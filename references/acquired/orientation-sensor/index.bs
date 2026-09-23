@@ -1,0 +1,575 @@
+<pre class="metadata">
+Title: Orientation Sensor
+Status: ED
+Level: none
+ED: https://w3c.github.io/orientation-sensor/
+Shortname: orientation-sensor
+TR: https://www.w3.org/TR/orientation-sensor/
+Editor: Kenneth Rohde Christiansen 57705, Intel Corporation, https://intel.com/
+Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
+Former Editor: Mikhail Pozdnyakov 78325, Intel Corporation, https://intel.com/
+Former Editor: Alexander Shalamov 78335, Intel Corporation, https://intel.com/
+Group: dap
+Abstract:
+  This specification defines a base orientation sensor interface and concrete sensor subclasses to monitor the device's
+  physical orientation in relation to a stationary three dimensional Cartesian coordinate system.
+Status Text:
+  <p class="advisement">This specification is maintained for existing deployments. Multiple browser engines have expressed concerns about this specification. For new projects, developers should use <a href="https://www.w3.org/TR/orientation-event/">Device Orientation and Motion</a>, which has cross-engine support. The Working Group intends to develop new motion-sensing functionality in <a href="https://www.w3.org/TR/orientation-event/">Device Orientation and Motion</a>.</p>
+
+  The Devices and Sensors Working Group is pursuing modern security and privacy
+  reviews for this specification in consideration of the amount of change in both
+  this specification and in privacy and security review practices since the
+  horizontal reviews <a
+  href="https://github.com/w3c/sensors/issues/299#issuecomment-541607278">took place
+  on 14 October 2019</a>. Similarly, the group is pursuing an update to the Technical
+  Architecture Group review for this specification to account for the latest
+  architectural review practices.
+Version History: https://github.com/w3c/orientation-sensor/commits/main/index.bs
+Issue Tracking: Orientation Sensor Issues Repository https://github.com/w3c/orientation-sensor/issues
+Indent: 2
+Repository: w3c/orientation-sensor
+Markup Shorthands: markdown on
+Inline Github Issues: true
+!Test Suite: <a href="https://github.com/web-platform-tests/wpt/tree/master/orientation-sensor">web-platform-tests on GitHub</a>
+Boilerplate: omit issues-index, repository-issue-tracking no
+Include MDN Panels: if possible
+Ignored Vars: sensor_instance, targetMatrix, x, y, z, w
+</pre>
+<pre class="anchors">
+urlPrefix: https://w3c.github.io/sensors/; spec: GENERIC-SENSOR
+  type: dfn
+    text: activated
+    text: construct a sensor object; url: construct-sensor-object
+    text: initialize a sensor object; url: initialize-a-sensor-object
+    text: default sensor
+    text: high-level
+    text: low-level
+    text: latest reading
+    text: sensor-fusion
+    text: sensor type
+    text: local coordinate system
+    text: check sensor policy-controlled features; url: check-sensor-policy-controlled-features
+    text: supported sensor options
+urlPrefix: https://w3c.github.io/accelerometer/; spec: ACCELEROMETER
+  type: dfn
+    text: acceleration
+    text: device coordinate system
+    text: screen coordinate system
+  type: interface
+    text: Accelerometer; url: accelerometer
+</pre>
+
+<pre class="anchors">
+urlPrefix: https://w3c.github.io/gyroscope/; spec: GYROSCOPE
+  type: dfn
+    text: angular velocity
+  type: interface
+    text: Gyroscope; url: gyroscope
+</pre>
+
+<pre class="anchors">
+urlPrefix: https://w3c.github.io/magnetometer/; spec: MAGNETOMETER
+  type: dfn
+    text: magnetic field
+  type: interface
+    text: Magnetometer; url: magnetometer
+</pre>
+
+<pre class="anchors">
+urlPrefix: https://www.w3.org/TR/2016/CR-orientation-event-20160818/; spec: DEVICEORIENTATION
+  type: interface
+    text: DeviceOrientationEvent; url: deviceorientation_event
+</pre>
+
+<pre class="link-defaults">
+spec:infra;
+  type:dfn;
+    text:list
+spec:generic-sensor-1;
+  type:enum-value;
+    text:"activated"
+spec: webidl;
+  type:dfn;
+    text:identifier
+</pre>
+
+<pre class=biblio>
+{
+    "QUATERNIONS": {
+        "id": "QUATERNIONS",
+        "href": "https://en.wikipedia.org/wiki/Quaternion",
+        "title": "Quaternion",
+        "publisher": "Wikipedia"
+    },
+    "QUATCONV": {
+        "authors": [
+            "Watt, Alan H., and Mark Watt."
+        ],
+        "id": "QUATCONV",
+        "href": "https://www.cs.cmu.edu/afs/cs/academic/class/15462-s14/www/lec_slides/3DRotationNotes.pdf",
+        "title": "Advanced animation and rendering techniques., page 362",
+        "date": "1992",
+        "status": "Informational",
+        "publisher": "New York, NY, USA:: ACM press"
+    }
+}
+</pre>
+
+Introduction {#intro}
+============
+
+The Orientation Sensor API extends the Generic Sensor API [[GENERIC-SENSOR]]
+to provide generic information describing the device's physical orientation
+in relation to a three dimensional Cartesian coordinate system.
+
+The {{AbsoluteOrientationSensor}} class inherits from the {{OrientationSensor}} interface and
+describes the device's physical orientation in relation to the <a>Earth's reference coordinate system</a>.
+
+Other subclasses describe the orientation in relation to other stationary
+directions, such as true north, or non stationary directions, like in
+relation to a devices own z-position, drifting towards its latest most stable
+z-position.
+
+The data provided by the {{OrientationSensor}} subclasses are similar to data from
+{{DeviceOrientationEvent}}, but the Orientation Sensor API has the following significant differences:
+1. The Orientation Sensor API represents orientation data in WebGL-compatible formats (quaternion, rotation matrix).
+1. The Orientation Sensor API satisfies stricter latency requirements.
+1. Unlike {{DeviceOrientationEvent}}, the {{OrientationSensor}} subclasses explicitly define which [=low-level=]
+   motion sensors are used to obtain the orientation data, thus obviating possible interoperability issues.
+1. Instances of {{OrientationSensor}} subclasses are configurable via {{SensorOptions}} constructor parameter.
+
+Use Cases and Requirements {#usecases-requirements}
+==============================
+
+The use cases and requirements are discussed in the <cite><a href="https://w3c.github.io/motion-sensors/#usecases-and-requirements">
+Motion Sensors Explainer</a></cite> document.
+
+Examples {#examples}
+========
+
+<div class="example">
+    <pre highlight="js">
+    const sensor = new AbsoluteOrientationSensor();
+    const mat4 = new Float32Array(16);
+    sensor.start();
+    sensor.onerror = event => console.log(event.error.name, event.error.message);
+
+    sensor.onreading = () => {
+      sensor.populateMatrix(mat4);
+    };
+    </pre>
+</div>
+
+<div class="example">
+    <pre highlight="js">
+    const sensor = new AbsoluteOrientationSensor({ frequency: 60 });
+    const mat4 = new Float32Array(16);
+    sensor.start();
+    sensor.onerror = event => console.log(event.error.name, event.error.message);
+
+    function draw(timestamp) {
+      window.requestAnimationFrame(draw);
+      try {
+        sensor.populateMatrix(mat4);
+      } catch(e) {
+        // mat4 has not been updated.
+      }
+      // Drawing...
+    }
+
+    window.requestAnimationFrame(draw);
+    </pre>
+</div>
+
+Security and Privacy Considerations {#security-and-privacy}
+===================================
+
+There are no specific security and privacy considerations
+beyond those described in the Generic Sensor API [[!GENERIC-SENSOR]].
+
+Model {#model}
+=====
+
+The {{OrientationSensor}} class extends the {{Sensor}} class and provides generic interface
+representing device orientation data.
+
+To access the <dfn>Orientation Sensor</dfn> <a>sensor type</a>'s [=latest reading=], the user agent must invoke [=request sensor access=] abstract operation for each of the [=low-level=] sensors used by the concrete orientation sensor. The table below
+describes mapping between concrete orientation sensors and permission tokens defined by [=low-level=] sensors.
+
+<table class="def">
+  <thead>
+    <tr>
+      <th>OrientationSensor subclass</th>
+      <th>Permission tokens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{AbsoluteOrientationSensor}}</td>
+      <td>"<code>accelerometer</code>", "<code>gyroscope</code>", "<code>magnetometer</code>"</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>{{RelativeOrientationSensor}}</td>
+      <td>"<code>accelerometer</code>", "<code>gyroscope</code>"</td>
+    </tr>
+  </tbody>
+</table>
+
+The {{AbsoluteOrientationSensor}} is a [=policy-controlled feature=] identified by strings "accelerometer", "gyroscope" and "magnetometer" . Its [=default allowlist=] is `'self'`.
+
+The {{RelativeOrientationSensor}} is a [=policy-controlled feature=] identified by strings "accelerometer" and "gyroscope". Its [=default allowlist=] is `'self'`.
+
+A [=latest reading=] for a {{Sensor}} of <a>Orientation Sensor</a> <a>sensor type</a> includes an [=map/entry=]
+whose [=map/key=] is "quaternion" and whose [=map/value=] contains a four element [=list=].
+The elements of the [=list=] are equal to components of a unit quaternion [[QUATERNIONS]]
+[V<sub>x</sub> * sin(θ/2), V<sub>y</sub> * sin(θ/2), V<sub>z</sub> * sin(θ/2), cos(θ/2)] where V is
+the unit vector (whose elements are V<sub>x</sub>, V<sub>y</sub>, and V<sub>z</sub>) representing the axis of rotation, and θ is the rotation angle about the axis defined by the unit vector V.
+
+Note: The quaternion components are arranged in the [=list=] as [q<sub>1</sub>, q<sub>2</sub>, q<sub>3</sub>, q<sub>0</sub>]
+[[QUATERNIONS]], i.e. the components representing the vector part of the quaternion go first and the scalar part component which
+is equal to cos(θ/2) goes after. This order is used for better compatibility with the most of the existing WebGL frameworks,
+however other libraries could use a different order when exposing quaternion as an array, e.g. [q<sub>0</sub>, q<sub>1</sub>,
+q<sub>2</sub>, q<sub>3</sub>].
+
+The concrete {{OrientationSensor}} subclasses that are created through [=sensor-fusion=] of the
+[=low-level=] motion sensors are presented in the table below:
+
+<table class="def">
+  <thead>
+    <tr>
+      <th>OrientationSensor subclass</th>
+      <th>[=low-level|Low-level=] motion sensors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{AbsoluteOrientationSensor}}</td>
+      <td>{{Accelerometer}}, {{Gyroscope}}, {{Magnetometer}}</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>{{RelativeOrientationSensor}}</td>
+      <td>{{Accelerometer}}, {{Gyroscope}}</td>
+    </tr>
+  </tbody>
+</table>
+
+Note: {{Accelerometer}}, {{Gyroscope}} and {{Magnetometer}} [=low-level=] sensors are defined in
+[[ACCELEROMETER]], [[GYROSCOPE]], and [[MAGNETOMETER]] specifications respectively. The
+[=sensor-fusion|sensor fusion=] is platform specific and can happen in software or hardware, i.e.
+on a sensor hub.
+
+<div class="example">
+    This example code explicitly queries permissions for {{AbsoluteOrientationSensor}} before
+    calling {{Sensor/start()}}.
+    <pre highlight="js">
+    const sensor = new AbsoluteOrientationSensor();
+    Promise.all([navigator.permissions.query({ name: "accelerometer" }),
+                 navigator.permissions.query({ name: "magnetometer" }),
+                 navigator.permissions.query({ name: "gyroscope" })])
+           .then(results => {
+                 if (results.every(result => result.state === "granted")) {
+                   sensor.start();
+                   ...
+                 } else {
+                   console.log("No permissions to use AbsoluteOrientationSensor.");
+                 }
+           });
+    </pre>
+
+    Another approach is to simply call {{Sensor/start()}} and subscribe to
+    {{Sensor/onerror}} [=event handler=].
+
+    <pre highlight="js">
+    const sensor = new AbsoluteOrientationSensor();
+    sensor.onerror = event => {
+      if (event.error.name === 'NotAllowedError')
+        console.log("No permissions to use AbsoluteOrientationSensor.");
+    };
+    sensor.start();
+    </pre>
+</div>
+
+The AbsoluteOrientationSensor Model {#absoluteorientationsensor-model}
+----------------------------------------------------------------------
+
+The <dfn id="absolute-orientation-sensor-type" export>Absolute Orientation Sensor</dfn> [=sensor type=] represents the sensor described in [[MOTION-SENSORS#absolute-orientation]]. Its associated [=extension sensor interface=] is {{AbsoluteOrientationSensor}}, a subclass of {{OrientationSensor}}. Its associated [=virtual sensor type=] is
+"<code><a data-lt="absolute-orientation virtual sensor type">absolute-orientation</a></code>".
+
+For the absolute orientation sensor the value of [=latest reading=]["quaternion"] represents
+the rotation of a device's [=local coordinate system=] in relation to the <dfn export>Earth's reference
+coordinate system</dfn> defined as a three dimensional Cartesian coordinate system (x, y, z), where:
+
+ - x-axis is a vector product of y.z that is tangential to the ground and points east,
+ - y-axis is tangential to the ground and points towards magnetic north, and
+ - z-axis points towards the sky and is perpendicular to the plane made up of x and y axes.
+
+The device's [=local coordinate system=] is the same as defined for the [=low-level=]
+motion sensors. It can be either the [=device coordinate system=] or the
+[=screen coordinate system=].
+
+Note: Figure below represents the case where device's [=local coordinate system=] and the <a>Earth's reference coordinate system</a> are aligned, therefore,
+orientation sensor's [=latest reading=] would represent 0 (rad) [[SI]] rotation about each axis.
+
+<img src="images/absolute_orientation_sensor_coordinate_system.png" srcset="images/absolute_orientation_sensor_coordinate_system.svg" style="display: block;margin: auto;" alt="AbsoluteOrientationSensor coordinate system.">
+
+The RelativeOrientationSensor Model {#relativeorientationsensor-model}
+----------------------------------------------------------------------
+
+The <dfn id="relative-orientation-sensor-type" export>Relative Orientation Sensor</dfn> [=sensor type=] represents the sensor described in [[MOTION-SENSORS#relative-orientation]]. Its associated [=extension sensor interface=] is {{RelativeOrientationSensor}}, a subclass of {{OrientationSensor}}. Its associated [=virtual sensor type=] is
+"<code><a data-lt="relative-orientation virtual sensor type">relative-orientation</a></code>".
+
+For the relative orientation sensor the value of [=latest reading=]["quaternion"] represents the
+rotation of a device's [=local coordinate system=] in relation to a [=stationary reference coordinate
+system=]. The [=stationary reference coordinate system=] may drift due to the bias introduced by
+the gyroscope sensor, thus, the rotation value provided by the sensor, may drift over time.
+
+The <dfn>stationary reference coordinate system</dfn> is defined as an inertial three dimensional
+Cartesian coordinate system that remains stationary as the device hosting the sensor moves through
+the environment.
+
+The device's [=local coordinate system=] is the same as defined for the [=low-level=]
+motion sensors. It can be either the [=device coordinate system=] or the
+[=screen coordinate system=].
+
+Note: The relative orientation sensor data could be more accurate than the one provided by absolute
+orientation sensor, as the sensor is not affected by magnetic fields.
+
+API {#api}
+===
+
+The OrientationSensor Interface {#orientationsensor-interface}
+-------------------------------------
+
+<pre class="idl">
+  typedef (Float32Array or Float64Array or DOMMatrix) RotationMatrixType;
+
+  [SecureContext, Exposed=Window]
+  interface OrientationSensor : Sensor {
+    readonly attribute FrozenArray&lt;double>? quaternion;
+    undefined populateMatrix(RotationMatrixType targetMatrix);
+  };
+
+  enum OrientationSensorLocalCoordinateSystem { "device", "screen" };
+
+  dictionary OrientationSensorOptions : SensorOptions {
+    OrientationSensorLocalCoordinateSystem referenceFrame = "device";
+  };
+</pre>
+
+### OrientationSensor.quaternion ### {#orientationsensor-quaternion}
+
+Returns a four-element {{FrozenArray}} whose elements contain the components
+of the unit quaternion representing the device orientation.
+In other words, this attribute returns the result of invoking
+[=get value from latest reading=] with <emu-val>this</emu-val>
+and "quaternion" as arguments.
+
+### OrientationSensor.populateMatrix() ### {#orientationsensor-populatematrix}
+
+<div algorithm="populate rotation matrix">
+The {{OrientationSensor/populateMatrix(targetMatrix)}} method steps are:
+    1.  If |targetMatrix| is of type {{Float32Array}} or {{Float64Array}} with a size less than sixteen, [=throw=] a
+        "{{TypeError!!exception}}" exception and abort these steps.
+    1.  Let |quaternion| be the result of invoking [=get value from latest reading=] with [=this=]
+        and "quaternion" as arguments.
+    1.  If |quaternion| is `null`, [=throw=] a "{{NotReadableError!!exception}}" {{DOMException}} and abort these steps.
+    1.  Let |rotationMatrix| be the result of [=converting a quaternion to rotation matrix=] with |quaternion|[0], |quaternion|[1], |quaternion|[2], and |quaternion|[3].
+    1.  If |targetMatrix| is of {{Float32Array}} or {{Float64Array}} type, run these sub-steps:
+        1.  Set |targetMatrix|[0] = |rotationMatrix|[0]
+        1.  Set |targetMatrix|[1] = |rotationMatrix|[1]
+        1.  Set |targetMatrix|[2] = |rotationMatrix|[2]
+        1.  Set |targetMatrix|[3] = |rotationMatrix|[3]
+        1.  Set |targetMatrix|[4] = |rotationMatrix|[4]
+        1.  Set |targetMatrix|[5] = |rotationMatrix|[5]
+        1.  Set |targetMatrix|[6] = |rotationMatrix|[6]
+        1.  Set |targetMatrix|[7] = |rotationMatrix|[7]
+        1.  Set |targetMatrix|[8] = |rotationMatrix|[8]
+        1.  Set |targetMatrix|[9] = |rotationMatrix|[9]
+        1.  Set |targetMatrix|[10] = |rotationMatrix|[10]
+        1.  Set |targetMatrix|[11] = |rotationMatrix|[11]
+        1.  Set |targetMatrix|[12] = |rotationMatrix|[12]
+        1.  Set |targetMatrix|[13] = |rotationMatrix|[13]
+        1.  Set |targetMatrix|[14] = |rotationMatrix|[14]
+        1.  Set |targetMatrix|[15] = |rotationMatrix|[15]
+    1.  If |targetMatrix| is of  {{DOMMatrix}} type, run these sub-steps:
+        1.  Set |targetMatrix|.m11 = |rotationMatrix|[0]
+        1.  Set |targetMatrix|.m12 = |rotationMatrix|[1]
+        1.  Set |targetMatrix|.m13 = |rotationMatrix|[2]
+        1.  Set |targetMatrix|.m14 = |rotationMatrix|[3]
+        1.  Set |targetMatrix|.m21 = |rotationMatrix|[4]
+        1.  Set |targetMatrix|.m22 = |rotationMatrix|[5]
+        1.  Set |targetMatrix|.m23 = |rotationMatrix|[6]
+        1.  Set |targetMatrix|.m24 = |rotationMatrix|[7]
+        1.  Set |targetMatrix|.m31 = |rotationMatrix|[8]
+        1.  Set |targetMatrix|.m32 = |rotationMatrix|[9]
+        1.  Set |targetMatrix|.m33 = |rotationMatrix|[10]
+        1.  Set |targetMatrix|.m34 = |rotationMatrix|[11]
+        1.  Set |targetMatrix|.m41 = |rotationMatrix|[12]
+        1.  Set |targetMatrix|.m42 = |rotationMatrix|[13]
+        1.  Set |targetMatrix|.m43 = |rotationMatrix|[14]
+        1.  Set |targetMatrix|.m44 = |rotationMatrix|[15]
+</div>
+
+
+The AbsoluteOrientationSensor Interface {#absoluteorientationsensor-interface}
+-------------------------------------
+
+<pre class="idl">
+  [SecureContext, Exposed=Window]
+  interface AbsoluteOrientationSensor : OrientationSensor {
+    constructor(optional OrientationSensorOptions sensorOptions = {});
+  };
+</pre>
+
+To construct an {{AbsoluteOrientationSensor}} object the user agent must invoke the
+[=construct an orientation sensor object=] abstract operation for the {{AbsoluteOrientationSensor}}
+interface.
+
+[=Supported sensor options=] for {{AbsoluteOrientationSensor}} are
+"frequency" and "referenceFrame".
+
+The RelativeOrientationSensor Interface {#relativeorientationsensor-interface}
+-------------------------------------
+
+<pre class="idl">
+  [SecureContext, Exposed=Window]
+  interface RelativeOrientationSensor : OrientationSensor {
+    constructor(optional OrientationSensorOptions sensorOptions = {});
+  };
+</pre>
+
+To construct a {{RelativeOrientationSensor}} object the user agent must invoke the
+[=construct an orientation sensor object=] abstract operation for the {{RelativeOrientationSensor}}
+interface.
+
+[=Supported sensor options=] for {{RelativeOrientationSensor}} are
+"frequency" and "referenceFrame".
+
+Abstract Operations {#abstract-operations}
+===================
+
+<h3 dfn export>Construct an Orientation Sensor object</h3>
+
+<div algorithm="construct an orientation sensor object">
+
+    : input
+    :: |orientation_interface|, an [=interface=] [=identifier=] whose [=inherited interfaces=] contains {{OrientationSensor}}.
+    :: |options|, a {{OrientationSensorOptions}} object.
+    : output
+    :: An {{OrientationSensor}} object.
+
+    1.  Let |allowed| be the result of invoking [=check sensor policy-controlled features=]
+        with the [=interface=] identified by |orientation_interface|.
+    1.  If |allowed| is false, then:
+        1.  [=Throw=] a {{SecurityError}} {{DOMException}}.
+    1.  Let |orientation| be a new instance of the [=interface=] identified by |orientation_interface|.
+    1.  Invoke [=initialize a sensor object=] with |orientation| and |options|.
+    1.  If |options|.{{referenceFrame!!dict-member}} is "screen", then:
+        1.  Define [=local coordinate system=] for |orientation|
+            as the [=screen coordinate system=].
+    1.  Otherwise, define [=local coordinate system=] for |orientation|
+        as the [=device coordinate system=].
+    1.  Return |orientation|.
+</div>
+
+<h3 id="convert-quaternion-to-rotation-matrix">Convert quaternion to rotation matrix</h3>
+
+The [=convert a quaternion to rotation matrix=] algorithm creates a [=list=] representation of a rotation matrix in column-major order converted from a quaternion [[QUATCONV]], as shown below:
+
+<img src="images/quaternion_to_rotation_matrix.png" style="display: block;margin: auto; width: 50%; height: 50%;" alt="Converting quaternion to rotation matrix.">
+
+where:
+
+ - W = cos(θ/2)
+ - X = V<sub>x</sub> * sin(θ/2)
+ - Y = V<sub>y</sub> * sin(θ/2)
+ - Z = V<sub>z</sub> * sin(θ/2)
+
+<div algorithm>
+To <dfn lt="converting a quaternion to rotation matrix">convert a quaternion to rotation matrix</dfn> given a number |x|, a number |y|, a number |z|, and a number |w|:
+
+    1. Let |m11| be 1 - 2 * y * y - 2 * z * z
+    1. Let |m12| be 2 * x * y - 2 * z * w
+    1. Let |m13| be 2 * x * z + 2 * y * w
+    1. Let |m14| be 0
+    1. Let |m21| be 2 * x * y + 2 * z * w
+    1. Let |m22| be 1 - 2 * x * x - 2 * z * z
+    1. Let |m23| be 2 * y * z - 2 * x * w
+    1. Let |m24| be 0
+    1. Let |m31| be 2 * x * z - 2 * y * w
+    1. Let |m32| be 2 * y * z + 2 * x * w
+    1. Let |m33| be 1 - 2 * x * x - 2 * y * y
+    1. Let |m34| be 0
+    1. Let |m41| be 0
+    1. Let |m42| be 0
+    1. Let |m43| be 0
+    1. Let |m44| be 1
+    1. Return « |m11|, |m12|, |m13|, |m14|, |m21|, |m22|, |m23|, |m24|, |m31|, |m32|, |m33|, |m34|, |m41|, |m42|, |m43|, |m44| ».
+
+</div>
+
+<h3 id="helper-create-quaternion-from-euler-angles">Create a quaternion from Euler angles</h3>
+
+<div algorithm>
+<!--
+    This algorithm was copied from
+    https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/sensor/sensor_inspector_agent.cc;l=27;drc=047c7dc4ee1ce908d7fea38ca063fa2f80f92c77
+-->
+
+To <dfn>create a quaternion from Euler angles</dfn> given a number |alpha|, a number |beta| and a number |gamma|:
+
+    1. Let |alphaInRadians| be |alpha| converted from degrees to radians.
+    1. Let |betaInRadians| be |beta| converted from degrees to radians.
+    1. Let |gammaInRadians| be |gamma| converted from degrees to radians.
+    1. Let |cosZ| be the cosine of (0.5 * |alphaInRadians|).
+    1. Let |sinZ| be the sine of (0.5 * |alphaInRadians|).
+    1. Let |cosX| be the cosine of (0.5 * |betaInRadians|).
+    1. Let |sinX| be the sine of (0.5 * |betaInRadians|).
+    1. Let |cosY| be the cosine of (0.5 * |gammaInRadians|).
+    1. Let |sinY| be the sine of (0.5 * |gammaInRadians|).
+    1. Let |quaternionX| be (|sinX| * |cosY| * |cosZ| - |cosX| * |sinY| * |sinZ|).
+    1. Let |quaternionY| be (|cosX| * |sinY| * |cosZ| + |sinX| * |cosY| * |sinZ|).
+    1. Let |quaternionZ| be (|cosX| * |cosY| * |sinZ| + |sinX| * |sinY| * |cosZ|).
+    1. Let |quaternionW| be (|cosX| * |cosY| * |cosZ| - |sinX| * |sinY| * |sinZ|).
+    1. Return « |quaternionX|, |quaternionY|, |quaternionZ|, |quaternionW| ».
+
+</div>
+
+Automation {#automation}
+==========
+
+This section extends [[GENERIC-SENSOR#automation]] by providing [=Orientation Sensor=]-specific virtual sensor metadata.
+
+Modifications to other specifications {#modifications-to-other-specifications}
+-------------------------------------
+
+This specification integrates with [[DEVICE-ORIENTATION#automation]] as follows.
+
+<div algorithm="parse-orientation-data-reading-modifications">
+The [=parse orientation data reading=] algorithm is modified as follows:
+
+    * Add the following steps after setting |reading|'s "`alpha`", "`beta`", and "`gamma`" keys and before returning |reading|:
+        1. [=map/Set=] |reading|["`quaternion`"] to the result of invoking [=create a quaternion from Euler angles=] with |reading|["`alpha`"], |reading|["`beta`"], and |reading|["`gamma`"].
+
+</div>
+
+Note: This specification does not currently provide a way for specifying quaternions in WebDriver (and consequently deriving Euler angles from the quaternion) directly. This decision was made for simplicity and under the assumption that automation users are much more likely to work with Euler angles as inputs (or pick specific quaternion values and provide the corresponding Euler angle values on their own). Feedback from users with different use cases who are interested in being able to provide quaternion values directly is welcome via <a href="https://github.com/w3c/orientation-sensor/issues">this specification's issue tracker</a>.
+
+Absolute Orientation Sensor automation {#absolute-orientation-sensor-automation}
+--------------------------------------
+
+The [=absolute-orientation virtual sensor type=] and its corresponding entry in the [=per-type virtual sensor metadata=] [=map=] are defined in [[DEVICE-ORIENTATION#automation]].
+
+Relative Orientation Sensor automation {#relative-orientation-sensor-automation}
+--------------------------------------
+
+The [=relative-orientation virtual sensor type=] and its corresponding entry in the [=per-type virtual sensor metadata=] [=map=] are defined in [[DEVICE-ORIENTATION#automation]].
+
+Acknowledgements {#acknowledgements}
+================
+
+Tobie Langel for the work on Generic Sensor API.
