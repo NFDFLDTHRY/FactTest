@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D8-REOBSERVE",
+  "selected_inputs": ["design/materialization/M0-INTENDED-SYSTEM.md", "factory/receipts/", "evidence/D6/physical/", "evidence/D7/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/M9-OBSERVED-SYSTEM.md", "design/materialization/LEDGER.md", "factory/deltas/", "factory/fixtures/", "factory/receipts/D8-REOBSERVE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "for s in 1 2 3 4 5 6 7 8; do grep -qE \"^$s  \" design/materialization/M9-OBSERVED-SYSTEM.md || { echo missing M0 section $s; exit 1; }; done; grep -q 'D8-REOBSERVE' design/materialization/LEDGER.md"], "log": "factory/receipts/D8-REOBSERVE/logs/F0-sections.log"},
+    {"cwd": ".", "program": "git", "args": ["diff", "--exit-code", "976718a608c58e0f22eb26802eb4c125ba72ee80", "--", "design/materialization/M0-INTENDED-SYSTEM.md"], "log": "factory/receipts/D8-REOBSERVE/logs/F0-drawing-untouched.log"}
+  ]},
+  "expected_outputs": ["design/materialization/M9-OBSERVED-SYSTEM.md"],
+  "tests": ["M9 addresses every M0 section", "M0 drawing untouched"], "evidence_requirements": ["receipt"]
+}

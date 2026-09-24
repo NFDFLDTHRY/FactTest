@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F1-build", "station_id": "S-BUILD", "delta_id": "D8-REOBSERVE",
+  "selected_inputs": ["compiler/", "factory/", "host/", "fixtures/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D8/build/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D8/build/test.log"}
+  ]},
+  "expected_outputs": ["evidence/D8/build/test.log"],
+  "tests": ["full suite on the final tree"], "evidence_requirements": ["logs"]
+}

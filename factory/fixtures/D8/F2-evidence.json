@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F2-evidence", "station_id": "S-EVIDENCE", "delta_id": "D8-REOBSERVE",
+  "selected_inputs": ["evidence/D8/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D8/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["evidence", "index", "evidence/D8", "evidence/D8/index.json"], "log": "evidence/D8/index.log"}
+  ]},
+  "expected_outputs": ["evidence/D8/index.json"],
+  "tests": ["evidence indexed"], "evidence_requirements": ["index"]
+}

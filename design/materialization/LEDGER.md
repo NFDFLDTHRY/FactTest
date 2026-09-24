@@ -347,5 +347,32 @@ BEFORE
 - EXPECTED EVIDENCE: evidence/D7/{build,anti-cheat,physical}/*, index.json.
 
 AFTER
-- recorded by the next delta (a delta cannot carry its own integration result).
+- RESULT: integrated as 976718a608c58e0f22eb26802eb4c125ba72ee80 (ff-only from 578108e); no refusals.
+- RECEIPTS: factory/receipts/D7-COMMISSIONING-GATE/{F0-doc,F1-web,F2-rust,F3-fixture,F4-build,F5-browser,F6-evidence}.json PASS.
+- VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- EVIDENCE: evidence/D7/build/test.log 95 passed / 0 failed (commissioning ladder 4 new); evidence/D7/anti-cheat/summary.log
+  compiler-src/codegen-templates/factory-src/host all clean (P6-X06); evidence/D7/physical second PHYSICAL_BROWSER run
+  with the same verdict as D6 (E0 WEBGPU exact x2, loss "destroyed", E1 CPU_WASM64 exact x2, no codegen, bundle unchanged)
+  and metric_evidence_refs now derived from strategy data ("metric:preference_rank").
+- OBSERVED ASCII: evidence/D7/physical/observed/observed.ascii.
+- MATCH/DIFFER: MATCH; COMMISSIONING-RECORD.md maps all 45 PASS6-TESTS ids.
+
+---
+
+## D8-REOBSERVE  (M9)
+
+BEFORE
+- DELTA: D8-REOBSERVE (factory/deltas/D8.json)
+- BASE: 976718a608c58e0f22eb26802eb4c125ba72ee80
+- STATION: S-DOC, S-BUILD, S-EVIDENCE
+- FIXTURE: F0-doc, F1-build, F2-evidence
+- READ: everything.  CHANGE: design/materialization/M9-OBSERVED-SYSTEM.md, this ledger, evidence/D8/.
+  FORBIDDEN: everything else (no source, fixture, template, registry or law change).
+- INVARIANTS: M0 drawing untouched; differences preserved as [OBS]/[GAP]/[UNK], never resolved by editing the drawing.
+- TESTS: full `cargo test` on the final tree recorded as evidence/D8/build/test.log; M9 names every M0 section.
+- EXPECTED EVIDENCE: evidence/D8/build/test.log, evidence/D8/index.json.
+
+AFTER
+- a delta cannot carry its own integration result; D8's receipts, verification.json and integration commit are
+  read from factory/receipts/D8-REOBSERVE/ and `git log` (author FactTest Factory), and W8.state.json outside the tree.
 

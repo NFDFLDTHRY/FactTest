@@ -1,0 +1,142 @@
+{
+  "delta_id": "D8-REOBSERVE",
+  "workpiece_id": "W8",
+  "canonical_base": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+  "base_tree": "03341bd174382bf3a21119129383167e4ca9d0ed",
+  "verified_tree": "421652efea062e5e8e6d64fa2a4c3775a8757ad2",
+  "changed_paths": [
+    "design/materialization/LEDGER.md",
+    "design/materialization/M9-OBSERVED-SYSTEM.md",
+    "evidence/D8/build/test.log",
+    "evidence/D8/index.json",
+    "evidence/D8/index.log",
+    "factory/deltas/D8.json",
+    "factory/fixtures/D8/F0-doc.json",
+    "factory/fixtures/D8/F1-build.json",
+    "factory/fixtures/D8/F2-evidence.json",
+    "factory/receipts/D8-REOBSERVE/F0-doc.json",
+    "factory/receipts/D8-REOBSERVE/F1-build.json",
+    "factory/receipts/D8-REOBSERVE/F2-evidence.json",
+    "factory/receipts/D8-REOBSERVE/logs/F0-drawing-untouched.log",
+    "factory/receipts/D8-REOBSERVE/logs/F0-sections.log"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "03341bd174382bf3a21119129383167e4ca9d0ed"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D8-REOBSERVE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D8-REOBSERVE/F1-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D8-REOBSERVE/F2-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/M9-OBSERVED-SYSTEM.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D8/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D8/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T03:00:52Z",
+  "status": "PASS"
+}

@@ -1,0 +1,98 @@
+{
+  "receipt_id": "R-D8-REOBSERVE-F2-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F2-evidence",
+  "workpiece_id": "W8",
+  "delta_id": "D8-REOBSERVE",
+  "canonical_base": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+  "input_artifacts": [
+    "evidence/D8/"
+  ],
+  "open_tree": "bb5b1b6eecb0534473ffbe7354f767a089810aff",
+  "close_tree": "294bc3bb211fe72dcb2edc31c0f594ca6f5ccf0b",
+  "changed_paths": [
+    "evidence/D8/index.json",
+    "evidence/D8/index.log"
+  ],
+  "output_artifacts": [
+    "evidence/D8/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D8-REOBSERVE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D8/index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory evidence index evidence/D8 evidence/D8/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D8/index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D8/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D8/index.log"
+  ],
+  "closed": "2026-09-24T03:00:52Z",
+  "status": "PASS"
+}
