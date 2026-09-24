@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D1-COMPILER-FOUNDATION",
+  "selected_inputs": ["BOOTSTRAP-TESTS.md", "PLANNED-REPO-LAYOUT.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/LEDGER.md", "factory/deltas/", "factory/fixtures/", "Cargo.toml", "factory/receipts/D1-COMPILER-FOUNDATION/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "grep", "args": ["-q", "D1-COMPILER-FOUNDATION", "design/materialization/LEDGER.md"], "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F0-ledger.log"}
+  ]},
+  "expected_outputs": ["design/materialization/LEDGER.md", "Cargo.toml"],
+  "tests": ["ledger names this delta"], "evidence_requirements": ["receipt"]
+}

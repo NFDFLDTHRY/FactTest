@@ -1,0 +1,15 @@
+$ cargo tree --edges normal,build
+(cwd .)
+factc v0.1.0 (/home/user/factory-workpieces/W1/host/factc)
+├── factc-foundation v0.1.0 (/home/user/factory-workpieces/W1/compiler/foundation)
+└── factc-kernel v0.1.0 (/home/user/factory-workpieces/W1/compiler/kernel)
+    └── factc-foundation v0.1.0 (/home/user/factory-workpieces/W1/compiler/foundation)
+
+factc-foundation v0.1.0 (/home/user/factory-workpieces/W1/compiler/foundation)
+
+factc-kernel v0.1.0 (/home/user/factory-workpieces/W1/compiler/kernel) (*)
+
+factory v0.1.0 (/home/user/factory-workpieces/W1/factory)
+└── factc-foundation v0.1.0 (/home/user/factory-workpieces/W1/compiler/foundation)
+
+[exit 0] expected 0

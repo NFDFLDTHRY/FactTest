@@ -1,0 +1,324 @@
+{
+  "delta_id": "D1-COMPILER-FOUNDATION",
+  "workpiece_id": "W1",
+  "canonical_base": "25ef9e372a62f62a08371027b71bf0b4cd4b77ff",
+  "base_tree": "11cf2d6489541868bb49097517b4a77cf5be7b7e",
+  "verified_tree": "930f7d9314928e894e768cf14f936e0b5fab872c",
+  "changed_paths": [
+    "Cargo.lock",
+    "Cargo.toml",
+    "compiler/foundation/Cargo.toml",
+    "compiler/foundation/src/artifact.rs",
+    "compiler/foundation/src/buf.rs",
+    "compiler/foundation/src/bvec.rs",
+    "compiler/foundation/src/diag.rs",
+    "compiler/foundation/src/hex.rs",
+    "compiler/foundation/src/ids.rs",
+    "compiler/foundation/src/json.rs",
+    "compiler/foundation/src/lib.rs",
+    "compiler/foundation/src/limits.rs",
+    "compiler/foundation/src/sha256.rs",
+    "compiler/foundation/src/tests_foundation.rs",
+    "compiler/foundation/src/text.rs",
+    "compiler/foundation/src/wasm.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/lib.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/bootstrap_ladder.rs",
+    "compiler/wasm-abi/Cargo.toml",
+    "compiler/wasm-abi/src/lib.rs",
+    "design/materialization/LEDGER.md",
+    "evidence/D1/bootstrap/b10-b11-chromium.json",
+    "evidence/D1/bootstrap/b10-node.json",
+    "evidence/D1/bootstrap/b9-build.log",
+    "evidence/D1/bootstrap/b9-inspect.json",
+    "evidence/D1/bootstrap/b9-inspect.log",
+    "evidence/D1/bootstrap/b9-toolchain.log",
+    "evidence/D1/bootstrap/factc_wasm_abi.wasm",
+    "evidence/D1/bootstrap/run.log",
+    "evidence/D1/build/cargo-tree.log",
+    "evidence/D1/build/test.log",
+    "evidence/D1/build/toolchain-nightly.log",
+    "evidence/D1/build/toolchain-stable.log",
+    "evidence/D1/index.json",
+    "evidence/D1/index.log",
+    "evidence/D1/negative/run.log",
+    "evidence/D1/negative/summary.log",
+    "evidence/D1/negative/third-party-dep.log",
+    "factory/Cargo.toml",
+    "factory/deltas/D1.json",
+    "factory/fixtures/D1/F0-doc.json",
+    "factory/fixtures/D1/F1-rust.json",
+    "factory/fixtures/D1/F2-web.json",
+    "factory/fixtures/D1/F3-fixture.json",
+    "factory/fixtures/D1/F4-build.json",
+    "factory/fixtures/D1/F5-evidence.json",
+    "factory/receipts/D1-COMPILER-FOUNDATION/F0-doc.json",
+    "factory/receipts/D1-COMPILER-FOUNDATION/F1-rust.json",
+    "factory/receipts/D1-COMPILER-FOUNDATION/F2-web.json",
+    "factory/receipts/D1-COMPILER-FOUNDATION/F3-fixture.json",
+    "factory/receipts/D1-COMPILER-FOUNDATION/F4-build.json",
+    "factory/receipts/D1-COMPILER-FOUNDATION/F5-evidence.json",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F0-ledger.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-build.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-clippy.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-depcheck.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-fmt.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-nostd.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F2-syntax.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F3-sh-syntax.log",
+    "factory/src/checks.rs",
+    "factory/src/lib.rs",
+    "factory/src/main.rs",
+    "factory/src/ops.rs",
+    "fixtures/compiler/negative/id-substitution/Cargo.lock",
+    "fixtures/compiler/negative/id-substitution/Cargo.toml",
+    "fixtures/compiler/negative/id-substitution/src/lib.rs",
+    "fixtures/compiler/negative/std-in-kernel/Cargo.lock",
+    "fixtures/compiler/negative/std-in-kernel/Cargo.toml",
+    "fixtures/compiler/negative/std-in-kernel/src/lib.rs",
+    "fixtures/compiler/negative/third-party-dep/Cargo.toml",
+    "fixtures/compiler/negative/third-party-dep/src/lib.rs",
+    "host/factc/Cargo.toml",
+    "host/factc/src/main.rs",
+    "host/harness/kernel-host.mjs",
+    "tests/bootstrap/b7-opaque.ascii",
+    "tests/bootstrap/run-b9-b11.sh",
+    "tests/bootstrap/run-negative-fixtures.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "11cf2d6489541868bb49097517b4a77cf5be7b7e"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D1-COMPILER-FOUNDATION/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D1-COMPILER-FOUNDATION/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-web",
+      "status": "PASS",
+      "detail": "factory/receipts/D1-COMPILER-FOUNDATION/F2-web.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D1-COMPILER-FOUNDATION/F3-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D1-COMPILER-FOUNDATION/F4-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D1-COMPILER-FOUNDATION/F5-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:WEB_HOST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/foundation/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/kernel/src/abi.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/wasm-abi/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:host/factc/src/main.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:host/harness/kernel-host.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/src/checks.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/bootstrap/run-b9-b11.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D1/bootstrap/factc_wasm_abi.wasm",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D1/bootstrap/b10-b11-chromium.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D1/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T01:47:53Z",
+  "status": "PASS"
+}

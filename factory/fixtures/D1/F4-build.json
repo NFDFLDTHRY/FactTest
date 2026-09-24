@@ -1,0 +1,16 @@
+{
+  "fixture_id": "F4-build", "station_id": "S-BUILD", "delta_id": "D1-COMPILER-FOUNDATION",
+  "selected_inputs": ["compiler/", "host/", "factory/", "fixtures/", "tests/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D1/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D1/build/test.log"},
+    {"cwd": ".", "program": "cargo", "args": ["tree", "--edges", "normal,build"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D1/build/cargo-tree.log"},
+    {"cwd": ".", "program": "rustc", "args": ["--version", "--verbose"], "log": "evidence/D1/build/toolchain-stable.log"},
+    {"cwd": ".", "program": "rustc", "args": ["+nightly", "--version", "--verbose"], "log": "evidence/D1/build/toolchain-nightly.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/bootstrap/run-negative-fixtures.sh", "evidence/D1/negative"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory"}, "log": "evidence/D1/negative/run.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/bootstrap/run-b9-b11.sh", "evidence/D1/bootstrap"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory", "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers"}, "log": "evidence/D1/bootstrap/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D1/build/test.log", "evidence/D1/negative/summary.log", "evidence/D1/bootstrap/factc_wasm_abi.wasm", "evidence/D1/bootstrap/b9-inspect.json", "evidence/D1/bootstrap/b10-b11-chromium.json"],
+  "tests": ["cargo test (B3-B8, factory law)", "negative fixtures (B1-B3)", "B9-B11"], "evidence_requirements": ["logs", "module identity", "browser record"]
+}

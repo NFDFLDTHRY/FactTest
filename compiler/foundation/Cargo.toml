@@ -1,0 +1,12 @@
+[package]
+name = "factc-foundation"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "FactTest compiler foundation: typed identity domains, spans, bounded arenas, structured diagnostics, output buffers, JSON writer, SHA-256. no_std, no dependencies."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,91 @@
+$ cargo test
+(cwd .)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 9 tests
+test tests_foundation::b3_span_requires_valid_interval ... ok
+test tests_foundation::b4_diagnostics_deterministic_order ... ok
+test tests_foundation::bvec_exhaustion_is_a_value ... ok
+test tests_foundation::json_writer_is_deterministic_and_escapes ... ok
+test tests_foundation::outbuf_reports_output_too_small ... ok
+test tests_foundation::text_arena_interns_and_compares_by_bytes ... ok
+test wasm::tests::reads_memory64_flag ... ok
+test wasm::tests::rejects_bad_magic ... ok
+test sha256::tests::known_answers ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 4 tests
+test b2_workspace_exhaustion_is_structured ... ok
+test no_source_is_a_diagnostic_not_a_panic ... ok
+test b7_opaque_source_reaches_front_end_boundary ... ok
+test b8_language_kernel_absent_is_structured_and_deterministic ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 9 tests
+test f02_fixture_authority_expansion_rejected_at_open ... ok
+test f03_missing_receipt_blocks_verification ... ok
+test f01_unauthorized_mutation_fails_verification ... ok
+test f00_happy_path_integrates_and_reinspects ... ok
+test f04_failed_station_check_cannot_be_pass ... ok
+test f06_read_only_station_mutating_source_fails ... ok
+test f08_delta_with_overlapping_authority_fails_structural_check ... ok
+test f07_unreceipted_change_fails_verification ... ok
+test f05_moved_base_blocks_integration_without_force ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling factc-kernel v0.1.0 (/home/user/factory-workpieces/W1/compiler/kernel)
+   Compiling factc v0.1.0 (/home/user/factory-workpieces/W1/host/factc)
+   Compiling factory v0.1.0 (/home/user/factory-workpieces/W1/factory)
+   Compiling factc-foundation v0.1.0 (/home/user/factory-workpieces/W1/compiler/foundation)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.97s
+     Running unittests src/main.rs (/home/user/factory-target/debug/deps/factc-eeec58fae0c95f30)
+     Running unittests src/lib.rs (/home/user/factory-target/debug/deps/factc_foundation-4680fb8d21471dda)
+     Running unittests src/lib.rs (/home/user/factory-target/debug/deps/factc_kernel-4dff35a507e58901)
+     Running tests/bootstrap_ladder.rs (/home/user/factory-target/debug/deps/bootstrap_ladder-9f5c4aa794cad132)
+     Running unittests src/lib.rs (/home/user/factory-target/debug/deps/factory-7f03e9cc2885e627)
+     Running unittests src/main.rs (/home/user/factory-target/debug/deps/factory-3be3f278e1e07394)
+     Running tests/factory_law.rs (/home/user/factory-target/debug/deps/factory_law-d56c0c15998918b0)
+   Doc-tests factc_foundation
+   Doc-tests factc_kernel
+   Doc-tests factory
+
+[exit 0] expected 0

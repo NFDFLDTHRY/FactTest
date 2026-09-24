@@ -1,0 +1,15 @@
+[package]
+name = "factc-wasm-abi"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "wasm64-unknown-unknown export surface for the FactTest kernel bootstrap ABI (B9-B11). Transport only; no semantics."
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+factc-kernel = { path = "../kernel" }
+factc-foundation = { path = "../foundation" }

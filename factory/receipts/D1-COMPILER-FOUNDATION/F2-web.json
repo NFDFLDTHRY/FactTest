@@ -1,0 +1,93 @@
+{
+  "receipt_id": "R-D1-COMPILER-FOUNDATION-F2-web",
+  "station_id": "S-WEB",
+  "station_version": "1",
+  "fixture_id": "F2-web",
+  "workpiece_id": "W1",
+  "delta_id": "D1-COMPILER-FOUNDATION",
+  "canonical_base": "25ef9e372a62f62a08371027b71bf0b4cd4b77ff",
+  "input_artifacts": [
+    "BOOTSTRAP-CONTRACTS.md C13/C14"
+  ],
+  "open_tree": "21ca05ac088103961c4214abdd8db8da2f1bd3a7",
+  "close_tree": "e2f3ef305d6b31b33ed36b9eb4cf7b8522c48e07",
+  "changed_paths": [
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F2-syntax.log",
+    "host/harness/kernel-host.mjs"
+  ],
+  "output_artifacts": [
+    "host/harness/kernel-host.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-WEB v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D1-COMPILER-FOUNDATION"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "WEB_HOST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D1-COMPILER-FOUNDATION/logs/F2-syntax.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node --check host/harness/kernel-host.mjs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D1-COMPILER-FOUNDATION/logs/F2-syntax.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:host/harness/kernel-host.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F2-syntax.log"
+  ],
+  "closed": "2026-09-24T01:47:50Z",
+  "status": "PASS"
+}

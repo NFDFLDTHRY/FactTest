@@ -2,6 +2,19 @@
 resolver = "2"
 members = [
     "factory",
+    "compiler/foundation",
+    "compiler/kernel",
+    "compiler/wasm-abi",
+    "host/factc",
+]
+default-members = [
+    "factory",
+    "compiler/foundation",
+    "compiler/kernel",
+    "host/factc",
+]
+exclude = [
+    "fixtures",
 ]
 
 [workspace.package]

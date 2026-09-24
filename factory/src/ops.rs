@@ -676,6 +676,12 @@ pub fn integrate(delta: &StructuralDelta) -> Result<Report, String> {
         checked_out == delta.canonical_branch,
         checked_out,
     );
+    let dirty = git::run(repo, &["status", "--porcelain"])?;
+    r.check(
+        "canonical_working_tree_clean",
+        dirty.is_empty(),
+        dirty.lines().take(5).collect::<Vec<_>>().join("; "),
+    );
     if !r.pass() {
         r.check(
             "integration",
@@ -692,7 +698,13 @@ pub fn integrate(delta: &StructuralDelta) -> Result<Report, String> {
             msg.push('\n');
         }
     }
-    let commit = git::commit_all(&wp, &msg)?;
+    // idempotent: a previous integration attempt may already have committed exactly the verified tree
+    let head = git::rev_parse(&wp, "HEAD")?;
+    let commit = if head != delta.canonical_base && git::tree_of_commit(&wp, &head)? == final_tree {
+        head
+    } else {
+        git::commit_all(&wp, &msg)?
+    };
     let commit_tree = git::tree_of_commit(&wp, &commit)?;
     r.check(
         "commit_tree_matches_final_tree",

@@ -3,5 +3,35 @@
 version = 4
 
 [[package]]
+name = "factc"
+version = "0.1.0"
+dependencies = [
+ "factc-foundation",
+ "factc-kernel",
+]
+
+[[package]]
+name = "factc-foundation"
+version = "0.1.0"
+
+[[package]]
+name = "factc-kernel"
+version = "0.1.0"
+dependencies = [
+ "factc-foundation",
+]
+
+[[package]]
+name = "factc-wasm-abi"
+version = "0.1.0"
+dependencies = [
+ "factc-foundation",
+ "factc-kernel",
+]
+
+[[package]]
 name = "factory"
 version = "0.1.0"
+dependencies = [
+ "factc-foundation",
+]

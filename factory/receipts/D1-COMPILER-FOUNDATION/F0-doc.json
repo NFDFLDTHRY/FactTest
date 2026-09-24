@@ -1,0 +1,101 @@
+{
+  "receipt_id": "R-D1-COMPILER-FOUNDATION-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W1",
+  "delta_id": "D1-COMPILER-FOUNDATION",
+  "canonical_base": "25ef9e372a62f62a08371027b71bf0b4cd4b77ff",
+  "input_artifacts": [
+    "BOOTSTRAP-TESTS.md",
+    "PLANNED-REPO-LAYOUT.md"
+  ],
+  "open_tree": "65a671715034743982b49fc98a84f11929009f82",
+  "close_tree": "a5bf2d52c08e33a31f60dc2162b11d1242278338",
+  "changed_paths": [
+    "Cargo.toml",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F0-ledger.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/LEDGER.md",
+    "Cargo.toml"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D1-COMPILER-FOUNDATION"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D1-COMPILER-FOUNDATION/logs/F0-ledger.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:grep -q D1-COMPILER-FOUNDATION design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D1-COMPILER-FOUNDATION/logs/F0-ledger.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:Cargo.toml",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F0-ledger.log"
+  ],
+  "closed": "2026-09-24T01:47:48Z",
+  "status": "PASS"
+}

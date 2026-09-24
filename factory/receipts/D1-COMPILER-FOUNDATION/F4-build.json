@@ -1,0 +1,194 @@
+{
+  "receipt_id": "R-D1-COMPILER-FOUNDATION-F4-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F4-build",
+  "workpiece_id": "W1",
+  "delta_id": "D1-COMPILER-FOUNDATION",
+  "canonical_base": "25ef9e372a62f62a08371027b71bf0b4cd4b77ff",
+  "input_artifacts": [
+    "compiler/",
+    "host/",
+    "factory/",
+    "fixtures/",
+    "tests/"
+  ],
+  "open_tree": "3c2b22eb65778951515ebf77c0aca7ee4107e7a2",
+  "close_tree": "0354f252aabae07acb1cc94ad0de7e8670e3d5ad",
+  "changed_paths": [
+    "evidence/D1/bootstrap/b10-b11-chromium.json",
+    "evidence/D1/bootstrap/b10-node.json",
+    "evidence/D1/bootstrap/b9-build.log",
+    "evidence/D1/bootstrap/b9-inspect.json",
+    "evidence/D1/bootstrap/b9-inspect.log",
+    "evidence/D1/bootstrap/b9-toolchain.log",
+    "evidence/D1/bootstrap/factc_wasm_abi.wasm",
+    "evidence/D1/bootstrap/run.log",
+    "evidence/D1/build/cargo-tree.log",
+    "evidence/D1/build/test.log",
+    "evidence/D1/build/toolchain-nightly.log",
+    "evidence/D1/build/toolchain-stable.log",
+    "evidence/D1/negative/run.log",
+    "evidence/D1/negative/summary.log",
+    "evidence/D1/negative/third-party-dep.log"
+  ],
+  "output_artifacts": [
+    "evidence/D1/build/test.log",
+    "evidence/D1/negative/summary.log",
+    "evidence/D1/bootstrap/factc_wasm_abi.wasm",
+    "evidence/D1/bootstrap/b9-inspect.json",
+    "evidence/D1/bootstrap/b10-b11-chromium.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D1-COMPILER-FOUNDATION"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D1/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D1/build/cargo-tree.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D1/build/toolchain-stable.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D1/build/toolchain-nightly.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D1/negative/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D1/bootstrap/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo test",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D1/build/test.log"
+    },
+    {
+      "check": "command:cargo tree --edges normal,build",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D1/build/cargo-tree.log"
+    },
+    {
+      "check": "command:rustc --version --verbose",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D1/build/toolchain-stable.log"
+    },
+    {
+      "check": "command:rustc +nightly --version --verbose",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D1/build/toolchain-nightly.log"
+    },
+    {
+      "check": "command:sh tests/bootstrap/run-negative-fixtures.sh evidence/D1/negative",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D1/negative/run.log"
+    },
+    {
+      "check": "command:sh tests/bootstrap/run-b9-b11.sh evidence/D1/bootstrap",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D1/bootstrap/run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D1/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D1/negative/summary.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D1/bootstrap/factc_wasm_abi.wasm",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D1/bootstrap/b9-inspect.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D1/bootstrap/b10-b11-chromium.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D1/build/test.log",
+    "evidence/D1/build/cargo-tree.log",
+    "evidence/D1/build/toolchain-stable.log",
+    "evidence/D1/build/toolchain-nightly.log",
+    "evidence/D1/negative/run.log",
+    "evidence/D1/bootstrap/run.log"
+  ],
+  "closed": "2026-09-24T01:47:53Z",
+  "status": "PASS"
+}
