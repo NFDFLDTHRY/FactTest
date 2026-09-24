@@ -11,8 +11,11 @@
 //   new AUTHORITY / COMPUTATIONAL_FACT / EVIDENCE nodes and the register's added edges
 // Pins of new authorities are derived, never typed: from the superseded authority's pin, from a clause's extraction
 // source, or from the sha256 of a file under --root.  Generic: names no item, node or document itself.  Usage:
-//   node tests/reconcile/build-reconciliation.mjs --clause-epoch FILE --register FILE --graph FILE --root DIR
+//   node tests/reconcile/build-reconciliation.mjs [--clause-epoch FILE] --register FILE --graph FILE --root DIR
 //        --epoch D18 --delta ID --commit STR [--declare] --out FILE
+// D18R: the clause fragment, new authorities and ledger are optional (a repair register may carry none); supersession
+// chains are followed through the SUPERSEDES edges already in the graph, so a later successor inherits every edge its
+// predecessors carried.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
@@ -21,7 +24,7 @@ const a = process.argv.slice(2); const o = { root: '.' };
 for (let i = 0; i < a.length; i++) { const k = a[i].replace(/^--/, ''); if (a[i + 1] === undefined || a[i + 1].startsWith('--')) o[k] = true; else o[k] = a[++i]; }
 const sha = p => createHash('sha256').update(readFileSync(p)).digest('hex');
 const E = o.epoch;
-const base = JSON.parse(readFileSync(o['clause-epoch'], 'utf8'));
+const base = o['clause-epoch'] ? JSON.parse(readFileSync(o['clause-epoch'], 'utf8')) : { nodes: [], edges: [] };
 const R = JSON.parse(readFileSync(o.register, 'utf8'));
 const g = JSON.parse(readFileSync(o.graph, 'utf8'));
 const nodes = [...base.nodes]; const edges = [...base.edges];
@@ -30,7 +33,7 @@ const known = new Map([...g.nodes, ...base.nodes].map(n => [n.id, n]));
 const node = id => { const n = known.get(id); if (!n) throw new Error(`unknown node ${id}`); return n; };
 const owner = `${o.register} (reviewed; ${E})`;
 
-for (const na of R.new_authorities) {
+for (const na of R.new_authorities || []) {
   const f = na.pin_from; let pin;
   if (f.authority) pin = { ...node(f.authority).reproducibility_pin, locator: na.pin_locator };
   else if (f.clause) { const c = node(f.clause); const s = JSON.parse(readFileSync(join(o.root, 'evidence', c.epoch, 'clauses', 'summary.json'), 'utf8'));
@@ -41,7 +44,7 @@ for (const na of R.new_authorities) {
     maturity: na.maturity, observed_date: na.observed_date, reopen_status: na.reopen_status, reproducibility_pin: pin, extracted_consequence: na.extracted_consequence, fragment_status: na.fragment_status, owner: na.authority_owner });
   known.set(na.id, nodes[nodes.length - 1]);
 }
-for (const f of R.new_facts) {
+for (const f of R.new_facts || []) {
   N({ id: f.id, class: 'COMPUTATIONAL_FACT', fact_id: f.id, subject: f.subject, predicate: f.predicate, required_environment: f.required_environment, constraint_refs: f.constraint_refs, status: f.status, note: f.note, source_ref: f.source_ref, owner: `${E} reconciliation (derived from the evidence named by its edges)` });
   known.set(f.id, nodes[nodes.length - 1]);
 }
@@ -56,10 +59,10 @@ for (const it of R.items) {
   N({ id: it.id, class: 'RECONCILIATION', reconciliation_id: it.id, subject: it.subject, traversal: it.traversal, outcome: it.outcome, surfaces: it.surfaces, note: it.note, new_probe_obligation: it.new_probe_obligation, owner });
   for (const s of it.reconciles) { node(s); edges.push({ type: 'RECONCILES', from: it.id, to: s }); }
 }
-const sup = new Map(R.supersessions.map(s => [s.old, s.new]));
+const sup = new Map([...g.edges.filter(e => e.type === 'SUPERSEDES').map(e => [e.to, e.from]), ...R.supersessions.map(s => [s.old, s.new])]);
 const cur = x => { let y = x; const seen = new Set(); while (sup.has(y) && !seen.has(y)) { seen.add(y); y = sup.get(y); } return y; };
 for (const s of R.supersessions) { if (node(s.old).class !== node(s.new).class) throw new Error(`${s.new} -> ${s.old}: classes differ`); edges.push({ type: 'SUPERSEDES', from: s.new, to: s.old, reconciliation: s.reconciliation }); }
-for (const e of R.add_edges) { node(e.from); node(e.to); edges.push(e); }
+for (const e of R.add_edges || []) { node(e.from); node(e.to); edges.push(e); }
 // inheritance: every inheritable edge touching a superseded node is carried by its current successor
 const keys = new Set([...g.edges, ...edges].map(e => JSON.stringify(e)));
 const pool = [...g.edges, ...edges].filter(e => e.type !== 'SUPERSEDES' && e.type !== 'RECONCILES');
@@ -72,7 +75,7 @@ for (const s of R.supersessions) {
     if (!keys.has(k)) { keys.add(k); edges.push(want); inherited++; }
   }
 }
-const L = R.ledger;
+const L = R.ledger || { constraints: [] };
 for (const c of L.constraints) { if (node(c).ledger_status !== 'PROPOSED') throw new Error(`${c} is not PROPOSED`); edges.push({ type: 'LEDGERED_IN', from: c, to: L.authority, locator: `${L.file} ${L.marker}: ${c}`, reconciliation: L.reconciliation }); }
 const by = {}; for (const it of R.items) by[it.outcome] = (by[it.outcome] || 0) + 1;
 const classes = [...new Set([...g.nodes, ...nodes].map(n => n.class))].filter(c => c !== 'RECONCILIATION').sort();

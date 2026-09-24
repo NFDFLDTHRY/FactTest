@@ -217,3 +217,11 @@ D18    D18-REPO-RECONCILIATION     36 RECONCILIATION nodes re-examine every Q17 
                                    6 label findings and the implementation-pin [ERR] resolved; kernel identity defined as
                                    the exec identity; 2 implementation clauses; epochs/D18.json.  Q21 is the current model.
 ```
+
+## 11. Repair epoch D18R (added by D18R-CHAIN-REPAIR)
+
+```text
+D18R   D18R-CHAIN-REPAIR           R-52 supersedes FACT-WORKERS-D18 (its "hardwareConcurrency was never read" contradicted
+                                   D11/D16 evidence) by FACT-WORKERS-D18R; R-53 corrects the reading of the D12
+                                   executable field (default path, not the launched binary); epochs/D18R.json.
+```

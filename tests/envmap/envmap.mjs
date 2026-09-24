@@ -35,6 +35,8 @@
 //   records a PROPOSED constraint entered into a project-law ledger.  Queries and renders show the current view
 //   (superseded authorities leave the Q18 authority steps; superseded or RESOLVED facts terminate as such); Q21 answers
 //   the reconciliation.  Graphs without these edges and nodes answer, validate and render exactly as before.
+//   D18R: when a successor is itself superseded later, Q21 names the reconciliation that revised it (revised_by) on the
+//   row and on its obligation; a graph without such chains answers as before.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -343,7 +345,8 @@ const Q = {
     const recs = g.nodes.filter(n => n.class === 'RECONCILIATION').sort((a, b) => a.id.localeCompare(b.id));
     if (!recs.length) return { reconciliations: 0, note: 'no RECONCILIATION nodes in this graph' };
     const steps = ((g.node_classes || {}).RECONCILIATION || {}).traversal_steps || [];
-    const rows = recs.map(r => ({ reconciliation: r.id, subject: r.subject, outcome: r.outcome, reconciles: sortIds(out(g, r.id, 'RECONCILES').map(e => e.to)),
+    const revisedBy = r => sortIds(g.edges.filter(e => e.type === 'SUPERSEDES' && e.reconciliation === r.id).map(e => supersededBy(g, e.from)).filter(Boolean).map(s => s.reconciliation));
+    const rows = recs.map(r => ({ reconciliation: r.id, subject: r.subject, outcome: r.outcome, ...(revisedBy(r).length ? { revised_by: revisedBy(r) } : {}), reconciles: sortIds(out(g, r.id, 'RECONCILES').map(e => e.to)),
       traversal: steps.map(s => ({ step: s, answer: r.traversal[s] })), surfaces: r.surfaces, new_probe_obligation: r.new_probe_obligation, note: r.note,
       supersessions: g.edges.filter(e => e.type === 'SUPERSEDES' && e.reconciliation === r.id).map(e => ({ superseded: e.to, current: e.from })),
       ledgered: g.edges.filter(e => e.type === 'LEDGERED_IN' && e.reconciliation === r.id).map(e => ({ constraint: e.from, ledger: e.to, locator: e.locator })),
@@ -361,7 +364,7 @@ const Q = {
         facts: { total: facts.length, current: current.length, superseded: facts.filter(f => !isCurrent(g, f.id)).length, resolved: resolved.size, current_by_status: st },
         constraints: { total: cons.length, ledger: cons.filter(c => c.ledger_status !== 'PROPOSED' || led.has(c.id)).length, proposed: cons.filter(c => c.ledger_status === 'PROPOSED' && !led.has(c.id)).map(c => c.id) },
         authorities: { total: g.nodes.filter(n => n.class === 'AUTHORITY').length, superseded: g.nodes.filter(n => n.class === 'AUTHORITY' && !isCurrent(g, n.id)).length } },
-      new_probe_obligations: rows.filter(r => r.new_probe_obligation).map(r => ({ reconciliation: r.reconciliation, obligation: r.new_probe_obligation })), rows };
+      new_probe_obligations: rows.filter(r => r.new_probe_obligation).map(r => ({ reconciliation: r.reconciliation, obligation: r.new_probe_obligation, ...(r.revised_by ? { revised_by: r.revised_by } : {}) })), rows };
   } },
   Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
     const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;

@@ -8,7 +8,8 @@
 //   labels_resolved            every MISLABEL finding's [ERR] fact is closed by a RESOLVED reconciliation
 //   stale_facts_reconciled     every Q17 fact to recheck is re-examined (Q21)
 //   current_statements_clean   no current AUTHORITY / COMPUTATIONAL_FACT (neither superseded nor resolved) still carries
-//                              a MISLABEL text, unless a CORRECTED reconciliation attaches the current reading
+//                              a MISLABEL text, unless a CORRECTED reconciliation attaches the current reading, nor any
+//                              text the register retires (register "retired_texts", D18R)
 //   surfaces_pass              the physical surface checks (tests/reconcile/surfaces.mjs) passed
 // Generic: names no item, node or document.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
@@ -34,13 +35,14 @@ for (const it of R.items) {
   const got = out(it.id, 'RECONCILES').sort().join(','), want = [...new Set(it.reconciles)].sort().join(',');
   if (got !== want) bad1.push(`${it.id} re-examines ${got} != ${want}`);
 }
-for (const s of R.supersessions) if (!have.has(key({ type: 'SUPERSEDES', from: s.new, to: s.old, reconciliation: s.reconciliation }))) bad1.push(`no SUPERSEDES ${s.new} -> ${s.old}`);
-for (const c of R.ledger.constraints) if (!g.edges.some(e => e.type === 'LEDGERED_IN' && e.from === c && e.to === R.ledger.authority)) bad1.push(`${c} not LEDGERED_IN`);
-for (const e of R.add_edges) if (!have.has(key(e))) bad1.push(`missing edge ${e.type} ${e.from} -> ${e.to}`);
-add('register_in_graph', bad1, `${R.items.length} reconciliations, ${R.supersessions.length} supersessions, ${R.ledger.constraints.length} ledgered, ${R.add_edges.length} added edges`);
+for (const s of R.supersessions || []) if (!have.has(key({ type: 'SUPERSEDES', from: s.new, to: s.old, reconciliation: s.reconciliation }))) bad1.push(`no SUPERSEDES ${s.new} -> ${s.old}`);
+const LED = R.ledger || { constraints: [] };
+for (const c of LED.constraints) if (!g.edges.some(e => e.type === 'LEDGERED_IN' && e.from === c && e.to === LED.authority)) bad1.push(`${c} not LEDGERED_IN`);
+for (const e of R.add_edges || []) if (!have.has(key(e))) bad1.push(`missing edge ${e.type} ${e.from} -> ${e.to}`);
+add('register_in_graph', bad1, `${R.items.length} reconciliations, ${(R.supersessions || []).length} supersessions, ${LED.constraints.length} ledgered, ${(R.add_edges || []).length} added edges`);
 
-const ledger = readFileSync(join(o.root, R.ledger.file), 'utf8');
-add('ledger_text_present', R.ledger.constraints.filter(c => !ledger.includes(`### ${c} `) || !ledger.includes(`Constraint: ${ids.get(c).statement}`)).map(c => `${c} not verbatim in ${R.ledger.file}`), `${R.ledger.constraints.length} constraints verbatim in ${R.ledger.file}`);
+const ledger = LED.file ? readFileSync(join(o.root, LED.file), 'utf8') : '';
+add('ledger_text_present', LED.constraints.filter(c => !ledger.includes(`### ${c} `) || !ledger.includes(`Constraint: ${ids.get(c).statement}`)).map(c => `${c} not verbatim in ${LED.file}`), `${LED.constraints.length} constraints verbatim in ${LED.file || '(no ledger in this register)'}`);
 
 const resolvedBy = id => inc(id, 'RECONCILES').filter(r => ids.get(r).outcome === 'RESOLVED');
 const mis = LA.findings.filter(f => f.verdict === 'MISLABEL');
@@ -52,7 +54,8 @@ const superseded = new Set(g.edges.filter(e => e.type === 'SUPERSEDES').map(e =>
 const current = g.nodes.filter(n => ['AUTHORITY', 'COMPUTATIONAL_FACT'].includes(n.class) && !superseded.has(n.id) && !resolvedBy(n.id).length);
 const bad5 = [];
 for (const f of mis) for (const n of current) if (JSON.stringify(n).includes(f.location.text) && !inc(n.id, 'RECONCILES').some(r => ids.get(r).outcome === 'CORRECTED')) bad5.push(`${n.id} carries ${f.id} text`);
-add('current_statements_clean', bad5, `${current.length} current authorities/facts; MISLABEL texts only on superseded, resolved or CORRECTED nodes`);
+for (const t of R.retired_texts || []) for (const n of current) if (JSON.stringify(n).includes(t)) bad5.push(`${n.id} carries retired text '${t}'`);
+add('current_statements_clean', bad5, `${current.length} current authorities/facts; MISLABEL texts only on superseded, resolved or CORRECTED nodes${(R.retired_texts || []).length ? `; ${R.retired_texts.length} retired texts absent` : ''}`);
 
 add('surfaces_pass', surf.status === 'PASS' ? [] : surf.checks.filter(c => c.status !== 'PASS').map(c => c.check), `${surf.checks.length} surface checks PASS`);
 const status = checks.every(c => c.status === 'PASS') ? 'PASS' : 'FAIL';

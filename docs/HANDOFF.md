@@ -8,8 +8,8 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D18-REPO-RECONCILIATION (pass 5 of the D14-D19 technical reference review series; integration
-                   commit in design/materialization/LEDGER.md)
+last delta         D18R-CHAIN-REPAIR (repair of pass 5, D18-REPO-RECONCILIATION, before pass 6 of the D14-D19
+                   technical reference review series; integration commits in design/materialization/LEDGER.md)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in the Chromium 141 headless shell (SwiftShader CPU fallback
                    WebGPU under the unsafe WebGPU switches, plus wasm64), D9 qualified Rust/Cargo proof harness, D11
@@ -20,14 +20,16 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    traced at 90 more clauses, exposure census, Q19), D17 implementation reality (19 behaviours on 44
                    clauses pinned to the versions run, kernel section identity, label audit, Q20), D18 reconciliation
                    (one current model: 36 reconciliations, 15 supersessions, 19 constraints ledgered, 6 label findings
-                   resolved, kernel identity defined; law annotated insertion-only; Q21)
+                   resolved, kernel identity defined; law annotated insertion-only; Q21), D18R chain repair (one D18
+                   worker statement contradicted committed evidence: superseded; D12 executable field corrected)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
 series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): one StructuralDelta
                    per pass, each closed, verified, integrated and re-observed before the next
 next               D19-REPROVE-REOBSERVE (select the minimum affected physical test set from graph staleness and execute
-                   it), starting from design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md and graph query Q21
-                   (probe obligations: the qualified proof with the exec-identity kernel check; environment identity).
+                   it), starting from design/materialization/D18R-OBSERVED-CHAIN-REPAIR.md and graph query Q21 (probe
+                   obligations: the qualified proof with the exec-identity kernel check; environment identity including
+                   the executable actually launched).
                    Historical evidence is never mutated.  The owner PAUSED the D12-predicted seed/broker
                    qualification; it is renumbered after D19.
 ```
@@ -56,6 +58,8 @@ HEAD, tree, status, ancestry to main) before drawing anything.
 ```text
 1  ASCII     write design/materialization/<D>-INTENDED-*.md: observation, intended structure, classification,
              mutation plan by station, predictions, "STRUCTURAL CHECK: PASS"
+             (absence: check an absence claim against the committed evidence - grep evidence/ and the graph's
+             EVIDENCE observed_result - before asserting "never observed" / "no fixture"; D18R lesson)
 2  payload   stage the files outside the repository (e.g. /home/user/factory-workpieces/<W>-stage); write
              factory/deltas/<D>.json (canonical_base = current HEAD, workpiece_id, may_change / must_not_change as
              LITERAL surfaces: "*", "dir/" or an exact file - wildcard-looking entries are rejected) and one fixture per
@@ -147,8 +151,8 @@ C      D11 Q09 -> D16 Q19                   the capability map is no longer hidd
 C      D16 chooser/activation families      HID, USB, Serial, Bluetooth, immersive XR, device-orientation          [OBS]/[GAP]
                                             permission need a user gesture or virtual device path to be admitted
                                             (CON-CAP-002, ledgered D18)
-C      D18 workers (FACT-WORKERS-D18)       a dedicated worker was constructed (D12 P10) but no worker admission     [GAP]
-                                            contract exists and hardwareConcurrency was never read
+C      D18R workers (FACT-WORKERS-D18R)     a dedicated worker was constructed (D12 P10) and hardwareConcurrency 4    [GAP]
+                                            was observed (D11, D16), but no worker admission contract exists
 C      D11 streaming (FACT-STREAMING-       compileStreaming / application/wasm delivery never exercised (citation     [GAP]
        UNPROBED)                            corrected D18: #streaming-modules)
 D      D16 Generic Sensor advisements       whole family flagged at its tips (Proximity: no engine; Magnetometer,  [OBS]
@@ -205,7 +209,8 @@ design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md):
 ```text
 D13 H-12 kernel identity            exec identity, install-name independent (tests/toolchain/proof-sets.json exec_identity;
                                     FACT-KERNEL-IDENTITY-DEFINED-D18); re-proof in D19
-D16 stale claim                     FACT-WORKERS-UNPROBED superseded by FACT-WORKERS-D18, invalidated by EV-D12-P10
+D16 stale claim                     FACT-WORKERS-UNPROBED superseded by FACT-WORKERS-D18 and, after the D18R repair, by
+                                    FACT-WORKERS-D18R; invalidated by EV-D12-P10 and EV-D11-BROWSER-GPUFLAGS
 D17 label audit                     6 MISLABEL findings resolved: live handoff text replaced, README correction line,
                                     graph facts superseded or corrected (R-40..R-47)
 D17 implementation pins             D11 Chromium/V8/SwiftShader authorities superseded by pins at the versions run (R-48)

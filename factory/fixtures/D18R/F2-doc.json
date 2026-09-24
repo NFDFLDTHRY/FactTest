@@ -1,0 +1,34 @@
+{
+  "fixture_id": "F2-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "D18R section 1"
+  ],
+  "narrowed_may_change": [
+    "docs/HANDOFF.md",
+    "factory/receipts/D18R-CHAIN-REPAIR/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && sh tests/hygiene/handoff-check.sh $T/h.json && node tests/reconcile/surfaces.mjs tests/reconcile/d18r-surfaces.json --out $T/s.json && grep -q 'last delta         D18R-CHAIN-REPAIR' docs/HANDOFF.md"
+        ],
+        "log": "factory/receipts/D18R-CHAIN-REPAIR/logs/F2-handoff.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "docs/HANDOFF.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18R-CHAIN-REPAIR"
+}

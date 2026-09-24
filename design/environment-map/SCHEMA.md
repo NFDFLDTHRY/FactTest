@@ -253,3 +253,15 @@ Q21                     reconciliation traversal, current model, new probe oblig
 tools                   tests/reconcile/{d18-reconciliation.json, surfaces.json, build-reconciliation.mjs, surfaces.mjs,
                         gate.mjs, stage-audit.mjs}
 ```
+
+## 12. Repair epochs (D18R)
+
+```text
+repair epoch            an epoch that declares nothing and uses the reconciliation classes to correct what contradicts
+                        committed evidence (register tests/reconcile/<epoch>-reconciliation.json with optional parts)
+supersession chains     a successor may itself be superseded; currentOf follows the chain; the builder inherits through
+                        the graph's existing SUPERSEDES edges; validate checks every link
+retired_texts           register field: texts no current AUTHORITY / COMPUTATIONAL_FACT may carry (gate)
+Q21                     revised_by on a reconciliation row and its obligation when a successor it introduced was
+                        superseded later
+```

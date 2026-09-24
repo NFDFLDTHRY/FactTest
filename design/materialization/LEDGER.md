@@ -748,4 +748,31 @@ BEFORE
   35 PASS; gate PASS; Q18 20 COMPLETE of 47 current RUN claims; Q21 109 current facts.
 
 AFTER
+- RESULT: integrated as 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c (ff-only from 715ac92); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-annotate F4-annotate-owner F5-doc F6-doc F7-evidence F8-doc PASS (format 2).
+  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D18.json rebuilt
+  byte-identically from the committed clause and kernel evidence; surfaces and reconciliation gate re-run PASS).  Pushed.
+- OBSERVED: D18-OBSERVED-REPO-RECONCILIATION.md - P1-P7 MATCH.
+- DEFECT FOUND AFTER INTEGRATION [ERR]: FACT-WORKERS-D18 said hardwareConcurrency was never read, but D11's browser probe
+  and the D16 census recorded 4; R-45 cited the D12 executable field (chromium.executablePath(), not the launched
+  binary) as launch identity.  The MATCH verdicts compared against predictions that carried the error.  Repaired by
+  D18R-CHAIN-REPAIR before D19 (the D18 records stay as written).
+
+---
+
+## D18R-CHAIN-REPAIR  (repair of pass 5 before pass 6: remove what contradicts committed evidence)
+
+BEFORE
+- DELTA: D18R-CHAIN-REPAIR (factory/deltas/D18R.json), workpiece W21, base 1b81dc0.
+- ASCII: design/materialization/D18R-INTENDED-CHAIN-REPAIR.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F2, F3, F5), S-FIXTURE (F1), S-EVIDENCE (F4).
+- CHANGE: tests/reconcile/ (repair register and surfaces; builder follows supersession chains and takes optional parts;
+  gate takes retired texts), tests/envmap/envmap.mjs (Q21 revised_by), docs/HANDOFF.md, evidence/D18R/,
+  design/environment-map/ (epoch D18R, merged graph, views, SCHEMA section 12, ENVIRONMENT-MAP section 11), D18R
+  records, this ledger.  FORBIDDEN: law and pass documents, README.md, compiler/, host/, factory/, fixtures/, D0-D18
+  evidence and epochs.
+- PREDICTED: D18 regression identical; epoch 3 nodes / 20 edges; merged 1101 / 2414; validate 42 PASS; D18R and D18
+  gates PASS; Q21 38 rows with R-32 revised_by R-52.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

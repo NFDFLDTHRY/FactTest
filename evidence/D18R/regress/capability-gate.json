@@ -1,0 +1,153 @@
+{
+ "tool": "tests/capability/gate.mjs",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "g_rows_preserved",
+   "status": "PASS",
+   "detail": "33 matrix rows = 33 families, in order"
+  },
+  {
+   "check": "graph_families_match",
+   "status": "PASS",
+   "detail": "33 CAPABILITY_FAMILY nodes"
+  },
+  {
+   "check": "steps_complete",
+   "status": "PASS",
+   "detail": "{\"CLAUSE\":174,\"NONE_DEFINED\":6,\"GAP\":51}"
+  },
+  {
+   "check": "census_complete",
+   "status": "PASS",
+   "detail": "32 records"
+  },
+  {
+   "check": "witnesses_resolve",
+   "status": "PASS",
+   "detail": "54 witness references"
+  },
+  {
+   "check": "classification_allowed",
+   "status": "PASS",
+   "detail": "RUN 6, OBS 16, ERR 1, GAP 10"
+  }
+ ],
+ "classification": {
+  "RUN": [
+   "CAP-CPU-WASM64",
+   "CAP-OPFS",
+   "CAP-INDEXEDDB",
+   "CAP-CACHESTORAGE",
+   "CAP-SERVICE-WORKER",
+   "CAP-SECURE-CONTEXT"
+  ],
+  "OBS": [
+   "CAP-WORKER-DEDICATED",
+   "CAP-WEBCODECS",
+   "CAP-CAMERA",
+   "CAP-MICROPHONE",
+   "CAP-GENERIC-SENSOR",
+   "CAP-ACCELEROMETER",
+   "CAP-GYROSCOPE",
+   "CAP-ORIENTATION-SENSOR",
+   "CAP-DEVICE-ORIENTATION",
+   "CAP-GEOLOCATION",
+   "CAP-XR",
+   "CAP-PERMISSIONS",
+   "CAP-PERMISSIONS-POLICY",
+   "CAP-HID",
+   "CAP-USB",
+   "CAP-SERIAL"
+  ],
+  "ERR": [
+   "CAP-WASM-SHARED-THREADS"
+  ],
+  "GAP": [
+   "CAP-WEBGPU",
+   "CAP-WEBNN",
+   "CAP-MAGNETOMETER",
+   "CAP-PROXIMITY",
+   "CAP-AMBIENT-LIGHT",
+   "CAP-FETCH",
+   "CAP-STORAGE-QUOTA",
+   "CAP-MANIFEST",
+   "CAP-BLUETOOTH",
+   "CAP-FUTURE-EXPLICIT"
+  ]
+ },
+ "census": {
+  "CAP-CPU-WASM64": "EXPOSED",
+  "CAP-WORKER-DEDICATED": "EXPOSED",
+  "CAP-WASM-SHARED-THREADS": "ABSENT",
+  "CAP-WEBGPU": "EXPOSED",
+  "CAP-WEBNN": "ABSENT",
+  "CAP-WEBCODECS": "EXPOSED",
+  "CAP-CAMERA": "EXPOSED",
+  "CAP-MICROPHONE": "EXPOSED",
+  "CAP-GENERIC-SENSOR": "EXPOSED",
+  "CAP-ACCELEROMETER": "EXPOSED",
+  "CAP-GYROSCOPE": "EXPOSED",
+  "CAP-MAGNETOMETER": "ABSENT",
+  "CAP-ORIENTATION-SENSOR": "EXPOSED",
+  "CAP-DEVICE-ORIENTATION": "EXPOSED",
+  "CAP-PROXIMITY": "ABSENT",
+  "CAP-AMBIENT-LIGHT": "ABSENT",
+  "CAP-GEOLOCATION": "EXPOSED",
+  "CAP-XR": "EXPOSED",
+  "CAP-FETCH": "EXPOSED",
+  "CAP-STORAGE-QUOTA": "EXPOSED",
+  "CAP-OPFS": "EXPOSED",
+  "CAP-INDEXEDDB": "EXPOSED",
+  "CAP-CACHESTORAGE": "EXPOSED",
+  "CAP-SERVICE-WORKER": "EXPOSED",
+  "CAP-MANIFEST": "UNDETERMINED",
+  "CAP-SECURE-CONTEXT": "EXPOSED",
+  "CAP-PERMISSIONS": "EXPOSED",
+  "CAP-PERMISSIONS-POLICY": "EXPOSED",
+  "CAP-HID": "EXPOSED",
+  "CAP-USB": "EXPOSED",
+  "CAP-SERIAL": "EXPOSED",
+  "CAP-BLUETOOTH": "ABSENT"
+ },
+ "step_status_counts": {
+  "CLAUSE": 174,
+  "NONE_DEFINED": 6,
+  "GAP": 51
+ },
+ "first_gap_step": {
+  "CAP-CPU-WASM64": "LIFECYCLE",
+  "CAP-WORKER-DEDICATED": "SECURE_CONTEXT",
+  "CAP-WASM-SHARED-THREADS": "LOSS",
+  "CAP-WEBGPU": null,
+  "CAP-WEBNN": "FEATURES_LIMITS",
+  "CAP-WEBCODECS": null,
+  "CAP-CAMERA": "FEATURES_LIMITS",
+  "CAP-MICROPHONE": "FEATURES_LIMITS",
+  "CAP-GENERIC-SENSOR": "FEATURES_LIMITS",
+  "CAP-ACCELEROMETER": "FEATURES_LIMITS",
+  "CAP-GYROSCOPE": "FEATURES_LIMITS",
+  "CAP-MAGNETOMETER": "FEATURES_LIMITS",
+  "CAP-ORIENTATION-SENSOR": "API",
+  "CAP-DEVICE-ORIENTATION": "FEATURES_LIMITS",
+  "CAP-PROXIMITY": "FEATURES_LIMITS",
+  "CAP-AMBIENT-LIGHT": null,
+  "CAP-GEOLOCATION": "FEATURES_LIMITS",
+  "CAP-XR": null,
+  "CAP-FETCH": "SECURE_CONTEXT",
+  "CAP-STORAGE-QUOTA": null,
+  "CAP-OPFS": "PERMISSION_POLICY",
+  "CAP-INDEXEDDB": null,
+  "CAP-CACHESTORAGE": "PERMISSION_POLICY",
+  "CAP-SERVICE-WORKER": null,
+  "CAP-MANIFEST": "API",
+  "CAP-SECURE-CONTEXT": null,
+  "CAP-PERMISSIONS": "SECURE_CONTEXT",
+  "CAP-PERMISSIONS-POLICY": "API",
+  "CAP-HID": "FEATURES_LIMITS",
+  "CAP-USB": "FEATURES_LIMITS",
+  "CAP-SERIAL": "FEATURES_LIMITS",
+  "CAP-BLUETOOTH": "FEATURES_LIMITS",
+  "CAP-FUTURE-EXPLICIT": "API"
+ }
+}

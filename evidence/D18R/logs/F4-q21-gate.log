@@ -1,0 +1,5 @@
+$ sh -c node -e 'const q=JSON.parse(require("fs").readFileSync("evidence/D18R/envmap/queries/Q21.json")).answer;const r=q.rows.find(x=>x.reconciliation==="R-32");console.log(q.reconciliations,JSON.stringify(q.by_outcome),JSON.stringify(q.current_model.facts),JSON.stringify(r.revised_by));if(!r.revised_by||!r.revised_by.includes("R-52")||q.stale_facts.reconciled!==q.stale_facts.to_recheck)process.exit(1)'
+(cwd .)
+38 {"HOLDS":8,"OPEN":5,"SUPERSEDED":10,"ANNOTATED":6,"LEDGERED":1,"RESOLVED":6,"CORRECTED":2} {"total":121,"current":109,"superseded":5,"resolved":7,"current_by_status":{"UNK":5,"RUN":47,"ERR":4,"OBS":43,"GAP":10}} ["R-52"]
+
+[exit 0] expected 0

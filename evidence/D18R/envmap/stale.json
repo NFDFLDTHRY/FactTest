@@ -1,0 +1,1025 @@
+{
+  "dimensions": {
+    "authority.source_commit": [
+      {
+        "subject": "FACT-D15-CLAUSES-VERIFIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D15-HOST",
+        "relation": "any clause source tip moves with the clause window changed"
+      },
+      {
+        "subject": "FACT-D16-CLAUSES-VERIFIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-HOST",
+        "relation": "any clause source tip moves with the clause window changed"
+      },
+      {
+        "subject": "FACT-D17-CLAUSES-VERIFIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D17-HOST",
+        "relation": "any clause source tip moves with the clause window changed"
+      },
+      {
+        "subject": "FACT-D18-CLAUSES-VERIFIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D18-HOST",
+        "relation": "any clause source tip moves with the clause window changed"
+      },
+      {
+        "subject": "FACT-FRONTIER-SOURCES-AT-PIN",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "any pinned repository tip moves with the cited file changed"
+      },
+      {
+        "subject": "FACT-MEMORY64-FINISHED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "registry tip moves"
+      },
+      {
+        "subject": "FACT-WASM-SET-PHASE-1",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "registry tip moves"
+      },
+      {
+        "subject": "FACT-WASM-THREADS-PHASE-4",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "registry tip moves"
+      }
+    ],
+    "browser.flags": [
+      {
+        "subject": "EV-D7-ADM-E0-WEBGPU",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-CAP-AMBIENT-LIGHT-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: SensorExtraClasses enabled (flag) or shipped (IB-SENSOR-EXTRA-CLASSES)"
+      },
+      {
+        "subject": "FACT-CAP-DEVICE-ORIENTATION-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: the feature ships or is enabled by flag (IB-DO-REQUESTPERMISSION-UNSHIPPED)"
+      },
+      {
+        "subject": "FACT-CAP-MAGNETOMETER-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: SensorExtraClasses enabled (flag) or shipped (IB-SENSOR-EXTRA-CLASSES)"
+      },
+      {
+        "subject": "FACT-CAP-PERMISSIONS-POLICY-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: another Playwright version or launch without these switches (IB-PLAYWRIGHT-DEFAULT-SWITCHES)"
+      },
+      {
+        "subject": "FACT-CAP-WEBGPU-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: Chromium enables WebGPUService on Linux, or the launch switch set changes (IB-GPU-LINUX-SERVICE-OFF)"
+      },
+      {
+        "subject": "FACT-CAP-WEBNN-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: the WebNN feature is enabled (flag) or defaults on (IB-WEBNN-OFF-BY-DEFAULT)"
+      },
+      {
+        "subject": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "implementation: Chromium enables WebGPUService on Linux, or the launch switch set changes (IB-GPU-LINUX-SERVICE-OFF)"
+      },
+      {
+        "subject": "FACT-GPU-ADAPTER-SWIFTSHADER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-ADMITTED-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-KNOWN-ANSWER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-MAXBUFFERSIZE-OBSERVED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-RELAY-EXACT-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "implementation: another Playwright version or launch without these switches (IB-PLAYWRIGHT-DEFAULT-SWITCHES)"
+      }
+    ],
+    "browser.js_engine": [
+      {
+        "subject": "FACT-CAP-CPU-WASM64-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: another V8 version (browser or Node) (IB-V8-MEMORY64-VERSIONED)"
+      },
+      {
+        "subject": "FACT-MEMORY64-DISCOVERED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "implementation: another V8 version (browser or Node) (IB-V8-MEMORY64-VERSIONED)"
+      },
+      {
+        "subject": "FACT-MEMORY64-DISCOVERED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-NODE-NO-MEMORY64",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "implementation: another V8 version (browser or Node) (IB-V8-MEMORY64-VERSIONED)"
+      },
+      {
+        "subject": "FACT-WASM64-ABI-EXEC",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      }
+    ],
+    "browser.product": [
+      {
+        "subject": "EV-D1-B10-B11-CHROMIUM",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D6-PROBE-RECORD",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-ADM-E0-WEBGPU",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-CONTROLLED-LOSS",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-E0-RELAY",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-E1-RELAY",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P8-03",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-CAP-BLUETOOTH-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: another platform or a flag enabling WebBluetooth (IB-BLUETOOTH-PLATFORM-DEFAULT)"
+      },
+      {
+        "subject": "FACT-CAP-CAMERA-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: full Chrome (chrome/ permission layer) or pre-granted permissions (IB-HEADLESS-PERMISSIONS-ASK)"
+      },
+      {
+        "subject": "FACT-CAP-GEOLOCATION-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: full Chrome (chrome/ permission layer) or pre-granted permissions (IB-HEADLESS-PERMISSIONS-ASK)"
+      },
+      {
+        "subject": "FACT-CAP-PERMISSIONS-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: full Chrome (chrome/ permission layer) or pre-granted permissions (IB-HEADLESS-PERMISSIONS-ASK)"
+      },
+      {
+        "subject": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-ADMITTED-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-EPOCH-INVALIDATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-EXPOSED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+      },
+      {
+        "subject": "FACT-GPU-EXPOSED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-KNOWN-ANSWER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-LOSS-DESTROYED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-RELAY-EXACT-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-JS-I64-BIGINT-MEMBRANE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-LOOPBACK-SECURE-CONTEXT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+      },
+      {
+        "subject": "FACT-LOOPBACK-SECURE-CONTEXT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+      },
+      {
+        "subject": "FACT-MEMORY64-DISCOVERED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-RESELECTION-NO-CODEGEN",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-BROKEN-SEED-FATAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-BROKER-FED-GENERATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GENERATED-OFFLINE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GIT-IDENTITY",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-IDB-CAS",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-INTERRUPTED-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-KERNEL-WORKER-PARTIAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPAQUE-CONFINEMENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPFS-SERVED-APP",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-STORAGE-BEST-EFFORT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-STORAGE-DURABILITY-D18",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-GRANTS-COI",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-NO-SELF-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-ABI-EXEC",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-ADMITTED-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-ADMITTED-E1",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      }
+    ],
+    "browser.revision": [
+      {
+        "subject": "FACT-CAP-ACCELEROMETER-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-AMBIENT-LIGHT-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-BLUETOOTH-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-CACHESTORAGE-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-CAMERA-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-CPU-WASM64-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-DEVICE-ORIENTATION-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-FETCH-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-GENERIC-SENSOR-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-GEOLOCATION-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-GYROSCOPE-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-HID-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-INDEXEDDB-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-MAGNETOMETER-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-MANIFEST-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-MICROPHONE-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-OPFS-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-ORIENTATION-SENSOR-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-PERMISSIONS-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-PERMISSIONS-POLICY-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-PROXIMITY-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-SECURE-CONTEXT-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-SERIAL-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-SERVICE-WORKER-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-STORAGE-QUOTA-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-USB-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-WASM-SHARED-THREADS-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-WEBCODECS-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-WEBGPU-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-WEBNN-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-WORKER-DEDICATED-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-CAP-XR-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "any other browser build, launch flag set or origin"
+      },
+      {
+        "subject": "FACT-SH-BROKEN-SEED-FATAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-BROKER-FED-GENERATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GENERATED-OFFLINE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GIT-IDENTITY",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-IDB-CAS",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-INTERRUPTED-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-KERNEL-WORKER-PARTIAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPAQUE-CONFINEMENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPFS-SERVED-APP",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-STORAGE-BEST-EFFORT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-STORAGE-DURABILITY-D18",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-GRANTS-COI",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-NO-SELF-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WORKERS-D18",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WORKERS-D18R",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      }
+    ],
+    "dependency_graph_identity": [
+      {
+        "subject": "FACT-FIRST-PARTY-GRAPH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      }
+    ],
+    "host.gpu_device_node": [
+      {
+        "subject": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "a hardware adapter appears"
+      },
+      {
+        "subject": "FACT-GPU-ADAPTER-SWIFTSHADER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "a hardware adapter appears (then a different fact)"
+      }
+    ],
+    "host_runtime.git_version": [
+      {
+        "subject": "FACT-FF-ONLY-INTEGRATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "changes (commit-object and ref compare-and-set semantics), or IMPL-FACTORY-OPS changes the integrate rule"
+      },
+      {
+        "subject": "FACT-WORKPIECE-ISOLATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "changes"
+      }
+    ],
+    "host_runtime.node_version": [
+      {
+        "subject": "FACT-NODE-NO-MEMORY64",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "changes"
+      }
+    ],
+    "network_egress.policy": [
+      {
+        "subject": "FACT-AUTHORITY-REOPEN-DENIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "published hosts admitted"
+      }
+    ],
+    "origin_security.cross_origin_isolated": [
+      {
+        "subject": "FACT-CAP-WASM-SHARED-THREADS-EXPOSURE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D16-BROWSER",
+        "relation": "implementation: the page becomes cross-origin isolated or Chromium changes the hook (IB-SAB-CONSTRUCTOR-HOOK)"
+      }
+    ],
+    "origin_security.origin": [
+      {
+        "subject": "FACT-LOOPBACK-SECURE-CONTEXT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "scheme/host changes"
+      },
+      {
+        "subject": "FACT-SH-BROKER-FED-GENERATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-GENERATED-OFFLINE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-OPAQUE-CONFINEMENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-OPFS-SERVED-APP",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      }
+    ],
+    "origin_security.secure_context": [
+      {
+        "subject": "FACT-GPU-EXPOSED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "becomes false"
+      }
+    ],
+    "other_state.network_egress": [
+      {
+        "subject": "EV-D12-NETWORK",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D12-HOST",
+        "relation": "policy changes"
+      }
+    ],
+    "repo.commit": [
+      {
+        "subject": "FACT-LITERAL-PATH-MATCH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "factory/src/paths.rs changes"
+      },
+      {
+        "subject": "FACT-WILDCARD-SURFACES-DEAD",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "factory/registry or paths.rs changes"
+      }
+    ],
+    "repository.workspace_members": [
+      {
+        "subject": "FACT-PROOF-SETS-DECLARED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "a workspace member or default-members changes"
+      }
+    ],
+    "toolchain.nightly.components": [
+      {
+        "subject": "EV-D9-T9-P3-04",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "clippy absent (already the case on ENV-D11-HOST)"
+      },
+      {
+        "subject": "FACT-CORE-ONLY-GRAPH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "rust-src removed"
+      },
+      {
+        "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D17-TOOLCHAIN",
+        "relation": "implementation: another toolchain, another install path, or a profile that strips the name section (IB-KERNEL-NAME-SECTION-HASH)"
+      },
+      {
+        "subject": "FACT-NIGHTLY-CLIPPY-ABSENT-D11",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "changes"
+      }
+    ],
+    "toolchain.nightly.install_name": [
+      {
+        "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes (build-std hashes the rust-src path)"
+      },
+      {
+        "subject": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes (build-std hashes the rust-src path)"
+      }
+    ],
+    "toolchain.nightly.rustc_commit": [
+      {
+        "subject": "EV-D1-B9-BUILD",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D1-B9-INSPECT",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D12-KERNEL",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D12-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P5-02",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P5-03",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P8-01",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P8-02",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-CORE-ONLY-GRAPH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D17-TOOLCHAIN",
+        "relation": "another nightly or codegen profile"
+      },
+      {
+        "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D17-TOOLCHAIN",
+        "relation": "another nightly or codegen profile changes the exec sections"
+      },
+      {
+        "subject": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-QUALIFIED-JUDGE-RERUN",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-KERNEL-TOOLCHAIN-DRIFT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-MODULE-I64",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "implementation: another pinned nightly (IB-RUSTC-PIN-EQUALS-TIP)"
+      },
+      {
+        "subject": "FACT-WASM64-MODULE-I64",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      }
+    ],
+    "toolchain.stable.rustc_commit": [
+      {
+        "subject": "FACT-TOOLCHAIN-PINNED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      }
+    ],
+    "toolchain.stable.rustc_release": [
+      {
+        "subject": "EV-D9-T9-P2-04",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P4",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-COMPILE-FAIL-WITNESSED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-NATIVE-WORKSPACE-UNBUILDABLE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "a future rustc may change the panic_handler requirement"
+      }
+    ]
+  },
+  "count": 163
+}
