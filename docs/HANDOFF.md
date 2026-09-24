@@ -8,20 +8,23 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D14-FRONTIER-REOPEN (pass 1 of the D14-D19 technical reference review series; integration
+last delta         D15-FOUNDATIONAL-SEMANTICS (pass 2 of the D14-D19 technical reference review series; integration
                    commit in design/materialization/LEDGER.md)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64), D9 qualified
                    Rust/Cargo proof harness, D11 computational environment map, D12 self-hosting architecture (ASCII +
                    primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces),
-                   D14 authority frontier epoch (64 AUTHORITY_REVISION nodes, Q17 staleness traversal)
+                   D14 authority frontier epoch (64 AUTHORITY_REVISION nodes, Q17 staleness traversal), D15 foundational
+                   clause epoch (60 exact clauses VERIFIED at source tips, 6 PROPOSED constraints, Q18 claim traversal)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm, broad capability families (section 6)
 series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): one StructuralDelta
                    per pass, each closed, verified, integrated and re-observed before the next
-next               D15-FOUNDATIONAL-SEMANTICS (what do the foundational computational authorities currently require?),
-                   starting from design/materialization/D14-OBSERVED-FRONTIER-REOPEN.md and graph query Q17.
-                   The owner PAUSED the D12-predicted seed/broker qualification; it is renumbered after D19.
+next               D16-CAPABILITY-UNIVERSE (which capability families does the platform expose, and which does FactTest
+                   use, probe or leave [GAP]?), starting from design/materialization/D15-OBSERVED-FOUNDATIONAL-SEMANTICS.md
+                   and graph query Q18 (the GPU facts stop at EXACT CLAUSE).  No approved capability is removed for
+                   missing support.  The owner PAUSED the D12-predicted seed/broker qualification; it is renumbered
+                   after D19.
 ```
 
 ## 2. Mutation law
@@ -86,7 +89,8 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
-               epochs/D12.json, epochs/D13.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
+               epochs/D12.json .. epochs/D15.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
+               tests/reference/<epoch>-clauses.json (exact-clause manifests; constraints there are PROPOSED until D18);
                this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml
 HISTORICAL     FABLE-ASCII-SYSTEM-PROMPT.md (bootloader of the original Fable 5.1 materialization session; carries a
                HISTORICAL banner), PASS1.md-PASS6.md, PASS5-TESTS.md, PASS6-TESTS.md, PASS6-GAP-REPAIRS.md,
@@ -134,11 +138,28 @@ D      web-api #streaming-module-compilation-  D14: the cited id never existed a
 D      git #_worktrees (repository-layout)  D14: a definition-list term with no asciidoctor id; published     [UNK]
                                             rendering unknown
 D      rust-lang/rust pins                  D14: branch master removed; pinned commit is main (pin field D18)   [OBS]
+D      ERR-001 (D15 CL-R7)                  current, not historical: the rustc wasm64 page at the rust-lang/rust  [ERR]
+                                            main tip still calls memory64 "not standardized"; Core 3.0 (CL-W4)
+                                            standardizes it.  The Core governs (CON-RS-003); law wording D18
+D      git tree-entry order (D15 CL-G3)     "normalized by mktree" with no documented rule; browser tree ids     [GAP]
+                                            are correct only where equality with git was observed (P09); the
+                                            ordering rule's implementation source -> D17
+D      SharedArrayBuffer global (D15 CL-T6) absence without COI is host behaviour (FACT-SAB-GLOBAL-HOST-      [OBS]
+                                            DEFINED); only serialization is standard-gated (CL-T4); Chromium
+                                            source -> D17
+D      D15 proposed constraints             CON-WA-006, CON-SEC-002, CON-PP-001, CON-SW-001, CON-ST-001,          [GAP]
+                                            CON-GIT-001 exist only as PROPOSED graph nodes; CONSTRAINT-LEDGER D18
+D      Q18 claim traversal (D15)            RUN claims that stop before COMPLETE: EXACT CLAUSE (GPU/WebGPU ->     [GAP]
+                                            D16; process facts), IMPLEMENTATION CONTRACT, CURRENT AUTHORITY
+                                            (project facts -> D18); evidence/D15/envmap/queries/Q18.json
 D      published frontier (D14)             53 renderings refused + 2 github.com 403: no current published      [UNK]
-                                            authority verified in D14 (FACT-PUBLISHED-FRONTIER-UNVERIFIED)
+                                            authority verified in D14 (FACT-PUBLISHED-FRONTIER-UNVERIFIED); D15
+                                            clauses are likewise verified at source tips only
 D      js-api #internal-storage             cited in 5 law files and fixtures/commissioning/contracts.ascii;   [ERR]/[UNK]
                                             not an id in pinned WebAssembly/spec@608711107b; published page
-                                            not opened (annotated in place by D13; resolution D14)
+                                            not opened (annotated in place by D13); D14: MOVED to
+                                            #webassembly-storage; D15 cites the clause at #store (CL-T1); law
+                                            correction D18
 D      D11 FACT-AUTHORITY-REOPEN-DENIED     37 of 48 D11 authorities and all 16 D12 authorities read from       [UNK]
                                             pinned sources only; published hosts DENIED
 D      D12 B-19                             githack public-origin path unreachable (proxy 403)                  [UNK]
@@ -148,8 +169,8 @@ B      D0-D12 receipts/evidence             incomplete environment identity (rec
 B      D3-D8 fixture wording                "all ladders" / "full suite" overstated the selection               kept
 B      D1-D8 heuristic gates                nostd-check/depcheck used as gates (proof weight now NONE)          kept
 B      scratch-only tooling                 D0-D13 route scripts, D11 graph generator (procedure: section 4)    kept
-B      workpiece root                       W11-stage and W14-stage (pre-binding graph drafts), factory-         [GAP] kept
-                                            bootstrap-bin (unmanaged)
+B      workpiece root                       W11-stage, W14-stage, W16-stage (pre-binding graph drafts),          [GAP] kept
+                                            factory-bootstrap-bin (unmanaged)
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
        (B-07); D-6 object hash; D-8 seed replacement; D-9 history horizon; deleting the fully merged remote branches
        claude/d9-rust-cargo-proof-4nys6s, factory/reference-corpus-wasm64, work/pass2-5-reference-ingress-1

@@ -1,0 +1,4 @@
+$ sh -c for k in P1 P2 P3 P4 P5 VERIFIED Q18 ERR-001 CON-WA-006 D16-CAPABILITY-UNIVERSE; do grep -q "$k" design/materialization/D15-OBSERVED-FOUNDATIONAL-SEMANTICS.md || { echo missing $k; exit 1; }; done; grep -q '^GATE: PASS' design/materialization/D15-OBSERVED-FOUNDATIONAL-SEMANTICS.md && grep -q 'D15-FOUNDATIONAL-SEMANTICS' docs/HANDOFF.md && grep -q 'D16' docs/HANDOFF.md
+(cwd .)
+
+[exit 0] expected 0

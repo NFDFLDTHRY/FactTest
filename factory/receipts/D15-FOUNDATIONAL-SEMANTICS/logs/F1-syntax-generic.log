@@ -1,0 +1,5 @@
+$ sh -c for f in tests/reference/lib.mjs tests/reference/reopen.mjs tests/reference/clauses.mjs tests/reference/build-clauses.mjs tests/reference/regress-reopen.mjs tests/envmap/envmap.mjs; do node --check $f || exit 1; done; node -e 'const m=JSON.parse(require("fs").readFileSync("tests/reference/d15-clauses.json"));console.log(m.clauses.length+" clauses, "+Object.keys(m.traces).length+" traces")' && ! grep -nE "'(AUTH|FACT|CON|LAW|CL)-[A-Z0-9]" tests/reference/lib.mjs tests/reference/reopen.mjs tests/reference/clauses.mjs tests/reference/build-clauses.mjs tests/reference/regress-reopen.mjs tests/envmap/envmap.mjs && git diff --exit-code 46cc28be1486798635eac42a6955dedaba36673f -- tests/reference/gate.mjs tests/reference/build-revisions.mjs tests/reference/d14-review.json
+(cwd .)
+60 clauses, 11 traces
+
+[exit 0] expected 0

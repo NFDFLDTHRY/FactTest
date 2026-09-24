@@ -1,0 +1,29 @@
+{
+ "id": "CL-G4",
+ "trace": "G",
+ "authority": "AUTH-GIT-PACK-FORMAT",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "path": "Documentation/gitformat-pack.adoc",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "sha256": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b",
+  "bytes": 27494
+ },
+ "locator": {
+  "text": "4-byte signature:",
+  "line_start": 43,
+  "line_end": 48,
+  "derivation": "anchor text",
+  "enclosing_section": "#_packpack_files_have_the_following_format (line 39)"
+ },
+ "window": 6,
+ "consequence": "packfiles start with a signature and a version: history import/export (D12 B-17) needs a pack reader/writer",
+ "excerpt": "     4-byte signature:\n         The signature is: {'P', 'A', 'C', 'K'}\n\n     4-byte version number (network byte order):\n\t Git currently accepts version number 2 or 3 but\n         generates version 2 only.",
+ "excerpt_sha256": "377a532e56fb602a5c9d1df47156bbd0646bf42d68fc93748509340eac5ee81d",
+ "must_contain": {
+  "version number": true
+ },
+ "status": "VERIFIED"
+}

@@ -161,3 +161,27 @@ Q17                     latest revision per authority (epoch order) -> movement 
 builder                 tests/reference/build-revisions.mjs (reopen evidence + tests/reference/<epoch>-review.json)
 ```
 
+
+## 8. Exact clauses and claim traversal (D15)
+
+```text
+CLAUSE                  one exact clause of one AUTHORITY at a named source tip: clause_id, authority_ref, trace, epoch,
+                        source {repo, commit, path, sha256}, locator {requested, line_start, line_end, derivation,
+                        enclosing_section}, excerpt_sha256, quoted[] (the phrases verified present), consequence.
+                        Admitted only VERIFIED (located at the tip, every quoted phrase present).  Declared by epoch D15.
+CLAUSE_OF               CLAUSE -> AUTHORITY (the document the clause lives in)
+GROUNDS                 CLAUSE -> CONSTRAINT | COMPUTATIONAL_FACT (the clause text is the ground)
+LEADS_TO                CLAUSE -> CLAUSE (a sublink followed because it changes legality, lifecycle, failure, security,
+                        storage, admission or proof interpretation)
+EXTRACTED_IN            CLAUSE -> EVIDENCE (the extraction record: commit, sha256, lines, excerpt)
+validate                + clause_of_its_authority, clause_has_extraction_identity, clause_connected (every clause grounds
+                        something or leads to a clause that does)
+Q18                     claim traversal for every COMPUTATIONAL_FACT: CLAIM -> CURRENT AUTHORITY -> EXACT CLAUSE ->
+                        AUTHORITY MATURITY -> REPRODUCIBILITY PIN -> PROJECT CONSTRAINT -> IMPLEMENTATION CONTRACT ->
+                        ENVIRONMENT -> PROBE -> PHYSICAL EVIDENCE -> STALE CONDITIONS; terminal COMPLETE, the first
+                        broken step, or the claim's own [GAP]/[OBS]/[UNK]/[ERR] status.  An unverified published
+                        rendering is an annotation on the maturity step, not a stop.
+proposed constraints    CONSTRAINT nodes with ledger_status PROPOSED (not yet in CONSTRAINT-LEDGER.md; reconciled in D18)
+extractor / builder     tests/reference/clauses.mjs (manifest tests/reference/<epoch>-clauses.json) and
+                        tests/reference/build-clauses.mjs
+```

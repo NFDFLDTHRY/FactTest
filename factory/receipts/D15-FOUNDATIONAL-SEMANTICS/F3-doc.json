@@ -1,0 +1,181 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D15-FOUNDATIONAL-SEMANTICS-F3-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F3-doc",
+  "workpiece_id": "W17",
+  "delta_id": "D15-FOUNDATIONAL-SEMANTICS",
+  "canonical_base": "46cc28be1486798635eac42a6955dedaba36673f",
+  "input_artifacts": [
+    "evidence/D15/clauses/",
+    "tests/reference/d15-clauses.json"
+  ],
+  "open_tree": "a69906b7e2dc18622e5fa6041d059fcc8456ceff",
+  "close_tree": "81f9d624c1452d659acf963fe748b5e9215a7732",
+  "changed_paths": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D15.json",
+    "design/environment-map/graph.json",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-build-epoch.log",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-checks.log",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-merge.log",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-render.log"
+  ],
+  "output_artifacts": [
+    "design/environment-map/epochs/D15.json",
+    "design/environment-map/graph.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D15-FOUNDATIONAL-SEMANTICS"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-build-epoch.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-merge.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/reference/build-clauses.mjs --clauses evidence/D15/clauses --manifest tests/reference/d15-clauses.json --epoch D15 --delta D15-FOUNDATIONAL-SEMANTICS --commit 46cc28be1486798635eac42a6955dedaba36673f (canonical base; integration commit in LEDGER AFTER) --declare --out design/environment-map/epochs/D15.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-build-epoch.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json --out design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-merge.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render design/environment-map/graph.json --out design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-render.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 8. Exact clauses and claim traversal' design/environment-map/SCHEMA.md && grep -q 'Foundational clause epoch D15' design/environment-map/ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-checks.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D15.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-build-epoch.log",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-merge.log",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-render.log",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T08:15:39Z",
+  "status": "PASS"
+}

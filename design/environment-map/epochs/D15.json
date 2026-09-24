@@ -1,0 +1,4943 @@
+{
+ "schema": "facttest-environment-map-epoch/1",
+ "epoch": "D15",
+ "delta": "D15-FOUNDATIONAL-SEMANTICS",
+ "commit": "46cc28be1486798635eac42a6955dedaba36673f (canonical base; integration commit in LEDGER AFTER)",
+ "summary": "60 exact clauses over 10 new and existing authorities; traces R W S T I H F P ST MF G; 6 proposed constraints; 4 facts",
+ "node_classes": {
+  "CLAUSE": {
+   "owner_rule": "the clause manifest (tests/reference/<epoch>-clauses.json) and its extraction evidence",
+   "required": [
+    "clause_id",
+    "authority_ref",
+    "trace",
+    "epoch",
+    "source",
+    "locator",
+    "excerpt_sha256",
+    "quoted",
+    "consequence"
+   ]
+  }
+ },
+ "edge_semantics": {
+  "CLAUSE_OF": {
+   "from": [
+    "CLAUSE"
+   ],
+   "to": [
+    "AUTHORITY"
+   ],
+   "meaning": "the exact clause lives in the document identified by that authority"
+  },
+  "GROUNDS": {
+   "from": [
+    "CLAUSE"
+   ],
+   "to": [
+    "CONSTRAINT",
+    "COMPUTATIONAL_FACT"
+   ],
+   "meaning": "the clause text is the ground of that project constraint or fact"
+  },
+  "LEADS_TO": {
+   "from": [
+    "CLAUSE"
+   ],
+   "to": [
+    "CLAUSE"
+   ],
+   "meaning": "a sublink followed because it materially changes legality, lifecycle, failure, security, storage, admission or proof interpretation"
+  },
+  "EXTRACTED_IN": {
+   "from": [
+    "CLAUSE"
+   ],
+   "to": [
+    "EVIDENCE"
+   ],
+   "meaning": "the extraction record (source commit, sha256, excerpt) of the clause"
+  }
+ },
+ "nodes": [
+  {
+   "id": "ENV-D15-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D15-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": null,
+   "target": "authority sources (no build)",
+   "host_runtime": "node + curl + git through the session proxy (sources only)",
+   "versions": null,
+   "flags": {
+    "channels": "raw.githubusercontent.com bytes at each source tip; git ls-remote tips"
+   },
+   "build_profile": null,
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "none (source extraction)",
+   "dependency_graph_identity": null,
+   "other_state": {
+    "network_egress": "published renderings denied (unchanged since D14)"
+   },
+   "identity_completeness": {
+    "missing": [
+     "published renderings (policy)"
+    ],
+    "present": [
+     "source commit + sha256 per clause"
+    ]
+   },
+   "owner": "evidence/D15/clauses/summary.json",
+   "note": "D15 clause extraction; observed 2026-09-24T08:14:33.323Z"
+  },
+  {
+   "id": "IMPL-REFERENCE-CLAUSES",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-REFERENCE-CLAUSES",
+   "repo_path": "tests/reference/{clauses.mjs,lib.mjs,build-clauses.mjs}",
+   "commit": "introduced by D15-FOUNDATIONAL-SEMANTICS (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "exact-clause extraction at each source tip with phrase verification",
+   "owner": "FactTest repository path tests/reference/"
+  },
+  {
+   "id": "PROBE-CLAUSE-EXTRACT",
+   "class": "PROBE",
+   "probe_id": "PROBE-CLAUSE-EXTRACT",
+   "proves_fact": [
+    "FACT-D15-CLAUSES-VERIFIED"
+   ],
+   "command_or_operation": "node tests/reference/clauses.mjs tests/reference/<epoch>-clauses.json design/environment-map/graph.json evidence/<epoch>/clauses",
+   "expected_observations": [
+    "every manifest clause VERIFIED: located at the tip and every must_contain phrase present"
+   ],
+   "failure_meaning": [
+    "a clause the authority does not (or no longer) say: the dependent constraint returns to ASCII"
+   ],
+   "implemented_by": "IMPL-REFERENCE-CLAUSES",
+   "owner": "IMPL-REFERENCE-CLAUSES"
+  },
+  {
+   "id": "EV-D15-CLAUSES-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CLAUSES-SUMMARY",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/summary.json",
+    "sha256": "4a27f6b82b2a97d39c7bb79680344416ddf76e3df4592c6f6dba01371220a4ba",
+    "locator": "status, sources",
+    "identity_source": "sha256 of the committed file"
+   },
+   "observed_result": "60 clauses {\"VERIFIED\":60} over 31 sources",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "FACT-D15-CLAUSES-VERIFIED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D15-CLAUSES-VERIFIED",
+   "subject": "D15 clause manifest",
+   "predicate": "every one of 60 manifest clauses is present at its source tip with each quoted phrase (the consequences stated on the CLAUSE nodes rest on text the authorities contain)",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "source level only: published renderings unverified (network policy)",
+   "source_ref": "evidence/D15/clauses/summary.json",
+   "owner": "D15 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "AUTH-ECMA-262",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-ECMA-262",
+   "title": "ECMAScript Language Specification (draft)",
+   "exact_url": "https://tc39.es/ecma262/",
+   "exact_fragment": null,
+   "authority_owner": "Ecma TC39",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "living draft (ES annual editions snapshot it)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/tc39/ecma262",
+    "branch": "main",
+    "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+    "path": "spec.html",
+    "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "agents and [[CanBlock]], ToBigInt64, SharedArrayBuffer (host may omit the global)",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "Ecma TC39"
+  },
+  {
+   "id": "AUTH-WEBIDL",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-WEBIDL",
+   "title": "Web IDL Standard",
+   "exact_url": "https://webidl.spec.whatwg.org/",
+   "exact_fragment": null,
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/whatwg/webidl",
+    "branch": "main",
+    "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+    "path": "index.bs",
+    "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "[SecureContext] exposure, [EnforceRange], bigint conversion",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "WHATWG"
+  },
+  {
+   "id": "AUTH-FETCH",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-FETCH",
+   "title": "Fetch Standard",
+   "exact_url": "https://fetch.spec.whatwg.org/",
+   "exact_fragment": null,
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/whatwg/fetch",
+    "branch": "main",
+    "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+    "path": "fetch.bs",
+    "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "ok status; request service-workers mode",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "WHATWG"
+  },
+  {
+   "id": "AUTH-STREAMS",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-STREAMS",
+   "title": "Streams Standard",
+   "exact_url": "https://streams.spec.whatwg.org/",
+   "exact_fragment": null,
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/whatwg/streams",
+    "branch": "main",
+    "commit": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+    "path": "index.bs",
+    "sha256": "24360b4f8446e6c80e185c5021fcca9b67a7e0bb62490a00109080ebc04c6440",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "readable streams (Response bodies consumed by compileStreaming)",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "WHATWG"
+  },
+  {
+   "id": "AUTH-PERMISSIONS",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-PERMISSIONS",
+   "title": "Permissions",
+   "exact_url": "https://w3c.github.io/permissions/",
+   "exact_fragment": null,
+   "authority_owner": "W3C WebAppSec",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "editor's draft source",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/w3c/permissions",
+    "branch": "main",
+    "commit": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+    "path": "index.html",
+    "sha256": "46570dd5901750012dc8cefb927b70f29592655c431f73a0a749d285e1e99509",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "powerful features need express permission; most are also policy-controlled",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "W3C WebAppSec"
+  },
+  {
+   "id": "AUTH-PERMISSIONS-POLICY",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-PERMISSIONS-POLICY",
+   "title": "Permissions Policy",
+   "exact_url": "https://w3c.github.io/webappsec-permissions-policy/",
+   "exact_fragment": null,
+   "authority_owner": "W3C WebAppSec",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "editor's draft source",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/w3c/webappsec-permissions-policy",
+    "branch": "main",
+    "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+    "path": "index.bs",
+    "sha256": "51a87c5f4008510e501b5a4fe553baf8271e0e3af6ce6e8feece987639794c9a",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "default allowlist '*' or 'self'; container policy from the allow attribute",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "W3C WebAppSec"
+  },
+  {
+   "id": "AUTH-WASM-SPECTEC-VALIDATION",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-WASM-SPECTEC-VALIDATION",
+   "title": "WebAssembly Core 3.0 validation rules (SpecTec source of the published prose)",
+   "exact_url": "https://webassembly.github.io/spec/core/valid/types.html",
+   "exact_fragment": "#valid-memtype",
+   "authority_owner": "WebAssembly WG",
+   "authority_class": "STANDARD_RELEASE",
+   "maturity": "Release 3.0 (rule source spliced into the published rendering)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "branch": "main",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "specification/wasm-3.0/2.1-validation.types.spectec",
+    "sha256": "fe29444726505af0328144b93ebec011446afe298d19832f2e4537cd755dfd78",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "Memtype_ok bounds limits by 2^(size(addrtype)-16) pages",
+   "fragment_status": "CLAUSE-LEVEL (fragments live on the CLAUSE nodes)",
+   "owner": "WebAssembly WG"
+  },
+  {
+   "id": "AUTH-WASM-JSAPI-VALUES",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-WASM-JSAPI-VALUES",
+   "title": "WebAssembly JavaScript Interface - value conversion (ToJSValue / ToWebAssemblyValue)",
+   "exact_url": "https://webassembly.github.io/spec/js-api/",
+   "exact_fragment": "#towebassemblyvalue",
+   "authority_owner": "WebAssembly WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "Status: ED, Level 2",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "branch": "main",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "i64 values cross the JS boundary as BigInt only",
+   "fragment_status": "CLAUSE-LEVEL (fragments live on the CLAUSE nodes)",
+   "owner": "WebAssembly WG"
+  },
+  {
+   "id": "AUTH-HTML-SECURE-CONTEXT",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-HTML-SECURE-CONTEXT",
+   "title": "HTML - secure context",
+   "exact_url": "https://html.spec.whatwg.org/multipage/webappapis.html",
+   "exact_fragment": "#secure-context",
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/whatwg/html",
+    "branch": "main",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "an environment is a secure context when its top-level creation URL is potentially trustworthy",
+   "fragment_status": "CLAUSE-LEVEL (fragments live on the CLAUSE nodes)",
+   "owner": "WHATWG"
+  },
+  {
+   "id": "AUTH-GIT-MKTREE",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-GIT-MKTREE",
+   "title": "git mktree",
+   "exact_url": "https://git-scm.com/docs/git-mktree",
+   "exact_fragment": null,
+   "authority_owner": "git project",
+   "authority_class": "TOOL_DOC",
+   "maturity": "tool documentation (master)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/git/git",
+    "branch": "master",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/git-mktree.adoc",
+    "sha256": "76c374c1dc612b1a2996472be938ab3e0ea2607428dc669dac4da7e6907f6974",
+    "observed": "2026-09-24",
+    "locator": "clauses of D15 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "tree entry order is normalized by the tool; the rule is not stated",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "git project"
+  },
+  {
+   "id": "EV-D15-CL-F1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-F1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-F1.json",
+    "sha256": "d9ddc6a29cea291898acf62672948f4297079670d6bc63a9b51f21aa9d859d5e",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/fetch@357bd98924 fetch.bs:1795-1800",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-F1",
+   "class": "CLAUSE",
+   "clause_id": "CL-F1",
+   "authority_ref": "AUTH-FETCH",
+   "trace": "F",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/fetch",
+    "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+    "path": "fetch.bs",
+    "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36"
+   },
+   "locator": {
+    "requested": {
+     "text": "has an associated <dfn for=request export>service-workers mode</dfn>"
+    },
+    "line_start": 1795,
+    "line_end": 1800,
+    "derivation": "anchor text",
+    "enclosing_section": "#requests (line 1657)"
+   },
+   "excerpt_sha256": "3cf520208d38467f137c943c8c4d94e90ca95880715d51d9b29d47072ee85869",
+   "quoted": [
+    "\"<code>all</code>\"",
+    "\"<code>none</code>\""
+   ],
+   "consequence": "requests carry a service-workers mode; \"none\" bypasses service workers",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-F1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-F2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-F2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-F2.json",
+    "sha256": "5128410670beda71df3d6a177d226ca1f6cd84d2fcc26a64f4d5cbbe532a2e65",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/ServiceWorker@2f5ec0663a index.bs:2821-2821",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-F2",
+   "class": "CLAUSE",
+   "clause_id": "CL-F2",
+   "authority_ref": "AUTH-SW-UPDATE-BYPASS",
+   "trace": "F",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "locator": {
+    "requested": {
+     "text": "1. Set |request|'s [=service-workers mode=] to \"`none`\".",
+     "after": "<h3 id=\"update-algorithm\">"
+    },
+    "line_start": 2821,
+    "line_end": 2821,
+    "derivation": "anchor text after \"<h3 id=\"update-algorithm\">\"",
+    "enclosing_section": "#update-algorithm (line 2780)"
+   },
+   "excerpt_sha256": "4f55b46834759e9e57333ece580c03443b96c38be5bb08589f1c7fc2465c8bc0",
+   "quoted": [
+    "service-workers mode=] to \"`none`\""
+   ],
+   "consequence": "the update check fetches the new script with service workers bypassed: a seed cannot supply its own replacement from its caches (D12 P02, B-08)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-F2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-F3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-F3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-F3.json",
+    "sha256": "e440eff517f0b6cd6ea5df3abdcaaead4cb02afc4a97bb77d5362e8338906ab2",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/ServiceWorker@2f5ec0663a index.bs:281-281",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-F3",
+   "class": "CLAUSE",
+   "clause_id": "CL-F3",
+   "authority_ref": "AUTH-SW-UPDATE-BYPASS",
+   "trace": "F",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "locator": {
+    "requested": {
+     "text": "is said to be <dfn>stale</dfn> if"
+    },
+    "line_start": 281,
+    "line_end": 281,
+    "derivation": "anchor text",
+    "enclosing_section": "#service-worker-registration-concept (line 265)"
+   },
+   "excerpt_sha256": "bff8f11aafffea2847b00a7d36b7f9c03961c383d8916a1baa1462c7afdd55c0",
+   "quoted": [
+    "last update check time"
+   ],
+   "consequence": "a registration becomes stale by elapsed time since its last update check (86400 s), so the browser re-fetches the seed script whenever reachable",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-F3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-F4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-F4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-F4.json",
+    "sha256": "7133699ba8bf88519f8f44f257505d78125a168f8ff224c200307466778286d7",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/ServiceWorker@2f5ec0663a index.bs:2759-2761",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-F4",
+   "class": "CLAUSE",
+   "clause_id": "CL-F4",
+   "authority_ref": "AUTH-SW-REGISTER-TRUST",
+   "trace": "F",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "locator": {
+    "requested": {
+     "text": "<a>potentially trustworthy origin</a> with the"
+    },
+    "line_start": 2759,
+    "line_end": 2761,
+    "derivation": "anchor text",
+    "enclosing_section": "#register-algorithm (line 2752)"
+   },
+   "excerpt_sha256": "328bbf8f3e553f6f0c339bae7b9e73588c3917ca0c03887d7c327ff1951f70a1",
+   "quoted": [
+    "Not Trusted"
+   ],
+   "consequence": "registration requires a potentially trustworthy script origin: the seed's home origin must be HTTPS or loopback (D-1)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-F4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-F5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-F5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-F5.json",
+    "sha256": "27ce5465864962c22397cf02b7ff201f7e55155c1b93ac88b22b87d341c241fa",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/ServiceWorker@2f5ec0663a index.bs:2994-2997",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-F5",
+   "class": "CLAUSE",
+   "clause_id": "CL-F5",
+   "authority_ref": "AUTH-SW-INSTALL-FAILED",
+   "trace": "F",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "locator": {
+    "requested": {
+     "text": "1. If |installFailed| is true, then:"
+    },
+    "line_start": 2994,
+    "line_end": 2997,
+    "derivation": "anchor text",
+    "enclosing_section": "#installation-algorithm (line 2954)"
+   },
+   "excerpt_sha256": "6d14468d3ba2ea637f725136d2f3f5b42c3a3ea7cfeae616908f46caca38e710",
+   "quoted": [
+    "\"`redundant`\""
+   ],
+   "consequence": "a failed install discards the installing worker and keeps the active one: an interrupted/broken update cannot replace a working seed (D12 P15)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-F5.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-F6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-F6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-F6.json",
+    "sha256": "cf90492797a570c106ceb08f193f3bb0ad0da77d178fed0b9a0a2788c735b80d",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/ServiceWorker@2f5ec0663a index.bs:353-355",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-F6",
+   "class": "CLAUSE",
+   "clause_id": "CL-F6",
+   "authority_ref": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+   "trace": "F",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "locator": {
+    "requested": {
+     "text": "<{iframe}>s without the sandboxing directives"
+    },
+    "line_start": 353,
+    "line_end": 355,
+    "derivation": "anchor text",
+    "enclosing_section": "#control-and-use-window-client (line 336)"
+   },
+   "excerpt_sha256": "b3764163418d3b7f44db1648ffeaec27a1240eab5fc149f2c2cbfabc7c843b0b",
+   "quoted": [
+    "null"
+   ],
+   "consequence": "sandboxed (opaque) frames have no active service worker: a confined generation cannot be served by the seed's router and must be bootstrapped inline (D12 P16, B-10)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-F6.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-G1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-G1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-G1.json",
+    "sha256": "c5f0045e5f7b180aae80e4b1e7a2f3c248bef9838538f929836b02850dd6e1e6",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at git/git@0f8e75abeb Documentation/user-manual.adoc:4082-4097",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-G1",
+   "class": "CLAUSE",
+   "clause_id": "CL-G1",
+   "authority_ref": "AUTH-GIT-OBJECT-FORMAT",
+   "trace": "G",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/user-manual.adoc",
+    "sha256": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#object-details"
+    },
+    "line_start": 4082,
+    "line_end": 4097,
+    "derivation": "PRESENT_EXPLICIT (asciidoc anchor)",
+    "enclosing_section": "#object-details (line 4082)"
+   },
+   "excerpt_sha256": "9aba9661663f63b9e47b0c4d05a071e1b38df7a16f3d8fdc6467a351229204d7",
+   "quoted": [
+    "deflated with zlib",
+    "hash of the original data"
+   ],
+   "consequence": "object id = SHA-1 over \"<type> <size>\\0\" + content; loose objects are zlib-deflated: the browser object store must hash the header, not the bytes (D12 P09 matched 880/880)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-G1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-G2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-G2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-G2.json",
+    "sha256": "7ae9c5c91da780c9492adb2bdaf87c01df60177e35ade35dbe6085736e21997e",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at git/git@0f8e75abeb Documentation/git-update-ref.adoc:21-28",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-G2",
+   "class": "CLAUSE",
+   "clause_id": "CL-G2",
+   "authority_ref": "AUTH-GIT-UPDATE-REF-CAS",
+   "trace": "G",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/git-update-ref.adoc",
+    "sha256": "ba4abaaa5acc9e73587ae2195e0bf431f744258214e575e30f29ae3ff3763a22"
+   },
+   "locator": {
+    "requested": {
+     "text": "Given three arguments, stores the <new-oid> in the <ref>,"
+    },
+    "line_start": 21,
+    "line_end": 28,
+    "derivation": "anchor text",
+    "enclosing_section": "#_description (line 15)"
+   },
+   "excerpt_sha256": "917c9d41a8e3a4cb134992a6bcdfce1074a7fcb34e33e6eed80efea60c34bdc1",
+   "quoted": [
+    "only if its current",
+    "value is <old-oid>"
+   ],
+   "consequence": "a ref moves only if its current value is the expected old id: the Factory's fast-forward gate and a browser ref store both need compare-and-set",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-G2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-G3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-G3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-G3.json",
+    "sha256": "121d6b15f1c3416fd713b4a905e14898a06430ee007e33716f39959472700988",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at git/git@0f8e75abeb Documentation/git-mktree.adoc:17-18",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-G3",
+   "class": "CLAUSE",
+   "clause_id": "CL-G3",
+   "authority_ref": "AUTH-GIT-MKTREE",
+   "trace": "G",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/git-mktree.adoc",
+    "sha256": "76c374c1dc612b1a2996472be938ab3e0ea2607428dc669dac4da7e6907f6974"
+   },
+   "locator": {
+    "requested": {
+     "text": "The order of the tree entries is normalized by mktree"
+    },
+    "line_start": 17,
+    "line_end": 18,
+    "derivation": "anchor text",
+    "enclosing_section": "#_description (line 14)"
+   },
+   "excerpt_sha256": "d5fd2431fe1100f6038cf6c4323e905a99478e39af9b64a133c821c1f74e301e",
+   "quoted": [
+    "normalized by mktree"
+   ],
+   "consequence": "tree-entry order is normalized by git but the rule is not stated in the documentation: browser-computed tree ids are correct only as far as observed equality with git goes (P09) - the ordering rule is an implementation fact (D17) [GAP]",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-G3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-G4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-G4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-G4.json",
+    "sha256": "53db5e009f0b1cebea4ca4a12b7b9b25e20717d3712d777573590c4217ac9bb7",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at git/git@0f8e75abeb Documentation/gitformat-pack.adoc:43-48",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-G4",
+   "class": "CLAUSE",
+   "clause_id": "CL-G4",
+   "authority_ref": "AUTH-GIT-PACK-FORMAT",
+   "trace": "G",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/gitformat-pack.adoc",
+    "sha256": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b"
+   },
+   "locator": {
+    "requested": {
+     "text": "4-byte signature:"
+    },
+    "line_start": 43,
+    "line_end": 48,
+    "derivation": "anchor text",
+    "enclosing_section": "#_packpack_files_have_the_following_format (line 39)"
+   },
+   "excerpt_sha256": "377a532e56fb602a5c9d1df47156bbd0646bf42d68fc93748509340eac5ee81d",
+   "quoted": [
+    "version number"
+   ],
+   "consequence": "packfiles start with a signature and a version: history import/export (D12 B-17) needs a pack reader/writer",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-G4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-G5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-G5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-G5.json",
+    "sha256": "192ea6d66d3c131b9a38dd883c7b85c42dd176fd596e6745094afd8b8982d970",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at git/git@0f8e75abeb Documentation/technical/hash-function-transition.adoc:152-159",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-G5",
+   "class": "CLAUSE",
+   "clause_id": "CL-G5",
+   "authority_ref": "AUTH-GIT-SHA256-TRANSITION",
+   "trace": "G",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/technical/hash-function-transition.adoc",
+    "sha256": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d"
+   },
+   "locator": {
+    "requested": {
+     "text": "`extensions.compatObjectFormat` (see linkgit:git-config[1]) set to:"
+    },
+    "line_start": 152,
+    "line_end": 159,
+    "derivation": "anchor text",
+    "enclosing_section": "#_repository_format_extension (line 148)"
+   },
+   "excerpt_sha256": "645ef54ebd4a8385314e53cb0a570ab9a230fb5c075665c54ede31f9bbd15df3",
+   "quoted": [
+    "objectFormat = sha256"
+   ],
+   "consequence": "a repository may use SHA-256 object names (with a SHA-1 compat map): object-hash choice is D-6 (owner)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-G5.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-H1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-H1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-H1.json",
+    "sha256": "a4291967205577589c657bb9285eecd0cf17954e712e79cea19c5cb691c9a250",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/html@cd8ac6f1bb source:118175-118220",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-H1",
+   "class": "CLAUSE",
+   "clause_id": "CL-H1",
+   "authority_ref": "AUTH-HTML-SECURE-CONTEXT",
+   "trace": "H",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "locator": {
+    "requested": {
+     "text": "is a <dfn export data-lt=\"secure context|Is"
+    },
+    "line_start": 118175,
+    "line_end": 118220,
+    "derivation": "anchor text",
+    "enclosing_section": "#realms-settings-objects-global-objects (line 117462)"
+   },
+   "excerpt_sha256": "5dfb30f621fe18f691b17d8684f149252878aec284842e885aefb548820feaf9",
+   "quoted": [
+    "top-level creation URL",
+    "Potentially"
+   ],
+   "consequence": "secure context is decided by the environment's TOP-LEVEL CREATION URL: an opaque sandboxed frame under a loopback top-level is still a secure context (D12 P08/P16 observed exactly this)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-H1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-H2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-H2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-H2.json",
+    "sha256": "728be2a2cc2982c8c5ff8de84b306ad5180d8328a64d611fb85bb30c9ccf126b",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/webappsec-secure-contexts@68191bb08a index.bs:556-558",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-H2",
+   "class": "CLAUSE",
+   "clause_id": "CL-H2",
+   "authority_ref": "AUTH-SECCTX-TRUSTWORTHY",
+   "trace": "H",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/webappsec-secure-contexts",
+    "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+    "path": "index.bs",
+    "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1"
+   },
+   "locator": {
+    "requested": {
+     "text": "matches one of the CIDR"
+    },
+    "line_start": 556,
+    "line_end": 558,
+    "derivation": "anchor text",
+    "enclosing_section": "#is-origin-trustworthy (line 517)"
+   },
+   "excerpt_sha256": "05f3d27317404779acb76ae47ed1ea0e33f6454523ecb63b272ed9a3de374081",
+   "quoted": [
+    "127.0.0.0/8",
+    "::1/128"
+   ],
+   "consequence": "loopback 127.0.0.0/8 and ::1 are potentially trustworthy: every FactTest browser probe (127.0.0.1) runs in a secure context",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-H2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-H3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-H3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-H3.json",
+    "sha256": "7c5f9caf6b360ebce4098159d3f608e45687c796deec238c05afa65905248ab7",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/webappsec-secure-contexts@68191bb08a index.bs:546-546",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-H3",
+   "class": "CLAUSE",
+   "clause_id": "CL-H3",
+   "authority_ref": "AUTH-SECCTX-TRUSTWORTHY",
+   "trace": "H",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/webappsec-secure-contexts",
+    "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+    "path": "index.bs",
+    "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1"
+   },
+   "locator": {
+    "requested": {
+     "text": "If |origin| is an <a>opaque origin</a>, return"
+    },
+    "line_start": 546,
+    "line_end": 546,
+    "derivation": "anchor text",
+    "enclosing_section": "#is-origin-trustworthy (line 517)"
+   },
+   "excerpt_sha256": "a9e277dfa7556045878136757d1e29d08b281be657438dee0b66768a35dad8b7",
+   "quoted": [
+    "Not Trustworthy"
+   ],
+   "consequence": "an opaque ORIGIN is not trustworthy (origin-keyed checks such as SW registration fail) even though the environment is a secure context by its top-level creation URL",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-H3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-H4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-H4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-H4.json",
+    "sha256": "632ea67c4e88af8461f7c5aa67cdc2b8600bae19b32dd4a3e1fe3a4a1f4566be",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/html@cd8ac6f1bb source:96158-96165",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-H4",
+   "class": "CLAUSE",
+   "clause_id": "CL-H4",
+   "authority_ref": "AUTH-HTML-SANDBOX-ORIGIN",
+   "trace": "H",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#sandboxed-origin-browsing-context-flag"
+    },
+    "line_start": 96158,
+    "line_end": 96165,
+    "derivation": "PRESENT_DERIVED (bikeshed dfn)",
+    "enclosing_section": "#the-coep-headers (line 95839)"
+   },
+   "excerpt_sha256": "cd99bc8a8a2025827c502f4d968f6b77386e323a136a9672b49672edf3bf63ac",
+   "quoted": [
+    "opaque origin"
+   ],
+   "consequence": "the sandboxed origin flag forces an opaque origin: confined generations cannot reach the Factory origin's storage (D12 B-09 broker requirement)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-H4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-I1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-I1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-I1.json",
+    "sha256": "9afa2f4602a11a0cb49279425cc2877851418a294af794c227d23c4163c324e7",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/webidl@6a53497380 index.bs:10629-10646",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-I1",
+   "class": "CLAUSE",
+   "clause_id": "CL-I1",
+   "authority_ref": "AUTH-WEBIDL",
+   "trace": "I",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/webidl",
+    "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+    "path": "index.bs",
+    "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#SecureContext"
+    },
+    "line_start": 10629,
+    "line_end": 10646,
+    "derivation": "PRESENT_EXPLICIT (id attribute)",
+    "enclosing_section": "#SecureContext (line 10629)"
+   },
+   "excerpt_sha256": "a1b573b169cf7fab2dc3388b0c30e317652224203b453fe4297d009fa0d9adae",
+   "quoted": [
+    "only within a [=secure context=]"
+   ],
+   "consequence": "a [SecureContext] construct is not exposed at all outside a secure context: absence of an API in an insecure context is exposure, not a runtime failure - admission probes must run in a secure context",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-I1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-I2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-I2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-I2.json",
+    "sha256": "37dfee4ba94ac96149682cf977cae58110616e680f86e6b336d2bea009139503",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/webidl@6a53497380 index.bs:9857-9859",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-I2",
+   "class": "CLAUSE",
+   "clause_id": "CL-I2",
+   "authority_ref": "AUTH-WEBIDL",
+   "trace": "I",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/webidl",
+    "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+    "path": "index.bs",
+    "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#EnforceRange"
+    },
+    "line_start": 9857,
+    "line_end": 9859,
+    "derivation": "PRESENT_EXPLICIT (id attribute)",
+    "enclosing_section": "#EnforceRange (line 9857)"
+   },
+   "excerpt_sha256": "0d0f4f48e53195ac5d007c9cea04cc0a271010c261e3dbf0c7400bfa151568e3",
+   "quoted": [
+    "[{{EnforceRange}}]"
+   ],
+   "consequence": "[EnforceRange] throws instead of wrapping; the JS API emulates it for i64 address values (CL-W7)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-I2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-I3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-I3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-I3.json",
+    "sha256": "e3bc6b0b405ff6e4e13aab9d1d101cde38e9b35b73ba3f8eaaabec17b8d0ce04",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/webidl@6a53497380 index.bs:7785-7794",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-I3",
+   "class": "CLAUSE",
+   "clause_id": "CL-I3",
+   "authority_ref": "AUTH-WEBIDL",
+   "trace": "I",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/webidl",
+    "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+    "path": "index.bs",
+    "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#js-bigint"
+    },
+    "line_start": 7785,
+    "line_end": 7794,
+    "derivation": "PRESENT_EXPLICIT (id attribute)",
+    "enclosing_section": "#js-bigint (line 7785)"
+   },
+   "excerpt_sha256": "017289e62327ffabc36027e7ea9e37e02d2d7b8ffcbff88ea143e172fc77b973",
+   "quoted": [
+    "[$ToBigInt$](|V|)"
+   ],
+   "consequence": "IDL bigint conversion is ToBigInt: Numbers are rejected rather than coerced",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-I3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-I4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-I4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-I4.json",
+    "sha256": "d0307198cac6b8f713b101e1adabcc1641437d609b51a2fdffd23e17fbfa4b8e",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at tc39/ecma262@726ec8a426 spec.html:5672-5679",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-I4",
+   "class": "CLAUSE",
+   "clause_id": "CL-I4",
+   "authority_ref": "AUTH-ECMA-262",
+   "trace": "I",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/tc39/ecma262",
+    "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+    "path": "spec.html",
+    "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#sec-tobigint64"
+    },
+    "line_start": 5672,
+    "line_end": 5679,
+    "derivation": "PRESENT_EXPLICIT (id attribute)",
+    "enclosing_section": null
+   },
+   "excerpt_sha256": "b5d0accabfbaea66b0441f2957f238880ecf09c886a170b03f0b8184113320f1",
+   "quoted": [
+    "ToBigInt64"
+   ],
+   "consequence": "ToBigInt64 wraps modulo 2^64 after ToBigInt (which throws for Numbers): the membrane must hand BigInt, and values are two's-complement i64",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-I4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-MF1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-MF1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-MF1.json",
+    "sha256": "ad312d969fe033cbd539f931a275902e8b95f740136deba213c100adfcd97822",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/manifest@8ae3046968 index.html:2615-2622",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-MF1",
+   "class": "CLAUSE",
+   "clause_id": "CL-MF1",
+   "authority_ref": "AUTH-MANIFEST-INSTALLABLE",
+   "trace": "MF",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/manifest",
+    "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+    "path": "index.html",
+    "sha256": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d"
+   },
+   "locator": {
+    "requested": {
+     "text": "Any website is an <strong>installable web application</strong>."
+    },
+    "line_start": 2615,
+    "line_end": 2622,
+    "derivation": "anchor text",
+    "enclosing_section": "#applying (line 1808)"
+   },
+   "excerpt_sha256": "8dfe66accd9f5fe431a6a125df5f566d3d83c27e1019412766dc7312ca1e2115",
+   "quoted": [
+    "A user agent can provide a way"
+   ],
+   "consequence": "installation is user-agent behaviour offered to the user, not something a manifest guarantees: the installed-Factory level L0 needs an installation OBSERVATION, never a manifest-only claim",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-MF1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-P1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-P1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-P1.json",
+    "sha256": "155c578c7e03f8ea67a73d5e3dbd6364c77df16357301a25b40d3c8aaa170d9b",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/permissions@0051a836a9 index.html:383-387",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-P1",
+   "class": "CLAUSE",
+   "clause_id": "CL-P1",
+   "authority_ref": "AUTH-PERMISSIONS",
+   "trace": "P",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/permissions",
+    "commit": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+    "path": "index.html",
+    "sha256": "46570dd5901750012dc8cefb927b70f29592655c431f73a0a749d285e1e99509"
+   },
+   "locator": {
+    "requested": {
+     "text": "A <dfn class=\"export\" data-local-lt=\"feature\">powerful feature</dfn> is a web platform"
+    },
+    "line_start": 383,
+    "line_end": 387,
+    "derivation": "anchor text",
+    "enclosing_section": "#examples (line 118)"
+   },
+   "excerpt_sha256": "36d49121bbe43e3149e55084fc059a1876ad4e8b52bf579e1833278d82165087",
+   "quoted": [
+    "express permission",
+    "policy-controlled features"
+   ],
+   "consequence": "powerful features need express permission and are usually also policy-controlled: capability admission is permission AND policy, never presence",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-P1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-P2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-P2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-P2.json",
+    "sha256": "325567b9c383da9e9950eb923b29627dfe9c59081abaa801fa5654db7a615ac0",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/webappsec-permissions-policy@29398046f1 index.bs:1082-1085",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-P2",
+   "class": "CLAUSE",
+   "clause_id": "CL-P2",
+   "authority_ref": "AUTH-PERMISSIONS-POLICY",
+   "trace": "P",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/webappsec-permissions-policy",
+    "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+    "path": "index.bs",
+    "sha256": "51a87c5f4008510e501b5a4fe553baf8271e0e3af6ce6e8feece987639794c9a"
+   },
+   "locator": {
+    "requested": {
+     "text": "If |feature|'s <a>default allowlist</a> is <code>'self'</code>, and"
+    },
+    "line_start": 1082,
+    "line_end": 1085,
+    "derivation": "anchor text",
+    "enclosing_section": "#algo-define-inherited-policy-in-container (line 1056)"
+   },
+   "excerpt_sha256": "bc226268ee0aa472edc3a069d029c23db5975ac4882b1545576424c3fb5b5d7c",
+   "quoted": [
+    "[=same origin=]",
+    "Disabled"
+   ],
+   "consequence": "a 'self'-default feature is Disabled in a frame whose origin is not same origin with its container: an opaque-origin generation frame loses every 'self' feature unless the container policy (allow attribute) grants it",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-P2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-P3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-P3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-P3.json",
+    "sha256": "41dde512964995f82ddd70dff7cb3852991fe9b0954f5a317663533d29356a78",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/webappsec-permissions-policy@29398046f1 index.bs:1074-1078",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-P3",
+   "class": "CLAUSE",
+   "clause_id": "CL-P3",
+   "authority_ref": "AUTH-PERMISSIONS-POLICY",
+   "trace": "P",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/webappsec-permissions-policy",
+    "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+    "path": "index.bs",
+    "sha256": "51a87c5f4008510e501b5a4fe553baf8271e0e3af6ce6e8feece987639794c9a"
+   },
+   "locator": {
+    "requested": {
+     "text": "Let |container policy| be the result of running <a abstract-op>Process"
+    },
+    "line_start": 1074,
+    "line_end": 1078,
+    "derivation": "anchor text",
+    "enclosing_section": "#algo-define-inherited-policy-in-container (line 1056)"
+   },
+   "excerpt_sha256": "da9f40d57c2b0fda223ed3e05604f88cb5e64d74fab122fb3b94c54d25b64d80",
+   "quoted": [
+    "container policy",
+    "Enabled"
+   ],
+   "consequence": "the container policy (iframe allow attribute) decides first: the broker must declare allow= for every capability a confined generation may use",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-P3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R1.json",
+    "sha256": "083b60a731357190f6adde441b31d6656f92442aed17298f0df1b928721804f5",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/reference@52ffdc0906 src/names/preludes.md:53-54",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R1",
+   "class": "CLAUSE",
+   "clause_id": "CL-R1",
+   "authority_ref": "AUTH-RUST-REF-NOSTD",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/reference",
+    "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+    "path": "src/names/preludes.md",
+    "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434"
+   },
+   "locator": {
+    "requested": {
+     "text": "r[names.preludes.extern.std]"
+    },
+    "line_start": 53,
+    "line_end": 54,
+    "derivation": "anchor text",
+    "enclosing_section": "#extern-prelude (line 45)"
+   },
+   "excerpt_sha256": "bf2891c8551d99ace9f1050274fa10dccd01cb184539eb1f99c0bc95938c9b0f",
+   "quoted": [
+    "is added as long as the [`no_std` attribute] is not specified in the crate root"
+   ],
+   "consequence": "a #![no_std] crate root does not get std in its extern prelude: every compiler crate links only what it names from core",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R2.json",
+    "sha256": "56a5eaa427c9e656337f0e3a0c2e1873493257dee4c665858ce02a9dac201d13",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/reference@52ffdc0906 src/names/preludes.md:24-32",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R2",
+   "class": "CLAUSE",
+   "clause_id": "CL-R2",
+   "authority_ref": "AUTH-RUST-REF-NOSTD",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/reference",
+    "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+    "path": "src/names/preludes.md",
+    "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434"
+   },
+   "locator": {
+    "requested": {
+     "text": "r[names.preludes.std.module]"
+    },
+    "line_start": 24,
+    "line_end": 32,
+    "derivation": "anchor text",
+    "enclosing_section": "#standard-library-prelude (line 19)"
+   },
+   "excerpt_sha256": "8753848077d537b3b301b3889f19f865bae2ccc3e91657b827f5e7c0b27e8ff2",
+   "quoted": [
+    "`no_std` applied",
+    "core::prelude::rust_2021"
+   ],
+   "consequence": "under no_std the standard-library prelude is core's; FactTest's 2021-edition crates see core::prelude::rust_2021",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R3.json",
+    "sha256": "0514a405df02c3e64c15fb70d7581948b223cdef9873dc6a8f9c875374ffea76",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/cargo@694054f34b doc/book/src/reference/unstable.md:558-565",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R3",
+   "class": "CLAUSE",
+   "clause_id": "CL-R3",
+   "authority_ref": "AUTH-CARGO-BUILD-STD",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/cargo",
+    "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+    "path": "doc/book/src/reference/unstable.md",
+    "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd"
+   },
+   "locator": {
+    "requested": {
+     "text": "### Requirements",
+     "after": "## build-std"
+    },
+    "line_start": 558,
+    "line_end": 565,
+    "derivation": "anchor text after \"## build-std\"",
+    "enclosing_section": "#requirements (line 558)"
+   },
+   "excerpt_sha256": "f5236253af109bac31dca99211b8eedb55d523883d023e4443d72a71ab31e901",
+   "quoted": [
+    "rust-src",
+    "nightly Cargo and a nightly rustc",
+    "must be passed to all `cargo` invocations"
+   ],
+   "consequence": "building core for wasm64 needs rust-src and a nightly Cargo+rustc, and -Z build-std on every invocation: WASM64_KERNEL_SET runs on the pinned nightly with rust-src (D13 pin)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R4.json",
+    "sha256": "97a1d65af01d146e6b583d7d51b31929c3da8a6a042fb21ac5fab8f152876d78",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@3670d2532b src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md:77-84",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R4",
+   "class": "CLAUSE",
+   "clause_id": "CL-R4",
+   "authority_ref": "AUTH-RUSTC-WASM64-DOC",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013"
+   },
+   "locator": {
+    "requested": {
+     "text": "## Building Rust programs"
+    },
+    "line_start": 77,
+    "line_end": 84,
+    "derivation": "anchor text",
+    "enclosing_section": "#building-rust-programs (line 77)"
+   },
+   "excerpt_sha256": "49f36bf5a8a0a88bd6dddd011feedced765faa8e621f181d1cdaa878ee3c7230",
+   "quoted": [
+    "does not yet ship pre-compiled artifacts for this target",
+    "`build-std`"
+   ],
+   "consequence": "no prebuilt core/std exists for wasm64-unknown-unknown: build-std is the only way FactTest obtains core for the kernel",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R5.json",
+    "sha256": "30818dfd1c8c5f1e675f561803237fdd1cadd8b7815ca5efb3f856ba0a861756",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@3670d2532b src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md:62-62",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R5",
+   "class": "CLAUSE",
+   "clause_id": "CL-R5",
+   "authority_ref": "AUTH-RUSTC-WASM64-DOC",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013"
+   },
+   "locator": {
+    "requested": {
+     "text": "This target does not support `panic=unwind`"
+    },
+    "line_start": 62,
+    "line_end": 62,
+    "derivation": "anchor text",
+    "enclosing_section": "#requirements (line 14)"
+   },
+   "excerpt_sha256": "20a1d9dc5fa07e897eab62cfeed40bc38d8dbe9724b29010da31aba1bb335f5e",
+   "quoted": [
+    "does not support `panic=unwind`"
+   ],
+   "consequence": "the wasm64 kernel must use panic=abort (FactTest's release profile sets panic = \"abort\"; the wasm-abi crate supplies its own panic_handler)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R5.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R6.json",
+    "sha256": "284b4ea8138e0c3a4ffbc8941671c83e4aa6a8d59b09cd3210af6170af0f644f",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@3670d2532b src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md:86-86",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R6",
+   "class": "CLAUSE",
+   "clause_id": "CL-R6",
+   "authority_ref": "AUTH-RUSTC-WASM64-DOC",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013"
+   },
+   "locator": {
+    "requested": {
+     "text": "`cfg(target_arch = \"wasm64\")`"
+    },
+    "line_start": 86,
+    "line_end": 86,
+    "derivation": "anchor text",
+    "enclosing_section": "#building-rust-programs (line 77)"
+   },
+   "excerpt_sha256": "77ac5eabca50a33844d8f2fd818e5566c4287180a33ae1d8cc7272b6d3f1bdbc",
+   "quoted": [
+    "cfg(target_arch = \"wasm64\")"
+   ],
+   "consequence": "cfg(target_arch = \"wasm64\") is the target's predicate: factc-wasm-abi's panic_handler is gated on it, which is why the crate is target-specific (WASM64_KERNEL_SET root; CROSS_SET on the host)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R6.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R7",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R7",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R7.json",
+    "sha256": "4105a7c47765444bce9544eae791e9ea2eaaaed8e6699c8fd29b274a233a7df9",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@3670d2532b src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md:33-35",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R7",
+   "class": "CLAUSE",
+   "clause_id": "CL-R7",
+   "authority_ref": "AUTH-RUSTC-WASM64-DOC",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013"
+   },
+   "locator": {
+    "requested": {
+     "text": "This target is not a stable target."
+    },
+    "line_start": 33,
+    "line_end": 35,
+    "derivation": "anchor text",
+    "enclosing_section": "#requirements (line 14)"
+   },
+   "excerpt_sha256": "00611bb0dc6179cf15163f7d830196f2f9184d75cff8a152e3c9926d5a5b9e65",
+   "quoted": [
+    "still",
+    "in-progress and not standardized"
+   ],
+   "consequence": "the implementation doc still calls memory64 unstandardized while the proposal registry lists Memory64 as finished and Core 3.0 carries 64-bit address types: ERR-001 persists (implementation documentation is not standards law, CON-RS-003)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R7.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R8",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R8",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R8.json",
+    "sha256": "faacb74d4634f33d234ca228d74ae6f2d307732aa2a87e55a3c1f1b176c2ee6e",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@3670d2532b compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs:38-38",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R8",
+   "class": "CLAUSE",
+   "clause_id": "CL-R8",
+   "authority_ref": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+    "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb"
+   },
+   "locator": {
+    "requested": {
+     "text": "options.features ="
+    },
+    "line_start": 38,
+    "line_end": 38,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "0c6bf9c42dd49f1eb71b5f8a214eae3f2f5c15d7d8117f0fb7b96b874e9cfd68",
+   "quoted": [
+    "+bulk-memory,+mutable-globals,+sign-ext,+nontrapping-fptoint"
+   ],
+   "consequence": "the rustc wasm64 target emits code assuming bulk-memory, mutable-globals, sign-ext and nontrapping-fptoint: CPU_WASM64 admission needs an engine with memory64 AND these features",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R8.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-R9",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-R9",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-R9.json",
+    "sha256": "4d6e437f2a3e6ed2d7a8903067e75818407587c74f58d9bb1db80987812775b9",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@3670d2532b compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs:48-49",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-R9",
+   "class": "CLAUSE",
+   "clause_id": "CL-R9",
+   "authority_ref": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "trace": "R",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+    "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb"
+   },
+   "locator": {
+    "requested": {
+     "text": "pointer_width: 64"
+    },
+    "line_start": 48,
+    "line_end": 49,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "778bad5c6b925d5e6b8655fd9c23c7c65381cd789643d2540b534a681b1b77d3",
+   "quoted": [
+    "p:64:64"
+   ],
+   "consequence": "usize and pointers are 64-bit: every pointer/length crossing the ABI is an i64 (hence BigInt in JS, trace W)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-R9.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-S1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-S1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-S1.json",
+    "sha256": "8facc10e2b19ab9a192006c066799174772fb4963df7f1950d50a472acd7fcb4",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/web-api/index.bs:114-115",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-S1",
+   "class": "CLAUSE",
+   "clause_id": "CL-S1",
+   "authority_ref": "AUTH-WASM-WEBAPI-STREAMING",
+   "trace": "S",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/web-api/index.bs",
+    "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6"
+   },
+   "locator": {
+    "requested": {
+     "text": "does not represent an [=ok status=]"
+    },
+    "line_start": 114,
+    "line_end": 115,
+    "derivation": "anchor text",
+    "enclosing_section": "#streaming-modules (line 86)"
+   },
+   "excerpt_sha256": "01c02cf1dd52ae6ded445e96f1012fe3f78a690e6f872051086310b7b8fed642",
+   "quoted": [
+    "[=CORS-same-origin=]",
+    "`application/wasm`"
+   ],
+   "consequence": "compileStreaming rejects a response that is not CORS-same-origin, not ok, or not application/wasm",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-S1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-S2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-S2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-S2.json",
+    "sha256": "72dc4ddb9eda26604fa2abb1d3940002069edba36e9c90d750fea6b3e298729a",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/web-api/index.bs:127-129",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-S2",
+   "class": "CLAUSE",
+   "clause_id": "CL-S2",
+   "authority_ref": "AUTH-WASM-WEBAPI-STREAMING",
+   "trace": "S",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/web-api/index.bs",
+    "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6"
+   },
+   "locator": {
+    "requested": {
+     "text": "If |mimeType| is not a [=byte-case-insensitive=] match"
+    },
+    "line_start": 127,
+    "line_end": 129,
+    "derivation": "anchor text",
+    "enclosing_section": "#streaming-modules (line 86)"
+   },
+   "excerpt_sha256": "90c08c5792a65c7dcb041acef8343a277e2ac8493d29e5b166fbfbc84ca0b044",
+   "quoted": [
+    "extra parameters are not allowed"
+   ],
+   "consequence": "the MIME check is exact (no parameters): a server sending application/wasm;charset=... fails streaming",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-S2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-S3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-S3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-S3.json",
+    "sha256": "2900c87572e38d04f2901126fa8e4118e4abbd21a077d47edd0762066e7828bb",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/fetch@357bd98924 fetch.bs:1474-1474",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-S3",
+   "class": "CLAUSE",
+   "clause_id": "CL-S3",
+   "authority_ref": "AUTH-FETCH",
+   "trace": "S",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/fetch",
+    "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+    "path": "fetch.bs",
+    "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36"
+   },
+   "locator": {
+    "requested": {
+     "text": "<p>An <dfn export>ok status</dfn>"
+    },
+    "line_start": 1474,
+    "line_end": 1474,
+    "derivation": "anchor text",
+    "enclosing_section": "#statuses (line 1465)"
+   },
+   "excerpt_sha256": "13c98c47e9a9b62985c09c86e865c9c0c1adbe93a47c5f2c93b8a8637ffd5346",
+   "quoted": [
+    "200 to 299"
+   ],
+   "consequence": "ok status = 200..299",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-S3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-S4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-S4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-S4.json",
+    "sha256": "004b8917d5749b6a6ee2343799a983e6a40f93f5b541d96c51921bc88b1e4433",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/streams@b9ba9f49d9 index.bs:123-124",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-S4",
+   "class": "CLAUSE",
+   "clause_id": "CL-S4",
+   "authority_ref": "AUTH-STREAMS",
+   "trace": "S",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/streams",
+    "commit": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+    "path": "index.bs",
+    "sha256": "24360b4f8446e6c80e185c5021fcca9b67a7e0bb62490a00109080ebc04c6440"
+   },
+   "locator": {
+    "requested": {
+     "text": "A <dfn export>readable stream</dfn> represents"
+    },
+    "line_start": 123,
+    "line_end": 124,
+    "derivation": "anchor text",
+    "enclosing_section": "#rs-model (line 121)"
+   },
+   "excerpt_sha256": "71fcb29d6ce9ffd0d983f7bd56485ea53017599ba8c7eb7939361e225d551712",
+   "quoted": [
+    "represents a source of data"
+   ],
+   "consequence": "the Response body is a readable stream consumed incrementally by streaming compilation; FactTest's harness instead instantiates from bytes (no streaming probe: FACT-STREAMING-UNPROBED stays [GAP])",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-S4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-ST1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-ST1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-ST1.json",
+    "sha256": "26a21a1667dc0b5bfe9dbe4e176484175c7cfe7a05311db79826a686bf660e28",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/storage@1933f424de storage.bs:363-365",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-ST1",
+   "class": "CLAUSE",
+   "clause_id": "CL-ST1",
+   "authority_ref": "AUTH-STORAGE-BUCKET-MODE",
+   "trace": "ST",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/storage",
+    "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+    "path": "storage.bs",
+    "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#bucket-mode"
+    },
+    "line_start": 363,
+    "line_end": 365,
+    "derivation": "PRESENT_EXPLICIT (id attribute)",
+    "enclosing_section": "#buckets (line 350)"
+   },
+   "excerpt_sha256": "4d543f404d21ce0078af47a6d672d8d8328a5ebf99a6615c89dca4fbc79a8dbb",
+   "quoted": [
+    "\"<code>best-effort</code>\""
+   ],
+   "consequence": "local storage buckets start best-effort",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-ST1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-ST2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-ST2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-ST2.json",
+    "sha256": "387530506160feb99af72634edd13b2cbac3ce914ec0d96e1b3fa6d3a3706abd",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/storage@1933f424de storage.bs:570-572",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-ST2",
+   "class": "CLAUSE",
+   "clause_id": "CL-ST2",
+   "authority_ref": "AUTH-STORAGE-BUCKET-MODE",
+   "trace": "ST",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/storage",
+    "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+    "path": "storage.bs",
+    "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7"
+   },
+   "locator": {
+    "requested": {
+     "text": "<p>A user agent that comes under storage pressure should clear network state and"
+    },
+    "line_start": 570,
+    "line_end": 572,
+    "derivation": "anchor text",
+    "enclosing_section": "#storage-pressure (line 568)"
+   },
+   "excerpt_sha256": "2f5d0d447f387d0bb2f51b8a51170560e9a92171b187139c403edf4fca02b776",
+   "quoted": [
+    "\"<code>best-effort</code>\""
+   ],
+   "consequence": "under storage pressure best-effort buckets may be cleared: an installed Factory's objects are not durable without persistence (D12 P07, B-11)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-ST2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-ST3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-ST3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-ST3.json",
+    "sha256": "351485dbdfa2f9436f1871f3bffdded4f3d73b1ea1966df18a3752a9de7f03e2",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/storage@1933f424de storage.bs:619-619",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-ST3",
+   "class": "CLAUSE",
+   "clause_id": "CL-ST3",
+   "authority_ref": "AUTH-STORAGE-BUCKET-MODE",
+   "trace": "ST",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/storage",
+    "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+    "path": "storage.bs",
+    "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7"
+   },
+   "locator": {
+    "requested": {
+     "text": "[Exposed=Window] Promise&lt;boolean> persist();"
+    },
+    "line_start": 619,
+    "line_end": 619,
+    "derivation": "anchor text",
+    "enclosing_section": "#api (line 598)"
+   },
+   "excerpt_sha256": "913f087aa16017a1380bb14a3cc0ea5690ce64abc578a1ae49e098079a8437fb",
+   "quoted": [
+    "[Exposed=Window]"
+   ],
+   "consequence": "persist() exists only in windows (not workers): durability must be requested from the page, and its answer is UA policy (D12 P07 observed false)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-ST3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-ST4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-ST4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-ST4.json",
+    "sha256": "37ed527ce25ebf9a96c3414fb4b943810f53d719faeea995ea74b31ee5c69774",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/fs@cd55e5582e index.bs:429-431",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-ST4",
+   "class": "CLAUSE",
+   "clause_id": "CL-ST4",
+   "authority_ref": "AUTH-FS-OPFS",
+   "trace": "ST",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/fs",
+    "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+    "path": "index.bs",
+    "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea"
+   },
+   "locator": {
+    "requested": {
+     "text": "[Exposed=(Window,Worker), SecureContext, Serializable]",
+     "after": "## The {{FileSystemFileHandle}} interface"
+    },
+    "line_start": 429,
+    "line_end": 431,
+    "derivation": "anchor text after \"## The {{FileSystemFileHandle}} interfac\"",
+    "enclosing_section": "#api-filesystemfilehandle (line 422)"
+   },
+   "excerpt_sha256": "2b48bd38d5d12cdf399f53cbfc14f64405c271cf1eeae8085553d7d4f8dfc7d8",
+   "quoted": [
+    "interface FileSystemFileHandle"
+   ],
+   "consequence": "OPFS file handles are [SecureContext] in windows and workers",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-ST4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-ST5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-ST5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-ST5.json",
+    "sha256": "69a897acd95b3533d7c66228c135b79bbe24c5cff092a95a0085267d8dfbd3cd",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/fs@cd55e5582e index.bs:433-434",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-ST5",
+   "class": "CLAUSE",
+   "clause_id": "CL-ST5",
+   "authority_ref": "AUTH-FS-OPFS",
+   "trace": "ST",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/fs",
+    "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+    "path": "index.bs",
+    "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea"
+   },
+   "locator": {
+    "requested": {
+     "text": "[Exposed=DedicatedWorker]"
+    },
+    "line_start": 433,
+    "line_end": 434,
+    "derivation": "anchor text",
+    "enclosing_section": "#api-filesystemfilehandle (line 422)"
+   },
+   "excerpt_sha256": "8fb3af2f0f50fc0fd6d179afdef2a01f79eaae4b8b351a39d165fbd2f99bc033",
+   "quoted": [
+    "createSyncAccessHandle"
+   ],
+   "consequence": "synchronous access handles exist only in dedicated workers: a synchronous object store must run in a worker",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-ST5.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-ST6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-ST6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-ST6.json",
+    "sha256": "fbae3efa6fba2149e11b5339c1c29448c7aaeb7480133587aa550ff36dc79cda",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/IndexedDB@f70491894a index.bs:882-882",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-ST6",
+   "class": "CLAUSE",
+   "clause_id": "CL-ST6",
+   "authority_ref": "AUTH-IDB-TRANSACTION",
+   "trace": "ST",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/IndexedDB",
+    "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+    "path": "index.bs",
+    "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8"
+   },
+   "locator": {
+    "requested": {
+     "text": "represents an atomic and durable set of data access"
+    },
+    "line_start": 882,
+    "line_end": 882,
+    "derivation": "anchor text",
+    "enclosing_section": "#transaction-construct (line 870)"
+   },
+   "excerpt_sha256": "a5863c24b50ddc18c83a7567865d6702f5108fa43bf24b8fe7c48fbcc8e902c4",
+   "quoted": [
+    "atomic and durable"
+   ],
+   "consequence": "an IndexedDB transaction is atomic: the generation pointer can be swapped with compare-and-set semantics (D12 P06)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-ST6.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-ST7",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-ST7",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-ST7.json",
+    "sha256": "9174af820bfa4d46cc7a64c63a69c2c7c92225ce074e3f16b250a08754846d20",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at w3c/web-locks@a61a77307d index.bs:357-358",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-ST7",
+   "class": "CLAUSE",
+   "clause_id": "CL-ST7",
+   "authority_ref": "AUTH-WEB-LOCKS",
+   "trace": "ST",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/w3c/web-locks",
+    "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+    "path": "index.bs",
+    "sha256": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9"
+   },
+   "locator": {
+    "requested": {
+     "text": "[SecureContext, Exposed=(Window,Worker)]"
+    },
+    "line_start": 357,
+    "line_end": 358,
+    "derivation": "anchor text",
+    "enclosing_section": "#api-lock-manager (line 353)"
+   },
+   "excerpt_sha256": "7288dfcf00083d441ee890feceb1f1f0079b6547e4493c567783a8eb43dda50e",
+   "quoted": [
+    "interface LockManager"
+   ],
+   "consequence": "Web Locks coordinate writers across tabs and workers of one origin (secure context only)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-ST7.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T1.json",
+    "sha256": "970816917f78648ed84895936905d54051d2d877ee1679cd890bcfca7d29cda5",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/js-api/index.bs:330-336",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T1",
+   "class": "CLAUSE",
+   "clause_id": "CL-T1",
+   "authority_ref": "AUTH-WASM-JSAPI-STORAGE",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#store"
+    },
+    "line_start": 330,
+    "line_end": 336,
+    "derivation": "PRESENT_EXPLICIT (id attribute)",
+    "enclosing_section": "#store (line 330)"
+   },
+   "excerpt_sha256": "9878c3458b0c11c90293e9b8c7b1eef9ac11d77ae4f0072484431de47795566a",
+   "quoted": [
+    "no WebAssembly-related objects, memory or addresses can be shared among agents"
+   ],
+   "consequence": "the current JS embedding is agent-local (the clause behind CON-WA-005; cited at #store / #webassembly-storage, not #internal-storage)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T2.json",
+    "sha256": "f290814273c7f42ec77d293b411f1ad9aa187f463cd54488551482ee8ab4ea07",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/threads@cc535ada1a proposals/threads/Overview.md:147-149",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T2",
+   "class": "CLAUSE",
+   "clause_id": "CL-T2",
+   "authority_ref": "AUTH-WASM-THREADS",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/threads",
+    "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+    "path": "proposals/threads/Overview.md",
+    "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73"
+   },
+   "locator": {
+    "requested": {
+     "text": "A linear memory can be marked as shared"
+    },
+    "line_start": 147,
+    "line_end": 149,
+    "derivation": "anchor text",
+    "enclosing_section": "#shared-linear-memory (line 145)"
+   },
+   "excerpt_sha256": "9fc29c58789f63b3a5e3acb8efce14980490650d05615fdeaa332f6c6ab9943b",
+   "quoted": [
+    "shared between",
+    "all agents in an agent cluster"
+   ],
+   "consequence": "shared memory belongs to the Threads proposal (Phase 4, not standard): a distinct family, never baseline",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T3.json",
+    "sha256": "9885c900b908eae9066904109715f9680a8713262460d7e542775a5a13b75fcf",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/shared-everything-threads@065aa53822 proposals/shared-everything-threads/Overview.md:4-4",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T3",
+   "class": "CLAUSE",
+   "clause_id": "CL-T3",
+   "authority_ref": "AUTH-WASM-SET",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/shared-everything-threads",
+    "commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+    "path": "proposals/shared-everything-threads/Overview.md",
+    "sha256": "5eea594af9ec935cdbcfdefd62131905aded7a2c8f85e4b033e03800ed713e7d"
+   },
+   "locator": {
+    "requested": {
+     "text": "Expect frequent and significant changes"
+    },
+    "line_start": 4,
+    "line_end": 4,
+    "derivation": "anchor text",
+    "enclosing_section": "#shared-everything-threads (line 1)"
+   },
+   "excerpt_sha256": "3843467e634a35cc75d0031a347fd1d64fd5fb92ae790edabbf7ba391ddf7a6b",
+   "quoted": [
+    "Expect frequent and significant changes"
+   ],
+   "consequence": "Shared-Everything Threads is a Phase 1 proposal: future machinery only",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T4.json",
+    "sha256": "1813315518024b6f093f339ec477b6c05808129f1ea4e4f22308838d640e7b9c",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/html@cd8ac6f1bb source:10512-10519",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T4",
+   "class": "CLAUSE",
+   "clause_id": "CL-T4",
+   "authority_ref": "AUTH-HTML-COI",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "locator": {
+    "requested": {
+     "text": "<p>If <span>IsSharedArrayBuffer</span>(<var>value</var>) is true:"
+    },
+    "line_start": 10512,
+    "line_end": 10519,
+    "derivation": "anchor text",
+    "enclosing_section": "#structuredserializeinternal (line 10447)"
+   },
+   "excerpt_sha256": "8fead2c0fc93daf4e4eb1c32466a74b8866de293c9b54492bc087d106168babf",
+   "quoted": [
+    "cross-origin isolated",
+    "DataCloneError"
+   ],
+   "consequence": "posting a SharedArrayBuffer to another agent requires the cross-origin isolated capability (the standard gate for sharing memory with a worker)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T5.json",
+    "sha256": "46820c2d905102ce2b56bb2e7b5a6ed1c89c4838218a4c5485a0267073838437",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/html@cd8ac6f1bb source:117443-117449",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T5",
+   "class": "CLAUSE",
+   "clause_id": "CL-T5",
+   "authority_ref": "AUTH-HTML-COI",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "locator": {
+    "requested": {
+     "text": "data-x=\"concept-settings-object-cross-origin-isolated-capability\" export"
+    },
+    "line_start": 117443,
+    "line_end": 117449,
+    "derivation": "anchor text",
+    "enclosing_section": "#scripting (line 116957)"
+   },
+   "excerpt_sha256": "eb9e58dd7cf2caa49d1e38af8229050e1576473a67df7a633615046c957617c9",
+   "quoted": [
+    "allowed to use APIs that require cross-origin isolation"
+   ],
+   "consequence": "cross-origin isolated capability is a per-environment boolean (COOP/COEP; D12 P05 observed it granted by SW-set headers)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T5.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T6.json",
+    "sha256": "7e274f1fdafdb83a78eccca17b8eb3380372865a9824f971ff54fddeeee25cab",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at tc39/ecma262@726ec8a426 spec.html:46276-46282",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T6",
+   "class": "CLAUSE",
+   "clause_id": "CL-T6",
+   "authority_ref": "AUTH-ECMA-262",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/tc39/ecma262",
+    "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+    "path": "spec.html",
+    "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#sec-sharedarraybuffer-constructor"
+    },
+    "line_start": 46276,
+    "line_end": 46282,
+    "derivation": "PRESENT_EXPLICIT (id attribute)",
+    "enclosing_section": null
+   },
+   "excerpt_sha256": "00e0adcbfff02f45f3597aa64dbe2f940d985018c93e21bc9e4bc81f9a9305d4",
+   "quoted": [
+    "if that property is present"
+   ],
+   "consequence": "ECMA-262 lets the host omit the SharedArrayBuffer global: its ABSENCE outside cross-origin isolation (D11 FACT-SHARED-THREADS-UNADMITTED) is host/implementation behaviour, not an HTML/ECMA requirement - only the serialization gate (CL-T4) is standard",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T6.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T7",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T7",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T7.json",
+    "sha256": "f92211e0da4bb77969036f8ab4af64990e78283b81d1314e4dc3b9a16ace83a9",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at tc39/ecma262@726ec8a426 spec.html:12771-12777",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T7",
+   "class": "CLAUSE",
+   "clause_id": "CL-T7",
+   "authority_ref": "AUTH-ECMA-262",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/tc39/ecma262",
+    "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+    "path": "spec.html",
+    "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af"
+   },
+   "locator": {
+    "requested": {
+     "text": "<h1>AgentCanSuspend ( ): a Boolean</h1>"
+    },
+    "line_start": 12771,
+    "line_end": 12777,
+    "derivation": "anchor text",
+    "enclosing_section": null
+   },
+   "excerpt_sha256": "cb7142950fcd23ac21c44e7e46e14a6bef9556a4158f72b747936becf40ca252",
+   "quoted": [
+    "[[CanBlock]]"
+   ],
+   "consequence": "whether an agent may block (Atomics.wait) is its [[CanBlock]] field",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T7.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-T8",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-T8",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-T8.json",
+    "sha256": "0f3e0dd1cf3185e3c9a38ec771c3b16ce36fdf79c000dd12a06de03a5900ffc7",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at whatwg/html@cd8ac6f1bb source:117169-117170",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-T8",
+   "class": "CLAUSE",
+   "clause_id": "CL-T8",
+   "authority_ref": "AUTH-HTML-COI",
+   "trace": "T",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "locator": {
+    "requested": {
+     "text": "<li><p>Add the result of <span data-x=\"create an agent\">creating an agent</span>, given false,"
+    },
+    "line_start": 117169,
+    "line_end": 117170,
+    "derivation": "anchor text",
+    "enclosing_section": "#scripting (line 116957)"
+   },
+   "excerpt_sha256": "4d3bf755649a596d10ba2ee7f07aa7153ed52b28cab2c9d6587377f2d44127ca",
+   "quoted": [
+    "given false"
+   ],
+   "consequence": "HTML creates similar-origin window agents with canBlock false: a shared-memory backend can block only in workers, never on the page's main thread",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-T8.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W1.json",
+    "sha256": "881a749db3b03e1413813de41461ef7b5949cd8e3e46367c2e61825e432853e7",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/core/syntax/types.rst:330-337",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W1",
+   "class": "CLAUSE",
+   "clause_id": "CL-W1",
+   "authority_ref": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/syntax/types.rst",
+    "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#syntax-addrtype"
+    },
+    "line_start": 330,
+    "line_end": 337,
+    "derivation": "PRESENT_EXPLICIT (rst label)",
+    "enclosing_section": "#syntax-addrtype (line 330)"
+   },
+   "excerpt_sha256": "ac41a5791dbb567e38985d768e437178cbc5bed8685c0edfd30900bda1fb5418",
+   "quoted": [
+    "Address types",
+    "offsets into"
+   ],
+   "consequence": "address types classify memory/table offsets; i64 is one of them in Core 3.0",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W1.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W2.json",
+    "sha256": "5223f4074a5302e7b17753f66680beca9551a7aecbd95ea401f84bbaa5b2e36f",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b specification/wasm-3.0/2.1-validation.types.spectec:228-235",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W2",
+   "class": "CLAUSE",
+   "clause_id": "CL-W2",
+   "authority_ref": "AUTH-WASM-SPECTEC-VALIDATION",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "specification/wasm-3.0/2.1-validation.types.spectec",
+    "sha256": "fe29444726505af0328144b93ebec011446afe298d19832f2e4537cd755dfd78"
+   },
+   "locator": {
+    "requested": {
+     "text": "rule Memtype_ok:"
+    },
+    "line_start": 228,
+    "line_end": 235,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "6c4844f037f563fbd4d5f771ff36a2c2948624d58ec4e177bf3b92faa650f25a",
+   "quoted": [
+    "Limits_ok: C |- limits : $(2^($size(addrtype) - 16))"
+   ],
+   "consequence": "a memory type is valid only if its limits are within 2^(bits-16) pages: 2^48 pages for i64 (FactTest's kernel declares I64 min 311)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W2.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W3.json",
+    "sha256": "db02fda10d0901aa34480e3354ff917058c25f02d5d2bcafdc43e769a127d382",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/core/binary/types.rst:138-145",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W3",
+   "class": "CLAUSE",
+   "clause_id": "CL-W3",
+   "authority_ref": "AUTH-WASM-CORE-BINARY-LIMITS",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/binary/types.rst",
+    "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022"
+   },
+   "locator": {
+    "requested": {
+     "fragment": "#binary-limits"
+    },
+    "line_start": 138,
+    "line_end": 145,
+    "derivation": "PRESENT_EXPLICIT (rst label)",
+    "enclosing_section": "#binary-limits (line 138)"
+   },
+   "excerpt_sha256": "d6f78387e78247e50461ca60515c6e526e19deed7a1cd6c6136aa806c7bd2eb6",
+   "quoted": [
+    "flag for the :ref:`address type"
+   ],
+   "consequence": "the binary limits flag carries the address type: the emitted module declares i64 memory in its encoding (what factory wasm-inspect reads)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W3.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W4.json",
+    "sha256": "9eddc4dc21a9e9b339dec3ee7c1b7a869ea920f424f421c4f84a6e3c5d751918",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/core/appendix/changes.rst:432-437",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W4",
+   "class": "CLAUSE",
+   "clause_id": "CL-W4",
+   "authority_ref": "AUTH-WASM-CORE-CHANGES-64",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/appendix/changes.rst",
+    "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9"
+   },
+   "locator": {
+    "requested": {
+     "text": "64-bit Address Space"
+    },
+    "line_start": 432,
+    "line_end": 437,
+    "derivation": "anchor text",
+    "enclosing_section": "#changes (line 2)"
+   },
+   "excerpt_sha256": "ba7cffbbe04d76606b377515dca8f7fa5882d89e9f84b6d6f8faeb3c1117056b",
+   "quoted": [
+    "64-bit Address Space"
+   ],
+   "consequence": "Release 3.0 lists 64-bit address space as a change: memory64 is standard semantics (registry: Memory64 finished)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W4.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W5.json",
+    "sha256": "6c79acf44912e4182984a0a2d7b0dfaa6dbe6fbf0da32987a1475f7924fbcbad",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/js-api/index.bs:803-807",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W5",
+   "class": "CLAUSE",
+   "clause_id": "CL-W5",
+   "authority_ref": "AUTH-WASM-JSAPI-MEMORIES",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "locator": {
+    "requested": {
+     "text": "dictionary MemoryDescriptor {"
+    },
+    "line_start": 803,
+    "line_end": 807,
+    "derivation": "anchor text",
+    "enclosing_section": "#memories (line 800)"
+   },
+   "excerpt_sha256": "6646df31a70f99e49cedce348938227a3a10510c7efb45971e83cdd67c01118a",
+   "quoted": [
+    "AddressType address;"
+   ],
+   "consequence": "the JS Memory descriptor carries the address type",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W5.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W6.json",
+    "sha256": "6ca6c8b36481b8b1a06bad4c86310d8713a9e018f5f676ab853fe85584480b70",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/js-api/index.bs:872-874",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W6",
+   "class": "CLAUSE",
+   "clause_id": "CL-W6",
+   "authority_ref": "AUTH-WASM-JSAPI-MEMORIES",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "locator": {
+    "requested": {
+     "text": "constructor, when invoked, performs the following steps:",
+     "after": "The <dfn constructor for=\"Memory\">Memory("
+    },
+    "line_start": 872,
+    "line_end": 874,
+    "derivation": "anchor text after \"The <dfn constructor for=\"Memory\">Memory\"",
+    "enclosing_section": "#memories (line 800)"
+   },
+   "excerpt_sha256": "c5e49701d4c71c7e4e51285248d70e461e55e51fb1d9a313d130e254cd682bc4",
+   "quoted": [
+    "otherwise, let |addrtype| be \"i32\""
+   ],
+   "consequence": "a JS-constructed Memory defaults to i32: a host that constructs memories must pass address: \"i64\" explicitly (FactTest's kernel defines its own memory, so this binds only host-created memories)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W6.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W7",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W7",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W7.json",
+    "sha256": "35a727b9081628416c2b533c03e057d91082662059674d016373713dbdb28f60",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/js-api/index.bs:1491-1493",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W7",
+   "class": "CLAUSE",
+   "clause_id": "CL-W7",
+   "authority_ref": "AUTH-WASM-JSAPI-MEMORIES",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "locator": {
+    "requested": {
+     "text": "1. If |addrtype| is \"i64\",",
+     "after": "<dfn>AddressValueToU64</dfn>"
+    },
+    "line_start": 1491,
+    "line_end": 1493,
+    "derivation": "anchor text after \"<dfn>AddressValueToU64</dfn>\"",
+    "enclosing_section": "#exported-function-exotic-objects (line 1238)"
+   },
+   "excerpt_sha256": "0c2ec410f53e378a28ad225f6ffb4886652e2bf034ba814bc3f084de1495eb16",
+   "quoted": [
+    "[$ToBigInt$](|v|)",
+    "2<sup>64</sup> &minus; 1"
+   ],
+   "consequence": "i64 address values (grow deltas, sizes) are BigInt in [0, 2^64-1]; a Number throws",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W7.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W8",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W8",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W8.json",
+    "sha256": "2d7c684c0eed4dfea8b181176e557a0f3363672fc0fb1c3bb17fb0bb15488553",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/js-api/index.bs:1419-1426",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W8",
+   "class": "CLAUSE",
+   "clause_id": "CL-W8",
+   "authority_ref": "AUTH-WASM-JSAPI-VALUES",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "locator": {
+    "requested": {
+     "text": "<dfn>ToWebAssemblyValue</dfn>"
+    },
+    "line_start": 1419,
+    "line_end": 1426,
+    "derivation": "anchor text",
+    "enclosing_section": "#exported-function-exotic-objects (line 1238)"
+   },
+   "excerpt_sha256": "e9288d6495f34fc36014bdea0f9b06707d3558fda90eeda9e294f7464604a452",
+   "quoted": [
+    "If |type| is [=i64=]",
+    "[$ToBigInt64$](|v|)"
+   ],
+   "consequence": "every i64 parameter passed from JS to an export is converted with ToBigInt64: the FactTest host membrane passes BigInt for every pointer/length (kernel-host.mjs, adapter-wasm64_relay.js)",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W8.json (extraction)"
+  },
+  {
+   "id": "EV-D15-CL-W9",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D15-CL-W9",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D15-HOST",
+   "artifact_identity": {
+    "path": "evidence/D15/clauses/records/CL-W9.json",
+    "sha256": "7873535c84edb5923781747d1e0abf658dc0884c421707e906922125396dc991",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at WebAssembly/spec@608711107b document/js-api/index.bs:1376-1382",
+   "epoch": "D15",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D15-FOUNDATIONAL-SEMANTICS"
+  },
+  {
+   "id": "CL-W9",
+   "class": "CLAUSE",
+   "clause_id": "CL-W9",
+   "authority_ref": "AUTH-WASM-JSAPI-VALUES",
+   "trace": "W",
+   "epoch": "D15",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "locator": {
+    "requested": {
+     "text": "<dfn>ToJSValue</dfn>"
+    },
+    "line_start": 1376,
+    "line_end": 1382,
+    "derivation": "anchor text",
+    "enclosing_section": "#exported-function-exotic-objects (line 1238)"
+   },
+   "excerpt_sha256": "387a32175cb14d36c33b0a59f8142b6c92f2f9b239564a93394de300147c8140",
+   "quoted": [
+    "If |w| is of the form [=i64.const=]",
+    "ℤ"
+   ],
+   "consequence": "every i64 result returned to JS is a BigInt (ℤ), never a Number",
+   "owner": "tests/reference/d15-clauses.json (clause), evidence/D15/clauses/records/CL-W9.json (extraction)"
+  },
+  {
+   "id": "CON-WA-006",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-WA-006",
+   "statement": "At the JavaScript boundary every i64 export parameter/result and every i64 address value is a BigInt (ToWebAssemblyValue uses ToBigInt64; ToJSValue returns a mathematical integer; AddressValueToU64 requires BigInt in [0, 2^64-1]); a Number is a TypeError, never a silent coercion.",
+   "authority_refs": [
+    "AUTH-WASM-JSAPI-VALUES",
+    "AUTH-WASM-JSAPI-MEMORIES",
+    "AUTH-ECMA-262",
+    "AUTH-WEBIDL"
+   ],
+   "scope": "host membrane",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "external",
+   "owner": "D15 (proposed; not yet in CONSTRAINT-LEDGER.md: D18)"
+  },
+  {
+   "id": "CON-SEC-002",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-SEC-002",
+   "statement": "A secure context is decided by the environment's top-level creation URL, while trust checks on an ORIGIN treat an opaque origin as Not Trustworthy: a sandboxed generation frame under a trustworthy top-level is a secure context with an opaque origin (secure-context APIs exposed; origin storage, SW control and same-origin reach denied).",
+   "authority_refs": [
+    "AUTH-HTML-SECURE-CONTEXT",
+    "AUTH-SECCTX-TRUSTWORTHY",
+    "AUTH-HTML-SANDBOX-ORIGIN"
+   ],
+   "scope": "confinement",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "external",
+   "owner": "D15 (proposed; not yet in CONSTRAINT-LEDGER.md: D18)"
+  },
+  {
+   "id": "CON-PP-001",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-PP-001",
+   "statement": "A policy-controlled feature whose default allowlist is 'self' is Disabled in a frame that is not same origin with its container unless the container policy (allow attribute) enables it; capability admission inside a confined generation therefore requires an explicit allow= grant AND permission.",
+   "authority_refs": [
+    "AUTH-PERMISSIONS-POLICY",
+    "AUTH-PERMISSIONS"
+   ],
+   "scope": "capability admission",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "external",
+   "owner": "D15 (proposed; not yet in CONSTRAINT-LEDGER.md: D18)"
+  },
+  {
+   "id": "CON-SW-001",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-SW-001",
+   "statement": "A service worker's update check fetches its script with service workers bypassed and a failed install keeps the active worker: an installed seed can neither replace itself from its own caches nor be broken by an interrupted update, and cannot be updated at all while its origin is unreachable.",
+   "authority_refs": [
+    "AUTH-FETCH",
+    "AUTH-SW-UPDATE-BYPASS",
+    "AUTH-SW-INSTALL-FAILED"
+   ],
+   "scope": "seed lifecycle",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "external",
+   "owner": "D15 (proposed; not yet in CONSTRAINT-LEDGER.md: D18)"
+  },
+  {
+   "id": "CON-ST-001",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-ST-001",
+   "statement": "Origin storage is best-effort unless persistence is granted; best-effort buckets may be cleared under storage pressure and persist() is exposed only to windows: durability of Factory-held objects is a UA grant to observe, never an assumption.",
+   "authority_refs": [
+    "AUTH-STORAGE-BUCKET-MODE"
+   ],
+   "scope": "storage",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "external",
+   "owner": "D15 (proposed; not yet in CONSTRAINT-LEDGER.md: D18)"
+  },
+  {
+   "id": "CON-GIT-001",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-GIT-001",
+   "statement": "Git object identity is SHA-1 (or SHA-256 by repository format) over the typed header and content, and refs move by compare-and-set; tree-entry ordering is normalized by the implementation without a documented rule, so a non-git tree encoder is correct only where equality with git has been observed.",
+   "authority_refs": [
+    "AUTH-GIT-OBJECT-FORMAT",
+    "AUTH-GIT-UPDATE-REF-CAS",
+    "AUTH-GIT-MKTREE",
+    "AUTH-GIT-SHA256-TRANSITION"
+   ],
+   "scope": "object store",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "external",
+   "owner": "D15 (proposed; not yet in CONSTRAINT-LEDGER.md: D18)"
+  },
+  {
+   "id": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "subject": "FactTest host membrane (host/harness/kernel-host.mjs, codegen adapter-wasm64_relay.js)",
+   "predicate": "passes every i64 ABI argument as BigInt and the wasm64 kernel executes in Chromium through it (D9 T9-P8-03, D13 Q-WASM-07)",
+   "required_environment": [
+    "Chromium 141 (memory64 enabled by default)"
+   ],
+   "constraint_refs": [
+    "CON-WA-006",
+    "CON-WA-003"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "tests/reference/d15-clauses.json",
+   "owner": "D15 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-SAB-GLOBAL-HOST-DEFINED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-SAB-GLOBAL-HOST-DEFINED",
+   "subject": "SharedArrayBuffer global outside cross-origin isolation",
+   "predicate": "the standard gates only SAB serialization on the cross-origin isolated capability and lets the host omit the global; D11's observed absence of the global without COOP/COEP is Chromium behaviour (implementation fact for D17), not a standard requirement",
+   "required_environment": [],
+   "constraint_refs": [
+    "CON-IC-WASM_SHARED_THREADS"
+   ],
+   "status": "OBS",
+   "note": null,
+   "source_ref": "tests/reference/d15-clauses.json",
+   "owner": "D15 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+   "subject": "sandboxed (opaque-origin) generation frames",
+   "predicate": "are secure contexts by their top-level creation URL while their origin is opaque: the D12 P08/P16 observations are exactly what HTML + Secure Contexts require",
+   "required_environment": [
+    "Chromium 141 persistent profile, loopback top-level origin"
+   ],
+   "constraint_refs": [
+    "CON-SEC-002"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "tests/reference/d15-clauses.json",
+   "owner": "D15 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+   "subject": "git tree-entry ordering",
+   "predicate": "normalized by git mktree without a documented rule; FactTest's browser tree encoder matched git on the observed repository (P09) only",
+   "required_environment": [],
+   "constraint_refs": [
+    "CON-GIT-001"
+   ],
+   "status": "GAP",
+   "note": "implementation source of the ordering rule -> D17",
+   "source_ref": "tests/reference/d15-clauses.json",
+   "owner": "D15 (derived from the evidence named by its edges)"
+  }
+ ],
+ "edges": [
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-CLAUSE-EXTRACT",
+   "to": "IMPL-REFERENCE-CLAUSES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-CLAUSE-EXTRACT",
+   "to": "EV-D15-CLAUSES-SUMMARY"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "PROBE-CLAUSE-EXTRACT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "EV-D15-CLAUSES-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "ENV-D15-HOST"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "ENV-D15-HOST",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any clause source tip moves with the clause window changed"
+   }
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-F1",
+   "to": "AUTH-FETCH"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-F1",
+   "to": "EV-D15-CL-F1"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-F1",
+   "to": "CL-F2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-F2",
+   "to": "AUTH-SW-UPDATE-BYPASS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-F2",
+   "to": "EV-D15-CL-F2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F2",
+   "to": "FACT-SH-SW-NO-SELF-UPDATE"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-F2",
+   "to": "CL-F3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-F3",
+   "to": "AUTH-SW-UPDATE-BYPASS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-F3",
+   "to": "EV-D15-CL-F3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-F4",
+   "to": "AUTH-SW-REGISTER-TRUST"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-F4",
+   "to": "EV-D15-CL-F4"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F4",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F4",
+   "to": "FACT-SH-BROKEN-SEED-FATAL"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-F5",
+   "to": "AUTH-SW-INSTALL-FAILED"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-F5",
+   "to": "EV-D15-CL-F5"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F5",
+   "to": "FACT-SH-INTERRUPTED-UPDATE"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-F6",
+   "to": "AUTH-SW-SANDBOX-NO-CONTROLLER"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-F6",
+   "to": "EV-D15-CL-F6"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F6",
+   "to": "FACT-SH-BROKER-FED-GENERATION"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-F6",
+   "to": "CL-H4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-G1",
+   "to": "AUTH-GIT-OBJECT-FORMAT"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-G1",
+   "to": "EV-D15-CL-G1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G1",
+   "to": "CON-FT-004"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G1",
+   "to": "FACT-SH-GIT-IDENTITY"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-G1",
+   "to": "CL-G2"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-G1",
+   "to": "CL-G3"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-G1",
+   "to": "CL-G4"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-G1",
+   "to": "CL-G5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-G2",
+   "to": "AUTH-GIT-UPDATE-REF-CAS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-G2",
+   "to": "EV-D15-CL-G2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G2",
+   "to": "CON-FT-004"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-G3",
+   "to": "AUTH-GIT-MKTREE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-G3",
+   "to": "EV-D15-CL-G3"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G3",
+   "to": "CON-FT-004"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G3",
+   "to": "FACT-GIT-TREE-ORDER-UNDOCUMENTED"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-G4",
+   "to": "AUTH-GIT-PACK-FORMAT"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-G4",
+   "to": "EV-D15-CL-G4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-G5",
+   "to": "AUTH-GIT-SHA256-TRANSITION"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-G5",
+   "to": "EV-D15-CL-G5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-H1",
+   "to": "AUTH-HTML-SECURE-CONTEXT"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-H1",
+   "to": "EV-D15-CL-H1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H1",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H1",
+   "to": "FACT-OPAQUE-FRAME-SECURE-CONTEXT"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-H1",
+   "to": "CL-H2"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-H1",
+   "to": "CL-H3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-H2",
+   "to": "AUTH-SECCTX-TRUSTWORTHY"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-H2",
+   "to": "EV-D15-CL-H2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H2",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H2",
+   "to": "CON-EM-001"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-H3",
+   "to": "AUTH-SECCTX-TRUSTWORTHY"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-H3",
+   "to": "EV-D15-CL-H3"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H3",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-H3",
+   "to": "CL-H4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-H4",
+   "to": "AUTH-HTML-SANDBOX-ORIGIN"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-H4",
+   "to": "EV-D15-CL-H4"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H4",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H4",
+   "to": "FACT-SH-OPAQUE-CONFINEMENT"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-H4",
+   "to": "CL-P2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-I1",
+   "to": "AUTH-WEBIDL"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-I1",
+   "to": "EV-D15-CL-I1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-I1",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-I1",
+   "to": "CON-EM-001"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-I1",
+   "to": "CL-H1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-I2",
+   "to": "AUTH-WEBIDL"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-I2",
+   "to": "EV-D15-CL-I2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-I2",
+   "to": "CON-WA-003"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-I3",
+   "to": "AUTH-WEBIDL"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-I3",
+   "to": "EV-D15-CL-I3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-I4",
+   "to": "AUTH-ECMA-262"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-I4",
+   "to": "EV-D15-CL-I4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-MF1",
+   "to": "AUTH-MANIFEST-INSTALLABLE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-MF1",
+   "to": "EV-D15-CL-MF1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-MF1",
+   "to": "FACT-SH-NO-FACTORY-WEBAPP"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-P1",
+   "to": "AUTH-PERMISSIONS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-P1",
+   "to": "EV-D15-CL-P1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-P1",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-P1",
+   "to": "CL-P2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-P2",
+   "to": "AUTH-PERMISSIONS-POLICY"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-P2",
+   "to": "EV-D15-CL-P2"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-P2",
+   "to": "CL-P3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-P3",
+   "to": "AUTH-PERMISSIONS-POLICY"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-P3",
+   "to": "EV-D15-CL-P3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R1",
+   "to": "AUTH-RUST-REF-NOSTD"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R1",
+   "to": "EV-D15-CL-R1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R1",
+   "to": "CON-RS-001"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R1",
+   "to": "CL-R2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R2",
+   "to": "AUTH-RUST-REF-NOSTD"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R2",
+   "to": "EV-D15-CL-R2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R2",
+   "to": "CON-RS-001"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R2",
+   "to": "CL-R3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R3",
+   "to": "AUTH-CARGO-BUILD-STD"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R3",
+   "to": "EV-D15-CL-R3"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R3",
+   "to": "CON-RS-002"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R3",
+   "to": "CON-EM-007"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R3",
+   "to": "FACT-CORE-ONLY-GRAPH"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R3",
+   "to": "CL-R4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R4",
+   "to": "AUTH-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R4",
+   "to": "EV-D15-CL-R4"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R4",
+   "to": "CON-RS-002"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R4",
+   "to": "CL-R6"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R4",
+   "to": "CL-R8"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R5",
+   "to": "AUTH-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R5",
+   "to": "EV-D15-CL-R5"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R5",
+   "to": "CON-RS-001"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R6",
+   "to": "AUTH-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R6",
+   "to": "EV-D15-CL-R6"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R6",
+   "to": "CON-FT-007"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R7",
+   "to": "AUTH-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R7",
+   "to": "EV-D15-CL-R7"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R7",
+   "to": "CON-RS-003"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R7",
+   "to": "CL-W4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R8",
+   "to": "AUTH-RUSTC-WASM64-TARGET-SPEC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R8",
+   "to": "EV-D15-CL-R8"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R8",
+   "to": "CON-EM-004"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R8",
+   "to": "CON-IC-CPU_WASM64"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R8",
+   "to": "CL-W1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-R9",
+   "to": "AUTH-RUSTC-WASM64-TARGET-SPEC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-R9",
+   "to": "EV-D15-CL-R9"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-R9",
+   "to": "CON-WA-002"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-R9",
+   "to": "CL-W8"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-S1",
+   "to": "AUTH-WASM-WEBAPI-STREAMING"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-S1",
+   "to": "EV-D15-CL-S1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-S1",
+   "to": "CON-WA-004"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-S1",
+   "to": "FACT-STREAMING-UNPROBED"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-S1",
+   "to": "CL-S2"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-S1",
+   "to": "CL-S3"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-S1",
+   "to": "CL-S4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-S2",
+   "to": "AUTH-WASM-WEBAPI-STREAMING"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-S2",
+   "to": "EV-D15-CL-S2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-S2",
+   "to": "CON-WA-004"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-S3",
+   "to": "AUTH-FETCH"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-S3",
+   "to": "EV-D15-CL-S3"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-S3",
+   "to": "CON-WA-004"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-S4",
+   "to": "AUTH-STREAMS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-S4",
+   "to": "EV-D15-CL-S4"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-S4",
+   "to": "CON-WA-004"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-ST1",
+   "to": "AUTH-STORAGE-BUCKET-MODE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-ST1",
+   "to": "EV-D15-CL-ST1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST1",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-ST1",
+   "to": "CL-ST2"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-ST1",
+   "to": "CL-ST3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-ST2",
+   "to": "AUTH-STORAGE-BUCKET-MODE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-ST2",
+   "to": "EV-D15-CL-ST2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST2",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-ST3",
+   "to": "AUTH-STORAGE-BUCKET-MODE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-ST3",
+   "to": "EV-D15-CL-ST3"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST3",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-ST4",
+   "to": "AUTH-FS-OPFS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-ST4",
+   "to": "EV-D15-CL-ST4"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST4",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST4",
+   "to": "FACT-SH-OPFS-SERVED-APP"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-ST4",
+   "to": "CL-ST5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-ST5",
+   "to": "AUTH-FS-OPFS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-ST5",
+   "to": "EV-D15-CL-ST5"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST5",
+   "to": "CON-WB-001"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-ST6",
+   "to": "AUTH-IDB-TRANSACTION"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-ST6",
+   "to": "EV-D15-CL-ST6"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST6",
+   "to": "FACT-SH-IDB-CAS"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-ST7",
+   "to": "AUTH-WEB-LOCKS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-ST7",
+   "to": "EV-D15-CL-ST7"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST7",
+   "to": "CON-SEC-001"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T1",
+   "to": "AUTH-WASM-JSAPI-STORAGE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T1",
+   "to": "EV-D15-CL-T1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T1",
+   "to": "CON-WA-005"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T1",
+   "to": "FACT-SHARED-THREADS-UNADMITTED"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-T1",
+   "to": "CL-T2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T2",
+   "to": "AUTH-WASM-THREADS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T2",
+   "to": "EV-D15-CL-T2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T2",
+   "to": "CON-THREAD-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T2",
+   "to": "CON-IC-WASM_SHARED_THREADS"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-T2",
+   "to": "CL-T3"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-T2",
+   "to": "CL-T4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T3",
+   "to": "AUTH-WASM-SET"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T3",
+   "to": "EV-D15-CL-T3"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T3",
+   "to": "CON-THREAD-002"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T4",
+   "to": "AUTH-HTML-COI"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T4",
+   "to": "EV-D15-CL-T4"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T4",
+   "to": "CON-IC-WASM_SHARED_THREADS"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-T4",
+   "to": "CL-T5"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-T4",
+   "to": "CL-T6"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T5",
+   "to": "AUTH-HTML-COI"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T5",
+   "to": "EV-D15-CL-T5"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T5",
+   "to": "CON-IC-WASM_SHARED_THREADS"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T5",
+   "to": "FACT-SH-SW-GRANTS-COI"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T6",
+   "to": "AUTH-ECMA-262"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T6",
+   "to": "EV-D15-CL-T6"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T6",
+   "to": "CON-IC-WASM_SHARED_THREADS"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T6",
+   "to": "FACT-SAB-GLOBAL-HOST-DEFINED"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-T6",
+   "to": "CL-T7"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T7",
+   "to": "AUTH-ECMA-262"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T7",
+   "to": "EV-D15-CL-T7"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T7",
+   "to": "CON-IC-WASM_SHARED_THREADS"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-T7",
+   "to": "CL-T8"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-T8",
+   "to": "AUTH-HTML-COI"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-T8",
+   "to": "EV-D15-CL-T8"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T8",
+   "to": "CON-IC-WASM_SHARED_THREADS"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T8",
+   "to": "CON-WB-001"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W1",
+   "to": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W1",
+   "to": "EV-D15-CL-W1"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W1",
+   "to": "CON-WA-001"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W1",
+   "to": "CL-W2"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W1",
+   "to": "CL-W3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W2",
+   "to": "AUTH-WASM-SPECTEC-VALIDATION"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W2",
+   "to": "EV-D15-CL-W2"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W2",
+   "to": "CON-WA-002"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W2",
+   "to": "CL-W3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W3",
+   "to": "AUTH-WASM-CORE-BINARY-LIMITS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W3",
+   "to": "EV-D15-CL-W3"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W3",
+   "to": "CON-WA-002"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W3",
+   "to": "CON-FT-003"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W3",
+   "to": "FACT-WASM64-MODULE-I64"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W3",
+   "to": "CL-W5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W4",
+   "to": "AUTH-WASM-CORE-CHANGES-64"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W4",
+   "to": "EV-D15-CL-W4"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W4",
+   "to": "CON-WA-001"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W5",
+   "to": "AUTH-WASM-JSAPI-MEMORIES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W5",
+   "to": "EV-D15-CL-W5"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W5",
+   "to": "CON-WA-003"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W5",
+   "to": "CL-W6"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W6",
+   "to": "AUTH-WASM-JSAPI-MEMORIES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W6",
+   "to": "EV-D15-CL-W6"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W6",
+   "to": "CON-WA-003"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W6",
+   "to": "CL-W7"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W7",
+   "to": "AUTH-WASM-JSAPI-MEMORIES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W7",
+   "to": "EV-D15-CL-W7"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W7",
+   "to": "CON-WA-003"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W7",
+   "to": "CL-W8"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W8",
+   "to": "AUTH-WASM-JSAPI-VALUES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W8",
+   "to": "EV-D15-CL-W8"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W8",
+   "to": "FACT-JS-I64-BIGINT-MEMBRANE"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W8",
+   "to": "CL-W9"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-W8",
+   "to": "CL-I4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-W9",
+   "to": "AUTH-WASM-JSAPI-VALUES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-W9",
+   "to": "EV-D15-CL-W9"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W9",
+   "to": "FACT-JS-I64-BIGINT-MEMBRANE"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-VALUES",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-MEMORIES",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-ECMA-262",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WEBIDL",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W7",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W8",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-W9",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-I3",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-I4",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-WA-006",
+   "to": "FACT-JS-I64-BIGINT-MEMBRANE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "CON-WA-006",
+   "to": "IMPL-KERNEL-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "CON-WA-006",
+   "to": "IMPL-ADAPTER-WASM64"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-SECURE-CONTEXT",
+   "to": "CON-SEC-002"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SECCTX-TRUSTWORTHY",
+   "to": "CON-SEC-002"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-SANDBOX-ORIGIN",
+   "to": "CON-SEC-002"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H1",
+   "to": "CON-SEC-002"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H3",
+   "to": "CON-SEC-002"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-H4",
+   "to": "CON-SEC-002"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-SEC-002",
+   "to": "FACT-SH-OPAQUE-CONFINEMENT"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-SEC-002",
+   "to": "FACT-SH-BROKER-FED-GENERATION"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-SEC-002",
+   "to": "FACT-OPAQUE-FRAME-SECURE-CONTEXT"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-PERMISSIONS-POLICY",
+   "to": "CON-PP-001"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-PERMISSIONS",
+   "to": "CON-PP-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-P1",
+   "to": "CON-PP-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-P2",
+   "to": "CON-PP-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-P3",
+   "to": "CON-PP-001"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-FETCH",
+   "to": "CON-SW-001"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SW-UPDATE-BYPASS",
+   "to": "CON-SW-001"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SW-INSTALL-FAILED",
+   "to": "CON-SW-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F1",
+   "to": "CON-SW-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F2",
+   "to": "CON-SW-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-F5",
+   "to": "CON-SW-001"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-SW-001",
+   "to": "FACT-SH-SW-NO-SELF-UPDATE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-SW-001",
+   "to": "FACT-SH-INTERRUPTED-UPDATE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-SW-001",
+   "to": "FACT-SH-BROKEN-SEED-FATAL"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-STORAGE-BUCKET-MODE",
+   "to": "CON-ST-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST1",
+   "to": "CON-ST-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST2",
+   "to": "CON-ST-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST3",
+   "to": "CON-ST-001"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-ST-001",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-OBJECT-FORMAT",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-UPDATE-REF-CAS",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-MKTREE",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-SHA256-TRANSITION",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G1",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G2",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G3",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-G5",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-GIT-001",
+   "to": "FACT-SH-GIT-IDENTITY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-GIT-001",
+   "to": "FACT-SH-IDB-CAS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-GIT-001",
+   "to": "FACT-GIT-TREE-ORDER-UNDOCUMENTED"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "to": "PROBE-KERNEL-HOST-BROWSER"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "to": "EV-D9-T9-P8-03"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "to": "EV-D13-PROOF-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "to": "IMPL-KERNEL-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "to": "IMPL-ADAPTER-WASM64"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-SAB-GLOBAL-HOST-DEFINED",
+   "to": "PROBE-BROWSER-IDENTITY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SAB-GLOBAL-HOST-DEFINED",
+   "to": "EV-D11-BROWSER-DEFAULT"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+   "to": "PROBE-SH-P08"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+   "to": "EV-D12-P08"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+   "to": "EV-D12-P16"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+   "to": "PROBE-SH-P09"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+   "to": "EV-D12-P09"
+  }
+ ]
+}

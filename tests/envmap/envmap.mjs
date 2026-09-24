@@ -16,6 +16,10 @@
 // D14 (authority frontier): an epoch file may DECLARE new node_classes / edge_semantics (add-only; an existing name
 //   is an error).  Q17 answers "what moved in the authority frontier, and which claims may now be stale?" from the
 //   AUTHORITY_REVISION nodes (latest revision per authority in epoch order).
+// D15 (clauses): CLAUSE nodes (exact extracted clauses) are validated for authority, extraction identity and
+//   connection; TRACEABILITY lists the clauses grounding each fact; Q18 traverses every claim CLAIM -> AUTHORITY ->
+//   CLAUSE -> MATURITY -> PIN -> CONSTRAINT -> CONTRACT -> ENVIRONMENT -> PROBE -> EVIDENCE -> STALE and reports where
+//   it stops ([GAP] / [ERR] / [UNK]) or COMPLETE.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -115,6 +119,15 @@ function validate(g) {
     const noEv = revs.filter(r => !out(g, r.id, 'OBSERVED_IN').length);
     add('revision_has_reopen_evidence', noEv.length ? 'FAIL' : 'PASS', noEv.map(r => r.id).join(' '));
   }
+  const clauses = g.nodes.filter(n => n.class === 'CLAUSE');
+  if (clauses.length) {
+    const badC = clauses.filter(c => !ids.has(c.authority_ref) || ids.get(c.authority_ref).class !== 'AUTHORITY' || !out(g, c.id, 'CLAUSE_OF').some(e => e.to === c.authority_ref));
+    add('clause_of_its_authority', badC.length ? 'FAIL' : 'PASS', badC.map(c => c.id).join(' ') || `${clauses.length} clauses`);
+    const noX = clauses.filter(c => !c.excerpt_sha256 || !c.source || !c.source.commit || !out(g, c.id, 'EXTRACTED_IN').length);
+    add('clause_has_extraction_identity', noX.length ? 'FAIL' : 'PASS', noX.map(c => c.id).join(' '));
+    const orphan = clauses.filter(c => !out(g, c.id, 'GROUNDS').length && !out(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'LEADS_TO').length);
+    add('clause_connected', orphan.length ? 'FAIL' : 'PASS', orphan.map(c => c.id).join(' ') || 'every clause grounds something or is on a sublink chain');
+  }
   if (g.epochs) {
     const names = g.epochs.map(e => e.epoch);
     const badEpoch = g.nodes.filter(n => n.introduced_in && !names.includes(n.introduced_in)).map(n => n.id);
@@ -185,6 +198,34 @@ const Q = {
     const staleFacts = sortIds(Object.entries(byMovement).filter(([m]) => !['EDITORIAL', 'UNREACHABLE'].includes(m)).flatMap(([, xs]) => xs.flatMap(x => x.downstream.facts)));
     return { revisions: latest.size, authorities_without_revision: noRevision, movement_counts: Object.fromEntries(Object.entries(byMovement).map(([k, v]) => [k, v.length])), by_movement: byMovement, facts_to_recheck: staleFacts };
   } },
+  Q18: { title: 'Can each current claim be traversed CLAIM -> AUTHORITY -> CLAUSE -> MATURITY -> PIN -> CONSTRAINT -> CONTRACT -> ENVIRONMENT -> PROBE -> EVIDENCE -> STALE, and where does it stop?', perFact: true, fn: (g, ids, f) => {
+    const order = (g.epochs || []).map(e => e.epoch);
+    const rev = a => g.nodes.filter(n => n.class === 'AUTHORITY_REVISION' && n.authority_ref === a).sort((x, y) => order.indexOf(y.epoch) - order.indexOf(x.epoch))[0] || null;
+    const consOf = sortIds([...(f.constraint_refs || []), ...inc(g, f.id, 'REQUIRES').map(e => e.from).filter(x => ids.get(x).class === 'CONSTRAINT')]);
+    const auths = sortIds([...inc(g, f.id, 'AUTHORIZES').map(e => e.from), ...consOf.flatMap(c => inc(g, c, 'AUTHORIZES').map(e => e.from))]);
+    const clauses = sortIds([...inc(g, f.id, 'GROUNDS').map(e => e.from), ...consOf.flatMap(c => inc(g, c, 'GROUNDS').map(e => e.from))]);
+    const contracts = sortIds([...consOf.filter(c => ids.get(c).kind === 'contract'), ...[f.id, ...consOf].flatMap(x => out(g, x, 'IMPLEMENTED_BY').map(e => e.to))]);
+    const probes = sortIds(out(g, f.id, 'PROBED_BY').map(e => e.to));
+    const evidence = evidenceOf(g, ids, f.id);
+    const envs = sortIds([...out(g, f.id, 'REQUIRES').map(e => e.to).filter(x => ids.get(x).class === 'ENVIRONMENT'), ...evidence.map(e => e.environment_ref)]);
+    const stale = out(g, f.id, 'STALE_IF').map(e => `${e.condition.dimension} @ ${e.to}`).sort();
+    const pins = auths.map(a => { const n = ids.get(a); return n.reproducibility_pin && n.reproducibility_pin.sha256 ? a : null; }).filter(Boolean);
+    const maturity = auths.map(a => { const r = rev(a); return { authority: a, class: ids.get(a).authority_class, maturity: ids.get(a).maturity, latest_revision: r ? r.id : null, movement: r ? r.movement : null, published: r ? r.current_authority.status : 'never reopened' }; });
+    const steps = [
+      ['CURRENT AUTHORITY', auths.length > 0, auths.length ? auths.join(', ') : '[GAP] no authority authorizes the claim or its constraints'],
+      ['EXACT CLAUSE', clauses.length > 0, clauses.length ? clauses.join(', ') : '[GAP] authority cited at document/locator level only; no extracted clause grounds this claim'],
+      ['AUTHORITY MATURITY', maturity.every(m => m.maturity), maturity.every(m => m.maturity) ? maturity.map(m => `${m.authority}:${m.class}${m.latest_revision ? '' : ' (first observed, no reopen yet)'}`).join(', ') + (maturity.some(m => /^UNREACHABLE|^HTTP_4|never reopened/.test(m.published)) ? ' - published rendering unverified [UNK] (source-declared maturity)' : '') : '[GAP] maturity not recorded: ' + maturity.filter(m => !m.maturity).map(m => m.authority).join(', ')],
+      ['REPRODUCIBILITY PIN', pins.length === auths.length && auths.length > 0, pins.length === auths.length ? `${pins.length} pinned by commit + sha256` : '[GAP] unpinned authority: ' + auths.filter(a => !pins.includes(a)).join(', ')],
+      ['PROJECT CONSTRAINT', consOf.length > 0, consOf.length ? consOf.join(', ') : '[GAP] no project constraint names this claim'],
+      ['IMPLEMENTATION CONTRACT', contracts.length > 0, contracts.length ? contracts.join(', ') : '[GAP] no implementation contract / implementation realizes it'],
+      ['REQUIRED ENVIRONMENT', envs.length > 0, envs.length ? envs.join(', ') : '[GAP] no environment bound'],
+      ['PROBE', probes.length > 0, probes.length ? probes.join(', ') : '[GAP] no probe'],
+      ['PHYSICAL EVIDENCE', evidence.some(e => e.status === 'RUN' && String(e.evidence_class).startsWith('PHYSICAL')), evidence.length ? evidence.map(e => `${e.evidence_id}[${e.status}/${e.evidence_class}]`).join(', ') : '[GAP] no evidence'],
+      ['STALE CONDITIONS', stale.length > 0, stale.length ? stale.join('; ') : '[GAP] no stale condition declared'] ];
+    const firstBreak = steps.find(s => !s[1]);
+    const terminal = f.status !== 'RUN' ? `[${f.status}] the claim itself is not a run claim: ${f.note || f.predicate}` : firstBreak ? `stops at ${firstBreak[0]}: ${firstBreak[2]}` : 'COMPLETE';
+    return { fact: f.id, status: f.status, traversal: steps.map(([step, ok, detail]) => ({ step, ok, detail })), maturity, terminal };
+  } },
   Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
     const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;
     const ep = n => n.introduced_in || first;
@@ -253,6 +294,8 @@ function renderTrace(g) {
     L.push(`- authorities (direct): ${a.direct.join(', ') || '(none)'}`, `- authorities (via constraints): ${a.via_constraints.join(', ') || '(none)'}`, `- constraints: ${(f.constraint_refs || []).join(', ') || '(none)'}`);
     L.push(`- required environment: ${(f.required_environment || []).join('; ') || '(none stated)'}`);
     L.push(`- environments: ${sortIds(out(g, f.id, 'REQUIRES').map(e => e.to).filter(id => ids.get(id).class === 'ENVIRONMENT')).join(', ') || '(none)'}`);
+    const cl = sortIds([...inc(g, f.id, 'GROUNDS').map(e => e.from), ...(f.constraint_refs || []).flatMap(c => inc(g, c, 'GROUNDS').map(e => e.from))]);
+    if (cl.length) L.push(`- clauses: ${cl.map(c => { const n = ids.get(c); return `${c} (${String(n.source.repo).replace('https://github.com/', '')}@${String(n.source.commit).slice(0, 10)} ${n.source.path}:${n.locator.line_start})`; }).join('; ')}`);
     L.push(`- probes: ${sortIds(out(g, f.id, 'PROBED_BY').map(e => e.to)).join(', ') || '(none) [GAP]'}`);
     const evs = evidenceOf(g, ids, f.id);
     L.push(evs.length ? '- evidence:' : '- evidence: (none)');

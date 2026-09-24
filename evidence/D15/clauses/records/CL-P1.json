@@ -1,0 +1,30 @@
+{
+ "id": "CL-P1",
+ "trace": "P",
+ "authority": "AUTH-PERMISSIONS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/permissions",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+  "sha256": "46570dd5901750012dc8cefb927b70f29592655c431f73a0a749d285e1e99509",
+  "bytes": 84491
+ },
+ "locator": {
+  "text": "A <dfn class=\"export\" data-local-lt=\"feature\">powerful feature</dfn> is a web platform",
+  "line_start": 383,
+  "line_end": 387,
+  "derivation": "anchor text",
+  "enclosing_section": "#examples (line 118)"
+ },
+ "window": 5,
+ "consequence": "powerful features need express permission and are usually also policy-controlled: capability admission is permission AND policy, never presence",
+ "excerpt": "          A <dfn class=\"export\" data-local-lt=\"feature\">powerful feature</dfn> is a web platform\n          feature (usually an API) for which a user gives [=express permission=] before the feature\n          can be used. Except for a few notable exceptions (e.g., the [[[Notifications]]]), most\n          powerful features are also [=policy-controlled features=]. For powerful features that are\n          also [=policy-controlled features=], [[Permissions-Policy]] controls whether a",
+ "excerpt_sha256": "36d49121bbe43e3149e55084fc059a1876ad4e8b52bf579e1833278d82165087",
+ "must_contain": {
+  "express permission": true,
+  "policy-controlled features": true
+ },
+ "status": "VERIFIED"
+}

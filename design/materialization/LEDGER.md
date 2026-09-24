@@ -629,4 +629,36 @@ BEFORE
   graph 441 nodes / 795 edges.
 
 AFTER
+- RESULT: integrated as 46cc28be1486798635eac42a6955dedaba36673f (ff-only from 5e57467).
+- ROUTE: F3 refused once at station open (narrowed surface wider than the delta's exact file list); nothing ran;
+  narrowed and resumed.  The first `factory verify` FAILED no_unreceipted_change (SCHEMA.md, ENVIRONMENT-MAP.md
+  copied outside a station run after a masked refused open); integration refused.  Repaired inside the Factory: both
+  files restored to base bytes, fixture F6-doc added, F6 and F5 run, verify re-run.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-doc F4-evidence F5-doc F6-doc PASS (format 2).  VERIFICATION: PASS (second
+  run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree 251f06e0).  Pushed.
+- OBSERVED: D14-OBSERVED-FRONTIER-REOPEN.md - P1-P3 MATCH; P4 DIFFER (W14-stage KEEP: pre-binding drafts); route
+  DIFFER recorded.  Prospective rule adopted: a route checks every station open's exit status before copying.
+- (recorded by D15-FOUNDATIONAL-SEMANTICS, the next delta.)
+
+---
+
+## D15-FOUNDATIONAL-SEMANTICS  (pass 2 of 6: what do the foundational authorities currently require?)
+
+BEFORE
+- DELTA: D15-FOUNDATIONAL-SEMANTICS (factory/deltas/D15.json), workpiece W17, base 46cc28b.
+- ASCII: design/materialization/D15-INTENDED-FOUNDATIONAL-SEMANTICS.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F3, F5), S-FIXTURE (F1), S-BUILD (F2 clause extraction), S-EVIDENCE (F4).
+- CHANGE: tests/reference/ (shared lib, reopen refactor, clause extractor, clause epoch builder, reopen regression
+  witness, D15 clause manifest), tests/envmap/envmap.mjs (clause checks, Q18 claim traversal), evidence/D15/,
+  design/environment-map/ (epoch D15, merged graph, views, SCHEMA section 8, ENVIRONMENT-MAP section 7),
+  docs/HANDOFF.md, D15 records, this ledger.  FORBIDDEN: every law and pass document (constraints stay PROPOSED until
+  D18), compiler/, host/, factory/ machinery, fixtures/, earlier epochs and D0-D14 evidence.
+- NETWORK: unchanged since D14 (published renderings refused by policy; sources read at their tips).
+- PREDICTED: 60/60 clauses VERIFIED over 11 traces; epoch 145 nodes / 305 edges; merged 586 / 1100; validate 30
+  checks; Q18 42 RUN claims, 10 COMPLETE; reopen regression 64 records with only moved tips and one corrected coarse
+  candidate differing.  Findings: ERR-001 current; BigInt membrane, secure-context vs opaque-origin, Permissions Policy
+  in opaque frames, SW update bypass, storage durability grounded as proposed constraints; SAB global absence relabeled
+  host behaviour; git tree order [GAP].
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

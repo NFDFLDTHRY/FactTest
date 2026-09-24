@@ -178,3 +178,13 @@ D14    D14-FRONTIER-REOPEN     64 AUTHORITY_REVISION nodes (published rendering 
                                epochs/D14.json.  Q17 lists what moved and which claims may now be stale.
 ```
 
+
+## 7. Foundational clause epoch D15 (added by D15-FOUNDATIONAL-SEMANTICS)
+
+```text
+D15    D15-FOUNDATIONAL-SEMANTICS  60 CLAUSE nodes over 11 traces (Rust no_std/build-std/wasm64, Wasm memory64 + JS
+                               API BigInt membrane, streaming, threads/COI/canBlock, Web IDL, secure context vs opaque
+                               origin, SW lifecycle, Permissions Policy, storage/OPFS/IDB/locks, manifest, git), 10
+                               document-level AUTHORITY nodes, 6 PROPOSED constraints, 5 facts; epochs/D15.json.
+                               Q18 walks every claim to COMPLETE or its first broken step.
+```

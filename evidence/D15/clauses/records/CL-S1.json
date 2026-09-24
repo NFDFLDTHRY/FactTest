@@ -1,0 +1,30 @@
+{
+ "id": "CL-S1",
+ "trace": "S",
+ "authority": "AUTH-WASM-WEBAPI-STREAMING",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/web-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+  "bytes": 17819
+ },
+ "locator": {
+  "text": "does not represent an [=ok status=]",
+  "line_start": 114,
+  "line_end": 115,
+  "derivation": "anchor text",
+  "enclosing_section": "#streaming-modules (line 86)"
+ },
+ "window": 2,
+ "consequence": "compileStreaming rejects a response that is not CORS-same-origin, not ok, or not application/wasm",
+ "excerpt": "    [=CORS-same-origin=], does not represent an [=ok status=], or does not match the\n    `` `application/wasm` `` MIME type, the returned promise will be rejected with a {{TypeError}}; if",
+ "excerpt_sha256": "01c02cf1dd52ae6ded445e96f1012fe3f78a690e6f872051086310b7b8fed642",
+ "must_contain": {
+  "[=CORS-same-origin=]": true,
+  "`application/wasm`": true
+ },
+ "status": "VERIFIED"
+}
