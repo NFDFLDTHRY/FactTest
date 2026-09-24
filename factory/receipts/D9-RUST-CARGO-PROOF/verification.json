@@ -1,0 +1,368 @@
+{
+  "delta_id": "D9-RUST-CARGO-PROOF",
+  "workpiece_id": "W9",
+  "canonical_base": "f4395dfb79f19cf5fe1ce23891a5157b55fe53a4",
+  "base_tree": "d8e565205d90d0cee6bbf6a7c79e944c4caa0f0c",
+  "verified_tree": "30b048345955463da4de7b67239ad8c5d63229ca",
+  "changed_paths": [
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+    "design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+    "design/materialization/LEDGER.md",
+    "evidence/D9/compile-fail/T9-P4-01-std-in-kernel.json",
+    "evidence/D9/compile-fail/T9-P4-02-id-substitution.json",
+    "evidence/D9/compile-fail/T9-P4-03-forge-verified-strategy.json",
+    "evidence/D9/deps/T9-P6-01-resolved-graph-first-party.json",
+    "evidence/D9/deps/T9-P6-02-explicit-list-scan-heuristic.json",
+    "evidence/D9/deps/T9-P6-03-third-party-dep-fixture-rejected.json",
+    "evidence/D9/index.json",
+    "evidence/D9/index.log",
+    "evidence/D9/lint/T9-P3-01-clippy-all-targets-bare.json",
+    "evidence/D9/lint/T9-P3-01-clippy-all-targets-bare.log",
+    "evidence/D9/lint/T9-P3-02-clippy-all-targets-workspace.json",
+    "evidence/D9/lint/T9-P3-02-clippy-all-targets-workspace.log",
+    "evidence/D9/lint/T9-P3-03-fmt-all-check.json",
+    "evidence/D9/lint/T9-P3-03-fmt-all-check.log",
+    "evidence/D9/lint/T9-P3-04-clippy-wasm64-core-graph.json",
+    "evidence/D9/lint/T9-P3-04-clippy-wasm64-core-graph.log",
+    "evidence/D9/mutants/M1-omitted-workspace-member/mutant.json",
+    "evidence/D9/mutants/M1-omitted-workspace-member/qualified.json",
+    "evidence/D9/mutants/M1-omitted-workspace-member/weak.json",
+    "evidence/D9/mutants/M2-compile-fail-wrong-reason/mutant.json",
+    "evidence/D9/mutants/M2-compile-fail-wrong-reason/qualified.json",
+    "evidence/D9/mutants/M2-compile-fail-wrong-reason/weak.json",
+    "evidence/D9/mutants/M3-compile-fail-stale-forge/mutant.json",
+    "evidence/D9/mutants/M3-compile-fail-stale-forge/qualified.json",
+    "evidence/D9/mutants/M3-compile-fail-stale-forge/weak.json",
+    "evidence/D9/mutants/M4-nostd-scanner-bypass/mutant.json",
+    "evidence/D9/mutants/M4-nostd-scanner-bypass/qualified.json",
+    "evidence/D9/mutants/M4-nostd-scanner-bypass/weak.json",
+    "evidence/D9/mutants/M5-uninspected-manifest/mutant.json",
+    "evidence/D9/mutants/M5-uninspected-manifest/qualified.json",
+    "evidence/D9/mutants/M5-uninspected-manifest/weak.json",
+    "evidence/D9/mutants/M6-native-pass-wasm64-fail/mutant.json",
+    "evidence/D9/mutants/M6-native-pass-wasm64-fail/qualified.json",
+    "evidence/D9/mutants/M6-native-pass-wasm64-fail/weak.json",
+    "evidence/D9/mutants/M7-wasm32-masquerade/mutant.json",
+    "evidence/D9/mutants/M7-wasm32-masquerade/qualified.json",
+    "evidence/D9/mutants/M7-wasm32-masquerade/weak.json",
+    "evidence/D9/mutants/M8-debug-pass-release-fail/mutant.json",
+    "evidence/D9/mutants/M8-debug-pass-release-fail/qualified.json",
+    "evidence/D9/mutants/M8-debug-pass-release-fail/weak.json",
+    "evidence/D9/mutants/summary.json",
+    "evidence/D9/mutants/summary.txt",
+    "evidence/D9/native/T9-P2-01-build-bare-default-members.json",
+    "evidence/D9/native/T9-P2-01-build-bare-default-members.log",
+    "evidence/D9/native/T9-P2-02-build-workspace.json",
+    "evidence/D9/native/T9-P2-02-build-workspace.log",
+    "evidence/D9/native/T9-P2-03-build-release-bare.json",
+    "evidence/D9/native/T9-P2-03-build-release-bare.log",
+    "evidence/D9/native/T9-P2-04-test-debug-bare.json",
+    "evidence/D9/native/T9-P2-04-test-debug-bare.log",
+    "evidence/D9/native/T9-P2-05-test-release-bare.json",
+    "evidence/D9/native/T9-P2-05-test-release-bare.log",
+    "evidence/D9/native/T9-P2-06-test-debug-workspace.json",
+    "evidence/D9/native/T9-P2-06-test-debug-workspace.log",
+    "evidence/D9/native/T9-P2-07-test-release-workspace.json",
+    "evidence/D9/native/T9-P2-07-test-release-workspace.log",
+    "evidence/D9/nostd/T9-P5-01-textual-scan-heuristic.json",
+    "evidence/D9/nostd/T9-P5-02-core-only-wasm64-graph-dev.json",
+    "evidence/D9/nostd/T9-P5-03-core-only-wasm64-graph-release.json",
+    "evidence/D9/run-mutants.log",
+    "evidence/D9/run-proof-matrix.log",
+    "evidence/D9/selection/T9-P1-01-physical-vs-workspace-vs-default.json",
+    "evidence/D9/summary.json",
+    "evidence/D9/summary.log",
+    "evidence/D9/summary.txt",
+    "evidence/D9/toolchain/T9-P7-01-toolchain-identity.json",
+    "evidence/D9/wasm64/T9-P8-01-inspect-release.inspect.json",
+    "evidence/D9/wasm64/T9-P8-01-inspect-release.json",
+    "evidence/D9/wasm64/T9-P8-02-inspect-dev.inspect.json",
+    "evidence/D9/wasm64/T9-P8-02-inspect-dev.json",
+    "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.browser.err.log",
+    "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.browser.json",
+    "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.json",
+    "factory/deltas/D9.json",
+    "factory/fixtures/D9/F0-doc.json",
+    "factory/fixtures/D9/F1-fixture.json",
+    "factory/fixtures/D9/F2-build.json",
+    "factory/fixtures/D9/F3-doc.json",
+    "factory/fixtures/D9/F4-evidence.json",
+    "factory/receipts/D9-RUST-CARGO-PROOF/F0-doc.json",
+    "factory/receipts/D9-RUST-CARGO-PROOF/F1-fixture.json",
+    "factory/receipts/D9-RUST-CARGO-PROOF/F2-build.json",
+    "factory/receipts/D9-RUST-CARGO-PROOF/F3-doc.json",
+    "factory/receipts/D9-RUST-CARGO-PROOF/F4-evidence.json",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-ascii-contract.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-authority-untouched.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-mutant-contracts.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-mutants-outside-product-workspace.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-only-declared-mutant-carries-registry-dep.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-syntax.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-drawings-and-production-untouched.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-every-obligation-observed.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-observed-contract.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/verification.json",
+    "fixtures/toolchain/expect/forge-verified-strategy.json",
+    "fixtures/toolchain/expect/id-substitution.json",
+    "fixtures/toolchain/expect/std-in-kernel.json",
+    "fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.toml",
+    "fixtures/toolchain/mutants/M1-omitted-workspace-member/MUTANT.json",
+    "fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/Cargo.toml",
+    "fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/src/lib.rs",
+    "fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/Cargo.toml",
+    "fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/src/lib.rs",
+    "fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/Cargo.toml",
+    "fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/MUTANT.json",
+    "fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/expect.json",
+    "fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/src/lib.rs",
+    "fixtures/toolchain/mutants/M3-compile-fail-stale-forge/Cargo.toml",
+    "fixtures/toolchain/mutants/M3-compile-fail-stale-forge/MUTANT.json",
+    "fixtures/toolchain/mutants/M3-compile-fail-stale-forge/expect.json",
+    "fixtures/toolchain/mutants/M3-compile-fail-stale-forge/src/lib.rs",
+    "fixtures/toolchain/mutants/M4-nostd-scanner-bypass/Cargo.toml",
+    "fixtures/toolchain/mutants/M4-nostd-scanner-bypass/MUTANT.json",
+    "fixtures/toolchain/mutants/M4-nostd-scanner-bypass/src/lib.rs",
+    "fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.toml",
+    "fixtures/toolchain/mutants/M5-uninspected-manifest/MUTANT.json",
+    "fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/Cargo.toml",
+    "fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/src/lib.rs",
+    "fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml",
+    "fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/src/lib.rs",
+    "fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/Cargo.toml",
+    "fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/MUTANT.json",
+    "fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/src/lib.rs",
+    "fixtures/toolchain/mutants/M7-wasm32-masquerade/Cargo.toml",
+    "fixtures/toolchain/mutants/M7-wasm32-masquerade/MUTANT.json",
+    "fixtures/toolchain/mutants/M7-wasm32-masquerade/src/lib.rs",
+    "fixtures/toolchain/mutants/M8-debug-pass-release-fail/Cargo.toml",
+    "fixtures/toolchain/mutants/M8-debug-pass-release-fail/MUTANT.json",
+    "fixtures/toolchain/mutants/M8-debug-pass-release-fail/src/lib.rs",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/run-mutants.sh",
+    "tests/toolchain/run-proof-matrix.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "d8e565205d90d0cee6bbf6a7c79e944c4caa0f0c"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D9-RUST-CARGO-PROOF/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D9-RUST-CARGO-PROOF/F1-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D9-RUST-CARGO-PROOF/F2-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D9-RUST-CARGO-PROOF/F3-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D9-RUST-CARGO-PROOF/F4-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/toolchain/proof.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/toolchain/run-proof-matrix.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/toolchain/run-mutants.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/toolchain/expect/id-substitution.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/toolchain/mutants/M1-omitted-workspace-member/MUTANT.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/toolchain/mutants/M8-debug-pass-release-fail/MUTANT.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D9/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D9/mutants/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D9/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:rust-toolchain.toml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.lock",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.lock",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:fixtures/compiler/negative/third-party-dep/Cargo.lock",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T04:06:45Z",
+  "status": "PASS"
+}

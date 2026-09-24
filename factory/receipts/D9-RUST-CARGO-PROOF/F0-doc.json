@@ -1,0 +1,124 @@
+{
+  "receipt_id": "R-D9-RUST-CARGO-PROOF-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W9",
+  "delta_id": "D9-RUST-CARGO-PROOF",
+  "canonical_base": "f4395dfb79f19cf5fe1ce23891a5157b55fe53a4",
+  "input_artifacts": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "BOOTSTRAP-TESTS.md",
+    "PASS5-TESTS.md",
+    "PASS6-TESTS.md",
+    "factory/registry/stations/",
+    "Cargo.toml",
+    "factory/src/checks.rs",
+    "tests/bootstrap/",
+    "evidence/D1/",
+    "evidence/D3/",
+    "evidence/D8/"
+  ],
+  "open_tree": "d43bd2a2d30cffa18824dee1455c3fc989a9cb46",
+  "close_tree": "34d20a2b7c1d674620997e0ee69c280b4eb92d95",
+  "changed_paths": [
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-ascii-contract.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-authority-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+    "factory/deltas/D9.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D9-RUST-CARGO-PROOF"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-ascii-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-authority-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c grep -q '^STRUCTURAL CHECK: PASS' design/materialization/D9-INTENDED-PROOF-HARNESS.md && for c in T9-P1 T9-P2 T9-P3 T9-P4 T9-P5 T9-P6 T9-P7 T9-P8 T9-P9; do grep -q \"^$c \" design/materialization/D9-INTENDED-PROOF-HARNESS.md || { echo missing $c; exit 1; }; done && for m in M1 M2 M3 M4 M5 M6 M7 M8; do grep -q \"^  $m \" design/materialization/D9-INTENDED-PROOF-HARNESS.md || { echo missing mutant $m; exit 1; }; done && grep -q 'D9-RUST-CARGO-PROOF' design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-ascii-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code f4395dfb79f19cf5fe1ce23891a5157b55fe53a4 -- design/materialization/M0-INTENDED-SYSTEM.md design/materialization/M9-OBSERVED-SYSTEM.md FACTORY-LAW.md FACTORY-CONTRACTS.md compiler host factory/src factory/registry",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-authority-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/deltas/D9.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-ascii-contract.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-authority-untouched.log"
+  ],
+  "closed": "2026-09-24T04:01:39Z",
+  "status": "PASS"
+}

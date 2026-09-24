@@ -1,0 +1,40 @@
+{
+  "id": "T9-P8-03-chromium-abi-release",
+  "class": "T9-P8",
+  "invariant": "the wasm64 module executes in Chromium through the bootstrap ABI with zero imports",
+  "evaluated": "2026-09-24T04:02:51.932Z",
+  "command": [
+    "node",
+    "host/harness/kernel-host.mjs",
+    "/home/user/factory-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+    "tests/bootstrap/b7-opaque.ascii",
+    "--browser"
+  ],
+  "cwd": "/home/user/factory-workpieces/W9",
+  "exit": 0,
+  "observed": {
+    "host": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "abi_version": 1,
+    "required_workspace": "2865440",
+    "memory_pages": 311,
+    "imports": [],
+    "exports": [
+      "memory:memory",
+      "check_or_compile:function",
+      "input_buffer_len:function",
+      "input_buffer_ptr:function",
+      "output_buffer_ptr:function",
+      "query_abi_version:function",
+      "query_required_workspace:function",
+      "read_artifact_metadata:function",
+      "read_diagnostics:function",
+      "reset_workspace:function",
+      "submit_machine_state:function",
+      "submit_source_bytes:function",
+      "output_buffer_len:function"
+    ],
+    "status": 2
+  },
+  "verdict": "PASS",
+  "reason": "Chromium HeadlessChrome/141.0.7390.37: abi_version 1, imports [], 13 exports, memory_pages 311"
+}

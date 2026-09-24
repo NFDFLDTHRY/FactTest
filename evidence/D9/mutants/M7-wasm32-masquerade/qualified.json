@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/user/factory-target/debug/factory",
+    "wasm-inspect",
+    "/home/user/factory-target/d9-mutants/M7-wasm32-masquerade/target/wasm32-unknown-unknown/release/m7_wasm32_masquerade.wasm"
+  ],
+  "exit": 1,
+  "output": [
+    "== wasm-inspect /home/user/factory-target/d9-mutants/M7-wasm32-masquerade/target/wasm32-unknown-unknown/release/m7_wasm32_masquerade.wasm : FAIL",
+    "  [PASS] module_structure - 8 sections",
+    "  [PASS] memory_declared - I32 min=17 max=None shared=false",
+    "  [FAIL] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003",
+    "  [PASS] imports_listed",
+    "  [PASS] exports_listed - memory:2, input_buffer_ptr:0, query_abi_version:0",
+    "  [PASS] artifact_identity - sha256 b4c07d1c1f2ac847468202c88b5ccee60e80fbbc3c35b9e74fc9135927bb04cf bytes 391"
+  ],
+  "verdict": "FAIL",
+  "reason": "  [FAIL] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003"
+}

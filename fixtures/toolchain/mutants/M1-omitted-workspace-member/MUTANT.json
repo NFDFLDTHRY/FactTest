@@ -1,0 +1,6 @@
+{
+  "id": "M1-omitted-workspace-member", "attacks": "T9-P1 package selection",
+  "description": "two-member workspace whose default-members lists only alpha; beta carries a failing test. Bare `cargo test` reports green.",
+  "weak": { "check": "cargo", "args": ["test"], "expect": "PASS", "note": "historical rule: bare cargo test exit 0 == 'full suite'" },
+  "qualified": { "check": "selection", "expect": "FAIL", "reason_must_contain": "beta", "note": "T9-P1: default-members must equal members and --workspace must pass" }
+}

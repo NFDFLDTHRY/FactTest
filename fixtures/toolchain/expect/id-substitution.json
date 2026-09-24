@@ -1,0 +1,8 @@
+{
+  "fixture": "fixtures/compiler/negative/id-substitution",
+  "invariant": "B3: CapabilityId/ArtifactId/NodeId cannot be passed where ImplementationId/EvidenceId/SymbolId are expected; each substitution is a type mismatch at its own call site",
+  "expected_errors": [
+    { "code": "E0308", "count": 3, "message_contains": "mismatched types", "file": "src/lib.rs", "lines": [10, 11, 12] }
+  ],
+  "forbid_other_errors": true
+}

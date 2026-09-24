@@ -1,0 +1,6 @@
+{
+  "id": "M5-uninspected-manifest", "attacks": "T9-P6 dependency law",
+  "description": "workspace member gamma declares a crates.io dependency in a dotted [dependencies.serde] table; the explicit-list scan accepts both manifests (0 entries seen). An unlisted manifest would escape by construction.",
+  "weak": { "check": "depcheck-weak", "manifests": ["alpha/Cargo.toml", "gamma/Cargo.toml"], "expect": "PASS", "note": "factory depcheck with every manifest listed still passes" },
+  "qualified": { "check": "deps", "expect": "FAIL", "reason_must_contain": "serde", "note": "T9-P6: Cargo's resolved graph shows a registry source (or resolution from first-party sources fails)" }
+}

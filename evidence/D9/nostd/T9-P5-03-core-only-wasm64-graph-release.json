@@ -1,0 +1,76 @@
+{
+  "id": "T9-P5-03-core-only-wasm64-graph-release",
+  "class": "T9-P5",
+  "invariant": "compiler-enforced no_std: the intended crate graph compiles with core only for wasm64",
+  "evaluated": "2026-09-24T04:02:49.395Z",
+  "cwd": "/home/user/factory-workpieces/W9",
+  "toolchain": {
+    "channel": "nightly",
+    "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+    "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "rustc_release": "1.100.0-nightly",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "23.1.1",
+    "cargo": "cargo 1.100.0-nightly (98a09e7e7 2026-09-21)",
+    "available": true,
+    "error": null
+  },
+  "verdict": "PASS",
+  "reason": "12 workspace crates compiled with core only on wasm64-unknown-unknown (release); sysroot: compiler_builtins[custom-build]<sysroot-or-external-path> compiler_builtins[lib]<sysroot-or-external-path> core[lib]<sysroot-or-external-path>",
+  "command": [
+    "cargo",
+    "+nightly",
+    "build",
+    "-p",
+    "factc-wasm-abi",
+    "-Z",
+    "build-std=core",
+    "--target",
+    "wasm64-unknown-unknown",
+    "--release",
+    "--message-format=json"
+  ],
+  "env": {
+    "RUSTFLAGS": "-C link-arg=-zstack-size=16777216"
+  },
+  "exit": 0,
+  "compiled": [
+    "factc-bundle",
+    "factc-capability",
+    "factc-codegen",
+    "factc-foundation",
+    "factc-implementation",
+    "factc-kernel",
+    "factc-observe",
+    "factc-planning",
+    "factc-semantic",
+    "factc-source",
+    "factc-verifier",
+    "factc-wasm-abi"
+  ],
+  "sysroot": [
+    "compiler_builtins[custom-build]<sysroot-or-external-path>",
+    "compiler_builtins[lib]<sysroot-or-external-path>",
+    "core[lib]<sysroot-or-external-path>"
+  ],
+  "intended": [
+    "factc-foundation",
+    "factc-source",
+    "factc-semantic",
+    "factc-capability",
+    "factc-implementation",
+    "factc-planning",
+    "factc-verifier",
+    "factc-codegen",
+    "factc-bundle",
+    "factc-observe",
+    "factc-kernel",
+    "factc-wasm-abi"
+  ],
+  "missing": [],
+  "std_errors": [],
+  "errors": [],
+  "target": "wasm64-unknown-unknown",
+  "profile": "release",
+  "artifact": "/home/user/factory-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm"
+}

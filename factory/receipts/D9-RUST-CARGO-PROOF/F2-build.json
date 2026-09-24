@@ -1,0 +1,251 @@
+{
+  "receipt_id": "R-D9-RUST-CARGO-PROOF-F2-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F2-build",
+  "workpiece_id": "W9",
+  "delta_id": "D9-RUST-CARGO-PROOF",
+  "canonical_base": "f4395dfb79f19cf5fe1ce23891a5157b55fe53a4",
+  "input_artifacts": [
+    "Cargo.toml",
+    "Cargo.lock",
+    "compiler/",
+    "host/",
+    "factory/",
+    "fixtures/compiler/negative/",
+    "fixtures/toolchain/",
+    "tests/toolchain/",
+    "tests/bootstrap/b7-opaque.ascii"
+  ],
+  "open_tree": "3aa7230cbcd740700311d6ca3df6e2493f31f57b",
+  "close_tree": "7eb21f9541249d009c63efb257a3a1e34b9cfd4a",
+  "changed_paths": [
+    "evidence/D9/compile-fail/T9-P4-01-std-in-kernel.json",
+    "evidence/D9/compile-fail/T9-P4-02-id-substitution.json",
+    "evidence/D9/compile-fail/T9-P4-03-forge-verified-strategy.json",
+    "evidence/D9/deps/T9-P6-01-resolved-graph-first-party.json",
+    "evidence/D9/deps/T9-P6-02-explicit-list-scan-heuristic.json",
+    "evidence/D9/deps/T9-P6-03-third-party-dep-fixture-rejected.json",
+    "evidence/D9/lint/T9-P3-01-clippy-all-targets-bare.json",
+    "evidence/D9/lint/T9-P3-01-clippy-all-targets-bare.log",
+    "evidence/D9/lint/T9-P3-02-clippy-all-targets-workspace.json",
+    "evidence/D9/lint/T9-P3-02-clippy-all-targets-workspace.log",
+    "evidence/D9/lint/T9-P3-03-fmt-all-check.json",
+    "evidence/D9/lint/T9-P3-03-fmt-all-check.log",
+    "evidence/D9/lint/T9-P3-04-clippy-wasm64-core-graph.json",
+    "evidence/D9/lint/T9-P3-04-clippy-wasm64-core-graph.log",
+    "evidence/D9/mutants/M1-omitted-workspace-member/mutant.json",
+    "evidence/D9/mutants/M1-omitted-workspace-member/qualified.json",
+    "evidence/D9/mutants/M1-omitted-workspace-member/weak.json",
+    "evidence/D9/mutants/M2-compile-fail-wrong-reason/mutant.json",
+    "evidence/D9/mutants/M2-compile-fail-wrong-reason/qualified.json",
+    "evidence/D9/mutants/M2-compile-fail-wrong-reason/weak.json",
+    "evidence/D9/mutants/M3-compile-fail-stale-forge/mutant.json",
+    "evidence/D9/mutants/M3-compile-fail-stale-forge/qualified.json",
+    "evidence/D9/mutants/M3-compile-fail-stale-forge/weak.json",
+    "evidence/D9/mutants/M4-nostd-scanner-bypass/mutant.json",
+    "evidence/D9/mutants/M4-nostd-scanner-bypass/qualified.json",
+    "evidence/D9/mutants/M4-nostd-scanner-bypass/weak.json",
+    "evidence/D9/mutants/M5-uninspected-manifest/mutant.json",
+    "evidence/D9/mutants/M5-uninspected-manifest/qualified.json",
+    "evidence/D9/mutants/M5-uninspected-manifest/weak.json",
+    "evidence/D9/mutants/M6-native-pass-wasm64-fail/mutant.json",
+    "evidence/D9/mutants/M6-native-pass-wasm64-fail/qualified.json",
+    "evidence/D9/mutants/M6-native-pass-wasm64-fail/weak.json",
+    "evidence/D9/mutants/M7-wasm32-masquerade/mutant.json",
+    "evidence/D9/mutants/M7-wasm32-masquerade/qualified.json",
+    "evidence/D9/mutants/M7-wasm32-masquerade/weak.json",
+    "evidence/D9/mutants/M8-debug-pass-release-fail/mutant.json",
+    "evidence/D9/mutants/M8-debug-pass-release-fail/qualified.json",
+    "evidence/D9/mutants/M8-debug-pass-release-fail/weak.json",
+    "evidence/D9/mutants/summary.json",
+    "evidence/D9/mutants/summary.txt",
+    "evidence/D9/native/T9-P2-01-build-bare-default-members.json",
+    "evidence/D9/native/T9-P2-01-build-bare-default-members.log",
+    "evidence/D9/native/T9-P2-02-build-workspace.json",
+    "evidence/D9/native/T9-P2-02-build-workspace.log",
+    "evidence/D9/native/T9-P2-03-build-release-bare.json",
+    "evidence/D9/native/T9-P2-03-build-release-bare.log",
+    "evidence/D9/native/T9-P2-04-test-debug-bare.json",
+    "evidence/D9/native/T9-P2-04-test-debug-bare.log",
+    "evidence/D9/native/T9-P2-05-test-release-bare.json",
+    "evidence/D9/native/T9-P2-05-test-release-bare.log",
+    "evidence/D9/native/T9-P2-06-test-debug-workspace.json",
+    "evidence/D9/native/T9-P2-06-test-debug-workspace.log",
+    "evidence/D9/native/T9-P2-07-test-release-workspace.json",
+    "evidence/D9/native/T9-P2-07-test-release-workspace.log",
+    "evidence/D9/nostd/T9-P5-01-textual-scan-heuristic.json",
+    "evidence/D9/nostd/T9-P5-02-core-only-wasm64-graph-dev.json",
+    "evidence/D9/nostd/T9-P5-03-core-only-wasm64-graph-release.json",
+    "evidence/D9/run-mutants.log",
+    "evidence/D9/run-proof-matrix.log",
+    "evidence/D9/selection/T9-P1-01-physical-vs-workspace-vs-default.json",
+    "evidence/D9/summary.json",
+    "evidence/D9/summary.log",
+    "evidence/D9/summary.txt",
+    "evidence/D9/toolchain/T9-P7-01-toolchain-identity.json",
+    "evidence/D9/wasm64/T9-P8-01-inspect-release.inspect.json",
+    "evidence/D9/wasm64/T9-P8-01-inspect-release.json",
+    "evidence/D9/wasm64/T9-P8-02-inspect-dev.inspect.json",
+    "evidence/D9/wasm64/T9-P8-02-inspect-dev.json",
+    "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.browser.err.log",
+    "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.browser.json",
+    "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.json"
+  ],
+  "output_artifacts": [
+    "evidence/D9/summary.json",
+    "evidence/D9/summary.txt",
+    "evidence/D9/toolchain/T9-P7-01-toolchain-identity.json",
+    "evidence/D9/selection/T9-P1-01-physical-vs-workspace-vs-default.json",
+    "evidence/D9/native/T9-P2-04-test-debug-bare.json",
+    "evidence/D9/compile-fail/T9-P4-03-forge-verified-strategy.json",
+    "evidence/D9/nostd/T9-P5-03-core-only-wasm64-graph-release.json",
+    "evidence/D9/deps/T9-P6-01-resolved-graph-first-party.json",
+    "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.json",
+    "evidence/D9/mutants/summary.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D9-RUST-CARGO-PROOF"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D9/run-proof-matrix.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D9/run-mutants.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D9/summary.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh tests/toolchain/run-proof-matrix.sh evidence/D9",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D9/run-proof-matrix.log"
+    },
+    {
+      "check": "command:sh tests/toolchain/run-mutants.sh evidence/D9/mutants",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D9/run-mutants.log"
+    },
+    {
+      "check": "command:node tests/toolchain/proof.mjs summary --out evidence/D9",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D9/summary.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/summary.txt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/toolchain/T9-P7-01-toolchain-identity.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/selection/T9-P1-01-physical-vs-workspace-vs-default.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/native/T9-P2-04-test-debug-bare.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/compile-fail/T9-P4-03-forge-verified-strategy.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/nostd/T9-P5-03-core-only-wasm64-graph-release.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/deps/T9-P6-01-resolved-graph-first-party.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/wasm64/T9-P8-03-chromium-abi-release.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D9/mutants/summary.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D9/run-proof-matrix.log",
+    "evidence/D9/run-mutants.log",
+    "evidence/D9/summary.log"
+  ],
+  "closed": "2026-09-24T04:03:36Z",
+  "status": "PASS"
+}

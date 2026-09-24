@@ -1,0 +1,70 @@
+{
+  "id": "T9-P2-01-build-bare-default-members",
+  "class": "T9-P2",
+  "invariant": "declared cargo invocation exits 0 over an explicitly recorded selection",
+  "evaluated": "2026-09-24T04:01:52.302Z",
+  "command": [
+    "cargo",
+    "build",
+    "--message-format=json"
+  ],
+  "cwd": "/home/user/factory-workpieces/W9",
+  "env": {},
+  "toolchain": {
+    "channel": "default(active)",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "rustc_release": "1.94.1",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "21.1.8",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "available": true,
+    "error": null
+  },
+  "exit": 0,
+  "spawn_error": null,
+  "selection": [
+    "factc-bundle:factc_bundle[lib]",
+    "factc-capability:factc_capability[lib]",
+    "factc-codegen:factc_codegen[lib]",
+    "factc-foundation:factc_foundation[lib]",
+    "factc-implementation:factc_implementation[lib]",
+    "factc-kernel:factc_kernel[lib]",
+    "factc-observe:factc_observe[lib]",
+    "factc-planning:factc_planning[lib]",
+    "factc-semantic:factc_semantic[lib]",
+    "factc-source:factc_source[lib]",
+    "factc-verifier:factc_verifier[lib]",
+    "factc:factc[bin]",
+    "factory:factory[bin]",
+    "factory:factory[lib]"
+  ],
+  "packages": [
+    "factc",
+    "factc-bundle",
+    "factc-capability",
+    "factc-codegen",
+    "factc-foundation",
+    "factc-implementation",
+    "factc-kernel",
+    "factc-observe",
+    "factc-planning",
+    "factc-semantic",
+    "factc-source",
+    "factc-verifier",
+    "factory"
+  ],
+  "sysroot_artifacts": [],
+  "tests": {
+    "binaries": [],
+    "results": [],
+    "passed": 0,
+    "failed": 0,
+    "failed_names": [],
+    "finished": "Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.82s"
+  },
+  "errors": [],
+  "finished": "Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.82s",
+  "verdict": "PASS",
+  "reason": "exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]"
+}

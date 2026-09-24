@@ -1,0 +1,86 @@
+D9 PROOF MATRIX (verdicts are about the system under test; the harness ran)
+FAIL T9-P1-01-physical-vs-workspace-vs-default  rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo metadata --format-version 1 --locked
+     members omitted from default-members (bare cargo build/test/clippy never select them): factc-wasm-abi
+PASS T9-P2-01-build-bare-default-members        rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo build --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]
+FAIL T9-P2-02-build-workspace                   rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo build --workspace --message-format=json
+     exit 101; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; first error: factc-wasm-abi (no code) `#[panic_handler]` function required, but not found
+PASS T9-P2-03-build-release-bare                rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo build --release --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]
+PASS T9-P2-04-test-debug-bare                   rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo test --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; tests 95 passed / 0 failed over 34 harness runs
+PASS T9-P2-05-test-release-bare                 rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo test --release --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; tests 95 passed / 0 failed over 34 harness runs
+PASS T9-P2-06-test-debug-workspace              rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo test --workspace --message-format=json
+     exit 0; 14 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi factory]; tests 95 passed / 0 failed over 35 harness runs
+PASS T9-P2-07-test-release-workspace            rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo test --release --workspace --message-format=json
+     exit 0; 14 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi factory]; tests 95 passed / 0 failed over 35 harness runs
+PASS T9-P3-01-clippy-all-targets-bare           rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo clippy --all-targets --message-format=json -- -D warnings
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]
+FAIL T9-P3-02-clippy-all-targets-workspace      rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo clippy --workspace --all-targets --message-format=json -- -D warnings
+     exit 101; 14 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi factory]; first error: factc-wasm-abi (no code) `#[panic_handler]` function required, but not found
+PASS T9-P3-03-fmt-all-check                     rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo fmt --all --check -v
+     exit 0; 14 workspace packages [compiler/bundle compiler/capability compiler/codegen compiler/foundation compiler/implementation compiler/kernel compiler/observe compiler/planning compiler/semantic compiler/source compiler/verifier compiler/wasm-abi factory host/factc]
+PASS T9-P3-04-clippy-wasm64-core-graph          rustc 1.100.0-nightly (6eeff9a52 2026-09-23)
+     cargo +nightly clippy -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --message-format=json -- -D warnings
+     exit 0; 12 workspace packages [factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi]
+PASS T9-P4-01-std-in-kernel                     rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo build --lib --message-format=json
+     rejected for the expected reason: 2xE0433 (E0433:2)
+PASS T9-P4-02-id-substitution                   rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo build --lib --message-format=json
+     rejected for the expected reason: 3xE0308 (E0308:3)
+PASS T9-P4-03-forge-verified-strategy           rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo build --lib --message-format=json
+     rejected for the expected reason: 1xprivate-field ((no code):1)
+PASS T9-P5-01-textual-scan-heuristic            
+     /home/user/factory-target/debug/factory nostd-check compiler/foundation compiler/source compiler/semantic compiler/capability compiler/implementation compiler/planning compiler/verifier compiler/codegen compiler/bundle compiler/observe compiler/kernel compiler/wasm-abi
+     textual scan found no offender [HEURISTIC: cfg(test)/::std/grouped-use bypasses known; verdict weight none]
+PASS T9-P5-02-core-only-wasm64-graph-dev        rustc 1.100.0-nightly (6eeff9a52 2026-09-23)
+     cargo +nightly build -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --message-format=json
+     12 workspace crates compiled with core only on wasm64-unknown-unknown (dev); sysroot: compiler_builtins[custom-build]<sysroot-or-external-path> compiler_builtins[lib]<sysroot-or-external-path> core[lib]<sysroot-or-external-path>
+PASS T9-P5-03-core-only-wasm64-graph-release    rustc 1.100.0-nightly (6eeff9a52 2026-09-23)
+     cargo +nightly build -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --release --message-format=json
+     12 workspace crates compiled with core only on wasm64-unknown-unknown (release); sysroot: compiler_builtins[custom-build]<sysroot-or-external-path> compiler_builtins[lib]<sysroot-or-external-path> core[lib]<sysroot-or-external-path>
+PASS T9-P6-01-resolved-graph-first-party        rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo metadata --format-version 1 --locked
+     14 packages, all path sources inside root; 49 declared dependency edges all path-inside-root; resolve graph 14 nodes; physical manifests not in the product graph: fixtures/compiler/negative/forge-verified-strategy/Cargo.toml(excluded), fixtures/compiler/negative/id-substitution/Cargo.toml(excluded), fixtures/compiler/negative/std-in-kernel/Cargo.toml(excluded), fixtures/compiler/negative/third-party-dep/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/Cargo.toml(excluded), fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/Cargo.toml(excluded), fixtures/toolchain/mutants/M3-compile-fail-stale-forge/Cargo.toml(excluded), fixtures/toolchain/mutants/M4-nostd-scanner-bypass/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml(excluded), fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/Cargo.toml(excluded), fixtures/toolchain/mutants/M7-wasm32-masquerade/Cargo.toml(excluded), fixtures/toolchain/mutants/M8-debug-pass-release-fail/Cargo.toml(excluded)
+PASS T9-P6-02-explicit-list-scan-heuristic      
+     /home/user/factory-target/debug/factory depcheck /home/user/factory-workpieces/W9 factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/capability/Cargo.toml compiler/implementation/Cargo.toml compiler/planning/Cargo.toml compiler/verifier/Cargo.toml compiler/codegen/Cargo.toml compiler/bundle/Cargo.toml compiler/observe/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml
+     explicit-list scan accepted 14 manifests [HEURISTIC: unlisted manifests and dotted-table sections are never read; verdict weight none]
+PASS T9-P6-03-third-party-dep-fixture-rejected  rustc 1.94.1 (e408947bf 2026-03-25)
+     cargo metadata --format-version 1
+     rejected as required: neg-third-party-dep -> serde (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1; package proc-macro2@1.0.107 source registry+https://github.com/rust-lang/crates.io-index; package proc-macro2 manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml; proc-macro2 -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> flate2 (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> quote (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0
+GAP  T9-P7-01-toolchain-identity                
+     
+     no repository pin; stable=rustc 1.94.1 (e408947bf 2026-03-25) nightly=rustc 1.100.0-nightly (6eeff9a52 2026-09-23); pin authorization returned to ASCII (D10)
+PASS T9-P8-01-inspect-release                   
+     /home/user/factory-target/debug/factory wasm-inspect /home/user/factory-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm
+       [PASS] memory_declared - I64 min=311 max=None shared=false;   [PASS] artifact_identity - sha256 309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c bytes 3350252
+PASS T9-P8-02-inspect-dev                       
+     /home/user/factory-target/debug/factory wasm-inspect /home/user/factory-target/wasm64-unknown-unknown/debug/factc_wasm_abi.wasm
+       [PASS] memory_declared - I64 min=312 max=None shared=false;   [PASS] artifact_identity - sha256 24b9bcb71e9a5c03d67a85f465aa725efe68aa381aa2dcabad0b25e35433d9b4 bytes 12446312
+PASS T9-P8-03-chromium-abi-release              
+     node host/harness/kernel-host.mjs /home/user/factory-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm tests/bootstrap/b7-opaque.ascii --browser
+     Chromium HeadlessChrome/141.0.7390.37: abi_version 1, imports [], 13 exports, memory_pages 311
+
+MUTANTS RUN: 8 mutants: every weak check accepted the mutant and every qualified check rejected it for the named reason
+  RUN M1-omitted-workspace-member weak=PASS qualified=FAIL
+  RUN M2-compile-fail-wrong-reason weak=PASS qualified=FAIL
+  RUN M3-compile-fail-stale-forge weak=PASS qualified=FAIL
+  RUN M4-nostd-scanner-bypass weak=PASS qualified=FAIL
+  RUN M5-uninspected-manifest weak=PASS qualified=FAIL
+  RUN M6-native-pass-wasm64-fail weak=PASS qualified=FAIL
+  RUN M7-wasm32-masquerade weak=PASS qualified=FAIL
+  RUN M8-debug-pass-release-fail weak=PASS qualified=FAIL

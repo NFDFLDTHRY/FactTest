@@ -1,0 +1,5 @@
+$ sh -c for m in fixtures/toolchain/mutants/*/; do test -f "$m/MUTANT.json" || { echo "$m has no MUTANT.json"; exit 1; }; node -e 'const j=JSON.parse(require("fs").readFileSync(process.argv[1]));if(!j.weak||!j.qualified||j.weak.expect!=="PASS"||j.qualified.expect!=="FAIL")process.exit(1)' "$m/MUTANT.json" || { echo "$m: weak must expect PASS and qualified must expect FAIL"; exit 1; }; done; for e in fixtures/toolchain/expect/*.json; do node -e 'const j=JSON.parse(require("fs").readFileSync(process.argv[1]));if(!Array.isArray(j.expected_errors)||!j.expected_errors.length||!j.invariant)process.exit(1)' "$e" || { echo "$e: no expected_errors/invariant"; exit 1; }; done; ls fixtures/toolchain/mutants | wc -l
+(cwd .)
+8
+
+[exit 0] expected 0

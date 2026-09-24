@@ -1,0 +1,8 @@
+{
+  "fixture": "fixtures/compiler/negative/forge-verified-strategy",
+  "invariant": "P5-V01 / P6-G05: VerifiedStrategy cannot be constructed outside the verifier because of its private sealing field; the failure must be the private-field rejection of the struct literal, not a stale-field, import or syntax error",
+  "expected_errors": [
+    { "code": null, "count": 1, "message_contains": "private fields", "message_contains_all": ["VerifiedStrategy", "struct literal", "private fields"], "file": "src/lib.rs", "lines": [8] }
+  ],
+  "forbid_other_errors": true
+}

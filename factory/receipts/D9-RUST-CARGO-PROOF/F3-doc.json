@@ -1,0 +1,121 @@
+{
+  "receipt_id": "R-D9-RUST-CARGO-PROOF-F3-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F3-doc",
+  "workpiece_id": "W9",
+  "delta_id": "D9-RUST-CARGO-PROOF",
+  "canonical_base": "f4395dfb79f19cf5fe1ce23891a5157b55fe53a4",
+  "input_artifacts": [
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+    "evidence/D9/summary.txt",
+    "evidence/D9/mutants/summary.txt",
+    "design/materialization/LEDGER.md",
+    "evidence/D1/",
+    "evidence/D3/",
+    "evidence/D8/"
+  ],
+  "open_tree": "90f6eee2c10caf2e1eb800b63b2809f4d3d05ebe",
+  "close_tree": "dc03b26f4c90f19682f1dfb1607dbe4fb782e20a",
+  "changed_paths": [
+    "design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+    "design/materialization/LEDGER.md"
+  ],
+  "output_artifacts": [
+    "design/materialization/D9-OBSERVED-PROOF-HARNESS.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D9-RUST-CARGO-PROOF"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-observed-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-every-obligation-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-drawings-and-production-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for c in T9-P1 T9-P2 T9-P3 T9-P4 T9-P5 T9-P6 T9-P7 T9-P8 T9-P9; do grep -q \"$c\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $c; exit 1; }; done; for t in '[RUN]' '[ERR]' '[GAP]' '[UNK]'; do grep -qF \"$t\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $t; exit 1; }; done; grep -q 'HISTORICAL CLAIM' design/materialization/D9-OBSERVED-PROOF-HARNESS.md && grep -q 'NO PRODUCTION COMPILER REPAIR' design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-observed-contract.log"
+    },
+    {
+      "check": "command:sh -c for id in $(node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D9/summary.json\"));console.log(s.obligations.map(o=>o.id).join(\" \"))'); do grep -q \"$id\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo \"observed ASCII does not mention $id\"; exit 1; }; done; for m in M1 M2 M3 M4 M5 M6 M7 M8; do grep -q \"$m-\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $m; exit 1; }; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-every-obligation-observed.log"
+    },
+    {
+      "check": "command:git diff --exit-code f4395dfb79f19cf5fe1ce23891a5157b55fe53a4 -- design/materialization/M0-INTENDED-SYSTEM.md design/materialization/M9-OBSERVED-SYSTEM.md compiler host",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-drawings-and-production-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-observed-contract.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-every-obligation-observed.log",
+    "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-drawings-and-production-untouched.log"
+  ],
+  "closed": "2026-09-24T04:06:45Z",
+  "status": "PASS"
+}

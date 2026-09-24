@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/user/factory-target/debug/factory",
+    "depcheck",
+    "/home/user/factory-target/d9-mutants/M5-uninspected-manifest/src-copy",
+    "alpha/Cargo.toml",
+    "gamma/Cargo.toml"
+  ],
+  "exit": 0,
+  "output": [
+    "== depcheck /home/user/factory-target/d9-mutants/M5-uninspected-manifest/src-copy alpha/Cargo.toml gamma/Cargo.toml : PASS",
+    "  [PASS] first_party_only:alpha/Cargo.toml:gamma - path ../gamma",
+    "  [PASS] manifest_scanned:alpha/Cargo.toml - 1 dependency entries",
+    "  [PASS] manifest_scanned:gamma/Cargo.toml - 0 dependency entries"
+  ],
+  "verdict": "PASS",
+  "reason": "explicit-list scan accepted 2 manifests [HEURISTIC: unlisted manifests and dotted-table sections are never read; verdict weight none]"
+}

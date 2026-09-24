@@ -376,3 +376,54 @@ AFTER
 - a delta cannot carry its own integration result; D8's receipts, verification.json and integration commit are
   read from factory/receipts/D8-REOBSERVE/ and `git log` (author FactTest Factory), and W8.state.json outside the tree.
 
+
+---
+
+## D9-RUST-CARGO-PROOF  (proof-harness commissioning)
+
+BEFORE
+- DELTA: D9-RUST-CARGO-PROOF (factory/deltas/D9.json)
+- BASE: f4395dfb79f19cf5fe1ce23891a5157b55fe53a4 (branch main = owner-approved merge of PR #1; development branch
+  claude/d9-rust-cargo-proof-4nys6s at the same commit)  tree d8e565205d90d0cee6bbf6a7c79e944c4caa0f0c
+- STATION: S-DOC, S-FIXTURE, S-BUILD, S-EVIDENCE (all from the canonical registry; no new station)
+- FIXTURE: F0-doc, F1-fixture, F2-build, F3-doc, F4-evidence
+- READ: everything.  CHANGE: design/materialization/D9-INTENDED-PROOF-HARNESS.md, D9-OBSERVED-PROOF-HARNESS.md, this
+  ledger, factory/deltas/D9.json, factory/fixtures/D9/, factory/receipts/D9-RUST-CARGO-PROOF/, tests/toolchain/,
+  fixtures/toolchain/, evidence/D9/.  FORBIDDEN: every law/pass/design document, compiler/, host/, factory/src/,
+  factory/registry/, factory/tests/, Cargo.toml, Cargo.lock, rust-toolchain.toml (must stay absent), D0-D8 deltas/
+  fixtures/receipts/evidence, fixtures/{language,compiler,commissioning}, tests/{bootstrap,commissioning,language},
+  M0, M9, COMMISSIONING-RECORD.md, README.md.
+- INVARIANTS: D9 evaluates the judge and repairs nothing in production; no third-party crate; no toolchain pin; SUT
+  failures are evidence verdicts, never station failures; every obligation record names command, toolchain,
+  package/target/profile selection, observed result, verdict and reason; compile-fail verdicts never from exit codes;
+  no_std weight only from the core-only wasm64 graph; wasm64-unknown-unknown only; fixture trees never written by
+  build commands; mutants outside the product workspace.
+- TESTS: tests/toolchain/run-proof-matrix.sh (T9-P1..P8), tests/toolchain/run-mutants.sh (T9-P9, M1..M8),
+  harness syntax and mutant-contract checks (F1), observed-ASCII completeness (F3).
+- EXPECTED EVIDENCE: evidence/D9/{toolchain,selection,native,lint,compile-fail,nostd,deps,wasm64}/*.json,
+  evidence/D9/mutants/*/{weak,qualified,mutant}.json, summary.json/.txt, index.json; 5 FactoryReceipts;
+  verification.json.
+- PREDICTED (design/materialization/D9-INTENDED-PROOF-HARNESS.md section 2): T9-P1-01 FAIL (wasm-abi omitted from
+  default-members), T9-P2-02 / T9-P3-02 FAIL (native --workspace: wasm-abi panic_handler gated to wasm64), T9-P7 GAP
+  (no pin, nightly drifted), everything else PASS, all eight mutants RUN.
+
+AFTER
+- RESULT: workpiece W9 verified and integrated by the Factory (ff-only from f4395df); the integration commit is read
+  from `git log` (author FactTest Factory) and W9.state.json outside the tree.
+- RECEIPTS: factory/receipts/D9-RUST-CARGO-PROOF/{F0-doc,F1-fixture,F2-build,F3-doc,F4-evidence}.json PASS
+  (F1 closed FAIL once on a mis-written fixture check that matched `version = "0.0.0"` under [package]; the fixture was
+  corrected on the ASCII/control surface; F1 was then re-run from a workpiece state without its outputs so that the
+  PASS receipt carries every harness/fixture path; independent verification first returned FAIL no_unreceipted_change
+  on the receipt-less files and PASS after the re-run; no harness or fixture content changed).
+- EVIDENCE: evidence/D9/summary.txt - 25 obligation records: PASS 20, FAIL 3, GAP 1, plus T9-P6-03 negative fixture
+  rejected as required; evidence/D9/mutants/summary.txt - 8/8 mutants caught (weak PASS, qualified FAIL for the named
+  reason); toolchains stable 1.94.1 (e408947bf) and nightly 1.100.0 (6eeff9a52 2026-09-23); index.json.
+- OBSERVED ASCII: design/materialization/D9-OBSERVED-PROOF-HARNESS.md.
+- MATCH/DIFFER: MATCH on every prediction.  Preserved: [ERR] the workspace is not natively buildable as a whole
+  (factc-wasm-abi omitted from default-members; --workspace build/clippy fail on x86_64), [GAP] no toolchain pin,
+  [GAP] heuristic nostd-check/depcheck remain in factory/src with verdict weight none, [GAP] literal wildcard surfaces
+  in factory/src/paths.rs, [UNK] vendored-code blindness of path rules, [UNK] dev-profile wasm reproducibility.
+- HISTORY: "95/0" remains valid for 13 default-member packages; "full suite", "clippy --all-targets clean",
+  "rejected by rustc (expected)", "nostd-check PASS", "depcheck PASS" were overstated; wasm64 compiler build evidence
+  was valid for D3's 6-crate graph only and is re-proved in D9 for 12 crates.
+- NO PRODUCTION COMPILER REPAIR: the [ERR] above is returned to ASCII for a D10 design against the qualified judge.

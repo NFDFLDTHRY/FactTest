@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D9-RUST-CARGO-PROOF",
+  "selected_inputs": ["FACTORY-LAW.md", "FACTORY-CONTRACTS.md", "FINAL-HANDOFF-REQUIREMENTS.md", "BOOTSTRAP-TESTS.md", "PASS5-TESTS.md", "PASS6-TESTS.md", "factory/registry/stations/", "Cargo.toml", "factory/src/checks.rs", "tests/bootstrap/", "evidence/D1/", "evidence/D3/", "evidence/D8/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/D9-INTENDED-PROOF-HARNESS.md", "design/materialization/LEDGER.md", "factory/deltas/D9.json", "factory/fixtures/D9/", "factory/receipts/D9-RUST-CARGO-PROOF/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "grep -q '^STRUCTURAL CHECK: PASS' design/materialization/D9-INTENDED-PROOF-HARNESS.md && for c in T9-P1 T9-P2 T9-P3 T9-P4 T9-P5 T9-P6 T9-P7 T9-P8 T9-P9; do grep -q \"^$c \" design/materialization/D9-INTENDED-PROOF-HARNESS.md || { echo missing $c; exit 1; }; done && for m in M1 M2 M3 M4 M5 M6 M7 M8; do grep -q \"^  $m \" design/materialization/D9-INTENDED-PROOF-HARNESS.md || { echo missing mutant $m; exit 1; }; done && grep -q 'D9-RUST-CARGO-PROOF' design/materialization/LEDGER.md"], "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-ascii-contract.log"},
+    {"cwd": ".", "program": "git", "args": ["diff", "--exit-code", "f4395dfb79f19cf5fe1ce23891a5157b55fe53a4", "--", "design/materialization/M0-INTENDED-SYSTEM.md", "design/materialization/M9-OBSERVED-SYSTEM.md", "FACTORY-LAW.md", "FACTORY-CONTRACTS.md", "compiler", "host", "factory/src", "factory/registry"], "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F0-authority-untouched.log"}
+  ]},
+  "expected_outputs": ["design/materialization/D9-INTENDED-PROOF-HARNESS.md", "factory/deltas/D9.json"],
+  "tests": ["intended ASCII carries STRUCTURAL CHECK: PASS, all nine proof classes and eight mutants", "ledger BEFORE entry present", "authoritative drawings, law and production machinery untouched"], "evidence_requirements": ["receipt"]
+}

@@ -1,0 +1,13 @@
+{
+  "fixture_id": "F2-build", "station_id": "S-BUILD", "delta_id": "D9-RUST-CARGO-PROOF",
+  "selected_inputs": ["Cargo.toml", "Cargo.lock", "compiler/", "host/", "factory/", "fixtures/compiler/negative/", "fixtures/toolchain/", "tests/toolchain/", "tests/bootstrap/b7-opaque.ascii"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D9/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["tests/toolchain/run-proof-matrix.sh", "evidence/D9"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory"}, "log": "evidence/D9/run-proof-matrix.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/toolchain/run-mutants.sh", "evidence/D9/mutants"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory"}, "log": "evidence/D9/run-mutants.log"},
+    {"cwd": ".", "program": "node", "args": ["tests/toolchain/proof.mjs", "summary", "--out", "evidence/D9"], "log": "evidence/D9/summary.log"}
+  ]},
+  "expected_outputs": ["evidence/D9/summary.json", "evidence/D9/summary.txt", "evidence/D9/toolchain/T9-P7-01-toolchain-identity.json", "evidence/D9/selection/T9-P1-01-physical-vs-workspace-vs-default.json", "evidence/D9/native/T9-P2-04-test-debug-bare.json", "evidence/D9/compile-fail/T9-P4-03-forge-verified-strategy.json", "evidence/D9/nostd/T9-P5-03-core-only-wasm64-graph-release.json", "evidence/D9/deps/T9-P6-01-resolved-graph-first-party.json", "evidence/D9/wasm64/T9-P8-03-chromium-abi-release.json", "evidence/D9/mutants/summary.json"],
+  "tests": ["proof matrix T9-P1..P8 executed over the system under test (verdicts are evidence)", "mutant corpus T9-P9: every weak check accepts, every qualified check rejects for the named reason"], "evidence_requirements": ["obligation records", "mutant records", "logs"]
+}

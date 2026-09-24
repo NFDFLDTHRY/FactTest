@@ -1,0 +1,76 @@
+{
+  "id": "M2-compile-fail-wrong-reason",
+  "attacks": "T9-P4 compile-fail",
+  "description": "id-substitution fixture plus an unclosed delimiter: the build fails before type checking; the intended E0308 witnesses never appear.",
+  "weak": {
+    "check": "compile-fail-weak",
+    "expect": "PASS",
+    "note": "run-negative-fixtures.sh rule: cargo build exit != 0 => rejected (expected)",
+    "observed": {
+      "verdict": "PASS",
+      "command": [
+        "cargo",
+        "build",
+        "--lib",
+        "--message-format=json"
+      ],
+      "exit": 101,
+      "reason": "cargo build exit 101 -> weak rule says \"rejected by rustc (expected)\" without reading the diagnostic ((no code))"
+    }
+  },
+  "qualified": {
+    "check": "compile-fail",
+    "expect_file": "expect.json",
+    "expect": "FAIL",
+    "reason_must_contain": "E0308",
+    "note": "T9-P4: diagnostics must equal the expected {code,count,span} set",
+    "observed": {
+      "verdict": "FAIL",
+      "reason": "expected 3 x E0308 \"mismatched types\", observed 0; E0308 primary spans [] != expected [11,12,13]; unexpected diagnostic (no code) \"this file contains an unclosed delimiter\" at src/lib.rs:16",
+      "command": [
+        "cargo",
+        "build",
+        "--lib",
+        "--message-format=json"
+      ],
+      "exit": 101,
+      "observed_errors": [
+        {
+          "package": "m2-compile-fail-wrong-reason",
+          "code": null,
+          "message": "this file contains an unclosed delimiter",
+          "file": "src/lib.rs",
+          "line": 16
+        }
+      ],
+      "expected": [
+        {
+          "code": "E0308",
+          "count": 3,
+          "message_contains": "mismatched types",
+          "file": "src/lib.rs",
+          "lines": [
+            11,
+            12,
+            13
+          ]
+        }
+      ],
+      "weak_rule": {
+        "rule": "run-negative-fixtures.sh: cargo build exit != 0",
+        "verdict": "PASS"
+      },
+      "invariant": "B3 typed identity domains"
+    }
+  },
+  "expected": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "observed": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "verdict": "RUN",
+  "reason": "weak check PASS (would accept the mutant); qualified check FAIL: expected 3 x E0308 \"mismatched types\", observed 0; E0308 primary spans [] != expected [11,12,13]; unexpected diagnostic (no code) \"this file contains an unclosed delimiter\" at src/lib.rs:16"
+}

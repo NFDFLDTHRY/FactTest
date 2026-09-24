@@ -1,0 +1,85 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "delta_id": "D9-RUST-CARGO-PROOF",
+  "selected_inputs": [
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+    "tests/bootstrap/run-negative-fixtures.sh",
+    "tests/bootstrap/run-b9-b11.sh",
+    "factory/src/checks.rs",
+    "fixtures/compiler/negative/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "tests/toolchain/",
+    "fixtures/toolchain/",
+    "factory/receipts/D9-RUST-CARGO-PROOF/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "sh -n tests/toolchain/run-proof-matrix.sh && sh -n tests/toolchain/run-mutants.sh && node --check tests/toolchain/proof.mjs"
+        ],
+        "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-syntax.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "for m in fixtures/toolchain/mutants/*/; do test -f \"$m/MUTANT.json\" || { echo \"$m has no MUTANT.json\"; exit 1; }; node -e 'const j=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));if(!j.weak||!j.qualified||j.weak.expect!==\"PASS\"||j.qualified.expect!==\"FAIL\")process.exit(1)' \"$m/MUTANT.json\" || { echo \"$m: weak must expect PASS and qualified must expect FAIL\"; exit 1; }; done; for e in fixtures/toolchain/expect/*.json; do node -e 'const j=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));if(!Array.isArray(j.expected_errors)||!j.expected_errors.length||!j.invariant)process.exit(1)' \"$e\" || { echo \"$e: no expected_errors/invariant\"; exit 1; }; done; ls fixtures/toolchain/mutants | wc -l"
+        ],
+        "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-mutant-contracts.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "[ \"$(awk 'FNR==1{sec=\"\"} /^\\[/{sec=$0} { if (sec ~ /dependencies/) { if ($0 ~ /(version|git|registry) *=/ || $0 ~ /^[A-Za-z0-9_-]+ *= *\"/) print FILENAME } }' $(find fixtures/toolchain/mutants -name Cargo.toml | sort) | sort -u)\" = \"fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml\" ]"
+        ],
+        "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-only-declared-mutant-carries-registry-dep.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "! grep -q 'fixtures/toolchain' Cargo.toml && grep -q '\"fixtures\"' Cargo.toml"
+        ],
+        "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F1-mutants-outside-product-workspace.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/run-proof-matrix.sh",
+    "tests/toolchain/run-mutants.sh",
+    "fixtures/toolchain/expect/std-in-kernel.json",
+    "fixtures/toolchain/expect/id-substitution.json",
+    "fixtures/toolchain/expect/forge-verified-strategy.json",
+    "fixtures/toolchain/mutants/M1-omitted-workspace-member/MUTANT.json",
+    "fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/MUTANT.json",
+    "fixtures/toolchain/mutants/M3-compile-fail-stale-forge/MUTANT.json",
+    "fixtures/toolchain/mutants/M4-nostd-scanner-bypass/MUTANT.json",
+    "fixtures/toolchain/mutants/M5-uninspected-manifest/MUTANT.json",
+    "fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/MUTANT.json",
+    "fixtures/toolchain/mutants/M7-wasm32-masquerade/MUTANT.json",
+    "fixtures/toolchain/mutants/M8-debug-pass-release-fail/MUTANT.json"
+  ],
+  "tests": [
+    "harness syntax",
+    "every mutant declares weak=PASS/qualified=FAIL expectations",
+    "only M5 carries a registry dependency (deliberate)",
+    "fixtures/ stays excluded from the product workspace"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

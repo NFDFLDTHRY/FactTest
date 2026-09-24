@@ -1,0 +1,6 @@
+{
+  "id": "M7-wasm32-masquerade", "attacks": "T9-P8 wasm64 / no wasm32 fallback",
+  "description": "a wasm32-unknown-unknown cdylib presented as the wasm artifact.",
+  "weak": { "check": "cargo", "chan": "nightly", "args": ["build", "--release", "-Z", "build-std=core", "--target", "wasm32-unknown-unknown"], "expect": "PASS", "note": "'a wasm build succeeded' rule" },
+  "qualified": { "check": "wasm-inspect", "module": "wasm32-unknown-unknown/release/m7_wasm32_masquerade.wasm", "expect": "FAIL", "reason_must_contain": "all_memories_i64_address_type", "note": "T9-P8-02: factory wasm-inspect requires i64 memories (FT-003)" }
+}
