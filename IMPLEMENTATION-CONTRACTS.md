@@ -87,6 +87,7 @@ ERR/GAP at universal-baseline boundary.
 Current JS authority:
 https://webassembly.github.io/spec/js-api/#internal-storage
 D13 ANNOTATION (fragment #internal-storage): the citation above is preserved exactly as historically written.  It is NOT asserted to be a currently valid fragment: the pinned source WebAssembly/spec@608711107b has no id "internal-storage" (it has #webassembly-storage and #store) - FRAGMENT_DRIFT [ERR]; whether the published rendering still carries an alias is [UNK] (host denied).  Semantic resolution is deferred to the D14 technical reference rescan (design/environment-map/AUTHORITY-REGISTER.md AUTH-WASM-JSAPI-STORAGE; docs/HANDOFF.md section 6).
+D14 ANNOTATION (fragment #internal-storage): confirmed at the published rendering taken from WebAssembly/spec gh-pages@dcb71aa493d7 (fixtures/reference/published/webassembly.github.io/spec/js-api/index.html, evidence/D14/audit/fragments.json): no element carries id "internal-storage"; the section is <h2 id="webassembly-storage"> (also #store).  Historical citation preserved; NOT asserted current [ERR]; the rendering was not observed at the published host (egress denied).
 
 Threads proposal:
 https://webassembly.github.io/threads/core/
@@ -236,6 +237,7 @@ retain in G; runtime admission required.
 
 Authority:
 https://w3c.github.io/ambient-light/#ambientlightsensor-interface
+D14 ANNOTATION (fragment #ambientlightsensor-interface): reopened at the published rendering taken from the publisher's gh-pages branch @ae93d6df4d85 (fixtures/reference/published/w3c.github.io/ambient-light/index.html, evidence/D14/audit/link-audit.json): no element carries id "ambientlightsensor-interface"; nearest ids in that rendering: #ambientlightsensor, #ref-for-ambientlightsensor, #ref-for-ambientlightsensor①, #ref-for-ambientlightsensor②.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 Contract:
 quantized/limited precision semantics must be preserved; do not expose false raw precision.
@@ -297,6 +299,7 @@ handle invalidation/reacquisition and quota failures represented.
 
 Authority:
 https://w3c.github.io/IndexedDB/#database-concept
+D14 ANNOTATION (fragment #database-concept): reopened at the published rendering taken from the publisher's gh-pages branch @da7991bc1c84 (fixtures/reference/published/w3c.github.io/IndexedDB/index.html, evidence/D14/audit/link-audit.json): no element carries id "database-concept"; nearest ids in that rendering: #database, #idbdatabase, #database-name, #index-concept.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 Contract:
 transactional structured persistence, versionchange/abort/error lifecycle.
@@ -313,6 +316,7 @@ request/response cache semantics and explicit version lifecycle.
 
 Authority:
 https://w3c.github.io/ServiceWorker/#fetch-event
+D14 ANNOTATION (fragment #fetch-event): reopened at the published rendering taken from the publisher's gh-pages branch @65c0b6f013f5 (fixtures/reference/published/w3c.github.io/ServiceWorker/index.html, evidence/D14/audit/link-audit.json): no element carries id "fetch-event"; nearest ids in that rendering: #fetchevent, #ref-for-fetchevent, #ref-for-fetchevent①, #ref-for-fetchevent②.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 Contract:
 registration/install/activate/control/fetch lifecycle, failed-update retention.

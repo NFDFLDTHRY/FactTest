@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && node tests/reference/ingress.mjs verify --routes fixtures/reference/ROUTES.json --corpus fixtures/reference --register fixtures/reference/REGISTER.json --out $T/verify.json && grep -q '"verdict": "PASS"' $T/verify.json && node -e 'const r=JSON.parse(require("fs").readFileSync("fixtures/reference/REGISTER.json"));if(r.totals.ingested!==r.totals.files||r.totals.pin_mismatch!==0)process.exit(1);for(const f of r.files){if(!f.commit||!f.sha256||!f.git_blob_sha1||!f.fetched)process.exit(1)}console.log("register:",JSON.stringify(r.totals))'
+(cwd .)
+verify: PASS; 83 checks, 0 failed
+register: {"files":83,"ingested":83,"published":39,"sources":44,"bytes":51096208,"pins_rechecked":63,"pin_match":56,"pin_mismatch":0,"content_changed_since_pin":0}
+
+[exit 0] expected 0

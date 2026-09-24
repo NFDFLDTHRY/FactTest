@@ -1,0 +1,12 @@
+$ sh tests/reference/run-ingress-checks.sh evidence/D14
+(cwd .)
+plan-check PASS: every REFERENCE-AUTHORITY.md link and graph authority URL resolves to a route or an explicit NO_ROUTE; 83 files
+probe-hosts: 23 denied [chromium.googlesource.com compression.spec.whatwg.org doc.rust-lang.org dom.spec.whatwg.org fetch.spec.whatwg.org fs.spec.whatwg.org git-scm.com gpuweb.github.io html.spec.whatwg.org immersive-web.github.io infra.spec.whatwg.org serial.spec.whatwg.org source.chromium.org storage.spec.whatwg.org streams.spec.whatwg.org tc39.es w3c.github.io webassembly.github.io webbluetoothcg.github.io webidl.spec.whatwg.org webmachinelearning.github.io wicg.github.io www.w3.org]; reachable [github.com raw.githubusercontent.com]; PUBLISHED_HOSTS_DENIED; ROUTE AVAILABLE
+verify: PASS; 83 checks, 0 failed
+verify (refetch): PASS; 166 checks, 0 failed
+D14 AUDIT
+links: 99 {"PRESENT_IN_SOURCE":5,"NO_FRAGMENT_CITED":45,"VERIFIED_IN_PUBLISHED_RENDERING":36,"ABSENT_IN_PUBLISHED_RENDERING [ERR]":9,"NO_ROUTE [UNK]":1,"DERIVED_FROM_DFN_UNVERIFIED":3}
+authorities: 64 {"PRESENT_IN_SOURCE":5,"NO_FRAGMENT_CITED":29,"DERIVED_FROM_HEADING_UNVERIFIED":2,"VERIFIED_IN_PUBLISHED_RENDERING":17,"DERIVED_FROM_DFN_UNVERIFIED":1,"NOT_AUDITED":8,"ABSENT_IN_PUBLISHED_RENDERING [ERR]":2} facts {"RUN":51,"OBS":3,"n/a":8,"ERR":2}
+ingress checks executed (verdicts in evidence/D14/ingress/*.json and evidence/D14/audit/*)
+
+[exit 0] expected 0

@@ -60,6 +60,7 @@ https://webassembly.github.io/spec/js-api/
 Internal storage / agent-local current model:
 https://webassembly.github.io/spec/js-api/#internal-storage
 D13 ANNOTATION (fragment #internal-storage): the citation above is preserved exactly as historically written.  It is NOT asserted to be a currently valid fragment: the pinned source WebAssembly/spec@608711107b has no id "internal-storage" (it has #webassembly-storage and #store) - FRAGMENT_DRIFT [ERR]; whether the published rendering still carries an alias is [UNK] (host denied).  Semantic resolution is deferred to the D14 technical reference rescan (design/environment-map/AUTHORITY-REGISTER.md AUTH-WASM-JSAPI-STORAGE; docs/HANDOFF.md section 6).
+D14 ANNOTATION (fragment #internal-storage): confirmed at the published rendering taken from WebAssembly/spec gh-pages@dcb71aa493d7 (fixtures/reference/published/webassembly.github.io/spec/js-api/index.html, evidence/D14/audit/fragments.json): no element carries id "internal-storage"; the section is <h2 id="webassembly-storage"> (also #store).  Historical citation preserved; NOT asserted current [ERR]; the rendering was not observed at the published host (egress denied).
 
 Memories:
 https://webassembly.github.io/spec/js-api/#memories
@@ -69,6 +70,7 @@ https://webassembly.github.io/spec/web-api/
 
 Streaming compilation/instantiation:
 https://webassembly.github.io/spec/web-api/#streaming-module-compilation-and-instantiation
+D14 ANNOTATION (fragment #streaming-module-compilation-and-instantiation): reopened at the published rendering taken from the publisher's gh-pages branch @dcb71aa493d7 (fixtures/reference/published/webassembly.github.io/spec/web-api/index.html, evidence/D14/audit/link-audit.json): no element carries id "streaming-module-compilation-and-instantiation"; nearest ids in that rendering: #streaming-modules, #ref-for-module, #ref-for-module①, #ref-for-module②.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 ## WebAssembly threading proposals
 
@@ -224,6 +226,7 @@ https://w3c.github.io/IndexedDB/
 
 Database concept:
 https://w3c.github.io/IndexedDB/#database-concept
+D14 ANNOTATION (fragment #database-concept): reopened at the published rendering taken from the publisher's gh-pages branch @da7991bc1c84 (fixtures/reference/published/w3c.github.io/IndexedDB/index.html, evidence/D14/audit/link-audit.json): no element carries id "database-concept"; nearest ids in that rendering: #database, #idbdatabase, #database-name, #index-concept.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 ## Service Worker / PWA
 
@@ -232,6 +235,7 @@ https://w3c.github.io/ServiceWorker/
 
 fetch event:
 https://w3c.github.io/ServiceWorker/#fetch-event
+D14 ANNOTATION (fragment #fetch-event): reopened at the published rendering taken from the publisher's gh-pages branch @65c0b6f013f5 (fixtures/reference/published/w3c.github.io/ServiceWorker/index.html, evidence/D14/audit/link-audit.json): no element carries id "fetch-event"; nearest ids in that rendering: #fetchevent, #ref-for-fetchevent, #ref-for-fetchevent①, #ref-for-fetchevent②.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 cache objects:
 https://w3c.github.io/ServiceWorker/#cache-objects
@@ -252,9 +256,11 @@ https://w3c.github.io/sensors/#dom-sensor-start
 
 Permission integration:
 https://w3c.github.io/sensors/#extending-the-permission-api
+D14 ANNOTATION (fragment #extending-the-permission-api): reopened at the published rendering taken from the publisher's gh-pages branch @f18fbc5b3445 (fixtures/reference/published/w3c.github.io/sensors/index.html, evidence/D14/audit/link-audit.json): no element carries id "extending-the-permission-api"; nearest ids in that rendering: #permissions, #permissioning, #permission-api, #permissions-policy.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 Permissions Policy integration:
 https://w3c.github.io/sensors/#extending-the-permissions-policy-api
+D14 ANNOTATION (fragment #extending-the-permissions-policy-api): reopened at the published rendering taken from the publisher's gh-pages branch @f18fbc5b3445 (fixtures/reference/published/w3c.github.io/sensors/index.html, evidence/D14/audit/link-audit.json): no element carries id "extending-the-permissions-policy-api"; nearest ids in that rendering: #permissions-policy, #permissions-policy-api, #biblio-permissions-policy, #permissions.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 Accelerometer:
 https://w3c.github.io/accelerometer/
@@ -273,6 +279,7 @@ https://w3c.github.io/deviceorientation/
 
 Permissions:
 https://w3c.github.io/deviceorientation/#permissions
+D14 ANNOTATION (fragment #permissions): reopened at the published rendering taken from the publisher's gh-pages branch @4b6c4a3d39c1 (fixtures/reference/published/w3c.github.io/deviceorientation/index.html, evidence/D14/audit/link-audit.json): no element carries id "permissions"; nearest ids in that rendering: #biblio-permissions, #permissions-integration, #ref-for-dom-permissionstate, #biblio-permissions-policy-1.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 Proximity:
 https://w3c.github.io/proximity/
@@ -282,6 +289,7 @@ https://w3c.github.io/ambient-light/
 
 AmbientLightSensor interface:
 https://w3c.github.io/ambient-light/#ambientlightsensor-interface
+D14 ANNOTATION (fragment #ambientlightsensor-interface): reopened at the published rendering taken from the publisher's gh-pages branch @ae93d6df4d85 (fixtures/reference/published/w3c.github.io/ambient-light/index.html, evidence/D14/audit/link-audit.json): no element carries id "ambientlightsensor-interface"; nearest ids in that rendering: #ambientlightsensor, #ref-for-ambientlightsensor, #ref-for-ambientlightsensor①, #ref-for-ambientlightsensor②.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 ## Geolocation
 
@@ -301,6 +309,7 @@ https://immersive-web.github.io/webxr/
 
 navigator.xr:
 https://immersive-web.github.io/webxr/#navigator-xr
+D14 ANNOTATION (fragment #navigator-xr): reopened at the published rendering taken from the publisher's gh-pages branch @4f2898158f9f (fixtures/reference/published/immersive-web.github.io/webxr/index.html, evidence/D14/audit/link-audit.json): no element carries id "navigator-xr"; nearest ids in that rendering: #dom-navigator-xr, #ref-for-navigator, #ref-for-navigator①, #ref-for-dom-navigator.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
 
 isSessionSupported:
 https://immersive-web.github.io/webxr/#dom-xrsystem-issessionsupported

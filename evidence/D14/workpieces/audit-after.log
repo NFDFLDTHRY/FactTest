@@ -1,0 +1,9 @@
+$ /home/user/factory-target-d14/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/d9-rust-cargo-proof-4nys6s --current W16 --out evidence/D14/workpieces/audit-after.json
+(cwd .)
+== workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/d9-rust-cargo-proof-4nys6s --current W16 --out evidence/D14/workpieces/audit-after.json : PASS
+  [PASS] audited:/home/user/factory-workpieces/W15 - worktree ABSENT worktree directory not present
+  [PASS] audited:/home/user/factory-workpieces/W16 - worktree CURRENT current workpiece of the running delta; verification FAIL; integration MISSING; reinspect DIFFER; integration commit is not an ancestor of the canonical head; worktree HEAD 6778133c35a96d5e356df283aa1676ee428766bb != integration commit; worktree has modified, untracked or ignored entries
+  [PASS] audited:/home/user/factory-workpieces/W9 - worktree ABSENT worktree directory not present
+  [PASS] audit_written - evidence/D14/workpieces/audit-after.json
+
+[exit 0] expected 0

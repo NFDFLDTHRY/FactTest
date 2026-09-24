@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D14-INTENDED-REFERENCE-RESCAN.md; grep -q '^STRUCTURAL CHECK: PASS' $I && for s in '## 0.' '## 1.' '### 1.1' '### 1.2' '### 1.3' '### 1.4' '### 1.5' '## 2.' '## 3.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done && for t in T14-R1 T14-R2 T14-R3 T14-R4 T14-R5 T14-R6 T14-R7 T14-R8; do grep -q "^$t " $I || { echo missing $t; exit 1; }; done && grep -q '^## D14-TECHNICAL-REFERENCE-RESCAN' design/materialization/LEDGER.md && grep -q 'integrated as 6778133c35a96d5e356df283aa1676ee428766bb' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ]
+(cwd .)
+
+[exit 0] expected 0

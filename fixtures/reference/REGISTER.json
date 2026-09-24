@@ -1,0 +1,3197 @@
+{
+ "schema": "facttest-reference-register/1",
+ "law": "REFERENCE-AUTHORITY.md citation law and PASS1.md: living/editor documents govern current semantics; dated snapshots are historical unless explicitly pinned for reproducibility. Every file this table ingests is a REPRODUCIBILITY PIN of an authority at a recorded commit (git ls-remote head at ingest time), never the current authority itself. The register (REGISTER.json) carries the commit, blob id, sha256 and observation time of every copy.",
+ "retrieval": {
+  "problem": "the session egress policy denies every published authority host (CONNECT 403): doc.rust-lang.org, webassembly.github.io, gpuweb.github.io, w3c.github.io, html.spec.whatwg.org and the other *.spec.whatwg.org hosts, tc39.es, git-scm.com, www.w3.org, source.chromium.org, chromium.googlesource.com, raw.githack.com; D11-D13 could read sources pinned by commit only",
+  "solution": "every denied published rendering that a publisher serves through GitHub Pages is the byte-exact content of that repository's gh-pages branch; that branch is reachable with exact commit identity through the session git proxy (git ls-remote / blobless partial fetch) and its files are fetchable immutably by commit from raw.githubusercontent.com, which the policy allows. Specification sources are taken from the publisher's default branch the same way. A published host without a Pages branch (WHATWG standards, doc.rust-lang.org, git-scm.com, www.w3.org/TR snapshots, Chromium code search) has NO_ROUTE for its rendering and is ingested as source only.",
+  "allowed_route_hosts": [
+   "raw.githubusercontent.com (HTTPS through the session proxy)",
+   "github.com git smart-HTTP (through the session git proxy: ls-remote, partial fetch)"
+  ],
+  "not_claimed": "a file taken from a gh-pages branch was NOT observed at the published host; the register marks it PAGES_BRANCH and the published URL stays NOT_OBSERVED_AT_HOST until the policy admits the host"
+ },
+ "ingested": "2026-09-24T08:55:03.020Z",
+ "corpus_root": "fixtures/reference",
+ "repos": {
+  "WebAssembly/spec": {
+   "published_ref": "gh-pages",
+   "published_head": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "source_ref": "main",
+   "source_head": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "published_host": "https://webassembly.github.io/spec/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "dcb71aa493d71d7581af1589368364b7283e6724",
+    "observed": "2026-09-24T08:54:06.728Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "observed": "2026-09-24T08:54:07.453Z"
+   }
+  },
+  "WebAssembly/threads": {
+   "published_ref": "gh-pages",
+   "published_head": "9a158a00f3d29ef783ef40fe5cde374a89f552ab",
+   "source_ref": "main",
+   "source_head": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+   "published_host": "https://webassembly.github.io/threads/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "9a158a00f3d29ef783ef40fe5cde374a89f552ab",
+    "observed": "2026-09-24T08:54:07.895Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+    "observed": "2026-09-24T08:54:08.321Z"
+   }
+  },
+  "WebAssembly/shared-everything-threads": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+   "published_host": null,
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+    "observed": "2026-09-24T08:54:08.744Z"
+   }
+  },
+  "gpuweb/gpuweb": {
+   "published_ref": "gh-pages",
+   "published_head": "399a86cf9537fe0f2723566a4224a65cacf14ccf",
+   "source_ref": "main",
+   "source_head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "published_host": "https://gpuweb.github.io/gpuweb/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "399a86cf9537fe0f2723566a4224a65cacf14ccf",
+    "observed": "2026-09-24T08:54:09.222Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "observed": "2026-09-24T08:54:09.615Z"
+   }
+  },
+  "webmachinelearning/webnn": {
+   "published_ref": "gh-pages",
+   "published_head": "c5dcdee6011f2bfd52917ae60e14981c73347c8b",
+   "source_ref": "main",
+   "source_head": "59db71f24cc87fe31b764bd06ca24c215c1755a4",
+   "published_host": "https://webmachinelearning.github.io/webnn/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "c5dcdee6011f2bfd52917ae60e14981c73347c8b",
+    "observed": "2026-09-24T08:54:10.154Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "59db71f24cc87fe31b764bd06ca24c215c1755a4",
+    "observed": "2026-09-24T08:54:10.535Z"
+   }
+  },
+  "w3c/webcodecs": {
+   "published_ref": "gh-pages",
+   "published_head": "4b682a0f4a75be7f931d90f93eb32b1789990e94",
+   "source_ref": "main",
+   "source_head": "91160a493a2f59060c8b1ba4831e398f820c6e6d",
+   "published_host": "https://w3c.github.io/webcodecs/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "4b682a0f4a75be7f931d90f93eb32b1789990e94",
+    "observed": "2026-09-24T08:54:11.271Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "91160a493a2f59060c8b1ba4831e398f820c6e6d",
+    "observed": "2026-09-24T08:54:11.942Z"
+   }
+  },
+  "w3c/mediacapture-main": {
+   "published_ref": "gh-pages",
+   "published_head": "215cb8d7abf82e582a45ad3ea87016513fa2c988",
+   "source_ref": "main",
+   "source_head": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+   "published_host": "https://w3c.github.io/mediacapture-main/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "215cb8d7abf82e582a45ad3ea87016513fa2c988",
+    "observed": "2026-09-24T08:54:12.629Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+    "observed": "2026-09-24T08:54:13.020Z"
+   }
+  },
+  "w3c/webappsec-secure-contexts": {
+   "published_ref": "gh-pages",
+   "published_head": "fcb77fad84a9b2486ef2ff4ee030ef4ccdd82de0",
+   "source_ref": "main",
+   "source_head": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+   "published_host": "https://w3c.github.io/webappsec-secure-contexts/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "fcb77fad84a9b2486ef2ff4ee030ef4ccdd82de0",
+    "observed": "2026-09-24T08:54:13.452Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+    "observed": "2026-09-24T08:54:13.836Z"
+   }
+  },
+  "w3c/permissions": {
+   "published_ref": "gh-pages",
+   "published_head": "ac71e589ea5990f38a40a09ae4d1f21ac88c2b16",
+   "source_ref": "main",
+   "source_head": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+   "published_host": "https://w3c.github.io/permissions/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "ac71e589ea5990f38a40a09ae4d1f21ac88c2b16",
+    "observed": "2026-09-24T08:54:14.266Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+    "observed": "2026-09-24T08:54:14.626Z"
+   }
+  },
+  "w3c/webappsec-permissions-policy": {
+   "published_ref": "gh-pages",
+   "published_head": "1eb687a99be95a0a69a9b4c1eba0ccbbe85ae985",
+   "source_ref": "main",
+   "source_head": "29398046f1e0cb45c091adda853df74925dc740a",
+   "published_host": "https://w3c.github.io/webappsec-permissions-policy/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "1eb687a99be95a0a69a9b4c1eba0ccbbe85ae985",
+    "observed": "2026-09-24T08:54:15.045Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "29398046f1e0cb45c091adda853df74925dc740a",
+    "observed": "2026-09-24T08:54:15.429Z"
+   }
+  },
+  "w3c/IndexedDB": {
+   "published_ref": "gh-pages",
+   "published_head": "da7991bc1c84f151dfbe8cd4e33fb50c21a05fd9",
+   "source_ref": "main",
+   "source_head": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+   "published_host": "https://w3c.github.io/IndexedDB/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "da7991bc1c84f151dfbe8cd4e33fb50c21a05fd9",
+    "observed": "2026-09-24T08:54:15.888Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+    "observed": "2026-09-24T08:54:16.310Z"
+   }
+  },
+  "w3c/ServiceWorker": {
+   "published_ref": "gh-pages",
+   "published_head": "65c0b6f013f511233ca8490d9f0d0b45d947f5a7",
+   "source_ref": "main",
+   "source_head": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "published_host": "https://w3c.github.io/ServiceWorker/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "65c0b6f013f511233ca8490d9f0d0b45d947f5a7",
+    "observed": "2026-09-24T08:54:16.728Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "observed": "2026-09-24T08:54:17.117Z"
+   }
+  },
+  "w3c/manifest": {
+   "published_ref": "gh-pages",
+   "published_head": "cc98a2acb99b8ef593b6370faf725058a9559a96",
+   "source_ref": "main",
+   "source_head": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+   "published_host": "https://w3c.github.io/manifest/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "cc98a2acb99b8ef593b6370faf725058a9559a96",
+    "observed": "2026-09-24T08:54:17.863Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+    "observed": "2026-09-24T08:54:18.523Z"
+   }
+  },
+  "w3c/web-locks": {
+   "published_ref": "gh-pages",
+   "published_head": "b4e69588396019463ad60a3abe85a7b8f1c59374",
+   "source_ref": "main",
+   "source_head": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+   "published_host": "https://w3c.github.io/web-locks/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "b4e69588396019463ad60a3abe85a7b8f1c59374",
+    "observed": "2026-09-24T08:54:18.956Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+    "observed": "2026-09-24T08:54:19.361Z"
+   }
+  },
+  "w3c/webcrypto": {
+   "published_ref": "gh-pages",
+   "published_head": "3e43d42bf5b508231a5c02281d36e1f734e22774",
+   "source_ref": "main",
+   "source_head": "811c24c69eb22d477af5f1678cb70dbc611c7c40",
+   "published_host": "https://w3c.github.io/webcrypto/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "3e43d42bf5b508231a5c02281d36e1f734e22774",
+    "observed": "2026-09-24T08:54:19.798Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "811c24c69eb22d477af5f1678cb70dbc611c7c40",
+    "observed": "2026-09-24T08:54:20.170Z"
+   }
+  },
+  "w3c/sensors": {
+   "published_ref": "gh-pages",
+   "published_head": "f18fbc5b3445632f4a58264e49619fddda705327",
+   "source_ref": "main",
+   "source_head": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+   "published_host": "https://w3c.github.io/sensors/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "f18fbc5b3445632f4a58264e49619fddda705327",
+    "observed": "2026-09-24T08:54:20.573Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+    "observed": "2026-09-24T08:54:20.952Z"
+   }
+  },
+  "w3c/accelerometer": {
+   "published_ref": "gh-pages",
+   "published_head": "cae67c0d2b9a960ac23e1b7a0b78edd2235305be",
+   "source_ref": "main",
+   "source_head": "9f0a66ddab67fbb3fffcf3118fd6a8e1d30e558e",
+   "published_host": "https://w3c.github.io/accelerometer/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "cae67c0d2b9a960ac23e1b7a0b78edd2235305be",
+    "observed": "2026-09-24T08:54:21.356Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "9f0a66ddab67fbb3fffcf3118fd6a8e1d30e558e",
+    "observed": "2026-09-24T08:54:21.730Z"
+   }
+  },
+  "w3c/gyroscope": {
+   "published_ref": "gh-pages",
+   "published_head": "5bb1f8ec128b1bf99cf4186cd9ab2cba735fa110",
+   "source_ref": "main",
+   "source_head": "335dc6ecc5f85289a2745810a086e7f1c7237cdb",
+   "published_host": "https://w3c.github.io/gyroscope/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "5bb1f8ec128b1bf99cf4186cd9ab2cba735fa110",
+    "observed": "2026-09-24T08:54:22.442Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "335dc6ecc5f85289a2745810a086e7f1c7237cdb",
+    "observed": "2026-09-24T08:54:23.139Z"
+   }
+  },
+  "w3c/magnetometer": {
+   "published_ref": "gh-pages",
+   "published_head": "10eca32cea1ba09d160621a06227ec65b7c3d07b",
+   "source_ref": "main",
+   "source_head": "40801a25e7ad6c0ea12b1777f1d913f21e680e87",
+   "published_host": "https://w3c.github.io/magnetometer/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "10eca32cea1ba09d160621a06227ec65b7c3d07b",
+    "observed": "2026-09-24T08:54:23.565Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "40801a25e7ad6c0ea12b1777f1d913f21e680e87",
+    "observed": "2026-09-24T08:54:23.983Z"
+   }
+  },
+  "w3c/orientation-sensor": {
+   "published_ref": "gh-pages",
+   "published_head": "acc331f74db671de7557d0c11b52e1d765c11a3b",
+   "source_ref": "main",
+   "source_head": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824",
+   "published_host": "https://w3c.github.io/orientation-sensor/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "acc331f74db671de7557d0c11b52e1d765c11a3b",
+    "observed": "2026-09-24T08:54:24.409Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824",
+    "observed": "2026-09-24T08:54:24.814Z"
+   }
+  },
+  "w3c/deviceorientation": {
+   "published_ref": "gh-pages",
+   "published_head": "4b6c4a3d39c1f61043041b8b583d91bed8e66adc",
+   "source_ref": "main",
+   "source_head": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+   "published_host": "https://w3c.github.io/deviceorientation/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "4b6c4a3d39c1f61043041b8b583d91bed8e66adc",
+    "observed": "2026-09-24T08:54:25.238Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+    "observed": "2026-09-24T08:54:25.657Z"
+   }
+  },
+  "w3c/proximity": {
+   "published_ref": "gh-pages",
+   "published_head": "b99495b3a2ce101ffcdfca7c0fc31d3ccffe2676",
+   "source_ref": "main",
+   "source_head": "1d43739eea15981bb6cab10224929c53ae6f51ed",
+   "published_host": "https://w3c.github.io/proximity/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "b99495b3a2ce101ffcdfca7c0fc31d3ccffe2676",
+    "observed": "2026-09-24T08:54:26.336Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "1d43739eea15981bb6cab10224929c53ae6f51ed",
+    "observed": "2026-09-24T08:54:26.947Z"
+   }
+  },
+  "w3c/ambient-light": {
+   "published_ref": "gh-pages",
+   "published_head": "ae93d6df4d85ab4477b813e817981bd218eb74a5",
+   "source_ref": "main",
+   "source_head": "381d5dd21deb386282bbc72147201a8e6ff3b5ea",
+   "published_host": "https://w3c.github.io/ambient-light/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "ae93d6df4d85ab4477b813e817981bd218eb74a5",
+    "observed": "2026-09-24T08:54:27.351Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "381d5dd21deb386282bbc72147201a8e6ff3b5ea",
+    "observed": "2026-09-24T08:54:27.790Z"
+   }
+  },
+  "w3c/geolocation": {
+   "published_ref": "gh-pages",
+   "published_head": "c9bfbcd63e9713a45f5812d6b93ad8a06be8c6fa",
+   "source_ref": "main",
+   "source_head": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+   "published_host": "https://w3c.github.io/geolocation/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "c9bfbcd63e9713a45f5812d6b93ad8a06be8c6fa",
+    "observed": "2026-09-24T08:54:28.223Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+    "observed": "2026-09-24T08:54:28.622Z"
+   }
+  },
+  "immersive-web/webxr": {
+   "published_ref": "gh-pages",
+   "published_head": "4f2898158f9f3ade9d3103b8677fd5267b4dc552",
+   "source_ref": "main",
+   "source_head": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+   "published_host": "https://immersive-web.github.io/webxr/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "4f2898158f9f3ade9d3103b8677fd5267b4dc552",
+    "observed": "2026-09-24T08:54:29.102Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+    "observed": "2026-09-24T08:54:29.521Z"
+   }
+  },
+  "WICG/webhid": {
+   "published_ref": "gh-pages",
+   "published_head": "f3a450c64f17a23f8df8b6056858f96ae1d22945",
+   "source_ref": "main",
+   "source_head": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+   "published_host": "https://wicg.github.io/webhid/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "f3a450c64f17a23f8df8b6056858f96ae1d22945",
+    "observed": "2026-09-24T08:54:29.970Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+    "observed": "2026-09-24T08:54:30.358Z"
+   }
+  },
+  "WICG/webusb": {
+   "published_ref": "gh-pages",
+   "published_head": "b66dce7d5ae26e28b556cd641d57725a61a27dc3",
+   "source_ref": "main",
+   "source_head": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+   "published_host": "https://wicg.github.io/webusb/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "b66dce7d5ae26e28b556cd641d57725a61a27dc3",
+    "observed": "2026-09-24T08:54:30.791Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+    "observed": "2026-09-24T08:54:31.171Z"
+   }
+  },
+  "whatwg/serial": {
+   "published_ref": "gh-pages",
+   "published_head": "4a824f3b0fd2953c0ead7dccd317592239ebe1c1",
+   "source_ref": "main",
+   "source_head": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+   "published_host": "https://serial.spec.whatwg.org/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "4a824f3b0fd2953c0ead7dccd317592239ebe1c1",
+    "observed": "2026-09-24T08:54:31.588Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+    "observed": "2026-09-24T08:54:31.993Z"
+   }
+  },
+  "WebBluetoothCG/web-bluetooth": {
+   "published_ref": "gh-pages",
+   "published_head": "3034269cd5d155d805bd302933b5f80e282608cc",
+   "source_ref": "main",
+   "source_head": "2e451c162f6a3f2277f86104223de4630710506e",
+   "published_host": "https://webbluetoothcg.github.io/web-bluetooth/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "3034269cd5d155d805bd302933b5f80e282608cc",
+    "observed": "2026-09-24T08:54:32.410Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "2e451c162f6a3f2277f86104223de4630710506e",
+    "observed": "2026-09-24T08:54:32.776Z"
+   }
+  },
+  "tc39/ecma262": {
+   "published_ref": "gh-pages",
+   "published_head": "181d3068d76544298cbe5e4ffd6e668f1e1587fa",
+   "source_ref": "main",
+   "source_head": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+   "published_host": "https://tc39.es/ecma262/",
+   "published_route": "PAGES_BRANCH",
+   "published_ls_remote": {
+    "status": "OK",
+    "head": "181d3068d76544298cbe5e4ffd6e668f1e1587fa",
+    "observed": "2026-09-24T08:54:33.226Z"
+   },
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+    "observed": "2026-09-24T08:54:33.616Z"
+   }
+  },
+  "whatwg/html": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+   "published_host": "https://html.spec.whatwg.org/",
+   "published_route": "NO_ROUTE (WHATWG deploys its own build; no Pages branch)",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "observed": "2026-09-24T08:54:34.067Z"
+   }
+  },
+  "whatwg/webidl": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "6a53497380036fc4a25b82be889a88e0de7cf448",
+   "published_host": "https://webidl.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "6a53497380036fc4a25b82be889a88e0de7cf448",
+    "observed": "2026-09-24T08:54:34.495Z"
+   }
+  },
+  "whatwg/dom": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "a2331a45360129e8645ef7e0a04740241b6e3726",
+   "published_host": "https://dom.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "a2331a45360129e8645ef7e0a04740241b6e3726",
+    "observed": "2026-09-24T08:54:34.905Z"
+   }
+  },
+  "whatwg/infra": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "3f984adcd24a6d5c53cc26b3e737701808003f3e",
+   "published_host": "https://infra.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "3f984adcd24a6d5c53cc26b3e737701808003f3e",
+    "observed": "2026-09-24T08:54:35.326Z"
+   }
+  },
+  "whatwg/fetch": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+   "published_host": "https://fetch.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+    "observed": "2026-09-24T08:54:35.760Z"
+   }
+  },
+  "whatwg/streams": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+   "published_host": "https://streams.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+    "observed": "2026-09-24T08:54:36.187Z"
+   }
+  },
+  "whatwg/storage": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+   "published_host": "https://storage.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+    "observed": "2026-09-24T08:54:36.661Z"
+   }
+  },
+  "whatwg/fs": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+   "published_host": "https://fs.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+    "observed": "2026-09-24T08:54:37.047Z"
+   }
+  },
+  "whatwg/compression": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+   "published_host": "https://compression.spec.whatwg.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+    "observed": "2026-09-24T08:54:37.475Z"
+   }
+  },
+  "rust-lang/reference": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "master",
+   "source_head": "52ffdc09065e0043e877546da923c01bf875d41d",
+   "published_host": "https://doc.rust-lang.org/reference/",
+   "published_route": "NO_ROUTE (mdBook build deployed by rust-lang CI)",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "52ffdc09065e0043e877546da923c01bf875d41d",
+    "observed": "2026-09-24T08:54:37.880Z"
+   }
+  },
+  "rust-lang/cargo": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "master",
+   "source_head": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+   "published_host": "https://doc.rust-lang.org/nightly/cargo/",
+   "published_route": "NO_ROUTE (the cargo gh-pages branch is a stub, not the book)",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+    "observed": "2026-09-24T08:54:38.300Z"
+   }
+  },
+  "rust-lang/rust": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+   "published_host": "https://doc.rust-lang.org/rustc/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "observed": "2026-09-24T08:54:38.817Z"
+   }
+  },
+  "git/git": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "master",
+   "source_head": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "published_host": "https://git-scm.com/docs/",
+   "published_route": "NO_ROUTE (git-scm.com renders the asciidoc sources)",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "observed": "2026-09-24T08:54:39.595Z"
+   }
+  },
+  "chromium/chromium": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "published_host": "https://source.chromium.org/ and https://chromium.googlesource.com/",
+   "published_route": "NO_ROUTE (GitHub mirror of the source is the copy)",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+    "observed": "2026-09-24T08:54:40.109Z"
+   }
+  },
+  "v8/v8": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "main",
+   "source_head": "72302c22b71e67b54116b651913ccf3c8a01c139",
+   "published_host": "https://source.chromium.org/",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "72302c22b71e67b54116b651913ccf3c8a01c139",
+    "observed": "2026-09-24T08:54:40.631Z"
+   }
+  },
+  "google/swiftshader": {
+   "published_ref": null,
+   "published_head": null,
+   "source_ref": "master",
+   "source_head": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+   "published_host": "https://github.com/google/swiftshader (denied for HTTPS page access; git and raw allowed)",
+   "published_route": "NO_ROUTE",
+   "source_ls_remote": {
+    "status": "OK",
+    "head": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+    "observed": "2026-09-24T08:54:41.033Z"
+   }
+  }
+ },
+ "files": [
+  {
+   "id": "wasm-core-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/spec",
+   "ref": "gh-pages",
+   "commit": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "path": "core/index.html",
+   "store": "published/webassembly.github.io/spec/core/index.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/spec/core/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/dcb71aa493d71d7581af1589368364b7283e6724/core/index.html",
+   "bytes": 10128,
+   "sha256": "88708593a992766bc98cd8ff17d6550d1854a52ac13cab8c8b292977ff5f02cb",
+   "git_blob_sha1": "dff0234d8cff323e49728152e273b2f1afef3ba7",
+   "fetched": "2026-09-24T08:54:41.289Z"
+  },
+  {
+   "id": "wasm-core-text-types",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/spec",
+   "ref": "gh-pages",
+   "commit": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "path": "core/text/types.html",
+   "store": "published/webassembly.github.io/spec/core/text/types.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/spec/core/text/types.html",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/dcb71aa493d71d7581af1589368364b7283e6724/core/text/types.html",
+   "bytes": 45196,
+   "sha256": "eb080a737e3d3c0d9060654e33ff0569a26f57e73097cedc8bf5d7aa6a50f56c",
+   "git_blob_sha1": "be641370ab58933534b3d7ccadce7e3b9252f561",
+   "fetched": "2026-09-24T08:54:41.751Z"
+  },
+  {
+   "id": "wasm-core-syntax-types",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/spec",
+   "ref": "gh-pages",
+   "commit": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "path": "core/syntax/types.html",
+   "store": "published/webassembly.github.io/spec/core/syntax/types.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/spec/core/syntax/types.html",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/dcb71aa493d71d7581af1589368364b7283e6724/core/syntax/types.html",
+   "bytes": 51308,
+   "sha256": "5a4c2283a80a074d4ecaff484a34fbdd3fa110b4f4cd39e1c80ac69cd2d1cd18",
+   "git_blob_sha1": "5c3f9f60d78428ecd978303201dd84be4cf35b45",
+   "fetched": "2026-09-24T08:54:41.953Z"
+  },
+  {
+   "id": "wasm-core-binary-types",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/spec",
+   "ref": "gh-pages",
+   "commit": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "path": "core/binary/types.html",
+   "store": "published/webassembly.github.io/spec/core/binary/types.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/spec/core/binary/types.html",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/dcb71aa493d71d7581af1589368364b7283e6724/core/binary/types.html",
+   "bytes": 29524,
+   "sha256": "c7a2a369e712f2138fceef1c871569d11b8ba91ed8aec9afb47f59f4c253662d",
+   "git_blob_sha1": "abefadac608862a763ee74c2d48a1b4e58a9f29e",
+   "fetched": "2026-09-24T08:54:42.145Z"
+  },
+  {
+   "id": "wasm-core-changes",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/spec",
+   "ref": "gh-pages",
+   "commit": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "path": "core/appendix/changes.html",
+   "store": "published/webassembly.github.io/spec/core/appendix/changes.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/spec/core/appendix/changes.html",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/dcb71aa493d71d7581af1589368364b7283e6724/core/appendix/changes.html",
+   "bytes": 75731,
+   "sha256": "6505c30084c1f71027667b8befc2de36ead8f2f3c048f54da51858b65a2f245d",
+   "git_blob_sha1": "823dbd004566f77275b5e942e98c0f162642a4bc",
+   "fetched": "2026-09-24T08:54:42.316Z"
+  },
+  {
+   "id": "wasm-js-api",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/spec",
+   "ref": "gh-pages",
+   "commit": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "path": "js-api/index.html",
+   "store": "published/webassembly.github.io/spec/js-api/index.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/spec/js-api/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/dcb71aa493d71d7581af1589368364b7283e6724/js-api/index.html",
+   "bytes": 768866,
+   "sha256": "9594fb78ee1e17339ea06c8b7d41f083982377873dbf7b77b22f6da22adf98e1",
+   "git_blob_sha1": "a7e595023bde5b1e4e839323039a849177bd016b",
+   "fetched": "2026-09-24T08:54:42.559Z"
+  },
+  {
+   "id": "wasm-web-api",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/spec",
+   "ref": "gh-pages",
+   "commit": "dcb71aa493d71d7581af1589368364b7283e6724",
+   "path": "web-api/index.html",
+   "store": "published/webassembly.github.io/spec/web-api/index.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/spec/web-api/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/dcb71aa493d71d7581af1589368364b7283e6724/web-api/index.html",
+   "bytes": 128274,
+   "sha256": "385d79f0f451a8ed88a7b4fe8dd2795d78abad3346301e86d0b8e86f84d9894c",
+   "git_blob_sha1": "d9b2471e5fcf939c80bb2a5a18de8d2f3d702d34",
+   "fetched": "2026-09-24T08:54:42.764Z"
+  },
+  {
+   "id": "wasm-src-text-types",
+   "kind": "source",
+   "format": "rst",
+   "repo": "WebAssembly/spec",
+   "ref": "main",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "path": "document/core/text/types.rst",
+   "store": "sources/WebAssembly/spec/document/core/text/types.rst",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/text/types.rst",
+   "bytes": 6506,
+   "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d",
+   "git_blob_sha1": "288b6bddb003ec945c0880024485ebed77240438",
+   "fetched": "2026-09-24T08:54:42.933Z"
+  },
+  {
+   "id": "wasm-src-syntax-types",
+   "kind": "source",
+   "format": "rst",
+   "repo": "WebAssembly/spec",
+   "ref": "main",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "path": "document/core/syntax/types.rst",
+   "store": "sources/WebAssembly/spec/document/core/syntax/types.rst",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/syntax/types.rst",
+   "bytes": 17872,
+   "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d",
+   "git_blob_sha1": "4b75d6a489d593f10e9ee3ecd52401e26e7d6953",
+   "fetched": "2026-09-24T08:54:43.253Z"
+  },
+  {
+   "id": "wasm-src-binary-types",
+   "kind": "source",
+   "format": "rst",
+   "repo": "WebAssembly/spec",
+   "ref": "main",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "path": "document/core/binary/types.rst",
+   "store": "sources/WebAssembly/spec/document/core/binary/types.rst",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/binary/types.rst",
+   "bytes": 5846,
+   "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022",
+   "git_blob_sha1": "49043ed949744bf6ac68fa63dfecf0c5976c4ae8",
+   "fetched": "2026-09-24T08:54:43.434Z"
+  },
+  {
+   "id": "wasm-src-changes",
+   "kind": "source",
+   "format": "rst",
+   "repo": "WebAssembly/spec",
+   "ref": "main",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "path": "document/core/appendix/changes.rst",
+   "store": "sources/WebAssembly/spec/document/core/appendix/changes.rst",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/appendix/changes.rst",
+   "bytes": 21444,
+   "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9",
+   "git_blob_sha1": "0efcee2ae5ab1e2810bc9460992cb0f915a1205f",
+   "fetched": "2026-09-24T08:54:43.626Z"
+  },
+  {
+   "id": "wasm-src-js-api",
+   "kind": "source",
+   "format": "bs",
+   "repo": "WebAssembly/spec",
+   "ref": "main",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "path": "document/js-api/index.bs",
+   "store": "sources/WebAssembly/spec/document/js-api/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/js-api/index.bs",
+   "bytes": 114471,
+   "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+   "git_blob_sha1": "a24dc3ea66edb9deca84b2f291048760fa9e3ddc",
+   "fetched": "2026-09-24T08:54:43.824Z"
+  },
+  {
+   "id": "wasm-src-web-api",
+   "kind": "source",
+   "format": "bs",
+   "repo": "WebAssembly/spec",
+   "ref": "main",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "path": "document/web-api/index.bs",
+   "store": "sources/WebAssembly/spec/document/web-api/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/web-api/index.bs",
+   "bytes": 17819,
+   "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+   "git_blob_sha1": "aa58250d5ced49c8ea3c1c78f0d2ea606e7361ec",
+   "fetched": "2026-09-24T08:54:43.999Z"
+  },
+  {
+   "id": "threads-core-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/threads",
+   "ref": "gh-pages",
+   "commit": "9a158a00f3d29ef783ef40fe5cde374a89f552ab",
+   "path": "core/index.html",
+   "store": "published/webassembly.github.io/threads/core/index.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/threads/core/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/threads/9a158a00f3d29ef783ef40fe5cde374a89f552ab/core/index.html",
+   "bytes": 9189,
+   "sha256": "c932623bfa65d40fa253962a8f1f6a770e97c9f3d020d7a4789b194761c55f75",
+   "git_blob_sha1": "1ba22bfe0a1c9db004a26653dc0ef6f122979f52",
+   "fetched": "2026-09-24T08:54:44.189Z"
+  },
+  {
+   "id": "threads-core-syntax-types",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/threads",
+   "ref": "gh-pages",
+   "commit": "9a158a00f3d29ef783ef40fe5cde374a89f552ab",
+   "path": "core/syntax/types.html",
+   "store": "published/webassembly.github.io/threads/core/syntax/types.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/threads/core/syntax/types.html",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/threads/9a158a00f3d29ef783ef40fe5cde374a89f552ab/core/syntax/types.html",
+   "bytes": 23114,
+   "sha256": "5ca7e70f923df0e1b7a23538a138f7278e43648cbb08d01cb297bf0f9a03064c",
+   "git_blob_sha1": "0ccbc53d9076750d9572a2fd343acff64c1ff711",
+   "fetched": "2026-09-24T08:54:44.389Z"
+  },
+  {
+   "id": "threads-js-api",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/threads",
+   "ref": "gh-pages",
+   "commit": "9a158a00f3d29ef783ef40fe5cde374a89f552ab",
+   "path": "js-api/index.html",
+   "store": "published/webassembly.github.io/threads/js-api/index.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/threads/js-api/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/threads/9a158a00f3d29ef783ef40fe5cde374a89f552ab/js-api/index.html",
+   "bytes": 394053,
+   "sha256": "af8bf32ff33d2029424a316b217ed5191a779524ab9e4e97d2c4d80e6e5a5ac9",
+   "git_blob_sha1": "5d2d6d720aabd2fb42441e48e2b48aa9e34c658b",
+   "fetched": "2026-09-24T08:54:44.588Z"
+  },
+  {
+   "id": "threads-web-api",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebAssembly/threads",
+   "ref": "gh-pages",
+   "commit": "9a158a00f3d29ef783ef40fe5cde374a89f552ab",
+   "path": "web-api/index.html",
+   "store": "published/webassembly.github.io/threads/web-api/index.html",
+   "note": null,
+   "stands_for": "https://webassembly.github.io/threads/web-api/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/threads/9a158a00f3d29ef783ef40fe5cde374a89f552ab/web-api/index.html",
+   "bytes": 77903,
+   "sha256": "c07b7b670e0a379ce5c93dfdc45a08ac839b8b1a20e14f30952f36334599d468",
+   "git_blob_sha1": "3d448f2f1f3486ea464cbef9dbb17e6af570d73e",
+   "fetched": "2026-09-24T08:54:44.764Z"
+  },
+  {
+   "id": "threads-src-overview",
+   "kind": "source",
+   "format": "md",
+   "repo": "WebAssembly/threads",
+   "ref": "main",
+   "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+   "path": "proposals/threads/Overview.md",
+   "store": "sources/WebAssembly/threads/proposals/threads/Overview.md",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/threads/cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0/proposals/threads/Overview.md",
+   "bytes": 33766,
+   "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73",
+   "git_blob_sha1": "a4fce82866be8ff7f3fb307e9fd335fc5f13d237",
+   "fetched": "2026-09-24T08:54:44.931Z"
+  },
+  {
+   "id": "set-src-overview",
+   "kind": "source",
+   "format": "md",
+   "repo": "WebAssembly/shared-everything-threads",
+   "ref": "main",
+   "commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+   "path": "proposals/shared-everything-threads/Overview.md",
+   "store": "sources/WebAssembly/shared-everything-threads/proposals/shared-everything-threads/Overview.md",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/065aa53822e17eea69bfc049df67a16cbd03d9ce/proposals/shared-everything-threads/Overview.md",
+   "bytes": 54750,
+   "sha256": "5eea594af9ec935cdbcfdefd62131905aded7a2c8f85e4b033e03800ed713e7d",
+   "git_blob_sha1": "2f6aa6ea98d6259689468ef9efe54626ca20f4cd",
+   "fetched": "2026-09-24T08:54:45.112Z"
+  },
+  {
+   "id": "gpuweb-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "gpuweb/gpuweb",
+   "ref": "gh-pages",
+   "commit": "399a86cf9537fe0f2723566a4224a65cacf14ccf",
+   "path": "index.html",
+   "store": "published/gpuweb.github.io/gpuweb/index.html",
+   "note": null,
+   "stands_for": "https://gpuweb.github.io/gpuweb/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/399a86cf9537fe0f2723566a4224a65cacf14ccf/index.html",
+   "bytes": 4521819,
+   "sha256": "99118cd7f49e962cbc65160560f89bd960bd39a5321ee94c14f5ed5c99e0c7f9",
+   "git_blob_sha1": "9f685778e3ca4bfd91f0656e09c35e2efdd52520",
+   "fetched": "2026-09-24T08:54:45.476Z"
+  },
+  {
+   "id": "wgsl-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "gpuweb/gpuweb",
+   "ref": "gh-pages",
+   "commit": "399a86cf9537fe0f2723566a4224a65cacf14ccf",
+   "path": "wgsl/index.html",
+   "store": "published/gpuweb.github.io/gpuweb/wgsl/index.html",
+   "note": null,
+   "stands_for": "https://gpuweb.github.io/gpuweb/wgsl/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/399a86cf9537fe0f2723566a4224a65cacf14ccf/wgsl/index.html",
+   "bytes": 3104335,
+   "sha256": "3958c198bd96b6be4e8de1070b47959faa7b7a84d31e79cce0fa18cdfe8629d6",
+   "git_blob_sha1": "ad2e8a81d8ec115ceb336153a639994709e17e17",
+   "fetched": "2026-09-24T08:54:45.791Z"
+  },
+  {
+   "id": "gpuweb-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "gpuweb/gpuweb",
+   "ref": "main",
+   "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "path": "spec/index.bs",
+   "store": "sources/gpuweb/gpuweb/spec/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+   "bytes": 848916,
+   "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+   "git_blob_sha1": "53e14b7b3219aea7b4904f0d503c38a2a8465a43",
+   "fetched": "2026-09-24T08:54:46.069Z"
+  },
+  {
+   "id": "wgsl-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "gpuweb/gpuweb",
+   "ref": "main",
+   "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "path": "wgsl/index.bs",
+   "store": "sources/gpuweb/gpuweb/wgsl/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/wgsl/index.bs",
+   "bytes": 928167,
+   "sha256": "11b1020a2fec581050599ae8e035a7138de551129c0856e055b41b4342d658fd",
+   "git_blob_sha1": "17cce6a842e44ea611f8eb9486f33fabf0f8315a",
+   "fetched": "2026-09-24T08:54:46.310Z"
+  },
+  {
+   "id": "webnn-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "webmachinelearning/webnn",
+   "ref": "gh-pages",
+   "commit": "c5dcdee6011f2bfd52917ae60e14981c73347c8b",
+   "path": "index.html",
+   "store": "published/webmachinelearning.github.io/webnn/index.html",
+   "note": null,
+   "stands_for": "https://webmachinelearning.github.io/webnn/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/webmachinelearning/webnn/c5dcdee6011f2bfd52917ae60e14981c73347c8b/index.html",
+   "bytes": 3315987,
+   "sha256": "7676dea50c9b2821d5163a5a4bfdde31021cba59666c26e4f69d44f452a29302",
+   "git_blob_sha1": "bc3a20c980ac71b07caf72289be8dcfd5dc3cd28",
+   "fetched": "2026-09-24T08:54:46.660Z"
+  },
+  {
+   "id": "webcodecs-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/webcodecs",
+   "ref": "gh-pages",
+   "commit": "4b682a0f4a75be7f931d90f93eb32b1789990e94",
+   "path": "index.html",
+   "store": "published/w3c.github.io/webcodecs/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/webcodecs/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/webcodecs/4b682a0f4a75be7f931d90f93eb32b1789990e94/index.html",
+   "bytes": 1751411,
+   "sha256": "48c188b038d1996daf02409ef17b249c9008e457254278e84c98b719d1358120",
+   "git_blob_sha1": "b4f65340002c4af8f25d5455032af3799b2cb1f6",
+   "fetched": "2026-09-24T08:54:47.166Z"
+  },
+  {
+   "id": "mediacapture-getusermedia",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/mediacapture-main",
+   "ref": "gh-pages",
+   "commit": "215cb8d7abf82e582a45ad3ea87016513fa2c988",
+   "path": "getusermedia.html",
+   "store": "published/w3c.github.io/mediacapture-main/getusermedia.html",
+   "note": "index.html on that branch is a 35-byte redirect stub to archives/; the editor's draft is getusermedia.html",
+   "stands_for": "https://w3c.github.io/mediacapture-main/getusermedia.html",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/mediacapture-main/215cb8d7abf82e582a45ad3ea87016513fa2c988/getusermedia.html",
+   "bytes": 282841,
+   "sha256": "0901bb87d24561d407d0c1892d6f0b47c3d12a38776064b0ba62b25f4f445f14",
+   "git_blob_sha1": "58c776fd2429cc33f3150a641ebaea5c50b27c7e",
+   "fetched": "2026-09-24T08:54:47.391Z"
+  },
+  {
+   "id": "secure-contexts-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/webappsec-secure-contexts",
+   "ref": "gh-pages",
+   "commit": "fcb77fad84a9b2486ef2ff4ee030ef4ccdd82de0",
+   "path": "index.html",
+   "store": "published/w3c.github.io/webappsec-secure-contexts/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/webappsec-secure-contexts/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/webappsec-secure-contexts/fcb77fad84a9b2486ef2ff4ee030ef4ccdd82de0/index.html",
+   "bytes": 128785,
+   "sha256": "7c3806c45a63d8078970a5760b8f31457aadc9f7705c4ec8ca11b4a10291e0e3",
+   "git_blob_sha1": "d353cee636112c40f37c78a52e35760b243395c4",
+   "fetched": "2026-09-24T08:54:47.599Z"
+  },
+  {
+   "id": "secure-contexts-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "w3c/webappsec-secure-contexts",
+   "ref": "main",
+   "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+   "path": "index.bs",
+   "store": "sources/w3c/webappsec-secure-contexts/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/webappsec-secure-contexts/68191bb08a685c1e2d2270e72d2b14b36ba96f42/index.bs",
+   "bytes": 39524,
+   "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1",
+   "git_blob_sha1": "1f8867664550c585194f066d6f9c030c006f233c",
+   "fetched": "2026-09-24T08:54:48.011Z"
+  },
+  {
+   "id": "permissions-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/permissions",
+   "ref": "gh-pages",
+   "commit": "ac71e589ea5990f38a40a09ae4d1f21ac88c2b16",
+   "path": "index.html",
+   "store": "published/w3c.github.io/permissions/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/permissions/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/permissions/ac71e589ea5990f38a40a09ae4d1f21ac88c2b16/index.html",
+   "bytes": 336720,
+   "sha256": "e355948becd1c0327d9768aaa4e97dc801b4faae1d35c7d7e3f66c68c4cf55f8",
+   "git_blob_sha1": "68b1103bdd3fb9716223d5d57f8ebdb27da2e793",
+   "fetched": "2026-09-24T08:54:48.230Z"
+  },
+  {
+   "id": "permissions-policy-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/webappsec-permissions-policy",
+   "ref": "gh-pages",
+   "commit": "1eb687a99be95a0a69a9b4c1eba0ccbbe85ae985",
+   "path": "index.html",
+   "store": "published/w3c.github.io/webappsec-permissions-policy/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/webappsec-permissions-policy/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/webappsec-permissions-policy/1eb687a99be95a0a69a9b4c1eba0ccbbe85ae985/index.html",
+   "bytes": 389094,
+   "sha256": "accd154d3f3cbd2003fa18aaa52d3cadb6ccba25b4868de660ff4cc88ac5b29f",
+   "git_blob_sha1": "a1b5f2e5c65e4526e3cc852fd51650a73659a71c",
+   "fetched": "2026-09-24T08:54:48.438Z"
+  },
+  {
+   "id": "indexeddb-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/IndexedDB",
+   "ref": "gh-pages",
+   "commit": "da7991bc1c84f151dfbe8cd4e33fb50c21a05fd9",
+   "path": "index.html",
+   "store": "published/w3c.github.io/IndexedDB/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/IndexedDB/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/IndexedDB/da7991bc1c84f151dfbe8cd4e33fb50c21a05fd9/index.html",
+   "bytes": 1588923,
+   "sha256": "a63ab4f3bad56a3600d8e55df22c2144023aa795f4796acf7fc16a705503769d",
+   "git_blob_sha1": "412d8ad2b2750f18d12956a6b8bf0fa566c517dd",
+   "fetched": "2026-09-24T08:54:48.699Z"
+  },
+  {
+   "id": "indexeddb-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "w3c/IndexedDB",
+   "ref": "main",
+   "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+   "path": "index.bs",
+   "store": "sources/w3c/IndexedDB/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/IndexedDB/f70491894a213c30424e1f6cfb9466ba82d7e996/index.bs",
+   "bytes": 277352,
+   "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8",
+   "git_blob_sha1": "88bbfeb4176681b3de7598c727e65ec0c8659141",
+   "fetched": "2026-09-24T08:54:48.920Z"
+  },
+  {
+   "id": "serviceworker-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/ServiceWorker",
+   "ref": "gh-pages",
+   "commit": "65c0b6f013f511233ca8490d9f0d0b45d947f5a7",
+   "path": "index.html",
+   "store": "published/w3c.github.io/ServiceWorker/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/ServiceWorker/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/ServiceWorker/65c0b6f013f511233ca8490d9f0d0b45d947f5a7/index.html",
+   "bytes": 1923358,
+   "sha256": "eafd5978cb0ea5f56ae7c9f57d88048065d816154abafce4bc2c475b6d48c0ec",
+   "git_blob_sha1": "3867234e4ca12fcfcf9b5d0aae44f2977bec2d26",
+   "fetched": "2026-09-24T08:54:49.176Z"
+  },
+  {
+   "id": "serviceworker-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "w3c/ServiceWorker",
+   "ref": "main",
+   "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "path": "index.bs",
+   "store": "sources/w3c/ServiceWorker/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/ServiceWorker/2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc/index.bs",
+   "bytes": 297377,
+   "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+   "git_blob_sha1": "4470f8e06242be073a256a609a8aa0fe603976ed",
+   "fetched": "2026-09-24T08:54:49.390Z"
+  },
+  {
+   "id": "manifest-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/manifest",
+   "ref": "gh-pages",
+   "commit": "cc98a2acb99b8ef593b6370faf725058a9559a96",
+   "path": "index.html",
+   "store": "published/w3c.github.io/manifest/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/manifest/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/manifest/cc98a2acb99b8ef593b6370faf725058a9559a96/index.html",
+   "bytes": 640165,
+   "sha256": "57b96d0aaaad7f30e2430efafeb2fa2e82ee71ae0adb6b02d425a096c1b80924",
+   "git_blob_sha1": "15a5f27d86859db39ea87fa177236bad334bbcbd",
+   "fetched": "2026-09-24T08:54:49.617Z"
+  },
+  {
+   "id": "manifest-src",
+   "kind": "source",
+   "format": "html",
+   "repo": "w3c/manifest",
+   "ref": "main",
+   "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+   "path": "index.html",
+   "store": "sources/w3c/manifest/index.html",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/manifest/8ae3046968895a9d2485e09b4561e09029a8edbf/index.html",
+   "bytes": 159072,
+   "sha256": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d",
+   "git_blob_sha1": "d5bb004278d59f7915ae982834f12932a0304934",
+   "fetched": "2026-09-24T08:54:49.818Z"
+  },
+  {
+   "id": "web-locks-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/web-locks",
+   "ref": "gh-pages",
+   "commit": "b4e69588396019463ad60a3abe85a7b8f1c59374",
+   "path": "index.html",
+   "store": "published/w3c.github.io/web-locks/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/web-locks/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/web-locks/b4e69588396019463ad60a3abe85a7b8f1c59374/index.html",
+   "bytes": 284113,
+   "sha256": "a8e7d4216fe29a829d2ad9cf620470228c3f68a9cfd88be708280a22136ec91f",
+   "git_blob_sha1": "da2f8a24ba930696f5552d33de3502c8319c8064",
+   "fetched": "2026-09-24T08:54:50.033Z"
+  },
+  {
+   "id": "web-locks-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "w3c/web-locks",
+   "ref": "main",
+   "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+   "path": "index.bs",
+   "store": "sources/w3c/web-locks/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/web-locks/a61a77307d2a0b0928320a2ff9c897b7658a9e2e/index.bs",
+   "bytes": 43490,
+   "sha256": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9",
+   "git_blob_sha1": "1800ed46772eafbd915067b1bdf0b19b875a3fb0",
+   "fetched": "2026-09-24T08:54:50.223Z"
+  },
+  {
+   "id": "webcrypto-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/webcrypto",
+   "ref": "gh-pages",
+   "commit": "3e43d42bf5b508231a5c02281d36e1f734e22774",
+   "path": "index.html",
+   "store": "published/w3c.github.io/webcrypto/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/webcrypto/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/webcrypto/3e43d42bf5b508231a5c02281d36e1f734e22774/index.html",
+   "bytes": 1613869,
+   "sha256": "0a7ea877940f255d9f9b6477a2be55a0ddf7319fa194008fadc41e8b2a0e9a6e",
+   "git_blob_sha1": "14b9e0210f88b3329cd347d1e3744b9c952dfb3a",
+   "fetched": "2026-09-24T08:54:50.496Z"
+  },
+  {
+   "id": "webcrypto-src",
+   "kind": "source",
+   "format": "html",
+   "repo": "w3c/webcrypto",
+   "ref": "main",
+   "commit": "811c24c69eb22d477af5f1678cb70dbc611c7c40",
+   "path": "spec/Overview.html",
+   "store": "sources/w3c/webcrypto/spec/Overview.html",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/webcrypto/811c24c69eb22d477af5f1678cb70dbc611c7c40/spec/Overview.html",
+   "bytes": 674900,
+   "sha256": "00a094ac4298f0c7a5a4afe599281827c98fefbe72b09756f1f5859746f52c97",
+   "git_blob_sha1": "d568caa38f4f1fe7b1b8034a578b99d2008b7477",
+   "fetched": "2026-09-24T08:54:51.131Z"
+  },
+  {
+   "id": "sensors-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/sensors",
+   "ref": "gh-pages",
+   "commit": "f18fbc5b3445632f4a58264e49619fddda705327",
+   "path": "index.html",
+   "store": "published/w3c.github.io/sensors/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/sensors/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/sensors/f18fbc5b3445632f4a58264e49619fddda705327/index.html",
+   "bytes": 544721,
+   "sha256": "85047b1c1474f29ee4e2a6d110643c93079c265ea03b0f598ed09309910d6ae8",
+   "git_blob_sha1": "ca04c9846edb8e62c6c9b4df184ecedfe2c34844",
+   "fetched": "2026-09-24T08:54:51.363Z"
+  },
+  {
+   "id": "accelerometer-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/accelerometer",
+   "ref": "gh-pages",
+   "commit": "cae67c0d2b9a960ac23e1b7a0b78edd2235305be",
+   "path": "index.html",
+   "store": "published/w3c.github.io/accelerometer/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/accelerometer/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/accelerometer/cae67c0d2b9a960ac23e1b7a0b78edd2235305be/index.html",
+   "bytes": 214446,
+   "sha256": "37a8bc2cb45432ab82806c602261f1a4ca3d21bed67262b2c5826102eb70f248",
+   "git_blob_sha1": "3a7425b0dbccbeacb56ec6fd8afb7912f144c95a",
+   "fetched": "2026-09-24T08:54:51.577Z"
+  },
+  {
+   "id": "gyroscope-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/gyroscope",
+   "ref": "gh-pages",
+   "commit": "5bb1f8ec128b1bf99cf4186cd9ab2cba735fa110",
+   "path": "index.html",
+   "store": "published/w3c.github.io/gyroscope/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/gyroscope/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/gyroscope/5bb1f8ec128b1bf99cf4186cd9ab2cba735fa110/index.html",
+   "bytes": 142155,
+   "sha256": "d9b208a2d54ea9d181ecc18540141ce059a48457b0432d71aadc344bfffc901a",
+   "git_blob_sha1": "8bbd1a013ae61b410c417620550a870905077554",
+   "fetched": "2026-09-24T08:54:51.786Z"
+  },
+  {
+   "id": "magnetometer-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/magnetometer",
+   "ref": "gh-pages",
+   "commit": "10eca32cea1ba09d160621a06227ec65b7c3d07b",
+   "path": "index.html",
+   "store": "published/w3c.github.io/magnetometer/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/magnetometer/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/magnetometer/10eca32cea1ba09d160621a06227ec65b7c3d07b/index.html",
+   "bytes": 186672,
+   "sha256": "6053fc1a26b9a7d226c34027d49c2850faf45a4315fa87dfdd1f30e2de1c7036",
+   "git_blob_sha1": "6ae27d12d72d606a2d4f78520f10347a608f7c0b",
+   "fetched": "2026-09-24T08:54:51.974Z"
+  },
+  {
+   "id": "orientation-sensor-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/orientation-sensor",
+   "ref": "gh-pages",
+   "commit": "acc331f74db671de7557d0c11b52e1d765c11a3b",
+   "path": "index.html",
+   "store": "published/w3c.github.io/orientation-sensor/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/orientation-sensor/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/orientation-sensor/acc331f74db671de7557d0c11b52e1d765c11a3b/index.html",
+   "bytes": 204293,
+   "sha256": "b56e3ec1b763d609092500c2535595ebcc7600071ac935720584e41d361d9510",
+   "git_blob_sha1": "49079ce4eae32b2184d9feeb5097c3a30869b21b",
+   "fetched": "2026-09-24T08:54:52.205Z"
+  },
+  {
+   "id": "deviceorientation-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/deviceorientation",
+   "ref": "gh-pages",
+   "commit": "4b6c4a3d39c1f61043041b8b583d91bed8e66adc",
+   "path": "index.html",
+   "store": "published/w3c.github.io/deviceorientation/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/deviceorientation/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/deviceorientation/4b6c4a3d39c1f61043041b8b583d91bed8e66adc/index.html",
+   "bytes": 423882,
+   "sha256": "6185a82d9cc8dee9fe9bbb78429a6c2a4335012689309e98743e1720c781cafc",
+   "git_blob_sha1": "36f5e9e3ed5dd9d64da486a5a6f1b9cdb068eac4",
+   "fetched": "2026-09-24T08:54:52.434Z"
+  },
+  {
+   "id": "proximity-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/proximity",
+   "ref": "gh-pages",
+   "commit": "b99495b3a2ce101ffcdfca7c0fc31d3ccffe2676",
+   "path": "index.html",
+   "store": "published/w3c.github.io/proximity/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/proximity/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/proximity/b99495b3a2ce101ffcdfca7c0fc31d3ccffe2676/index.html",
+   "bytes": 126210,
+   "sha256": "b77998d9d1665118ba2e81c223a4db2c14372d556be2c231e21808f786a91317",
+   "git_blob_sha1": "e426868ff355962da30ee2caebf166b7ae1beedb",
+   "fetched": "2026-09-24T08:54:52.636Z"
+  },
+  {
+   "id": "ambient-light-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/ambient-light",
+   "ref": "gh-pages",
+   "commit": "ae93d6df4d85ab4477b813e817981bd218eb74a5",
+   "path": "index.html",
+   "store": "published/w3c.github.io/ambient-light/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/ambient-light/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/ambient-light/ae93d6df4d85ab4477b813e817981bd218eb74a5/index.html",
+   "bytes": 145059,
+   "sha256": "f3a01370a5c8c38998733c96bb2f0ba7dfbd340b833e207867db9193054b3de9",
+   "git_blob_sha1": "1ae9d7756cd4b79d7328c80b7a30cdbc055888fe",
+   "fetched": "2026-09-24T08:54:52.852Z"
+  },
+  {
+   "id": "geolocation-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "w3c/geolocation",
+   "ref": "gh-pages",
+   "commit": "c9bfbcd63e9713a45f5812d6b93ad8a06be8c6fa",
+   "path": "index.html",
+   "store": "published/w3c.github.io/geolocation/index.html",
+   "note": null,
+   "stands_for": "https://w3c.github.io/geolocation/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/w3c/geolocation/c9bfbcd63e9713a45f5812d6b93ad8a06be8c6fa/index.html",
+   "bytes": 363666,
+   "sha256": "4c95d461fb82779eb9e977e64025a4d3b5ea5ef4738d16e7ad50dcaaa9ec29d3",
+   "git_blob_sha1": "1f3d8a6268d4faa72eaf3f981c3ecd75dc848584",
+   "fetched": "2026-09-24T08:54:53.064Z"
+  },
+  {
+   "id": "webxr-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "immersive-web/webxr",
+   "ref": "gh-pages",
+   "commit": "4f2898158f9f3ade9d3103b8677fd5267b4dc552",
+   "path": "index.html",
+   "store": "published/immersive-web.github.io/webxr/index.html",
+   "note": null,
+   "stands_for": "https://immersive-web.github.io/webxr/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/immersive-web/webxr/4f2898158f9f3ade9d3103b8677fd5267b4dc552/index.html",
+   "bytes": 1529851,
+   "sha256": "5c57ef3cb1205cf7268050b361ed4f7c3bd2542c592d8fbdd64e22c44e2dbd6d",
+   "git_blob_sha1": "12d1b291a50b440aec88806cc3263f6e1cb66253",
+   "fetched": "2026-09-24T08:54:53.342Z"
+  },
+  {
+   "id": "webhid-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "WICG/webhid",
+   "ref": "gh-pages",
+   "commit": "f3a450c64f17a23f8df8b6056858f96ae1d22945",
+   "path": "index.html",
+   "store": "published/wicg.github.io/webhid/index.html",
+   "note": null,
+   "stands_for": "https://wicg.github.io/webhid/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WICG/webhid/f3a450c64f17a23f8df8b6056858f96ae1d22945/index.html",
+   "bytes": 517266,
+   "sha256": "6cb359dae15fe9d9b600e2433200a1c51617c3f78ce59f6144d2a109556eb62b",
+   "git_blob_sha1": "31140311f3eba12c331f72a6bd18b763a34b57e7",
+   "fetched": "2026-09-24T08:54:53.570Z"
+  },
+  {
+   "id": "webusb-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "WICG/webusb",
+   "ref": "gh-pages",
+   "commit": "b66dce7d5ae26e28b556cd641d57725a61a27dc3",
+   "path": "index.html",
+   "store": "published/wicg.github.io/webusb/index.html",
+   "note": null,
+   "stands_for": "https://wicg.github.io/webusb/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WICG/webusb/b66dce7d5ae26e28b556cd641d57725a61a27dc3/index.html",
+   "bytes": 871342,
+   "sha256": "095c43b9423c44702382304ec1839270372c0609f94f14ea24d869683edc28cd",
+   "git_blob_sha1": "909c08cd53cd23b7f7b942a32ec8842cb733cafe",
+   "fetched": "2026-09-24T08:54:54.369Z"
+  },
+  {
+   "id": "serial-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "whatwg/serial",
+   "ref": "gh-pages",
+   "commit": "4a824f3b0fd2953c0ead7dccd317592239ebe1c1",
+   "path": "index.html",
+   "store": "published/serial.spec.whatwg.org/index.html",
+   "note": null,
+   "stands_for": "https://serial.spec.whatwg.org/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/serial/4a824f3b0fd2953c0ead7dccd317592239ebe1c1/index.html",
+   "bytes": 327025,
+   "sha256": "9b94a6ce9d62af923a02c61093cf37051d02d1ce5b8e32d39ae802d84493da39",
+   "git_blob_sha1": "493587360d294c6c6dde898fbbfd042a4364845c",
+   "fetched": "2026-09-24T08:54:54.603Z"
+  },
+  {
+   "id": "serial-src",
+   "kind": "source",
+   "format": "html",
+   "repo": "whatwg/serial",
+   "ref": "main",
+   "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+   "path": "index.html",
+   "store": "sources/whatwg/serial/index.html",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/serial/600bbf14337b49bca06ba9b7182d21d2d8b455c2/index.html",
+   "bytes": 84878,
+   "sha256": "48d0a5629c71f2b523108b817d9c0c8c2851959d442f37a3a1b3094b3313dcc3",
+   "git_blob_sha1": "1f12d08660ddae1b93afb360cfca7b4e461b5ede",
+   "fetched": "2026-09-24T08:54:54.868Z"
+  },
+  {
+   "id": "web-bluetooth-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "WebBluetoothCG/web-bluetooth",
+   "ref": "gh-pages",
+   "commit": "3034269cd5d155d805bd302933b5f80e282608cc",
+   "path": "index.html",
+   "store": "published/webbluetoothcg.github.io/web-bluetooth/index.html",
+   "note": null,
+   "stands_for": "https://webbluetoothcg.github.io/web-bluetooth/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/WebBluetoothCG/web-bluetooth/3034269cd5d155d805bd302933b5f80e282608cc/index.html",
+   "bytes": 1845695,
+   "sha256": "e5fb075be03bb70f5f3a7677dbf889856c6fc011c90e7fe28dab3c321fd6874f",
+   "git_blob_sha1": "e577db56ade3796716a8b945c4d9fed9cf0e9390",
+   "fetched": "2026-09-24T08:54:55.132Z"
+  },
+  {
+   "id": "ecma262-index",
+   "kind": "published",
+   "format": "html",
+   "repo": "tc39/ecma262",
+   "ref": "gh-pages",
+   "commit": "181d3068d76544298cbe5e4ffd6e668f1e1587fa",
+   "path": "index.html",
+   "store": "published/tc39.es/ecma262/index.html",
+   "note": null,
+   "stands_for": "https://tc39.es/ecma262/",
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/tc39/ecma262/181d3068d76544298cbe5e4ffd6e668f1e1587fa/index.html",
+   "bytes": 7626882,
+   "sha256": "e2b29c85f37b8ded51873ce385b6573a35cbc26b467c21c14f8184f3bab5aa26",
+   "git_blob_sha1": "a9d2e8eab87cc1fb8f78bb9d22286dc0a44d5e1c",
+   "fetched": "2026-09-24T08:54:56.006Z"
+  },
+  {
+   "id": "html-src",
+   "kind": "source",
+   "format": "wattsi",
+   "repo": "whatwg/html",
+   "ref": "main",
+   "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+   "path": "source",
+   "store": "sources/whatwg/html/source",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/html/cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d/source",
+   "bytes": 7915656,
+   "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+   "git_blob_sha1": "d078e5ed6fd79283950400b5011f8e2b99f09974",
+   "fetched": "2026-09-24T08:54:56.766Z"
+  },
+  {
+   "id": "webidl-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/webidl",
+   "ref": "main",
+   "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+   "path": "index.bs",
+   "store": "sources/whatwg/webidl/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/webidl/6a53497380036fc4a25b82be889a88e0de7cf448/index.bs",
+   "bytes": 693068,
+   "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9",
+   "git_blob_sha1": "e6064535db20961ce2f5d23ed03c187eb06e3b14",
+   "fetched": "2026-09-24T08:54:56.997Z"
+  },
+  {
+   "id": "dom-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/dom",
+   "ref": "main",
+   "commit": "a2331a45360129e8645ef7e0a04740241b6e3726",
+   "path": "dom.bs",
+   "store": "sources/whatwg/dom/dom.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/dom/a2331a45360129e8645ef7e0a04740241b6e3726/dom.bs",
+   "bytes": 476405,
+   "sha256": "d98c6542f35f2aa976cfbf037f8cd1f556c09a704700f19a0a163100935098ff",
+   "git_blob_sha1": "2b4e5a7bd9551db83c5d99931351f0bc7bb1618d",
+   "fetched": "2026-09-24T08:54:57.248Z"
+  },
+  {
+   "id": "infra-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/infra",
+   "ref": "main",
+   "commit": "3f984adcd24a6d5c53cc26b3e737701808003f3e",
+   "path": "infra.bs",
+   "store": "sources/whatwg/infra/infra.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/infra/3f984adcd24a6d5c53cc26b3e737701808003f3e/infra.bs",
+   "bytes": 104059,
+   "sha256": "7c38e6e25ef21f536142cfc6d94954c41bc9889cd0b6fd67ab34571215acd8eb",
+   "git_blob_sha1": "0446ff3db3bb9101275968e6c4442e2aa8ab8ff7",
+   "fetched": "2026-09-24T08:54:57.441Z"
+  },
+  {
+   "id": "fetch-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/fetch",
+   "ref": "main",
+   "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+   "path": "fetch.bs",
+   "store": "sources/whatwg/fetch/fetch.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/fetch/357bd98924d94b81fbe8608192a2ee1f123b82f4/fetch.bs",
+   "bytes": 444018,
+   "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36",
+   "git_blob_sha1": "702dd0131e5bd3b7060f27e16109af3ca481a42b",
+   "fetched": "2026-09-24T08:54:57.666Z"
+  },
+  {
+   "id": "streams-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/streams",
+   "ref": "main",
+   "commit": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+   "path": "index.bs",
+   "store": "sources/whatwg/streams/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/streams/b9ba9f49d95b4280be0dc2372377a006c3a91c18/index.bs",
+   "bytes": 417076,
+   "sha256": "24360b4f8446e6c80e185c5021fcca9b67a7e0bb62490a00109080ebc04c6440",
+   "git_blob_sha1": "ba3fe86600a4670f735346b404b4dff47a09d79e",
+   "fetched": "2026-09-24T08:54:57.899Z"
+  },
+  {
+   "id": "storage-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/storage",
+   "ref": "main",
+   "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+   "path": "storage.bs",
+   "store": "sources/whatwg/storage/storage.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/storage/1933f424de8d0b2d1073e10f3fb77bd12b11efca/storage.bs",
+   "bytes": 30128,
+   "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+   "git_blob_sha1": "9825d49afccb434b1146eb5cafc2f2084300e4af",
+   "fetched": "2026-09-24T08:54:58.081Z"
+  },
+  {
+   "id": "fs-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/fs",
+   "ref": "main",
+   "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+   "path": "index.bs",
+   "store": "sources/whatwg/fs/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/fs/cd55e5582e9c915c6341479bceaa4216f7a05413/index.bs",
+   "bytes": 85583,
+   "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+   "git_blob_sha1": "267287d0f94cde3ddba54f6f7895b85982de98f7",
+   "fetched": "2026-09-24T08:54:58.302Z"
+  },
+  {
+   "id": "compression-src",
+   "kind": "source",
+   "format": "bs",
+   "repo": "whatwg/compression",
+   "ref": "main",
+   "commit": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+   "path": "index.bs",
+   "store": "sources/whatwg/compression/index.bs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/whatwg/compression/770f314342e2ee560353a04a7f30ee9449a23ee4/index.bs",
+   "bytes": 12195,
+   "sha256": "15ae346d1a953f4b65dee0d4f4dfe1d5252d790e5bef496d8f29ddf9c14a8e2f",
+   "git_blob_sha1": "c228756aeb9a2aa12778a7013be056e98638423d",
+   "fetched": "2026-09-24T08:54:58.477Z"
+  },
+  {
+   "id": "rust-reference-preludes",
+   "kind": "source",
+   "format": "md",
+   "repo": "rust-lang/reference",
+   "ref": "master",
+   "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+   "path": "src/names/preludes.md",
+   "store": "sources/rust-lang/reference/src/names/preludes.md",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/rust-lang/reference/52ffdc09065e0043e877546da923c01bf875d41d/src/names/preludes.md",
+   "bytes": 10212,
+   "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+   "git_blob_sha1": "0daf4a1d7abb9c4373af40c1a527b22061d363d5",
+   "fetched": "2026-09-24T08:54:58.650Z"
+  },
+  {
+   "id": "cargo-unstable",
+   "kind": "source",
+   "format": "md",
+   "repo": "rust-lang/cargo",
+   "ref": "master",
+   "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+   "path": "doc/book/src/reference/unstable.md",
+   "store": "sources/rust-lang/cargo/src/doc/src/reference/unstable.md",
+   "note": "the D11 pin path is tried first; alt paths cover the book directory move",
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/rust-lang/cargo/694054f34bcb04025b16d0eaf075038c0e58a15d/doc/book/src/reference/unstable.md",
+   "bytes": 98671,
+   "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd",
+   "git_blob_sha1": "865d1db66f4b9cbd85855244a830a7816d2a1633",
+   "fetched": "2026-09-24T08:54:59.056Z",
+   "tried": [
+    "src/doc/src/reference/unstable.md:HTTP_404",
+    "doc/book/src/reference/unstable.md:OK"
+   ]
+  },
+  {
+   "id": "rustc-wasm64-doc",
+   "kind": "source",
+   "format": "md",
+   "repo": "rust-lang/rust",
+   "ref": "main",
+   "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+   "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "store": "sources/rust-lang/rust/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/rust-lang/rust/3670d2532bdf51abbe0b8fea22284d7ca340ffe3/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "bytes": 4126,
+   "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+   "git_blob_sha1": "cc21da11f4de1915176bd2fd0eece1e2102a8e26",
+   "fetched": "2026-09-24T08:54:59.221Z"
+  },
+  {
+   "id": "rustc-wasm64-target-spec",
+   "kind": "source",
+   "format": "code",
+   "repo": "rust-lang/rust",
+   "ref": "main",
+   "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+   "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "store": "sources/rust-lang/rust/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/rust-lang/rust/3670d2532bdf51abbe0b8fea22284d7ca340ffe3/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "bytes": 1985,
+   "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb",
+   "git_blob_sha1": "7f9341b3ef91b05035f462ff31ce34a1497f9efb",
+   "fetched": "2026-09-24T08:54:59.388Z"
+  },
+  {
+   "id": "git-glossary",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/glossary-content.adoc",
+   "store": "sources/git/git/Documentation/glossary-content.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/glossary-content.adoc",
+   "bytes": 33357,
+   "sha256": "0635310817aac48a1b2087e957f60be0d95d05834670460143dbde85c8a7be7e",
+   "git_blob_sha1": "52301a56ddaa60047722c2e530a406a9d8373619",
+   "fetched": "2026-09-24T08:54:59.552Z"
+  },
+  {
+   "id": "git-revisions",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/gitrevisions.adoc",
+   "store": "sources/git/git/Documentation/gitrevisions.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/gitrevisions.adoc",
+   "bytes": 824,
+   "sha256": "afe4cab8520820d9bf583ec5688beea000d50cce6fdd3c841eb9df94763feadd",
+   "git_blob_sha1": "7146117de5f23fa12cdff7f4dc80c82514ab52a1",
+   "fetched": "2026-09-24T08:54:59.720Z"
+  },
+  {
+   "id": "git-repository-layout",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/gitrepository-layout.adoc",
+   "store": "sources/git/git/Documentation/gitrepository-layout.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/gitrepository-layout.adoc",
+   "bytes": 11890,
+   "sha256": "39ce8d137a30e1fd80eeae146b1c424e56f688f4ddd001259eb98543d3209439",
+   "git_blob_sha1": "7421ef956d35ac626a19c3af5c4cc18491695dd2",
+   "fetched": "2026-09-24T08:54:59.884Z"
+  },
+  {
+   "id": "git-worktree",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/git-worktree.adoc",
+   "store": "sources/git/git/Documentation/git-worktree.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/git-worktree.adoc",
+   "bytes": 22021,
+   "sha256": "ee8a368564ace74a07e4a034e080b26fb1c3b35d17ef1fe41dcbfcc5595fe8dc",
+   "git_blob_sha1": "32787eacc3c17d743e3221daaeb6676b2675897c",
+   "fetched": "2026-09-24T08:55:00.062Z"
+  },
+  {
+   "id": "git-user-manual",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/user-manual.adoc",
+   "store": "sources/git/git/Documentation/user-manual.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/user-manual.adoc",
+   "bytes": 174683,
+   "sha256": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424",
+   "git_blob_sha1": "5ec65cebe29dd7e4ba6be98a92de7753c0001259",
+   "fetched": "2026-09-24T08:55:00.270Z"
+  },
+  {
+   "id": "git-update-ref",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/git-update-ref.adoc",
+   "store": "sources/git/git/Documentation/git-update-ref.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/git-update-ref.adoc",
+   "bytes": 7612,
+   "sha256": "ba4abaaa5acc9e73587ae2195e0bf431f744258214e575e30f29ae3ff3763a22",
+   "git_blob_sha1": "37a5019a8bc75e29f23decb8b1b70c28c9412771",
+   "fetched": "2026-09-24T08:55:00.461Z"
+  },
+  {
+   "id": "git-format-pack",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/gitformat-pack.adoc",
+   "store": "sources/git/git/Documentation/gitformat-pack.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/gitformat-pack.adoc",
+   "bytes": 27494,
+   "sha256": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b",
+   "git_blob_sha1": "3416edceab82e9d5a758ac80e6b05b546ec10b72",
+   "fetched": "2026-09-24T08:55:00.637Z"
+  },
+  {
+   "id": "git-hash-transition",
+   "kind": "source",
+   "format": "adoc",
+   "repo": "git/git",
+   "ref": "master",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "path": "Documentation/technical/hash-function-transition.adoc",
+   "store": "sources/git/git/Documentation/technical/hash-function-transition.adoc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/technical/hash-function-transition.adoc",
+   "bytes": 36295,
+   "sha256": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d",
+   "git_blob_sha1": "241d2f763dd43624bb300982963d60485e7f5dde",
+   "fetched": "2026-09-24T08:55:00.833Z"
+  },
+  {
+   "id": "chromium-content-switches",
+   "kind": "source",
+   "format": "code",
+   "repo": "chromium/chromium",
+   "ref": "main",
+   "commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "path": "content/public/common/content_switches.cc",
+   "store": "sources/chromium/chromium/content/public/common/content_switches.cc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/chromium/chromium/5c5d5f1b5b7d5f58d381663166f52d6f4de551da/content/public/common/content_switches.cc",
+   "bytes": 45378,
+   "sha256": "0262144447bae97b511b1f4e3cfcda4dcd58c5775c890b0b2ff517a3d1b4764e",
+   "git_blob_sha1": "2ad794823dc328d4ce7253c931eac3c8d3373460",
+   "fetched": "2026-09-24T08:55:01.062Z"
+  },
+  {
+   "id": "chromium-gl-switches",
+   "kind": "source",
+   "format": "code",
+   "repo": "chromium/chromium",
+   "ref": "main",
+   "commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "path": "ui/gl/gl_switches.cc",
+   "store": "sources/chromium/chromium/ui/gl/gl_switches.cc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/chromium/chromium/5c5d5f1b5b7d5f58d381663166f52d6f4de551da/ui/gl/gl_switches.cc",
+   "bytes": 19072,
+   "sha256": "8762d5ed6fd4e565e0632d33dad588cf29d6df8089cdc4deab5f3e8e218ffd5e",
+   "git_blob_sha1": "8b942e0c71e5b8e3a0bb8984bada140edfe5cdeb",
+   "fetched": "2026-09-24T08:55:01.274Z"
+  },
+  {
+   "id": "chromium-gpu-switches",
+   "kind": "source",
+   "format": "code",
+   "repo": "chromium/chromium",
+   "ref": "main",
+   "commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "path": "gpu/config/gpu_switches.cc",
+   "store": "sources/chromium/chromium/gpu/config/gpu_switches.cc",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/chromium/chromium/5c5d5f1b5b7d5f58d381663166f52d6f4de551da/gpu/config/gpu_switches.cc",
+   "bytes": 7842,
+   "sha256": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640",
+   "git_blob_sha1": "ee4056a7c85bdf10d8799d1ab0d5b10f5af8330a",
+   "fetched": "2026-09-24T08:55:01.480Z"
+  },
+  {
+   "id": "chromium-swiftshader-doc",
+   "kind": "source",
+   "format": "md",
+   "repo": "chromium/chromium",
+   "ref": "main",
+   "commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "path": "docs/gpu/swiftshader.md",
+   "store": "sources/chromium/chromium/docs/gpu/swiftshader.md",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/chromium/chromium/5c5d5f1b5b7d5f58d381663166f52d6f4de551da/docs/gpu/swiftshader.md",
+   "bytes": 2763,
+   "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0",
+   "git_blob_sha1": "f42d41ede341236294857b673aa86216e8bd1a8d",
+   "fetched": "2026-09-24T08:55:01.686Z"
+  },
+  {
+   "id": "v8-flags",
+   "kind": "source",
+   "format": "code",
+   "repo": "v8/v8",
+   "ref": "main",
+   "commit": "72302c22b71e67b54116b651913ccf3c8a01c139",
+   "path": "src/flags/flag-definitions.h",
+   "store": "sources/v8/v8/src/flags/flag-definitions.h",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/v8/v8/72302c22b71e67b54116b651913ccf3c8a01c139/src/flags/flag-definitions.h",
+   "bytes": 215847,
+   "sha256": "1940dff6a404265f61f0fd763ca36a3ceba47ab5a3a9d2a7b44c79dbd6cc780d",
+   "git_blob_sha1": "9ce9645b33037e2b767fce9dc62bef7bcf005adc",
+   "fetched": "2026-09-24T08:55:01.887Z"
+  },
+  {
+   "id": "swiftshader-readme",
+   "kind": "source",
+   "format": "md",
+   "repo": "google/swiftshader",
+   "ref": "master",
+   "commit": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+   "path": "README.md",
+   "store": "sources/google/swiftshader/README.md",
+   "note": null,
+   "stands_for": null,
+   "status": "INGESTED",
+   "url": "https://raw.githubusercontent.com/google/swiftshader/1e80438d2b93ef36a7c05f8d2b81233bac0e3d16/README.md",
+   "bytes": 7927,
+   "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb",
+   "git_blob_sha1": "de5e1ce5977cfe99ac75ef2018efbddef629c71a",
+   "fetched": "2026-09-24T08:55:02.052Z"
+  }
+ ],
+ "authority_pins": [
+  {
+   "authority": "AUTH-CARGO-BUILD-STD",
+   "pin": {
+    "repo": "rust-lang/cargo",
+    "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+    "path": "doc/book/src/reference/unstable.md",
+    "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd"
+   },
+   "tip_commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+   "tip_file": "sources/rust-lang/cargo/src/doc/src/reference/unstable.md",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+   "pin": {
+    "repo": "chromium/chromium",
+    "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+    "path": "content/public/common/content_switches.cc",
+    "sha256": "0262144447bae97b511b1f4e3cfcda4dcd58c5775c890b0b2ff517a3d1b4764e"
+   },
+   "tip_commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "tip_file": "sources/chromium/chromium/content/public/common/content_switches.cc",
+   "pin_refetch": "OK",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (tip moved, same bytes)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-CHROMIUM-GL-SWITCHES",
+   "pin": {
+    "repo": "chromium/chromium",
+    "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+    "path": "ui/gl/gl_switches.cc",
+    "sha256": "8762d5ed6fd4e565e0632d33dad588cf29d6df8089cdc4deab5f3e8e218ffd5e"
+   },
+   "tip_commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "tip_file": "sources/chromium/chromium/ui/gl/gl_switches.cc",
+   "pin_refetch": "OK",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (tip moved, same bytes)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-CHROMIUM-GPU-SWITCHES",
+   "pin": {
+    "repo": "chromium/chromium",
+    "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+    "path": "gpu/config/gpu_switches.cc",
+    "sha256": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640"
+   },
+   "tip_commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "tip_file": "sources/chromium/chromium/gpu/config/gpu_switches.cc",
+   "pin_refetch": "OK",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (tip moved, same bytes)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+   "pin": {
+    "repo": "chromium/chromium",
+    "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+    "path": "docs/gpu/swiftshader.md",
+    "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0"
+   },
+   "tip_commit": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da",
+   "tip_file": "sources/chromium/chromium/docs/gpu/swiftshader.md",
+   "pin_refetch": "OK",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (tip moved, same bytes)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-COMPRESSION-ZLIB",
+   "pin": {
+    "repo": "whatwg/compression",
+    "commit": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+    "path": "index.bs",
+    "sha256": "15ae346d1a953f4b65dee0d4f4dfe1d5252d790e5bef496d8f29ddf9c14a8e2f"
+   },
+   "tip_commit": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+   "tip_file": "sources/whatwg/compression/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-FS-OPFS",
+   "pin": {
+    "repo": "whatwg/fs",
+    "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+    "path": "index.bs",
+    "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea"
+   },
+   "tip_commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+   "tip_file": "sources/whatwg/fs/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-GLOSSARY-COMMIT",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/glossary-content.adoc",
+    "sha256": "0635310817aac48a1b2087e957f60be0d95d05834670460143dbde85c8a7be7e"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/glossary-content.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-OBJECT-FORMAT",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/user-manual.adoc",
+    "sha256": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/user-manual.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-PACK-FORMAT",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/gitformat-pack.adoc",
+    "sha256": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/gitformat-pack.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-REPO-LAYOUT",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/gitrepository-layout.adoc",
+    "sha256": "39ce8d137a30e1fd80eeae146b1c424e56f688f4ddd001259eb98543d3209439"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/gitrepository-layout.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-REVISIONS",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/gitrevisions.adoc",
+    "sha256": "afe4cab8520820d9bf583ec5688beea000d50cce6fdd3c841eb9df94763feadd"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/gitrevisions.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-SHA256-TRANSITION",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/technical/hash-function-transition.adoc",
+    "sha256": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/technical/hash-function-transition.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-UPDATE-REF-CAS",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/git-update-ref.adoc",
+    "sha256": "ba4abaaa5acc9e73587ae2195e0bf431f744258214e575e30f29ae3ff3763a22"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/git-update-ref.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GIT-WORKTREE",
+   "pin": {
+    "repo": "git/git",
+    "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+    "path": "Documentation/git-worktree.adoc",
+    "sha256": "ee8a368564ace74a07e4a034e080b26fb1c3b35d17ef1fe41dcbfcc5595fe8dc"
+   },
+   "tip_commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "tip_file": "sources/git/git/Documentation/git-worktree.adoc",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-ADAPTER-EXPIRE",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-ADAPTERINFO",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-DESTROY",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-FALLBACK-ADAPTER",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-LOSE-DEVICE",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-LOST",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-NAVIGATOR-GPU",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-REQUESTADAPTER",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-GPU-REQUESTDEVICE",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "spec/index.bs",
+    "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/spec/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-HTML-COI",
+   "pin": {
+    "repo": "whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "tip_commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+   "tip_file": "sources/whatwg/html/source",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-HTML-HWCONCURRENCY",
+   "pin": {
+    "repo": "whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "tip_commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+   "tip_file": "sources/whatwg/html/source",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-HTML-SANDBOX-ORIGIN",
+   "pin": {
+    "repo": "whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "tip_commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+   "tip_file": "sources/whatwg/html/source",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-HTML-WORKERS",
+   "pin": {
+    "repo": "whatwg/html",
+    "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+    "path": "source",
+    "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+   },
+   "tip_commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+   "tip_file": "sources/whatwg/html/source",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-IDB-TRANSACTION",
+   "pin": {
+    "repo": "w3c/IndexedDB",
+    "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+    "path": "index.bs",
+    "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8"
+   },
+   "tip_commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+   "tip_file": "sources/w3c/IndexedDB/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-MANIFEST-INSTALLABLE",
+   "pin": {
+    "repo": "w3c/manifest",
+    "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+    "path": "index.html",
+    "sha256": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d"
+   },
+   "tip_commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+   "tip_file": "sources/w3c/manifest/index.html",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-RUST-REF-NOSTD",
+   "pin": {
+    "repo": "rust-lang/reference",
+    "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+    "path": "src/names/preludes.md",
+    "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434"
+   },
+   "tip_commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+   "tip_file": "sources/rust-lang/reference/src/names/preludes.md",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-RUSTC-WASM64-DOC",
+   "pin": {
+    "repo": "rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013"
+   },
+   "tip_commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+   "tip_file": "sources/rust-lang/rust/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "pin": {
+    "repo": "rust-lang/rust",
+    "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+    "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+    "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb"
+   },
+   "tip_commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+   "tip_file": "sources/rust-lang/rust/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-SECCTX-TRUSTWORTHY",
+   "pin": {
+    "repo": "w3c/webappsec-secure-contexts",
+    "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+    "path": "index.bs",
+    "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1"
+   },
+   "tip_commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+   "tip_file": "sources/w3c/webappsec-secure-contexts/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-STORAGE-BUCKET-MODE",
+   "pin": {
+    "repo": "whatwg/storage",
+    "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+    "path": "storage.bs",
+    "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7"
+   },
+   "tip_commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+   "tip_file": "sources/whatwg/storage/storage.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-SW-INSTALL-FAILED",
+   "pin": {
+    "repo": "w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "tip_commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "tip_file": "sources/w3c/ServiceWorker/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-SW-REGISTER-TRUST",
+   "pin": {
+    "repo": "w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "tip_commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "tip_file": "sources/w3c/ServiceWorker/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+   "pin": {
+    "repo": "w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "tip_commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "tip_file": "sources/w3c/ServiceWorker/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-SW-UPDATE-BYPASS",
+   "pin": {
+    "repo": "w3c/ServiceWorker",
+    "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+    "path": "index.bs",
+    "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b"
+   },
+   "tip_commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "tip_file": "sources/w3c/ServiceWorker/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-SWIFTSHADER-README",
+   "pin": {
+    "repo": "google/swiftshader",
+    "commit": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+    "path": "README.md",
+    "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb"
+   },
+   "tip_commit": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+   "tip_file": "sources/google/swiftshader/README.md",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-V8-FLAGS",
+   "pin": {
+    "repo": "v8/v8",
+    "commit": "36de2a2334c9129db7f6fe0db76fd7d5fa64df78",
+    "path": "src/flags/flag-definitions.h",
+    "sha256": "1940dff6a404265f61f0fd763ca36a3ceba47ab5a3a9d2a7b44c79dbd6cc780d"
+   },
+   "tip_commit": "72302c22b71e67b54116b651913ccf3c8a01c139",
+   "tip_file": "sources/v8/v8/src/flags/flag-definitions.h",
+   "pin_refetch": "OK",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (tip moved, same bytes)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-CORE-BINARY-LIMITS",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/binary/types.rst",
+    "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/core/binary/types.rst",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-CORE-CHANGES-64",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/appendix/changes.rst",
+    "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/core/appendix/changes.rst",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/syntax/types.rst",
+    "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/core/syntax/types.rst",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/text/types.rst",
+    "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/core/text/types.rst",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/core/text/types.rst",
+    "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/core/text/types.rst",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-JSAPI-MEMORIES",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/js-api/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-JSAPI-STORAGE",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/js-api/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-JSAPI-VALIDATE",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/js-api/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-SET",
+   "pin": {
+    "repo": "WebAssembly/shared-everything-threads",
+    "commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+    "path": "proposals/shared-everything-threads/Overview.md",
+    "sha256": "5eea594af9ec935cdbcfdefd62131905aded7a2c8f85e4b033e03800ed713e7d"
+   },
+   "tip_commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+   "tip_file": "sources/WebAssembly/shared-everything-threads/proposals/shared-everything-threads/Overview.md",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-THREADS",
+   "pin": {
+    "repo": "WebAssembly/threads",
+    "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+    "path": "proposals/threads/Overview.md",
+    "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73"
+   },
+   "tip_commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+   "tip_file": "sources/WebAssembly/threads/proposals/threads/Overview.md",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WASM-WEBAPI-STREAMING",
+   "pin": {
+    "repo": "WebAssembly/spec",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/web-api/index.bs",
+    "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6"
+   },
+   "tip_commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "tip_file": "sources/WebAssembly/spec/document/web-api/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WEB-LOCKS",
+   "pin": {
+    "repo": "w3c/web-locks",
+    "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+    "path": "index.bs",
+    "sha256": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9"
+   },
+   "tip_commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+   "tip_file": "sources/w3c/web-locks/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WEBCRYPTO-DIGEST",
+   "pin": {
+    "repo": "w3c/webcrypto",
+    "commit": "811c24c69eb22d477af5f1678cb70dbc611c7c40",
+    "path": "spec/Overview.html",
+    "sha256": "00a094ac4298f0c7a5a4afe599281827c98fefbe72b09756f1f5859746f52c97"
+   },
+   "tip_commit": "811c24c69eb22d477af5f1678cb70dbc611c7c40",
+   "tip_file": "sources/w3c/webcrypto/spec/Overview.html",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "AUTH-WGSL",
+   "pin": {
+    "repo": "gpuweb/gpuweb",
+    "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+    "path": "wgsl/index.bs",
+    "sha256": "11b1020a2fec581050599ae8e035a7138de551129c0856e055b41b4342d658fd"
+   },
+   "tip_commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "tip_file": "sources/gpuweb/gpuweb/wgsl/index.bs",
+   "pin_refetch": "SAME_COMMIT_AS_TIP",
+   "pin_verdict": "PIN_MATCH",
+   "content_since_pin": "UNCHANGED (same commit)",
+   "verdict": "PIN_MATCH"
+  },
+  {
+   "authority": "LAW-EVIDENCE-OBLIGATIONS",
+   "pin": {
+    "repo": "NFDFLDTHRY/FactTest",
+    "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "path": "EVIDENCE-OBLIGATIONS.md",
+    "sha256": "500e3f716eba1a1b51b9296baf3dd7295b867eace660f2b19f6d322feef91354"
+   },
+   "tip_commit": null,
+   "tip_file": null,
+   "verdict": "PROJECT_LAW (internal; not re-fetched)"
+  },
+  {
+   "authority": "LAW-FACTORY-CONTRACTS",
+   "pin": {
+    "repo": "NFDFLDTHRY/FactTest",
+    "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "path": "FACTORY-CONTRACTS.md",
+    "sha256": "08d6fa97b3c8a7037ab7634349d1a7e40f45731fded1858a62fbbb73f248b5aa"
+   },
+   "tip_commit": null,
+   "tip_file": null,
+   "verdict": "PROJECT_LAW (internal; not re-fetched)"
+  },
+  {
+   "authority": "LAW-FACTORY-LAW",
+   "pin": {
+    "repo": "NFDFLDTHRY/FactTest",
+    "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "path": "FACTORY-LAW.md",
+    "sha256": "8c8d42e7c2c1f91fae13f69f9a157b9a4ecb3d2433585c9fc706d2320ff68660"
+   },
+   "tip_commit": null,
+   "tip_file": null,
+   "verdict": "PROJECT_LAW (internal; not re-fetched)"
+  },
+  {
+   "authority": "LAW-PASS1-FT003",
+   "pin": {
+    "repo": "NFDFLDTHRY/FactTest",
+    "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "path": "PASS1.md",
+    "sha256": "bbce034344581a64509ea98be0fab0ce4fc9408a05d0b6faed349d9f1f9bc8b1"
+   },
+   "tip_commit": null,
+   "tip_file": null,
+   "verdict": "PROJECT_LAW (internal; not re-fetched)"
+  },
+  {
+   "authority": "LAW-PASS6-COMMISSIONING",
+   "pin": {
+    "repo": "NFDFLDTHRY/FactTest",
+    "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "path": "PASS6.md",
+    "sha256": "3a02497309dc0c31a7f28006f105a6b4b76b4d265dc262a67685fced2662c250"
+   },
+   "tip_commit": null,
+   "tip_file": null,
+   "verdict": "PROJECT_LAW (internal; not re-fetched)"
+  },
+  {
+   "authority": "LAW-PLANNER-COST-MODEL",
+   "pin": {
+    "repo": "NFDFLDTHRY/FactTest",
+    "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "path": "PLANNER-COST-MODEL.md",
+    "sha256": "f30f4a888122f8c7e9264bd6489a80f1d5d069593a0d0769077d309f0d7830d6"
+   },
+   "tip_commit": null,
+   "tip_file": null,
+   "verdict": "PROJECT_LAW (internal; not re-fetched)"
+  },
+  {
+   "authority": "LAW-RUNTIME-ADMISSION",
+   "pin": {
+    "repo": "NFDFLDTHRY/FactTest",
+    "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "path": "RUNTIME-ADMISSION-REPLAN.md",
+    "sha256": "f8906f40f607db5b0b1a4b7f041066a6cde9a11b68586072639718a8923d111a"
+   },
+   "tip_commit": null,
+   "tip_file": null,
+   "verdict": "PROJECT_LAW (internal; not re-fetched)"
+  }
+ ],
+ "totals": {
+  "files": 83,
+  "ingested": 83,
+  "published": 39,
+  "sources": 44,
+  "bytes": 51096208,
+  "pins_rechecked": 63,
+  "pin_match": 56,
+  "pin_mismatch": 0,
+  "content_changed_since_pin": 0
+ }
+}

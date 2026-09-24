@@ -1,0 +1,5 @@
+$ sh -c grep -q 'REPRODUCIBILITY PIN' fixtures/reference/README.md && grep -q 'never the current authority' fixtures/reference/README.md && ! grep -rqiE 'require\(|from [\"'\''](?!node:)' tests/reference/ingress.mjs
+(cwd .)
+grep: warning: ? at start of expression
+
+[exit 0] expected 0
