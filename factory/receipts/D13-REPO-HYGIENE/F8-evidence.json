@@ -1,0 +1,202 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F8-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F8-evidence",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "design/environment-map/graph.json"
+  ],
+  "open_tree": "9d8543df297fa0567193783ebe2afe84b36c52d3",
+  "close_tree": "ab6a69936923e969b03350ac1c15b911232ac905",
+  "changed_paths": [
+    "evidence/D13/envmap/merge-check.json",
+    "evidence/D13/envmap/queries/Q01.json",
+    "evidence/D13/envmap/queries/Q02.json",
+    "evidence/D13/envmap/queries/Q03.json",
+    "evidence/D13/envmap/queries/Q04.json",
+    "evidence/D13/envmap/queries/Q05.json",
+    "evidence/D13/envmap/queries/Q06.json",
+    "evidence/D13/envmap/queries/Q07.json",
+    "evidence/D13/envmap/queries/Q08.json",
+    "evidence/D13/envmap/queries/Q09.json",
+    "evidence/D13/envmap/queries/Q10.json",
+    "evidence/D13/envmap/queries/Q11.json",
+    "evidence/D13/envmap/queries/Q12.json",
+    "evidence/D13/envmap/queries/Q13.json",
+    "evidence/D13/envmap/queries/Q14.json",
+    "evidence/D13/envmap/queries/Q15.json",
+    "evidence/D13/envmap/queries/Q16.json",
+    "evidence/D13/envmap/render-check.json",
+    "evidence/D13/envmap/stale.json",
+    "evidence/D13/envmap/validate.json",
+    "evidence/D13/index.json",
+    "evidence/D13/logs/F8-d12-traversable.log",
+    "evidence/D13/logs/F8-index.log",
+    "evidence/D13/logs/F8-merge-check.log",
+    "evidence/D13/logs/F8-queries.log",
+    "evidence/D13/logs/F8-render-check.log",
+    "evidence/D13/logs/F8-stale.log",
+    "evidence/D13/logs/F8-validate.log"
+  ],
+  "output_artifacts": [
+    "evidence/D13/envmap/validate.json",
+    "evidence/D13/envmap/queries/Q16.json",
+    "evidence/D13/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F8-validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F8-queries.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F8-stale.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F8-render-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F8-merge-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F8-d12-traversable.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F8-index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D13/envmap/validate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F8-validate.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out evidence/D13/envmap/queries",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F8-queries.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs stale design/environment-map/graph.json --out evidence/D13/envmap/stale.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F8-stale.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map --out evidence/D13/envmap/render-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F8-render-check.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json --out evidence/D13/envmap/merge-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F8-merge-check.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const q=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/envmap/queries/Q16.json\"));const e=q.answer.epochs.map(x=>x.epoch).join(\",\");const d12=q.answer.epochs.find(x=>x.epoch===\"D12\");if(e!==\"D11,D12,D13\"||d12.facts.length<13||!d12.cross_epoch_edges.length)process.exit(1);console.log(e)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F8-d12-traversable.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d13w/debug/factory evidence index evidence/D13 evidence/D13/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F8-index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/envmap/validate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/envmap/queries/Q16.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D13/logs/F8-validate.log",
+    "evidence/D13/logs/F8-queries.log",
+    "evidence/D13/logs/F8-stale.log",
+    "evidence/D13/logs/F8-render-check.log",
+    "evidence/D13/logs/F8-merge-check.log",
+    "evidence/D13/logs/F8-d12-traversable.log",
+    "evidence/D13/logs/F8-index.log"
+  ],
+  "closed": "2026-09-24T07:14:24Z",
+  "status": "PASS"
+}

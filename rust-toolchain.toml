@@ -1,0 +1,10 @@
+# D13-REPO-HYGIENE toolchain pin (design/materialization/D13-INTENDED-REPO-HYGIENE.md section 3.2).
+# Pins HOST_NATIVE_SET: the exact stable toolchain on which the only complete qualified proof matrix (D9) ran
+# (rustc 1.94.1, commit e408947bfd200af42db322daf0fadfe7e26d3bd1).  WASM64_KERNEL_SET needs a nightly
+# (-Z build-std=core); one file cannot pin two channels, so that pin is declared in tests/toolchain/proof-sets.json
+# (nightly-2026-09-24, commit 6eeff9a52c3e35c4c4cbf5651f342dcd2191866f) and enforced by
+# tests/toolchain/run-qualified-proof.sh, which passes +<toolchain> explicitly on every cargo call.
+[toolchain]
+channel = "1.94.1"
+components = ["clippy", "rustfmt"]
+profile = "minimal"

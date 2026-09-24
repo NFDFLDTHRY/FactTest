@@ -1,0 +1,373 @@
+{
+ "schema": "facttest-status-classification/1",
+ "law": "design/materialization/D13-INTENDED-REPO-HYGIENE.md section 6; classes A B C D R N as documented in tests/hygiene/status-scan.mjs",
+ "markers": [
+  {
+   "name": "[ERR]",
+   "regex": "\\[ERR\\]"
+  },
+  {
+   "name": "[GAP]",
+   "regex": "\\[GAP\\]"
+  },
+  {
+   "name": "[UNK]",
+   "regex": "\\[UNK\\]"
+  },
+  {
+   "name": "PENDING",
+   "regex": "\\bpending\\b",
+   "flags": "gi"
+  },
+  {
+   "name": "TODO",
+   "regex": "\\bTODO\\b"
+  },
+  {
+   "name": "FIXME",
+   "regex": "\\bFIXME\\b"
+  },
+  {
+   "name": "unfinished",
+   "regex": "\\bunfinished\\b",
+   "flags": "gi"
+  },
+  {
+   "name": "stale",
+   "regex": "\\bstale\\b",
+   "flags": "gi"
+  },
+  {
+   "name": "overclaim",
+   "regex": "all ladders|full suite|full workspace|entire project|whole project",
+   "flags": "gi"
+  }
+ ],
+ "zones": [
+  {
+   "id": "Z-EVIDENCE",
+   "class": "B",
+   "match": {
+    "prefix": [
+     "evidence/"
+    ]
+   },
+   "rationale": "historical evidence; immutable (D0-D13 packages)"
+  },
+  {
+   "id": "Z-RECEIPTS",
+   "class": "B",
+   "match": {
+    "prefix": [
+     "factory/receipts/"
+    ]
+   },
+   "rationale": "FactoryReceipts; immutable records"
+  },
+  {
+   "id": "Z-D13-CONTROL",
+   "class": "N",
+   "match": {
+    "exact": [
+     "factory/deltas/D13.json"
+    ],
+    "prefix": [
+     "factory/fixtures/D13/"
+    ]
+   },
+   "rationale": "the running delta's checks name the markers they look for"
+  },
+  {
+   "id": "Z-DELTA-CONTROL",
+   "class": "B",
+   "match": {
+    "prefix": [
+     "factory/deltas/",
+     "factory/fixtures/"
+    ]
+   },
+   "rationale": "control records of integrated deltas (tests text incl. the D3-D8 overstatement, FACT-D9-HISTORY-OVERSTATED)"
+  },
+  {
+   "id": "Z-PROMPTS",
+   "class": "B",
+   "match": {
+    "regex": "^design/materialization/D1[0-3]-.*PROMPT\\.md$"
+   },
+   "rationale": "owner prompts tracked verbatim (their markers name search vocabulary or past boundaries)"
+  },
+  {
+   "id": "Z-D13-RECORDS",
+   "class": "R",
+   "match": {
+    "prefix": [
+     "design/materialization/D13-"
+    ]
+   },
+   "rationale": "the D13 classification itself (each row carries its class)"
+  },
+  {
+   "id": "Z-CLOSED-RECORDS",
+   "class": "B",
+   "match": {
+    "prefix": [
+     "design/materialization/"
+    ]
+   },
+   "rationale": "closed delta records (M0, M9, COMMISSIONING-RECORD, D9-D12, LEDGER history); live items re-listed in docs/HANDOFF.md section 6"
+  },
+  {
+   "id": "Z-ENVMAP-REGISTER",
+   "class": "R",
+   "match": {
+    "prefix": [
+     "design/environment-map/"
+    ]
+   },
+   "rationale": "live graph + derived views: each marker belongs to a node (AUTHORITY DENIED/drift -> D, FACT GAP/ERR -> C, identity incompleteness -> B)"
+  },
+  {
+   "id": "Z-HANDOFF-REGISTER",
+   "class": "R",
+   "match": {
+    "exact": [
+     "docs/HANDOFF.md",
+     "README.md"
+    ]
+   },
+   "rationale": "live entry and open-boundary register (explicit class per row)"
+  },
+  {
+   "id": "Z-HISTORICAL-ROOT",
+   "class": "B",
+   "match": {
+    "exact": [
+     "PASS1.md",
+     "PASS2.md",
+     "PASS3.md",
+     "PASS4.md",
+     "PASS5.md",
+     "PASS5-TESTS.md",
+     "PASS6.md",
+     "PASS6-TESTS.md",
+     "PASS6-GAP-REPAIRS.md",
+     "FABLE-ASCII-SYSTEM-PROMPT.md",
+     "PLANNED-REPO-LAYOUT.md"
+    ]
+   },
+   "rationale": "pass files, the Fable 5.1 bootloader and the PASS 5 layout plan: historical (marked by D13 banners where they looked live)"
+  },
+  {
+   "id": "Z-LAW-ROWS",
+   "class": "R",
+   "match": {
+    "exact": [
+     "ASCII-GRAMMAR.md",
+     "ASCII-LANGUAGE.md",
+     "CAPABILITY-MATRIX.md",
+     "CODEGEN-BUNDLE-CONTRACT.md",
+     "CONFLICT-LEDGER.md",
+     "CONSTRAINT-LEDGER.md",
+     "EVIDENCE-OBLIGATIONS.md",
+     "FACTORY-CONTRACTS.md",
+     "FACTORY-LAW.md",
+     "FINAL-HANDOFF-REQUIREMENTS.md",
+     "IMPLEMENTATION-CONTRACTS.md",
+     "LANGUAGE-TESTS.md",
+     "LOWERING-MODEL.md",
+     "PLANNER-COST-MODEL.md",
+     "REFERENCE-AUTHORITY.md",
+     "REFINEMENT-LAW.md",
+     "REPRESENTATION-TRANSFER.md",
+     "RUNTIME-ADMISSION-REPLAN.md",
+     "SEMANTIC-MODEL.md",
+     "STATION-REGISTRY.md",
+     "VERIFICATION-CERTIFICATES.md",
+     "COMMISSIONING-ASCII.md",
+     "COMMISSIONING-FACTORY.md",
+     "COMMISSIONING-FIXTURE.md",
+     "COMMISSIONING-PROOF.md",
+     "COMMISSIONING-RUNTIME.md",
+     "COMMISSIONING-SLICE.md",
+     "COMMISSIONING-TRACE.md",
+     "BOOTSTRAP-ARCHITECTURE.md",
+     "BOOTSTRAP-CONTRACTS.md",
+     "BOOTSTRAP-TESTS.md"
+    ]
+   },
+   "markers": [
+    "[ERR]",
+    "[GAP]",
+    "[UNK]"
+   ],
+   "rationale": "law ledgers: each [ERR]/[GAP]/[UNK] is a boundary row, classified C or D in docs/HANDOFF.md section 6"
+  },
+  {
+   "id": "Z-LAW-VOCABULARY",
+   "class": "N",
+   "match": {
+    "exact": [
+     "ASCII-GRAMMAR.md",
+     "ASCII-LANGUAGE.md",
+     "CAPABILITY-MATRIX.md",
+     "CODEGEN-BUNDLE-CONTRACT.md",
+     "CONFLICT-LEDGER.md",
+     "CONSTRAINT-LEDGER.md",
+     "EVIDENCE-OBLIGATIONS.md",
+     "FACTORY-CONTRACTS.md",
+     "FACTORY-LAW.md",
+     "FINAL-HANDOFF-REQUIREMENTS.md",
+     "IMPLEMENTATION-CONTRACTS.md",
+     "LANGUAGE-TESTS.md",
+     "LOWERING-MODEL.md",
+     "PLANNER-COST-MODEL.md",
+     "REFERENCE-AUTHORITY.md",
+     "REFINEMENT-LAW.md",
+     "REPRESENTATION-TRANSFER.md",
+     "RUNTIME-ADMISSION-REPLAN.md",
+     "SEMANTIC-MODEL.md",
+     "STATION-REGISTRY.md",
+     "VERIFICATION-CERTIFICATES.md",
+     "COMMISSIONING-ASCII.md",
+     "COMMISSIONING-FACTORY.md",
+     "COMMISSIONING-FIXTURE.md",
+     "COMMISSIONING-PROOF.md",
+     "COMMISSIONING-RUNTIME.md",
+     "COMMISSIONING-SLICE.md",
+     "COMMISSIONING-TRACE.md",
+     "BOOTSTRAP-ARCHITECTURE.md",
+     "BOOTSTRAP-CONTRACTS.md",
+     "BOOTSTRAP-TESTS.md"
+    ]
+   },
+   "rationale": "rule words in law text ('stale authority', 'pending', 'entire project' in a principle)"
+  },
+  {
+   "id": "Z-KERNEL-DIAGNOSTIC",
+   "class": "C",
+   "match": {
+    "exact": [
+     "compiler/kernel/src/phases.rs"
+    ]
+   },
+   "markers": [
+    "[GAP]"
+   ],
+   "rationale": "the kernel reports a missing capability at run time: a real capability gap by design"
+  },
+  {
+   "id": "Z-CODE-SEMANTICS",
+   "class": "N",
+   "match": {
+    "prefix": [
+     "compiler/",
+     "host/",
+     "factory/src/"
+    ]
+   },
+   "rationale": "code vocabulary (service-worker cache 'stale')"
+  },
+  {
+   "id": "Z-TOOLS",
+   "class": "N",
+   "match": {
+    "prefix": [
+     "tests/"
+    ]
+   },
+   "rationale": "harness vocabulary: evidence PENDING binding, stale queries, heuristic labels"
+  },
+  {
+   "id": "Z-FIXTURE-DATA",
+   "class": "N",
+   "match": {
+    "prefix": [
+     "fixtures/"
+    ]
+   },
+   "rationale": "mutant/fixture names describe the defect they attack (e.g. M3 stale forge, M1 'full suite')"
+  },
+  {
+   "id": "Z-DOCS-OTHER",
+   "class": "R",
+   "match": {
+    "prefix": [
+     "docs/"
+    ]
+   },
+   "rationale": "live documentation register"
+  }
+ ],
+ "defect_patterns": [
+  {
+   "id": "DP-01-WILDCARD-SURFACE",
+   "match": {
+    "prefix": [
+     "factory/registry/"
+    ]
+   },
+   "regex": "\"(?:[^\"*]+\\*[^\"]*|\\*[^\"]+)\"",
+   "max": 0,
+   "meaning": "a wildcard-looking authority entry in the station registry (dead under the literal rule)"
+  },
+  {
+   "id": "DP-02-LEDGER-FABLE-LIVE",
+   "match": {
+    "exact": [
+     "design/materialization/LEDGER.md"
+    ]
+   },
+   "regex": "^STATUS: LIVE RECORD OF THE FABLE",
+   "max": 0,
+   "meaning": "the ledger presenting itself as the live Fable 5.1 session record"
+  },
+  {
+   "id": "DP-03-README-FABLE-ENTRY",
+   "match": {
+    "exact": [
+     "README.md"
+    ]
+   },
+   "regex": "^Read \\[FABLE-ASCII-SYSTEM-PROMPT\\.md\\]",
+   "max": 0,
+   "meaning": "README directing a new reader to the Fable 5.1 bootloader"
+  },
+  {
+   "id": "DP-04-LEDGER-AFTER-PLACEHOLDER",
+   "match": {
+    "exact": [
+     "design/materialization/LEDGER.md"
+    ]
+   },
+   "regex": "recorded by the next delta",
+   "max": 1,
+   "meaning": "an unrecorded AFTER; only the newest entry may carry it (a commit cannot contain its own id)"
+  },
+  {
+   "id": "DP-05-BOOTLOADER-BANNER",
+   "match": {
+    "exact": [
+     "FABLE-ASCII-SYSTEM-PROMPT.md"
+    ]
+   },
+   "regex": "^D13 ANNOTATION .*HISTORICAL",
+   "min": 1,
+   "meaning": "the Fable 5.1 bootloader carries its HISTORICAL banner"
+  },
+  {
+   "id": "DP-06-FRAGMENT-ANNOTATED",
+   "match": {
+    "exact": [
+     "REFERENCE-AUTHORITY.md",
+     "CONSTRAINT-LEDGER.md",
+     "CONFLICT-LEDGER.md",
+     "IMPLEMENTATION-CONTRACTS.md",
+     "EVIDENCE-OBLIGATIONS.md"
+    ]
+   },
+   "regex": "^D13 ANNOTATION .*#internal-storage",
+   "min": 5,
+   "meaning": "every law citation of js-api #internal-storage carries the fragment-drift annotation"
+  }
+ ]
+}

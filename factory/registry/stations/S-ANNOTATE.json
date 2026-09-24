@@ -1,0 +1,52 @@
+{
+  "station_id": "S-ANNOTATE",
+  "version": "1",
+  "capability_tags": [
+    "LAW_ANNOTATION"
+  ],
+  "input_kinds": [
+    "approved_ascii",
+    "owner_direction"
+  ],
+  "operation_class": "insert_annotations_into_root_documents",
+  "output_kinds": [
+    "annotated_documents"
+  ],
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "STATION-REGISTRY.md",
+    "FACTORY-CONTRACTS.md",
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "factory/receipts/"
+  ],
+  "must_not_change": [
+    "FACTORY-LAW.md",
+    "compiler/",
+    "host/",
+    "factory/src/",
+    "evidence/"
+  ],
+  "preconditions": [
+    "the annotation is ordered by approved ASCII (design/materialization/D13-INTENDED-REPO-HYGIENE.md section 3.1)"
+  ],
+  "invariants": [
+    "INSERTION-ONLY: no existing line of an annotated document is deleted or modified (git diff --numstat reports 0 deleted lines)",
+    "every inserted block begins with a line starting 'D13 ANNOTATION' (later deltas: '<delta> ANNOTATION')",
+    "FACTORY-LAW.md is never annotated by this station"
+  ],
+  "verification": [
+    "per-file deleted-line count 0 against the canonical base",
+    "annotation marker present"
+  ],
+  "source_nonmutating": false,
+  "receipt_schema_version": "1"
+}

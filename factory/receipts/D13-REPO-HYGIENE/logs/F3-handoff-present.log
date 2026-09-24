@@ -1,0 +1,4 @@
+$ sh -c grep -q 'docs/HANDOFF.md' README.md && for s in '## 1. Current state' '## 6. Open-boundary register' '## 7. Proof sets and toolchain'; do grep -qF "$s" docs/HANDOFF.md || exit 1; done
+(cwd .)
+
+[exit 0] expected 0

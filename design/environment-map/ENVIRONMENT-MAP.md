@@ -151,3 +151,21 @@ design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md.
   [GAP], a Worker [GAP], or shared Wasm memory [ERR].
 - The authorities cited are hyperlink-connected to pinned sources (40 pins verified by sha256), but the published
   renderings were not re-opened in D11 [UNK]; one cited fragment does not exist in the current source [ERR].
+
+## 5. Later evidence epochs (added by D13; sections 1-4 above are the D11 epoch as written)
+
+```text
+EPOCH  DELTA                              ADDED                                                       SOURCE
+D12    D12-SELF-HOSTING-ARCHITECTURE      2 environments (ENV-D12-HOST, ENV-D12-BROWSER-PERSISTENT),   epochs/D12.json
+       (52d7d14)                          14 probes, 16 evidence, 16 facts (13 primitive probes, kernel
+                                          drift, githack [UNK], no Factory WebApp [GAP]), 16 authorities
+                                          pinned by commit (DENIED published hosts)
+D13    D13-REPO-HYGIENE                   ENV-D13-HOST-PINNED, pinned proof sets, literal surfaces,        epochs/D13.json
+                                          status inventory, live handoff, workpiece audit; CON-EM-007
+                                          CONFLICTS_WITH CON-EM-005 (the D11 "never pinned" rule is
+                                          superseded prospectively: the toolchain IS pinned from D13);
+                                          FACT-KERNEL-IDENTITY-INSTALL-PATH [GAP]
+```
+
+Section 4's sentence "No toolchain is pinned [GAP]" is true of the D11 epoch and is superseded by D13
+(FACT-TOOLCHAIN-PINNED; FACT-TOOLCHAIN-DRIFT INVALIDATED_BY EV-D13-PINS).  Query Q16 lists every epoch's additions.

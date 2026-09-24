@@ -1,6 +1,6 @@
 {
   "station_id": "S-FIXTURE",
-  "version": "1",
+  "version": "2",
   "capability_tags": [
     "FIXTURE_FORGE"
   ],
@@ -20,12 +20,11 @@
     "tests/",
     "factory/fixtures/",
     "factory/tests/",
-    "compiler/*/tests/",
     "factory/receipts/"
   ],
   "must_not_change": [
     "FACTORY-LAW.md",
-    "compiler/*/src/",
+    "compiler/",
     "host/",
     "evidence/"
   ],

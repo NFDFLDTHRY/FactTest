@@ -1,0 +1,5 @@
+$ sh -c node tests/envmap/envmap.mjs paths-probe . --out evidence/D13/paths/paths-probe.json && grep -q '"dead_wildcard_surfaces": \[\]' evidence/D13/paths/paths-probe.json
+(cwd .)
+OBS: dead wildcard surfaces: none
+
+[exit 0] expected 0

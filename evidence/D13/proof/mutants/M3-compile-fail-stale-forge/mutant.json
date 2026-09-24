@@ -1,0 +1,81 @@
+{
+  "id": "M3-compile-fail-stale-forge",
+  "attacks": "T9-P4 compile-fail",
+  "description": "forge-verified-strategy fixture with one stale public field name: only E0560 is reported and the private-field (sealing) error disappears while the build still fails.",
+  "weak": {
+    "check": "compile-fail-weak",
+    "expect": "PASS",
+    "note": "exit-code rule accepts any failure",
+    "observed": {
+      "verdict": "PASS",
+      "command": [
+        "cargo",
+        "+1.94.1",
+        "build",
+        "--lib",
+        "--message-format=json"
+      ],
+      "exit": 101,
+      "reason": "cargo build exit 101 -> weak rule says \"rejected by rustc (expected)\" without reading the diagnostic (E0560)"
+    }
+  },
+  "qualified": {
+    "check": "compile-fail",
+    "expect_file": "expect.json",
+    "expect": "FAIL",
+    "reason_must_contain": "E0560",
+    "note": "T9-P4: the private-field diagnostic must be the one observed",
+    "observed": {
+      "verdict": "FAIL",
+      "reason": "expected 1 x (no code) \"private fields\", observed 0; (no code) primary spans [] != expected [9]; unexpected diagnostic E0560 \"struct `factc_verifier::VerifiedStrategy` has no field named `certificate_id`\" at src/lib.rs:16",
+      "command": [
+        "cargo",
+        "+1.94.1",
+        "build",
+        "--lib",
+        "--message-format=json"
+      ],
+      "exit": 101,
+      "observed_errors": [
+        {
+          "package": "m3-compile-fail-stale-forge",
+          "code": "E0560",
+          "message": "struct `factc_verifier::VerifiedStrategy` has no field named `certificate_id`",
+          "file": "src/lib.rs",
+          "line": 16
+        }
+      ],
+      "expected": [
+        {
+          "code": null,
+          "count": 1,
+          "message_contains": "private fields",
+          "message_contains_all": [
+            "VerifiedStrategy",
+            "struct literal",
+            "private fields"
+          ],
+          "file": "src/lib.rs",
+          "lines": [
+            9
+          ]
+        }
+      ],
+      "weak_rule": {
+        "rule": "run-negative-fixtures.sh: cargo build exit != 0",
+        "verdict": "PASS"
+      },
+      "invariant": "P5-V01 / P6-G05 sealed VerifiedStrategy"
+    }
+  },
+  "expected": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "observed": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "verdict": "RUN",
+  "reason": "weak check PASS (would accept the mutant); qualified check FAIL: expected 1 x (no code) \"private fields\", observed 0; (no code) primary spans [] != expected [9]; unexpected diagnostic E0560 \"struct `factc_verifier::VerifiedStrategy` has no field named `certificate_id`\" at src/lib.rs:16"
+}

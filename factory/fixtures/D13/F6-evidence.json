@@ -1,0 +1,160 @@
+{
+  "fixture_id": "F6-evidence",
+  "station_id": "S-EVIDENCE",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "the D13 tree",
+    "/home/user/factory-workpieces (workpiece root)",
+    "git worktree list"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D13/status/",
+    "evidence/D13/handoff/",
+    "evidence/D13/paths/",
+    "evidence/D13/workpieces/",
+    "evidence/D13/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/hygiene/status-scan.mjs",
+          "--rules",
+          "tests/hygiene/status-classification.json",
+          "--out",
+          "evidence/D13/status"
+        ],
+        "log": "evidence/D13/logs/F6-status-scan.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "tests/hygiene/handoff-check.sh",
+          "evidence/D13/handoff/check.json"
+        ],
+        "log": "evidence/D13/logs/F6-handoff-check.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs paths-probe . --out evidence/D13/paths/paths-probe.json && grep -q '\"dead_wildcard_surfaces\": \\[\\]' evidence/D13/paths/paths-probe.json"
+        ],
+        "log": "evidence/D13/logs/F6-paths-probe.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d13w/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W14",
+          "--out",
+          "evidence/D13/workpieces/audit-before.json"
+        ],
+        "log": "evidence/D13/logs/F6-audit-before.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d13w/debug/factory",
+        "args": [
+          "workpiece",
+          "retire",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W14",
+          "--out",
+          "evidence/D13/workpieces/retire.json"
+        ],
+        "log": "evidence/D13/logs/F6-retire.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d13w/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W14",
+          "--out",
+          "evidence/D13/workpieces/audit-after.json"
+        ],
+        "log": "evidence/D13/logs/F6-audit-after.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/workpieces/audit-after.json\"));if(a.totals.RETIRABLE!==0)process.exit(1);const r=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/workpieces/retire.json\"));if(r.actions.some(x=>x.result!==\"REMOVED\"))process.exit(1);console.log(r.actions.length+\" retired; kept \"+r.kept.length)'"
+        ],
+        "log": "evidence/D13/logs/F6-cleanup-gate.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D13/status/inventory.json",
+    "evidence/D13/handoff/check.json",
+    "evidence/D13/paths/paths-probe.json",
+    "evidence/D13/workpieces/audit-before.json",
+    "evidence/D13/workpieces/retire.json",
+    "evidence/D13/workpieces/audit-after.json"
+  ],
+  "tests": [
+    "0 unclassified markers, defect patterns within bounds",
+    "handoff check PASS",
+    "no dead wildcard surface",
+    "only proven objects retired; 0 retirable after"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

@@ -1,8 +1,10 @@
 # Materialization Ledger
 
-STATUS: LIVE RECORD OF THE FABLE 5.1 MATERIALIZATION SESSION
-SOURCE OF RECORD: design/materialization/M0-INTENDED-SYSTEM.md (intended ASCII); this ledger records each
-workpiece BEFORE/AFTER as required by FABLE-ASCII-SYSTEM-PROMPT.md "REPORT EACH WORKPIECE".
+STATUS: LIVE RECORD OF EVERY FACTTEST DELTA (D0 onward); model-independent since D13-REPO-HYGIENE.
+SOURCE OF RECORD: each delta's intended ASCII (design/materialization/M0-INTENDED-SYSTEM.md for M0-M9 / D0-D8,
+design/materialization/D<n>-INTENDED-*.md afterwards); this ledger records each workpiece BEFORE/AFTER.
+HISTORICAL HEADER (historical, D0-D12): "STATUS: LIVE RECORD OF THE FABLE 5.1 MATERIALIZATION SESSION" - the ledger
+began as the historical Fable 5.1 session record required by FABLE-ASCII-SYSTEM-PROMPT.md "REPORT EACH WORKPIECE".
 
 Every entry is written by the S-DOC station inside the workpiece that carries it, so the ledger for delta N is
 integrated together with delta N.  Physical evidence lives under evidence/<delta>/ and the FactoryReceipts under
@@ -545,5 +547,35 @@ BEFORE
 - NEXT: the hygiene pass itself is D13-REPO-HYGIENE, assembled in design/materialization/D13-INTENDED-REPO-HYGIENE.md.
 
 AFTER
-- recorded by the next delta (a delta cannot carry its own integration result).
+- RESULT: integrated as 205d337a7efef5fa25bb588ec385fa3655acb562 (ff-only from 8e5dd6f); no refusal.
+- RECEIPTS: factory/receipts/D13-PROMPT-INTAKE/F0-doc.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.
+  PROBE: re-inspection MATCH.  Pushed to claude/facttest-materialization-27amc7.
+- (recorded by D13-REPO-HYGIENE, the next delta.)
 
+---
+
+## D13-REPO-HYGIENE  (repository hygiene / chain closure before the D14 reference rescan)
+
+BEFORE
+- DELTA: D13-REPO-HYGIENE (factory/deltas/D13.json), workpiece W14.
+- BASE: 205d337a7efef5fa25bb588ec385fa3655acb562 (D13-PROMPT-INTAKE; origin/main 8e5dd6f is its parent).
+- ASCII: design/materialization/D13-INTENDED-REPO-HYGIENE.md (inventory H-01..H-45 classified A/B/C/D, decisions 3.1
+  S-ANNOTATE and 3.2 toolchain pin, STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F3, F7, F9), S-RUST (F1), S-FIXTURE (F2), S-ANNOTATE (F4, new, bootstrap), S-BUILD (F5),
+  S-EVIDENCE (F6, F8).
+- CHANGE: factory/src/ + factory/tests/ (literal surfaces, receipt format 2, workpiece audit/retire, heuristic weight),
+  rust-toolchain.toml (1.94.1), tests/toolchain/{proof.mjs, proof-sets.json, run-qualified-proof.sh}, tests/hygiene/,
+  tests/envmap/envmap.mjs, registry S-FIXTURE v2 + S-ANNOTATE, README.md, docs/HANDOFF.md, design/environment-map/
+  (epochs D12 + D13, merged graph, derived views), insertion-only annotations of 10 root documents, evidence/D13/,
+  this ledger, D13 records.  FORBIDDEN: FACTORY-LAW.md, compiler/, host/, fixtures/, Cargo.toml, Cargo.lock, every
+  D0-D12 / D13-PROMPT-INTAKE artifact, the D9 proof scripts, the closed design records.
+- INVARIANTS: historical evidence byte-identical; no authority widening except S-ANNOTATE (literal, insertion-only);
+  S-FIXTURE effective authority unchanged; no capability implemented; every B/C/D boundary kept visible; cleanup only
+  under the retire guard.
+- PREDICTED: factory 17/17 tests; qualified proof: pins PASS, sets PASS, HOST/WASM64/ALL PASS, CROSS_SET OBS, HEURISTIC
+  weight NONE, kernel 6f25ce43... == declared, mutants 8/8 RUN; status scan 0 unclassified; handoff PASS; audit 13
+  worktrees + 12 stages RETIRABLE, W11-stage and factory-bootstrap-bin KEEP; graph 302 nodes / 641 edges, D11 part
+  unchanged.
+
+AFTER
+- recorded by the next delta (a delta cannot carry its own integration result).

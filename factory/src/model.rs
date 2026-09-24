@@ -41,6 +41,26 @@ impl Command {
     }
 }
 
+/// An identity probe declared by a fixture (`job_parameters.identity_probes`): a command whose output identifies part
+/// of the execution environment (toolchain, runtime, browser).  Its output is recorded in the receipt; it is never a
+/// verification verdict.
+#[derive(Clone, Debug)]
+pub struct IdentityProbe {
+    pub name: String,
+    pub program: String,
+    pub args: Vec<String>,
+}
+
+impl IdentityProbe {
+    pub fn from_value(v: &Value) -> Result<IdentityProbe, String> {
+        Ok(IdentityProbe {
+            name: v.str_field("name")?,
+            program: v.str_field("program")?,
+            args: v.str_list("args"),
+        })
+    }
+}
+
 #[derive(Clone, Debug)]
 pub struct StationSpec {
     pub station_id: String,
@@ -166,6 +186,7 @@ pub struct Fixture {
     pub narrowed_may_read: Vec<String>,
     pub narrowed_may_change: Vec<String>,
     pub commands: Vec<Command>,
+    pub identity_probes: Vec<IdentityProbe>,
     pub expected_outputs: Vec<String>,
     pub tests: Vec<String>,
     pub evidence_requirements: Vec<String>,
@@ -184,6 +205,16 @@ impl Fixture {
                     .collect::<Result<Vec<_>, _>>()
             })
             .unwrap_or(Ok(Vec::new()))?;
+        let identity_probes = v
+            .get("job_parameters")
+            .and_then(|j| j.get("identity_probes"))
+            .and_then(|x| x.as_arr())
+            .map(|a| {
+                a.iter()
+                    .map(IdentityProbe::from_value)
+                    .collect::<Result<Vec<_>, _>>()
+            })
+            .unwrap_or(Ok(Vec::new()))?;
         Ok(Fixture {
             path: path.to_path_buf(),
             fixture_id: v.str_field("fixture_id")?,
@@ -193,6 +224,7 @@ impl Fixture {
             narrowed_may_read: v.str_list("narrowed_may_read"),
             narrowed_may_change: v.str_list("narrowed_may_change"),
             commands,
+            identity_probes,
             expected_outputs: v.str_list("expected_outputs"),
             tests: v.str_list("tests"),
             evidence_requirements: v.str_list("evidence_requirements"),

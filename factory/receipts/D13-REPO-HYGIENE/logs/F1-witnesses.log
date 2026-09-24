@@ -1,0 +1,4 @@
+$ sh -c cargo +1.94.1 test -p factory -- --list 2>/dev/null | grep -c ': test$' | grep -qx 17 && for t in f09_wildcard_station_surface_rejected_at_open f10_wildcard_delta_surface_rejected_at_check f11_literal_surface_forms f12_fixture_wildcard_rejected_at_open f13_receipt_and_verification_carry_environment_identity f14_audit_classifies_only_proven_objects_retirable f15_retire_removes_exactly_the_proven_objects f16_heuristic_checkers_carry_proof_weight_none; do grep -q "fn $t" factory/tests/factory_law.rs || { echo missing $t; exit 1; }; done
+(cwd .)
+
+[exit 0] expected 0

@@ -1,0 +1,5 @@
+$ sh -c T=$(mktemp -d) && node tests/toolchain/proof.mjs sets-check --out $T --id S --root . --sets tests/toolchain/proof-sets.json && grep -q '"verdict": "PASS"' $T/S.json
+(cwd .)
+PASS S  14 members = 13 HOST_NATIVE_SET roots (== default-members) + 1 WASM64_KERNEL_SET root (factc-wasm-abi); disjoint and complete; 31 physical manifests accounted
+
+[exit 0] expected 0

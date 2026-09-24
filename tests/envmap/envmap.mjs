@@ -8,9 +8,15 @@
 //   render   <graph> --out DIR           AUTHORITY-REGISTER.md and TRACEABILITY.md (deterministic text)
 //   render-check <graph> --dir DIR [--out FILE]   re-render and byte-compare with the committed files
 //   paths-probe <repo root> [--out FILE] evaluate every station surface with the literal covers() rule against git ls-files
+// D13 (graph epochs; design/materialization/D13-INTENDED-REPO-HYGIENE.md section 2.6):
+//   merge --base-rev REV --epochs A.json,B.json --out FILE   base graph (git show REV:design/environment-map/graph.json)
+//                                        + epoch files; nodes/edges are only ADDED, never changed; envelope gains epochs
+//   merge-check <graph> --base-rev REV --epochs ...  [--out FILE]  re-merge and byte-compare; every base node/edge kept
+//   bind <epoch.json> [--root DIR]       fill sha256/bytes of PENDING evidence nodes from their committed files
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 
 function args(argv) {
   const o = { _: [] };
@@ -23,6 +29,7 @@ function args(argv) {
 }
 function load(p) { return JSON.parse(readFileSync(p, 'utf8')); }
 function writeJson(p, v) { mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, JSON.stringify(v, null, 2) + '\n'); }
+const GRAPH_PATH = 'design/environment-map/graph.json';
 function byId(g) { const m = new Map(); for (const n of g.nodes) m.set(n.id, n); return m; }
 function out(g, id, type) { return g.edges.filter(e => e.from === id && (!type || e.type === type)); }
 function inc(g, id, type) { return g.edges.filter(e => e.to === id && (!type || e.type === type)); }
@@ -95,6 +102,12 @@ function validate(g) {
   add('constraint_authority_refs_resolve', consBadRef.length ? 'FAIL' : 'PASS', consBadRef.map(c => c.id).join(' '));
   const factBadRef = facts.filter(f => f.constraint_refs.some(c => !ids.has(c) || ids.get(c).class !== 'CONSTRAINT'));
   add('fact_constraint_refs_resolve', factBadRef.length ? 'FAIL' : 'PASS', factBadRef.map(f => f.id).join(' '));
+  if (g.epochs) {
+    const names = g.epochs.map(e => e.epoch);
+    const badEpoch = g.nodes.filter(n => n.introduced_in && !names.includes(n.introduced_in)).map(n => n.id);
+    const counted = g.epochs.reduce((a, e) => a + e.nodes_added, 0);
+    add('epochs_consistent', !badEpoch.length && counted === g.nodes.length ? 'PASS' : 'FAIL', badEpoch.length ? 'unknown epoch on ' + badEpoch.join(' ') : `${names.join(' -> ')}; ${counted} nodes attributed of ${g.nodes.length}`);
+  }
   const invariants = Array.isArray(g.invariants) && g.invariants.length === 11;
   add('prompt_invariants_carried', invariants ? 'PASS' : 'FAIL', `${(g.invariants || []).length} invariants`);
   const status = checks.every(c => c.status === 'PASS') ? 'PASS' : 'FAIL';
@@ -136,6 +149,19 @@ const Q = {
   Q13: { title: 'Which [RUN] is valid only for one machine epoch?', fn: (g, ids) => ({ single_epoch_runs: g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT' && n.status === 'RUN').map(f => { const envs = new Set(out(g, f.id, 'REQUIRES').map(e => e.to).filter(id => ids.get(id).class === 'ENVIRONMENT')); for (const e of out(g, f.id, 'EVIDENCED_BY')) envs.add(ids.get(e.to).environment_ref); return { fact: f.id, environments: sortIds([...envs]) }; }).filter(x => x.environments.length === 1).sort((a, b) => a.fact.localeCompare(b.fact)) }) },
   Q14: { title: 'Where does a proposal get mistaken for baseline semantics?', fn: (g, ids) => ({ proposal_authorizing_run_fact: g.edges.filter(e => e.type === 'AUTHORIZES' && ids.get(e.from).authority_class === 'PROPOSAL' && ids.get(e.to).class === 'COMPUTATIONAL_FACT' && ids.get(e.to).status === 'RUN').map(e => `${e.from} -> ${e.to}`), ready_contract_on_proposal: g.nodes.filter(n => n.class === 'CONSTRAINT' && n.kind === 'contract' && n.contract_status === 'READY-CONTRACT' && n.authority_refs.some(a => ids.get(a).authority_class === 'PROPOSAL')).map(n => n.id), proposals_correctly_bounded: g.nodes.filter(n => n.class === 'AUTHORITY' && n.authority_class === 'PROPOSAL').map(n => ({ authority: n.id, authorizes: sortIds(out(g, n.id, 'AUTHORIZES').map(e => e.to)), conflicts: sortIds(out(g, n.id, 'CONFLICTS_WITH').map(e => e.conflict_id)) })) }) },
   Q15: { title: 'Where does implementation documentation get mistaken for standards law?', fn: (g, ids) => { const implClasses = ['IMPLEMENTATION_DOC', 'IMPLEMENTATION_SOURCE', 'TARGET_DOC', 'TOOL_DOC', 'RUST_REFERENCE']; const stdClasses = ['STANDARD_RELEASE', 'LIVING_STANDARD', 'EDITOR_DRAFT']; const res = []; for (const c of g.nodes.filter(n => n.class === 'CONSTRAINT' && n.kind === 'external')) { const cls = c.authority_refs.map(a => ids.get(a).authority_class); if (cls.some(x => implClasses.includes(x)) && !cls.some(x => stdClasses.includes(x))) res.push({ constraint: c.id, authorities: c.authority_refs, note: 'external constraint grounded only in implementation/tool documentation' }); } const conflicts = g.edges.filter(e => e.type === 'CONFLICTS_WITH' && (implClasses.includes(ids.get(e.from).authority_class) || implClasses.includes(ids.get(e.to).authority_class))).map(e => ({ conflict_id: e.conflict_id, from: e.from, to: e.to, note: e.note })); return { implementation_only_external_constraints: res, implementation_vs_standard_conflicts: conflicts }; } },
+  Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
+    const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;
+    const ep = n => n.introduced_in || first;
+    return { epochs: epochs.map(e => {
+      const nodes = g.nodes.filter(n => ep(n) === e.epoch); const mine = new Set(nodes.map(n => n.id));
+      const byClass = {}; for (const n of nodes) byClass[n.class] = (byClass[n.class] || 0) + 1;
+      const facts = nodes.filter(n => n.class === 'COMPUTATIONAL_FACT').sort((a, b) => a.id.localeCompare(b.id)).map(f => ({ fact: f.id, status: f.status,
+        probes: sortIds(out(g, f.id, 'PROBED_BY').map(x => x.to)), evidence: sortIds(out(g, f.id, 'EVIDENCED_BY').map(x => x.to)),
+        environments: sortIds(out(g, f.id, 'EVIDENCED_BY').map(x => ids.get(x.to).environment_ref)), authorities: sortIds(inc(g, f.id, 'AUTHORIZES').map(x => x.from)) }));
+      const cross = g.edges.filter(x => mine.has(x.from) !== mine.has(x.to) && (mine.has(x.from) || mine.has(x.to)) && (ep(ids.get(x.from)) === e.epoch ? true : ep(ids.get(x.to)) === e.epoch)).map(x => `${x.type} ${x.from} -> ${x.to}`).sort();
+      return { epoch: e.epoch, delta: e.delta || g.delta, commit: e.commit || g.repository_commit, nodes_by_class: byClass, facts, cross_epoch_edges: cross };
+    }) };
+  } },
 };
 function staleBy(g, ids, pred) {
   const groups = {};
@@ -157,8 +183,9 @@ function runQuery(g, q, nodeId) {
 }
 
 // ------------------------------------------------------------------------------------------------ render
+function epochLine(g) { return g.epochs ? ` Epochs: ${g.epochs.map(e => `${e.epoch} (${e.delta}, ${String(e.commit).slice(0, 9)}, +${e.nodes_added} nodes/+${e.edges_added} edges)`).join(' -> ')}; current epoch ${g.current_epoch}.` : ''; }
 function renderRegister(g) {
-  const L = ['# Authority Register (generated by tests/envmap/envmap.mjs render; do not edit by hand)', '', `Graph: ${g.schema}, delta ${g.delta}, repository ${g.repository_commit}, assembled ${g.assembled}.`,
+  const L = ['# Authority Register (generated by tests/envmap/envmap.mjs render; do not edit by hand)', '', `Graph: ${g.schema}, delta ${g.delta}, repository ${g.repository_commit}, assembled ${g.assembled}.${epochLine(g)}`,
     'Two identities per authority are kept apart: the CURRENT authority (exact_url + fragment, observed_date, reopen_status) and the REPRODUCIBILITY PIN (source repo @ commit, path, sha256, observed). A DENIED reopen means the published rendering was not verified in D11; the clause was read from the pinned source.', ''];
   const auth = g.nodes.filter(n => n.class === 'AUTHORITY').sort((a, b) => a.id.localeCompare(b.id));
   const byClass = {};
@@ -178,7 +205,7 @@ function renderRegister(g) {
 }
 function renderTrace(g) {
   const ids = byId(g);
-  const L = ['# Traceability: authority -> constraint -> fact -> probe -> evidence (generated by tests/envmap/envmap.mjs render; do not edit by hand)', '', `Graph: ${g.schema}, delta ${g.delta}, repository ${g.repository_commit}.`, ''];
+  const L = ['# Traceability: authority -> constraint -> fact -> probe -> evidence (generated by tests/envmap/envmap.mjs render; do not edit by hand)', '', `Graph: ${g.schema}, delta ${g.delta}, repository ${g.repository_commit}.${epochLine(g)}`, ''];
   const facts = g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT').sort((a, b) => a.id.localeCompare(b.id));
   for (const f of facts) {
     const a = authoritiesOf(g, ids, f.id);
@@ -245,6 +272,60 @@ function pathsProbe(root) {
   return { tool: 'tests/envmap/envmap.mjs paths-probe', rule: "covers(surface, path): '*' | 'dir/' prefix | exact file; no glob (restated from factory/src/paths.rs)", files_considered: files.length, status: 'OBS', dead_wildcard_surfaces: dead.map(x => `${x.station} ${x.kind} ${x.surface}`), surfaces };
 }
 
+// ------------------------------------------------------------------------------------------------ epochs (D13)
+function baseGraph(rev) {
+  const r = spawnSync('git', ['show', `${rev}:${GRAPH_PATH}`], { encoding: 'utf8', maxBuffer: 1 << 28 });
+  if (r.status !== 0) throw new Error(`git show ${rev}:${GRAPH_PATH} failed: ${r.stderr}`);
+  return JSON.parse(r.stdout);
+}
+function merge(base, epochFiles) {
+  const g = JSON.parse(JSON.stringify(base));
+  const first = { epoch: 'D11', delta: base.delta, commit: base.repository_commit, summary: 'computational environment map (origin epoch)', nodes_added: base.nodes.length, edges_added: base.edges.length };
+  g.epochs = base.epochs ? [...base.epochs] : [first];
+  const ids = new Set(g.nodes.map(n => n.id)); const edgeKeys = new Set(g.edges.map(e => JSON.stringify(e)));
+  for (const f of epochFiles) {
+    const ep = load(f);
+    if (ep.schema !== 'facttest-environment-map-epoch/1') throw new Error(`${f}: schema ${ep.schema}`);
+    if (g.epochs.some(e => e.epoch === ep.epoch)) throw new Error(`${f}: epoch ${ep.epoch} already merged`);
+    for (const n of ep.nodes) {
+      if (ids.has(n.id)) throw new Error(`${f}: node ${n.id} already exists (epochs only add nodes)`);
+      ids.add(n.id); g.nodes.push({ ...n, introduced_in: ep.epoch });
+    }
+    for (const e of ep.edges) {
+      const k = JSON.stringify(e);
+      if (edgeKeys.has(k)) throw new Error(`${f}: duplicate edge ${k}`);
+      edgeKeys.add(k); g.edges.push(e);
+    }
+    g.epochs.push({ epoch: ep.epoch, delta: ep.delta, commit: ep.commit, summary: ep.summary, nodes_added: ep.nodes.length, edges_added: ep.edges.length });
+  }
+  g.current_epoch = g.epochs[g.epochs.length - 1].epoch;
+  return g;
+}
+function graphText(g) { return JSON.stringify(g, null, 1) + '\n'; }
+function mergeCheck(path, rev, epochFiles) {
+  const base = baseGraph(rev), have = readFileSync(path, 'utf8'), want = graphText(merge(base, epochFiles));
+  const g = JSON.parse(have); const ids = byId(g); const checks = [];
+  const changed = base.nodes.filter(n => { const m = ids.get(n.id); if (!m) return true; const { introduced_in, ...rest } = m; return introduced_in !== undefined && introduced_in !== 'D11' || JSON.stringify(rest) !== JSON.stringify(n); }).map(n => n.id);
+  checks.push({ check: 'base_nodes_preserved', status: changed.length ? 'FAIL' : 'PASS', detail: changed.length ? changed.join(' ') : `${base.nodes.length} base nodes identical` });
+  const keys = new Set(g.edges.map(e => JSON.stringify(e)));
+  const lost = base.edges.filter(e => !keys.has(JSON.stringify(e)));
+  checks.push({ check: 'base_edges_preserved', status: lost.length ? 'FAIL' : 'PASS', detail: lost.length ? `${lost.length} base edges missing` : `${base.edges.length} base edges present` });
+  checks.push({ check: 'graph_equals_merge_of_base_and_epochs', status: have === want ? 'PASS' : 'FAIL', detail: have === want ? `${want.length} bytes identical` : `differs (${have.length} vs ${want.length} bytes)` });
+  return { tool: 'tests/envmap/envmap.mjs merge-check', base_rev: rev, epochs: epochFiles, status: checks.every(c => c.status === 'PASS') ? 'PASS' : 'FAIL', checks };
+}
+function bind(epochFile, root) {
+  const ep = load(epochFile); const bound = [];
+  for (const n of ep.nodes.filter(x => x.class === 'EVIDENCE' && x.status === 'PENDING')) {
+    const p = join(root, n.artifact_identity.path);
+    if (!existsSync(p)) throw new Error(`${n.id}: ${n.artifact_identity.path} missing`);
+    const b = readFileSync(p);
+    n.artifact_identity.sha256 = createHash('sha256').update(b).digest('hex'); n.artifact_identity.bytes = b.length;
+    n.status = n.status_after_bind || 'RUN'; delete n.status_after_bind; bound.push(n.id);
+  }
+  writeFileSync(epochFile, JSON.stringify(ep, null, 1) + '\n');
+  return bound;
+}
+
 // ------------------------------------------------------------------------------------------------ main
 const o = args(process.argv.slice(2));
 const cmd = o._[0];
@@ -255,5 +336,8 @@ try {
   else if (cmd === 'render') { const r = render(load(o._[1]), o.out); console.log(JSON.stringify(r)); }
   else if (cmd === 'render-check') { const r = renderCheck(load(o._[1]), o.dir); if (o.out) writeJson(o.out, r); console.log(r.status, r.checks.map(c => `${c.file}: ${c.detail}`).join('; ')); process.exit(r.status === 'PASS' ? 0 : 1); }
   else if (cmd === 'paths-probe') { const r = pathsProbe(o._[1]); if (o.out) writeJson(o.out, r); console.log(`${r.status}: dead wildcard surfaces: ${(r.dead_wildcard_surfaces || []).join('; ') || 'none'}`); }
-  else { console.error('usage: envmap.mjs <validate|query|stale|render|render-check|paths-probe> ...'); process.exit(2); }
+  else if (cmd === 'merge') { const g = merge(baseGraph(o['base-rev']), o.epochs.split(',')); writeFileSync(o.out, graphText(g)); console.log(`merged ${g.epochs.map(e => e.epoch).join(' -> ')}: ${g.nodes.length} nodes, ${g.edges.length} edges -> ${o.out}`); }
+  else if (cmd === 'merge-check') { const r = mergeCheck(o._[1], o['base-rev'], o.epochs.split(',')); if (o.out) writeJson(o.out, r); console.log(r.status, r.checks.map(c => `${c.check}: ${c.detail}`).join('; ')); process.exit(r.status === 'PASS' ? 0 : 1); }
+  else if (cmd === 'bind') { const b = bind(o._[1], o.root || '.'); console.log(`bound ${b.length}: ${b.join(' ')}`); }
+  else { console.error('usage: envmap.mjs <validate|query|stale|render|render-check|paths-probe|merge|merge-check|bind> ...'); process.exit(2); }
 } catch (e) { console.error('envmap: ' + (e && e.stack || e)); process.exit(2); }

@@ -1,0 +1,63 @@
+{
+  "schema": "facttest-proof-sets/1",
+  "delta": "D13-REPO-HYGIENE",
+  "law": "design/materialization/D13-INTENDED-REPO-HYGIENE.md section 3.2-3.3",
+  "rule": "a proof record states its set, target, profile and toolchain; a bare cargo command selects HOST_NATIVE_SET (default-members) and never the whole project; CROSS_SET and HEURISTIC records carry proof weight NONE",
+  "sets": {
+    "HOST_NATIVE_SET": {
+      "toolchain": "1.94.1",
+      "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+      "components": ["clippy", "rustfmt"],
+      "target": "host (x86_64-unknown-linux-gnu)",
+      "selection": "default-members (bare cargo)",
+      "roots": ["factory", "factc-foundation", "factc-source", "factc-semantic", "factc-capability", "factc-implementation", "factc-planning", "factc-verifier", "factc-codegen", "factc-bundle", "factc-observe", "factc-kernel", "factc"],
+      "profiles": ["dev", "release"],
+      "evidence_basis": "D9 T9-P2-*, T9-P3-01..03, T9-P4-*, T9-P6-* ran on rustc 1.94.1 (e408947bf 2026-03-25)"
+    },
+    "WASM64_KERNEL_SET": {
+      "toolchain": "nightly-2026-09-24",
+      "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+      "components": ["rust-src", "clippy"],
+      "target": "wasm64-unknown-unknown",
+      "build_std": "core",
+      "rustflags": "-C link-arg=-zstack-size=16777216",
+      "selection": "-p factc-wasm-abi",
+      "roots": ["factc-wasm-abi"],
+      "graph": ["factc-wasm-abi", "factc-foundation", "factc-source", "factc-semantic", "factc-capability", "factc-implementation", "factc-planning", "factc-verifier", "factc-codegen", "factc-bundle", "factc-observe", "factc-kernel"],
+      "profiles": ["dev", "release"],
+      "evidence_basis": "D9 T9-P3-04, T9-P5-02/03, T9-P8-* ran on rustc 1.100.0-nightly (6eeff9a52 2026-09-23); KRN-D13-B reproduced D9's kernel byte-for-byte",
+      "kernel_identity": {
+        "note": "the release kernel's bytes depend on the rust-src install path (-Z build-std hashes the std source path), i.e. on the rustup toolchain NAME; identity is therefore declared per install name [GAP: not install-path independent]",
+        "artifact": "wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+        "by_install_name": {
+          "nightly-2026-09-24-x86_64-unknown-linux-gnu": { "sha256": "6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81", "bytes": 3350254, "source": "KRN-D13-A (D13 assembly)" },
+          "nightly-x86_64-unknown-linux-gnu": { "sha256": "309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c", "bytes": 3350252, "source": "D9 T9-P8-01; reproduced by KRN-D13-B" }
+        }
+      }
+    },
+    "ALL_SOURCES": {
+      "toolchain": "1.94.1",
+      "target": "none (rustfmt reads files; nothing is compiled)",
+      "selection": "cargo fmt --all (every member's files)",
+      "profiles": []
+    },
+    "ALL_MEMBERS_GRAPH": {
+      "toolchain": "1.94.1",
+      "target": "none (cargo metadata; nothing is compiled)",
+      "selection": "every workspace member + every physical Cargo.toml under the root",
+      "profiles": []
+    },
+    "CROSS_SET": {
+      "toolchain": "1.94.1",
+      "target": "host",
+      "selection": "--workspace (mixes HOST_NATIVE_SET with the target-specific factc-wasm-abi)",
+      "proof_weight": "NONE",
+      "meaning": "diagnostic only: records that a host --workspace build/clippy cannot succeed (factc-wasm-abi has no host panic_handler by design) and that --workspace tests compile it only in the test harness; never a proof of either set"
+    },
+    "HEURISTIC": {
+      "proof_weight": "NONE",
+      "members": ["factory nostd-check", "factory depcheck"],
+      "authoritative_replacement": { "no_std": "WASM64_KERNEL_SET core-only graph (T9-P5-02/03)", "dependencies": "ALL_MEMBERS_GRAPH Cargo-resolved graph + physical manifests (T9-P6-01/03)" }
+    }
+  }
+}

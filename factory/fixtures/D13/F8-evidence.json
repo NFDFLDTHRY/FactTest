@@ -1,0 +1,151 @@
+{
+  "fixture_id": "F8-evidence",
+  "station_id": "S-EVIDENCE",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "design/environment-map/graph.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D13/envmap/",
+    "evidence/D13/index.json",
+    "evidence/D13/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D13/envmap/validate.json"
+        ],
+        "log": "evidence/D13/logs/F8-validate.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "query",
+          "design/environment-map/graph.json",
+          "--all",
+          "--out",
+          "evidence/D13/envmap/queries"
+        ],
+        "log": "evidence/D13/logs/F8-queries.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "stale",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D13/envmap/stale.json"
+        ],
+        "log": "evidence/D13/logs/F8-stale.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render-check",
+          "design/environment-map/graph.json",
+          "--dir",
+          "design/environment-map",
+          "--out",
+          "evidence/D13/envmap/render-check.json"
+        ],
+        "log": "evidence/D13/logs/F8-render-check.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge-check",
+          "design/environment-map/graph.json",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json",
+          "--out",
+          "evidence/D13/envmap/merge-check.json"
+        ],
+        "log": "evidence/D13/logs/F8-merge-check.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const q=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/envmap/queries/Q16.json\"));const e=q.answer.epochs.map(x=>x.epoch).join(\",\");const d12=q.answer.epochs.find(x=>x.epoch===\"D12\");if(e!==\"D11,D12,D13\"||d12.facts.length<13||!d12.cross_epoch_edges.length)process.exit(1);console.log(e)'"
+        ],
+        "log": "evidence/D13/logs/F8-d12-traversable.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d13w/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D13",
+          "evidence/D13/index.json"
+        ],
+        "log": "evidence/D13/logs/F8-index.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D13/envmap/validate.json",
+    "evidence/D13/envmap/queries/Q16.json",
+    "evidence/D13/index.json"
+  ],
+  "tests": [
+    "graph valid; Q01..Q16; D12 traversable",
+    "evidence index"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

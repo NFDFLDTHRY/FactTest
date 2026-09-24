@@ -1,0 +1,56 @@
+{
+  "module": "/home/user/factory-target-d13w/wasm64-unknown-unknown/debug/factc_wasm_abi.wasm",
+  "sha256": "5d601d85b5e8596c5026d634fcdd5f41e1c37da4ab480843548e6835bef5c46a",
+  "byte_len": 12452308,
+  "memories": [
+    "I64 min=312 max=None shared=false"
+  ],
+  "imports": [],
+  "exports": [
+    "memory:2",
+    "check_or_compile:0",
+    "input_buffer_len:0",
+    "input_buffer_ptr:0",
+    "output_buffer_len:0",
+    "output_buffer_ptr:0",
+    "query_abi_version:0",
+    "query_required_workspace:0",
+    "read_artifact_metadata:0",
+    "read_diagnostics:0",
+    "reset_workspace:0",
+    "submit_machine_state:0",
+    "submit_source_bytes:0"
+  ],
+  "checks": [
+    {
+      "check": "module_structure",
+      "status": "PASS",
+      "detail": "17 sections"
+    },
+    {
+      "check": "memory_declared",
+      "status": "PASS",
+      "detail": "I64 min=312 max=None shared=false"
+    },
+    {
+      "check": "all_memories_i64_address_type",
+      "status": "PASS",
+      "detail": "wasm32 (i32 address) memories are forbidden by project law FT-003"
+    },
+    {
+      "check": "imports_listed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exports_listed",
+      "status": "PASS",
+      "detail": "memory:2, check_or_compile:0, input_buffer_len:0, input_buffer_ptr:0, output_buffer_len:0, output_buffer_ptr:0, query_abi_version:0, query_required_workspace:0, read_artifact_metadata:0, read_diagnostics:0, reset_workspace:0, submit_machine_state:0, submit_source_bytes:0"
+    },
+    {
+      "check": "artifact_identity",
+      "status": "PASS",
+      "detail": "sha256 5d601d85b5e8596c5026d634fcdd5f41e1c37da4ab480843548e6835bef5c46a bytes 12452308"
+    }
+  ]
+}

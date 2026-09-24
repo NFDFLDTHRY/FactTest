@@ -5,10 +5,19 @@ use crate::json::Value;
 use crate::ops::Report;
 use std::path::{Path, PathBuf};
 
+/// Proof weight of the legacy text scanners (depcheck, nostd-check).
+pub const HEURISTIC_WEIGHT: &str = "NONE";
+
 /// B2 / PASS1: every `[dependencies]`, `[dev-dependencies]` and `[build-dependencies]` entry must be a
 /// `path = ` dependency that resolves inside the repository root.  Registry/git dependencies are rejected.
+///
+/// HEURISTIC (D13): a line scanner with demonstrated bypasses (D9 mutants M4/M5).  Its proof weight is NONE; the
+/// authoritative dependency proof is the Cargo-resolved graph with physical-manifest accounting (tests/toolchain).
 pub fn depcheck(root: &Path, manifests: &[PathBuf]) -> Report {
-    let mut r = Report::default();
+    let mut r = Report {
+        weight: Some(HEURISTIC_WEIGHT.into()),
+        ..Report::default()
+    };
     let root = root.canonicalize().unwrap_or_else(|_| root.to_path_buf());
     for m in manifests {
         let text = match std::fs::read_to_string(m) {
@@ -91,8 +100,14 @@ pub fn depcheck(root: &Path, manifests: &[PathBuf]) -> Report {
 }
 
 /// B1 companion: kernel crates must declare `#![no_std]` and never name `std::` / `extern crate std`.
+///
+/// HEURISTIC (D13): a text scan with demonstrated bypasses (cfg(test), `::std`, grouped `use`).  Its proof weight is
+/// NONE; the authoritative no_std proof is the core-only wasm64 compiler graph (tests/toolchain).
 pub fn nostd_check(crate_dirs: &[PathBuf]) -> Report {
-    let mut r = Report::default();
+    let mut r = Report {
+        weight: Some(HEURISTIC_WEIGHT.into()),
+        ..Report::default()
+    };
     for dir in crate_dirs {
         let lib = dir.join("src/lib.rs");
         let text = std::fs::read_to_string(&lib).unwrap_or_default();

@@ -3,6 +3,8 @@
 //! The Factory manufactures object A (FactTest.git).  It is not the compiler and never touches source semantics.
 pub mod checks;
 pub mod git;
+pub mod hygiene;
+pub mod identity;
 pub mod json;
 pub mod model;
 pub mod ops;

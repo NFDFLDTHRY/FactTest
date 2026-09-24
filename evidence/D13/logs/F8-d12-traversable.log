@@ -1,0 +1,5 @@
+$ sh -c node -e 'const q=JSON.parse(require("fs").readFileSync("evidence/D13/envmap/queries/Q16.json"));const e=q.answer.epochs.map(x=>x.epoch).join(",");const d12=q.answer.epochs.find(x=>x.epoch==="D12");if(e!=="D11,D12,D13"||d12.facts.length<13||!d12.cross_epoch_edges.length)process.exit(1);console.log(e)'
+(cwd .)
+D11,D12,D13
+
+[exit 0] expected 0

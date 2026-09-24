@@ -1,0 +1,207 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F5-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F5-build",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "compiler/",
+    "factory/",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "tests/toolchain/proof-sets.json",
+    "fixtures/toolchain/"
+  ],
+  "open_tree": "f34030a1db2350219266acd1846b17bf0e4337d0",
+  "close_tree": "c8f024ff219653b839f9ef9620a6f3fac009056d",
+  "changed_paths": [
+    "evidence/D13/logs/F5-factory-build.log",
+    "evidence/D13/logs/F5-qualified-proof.log",
+    "evidence/D13/logs/F5-summary-gate.log",
+    "evidence/D13/proof/all/Q-ALL-01-fmt-check.json",
+    "evidence/D13/proof/all/Q-ALL-01-fmt-check.log",
+    "evidence/D13/proof/all/Q-ALL-02-resolved-graph-first-party.json",
+    "evidence/D13/proof/all/Q-ALL-03-third-party-dep-fixture-rejected.json",
+    "evidence/D13/proof/cross/X-01-build-workspace-host.json",
+    "evidence/D13/proof/cross/X-01-build-workspace-host.log",
+    "evidence/D13/proof/cross/X-02-clippy-workspace-host.json",
+    "evidence/D13/proof/cross/X-02-clippy-workspace-host.log",
+    "evidence/D13/proof/cross/X-03-test-workspace-host.json",
+    "evidence/D13/proof/cross/X-03-test-workspace-host.log",
+    "evidence/D13/proof/heuristic/Z-01-nostd-textual-scan.json",
+    "evidence/D13/proof/heuristic/Z-02-depcheck-explicit-list.json",
+    "evidence/D13/proof/host/Q-HOST-01-build-dev.json",
+    "evidence/D13/proof/host/Q-HOST-01-build-dev.log",
+    "evidence/D13/proof/host/Q-HOST-02-build-release.json",
+    "evidence/D13/proof/host/Q-HOST-02-build-release.log",
+    "evidence/D13/proof/host/Q-HOST-03-test-dev.json",
+    "evidence/D13/proof/host/Q-HOST-03-test-dev.log",
+    "evidence/D13/proof/host/Q-HOST-04-test-release.json",
+    "evidence/D13/proof/host/Q-HOST-04-test-release.log",
+    "evidence/D13/proof/host/Q-HOST-05-clippy-all-targets.json",
+    "evidence/D13/proof/host/Q-HOST-05-clippy-all-targets.log",
+    "evidence/D13/proof/host/Q-HOST-06-std-in-kernel.json",
+    "evidence/D13/proof/host/Q-HOST-07-id-substitution.json",
+    "evidence/D13/proof/host/Q-HOST-08-forge-verified-strategy.json",
+    "evidence/D13/proof/mutants/M1-omitted-workspace-member/mutant.json",
+    "evidence/D13/proof/mutants/M1-omitted-workspace-member/qualified.json",
+    "evidence/D13/proof/mutants/M1-omitted-workspace-member/weak.json",
+    "evidence/D13/proof/mutants/M2-compile-fail-wrong-reason/mutant.json",
+    "evidence/D13/proof/mutants/M2-compile-fail-wrong-reason/qualified.json",
+    "evidence/D13/proof/mutants/M2-compile-fail-wrong-reason/weak.json",
+    "evidence/D13/proof/mutants/M3-compile-fail-stale-forge/mutant.json",
+    "evidence/D13/proof/mutants/M3-compile-fail-stale-forge/qualified.json",
+    "evidence/D13/proof/mutants/M3-compile-fail-stale-forge/weak.json",
+    "evidence/D13/proof/mutants/M4-nostd-scanner-bypass/mutant.json",
+    "evidence/D13/proof/mutants/M4-nostd-scanner-bypass/qualified.json",
+    "evidence/D13/proof/mutants/M4-nostd-scanner-bypass/weak.json",
+    "evidence/D13/proof/mutants/M5-uninspected-manifest/mutant.json",
+    "evidence/D13/proof/mutants/M5-uninspected-manifest/qualified.json",
+    "evidence/D13/proof/mutants/M5-uninspected-manifest/weak.json",
+    "evidence/D13/proof/mutants/M6-native-pass-wasm64-fail/mutant.json",
+    "evidence/D13/proof/mutants/M6-native-pass-wasm64-fail/qualified.json",
+    "evidence/D13/proof/mutants/M6-native-pass-wasm64-fail/weak.json",
+    "evidence/D13/proof/mutants/M7-wasm32-masquerade/mutant.json",
+    "evidence/D13/proof/mutants/M7-wasm32-masquerade/qualified.json",
+    "evidence/D13/proof/mutants/M7-wasm32-masquerade/weak.json",
+    "evidence/D13/proof/mutants/M8-debug-pass-release-fail/mutant.json",
+    "evidence/D13/proof/mutants/M8-debug-pass-release-fail/qualified.json",
+    "evidence/D13/proof/mutants/M8-debug-pass-release-fail/weak.json",
+    "evidence/D13/proof/mutants/summary.json",
+    "evidence/D13/proof/mutants/summary.txt",
+    "evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+    "evidence/D13/proof/sets/T13-SETS-01-roots-partition.json",
+    "evidence/D13/proof/summary.json",
+    "evidence/D13/proof/summary.txt",
+    "evidence/D13/proof/toolchain/T9-P7-01-toolchain-identity.json",
+    "evidence/D13/proof/wasm64/Q-WASM-01-clippy-core-graph.json",
+    "evidence/D13/proof/wasm64/Q-WASM-01-clippy-core-graph.log",
+    "evidence/D13/proof/wasm64/Q-WASM-02-core-only-graph-dev.json",
+    "evidence/D13/proof/wasm64/Q-WASM-03-core-only-graph-release.json",
+    "evidence/D13/proof/wasm64/Q-WASM-04-inspect-release.inspect.json",
+    "evidence/D13/proof/wasm64/Q-WASM-04-inspect-release.json",
+    "evidence/D13/proof/wasm64/Q-WASM-05-inspect-dev.inspect.json",
+    "evidence/D13/proof/wasm64/Q-WASM-05-inspect-dev.json",
+    "evidence/D13/proof/wasm64/Q-WASM-06-kernel-identity.json",
+    "evidence/D13/proof/wasm64/Q-WASM-07-chromium-abi-release.browser.err.log",
+    "evidence/D13/proof/wasm64/Q-WASM-07-chromium-abi-release.browser.json",
+    "evidence/D13/proof/wasm64/Q-WASM-07-chromium-abi-release.json"
+  ],
+  "output_artifacts": [
+    "evidence/D13/proof/summary.json",
+    "evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+    "evidence/D13/proof/wasm64/Q-WASM-06-kernel-identity.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F5-factory-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F5-qualified-proof.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F5-summary-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo +1.94.1 build -p factory",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F5-factory-build.log"
+    },
+    {
+      "check": "command:sh tests/toolchain/run-qualified-proof.sh evidence/D13/proof",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F5-qualified-proof.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/proof/summary.json\"));const bad=s.obligations.filter(o=>![\"PASS\",\"OBS\",\"HEURISTIC\"].includes(o.verdict));if(bad.length||s.mutants.verdict!==\"RUN\"||s.proof_tally.PASS<20){console.log(JSON.stringify(bad));process.exit(1)}console.log(JSON.stringify(s.tally))'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F5-summary-gate.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/proof/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/proof/wasm64/Q-WASM-06-kernel-identity.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D13/logs/F5-factory-build.log",
+    "evidence/D13/logs/F5-qualified-proof.log",
+    "evidence/D13/logs/F5-summary-gate.log"
+  ],
+  "closed": "2026-09-24T07:14:21Z",
+  "status": "PASS"
+}

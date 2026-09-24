@@ -1,0 +1,208 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F6-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F6-evidence",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "the D13 tree",
+    "/home/user/factory-workpieces (workpiece root)",
+    "git worktree list"
+  ],
+  "open_tree": "b4063db54383e0aad2d9941566c4dfc6cbfee560",
+  "close_tree": "37cf5fa0e9c23ffe40ab4e30864c30b95eaa6d07",
+  "changed_paths": [
+    "evidence/D13/handoff/check.json",
+    "evidence/D13/logs/F6-audit-after.log",
+    "evidence/D13/logs/F6-audit-before.log",
+    "evidence/D13/logs/F6-cleanup-gate.log",
+    "evidence/D13/logs/F6-handoff-check.log",
+    "evidence/D13/logs/F6-paths-probe.log",
+    "evidence/D13/logs/F6-retire.log",
+    "evidence/D13/logs/F6-status-scan.log",
+    "evidence/D13/paths/paths-probe.json",
+    "evidence/D13/status/inventory.json",
+    "evidence/D13/status/summary.txt",
+    "evidence/D13/workpieces/audit-after.json",
+    "evidence/D13/workpieces/audit-before.json",
+    "evidence/D13/workpieces/retire.json"
+  ],
+  "output_artifacts": [
+    "evidence/D13/status/inventory.json",
+    "evidence/D13/handoff/check.json",
+    "evidence/D13/paths/paths-probe.json",
+    "evidence/D13/workpieces/audit-before.json",
+    "evidence/D13/workpieces/retire.json",
+    "evidence/D13/workpieces/audit-after.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F6-status-scan.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F6-handoff-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F6-paths-probe.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F6-audit-before.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F6-retire.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F6-audit-after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D13/logs/F6-cleanup-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D13/status",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F6-status-scan.log"
+    },
+    {
+      "check": "command:sh tests/hygiene/handoff-check.sh evidence/D13/handoff/check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F6-handoff-check.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs paths-probe . --out evidence/D13/paths/paths-probe.json && grep -q '\"dead_wildcard_surfaces\": \\[\\]' evidence/D13/paths/paths-probe.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F6-paths-probe.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d13w/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W14 --out evidence/D13/workpieces/audit-before.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F6-audit-before.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d13w/debug/factory workpiece retire /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W14 --out evidence/D13/workpieces/retire.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F6-retire.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d13w/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W14 --out evidence/D13/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F6-audit-after.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/workpieces/audit-after.json\"));if(a.totals.RETIRABLE!==0)process.exit(1);const r=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/workpieces/retire.json\"));if(r.actions.some(x=>x.result!==\"REMOVED\"))process.exit(1);console.log(r.actions.length+\" retired; kept \"+r.kept.length)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D13/logs/F6-cleanup-gate.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/status/inventory.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/handoff/check.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/paths/paths-probe.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/workpieces/audit-before.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/workpieces/retire.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D13/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D13/logs/F6-status-scan.log",
+    "evidence/D13/logs/F6-handoff-check.log",
+    "evidence/D13/logs/F6-paths-probe.log",
+    "evidence/D13/logs/F6-audit-before.log",
+    "evidence/D13/logs/F6-retire.log",
+    "evidence/D13/logs/F6-audit-after.log",
+    "evidence/D13/logs/F6-cleanup-gate.log"
+  ],
+  "closed": "2026-09-24T07:14:23Z",
+  "status": "PASS"
+}

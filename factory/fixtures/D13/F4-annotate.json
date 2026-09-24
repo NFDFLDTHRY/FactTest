@@ -1,0 +1,110 @@
+{
+  "fixture_id": "F4-annotate",
+  "station_id": "S-ANNOTATE",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 2.5, 2.7, 3.1"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "STATION-REGISTRY.md",
+    "FACTORY-CONTRACTS.md",
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "factory/receipts/D13-REPO-HYGIENE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in FABLE-ASCII-SYSTEM-PROMPT.md FINAL-HANDOFF-REQUIREMENTS.md PLANNED-REPO-LAYOUT.md STATION-REGISTRY.md FACTORY-CONTRACTS.md REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do d=$(git diff --numstat 205d337a7efef5fa25bb588ec385fa3655acb562 -- $f | cut -f2); [ \"$d\" = 0 ] || { echo \"$f deleted $d lines\"; exit 1; }; grep -q '^D13 ANNOTATION' $f || { echo \"$f no annotation\"; exit 1; }; done"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F4-insertion-only.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do grep -q 'https://webassembly.github.io/spec/js-api/#internal-storage' $f && grep -A1 'https://webassembly.github.io/spec/js-api/#internal-storage' $f | grep -q '^D13 ANNOTATION (fragment #internal-storage)' || { echo $f; exit 1; }; done; head -1 FABLE-ASCII-SYSTEM-PROMPT.md | grep -q '^D13 ANNOTATION - HISTORICAL'"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F4-markers.log"
+      },
+      {
+        "cwd": ".",
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "205d337a7efef5fa25bb588ec385fa3655acb562",
+          "--",
+          "FACTORY-LAW.md"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F4-constitution-untouched.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "STATION-REGISTRY.md",
+    "FACTORY-CONTRACTS.md",
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md"
+  ],
+  "tests": [
+    "insertion-only (0 deleted lines per file)",
+    "citations preserved byte-exact and annotated",
+    "FACTORY-LAW.md untouched"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

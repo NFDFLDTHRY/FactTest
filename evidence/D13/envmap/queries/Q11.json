@@ -1,0 +1,563 @@
+{
+  "query": "Q11",
+  "title": "Which evidence lacks complete environment identity?",
+  "answer": {
+    "incomplete": [
+      {
+        "evidence": "EV-D1-B10-B11-CHROMIUM",
+        "environment": "ENV-D1-D3-BROWSER",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "origin",
+          "secure_context",
+          "flags (default launch, not recorded)",
+          "OS identity"
+        ]
+      },
+      {
+        "evidence": "EV-D1-B10-NODE",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D1-B9-BUILD",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D1-B9-INSPECT",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D1-TOOLCHAIN-NIGHTLY",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-BROWSER-IDENTITY",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-KERNEL",
+        "environment": "ENV-D12-HOST",
+        "missing": [
+          "CPU identity",
+          "kernel release",
+          "stable toolchain not recorded (unused)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-NETWORK",
+        "environment": "ENV-D12-HOST",
+        "missing": [
+          "CPU identity",
+          "kernel release",
+          "stable toolchain not recorded (unused)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P01",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P02",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P03",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P04",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P05",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P06",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P07",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P08",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P09",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P10",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P14",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P15",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P16",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D13-HANDOFF",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-KERNEL-IDENTITY",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-PATHS-PROBE",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-PINS",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-PROOF-SUMMARY",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-SETS",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-STATUS",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-WORKPIECES",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D3-B9-TOOLCHAIN",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D6-F5-RECEIPT",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D6-PROBE-RECORD",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ADM-E0-WASM64",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ADM-E0-WEBGPU",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ADM-E1-WEBGPU",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-BUNDLE-UNCHANGED",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-CONTROLLED-LOSS",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-E0-RELAY",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-E1-RELAY",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ENVIRONMENT-STEP",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-NOWEBGPU-ADM",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D7-OBSERVED-ASCII",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D9-MUTANTS",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P1-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P2-02",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P2-04",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P3-04",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P4",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P5-02",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P5-03",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P6-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P7-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P8-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P8-02",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P8-03",
+        "environment": "ENV-D1-D3-BROWSER",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "origin",
+          "secure_context",
+          "flags (default launch, not recorded)",
+          "OS identity"
+        ]
+      }
+    ]
+  }
+}

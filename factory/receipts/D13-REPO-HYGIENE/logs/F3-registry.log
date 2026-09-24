@@ -1,0 +1,30 @@
+$ sh -c node tests/hygiene/registry-check.mjs --base-rev 205d337a7efef5fa25bb588ec385fa3655acb562
+(cwd .)
+PASS literal:S-ANNOTATE all surfaces literal
+PASS new_station:S-ANNOTATE absent at 205d337a7efef5fa25bb588ec385fa3655acb562; may_change ["FABLE-ASCII-SYSTEM-PROMPT.md","FINAL-HANDOFF-REQUIREMENTS.md","PLANNED-REPO-LAYOUT.md","STATION-REGISTRY.md","FACTORY-CONTRACTS.md","REFERENCE-AUTHORITY.md","CONSTRAINT-LEDGER.md","CONFLICT-LEDGER.md","IMPLEMENTATION-CONTRACTS.md","EVIDENCE-OBLIGATIONS.md","factory/receipts/"]
+PASS literal:S-BROWSER all surfaces literal
+PASS effective_may_change_unchanged:S-BROWSER 403 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 403 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-BROWSER 222 -> 222 protected tracked files
+PASS literal:S-BUILD all surfaces literal
+PASS effective_may_change_unchanged:S-BUILD 403 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 403 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-BUILD 221 -> 221 protected tracked files
+PASS literal:S-BUNDLE all surfaces literal
+PASS effective_may_change_unchanged:S-BUNDLE 403 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 403 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-BUNDLE 222 -> 222 protected tracked files
+PASS literal:S-DOC all surfaces literal
+PASS effective_may_change_unchanged:S-DOC 389 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 389 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-DOC 476 -> 476 protected tracked files
+PASS literal:S-EVIDENCE all surfaces literal
+PASS effective_may_change_unchanged:S-EVIDENCE 403 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 403 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-EVIDENCE 221 -> 221 protected tracked files
+PASS literal:S-FIXTURE all surfaces literal
+PASS effective_may_change_unchanged:S-FIXTURE 364 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 364 now (v1 -> v2)
+PASS must_not_change_not_weakened:S-FIXTURE 408 -> 476 protected tracked files
+PASS literal:S-RUST all surfaces literal
+PASS effective_may_change_unchanged:S-RUST 356 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 356 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-RUST 405 -> 405 protected tracked files
+PASS literal:S-WEB all surfaces literal
+PASS effective_may_change_unchanged:S-WEB 193 tracked files at 205d337a7efef5fa25bb588ec385fa3655acb562 vs 193 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-WEB 415 -> 415 protected tracked files
+
+[exit 0] expected 0

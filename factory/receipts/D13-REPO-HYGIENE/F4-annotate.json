@@ -1,0 +1,180 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F4-annotate",
+  "station_id": "S-ANNOTATE",
+  "station_version": "1",
+  "fixture_id": "F4-annotate",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 2.5, 2.7, 3.1"
+  ],
+  "open_tree": "61aa46b220e06c0b35d67e78922531eeb6710009",
+  "close_tree": "ea055231ac54bc92e0dc9f923b6f1ca68cec7643",
+  "changed_paths": [
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FACTORY-CONTRACTS.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "REFERENCE-AUTHORITY.md",
+    "STATION-REGISTRY.md",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-constitution-untouched.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-insertion-only.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-markers.log"
+  ],
+  "output_artifacts": [
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "STATION-REGISTRY.md",
+    "FACTORY-CONTRACTS.md",
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-ANNOTATE v1 (workpiece-bootstrap)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "LAW_ANNOTATION"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F4-insertion-only.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F4-markers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F4-constitution-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in FABLE-ASCII-SYSTEM-PROMPT.md FINAL-HANDOFF-REQUIREMENTS.md PLANNED-REPO-LAYOUT.md STATION-REGISTRY.md FACTORY-CONTRACTS.md REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do d=$(git diff --numstat 205d337a7efef5fa25bb588ec385fa3655acb562 -- $f | cut -f2); [ \"$d\" = 0 ] || { echo \"$f deleted $d lines\"; exit 1; }; grep -q '^D13 ANNOTATION' $f || { echo \"$f no annotation\"; exit 1; }; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F4-insertion-only.log"
+    },
+    {
+      "check": "command:sh -c for f in REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do grep -q 'https://webassembly.github.io/spec/js-api/#internal-storage' $f && grep -A1 'https://webassembly.github.io/spec/js-api/#internal-storage' $f | grep -q '^D13 ANNOTATION (fragment #internal-storage)' || { echo $f; exit 1; }; done; head -1 FABLE-ASCII-SYSTEM-PROMPT.md | grep -q '^D13 ANNOTATION - HISTORICAL'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F4-markers.log"
+    },
+    {
+      "check": "command:git diff --exit-code 205d337a7efef5fa25bb588ec385fa3655acb562 -- FACTORY-LAW.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F4-constitution-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:FABLE-ASCII-SYSTEM-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:FINAL-HANDOFF-REQUIREMENTS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:PLANNED-REPO-LAYOUT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:STATION-REGISTRY.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:FACTORY-CONTRACTS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:REFERENCE-AUTHORITY.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:CONSTRAINT-LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:CONFLICT-LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:IMPLEMENTATION-CONTRACTS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:EVIDENCE-OBLIGATIONS.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-insertion-only.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-markers.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-constitution-untouched.log"
+  ],
+  "closed": "2026-09-24T07:11:43Z",
+  "status": "PASS"
+}

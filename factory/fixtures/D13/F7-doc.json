@@ -1,0 +1,111 @@
+{
+  "fixture_id": "F7-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "evidence/D13/",
+    "design/environment-map/epochs/D13.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/",
+    "factory/receipts/D13-REPO-HYGIENE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "bind",
+          "design/environment-map/epochs/D13.json",
+          "--root",
+          "."
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F7-bind.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json",
+          "--out",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F7-merge.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F7-render.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "! grep -q '\"PENDING\"' design/environment-map/epochs/D13.json && node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F7-checks.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/graph.json",
+    "design/environment-map/epochs/D13.json"
+  ],
+  "tests": [
+    "D13 evidence bound (no PENDING)",
+    "graph re-merged and re-rendered"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

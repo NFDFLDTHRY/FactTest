@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
 
 fn usage() -> ! {
     eprintln!(
-        "usage:\n  factory delta check <delta.json>\n  factory workpiece create <delta.json>\n  factory station open <delta.json> <fixture.json>\n  factory station close <delta.json> <fixture.json>\n  factory verify <delta.json>\n  factory integrate <delta.json>\n  factory reinspect <delta.json>\n  factory depcheck <repo root> <Cargo.toml...>\n  factory nostd-check <crate dir...>\n  factory wasm-inspect <module.wasm> [--out report.json | --allow-wasm32]\n  factory evidence index <dir> <out.json>"
+        "usage:\n  factory delta check <delta.json>\n  factory workpiece create <delta.json>\n  factory workpiece audit <workpiece root> <canonical repo> <branch> --current <id> --out <audit.json>\n  factory workpiece retire <workpiece root> <canonical repo> <branch> --current <id> --out <retire.json>\n  factory station open <delta.json> <fixture.json>\n  factory station close <delta.json> <fixture.json>\n  factory verify <delta.json>\n  factory integrate <delta.json>\n  factory reinspect <delta.json>\n  factory depcheck <repo root> <Cargo.toml...>        (HEURISTIC: proof weight NONE)\n  factory nostd-check <crate dir...>                (HEURISTIC: proof weight NONE)\n  factory wasm-inspect <module.wasm> [--out report.json | --allow-wasm32]\n  factory evidence index <dir> <out.json>"
     );
     std::process::exit(2)
 }
@@ -21,6 +21,24 @@ fn main() {
             [_, "delta", "check", d] => Ok(ops::delta_check(&StructuralDelta::load(Path::new(d))?)),
             [_, "workpiece", "create", d] => {
                 ops::workpiece_create(&StructuralDelta::load(Path::new(d))?)
+            }
+            [_, "workpiece", "audit", root, repo, branch, "--current", cur, "--out", out] => {
+                factory::hygiene::audit_report(
+                    Path::new(root),
+                    Path::new(repo),
+                    branch,
+                    cur,
+                    Path::new(out),
+                )
+            }
+            [_, "workpiece", "retire", root, repo, branch, "--current", cur, "--out", out] => {
+                factory::hygiene::retire(
+                    Path::new(root),
+                    Path::new(repo),
+                    branch,
+                    cur,
+                    Path::new(out),
+                )
             }
             [_, "station", "open", d, f] => {
                 let delta = StructuralDelta::load(Path::new(d))?;

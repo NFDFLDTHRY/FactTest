@@ -9,6 +9,8 @@ use std::path::{Path, PathBuf};
 #[derive(Debug, Default)]
 pub struct Report {
     pub checks: Vec<(String, bool, String)>,
+    /// Proof weight of a heuristic diagnostic (e.g. "NONE"); `None` for Factory law checks.
+    pub weight: Option<String>,
 }
 
 impl Report {
@@ -33,9 +35,13 @@ impl Report {
     }
     pub fn print(&self, title: &str) {
         println!(
-            "== {} : {}",
+            "== {} : {}{}",
             title,
-            if self.pass() { "PASS" } else { "FAIL" }
+            if self.pass() { "PASS" } else { "FAIL" },
+            match &self.weight {
+                Some(w) => format!(" [HEURISTIC: proof weight {}]", w),
+                None => String::new(),
+            }
         );
         for (n, ok, d) in &self.checks {
             println!(
@@ -136,6 +142,18 @@ pub fn delta_check(delta: &StructuralDelta) -> Report {
     match git::tree_of_commit(repo, &delta.canonical_base) {
         Ok(t) => r.check("canonical_base_resolves", true, format!("tree {}", t)),
         Err(e) => r.check("canonical_base_resolves", false, e),
+    }
+    for (name, surfaces) in [
+        ("may_read", &delta.may_read),
+        ("may_change", &delta.may_change),
+        ("must_not_change", &delta.must_not_change),
+    ] {
+        let bad = paths::invalid_surfaces(surfaces);
+        r.check(
+            &format!("delta_{}_surfaces_literal", name),
+            bad.is_empty(),
+            bad.join("; "),
+        );
     }
     let ov = paths::overlap(&delta.may_change, &delta.must_not_change);
     r.check(
@@ -271,6 +289,20 @@ pub fn fixture_check(
         fx.delta_id == delta.delta_id,
         fx.delta_id.clone(),
     );
+    for (name, surfaces) in [
+        ("station_may_read", &spec.may_read),
+        ("station_may_change", &spec.may_change),
+        ("station_must_not_change", &spec.must_not_change),
+        ("fixture_may_read", &fx.narrowed_may_read),
+        ("fixture_may_change", &fx.narrowed_may_change),
+    ] {
+        let bad = paths::invalid_surfaces(surfaces);
+        r.check(
+            &format!("{}_surfaces_literal", name),
+            bad.is_empty(),
+            bad.join("; "),
+        );
+    }
     let esc = paths::subset(&fx.narrowed_may_change, &spec.may_change);
     r.check(
         "fixture_may_change_subset_of_station",
@@ -442,6 +474,7 @@ pub fn station_close(delta: &StructuralDelta, fx: &Fixture) -> Result<Report, St
     let status = if r.pass() { "PASS" } else { "FAIL" };
     let receipt_id = format!("R-{}-{}", delta.delta_id, fx.fixture_id);
     let receipt = Value::obj()
+        .with("receipt_format", Value::s(crate::identity::RECEIPT_FORMAT))
         .with("receipt_id", Value::s(&receipt_id))
         .with("station_id", Value::s(&spec.station_id))
         .with("station_version", Value::s(&spec.version))
@@ -463,6 +496,10 @@ pub fn station_close(delta: &StructuralDelta, fx: &Fixture) -> Result<Report, St
                     .map(|c| c.log.clone())
                     .collect::<Vec<_>>(),
             ),
+        )
+        .with(
+            "environment_identity",
+            crate::identity::environment_identity(&wp, &fx.identity_probes),
         )
         .with("closed", Value::s(&now_iso()))
         .with("status", Value::s(status));
@@ -615,6 +652,8 @@ pub fn verify(delta: &StructuralDelta) -> Result<Report, String> {
         .with("verified_tree", Value::s(&current_tree))
         .with("changed_paths", Value::str_arr(&changed))
         .with("checks", r.to_value())
+        .with("verifier_identity", crate::identity::binary_identity())
+        .with("host", crate::identity::host_identity())
         .with("verified", Value::s(&now_iso()))
         .with("status", Value::s(status));
     let rel = format!("{}verification.json", delta.receipts_dir());

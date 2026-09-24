@@ -1,0 +1,113 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F9-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F9-doc",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "evidence/D13/",
+    "factory/receipts/D13-REPO-HYGIENE/"
+  ],
+  "open_tree": "28ebb5b3731000ca2037e7e27793ccf0cf28c984",
+  "close_tree": "a03c0ca8c8b8bcd67168193df771850c81046a0d",
+  "changed_paths": [
+    "design/materialization/D13-OBSERVED-REPO-HYGIENE.md",
+    "design/materialization/D13-PRE-RESCAN-BASELINE.md",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F9-every-obligation-named.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F9-observed.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D13-OBSERVED-REPO-HYGIENE.md",
+    "design/materialization/D13-PRE-RESCAN-BASELINE.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F9-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F9-every-obligation-named.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for k in 'Factory authority surfaces mean what they claim' 'unsupported wildcard-looking authority cannot match nothing' 'proof sets distinguish native and wasm64 targets' 'authoritative no_std/dependency proofs use the qualified judge' 'live handoff no longer depends on Fable/Opus identity' 'D12 is traversable from the environment graph' 'historical evidence remains immutable' 'unresolved technical capability gaps remain visible' 'unresolved external authority questions remain visible' 'cleanup deleted nothing not proven disposable' 'full post-repair verification/evidence succeeds' 'intended and observed D13 structures agree'; do grep -F \"$k\" design/materialization/D13-OBSERVED-REPO-HYGIENE.md | grep -q '^\\[PASS\\]' || { echo \"not PASS: $k\"; exit 1; }; done; grep -q 'TOOLCHAIN: PINNED' design/materialization/D13-OBSERVED-REPO-HYGIENE.md && grep -q '^PRE-RESCAN-BASELINE: ESTABLISHED' design/materialization/D13-PRE-RESCAN-BASELINE.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F9-observed.log"
+    },
+    {
+      "check": "command:sh -c for id in $(node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/proof/summary.json\"));console.log(s.obligations.map(o=>o.id).join(\" \"))'); do grep -q \"$id\" design/materialization/D13-OBSERVED-REPO-HYGIENE.md || { echo missing $id; exit 1; }; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F9-every-obligation-named.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D13-OBSERVED-REPO-HYGIENE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D13-PRE-RESCAN-BASELINE.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F9-observed.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F9-every-obligation-named.log"
+  ],
+  "closed": "2026-09-24T07:16:12Z",
+  "status": "PASS"
+}
