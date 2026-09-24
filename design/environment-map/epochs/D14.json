@@ -1,0 +1,3417 @@
+{
+ "schema": "facttest-environment-map-epoch/1",
+ "epoch": "D14",
+ "delta": "D14-TECHNICAL-REFERENCE-RESCAN",
+ "commit": "6778133c35a96d5e356df283aa1676ee428766bb (canonical base; integration commit in LEDGER AFTER)",
+ "summary": "technical reference rescan: egress denial recorded per host, Pages-branch route, 83 authority copies ingested as pins, D11 pins re-checked, 56 authorities reopened with fragment verdicts; evidence bound after the stations ran",
+ "nodes": [
+  {
+   "id": "ENV-D14-HOST-NETWORK",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D14-HOST-NETWORK",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "llvm": "21.1.8"
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "llvm": "23.1.1"
+    }
+   },
+   "target": "x86_64-unknown-linux-gnu (host); network egress through the session proxy",
+   "host_runtime": "node v22.22.2 / git git version 2.43.0 / curl curl 8.5.0",
+   "versions": {
+    "node": "v22.22.2",
+    "git": "git version 2.43.0",
+    "curl": "8.5.0"
+   },
+   "flags": {
+    "network_egress_policy": {
+     "denied_hosts": [
+      "chromium.googlesource.com",
+      "compression.spec.whatwg.org",
+      "doc.rust-lang.org",
+      "dom.spec.whatwg.org",
+      "fetch.spec.whatwg.org",
+      "fs.spec.whatwg.org",
+      "git-scm.com",
+      "gpuweb.github.io",
+      "html.spec.whatwg.org",
+      "immersive-web.github.io",
+      "infra.spec.whatwg.org",
+      "serial.spec.whatwg.org",
+      "source.chromium.org",
+      "storage.spec.whatwg.org",
+      "streams.spec.whatwg.org",
+      "tc39.es",
+      "w3c.github.io",
+      "webassembly.github.io",
+      "webbluetoothcg.github.io",
+      "webidl.spec.whatwg.org",
+      "webmachinelearning.github.io",
+      "wicg.github.io",
+      "www.w3.org"
+     ],
+     "reachable_published_hosts": [
+      "github.com",
+      "raw.githubusercontent.com"
+     ],
+     "allowed_route_hosts": [
+      "raw.githubusercontent.com (HTTPS through the session proxy)",
+      "github.com git smart-HTTP (through the session git proxy: ls-remote, partial fetch)"
+     ],
+     "proxy": {
+      "enabled": true,
+      "selective": false,
+      "noProxy": "localhost,127.0.0.1,::1,127.0.0.0/8,0.0.0.0/8,::,169.254.0.0/16,api.anthropic.com,api-staging.anthropic.com,api-pr-preview.anthropic.com,mcp-proxy.anthropic.com,mcp-proxy-staging.anthropic.com,registry.npmjs.org,jsr.io,npm.jsr.io,pypi.org,files.pythonhosted.org,index.crates.io,proxy.golang.org,host.docker.internal,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.64.0.0/10,.svc.cluster.local,*.svc.cluster.local"
+     }
+    }
+   },
+   "build_profile": "n/a",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "CPU only",
+   "dependency_graph_identity": null,
+   "other_state": {
+    "branch_heads": {
+     "WebAssembly/spec": {
+      "gh-pages": "dcb71aa493d71d7581af1589368364b7283e6724",
+      "main": "608711107b7f1edb13efd57b7d79b49477462d36"
+     },
+     "WebAssembly/threads": {
+      "gh-pages": "9a158a00f3d29ef783ef40fe5cde374a89f552ab",
+      "main": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0"
+     },
+     "WebAssembly/shared-everything-threads": {
+      "-": null,
+      "main": "065aa53822e17eea69bfc049df67a16cbd03d9ce"
+     },
+     "gpuweb/gpuweb": {
+      "gh-pages": "399a86cf9537fe0f2723566a4224a65cacf14ccf",
+      "main": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+     },
+     "webmachinelearning/webnn": {
+      "gh-pages": "c5dcdee6011f2bfd52917ae60e14981c73347c8b",
+      "main": "59db71f24cc87fe31b764bd06ca24c215c1755a4"
+     },
+     "w3c/webcodecs": {
+      "gh-pages": "4b682a0f4a75be7f931d90f93eb32b1789990e94",
+      "main": "91160a493a2f59060c8b1ba4831e398f820c6e6d"
+     },
+     "w3c/mediacapture-main": {
+      "gh-pages": "215cb8d7abf82e582a45ad3ea87016513fa2c988",
+      "main": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a"
+     },
+     "w3c/webappsec-secure-contexts": {
+      "gh-pages": "fcb77fad84a9b2486ef2ff4ee030ef4ccdd82de0",
+      "main": "68191bb08a685c1e2d2270e72d2b14b36ba96f42"
+     },
+     "w3c/permissions": {
+      "gh-pages": "ac71e589ea5990f38a40a09ae4d1f21ac88c2b16",
+      "main": "0051a836a92c4f8e37d016f261bbbed5b6312b96"
+     },
+     "w3c/webappsec-permissions-policy": {
+      "gh-pages": "1eb687a99be95a0a69a9b4c1eba0ccbbe85ae985",
+      "main": "29398046f1e0cb45c091adda853df74925dc740a"
+     },
+     "w3c/IndexedDB": {
+      "gh-pages": "da7991bc1c84f151dfbe8cd4e33fb50c21a05fd9",
+      "main": "f70491894a213c30424e1f6cfb9466ba82d7e996"
+     },
+     "w3c/ServiceWorker": {
+      "gh-pages": "65c0b6f013f511233ca8490d9f0d0b45d947f5a7",
+      "main": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc"
+     },
+     "w3c/manifest": {
+      "gh-pages": "cc98a2acb99b8ef593b6370faf725058a9559a96",
+      "main": "8ae3046968895a9d2485e09b4561e09029a8edbf"
+     },
+     "w3c/web-locks": {
+      "gh-pages": "b4e69588396019463ad60a3abe85a7b8f1c59374",
+      "main": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e"
+     },
+     "w3c/webcrypto": {
+      "gh-pages": "3e43d42bf5b508231a5c02281d36e1f734e22774",
+      "main": "811c24c69eb22d477af5f1678cb70dbc611c7c40"
+     },
+     "w3c/sensors": {
+      "gh-pages": "f18fbc5b3445632f4a58264e49619fddda705327",
+      "main": "a4614786ffe2afb8a4b18c9be47c277e0610437d"
+     },
+     "w3c/accelerometer": {
+      "gh-pages": "cae67c0d2b9a960ac23e1b7a0b78edd2235305be",
+      "main": "9f0a66ddab67fbb3fffcf3118fd6a8e1d30e558e"
+     },
+     "w3c/gyroscope": {
+      "gh-pages": "5bb1f8ec128b1bf99cf4186cd9ab2cba735fa110",
+      "main": "335dc6ecc5f85289a2745810a086e7f1c7237cdb"
+     },
+     "w3c/magnetometer": {
+      "gh-pages": "10eca32cea1ba09d160621a06227ec65b7c3d07b",
+      "main": "40801a25e7ad6c0ea12b1777f1d913f21e680e87"
+     },
+     "w3c/orientation-sensor": {
+      "gh-pages": "acc331f74db671de7557d0c11b52e1d765c11a3b",
+      "main": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824"
+     },
+     "w3c/deviceorientation": {
+      "gh-pages": "4b6c4a3d39c1f61043041b8b583d91bed8e66adc",
+      "main": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb"
+     },
+     "w3c/proximity": {
+      "gh-pages": "b99495b3a2ce101ffcdfca7c0fc31d3ccffe2676",
+      "main": "1d43739eea15981bb6cab10224929c53ae6f51ed"
+     },
+     "w3c/ambient-light": {
+      "gh-pages": "ae93d6df4d85ab4477b813e817981bd218eb74a5",
+      "main": "381d5dd21deb386282bbc72147201a8e6ff3b5ea"
+     },
+     "w3c/geolocation": {
+      "gh-pages": "c9bfbcd63e9713a45f5812d6b93ad8a06be8c6fa",
+      "main": "4aebf6e750ff5f40cf032d96b457a149582c9ecc"
+     },
+     "immersive-web/webxr": {
+      "gh-pages": "4f2898158f9f3ade9d3103b8677fd5267b4dc552",
+      "main": "53b29038ab89b817dbc0fa682557dc2b85908cd6"
+     },
+     "WICG/webhid": {
+      "gh-pages": "f3a450c64f17a23f8df8b6056858f96ae1d22945",
+      "main": "b5e588e6a0dd88f933863cace4892ab02cfded06"
+     },
+     "WICG/webusb": {
+      "gh-pages": "b66dce7d5ae26e28b556cd641d57725a61a27dc3",
+      "main": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db"
+     },
+     "whatwg/serial": {
+      "gh-pages": "4a824f3b0fd2953c0ead7dccd317592239ebe1c1",
+      "main": "600bbf14337b49bca06ba9b7182d21d2d8b455c2"
+     },
+     "WebBluetoothCG/web-bluetooth": {
+      "gh-pages": "3034269cd5d155d805bd302933b5f80e282608cc",
+      "main": "2e451c162f6a3f2277f86104223de4630710506e"
+     },
+     "tc39/ecma262": {
+      "gh-pages": "181d3068d76544298cbe5e4ffd6e668f1e1587fa",
+      "main": "726ec8a42625509026a6570f1d4649bfa9fe4156"
+     },
+     "whatwg/html": {
+      "-": null,
+      "main": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d"
+     },
+     "whatwg/webidl": {
+      "-": null,
+      "main": "6a53497380036fc4a25b82be889a88e0de7cf448"
+     },
+     "whatwg/dom": {
+      "-": null,
+      "main": "a2331a45360129e8645ef7e0a04740241b6e3726"
+     },
+     "whatwg/infra": {
+      "-": null,
+      "main": "3f984adcd24a6d5c53cc26b3e737701808003f3e"
+     },
+     "whatwg/fetch": {
+      "-": null,
+      "main": "357bd98924d94b81fbe8608192a2ee1f123b82f4"
+     },
+     "whatwg/streams": {
+      "-": null,
+      "main": "b9ba9f49d95b4280be0dc2372377a006c3a91c18"
+     },
+     "whatwg/storage": {
+      "-": null,
+      "main": "1933f424de8d0b2d1073e10f3fb77bd12b11efca"
+     },
+     "whatwg/fs": {
+      "-": null,
+      "main": "cd55e5582e9c915c6341479bceaa4216f7a05413"
+     },
+     "whatwg/compression": {
+      "-": null,
+      "main": "770f314342e2ee560353a04a7f30ee9449a23ee4"
+     },
+     "rust-lang/reference": {
+      "-": null,
+      "master": "52ffdc09065e0043e877546da923c01bf875d41d"
+     },
+     "rust-lang/cargo": {
+      "-": null,
+      "master": "694054f34bcb04025b16d0eaf075038c0e58a15d"
+     },
+     "rust-lang/rust": {
+      "-": null,
+      "main": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3"
+     },
+     "git/git": {
+      "-": null,
+      "master": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+     },
+     "chromium/chromium": {
+      "-": null,
+      "main": "5c5d5f1b5b7d5f58d381663166f52d6f4de551da"
+     },
+     "v8/v8": {
+      "-": null,
+      "main": "72302c22b71e67b54116b651913ccf3c8a01c139"
+     },
+     "google/swiftshader": {
+      "-": null,
+      "master": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16"
+     }
+    },
+    "register_sha256": "68392b28e07f05deb29d2f9b25403863add779577397161e6b3257ff3ca59334"
+   },
+   "identity_completeness": {
+    "missing": [
+     "CPU identity",
+     "proxy egress identity beyond host allow/deny"
+    ],
+    "present": [
+     "network policy as observed per host",
+     "branch heads at ingest",
+     "toolchains",
+     "node/git/curl versions"
+    ]
+   },
+   "owner": "evidence/D14/ingress/hosts.json",
+   "note": "first epoch that records the egress policy per authority host and the Pages-branch route"
+  },
+  {
+   "id": "IMPL-D14-REFERENCE-INGRESS",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-D14-REFERENCE-INGRESS",
+   "repo_path": "tests/reference/ingress.mjs + fixtures/reference/ROUTES.json",
+   "commit": "introduced by D14-TECHNICAL-REFERENCE-RESCAN (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "probe-hosts / fetch / verify / audit / plan-check / epoch; curl + git + node only",
+   "owner": "FactTest repository path tests/reference/"
+  },
+  {
+   "id": "IMPL-D14-REFERENCE-CORPUS",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-D14-REFERENCE-CORPUS",
+   "repo_path": "fixtures/reference/{REGISTER.json,published/,sources/}",
+   "commit": "introduced by D14-TECHNICAL-REFERENCE-RESCAN (integration commit in LEDGER AFTER)",
+   "kind": "fixture_data",
+   "note": "83 reproducibility copies (39 published renderings from Pages branches, 44 sources), 51096208 bytes; pins, never current authority",
+   "owner": "FactTest repository path fixtures/reference/"
+  },
+  {
+   "id": "CON-EM-D14-001",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-EM-D14-001",
+   "statement": "An authority copy in fixtures/reference/ is a reproducibility pin identified by repository, branch head commit, git blob id and sha256 at ingest time; a rendering taken from a GitHub Pages branch is never claimed to have been observed at the published host; the current authority remains the hyperlink in REFERENCE-AUTHORITY.md",
+   "authority_refs": [],
+   "scope": "fixtures/reference/, tests/reference/, design/environment-map/",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "project",
+   "owner": "D14 (PROPOSED; returned to ASCII for law adoption)"
+  },
+  {
+   "id": "EV-D14-HOSTS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D14-HOSTS",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D14-HOST-NETWORK",
+   "artifact_identity": {
+    "path": "evidence/D14/ingress/hosts.json",
+    "sha256": "808516c2f4363fa75ab021a6bd8f820a0af651469a10edaa74b547e3c8c46350",
+    "locator": "verdict/records",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 9812
+   },
+   "observed_result": "PUBLISHED_HOSTS_DENIED; ROUTE AVAILABLE",
+   "epoch": "D14",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D14-TECHNICAL-REFERENCE-RESCAN"
+  },
+  {
+   "id": "EV-D14-REGISTER",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D14-REGISTER",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D14-HOST-NETWORK",
+   "artifact_identity": {
+    "path": "evidence/D14/ingress/register.json",
+    "sha256": "68392b28e07f05deb29d2f9b25403863add779577397161e6b3257ff3ca59334",
+    "locator": "verdict/records",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 118801
+   },
+   "observed_result": "83/83 ingested; pins 56 match, 0 mismatch",
+   "epoch": "D14",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D14-TECHNICAL-REFERENCE-RESCAN"
+  },
+  {
+   "id": "EV-D14-REFETCH",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D14-REFETCH",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D14-HOST-NETWORK",
+   "artifact_identity": {
+    "path": "evidence/D14/ingress/refetch.json",
+    "sha256": "79f0086f6b8a626f3f5f17f27b67fc95652b4cfd7c43f95852e4695e80fad000",
+    "locator": "verdict/records",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 319
+   },
+   "observed_result": "PASS: 166 checks, 0 failed",
+   "epoch": "D14",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D14-TECHNICAL-REFERENCE-RESCAN"
+  },
+  {
+   "id": "EV-D14-LINK-AUDIT",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D14-LINK-AUDIT",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D14-HOST-NETWORK",
+   "artifact_identity": {
+    "path": "evidence/D14/audit/link-audit.json",
+    "sha256": "02e9e8d0500801cf192b65cda9e9a75db32d9dc7c0b374997e9fa13155c0bdc5",
+    "locator": "verdict/records",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 59268
+   },
+   "observed_result": "{\"PRESENT_IN_SOURCE\":5,\"NO_FRAGMENT_CITED\":45,\"VERIFIED_IN_PUBLISHED_RENDERING\":36,\"ABSENT_IN_PUBLISHED_RENDERING [ERR]\":9,\"NO_ROUTE [UNK]\":1,\"DERIVED_FROM_DFN_UNVERIFIED\":3}",
+   "epoch": "D14",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D14-TECHNICAL-REFERENCE-RESCAN"
+  },
+  {
+   "id": "EV-D14-FRAGMENTS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D14-FRAGMENTS",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D14-HOST-NETWORK",
+   "artifact_identity": {
+    "path": "evidence/D14/audit/fragments.json",
+    "sha256": "04c1ebb392e430713e7fc5c2ef07d8ed9a9839d08ee0ac4b610f2b7b5c7723d9",
+    "locator": "verdict/records",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 55846
+   },
+   "observed_result": "{\"PRESENT_IN_SOURCE\":5,\"NO_FRAGMENT_CITED\":29,\"DERIVED_FROM_HEADING_UNVERIFIED\":2,\"VERIFIED_IN_PUBLISHED_RENDERING\":17,\"DERIVED_FROM_DFN_UNVERIFIED\":1,\"NOT_AUDITED\":8,\"ABSENT_IN_PUBLISHED_RENDERING [ERR]\":2}",
+   "epoch": "D14",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D14-TECHNICAL-REFERENCE-RESCAN"
+  },
+  {
+   "id": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "subject": "technical reference authorities of FactTest",
+   "predicate": "23 published authority hosts answer CONNECT 403 from the session egress proxy [chromium.googlesource.com compression.spec.whatwg.org doc.rust-lang.org dom.spec.whatwg.org fetch.spec.whatwg.org fs.spec.whatwg.org git-scm.com gpuweb.github.io html.spec.whatwg.org immersive-web.github.io infra.spec.whatwg.org serial.spec.whatwg.org source.chromium.org storage.spec.whatwg.org streams.spec.whatwg.org tc39.es w3c.github.io webassembly.github.io webbluetoothcg.github.io webidl.spec.whatwg.org webmachinelearning.github.io wicg.github.io www.w3.org]; reachable published hosts: [github.com raw.githubusercontent.com]; route hosts raw.githubusercontent.com and github.com git smart-HTTP are allowed",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/ingress/hosts.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "subject": "technical reference authorities of FactTest",
+   "predicate": "39 published renderings were obtained byte-exactly from their publishers' gh-pages branches at the ls-remote head commits recorded in the register; none was observed at its published host",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/ingress/register.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-CORPUS-INGESTED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-CORPUS-INGESTED",
+   "subject": "technical reference authorities of FactTest",
+   "predicate": "83 of 83 route files ingested into fixtures/reference (51096208 bytes) with commit, git blob id and sha256 each",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/ingress/register.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-CORPUS-REPRODUCIBLE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-CORPUS-REPRODUCIBLE",
+   "subject": "technical reference authorities of FactTest",
+   "predicate": "every corpus file re-fetched by its recorded commit is byte-identical (166 checks, 0 failed)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/ingress/refetch.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-D11-PINS-RECHECKED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-D11-PINS-RECHECKED",
+   "subject": "technical reference authorities of FactTest",
+   "predicate": "63 D11/D12 authority pins re-fetched by commit: 56 match their recorded sha256, 0 mismatch; 0 pinned files changed at the current branch head",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/ingress/register.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-MAP-LINKS-AUDITED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-MAP-LINKS-AUDITED",
+   "subject": "technical reference authorities of FactTest",
+   "predicate": "REFERENCE-AUTHORITY.md: 99 links resolved through the route table: {\"PRESENT_IN_SOURCE\":5,\"NO_FRAGMENT_CITED\":45,\"VERIFIED_IN_PUBLISHED_RENDERING\":36,\"ABSENT_IN_PUBLISHED_RENDERING [ERR]\":9,\"NO_ROUTE [UNK]\":1,\"DERIVED_FROM_DFN_UNVERIFIED\":3}; 9 fragment(s) not found where cited",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "ERR",
+   "note": null,
+   "source_ref": "evidence/D14/audit/link-audit.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "subject": "AUTH-CARGO-BUILD-STD",
+   "predicate": "https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#build-std: NO_ROUTE (source-pinned only); fragment PRESENT_IN_SOURCE (heading slug: build-std); copy at source@694054f34bcb; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "subject": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+   "predicate": "https://source.chromium.org/chromium/chromium/src/+/main:content/public/common/content_switches.cc: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@5c5d5f1b5b7d; D11 pin PIN_MATCH; UNCHANGED (tip moved, same bytes)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "subject": "AUTH-CHROMIUM-GL-SWITCHES",
+   "predicate": "https://source.chromium.org/chromium/chromium/src/+/main:ui/gl/gl_switches.cc: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@5c5d5f1b5b7d; D11 pin PIN_MATCH; UNCHANGED (tip moved, same bytes)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "subject": "AUTH-CHROMIUM-GPU-SWITCHES",
+   "predicate": "https://source.chromium.org/chromium/chromium/src/+/main:gpu/config/gpu_switches.cc: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@5c5d5f1b5b7d; D11 pin PIN_MATCH; UNCHANGED (tip moved, same bytes)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "subject": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+   "predicate": "https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@5c5d5f1b5b7d; D11 pin PIN_MATCH; UNCHANGED (tip moved, same bytes)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "subject": "AUTH-COMPRESSION-ZLIB",
+   "predicate": "https://compression.spec.whatwg.org/: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@770f314342e2; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-FS-OPFS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-FS-OPFS",
+   "subject": "AUTH-FS-OPFS",
+   "predicate": "https://fs.spec.whatwg.org/: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@cd55e5582e9c; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "subject": "AUTH-GIT-GLOSSARY-COMMIT",
+   "predicate": "https://git-scm.com/docs/gitglossary#def_commit: NO_ROUTE (source-pinned only); fragment PRESENT_IN_SOURCE (anchor); copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "subject": "AUTH-GIT-OBJECT-FORMAT",
+   "predicate": "https://git-scm.com/docs/user-manual: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "subject": "AUTH-GIT-PACK-FORMAT",
+   "predicate": "https://git-scm.com/docs/gitformat-pack: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "subject": "AUTH-GIT-REPO-LAYOUT",
+   "predicate": "https://git-scm.com/docs/gitrepository-layout#_worktrees: NO_ROUTE (source-pinned only); fragment DERIVED_FROM_HEADING_UNVERIFIED (worktrees); copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "OBS",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "subject": "AUTH-GIT-REVISIONS",
+   "predicate": "https://git-scm.com/docs/gitrevisions: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "subject": "AUTH-GIT-SHA256-TRANSITION",
+   "predicate": "https://git-scm.com/docs/hash-function-transition: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "subject": "AUTH-GIT-UPDATE-REF-CAS",
+   "predicate": "https://git-scm.com/docs/git-update-ref: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "subject": "AUTH-GIT-WORKTREE",
+   "predicate": "https://git-scm.com/docs/git-worktree#_description: NO_ROUTE (source-pinned only); fragment DERIVED_FROM_HEADING_UNVERIFIED (DESCRIPTION); copy at source@0f8e75abebff; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "OBS",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "subject": "AUTH-GPU-ADAPTER-EXPIRE",
+   "predicate": "https://gpuweb.github.io/gpuweb/#adapter-selection: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "subject": "AUTH-GPU-ADAPTERINFO",
+   "predicate": "https://gpuweb.github.io/gpuweb/#gpuadapterinfo: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-DESTROY",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-DESTROY",
+   "subject": "AUTH-GPU-DESTROY",
+   "predicate": "https://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "subject": "AUTH-GPU-FALLBACK-ADAPTER",
+   "predicate": "https://gpuweb.github.io/gpuweb/#fallback-adapter: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "subject": "AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+   "predicate": "https://gpuweb.github.io/gpuweb/#dom-supported-limits-maxbuffersize: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "subject": "AUTH-GPU-LOSE-DEVICE",
+   "predicate": "https://gpuweb.github.io/gpuweb/#lose-the-device: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-LOST",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-LOST",
+   "subject": "AUTH-GPU-LOST",
+   "predicate": "https://gpuweb.github.io/gpuweb/#dom-gpudevice-lost: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "subject": "AUTH-GPU-NAVIGATOR-GPU",
+   "predicate": "https://gpuweb.github.io/gpuweb/#navigatorgpu: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "subject": "AUTH-GPU-REQUESTADAPTER",
+   "predicate": "https://gpuweb.github.io/gpuweb/#dom-gpu-requestadapter: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "subject": "AUTH-GPU-REQUESTDEVICE",
+   "predicate": "https://gpuweb.github.io/gpuweb/#dom-gpuadapter-requestdevice: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-HTML-COI",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-HTML-COI",
+   "subject": "AUTH-HTML-COI",
+   "predicate": "https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-crossoriginisolated: NO_ROUTE (source-pinned only); fragment DERIVED_FROM_DFN_UNVERIFIED (data-x=\"dom-crossOriginIsolated\"); copy at source@cd8ac6f1bbf8; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "OBS",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "subject": "AUTH-HTML-HWCONCURRENCY",
+   "predicate": "https://html.spec.whatwg.org/multipage/workers.html#navigator.hardwareconcurrency: NO_ROUTE (source-pinned only); fragment PRESENT_IN_SOURCE; copy at source@cd8ac6f1bbf8; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "subject": "AUTH-HTML-SANDBOX-ORIGIN",
+   "predicate": "https://html.spec.whatwg.org/multipage/browsers.html: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@cd8ac6f1bbf8; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-HTML-WORKERS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-HTML-WORKERS",
+   "subject": "AUTH-HTML-WORKERS",
+   "predicate": "https://html.spec.whatwg.org/multipage/workers.html#workers: NO_ROUTE (source-pinned only); fragment PRESENT_IN_SOURCE; copy at source@cd8ac6f1bbf8; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "subject": "AUTH-IDB-TRANSACTION",
+   "predicate": "https://w3c.github.io/IndexedDB/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@da7991bc1c84; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "subject": "AUTH-MANIFEST-INSTALLABLE",
+   "predicate": "https://w3c.github.io/manifest/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@cc98a2acb99b; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "subject": "AUTH-RUST-REF-NOSTD",
+   "predicate": "https://doc.rust-lang.org/reference/names/preludes.html#the-no_std-attribute: NO_ROUTE (source-pinned only); fragment PRESENT_IN_SOURCE (heading slug: The `no_std` attribute); copy at source@52ffdc09065e; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "subject": "AUTH-RUSTC-WASM64-DOC",
+   "predicate": "https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@3670d2532bdf; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "subject": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "predicate": "https://github.com/rust-lang/rust/blob/master/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs: SOURCE_ONLY (published rendering has no route); fragment NO_FRAGMENT_CITED; copy at source@3670d2532bdf; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "subject": "AUTH-SECCTX-TRUSTWORTHY",
+   "predicate": "https://w3c.github.io/webappsec-secure-contexts/#is-origin-trustworthy: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@fcb77fad84a9; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "subject": "AUTH-STORAGE-BUCKET-MODE",
+   "predicate": "https://storage.spec.whatwg.org/: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@1933f424de8d; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "subject": "AUTH-SW-INSTALL-FAILED",
+   "predicate": "https://w3c.github.io/ServiceWorker/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@65c0b6f013f5; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "subject": "AUTH-SW-REGISTER-TRUST",
+   "predicate": "https://w3c.github.io/ServiceWorker/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@65c0b6f013f5; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "subject": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+   "predicate": "https://w3c.github.io/ServiceWorker/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@65c0b6f013f5; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "subject": "AUTH-SW-UPDATE-BYPASS",
+   "predicate": "https://w3c.github.io/ServiceWorker/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@65c0b6f013f5; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "subject": "AUTH-SWIFTSHADER-README",
+   "predicate": "https://github.com/google/swiftshader/blob/master/README.md: SOURCE_ONLY (published rendering has no route); fragment NO_FRAGMENT_CITED; copy at source@1e80438d2b93; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-V8-FLAGS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-V8-FLAGS",
+   "subject": "AUTH-V8-FLAGS",
+   "predicate": "https://source.chromium.org/chromium/chromium/src/+/main:v8/src/flags/flag-definitions.h: NO_ROUTE (source-pinned only); fragment NO_FRAGMENT_CITED; copy at source@72302c22b71e; D11 pin PIN_MATCH; UNCHANGED (tip moved, same bytes)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "subject": "AUTH-WASM-CORE-BINARY-LIMITS",
+   "predicate": "https://webassembly.github.io/spec/core/binary/types.html#binary-limits: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "subject": "AUTH-WASM-CORE-CHANGES-64",
+   "predicate": "https://webassembly.github.io/spec/core/appendix/changes.html: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "subject": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+   "predicate": "https://webassembly.github.io/spec/core/syntax/types.html#syntax-addrtype: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "subject": "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+   "predicate": "https://webassembly.github.io/spec/core/text/types.html#text-addrtype: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "subject": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+   "predicate": "https://webassembly.github.io/spec/core/text/types.html#text-memtype: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "subject": "AUTH-WASM-JSAPI-MEMORIES",
+   "predicate": "https://webassembly.github.io/spec/js-api/#memories: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "subject": "AUTH-WASM-JSAPI-STORAGE",
+   "predicate": "https://webassembly.github.io/spec/js-api/#internal-storage: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment ABSENT_IN_PUBLISHED_RENDERING [ERR]; published ids near the cited fragment: webassembly-storage, get-internal-method-of-an-exported-gc-object, set-internal-method-of-an-exported-gc-object, delete-internal-method-of-an-exported-gc-object, hasproperty-internal-method-of-an-exported-gc-object, ref-for-get-internal-method-of-an-exported-gc-object; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "ERR",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "subject": "AUTH-WASM-JSAPI-VALIDATE",
+   "predicate": "https://webassembly.github.io/spec/js-api/#dom-webassembly-validate: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment VERIFIED_IN_PUBLISHED_RENDERING; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-SET",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-SET",
+   "subject": "AUTH-WASM-SET",
+   "predicate": "https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/main/proposals/shared-everything-threads/Overview.md: SOURCE_ONLY (published rendering has no route); fragment NO_FRAGMENT_CITED; copy at source@065aa53822e1; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-THREADS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-THREADS",
+   "subject": "AUTH-WASM-THREADS",
+   "predicate": "https://webassembly.github.io/threads/core/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@9a158a00f3d2; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "subject": "AUTH-WASM-WEBAPI-STREAMING",
+   "predicate": "https://webassembly.github.io/spec/web-api/#streaming-module-compilation-and-instantiation: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment ABSENT_IN_PUBLISHED_RENDERING [ERR]; published ids near the cited fragment: streaming-modules, ref-for-module, ref-for-module①, ref-for-module②, dom-webassembly-compilestreaming, dom-webassembly-instantiatestreaming; copy at gh-pages@dcb71aa493d7; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "ERR",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WEB-LOCKS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WEB-LOCKS",
+   "subject": "AUTH-WEB-LOCKS",
+   "predicate": "https://w3c.github.io/web-locks/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@b4e695883960; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "subject": "AUTH-WEBCRYPTO-DIGEST",
+   "predicate": "https://w3c.github.io/webcrypto/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@3e43d42bf5b5; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-REOPEN-WGSL",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-REOPEN-WGSL",
+   "subject": "AUTH-WGSL",
+   "predicate": "https://gpuweb.github.io/gpuweb/wgsl/: REOPENED_VIA_PAGES_BRANCH (not observed at host); fragment NO_FRAGMENT_CITED; copy at gh-pages@399a86cf9537; D11 pin PIN_MATCH; UNCHANGED (same commit)",
+   "required_environment": [
+    "network egress policy of the session container (ENV-D14-HOST-NETWORK)"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "evidence/D14/audit/fragments.json",
+   "owner": "D14 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "PROBE-D14-REFERENCE-INGRESS",
+   "class": "PROBE",
+   "probe_id": "PROBE-D14-REFERENCE-INGRESS",
+   "proves_fact": [
+    "FACT-D14-PUBLISHED-HOSTS-DENIED",
+    "FACT-D14-PAGES-BRANCH-ROUTE",
+    "FACT-D14-CORPUS-INGESTED",
+    "FACT-D14-CORPUS-REPRODUCIBLE",
+    "FACT-D14-D11-PINS-RECHECKED",
+    "FACT-D14-MAP-LINKS-AUDITED",
+    "FACT-D14-REOPEN-CARGO-BUILD-STD",
+    "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+    "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+    "FACT-D14-REOPEN-FS-OPFS",
+    "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+    "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+    "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+    "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+    "FACT-D14-REOPEN-GIT-REVISIONS",
+    "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+    "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+    "FACT-D14-REOPEN-GIT-WORKTREE",
+    "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+    "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+    "FACT-D14-REOPEN-GPU-DESTROY",
+    "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+    "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+    "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+    "FACT-D14-REOPEN-GPU-LOST",
+    "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+    "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+    "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+    "FACT-D14-REOPEN-HTML-COI",
+    "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+    "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+    "FACT-D14-REOPEN-HTML-WORKERS",
+    "FACT-D14-REOPEN-IDB-TRANSACTION",
+    "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+    "FACT-D14-REOPEN-RUST-REF-NOSTD",
+    "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+    "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+    "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+    "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+    "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+    "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+    "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+    "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+    "FACT-D14-REOPEN-SWIFTSHADER-README",
+    "FACT-D14-REOPEN-V8-FLAGS",
+    "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+    "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+    "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+    "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+    "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+    "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+    "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+    "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+    "FACT-D14-REOPEN-WASM-SET",
+    "FACT-D14-REOPEN-WASM-THREADS",
+    "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+    "FACT-D14-REOPEN-WEB-LOCKS",
+    "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+    "FACT-D14-REOPEN-WGSL"
+   ],
+   "command_or_operation": "node tests/reference/ingress.mjs probe-hosts | fetch | verify --refetch | audit (S-FIXTURE ingest, S-BUILD evidence)",
+   "expected_observations": [
+    "published hosts DENIED (CONNECT 403); route hosts allowed",
+    "every route file ingested with commit/blob/sha256",
+    "refetch by commit byte-identical",
+    "D11 pins re-fetched match",
+    "cited fragments present in the published rendering or source"
+   ],
+   "failure_meaning": [
+    "a fragment absent in the published rendering = the citation drifted (ERR in law until corrected through S-ANNOTATE or an owner law delta)",
+    "refetch mismatch = the branch commit is not immutable content or the copy was altered",
+    "pin mismatch = the D11 pin identity is wrong"
+   ],
+   "implemented_by": "IMPL-D14-REFERENCE-INGRESS",
+   "owner": "tests/reference/ingress.mjs"
+  }
+ ],
+ "edges": [
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CARGO-BUILD-STD",
+   "to": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+   "to": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CHROMIUM-GL-SWITCHES",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CHROMIUM-GPU-SWITCHES",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+   "to": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-COMPRESSION-ZLIB",
+   "to": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-FS-OPFS",
+   "to": "FACT-D14-REOPEN-FS-OPFS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-FS-OPFS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-FS-OPFS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-GLOSSARY-COMMIT",
+   "to": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-OBJECT-FORMAT",
+   "to": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-PACK-FORMAT",
+   "to": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-REPO-LAYOUT",
+   "to": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-REVISIONS",
+   "to": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-SHA256-TRANSITION",
+   "to": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-UPDATE-REF-CAS",
+   "to": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GIT-WORKTREE",
+   "to": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-ADAPTER-EXPIRE",
+   "to": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-ADAPTERINFO",
+   "to": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-DESTROY",
+   "to": "FACT-D14-REOPEN-GPU-DESTROY",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-DESTROY",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-DESTROY",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-FALLBACK-ADAPTER",
+   "to": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+   "to": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-LOSE-DEVICE",
+   "to": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-LOST",
+   "to": "FACT-D14-REOPEN-GPU-LOST",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LOST",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-LOST",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-NAVIGATOR-GPU",
+   "to": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-REQUESTADAPTER",
+   "to": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-GPU-REQUESTDEVICE",
+   "to": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-COI",
+   "to": "FACT-D14-REOPEN-HTML-COI",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-COI",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-COI",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-HWCONCURRENCY",
+   "to": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-SANDBOX-ORIGIN",
+   "to": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-WORKERS",
+   "to": "FACT-D14-REOPEN-HTML-WORKERS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-WORKERS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-WORKERS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IDB-TRANSACTION",
+   "to": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-MANIFEST-INSTALLABLE",
+   "to": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUST-REF-NOSTD",
+   "to": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-DOC",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SECCTX-TRUSTWORTHY",
+   "to": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-STORAGE-BUCKET-MODE",
+   "to": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SW-INSTALL-FAILED",
+   "to": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SW-REGISTER-TRUST",
+   "to": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+   "to": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SW-UPDATE-BYPASS",
+   "to": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-SWIFTSHADER-README",
+   "to": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-V8-FLAGS",
+   "to": "FACT-D14-REOPEN-V8-FLAGS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-V8-FLAGS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-V8-FLAGS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-CORE-BINARY-LIMITS",
+   "to": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-CORE-CHANGES-64",
+   "to": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+   "to": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+   "to": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+   "to": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-MEMORIES",
+   "to": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-STORAGE",
+   "to": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-VALIDATE",
+   "to": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-SET",
+   "to": "FACT-D14-REOPEN-WASM-SET",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-SET",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-SET",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-THREADS",
+   "to": "FACT-D14-REOPEN-WASM-THREADS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-THREADS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-THREADS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-WEBAPI-STREAMING",
+   "to": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WEB-LOCKS",
+   "to": "FACT-D14-REOPEN-WEB-LOCKS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WEB-LOCKS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WEB-LOCKS",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WEBCRYPTO-DIGEST",
+   "to": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WGSL",
+   "to": "FACT-D14-REOPEN-WGSL",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WGSL",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WGSL",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-CORPUS-INGESTED",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-CORPUS-INGESTED",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-CORPUS-REPRODUCIBLE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-CORPUS-REPRODUCIBLE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-D11-PINS-RECHECKED",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-MAP-LINKS-AUDITED",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-MAP-LINKS-AUDITED",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-FS-OPFS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-FS-OPFS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-DESTROY",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-DESTROY",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LOST",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-LOST",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-HTML-COI",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-HTML-COI",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-HTML-WORKERS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-HTML-WORKERS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-V8-FLAGS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-V8-FLAGS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-SET",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-SET",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-THREADS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-THREADS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WEB-LOCKS",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WEB-LOCKS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-REOPEN-WGSL",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-REOPEN-WGSL",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "to": "EV-D14-HOSTS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "to": "EV-D14-REGISTER"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-CORPUS-INGESTED",
+   "to": "EV-D14-REGISTER"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-CORPUS-REPRODUCIBLE",
+   "to": "EV-D14-REFETCH"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED",
+   "to": "EV-D14-REGISTER"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-MAP-LINKS-AUDITED",
+   "to": "EV-D14-LINK-AUDIT"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-D14-REFERENCE-INGRESS",
+   "to": "IMPL-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D14-CORPUS-INGESTED",
+   "to": "IMPL-D14-REFERENCE-CORPUS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "CON-EM-D14-001",
+   "to": "IMPL-D14-REFERENCE-CORPUS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-EM-D14-001",
+   "to": "FACT-D14-CORPUS-REPRODUCIBLE"
+  },
+  {
+   "type": "BUILT_WITH",
+   "from": "EV-D14-HOSTS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-D14-REFERENCE-INGRESS",
+   "to": "EV-D14-HOSTS"
+  },
+  {
+   "type": "BUILT_WITH",
+   "from": "EV-D14-REGISTER",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-D14-REFERENCE-INGRESS",
+   "to": "EV-D14-REGISTER"
+  },
+  {
+   "type": "BUILT_WITH",
+   "from": "EV-D14-REFETCH",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-D14-REFERENCE-INGRESS",
+   "to": "EV-D14-REFETCH"
+  },
+  {
+   "type": "BUILT_WITH",
+   "from": "EV-D14-LINK-AUDIT",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-D14-REFERENCE-INGRESS",
+   "to": "EV-D14-LINK-AUDIT"
+  },
+  {
+   "type": "BUILT_WITH",
+   "from": "EV-D14-FRAGMENTS",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-D14-REFERENCE-INGRESS",
+   "to": "EV-D14-FRAGMENTS"
+  },
+  {
+   "type": "INVALIDATED_BY",
+   "from": "FACT-AUTHORITY-REOPEN-DENIED",
+   "to": "EV-D14-REGISTER",
+   "note": "D11 fact \"clauses could only be taken from source pins\" is superseded for the authorities with a Pages-branch route; the hosts themselves remain denied (FACT-D14-PUBLISHED-HOSTS-DENIED)"
+  }
+ ]
+}

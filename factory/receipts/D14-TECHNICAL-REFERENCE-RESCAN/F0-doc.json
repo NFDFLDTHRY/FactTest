@@ -1,0 +1,229 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D14-TECHNICAL-REFERENCE-RESCAN-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W16",
+  "delta_id": "D14-TECHNICAL-REFERENCE-RESCAN",
+  "canonical_base": "6778133c35a96d5e356df283aa1676ee428766bb",
+  "input_artifacts": [
+    "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+    "design/materialization/D13-PRE-RESCAN-BASELINE.md",
+    "REFERENCE-AUTHORITY.md",
+    "design/environment-map/graph.json",
+    "scratch probes (section 0)"
+  ],
+  "open_tree": "e54fc209779b3455db083f0f5620e187a7c74d51",
+  "close_tree": "057efe79ef0f8611633432bfce51828a710d7649",
+  "changed_paths": [
+    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+    "factory/deltas/D14.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D14-TECHNICAL-REFERENCE-RESCAN"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D14-INTENDED-REFERENCE-RESCAN.md; grep -q '^STRUCTURAL CHECK: PASS' $I && for s in '## 0.' '## 1.' '### 1.1' '### 1.2' '### 1.3' '### 1.4' '### 1.5' '## 2.' '## 3.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done && for t in T14-R1 T14-R2 T14-R3 T14-R4 T14-R5 T14-R6 T14-R7 T14-R8; do grep -q \"^$t \" $I || { echo missing $t; exit 1; }; done && grep -q '^## D14-TECHNICAL-REFERENCE-RESCAN' design/materialization/LEDGER.md && grep -q 'integrated as 6778133c35a96d5e356df283aa1676ee428766bb' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ]",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code 6778133c35a96d5e356df283aa1676ee428766bb -- FACTORY-LAW.md compiler host factory/src factory/registry factory/tests fixtures/language fixtures/compiler fixtures/commissioning fixtures/toolchain tests/toolchain tests/envmap tests/hygiene design/materialization/M0-INTENDED-SYSTEM.md design/materialization/D13-PRE-RESCAN-BASELINE.md design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/deltas/D14.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-d14/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "command": [
+          "rustc",
+          "+1.94.1",
+          "-vV"
+        ],
+        "exit": 0,
+        "output": [
+          "rustc 1.94.1 (e408947bf 2026-03-25)",
+          "binary: rustc",
+          "commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1",
+          "commit-date: 2026-03-25",
+          "host: x86_64-unknown-linux-gnu",
+          "release: 1.94.1",
+          "LLVM version: 21.1.8"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "command": [
+          "rustc",
+          "+nightly-2026-09-24",
+          "-vV"
+        ],
+        "exit": 0,
+        "output": [
+          "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+          "binary: rustc",
+          "commit-hash: 6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+          "commit-date: 2026-09-23",
+          "host: x86_64-unknown-linux-gnu",
+          "release: 1.100.0-nightly",
+          "LLVM version: 23.1.1"
+        ]
+      },
+      {
+        "name": "node",
+        "command": [
+          "node",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "v22.22.2"
+        ]
+      },
+      {
+        "name": "git",
+        "command": [
+          "git",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "git version 2.43.0"
+        ]
+      },
+      {
+        "name": "curl",
+        "command": [
+          "curl",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10",
+          "Release-Date: 2023-12-06, security patched: 8.5.0-2ubuntu10.8",
+          "Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp",
+          "Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd"
+        ]
+      }
+    ]
+  },
+  "closed": "2026-09-24T08:55:37Z",
+  "status": "PASS"
+}

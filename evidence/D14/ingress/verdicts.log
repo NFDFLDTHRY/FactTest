@@ -1,0 +1,4 @@
+$ sh -c grep -q '"verdict": "PASS"' evidence/D14/ingress/verify.json && grep -q '"verdict": "PASS"' evidence/D14/ingress/refetch.json && grep -q 'PUBLISHED_HOSTS_DENIED; ROUTE AVAILABLE\|PUBLISHED_HOSTS_REACHABLE' evidence/D14/ingress/hosts.json && test -s evidence/D14/audit/fragments.json && test -s evidence/D14/audit/link-audit.json
+(cwd .)
+
+[exit 0] expected 0

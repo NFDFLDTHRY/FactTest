@@ -8,15 +8,19 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D13-REPO-HYGIENE (see design/materialization/LEDGER.md for its integration commit)
+last delta         D14-TECHNICAL-REFERENCE-RESCAN (see design/materialization/LEDGER.md for its integration commit);
+                   D14-PROMPT-INTAKE 6778133; D13-REPO-HYGIENE 8265623 (main 4d8a4c0, PR #4)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64), D9 qualified
                    Rust/Cargo proof harness, D11 computational environment map, D12 self-hosting architecture (ASCII +
-                   primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces)
+                   primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces),
+                   D14 technical reference rescan (retrieval route under the egress policy, fixtures/reference corpus of
+                   83 reproducibility copies, D11 pins re-checked, 99 map links + 64 authorities audited, epoch D14)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm, broad capability families (section 6)
-next               D14 TECHNICAL REFERENCE RESCAN, starting from design/materialization/D13-PRE-RESCAN-BASELINE.md.
-                   The owner PAUSED the D12-predicted D13-SEED-BROKER-QUALIFICATION; it is renumbered after D14.
+next               OWNER law delta for the nine drifted REFERENCE-AUTHORITY.md fragments (section 6), then the PAUSED
+                   seed/broker qualification (D12-predicted; renumbered D15 or later).  The corpus is re-ingested by a
+                   new delta when the register's branch heads are stale (tests/reference/ingress.mjs fetch).
 ```
 
 ## 2. Mutation law
@@ -81,7 +85,9 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
                epochs/D12.json, epochs/D13.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
-               this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml
+               this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml;
+               fixtures/reference/ (ROUTES.json retrieval route, REGISTER.json copy identities, published/ and sources/
+               reproducibility copies: pins, never current authority; re-check with tests/reference/ingress.mjs)
 HISTORICAL     FABLE-ASCII-SYSTEM-PROMPT.md (bootloader of the original Fable 5.1 materialization session; carries a
                HISTORICAL banner), PASS1.md-PASS6.md, PASS5-TESTS.md, PASS6-TESTS.md, PASS6-GAP-REPAIRS.md,
                PLANNED-REPO-LAYOUT.md (PASS 5 plan; the law/ zone was never created), M0-INTENDED-SYSTEM.md,
@@ -94,8 +100,8 @@ SESSIONS       historical: M0-M9 / D0-D8 ran under the Fable 5.1 session bootloa
 ```
 
 Observed repository layout: factory/ (src, tests, registry, deltas, fixtures, receipts), compiler/<crate>/,
-host/ (factc, harness), fixtures/ (language, compiler/negative, commissioning, toolchain), tests/ (bootstrap,
-commissioning, language, toolchain, envmap, selfhost, hygiene), evidence/<delta>/, design/ (materialization,
+host/ (factc, harness), fixtures/ (language, compiler/negative, commissioning, toolchain, reference), tests/ (bootstrap,
+commissioning, language, toolchain, envmap, selfhost, hygiene, reference), evidence/<delta>/, design/ (materialization,
 environment-map), docs/ (this page), root law documents.
 
 ## 6. Open-boundary register
@@ -122,12 +128,23 @@ C      D11 Q09                              streaming/MIME, workers, hardwareCon
                                             registry families not yet authority nodes
 C      CAPABILITY-MATRIX / CONSTRAINT-      capability rows marked [GAP]/[ERR]/[UNK] in the law ledgers        as marked
        LEDGER rows
-D      js-api #internal-storage             cited in 5 law files and fixtures/commissioning/contracts.ascii;   [ERR]/[UNK]
-                                            not an id in pinned WebAssembly/spec@608711107b; published page
-                                            not opened (annotated in place by D13; resolution D14)
-D      D11 FACT-AUTHORITY-REOPEN-DENIED     37 of 48 D11 authorities and all 16 D12 authorities read from       [UNK]
-                                            pinned sources only; published hosts DENIED
-D      D12 B-19                             githack public-origin path unreachable (proxy 403)                  [UNK]
+D      js-api #internal-storage             cited in 5 law files and fixtures/commissioning/contracts.ascii;   [ERR]
+                                            not an id in the source pin nor in the gh-pages rendering
+                                            @dcb71aa493d7 (D14; section is #webassembly-storage); annotated in
+                                            place by D13 and D14; replacement = OWNER law delta
+OWNER  D14 drifted fragments (9)            web-api #streaming-module-compilation-and-instantiation, IndexedDB   [ERR]
+                                            #database-concept, ServiceWorker #fetch-event, sensors #extending-
+                                            the-permission-api / -permissions-policy-api, deviceorientation
+                                            #permissions, ambient-light #ambientlightsensor-interface, webxr
+                                            #navigator-xr, js-api #internal-storage: absent in the current
+                                            renderings; nearest ids in the D14 ANNOTATION lines; law delta needed
+D      D14 CON-EM-D14-001                   copies are pins, never current authority (PROPOSED constraint)        [OBS]
+D      D11 FACT-AUTHORITY-REOPEN-DENIED     narrowed by D14: 30 authorities / 78 map links now have a Pages-     [UNK]
+                                            branch copy of the rendering (not observed at the host); 23
+                                            authorities / 20 links on hosts without a Pages branch (WHATWG,
+                                            doc.rust-lang.org, git-scm.com, Chromium) stay source-pinned; the
+                                            WebCodecs TR snapshot has NO_ROUTE; 23 published hosts still DENIED
+D      D12 B-19                             githack public-origin path unreachable (proxy 403; re-probed D14)   [UNK]
 D      D12 B-18, B-20                       GitHub smart-HTTP CORS; browser update behaviour                    [OBS]/[UNK]
 D      CONFLICT-LEDGER ERR-001 et al.       authority conflicts preserved as ledger rows                        [ERR]
 B      D0-D12 receipts/evidence             incomplete environment identity (receipt format 2 from D14 on)      kept
@@ -135,6 +152,8 @@ B      D3-D8 fixture wording                "all ladders" / "full suite" oversta
 B      D1-D8 heuristic gates                nostd-check/depcheck used as gates (proof weight now NONE)          kept
 B      scratch-only tooling                 D0-D13 route scripts, D11 graph generator (procedure: section 4)    kept
 B      workpiece root                       W11-stage (2 pre-binding drafts), factory-bootstrap-bin (unmanaged) [GAP] kept
+B      fixtures/reference size              ~51 MB of authority copies (git-compressed far smaller); re-ingest   [GAP] kept
+                                            by a new delta when branch heads move
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
        (B-07); D-6 object hash; D-8 seed replacement; D-9 history horizon; deleting the fully merged remote branches
        claude/d9-rust-cargo-proof-4nys6s, factory/reference-corpus-wasm64, work/pass2-5-reference-ingress-1

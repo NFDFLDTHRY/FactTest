@@ -1,0 +1,1146 @@
+{
+  "schema": "facttest-reference-routes/1",
+  "law": "REFERENCE-AUTHORITY.md citation law and PASS1.md: living/editor documents govern current semantics; dated snapshots are historical unless explicitly pinned for reproducibility. Every file this table ingests is a REPRODUCIBILITY PIN of an authority at a recorded commit (git ls-remote head at ingest time), never the current authority itself. The register (REGISTER.json) carries the commit, blob id, sha256 and observation time of every copy.",
+  "retrieval": {
+    "problem": "the session egress policy denies every published authority host (CONNECT 403): doc.rust-lang.org, webassembly.github.io, gpuweb.github.io, w3c.github.io, html.spec.whatwg.org and the other *.spec.whatwg.org hosts, tc39.es, git-scm.com, www.w3.org, source.chromium.org, chromium.googlesource.com, raw.githack.com; D11-D13 could read sources pinned by commit only",
+    "solution": "every denied published rendering that a publisher serves through GitHub Pages is the byte-exact content of that repository's gh-pages branch; that branch is reachable with exact commit identity through the session git proxy (git ls-remote / blobless partial fetch) and its files are fetchable immutably by commit from raw.githubusercontent.com, which the policy allows. Specification sources are taken from the publisher's default branch the same way. A published host without a Pages branch (WHATWG standards, doc.rust-lang.org, git-scm.com, www.w3.org/TR snapshots, Chromium code search) has NO_ROUTE for its rendering and is ingested as source only.",
+    "allowed_route_hosts": [
+      "raw.githubusercontent.com (HTTPS through the session proxy)",
+      "github.com git smart-HTTP (through the session git proxy: ls-remote, partial fetch)"
+    ],
+    "not_claimed": "a file taken from a gh-pages branch was NOT observed at the published host; the register marks it PAGES_BRANCH and the published URL stays NOT_OBSERVED_AT_HOST until the policy admits the host"
+  },
+  "repos": {
+    "WebAssembly/spec": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://webassembly.github.io/spec/"
+    },
+    "WebAssembly/threads": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://webassembly.github.io/threads/"
+    },
+    "WebAssembly/shared-everything-threads": {
+      "source_ref": "main"
+    },
+    "gpuweb/gpuweb": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://gpuweb.github.io/gpuweb/"
+    },
+    "webmachinelearning/webnn": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://webmachinelearning.github.io/webnn/"
+    },
+    "w3c/webcodecs": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/webcodecs/"
+    },
+    "w3c/mediacapture-main": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/mediacapture-main/"
+    },
+    "w3c/webappsec-secure-contexts": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/webappsec-secure-contexts/"
+    },
+    "w3c/permissions": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/permissions/"
+    },
+    "w3c/webappsec-permissions-policy": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/webappsec-permissions-policy/"
+    },
+    "w3c/IndexedDB": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/IndexedDB/"
+    },
+    "w3c/ServiceWorker": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/ServiceWorker/"
+    },
+    "w3c/manifest": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/manifest/"
+    },
+    "w3c/web-locks": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/web-locks/"
+    },
+    "w3c/webcrypto": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/webcrypto/"
+    },
+    "w3c/sensors": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/sensors/"
+    },
+    "w3c/accelerometer": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/accelerometer/"
+    },
+    "w3c/gyroscope": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/gyroscope/"
+    },
+    "w3c/magnetometer": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/magnetometer/"
+    },
+    "w3c/orientation-sensor": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/orientation-sensor/"
+    },
+    "w3c/deviceorientation": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/deviceorientation/"
+    },
+    "w3c/proximity": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/proximity/"
+    },
+    "w3c/ambient-light": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/ambient-light/"
+    },
+    "w3c/geolocation": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://w3c.github.io/geolocation/"
+    },
+    "immersive-web/webxr": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://immersive-web.github.io/webxr/"
+    },
+    "WICG/webhid": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://wicg.github.io/webhid/"
+    },
+    "WICG/webusb": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://wicg.github.io/webusb/"
+    },
+    "whatwg/serial": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://serial.spec.whatwg.org/",
+      "note": "the WHATWG serial repository keeps a gh-pages branch; whether the host serves that branch is NOT verified (host denied)"
+    },
+    "WebBluetoothCG/web-bluetooth": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://webbluetoothcg.github.io/web-bluetooth/"
+    },
+    "tc39/ecma262": {
+      "published_ref": "gh-pages",
+      "source_ref": "main",
+      "published_host": "https://tc39.es/ecma262/"
+    },
+    "whatwg/html": {
+      "source_ref": "main",
+      "published_host": "https://html.spec.whatwg.org/",
+      "published_route": "NO_ROUTE (WHATWG deploys its own build; no Pages branch)"
+    },
+    "whatwg/webidl": {
+      "source_ref": "main",
+      "published_host": "https://webidl.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "whatwg/dom": {
+      "source_ref": "main",
+      "published_host": "https://dom.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "whatwg/infra": {
+      "source_ref": "main",
+      "published_host": "https://infra.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "whatwg/fetch": {
+      "source_ref": "main",
+      "published_host": "https://fetch.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "whatwg/streams": {
+      "source_ref": "main",
+      "published_host": "https://streams.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "whatwg/storage": {
+      "source_ref": "main",
+      "published_host": "https://storage.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "whatwg/fs": {
+      "source_ref": "main",
+      "published_host": "https://fs.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "whatwg/compression": {
+      "source_ref": "main",
+      "published_host": "https://compression.spec.whatwg.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "rust-lang/reference": {
+      "source_ref": "master",
+      "published_host": "https://doc.rust-lang.org/reference/",
+      "published_route": "NO_ROUTE (mdBook build deployed by rust-lang CI)"
+    },
+    "rust-lang/cargo": {
+      "source_ref": "master",
+      "published_host": "https://doc.rust-lang.org/nightly/cargo/",
+      "published_route": "NO_ROUTE (the cargo gh-pages branch is a stub, not the book)"
+    },
+    "rust-lang/rust": {
+      "source_ref": "main",
+      "published_host": "https://doc.rust-lang.org/rustc/",
+      "published_route": "NO_ROUTE"
+    },
+    "git/git": {
+      "source_ref": "master",
+      "published_host": "https://git-scm.com/docs/",
+      "published_route": "NO_ROUTE (git-scm.com renders the asciidoc sources)"
+    },
+    "chromium/chromium": {
+      "source_ref": "main",
+      "published_host": "https://source.chromium.org/ and https://chromium.googlesource.com/",
+      "published_route": "NO_ROUTE (GitHub mirror of the source is the copy)"
+    },
+    "v8/v8": {
+      "source_ref": "main",
+      "published_host": "https://source.chromium.org/",
+      "published_route": "NO_ROUTE"
+    },
+    "google/swiftshader": {
+      "source_ref": "master",
+      "published_host": "https://github.com/google/swiftshader (denied for HTTPS page access; git and raw allowed)"
+    }
+  },
+  "files": [
+    {
+      "id": "wasm-core-index",
+      "kind": "published",
+      "repo": "WebAssembly/spec",
+      "path": "core/index.html",
+      "store": "published/webassembly.github.io/spec/core/index.html",
+      "format": "html"
+    },
+    {
+      "id": "wasm-core-text-types",
+      "kind": "published",
+      "repo": "WebAssembly/spec",
+      "path": "core/text/types.html",
+      "store": "published/webassembly.github.io/spec/core/text/types.html",
+      "format": "html"
+    },
+    {
+      "id": "wasm-core-syntax-types",
+      "kind": "published",
+      "repo": "WebAssembly/spec",
+      "path": "core/syntax/types.html",
+      "store": "published/webassembly.github.io/spec/core/syntax/types.html",
+      "format": "html"
+    },
+    {
+      "id": "wasm-core-binary-types",
+      "kind": "published",
+      "repo": "WebAssembly/spec",
+      "path": "core/binary/types.html",
+      "store": "published/webassembly.github.io/spec/core/binary/types.html",
+      "format": "html"
+    },
+    {
+      "id": "wasm-core-changes",
+      "kind": "published",
+      "repo": "WebAssembly/spec",
+      "path": "core/appendix/changes.html",
+      "store": "published/webassembly.github.io/spec/core/appendix/changes.html",
+      "format": "html"
+    },
+    {
+      "id": "wasm-js-api",
+      "kind": "published",
+      "repo": "WebAssembly/spec",
+      "path": "js-api/index.html",
+      "store": "published/webassembly.github.io/spec/js-api/index.html",
+      "format": "html"
+    },
+    {
+      "id": "wasm-web-api",
+      "kind": "published",
+      "repo": "WebAssembly/spec",
+      "path": "web-api/index.html",
+      "store": "published/webassembly.github.io/spec/web-api/index.html",
+      "format": "html"
+    },
+    {
+      "id": "wasm-src-text-types",
+      "kind": "source",
+      "repo": "WebAssembly/spec",
+      "path": "document/core/text/types.rst",
+      "store": "sources/WebAssembly/spec/document/core/text/types.rst",
+      "format": "rst"
+    },
+    {
+      "id": "wasm-src-syntax-types",
+      "kind": "source",
+      "repo": "WebAssembly/spec",
+      "path": "document/core/syntax/types.rst",
+      "store": "sources/WebAssembly/spec/document/core/syntax/types.rst",
+      "format": "rst"
+    },
+    {
+      "id": "wasm-src-binary-types",
+      "kind": "source",
+      "repo": "WebAssembly/spec",
+      "path": "document/core/binary/types.rst",
+      "store": "sources/WebAssembly/spec/document/core/binary/types.rst",
+      "format": "rst"
+    },
+    {
+      "id": "wasm-src-changes",
+      "kind": "source",
+      "repo": "WebAssembly/spec",
+      "path": "document/core/appendix/changes.rst",
+      "store": "sources/WebAssembly/spec/document/core/appendix/changes.rst",
+      "format": "rst"
+    },
+    {
+      "id": "wasm-src-js-api",
+      "kind": "source",
+      "repo": "WebAssembly/spec",
+      "path": "document/js-api/index.bs",
+      "store": "sources/WebAssembly/spec/document/js-api/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "wasm-src-web-api",
+      "kind": "source",
+      "repo": "WebAssembly/spec",
+      "path": "document/web-api/index.bs",
+      "store": "sources/WebAssembly/spec/document/web-api/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "threads-core-index",
+      "kind": "published",
+      "repo": "WebAssembly/threads",
+      "path": "core/index.html",
+      "store": "published/webassembly.github.io/threads/core/index.html",
+      "format": "html"
+    },
+    {
+      "id": "threads-core-syntax-types",
+      "kind": "published",
+      "repo": "WebAssembly/threads",
+      "path": "core/syntax/types.html",
+      "store": "published/webassembly.github.io/threads/core/syntax/types.html",
+      "format": "html"
+    },
+    {
+      "id": "threads-js-api",
+      "kind": "published",
+      "repo": "WebAssembly/threads",
+      "path": "js-api/index.html",
+      "store": "published/webassembly.github.io/threads/js-api/index.html",
+      "format": "html"
+    },
+    {
+      "id": "threads-web-api",
+      "kind": "published",
+      "repo": "WebAssembly/threads",
+      "path": "web-api/index.html",
+      "store": "published/webassembly.github.io/threads/web-api/index.html",
+      "format": "html"
+    },
+    {
+      "id": "threads-src-overview",
+      "kind": "source",
+      "repo": "WebAssembly/threads",
+      "path": "proposals/threads/Overview.md",
+      "store": "sources/WebAssembly/threads/proposals/threads/Overview.md",
+      "format": "md"
+    },
+    {
+      "id": "set-src-overview",
+      "kind": "source",
+      "repo": "WebAssembly/shared-everything-threads",
+      "path": "proposals/shared-everything-threads/Overview.md",
+      "store": "sources/WebAssembly/shared-everything-threads/proposals/shared-everything-threads/Overview.md",
+      "format": "md"
+    },
+    {
+      "id": "gpuweb-index",
+      "kind": "published",
+      "repo": "gpuweb/gpuweb",
+      "path": "index.html",
+      "store": "published/gpuweb.github.io/gpuweb/index.html",
+      "format": "html"
+    },
+    {
+      "id": "wgsl-index",
+      "kind": "published",
+      "repo": "gpuweb/gpuweb",
+      "path": "wgsl/index.html",
+      "store": "published/gpuweb.github.io/gpuweb/wgsl/index.html",
+      "format": "html"
+    },
+    {
+      "id": "gpuweb-src",
+      "kind": "source",
+      "repo": "gpuweb/gpuweb",
+      "path": "spec/index.bs",
+      "store": "sources/gpuweb/gpuweb/spec/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "wgsl-src",
+      "kind": "source",
+      "repo": "gpuweb/gpuweb",
+      "path": "wgsl/index.bs",
+      "store": "sources/gpuweb/gpuweb/wgsl/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "webnn-index",
+      "kind": "published",
+      "repo": "webmachinelearning/webnn",
+      "path": "index.html",
+      "store": "published/webmachinelearning.github.io/webnn/index.html",
+      "format": "html"
+    },
+    {
+      "id": "webcodecs-index",
+      "kind": "published",
+      "repo": "w3c/webcodecs",
+      "path": "index.html",
+      "store": "published/w3c.github.io/webcodecs/index.html",
+      "format": "html"
+    },
+    {
+      "id": "mediacapture-getusermedia",
+      "kind": "published",
+      "repo": "w3c/mediacapture-main",
+      "path": "getusermedia.html",
+      "store": "published/w3c.github.io/mediacapture-main/getusermedia.html",
+      "format": "html",
+      "note": "index.html on that branch is a 35-byte redirect stub to archives/; the editor's draft is getusermedia.html"
+    },
+    {
+      "id": "secure-contexts-index",
+      "kind": "published",
+      "repo": "w3c/webappsec-secure-contexts",
+      "path": "index.html",
+      "store": "published/w3c.github.io/webappsec-secure-contexts/index.html",
+      "format": "html"
+    },
+    {
+      "id": "secure-contexts-src",
+      "kind": "source",
+      "repo": "w3c/webappsec-secure-contexts",
+      "path": "index.bs",
+      "store": "sources/w3c/webappsec-secure-contexts/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "permissions-index",
+      "kind": "published",
+      "repo": "w3c/permissions",
+      "path": "index.html",
+      "store": "published/w3c.github.io/permissions/index.html",
+      "format": "html"
+    },
+    {
+      "id": "permissions-policy-index",
+      "kind": "published",
+      "repo": "w3c/webappsec-permissions-policy",
+      "path": "index.html",
+      "store": "published/w3c.github.io/webappsec-permissions-policy/index.html",
+      "format": "html"
+    },
+    {
+      "id": "indexeddb-index",
+      "kind": "published",
+      "repo": "w3c/IndexedDB",
+      "path": "index.html",
+      "store": "published/w3c.github.io/IndexedDB/index.html",
+      "format": "html"
+    },
+    {
+      "id": "indexeddb-src",
+      "kind": "source",
+      "repo": "w3c/IndexedDB",
+      "path": "index.bs",
+      "store": "sources/w3c/IndexedDB/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "serviceworker-index",
+      "kind": "published",
+      "repo": "w3c/ServiceWorker",
+      "path": "index.html",
+      "store": "published/w3c.github.io/ServiceWorker/index.html",
+      "format": "html"
+    },
+    {
+      "id": "serviceworker-src",
+      "kind": "source",
+      "repo": "w3c/ServiceWorker",
+      "path": "index.bs",
+      "store": "sources/w3c/ServiceWorker/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "manifest-index",
+      "kind": "published",
+      "repo": "w3c/manifest",
+      "path": "index.html",
+      "store": "published/w3c.github.io/manifest/index.html",
+      "format": "html"
+    },
+    {
+      "id": "manifest-src",
+      "kind": "source",
+      "repo": "w3c/manifest",
+      "path": "index.html",
+      "store": "sources/w3c/manifest/index.html",
+      "format": "html"
+    },
+    {
+      "id": "web-locks-index",
+      "kind": "published",
+      "repo": "w3c/web-locks",
+      "path": "index.html",
+      "store": "published/w3c.github.io/web-locks/index.html",
+      "format": "html"
+    },
+    {
+      "id": "web-locks-src",
+      "kind": "source",
+      "repo": "w3c/web-locks",
+      "path": "index.bs",
+      "store": "sources/w3c/web-locks/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "webcrypto-index",
+      "kind": "published",
+      "repo": "w3c/webcrypto",
+      "path": "index.html",
+      "store": "published/w3c.github.io/webcrypto/index.html",
+      "format": "html"
+    },
+    {
+      "id": "webcrypto-src",
+      "kind": "source",
+      "repo": "w3c/webcrypto",
+      "path": "spec/Overview.html",
+      "store": "sources/w3c/webcrypto/spec/Overview.html",
+      "format": "html"
+    },
+    {
+      "id": "sensors-index",
+      "kind": "published",
+      "repo": "w3c/sensors",
+      "path": "index.html",
+      "store": "published/w3c.github.io/sensors/index.html",
+      "format": "html"
+    },
+    {
+      "id": "accelerometer-index",
+      "kind": "published",
+      "repo": "w3c/accelerometer",
+      "path": "index.html",
+      "store": "published/w3c.github.io/accelerometer/index.html",
+      "format": "html"
+    },
+    {
+      "id": "gyroscope-index",
+      "kind": "published",
+      "repo": "w3c/gyroscope",
+      "path": "index.html",
+      "store": "published/w3c.github.io/gyroscope/index.html",
+      "format": "html"
+    },
+    {
+      "id": "magnetometer-index",
+      "kind": "published",
+      "repo": "w3c/magnetometer",
+      "path": "index.html",
+      "store": "published/w3c.github.io/magnetometer/index.html",
+      "format": "html"
+    },
+    {
+      "id": "orientation-sensor-index",
+      "kind": "published",
+      "repo": "w3c/orientation-sensor",
+      "path": "index.html",
+      "store": "published/w3c.github.io/orientation-sensor/index.html",
+      "format": "html"
+    },
+    {
+      "id": "deviceorientation-index",
+      "kind": "published",
+      "repo": "w3c/deviceorientation",
+      "path": "index.html",
+      "store": "published/w3c.github.io/deviceorientation/index.html",
+      "format": "html"
+    },
+    {
+      "id": "proximity-index",
+      "kind": "published",
+      "repo": "w3c/proximity",
+      "path": "index.html",
+      "store": "published/w3c.github.io/proximity/index.html",
+      "format": "html"
+    },
+    {
+      "id": "ambient-light-index",
+      "kind": "published",
+      "repo": "w3c/ambient-light",
+      "path": "index.html",
+      "store": "published/w3c.github.io/ambient-light/index.html",
+      "format": "html"
+    },
+    {
+      "id": "geolocation-index",
+      "kind": "published",
+      "repo": "w3c/geolocation",
+      "path": "index.html",
+      "store": "published/w3c.github.io/geolocation/index.html",
+      "format": "html"
+    },
+    {
+      "id": "webxr-index",
+      "kind": "published",
+      "repo": "immersive-web/webxr",
+      "path": "index.html",
+      "store": "published/immersive-web.github.io/webxr/index.html",
+      "format": "html"
+    },
+    {
+      "id": "webhid-index",
+      "kind": "published",
+      "repo": "WICG/webhid",
+      "path": "index.html",
+      "store": "published/wicg.github.io/webhid/index.html",
+      "format": "html"
+    },
+    {
+      "id": "webusb-index",
+      "kind": "published",
+      "repo": "WICG/webusb",
+      "path": "index.html",
+      "store": "published/wicg.github.io/webusb/index.html",
+      "format": "html"
+    },
+    {
+      "id": "serial-index",
+      "kind": "published",
+      "repo": "whatwg/serial",
+      "path": "index.html",
+      "store": "published/serial.spec.whatwg.org/index.html",
+      "format": "html"
+    },
+    {
+      "id": "serial-src",
+      "kind": "source",
+      "repo": "whatwg/serial",
+      "path": "index.html",
+      "store": "sources/whatwg/serial/index.html",
+      "format": "html"
+    },
+    {
+      "id": "web-bluetooth-index",
+      "kind": "published",
+      "repo": "WebBluetoothCG/web-bluetooth",
+      "path": "index.html",
+      "store": "published/webbluetoothcg.github.io/web-bluetooth/index.html",
+      "format": "html"
+    },
+    {
+      "id": "ecma262-index",
+      "kind": "published",
+      "repo": "tc39/ecma262",
+      "path": "index.html",
+      "store": "published/tc39.es/ecma262/index.html",
+      "format": "html"
+    },
+    {
+      "id": "html-src",
+      "kind": "source",
+      "repo": "whatwg/html",
+      "path": "source",
+      "store": "sources/whatwg/html/source",
+      "format": "wattsi"
+    },
+    {
+      "id": "webidl-src",
+      "kind": "source",
+      "repo": "whatwg/webidl",
+      "path": "index.bs",
+      "store": "sources/whatwg/webidl/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "dom-src",
+      "kind": "source",
+      "repo": "whatwg/dom",
+      "path": "dom.bs",
+      "store": "sources/whatwg/dom/dom.bs",
+      "format": "bs"
+    },
+    {
+      "id": "infra-src",
+      "kind": "source",
+      "repo": "whatwg/infra",
+      "path": "infra.bs",
+      "store": "sources/whatwg/infra/infra.bs",
+      "format": "bs"
+    },
+    {
+      "id": "fetch-src",
+      "kind": "source",
+      "repo": "whatwg/fetch",
+      "path": "fetch.bs",
+      "store": "sources/whatwg/fetch/fetch.bs",
+      "format": "bs"
+    },
+    {
+      "id": "streams-src",
+      "kind": "source",
+      "repo": "whatwg/streams",
+      "path": "index.bs",
+      "store": "sources/whatwg/streams/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "storage-src",
+      "kind": "source",
+      "repo": "whatwg/storage",
+      "path": "storage.bs",
+      "store": "sources/whatwg/storage/storage.bs",
+      "format": "bs"
+    },
+    {
+      "id": "fs-src",
+      "kind": "source",
+      "repo": "whatwg/fs",
+      "path": "index.bs",
+      "store": "sources/whatwg/fs/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "compression-src",
+      "kind": "source",
+      "repo": "whatwg/compression",
+      "path": "index.bs",
+      "store": "sources/whatwg/compression/index.bs",
+      "format": "bs"
+    },
+    {
+      "id": "rust-reference-preludes",
+      "kind": "source",
+      "repo": "rust-lang/reference",
+      "path": "src/names/preludes.md",
+      "store": "sources/rust-lang/reference/src/names/preludes.md",
+      "format": "md"
+    },
+    {
+      "id": "cargo-unstable",
+      "kind": "source",
+      "repo": "rust-lang/cargo",
+      "path": "src/doc/src/reference/unstable.md",
+      "store": "sources/rust-lang/cargo/src/doc/src/reference/unstable.md",
+      "format": "md",
+      "alt_paths": [
+        "doc/book/src/reference/unstable.md"
+      ],
+      "note": "the D11 pin path is tried first; alt paths cover the book directory move"
+    },
+    {
+      "id": "rustc-wasm64-doc",
+      "kind": "source",
+      "repo": "rust-lang/rust",
+      "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+      "store": "sources/rust-lang/rust/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+      "format": "md"
+    },
+    {
+      "id": "rustc-wasm64-target-spec",
+      "kind": "source",
+      "repo": "rust-lang/rust",
+      "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+      "store": "sources/rust-lang/rust/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+      "format": "code"
+    },
+    {
+      "id": "git-glossary",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/glossary-content.adoc",
+      "store": "sources/git/git/Documentation/glossary-content.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "git-revisions",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/gitrevisions.adoc",
+      "store": "sources/git/git/Documentation/gitrevisions.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "git-repository-layout",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/gitrepository-layout.adoc",
+      "store": "sources/git/git/Documentation/gitrepository-layout.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "git-worktree",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/git-worktree.adoc",
+      "store": "sources/git/git/Documentation/git-worktree.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "git-user-manual",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/user-manual.adoc",
+      "store": "sources/git/git/Documentation/user-manual.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "git-update-ref",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/git-update-ref.adoc",
+      "store": "sources/git/git/Documentation/git-update-ref.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "git-format-pack",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/gitformat-pack.adoc",
+      "store": "sources/git/git/Documentation/gitformat-pack.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "git-hash-transition",
+      "kind": "source",
+      "repo": "git/git",
+      "path": "Documentation/technical/hash-function-transition.adoc",
+      "store": "sources/git/git/Documentation/technical/hash-function-transition.adoc",
+      "format": "adoc"
+    },
+    {
+      "id": "chromium-content-switches",
+      "kind": "source",
+      "repo": "chromium/chromium",
+      "path": "content/public/common/content_switches.cc",
+      "store": "sources/chromium/chromium/content/public/common/content_switches.cc",
+      "format": "code"
+    },
+    {
+      "id": "chromium-gl-switches",
+      "kind": "source",
+      "repo": "chromium/chromium",
+      "path": "ui/gl/gl_switches.cc",
+      "store": "sources/chromium/chromium/ui/gl/gl_switches.cc",
+      "format": "code"
+    },
+    {
+      "id": "chromium-gpu-switches",
+      "kind": "source",
+      "repo": "chromium/chromium",
+      "path": "gpu/config/gpu_switches.cc",
+      "store": "sources/chromium/chromium/gpu/config/gpu_switches.cc",
+      "format": "code"
+    },
+    {
+      "id": "chromium-swiftshader-doc",
+      "kind": "source",
+      "repo": "chromium/chromium",
+      "path": "docs/gpu/swiftshader.md",
+      "store": "sources/chromium/chromium/docs/gpu/swiftshader.md",
+      "format": "md"
+    },
+    {
+      "id": "v8-flags",
+      "kind": "source",
+      "repo": "v8/v8",
+      "path": "src/flags/flag-definitions.h",
+      "store": "sources/v8/v8/src/flags/flag-definitions.h",
+      "format": "code"
+    },
+    {
+      "id": "swiftshader-readme",
+      "kind": "source",
+      "repo": "google/swiftshader",
+      "path": "README.md",
+      "store": "sources/google/swiftshader/README.md",
+      "format": "md"
+    }
+  ],
+  "url_map": [
+    {"prefix": "https://webassembly.github.io/spec/core/",
+      "pages_root": "published/webassembly.github.io/spec/core/",
+      "source_root": "sources/WebAssembly/spec/document/core/"
+    },
+    {"prefix": "https://webassembly.github.io/spec/js-api/",
+      "file": "published/webassembly.github.io/spec/js-api/index.html",
+      "source": "sources/WebAssembly/spec/document/js-api/index.bs"
+    },
+    {"prefix": "https://webassembly.github.io/spec/web-api/",
+      "file": "published/webassembly.github.io/spec/web-api/index.html",
+      "source": "sources/WebAssembly/spec/document/web-api/index.bs"
+    },
+    {"prefix": "https://webassembly.github.io/threads/core/",
+      "pages_root": "published/webassembly.github.io/threads/core/"
+    },
+    {"prefix": "https://webassembly.github.io/threads/js-api/",
+      "file": "published/webassembly.github.io/threads/js-api/index.html"
+    },
+    {"prefix": "https://webassembly.github.io/threads/web-api/",
+      "file": "published/webassembly.github.io/threads/web-api/index.html"
+    },
+    {"prefix": "https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/main/proposals/shared-everything-threads/Overview.md",
+      "file": "sources/WebAssembly/shared-everything-threads/proposals/shared-everything-threads/Overview.md",
+      "published_route": "RAW_ALLOWED"
+    },
+    {"prefix": "https://gpuweb.github.io/gpuweb/wgsl/",
+      "file": "published/gpuweb.github.io/gpuweb/wgsl/index.html",
+      "source": "sources/gpuweb/gpuweb/wgsl/index.bs"
+    },
+    {"prefix": "https://gpuweb.github.io/gpuweb/",
+      "file": "published/gpuweb.github.io/gpuweb/index.html",
+      "source": "sources/gpuweb/gpuweb/spec/index.bs"
+    },
+    {"prefix": "https://webmachinelearning.github.io/webnn/",
+      "file": "published/webmachinelearning.github.io/webnn/index.html"
+    },
+    {"prefix": "https://w3c.github.io/webcodecs/",
+      "file": "published/w3c.github.io/webcodecs/index.html"
+    },
+    {"prefix": "https://www.w3.org/TR/2026/WD-webcodecs-20260921/",
+      "file": null,
+      "published_route": "NO_ROUTE (dated W3C TR snapshot; host denied; no branch holds it)"
+    },
+    {"prefix": "https://w3c.github.io/mediacapture-main/",
+      "file": "published/w3c.github.io/mediacapture-main/getusermedia.html"
+    },
+    {"prefix": "https://w3c.github.io/webappsec-secure-contexts/",
+      "file": "published/w3c.github.io/webappsec-secure-contexts/index.html",
+      "source": "sources/w3c/webappsec-secure-contexts/index.bs"
+    },
+    {"prefix": "https://w3c.github.io/permissions/",
+      "file": "published/w3c.github.io/permissions/index.html"
+    },
+    {"prefix": "https://w3c.github.io/webappsec-permissions-policy/",
+      "file": "published/w3c.github.io/webappsec-permissions-policy/index.html"
+    },
+    {"prefix": "https://storage.spec.whatwg.org/",
+      "file": "sources/whatwg/storage/storage.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://fs.spec.whatwg.org/",
+      "file": "sources/whatwg/fs/index.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://compression.spec.whatwg.org/",
+      "file": "sources/whatwg/compression/index.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://w3c.github.io/IndexedDB/",
+      "file": "published/w3c.github.io/IndexedDB/index.html",
+      "source": "sources/w3c/IndexedDB/index.bs"
+    },
+    {"prefix": "https://w3c.github.io/ServiceWorker/",
+      "file": "published/w3c.github.io/ServiceWorker/index.html",
+      "source": "sources/w3c/ServiceWorker/index.bs"
+    },
+    {"prefix": "https://w3c.github.io/manifest/",
+      "file": "published/w3c.github.io/manifest/index.html",
+      "source": "sources/w3c/manifest/index.html"
+    },
+    {"prefix": "https://w3c.github.io/web-locks/",
+      "file": "published/w3c.github.io/web-locks/index.html",
+      "source": "sources/w3c/web-locks/index.bs"
+    },
+    {"prefix": "https://w3c.github.io/webcrypto/",
+      "file": "published/w3c.github.io/webcrypto/index.html",
+      "source": "sources/w3c/webcrypto/spec/Overview.html"
+    },
+    {"prefix": "https://w3c.github.io/sensors/",
+      "file": "published/w3c.github.io/sensors/index.html"
+    },
+    {"prefix": "https://w3c.github.io/accelerometer/",
+      "file": "published/w3c.github.io/accelerometer/index.html"
+    },
+    {"prefix": "https://w3c.github.io/gyroscope/",
+      "file": "published/w3c.github.io/gyroscope/index.html"
+    },
+    {"prefix": "https://w3c.github.io/magnetometer/",
+      "file": "published/w3c.github.io/magnetometer/index.html"
+    },
+    {"prefix": "https://w3c.github.io/orientation-sensor/",
+      "file": "published/w3c.github.io/orientation-sensor/index.html"
+    },
+    {"prefix": "https://w3c.github.io/deviceorientation/",
+      "file": "published/w3c.github.io/deviceorientation/index.html"
+    },
+    {"prefix": "https://w3c.github.io/proximity/",
+      "file": "published/w3c.github.io/proximity/index.html"
+    },
+    {"prefix": "https://w3c.github.io/ambient-light/",
+      "file": "published/w3c.github.io/ambient-light/index.html"
+    },
+    {"prefix": "https://w3c.github.io/geolocation/",
+      "file": "published/w3c.github.io/geolocation/index.html"
+    },
+    {"prefix": "https://immersive-web.github.io/webxr/",
+      "file": "published/immersive-web.github.io/webxr/index.html"
+    },
+    {"prefix": "https://wicg.github.io/webhid/",
+      "file": "published/wicg.github.io/webhid/index.html"
+    },
+    {"prefix": "https://wicg.github.io/webusb/",
+      "file": "published/wicg.github.io/webusb/index.html"
+    },
+    {"prefix": "https://serial.spec.whatwg.org/",
+      "file": "published/serial.spec.whatwg.org/index.html",
+      "source": "sources/whatwg/serial/index.html"
+    },
+    {"prefix": "https://webbluetoothcg.github.io/web-bluetooth/",
+      "file": "published/webbluetoothcg.github.io/web-bluetooth/index.html"
+    },
+    {"prefix": "https://tc39.es/ecma262/",
+      "file": "published/tc39.es/ecma262/index.html"
+    },
+    {"prefix": "https://webidl.spec.whatwg.org/",
+      "file": "sources/whatwg/webidl/index.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://html.spec.whatwg.org/",
+      "file": "sources/whatwg/html/source",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://dom.spec.whatwg.org/",
+      "file": "sources/whatwg/dom/dom.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://infra.spec.whatwg.org/",
+      "file": "sources/whatwg/infra/infra.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://fetch.spec.whatwg.org/",
+      "file": "sources/whatwg/fetch/fetch.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://streams.spec.whatwg.org/",
+      "file": "sources/whatwg/streams/index.bs",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://doc.rust-lang.org/reference/names/preludes.html",
+      "file": "sources/rust-lang/reference/src/names/preludes.md",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://doc.rust-lang.org/nightly/cargo/reference/unstable.html",
+      "file": "sources/rust-lang/cargo/src/doc/src/reference/unstable.md",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html",
+      "file": "sources/rust-lang/rust/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://github.com/rust-lang/rust/blob/master/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+      "file": "sources/rust-lang/rust/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+      "published_route": "GITHUB_PAGE_DENIED_RAW_ALLOWED"
+    },
+    {"prefix": "https://git-scm.com/docs/gitglossary",
+      "file": "sources/git/git/Documentation/glossary-content.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://git-scm.com/docs/gitrevisions",
+      "file": "sources/git/git/Documentation/gitrevisions.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://git-scm.com/docs/gitrepository-layout",
+      "file": "sources/git/git/Documentation/gitrepository-layout.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://git-scm.com/docs/git-worktree",
+      "file": "sources/git/git/Documentation/git-worktree.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://git-scm.com/docs/user-manual",
+      "file": "sources/git/git/Documentation/user-manual.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://git-scm.com/docs/gitformat-pack",
+      "file": "sources/git/git/Documentation/gitformat-pack.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://git-scm.com/docs/hash-function-transition",
+      "file": "sources/git/git/Documentation/technical/hash-function-transition.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://git-scm.com/docs/git-update-ref",
+      "file": "sources/git/git/Documentation/git-update-ref.adoc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://source.chromium.org/chromium/chromium/src/+/main:content/public/common/content_switches.cc",
+      "file": "sources/chromium/chromium/content/public/common/content_switches.cc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://source.chromium.org/chromium/chromium/src/+/main:ui/gl/gl_switches.cc",
+      "file": "sources/chromium/chromium/ui/gl/gl_switches.cc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://source.chromium.org/chromium/chromium/src/+/main:gpu/config/gpu_switches.cc",
+      "file": "sources/chromium/chromium/gpu/config/gpu_switches.cc",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://source.chromium.org/chromium/chromium/src/+/main:v8/src/flags/flag-definitions.h",
+      "file": "sources/v8/v8/src/flags/flag-definitions.h",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md",
+      "file": "sources/chromium/chromium/docs/gpu/swiftshader.md",
+      "published_route": "NO_ROUTE"
+    },
+    {"prefix": "https://github.com/google/swiftshader/blob/master/README.md",
+      "file": "sources/google/swiftshader/README.md",
+      "published_route": "GITHUB_PAGE_DENIED_RAW_ALLOWED"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "workpiece_root": "/home/user/factory-workpieces",
+  "canonical_head": "6778133c35a96d5e356df283aa1676ee428766bb",
+  "current_workpiece": "W16",
+  "retired_at": "2026-09-24T08:59:23Z",
+  "actions": [],
+  "kept": [
+    {
+      "object": "/home/user/factory-workpieces/W15",
+      "kind": "worktree",
+      "workpiece_id": "W15",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "6778133c35a96d5e356df283aa1676ee428766bb",
+        "reinspect": "MATCH",
+        "canonical_head": "6778133c35a96d5e356df283aa1676ee428766bb",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W16",
+      "kind": "worktree",
+      "workpiece_id": "W16",
+      "decision": "CURRENT",
+      "reasons": [
+        "current workpiece of the running delta",
+        "verification FAIL",
+        "integration MISSING",
+        "reinspect DIFFER",
+        "integration commit is not an ancestor of the canonical head",
+        "worktree HEAD 6778133c35a96d5e356df283aa1676ee428766bb != integration commit",
+        "worktree has modified, untracked or ignored entries"
+      ],
+      "proof": {
+        "verification": "FAIL",
+        "integration": "",
+        "integration_commit": "",
+        "reinspect": "DIFFER",
+        "canonical_head": "6778133c35a96d5e356df283aa1676ee428766bb",
+        "commit_is_ancestor_of_head": false,
+        "worktree_head": "6778133c35a96d5e356df283aa1676ee428766bb",
+        "status_porcelain_ignored_entries": 19,
+        "registered_worktree": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W9",
+      "kind": "worktree",
+      "workpiece_id": "W9",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+        "reinspect": "MATCH",
+        "canonical_head": "6778133c35a96d5e356df283aa1676ee428766bb",
+        "commit_is_ancestor_of_head": true
+      }
+    }
+  ]
+}

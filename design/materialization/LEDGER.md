@@ -578,4 +578,59 @@ BEFORE
   unchanged.
 
 AFTER
+- RESULT: integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca (ff-only from 205d337); merged into main by the owner
+  through pull request #4 as 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (PR closed, history fast-forwarded).
+- RECEIPTS: factory/receipts/D13-REPO-HYGIENE/{F0-doc,F1-rust,F2-fixture,F3-doc,F4-annotate,F5-build,F6-evidence,
+  F7-doc,F8-evidence,F9-doc}.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- OBSERVED: design/materialization/D13-OBSERVED-REPO-HYGIENE.md; PRE-RESCAN-BASELINE: ESTABLISHED.
+- (recorded by D14-PROMPT-INTAKE, the next delta.)
+
+---
+
+## D14-PROMPT-INTAKE  (FIRST ACTION of the technical reference rescan)
+
+BEFORE
+- DELTA: D14-PROMPT-INTAKE (factory/deltas/D14-PROMPT-INTAKE.json), workpiece W15.
+- BASE: 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (main after PR #4; development branch
+  claude/d9-rust-cargo-proof-4nys6s restarted on it: it carried only merged history).
+- STATION: S-DOC.  FIXTURE: F0-doc.
+- CHANGE: design/materialization/D14-REFERENCE-RESCAN-PROMPT.md (verbatim owner prompt + the reading adopted for
+  assembly), this ledger (D13 AFTER, this entry), the delta, its fixture, receipts.  FORBIDDEN: everything else.
+- NEXT: the rescan itself is D14-TECHNICAL-REFERENCE-RESCAN, assembled in
+  design/materialization/D14-INTENDED-REFERENCE-RESCAN.md from design/materialization/D13-PRE-RESCAN-BASELINE.md.
+
+AFTER
+- RESULT: integrated as 6778133c35a96d5e356df283aa1676ee428766bb (ff-only from 4d8a4c0); pushed to
+  claude/d9-rust-cargo-proof-4nys6s.  RECEIPTS: factory/receipts/D14-PROMPT-INTAKE/F0-doc.json PASS (format 2).
+  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- (recorded by D14-TECHNICAL-REFERENCE-RESCAN, the next delta.)
+
+---
+
+## D14-TECHNICAL-REFERENCE-RESCAN  (retrieval route + reference ingress)
+
+BEFORE
+- DELTA: D14-TECHNICAL-REFERENCE-RESCAN (factory/deltas/D14.json), workpiece W16.
+- BASE: 6778133c35a96d5e356df283aa1676ee428766bb (D14-PROMPT-INTAKE).
+- ASCII: design/materialization/D14-INTENDED-REFERENCE-RESCAN.md (observation incl. the egress probe and the
+  Pages-branch route, obligations T14-R1..R8, mutation plan by station, classification, predictions from a scratch dry
+  run, STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4), S-FIXTURE v2 (F1), S-BUILD (F2), S-ANNOTATE (F3), S-EVIDENCE (F5).  No new station.
+- CHANGE: tests/reference/{ingress.mjs, run-ingress-checks.sh}; fixtures/reference/{README.md, ROUTES.json,
+  REGISTER.json, published/, sources/} (83 reproducibility copies fetched in the stage at recorded branch heads);
+  evidence/D14/; insertion-only D14 ANNOTATION lines in REFERENCE-AUTHORITY.md, CONSTRAINT-LEDGER.md,
+  CONFLICT-LEDGER.md, IMPLEMENTATION-CONTRACTS.md, EVIDENCE-OBLIGATIONS.md; design/environment-map/{epochs/D14.json,
+  graph.json, AUTHORITY-REGISTER.md, TRACEABILITY.md}; docs/HANDOFF.md sections 1 and 6; D14 records; this ledger.
+  FORBIDDEN: FACTORY-LAW.md and every other law/pass document, compiler/, host/, factory/src|tests|registry,
+  Cargo.*, rust-toolchain.toml, every D0-D13 and D14-PROMPT-INTAKE artifact, prior fixtures and tests, the D12/D13
+  epochs, SCHEMA.md.
+- INVARIANTS: copies are pins, never current authority; no denied host tunnelled (raw.githubusercontent.com and the
+  git proxy only); law text insertion-only; D11-D13 graph nodes unchanged; no dependency; no toolchain change.
+- PREDICTED: 23 published hosts DENIED, route available; 83 files (39 renderings, 44 sources) ingested; verify PASS;
+  refetch PASS; 63 pins re-checked (56 match, 7 project-law); links 36 verified / 5 present / 3 derived /
+  45 no-fragment / 9 absent [ERR] / 1 no-route; authorities 17 / 5 / 3 / 29 / 2 absent [ERR] / 8 not network;
+  annotations 9+1+1+4+6 lines, 0 deletions; epoch 72 nodes / 315 edges; graph 374 / 956; validate, merge-check,
+  render-check, handoff-check, status-scan PASS.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

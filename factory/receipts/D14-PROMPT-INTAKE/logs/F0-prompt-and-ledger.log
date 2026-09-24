@@ -1,0 +1,4 @@
+$ sh -c grep -qF 'Solve the retrieval problem and get all the relevant sources to the factor ingested.' design/materialization/D14-REFERENCE-RESCAN-PROMPT.md && grep -q '^## D14-PROMPT-INTAKE' design/materialization/LEDGER.md && grep -q 'integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ]
+(cwd .)
+
+[exit 0] expected 0

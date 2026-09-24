@@ -1,0 +1,202 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D14-PROMPT-INTAKE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W15",
+  "delta_id": "D14-PROMPT-INTAKE",
+  "canonical_base": "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+  "input_artifacts": [
+    "the owner prompt (session message)",
+    "design/materialization/LEDGER.md",
+    "git log of main (PR #4 merge 4d8a4c0, D13 integration 8265623)"
+  ],
+  "open_tree": "126727fa0c75f7ef446e4907bd79da536267cef4",
+  "close_tree": "bdc958938e553a08688ce07f374d3cc4208078ae",
+  "changed_paths": [
+    "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.json",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D14-PROMPT-INTAKE"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c grep -qF 'Solve the retrieval problem and get all the relevant sources to the factor ingested.' design/materialization/D14-REFERENCE-RESCAN-PROMPT.md && grep -q '^## D14-PROMPT-INTAKE' design/materialization/LEDGER.md && grep -q 'integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ]",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log"
+    },
+    {
+      "check": "command:git diff --exit-code 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 -- FACTORY-LAW.md REFERENCE-AUTHORITY.md docs compiler host factory/src factory/registry fixtures tests evidence design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log"
+    },
+    {
+      "check": "command:sh tests/hygiene/handoff-check.sh factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-d14/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "command": [
+          "rustc",
+          "+1.94.1",
+          "-vV"
+        ],
+        "exit": 0,
+        "output": [
+          "rustc 1.94.1 (e408947bf 2026-03-25)",
+          "binary: rustc",
+          "commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1",
+          "commit-date: 2026-03-25",
+          "host: x86_64-unknown-linux-gnu",
+          "release: 1.94.1",
+          "LLVM version: 21.1.8"
+        ]
+      },
+      {
+        "name": "node",
+        "command": [
+          "node",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "v22.22.2"
+        ]
+      },
+      {
+        "name": "git",
+        "command": [
+          "git",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "git version 2.43.0"
+        ]
+      }
+    ]
+  },
+  "closed": "2026-09-24T08:49:44Z",
+  "status": "PASS"
+}

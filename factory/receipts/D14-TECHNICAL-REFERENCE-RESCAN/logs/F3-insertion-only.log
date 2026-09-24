@@ -1,0 +1,5 @@
+$ sh -c for f in REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do d=$(git diff --numstat 6778133c35a96d5e356df283aa1676ee428766bb -- $f | cut -f2); [ "${d:-0}" = 0 ] || { echo "$f deleted $d lines"; exit 1; }; grep -q '^D14 ANNOTATION (fragment #' $f || { echo "$f no D14 annotation"; exit 1; }; done; for f in REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do grep -A3 'https://webassembly.github.io/spec/js-api/#internal-storage' $f | grep -q '^D13 ANNOTATION .*#internal-storage' || { echo "$f D13 line displaced"; exit 1; }; grep -q '^D14 ANNOTATION (fragment #internal-storage): confirmed at the published rendering' $f || { echo "$f no D14 internal-storage line"; exit 1; }; done; node tests/reference/ingress.mjs annotate --audit evidence/D14/audit --dry-run REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md | grep -q ': [1-9]' && { echo 'annotation not idempotent'; exit 1; }; echo insertion-only-ok
+(cwd .)
+insertion-only-ok
+
+[exit 0] expected 0

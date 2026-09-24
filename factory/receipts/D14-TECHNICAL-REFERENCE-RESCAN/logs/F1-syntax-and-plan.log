@@ -1,0 +1,5 @@
+$ sh -c node --check tests/reference/ingress.mjs && sh -n tests/reference/run-ingress-checks.sh && node tests/reference/ingress.mjs plan-check --routes fixtures/reference/ROUTES.json --map REFERENCE-AUTHORITY.md --graph design/environment-map/graph.json
+(cwd .)
+plan-check PASS: every REFERENCE-AUTHORITY.md link and graph authority URL resolves to a route or an explicit NO_ROUTE; 83 files
+
+[exit 0] expected 0
