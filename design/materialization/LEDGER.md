@@ -113,5 +113,50 @@ BEFORE
         name order; positional arena ids never appear in canonical ASCII or typed IR.
 
 AFTER
+- RESULT: integrated as 4571d1449cc32d28d2c2f601dc4bb2a879dca7d7 (ff-only from 8ab25c9).
+- RECEIPTS: factory/receipts/D2-LANGUAGE-KERNEL/{F0-doc,F1-rust,F2-fixture,F3-build,F4-evidence}.json PASS.
+- VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- EVIDENCE: evidence/D2/build/test.log (30 language witnesses + 4 bootstrap + 9 foundation + 9 factory-law PASS),
+  evidence/D2/byte-relay/* (factc BUILD on the authoritative source: status OK, canonical ASCII, typed IR with all
+  four invariants holding), evidence/D2/bootstrap/* (wasm64 kernel with the language: 2.3 MB module, all memories
+  i64; Chromium 141 ran the Byte Relay source through the ABI with status OK), evidence/D2/negative/*.
+- OBSERVED ASCII: compiler/source and compiler/semantic exist as drawn; canonical renderer is the human/AI witness.
+- MATCH/DIFFER: MATCH.  [ERR->fixed] the first D2 routing attempt was refused by the Factory because the fixture
+  asked S-DOC for `.cargo/` authority it does not have; the stack policy moved into the B9 script environment and
+  the test harness threads instead.  No station spec was widened.
+
+---
+
+## D3-LOWERING-CONTRACTS  (M4)
+
+BEFORE
+- DELTA: D3-LOWERING-CONTRACTS (factory/deltas/D3.json)
+- BASE: 4571d1449cc32d28d2c2f601dc4bb2a879dca7d7
+- STATION: S-DOC, S-RUST, S-FIXTURE, S-BUILD, S-EVIDENCE
+- FIXTURE: F0-doc, F1-rust, F2-fixture, F3-build, F4-evidence
+- READ: everything.  CHANGE: compiler/ (new crates capability, implementation; kernel/factc wiring),
+  fixtures/commissioning/ (registry, metrics, epochs, witnesses), tests/, ledger, evidence/D3/.
+  FORBIDDEN: law/design/pass docs, D0-D2 receipts/evidence, factory/src, factory/registry, host/harness,
+  fixtures/language, fixtures/compiler, M0 ASCII.
+- INVARIANTS: lowering selects no implementation; only registry conversions form paths (no implicit conversion);
+  GAP/ERR/UNK backends never enter H_G (C subset of G, target preserved as data); H_G independent of admission,
+  H_A(E) filters it; registry is DATA; no_std/no-third-party unchanged.
+- TESTS: lowering ladder P5-L01 (W and G both in H_G), L02 (pin restricts), L03 (H_A filter, H_G unchanged), L04
+  (no representation path -> NO_LEGAL_PLAN), L06/P6-V03 (copy-only conversions cannot serve move), P5-S01/S03
+  (33 G families present, only CPU_WASM64/WEBGPU READY-CONTRACT), P6-G03 (READY-CONTRACT needs a recipe),
+  registry dialect rejections; factc on Byte Relay under E_model_0/E_model_1; all prior suites; B9-B11.
+- EXPECTED EVIDENCE: evidence/D3/{build,byte-relay/E_model_0,byte-relay/E_model_1,bootstrap}/*, index.json.
+- COMPILER-PLANE DECISIONS RECORDED:
+  [NEW] Registry dialect keywords: registry, representation, boundary, conversion, backend, authority_link, recipe,
+        metric_value, epoch, admission.  `backend` is the ImplementationContract record (named to avoid confusion
+        with the source keyword `implementation`).  Unknown keywords are errors.
+  [NEW] A transfer requirement's legal edges are cycles boundary -> ... -> boundary over conversions that support
+        the relation's transfer mode and preserve value, without revisiting a representation (max 6 steps).
+        The identity path exists only if the registry declares a boundary->boundary conversion (it does not).
+  [NEW] Static legality = every backend a path requires is READY-CONTRACT and every pin on the endpoint
+        components is among those backends.  Rejections are kept with structured reasons.
+  [OBS] MAX_TOKENS_PER_ISLAND raised 48 -> 96 (a backend record with lifecycle lists exceeds 48 tokens).
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

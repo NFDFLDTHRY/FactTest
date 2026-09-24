@@ -8,7 +8,7 @@ use std::path::PathBuf;
 const OUT_BYTES: usize = 1 << 20;
 
 fn usage() -> ! {
-    eprintln!("usage:\n  factc abi-version\n  factc required-workspace\n  factc check <analyze|build> --out <dir> <source files...>");
+    eprintln!("usage:\n  factc abi-version\n  factc required-workspace\n  factc check <analyze|build> --out <dir> [--contracts <file>] [--metrics <file>] [--machine <file>] <source files...>");
     std::process::exit(2)
 }
 
@@ -46,10 +46,22 @@ fn check(args: &[String]) -> i32 {
     };
     let mut out_dir: Option<PathBuf> = None;
     let mut files: Vec<PathBuf> = Vec::new();
+    let mut contracts: Option<PathBuf> = None;
+    let mut metrics: Option<PathBuf> = None;
+    let mut machine: Option<PathBuf> = None;
     let mut i = 1;
     while i < args.len() {
         if args[i] == "--out" {
             out_dir = args.get(i + 1).map(PathBuf::from);
+            i += 2;
+        } else if args[i] == "--contracts" {
+            contracts = args.get(i + 1).map(PathBuf::from);
+            i += 2;
+        } else if args[i] == "--metrics" {
+            metrics = args.get(i + 1).map(PathBuf::from);
+            i += 2;
+        } else if args[i] == "--machine" {
+            machine = args.get(i + 1).map(PathBuf::from);
             i += 2;
         } else {
             files.push(PathBuf::from(&args[i]));
@@ -96,6 +108,30 @@ fn check(args: &[String]) -> i32 {
         }
     }
     lineage.push_str("]}\n");
+    for (path, which) in [
+        (&contracts, "contracts"),
+        (&metrics, "metrics"),
+        (&machine, "machine"),
+    ] {
+        if let Some(p) = path {
+            let bytes = match std::fs::read(p) {
+                Ok(b) => b,
+                Err(e) => {
+                    eprintln!("factc: {}: {}", p.display(), e);
+                    return 3;
+                }
+            };
+            let r = match which {
+                "contracts" => factc_kernel::submit_contracts(&mut ws, &bytes),
+                "metrics" => factc_kernel::submit_metrics(&mut ws, &bytes),
+                _ => factc_kernel::submit_machine_state(&mut ws, &bytes),
+            };
+            if let Err(st) = r {
+                eprintln!("factc: {} submission failed: {:?}", which, st);
+                return 3;
+            }
+        }
+    }
     let status = factc_kernel::check_or_compile(&mut ws, mode);
     let mut out_bytes = vec![0u8; OUT_BYTES];
     let mut buf = OutBuf::new(&mut out_bytes);

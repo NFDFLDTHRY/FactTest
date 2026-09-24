@@ -1,0 +1,95 @@
+{
+  "receipt_id": "R-D3-LOWERING-CONTRACTS-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W3",
+  "delta_id": "D3-LOWERING-CONTRACTS",
+  "canonical_base": "4571d1449cc32d28d2c2f601dc4bb2a879dca7d7",
+  "input_artifacts": [
+    "LOWERING-MODEL.md",
+    "IMPLEMENTATION-CONTRACTS.md"
+  ],
+  "open_tree": "678dca0d5aefba683fed8bb1b7f04f3d6bc1ce4c",
+  "close_tree": "29dcbe1c79937f30196401d886eeeb3b768e158a",
+  "changed_paths": [
+    "Cargo.toml",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F0-ledger.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/LEDGER.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D3-LOWERING-CONTRACTS"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F0-ledger.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:grep -q D3-LOWERING-CONTRACTS design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F0-ledger.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F0-ledger.log"
+  ],
+  "closed": "2026-09-24T02:20:45Z",
+  "status": "PASS"
+}

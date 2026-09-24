@@ -4,7 +4,7 @@
 pub const MAX_SOURCE_UNITS: usize = 8;
 pub const SOURCE_BYTES: usize = 64 * 1024;
 pub const MAX_ISLANDS: usize = 512;
-pub const MAX_TOKENS_PER_ISLAND: usize = 48;
+pub const MAX_TOKENS_PER_ISLAND: usize = 96;
 pub const MAX_DIAGNOSTICS: usize = 256;
 pub const MAX_ARTIFACTS: usize = 32;
 pub const TEXT_ARENA_BYTES: usize = 32 * 1024;

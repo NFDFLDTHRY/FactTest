@@ -90,6 +90,57 @@ pub fn semantic(ws: &mut Workspace) -> bool {
     ok && failing == 0 && ref_fail == 0
 }
 
+/// Lowering: TYPED_SYSTEM_IR -> CAPABILITY_IR (+ obligation set).  Selects no implementation.
+pub fn lowering(ws: &mut Workspace) {
+    let (model, ir) = (&ws.model, &mut ws.capability_ir);
+    factc_capability::lower(model, ir);
+}
+
+/// Contract registry + metric evidence + machine state (all registry dialect) -> Registry; then H_G.
+/// Registry inputs are DATA; absent inputs leave the hypergraph empty (no backend is assumed).
+pub fn contracts(ws: &mut Workspace) -> bool {
+    ws.registry.clear();
+    if ws.contracts_len == 0 {
+        return true;
+    }
+    let (bytes, len, reg, diags) = (
+        &ws.contracts,
+        ws.contracts_len,
+        &mut ws.registry,
+        &mut ws.diagnostics,
+    );
+    // registry islands are attributed to a synthetic source id beyond the submitted units
+    let src_id = SourceId::new(0xC0DE);
+    factc_implementation::parse(&bytes[..len], src_id, reg, diags);
+    let ok = reg.ok;
+    if ws.metrics_len > 0 {
+        let (mb, ml, reg, diags) = (
+            &ws.metrics,
+            ws.metrics_len,
+            &mut ws.registry,
+            &mut ws.diagnostics,
+        );
+        factc_implementation::parse(&mb[..ml], SourceId::new(0xC0DF), reg, diags);
+    }
+    if ws.machine_state_len > 0 {
+        let (mb, ml, reg, diags) = (
+            &ws.machine_state,
+            ws.machine_state_len,
+            &mut ws.registry,
+            &mut ws.diagnostics,
+        );
+        factc_implementation::parse(&mb[..ml], SourceId::new(0xC0E0), reg, diags);
+    }
+    let (model, ir, reg, hg) = (
+        &ws.model,
+        &ws.capability_ir,
+        &ws.registry,
+        &mut ws.hypergraph,
+    );
+    factc_implementation::enumerate(model, ir, reg, hg);
+    ok && ws.registry.ok
+}
+
 /// Emit artifacts: canonical ASCII per system, TypedSystemIR JSON.
 pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace::ArenaExhausted> {
     let mut scratch = [0u8; SCRATCH];
@@ -133,7 +184,7 @@ pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace
         return Err(crate::workspace::ArenaExhausted);
     }
     let n = o.len();
-    ws.store_artifact(
+    let typed = ws.store_artifact(
         ArtifactKind::TypedSystemIr,
         "factc-semantic/typed-ir",
         status,
@@ -141,6 +192,61 @@ pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace
         &[],
         None,
     )?;
+    let mut o = OutBuf::new(&mut scratch);
+    if factc_capability::capability_ir_json(&ws.model, &ws.capability_ir, &mut o).is_err() {
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::OutputTooSmall,
+            Phase::Lowering,
+            SourceId::default(),
+            None,
+            "capability IR rendering exceeds scratch",
+        ));
+        return Err(crate::workspace::ArenaExhausted);
+    }
+    let n = o.len();
+    let cap = ws.store_artifact(
+        ArtifactKind::CapabilityIr,
+        "factc-capability/lower",
+        status,
+        &scratch[..n],
+        &[typed],
+        None,
+    )?;
+    if ws.contracts_len > 0 {
+        let mut o = OutBuf::new(&mut scratch);
+        if factc_implementation::hypergraph_json(
+            &ws.model,
+            &ws.capability_ir,
+            &ws.registry,
+            &ws.hypergraph,
+            &mut o,
+        )
+        .is_err()
+        {
+            ws.diagnostics.push(Diagnostic::new(
+                DiagCode::OutputTooSmall,
+                Phase::Contracts,
+                SourceId::default(),
+                None,
+                "hypergraph rendering exceeds scratch",
+            ));
+            return Err(crate::workspace::ArenaExhausted);
+        }
+        let n = o.len();
+        let hstatus = if ws.registry.ok && ws.hypergraph.unsatisfied.is_empty() {
+            ArtifactStatus::Ok
+        } else {
+            ArtifactStatus::Partial
+        };
+        ws.store_artifact(
+            ArtifactKind::ImplementationHypergraph,
+            "factc-implementation/enumerate",
+            hstatus,
+            &scratch[..n],
+            &[cap],
+            None,
+        )?;
+    }
     Ok(())
 }
 
@@ -162,6 +268,20 @@ pub fn run(ws: &mut Workspace, mode: Mode) -> Status {
     }
     front_end(ws);
     let well_typed = semantic(ws) && !ws.diagnostics.has_errors();
+    lowering(ws);
+    let contracts_ok = contracts(ws);
+    if mode == Mode::Build
+        && ws.contracts_len > 0
+        && (!contracts_ok || !ws.hypergraph.unsatisfied.is_empty())
+    {
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::NoLegalPlan,
+            Phase::Contracts,
+            SourceId::default(),
+            None,
+            "a requirement has no statically legal implementation edge in H_G",
+        ));
+    }
     if mode == Mode::Build {
         if let Some((obj, st)) = factc_semantic::render::build_blocker(&ws.model) {
             let src = ws.model.systems[ws.model.obj_sys(obj) as usize].source;

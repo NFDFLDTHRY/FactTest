@@ -1,0 +1,34 @@
+$ /home/user/factory-target/debug/factory depcheck . factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/capability/Cargo.toml compiler/implementation/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml
+(cwd .)
+== depcheck . factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/capability/Cargo.toml compiler/implementation/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml : PASS
+  [PASS] first_party_only:factory/Cargo.toml:factc-foundation - path ../compiler/foundation
+  [PASS] manifest_scanned:factory/Cargo.toml - 1 dependency entries
+  [PASS] manifest_scanned:compiler/foundation/Cargo.toml - 0 dependency entries
+  [PASS] first_party_only:compiler/source/Cargo.toml:factc-foundation - path ../foundation
+  [PASS] manifest_scanned:compiler/source/Cargo.toml - 1 dependency entries
+  [PASS] first_party_only:compiler/semantic/Cargo.toml:factc-foundation - path ../foundation
+  [PASS] first_party_only:compiler/semantic/Cargo.toml:factc-source - path ../source
+  [PASS] manifest_scanned:compiler/semantic/Cargo.toml - 2 dependency entries
+  [PASS] first_party_only:compiler/capability/Cargo.toml:factc-foundation - path ../foundation
+  [PASS] first_party_only:compiler/capability/Cargo.toml:factc-source - path ../source
+  [PASS] first_party_only:compiler/capability/Cargo.toml:factc-semantic - path ../semantic
+  [PASS] manifest_scanned:compiler/capability/Cargo.toml - 3 dependency entries
+  [PASS] first_party_only:compiler/implementation/Cargo.toml:factc-foundation - path ../foundation
+  [PASS] first_party_only:compiler/implementation/Cargo.toml:factc-source - path ../source
+  [PASS] first_party_only:compiler/implementation/Cargo.toml:factc-semantic - path ../semantic
+  [PASS] first_party_only:compiler/implementation/Cargo.toml:factc-capability - path ../capability
+  [PASS] manifest_scanned:compiler/implementation/Cargo.toml - 4 dependency entries
+  [PASS] first_party_only:compiler/kernel/Cargo.toml:factc-foundation - path ../foundation
+  [PASS] first_party_only:compiler/kernel/Cargo.toml:factc-source - path ../source
+  [PASS] first_party_only:compiler/kernel/Cargo.toml:factc-semantic - path ../semantic
+  [PASS] first_party_only:compiler/kernel/Cargo.toml:factc-capability - path ../capability
+  [PASS] first_party_only:compiler/kernel/Cargo.toml:factc-implementation - path ../implementation
+  [PASS] manifest_scanned:compiler/kernel/Cargo.toml - 5 dependency entries
+  [PASS] first_party_only:compiler/wasm-abi/Cargo.toml:factc-kernel - path ../kernel
+  [PASS] first_party_only:compiler/wasm-abi/Cargo.toml:factc-foundation - path ../foundation
+  [PASS] manifest_scanned:compiler/wasm-abi/Cargo.toml - 2 dependency entries
+  [PASS] first_party_only:host/factc/Cargo.toml:factc-kernel - path ../../compiler/kernel
+  [PASS] first_party_only:host/factc/Cargo.toml:factc-foundation - path ../../compiler/foundation
+  [PASS] manifest_scanned:host/factc/Cargo.toml - 2 dependency entries
+
+[exit 0] expected 0

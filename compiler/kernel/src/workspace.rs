@@ -6,6 +6,8 @@ use factc_foundation::{ArtifactKind, ArtifactStatus, BVec, Diagnostics, SourceId
 
 pub const ARTIFACT_BYTES: usize = 512 * 1024;
 pub const MACHINE_STATE_BYTES: usize = 16 * 1024;
+pub const CONTRACT_BYTES: usize = 32 * 1024;
+pub const METRIC_BYTES: usize = 8 * 1024;
 
 #[derive(Copy, Clone, Debug)]
 pub struct SourceUnit {
@@ -68,6 +70,13 @@ pub struct Workspace {
     pub islands: BVec<factc_source::Island, MAX_ISLANDS>,
     pub units: [Option<Unit>; MAX_SOURCE_UNITS],
     pub model: factc_semantic::Model,
+    pub contracts: [u8; CONTRACT_BYTES],
+    pub contracts_len: usize,
+    pub metrics: [u8; METRIC_BYTES],
+    pub metrics_len: usize,
+    pub capability_ir: factc_capability::CapabilityIr,
+    pub registry: factc_implementation::Registry,
+    pub hypergraph: factc_implementation::Hypergraph,
     pub artifact_bytes: [u8; ARTIFACT_BYTES],
     pub artifact_used: usize,
     pub artifacts: BVec<ArtifactSlot, MAX_ARTIFACTS>,
@@ -96,6 +105,13 @@ impl Workspace {
             islands: BVec::new(),
             units: [None, None, None, None, None, None, None, None],
             model: factc_semantic::Model::new(),
+            contracts: [0; CONTRACT_BYTES],
+            contracts_len: 0,
+            metrics: [0; METRIC_BYTES],
+            metrics_len: 0,
+            capability_ir: factc_capability::CapabilityIr::new(),
+            registry: factc_implementation::Registry::new(),
+            hypergraph: factc_implementation::Hypergraph::new(),
             artifact_bytes: [0; ARTIFACT_BYTES],
             artifact_used: 0,
             artifacts: BVec::new(),
@@ -112,6 +128,11 @@ impl Workspace {
             *u = None;
         }
         self.model.clear();
+        self.contracts_len = 0;
+        self.metrics_len = 0;
+        self.capability_ir.clear();
+        self.registry.clear();
+        self.hypergraph.clear();
         self.artifact_used = 0;
         self.artifacts.clear();
         self.last_status = Status::Idle;

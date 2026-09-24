@@ -24,7 +24,7 @@ fn port_path(m: &Model, p: u32, o: &mut OutBuf<'_>, from_sys: u32) -> R {
     o.bytes(m.name(port.name))
 }
 
-fn obj_path(m: &Model, ob: Obj, o: &mut OutBuf<'_>, from_sys: u32) -> R {
+pub fn obj_path(m: &Model, ob: Obj, o: &mut OutBuf<'_>, from_sys: u32) -> R {
     match ob {
         Obj::Port(p) => port_path(m, p, o, from_sys),
         Obj::System(s) => o.bytes(m.name(m.systems[s as usize].name)),

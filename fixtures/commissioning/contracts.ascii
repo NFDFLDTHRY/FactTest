@@ -1,0 +1,96 @@
+BYTE RELAY COMMISSIONING CONTRACT REGISTRY  (slice DATA; the machinery is generic)
+Authority for every externally constrained backend: REFERENCE-AUTHORITY.md / IMPLEMENTATION-CONTRACTS.md.
+Only CPU_WASM64 and WEBGPU carry READY-CONTRACT here; every other family of G is present with status GAP so that
+target preservation (PASS1 section 6, CAPABILITY-MATRIX.md) is data-visible, not a compiler assumption.
+
+@{registry byte_relay_commissioning version=1}
+
+--- representations (REPRESENTATION-TRANSFER.md) ---
+@{representation HOST_BYTES type=Bytes domain=ARRAY_BUFFER modes=copy,move,borrow lifetime=host_scope}
+@{representation WASM_LINEAR_BYTES type=Bytes domain=WASM_LINEAR modes=copy,borrow lifetime=instance}
+@{representation GPU_BUFFER_BYTES type=Bytes domain=GPU_BUFFER modes=copy lifetime=device}
+@{boundary Bytes HOST_BYTES}
+
+--- explicit conversions (no implicit conversion exists) ---
+@{conversion host_to_wasm HOST_BYTES -> WASM_LINEAR_BYTES mode=copy preserves=value requires=CPU_WASM64}
+@{conversion wasm_to_host WASM_LINEAR_BYTES -> HOST_BYTES mode=copy preserves=value requires=CPU_WASM64}
+@{conversion host_to_gpu HOST_BYTES -> GPU_BUFFER_BYTES mode=copy preserves=value requires=WEBGPU}
+@{conversion gpu_to_host GPU_BUFFER_BYTES -> HOST_BYTES mode=copy preserves=value requires=WEBGPU}
+
+--- commissioning backends ---
+@{backend CPU_WASM64 status=READY-CONTRACT capabilities=COMPUTE accepts=WASM_LINEAR_BYTES produces=WASM_LINEAR_BYTES modes=copy effects=none probes=wasm64_instantiate,wasm64_known_answer recipe=R_WASM64_RELAY lifecycle=READY,ACTIVE,CLOSED failures=TRANSIENT_OPERATION_FAILURE,PERMANENT_FOR_EPOCH}
+@{authority_link CPU_WASM64 "https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html"}
+@{authority_link CPU_WASM64 "https://webassembly.github.io/spec/core/text/types.html#text-addrtype"}
+@{authority_link CPU_WASM64 "https://webassembly.github.io/spec/js-api/#memories"}
+@{backend WEBGPU status=READY-CONTRACT capabilities=GPU_COMPUTE accepts=GPU_BUFFER_BYTES produces=GPU_BUFFER_BYTES modes=copy effects=none probes=webgpu_adapter,webgpu_device,webgpu_known_answer recipe=R_WEBGPU_RELAY lifecycle=UNAVAILABLE,DISCOVERED,REQUESTING,READY,ACTIVE,LOST,CLOSED failures=NOT_ADMITTED,RESOURCE_LOST,PERMANENT_FOR_EPOCH}
+@{authority_link WEBGPU "https://gpuweb.github.io/gpuweb/#dom-gpu-requestadapter"}
+@{authority_link WEBGPU "https://gpuweb.github.io/gpuweb/#dom-gpuadapter-requestdevice"}
+@{authority_link WEBGPU "https://gpuweb.github.io/gpuweb/#dom-gpudevice-lost"}
+@{authority_link WEBGPU "https://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy"}
+
+--- codegen recipes (CODEGEN-BUNDLE-CONTRACT.md) ---
+@{recipe R_WASM64_RELAY backend=CPU_WASM64 roles=wasm_module,host_adapter exports=memory,abi_version,copy_bytes imports=none adapter=wasm64_relay}
+@{recipe R_WEBGPU_RELAY backend=WEBGPU roles=host_adapter exports=none imports=none adapter=webgpu_relay}
+
+--- every other capability family of G (CAPABILITY-MATRIX.md): present, not materialized ---
+@{backend WORKER_DEDICATED status=GAP capabilities=PARALLEL_EXECUTION accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WORKER_DEDICATED "https://html.spec.whatwg.org/multipage/workers.html#workers"}
+@{backend WASM_SHARED_THREADS status=ERR capabilities=SHARED_EXECUTION accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WASM_SHARED_THREADS "https://webassembly.github.io/spec/js-api/#internal-storage"}
+@{backend WEBNN status=GAP capabilities=ML_GRAPH accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEBNN "https://webmachinelearning.github.io/webnn/#api"}
+@{backend WEBCODECS status=GAP capabilities=VIDEO_ENCODE,VIDEO_DECODE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEBCODECS "https://w3c.github.io/webcodecs/#dom-videodecoder-isconfigsupported"}
+@{backend CAMERA status=GAP capabilities=VIDEO_CAPTURE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link CAMERA "https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia"}
+@{backend MICROPHONE status=GAP capabilities=AUDIO_CAPTURE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link MICROPHONE "https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia"}
+@{backend GENERIC_SENSOR status=GAP capabilities=SENSOR_READING accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link GENERIC_SENSOR "https://w3c.github.io/sensors/#dom-sensor-start"}
+@{backend ACCELEROMETER status=GAP capabilities=ACCELERATION accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link ACCELEROMETER "https://w3c.github.io/accelerometer/"}
+@{backend GYROSCOPE status=GAP capabilities=ANGULAR_RATE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link GYROSCOPE "https://w3c.github.io/gyroscope/"}
+@{backend MAGNETOMETER status=GAP capabilities=MAGNETIC_FIELD accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link MAGNETOMETER "https://w3c.github.io/magnetometer/"}
+@{backend ORIENTATION_SENSOR status=GAP capabilities=ORIENTATION accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link ORIENTATION_SENSOR "https://w3c.github.io/orientation-sensor/"}
+@{backend DEVICE_ORIENTATION_MOTION status=GAP capabilities=ORIENTATION,MOTION accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link DEVICE_ORIENTATION_MOTION "https://w3c.github.io/deviceorientation/#permissions"}
+@{backend PROXIMITY_SENSOR status=GAP capabilities=PROXIMITY accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link PROXIMITY_SENSOR "https://w3c.github.io/proximity/"}
+@{backend AMBIENT_LIGHT_SENSOR status=GAP capabilities=ILLUMINANCE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link AMBIENT_LIGHT_SENSOR "https://w3c.github.io/ambient-light/#ambientlightsensor-interface"}
+@{backend GEOLOCATION status=GAP capabilities=POSITION accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link GEOLOCATION "https://w3c.github.io/geolocation/#dom-geolocation-getcurrentposition"}
+@{backend WEBXR status=GAP capabilities=XR_SESSION accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEBXR "https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession"}
+@{backend FETCH_STREAMS status=GAP capabilities=NETWORK_IO accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link FETCH_STREAMS "https://fetch.spec.whatwg.org/"}
+@{backend STORAGE_MANAGER status=GAP capabilities=STORAGE_QUOTA accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link STORAGE_MANAGER "https://storage.spec.whatwg.org/#dom-storagemanager-estimate"}
+@{backend OPFS status=GAP capabilities=PERSISTENT_BYTES accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link OPFS "https://fs.spec.whatwg.org/#dom-storagemanager-getdirectory"}
+@{backend INDEXEDDB status=GAP capabilities=PERSISTENT_RECORDS accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link INDEXEDDB "https://w3c.github.io/IndexedDB/#database-concept"}
+@{backend CACHE_STORAGE status=GAP capabilities=RESPONSE_CACHE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link CACHE_STORAGE "https://w3c.github.io/ServiceWorker/#cache-objects"}
+@{backend SERVICE_WORKER status=GAP capabilities=OFFLINE_SHELL accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link SERVICE_WORKER "https://w3c.github.io/ServiceWorker/#fetch-event"}
+@{backend WEBAPP_MANIFEST status=GAP capabilities=INSTALL_METADATA accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEBAPP_MANIFEST "https://w3c.github.io/manifest/#web-application-manifest"}
+@{backend SECURE_CONTEXT status=GAP capabilities=TRUSTWORTHY_ORIGIN accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link SECURE_CONTEXT "https://w3c.github.io/webappsec-secure-contexts/#is-origin-trustworthy"}
+@{backend PERMISSIONS status=GAP capabilities=PERMISSION_STATE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link PERMISSIONS "https://w3c.github.io/permissions/#permissions"}
+@{backend PERMISSIONS_POLICY status=GAP capabilities=POLICY_STATE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link PERMISSIONS_POLICY "https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature"}
+@{backend WEBHID status=GAP capabilities=HID_REPORTS accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEBHID "https://wicg.github.io/webhid/#dom-hid-requestdevice"}
+@{backend WEBUSB status=GAP capabilities=USB_TRANSFER accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEBUSB "https://wicg.github.io/webusb/#dom-usb-requestdevice"}
+@{backend WEB_SERIAL status=GAP capabilities=SERIAL_BYTES accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEB_SERIAL "https://serial.spec.whatwg.org/#dom-serial-requestport"}
+@{backend WEB_BLUETOOTH status=GAP capabilities=GATT accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{authority_link WEB_BLUETOOTH "https://webbluetoothcg.github.io/web-bluetooth/#dom-bluetooth-requestdevice"}
+@{backend FUTURE_EXPLICIT_CAPABILITY status=UNK capabilities=none accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}

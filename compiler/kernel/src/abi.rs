@@ -64,6 +64,42 @@ pub fn submit_machine_state(ws: &mut Workspace, bytes: &[u8]) -> Result<(), Stat
     Ok(())
 }
 
+/// SUBMIT_CONTRACTS: implementation-plane contract registry bytes (registry dialect).  Additive with metrics.
+pub fn submit_contracts(ws: &mut Workspace, bytes: &[u8]) -> Result<(), Status> {
+    if bytes.len() > ws.contracts.len() {
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::WorkspaceExhausted,
+            Phase::Bootstrap,
+            SourceId::default(),
+            None,
+            "contract arena exhausted",
+        ));
+        ws.last_status = Status::Exhausted;
+        return Err(Status::Exhausted);
+    }
+    ws.contracts[..bytes.len()].copy_from_slice(bytes);
+    ws.contracts_len = bytes.len();
+    Ok(())
+}
+
+/// SUBMIT_METRICS: metric evidence bytes (registry dialect `metric_value` islands).
+pub fn submit_metrics(ws: &mut Workspace, bytes: &[u8]) -> Result<(), Status> {
+    if bytes.len() > ws.metrics.len() {
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::WorkspaceExhausted,
+            Phase::Bootstrap,
+            SourceId::default(),
+            None,
+            "metric arena exhausted",
+        ));
+        ws.last_status = Status::Exhausted;
+        return Err(Status::Exhausted);
+    }
+    ws.metrics[..bytes.len()].copy_from_slice(bytes);
+    ws.metrics_len = bytes.len();
+    Ok(())
+}
+
 /// CHECK_OR_COMPILE: run the phase spine (front end -> semantic -> emit).
 pub fn check_or_compile(ws: &mut Workspace, mode: Mode) -> Status {
     crate::phases::run(ws, mode)

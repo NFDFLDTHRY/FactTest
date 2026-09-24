@@ -1,0 +1,297 @@
+{
+  "delta_id": "D3-LOWERING-CONTRACTS",
+  "workpiece_id": "W3",
+  "canonical_base": "4571d1449cc32d28d2c2f601dc4bb2a879dca7d7",
+  "base_tree": "4e4c44e2f4b5881816e20d643f1a261bb30a7cc8",
+  "verified_tree": "a5fa19abafa8381f36ebd069e5154287fa442732",
+  "changed_paths": [
+    "Cargo.lock",
+    "Cargo.toml",
+    "compiler/capability/Cargo.toml",
+    "compiler/capability/src/lib.rs",
+    "compiler/foundation/src/limits.rs",
+    "compiler/implementation/Cargo.toml",
+    "compiler/implementation/src/hypergraph.rs",
+    "compiler/implementation/src/lib.rs",
+    "compiler/implementation/src/registry.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/lowering_ladder.rs",
+    "compiler/semantic/src/render.rs",
+    "design/materialization/LEDGER.md",
+    "evidence/D3/bootstrap/b10-b11-chromium.json",
+    "evidence/D3/bootstrap/b10-node.json",
+    "evidence/D3/bootstrap/b9-build.log",
+    "evidence/D3/bootstrap/b9-inspect.json",
+    "evidence/D3/bootstrap/b9-inspect.log",
+    "evidence/D3/bootstrap/b9-toolchain.log",
+    "evidence/D3/bootstrap/factc_wasm_abi.wasm",
+    "evidence/D3/bootstrap/run.log",
+    "evidence/D3/build/test.log",
+    "evidence/D3/byte-relay/E_model_0/artifacts.json",
+    "evidence/D3/byte-relay/E_model_0/canonical-ascii-0.ascii",
+    "evidence/D3/byte-relay/E_model_0/capability-ir.json",
+    "evidence/D3/byte-relay/E_model_0/diagnostics.json",
+    "evidence/D3/byte-relay/E_model_0/factc.log",
+    "evidence/D3/byte-relay/E_model_0/implementation-hypergraph.json",
+    "evidence/D3/byte-relay/E_model_0/source-lineage.json",
+    "evidence/D3/byte-relay/E_model_0/typed-system-ir.json",
+    "evidence/D3/byte-relay/E_model_1/artifacts.json",
+    "evidence/D3/byte-relay/E_model_1/canonical-ascii-0.ascii",
+    "evidence/D3/byte-relay/E_model_1/capability-ir.json",
+    "evidence/D3/byte-relay/E_model_1/diagnostics.json",
+    "evidence/D3/byte-relay/E_model_1/factc.log",
+    "evidence/D3/byte-relay/E_model_1/implementation-hypergraph.json",
+    "evidence/D3/byte-relay/E_model_1/source-lineage.json",
+    "evidence/D3/byte-relay/E_model_1/typed-system-ir.json",
+    "evidence/D3/byte-relay/artifacts.json",
+    "evidence/D3/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D3/byte-relay/capability-ir.json",
+    "evidence/D3/byte-relay/diagnostics.json",
+    "evidence/D3/byte-relay/factc.log",
+    "evidence/D3/byte-relay/run.log",
+    "evidence/D3/byte-relay/source-lineage.json",
+    "evidence/D3/byte-relay/typed-system-ir.json",
+    "evidence/D3/index.json",
+    "evidence/D3/index.log",
+    "factory/deltas/D3.json",
+    "factory/fixtures/D3/F0-doc.json",
+    "factory/fixtures/D3/F1-rust.json",
+    "factory/fixtures/D3/F2-fixture.json",
+    "factory/fixtures/D3/F3-build.json",
+    "factory/fixtures/D3/F4-evidence.json",
+    "factory/receipts/D3-LOWERING-CONTRACTS/F0-doc.json",
+    "factory/receipts/D3-LOWERING-CONTRACTS/F1-rust.json",
+    "factory/receipts/D3-LOWERING-CONTRACTS/F2-fixture.json",
+    "factory/receipts/D3-LOWERING-CONTRACTS/F3-build.json",
+    "factory/receipts/D3-LOWERING-CONTRACTS/F4-evidence.json",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F0-ledger.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-build.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-clippy.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-depcheck.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-fmt.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-nostd.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-family-count.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-metric-policy.log",
+    "fixtures/commissioning/byte-relay-move.ascii",
+    "fixtures/commissioning/byte-relay-other-type.ascii",
+    "fixtures/commissioning/byte-relay-pinned.ascii",
+    "fixtures/commissioning/contracts.ascii",
+    "fixtures/commissioning/epoch-model-0.ascii",
+    "fixtures/commissioning/epoch-model-1.ascii",
+    "fixtures/commissioning/metrics.ascii",
+    "host/factc/src/main.rs",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "4e4c44e2f4b5881816e20d643f1a261bb30a7cc8"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D3-LOWERING-CONTRACTS/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D3-LOWERING-CONTRACTS/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D3-LOWERING-CONTRACTS/F2-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D3-LOWERING-CONTRACTS/F3-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D3-LOWERING-CONTRACTS/F4-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/capability/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/implementation/src/registry.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/implementation/src/hypergraph.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/kernel/tests/lowering_ladder.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/commissioning/contracts.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/commissioning/metrics.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/commissioning/epoch-model-0.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/commissioning/epoch-model-1.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D3/byte-relay/E_model_0/implementation-hypergraph.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D3/byte-relay/E_model_1/implementation-hypergraph.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D3/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T02:20:57Z",
+  "status": "PASS"
+}
