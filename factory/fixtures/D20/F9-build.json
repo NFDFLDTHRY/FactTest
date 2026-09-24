@@ -1,0 +1,34 @@
+{
+  "fixture_id": "F9-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "selection of F7"
+  ],
+  "narrowed_may_change": [
+    "evidence/D20/proof/",
+    "evidence/D20/kernel/",
+    "evidence/D20/results/",
+    "evidence/D20/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D20/selection.json --runbook tests/reprove/runbook.json --kind build --out evidence/D20"
+        ],
+        "log": "evidence/D20/logs/F9-build.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

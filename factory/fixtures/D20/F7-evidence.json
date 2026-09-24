@@ -1,0 +1,48 @@
+{
+  "fixture_id": "F7-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "identity capture of F6",
+    "the D20-SYNC graph"
+  ],
+  "narrowed_may_change": [
+    "evidence/D20/selection.json",
+    "evidence/D20/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reprove/select.mjs",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--identity",
+          "evidence/D20/identity",
+          "--dimensions",
+          "tests/reprove/dimensions.json",
+          "--runbook",
+          "tests/reprove/runbook.json",
+          "--obligations",
+          "tests/reprove/obligations.json",
+          "--pass",
+          "D20",
+          "--out",
+          "evidence/D20/selection.json"
+        ],
+        "log": "evidence/D20/logs/F7-selection.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D20/selection.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

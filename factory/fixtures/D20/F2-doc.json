@@ -1,0 +1,47 @@
+{
+  "fixture_id": "F2-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "tests/sync/d20-line.json",
+    "git objects of 1205fda"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+    "design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md",
+    "factory/deltas/D14-PROMPT-INTAKE.json",
+    "factory/deltas/D14-RESCAN.json",
+    "factory/fixtures/D14-PROMPT-INTAKE/",
+    "factory/fixtures/D14-RESCAN/",
+    "factory/receipts/D14-PROMPT-INTAKE/",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/",
+    "fixtures/reference/",
+    "design/environment-map/epochs/D14-RESCAN.json",
+    "factory/receipts/D20-MAIN-SYNC/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope design/materialization/D14-REFERENCE-RESCAN-PROMPT.md,design/materialization/D14-INTENDED-REFERENCE-RESCAN.md,design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md,factory/deltas/D14-PROMPT-INTAKE.json,factory/deltas/D14-RESCAN.json,factory/fixtures/D14-PROMPT-INTAKE/,factory/fixtures/D14-RESCAN/,factory/receipts/D14-PROMPT-INTAKE/,factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/,fixtures/reference/,design/environment-map/epochs/D14-RESCAN.json && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope design/materialization/D14-REFERENCE-RESCAN-PROMPT.md,design/materialization/D14-INTENDED-REFERENCE-RESCAN.md,design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md,factory/deltas/D14-PROMPT-INTAKE.json,factory/deltas/D14-RESCAN.json,factory/fixtures/D14-PROMPT-INTAKE/,factory/fixtures/D14-RESCAN/,factory/receipts/D14-PROMPT-INTAKE/,factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/,fixtures/reference/,design/environment-map/epochs/D14-RESCAN.json"
+        ],
+        "log": "factory/receipts/D20-MAIN-SYNC/logs/F2-import-doc.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "factory/deltas/D14-RESCAN.json",
+    "design/environment-map/epochs/D14-RESCAN.json",
+    "fixtures/reference/REGISTER.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

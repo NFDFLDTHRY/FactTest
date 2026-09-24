@@ -1,0 +1,217 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D20-MAIN-SYNC-F1-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F1-fixture",
+  "workpiece_id": "W23",
+  "delta_id": "D20-MAIN-SYNC",
+  "canonical_base": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+  "input_artifacts": [
+    "D20 sections 1-4"
+  ],
+  "open_tree": "ad35120d7270e2339e1319d982b1ba48a7e0dac8",
+  "close_tree": "cbbb3d27d80ef758b98c0b5db6a227e6eb932f85",
+  "changed_paths": [
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-import-tests.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-lineage.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-regression-epochs.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-regression-graph.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-regression-selection.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-syntax-generic.log",
+    "tests/envmap/envmap.mjs",
+    "tests/reconcile/build-reconciliation.mjs",
+    "tests/reconcile/d20-reconciliation.json",
+    "tests/reconcile/d20-surfaces.json",
+    "tests/reference/ingress.mjs",
+    "tests/reference/run-ingress-checks.sh",
+    "tests/reprove/build-reprove.mjs",
+    "tests/reprove/lineage.mjs",
+    "tests/reprove/obligations.json",
+    "tests/reprove/runbook.json",
+    "tests/reprove/select.mjs",
+    "tests/sync/d20-line.json",
+    "tests/sync/import-line.mjs"
+  ],
+  "output_artifacts": [
+    "tests/sync/import-line.mjs",
+    "tests/reconcile/d20-reconciliation.json",
+    "tests/reference/ingress.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D20-MAIN-SYNC"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F1-import-tests.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F1-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F1-regression-graph.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F1-regression-epochs.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F1-regression-selection.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F1-lineage.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope tests/reference/ && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope tests/reference/",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F1-import-tests.log"
+    },
+    {
+      "check": "command:sh -c for f in tests/sync/import-line.mjs tests/envmap/envmap.mjs tests/reconcile/build-reconciliation.mjs tests/reprove/select.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs tests/reference/ingress.mjs; do node --check $f || exit 1; done; for j in tests/sync/d20-line.json tests/reconcile/d20-reconciliation.json tests/reconcile/d20-surfaces.json tests/reprove/runbook.json tests/reprove/obligations.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done; ! grep -nE \"'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]\" tests/sync/import-line.mjs tests/envmap/envmap.mjs tests/reconcile/build-reconciliation.mjs tests/reprove/select.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs && git diff --exit-code c3159d562768d52465ead5e44bc6c5259dfc1b79 -- tests ':!tests/sync' ':!tests/envmap/envmap.mjs' ':!tests/reconcile/build-reconciliation.mjs' ':!tests/reconcile/d20-reconciliation.json' ':!tests/reconcile/d20-surfaces.json' ':!tests/reprove/select.mjs' ':!tests/reprove/lineage.mjs' ':!tests/reprove/build-reprove.mjs' ':!tests/reprove/runbook.json' ':!tests/reprove/obligations.json' ':!tests/reference/ingress.mjs' ':!tests/reference/run-ingress-checks.sh' && echo 'tools parse; generic; no other test changed'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F1-syntax-generic.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q >/dev/null && for q in $(ls evidence/D19/envmap/queries); do cmp evidence/D19/envmap/queries/$q $T/q/$q || exit 1; done && echo 'D19 graph: validate 42, render/merge identical, Q01-Q22 byte-identical to evidence/D19'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F1-regression-graph.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && mkdir $T/root18 && git archive 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c | tar -x -C $T/root18 && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json --out $T/g17.json >/dev/null && node tests/reference/build-clauses.mjs --clauses evidence/D18/clauses --manifest tests/reference/d18-clauses.json --epoch D18 --delta D18-REPO-RECONCILIATION --commit '715ac92d327f5f2677fd7c0b067fa843da6323c4 (canonical base; integration commit in LEDGER AFTER)' --harness-in $T/g17.json --out $T/clauses.json >/dev/null && node tests/reconcile/build-reconciliation.mjs --clause-epoch $T/clauses.json --register tests/reconcile/d18-reconciliation.json --graph $T/g17.json --root $T/root18 --epoch D18 --delta D18-REPO-RECONCILIATION --commit '715ac92d327f5f2677fd7c0b067fa843da6323c4 (canonical base; integration commit in LEDGER AFTER)' --declare --out $T/D18.json >/dev/null && cmp $T/D18.json design/environment-map/epochs/D18.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json --out $T/g18.json >/dev/null && node tests/reconcile/build-reconciliation.mjs --register tests/reconcile/d18r-reconciliation.json --graph $T/g18.json --root . --epoch D18R --delta D18R-CHAIN-REPAIR --commit '1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c (canonical base; integration commit in LEDGER AFTER)' --out $T/D18R.json >/dev/null && cmp $T/D18R.json design/environment-map/epochs/D18R.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out $T/g18r.json >/dev/null && for f in runbook obligations dimensions; do git show 780aee1b50c4a799a62b760823a3d1460d386d0f:tests/reprove/$f.json > $T/$f.json; done && node tests/reprove/build-reprove.mjs --graph $T/g18r.json --selection evidence/D19/selection.json --evidence evidence/D19 --runbook $T/runbook.json --obligations $T/obligations.json --dimensions $T/dimensions.json --epoch D19 --delta D19-REPROVE-REOBSERVE --commit 'b509fb00920443930aa75b10dae05b9683d2fe1b (canonical base; integration commit in LEDGER AFTER)' --declare --out $T/D19.json >/dev/null && cmp $T/D19.json design/environment-map/epochs/D19.json && echo 'D18 (on the D18 tree), D18R and D19 epochs rebuilt byte-identically with the D20 builders'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F1-regression-epochs.log"
+    },
+    {
+      "check": "command:sh -c R0=$(pwd) && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 780aee1b50c4a799a62b760823a3d1460d386d0f && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out $T/g18r.json >/dev/null && node tests/reprove/select.mjs --graph $T/g18r.json --identity evidence/D19/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --out $T/replay.json >/dev/null && cd $R0 && node -e 'const a=JSON.parse(require(\"fs\").readFileSync(process.argv[1])),b=JSON.parse(require(\"fs\").readFileSync(\"evidence/D19/selection.json\"));const k=[\"evaluated\",\"boundary_records\",\"selected\",\"selected_by\",\"gaps\",\"environment_pairs\",\"drift\",\"unk\",\"groups\",\"obligations\",\"unmapped_obligations\"];const d=k.filter(x=>JSON.stringify(a[x])!==JSON.stringify(b[x]));const s=f=>f.facts.filter(x=>x.selected).map(x=>x.fact+\":\"+x.reasons).sort().join();if(s(a)!==s(b))d.push(\"selected facts\");if(d.length){console.log(\"DIFF\",d);process.exit(1)}console.log(\"D19 selection replayed identically:\",a.selected,\"of\",a.evaluated)' $T/replay.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F1-regression-selection.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/reprove/lineage.mjs --from 4a151c9ae58f9968c70b9b85cef82a02fba12b85 --out $T/l.json && node -e 'const l=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));if(!l.first_parent_linear||!l.factory_authored||l.unclassified_merges.length||l.sync_merges.length!==1||l.sync_merges[0].commit!==\"c3159d562768d52465ead5e44bc6c5259dfc1b79\")process.exit(1);console.log(\"sync merge classified:\",l.sync_merges[0].commit.slice(0,9),\"owner merges\",l.owner_merges.length)' $T/l.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F1-lineage.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/sync/import-line.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reconcile/d20-reconciliation.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reference/ingress.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-import-tests.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-syntax-generic.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-regression-graph.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-regression-epochs.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-regression-selection.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F1-lineage.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T11:40:13Z",
+  "status": "PASS"
+}

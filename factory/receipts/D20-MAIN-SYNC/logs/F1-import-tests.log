@@ -1,0 +1,6 @@
+$ sh -c node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope tests/reference/ && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope tests/reference/
+(cwd .)
+write: 181 line changes {"union":5,"regenerate":3,"relocated":38,"added":133,"embed":1,"live":1}; 2 written, 0 checked; PASS
+check: 181 line changes {"union":5,"regenerate":3,"relocated":38,"added":133,"embed":1,"live":1}; 0 written, 2 checked; PASS
+
+[exit 0] expected 0

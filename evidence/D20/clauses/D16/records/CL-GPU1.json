@@ -1,0 +1,35 @@
+{
+ "id": "CL-GPU1",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-NAVIGATOR-GPU",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "interface mixin NavigatorGPU {",
+  "line_start": 2461,
+  "line_end": 2465,
+  "derivation": "anchor text",
+  "enclosing_section": "#navigator-gpu (line 2455)"
+ },
+ "window": 5,
+ "consequence": "navigator.gpu exists only in secure contexts, in Window and Worker; WebGPU defines NO permission and NO policy-controlled feature (verified absent from the whole document): exposure is gated by secure context alone",
+ "excerpt": "interface mixin NavigatorGPU {\n    [SameObject, SecureContext] readonly attribute GPU gpu;\n};\nNavigator includes NavigatorGPU;\nWorkerNavigator includes NavigatorGPU;",
+ "excerpt_sha256": "69a8df5b8b08cdfbdcba41eda8f206acbbc21c038b928c9179f69a802a0ccce3",
+ "must_contain": {
+  "[SameObject, SecureContext] readonly attribute GPU gpu;": true,
+  "WorkerNavigator includes NavigatorGPU;": true
+ },
+ "status": "VERIFIED",
+ "absent_in_document": {
+  "policy-controlled feature": true,
+  "powerful feature": true,
+  "Permissions Policy": true
+ }
+}

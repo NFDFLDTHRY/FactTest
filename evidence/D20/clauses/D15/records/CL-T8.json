@@ -1,0 +1,29 @@
+{
+ "id": "CL-T8",
+ "trace": "T",
+ "authority": "AUTH-HTML-COI",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+  "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+  "bytes": 7915656
+ },
+ "locator": {
+  "text": "<li><p>Add the result of <span data-x=\"create an agent\">creating an agent</span>, given false,",
+  "line_start": 117169,
+  "line_end": 117170,
+  "derivation": "anchor text",
+  "enclosing_section": "#scripting (line 116957)"
+ },
+ "window": 2,
+ "consequence": "HTML creates similar-origin window agents with canBlock false: a shared-memory backend can block only in workers, never on the page's main thread",
+ "excerpt": "     <li><p>Add the result of <span data-x=\"create an agent\">creating an agent</span>, given false,\n     to <var>agentCluster</var>.</p></li>",
+ "excerpt_sha256": "4d3bf755649a596d10ba2ee7f07aa7153ed52b28cab2c9d6587377f2d44127ca",
+ "must_contain": {
+  "given false": true
+ },
+ "status": "VERIFIED"
+}

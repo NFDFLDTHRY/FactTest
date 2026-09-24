@@ -16,6 +16,9 @@
 // D18R: the clause fragment, new authorities and ledger are optional (a repair register may carry none); supersession
 // chains are followed through the SUPERSEDES edges already in the graph, so a later successor inherits every edge its
 // predecessors carried.
+// D20: inheritance also covers the supersessions already in the graph, so an epoch merged later from another line that
+// attached edges to a superseded node has them carried to the current successor; a graph whose successors already carry
+// every inheritable edge gains nothing (the D18 and D18R epochs rebuild byte-identically).
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
@@ -67,7 +70,7 @@ for (const e of R.add_edges || []) { node(e.from); node(e.to); edges.push(e); }
 const keys = new Set([...g.edges, ...edges].map(e => JSON.stringify(e)));
 const pool = [...g.edges, ...edges].filter(e => e.type !== 'SUPERSEDES' && e.type !== 'RECONCILES');
 let inherited = 0;
-for (const s of R.supersessions) {
+for (const s of [...R.supersessions, ...g.edges.filter(e => e.type === 'SUPERSEDES').map(e => ({ old: e.to, new: e.from }))]) {
   const rule = R.inherits[node(s.old).class] || { out: [], in: [] };
   for (const x of pool) {
     if (!((x.from === s.old && rule.out.includes(x.type)) || (x.to === s.old && rule.in.includes(x.type)))) continue;

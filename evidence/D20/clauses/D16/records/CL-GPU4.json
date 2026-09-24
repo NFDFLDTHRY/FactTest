@@ -1,0 +1,30 @@
+{
+ "id": "CL-GPU4",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-REQUESTDEVICE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "- The set of values in |descriptor|.{{GPUDeviceDescriptor/requiredFeatures}}",
+  "line_start": 2929,
+  "line_end": 2940,
+  "derivation": "anchor text",
+  "enclosing_section": "#gpuadapter (line 2837)"
+ },
+ "window": 12,
+ "consequence": "requested features must be a subset of the adapter's features, else requestDevice rejects with TypeError",
+ "excerpt": "                        - The set of values in |descriptor|.{{GPUDeviceDescriptor/requiredFeatures}}\n                            must be a subset of those in |adapter|.{{adapter/[[features]]}}.\n                    </div>\n\n                    Then issue the following steps on <var data-timeline=content>contentTimeline</var>\n                    and return:\n\n                        <div data-timeline=content>\n                            [=Content timeline=] steps:\n\n                            1. [=Reject=] |promise| with a {{TypeError}}.\n                        </div>",
+ "excerpt_sha256": "51f43baf98300de8bac3e7dc8a4b0f85ef473970f7d1de44fc95ba744bcefe15",
+ "must_contain": {
+  "must be a subset of those in": true,
+  "[=Reject=] |promise| with a {{TypeError}}": true
+ },
+ "status": "VERIFIED"
+}

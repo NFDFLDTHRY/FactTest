@@ -1,0 +1,44 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "identity",
+ "kind": "cite",
+ "started": "2026-09-24T11:41:01.781Z",
+ "commands": [],
+ "facts": {
+  "FACT-D19-LAUNCHED-EXECUTABLE": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "8fe11b498c7b707666e2c1c9d0db44b54e8912c5728de2758d7731615dd65585",
+     "checks": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "observed": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "97f12370e10e4ca5bb327e4c2d65fca957fe1db8487b4f9d5c98e395a69ba2d7",
+     "checks": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "observed": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T11:41:01.784Z",
+ "status": "PASS"
+}

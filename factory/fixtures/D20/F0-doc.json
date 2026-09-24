@@ -1,0 +1,70 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "owner decision on pull request #6 (quoted in the ASCII)",
+    "trial merge and assembly (section 0)"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D20-INTENDED-MAIN-SYNC.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D20.json",
+    "factory/fixtures/D20/",
+    "factory/receipts/D20-MAIN-SYNC/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D20-INTENDED-MAIN-SYNC.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 780aee1b50c4a799a62b760823a3d1460d386d0f' design/materialization/LEDGER.md && grep -q '^## D20-MAIN-SYNC' design/materialization/LEDGER.md && grep -q '^## MAIN LINE' design/materialization/LEDGER.md && grep -q 'integrated as 8d5ea6f95e90961959cd9f8df4d9db22eb37aa85' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]"
+        ],
+        "log": "factory/receipts/D20-MAIN-SYNC/logs/F0-ascii.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "tests",
+          "evidence",
+          "fixtures",
+          "design/environment-map",
+          "docs",
+          "README.md",
+          "rust-toolchain.toml",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "STATION-REGISTRY.md",
+          "CAPABILITY-MATRIX.md",
+          "BOOTSTRAP-TESTS.md",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md"
+        ],
+        "log": "factory/receipts/D20-MAIN-SYNC/logs/F0-scope.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D20-INTENDED-MAIN-SYNC.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-WASM-CORE-BINARY-LIMITS",
+ "authority_class": "STANDARD_RELEASE",
+ "cited": {
+  "url": "https://webassembly.github.io/spec/core/binary/types.html",
+  "fragment": "#binary-limits",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "Release 3.0 (followed sublink: the encoding the emitter writes and wasm-inspect reads)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "path": "document/core/binary/types.rst",
+  "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022",
+  "observed": "2026-09-24",
+  "locator": "labels _binary-limits (line 138) and _binary-memtype (line 179)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#binary-limits",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 138,
+   "kind": "rst label"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 138,
+   "kind": "rst label"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   138,
+   138
+  ],
+  "window_sha256": "1925328d0888f23d4af5096977dae002673c2ca9834a61789d67ab348d81eb11",
+  "window_excerpt": ".. _binary-limits:",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   138,
+   138
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

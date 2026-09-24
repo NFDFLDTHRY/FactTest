@@ -1,0 +1,352 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D14-TECHNICAL-REFERENCE-RESCAN-F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F5-evidence",
+  "workpiece_id": "W16",
+  "delta_id": "D14-TECHNICAL-REFERENCE-RESCAN",
+  "canonical_base": "6778133c35a96d5e356df283aa1676ee428766bb",
+  "input_artifacts": [
+    "evidence/D14/",
+    "design/environment-map/graph.json",
+    "/home/user/factory-workpieces"
+  ],
+  "open_tree": "dd2e7279dc0cbc8d1530a6a292f45cb5c5deaefe",
+  "close_tree": "6a96866b888156e7eb05380ee7ad6bad651c757a",
+  "changed_paths": [
+    "evidence/D14/envmap/after.log",
+    "evidence/D14/envmap/merge-check.json",
+    "evidence/D14/envmap/queries/Q01.json",
+    "evidence/D14/envmap/queries/Q02.json",
+    "evidence/D14/envmap/queries/Q03.json",
+    "evidence/D14/envmap/queries/Q04.json",
+    "evidence/D14/envmap/queries/Q05.json",
+    "evidence/D14/envmap/queries/Q06.json",
+    "evidence/D14/envmap/queries/Q07.json",
+    "evidence/D14/envmap/queries/Q08.json",
+    "evidence/D14/envmap/queries/Q09.json",
+    "evidence/D14/envmap/queries/Q10.json",
+    "evidence/D14/envmap/queries/Q11.json",
+    "evidence/D14/envmap/queries/Q12.json",
+    "evidence/D14/envmap/queries/Q13.json",
+    "evidence/D14/envmap/queries/Q14.json",
+    "evidence/D14/envmap/queries/Q15.json",
+    "evidence/D14/envmap/queries/Q16.json",
+    "evidence/D14/envmap/render-check.json",
+    "evidence/D14/envmap/validate.json",
+    "evidence/D14/hygiene/handoff.json",
+    "evidence/D14/hygiene/handoff.log",
+    "evidence/D14/hygiene/status-scan.log",
+    "evidence/D14/hygiene/status/inventory.json",
+    "evidence/D14/hygiene/status/summary.txt",
+    "evidence/D14/index.json",
+    "evidence/D14/index.log",
+    "evidence/D14/workpieces/audit-after.json",
+    "evidence/D14/workpieces/audit-after.log",
+    "evidence/D14/workpieces/audit-before.json",
+    "evidence/D14/workpieces/audit-before.log",
+    "evidence/D14/workpieces/retire.json",
+    "evidence/D14/workpieces/retire.log"
+  ],
+  "output_artifacts": [
+    "evidence/D14/hygiene/status/inventory.json",
+    "evidence/D14/hygiene/handoff.json",
+    "evidence/D14/envmap/validate.json",
+    "evidence/D14/envmap/merge-check.json",
+    "evidence/D14/envmap/render-check.json",
+    "evidence/D14/envmap/queries/Q16.json",
+    "evidence/D14/workpieces/audit-after.json",
+    "evidence/D14/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D14-TECHNICAL-REFERENCE-RESCAN"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D14/hygiene/status-scan.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D14/hygiene/handoff.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D14/envmap/after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D14/workpieces/audit-before.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D14/workpieces/retire.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D14/workpieces/audit-after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D14/index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D14/hygiene/status",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D14/hygiene/status-scan.log"
+    },
+    {
+      "check": "command:sh tests/hygiene/handoff-check.sh evidence/D14/hygiene/handoff.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D14/hygiene/handoff.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D14/envmap/validate.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json --out evidence/D14/envmap/merge-check.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map --out evidence/D14/envmap/render-check.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out evidence/D14/envmap/queries",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D14/envmap/after.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d14/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/d9-rust-cargo-proof-4nys6s --current W16 --out evidence/D14/workpieces/audit-before.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D14/workpieces/audit-before.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d14/debug/factory workpiece retire /home/user/factory-workpieces /home/user/FactTest claude/d9-rust-cargo-proof-4nys6s --current W16 --out evidence/D14/workpieces/retire.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D14/workpieces/retire.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d14/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/d9-rust-cargo-proof-4nys6s --current W16 --out evidence/D14/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D14/workpieces/audit-after.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d14/debug/factory evidence index evidence/D14 evidence/D14/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D14/index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/hygiene/status/inventory.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/hygiene/handoff.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/envmap/validate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/envmap/merge-check.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/envmap/render-check.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/envmap/queries/Q16.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D14/hygiene/status-scan.log",
+    "evidence/D14/hygiene/handoff.log",
+    "evidence/D14/envmap/after.log",
+    "evidence/D14/workpieces/audit-before.log",
+    "evidence/D14/workpieces/retire.log",
+    "evidence/D14/workpieces/audit-after.log",
+    "evidence/D14/index.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-d14/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "command": [
+          "rustc",
+          "+1.94.1",
+          "-vV"
+        ],
+        "exit": 0,
+        "output": [
+          "rustc 1.94.1 (e408947bf 2026-03-25)",
+          "binary: rustc",
+          "commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1",
+          "commit-date: 2026-03-25",
+          "host: x86_64-unknown-linux-gnu",
+          "release: 1.94.1",
+          "LLVM version: 21.1.8"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "command": [
+          "rustc",
+          "+nightly-2026-09-24",
+          "-vV"
+        ],
+        "exit": 0,
+        "output": [
+          "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+          "binary: rustc",
+          "commit-hash: 6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+          "commit-date: 2026-09-23",
+          "host: x86_64-unknown-linux-gnu",
+          "release: 1.100.0-nightly",
+          "LLVM version: 23.1.1"
+        ]
+      },
+      {
+        "name": "node",
+        "command": [
+          "node",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "v22.22.2"
+        ]
+      },
+      {
+        "name": "git",
+        "command": [
+          "git",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "git version 2.43.0"
+        ]
+      },
+      {
+        "name": "curl",
+        "command": [
+          "curl",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10",
+          "Release-Date: 2023-12-06, security patched: 8.5.0-2ubuntu10.8",
+          "Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp",
+          "Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd"
+        ]
+      }
+    ]
+  },
+  "closed": "2026-09-24T08:59:24Z",
+  "status": "PASS"
+}

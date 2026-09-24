@@ -1,0 +1,29 @@
+{
+ "id": "CL-F3",
+ "trace": "F",
+ "authority": "AUTH-SW-UPDATE-BYPASS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/ServiceWorker",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+  "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+  "bytes": 297377
+ },
+ "locator": {
+  "text": "is said to be <dfn>stale</dfn> if",
+  "line_start": 281,
+  "line_end": 281,
+  "derivation": "anchor text",
+  "enclosing_section": "#service-worker-registration-concept (line 265)"
+ },
+ "window": 1,
+ "consequence": "a registration becomes stale by elapsed time since its last update check (86400 s), so the browser re-fetches the seed script whenever reachable",
+ "excerpt": "    A [=/service worker registration=] is said to be <dfn>stale</dfn> if the registration's [=last update check time=] is non-null and the time difference in seconds calculated by the current time minus the registration's [=last update check time=] is greater than 86400.",
+ "excerpt_sha256": "bff8f11aafffea2847b00a7d36b7f9c03961c383d8916a1baa1462c7afdd55c0",
+ "must_contain": {
+  "last update check time": true
+ },
+ "status": "VERIFIED"
+}

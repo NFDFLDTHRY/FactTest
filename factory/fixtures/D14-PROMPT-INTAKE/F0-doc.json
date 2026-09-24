@@ -1,0 +1,20 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D14-PROMPT-INTAKE",
+  "selected_inputs": ["the owner prompt (session message)", "design/materialization/LEDGER.md", "git log of main (PR #4 merge 4d8a4c0, D13 integration 8265623)"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/D14-REFERENCE-RESCAN-PROMPT.md", "design/materialization/LEDGER.md", "factory/deltas/D14-PROMPT-INTAKE.json", "factory/fixtures/D14-PROMPT-INTAKE/", "factory/receipts/D14-PROMPT-INTAKE/"],
+  "job_parameters": {
+    "identity_probes": [
+      {"name": "rustc-host-set", "program": "rustc", "args": ["+1.94.1", "-vV"]},
+      {"name": "node", "program": "node", "args": ["--version"]},
+      {"name": "git", "program": "git", "args": ["--version"]}
+    ],
+    "commands": [
+      {"cwd": ".", "program": "sh", "args": ["-c", "grep -qF 'Solve the retrieval problem and get all the relevant sources to the factor ingested.' design/materialization/D14-REFERENCE-RESCAN-PROMPT.md && grep -q '^## D14-PROMPT-INTAKE' design/materialization/LEDGER.md && grep -q 'integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ]"], "log": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log"},
+      {"cwd": ".", "program": "git", "args": ["diff", "--exit-code", "4d8a4c0e2568ecda75981aeaef0dc797fb23d928", "--", "FACTORY-LAW.md", "REFERENCE-AUTHORITY.md", "docs", "compiler", "host", "factory/src", "factory/registry", "fixtures", "tests", "evidence", "design/environment-map"], "log": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log"},
+      {"cwd": ".", "program": "sh", "args": ["tests/hygiene/handoff-check.sh", "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.json"], "log": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log"}
+    ]
+  },
+  "expected_outputs": ["design/materialization/D14-REFERENCE-RESCAN-PROMPT.md"],
+  "tests": ["prompt verbatim", "D13 AFTER recorded", "single AFTER placeholder", "authority untouched", "handoff check"], "evidence_requirements": ["receipt"]
+}

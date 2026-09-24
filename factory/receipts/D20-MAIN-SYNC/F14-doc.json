@@ -1,0 +1,133 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D20-MAIN-SYNC-F14-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F14-doc",
+  "workpiece_id": "W23",
+  "delta_id": "D20-MAIN-SYNC",
+  "canonical_base": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+  "input_artifacts": [
+    "Factory evidence of F0-F13"
+  ],
+  "open_tree": "c26001ed458c9794f83fd7a17a59fc4af745c1bd",
+  "close_tree": "5ce3179bc883e30e7b3dde2c914945edd3d4d013",
+  "changed_paths": [
+    "design/materialization/D20-OBSERVED-MAIN-SYNC.md",
+    "factory/receipts/D20-MAIN-SYNC/logs/F14-observed.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D20-OBSERVED-MAIN-SYNC.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D20-MAIN-SYNC"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F14-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c O=design/materialization/D20-OBSERVED-MAIN-SYNC.md; for k in P1 P2 P3 P4 P5 P6 P7 Q22 c3159d5 D14-RESCAN R-54 R-63; do grep -q \"$k\" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F14-observed.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D20-OBSERVED-MAIN-SYNC.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D20-MAIN-SYNC/logs/F14-observed.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T11:45:34Z",
+  "status": "PASS"
+}

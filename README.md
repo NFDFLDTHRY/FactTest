@@ -51,7 +51,9 @@ Every implementation commit on the materialization branch was produced by the Fa
 2. [FACTORY-LAW.md](FACTORY-LAW.md) - AGENT -> ASCII -> FACTORY -> WORKPIECE -> VERIFY -> REPO; never AGENT -> REPO.
 3. [design/materialization/LEDGER.md](design/materialization/LEDGER.md) - BEFORE/AFTER of every delta (D0 onward).
 4. [design/materialization/D19-STABLE-BASELINE.md](design/materialization/D19-STABLE-BASELINE.md) - the stable
-   baseline after the D14-D19 technical reference review: what FactTest is entitled to claim now and how to re-verify it.
+   baseline after the D14-D19 technical reference review: what FactTest may rely on and how to re-verify it; the current
+   claim surface of the joined model (after main's parallel D14 line) is in
+   [design/materialization/D20-OBSERVED-MAIN-SYNC.md](design/materialization/D20-OBSERVED-MAIN-SYNC.md).
 
 No session prompt is required: the entry is model-independent.  Proof sets and the toolchain pin are in
 [tests/toolchain/proof-sets.json](tests/toolchain/proof-sets.json) and [rust-toolchain.toml](rust-toolchain.toml).
@@ -69,4 +71,5 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
 - Later deltas: D9 Rust/Cargo proof harness, D10-D11 computational environment map, D12 self-hosting architecture,
   D13 repository hygiene, D14-D19 technical reference review series (D14 authority frontier, D15 foundational clauses,
   D16 capability universe, D17 implementation reality, D18 repository reconciliation, D18R chain repair, D19 re-proof
-  and stable baseline; see the ledger).
+  and stable baseline), a parallel D14 technical reference rescan on main (pull request #5: reference corpus in
+  fixtures/reference/), joined by D20 main sync with a second re-proof; see the ledger.

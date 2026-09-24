@@ -1,0 +1,29 @@
+{
+ "id": "CL-I2",
+ "trace": "I",
+ "authority": "AUTH-WEBIDL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/webidl",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+  "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9",
+  "bytes": 693068
+ },
+ "locator": {
+  "fragment": "#EnforceRange",
+  "line_start": 9857,
+  "line_end": 9859,
+  "derivation": "PRESENT_EXPLICIT (id attribute)",
+  "enclosing_section": "#EnforceRange (line 9857)"
+ },
+ "window": 3,
+ "consequence": "[EnforceRange] throws instead of wrapping; the JS API emulates it for i64 address values (CL-W7)",
+ "excerpt": "<h4 id=\"EnforceRange\" extended-attribute lt=\"EnforceRange\">[EnforceRange]</h4>\n\nIf the [{{EnforceRange}}] [=extended attribute=] appears on one of the [=integer types=], it creates",
+ "excerpt_sha256": "0d0f4f48e53195ac5d007c9cea04cc0a271010c261e3dbf0c7400bfa151568e3",
+ "must_contain": {
+  "[{{EnforceRange}}]": true
+ },
+ "status": "VERIFIED"
+}

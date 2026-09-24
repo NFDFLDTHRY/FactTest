@@ -1,0 +1,29 @@
+{
+ "id": "CL-ORI2",
+ "trace": "MS",
+ "authority": "AUTH-ORIENTATION-SENSOR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/orientation-sensor",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824",
+  "sha256": "89dbebc2e2229ec4706af367f49995e71512fc86a9fce9ae9dc00c9a625b8a4e",
+  "bytes": 26529
+ },
+ "locator": {
+  "text": "To access the <dfn>Orientation Sensor</dfn> <a>sensor type</a>'s [=latest reading=]",
+  "line_start": 196,
+  "line_end": 196,
+  "derivation": "anchor text",
+  "enclosing_section": "#model (line 190)"
+ },
+ "window": 1,
+ "consequence": "reading orientation requests access for each underlying sensor",
+ "excerpt": "To access the <dfn>Orientation Sensor</dfn> <a>sensor type</a>'s [=latest reading=], the user agent must invoke [=request sensor access=] abstract operation for each of the [=low-level=] sensors used by the concrete orientation sensor. The table below",
+ "excerpt_sha256": "c6dd0a549a12a64891c5eb4909ae5ac2411301c9fb1d416b7746acec5ea1daa4",
+ "must_contain": {
+  "must invoke [=request sensor access=] abstract operation for each of the [=low-level=] sensors": true
+ },
+ "status": "VERIFIED"
+}

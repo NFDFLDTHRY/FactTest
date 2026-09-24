@@ -288,3 +288,21 @@ tools                   tests/reprove/{identity.mjs, select.mjs, run-selected.mj
                         gate.mjs, dimensions.json, runbook.json, obligations.json}; tests/envmap/browser-probe.mjs records
                         the executable launched
 ```
+
+## 14. Joined lines and the second re-proof (D20)
+
+```text
+epoch alias             an epoch entry FILE=LABEL merges FILE under LABEL when its own label is taken by another line's
+                        epoch; the file stays byte-identical and the merged epoch list records relabeled_from
+                        (epochs/D14-RESCAN.json is the D14 epoch of the line merged into main by pull request #5)
+line import             tests/sync/import-line.mjs with a map (tests/sync/<delta>-line.json): every change of the other
+                        line is added or relocated byte-identically, unioned (law documents, insertion-only), embedded
+                        (the ledger block), regenerated (graph and views) or live (the handoff); --check verifies each
+inheritance             build-reconciliation.mjs carries inheritable edges for every supersession in the graph, so an
+                        epoch merged later that attached edges to a superseded node has them on the current successor
+carried conditions      select.mjs: once a claim was re-proved, the stale condition carried to the environment of its
+                        newest evidence (same dimension and relation) supersedes the older one (superseded_conditions);
+                        --pass names the pass the obligations are addressed to
+lineage                 non-Factory merges are owner pull-request merges or SYNC merges (tree equal to the first parent:
+                        no content); any other merge is a violation
+```

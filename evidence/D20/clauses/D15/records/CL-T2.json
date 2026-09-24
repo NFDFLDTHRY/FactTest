@@ -1,0 +1,30 @@
+{
+ "id": "CL-T2",
+ "trace": "T",
+ "authority": "AUTH-WASM-THREADS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/threads",
+  "branch": "main",
+  "path": "proposals/threads/Overview.md",
+  "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+  "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73",
+  "bytes": 33766
+ },
+ "locator": {
+  "text": "A linear memory can be marked as shared",
+  "line_start": 147,
+  "line_end": 149,
+  "derivation": "anchor text",
+  "enclosing_section": "#shared-linear-memory (line 145)"
+ },
+ "window": 3,
+ "consequence": "shared memory belongs to the Threads proposal (Phase 4, not standard): a distinct family, never baseline",
+ "excerpt": "A linear memory can be marked as shared, which allows it to be shared between\nall agents in an agent cluster. The shared memory can be imported or defined in\nthe module. It is a validation error to attempt to import shared linear memory",
+ "excerpt_sha256": "9fc29c58789f63b3a5e3acb8efce14980490650d05615fdeaa332f6c6ab9943b",
+ "must_contain": {
+  "shared between": true,
+  "all agents in an agent cluster": true
+ },
+ "status": "VERIFIED"
+}

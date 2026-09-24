@@ -1,0 +1,35 @@
+{
+ "id": "CL-IDB1",
+ "trace": "STO",
+ "authority": "AUTH-IDB-TRANSACTION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/IndexedDB",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+  "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8",
+  "bytes": 277352
+ },
+ "locator": {
+  "text": "interface IDBFactory {",
+  "after": "partial interface mixin WindowOrWorkerGlobalScope {",
+  "line_start": 2192,
+  "line_end": 2192,
+  "derivation": "anchor text after \"partial interface mixin WindowOrWorkerGl\"",
+  "enclosing_section": "#factory-interface (line 2172)"
+ },
+ "window": 1,
+ "consequence": "IDBFactory is exposed to Window and Worker; IndexedDB defines no [SecureContext], no powerful feature and no policy-controlled feature (verified absent)",
+ "excerpt": "interface IDBFactory {",
+ "excerpt_sha256": "7b5d21e5a9f8661160c9230ff98e8712b21b11361160edec0f7e9d00aab48da9",
+ "must_contain": {
+  "interface IDBFactory": true
+ },
+ "status": "VERIFIED",
+ "absent_in_document": {
+  "SecureContext": true,
+  "policy-controlled feature": true,
+  "powerful feature": true
+ }
+}

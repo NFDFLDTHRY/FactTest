@@ -1,0 +1,29 @@
+{
+ "id": "CL-ST3",
+ "trace": "ST",
+ "authority": "AUTH-STORAGE-BUCKET-MODE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/storage",
+  "branch": "main",
+  "path": "storage.bs",
+  "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+  "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+  "bytes": 30128
+ },
+ "locator": {
+  "text": "[Exposed=Window] Promise&lt;boolean> persist();",
+  "line_start": 619,
+  "line_end": 619,
+  "derivation": "anchor text",
+  "enclosing_section": "#api (line 598)"
+ },
+ "window": 1,
+ "consequence": "persist() exists only in windows (not workers): durability must be requested from the page, and its answer is UA policy (D12 P07 observed false)",
+ "excerpt": "  [Exposed=Window] Promise&lt;boolean> persist();",
+ "excerpt_sha256": "913f087aa16017a1380bb14a3cc0ea5690ce64abc578a1ae49e098079a8437fb",
+ "must_contain": {
+  "[Exposed=Window]": true
+ },
+ "status": "VERIFIED"
+}

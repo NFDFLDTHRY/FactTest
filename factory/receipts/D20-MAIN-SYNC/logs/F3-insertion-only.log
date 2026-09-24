@@ -1,0 +1,10 @@
+$ sh -c git diff --numstat c3159d562768d52465ead5e44bc6c5259dfc1b79 -- REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md | awk '{print} $2!=0{bad=1} END{exit bad}' && echo 'insertion-only: 0 deleted lines'
+(cwd .)
+1	0	CONFLICT-LEDGER.md
+1	0	CONSTRAINT-LEDGER.md
+6	0	EVIDENCE-OBLIGATIONS.md
+4	0	IMPLEMENTATION-CONTRACTS.md
+9	0	REFERENCE-AUTHORITY.md
+insertion-only: 0 deleted lines
+
+[exit 0] expected 0

@@ -1,0 +1,30 @@
+{
+ "id": "CL-G1",
+ "trace": "G",
+ "authority": "AUTH-GIT-OBJECT-FORMAT",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "path": "Documentation/user-manual.adoc",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "sha256": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424",
+  "bytes": 174683
+ },
+ "locator": {
+  "fragment": "#object-details",
+  "line_start": 4082,
+  "line_end": 4097,
+  "derivation": "PRESENT_EXPLICIT (asciidoc anchor)",
+  "enclosing_section": "#object-details (line 4082)"
+ },
+ "window": 16,
+ "consequence": "object id = SHA-1 over \"<type> <size>\\0\" + content; loose objects are zlib-deflated: the browser object store must hash the header, not the bytes (D12 P09 matched 880/880)",
+ "excerpt": "[[object-details]]\n=== Object storage format\n\nAll objects have a statically determined \"type\" which identifies the\nformat of the object (i.e. how it is used, and how it can refer to other\nobjects).  There are currently four different object types: \"blob\",\n\"tree\", \"commit\", and \"tag\".\n\nRegardless of object type, all objects share the following\ncharacteristics: they are all deflated with zlib, and have a header\nthat not only specifies their type, but also provides size information\nabout the data in the object.  It's worth noting that the SHA-1 hash\nthat is used to name the object is the hash of the original data\nplus this header, so `sha1sum` 'file' does not match the object name\nfor 'file' (the earliest versions of Git hashed slightly differently\nbut the conclusion is still the same).",
+ "excerpt_sha256": "9aba9661663f63b9e47b0c4d05a071e1b38df7a16f3d8fdc6467a351229204d7",
+ "must_contain": {
+  "deflated with zlib": true,
+  "hash of the original data": true
+ },
+ "status": "VERIFIED"
+}

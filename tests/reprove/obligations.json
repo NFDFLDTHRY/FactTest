@@ -1,6 +1,6 @@
 {
  "schema": "facttest-reprove-obligations/1",
- "note": "reviewed reading of the D18/D18R obligations addressed to D19: the groups that discharge each (Q21 rows whose obligation starts 'D19:' and is not revised)",
+ "note": "reviewed reading of the D18/D18R obligations addressed to D19: the groups that discharge each (Q21 rows whose obligation starts 'D19:' and is not revised); D20: the reconciliations of the main sync addressed to D20 (tests/reconcile/d20-reconciliation.json)",
  "obligations": {
   "R-03": {
    "groups": [
@@ -25,6 +25,30 @@
     "identity"
    ],
    "reading": "record the executable actually launched"
+  },
+  "R-54": {
+   "groups": [
+    "ingress"
+   ],
+   "reading": "re-prove the other line's host and route claims in this environment"
+  },
+  "R-59": {
+   "groups": [
+    "reopen"
+   ],
+   "reading": "re-prove the pin re-check with the frontier reopen"
+  },
+  "R-62": {
+   "groups": [
+    "ingress"
+   ],
+   "reading": "re-prove the other line's execution claims on the line's own inputs"
+  },
+  "R-63": {
+   "groups": [
+    "lineage"
+   ],
+   "reading": "re-prove the integration lineage with the sync merge classified"
   }
  }
 }

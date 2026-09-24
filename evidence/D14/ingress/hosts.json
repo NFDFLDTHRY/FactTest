@@ -1,0 +1,317 @@
+{
+ "tool": "tests/reference/ingress.mjs probe-hosts",
+ "observed": "2026-09-24T08:55:47.869Z",
+ "law": {
+  "problem": "the session egress policy denies every published authority host (CONNECT 403): doc.rust-lang.org, webassembly.github.io, gpuweb.github.io, w3c.github.io, html.spec.whatwg.org and the other *.spec.whatwg.org hosts, tc39.es, git-scm.com, www.w3.org, source.chromium.org, chromium.googlesource.com, raw.githack.com; D11-D13 could read sources pinned by commit only",
+  "solution": "every denied published rendering that a publisher serves through GitHub Pages is the byte-exact content of that repository's gh-pages branch; that branch is reachable with exact commit identity through the session git proxy (git ls-remote / blobless partial fetch) and its files are fetchable immutably by commit from raw.githubusercontent.com, which the policy allows. Specification sources are taken from the publisher's default branch the same way. A published host without a Pages branch (WHATWG standards, doc.rust-lang.org, git-scm.com, www.w3.org/TR snapshots, Chromium code search) has NO_ROUTE for its rendering and is ingested as source only.",
+  "allowed_route_hosts": [
+   "raw.githubusercontent.com (HTTPS through the session proxy)",
+   "github.com git smart-HTTP (through the session git proxy: ls-remote, partial fetch)"
+  ],
+  "not_claimed": "a file taken from a gh-pages branch was NOT observed at the published host; the register marks it PAGES_BRANCH and the published URL stays NOT_OBSERVED_AT_HOST until the policy admits the host"
+ },
+ "proxy": {
+  "enabled": true,
+  "selective": false,
+  "noProxy": "localhost,127.0.0.1,::1,127.0.0.0/8,0.0.0.0/8,::,169.254.0.0/16,api.anthropic.com,api-staging.anthropic.com,api-pr-preview.anthropic.com,mcp-proxy.anthropic.com,mcp-proxy-staging.anthropic.com,registry.npmjs.org,jsr.io,npm.jsr.io,pypi.org,files.pythonhosted.org,index.crates.io,proxy.golang.org,host.docker.internal,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.64.0.0/10,.svc.cluster.local,*.svc.cluster.local"
+ },
+ "published_hosts": [
+  {
+   "host": "chromium.googlesource.com",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md"
+  },
+  {
+   "host": "compression.spec.whatwg.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://compression.spec.whatwg.org/"
+  },
+  {
+   "host": "doc.rust-lang.org",
+   "cited_by": "4 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://doc.rust-lang.org/reference/names/preludes.html#the-no_std-attribute"
+  },
+  {
+   "host": "dom.spec.whatwg.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://dom.spec.whatwg.org/"
+  },
+  {
+   "host": "fetch.spec.whatwg.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://fetch.spec.whatwg.org/"
+  },
+  {
+   "host": "fs.spec.whatwg.org",
+   "cited_by": "2 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://fs.spec.whatwg.org/"
+  },
+  {
+   "host": "git-scm.com",
+   "cited_by": "9 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://git-scm.com/docs/gitglossary#def_commit"
+  },
+  {
+   "host": "github.com",
+   "cited_by": "2 citations",
+   "probe": {
+    "status": "HTTP",
+    "http_code": 403
+   },
+   "sample_url": "https://github.com/rust-lang/rust/blob/master/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs"
+  },
+  {
+   "host": "gpuweb.github.io",
+   "cited_by": "12 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://gpuweb.github.io/gpuweb/"
+  },
+  {
+   "host": "html.spec.whatwg.org",
+   "cited_by": "5 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://html.spec.whatwg.org/multipage/"
+  },
+  {
+   "host": "immersive-web.github.io",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://immersive-web.github.io/webxr/"
+  },
+  {
+   "host": "infra.spec.whatwg.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://infra.spec.whatwg.org/"
+  },
+  {
+   "host": "raw.githubusercontent.com",
+   "cited_by": "2 citations",
+   "probe": {
+    "status": "HTTP",
+    "http_code": 200
+   },
+   "sample_url": "https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/main/proposals/shared-everything-threads/Overview.md"
+  },
+  {
+   "host": "serial.spec.whatwg.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://serial.spec.whatwg.org/"
+  },
+  {
+   "host": "source.chromium.org",
+   "cited_by": "4 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://source.chromium.org/chromium/chromium/src/+/main:content/public/common/content_switches.cc"
+  },
+  {
+   "host": "storage.spec.whatwg.org",
+   "cited_by": "2 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://storage.spec.whatwg.org/"
+  },
+  {
+   "host": "streams.spec.whatwg.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://streams.spec.whatwg.org/"
+  },
+  {
+   "host": "tc39.es",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://tc39.es/ecma262/"
+  },
+  {
+   "host": "w3c.github.io",
+   "cited_by": "10 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://w3c.github.io/webcodecs/"
+  },
+  {
+   "host": "webassembly.github.io",
+   "cited_by": "11 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://webassembly.github.io/spec/core/"
+  },
+  {
+   "host": "webbluetoothcg.github.io",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://webbluetoothcg.github.io/web-bluetooth/"
+  },
+  {
+   "host": "webidl.spec.whatwg.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://webidl.spec.whatwg.org/"
+  },
+  {
+   "host": "webmachinelearning.github.io",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://webmachinelearning.github.io/webnn/"
+  },
+  {
+   "host": "wicg.github.io",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://wicg.github.io/webhid/"
+  },
+  {
+   "host": "www.w3.org",
+   "cited_by": "1 citations",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "sample_url": "https://www.w3.org/TR/2026/WD-webcodecs-20260921/"
+  }
+ ],
+ "route_hosts": [
+  {
+   "host": "raw.githubusercontent.com",
+   "probe": {
+    "status": "HTTP",
+    "http_code": 200
+   },
+   "role": "immutable file fetch by commit (allowed)"
+  },
+  {
+   "host": "github.com (git smart-HTTP through the session git proxy)",
+   "probe": {
+    "status": "OK",
+    "head": "dcb71aa493d71d7581af1589368364b7283e6724"
+   },
+   "role": "branch head identity (git ls-remote), partial fetch"
+  },
+  {
+   "host": "github.com (HTTPS page)",
+   "probe": {
+    "status": "HTTP",
+    "http_code": 403
+   },
+   "role": "not needed; recorded"
+  },
+  {
+   "host": "codeload.github.com",
+   "probe": {
+    "status": "HTTP",
+    "http_code": 403
+   },
+   "role": "archive by commit; recorded"
+  },
+  {
+   "host": "raw.githack.com",
+   "probe": {
+    "status": "DENIED",
+    "detail": "curl: (56) CONNECT tunnel failed, response 403"
+   },
+   "role": "D12 public-origin test path; recorded"
+  }
+ ],
+ "denied_hosts": [
+  "chromium.googlesource.com",
+  "compression.spec.whatwg.org",
+  "doc.rust-lang.org",
+  "dom.spec.whatwg.org",
+  "fetch.spec.whatwg.org",
+  "fs.spec.whatwg.org",
+  "git-scm.com",
+  "gpuweb.github.io",
+  "html.spec.whatwg.org",
+  "immersive-web.github.io",
+  "infra.spec.whatwg.org",
+  "serial.spec.whatwg.org",
+  "source.chromium.org",
+  "storage.spec.whatwg.org",
+  "streams.spec.whatwg.org",
+  "tc39.es",
+  "w3c.github.io",
+  "webassembly.github.io",
+  "webbluetoothcg.github.io",
+  "webidl.spec.whatwg.org",
+  "webmachinelearning.github.io",
+  "wicg.github.io",
+  "www.w3.org"
+ ],
+ "reachable_hosts": [
+  "github.com",
+  "raw.githubusercontent.com"
+ ],
+ "verdict": "PUBLISHED_HOSTS_DENIED; ROUTE AVAILABLE"
+}

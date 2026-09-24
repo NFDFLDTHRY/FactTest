@@ -1,0 +1,5 @@
+$ sh -c for f in $(find fixtures/reference -type f | sort); do case $f in fixtures/reference/README.md|fixtures/reference/ROUTES.json|fixtures/reference/REGISTER.json|fixtures/reference/published/*|fixtures/reference/sources/*) ;; *) echo "unexpected $f"; exit 1;; esac; done; n=$(find fixtures/reference/published fixtures/reference/sources -type f | wc -l); r=$(node -e 'console.log(JSON.parse(require("fs").readFileSync("fixtures/reference/REGISTER.json")).totals.ingested)'); [ "$n" = "$r" ] && echo "$n copies == register"
+(cwd .)
+83 copies == register
+
+[exit 0] expected 0

@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F4-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "tests/sync/d20-line.json",
+    "git objects of 1205fda"
+  ],
+  "narrowed_may_change": [
+    "evidence/D14/audit/",
+    "evidence/D14/ingress/",
+    "evidence/D14/hygiene/",
+    "evidence/D14-RESCAN/",
+    "evidence/D20/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope evidence/D14/audit/,evidence/D14/ingress/,evidence/D14/hygiene/,evidence/D14-RESCAN/ && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope evidence/D14/audit/,evidence/D14/ingress/,evidence/D14/hygiene/,evidence/D14-RESCAN/"
+        ],
+        "log": "evidence/D20/logs/F4-import-evidence.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D14/ingress/register.json",
+    "evidence/D14-RESCAN/index.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

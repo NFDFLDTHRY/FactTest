@@ -1,0 +1,85 @@
+{
+ "authority": "AUTH-WEB-LOCKS",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://w3c.github.io/web-locks/",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "editor's draft source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/w3c/web-locks",
+  "branch": "main",
+  "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+  "path": "index.bs",
+  "sha256": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9",
+  "observed": "2026-09-24",
+  "locator": "lines 357, 578 ([SecureContext, Exposed=(Window,Worker)])"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   357,
+   357
+  ],
+  "window_sha256": "ebdfdb3ca81e716d29db91e0fd1ffae480a62d50d0b8feac4318e20a61898095",
+  "window_excerpt": "[SecureContext, Exposed=(Window,Worker)]",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   357,
+   357
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "ED",
+   "group": "webapps",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "ED",
+   "group": "webapps",
+   "level": "None"
+  },
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 357,
+  "candidates": {
+   "section": {
+    "id": "#api-lock-manager",
+    "line": 353,
+    "kind": "bikeshed heading id"
+   },
+   "definition": {
+    "id": "#dom-navigatorlocks-locks",
+    "line": 350,
+    "kind": "bikeshed IDL dfn"
+   }
+  }
+ }
+}

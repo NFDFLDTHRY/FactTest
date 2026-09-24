@@ -7,11 +7,13 @@ the project; everything below points at repository files.
 ## 1. Current state
 
 ```text
-canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D19-REPROVE-REOBSERVE (pass 6, the last of the D14-D19 technical reference review series;
-                   integration commit in design/materialization/LEDGER.md)
+canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
+                   parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
+last delta         D20-MAIN-SYNC (joins the parallel D14 line of main after the D14-D19 series; integration commits in
+                   design/materialization/LEDGER.md)
 baseline           design/materialization/D19-STABLE-BASELINE.md (STABLE-BASELINE: ESTABLISHED) - what later work may
-                   rely on, the entitled-claim surface (graph query Q22) and how to re-verify it
+                   rely on and how to re-verify it; the current entitled-claim surface of the joined model is graph
+                   query Q22 of the D20 graph (design/materialization/D20-OBSERVED-MAIN-SYNC.md, section 6)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in the Chromium 141 headless shell (SwiftShader CPU fallback
                    WebGPU under the unsafe WebGPU switches, plus wasm64), D9 qualified Rust/Cargo proof harness, D11
@@ -25,15 +27,18 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    resolved, kernel identity defined; law annotated insertion-only; Q21), D18R chain repair (one D18
                    worker statement contradicted committed evidence: superseded; D12 executable field corrected), D19
                    re-proof (environment identity captured; the minimum affected set selected from the graph and
-                   re-proved physically; current evidence epoch; entitled-claim surface Q22)
+                   re-proved physically; current evidence epoch; entitled-claim surface Q22), and main's parallel D14 line
+                   (pull request #5: a Pages-branch retrieval route under the egress policy, fixtures/reference/ corpus of
+                   83 reproducibility copies, D11 pins re-checked) joined by D20 with a second re-proof
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
 series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): CLOSED - one
                    StructuralDelta per pass (plus the D18R chain repair), each closed, verified, integrated and
                    re-observed before the next
-next               an OWNER decision: the paused D12-predicted seed/broker qualification (renumbered after D19) or any
-                   row of section 6.  Before building on a claim, re-run the D19 selection (section 7) against the then
-                   current environment; historical evidence is never mutated.
+next               an OWNER decision: the paused D12-predicted seed/broker qualification (renumbered after D20), the law
+                   delta for the 7 drifted fragments, adopting CON-EM-D14-001, or any row of section 6.  Before building
+                   on a claim, re-run the selection (section 7) against the then current environment; historical evidence
+                   is never mutated.
 ```
 
 ## 2. Mutation law
@@ -64,6 +69,9 @@ HEAD, tree, status, ancestry to main) before drawing anything.
              EVIDENCE observed_result - before asserting "never observed" / "no fixture"; D18R lesson)
              (closed statements: a [GAP]/[ERR]/[UNK] fact INVALIDATED_BY later evidence is history, not an open
              stop - read Q22 explicit_stops, never a bare status count; D19 lesson)
+             (parallel lines: a line merged into main from another branch is joined by a content-neutral sync merge -
+             git merge -s ours, tree equal to the first parent - and a Factory delta that imports its files from git
+             objects with tests/sync/import-line.mjs, relocating what collides; D20 lesson)
 2  payload   stage the files outside the repository (e.g. /home/user/factory-workpieces/<W>-stage); write
              factory/deltas/<D>.json (canonical_base = current HEAD, workpiece_id, may_change / must_not_change as
              LITERAL surfaces: "*", "dir/" or an exact file - wildcard-looking entries are rejected) and one fixture per
@@ -105,11 +113,16 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
-               epochs/D12.json .. epochs/D19.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
+               epochs/D12.json .. epochs/D19.json, epochs/D14-RESCAN.json=D14-RESCAN, epochs/D20-SYNC.json,
+               epochs/D20.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
                tests/reference/<epoch>-clauses.json (exact-clause manifests; the constraints they proposed are ledgered
                in CONSTRAINT-LEDGER.md since D18); tests/reconcile/d18-reconciliation.json (the reviewed D18 register:
                supersessions, ledgering, resolutions; graph query Q21 is the current model); tests/reprove/
                (D19 dimension rules, runbook, obligations; Q22 is the entitled-claim surface);
+               fixtures/reference/ (the imported line's ROUTES.json retrieval route, REGISTER.json copy identities,
+               published/ and sources/ reproducibility copies: pins, never current authority; re-check with
+               tests/reference/ingress.mjs on that line's inputs); tests/sync/ (line import map of D20);
+               tests/reconcile/d20-reconciliation.json (the two lines reconciled, R-54..R-63);
                tests/capability/universe.json (the G trace + reviewed classification; G itself is CAPABILITY-MATRIX.md);
                tests/implementation/{reality.json, label-audit.json} (implementation behaviours; reviewed label findings);
                this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml
@@ -117,6 +130,8 @@ HISTORICAL     FABLE-ASCII-SYSTEM-PROMPT.md (bootloader of the original Fable 5.
                HISTORICAL banner), PASS1.md-PASS6.md, PASS5-TESTS.md, PASS6-TESTS.md, PASS6-GAP-REPAIRS.md,
                PLANNED-REPO-LAYOUT.md (PASS 5 plan; the law/ zone was never created), M0-INTENDED-SYSTEM.md,
                M9-OBSERVED-SYSTEM.md, COMMISSIONING-RECORD.md, D9-D13 prompts and closed intended/observed records,
+               the imported line's D14-REFERENCE-RESCAN records (its "D14 ANNOTATION" lines in the law documents are
+               that line's, not this branch's D14-FRONTIER-REOPEN, which annotated nothing),
                evidence/, factory/receipts/, factory/deltas and factory/fixtures of integrated deltas.  Historical
                files are never rewritten; D13 added insertion-only annotations where they looked live.
 SESSIONS       historical: M0-M9 / D0-D8 ran under the Fable 5.1 session bootloader (historical record only)
@@ -125,8 +140,9 @@ SESSIONS       historical: M0-M9 / D0-D8 ran under the Fable 5.1 session bootloa
 ```
 
 Observed repository layout: factory/ (src, tests, registry, deltas, fixtures, receipts), compiler/<crate>/,
-host/ (factc, harness), fixtures/ (language, compiler/negative, commissioning, toolchain), tests/ (bootstrap,
-commissioning, language, toolchain, envmap, selfhost, hygiene), evidence/<delta>/, design/ (materialization,
+host/ (factc, harness), fixtures/ (language, compiler/negative, commissioning, toolchain, reference), tests/ (bootstrap,
+commissioning, language, toolchain, envmap, selfhost, hygiene, reference, reconcile, reprove, sync), evidence/<delta>/
+(evidence/D14-RESCAN/ holds the imported line's relocated D14 records), design/ (materialization,
 environment-map), docs/ (this page), root law documents.
 
 ## 6. Open-boundary register
@@ -183,19 +199,42 @@ D      git tree-entry order (D15 CL-G3)     "normalized by mktree" with no docum
                                             ordering source not traced (D17 traced browser and toolchain sources)
 D      Q18 claim traversal                  current RUN claims that stop before COMPLETE: IMPLEMENTATION CONTRACT,  [GAP]
                                             CURRENT AUTHORITY (process facts), EXACT CLAUSE (project facts cited at
-                                            locator level), PROJECT CONSTRAINT; each stop is explicit
-                                            (evidence/D19/envmap/queries/Q18.json, Q22)
-D      published frontier (D14)             53 renderings refused + 2 github.com 403: no current published      [UNK]
-                                            authority verified in D14 (FACT-PUBLISHED-FRONTIER-UNVERIFIED); D15
-                                            clauses are likewise verified at source tips only
-D      D11 FACT-AUTHORITY-REOPEN-DENIED     37 of 48 D11 authorities and all 16 D12 authorities read from       [UNK]
-                                            pinned sources only; published hosts DENIED
+                                            locator level; the imported line's 56 reopen observations stop here
+                                            too), PROJECT CONSTRAINT; each stop is explicit
+                                            (evidence/D20/envmap/queries/Q18.json, Q22)
+D      published frontier                   FACT-PUBLISHED-FRONTIER-D20: 23 published hosts refuse the egress      [UNK]
+       (FACT-PUBLISHED-FRONTIER-D20)        proxy; 39 renderings exist as byte-exact Pages-branch copies
+                                            (fixtures/reference/published, imported line) with 36 cited fragments
+                                            present and 9 absent; no rendering observed at its published host;
+                                            WHATWG, doc.rust-lang.org, git-scm.com and Chromium have no Pages
+                                            branch and stay source-pinned; D15 clauses are verified at source tips
+OWNER  drifted fragments (FACT-D14-MAP-     7 citations in REFERENCE-AUTHORITY.md name fragments absent in the     [ERR]
+       LINKS-AUDITED, R-58)                 current renderings: sensors #extending-the-permission-api and
+                                            #extending-the-permissions-policy-api, deviceorientation #permissions,
+                                            IndexedDB #database-concept, ServiceWorker #fetch-event, ambient-light
+                                            #ambientlightsensor-interface, webxr #navigator-xr; nearest ids in the
+                                            D14 ANNOTATION lines; replacing them is an owner-approved law delta
+                                            (the other 2 of 9 have current authorities since D18: R-10, R-11)
+OWNER  CON-EM-D14-001 (R-60)                PROPOSED by the imported line: copies in fixtures/reference/ are     [OBS]
+                                            pins, never current authority; adopting it into CONSTRAINT-LEDGER.md
+                                            is an owner decision
+D      reference route table (D14-RESCAN)   fixtures/reference/ROUTES.json covers the authorities of the D13     [GAP]
+                                            graph only: the authorities D14-D19 of this branch added have no
+                                            route rule (its checks re-prove on the imported line's own inputs)
 D      D12 B-19                             githack public-origin path unreachable (proxy 403)                  [UNK]
 D      D12 B-18, B-20                       GitHub smart-HTTP CORS; browser update behaviour                    [OBS]/[UNK]
 D      CONFLICT-LEDGER ERR-001 et al.       authority conflicts preserved as ledger rows                        [ERR]
 B      D0-D12 receipts/evidence             incomplete environment identity (receipt format 2 from D14 on); D19:      kept
                                             9 stale-condition pairs undecidable (V8 version, GPU device node, launch
-                                            options or components never recorded; evidence/D19/selection.json unk)
+                                            options or components never recorded; evidence/D19/selection.json unk);
+                                            D20: the imported line's ENV-D14-HOST-NETWORK records no source tips and
+                                            its egress policy as prose (evidence/D20/selection.json unk)
+B      imported line records                D14-TECHNICAL-REFERENCE-RESCAN's delta, fixtures, envmap and          kept
+                                            workpiece evidence moved to the D14-RESCAN paths (the D14 paths hold
+                                            this branch's D14); its receipts name the original paths, which stay
+                                            reachable at 8d5ea6f (tests/sync/d20-line.json maps them)
+B      fixtures/reference size              ~50 MB of authority copies (git-compressed far smaller); re-ingest     [GAP] kept
+                                            by a new delta when branch heads move
 B      D3-D8 fixture wording                "all ladders" / "full suite" overstated the selection               kept
 B      D1-D8 heuristic gates                nostd-check/depcheck used as gates (proof weight now NONE)          kept
 C      D9 native --workspace                cargo build/clippy --workspace fail on the host: factc-wasm-abi's   [ERR] kept
@@ -205,8 +244,8 @@ B      scratch-only tooling                 D0-D13 route scripts, D11 graph gene
 B      workpiece root                       W11-stage, W14-stage hold base-era graph views that are not in the      [GAP] kept
                                             canonical history; W16-W19-stage are proven superseded (every file blob
                                             is in the canonical history: evidence/D18/workpieces/stages.json);
-                                            W20-W21-stage differ from their integrated trees only in the three
-                                            generated graph views (evidence/D19/workpieces/audit-after.json);
+                                            W20-W22-stage differ from their integrated trees only in the three
+                                            generated graph views (evidence/D20/workpieces/audit-after.json);
                                             factory workpiece retire handles worktrees only; factory-bootstrap-bin
                                             (unmanaged)
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
@@ -236,6 +275,25 @@ SharedArrayBuffer global            standard / host / Chromium layers stated in 
 proposed constraints                19 PROPOSED constraints (D11, D13, D15, D16) ledgered in CONSTRAINT-LEDGER.md (R-21)
 ```
 
+Resolved by D20-MAIN-SYNC (tests/reconcile/d20-reconciliation.json; graph query Q21; history in
+design/materialization/D20-OBSERVED-MAIN-SYNC.md):
+
+```text
+D11 FACT-AUTHORITY-REOPEN-DENIED    closed by the imported line's evidence (INVALIDATED_BY EV-D14-REGISTER): Pages-branch
+                                    copies exist for the authorities with a route; the remaining uncertainty is
+                                    FACT-PUBLISHED-FRONTIER-D20 (R-55)
+imported reopen [ERR]s              #internal-storage and #streaming-module-compilation-and-instantiation: closed by the
+                                    D18 successors AUTH-WASM-JSAPI-STORAGE-D18 and AUTH-WASM-WEBAPI-STREAMING-D18 (R-56,
+                                    R-57)
+pin head relation                   FACT-D14-D11-PINS-RECHECKED superseded by FACT-D14-D11-PINS-RECHECKED-D20: the pins
+                                    re-fetch by commit; a file at a moving head may change, the clause reading is
+                                    FACT-FRONTIER-SOURCES-AT-PIN (R-59)
+superseded authorities              the imported line's 10 AUTHORIZES edges on authorities D18 superseded are carried to
+                                    the successors (R-61)
+lineage                             the sync merge c3159d5 (tree equal to its first parent) is told apart from owner
+                                    merges; Factory integration stays fast-forward only (R-63)
+```
+
 ## 7. Proof sets and toolchain
 
 ```text
@@ -251,8 +309,10 @@ tests/toolchain/proof-sets.json
   HEURISTIC                  factory nostd-check / depcheck: weight NONE; never a gate
 run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>)
 history                      tests/toolchain/run-proof-matrix.sh is the D9 matrix, kept for reproduction of D9
-re-prove (D19)               node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out <dir>/identity;
-                             node tests/reprove/select.mjs ... --out <dir>/selection.json (environment drift, implementation
-                             change, obligations); node tests/reprove/run-selected.mjs --kind cite|build|source|repo; the
+re-prove (D19, D20)          node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out <dir>/identity;
+                             node tests/reprove/select.mjs ... --pass <D> --out <dir>/selection.json (environment drift -
+                             a condition a re-proof carried supersedes the older one -, implementation change, obligations
+                             addressed to <D>); node tests/reprove/run-selected.mjs --kind cite|build|source|repo; the
                              runbook (tests/reprove/runbook.json) names each claim's re-proof and expected observation
+                             (group ingress: the imported line's tests/reference/ingress.mjs checks on its own inputs)
 ```

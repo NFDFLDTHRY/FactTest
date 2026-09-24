@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F6-browser",
+  "station_id": "S-BROWSER",
+  "selected_inputs": [
+    "D20 section 4"
+  ],
+  "narrowed_may_change": [
+    "evidence/D20/identity/",
+    "evidence/D20/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reprove/identity.mjs",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D20/identity"
+        ],
+        "log": "evidence/D20/logs/F6-identity.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D20/identity/host.json",
+    "evidence/D20/identity/browser-default.json",
+    "evidence/D20/identity/tips.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

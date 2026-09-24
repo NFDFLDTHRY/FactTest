@@ -1,0 +1,70 @@
+{
+ "tool": "tests/reprove/lineage.mjs",
+ "from": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+ "head": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+ "commits": 19,
+ "factory_commits": 14,
+ "owner_merges": [
+  {
+   "commit": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+   "parents": [
+    "f4395dfb79f19cf5fe1ce23891a5157b55fe53a4",
+    "fdb9c32d1346408f184ccf0cc4880112282f164e"
+   ],
+   "author": "NFDFLDTHRY"
+  },
+  {
+   "commit": "8e5dd6fe0d35669867dc7894434e68b13abeb158",
+   "parents": [
+    "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+    "52d7d1425028dac6ef9f77b4a4cb178b96217864"
+   ],
+   "author": "NFDFLDTHRY"
+  },
+  {
+   "commit": "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+   "parents": [
+    "8e5dd6fe0d35669867dc7894434e68b13abeb158",
+    "8265623ed785fbc4cd2328cbf0bb27d8984906ca"
+   ],
+   "author": "NFDFLDTHRY"
+  },
+  {
+   "commit": "1205fda00deff8c66cd7e3bb8eb529c87d6a472c",
+   "parents": [
+    "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+    "8d5ea6f95e90961959cd9f8df4d9db22eb37aa85"
+   ],
+   "author": "NFDFLDTHRY"
+  }
+ ],
+ "sync_merges": [
+  {
+   "commit": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+   "parents": [
+    "780aee1b50c4a799a62b760823a3d1460d386d0f",
+    "1205fda00deff8c66cd7e3bb8eb529c87d6a472c"
+   ],
+   "author": "Claude",
+   "tree_equals_first_parent": true
+  }
+ ],
+ "unclassified_merges": [],
+ "first_parent_linear": true,
+ "violations": [],
+ "authors": [
+  "FactTest Factory",
+  "NFDFLDTHRY",
+  "Claude"
+ ],
+ "factory_authored": true,
+ "non_factory_commits": [],
+ "latest_verification": {
+  "path": "factory/receipts/D19-REPROVE-REOBSERVE/verification.json",
+  "delta": "D19-REPROVE-REOBSERVE",
+  "status": "PASS",
+  "verified": "2026-09-24T10:55:08Z",
+  "state_base_tree_matches_canonical_base": "PASS",
+  "must_not_change_tree_identical": "PASS"
+ }
+}

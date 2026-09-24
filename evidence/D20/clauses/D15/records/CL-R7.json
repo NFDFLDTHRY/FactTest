@@ -1,0 +1,30 @@
+{
+ "id": "CL-R7",
+ "trace": "R",
+ "authority": "AUTH-RUSTC-WASM64-DOC",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/rust",
+  "branch": "master",
+  "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+  "commit": "ad2e756c7093149e25f67a747e579a49b7e6976e",
+  "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+  "bytes": 4126
+ },
+ "locator": {
+  "text": "This target is not a stable target.",
+  "line_start": 33,
+  "line_end": 35,
+  "derivation": "anchor text",
+  "enclosing_section": "#requirements (line 14)"
+ },
+ "window": 3,
+ "consequence": "the implementation doc still calls memory64 unstandardized while the proposal registry lists Memory64 as finished and Core 3.0 carries 64-bit address types: ERR-001 persists (implementation documentation is not standards law, CON-RS-003)",
+ "excerpt": "This target is not a stable target. The [memory64] WebAssembly proposal is still\nin-progress and not standardized. This means that there are not many engines\nwhich implement the `memory64` feature and if they do they're likely behind a",
+ "excerpt_sha256": "00611bb0dc6179cf15163f7d830196f2f9184d75cff8a152e3c9926d5a5b9e65",
+ "must_contain": {
+  "still": true,
+  "in-progress and not standardized": true
+ },
+ "status": "VERIFIED"
+}

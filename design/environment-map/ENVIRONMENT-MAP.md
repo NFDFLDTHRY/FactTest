@@ -235,3 +235,18 @@ D19    D19-REPROVE-REOBSERVE       the current environment identity (ENV-D19-HOS
                                    sections, browser identity, clause re-verification, frontier reopen, lineage, paths);
                                    D18 obligations fulfilled; epochs/D19.json.  Q22 is the entitled-claim surface.
 ```
+
+## 13. Joined line D14-RESCAN and epochs D20-SYNC, D20 (added by D20-MAIN-SYNC)
+
+```text
+D14-RESCAN  D14-TECHNICAL-REFERENCE-RESCAN   the line merged into main by pull request #5 (same base as D14..D19):
+                                             Pages-branch retrieval route, fixtures/reference/ corpus (83 copies), D11
+                                             pins re-checked, 56 authorities reopened; its epoch file relabeled on merge
+D20-SYNC    D20-MAIN-SYNC                    reconciliation of the two lines (R-54..R-63): published frontier narrowed,
+                                             D11 denial and two fragment [ERR]s resolved, pin head relation dropped, 10
+                                             edges carried to D18 successors, 7 drifted fragments and CON-EM-D14-001
+                                             open for the owner
+D20         D20-MAIN-SYNC                    second re-proof: the selection on the joined graph (the other line's claims
+                                             on its own inputs, D19's process facts by replay, the lineage with the sync
+                                             merge, clauses and frontier at moved tips); Q22 on the joined model
+```

@@ -803,4 +803,117 @@ BEFORE
   claimable, 1 invalidated by design), 29 re-proved in D19; the status inventory no longer re-scans earlier ones.
 
 AFTER
+- RESULT: integrated as 780aee1b50c4a799a62b760823a3d1460d386d0f (ff-only from b509fb0).  One route repair: while F6 ran,
+  Q22 was found to show two closed [GAP] statements as open stops; the route was paused after F6 and the NEW fixture
+  F11-fixture fixed the query before the graph was built (D19-OBSERVED section 1).  No fixture re-run.
+- RECEIPTS: F0-F11 (12) PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection
+  MATCH (epochs/D19.json rebuilt byte-identically; re-proof gate re-run PASS).  Pushed.
+- OBSERVED: D19-OBSERVED-REPROVE-REOBSERVE.md - P1-P7 MATCH (P6 with the repaired presentation); GATE: PASS;
+  D19-STABLE-BASELINE.md: STABLE-BASELINE: ESTABLISHED.
+- LATER: the owner asked for pull request #6 (this branch into main).  Main had merged pull request #5, a parallel line
+  on the same base 4d8a4c0 that also calls its pass D14: 33 conflicts.  The owner chose to merge main into this branch
+  and join the line by a Factory delta (D20-MAIN-SYNC); the content-neutral sync merge c3159d5 made it an ancestor.
+- (recorded by D20-MAIN-SYNC, the next delta.)
+
+---
+
+## MAIN LINE: D14-PROMPT-INTAKE, D14-TECHNICAL-REFERENCE-RESCAN  (pull request #5; imported by D20-MAIN-SYNC)
+
+The lines below, from its D13 AFTER entry through its D14-TECHNICAL-REFERENCE-RESCAN BEFORE entry, are the other
+line's ledger additions (4d8a4c0..1205fda), embedded verbatim (tests/sync/d20-line.json, treatment "embed").  Its records
+named factory/deltas/D14.json, factory/fixtures/D14/ and evidence/D14/{envmap,workpieces,index.*}; in this tree they are
+at the D14-RESCAN paths.
+
+AFTER
+- RESULT: integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca (ff-only from 205d337); merged into main by the owner
+  through pull request #4 as 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (PR closed, history fast-forwarded).
+- RECEIPTS: factory/receipts/D13-REPO-HYGIENE/{F0-doc,F1-rust,F2-fixture,F3-doc,F4-annotate,F5-build,F6-evidence,
+  F7-doc,F8-evidence,F9-doc}.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- OBSERVED: design/materialization/D13-OBSERVED-REPO-HYGIENE.md; PRE-RESCAN-BASELINE: ESTABLISHED.
+- (recorded by D14-PROMPT-INTAKE, the next delta.)
+
+---
+
+## D14-PROMPT-INTAKE  (FIRST ACTION of the technical reference rescan)
+
+BEFORE
+- DELTA: D14-PROMPT-INTAKE (factory/deltas/D14-PROMPT-INTAKE.json), workpiece W15.
+- BASE: 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (main after PR #4; development branch
+  claude/d9-rust-cargo-proof-4nys6s restarted on it: it carried only merged history).
+- STATION: S-DOC.  FIXTURE: F0-doc.
+- CHANGE: design/materialization/D14-REFERENCE-RESCAN-PROMPT.md (verbatim owner prompt + the reading adopted for
+  assembly), this ledger (D13 AFTER, this entry), the delta, its fixture, receipts.  FORBIDDEN: everything else.
+- NEXT: the rescan itself is D14-TECHNICAL-REFERENCE-RESCAN, assembled in
+  design/materialization/D14-INTENDED-REFERENCE-RESCAN.md from design/materialization/D13-PRE-RESCAN-BASELINE.md.
+
+AFTER
+- RESULT: integrated as 6778133c35a96d5e356df283aa1676ee428766bb (ff-only from 4d8a4c0); pushed to
+  claude/d9-rust-cargo-proof-4nys6s.  RECEIPTS: factory/receipts/D14-PROMPT-INTAKE/F0-doc.json PASS (format 2).
+  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- (recorded by D14-TECHNICAL-REFERENCE-RESCAN, the next delta.)
+
+---
+
+## D14-TECHNICAL-REFERENCE-RESCAN  (retrieval route + reference ingress)
+
+BEFORE
+- DELTA: D14-TECHNICAL-REFERENCE-RESCAN (factory/deltas/D14.json), workpiece W16.
+- BASE: 6778133c35a96d5e356df283aa1676ee428766bb (D14-PROMPT-INTAKE).
+- ASCII: design/materialization/D14-INTENDED-REFERENCE-RESCAN.md (observation incl. the egress probe and the
+  Pages-branch route, obligations T14-R1..R8, mutation plan by station, classification, predictions from a scratch dry
+  run, STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4), S-FIXTURE v2 (F1), S-BUILD (F2), S-ANNOTATE (F3), S-EVIDENCE (F5).  No new station.
+- CHANGE: tests/reference/{ingress.mjs, run-ingress-checks.sh}; fixtures/reference/{README.md, ROUTES.json,
+  REGISTER.json, published/, sources/} (83 reproducibility copies fetched in the stage at recorded branch heads);
+  evidence/D14/; insertion-only D14 ANNOTATION lines in REFERENCE-AUTHORITY.md, CONSTRAINT-LEDGER.md,
+  CONFLICT-LEDGER.md, IMPLEMENTATION-CONTRACTS.md, EVIDENCE-OBLIGATIONS.md; design/environment-map/{epochs/D14.json,
+  graph.json, AUTHORITY-REGISTER.md, TRACEABILITY.md}; docs/HANDOFF.md sections 1 and 6; D14 records; this ledger.
+  FORBIDDEN: FACTORY-LAW.md and every other law/pass document, compiler/, host/, factory/src|tests|registry,
+  Cargo.*, rust-toolchain.toml, every D0-D13 and D14-PROMPT-INTAKE artifact, prior fixtures and tests, the D12/D13
+  epochs, SCHEMA.md.
+- INVARIANTS: copies are pins, never current authority; no denied host tunnelled (raw.githubusercontent.com and the
+  git proxy only); law text insertion-only; D11-D13 graph nodes unchanged; no dependency; no toolchain change.
+- PREDICTED: 23 published hosts DENIED, route available; 83 files (39 renderings, 44 sources) ingested; verify PASS;
+  refetch PASS; 63 pins re-checked (56 match, 7 project-law); links 36 verified / 5 present / 3 derived /
+  45 no-fragment / 9 absent [ERR] / 1 no-route; authorities 17 / 5 / 3 / 29 / 2 absent [ERR] / 8 not network;
+  annotations 9+1+1+4+6 lines, 0 deletions; epoch 72 nodes / 315 edges; graph 374 / 956; validate, merge-check,
+  render-check, handoff-check, status-scan PASS.
+
+
+AFTER  (recorded by D20-MAIN-SYNC from the git history)
+- RESULT: integrated as 8d5ea6f95e90961959cd9f8df4d9db22eb37aa85 (ff-only from 6778133) on
+  claude/d9-rust-cargo-proof-4nys6s; merged into main by the owner through pull request #5 as
+  1205fda00deff8c66cd7e3bb8eb529c87d6a472c.  RECEIPTS: factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/ (imported
+  unchanged).  OBSERVED: design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md.
+- JOINED: made an ancestor of claude/facttest-materialization-27amc7 by the sync merge c3159d5; content imported and
+  reconciled by D20-MAIN-SYNC (R-54..R-63).
+
+---
+
+## D20-MAIN-SYNC  (joins the parallel D14 line of main after the D14-D19 series)
+
+BEFORE
+- DELTA: D20-MAIN-SYNC (factory/deltas/D20.json), workpiece W23, base c3159d5 (the sync merge of 1205fda into 780aee1;
+  tree equal to 780aee1).
+- ASCII: design/materialization/D20-INTENDED-MAIN-SYNC.md (STRUCTURAL CHECK: PASS).
+- DECISION: the owner's choice when pull request #6 conflicted with main (quoted in the ASCII): merge main in, keep this
+  branch's D14 at its paths, relocate the other line's colliding files to D14-RESCAN, add its epoch after D19, keep both
+  lines' law annotations, route all content as a Factory delta, classify the sync merge in the lineage.
+- STATIONS: S-DOC (F0, F2, F5, F12, F14), S-FIXTURE (F1), S-ANNOTATE (F3), S-EVIDENCE (F4, F7, F11, F13), S-BROWSER (F6,
+  F8), S-BUILD (F9, F10).
+- CHANGE: tests/sync/ (line import), tests/envmap/envmap.mjs (epoch alias), tests/reconcile/{build-reconciliation.mjs
+  (inheritance over existing supersessions), d20-reconciliation.json, d20-surfaces.json}, tests/reprove/{select.mjs
+  (carried conditions, --pass), lineage.mjs (sync merges), build-reprove.mjs (reuses harness nodes), runbook.json,
+  obligations.json}; imported from the other line: tests/reference/{ingress.mjs, run-ingress-checks.sh},
+  fixtures/reference/, its D14 records, receipts and evidence (relocated where the path is taken), its law annotations
+  (union, insertion-only); design/environment-map/ (epochs D14-RESCAN, D20-SYNC, D20; graph; views; SCHEMA 14,
+  ENVIRONMENT-MAP 13); evidence/D20/; docs/HANDOFF.md; README.md; this ledger; D20 records.  FORBIDDEN: FACTORY-LAW.md and
+  every other law/pass document except the five unions, compiler/, host/, factory/src|registry, earlier epochs, every
+  existing file of D0-D19 evidence, this branch's D14 records.
+- PREDICTED: import 177 checked PASS; regressions identical (D19 graph and Q01-Q22, D18/D18R/D19 epochs, D19 selection
+  replay); D20-SYNC 12 nodes / 112 edges; selection about 71 of 152, gaps 0, every group PASS; D20 epoch about 25 / 191;
+  merged about 1250 / 3190; validate 42; gates PASS; Q22 174 current facts, RUN 109 (108 claimable + 1 invalidated),
+  open stops GAP 8 / ERR 5 / UNK 4.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

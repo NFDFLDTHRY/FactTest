@@ -1,0 +1,2144 @@
+{
+ "schema": "facttest-environment-map-epoch/1",
+ "epoch": "D20",
+ "delta": "D20-MAIN-SYNC",
+ "commit": "c3159d562768d52465ead5e44bc6c5259dfc1b79 (canonical base; integration commit in LEDGER AFTER)",
+ "summary": "re-proof: 71 of 152 current RUN/OBS facts selected by environment drift, implementation change and obligations; 71 re-proved, 0 failed; obligations fulfilled R-54, R-59, R-62, R-63; environments ENV-D20-HOST, ENV-D20-BROWSER-DEFAULT, ENV-D20-BROWSER-GPUFLAGS, ENV-D20-SOURCES",
+ "nodes": [
+  {
+   "id": "ENV-D20-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D20-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "dev + release (proof sets)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": [
+      "api.w3.org:443",
+      "gpuweb.github.io:443",
+      "raw.githack.com:443",
+      "rawcdn.githack.com:443",
+      "source.chromium.org:443",
+      "w3c.github.io:443",
+      "webassembly.github.io:443",
+      "www.w3.org:443"
+     ]
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D20/identity/{host,toolchains,repo}.json",
+   "note": "D20 environment identity (the proof sets' pinned toolchains)"
+  },
+  {
+   "id": "ENV-D20-BROWSER-DEFAULT",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D20-BROWSER-DEFAULT",
+   "environment_class": "PHYSICAL_BROWSER",
+   "toolchain": null,
+   "target": "probe page (no bundle)",
+   "host_runtime": "HeadlessChrome/141.0.7390.37 via Playwright 1.56.1 (/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell)",
+   "versions": {
+    "product": "HeadlessChrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "js_engine": "14.1.146.11",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "playwright_browser_version": "141.0.7390.37"
+   },
+   "flags": {
+    "launch": {
+     "headless": true
+    },
+    "launch_args": []
+   },
+   "build_profile": null,
+   "origin_security": {
+    "origin": "http://127.0.0.1:<port>/",
+    "secure_context": true,
+    "cross_origin_isolated": false
+   },
+   "permissions_policy": null,
+   "implementation_hardware_class": "no WebGPU adapter",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": null,
+   "other_state": {
+    "launched_executable": [
+     "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+    ],
+    "hardwareConcurrency": 4
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "CDP product/revision/jsVersion",
+     "launch options",
+     "executable launched",
+     "origin"
+    ]
+   },
+   "owner": "evidence/D20/identity/browser-default.json",
+   "note": "D20 browser identity (default launch)"
+  },
+  {
+   "id": "ENV-D20-BROWSER-GPUFLAGS",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D20-BROWSER-GPUFLAGS",
+   "environment_class": "PHYSICAL_BROWSER",
+   "toolchain": null,
+   "target": "probe page (no bundle)",
+   "host_runtime": "HeadlessChrome/141.0.7390.37 via Playwright 1.56.1 (/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell)",
+   "versions": {
+    "product": "HeadlessChrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "js_engine": "14.1.146.11",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "playwright_browser_version": "141.0.7390.37"
+   },
+   "flags": {
+    "launch": {
+     "headless": true,
+     "ignoreDefaultArgs": [
+      "--disable-gpu"
+     ],
+     "args": [
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader",
+      "--ignore-gpu-blocklist"
+     ]
+    },
+    "launch_args": [
+     "--enable-unsafe-webgpu",
+     "--enable-features=Vulkan",
+     "--use-angle=swiftshader",
+     "--enable-unsafe-swiftshader",
+     "--ignore-gpu-blocklist"
+    ]
+   },
+   "build_profile": null,
+   "origin_security": {
+    "origin": "http://127.0.0.1:<port>/",
+    "secure_context": true,
+    "cross_origin_isolated": false
+   },
+   "permissions_policy": null,
+   "implementation_hardware_class": "software GPU: {\"vendor\":\"google\",\"architecture\":\"swiftshader\",\"device\":\"\",\"description\":\"\",\"isFallbackAdapter\":true}",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": null,
+   "other_state": {
+    "launched_executable": [
+     "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+    ],
+    "hardwareConcurrency": 4
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "CDP product/revision/jsVersion",
+     "launch options",
+     "executable launched",
+     "origin"
+    ]
+   },
+   "owner": "evidence/D20/identity/browser-gpu-flags.json",
+   "note": "D20 browser identity (GPU flag set)"
+  },
+  {
+   "id": "ENV-D20-SOURCES",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D20-SOURCES",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": null,
+   "target": "authority sources (no build)",
+   "host_runtime": "git ls-remote + raw source fetch through the session proxy",
+   "versions": {
+    "git": "2.43.0"
+   },
+   "flags": null,
+   "build_profile": null,
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "none (source observation)",
+   "dependency_graph_identity": null,
+   "other_state": {
+    "sources": [
+     {
+      "key": "https://github.com/chromium/chromium#main",
+      "commit": "e465e98ebffa362009e470e899a194016b2fec68",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/git/git#master",
+      "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/google/swiftshader#master",
+      "commit": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/gpuweb/gpuweb#main",
+      "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/immersive-web/webxr#main",
+      "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/NFDFLDTHRY/FactTest#claude/facttest-materialization-27amc7",
+      "commit": "780aee1b50c4a799a62b760823a3d1460d386d0f",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/rust-lang/cargo#master",
+      "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/rust-lang/reference#master",
+      "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/rust-lang/rust#master",
+      "commit": "ad2e756c7093149e25f67a747e579a49b7e6976e",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/tc39/ecma262#main",
+      "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/v8/v8#main",
+      "commit": "59145ee5f5954e0e2c7be6ec590d284970442aa8",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/w3c/accelerometer#main",
+      "commit": "9f0a66ddab67fbb3fffcf3118fd6a8e1d30e558e",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/ambient-light#main",
+      "commit": "381d5dd21deb386282bbc72147201a8e6ff3b5ea",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/deviceorientation#main",
+      "commit": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/geolocation#main",
+      "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/gyroscope#main",
+      "commit": "335dc6ecc5f85289a2745810a086e7f1c7237cdb",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/IndexedDB#main",
+      "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/magnetometer#main",
+      "commit": "40801a25e7ad6c0ea12b1777f1d913f21e680e87",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/manifest#main",
+      "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/mediacapture-main#main",
+      "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/orientation-sensor#main",
+      "commit": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/permissions#main",
+      "commit": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/proximity#main",
+      "commit": "1d43739eea15981bb6cab10224929c53ae6f51ed",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/sensors#main",
+      "commit": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/ServiceWorker#main",
+      "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/web-locks#main",
+      "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webappsec-permissions-policy#main",
+      "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webappsec-secure-contexts#main",
+      "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webcodecs#main",
+      "commit": "91160a493a2f59060c8b1ba4831e398f820c6e6d",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webcrypto#main",
+      "commit": "811c24c69eb22d477af5f1678cb70dbc611c7c40",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/WebAssembly/shared-everything-threads#main",
+      "commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WebAssembly/spec#main",
+      "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WebAssembly/threads#main",
+      "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WebBluetoothCG/web-bluetooth#main",
+      "commit": "2e451c162f6a3f2277f86104223de4630710506e",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/webmachinelearning/webnn#main",
+      "commit": "59db71f24cc87fe31b764bd06ca24c215c1755a4",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/compression#main",
+      "commit": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/whatwg/fetch#main",
+      "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/fs#main",
+      "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/html#main",
+      "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/serial#main",
+      "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/storage#main",
+      "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/streams#main",
+      "commit": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/webidl#main",
+      "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WICG/webhid#main",
+      "commit": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WICG/webusb#main",
+      "commit": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+      "read_by": "D16 clause re-verification"
+     }
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": [
+      "api.w3.org:443",
+      "gpuweb.github.io:443",
+      "raw.githack.com:443",
+      "rawcdn.githack.com:443",
+      "source.chromium.org:443",
+      "w3c.github.io:443",
+      "webassembly.github.io:443",
+      "www.w3.org:443"
+     ]
+    }
+   },
+   "identity_completeness": {
+    "missing": [
+     "published renderings (policy)"
+    ],
+    "present": [
+     "branch tip per source read"
+    ]
+   },
+   "owner": "evidence/D20/identity/tips.json",
+   "note": "D20 authority source tips"
+  },
+  {
+   "id": "EV-D20-IDENTITY-HOST",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-IDENTITY-HOST",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D20-HOST",
+   "artifact_identity": {
+    "path": "evidence/D20/identity/host.json",
+    "sha256": "064e791a94f3bdfd0d4e9bcdb3623e2233801c0290fab6f18928435f5f5e87c3",
+    "bytes": 4504,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "node 22.22.2, git version 2.43.0, Playwright 1.56.1, GPU device node ABSENT (no /dev/dri)",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-IDENTITY-TOOLCHAINS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-IDENTITY-TOOLCHAINS",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D20-HOST",
+   "artifact_identity": {
+    "path": "evidence/D20/identity/toolchains.json",
+    "sha256": "5d49ef5d6dcd695257ab68dc7fc767012da4c1a99f85ba2425e1ada60b776f1a",
+    "bytes": 2333,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "1.94.1 e408947bf, nightly 6bb1652a0, nightly-2026-09-24 6eeff9a52, stable e408947bf",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-IDENTITY-REPO",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-IDENTITY-REPO",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D20-HOST",
+   "artifact_identity": {
+    "path": "evidence/D20/identity/repo.json",
+    "sha256": "f3dba6139db3475e7aebfec3d9422254c7085172d1b966bd9bfd8615167c6e0b",
+    "bytes": 2099,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "head c3159d562; 14 workspace members; 42 working-tree changes",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-IDENTITY-BROWSER-DEFAULT",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-IDENTITY-BROWSER-DEFAULT",
+   "probe_ref": "PROBE-BROWSER-IDENTITY",
+   "environment_ref": "ENV-D20-BROWSER-DEFAULT",
+   "artifact_identity": {
+    "path": "evidence/D20/identity/browser-default.json",
+    "sha256": "8fe11b498c7b707666e2c1c9d0db44b54e8912c5728de2758d7731615dd65585",
+    "bytes": 1374,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "HeadlessChrome/141.0.7390.37 @9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e; launched /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_BROWSER",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-IDENTITY-BROWSER-GPU-FLAGS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-IDENTITY-BROWSER-GPU-FLAGS",
+   "probe_ref": "PROBE-BROWSER-IDENTITY",
+   "environment_ref": "ENV-D20-BROWSER-GPUFLAGS",
+   "artifact_identity": {
+    "path": "evidence/D20/identity/browser-gpu-flags.json",
+    "sha256": "97f12370e10e4ca5bb327e4c2d65fca957fe1db8487b4f9d5c98e395a69ba2d7",
+    "bytes": 2738,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "HeadlessChrome/141.0.7390.37 @9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e; launched /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_BROWSER",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-IDENTITY-TIPS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-IDENTITY-TIPS",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/identity/tips.json",
+    "sha256": "fc4e62b7d3ce4f1fd783a75d50c43527bef8063dfd9586cae2c48d233850986d",
+    "bytes": 13022,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "45 source tips; moved since recorded: 4",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-SELECTION",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-SELECTION",
+   "probe_ref": "PROBE-REPROOF-SELECTION",
+   "environment_ref": "ENV-D20-HOST",
+   "artifact_identity": {
+    "path": "evidence/D20/selection.json",
+    "sha256": "2f6c8460340e41ea8882c3608d041d4ab3669cd930ecade2f9eeb5f4af880cb5",
+    "bytes": 148062,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "152 current RUN/OBS facts evaluated; selected 71 (environment 8, implementation 4, obligation 62); gaps 0; environment pairs {\"SAME\":123,\"DRIFT\":8,\"UNK\":61}",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-CLAUSES-D15-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-CLAUSES-D15-SUMMARY",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/clauses/D15/summary.json",
+    "sha256": "a0d87bba7f5b6f1c23cc518b35842e0fd279b4a7bd18905b01f614e4af196be9",
+    "bytes": 8317,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "status.VERIFIED holds (60)",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-CLAUSES-D16-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-CLAUSES-D16-SUMMARY",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/clauses/D16/summary.json",
+    "sha256": "f9cfd301639b8aa58e9768794fdab7137cf00192c35905334fd210b736103205",
+    "bytes": 6460,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "status.VERIFIED holds (90)",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/ingress-reprove/ingress/verify.json",
+    "sha256": "061884c2d322da0b18abc725df2b4ccc778335c5080041ec3fce80ae845f2afc",
+    "bytes": 308,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\"); files holds (83); failed holds (0)",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/ingress-reprove/ingress/refetch.json",
+    "sha256": "f4abf75e73cb438bfd0792480ca0094d9be978a8d038301c0237711679660cb6",
+    "bytes": 319,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\"); checks holds (166); failed holds (0)",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/ingress-reprove/ingress/hosts.json",
+    "sha256": "a892bb9d298c91e641bb637fa25bd4978ed3db7246045435d3d80bd9a26278c4",
+    "bytes": 9812,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PUBLISHED_HOSTS_DENIED; ROUTE AVAILABLE\")",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+   "probe_ref": "PROBE-D14-REFERENCE-INGRESS",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/ingress-reprove/audit/fragments.json",
+    "sha256": "79eb5ca60ed84c30c052254919e2f47a5de450fe1bc329ea1796cceacd12f30c",
+    "bytes": 55846,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "records.0.authority holds (\"AUTH-CARGO-BUILD-STD\"); records.0.fact_status holds (\"RUN\"); records.0.fragment_status holds (\"PRESENT_IN_SOURCE\"); records.0.pin_verdict holds (\"PIN_MATCH\")",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-LINEAGE-LINEAGE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-LINEAGE-LINEAGE",
+   "probe_ref": "PROBE-WORKPIECE-VERIFY",
+   "environment_ref": "ENV-D20-HOST",
+   "artifact_identity": {
+    "path": "evidence/D20/lineage/lineage.json",
+    "sha256": "8715f26a7431b524b4265c9502379eb755822e769ab90be2a5b8da3f9c8b1bc6",
+    "bytes": 1796,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "first_parent_linear holds (true); factory_authored holds (true); unclassified_merges holds ([])",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-PATHS-PATHS-PROBE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-PATHS-PATHS-PROBE",
+   "probe_ref": "PROBE-PATHS-LITERAL",
+   "environment_ref": "ENV-D20-HOST",
+   "artifact_identity": {
+    "path": "evidence/D20/paths/paths-probe.json",
+    "sha256": "4946e2098391328091f0bade310120292a7ddd541e6122d131f26938de8e3cf4",
+    "bytes": 19902,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "dead_wildcard_surfaces holds ([])",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-PROCESS-D19-REPLAY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-PROCESS-D19-REPLAY",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D20-HOST",
+   "artifact_identity": {
+    "path": "evidence/D20/process/d19-replay.json",
+    "sha256": "c4e6f3a8db4580484668ffee989f8760c19827b89a037c2320c29e5ef0543411",
+    "bytes": 90080,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "evaluated holds (90); environment_pairs holds ({\"SAME\":114,\"DRIFT\":7,\"UNK\":9})",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-REOPEN-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-REOPEN-SUMMARY",
+   "probe_ref": "PROBE-AUTHORITY-REOPEN",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/reopen/summary.json",
+    "sha256": "2788175b1154067b5b5f00f5d19caa34a062163f37730a223627ea39973bf675",
+    "bytes": 3762,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "pin_check.PIN_MATCH holds (63); clause.CHANGED holds (\"(absent)\")",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "EV-D20-REOPEN-PROPOSAL-PHASES",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D20-REOPEN-PROPOSAL-PHASES",
+   "probe_ref": "PROBE-AUTHORITY-REOPEN",
+   "environment_ref": "ENV-D20-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D20/reopen/proposal-phases.json",
+    "sha256": "42804a3eb685100ad3af07f0b58e7469f1d841fb877e9afd8fc53b0d48194c41",
+    "bytes": 1760,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "finished holds (\"20 entries\")",
+   "epoch": "D20",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D20-MAIN-SYNC"
+  },
+  {
+   "id": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "subject": "D20 computational environment",
+   "predicate": "the current environment matches the recorded identity on 123 of 192 (environment, dimension) stale conditions of the current claims; drift on 8 (ENV-D19-SOURCES:authority.source_commit, ENV-D19-HOST:repo.commit); undecidable on 61 (the recorded identity carries no comparable value)",
+   "required_environment": [
+    "the proof sets' pinned toolchains",
+    "chromium-headless-shell via the installed Playwright"
+   ],
+   "constraint_refs": [
+    "CON-EM-005"
+   ],
+   "status": "RUN",
+   "note": "drift selects the claims bound to it for re-proof (FACT-D20-MINIMUM-SET); UNK pairs are listed in the selection record",
+   "source_ref": "evidence/D20/selection.json",
+   "owner": "D20 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "subject": "browser executable launched by Playwright 1.56.1 (headless)",
+   "predicate": "the default launch runs /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell and the GPU flag set runs /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell (process image under /proc), reporting HeadlessChrome/141.0.7390.37",
+   "required_environment": [
+    "Playwright headless launch"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "the D12 executable field named chromium.executablePath() instead (D18R R-53)",
+   "source_ref": "evidence/D20/identity/browser-*.json",
+   "owner": "D20 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D20-MINIMUM-SET",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D20-MINIMUM-SET",
+   "subject": "D20 minimum affected physical test set",
+   "predicate": "152 current RUN/OBS facts evaluated against environment drift, implementation change and obligations: 71 selected (environment 8, implementation 4, obligation 62), 71 re-proved, 0 failed, 0 without a runbook entry; the other 81 keep their evidence (no drift, implementation unchanged)",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "groups: ingress, reopen, clauses, process, identity, lineage, paths",
+   "source_ref": "evidence/D20/selection.json",
+   "owner": "D20 (derived from the evidence named by its edges)"
+  }
+ ],
+ "edges": [
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "EV-D20-CLAUSES-D15-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any clause source tip moves with the clause window changed"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D16-CLAUSES-VERIFIED",
+   "to": "EV-D20-CLAUSES-D16-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D16-CLAUSES-VERIFIED",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any clause source tip moves with the clause window changed"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "EV-D20-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "EV-D20-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "ENV-D20-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "another Playwright or browser build"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-CORPUS-INGESTED",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-CORPUS-REPRODUCIBLE",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-PAGES-BRANCH-ROUTE",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-PUBLISHED-HOSTS-DENIED",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CARGO-BUILD-STD",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-FS-OPFS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-FS-OPFS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-REVISIONS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GIT-WORKTREE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-DESTROY",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-DESTROY",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-LOST",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-LOST",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-COI",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-COI",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-HTML-WORKERS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-HTML-WORKERS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-IDB-TRANSACTION",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-RUST-REF-NOSTD",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-V8-FLAGS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-V8-FLAGS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-SET",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-SET",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WASM-THREADS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WASM-THREADS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WEB-LOCKS",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WEB-LOCKS",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-REOPEN-WGSL",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-REOPEN-WGSL",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-FF-ONLY-INTEGRATION",
+   "to": "EV-D20-LINEAGE-LINEAGE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-FF-ONLY-INTEGRATION",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "host_runtime.git_version",
+    "relation": "changes (commit-object and ref compare-and-set semantics), or IMPL-FACTORY-OPS changes the integrate rule"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WORKPIECE-ISOLATION",
+   "to": "EV-D20-LINEAGE-LINEAGE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WORKPIECE-ISOLATION",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "host_runtime.git_version",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SURFACES-LITERAL-ENFORCED",
+   "to": "EV-D20-PATHS-PATHS-PROBE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-PROCESS-D19-REPLAY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another pinned nightly"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D20-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "another browser build"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D20-PROCESS-D19-REPLAY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any later change of an implementation or environment"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "EV-D20-REOPEN-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-FRONTIER-SOURCES-AT-PIN",
+   "to": "EV-D20-REOPEN-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-FRONTIER-SOURCES-AT-PIN",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any pinned repository tip moves with the cited file changed"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-MEMORY64-FINISHED",
+   "to": "EV-D20-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-MEMORY64-FINISHED",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "registry tip moves"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WASM-SET-PHASE-1",
+   "to": "EV-D20-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM-SET-PHASE-1",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "registry tip moves"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WASM-THREADS-PHASE-4",
+   "to": "EV-D20-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM-THREADS-PHASE-4",
+   "to": "ENV-D20-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "registry tip moves"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "PROBE-ENV-IDENTITY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-IDENTITY-HOST"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-IDENTITY-TOOLCHAINS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-IDENTITY-REPO"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-IDENTITY-TIPS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "EV-D20-SELECTION"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D20-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "to": "PROBE-BROWSER-IDENTITY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "to": "EV-D20-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "to": "EV-D20-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "to": "ENV-D20-BROWSER-DEFAULT"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "PROBE-REPROOF-SELECTION"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-SELECTION"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-CLAUSES-D15-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-CLAUSES-D16-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-LINEAGE-LINEAGE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-PATHS-PATHS-PROBE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-PROCESS-D19-REPLAY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-REOPEN-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "EV-D20-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "ENV-D20-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another pinned nightly"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D20-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D20-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "another browser build"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D20-LAUNCHED-EXECUTABLE",
+   "to": "ENV-D20-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "another Playwright or browser build"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D20-MINIMUM-SET",
+   "to": "ENV-D20-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any later change of an implementation or environment"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "LAW-EVIDENCE-OBLIGATIONS",
+   "to": "FACT-D20-LAUNCHED-EXECUTABLE"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-IMP-PW1",
+   "to": "FACT-D20-LAUNCHED-EXECUTABLE"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY",
+   "to": "R-54",
+   "obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH",
+   "to": "R-54",
+   "obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS",
+   "to": "R-54",
+   "obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+   "to": "R-54",
+   "obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-REOPEN-SUMMARY",
+   "to": "R-59",
+   "obligation": "D20: re-prove the pin re-check (tests/reference/reopen.mjs on the D11-D13 authorities)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-REOPEN-PROPOSAL-PHASES",
+   "to": "R-59",
+   "obligation": "D20: re-prove the pin re-check (tests/reference/reopen.mjs on the D11-D13 authorities)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY",
+   "to": "R-62",
+   "obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH",
+   "to": "R-62",
+   "obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS",
+   "to": "R-62",
+   "obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+   "to": "R-62",
+   "obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D20-LINEAGE-LINEAGE",
+   "to": "R-63",
+   "obligation": "D20: re-prove the lineage over the history that now includes the sync merge (tests/reprove/lineage.mjs)"
+  }
+ ]
+}

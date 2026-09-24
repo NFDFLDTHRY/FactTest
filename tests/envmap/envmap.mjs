@@ -42,6 +42,9 @@
 //   what FactTest may claim, bounded to the environments of its physical evidence, with the epoch of its newest physical
 //   evidence, whether the current epoch re-proved it, and its Q18 terminal.  A [GAP]/[ERR]/[UNK]/[OBS] statement that
 //   later evidence INVALIDATED is closed history, not an open stop (explicit_stops separates open from closed).
+// D20 (main sync): an epoch entry FILE=LABEL merges FILE under LABEL when the file's own label is already taken by
+//   another line's epoch (the file stays byte-identical; the merged epoch list records relabeled_from).  Without "="
+//   every merge is exactly as before.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -557,8 +560,9 @@ function merge(base, epochFiles) {
   const first = { epoch: 'D11', delta: base.delta, commit: base.repository_commit, summary: 'computational environment map (origin epoch)', nodes_added: base.nodes.length, edges_added: base.edges.length };
   g.epochs = base.epochs ? [...base.epochs] : [first];
   const ids = new Set(g.nodes.map(n => n.id)); const edgeKeys = new Set(g.edges.map(e => JSON.stringify(e)));
-  for (const f of epochFiles) {
-    const ep = load(f);
+  for (const spec of epochFiles) {
+    const [f, alias] = spec.split('='); const ep = load(f);
+    if (alias && alias !== ep.epoch) { ep.relabeled_from = ep.epoch; ep.epoch = alias; }
     if (ep.schema !== 'facttest-environment-map-epoch/1') throw new Error(`${f}: schema ${ep.schema}`);
     if (g.epochs.some(e => e.epoch === ep.epoch)) throw new Error(`${f}: epoch ${ep.epoch} already merged`);
     for (const [k, v] of Object.entries(ep.node_classes || {})) { if (g.node_classes[k]) throw new Error(`${f}: node class ${k} already declared`); g.node_classes[k] = { ...v, declared_in: ep.epoch }; }
@@ -572,7 +576,7 @@ function merge(base, epochFiles) {
       if (edgeKeys.has(k)) throw new Error(`${f}: duplicate edge ${k}`);
       edgeKeys.add(k); g.edges.push(e);
     }
-    g.epochs.push({ epoch: ep.epoch, delta: ep.delta, commit: ep.commit, summary: ep.summary, nodes_added: ep.nodes.length, edges_added: ep.edges.length, ...(ep.node_classes || ep.edge_semantics ? { declares: [...Object.keys(ep.node_classes || {}), ...Object.keys(ep.edge_semantics || {})] } : {}) });
+    g.epochs.push({ epoch: ep.epoch, ...(ep.relabeled_from ? { relabeled_from: ep.relabeled_from } : {}), delta: ep.delta, commit: ep.commit, summary: ep.summary, nodes_added: ep.nodes.length, edges_added: ep.edges.length, ...(ep.node_classes || ep.edge_semantics ? { declares: [...Object.keys(ep.node_classes || {}), ...Object.keys(ep.edge_semantics || {})] } : {}) });
   }
   g.current_epoch = g.epochs[g.epochs.length - 1].epoch;
   return g;

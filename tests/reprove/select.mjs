@@ -1,6 +1,6 @@
 // D19 minimum affected physical test set (design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md section 3).
 // Usage: node tests/reprove/select.mjs --graph FILE --identity DIR --dimensions FILE --runbook FILE --obligations FILE
-//        [--root DIR] --out FILE
+//        [--root DIR] [--pass D19] --out FILE
 // For every CURRENT fact (not superseded, not resolved) whose status is RUN or OBS, decide from the graph whether its
 // physical evidence still applies:
 //   ENVIRONMENT     each STALE_IF (environment, dimension): the value recorded on the ENVIRONMENT node against the current
@@ -8,7 +8,10 @@
 //                   UNK (the recorded identity does not carry a comparable value)
 //   IMPLEMENTATION  the repository paths of its IMPLEMENTED_BY implementations and of its probes' implementations changed
 //                   after the commit that added its newest physical evidence (git log), or in the working tree
-//   OBLIGATION      a reconciliation obligation addressed to this pass ("D19:", not revised) names it
+//   OBLIGATION      a reconciliation obligation addressed to this pass ("<pass>:", default D19, not revised) names it
+// D20: once a claim was re-proved, the re-proof carried each of its stale conditions to the environments of the new
+// evidence (same dimension and relation); such a carried condition supersedes the older one, which is not evaluated again
+// (listed as superseded_conditions) - otherwise a drift the re-proof already answered would select the claim forever.
 // A fact is SELECTED on any DRIFT, implementation change or obligation.  Each selected fact is mapped to the runbook group
 // that re-proves it; a selected fact without a runbook entry is a [GAP] (it stays stale).  UNK dimensions are reported,
 // never silently counted as SAME.  Generic: names no fact, environment or dimension outside the data files.
@@ -55,9 +58,9 @@ function evidenceCommit(f) {
     if (m) cs.push({ evidence: e.id, commit: m[1] });
     else if (a.path && existsSync(join(o.root, a.path))) { const c = git(['log', '--diff-filter=A', '--format=%H', '--', a.path]); if (c) cs.push({ evidence: e.id, commit: c.split('\n').pop() }); }
   }
-  if (!cs.length) return { physical_evidence: evs.map(e => e.id), commit: null };
+  if (!cs.length) return { physical_evidence: evs.map(e => e.id), commit: null, newest_envs: [] };
   cs.sort((x, y) => Number(git(['rev-list', '--count', y.commit])) - Number(git(['rev-list', '--count', x.commit])));
-  return { physical_evidence: evs.map(e => e.id), commit: cs[0].commit, newest: cs[0].evidence };
+  return { physical_evidence: evs.map(e => e.id), commit: cs[0].commit, newest: cs[0].evidence, newest_envs: [...new Set(cs.filter(c => c.commit === cs[0].commit).map(c => ids.get(c.evidence).environment_ref))] };
 }
 function implPaths(f) {
   const impls = [...out(f.id, 'IMPLEMENTED_BY').map(e => e.to), ...out(f.id, 'PROBED_BY').map(e => (ids.get(e.to) || {}).implemented_by)].filter(Boolean);
@@ -122,7 +125,7 @@ const revised = r => g.edges.some(e => e.type === 'SUPERSEDES' && e.reconciliati
 const supBy = new Map(g.edges.filter(e => e.type === 'SUPERSEDES').map(e => [e.to, e.from]));
 const currentOf = x => { const seen = new Set(); while (supBy.has(x) && !seen.has(x)) { seen.add(x); x = supBy.get(x); } return x; };
 // obligation subjects are followed to their current successor (a reconciliation may name the node it superseded)
-const obligations = g.nodes.filter(n => n.class === 'RECONCILIATION' && /^D19:/.test(n.new_probe_obligation || '') && !revised(n.id)).map(n => ({ reconciliation: n.id, obligation: n.new_probe_obligation, subjects: [...new Set(out(n.id, 'RECONCILES').map(e => currentOf(e.to)))].sort(), mapped: OB[n.id] || null }));
+const obligations = g.nodes.filter(n => n.class === 'RECONCILIATION' && new RegExp(`^${o.pass || 'D19'}:`).test(n.new_probe_obligation || '') && !revised(n.id)).map(n => ({ reconciliation: n.id, obligation: n.new_probe_obligation, subjects: [...new Set(out(n.id, 'RECONCILES').map(e => currentOf(e.to)))].sort(), mapped: OB[n.id] || null }));
 const unmapped = obligations.filter(x => !x.mapped).map(x => x.reconciliation);
 // an obligation selects the subjects that its own groups re-prove; other subjects are reported, not silently re-proved
 const byObligation = new Map(); const notReproved = [];
@@ -136,13 +139,16 @@ const facts = [];
 for (const f of g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT' && !superseded.has(n.id) && !resolved.has(n.id)).sort((x, y) => x.id.localeCompare(y.id))) {
   if (!['RUN', 'OBS'].includes(f.status)) { facts.push({ fact: f.id, status: f.status, selected: false, reason: 'boundary record (not an execution or observation claim)' }); continue; }
   const ev = evidenceCommit(f);
-  const environment = out(f.id, 'STALE_IF').map(e => ({ environment: e.to, dimension: e.condition.dimension, ...resolve(e.condition.dimension, ids.get(e.to), f, ev) }));
+  const cond = e => `${e.condition.dimension}|${e.condition.relation}`; const stale = out(f.id, 'STALE_IF');
+  const carried = new Set(stale.filter(e => ev.newest_envs.includes(e.to)).map(cond));
+  const supersededConditions = stale.filter(e => !ev.newest_envs.includes(e.to) && carried.has(cond(e))).map(e => `${e.to} ${e.condition.dimension}`);
+  const environment = stale.filter(e => !supersededConditions.includes(`${e.to} ${e.condition.dimension}`)).map(e => ({ environment: e.to, dimension: e.condition.dimension, ...resolve(e.condition.dimension, ids.get(e.to), f, ev) }));
   const paths = implPaths(f); const ch = changedSince(ev.commit, paths);
   const implementation = { evidence_commit: ev.commit, newest_evidence: ev.newest || null, physical_evidence: ev.physical_evidence, paths, changed_commits: ch.commits, changed_working_tree: ch.working_tree, verdict: !ev.commit ? (ev.physical_evidence.length ? 'UNDATED' : 'NO_PHYSICAL_EVIDENCE') : (ch.commits.length || ch.working_tree.length ? 'CHANGED' : 'UNCHANGED') };
   const obl = byObligation.get(f.id) || [];
   const reasons = [...(environment.some(x => x.verdict === 'DRIFT') ? ['ENVIRONMENT'] : []), ...(implementation.verdict === 'CHANGED' ? ['IMPLEMENTATION'] : []), ...(obl.length ? ['OBLIGATION'] : [])];
   const rb = RB.facts[f.id] || null;
-  facts.push({ fact: f.id, status: f.status, selected: reasons.length > 0, reasons, obligations: obl, runbook: rb ? rb.group : null, gap: reasons.length > 0 && !rb ? 'no runbook entry: the fact stays stale' : undefined, environment, implementation });
+  facts.push({ fact: f.id, status: f.status, selected: reasons.length > 0, reasons, obligations: obl, runbook: rb ? rb.group : null, gap: reasons.length > 0 && !rb ? 'no runbook entry: the fact stays stale' : undefined, environment, ...(supersededConditions.length ? { superseded_conditions: supersededConditions } : {}), implementation });
 }
 const sel = facts.filter(x => x.selected);
 const groups = {};

@@ -1,0 +1,90 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "process",
+ "kind": "repo",
+ "started": "2026-09-24T11:43:45.522Z",
+ "commands": [
+  {
+   "command": "O=$(pwd)/evidence/D20/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 780aee1b50c4a799a62b760823a3d1460d386d0f && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out $T/g18r.json >/dev/null && node tests/reprove/select.mjs --graph $T/g18r.json --identity evidence/D19/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --out $O/d19-replay.json",
+   "exit": 0,
+   "seconds": 2
+  }
+ ],
+ "facts": {
+  "FACT-D19-ENVIRONMENT-IDENTITY": {
+   "probe": "PROBE-ENV-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d19-replay.json",
+     "sha256": "c4e6f3a8db4580484668ffee989f8760c19827b89a037c2320c29e5ef0543411",
+     "checks": [
+      {
+       "path": "evaluated",
+       "eq": 90,
+       "observed": 90,
+       "ok": true
+      },
+      {
+       "path": "environment_pairs",
+       "eq": {
+        "SAME": 114,
+        "DRIFT": 7,
+        "UNK": 9
+       },
+       "observed": {
+        "SAME": 114,
+        "DRIFT": 7,
+        "UNK": 9
+       },
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D19-MINIMUM-SET": {
+   "probe": "PROBE-REPROOF-SELECTION",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d19-replay.json",
+     "sha256": "c4e6f3a8db4580484668ffee989f8760c19827b89a037c2320c29e5ef0543411",
+     "checks": [
+      {
+       "path": "selected",
+       "eq": 29,
+       "observed": 29,
+       "ok": true
+      },
+      {
+       "path": "selected_by",
+       "eq": {
+        "environment": 6,
+        "implementation": 27,
+        "obligation": 4
+       },
+       "observed": {
+        "environment": 6,
+        "implementation": 27,
+        "obligation": 4
+       },
+       "ok": true
+      },
+      {
+       "path": "gaps",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T11:43:47.859Z",
+ "status": "PASS"
+}

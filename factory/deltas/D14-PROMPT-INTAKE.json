@@ -1,0 +1,23 @@
+{
+  "delta_id": "D14-PROMPT-INTAKE",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/d9-rust-cargo-proof-4nys6s",
+  "canonical_base": "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W15",
+  "approved_ascii_refs": ["design/materialization/D14-REFERENCE-RESCAN-PROMPT.md", "design/materialization/D13-PRE-RESCAN-BASELINE.md", "docs/HANDOFF.md", "FACTORY-LAW.md"],
+  "intent": "FIRST ACTION of the technical reference rescan: track the exact owner prompt as design/materialization/D14-REFERENCE-RESCAN-PROMPT.md through the Factory before any assembly; record the D13-REPO-HYGIENE AFTER ledger entry (integrated as 8265623, merged into main by PR #4 as 4d8a4c0)",
+  "may_read": ["*"],
+  "may_change": ["design/materialization/D14-REFERENCE-RESCAN-PROMPT.md", "design/materialization/LEDGER.md", "factory/deltas/D14-PROMPT-INTAKE.json", "factory/fixtures/D14-PROMPT-INTAKE/", "factory/receipts/D14-PROMPT-INTAKE/"],
+  "must_not_change": ["FACTORY-LAW.md", "FACTORY-CONTRACTS.md", "REFERENCE-AUTHORITY.md", "README.md", "docs/", "compiler/", "host/", "factory/src/", "factory/registry/", "factory/tests/", "fixtures/", "tests/", "evidence/", "design/environment-map/", "design/materialization/M0-INTENDED-SYSTEM.md", "design/materialization/M9-OBSERVED-SYSTEM.md", "design/materialization/D13-INTENDED-REPO-HYGIENE.md", "design/materialization/D13-OBSERVED-REPO-HYGIENE.md", "design/materialization/D13-PRE-RESCAN-BASELINE.md", "design/materialization/D13-REPO-HYGIENE-PROMPT.md", "Cargo.toml", "Cargo.lock", "rust-toolchain.toml"],
+  "required_station_capabilities": ["DOC_CONTRACT_FORGE"],
+  "invariants": ["the prompt text is verbatim", "no assembly, no source, fixture, evidence or law change", "exactly one ledger entry carries 'recorded by the next delta'"],
+  "tests": ["prompt file present and verbatim", "ledger D13 AFTER entry present with the integration commit", "everything else byte-identical to the base"],
+  "evidence_requirements": ["FactoryReceipt F0-doc", "verification.json"],
+  "expected_output_contract": {"required_paths": ["design/materialization/D14-REFERENCE-RESCAN-PROMPT.md"], "forbidden_paths": ["target"]},
+  "fixtures": ["factory/fixtures/D14-PROMPT-INTAKE/F0-doc.json"],
+  "reinspect_commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "grep -qF 'Solve the retrieval problem and get all the relevant sources to the factor ingested.' design/materialization/D14-REFERENCE-RESCAN-PROMPT.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ] && sh tests/hygiene/handoff-check.sh /tmp/d14-intake-handoff.json"], "log": "reinspect-intake.log"}
+  ],
+  "commit_trailers": ["Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>", "Claude-Session: https://claude.ai/code/session_01ECNQPSSxYenfqKLGWMgc3Z"]
+}
