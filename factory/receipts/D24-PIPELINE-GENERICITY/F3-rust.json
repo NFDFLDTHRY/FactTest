@@ -1,0 +1,293 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D24-PIPELINE-GENERICITY-F3-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F3-rust",
+  "workpiece_id": "W29",
+  "delta_id": "D24-PIPELINE-GENERICITY",
+  "canonical_base": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+  "input_artifacts": [
+    "D24 section 2 (codegen, BundleVerifier, observe, kernel, transport)",
+    "section 3 (genericity ladder)"
+  ],
+  "open_tree": "7f3def95445de8d797dceb205758db7a73153c5e",
+  "close_tree": "795f65a98462493467eafc07cc4fa178a9daca4e",
+  "changed_paths": [
+    "compiler/bundle/src/lib.rs",
+    "compiler/codegen/src/lib.rs",
+    "compiler/foundation/src/diag.rs",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/tests/genericity_ladder.rs",
+    "compiler/kernel/tests/observe_ladder.rs",
+    "compiler/observe/src/lib.rs",
+    "compiler/wasm-abi/src/lib.rs",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-checks.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-host.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-wasm.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-fmt.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-wasm-release.log",
+    "host/factc/src/main.rs",
+    "host/factc/tests/driver.rs"
+  ],
+  "output_artifacts": [
+    "compiler/codegen/src/lib.rs",
+    "compiler/bundle/src/lib.rs",
+    "compiler/observe/src/lib.rs",
+    "compiler/kernel/tests/genericity_ladder.rs",
+    "host/factc/tests/driver.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D24-PIPELINE-GENERICITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-host.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-host.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-wasm.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-wasm.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-wasm-release.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-wasm-release.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo +1.94.1 fmt --all --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-fmt.log"
+    },
+    {
+      "check": "command:cargo +1.94.1 clippy --workspace --all-targets --exclude factc-wasm-abi -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-host.log"
+    },
+    {
+      "check": "command:cargo +nightly-2026-09-24 clippy -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-wasm.log"
+    },
+    {
+      "check": "command:cargo +1.94.1 test --workspace",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log"
+    },
+    {
+      "check": "command:cargo +nightly-2026-09-24 build --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-wasm-release.log"
+    },
+    {
+      "check": "command:sh -c ! grep -qE 'FAILED|panicked' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log && grep -q 'test result: ok. 7 passed' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log && grep -q 'test result: ok. 8 passed' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log && [ $(grep -E '^test result' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log | awk '{s+=$4} END{print s}') -ge 130 ] && T=$(mktemp -d) && /home/user/factory-target-canon/debug/factory wasm-inspect /home/user/factory-target-w29/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --out $T/inspect.json >/dev/null && node -e 'const j=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));const e=j.exports.map(x=>x.split(\":\")[0]);console.log(\"exports\",e.length);if(e.length!==22)process.exit(1)' $T/inspect.json && T=$(mktemp -d) && node tests/implementation/wasm-sections.mjs --label K=/home/user/factory-target-w29/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --exclude-custom name --out $T/s.json >/dev/null && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).builds[0].identity_excluding_custom;console.log(\"exec identity\",s);' $T/s.json && git diff --exit-code 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 -- compiler host Cargo.toml Cargo.lock :!compiler/foundation/src :!compiler/codegen/src :!compiler/bundle/src :!compiler/observe/src :!compiler/kernel/src :!compiler/kernel/tests/genericity_ladder.rs :!compiler/kernel/tests/observe_ladder.rs :!compiler/wasm-abi/src :!host/factc/src :!host/factc/tests :!compiler/codegen/templates/runtime.js :!compiler/codegen/templates/index.html :!compiler/codegen/templates/selector.js :!host/harness/bundle-probe.mjs :!host/harness/kernel-build-probe.mjs && echo 'tests pass (genericity ladder 7, driver 8); 22 exports; identity recorded (the pin is checked once F4 delivers it); no other compiler/host source changed'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-checks.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/bundle/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/observe/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/kernel/tests/genericity_ladder.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:host/factc/tests/driver.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-fmt.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-host.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-wasm.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-wasm-release.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T14:53:57Z",
+  "status": "PASS"
+}

@@ -1,145 +1,162 @@
 {
-  "schema": "facttest-proof-sets/1",
-  "delta": "D13-REPO-HYGIENE",
-  "law": "design/materialization/D13-INTENDED-REPO-HYGIENE.md section 3.2-3.3",
-  "rule": "a proof record states its set, target, profile and toolchain; a bare cargo command selects HOST_NATIVE_SET (default-members) and never the whole project; CROSS_SET and HEURISTIC records carry proof weight NONE",
-  "sets": {
-    "HOST_NATIVE_SET": {
-      "toolchain": "1.94.1",
-      "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
-      "components": [
-        "clippy",
-        "rustfmt"
-      ],
-      "target": "host (x86_64-unknown-linux-gnu)",
-      "selection": "default-members (bare cargo)",
-      "roots": [
-        "factory",
-        "factc-foundation",
-        "factc-source",
-        "factc-semantic",
-        "factc-capability",
-        "factc-implementation",
-        "factc-planning",
-        "factc-verifier",
-        "factc-codegen",
-        "factc-bundle",
-        "factc-observe",
-        "factc-kernel",
-        "factc"
-      ],
-      "profiles": [
-        "dev",
-        "release"
-      ],
-      "evidence_basis": "D9 T9-P2-*, T9-P3-01..03, T9-P4-*, T9-P6-* ran on rustc 1.94.1 (e408947bf 2026-03-25)"
+ "schema": "facttest-proof-sets/1",
+ "delta": "D13-REPO-HYGIENE",
+ "law": "design/materialization/D13-INTENDED-REPO-HYGIENE.md section 3.2-3.3",
+ "rule": "a proof record states its set, target, profile and toolchain; a bare cargo command selects HOST_NATIVE_SET (default-members) and never the whole project; CROSS_SET and HEURISTIC records carry proof weight NONE",
+ "sets": {
+  "HOST_NATIVE_SET": {
+   "toolchain": "1.94.1",
+   "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+   "components": [
+    "clippy",
+    "rustfmt"
+   ],
+   "target": "host (x86_64-unknown-linux-gnu)",
+   "selection": "default-members (bare cargo)",
+   "roots": [
+    "factory",
+    "factc-foundation",
+    "factc-source",
+    "factc-semantic",
+    "factc-capability",
+    "factc-implementation",
+    "factc-planning",
+    "factc-verifier",
+    "factc-codegen",
+    "factc-bundle",
+    "factc-observe",
+    "factc-kernel",
+    "factc"
+   ],
+   "profiles": [
+    "dev",
+    "release"
+   ],
+   "evidence_basis": "D9 T9-P2-*, T9-P3-01..03, T9-P4-*, T9-P6-* ran on rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "WASM64_KERNEL_SET": {
+   "toolchain": "nightly-2026-09-24",
+   "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+   "components": [
+    "rust-src",
+    "clippy"
+   ],
+   "target": "wasm64-unknown-unknown",
+   "build_std": "core",
+   "rustflags": "-C link-arg=-zstack-size=16777216",
+   "selection": "-p factc-wasm-abi",
+   "roots": [
+    "factc-wasm-abi"
+   ],
+   "graph": [
+    "factc-wasm-abi",
+    "factc-foundation",
+    "factc-source",
+    "factc-semantic",
+    "factc-capability",
+    "factc-implementation",
+    "factc-planning",
+    "factc-verifier",
+    "factc-codegen",
+    "factc-bundle",
+    "factc-observe",
+    "factc-kernel"
+   ],
+   "profiles": [
+    "dev",
+    "release"
+   ],
+   "evidence_basis": "D9 T9-P3-04, T9-P5-02/03, T9-P8-* ran on rustc 1.100.0-nightly (6eeff9a52 2026-09-23); KRN-D13-B reproduced D9's kernel byte-for-byte",
+   "kernel_identity": {
+    "note": "D18: the kernel identity is exec_identity - install-name independent (D17 FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT: under two rustup install names only the custom \"name\" section differs, LLVM promoted-symbol hashes).  The whole-file sha256 differs per install name and stays recorded in by_install_name (informational, never the verdict).  Historical: D13 declared identity per install name only (H-12 [GAP]).",
+    "artifact": "wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+    "exec_identity": {
+     "sha256": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115",
+     "excluded_custom_sections": [
+      "name"
+     ],
+     "algorithm": "sha256 over (section id byte ++ section body) of every section except the excluded custom sections, in module order (tests/implementation/wasm-sections.mjs identity_excluding_custom)",
+     "source": "evidence/D24/kernel/sections.json (D24 genericity repair: codegen, bundle, observe, kernel, foundation, wasm-abi changed; INSTALL-PINNED and INSTALL-RENAMED builds, rustc 6eeff9a52); the identity is source-exact (panic locations carry line numbers), so it is pinned from the committed source"
     },
-    "WASM64_KERNEL_SET": {
-      "toolchain": "nightly-2026-09-24",
-      "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
-      "components": [
-        "rust-src",
-        "clippy"
-      ],
-      "target": "wasm64-unknown-unknown",
-      "build_std": "core",
-      "rustflags": "-C link-arg=-zstack-size=16777216",
-      "selection": "-p factc-wasm-abi",
-      "roots": [
-        "factc-wasm-abi"
-      ],
-      "graph": [
-        "factc-wasm-abi",
-        "factc-foundation",
-        "factc-source",
-        "factc-semantic",
-        "factc-capability",
-        "factc-implementation",
-        "factc-planning",
-        "factc-verifier",
-        "factc-codegen",
-        "factc-bundle",
-        "factc-observe",
-        "factc-kernel"
-      ],
-      "profiles": [
-        "dev",
-        "release"
-      ],
-      "evidence_basis": "D9 T9-P3-04, T9-P5-02/03, T9-P8-* ran on rustc 1.100.0-nightly (6eeff9a52 2026-09-23); KRN-D13-B reproduced D9's kernel byte-for-byte",
-      "kernel_identity": {
-        "note": "D18: the kernel identity is exec_identity - install-name independent (D17 FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT: under two rustup install names only the custom \"name\" section differs, LLVM promoted-symbol hashes).  The whole-file sha256 differs per install name and stays recorded in by_install_name (informational, never the verdict).  Historical: D13 declared identity per install name only (H-12 [GAP]).",
-        "artifact": "wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
-        "exec_identity": {
-          "sha256": "fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976",
-          "excluded_custom_sections": [
-            "name"
-          ],
-          "algorithm": "sha256 over (section id byte ++ section body) of every section except the excluded custom sections, in module order (tests/implementation/wasm-sections.mjs identity_excluding_custom)",
-          "source": "evidence/D23/kernel/sections.json (D23 transport extension, 22 exports; INSTALL-PINNED and INSTALL-RENAMED builds, rustc 6eeff9a52); the identity is source-exact (panic locations carry line numbers), so it is pinned from the committed source"
-        },
-        "by_install_name": {
-          "nightly-2026-09-24-x86_64-unknown-linux-gnu": {
-            "sha256": "fa5c7131fa8c6d43090672ae718dccbb536cc6d4a3ca70b6f54c4259412ae42f",
-            "bytes": 3373536,
-            "source": "evidence/D23/kernel/builds.json (INSTALL-PINNED)"
-          },
-          "nightly-x86_64-unknown-linux-gnu": {
-            "sha256": "6deeebc649a01337c94d10a389c1ad1ad300621672fadd9e7d2eacf3344f1ace",
-            "bytes": 3373534,
-            "source": "evidence/D23/kernel/builds.json (INSTALL-RENAMED)"
-          }
-        },
-        "history": [
-          {
-            "until": "D22 (a43c0ce)",
-            "exec_identity_sha256": "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2",
-            "by_install_name": {
-              "nightly-2026-09-24-x86_64-unknown-linux-gnu": {
-                "sha256": "6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81",
-                "bytes": 3350254,
-                "source": "KRN-D13-A (D13 assembly)"
-              },
-              "nightly-x86_64-unknown-linux-gnu": {
-                "sha256": "309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c",
-                "bytes": 3350252,
-                "source": "D9 T9-P8-01; reproduced by KRN-D13-B"
-              }
-            },
-            "note": "eight-operation transport (C14 bootstrap exports only); superseded by the D23 transport extension"
-          }
-        ]
-      }
+    "by_install_name": {
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu": {
+      "sha256": "2dbb740e8d671c3d87895d064cfc9e479ba71743da547f19d72b35dba9a2070b",
+      "bytes": 3384151,
+      "source": "evidence/D24/kernel/builds.json (INSTALL-PINNED)"
+     },
+     "nightly-x86_64-unknown-linux-gnu": {
+      "sha256": "e0b0aa8b81829fed653d615889c9e09b6a693b3234aed3f574b429992d1f5c83",
+      "bytes": 3384149,
+      "source": "evidence/D24/kernel/builds.json (INSTALL-RENAMED)"
+     }
     },
-    "ALL_SOURCES": {
-      "toolchain": "1.94.1",
-      "target": "none (rustfmt reads files; nothing is compiled)",
-      "selection": "cargo fmt --all (every member's files)",
-      "profiles": []
-    },
-    "ALL_MEMBERS_GRAPH": {
-      "toolchain": "1.94.1",
-      "target": "none (cargo metadata; nothing is compiled)",
-      "selection": "every workspace member + every physical Cargo.toml under the root",
-      "profiles": []
-    },
-    "CROSS_SET": {
-      "toolchain": "1.94.1",
-      "target": "host",
-      "selection": "--workspace (mixes HOST_NATIVE_SET with the target-specific factc-wasm-abi)",
-      "proof_weight": "NONE",
-      "meaning": "diagnostic only: records that a host --workspace build/clippy cannot succeed (factc-wasm-abi has no host panic_handler by design) and that --workspace tests compile it only in the test harness; never a proof of either set"
-    },
-    "HEURISTIC": {
-      "proof_weight": "NONE",
-      "members": [
-        "factory nostd-check",
-        "factory depcheck"
-      ],
-      "authoritative_replacement": {
-        "no_std": "WASM64_KERNEL_SET core-only graph (T9-P5-02/03)",
-        "dependencies": "ALL_MEMBERS_GRAPH Cargo-resolved graph + physical manifests (T9-P6-01/03)"
-      }
-    }
+    "history": [
+     {
+      "until": "D23 (6bcc86c)",
+      "exec_identity_sha256": "fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976",
+      "by_install_name": {
+       "nightly-2026-09-24-x86_64-unknown-linux-gnu": {
+        "sha256": "fa5c7131fa8c6d43090672ae718dccbb536cc6d4a3ca70b6f54c4259412ae42f",
+        "bytes": 3373536,
+        "source": "evidence/D23/kernel/builds.json (INSTALL-PINNED)"
+       },
+       "nightly-x86_64-unknown-linux-gnu": {
+        "sha256": "6deeebc649a01337c94d10a389c1ad1ad300621672fadd9e7d2eacf3344f1ace",
+        "bytes": 3373534,
+        "source": "evidence/D23/kernel/builds.json (INSTALL-RENAMED)"
+       }
+      },
+      "note": "D23 transport extension (22 exports); superseded by the D24 genericity repair (per-transfer strategy data, evidence binding, adapter family check)"
+     },
+     {
+      "until": "D22 (a43c0ce)",
+      "exec_identity_sha256": "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2",
+      "by_install_name": {
+       "nightly-2026-09-24-x86_64-unknown-linux-gnu": {
+        "sha256": "6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81",
+        "bytes": 3350254,
+        "source": "KRN-D13-A (D13 assembly)"
+       },
+       "nightly-x86_64-unknown-linux-gnu": {
+        "sha256": "309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c",
+        "bytes": 3350252,
+        "source": "D9 T9-P8-01; reproduced by KRN-D13-B"
+       }
+      },
+      "note": "eight-operation transport (C14 bootstrap exports only); superseded by the D23 transport extension"
+     }
+    ]
+   }
+  },
+  "ALL_SOURCES": {
+   "toolchain": "1.94.1",
+   "target": "none (rustfmt reads files; nothing is compiled)",
+   "selection": "cargo fmt --all (every member's files)",
+   "profiles": []
+  },
+  "ALL_MEMBERS_GRAPH": {
+   "toolchain": "1.94.1",
+   "target": "none (cargo metadata; nothing is compiled)",
+   "selection": "every workspace member + every physical Cargo.toml under the root",
+   "profiles": []
+  },
+  "CROSS_SET": {
+   "toolchain": "1.94.1",
+   "target": "host",
+   "selection": "--workspace (mixes HOST_NATIVE_SET with the target-specific factc-wasm-abi)",
+   "proof_weight": "NONE",
+   "meaning": "diagnostic only: records that a host --workspace build/clippy cannot succeed (factc-wasm-abi has no host panic_handler by design) and that --workspace tests compile it only in the test harness; never a proof of either set"
+  },
+  "HEURISTIC": {
+   "proof_weight": "NONE",
+   "members": [
+    "factory nostd-check",
+    "factory depcheck"
+   ],
+   "authoritative_replacement": {
+    "no_std": "WASM64_KERNEL_SET core-only graph (T9-P5-02/03)",
+    "dependencies": "ALL_MEMBERS_GRAPH Cargo-resolved graph + physical manifests (T9-P6-01/03)"
+   }
   }
+ }
 }

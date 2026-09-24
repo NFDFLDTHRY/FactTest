@@ -251,6 +251,10 @@ pub fn codegen_and_bundle(
                 None,
                 class,
             ));
+            // no bundle was generated: the certificate records that as a failed check, never as an empty PASS
+            let mut cert = factc_bundle::BundleCertificate::new();
+            cert.check("B-00-bundle-generated", false, class);
+            ws.bundle_certificate = cert;
             return false;
         }
     }
@@ -282,7 +286,7 @@ pub fn codegen_and_bundle(
         &expected,
         &mut cert,
     );
-    let pass = cert.pass;
+    let pass = cert.passed();
     ws.bundle_certificate = cert;
     if !pass {
         ws.diagnostics.push(Diagnostic::new(

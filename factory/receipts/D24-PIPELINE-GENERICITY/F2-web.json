@@ -1,0 +1,186 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D24-PIPELINE-GENERICITY-F2-web",
+  "station_id": "S-WEB",
+  "station_version": "1",
+  "fixture_id": "F2-web",
+  "workpiece_id": "W29",
+  "delta_id": "D24-PIPELINE-GENERICITY",
+  "canonical_base": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+  "input_artifacts": [
+    "D24 section 2 (runtime, shell, selector, harness)"
+  ],
+  "open_tree": "1f1cf0afb322f5cc656758843687dc5b7182f950",
+  "close_tree": "d005d04c39d46440812fb49617a091033f044920",
+  "changed_paths": [
+    "compiler/codegen/templates/index.html",
+    "compiler/codegen/templates/runtime.js",
+    "compiler/codegen/templates/selector.js",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-other-web-untouched.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-syntax-generic.log",
+    "host/harness/bundle-probe.mjs",
+    "host/harness/kernel-build-probe.mjs"
+  ],
+  "output_artifacts": [
+    "compiler/codegen/templates/runtime.js",
+    "compiler/codegen/templates/index.html",
+    "host/harness/bundle-probe.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-WEB v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D24-PIPELINE-GENERICITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "WEB_HOST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-other-web-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-other-web-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && cp compiler/codegen/templates/runtime.js $T/runtime.mjs && node --check $T/runtime.mjs && sed 's#__STRATEGY_JSON__#{}#; s#__STRATEGY_SHA256__#0#' compiler/codegen/templates/selector.js > $T/selector.mjs && node --check $T/selector.mjs && node --check host/harness/bundle-probe.mjs && node --check host/harness/kernel-build-probe.mjs && ! grep -nE 'WEBGPU|CPU_WASM64|relay\\(|\\.relay\\b|byte[-_]relay|commissioning|0x[0-9a-f]{2},0x' compiler/codegen/templates/runtime.js compiler/codegen/templates/index.html compiler/codegen/templates/selector.js host/harness/bundle-probe.mjs && grep -q 'requirementFor(plan, relation)' compiler/codegen/templates/runtime.js && grep -q \"island('bundle strategy_data=\" compiler/codegen/templates/runtime.js && grep -q 'STRATEGY.transfers' compiler/codegen/templates/index.html && grep -q 'STRATEGY_SHA256' compiler/codegen/templates/selector.js && grep -q 'shaStrategy' host/harness/kernel-build-probe.mjs && echo 'syntax clean; no backend name, fixed operation, specimen name or payload form in the generic templates and harness; generic entry points present'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-syntax-generic.log"
+    },
+    {
+      "check": "command:git diff --exit-code 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 -- host compiler/codegen/templates :!compiler/codegen/templates/runtime.js :!compiler/codegen/templates/index.html :!compiler/codegen/templates/selector.js :!host/harness/bundle-probe.mjs :!host/harness/kernel-build-probe.mjs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-other-web-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/runtime.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/index.html",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:host/harness/bundle-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-syntax-generic.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F2-other-web-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T14:53:31Z",
+  "status": "PASS"
+}

@@ -14,7 +14,7 @@ use factc_implementation::{Hypergraph, Registry, StrList};
 use factc_semantic::Model;
 use factc_verifier::VerifiedStrategy;
 
-/// Byte region layout of the generated relay module: two regions of REGION bytes inside a 2*REGION memory.
+/// Byte region layout of a generated wasm transfer module: two regions of REGION bytes inside a 2*REGION memory.
 pub const REGION: i64 = 1 << 20;
 pub const MEMORY_PAGES: u64 = (2 * REGION as u64) / 65536;
 
@@ -119,7 +119,7 @@ pub fn recipes_used(reg: &Registry, vs: &VerifiedStrategy) -> Result<StrList, Co
     Ok(adapters)
 }
 
-fn adapter_of_backend(
+pub fn adapter_of_backend(
     reg: &Registry,
     backend: factc_foundation::Str,
 ) -> Option<factc_foundation::Str> {
@@ -129,8 +129,23 @@ fn adapter_of_backend(
     Some(reg.recipes[ri as usize].adapter)
 }
 
+/// The transfer requirements in requirement-slot order: the DATA relations between ports, in model order, exactly
+/// as capability lowering enumerates them (the planner's first `nt` slots).
+fn transfer_relations(m: &Model) -> impl Iterator<Item = &factc_semantic::Relation> + '_ {
+    m.relations.iter().filter(|r| {
+        r.kind == factc_semantic::RelKind::Data
+            && matches!(
+                (r.from, r.to),
+                (factc_semantic::Obj::Port(_), factc_semantic::Obj::Port(_))
+            )
+    })
+}
+
 /// Strategy data embedded in selector.js.  The BundleVerifier re-renders this from the VerifiedStrategy and
-/// compares bytes, so any drift between emitted selector data and verified state is caught.
+/// compares bytes, so any drift between emitted selector data and verified state is caught.  Every transfer
+/// requirement of the source is listed, and every variant names, per transfer, the backends, adapters and
+/// conversions of the edge it verified (D24): the runtime executes a transfer by its own requirement, never by a
+/// fixed first relation or a fixed first backend.
 pub fn strategy_data_json(
     m: &Model,
     reg: &Registry,
@@ -142,14 +157,22 @@ pub fn strategy_data_json(
     w.obj_begin()?;
     w.kv_uint("strategy_id", vs.strategy_id as u64)?;
     w.kv_uint("strategy_certificate_id", vs.strategy_certificate_id as u64)?;
-    // relation name of the first transfer (adaptive relay targets have one); generic name otherwise
-    let rel = m
-        .relations
-        .iter()
-        .find(|r| r.kind == factc_semantic::RelKind::Data)
-        .map(|r| m.name(r.name))
-        .unwrap_or(b"data");
-    w.kv_str("relation", rel)?;
+    w.key("transfers")?;
+    w.arr()?;
+    for r in transfer_relations(m) {
+        w.obj()?;
+        w.kv_str("relation", m.name(r.name))?;
+        if let factc_semantic::Obj::Port(s) = r.from {
+            let ty = m.nominal(m.ports[s as usize].ty);
+            w.kv_str("type", m.name(m.types[ty as usize].name))?;
+        }
+        w.kv_str(
+            "mode",
+            r.mode.unwrap_or(factc_source::Mode::Copy).name().as_bytes(),
+        )?;
+        w.obj_end()?;
+    }
+    w.arr_end()?;
     w.key("goals")?;
     w.arr()?;
     for g in vs.goals.iter().take(vs.ngoals as usize).flatten() {
@@ -201,6 +224,47 @@ pub fn strategy_data_json(
                     w.str(reg.name(reg.conversions[ci as usize].name))?;
                 }
             }
+        }
+        w.arr_end()?;
+        // per transfer requirement: the verified edge this variant realizes it with
+        w.key("requirements")?;
+        w.arr()?;
+        for (slot, r) in transfer_relations(m).enumerate() {
+            let edge = v.plan.edges[..v.plan.nreq as usize]
+                .get(slot)
+                .copied()
+                .flatten()
+                .and_then(|e| hg.edges.iter().find(|x| x.id == e));
+            w.obj()?;
+            w.kv_str("relation", m.name(r.name))?;
+            w.key("backends")?;
+            w.arr()?;
+            if let Some(edge) = edge {
+                for b in edge.backends.iter() {
+                    w.str(reg.name(b))?;
+                }
+            }
+            w.arr_end()?;
+            w.key("adapters")?;
+            w.arr()?;
+            if let Some(edge) = edge {
+                for b in edge.backends.iter() {
+                    match adapter_of_backend(reg, b) {
+                        Some(a) => w.str(reg.name(a))?,
+                        None => w.null()?,
+                    }
+                }
+            }
+            w.arr_end()?;
+            w.key("conversions")?;
+            w.arr()?;
+            if let Some(edge) = edge {
+                for ci in edge.steps() {
+                    w.str(reg.name(reg.conversions[ci as usize].name))?;
+                }
+            }
+            w.arr_end()?;
+            w.obj_end()?;
         }
         w.arr_end()?;
         w.obj_end()?;
@@ -288,16 +352,23 @@ pub fn generate(
             .add(b"membrane.js", Role::HostMembrane, &scratch[..n])
             .map_err(|_| CodegenError::Output)?;
     }
-    // 3. selector.js with embedded strategy data
+    // 3. selector.js with embedded strategy data and the identity of that data (the evidence tape names it; the
+    //    data carries no source identity so that layout and label changes leave the executable files identical)
+    let mut strategy_sha_hex = [0u8; 64];
     {
         let mut data = [0u8; 8192];
         let mut d = OutBuf::new(&mut data);
         strategy_data_json(m, reg, hg, vs, &mut d).map_err(|_| CodegenError::Output)?;
         let dn = d.len();
+        let sha = factc_foundation::sha256::digest(&data[..dn]);
+        factc_foundation::hex::encode_into(&sha, &mut strategy_sha_hex);
         let mut o = OutBuf::new(scratch);
         subst(
             TEMPLATE_SELECTOR,
-            &[("__STRATEGY_JSON__", &data[..dn])],
+            &[
+                ("__STRATEGY_JSON__", &data[..dn]),
+                ("__STRATEGY_SHA256__", &strategy_sha_hex),
+            ],
             &mut o,
         )
         .map_err(|_| CodegenError::Output)?;
@@ -396,8 +467,18 @@ pub fn generate(
     // 7. bundle.json manifest (lineage + inventories)
     {
         let mut o = OutBuf::new(scratch);
-        manifest_json(m, reg, hg, vs, lineage, store, &bundle_id, &mut o)
-            .map_err(|_| CodegenError::Output)?;
+        manifest_json(
+            m,
+            reg,
+            hg,
+            vs,
+            lineage,
+            store,
+            &bundle_id,
+            &strategy_sha_hex,
+            &mut o,
+        )
+        .map_err(|_| CodegenError::Output)?;
         let n = o.len();
         store
             .add(b"bundle.json", Role::Metadata, &scratch[..n])
@@ -416,6 +497,7 @@ fn manifest_json(
     lineage: &Lineage<'_>,
     store: &BundleStore,
     bundle_id: &[u8; 32],
+    strategy_sha_hex: &[u8; 64],
     out: &mut OutBuf<'_>,
 ) -> Result<(), OutputTooSmall> {
     let mut w = JsonW::new(out);
@@ -432,6 +514,7 @@ fn manifest_json(
     w.obj_end()?;
     w.kv_uint("verified_strategy_id", vs.strategy_id as u64)?;
     w.kv_uint("strategy_certificate_id", vs.strategy_certificate_id as u64)?;
+    w.kv_str("strategy_data_sha256", strategy_sha_hex)?;
     w.kv_str(
         "machine_epoch_assumption",
         b"adaptive: none (runtime selects among preverified variants)",

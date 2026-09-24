@@ -1,0 +1,33 @@
+{
+ "specimen": "ledger-mirror",
+ "system": "ledger_mirror",
+ "source": "fixtures/genericity/ledger-mirror/source.ascii",
+ "contracts": "fixtures/genericity/ledger-mirror/contracts.ascii",
+ "metrics": null,
+ "payloads": "fixtures/genericity/ledger-mirror/payloads.json",
+ "varies": [
+  "system name ledger_mirror",
+  "three components (clerk, journal, archive)",
+  "TWO relations (post, mirror) of type Entry",
+  "payloads of 1, 0 and 1000 bytes",
+  "single backend registry (CPU_WASM64 only; recipe R_ENTRY_COPY of its own name)",
+  "no objective (FEASIBLE strategy)",
+  "controlled loss of the only backend leaves E1 with no active plan"
+ ],
+ "expect": {
+  "transfers": [
+   "post",
+   "mirror"
+  ],
+  "variants": 1,
+  "strength": "FEASIBLE",
+  "webgpu": {
+   "e0": "CPU_WASM64",
+   "loss": "CPU_WASM64",
+   "e1": "none"
+  },
+  "no_webgpu": {
+   "e0": "CPU_WASM64"
+  }
+ }
+}

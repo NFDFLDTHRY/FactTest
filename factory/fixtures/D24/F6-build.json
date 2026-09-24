@@ -1,0 +1,173 @@
+{
+  "fixture_id": "F6-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "tests/genericity/*",
+    "tests/commissioning/run-physical.sh",
+    "tests/selfhost/primitives-probe.mjs",
+    "tests/implementation/build-kernels.sh",
+    "host/harness/kernel-build-probe.mjs"
+  ],
+  "narrowed_may_change": [
+    "evidence/D24/specimens/",
+    "evidence/D24/attacks/",
+    "evidence/D24/anti-cheat/",
+    "evidence/D24/reproduce-base/",
+    "evidence/D24/physical/",
+    "evidence/D24/selfhost/",
+    "evidence/D24/kernel/",
+    "evidence/D24/transport/",
+    "evidence/D24/crates/",
+    "evidence/D24/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "build",
+          "-p",
+          "factc",
+          "-p",
+          "factory"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w29"
+        },
+        "log": "evidence/D24/logs/F6-build.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/genericity/run-specimens.mjs",
+          "--factc",
+          "/home/user/factory-target-w29/debug/factc",
+          "--out",
+          "evidence/D24/specimens"
+        ],
+        "log": "evidence/D24/logs/F6-specimens.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/genericity/run-attacks.mjs",
+          "--factc",
+          "/home/user/factory-target-w29/debug/factc",
+          "--specimens",
+          "evidence/D24/specimens",
+          "--out",
+          "evidence/D24/attacks"
+        ],
+        "log": "evidence/D24/logs/F6-attacks.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "tests/commissioning/run-anti-cheat.sh",
+          "evidence/D24/anti-cheat"
+        ],
+        "log": "evidence/D24/logs/F6-anti-cheat.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "tests/genericity/reproduce-base.sh",
+          "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+          "evidence/D24/reproduce-base",
+          "/home/user/factory-target-d24base"
+        ],
+        "log": "evidence/D24/logs/F6-reproduce-base.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "tests/commissioning/run-physical.sh",
+          "evidence/D24/physical"
+        ],
+        "env": {
+          "FACTC_BIN": "/home/user/factory-target-w29/debug/factc"
+        },
+        "log": "evidence/D24/logs/F6-physical.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/selfhost/primitives-probe.mjs",
+          "evidence/D24/selfhost"
+        ],
+        "env": {
+          "BUNDLE_DIR": "evidence/D24/physical/compile/bundle"
+        },
+        "log": "evidence/D24/logs/F6-selfhost.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "tests/implementation/build-kernels.sh",
+          "evidence/D24/kernel",
+          "/home/user/factory-builds/d24-kernels"
+        ],
+        "log": "evidence/D24/logs/F6-kernels.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && /home/user/factory-target-w29/debug/factc check build --out $T/native/build --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii fixtures/commissioning/byte-relay.ascii >/dev/null && /home/user/factory-target-w29/debug/factc observe --out $T/native/observe --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --source fixtures/commissioning/byte-relay.ascii --bundle-manifest $T/native/build/bundle/bundle.json --evidence-class PHYSICAL_BROWSER >/dev/null && node host/harness/kernel-build-probe.mjs /home/user/factory-target-w29/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --source fixtures/commissioning/byte-relay.ascii --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --evidence-class PHYSICAL_BROWSER --native-build $T/native/build --native-observe $T/native/observe --out evidence/D24/transport"
+        ],
+        "log": "evidence/D24/logs/F6-transport.log",
+        "cwd": "."
+      },
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "test",
+          "-p",
+          "factc-kernel",
+          "--test",
+          "genericity_ladder"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w29"
+        },
+        "log": "evidence/D24/crates/genericity-ladder.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const s=J(\"evidence/D24/specimens/summary.json\");if(s.status!==\"PASS\"||s.specimens.length!==4||s.specimens.some(x=>x.checks.length!==15||x.checks.some(c=>c.status!==\"PASS\"))||s.cross_specimen.length!==4)process.exit(1);const a=J(\"evidence/D24/attacks/summary.json\");if(a.status!==\"PASS\"||a.attacks.length!==13)process.exit(1);const r=J(\"evidence/D24/reproduce-base/summary.json\");if(r.status!==\"REPRODUCED\")process.exit(1);const sh=J(\"evidence/D24/selfhost/summary.json\");const p=Object.fromEntries((sh.records||[]).map(x=>[x.id,x.verdict]));if(p[\"P01-GENERATED-BUNDLE-OFFLINE\"]!==\"RUN\"||p[\"P04-OPFS-SERVED-APP\"]!==\"RUN\")process.exit(1);const k=J(\"evidence/D24/kernel/sections.json\");const pin=J(\"tests/toolchain/proof-sets.json\").sets.WASM64_KERNEL_SET.kernel_identity;if(!k.builds.every(b=>b.identity_excluding_custom===pin.exec_identity.sha256))process.exit(1);const bl=J(\"evidence/D24/kernel/builds.json\");for(const b of bl.builds){const w=pin.by_install_name[b.install_name+\"-x86_64-unknown-linux-gnu\"];if(!w||w.sha256!==b.wasm_sha256||w.bytes!==b.bytes){console.log(\"whole-file sha not as pinned\",b.label);process.exit(1)}}const t=J(\"evidence/D24/transport/probe.json\");if(t.status!==\"PASS\"||t.build.status!==1||t.observe.status!==1)process.exit(1);console.log(\"specimens 4x15 PASS; attacks 13 PASS; reproduced; P01/P04 RUN; kernels == pin; transport PASS\")' && grep -q ': clean' evidence/D24/anti-cheat/summary.log && ! grep -q 'in machinery' evidence/D24/anti-cheat/summary.log && grep -q 'in machinery' evidence/D24/reproduce-base/anti-cheat/summary.log && grep -q 'evidence_lineage OBS' evidence/D24/physical/observed/observed.ascii && tail -n +2 fixtures/commissioning/tape-sample.ascii | cmp - evidence/D24/physical/probe-webgpu/evidence-tape.ascii && grep -q 'test result: ok. 7 passed' evidence/D24/crates/genericity-ladder.log && echo 'anti-cheat clean here and FAIL on the base tree; the physical tape equals the fixture tape; ladder 7'"
+        ],
+        "log": "evidence/D24/logs/F6-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D24/specimens/summary.json",
+    "evidence/D24/attacks/summary.json",
+    "evidence/D24/reproduce-base/summary.json",
+    "evidence/D24/physical/observed/observed.ascii",
+    "evidence/D24/selfhost/summary.json",
+    "evidence/D24/kernel/sections.json",
+    "evidence/D24/transport/probe.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D24-PIPELINE-GENERICITY"
+}

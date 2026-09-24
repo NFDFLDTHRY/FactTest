@@ -1,0 +1,12 @@
+{
+ "schema": "facttest-reconcile-surfaces/1",
+ "epoch": "D24",
+ "base": "6bcc86c",
+ "annotated": {"marker": "D24 ANNOTATION", "files": []},
+ "surfaces": [
+  {"file": "tests/toolchain/proof-sets.json", "reconciliation": "R-65", "must_contain": ["\"exec_identity\"", "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115", "\"history\"", "fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976", "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2"], "must_not_contain": ["[GAP: not install-path independent]"]},
+  {"file": "docs/HANDOFF.md", "reconciliation": "R-65", "must_contain": ["FACT-KERNEL-IDENTITY-D24", "ef5d886a", "R-65"], "must_not_contain": []},
+  {"file": "docs/HANDOFF.md", "reconciliation": "R-66", "must_contain": ["FACT-D24-BYTE-RELAY-EXECUTED", "transfer(relation, bytes)", "R-66"], "must_not_contain": ["window.factRuntime.relay"]},
+  {"file": "tests/manifest/components.json", "reconciliation": "R-66", "must_contain": ["transfer(relation, bytes)", "STRATEGY.transfers"], "must_not_contain": ["relay(bytes) execution through the active plan's first guard backend", "relay payloads, controlled WEBGPU loss"]}
+ ]
+}

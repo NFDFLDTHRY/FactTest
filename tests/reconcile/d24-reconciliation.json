@@ -1,0 +1,63 @@
+{
+ "schema": "facttest-reconciliation/1",
+ "epoch": "D24",
+ "law": "design/materialization/D24-INTENDED-PIPELINE-GENERICITY.md",
+ "question": "Which current statements does the D24 genericity repair of the generated runtime supersede?",
+ "traversal_steps": ["AUTHORITY_CHANGED", "CONSTRAINT", "FACT", "IMPLEMENTATION_CONTRACT", "ENVIRONMENT", "OLD_PROBE_SUFFICIENT", "OLD_EVIDENCE_APPLICABLE"],
+ "outcomes": {
+  "SUPERSEDED": "a successor node is now the current statement; the superseded node stays in the graph as history"
+ },
+ "inherits": {
+  "AUTHORITY": {"out": ["AUTHORIZES", "DEPENDS_ON", "CONFLICTS_WITH"], "in": ["DEPENDS_ON", "CONFLICTS_WITH"]},
+  "COMPUTATIONAL_FACT": {"out": ["PROBED_BY", "EVIDENCED_BY", "ADMITTED_BY", "REQUIRES", "EXPOSED_BY", "STALE_IF", "IMPLEMENTED_BY"], "in": ["AUTHORIZES", "GROUNDS", "EXPLAINS", "WITNESSED_BY", "REQUIRES"]}
+ },
+ "retired_texts": [
+  "the kernel identity is the exec identity fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976",
+  "window.factRuntime.relay(payload) for payloads A and B"
+ ],
+ "new_facts": [],
+ "supersessions": [
+  {"old": "FACT-KERNEL-IDENTITY-D23", "new": "FACT-KERNEL-IDENTITY-D24", "reconciliation": "R-65"},
+  {"old": "FACT-GPU-RELAY-EXACT-E0", "new": "FACT-D24-BYTE-RELAY-EXECUTED", "reconciliation": "R-66"},
+  {"old": "FACT-WASM64-ADMITTED-E1", "new": "FACT-D24-BYTE-RELAY-EXECUTED", "reconciliation": "R-66"}
+ ],
+ "add_edges": [],
+ "items": [
+  {
+   "id": "R-65",
+   "subject": "kernel identity after the D24 genericity repair",
+   "reconciles": ["FACT-KERNEL-IDENTITY-D23"],
+   "outcome": "SUPERSEDED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none (AUTH-CARGO-BUILD-STD unchanged; the same pinned nightly)",
+    "CONSTRAINT": "none",
+    "FACT": "FACT-KERNEL-IDENTITY-D23 states the exec identity fcaee2a6... of the D23 kernel; D24 changed compiler crates the kernel links (codegen: per-transfer strategy data and its identity; bundle: B-06 identity, B-08 strategy-data lineage, B-11 adapter family, an empty certificate never passes; observe: the bundle record and evidence_lineage; kernel: EvidenceUnbound, the observe signature; foundation: the diagnostic code; wasm-abi: observe flag bit 2), so the release kernel built by the same toolchain has a new exec identity ef5d886a... - identical under both rustup install names",
+    "IMPLEMENTATION_CONTRACT": "tests/toolchain/proof-sets.json kernel_identity: exec_identity re-pinned from the committed source; the D23 identity and its whole-file shas kept under kernel_identity.history",
+    "ENVIRONMENT": "ENV-D24-HOST (nightly-2026-09-24, rustc 6eeff9a52); the kernel-sections probe ran under both install names (tests/implementation/build-kernels.sh)",
+    "OLD_PROBE_SUFFICIENT": "yes: PROBE-KERNEL-SECTIONS and PROBE-QUALIFIED-PROOF (Q-WASM-06) measure the new kernel exactly as they measured the old one",
+    "OLD_EVIDENCE_APPLICABLE": "no for the identity value: EV-D23-KERNEL-SECTIONS and the D23 builds record the D23 kernel; they remain its history (inherited edges carry the reconciliation)"
+   },
+   "surfaces": ["tests/toolchain/proof-sets.json", "docs/HANDOFF.md"],
+   "note": "successor FACT-KERNEL-IDENTITY-D24 [RUN]: the same definition (every section except the custom name section, install-name independent), a new value; the D23 fact stays as history",
+   "new_probe_obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)"
+  },
+  {
+   "id": "R-66",
+   "subject": "the Byte Relay execution facts after the runtime's fixed relay operation was replaced by transfer-by-requirement",
+   "reconciles": ["FACT-GPU-RELAY-EXACT-E0", "FACT-WASM64-ADMITTED-E1"],
+   "outcome": "SUPERSEDED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none (the WebGPU and wasm64 authorities are unchanged)",
+    "CONSTRAINT": "none",
+    "FACT": "both D7 facts state what the Byte Relay bundle did under window.factRuntime.relay(payload): E0 on plan 1 (WEBGPU) payloads A and B exact, and after the WebGPU loss CPU_WASM64 admitted, plan 0 active, A and B exact.  D24 removed relay(bytes) (I-09: a fixed operation executing the first data relation through the first guard backend) and generates transfer(relation, bytes) executing each authored relation through the requirement its verified variant carries; the Byte Relay specimen re-run physically through the generic harness shows the same E0/E1 behaviour (relation relay, WEBGPU then CPU_WASM64, A and B exact in both epochs) with the tape bound to the bundle",
+    "IMPLEMENTATION_CONTRACT": "COMMISSIONING-RUNTIME.md and RUNTIME-ADMISSION-REPLAN.md describe the runtime by its epochs, admissions, activation, execution, loss and reselection; neither fixes the JavaScript name of the execution entry, so no law text changes; the generated-shell and harness contracts in tests/manifest/components.json are updated",
+    "ENVIRONMENT": "ENV-D24-HOST; Chromium headless shell 141 with the same unsafe WebGPU switches (SwiftShader) and without WebGPU, as ENV-D6-D7-BROWSER-GPUFLAGS describes",
+    "OLD_PROBE_SUFFICIENT": "no: PROBE-RELAY-EXACT calls window.factRuntime.relay, which the generated runtime no longer exports; the successor is probed by PROBE-GENERICITY-SPECIMENS (host/harness/bundle-probe.mjs transferring every authored relation with every payload, expectations supplied by the specimen)",
+    "OLD_EVIDENCE_APPLICABLE": "as history of the D7 bundle only: EV-D6-PROBE-RECORD and EV-D7-E0-RELAY record the relay-API runtime; the D24 physical run (evidence/D24/physical, evidence/D24/specimens/byte-relay) is the current evidence"
+   },
+   "surfaces": ["docs/HANDOFF.md", "tests/manifest/components.json"],
+   "note": "successor FACT-D24-BYTE-RELAY-EXECUTED [RUN] carries both D7 facts' inheritable edges (constraints, clauses, capability witness, the GPU-flags environment)",
+   "new_probe_obligation": "D25: the physical webapp run exercises the generated shell's controls (I-11) and the public HTTPS boundary with the same specimen"
+  }
+ ]
+}

@@ -272,4 +272,11 @@ D23    D23-COMPILER-ABI-EXECUTION      the compiler DAG executed bottom-up on th
                                    focused tests, consumer tests; the 27-obligation matrix); the wasm transport completed
                                    (D12 B-06 was A/B: nine exports added, BUILD + OBSERVE in Chromium byte-identical to
                                    the native driver); the kernel identity superseded (R-64); epochs/D23.json.
+D24    D24-PIPELINE-GENERICITY         four semantically distinct specimens (Byte Relay, ledger-mirror, pixel-vault,
+                                   dual-stream) through one compiler, one generic browser harness, observe and integrity;
+                                   the specimen-specific runtime, shell, harness and scan repaired (I-07, I-08, I-09,
+                                   I-20) and three further accepted attacks (I-30 foreign evidence, I-31 adapter family,
+                                   I-32 empty certificate) repaired after reproduction on the base compiler; the attack
+                                   list refused; kernel identity superseded (R-65), the D7 relay facts superseded
+                                   (R-66); epochs/D24.json (five [RUN] facts, one [GAP] stop I-33).
 ```

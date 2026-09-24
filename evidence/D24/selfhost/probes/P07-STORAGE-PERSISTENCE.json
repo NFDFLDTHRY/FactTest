@@ -1,0 +1,19 @@
+{
+  "id": "P07-STORAGE-PERSISTENCE",
+  "question": "Is persistent storage granted?",
+  "needed_for": "durability",
+  "started": "2026-09-24T14:54:46.113Z",
+  "observed": {
+    "before": false,
+    "persist": false,
+    "after": false,
+    "estimate": {
+      "quota": 162331904409,
+      "usage": 0,
+      "usageDetails": {}
+    }
+  },
+  "verdict": "GAP",
+  "meaning": "persist() returned false in this headless, non-installed environment: the bucket stays \"best-effort\" and may be cleared under storage pressure (storage.bs \"Storage pressure\"); durability of an installed Factory's generations is not established here",
+  "finished": "2026-09-24T14:54:46.313Z"
+}

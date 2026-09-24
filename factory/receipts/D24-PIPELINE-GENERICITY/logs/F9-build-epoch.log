@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D24.json --identity evidence/D24/identity --epoch D24 --delta D24-PIPELINE-GENERICITY --commit '6bcc86cd50f9787c0afd3b65a113812bea2de2d7 (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out $T/facts.json && node tests/reconcile/build-reconciliation.mjs --clause-epoch $T/facts.json --register tests/reconcile/d24-reconciliation.json --graph design/environment-map/graph.json --root . --epoch D24 --delta D24-PIPELINE-GENERICITY --commit '6bcc86cd50f9787c0afd3b65a113812bea2de2d7 (canonical base; integration commit in LEDGER AFTER)' --out design/environment-map/epochs/D24.json
+(cwd .)
+D24: 26 nodes, 51 edges -> /tmp/tmp.SVO5nYuA55/facts.json; facts FACT-D24-PIPELINE-GENERIC [RUN], FACT-D24-ATTACKS-REFUSED [RUN], FACT-D24-EVIDENCE-BOUND [RUN], FACT-D24-BYTE-RELAY-EXECUTED [RUN], FACT-KERNEL-IDENTITY-D24 [RUN], FACT-D24-RUNTIME-SELF-INTEGRITY [GAP]
+D24: 28 nodes, 96 edges -> design/environment-map/epochs/D24.json; {"SUPERSEDED":2}; supersessions 3; inherited 39; ledgered 0
+
+[exit 0] expected 0

@@ -1,0 +1,136 @@
+{
+  "fixture_id": "F3-rust",
+  "station_id": "S-RUST",
+  "selected_inputs": [
+    "D24 section 2 (codegen, BundleVerifier, observe, kernel, transport)",
+    "section 3 (genericity ladder)"
+  ],
+  "narrowed_may_change": [
+    "compiler/foundation/src/",
+    "compiler/codegen/src/",
+    "compiler/bundle/src/",
+    "compiler/observe/src/",
+    "compiler/kernel/src/",
+    "compiler/kernel/tests/genericity_ladder.rs",
+    "compiler/kernel/tests/observe_ladder.rs",
+    "compiler/wasm-abi/src/",
+    "host/factc/src/",
+    "host/factc/tests/",
+    "factory/receipts/D24-PIPELINE-GENERICITY/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "fmt",
+          "--all",
+          "--check"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w29"
+        },
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-fmt.log",
+        "cwd": "."
+      },
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "clippy",
+          "--workspace",
+          "--all-targets",
+          "--exclude",
+          "factc-wasm-abi",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w29"
+        },
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-host.log",
+        "cwd": "."
+      },
+      {
+        "program": "cargo",
+        "args": [
+          "+nightly-2026-09-24",
+          "clippy",
+          "-p",
+          "factc-wasm-abi",
+          "-Z",
+          "build-std=core",
+          "--target",
+          "wasm64-unknown-unknown",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w29",
+          "RUSTFLAGS": "-C link-arg=-zstack-size=16777216"
+        },
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-clippy-wasm.log",
+        "cwd": "."
+      },
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "test",
+          "--workspace"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w29"
+        },
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log",
+        "cwd": "."
+      },
+      {
+        "program": "cargo",
+        "args": [
+          "+nightly-2026-09-24",
+          "build",
+          "--release",
+          "-p",
+          "factc-wasm-abi",
+          "-Z",
+          "build-std=core",
+          "--target",
+          "wasm64-unknown-unknown"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w29",
+          "RUSTFLAGS": "-C link-arg=-zstack-size=16777216"
+        },
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-wasm-release.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "! grep -qE 'FAILED|panicked' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log && grep -q 'test result: ok. 7 passed' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log && grep -q 'test result: ok. 8 passed' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log && [ $(grep -E '^test result' factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-tests.log | awk '{s+=$4} END{print s}') -ge 130 ] && T=$(mktemp -d) && /home/user/factory-target-canon/debug/factory wasm-inspect /home/user/factory-target-w29/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --out $T/inspect.json >/dev/null && node -e 'const j=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));const e=j.exports.map(x=>x.split(\":\")[0]);console.log(\"exports\",e.length);if(e.length!==22)process.exit(1)' $T/inspect.json && T=$(mktemp -d) && node tests/implementation/wasm-sections.mjs --label K=/home/user/factory-target-w29/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --exclude-custom name --out $T/s.json >/dev/null && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).builds[0].identity_excluding_custom;console.log(\"exec identity\",s);' $T/s.json && git diff --exit-code 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 -- compiler host Cargo.toml Cargo.lock :!compiler/foundation/src :!compiler/codegen/src :!compiler/bundle/src :!compiler/observe/src :!compiler/kernel/src :!compiler/kernel/tests/genericity_ladder.rs :!compiler/kernel/tests/observe_ladder.rs :!compiler/wasm-abi/src :!host/factc/src :!host/factc/tests :!compiler/codegen/templates/runtime.js :!compiler/codegen/templates/index.html :!compiler/codegen/templates/selector.js :!host/harness/bundle-probe.mjs :!host/harness/kernel-build-probe.mjs && echo 'tests pass (genericity ladder 7, driver 8); 22 exports; identity recorded (the pin is checked once F4 delivers it); no other compiler/host source changed'"
+        ],
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F3-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "compiler/codegen/src/lib.rs",
+    "compiler/bundle/src/lib.rs",
+    "compiler/observe/src/lib.rs",
+    "compiler/kernel/tests/genericity_ladder.rs",
+    "host/factc/tests/driver.rs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D24-PIPELINE-GENERICITY"
+}

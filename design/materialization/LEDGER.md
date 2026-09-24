@@ -1060,4 +1060,47 @@ BEFORE
   (RUN 116, GAP 11); W27 RETIRABLE -> REMOVED.
 
 AFTER
+- RESULT: integrated as 6bcc86c (ff-only from a43c0ce); no refusal, no repair, no re-run.
+- RECEIPTS: F0-doc F1-rust F2-web F3-fixture F4-browser F5-build F6-doc F7-evidence F8-doc F9-evidence F10-doc PASS
+  (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D23.json rebuilt
+  byte-identically; factc driver 7 passed from the canonical tree).  Pushed.
+- OBSERVED: D23-OBSERVED-COMPILER-ABI-EXECUTION.md - P1-P7 MATCH.
+
+---
+
+## D24-PIPELINE-GENERICITY  (task 4 of 6: is FactTest a compiler/foundry, or is part of the production machinery still secretly a Byte Relay demo?)
+
+BEFORE
+- DELTA: D24-PIPELINE-GENERICITY (factory/deltas/D24.json), workpiece W29, base 6bcc86c.
+- ASCII: design/materialization/D24-INTENDED-PIPELINE-GENERICITY.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F7, F9, F11), S-FIXTURE (F1, F4), S-WEB (F2), S-RUST (F3), S-BROWSER (F5), S-BUILD (F6),
+  S-EVIDENCE (F8, F10).
+- CHANGE: fixtures/genericity/ (three new specimens + the Byte Relay specimen by reference, each with specimen.json),
+  fixtures/commissioning/tape-sample.ascii (a physical tape carrying the bundle record), tests/genericity/
+  (run-specimens, run-attacks, check-bundle, reproduce-base), tests/commissioning/run-anti-cheat.sh (specimen-derived
+  patterns, every byte form, backend names outside adapters, optional tree), tests/commissioning/run-physical.sh
+  (expectations passed to the harness), tests/selfhost/primitives-probe.mjs (transfer), compiler/codegen/templates/
+  {runtime.js (transfer(relation, bytes) by requirement; the tape's bundle record), index.html (data-driven controls),
+  selector.js (STRATEGY_SHA256)}, host/harness/bundle-probe.mjs (generic: transfers x payloads, --loss, --expect-*),
+  host/harness/kernel-build-probe.mjs (observe flag bit 2), compiler/codegen/src/lib.rs (transfers + per-variant
+  requirements, strategy data identity, strategy_data_sha256), compiler/bundle/src/lib.rs (B-06 identity, B-08
+  strategy-data lineage, B-11 adapter family, passed()), compiler/observe/src/lib.rs (bundle record, evidence_lineage),
+  compiler/kernel/src/{abi.rs (strategy data identity, EvidenceUnbound), phases.rs (B-00 on codegen failure)},
+  compiler/foundation/src/diag.rs (EVIDENCE_UNBOUND), compiler/wasm-abi/src/lib.rs (flag bit 2),
+  compiler/kernel/tests/{genericity_ladder.rs (g01-g07), observe_ladder.rs (counts)}, host/factc/src/main.rs
+  (strategy_data_sha256 from the manifest), host/factc/tests/driver.rs (d07 bound, d08 unbound),
+  tests/toolchain/proof-sets.json (kernel identity ef5d886a..., D23 kept as history), tests/reconcile/d24-{reconciliation,
+  surfaces}.json (R-65, R-66), tests/envmap/facts/D24.json, tests/manifest/{components,issues}.json (TEST-GENERICITY,
+  FIXTURE-GENERICITY; I-07/08/09/20 REPAIRED, I-30..I-32 REPAIRED, I-33 D), design/execution-manifest/ (rebuilt),
+  evidence/D24/, design/environment-map/ (epoch D24, graph, views, SCHEMA, ENVIRONMENT-MAP), docs/HANDOFF.md, README.md,
+  D24 records, this ledger.  FORBIDDEN: compiler/{source,semantic,capability,implementation,planning,verifier} (no
+  language or planner semantic changes), adapter templates, membrane-core.js, sw.js, factory/, law and pass documents,
+  earlier epochs, D0-D23 evidence.
+- PREDICTED: reproduce-base REPRODUCED at 6bcc86c (five findings); workspace tests 130 (genericity ladder 7, driver 8);
+  22 exports; exec identity ef5d886a... under both install names; specimens 4 x 15 + 4 PASS, attacks 13 PASS,
+  anti-cheat clean, physical PASS, P01/P04 RUN, transport 18/18 + 3/3 identical; manifest 3553 files, 67
+  components, gate PASS (34 issues); epoch D24 28 nodes / 96 edges (39 inherited); merged 1332 / 3447; validate 42;
+  Q22 187 current facts (RUN 118, GAP 12); W28 RETIRABLE -> REMOVED.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

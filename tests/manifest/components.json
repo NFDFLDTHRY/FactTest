@@ -153,6 +153,9 @@
    ],
    "sync": [
     "SYNC-IMPORT"
+   ],
+   "genericity": [
+    "TEST-GENERICITY"
    ]
   }
  },
@@ -728,7 +731,7 @@
     "CODEGEN-BUNDLE-CONTRACT.md sections 1-4, CodegenRecipe; C17"
    ],
    "input": "per crate (see operation)",
-   "operation": "CodegenRecipe engine: VerifiedStrategy -> GeneratedBundle (first-party wasm64 emitter, membrane from templates, selector with strategy data, runtime, shell, manifest, service worker, bundle.json lineage)",
+   "operation": "CodegenRecipe engine: VerifiedStrategy -> GeneratedBundle (first-party wasm64 emitter, membrane from templates, selector with strategy data - every transfer relation and per-variant requirements (D24) - and its sha256 identity, runtime, shell, manifest, service worker, bundle.json lineage incl. strategy_data_sha256)",
    "output": "typed data / artifacts",
    "dependencies": [],
    "consumers": [
@@ -761,7 +764,7 @@
     "CODEGEN-BUNDLE-CONTRACT.md sections 5-6"
    ],
    "input": "per crate (see operation)",
-   "operation": "BundleVerifier: independent checks of a bundle against VerifiedStrategy, registry and lineage; BundleCertificate",
+   "operation": "BundleVerifier: independent checks of a bundle against VerifiedStrategy, registry and lineage (B-01..B-11; D24: strategy data identity in selector and metadata, adapter family per guarded backend); BundleCertificate (an empty certificate never passes)",
    "output": "typed data / artifacts",
    "dependencies": [],
    "consumers": [
@@ -789,7 +792,7 @@
     "RUNTIME-ADMISSION-REPLAN.md sections 6-10"
    ],
    "input": "per crate (see operation)",
-   "operation": "evidence tape -> ObservationDelta -> observed ASCII",
+   "operation": "evidence tape -> ObservationDelta -> observed ASCII; D24: the tape's bundle record is compared with the manifest's strategy data identity (evidence_lineage OBS/ERR, EVIDENCE_UNBOUND)",
    "output": "typed data / artifacts",
    "dependencies": [],
    "consumers": [
@@ -881,13 +884,14 @@
     "PASS6-TESTS.md",
     "BOOTSTRAP-TESTS.md"
    ],
-   "input": "fixtures/language, fixtures/commissioning",
-   "operation": "integration test ladders over the kernel facade: bootstrap (B2/B7/B8), language (L00-L35), lowering (P5-L*), strategy (P6-M*/V*), bundle (P6-B*/P5-C*), commissioning (P6-A*/X*), observe (P6-R07)",
+   "input": "fixtures/language, fixtures/commissioning, fixtures/genericity",
+   "operation": "integration test ladders over the kernel facade: bootstrap (B2/B7/B8), language (L00-L35), lowering (P5-L*), strategy (P6-M*/V*), bundle (P6-B*/P5-C*), commissioning (P6-A*/X*), observe (P6-R07), genericity (D24 g01-g07: four specimens, per-transfer strategy data, cross-specimen hardcode check, compile-level attacks)",
    "output": "cargo test verdicts",
    "dependencies": [
     "CRATE-KERNEL",
     "FIXTURE-LANGUAGE",
-    "FIXTURE-COMMISSIONING"
+    "FIXTURE-COMMISSIONING",
+    "FIXTURE-GENERICITY"
    ],
    "consumers": [
     "terminal: qualification of the compiler DAG (D23, D24)"
@@ -928,9 +932,10 @@
    "fixture_type": "rust bin",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
    "focused_tests": [
-    "host/factc/tests/driver.rs (d01-d07: queries, exit codes, analyze, build, B-07 behaviour, determinism, observe)",
+    "host/factc/tests/driver.rs (d01-d08: queries, exit codes, analyze, build, B-07 behaviour, determinism, observe bound, observe rejects unbound evidence)",
     "tests/language/run-byte-relay.sh (P6-A01/A03, P5-L01/L03, M5, M6)",
-    "tests/commissioning/run-physical.sh (compile step, observe step)"
+    "tests/commissioning/run-physical.sh (compile step, observe step)",
+    "tests/genericity/run-specimens.mjs (four specimens: build, probe, observe, integrity)"
    ],
    "task_regression": "D23 (native transport vs kernel API), D24 (specimens)",
    "runtime_probe": "none",
@@ -979,13 +984,14 @@
     "COMMISSIONING-FIXTURE.md"
    ],
    "input": "generated bundle dir + payloads.json",
-   "operation": "serve on 127.0.0.1, launch Chromium, drive window.factRuntime: E0 init/admissions/activation, relay payloads, controlled WEBGPU loss, E1 reselection; bundle hashes before/after; --no-webgpu negative witness",
+   "operation": "serve on 127.0.0.1, launch Chromium, drive window.factRuntime generically (D24): read STRATEGY.transfers from the bundle, E0 init/admissions/activation, transfer every authored relation x every payload, controlled loss of --loss BACKEND (default: the first guard backend of the E0 plan), E1 transfers when a plan activates; bundle hashes before/after; --no-webgpu; --expect-e0/--expect-e1 are the caller's expectations (none in the harness)",
    "output": "probe records, evidence-tape.ascii",
    "dependencies": [
     "TEMPLATE-RUNTIME"
    ],
    "consumers": [
-    "tests/commissioning/run-physical.sh"
+    "tests/commissioning/run-physical.sh",
+    "tests/genericity/run-specimens.mjs"
    ],
    "station": "S-WEB",
    "fixture_type": "node esm",
@@ -1097,7 +1103,7 @@
     "CODEGEN-BUNDLE-CONTRACT.md section 4"
    ],
    "input": "admissions",
-   "operation": "STRATEGY = VerifiedStrategy as data (__STRATEGY_JSON__); select() evaluates guards in dispatch order; names only plan_ids in STRATEGY.variants",
+   "operation": "STRATEGY = VerifiedStrategy as data (__STRATEGY_JSON__: transfers, goals, dispatch order, variants with per-transfer requirements) and STRATEGY_SHA256 = its identity (__STRATEGY_SHA256__); select() evaluates guards in dispatch order; names only plan_ids in STRATEGY.variants",
    "output": "activation selection",
    "dependencies": [],
    "consumers": [
@@ -1125,8 +1131,8 @@
     "RUNTIME-ADMISSION-REPLAN.md sections 1-7, 9-10",
     "COMMISSIONING-RUNTIME.md"
    ],
-   "input": "adapters, STRATEGY, payload bytes",
-   "operation": "machine epochs; admission (DISCOVER/REQUEST/PROBE); activation; relay(bytes) execution through the active plan's first guard backend; loss -> new epoch -> rejection -> reselection -> ObservationDelta; evidence records and tape islands; window.factRuntime",
+   "input": "adapters, STRATEGY (+ STRATEGY_SHA256), relation name, payload bytes",
+   "operation": "machine epochs; admission (DISCOVER/REQUEST/PROBE); activation; transfer(relation, bytes) execution through the active plan's requirement for that relation (its verified backend and conversions; D24 - no fixed relation, no fixed first backend); loss -> new epoch -> rejection -> reselection -> ObservationDelta; evidence records and tape islands, the tape opened by a bundle record naming the strategy data identity; window.factRuntime",
    "output": "evidence, tape, snapshot",
    "dependencies": [
     "TEMPLATE-MEMBRANE",
@@ -1157,7 +1163,7 @@
     "CODEGEN-BUNDLE-CONTRACT.md section 4"
    ],
    "input": "-",
-   "operation": "generated HTML shell: title/bundle/strategy substitution; buttons init (E0) / relay payload / destroy WEBGPU; registers sw.js",
+   "operation": "generated HTML shell: title/bundle/strategy substitution; data-driven controls (D24): init (E0), one hex input + transfer button per STRATEGY.transfers relation, one release button per backend a verified variant guards on; no payload and no backend name compiled in; registers sw.js",
    "output": "bundle index.html",
    "dependencies": [
     "TEMPLATE-RUNTIME"
@@ -1300,15 +1306,16 @@
     "COMMISSIONING-FIXTURE.md",
     "PASS6-TESTS.md P6-X06"
    ],
-   "input": "Byte Relay source + registry + payloads",
-   "operation": "run-physical.sh (compile, WebGPU probe, no-WebGPU probe, observe, source-of-record checks); run-anti-cheat.sh (slice names absent from machinery: grep over compiler/*/src, templates, factory/src, host)",
+   "input": "a specimen: source + registry + payloads (the Byte Relay specimen in run-physical.sh)",
+   "operation": "run-physical.sh (compile, WebGPU probe, no-WebGPU probe with the specimen's expectations passed to the generic harness, observe, source-of-record checks); run-anti-cheat.sh (D24: specimen-derived patterns - every fixture specimen's system and transfer-relation names as quoted strings, calls or members, its payload bytes in spaced-hex, 0x-comma, decimal-comma and contiguous-hex forms -, the fixed forms of a hardcode, backend names outside adapter templates; scans compiler/*/src, templates, factory/src, host; takes an optional tree to scan)",
    "output": "evidence records",
    "dependencies": [
     "FACTC",
     "HARNESS-BUNDLE-PROBE"
    ],
    "consumers": [
-    "D6, D7 fixtures"
+    "D6, D7 fixtures",
+    "tests/genericity/reproduce-base.sh (scans an earlier tree)"
    ],
    "station": "S-FIXTURE",
    "fixture_type": "node esm / sh",
@@ -1318,6 +1325,39 @@
    ],
    "task_regression": "D24 (anti-cheat), D25 (physical)",
    "runtime_probe": "PROBE-RELAY-EXACT"
+  },
+  {
+   "id": "TEST-GENERICITY",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/genericity/"
+   ],
+   "owner": [
+    "design/materialization/D24-INTENDED-PIPELINE-GENERICITY.md",
+    "PASS6-TESTS.md P6-X06"
+   ],
+   "input": "fixtures/genericity/*/specimen.json (every executable specimen with its expectations), a factc binary, the built bundles and tapes",
+   "operation": "run-specimens.mjs (every specimen through BUILD -> strategy data checks -> Chromium with/without WebGPU through the generic harness -> OBSERVE bound -> post-build integrity; cross-specimen hardcode check); run-attacks.mjs (renamed relation, changed order, different legal recipe, single-backend registry, missing conversion, undeclared adapter, wrong implementation family, tampered strategy/bundle/guard/certificate, stale evidence + genuine control); check-bundle.mjs (artifact identities vs bundle.json, tamper detection); reproduce-base.sh (the defects shown on an earlier revision's compiler before repair)",
+   "output": "evidence records (summary.json per tool)",
+   "dependencies": [
+    "FACTC",
+    "HARNESS-BUNDLE-PROBE",
+    "FIXTURE-GENERICITY",
+    "TEST-COMMISSIONING"
+   ],
+   "consumers": [
+    "D24 fixtures",
+    "D26 whole-repo commissioning"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; Chromium 141 (Playwright); sh; cargo for reproduce-base",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D24 (specimens, attacks), D26",
+   "runtime_probe": "PROBE-GENERICITY-SPECIMENS, PROBE-GENERICITY-ATTACKS"
   },
   {
    "id": "TEST-TOOLCHAIN",
@@ -1729,7 +1769,7 @@
     "COMMISSIONING-SLICE.md"
    ],
    "input": "-",
-   "operation": "the Byte Relay SPECIMEN as data: authored source (+ compact/labels/renamed/move/other-type/pinned variants), contract registry (2 READY-CONTRACT backends, every other family of G as GAP), metric evidence, synthetic epochs, payloads A/B, tape sample",
+   "operation": "the Byte Relay SPECIMEN as data: authored source (+ compact/labels/renamed/move/other-type/pinned variants), contract registry (2 READY-CONTRACT backends, every other family of G as GAP), metric evidence, synthetic epochs, payloads A/B, tape-sample.ascii (D24: a physical tape of this specimen carrying the bundle record)",
    "output": "data",
    "dependencies": [],
    "consumers": [
@@ -1746,7 +1786,36 @@
    ],
    "task_regression": "through the consumers",
    "runtime_probe": "none",
-   "note": "specimen DATA, never machinery (P6-X06); D24 adds further specimens beside it"
+   "note": "specimen DATA, never machinery (P6-X06); fixtures/genericity/ holds the further specimens (D24)"
+  },
+  {
+   "id": "FIXTURE-GENERICITY",
+   "tier": "FIXTURE",
+   "area": "fixtures",
+   "paths": [
+    "fixtures/genericity/"
+   ],
+   "owner": [
+    "design/materialization/D24-INTENDED-PIPELINE-GENERICITY.md",
+    "COMMISSIONING-FIXTURE.md (the specimen form)"
+   ],
+   "input": "-",
+   "operation": "the D24 SPECIMENS as data, each a directory with specimen.json (system, files, what it varies, expectations): byte-relay (the commissioning specimen, by reference), ledger-mirror (two relations, single backend, no objective), pixel-vault (GPU-only registry, odd payloads), dual-stream (two relations, two backends, maximize objective, four variants)",
+   "output": "data",
+   "dependencies": [],
+   "consumers": [
+    "KERNEL-LADDERS",
+    "TEST-GENERICITY"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "data",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "consumed by the consumers named"
+   ],
+   "task_regression": "through the consumers",
+   "runtime_probe": "none",
+   "note": "specimen DATA, never machinery (P6-X06)"
   },
   {
    "id": "FIXTURE-NEGATIVE",

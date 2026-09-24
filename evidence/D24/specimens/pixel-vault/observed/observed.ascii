@@ -1,0 +1,16 @@
++------------------------------------------------------------------------------+
+| OBSERVED pixel_vault  (derived from runtime evidence; evidence class PHYSICAL_BROWSER)
+| @{system pixel_vault_observed "Observed: pixel_vault"}
+| EPOCH E0
+| @{issue admission_E0_WEBGPU RUN "WEBGPU admitted at E0 (evidence webgpu_known_answer)"}
+| @{issue activation_E0 RUN "plan 0 active at E0"}
+| @{issue executed_E0_stash_1 RUN "stash: exact roundtrip of 3 bytes at E0 via plan 0 (sha256 8e1336ab78ebe687fd8056a37f2d3b0c32f4cf8fa8b691b653800fa693d570b9)"}
+| @{issue executed_E0_stash_2 RUN "stash: exact roundtrip of 17 bytes at E0 via plan 0 (sha256 45e73ee93254114fd513dec79e8be44533f27689f1386a015f40e47ef8d34cc7)"}
+| @{issue loss_E0_WEBGPU ERR "WEBGPU lost at E0 (reason destroyed)"}
+| EPOCH E1
+| @{issue admission_E1_WEBGPU ERR "WEBGPU rejected at E1 (evidence device_lost, reason destroyed)"}
+| @{issue activation_E1 ERR "no active plan at E1"}
+| @{issue transition_E0_E1 OBS "E0 -> E1: plan 0 -> plan none; reselection inside the VerifiedStrategy, no codegen"}
+| @{issue source_of_record OBS "authored source unchanged: sha256 4842ed89a61b6189aa8e4852884974c6e07f0a72b15371eddc286e63bf94aa2a"}
+| @{issue evidence_lineage OBS "evidence tape bound to this bundle: strategy data sha256 dfdceb5aab517ceb2954c015157a272e8a0bf023a7b8dea328dc1149d7e9207b"}
++------------------------------------------------------------------------------+

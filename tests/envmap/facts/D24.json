@@ -1,0 +1,265 @@
+{
+ "schema": "facttest-fact-epoch-spec/1",
+ "summary": "pipeline genericity: four semantically distinct specimens (Byte Relay, ledger-mirror, pixel-vault, dual-stream) through the same compiler, generic browser harness, observe and integrity check; the specimen-specific runtime, shell, harness and scan repaired (I-07, I-08, I-09, I-20) and three further accepted attacks repaired (foreign evidence, adapter family, empty certificate); the attack list refused; the kernel identity re-pinned (R-65) and the D7 relay facts superseded (R-66)",
+ "implementations": [
+  {
+   "id": "IMPL-GENERICITY-RUNNER",
+   "repo_path": "tests/genericity/{run-specimens.mjs,run-attacks.mjs,check-bundle.mjs,reproduce-base.sh}",
+   "kind": "harness",
+   "note": "every specimen through BUILD -> strategy data checks -> Chromium with/without WebGPU -> OBSERVE bound -> integrity; the attack list; the defects reproduced on an earlier revision (D24)"
+  }
+ ],
+ "probes": [
+  {
+   "id": "PROBE-GENERICITY-SPECIMENS",
+   "command_or_operation": "node tests/genericity/run-specimens.mjs --factc BIN --out DIR: for every fixtures/genericity/*/specimen.json - factc check build; the selector's strategy data lists every authored transfer relation in source order and every variant carries a requirement (backends, adapters, conversions) per transfer, the guard is the union, STRATEGY_SHA256 equals sha256 of the data and bundle.json names it; host/harness/bundle-probe.mjs with WebGPU (transfer every relation x payload at E0, loss of the specimen's backend, E1) and without WebGPU, expectations from the specimen; factc observe with the bundle manifest (evidence_lineage OBS); tests/genericity/check-bundle.mjs (identities, tamper detected); cross-specimen check: no bundle names another specimen's system, relations or payload bytes",
+   "expected_observations": [
+    "every specimen: build OK, certificate PASS, both browser runs PASS with the specimen's expectations, observe bound, integrity PASS",
+    "no foreign or own specimen semantics in any bundle"
+   ],
+   "failure_meaning": [
+    "a specimen the language can express does not execute through the same machinery, or a bundle carries specimen-specific semantics"
+   ],
+   "implemented_by": "IMPL-GENERICITY-RUNNER"
+  },
+  {
+   "id": "PROBE-GENERICITY-ATTACKS",
+   "command_or_operation": "node tests/genericity/run-attacks.mjs --factc BIN --specimens DIR --out DIR (renamed relation, changed order, different legal recipe, single-backend registry, missing conversion, undeclared adapter, unexpected implementation family, tampered strategy / bundle / guard / certificate, stale evidence, genuine evidence control); cargo test -p factc-kernel --test genericity_ladder (g01-g07: the same at the kernel level incl. BundleVerifier re-verification of edited strategy data, certificate ids and identity); sh tests/commissioning/run-anti-cheat.sh over the tree; sh tests/genericity/reproduce-base.sh <base> (the defects reproduced on the base compiler first)",
+   "expected_observations": [
+    "every attack produces the recorded refusal (diagnostic, failing certificate check, integrity mismatch or EVIDENCE_UNBOUND); the control passes",
+    "anti-cheat clean on the repaired tree, FAIL on the base tree"
+   ],
+   "failure_meaning": [
+    "an attack passes silently: the machinery accepts a semantics, adapter, bundle or evidence it should refuse"
+   ],
+   "implemented_by": "IMPL-GENERICITY-RUNNER"
+  }
+ ],
+ "facts": [
+  {
+   "id": "FACT-D24-PIPELINE-GENERIC",
+   "subject": "the current compiler (ASCII -> typed IR -> capability IR -> H_G -> planner -> verifier -> codegen -> BundleVerifier), the generated runtime, the browser harness and factc observe at the D24 tree",
+   "predicate": "four semantically distinct specimens execute through the same machinery with no specimen-specific branch: Byte Relay (one relation, two backends, minimize), ledger-mirror (system ledger_mirror, three components, two relations post/mirror of type Entry, payloads of 1, 0 and 1000 bytes, single backend, no objective, FEASIBLE), pixel-vault (system pixel_vault, relation stash of type Tile, GPU-only registry, payloads of 3 and 17 bytes; without WebGPU no plan activates and nothing is invented) and dual-stream (system dual_stream, relations feed/drain of type Chunk, two backends, MAXIMIZE preference_rank ranking CPU_WASM64 first, four variants); each bundle's strategy data lists every transfer with a per-variant requirement, every transfer of every payload emerges exact in Chromium with and without WebGPU, controlled loss of the specimen's backend reselects (dual-stream: CPU_WASM64 -> the all-WEBGPU variant) or leaves E1 without a plan (ledger-mirror, pixel-vault), observe binds each tape to its bundle, post-build integrity holds and no bundle carries another specimen's names or bytes",
+   "status": "RUN",
+   "note": "I-09 and I-20 closed by execution: the single-relation runtime was a real defect (reproduced on the base compiler: the two-relation specimen's strategy named one relation), repaired by per-transfer strategy data and transfer(relation, bytes); the adapter library stays backend-specific machinery keyed by registry recipe names; the semantics the language currently claims (a typed data transfer between ports) is the whole generic surface - no second operation kind is claimed",
+   "source_ref": "evidence/D24/specimens/summary.json",
+   "required_environment": [
+    "Chromium headless shell 141 (Playwright) with the unsafe WebGPU switches (SwiftShader Vulkan) and, for the no-WebGPU runs, without them",
+    "HOST_NATIVE_SET factc"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-GENERICITY-SPECIMENS",
+   "evidence": [
+    {
+     "path": "evidence/D24/specimens/summary.json",
+     "observed_result": "4 specimens x 15 checks PASS + 4 cross-specimen checks PASS"
+    },
+    {
+     "path": "evidence/D24/specimens/dual-stream/probe-webgpu/evidence-tape.ascii",
+     "observed_result": "bundle record; E0 plan 0 (CPU_WASM64) feed and drain exact for 4 and 513 bytes; loss CPU_WASM64; E1 plan 3 (WEBGPU) feed and drain exact"
+    },
+    {
+     "path": "evidence/D24/specimens/pixel-vault/probe-no-webgpu/evidence-tape.ascii",
+     "observed_result": "without WebGPU: WEBGPU rejected, activation none, every stash transfer NO_ACTIVE_PLAN; no CPU fallback invented"
+    },
+    {
+     "path": "evidence/D24/reproduce-base/summary.json",
+     "observed_result": "REPRODUCED at 6bcc86c: single-relation strategy, fixed operation relay(, first-backend execution, payload bytes in the shell, anti-cheat detects"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-GENERICITY-RUNNER",
+    "IMPL-BUNDLE-PROBE",
+    "IMPL-FACTC"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of compiler/, host/harness/bundle-probe.mjs or fixtures/genericity/"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D24-ATTACKS-REFUSED",
+   "subject": "the D24 attack list against the specimens",
+   "predicate": "renamed relation -> transfers renamed, strategy identity changed, the earlier tape no longer binds; changed order -> requirement slots follow the source; different legal recipe -> metadata names it, executable strategy identical; single-backend registry -> one variant; missing conversion -> NO_LEGAL_PLAN, no bundle; undeclared adapter -> build fails, certificate FAIL (B-00); unexpected implementation family -> B-11 FAIL; tampered strategy, bundle, guard, certificate -> integrity mismatch against bundle.json (and at the kernel level B-06 / B-08 re-verification FAIL); stale evidence -> EVIDENCE_UNBOUND, evidence_lineage ERR; the genuine control passes; the anti-cheat scan is clean on the repaired tree and fails on the base tree",
+   "status": "RUN",
+   "note": "three of these attacks passed on the base tree and were repaired in D24 before this fact (I-30 foreign evidence accepted, I-31 wrong adapter family accepted, I-32 empty certificate PASS); post-build tamper detection rests on bundle.json (I-33 [GAP], D25)",
+   "source_ref": "evidence/D24/attacks/summary.json",
+   "required_environment": [
+    "HOST_NATIVE_SET factc and the kernel ladders"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-GENERICITY-ATTACKS",
+   "evidence": [
+    {
+     "path": "evidence/D24/attacks/summary.json",
+     "observed_result": "13 attacks PASS (12 refusals + 1 control)"
+    },
+    {
+     "path": "evidence/D24/anti-cheat/summary.log",
+     "observed_result": "compiler-src, codegen-templates, factory-src, host, backend-names: clean"
+    },
+    {
+     "path": "evidence/D24/reproduce-base/anti-cheat/summary.log",
+     "observed_result": "the same scan over the base tree: specimen semantics in the shell and runtime, fixed backend names in the shell and harness"
+    },
+    {
+     "path": "evidence/D24/crates/genericity-ladder.log",
+     "observed_result": "7 passed (g01-g07)"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-GENERICITY-RUNNER",
+    "IMPL-KERNEL-CRATES"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of compiler/ or fixtures/genericity/"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D24-EVIDENCE-BOUND",
+   "subject": "an evidence tape of a generated bundle against the bundle's metadata",
+   "predicate": "the generated runtime opens every tape with a bundle record naming the sha256 of the verified strategy data it executes under (STRATEGY_SHA256 in selector.js, strategy_data_sha256 in bundle.json, both re-verified by the BundleVerifier: B-06-selector-strategy-identity, B-08-lineage-strategy-data); factc observe compares the record with the manifest it is given and rejects a tape of another bundle (diagnostic EVIDENCE_UNBOUND, evidence_lineage ERR, exit 1) while accepting the bundle's own tape (evidence_lineage OBS); the strategy data carries no source identity, so layout and label changes leave the executable files identical (P6-X03/X04 hold)",
+   "status": "RUN",
+   "note": "I-30 repaired; the observe transport carries the third identity as flag bit 2 (wasm-abi) and the native driver parses it from the manifest; BUILD + OBSERVE in Chromium remain byte-identical to the native driver with the bound tape",
+   "source_ref": "evidence/D24/attacks/stale-evidence/observed.ascii",
+   "required_environment": [
+    "HOST_NATIVE_SET factc; Chromium for the transport comparison"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-GENERICITY-ATTACKS",
+   "evidence": [
+    {
+     "path": "evidence/D24/attacks/stale-evidence/observed.ascii",
+     "observed_result": "evidence_lineage ERR: the Byte Relay tape is not bound to the ledger_mirror bundle"
+    },
+    {
+     "path": "evidence/D24/physical/observed/observed.ascii",
+     "observed_result": "evidence_lineage OBS: the Byte Relay tape bound to its bundle; source_of_record OBS; transition_E0_E1 OBS"
+    },
+    {
+     "path": "evidence/D24/transport/probe.json",
+     "observed_result": "Chromium BUILD status 1 and OBSERVE status 1 with the bound tape; every artifact and bundle file identical to the native driver"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-KERNEL-CRATES",
+    "IMPL-FACTC",
+    "IMPL-WASM-ABI"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of compiler/observe, compiler/bundle, compiler/codegen/templates or host/factc"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "subject": "the Byte Relay specimen (fixtures/commissioning) generated by the D24 compiler and driven through the generic harness",
+   "predicate": "at E0 the WEBGPU variant (plan 1) transfers payloads A (8 bytes) and B (10 bytes) byte-exact (harness-side compare and runtime sha256); after GPUDevice.destroy() WEBGPU is rejected, CPU_WASM64 stays admitted, plan 0 activates and A and B emerge exact again; without WebGPU CPU_WASM64 (plan 0) executes at E0; the tape is bound to the bundle and observe derives transition_E0_E1 with the authored source unchanged; the selfhost probes P01 (offline launch) and P04 (OPFS-served app) execute the same bundle through transfer(relation, bytes)",
+   "status": "RUN",
+   "note": "supersedes FACT-GPU-RELAY-EXACT-E0 and FACT-WASM64-ADMITTED-E1 (R-66): the same physical behaviour under the generic execution entry; the D7 evidence stays as history of the relay-API runtime",
+   "source_ref": "evidence/D24/physical/probe-webgpu/probe-record.json",
+   "required_environment": [
+    "Chromium headless shell 141 with the unsafe WebGPU switches (SwiftShader Vulkan) and without them"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-GENERICITY-SPECIMENS",
+   "evidence": [
+    {
+     "path": "evidence/D24/physical/probe-webgpu/probe-record.json",
+     "observed_result": "E0 WEBGPU plan 1 A,B exact; loss witnessed; E1 CPU_WASM64 plan 0 A,B exact; bundle unchanged; expectations met"
+    },
+    {
+     "path": "evidence/D24/physical/probe-no-webgpu/probe-record.json",
+     "observed_result": "no WebGPU: E0 CPU_WASM64 plan 0 A,B exact"
+    },
+    {
+     "path": "evidence/D24/selfhost/summary.json",
+     "observed_result": "P01 RUN, P04 RUN against the D24 bundle (BUNDLE_DIR given; the historical default stays I-05 for D25)"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-BUNDLE-PROBE",
+    "IMPL-FACTC"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of compiler/ or fixtures/commissioning/"
+    },
+    {
+     "dimension": "browser.version",
+     "relation": "a different Chromium or WebGPU implementation"
+    }
+   ]
+  },
+  {
+   "id": "FACT-KERNEL-IDENTITY-D24",
+   "subject": "WASM64_KERNEL_SET release kernel identity after the D24 genericity repair",
+   "predicate": "the kernel identity is the exec identity ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115 (sha256 over every section except the custom \"name\" section; tests/toolchain/proof-sets.json exec_identity, checked by tests/toolchain/proof.mjs kernel-identity), equal for the builds under both rustup install names; the whole-file sha256 stays recorded per install name (2dbb740e... pinned name, e0b0aa8b... renamed); the identity is source-exact, so it is pinned from the committed source",
+   "status": "RUN",
+   "note": "supersedes FACT-KERNEL-IDENTITY-D23 (R-65): the same definition, a new value; the D23 identity fcaee2a6... is kept as history in proof-sets.json",
+   "source_ref": "evidence/D24/kernel/sections.json",
+   "required_environment": [
+    "WASM64_KERNEL_SET (nightly-2026-09-24, rustc 6eeff9a52) under the pinned and the renamed install name"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-KERNEL-SECTIONS",
+   "evidence": [
+    {
+     "path": "evidence/D24/kernel/sections.json",
+     "observed_result": "INSTALL-PINNED and INSTALL-RENAMED: identity_excluding_custom ef5d886a... for both"
+    },
+    {
+     "path": "evidence/D24/kernel/builds.json",
+     "observed_result": "whole-file sha256 2dbb740e... (pinned name) / e0b0aa8b... (renamed)"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-WASM-ABI"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a crate the kernel links"
+    },
+    {
+     "dimension": "toolchain.nightly.rustc_commit",
+     "relation": "a different nightly"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "subject": "the generated bundle's own files at load time",
+   "predicate": "post-build tamper detection (check-bundle.mjs, the tampered-* attacks) rests on the identities bundle.json records and is exercised from outside the bundle; the generated runtime and service worker do not verify the files they load against those identities, so a tamper that also rewrites bundle.json is not detectable by the bundle itself",
+   "status": "GAP",
+   "note": "explicit stop (I-33, class D): runtime self-integrity is not claimed by CODEGEN-BUNDLE-CONTRACT.md; D25 decides whether the physical webapp claims it",
+   "source_ref": "tests/manifest/issues.json I-33",
+   "required_environment": [],
+   "constraint_refs": [],
+   "probe": "PROBE-GENERICITY-ATTACKS",
+   "evidence": [
+    {
+     "path": "evidence/D24/attacks/summary.json",
+     "observed_result": "tampered-strategy / tampered-bundle / invalid-guard / wrong-certificate detected by check-bundle.mjs against bundle.json only"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-GENERICITY-RUNNER"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of compiler/codegen/templates"
+    }
+   ]
+  }
+ ]
+}

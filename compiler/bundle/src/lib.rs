@@ -39,11 +39,15 @@ impl BundleCertificate {
             bundle_id: [0; 32],
         }
     }
-    fn check(&mut self, id: &'static str, pass: bool, detail: &'static str) {
+    pub fn check(&mut self, id: &'static str, pass: bool, detail: &'static str) {
         if !pass {
             self.pass = false;
         }
         let _ = self.checks.push(Check { id, pass, detail });
+    }
+    /// A certificate passes only when checks ran and none failed: an empty certificate is never a PASS (D24).
+    pub fn passed(&self) -> bool {
+        self.pass && !self.checks.is_empty()
     }
 }
 
@@ -58,6 +62,20 @@ fn find<'a>(files: &'a [File<'a>], path: &[u8]) -> Option<&'a [u8]> {
 
 fn contains(hay: &[u8], needle: &[u8]) -> bool {
     !needle.is_empty() && hay.windows(needle.len()).any(|w| w == needle)
+}
+
+/// The bytes between the first `begin` marker and the following `end` marker, when both exist in order.
+fn find_window<'a>(hay: &'a [u8], begin: &[u8], end: &[u8]) -> Option<&'a [u8]> {
+    if begin.is_empty() || end.is_empty() || hay.len() < begin.len() {
+        return None;
+    }
+    let s = hay.windows(begin.len()).position(|w| w == begin)? + begin.len();
+    let rest = &hay[s..];
+    if rest.len() < end.len() {
+        return None;
+    }
+    let e = rest.windows(end.len()).position(|w| w == end)?;
+    Some(&rest[..e])
 }
 
 fn count(hay: &[u8], needle: &[u8]) -> usize {
@@ -131,6 +149,42 @@ pub fn verify(
             "B-03-no-undeclared-adapter",
             begins <= allowed.len as usize,
             "no undeclared capability adapter exists",
+        );
+        // B-11 every backend a verified variant guards on is realized by an adapter of that backend's family:
+        // the adapter block a recipe names declares `backend: '<that backend>'` (an implementation family that
+        // does not match the registry's backend is a build error, not a runtime surprise)
+        let mut family_ok = true;
+        for v in vs.variants.iter() {
+            for b in v.plan.guard.iter() {
+                let Some(a) = factc_codegen::adapter_of_backend(reg, b) else {
+                    family_ok = false;
+                    continue;
+                };
+                let mut begin = [0u8; 80];
+                let mut bo = OutBuf::new(&mut begin);
+                let _ = bo.str("/*ADAPTER-BEGIN:");
+                let _ = bo.bytes(reg.name(a));
+                let _ = bo.str("*/");
+                let mut end = [0u8; 80];
+                let mut eo = OutBuf::new(&mut end);
+                let _ = eo.str("/*ADAPTER-END:");
+                let _ = eo.bytes(reg.name(a));
+                let _ = eo.str("*/");
+                let mut decl = [0u8; 96];
+                let mut d = OutBuf::new(&mut decl);
+                let _ = d.str("backend: '");
+                let _ = d.bytes(reg.name(b));
+                let _ = d.byte(b'\'');
+                let block = find_window(mem, bo.as_slice(), eo.as_slice());
+                if !block.is_some_and(|blk| contains(blk, d.as_slice())) {
+                    family_ok = false;
+                }
+            }
+        }
+        cert.check(
+            "B-11-adapter-realizes-backend",
+            family_ok,
+            "every guarded backend is realized by an adapter declaring that backend",
         );
         cert.check(
             "B-04-all-variants-emitted",
@@ -208,6 +262,9 @@ pub fn verify(
         let mut o = OutBuf::new(&mut data);
         let ok = factc_codegen::strategy_data_json(m, reg, hg, vs, &mut o).is_ok();
         let n = o.len();
+        let strategy_sha = factc_foundation::sha256::digest(&data[..n]);
+        let mut strategy_hex = [0u8; 64];
+        hex_of(&strategy_sha, &mut strategy_hex);
         let mut marker = [0u8; 8192 + 64];
         let mut mo = OutBuf::new(&mut marker);
         let _ = mo.str("/*STRATEGY-BEGIN*/");
@@ -218,6 +275,28 @@ pub fn verify(
             ok && contains(sel, mo.as_slice()),
             "selector strategy data equals the VerifiedStrategy (no missing/extra variant)",
         );
+        // B-06 the selector names the identity of its own strategy data (the runtime writes it into every tape)
+        let mut needle = [0u8; 96];
+        let mut no = OutBuf::new(&mut needle);
+        let _ = no.str("STRATEGY_SHA256 = '");
+        let _ = no.bytes(&strategy_hex);
+        let _ = no.byte(b'\'');
+        cert.check(
+            "B-06-selector-strategy-identity",
+            ok && contains(sel, no.as_slice()),
+            "selector names the sha256 of its strategy data as re-rendered from the VerifiedStrategy",
+        );
+        if let Some(man) = manifest {
+            let mut mo = OutBuf::new(&mut needle);
+            let _ = mo.str("\"strategy_data_sha256\":\"");
+            let _ = mo.bytes(&strategy_hex);
+            let _ = mo.byte(b'"');
+            cert.check(
+                "B-08-lineage-strategy-data",
+                ok && contains(man, mo.as_slice()),
+                "bundle metadata names the strategy data identity",
+            );
+        }
         cert.check(
             "B-06-selector-no-codegen",
             !contains(sel, b"WebAssembly.compile") && !contains(sel, b"new Function"),
@@ -385,7 +464,7 @@ pub fn certificate_json(c: &BundleCertificate, out: &mut OutBuf<'_>) -> Result<(
     w.kv_str("kind", b"BUNDLE_CERTIFICATE")?;
     w.kv_uint("schema_version", 1)?;
     w.kv_hex("bundle_identity_recomputed", &c.bundle_id)?;
-    w.kv_str("status", if c.pass { b"PASS" } else { b"FAIL" })?;
+    w.kv_str("status", if c.passed() { b"PASS" } else { b"FAIL" })?;
     w.key("checks")?;
     w.arr()?;
     for ch in c.checks.iter() {

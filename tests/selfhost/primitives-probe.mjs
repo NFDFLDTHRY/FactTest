@@ -87,7 +87,7 @@ async function p01() {
   await A.stop();
   const offline1 = await tryGoto(page, A.origin + '/b/index.html');
   let relay1 = null;
-  if (offline1.ok) relay1 = await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r = await m.relay(new Uint8Array([0, 1, 127, 128, 255])); const s = m.snapshot(); return { relay: r.status, exact: r.exact === true, backend: r.backend, active: s.activation && s.activation.plan_id, admissions: Object.fromEntries(Object.entries(s.admissions).map(([k, v]) => [k, v.decision])) }; }).catch(e => ({ error: String(e) }));
+  if (offline1.ok) relay1 = await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r = await m.transfer((await import('./selector.js')).STRATEGY.transfers[0].relation, new Uint8Array([0, 1, 127, 128, 255])); const s = m.snapshot(); return { relay: r.status, exact: r.exact === true, backend: r.backend, active: s.activation && s.activation.plan_id, admissions: Object.fromEntries(Object.entries(s.admissions).map(([k, v]) => [k, v.decision])) }; }).catch(e => ({ error: String(e) }));
   await ctx.close();
   ctx = await launch('p01');
   page = await ctx.newPage();
@@ -177,14 +177,14 @@ await navigator.serviceWorker.register('/p4/sw.js',{scope:'/p4/'});await navigat
   const nav = await tryGoto(page, A.origin + '/p4/apps/relay/index.html');
   const run = nav.ok ? await page.evaluate(async () => {
     const hdr = (await fetch('./runtime.js')).headers.get('x-served-by');
-    const m = await import('./runtime.js'); await m.init(); const payload = new Uint8Array([0xde, 0xad, 0xbe, 0xef, 0x00, 0x13]); const r0 = await m.relay(payload); const r = { status: r0.status, exact: r0.exact, backend: r0.backend, plan_id: r0.plan_id, input_sha256: r0.input_sha256 }; const s = m.snapshot();
+    const m = await import('./runtime.js'); await m.init(); const payload = new Uint8Array([0xde, 0xad, 0xbe, 0xef, 0x00, 0x13]); const r0 = await m.transfer((await import('./selector.js')).STRATEGY.transfers[0].relation, payload); const r = { status: r0.status, exact: r0.exact, backend: r0.backend, plan_id: r0.plan_id, input_sha256: r0.input_sha256 }; const s = m.snapshot();
     const regs = (await navigator.serviceWorker.getRegistrations()).map(x => x.scope);
     return { served_by: hdr, relay: r, active_plan: s.activation && s.activation.plan_id, admissions: Object.fromEntries(Object.entries(s.admissions).map(([k, v]) => [k, v.decision])), registrations: regs };
   }).catch(e => ({ error: String(e) })) : null;
   await ctx.close();
   ctx = await launch('p04'); page = await ctx.newPage();
   const afterRestart = await tryGoto(page, A.origin + '/p4/apps/relay/index.html');
-  const run2 = afterRestart.ok ? await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r0 = await m.relay(new Uint8Array([1, 2, 3, 4])); return { status: r0.status, exact: r0.exact, backend: r0.backend }; }).catch(e => ({ error: String(e) })) : null;
+  const run2 = afterRestart.ok ? await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r0 = await m.transfer((await import('./selector.js')).STRATEGY.transfers[0].relation, new Uint8Array([1, 2, 3, 4])); return { status: r0.status, exact: r0.exact, backend: r0.backend }; }).catch(e => ({ error: String(e) })) : null;
   await ctx.close();
   const exact = r => r && JSON.stringify(r).includes('"exact":true');
   const ok = nav.ok && run && run.served_by === 'opfs-sw' && exact(run.relay) && afterRestart.ok && exact(run2);

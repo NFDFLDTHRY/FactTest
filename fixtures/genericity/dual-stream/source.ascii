@@ -1,0 +1,17 @@
+DUAL STREAM (D24 specimen: two data relations of one type over two backends, an objective that MAXIMIZES the
+fixture rank - the dispatch order is the reverse of Byte Relay's; strategy cardinality 2 x 2 = 4)
+@{system dual_stream "Dual Stream"}
+@{type Chunk}
+@{metric preference_rank ordinal "fixture policy rank; not a measurement"}
+@{objective spread}
+@{goal spread 1 maximize preference_rank}
+@{component source}
+@{component splitter}
+@{component sink}
+@{port source.out out: Chunk public}
+@{port splitter.in in: Chunk public}
+@{port splitter.out out: Chunk public}
+@{port sink.in in: Chunk public}
+@{data feed source.out -> splitter.in mode=copy}
+@{data drain splitter.out -> sink.in mode=copy}
+@{invariant i_reach reachable(source, sink)}

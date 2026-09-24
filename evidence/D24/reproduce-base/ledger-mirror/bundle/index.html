@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ledger_mirror</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<style>body{font-family:ui-monospace,monospace;margin:16px;background:#111;color:#eee}pre{white-space:pre-wrap;background:#000;padding:8px;border:1px solid #333}button{margin:4px}</style>
+</head>
+<body>
+<h1>ledger_mirror</h1>
+<p>Generated capability-parametric WebApp (FactTest object B). Bundle <code>0a7952759816578f</code>. Strategy <code>1</code>.</p>
+<div><button id="init">init (E0)</button><button id="relay">relay payload</button><button id="destroy">destroy WEBGPU (controlled loss)</button></div>
+<pre id="out">idle</pre>
+<script type="module">
+import { init, relay, destroyBackend, snapshot } from './runtime.js';
+const out = document.getElementById('out');
+const show = () => { out.textContent = JSON.stringify(snapshot(), (k, v) => (v instanceof Uint8Array ? [...v] : v), 2); };
+document.getElementById('init').onclick = async () => { await init(); show(); };
+document.getElementById('relay').onclick = async () => { await relay(new Uint8Array([0x00,0x01,0x7f,0x80,0xff,0x55,0xaa,0x10])); show(); };
+document.getElementById('destroy').onclick = async () => { await destroyBackend('WEBGPU'); show(); };
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js').catch(() => {}); }
+</script>
+</body>
+</html>

@@ -33937,6 +33937,612 @@
    "new_probe_obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)",
    "owner": "tests/reconcile/d23-reconciliation.json (reviewed; D23)",
    "introduced_in": "D23"
+  },
+  {
+   "id": "ENV-D24-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D24-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "none (records compared; cargo metadata only)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": []
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D24/identity/{host,toolchains,repo}.json",
+   "note": "D24 environment identity (host of the run this epoch binds)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "IMPL-GENERICITY-RUNNER",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-GENERICITY-RUNNER",
+   "repo_path": "tests/genericity/{run-specimens.mjs,run-attacks.mjs,check-bundle.mjs,reproduce-base.sh}",
+   "commit": "introduced by D24-PIPELINE-GENERICITY (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "every specimen through BUILD -> strategy data checks -> Chromium with/without WebGPU -> OBSERVE bound -> integrity; the attack list; the defects reproduced on an earlier revision (D24)",
+   "owner": "tests/genericity/{run-specimens.mjs,run-attacks.mjs,check-bundle.mjs,reproduce-base.sh}",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "PROBE-GENERICITY-SPECIMENS",
+   "class": "PROBE",
+   "probe_id": "PROBE-GENERICITY-SPECIMENS",
+   "proves_fact": [
+    "FACT-D24-PIPELINE-GENERIC",
+    "FACT-D24-BYTE-RELAY-EXECUTED"
+   ],
+   "command_or_operation": "node tests/genericity/run-specimens.mjs --factc BIN --out DIR: for every fixtures/genericity/*/specimen.json - factc check build; the selector's strategy data lists every authored transfer relation in source order and every variant carries a requirement (backends, adapters, conversions) per transfer, the guard is the union, STRATEGY_SHA256 equals sha256 of the data and bundle.json names it; host/harness/bundle-probe.mjs with WebGPU (transfer every relation x payload at E0, loss of the specimen's backend, E1) and without WebGPU, expectations from the specimen; factc observe with the bundle manifest (evidence_lineage OBS); tests/genericity/check-bundle.mjs (identities, tamper detected); cross-specimen check: no bundle names another specimen's system, relations or payload bytes",
+   "expected_observations": [
+    "every specimen: build OK, certificate PASS, both browser runs PASS with the specimen's expectations, observe bound, integrity PASS",
+    "no foreign or own specimen semantics in any bundle"
+   ],
+   "failure_meaning": [
+    "a specimen the language can express does not execute through the same machinery, or a bundle carries specimen-specific semantics"
+   ],
+   "implemented_by": "IMPL-GENERICITY-RUNNER",
+   "owner": "IMPL-GENERICITY-RUNNER",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "PROBE-GENERICITY-ATTACKS",
+   "class": "PROBE",
+   "probe_id": "PROBE-GENERICITY-ATTACKS",
+   "proves_fact": [
+    "FACT-D24-ATTACKS-REFUSED",
+    "FACT-D24-EVIDENCE-BOUND",
+    "FACT-D24-RUNTIME-SELF-INTEGRITY"
+   ],
+   "command_or_operation": "node tests/genericity/run-attacks.mjs --factc BIN --specimens DIR --out DIR (renamed relation, changed order, different legal recipe, single-backend registry, missing conversion, undeclared adapter, unexpected implementation family, tampered strategy / bundle / guard / certificate, stale evidence, genuine evidence control); cargo test -p factc-kernel --test genericity_ladder (g01-g07: the same at the kernel level incl. BundleVerifier re-verification of edited strategy data, certificate ids and identity); sh tests/commissioning/run-anti-cheat.sh over the tree; sh tests/genericity/reproduce-base.sh <base> (the defects reproduced on the base compiler first)",
+   "expected_observations": [
+    "every attack produces the recorded refusal (diagnostic, failing certificate check, integrity mismatch or EVIDENCE_UNBOUND); the control passes",
+    "anti-cheat clean on the repaired tree, FAIL on the base tree"
+   ],
+   "failure_meaning": [
+    "an attack passes silently: the machinery accepts a semantics, adapter, bundle or evidence it should refuse"
+   ],
+   "implemented_by": "IMPL-GENERICITY-RUNNER",
+   "owner": "IMPL-GENERICITY-RUNNER",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-SPECIMENS-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-SPECIMENS-SUMMARY",
+   "probe_ref": "PROBE-GENERICITY-SPECIMENS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/specimens/summary.json",
+    "sha256": "ca6e6e62488d08151c401f2f75ff0551674b08764afee94286b8e26b3c855990",
+    "bytes": 13616,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "4 specimens x 15 checks PASS + 4 cross-specimen checks PASS",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-SPECIMENS-DUAL-STREAM-PROBE-WEBGPU-EVIDENCE-TAPE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-SPECIMENS-DUAL-STREAM-PROBE-WEBGPU-EVIDENCE-TAPE",
+   "probe_ref": "PROBE-GENERICITY-SPECIMENS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/specimens/dual-stream/probe-webgpu/evidence-tape.ascii",
+    "sha256": "522bd8132a948b5f7a0e23f9e324c73baf93e63532a3c0b74bd8ccd4c3e88bab",
+    "bytes": 2121,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "bundle record; E0 plan 0 (CPU_WASM64) feed and drain exact for 4 and 513 bytes; loss CPU_WASM64; E1 plan 3 (WEBGPU) feed and drain exact",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-SPECIMENS-PIXEL-VAULT-PROBE-NO-WEBGPU-EVIDENCE-TAPE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-SPECIMENS-PIXEL-VAULT-PROBE-NO-WEBGPU-EVIDENCE-TAPE",
+   "probe_ref": "PROBE-GENERICITY-SPECIMENS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/specimens/pixel-vault/probe-no-webgpu/evidence-tape.ascii",
+    "sha256": "3d7fb83df43e9c33255450c640db201d81f7a003d3c5c379ad686820209c4066",
+    "bytes": 295,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "without WebGPU: WEBGPU rejected, activation none, every stash transfer NO_ACTIVE_PLAN; no CPU fallback invented",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-REPRODUCE-BASE-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-REPRODUCE-BASE-SUMMARY",
+   "probe_ref": "PROBE-GENERICITY-SPECIMENS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/reproduce-base/summary.json",
+    "sha256": "1d9e33053fa822a5d103d406a9b87a9604f3a67dc961c948ae890467de0827a0",
+    "bytes": 707,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "REPRODUCED at 6bcc86c: single-relation strategy, fixed operation relay(, first-backend execution, payload bytes in the shell, anti-cheat detects",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "FACT-D24-PIPELINE-GENERIC",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D24-PIPELINE-GENERIC",
+   "subject": "the current compiler (ASCII -> typed IR -> capability IR -> H_G -> planner -> verifier -> codegen -> BundleVerifier), the generated runtime, the browser harness and factc observe at the D24 tree",
+   "predicate": "four semantically distinct specimens execute through the same machinery with no specimen-specific branch: Byte Relay (one relation, two backends, minimize), ledger-mirror (system ledger_mirror, three components, two relations post/mirror of type Entry, payloads of 1, 0 and 1000 bytes, single backend, no objective, FEASIBLE), pixel-vault (system pixel_vault, relation stash of type Tile, GPU-only registry, payloads of 3 and 17 bytes; without WebGPU no plan activates and nothing is invented) and dual-stream (system dual_stream, relations feed/drain of type Chunk, two backends, MAXIMIZE preference_rank ranking CPU_WASM64 first, four variants); each bundle's strategy data lists every transfer with a per-variant requirement, every transfer of every payload emerges exact in Chromium with and without WebGPU, controlled loss of the specimen's backend reselects (dual-stream: CPU_WASM64 -> the all-WEBGPU variant) or leaves E1 without a plan (ledger-mirror, pixel-vault), observe binds each tape to its bundle, post-build integrity holds and no bundle carries another specimen's names or bytes",
+   "required_environment": [
+    "Chromium headless shell 141 (Playwright) with the unsafe WebGPU switches (SwiftShader Vulkan) and, for the no-WebGPU runs, without them",
+    "HOST_NATIVE_SET factc"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "I-09 and I-20 closed by execution: the single-relation runtime was a real defect (reproduced on the base compiler: the two-relation specimen's strategy named one relation), repaired by per-transfer strategy data and transfer(relation, bytes); the adapter library stays backend-specific machinery keyed by registry recipe names; the semantics the language currently claims (a typed data transfer between ports) is the whole generic surface - no second operation kind is claimed",
+   "source_ref": "evidence/D24/specimens/summary.json",
+   "owner": "D24 (derived from the evidence named by its edges)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-ATTACKS-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-ATTACKS-SUMMARY",
+   "probe_ref": "PROBE-GENERICITY-ATTACKS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/attacks/summary.json",
+    "sha256": "b29dd5d66b89cb7cbc9e3177dd11c95acc2c3e61afda6b26b7b00616c2f78ae3",
+    "bytes": 5095,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "13 attacks PASS (12 refusals + 1 control)",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-ANTI-CHEAT-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-ANTI-CHEAT-SUMMARY",
+   "probe_ref": "PROBE-GENERICITY-ATTACKS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/anti-cheat/summary.log",
+    "sha256": "d825373cfc3da646a9ce0f8cee81a67c8ba78ee49a86a8c4f38ed4058a92a64a",
+    "bytes": 97,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "compiler-src, codegen-templates, factory-src, host, backend-names: clean",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-REPRODUCE-BASE-ANTI-CHEAT-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-REPRODUCE-BASE-ANTI-CHEAT-SUMMARY",
+   "probe_ref": "PROBE-GENERICITY-ATTACKS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/reproduce-base/anti-cheat/summary.log",
+    "sha256": "75f83664c64147f828a98a845dc84053cb5ba3673f5fd8f85539d191ef1585cd",
+    "bytes": 2921,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "the same scan over the base tree: specimen semantics in the shell and runtime, fixed backend names in the shell and harness",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-CRATES-GENERICITY-LADDER",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-CRATES-GENERICITY-LADDER",
+   "probe_ref": "PROBE-GENERICITY-ATTACKS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/crates/genericity-ladder.log",
+    "sha256": "6e839ff1beecd9c997f1c4849998a0202dc29c20b961b2562a1d315148f542ec",
+    "bytes": 912,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "7 passed (g01-g07)",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "FACT-D24-ATTACKS-REFUSED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D24-ATTACKS-REFUSED",
+   "subject": "the D24 attack list against the specimens",
+   "predicate": "renamed relation -> transfers renamed, strategy identity changed, the earlier tape no longer binds; changed order -> requirement slots follow the source; different legal recipe -> metadata names it, executable strategy identical; single-backend registry -> one variant; missing conversion -> NO_LEGAL_PLAN, no bundle; undeclared adapter -> build fails, certificate FAIL (B-00); unexpected implementation family -> B-11 FAIL; tampered strategy, bundle, guard, certificate -> integrity mismatch against bundle.json (and at the kernel level B-06 / B-08 re-verification FAIL); stale evidence -> EVIDENCE_UNBOUND, evidence_lineage ERR; the genuine control passes; the anti-cheat scan is clean on the repaired tree and fails on the base tree",
+   "required_environment": [
+    "HOST_NATIVE_SET factc and the kernel ladders"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "three of these attacks passed on the base tree and were repaired in D24 before this fact (I-30 foreign evidence accepted, I-31 wrong adapter family accepted, I-32 empty certificate PASS); post-build tamper detection rests on bundle.json (I-33 [GAP], D25)",
+   "source_ref": "evidence/D24/attacks/summary.json",
+   "owner": "D24 (derived from the evidence named by its edges)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-ATTACKS-STALE-EVIDENCE-OBSERVED",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-ATTACKS-STALE-EVIDENCE-OBSERVED",
+   "probe_ref": "PROBE-GENERICITY-ATTACKS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/attacks/stale-evidence/observed.ascii",
+    "sha256": "c228585a214a699425f1e6fd1dc3173a7513f5c89fbc2c40ccb08bd4639a7a6d",
+    "bytes": 1930,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "evidence_lineage ERR: the Byte Relay tape is not bound to the ledger_mirror bundle",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-PHYSICAL-OBSERVED-OBSERVED",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-PHYSICAL-OBSERVED-OBSERVED",
+   "probe_ref": "PROBE-GENERICITY-ATTACKS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/physical/observed/observed.ascii",
+    "sha256": "56c09980a5fdbf3949275e6b8c7511803b015266f011104c4e230a6dfba8ab8c",
+    "bytes": 1839,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "evidence_lineage OBS: the Byte Relay tape bound to its bundle; source_of_record OBS; transition_E0_E1 OBS",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-TRANSPORT-PROBE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-TRANSPORT-PROBE",
+   "probe_ref": "PROBE-GENERICITY-ATTACKS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/transport/probe.json",
+    "sha256": "8ec23f6198aec4417e1b6d80f9829fc2da52991e71cebf96b512921c208d937e",
+    "bytes": 3908,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "Chromium BUILD status 1 and OBSERVE status 1 with the bound tape; every artifact and bundle file identical to the native driver",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "FACT-D24-EVIDENCE-BOUND",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D24-EVIDENCE-BOUND",
+   "subject": "an evidence tape of a generated bundle against the bundle's metadata",
+   "predicate": "the generated runtime opens every tape with a bundle record naming the sha256 of the verified strategy data it executes under (STRATEGY_SHA256 in selector.js, strategy_data_sha256 in bundle.json, both re-verified by the BundleVerifier: B-06-selector-strategy-identity, B-08-lineage-strategy-data); factc observe compares the record with the manifest it is given and rejects a tape of another bundle (diagnostic EVIDENCE_UNBOUND, evidence_lineage ERR, exit 1) while accepting the bundle's own tape (evidence_lineage OBS); the strategy data carries no source identity, so layout and label changes leave the executable files identical (P6-X03/X04 hold)",
+   "required_environment": [
+    "HOST_NATIVE_SET factc; Chromium for the transport comparison"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "I-30 repaired; the observe transport carries the third identity as flag bit 2 (wasm-abi) and the native driver parses it from the manifest; BUILD + OBSERVE in Chromium remain byte-identical to the native driver with the bound tape",
+   "source_ref": "evidence/D24/attacks/stale-evidence/observed.ascii",
+   "owner": "D24 (derived from the evidence named by its edges)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-PHYSICAL-PROBE-WEBGPU-PROBE-RECORD",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-PHYSICAL-PROBE-WEBGPU-PROBE-RECORD",
+   "probe_ref": "PROBE-GENERICITY-SPECIMENS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/physical/probe-webgpu/probe-record.json",
+    "sha256": "b1b82b2032f39dfd6a23c01fa34c465a2024e120817d69d414db317f0abfb049",
+    "bytes": 12597,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "E0 WEBGPU plan 1 A,B exact; loss witnessed; E1 CPU_WASM64 plan 0 A,B exact; bundle unchanged; expectations met",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-PHYSICAL-PROBE-NO-WEBGPU-PROBE-RECORD",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-PHYSICAL-PROBE-NO-WEBGPU-PROBE-RECORD",
+   "probe_ref": "PROBE-GENERICITY-SPECIMENS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/physical/probe-no-webgpu/probe-record.json",
+    "sha256": "88ae9b9162f302f1c895f0bb09ced9814ef02cff5e2c481b700640f25b6565da",
+    "bytes": 6488,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "no WebGPU: E0 CPU_WASM64 plan 0 A,B exact",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-SELFHOST-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-SELFHOST-SUMMARY",
+   "probe_ref": "PROBE-GENERICITY-SPECIMENS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/selfhost/summary.json",
+    "sha256": "8b0b3311d0bf2e4fc54b94eede136fe2e650eea39302923b442d69dd97b2a3af",
+    "bytes": 5391,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "P01 RUN, P04 RUN against the D24 bundle (BUNDLE_DIR given; the historical default stays I-05 for D25)",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "subject": "the Byte Relay specimen (fixtures/commissioning) generated by the D24 compiler and driven through the generic harness",
+   "predicate": "at E0 the WEBGPU variant (plan 1) transfers payloads A (8 bytes) and B (10 bytes) byte-exact (harness-side compare and runtime sha256); after GPUDevice.destroy() WEBGPU is rejected, CPU_WASM64 stays admitted, plan 0 activates and A and B emerge exact again; without WebGPU CPU_WASM64 (plan 0) executes at E0; the tape is bound to the bundle and observe derives transition_E0_E1 with the authored source unchanged; the selfhost probes P01 (offline launch) and P04 (OPFS-served app) execute the same bundle through transfer(relation, bytes)",
+   "required_environment": [
+    "Chromium headless shell 141 with the unsafe WebGPU switches (SwiftShader Vulkan) and without them"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "supersedes FACT-GPU-RELAY-EXACT-E0 and FACT-WASM64-ADMITTED-E1 (R-66): the same physical behaviour under the generic execution entry; the D7 evidence stays as history of the relay-API runtime",
+   "source_ref": "evidence/D24/physical/probe-webgpu/probe-record.json",
+   "owner": "D24 (derived from the evidence named by its edges)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-KERNEL-SECTIONS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-KERNEL-SECTIONS",
+   "probe_ref": "PROBE-KERNEL-SECTIONS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/kernel/sections.json",
+    "sha256": "cbd03274f15affb230e0dce098eb43c1e4e8c3f98c312a1d9797df0e55805364",
+    "bytes": 5485,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "INSTALL-PINNED and INSTALL-RENAMED: identity_excluding_custom ef5d886a... for both",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "EV-D24-KERNEL-BUILDS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D24-KERNEL-BUILDS",
+   "probe_ref": "PROBE-KERNEL-SECTIONS",
+   "environment_ref": "ENV-D24-HOST",
+   "artifact_identity": {
+    "path": "evidence/D24/kernel/builds.json",
+    "sha256": "fffcfe1df5023c5a390657599257636109a3e7c6aa2f15b29a1f4b0d54625cc7",
+    "bytes": 1084,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "whole-file sha256 2dbb740e... (pinned name) / e0b0aa8b... (renamed)",
+   "epoch": "D24",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D24-PIPELINE-GENERICITY",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "FACT-KERNEL-IDENTITY-D24",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-KERNEL-IDENTITY-D24",
+   "subject": "WASM64_KERNEL_SET release kernel identity after the D24 genericity repair",
+   "predicate": "the kernel identity is the exec identity ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115 (sha256 over every section except the custom \"name\" section; tests/toolchain/proof-sets.json exec_identity, checked by tests/toolchain/proof.mjs kernel-identity), equal for the builds under both rustup install names; the whole-file sha256 stays recorded per install name (2dbb740e... pinned name, e0b0aa8b... renamed); the identity is source-exact, so it is pinned from the committed source",
+   "required_environment": [
+    "WASM64_KERNEL_SET (nightly-2026-09-24, rustc 6eeff9a52) under the pinned and the renamed install name"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "supersedes FACT-KERNEL-IDENTITY-D23 (R-65): the same definition, a new value; the D23 identity fcaee2a6... is kept as history in proof-sets.json",
+   "source_ref": "evidence/D24/kernel/sections.json",
+   "owner": "D24 (derived from the evidence named by its edges)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "subject": "the generated bundle's own files at load time",
+   "predicate": "post-build tamper detection (check-bundle.mjs, the tampered-* attacks) rests on the identities bundle.json records and is exercised from outside the bundle; the generated runtime and service worker do not verify the files they load against those identities, so a tamper that also rewrites bundle.json is not detectable by the bundle itself",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "GAP",
+   "note": "explicit stop (I-33, class D): runtime self-integrity is not claimed by CODEGEN-BUNDLE-CONTRACT.md; D25 decides whether the physical webapp claims it",
+   "source_ref": "tests/manifest/issues.json I-33",
+   "owner": "D24 (derived from the evidence named by its edges)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "R-65",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-65",
+   "subject": "kernel identity after the D24 genericity repair",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none (AUTH-CARGO-BUILD-STD unchanged; the same pinned nightly)",
+    "CONSTRAINT": "none",
+    "FACT": "FACT-KERNEL-IDENTITY-D23 states the exec identity fcaee2a6... of the D23 kernel; D24 changed compiler crates the kernel links (codegen: per-transfer strategy data and its identity; bundle: B-06 identity, B-08 strategy-data lineage, B-11 adapter family, an empty certificate never passes; observe: the bundle record and evidence_lineage; kernel: EvidenceUnbound, the observe signature; foundation: the diagnostic code; wasm-abi: observe flag bit 2), so the release kernel built by the same toolchain has a new exec identity ef5d886a... - identical under both rustup install names",
+    "IMPLEMENTATION_CONTRACT": "tests/toolchain/proof-sets.json kernel_identity: exec_identity re-pinned from the committed source; the D23 identity and its whole-file shas kept under kernel_identity.history",
+    "ENVIRONMENT": "ENV-D24-HOST (nightly-2026-09-24, rustc 6eeff9a52); the kernel-sections probe ran under both install names (tests/implementation/build-kernels.sh)",
+    "OLD_PROBE_SUFFICIENT": "yes: PROBE-KERNEL-SECTIONS and PROBE-QUALIFIED-PROOF (Q-WASM-06) measure the new kernel exactly as they measured the old one",
+    "OLD_EVIDENCE_APPLICABLE": "no for the identity value: EV-D23-KERNEL-SECTIONS and the D23 builds record the D23 kernel; they remain its history (inherited edges carry the reconciliation)"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "tests/toolchain/proof-sets.json",
+    "docs/HANDOFF.md"
+   ],
+   "note": "successor FACT-KERNEL-IDENTITY-D24 [RUN]: the same definition (every section except the custom name section, install-name independent), a new value; the D23 fact stays as history",
+   "new_probe_obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)",
+   "owner": "tests/reconcile/d24-reconciliation.json (reviewed; D24)",
+   "introduced_in": "D24"
+  },
+  {
+   "id": "R-66",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-66",
+   "subject": "the Byte Relay execution facts after the runtime's fixed relay operation was replaced by transfer-by-requirement",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none (the WebGPU and wasm64 authorities are unchanged)",
+    "CONSTRAINT": "none",
+    "FACT": "both D7 facts state what the Byte Relay bundle did under window.factRuntime.relay(payload): E0 on plan 1 (WEBGPU) payloads A and B exact, and after the WebGPU loss CPU_WASM64 admitted, plan 0 active, A and B exact.  D24 removed relay(bytes) (I-09: a fixed operation executing the first data relation through the first guard backend) and generates transfer(relation, bytes) executing each authored relation through the requirement its verified variant carries; the Byte Relay specimen re-run physically through the generic harness shows the same E0/E1 behaviour (relation relay, WEBGPU then CPU_WASM64, A and B exact in both epochs) with the tape bound to the bundle",
+    "IMPLEMENTATION_CONTRACT": "COMMISSIONING-RUNTIME.md and RUNTIME-ADMISSION-REPLAN.md describe the runtime by its epochs, admissions, activation, execution, loss and reselection; neither fixes the JavaScript name of the execution entry, so no law text changes; the generated-shell and harness contracts in tests/manifest/components.json are updated",
+    "ENVIRONMENT": "ENV-D24-HOST; Chromium headless shell 141 with the same unsafe WebGPU switches (SwiftShader) and without WebGPU, as ENV-D6-D7-BROWSER-GPUFLAGS describes",
+    "OLD_PROBE_SUFFICIENT": "no: PROBE-RELAY-EXACT calls window.factRuntime.relay, which the generated runtime no longer exports; the successor is probed by PROBE-GENERICITY-SPECIMENS (host/harness/bundle-probe.mjs transferring every authored relation with every payload, expectations supplied by the specimen)",
+    "OLD_EVIDENCE_APPLICABLE": "as history of the D7 bundle only: EV-D6-PROBE-RECORD and EV-D7-E0-RELAY record the relay-API runtime; the D24 physical run (evidence/D24/physical, evidence/D24/specimens/byte-relay) is the current evidence"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "docs/HANDOFF.md",
+    "tests/manifest/components.json"
+   ],
+   "note": "successor FACT-D24-BYTE-RELAY-EXECUTED [RUN] carries both D7 facts' inheritable edges (constraints, clauses, capability witness, the GPU-flags environment)",
+   "new_probe_obligation": "D25: the physical webapp run exercises the generated shell's controls (I-11) and the public HTTPS boundary with the same specimen",
+   "owner": "tests/reconcile/d24-reconciliation.json (reviewed; D24)",
+   "introduced_in": "D24"
   }
  ],
  "edges": [
@@ -52653,6 +53259,568 @@
     "dimension": "toolchain.nightly.install_name",
     "relation": "changes (build-std hashes the rust-src path)"
    }
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-GENERICITY-SPECIMENS",
+   "to": "IMPL-GENERICITY-RUNNER"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-GENERICITY-ATTACKS",
+   "to": "IMPL-GENERICITY-RUNNER"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "PROBE-GENERICITY-SPECIMENS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "EV-D24-SPECIMENS-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "EV-D24-SPECIMENS-DUAL-STREAM-PROBE-WEBGPU-EVIDENCE-TAPE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "EV-D24-SPECIMENS-PIXEL-VAULT-PROBE-NO-WEBGPU-EVIDENCE-TAPE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "EV-D24-REPRODUCE-BASE-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "ENV-D24-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "IMPL-GENERICITY-RUNNER"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "IMPL-BUNDLE-PROBE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-PIPELINE-GENERIC",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of compiler/, host/harness/bundle-probe.mjs or fixtures/genericity/"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "PROBE-GENERICITY-ATTACKS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "EV-D24-ATTACKS-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "EV-D24-ANTI-CHEAT-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "EV-D24-REPRODUCE-BASE-ANTI-CHEAT-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "EV-D24-CRATES-GENERICITY-LADDER"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "ENV-D24-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "IMPL-GENERICITY-RUNNER"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "IMPL-KERNEL-CRATES"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-ATTACKS-REFUSED",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of compiler/ or fixtures/genericity/"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "PROBE-GENERICITY-ATTACKS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "EV-D24-ATTACKS-STALE-EVIDENCE-OBSERVED"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "EV-D24-PHYSICAL-OBSERVED-OBSERVED"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "EV-D24-TRANSPORT-PROBE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "ENV-D24-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "IMPL-KERNEL-CRATES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-EVIDENCE-BOUND",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of compiler/observe, compiler/bundle, compiler/codegen/templates or host/factc"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "PROBE-GENERICITY-SPECIMENS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "EV-D24-PHYSICAL-PROBE-WEBGPU-PROBE-RECORD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "EV-D24-PHYSICAL-PROBE-NO-WEBGPU-PROBE-RECORD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "EV-D24-SELFHOST-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "ENV-D24-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "IMPL-BUNDLE-PROBE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of compiler/ or fixtures/commissioning/"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "browser.version",
+    "relation": "a different Chromium or WebGPU implementation"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "PROBE-KERNEL-SECTIONS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D24-KERNEL-SECTIONS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D24-KERNEL-BUILDS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D24-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of a crate the kernel links"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "a different nightly"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "to": "PROBE-GENERICITY-ATTACKS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "to": "EV-D24-ATTACKS-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "to": "ENV-D24-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "to": "IMPL-GENERICITY-RUNNER"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-RUNTIME-SELF-INTEGRITY",
+   "to": "ENV-D24-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of compiler/codegen/templates"
+   }
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-65",
+   "to": "FACT-KERNEL-IDENTITY-D23"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-66",
+   "to": "FACT-GPU-RELAY-EXACT-E0"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-66",
+   "to": "FACT-WASM64-ADMITTED-E1"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "FACT-KERNEL-IDENTITY-D23",
+   "reconciliation": "R-65"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "FACT-GPU-RELAY-EXACT-E0",
+   "reconciliation": "R-66"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "FACT-WASM64-ADMITTED-E1",
+   "reconciliation": "R-66"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D23-KERNEL-BUILDS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D23-KERNEL-SECTIONS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D23-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D23-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "IMPL-QUALIFIED-PROOF"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "IMPL-KERNEL-SECTIONS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any source of the core-only wasm64 graph changes (the identity is source-exact)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D17-KERNEL-SECTIONS",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D18-KERNEL-IDENTITY-A",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D18-KERNEL-IDENTITY-B",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D17-TOOLCHAIN",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D17-TOOLCHAIN",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   },
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "IMPL-QUALIFIED-PROOF",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D13-KERNEL-IDENTITY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.install_name",
+    "relation": "changes (build-std hashes the rust-src path)"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CARGO-BUILD-STD",
+   "to": "FACT-KERNEL-IDENTITY-D24"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "FACT-KERNEL-IDENTITY-D24"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D24",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.install_name",
+    "relation": "changes (build-std hashes the rust-src path)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "EV-D6-PROBE-RECORD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "EV-D7-E0-RELAY"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "PROBE-RELAY-EXACT"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-FT-006",
+   "to": "FACT-D24-BYTE-RELAY-EXECUTED"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "ENV-D6-D7-BROWSER-GPUFLAGS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "ENV-D6-D7-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "ENV-D6-D7-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-GPU9",
+   "to": "FACT-D24-BYTE-RELAY-EXECUTED"
+  },
+  {
+   "type": "WITNESSED_BY",
+   "from": "CAP-WEBGPU",
+   "to": "FACT-D24-BYTE-RELAY-EXECUTED"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "FACT-D24-BYTE-RELAY-EXECUTED"
+  },
+  {
+   "type": "ADMITTED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "EV-D7-NOWEBGPU-ADM",
+   "note": "also admitted at E0 of the default run"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "EV-D7-E1-RELAY"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "IMPL-ADAPTER-WASM64"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D24-BYTE-RELAY-EXECUTED",
+   "to": "PROBE-WASM64-REQUEST"
+  },
+  {
+   "type": "WITNESSED_BY",
+   "from": "CAP-CPU-WASM64",
+   "to": "FACT-D24-BYTE-RELAY-EXECUTED"
   }
  ],
  "epochs": [
@@ -52824,7 +53992,15 @@
    "summary": "1 reconciliations (SUPERSEDED 1); 1 supersessions (16 inherited edges); 0 constraints ledgered; 0 clauses",
    "nodes_added": 20,
    "edges_added": 67
+  },
+  {
+   "epoch": "D24",
+   "delta": "D24-PIPELINE-GENERICITY",
+   "commit": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7 (canonical base; integration commit in LEDGER AFTER)",
+   "summary": "2 reconciliations (SUPERSEDED 2); 3 supersessions (39 inherited edges); 0 constraints ledgered; 0 clauses",
+   "nodes_added": 28,
+   "edges_added": 96
   }
  ],
- "current_epoch": "D23"
+ "current_epoch": "D24"
 }

@@ -1,0 +1,9 @@
+PIXEL VAULT (D24 specimen: a different type, one relation, GPU-only registry, no objective)
+@{system pixel_vault "Pixel Vault"}
+@{type Tile}
+@{component camera}
+@{component vault}
+@{port camera.tile out: Tile public}
+@{port vault.tile in: Tile public}
+@{data stash camera.tile -> vault.tile mode=copy}
+@{invariant i_type type_equal(camera.tile, vault.tile)}

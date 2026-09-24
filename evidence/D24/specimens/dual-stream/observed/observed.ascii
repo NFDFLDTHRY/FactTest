@@ -1,0 +1,23 @@
++------------------------------------------------------------------------------+
+| OBSERVED dual_stream  (derived from runtime evidence; evidence class PHYSICAL_BROWSER)
+| @{system dual_stream_observed "Observed: dual_stream"}
+| EPOCH E0
+| @{issue admission_E0_CPU_WASM64 RUN "CPU_WASM64 admitted at E0 (evidence wasm64_known_answer)"}
+| @{issue admission_E0_WEBGPU RUN "WEBGPU admitted at E0 (evidence webgpu_known_answer)"}
+| @{issue activation_E0 RUN "plan 0 active at E0"}
+| @{issue executed_E0_feed_1 RUN "feed: exact roundtrip of 4 bytes at E0 via plan 0 (sha256 9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a)"}
+| @{issue executed_E0_feed_2 RUN "feed: exact roundtrip of 513 bytes at E0 via plan 0 (sha256 9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514)"}
+| @{issue executed_E0_drain_3 RUN "drain: exact roundtrip of 4 bytes at E0 via plan 0 (sha256 9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a)"}
+| @{issue executed_E0_drain_4 RUN "drain: exact roundtrip of 513 bytes at E0 via plan 0 (sha256 9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514)"}
+| @{issue loss_E0_CPU_WASM64 ERR "CPU_WASM64 lost at E0 (reason released)"}
+| EPOCH E1
+| @{issue admission_E1_CPU_WASM64 ERR "CPU_WASM64 rejected at E1 (evidence device_lost, reason released)"}
+| @{issue activation_E1 RUN "plan 3 active at E1"}
+| @{issue executed_E1_feed_1 RUN "feed: exact roundtrip of 4 bytes at E1 via plan 3 (sha256 9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a)"}
+| @{issue executed_E1_feed_2 RUN "feed: exact roundtrip of 513 bytes at E1 via plan 3 (sha256 9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514)"}
+| @{issue executed_E1_drain_3 RUN "drain: exact roundtrip of 4 bytes at E1 via plan 3 (sha256 9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a)"}
+| @{issue executed_E1_drain_4 RUN "drain: exact roundtrip of 513 bytes at E1 via plan 3 (sha256 9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514)"}
+| @{issue transition_E0_E1 OBS "E0 -> E1: plan 0 -> plan 3; reselection inside the VerifiedStrategy, no codegen"}
+| @{issue source_of_record OBS "authored source unchanged: sha256 64427dbce7797e8c5b7938faab60ba78c488dec645055a7e702d25221d2f81a3"}
+| @{issue evidence_lineage OBS "evidence tape bound to this bundle: strategy data sha256 2292e2eef2dca72ccfd02bc2dc49c6dcf0dfee45f18de517bb63a6c18cdf2790"}
++------------------------------------------------------------------------------+

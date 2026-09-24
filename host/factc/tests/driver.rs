@@ -225,5 +225,68 @@ fn d07_observe_renders_delta_and_observed_ascii() {
     assert!(out.contains("factc: observe status OK"));
     assert!(read(&d, "diagnostics.json").contains("\"status\":\"OK\""));
     assert!(read(&d, "observation-delta.json").contains("\"source_unchanged\":true"));
+    assert!(read(&d, "observation-delta.json").contains("\"bound\":true"));
+    assert!(read(&d, "observed.ascii").contains("evidence_lineage OBS"));
     assert!(!read(&d, "observed.ascii").is_empty());
+}
+
+#[test]
+fn d08_observe_rejects_a_tape_not_bound_to_the_bundle() {
+    // stale / foreign evidence: the same tape without its bundle record, or with another bundle's identity, is
+    // not accepted against this bundle's manifest (D24)
+    let b = scratch("d08b");
+    assert_eq!(build(&b).0, 0);
+    let manifest = b.join("bundle/bundle.json").to_string_lossy().to_string();
+    let tape = std::fs::read_to_string(fixture("tape-sample.ascii")).unwrap();
+    let other = {
+        let i = tape.find("strategy_data=\"").unwrap() + "strategy_data=\"".len();
+        format!("{}0000000000000000{}", &tape[..i], &tape[i + 16..])
+    };
+    let cases = [
+        (
+            "no-record",
+            tape.lines()
+                .filter(|l| !l.starts_with("@{bundle "))
+                .collect::<Vec<_>>()
+                .join("\n")
+                + "\n",
+        ),
+        ("other-bundle", other),
+    ];
+    for (name, body) in cases {
+        let d = scratch(&format!("d08-{}", name));
+        let t = d.join("tape.ascii");
+        std::fs::write(&t, &body).unwrap();
+        let (code, out, _err) = run(&[
+            "observe",
+            "--out",
+            &d.to_string_lossy(),
+            "--tape",
+            &t.to_string_lossy(),
+            "--system",
+            "byte_relay",
+            "--source",
+            &fixture("byte-relay.ascii"),
+            "--bundle-manifest",
+            &manifest,
+            "--evidence-class",
+            "PHYSICAL_BROWSER",
+        ]);
+        assert_eq!(code, 1, "{}: {}", name, out);
+        assert!(
+            read(&d, "diagnostics.json").contains("EVIDENCE_UNBOUND"),
+            "{}",
+            name
+        );
+        assert!(
+            read(&d, "observation-delta.json").contains("\"bound\":false"),
+            "{}",
+            name
+        );
+        assert!(
+            read(&d, "observed.ascii").contains("evidence_lineage ERR"),
+            "{}",
+            name
+        );
+    }
 }

@@ -1,0 +1,26 @@
+{
+ "tool": "tests/genericity/check-bundle.mjs",
+ "bundle": "/home/user/factory-workpieces/W29/evidence/D24/specimens/ledger-mirror/compile/bundle",
+ "integrity": {
+  "bundle_id": "8f6a79646e3e46607116556c17454278b7cf33392d7e8817182736f98ad0cd33",
+  "files": 7,
+  "recorded": 7,
+  "problems": [],
+  "status": "PASS"
+ },
+ "tamper": {
+  "file": "selector.js",
+  "byte_index": 883,
+  "detected": true,
+  "verdict": {
+   "bundle_id": "8f6a79646e3e46607116556c17454278b7cf33392d7e8817182736f98ad0cd33",
+   "files": 7,
+   "recorded": 7,
+   "problems": [
+    "selector.js: sha256 96642880908fba5ea1a7818badf0c852315e04900ca68d25c3aacfb0d5551666 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94"
+   ],
+   "status": "FAIL"
+  }
+ },
+ "status": "PASS"
+}

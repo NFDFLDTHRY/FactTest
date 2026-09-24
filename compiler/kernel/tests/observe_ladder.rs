@@ -29,6 +29,7 @@ fn observe(
                 b"byte_relay",
                 after.as_ref(),
                 lineage.as_ref(),
+                None,
                 b"SAMPLE",
             );
             (ws, st)
@@ -58,9 +59,10 @@ fn tape_parses_into_records() {
         "{:?}",
         d.iter().map(|x| x.code.name()).collect::<Vec<_>>()
     );
+    assert_eq!(obs.count(Kind::Bundle), 1);
     assert_eq!(obs.count(Kind::Epoch), 2);
     assert_eq!(obs.count(Kind::Admission), 3);
-    assert_eq!(obs.count(Kind::Executed), 3);
+    assert_eq!(obs.count(Kind::Executed), 4);
     assert_eq!(obs.count(Kind::Loss), 1);
     assert_eq!(obs.count(Kind::Transition), 1);
     let t = obs

@@ -116,15 +116,17 @@ pub extern "C" fn submit_evidence_tape(len: u64) -> u32 {
 }
 
 /// OBSERVE: the input buffer holds, in order, the system name (`name_len` bytes), the authored-source sha256 after
-/// the run (32 bytes, present when bit 0 of `flags` is set), the lineage sha256 (32 bytes, present when bit 1 is set)
-/// and the evidence class (`class_len` bytes).  Returns the Status discriminant; a frame that does not fit the input
+/// the run (32 bytes, present when bit 0 of `flags` is set), the lineage sha256 (32 bytes, present when bit 1 is set),
+/// the strategy data sha256 the bundle manifest names (32 bytes, present when bit 2 is set) and the evidence class
+/// (`class_len` bytes).  Returns the Status discriminant; a frame that does not fit the input
 /// buffer returns EXHAUSTED without touching the workspace.
 #[no_mangle]
 pub extern "C" fn observe(name_len: u64, class_len: u64, flags: u32) -> u32 {
     let (ws, input) = unsafe { (&mut *WS.0.get(), &*IN.0.get()) };
     let name_len = name_len as usize;
     let class_len = class_len as usize;
-    let shas = 32 * ((flags & 1) as usize + ((flags >> 1) & 1) as usize);
+    let shas =
+        32 * ((flags & 1) as usize + ((flags >> 1) & 1) as usize + ((flags >> 2) & 1) as usize);
     if name_len > IO_BYTES || class_len > IO_BYTES || name_len + shas + class_len > IO_BYTES {
         return Status::Exhausted as u32;
     }
@@ -140,8 +142,9 @@ pub extern "C" fn observe(name_len: u64, class_len: u64, flags: u32) -> u32 {
     };
     let after = take(flags & 1 != 0);
     let lineage = take(flags & 2 != 0);
+    let strategy_data = take(flags & 4 != 0);
     let class = &input[off..off + class_len];
-    factc_kernel::observe(ws, name, after, lineage, class) as u32
+    factc_kernel::observe(ws, name, after, lineage, strategy_data, class) as u32
 }
 
 /// CHECK_OR_COMPILE: mode 0 = ANALYZE, 1 = BUILD.  Returns the Status discriminant.

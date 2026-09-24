@@ -18,6 +18,7 @@ const inputs = { src: readFileSync(need('source')), contracts: readFileSync(need
 const nativeBuild = need('native-build'), nativeObserve = need('native-observe'), out = need('out'); const system = need('system');
 const manifest = readFileSync(join(nativeBuild, 'bundle', 'bundle.json'), 'utf8');
 const lineage = (manifest.match(/"source_sha256":"([0-9a-f]{64})"/) || [])[1] || null;
+const strategyData = (manifest.match(/"strategy_data_sha256":"([0-9a-f]{64})"/) || [])[1] || null;
 const shaAfter = createHash('sha256').update(inputs.src).digest('hex');
 const b64 = b => Buffer.from(b).toString('base64');
 
@@ -47,6 +48,7 @@ async function drive([wasmB64, p]) {
   const parts = [name]; let flags = 0;
   if (p.shaAfter) { parts.push(from(p.shaAfter)); flags |= 1; }
   if (p.shaLineage) { parts.push(from(p.shaLineage)); flags |= 2; }
+  if (p.shaStrategy) { parts.push(from(p.shaStrategy)); flags |= 4; }
   parts.push(cls);
   const frame = new Uint8Array(parts.reduce((n, q) => n + q.length, 0)); let off = 0; for (const q of parts) { frame.set(q, off); off += q.length; }
   put(frame);
@@ -59,7 +61,7 @@ async function drive([wasmB64, p]) {
 const { chromium } = await import('/opt/node22/lib/node_modules/playwright/index.mjs');
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage();
-const payload = { src: b64(inputs.src), contracts: b64(inputs.contracts), metrics: b64(inputs.metrics), machine: inputs.machine ? b64(inputs.machine) : null, tape: b64(inputs.tape), system, evidenceClass: o['evidence-class'], shaAfter: b64(Buffer.from(shaAfter, 'hex')), shaLineage: lineage ? b64(Buffer.from(lineage, 'hex')) : null };
+const payload = { src: b64(inputs.src), contracts: b64(inputs.contracts), metrics: b64(inputs.metrics), machine: inputs.machine ? b64(inputs.machine) : null, tape: b64(inputs.tape), system, evidenceClass: o['evidence-class'], shaAfter: b64(Buffer.from(shaAfter, 'hex')), shaLineage: lineage ? b64(Buffer.from(lineage, 'hex')) : null, shaStrategy: strategyData ? b64(Buffer.from(strategyData, 'hex')) : null };
 const r = await page.evaluate(drive, [b64(wasm), payload]);
 const ua = await page.evaluate(() => navigator.userAgent);
 await browser.close();
@@ -104,7 +106,7 @@ for (const x of bad) problems.push(`${x.file}: ${x.verdict}`);
 const report = { tool: 'host/harness/kernel-build-probe.mjs', host: ua, module: modulePath, kernel_sha256: createHash('sha256').update(wasm).digest('hex'), kernel_bytes: wasm.length,
   exports: r.exports, imports: r.imports, abi_version: r.abi_version, required_workspace: r.required_workspace, input_buffer_len: r.input_buffer_len,
   build: { status: r.build_status, ms: r.build_ms, artifacts: buildArtifacts, bundle_files: r.bundle.map(f => f.path), compare: buildCompare },
-  observe: { status: r.observe_status, ms: r.observe_ms, artifacts: observeArtifacts, source_sha256_after: shaAfter, lineage_sha256: lineage, compare: observeCompare },
+  observe: { status: r.observe_status, ms: r.observe_ms, artifacts: observeArtifacts, source_sha256_after: shaAfter, lineage_sha256: lineage, strategy_data_sha256: strategyData, compare: observeCompare },
   problems, status: problems.length ? 'FAIL' : 'PASS' };
 mkdirSync(out, { recursive: true }); writeFileSync(join(out, 'probe.json'), JSON.stringify(report, null, 1) + '\n');
 console.log(`${report.status} browser BUILD status ${r.build_status} (${r.build_ms} ms, ${r.bundle.length} bundle files, ${buildCompare.filter(x => x.verdict === 'IDENTICAL').length}/${buildCompare.length} identical to native); OBSERVE status ${r.observe_status} (${observeCompare.filter(x => x.verdict === 'IDENTICAL').length}/${observeCompare.length} identical)${problems.length ? ' - ' + problems.slice(0, 5).join('; ') : ''}`);

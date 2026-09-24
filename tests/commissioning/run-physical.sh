@@ -16,8 +16,9 @@ cp "$SRC" "$OUT/authored-source-before.ascii"
 "$FACTC" check build --out "$OUT/compile" --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii "$SRC" > "$OUT/compile.log" 2>&1
 grep -q '"status":"OK"' "$OUT/compile/diagnostics.json"
 grep -q '"status":"PASS"' "$OUT/compile/bundle-certificate.json"
-node host/harness/bundle-probe.mjs "$OUT/compile/bundle" fixtures/commissioning/payloads.json "$OUT/probe-webgpu" > "$OUT/probe-webgpu.log" 2>&1
-node host/harness/bundle-probe.mjs "$OUT/compile/bundle" fixtures/commissioning/payloads.json "$OUT/probe-no-webgpu" --no-webgpu > "$OUT/probe-no-webgpu.log" 2>&1
+# the expectations are this specimen's (registry: WEBGPU preferred, CPU_WASM64 fallback), passed to the generic harness
+node host/harness/bundle-probe.mjs "$OUT/compile/bundle" fixtures/commissioning/payloads.json "$OUT/probe-webgpu" --loss WEBGPU --expect-e0 WEBGPU --expect-e1 CPU_WASM64 > "$OUT/probe-webgpu.log" 2>&1
+node host/harness/bundle-probe.mjs "$OUT/compile/bundle" fixtures/commissioning/payloads.json "$OUT/probe-no-webgpu" --no-webgpu --loss none --expect-e0 CPU_WASM64 > "$OUT/probe-no-webgpu.log" 2>&1
 "$FACTC" observe --out "$OUT/observed" --tape "$OUT/probe-webgpu/evidence-tape.ascii" --system byte_relay --source "$SRC" --bundle-manifest "$OUT/compile/bundle/bundle.json" --evidence-class PHYSICAL_BROWSER > "$OUT/observe.log" 2>&1
 "$FACTC" observe --out "$OUT/observed-no-webgpu" --tape "$OUT/probe-no-webgpu/evidence-tape.ascii" --system byte_relay --source "$SRC" --bundle-manifest "$OUT/compile/bundle/bundle.json" --evidence-class PHYSICAL_BROWSER > "$OUT/observe-no-webgpu.log" 2>&1
 cmp "$SRC" "$OUT/authored-source-before.ascii"

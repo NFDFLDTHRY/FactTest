@@ -1,0 +1,5 @@
+$ sh -c for f in tests/genericity/run-specimens.mjs tests/genericity/run-attacks.mjs tests/genericity/check-bundle.mjs tests/selfhost/primitives-probe.mjs; do node --check $f || exit 1; done && for f in tests/genericity/reproduce-base.sh tests/commissioning/run-anti-cheat.sh tests/commissioning/run-physical.sh; do sh -n $f || exit 1; done && for j in fixtures/genericity/*/specimen.json fixtures/genericity/*/payloads.json; do node -e 'JSON.parse(require("fs").readFileSync(process.argv[1]))' $j || exit 1; done && [ $(ls fixtures/genericity/*/specimen.json | wc -l) -eq 4 ] && sed -n 2p fixtures/commissioning/tape-sample.ascii | grep -qE '^@\{bundle strategy_data="[0-9a-f]{64}" strategy=[0-9]+ certificate=[0-9]+\}$' && [ $(grep -c '' fixtures/commissioning/tape-sample.ascii) -eq 15 ] && ! grep -nE 'byte[-_]relay|commissioning|WEBGPU|CPU_WASM64' tests/genericity/run-specimens.mjs tests/genericity/check-bundle.mjs && echo 'syntax, JSON, tape record, generic runner clean'
+(cwd .)
+syntax, JSON, tape record, generic runner clean
+
+[exit 0] expected 0

@@ -77,4 +77,5 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
   and stable baseline), a parallel D14 technical reference rescan on main (pull request #5: reference corpus in
   fixtures/reference/), joined by D20 main sync with a second re-proof; D21-D26 whole-repository execution + gap closure
   (D21 execution manifest, D21R repair of its builder found by the D21 re-inspection, D22 Factory self-qualification,
-  D23 compiler + ABI execution with the wasm transport completed); see the ledger.
+  D23 compiler + ABI execution with the wasm transport completed, D24 pipeline genericity: four specimens through one
+  compiler, generic runtime, harness and observe, the attack list refused); see the ledger.

@@ -1,0 +1,230 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D24-PIPELINE-GENERICITY-F9-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F9-doc",
+  "workpiece_id": "W29",
+  "delta_id": "D24-PIPELINE-GENERICITY",
+  "canonical_base": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+  "input_artifacts": [
+    "evidence/D24/",
+    "tests/envmap/facts/D24.json",
+    "tests/reconcile/d24-reconciliation.json",
+    "the D23 graph"
+  ],
+  "open_tree": "ccb80b303ddaabe74ae11d28eaa0ce3bf2aaf1cd",
+  "close_tree": "9bf0ef918491bf6ff4ea6dd42d97252daebc36a6",
+  "changed_paths": [
+    "README.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D24.json",
+    "design/environment-map/graph.json",
+    "docs/HANDOFF.md",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-build-epoch.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-checks.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-merge.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-render.log"
+  ],
+  "output_artifacts": [
+    "design/environment-map/epochs/D24.json",
+    "design/environment-map/graph.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D24-PIPELINE-GENERICITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-build-epoch.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-build-epoch.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-merge.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-merge.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D24.json --identity evidence/D24/identity --epoch D24 --delta D24-PIPELINE-GENERICITY --commit '6bcc86cd50f9787c0afd3b65a113812bea2de2d7 (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out $T/facts.json && node tests/reconcile/build-reconciliation.mjs --clause-epoch $T/facts.json --register tests/reconcile/d24-reconciliation.json --graph design/environment-map/graph.json --root . --epoch D24 --delta D24-PIPELINE-GENERICITY --commit '6bcc86cd50f9787c0afd3b65a113812bea2de2d7 (canonical base; integration commit in LEDGER AFTER)' --out design/environment-map/epochs/D24.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-build-epoch.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json --out design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-merge.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render design/environment-map/graph.json --out design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-render.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node -e 'const e=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/epochs/D24.json\"));const by={};for(const n of e.nodes)by[n.class]=(by[n.class]||0)+1;console.log(e.nodes.length,e.edges.length,JSON.stringify(by));if(by.COMPUTATIONAL_FACT!==6||by.RECONCILIATION!==2||by.IMPLEMENTATION!==1||by.PROBE!==2)process.exit(1)' && grep -q '^genericity specimens' design/environment-map/SCHEMA.md && grep -q '^evidence binding' design/environment-map/SCHEMA.md && grep -q '^D24 ' design/environment-map/ENVIRONMENT-MAP.md && grep -q 'FACT-D24-BYTE-RELAY-EXECUTED' docs/HANDOFF.md && grep -q 'FACT-KERNEL-IDENTITY-D24' docs/HANDOFF.md && ! grep -q 'window.factRuntime.relay' docs/HANDOFF.md && grep -q 'D24' README.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-checks.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D24.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-build-epoch.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-merge.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-render.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F9-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T14:55:48Z",
+  "status": "PASS"
+}

@@ -1,0 +1,14 @@
+LEDGER MIRROR (D24 specimen: three components, two data relations, one backend, no objective)
+@{system ledger_mirror "Ledger Mirror"}
+@{type Entry}
+@{component clerk}
+@{component journal}
+@{component archive}
+@{port clerk.entries out: Entry public}
+@{port journal.intake in: Entry public}
+@{port journal.copy out: Entry public}
+@{port archive.store in: Entry public}
+@{data post clerk.entries -> journal.intake mode=copy}
+@{data mirror journal.copy -> archive.store mode=copy}
+@{invariant i_type type_equal(clerk.entries, archive.store)}
+@{invariant i_path reachable(clerk, archive)}

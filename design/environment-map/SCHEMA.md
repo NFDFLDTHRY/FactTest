@@ -344,4 +344,13 @@ crate DAG execution     tests/toolchain/run-crate-dag.mjs (D23): every HOST_NATI
 transport probe         host/harness/kernel-build-probe.mjs (D23; proof.mjs browser-build, Q-WASM-08): BUILD and OBSERVE
                         driven in Chromium through the wasm exports, every artifact and bundle file compared
                         byte-for-byte with host/factc; the wasm export surface is the whole kernel API (21 exports)
+genericity specimens    fixtures/genericity/<name>/specimen.json (D24): an executable specimen as data - source, registry,
+                        metrics, payloads, what it varies, and its expectations (transfers, variants, strength, E0/loss/E1
+                        backends with and without WebGPU); tests/genericity/run-specimens.mjs executes every specimen
+                        through the same machinery and tests/genericity/run-attacks.mjs the attack list; the generated
+                        runtime executes transfer(relation, bytes) by the verified requirement of the relation
+evidence binding        the generated runtime opens every evidence tape with @{bundle strategy_data=<sha256> ...} (D24):
+                        the sha256 of the verified strategy data (STRATEGY_SHA256 in selector.js, strategy_data_sha256 in
+                        bundle.json, BundleVerifier B-06/B-08); factc observe compares it with the manifest it is given
+                        (evidence_lineage OBS/ERR, EVIDENCE_UNBOUND) - evidence of one bundle is not evidence of another
 ```

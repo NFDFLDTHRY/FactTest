@@ -9,10 +9,10 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D23-COMPILER-ABI-EXECUTION (task 3 of the six-task whole-repository execution + gap closure series
+last delta         D24-PIPELINE-GENERICITY (task 4 of the six-task whole-repository execution + gap closure series
                    D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; after D21 execution
-                   manifest, D21R manifest repair and D22 Factory self-qualification; integration commits in
-                   design/materialization/LEDGER.md)
+                   manifest, D21R manifest repair, D22 Factory self-qualification and D23 compiler + ABI execution;
+                   integration commits in design/materialization/LEDGER.md)
 judge              the Factory built from this tree (tests/factory/run-witnesses.sh records its sha256): every refusal
                    reason of the prompt witnessed (tests/factory/witnesses.json, factory/tests/factory_law.rs f00-f28,
                    tests/sync/collision-witness.sh); six accepted attacks found by D22 and repaired before D23
@@ -43,18 +43,22 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    integrity, identity probes, command and canonical confinement repaired), D23 compiler + ABI
                    execution (every crate compile -> focused tests -> consumer test in dependency order on the
                    qualified proof sets; the wasm transport completed: BUILD + OBSERVE in Chromium byte-identical to
-                   the native driver; D12 B-06 closed as transport-only)
+                   the native driver; D12 B-06 closed as transport-only), D24 pipeline genericity (four semantically
+                   distinct specimens - Byte Relay, ledger-mirror, pixel-vault, dual-stream - through one compiler, one
+                   generic browser harness, observe and integrity; the runtime executes transfer(relation, bytes) by
+                   the verified requirement of each authored relation, the shell is data-driven, every tape is bound
+                   to its bundle's strategy data identity, the adapter family is verified; the attack list refused)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-3 of 6 closed; D21's
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-4 of 6 closed; D21's
                    re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
                    verified, integrated and re-observed before the next; a repair is tested before the next repair
                    (GLOBAL TEST-EVERY-ITERATION LAW)
-next               D24-PIPELINE-GENERICITY: the generated pipeline attacked physically with at least three semantically
-                   distinct specimens (I-07 payload A + WEBGPU destroy in the shell, I-08 anti-cheat byte form, I-09
-                   single-relation runtime / relay-only export library / two named adapters, I-20 single-specimen
-                   claims); no fix by renaming.  Then D25 physical runtime (I-05, I-11), D26 clean whole-repository
-                   commissioning (STALE_IF-selected re-proof, consistency audit, baseline and boundary register)
+next               D25-PHYSICAL-RUNTIME: the generated webapp exercised as a physical runtime (I-05 the selfhost probe's
+                   historical bundle default, I-11 the shell's own controls never clicked, I-33 runtime self-integrity
+                   decision) at a public HTTPS boundary - no localhost substituted as proof.  Then D26 clean
+                   whole-repository commissioning (STALE_IF-selected re-proof, consistency audit, baseline and
+                   boundary register)
 ```
 
 ## 2. Mutation law
@@ -173,11 +177,15 @@ evidence limit, OWNER decision.  None is an internal chain defect (D13 PRE-RESCA
 (tests/manifest/issues.json) maps these classes to the prompt's A..G (C -> D, D -> E, B -> F, OWNER -> G) and records
 the internal findings the D21 survey added, each with the task that repairs it: A (1) a stale kernel crate header
 (D23); B (7) missing Factory negative witnesses (D22), the wasm transport beyond the bootstrap eight (D23), per-crate
-consumer execution (D23), the anti-cheat scan's byte form (D24), the shell never exercised and a probe defaulting to a
-historical bundle (D25), graph claims for eleven live components (D21, done); C (2) the specimen payload compiled into
-the generated shell and the single-relation runtime (D24 proves, then repairs or records the exact architectural GAP);
-G (3) law-text presentation and wording (owner).  Until each task closes, these are open internal findings, not
-boundaries.  The D21 re-inspection found one more class A defect (the manifest builder read its own epoch after
+consumer execution (D23), the anti-cheat scan's byte form (D24, done), the shell never exercised and a probe defaulting
+to a historical bundle (D25), graph claims for eleven live components (D21, done); C (2) the specimen payload compiled
+into the generated shell and the single-relation runtime (D24: both were real defects, repaired and proven by three
+non-relay specimens; no architectural GAP remained in the claimed semantics); G (3) law-text presentation and wording
+(owner).  Until each task closes, these are open internal findings, not boundaries.  D24 found three more accepted
+attacks in the compiler (I-30 a foreign evidence tape observed as PASS, I-31 a backend realized by an adapter of another
+family verified PASS, I-32 an empty bundle certificate reading PASS): reproduced on the base compiler
+(tests/genericity/reproduce-base.sh), repaired, witnessed by tests/genericity/run-attacks.mjs and the genericity ladder;
+one class D stop recorded (I-33 runtime self-integrity, D25).  The D21 re-inspection found one more class A defect (the manifest builder read its own epoch after
 integration, changing two findings): repaired and witnessed by D21R-MANIFEST-REPAIR before D22.  D22 closed I-14 (every
 reason witnessed) and found six accepted attacks in the Factory itself (I-21..I-26, class A: edited and hand-written
 receipts verified, a failed identity probe closed PASS, escaping command cwd/log opened, a station writing into the
@@ -191,6 +199,9 @@ C      D12 B-06 (P10) -> D23                closed as transport-only (A/B): the 
                                             kernel API (21 exports); BUILD + OBSERVE in Chromium byte-identical to
                                             host/factc (FACT-D23-WASM-TRANSPORT-COMPLETE, Q-WASM-08); the C14 contract
                                             TEXT still names eight operations - an owner annotation (I-29), below
+C      I-33 (D24) -> D25                    runtime self-integrity: post-build tamper detection rests on bundle.json  [GAP]
+                                            (check-bundle.mjs, run-attacks tampered-*); the generated runtime does not
+                                            verify its own files at load (FACT-D24-RUNTIME-SELF-INTEGRITY); D25 decides
 C      D12 B-05, B-17                       templates compiled into the kernel; packfile import/export         [GAP]
 C      D12 B-11 (P07)                       persist() false in the Chromium 141 headless shell (every permission     [UNK]
                                             ASK); installed-Factory durability never observed - full Chrome grants
@@ -341,13 +352,22 @@ tests/toolchain/proof-sets.json
                              exec identity (every section except the custom "name" section; install-name independent,
                              D18); whole-file sha256 recorded per rust-src install name (informational); D23: the
                              transport extension changed the kernel - exec identity fcaee2a6... (22 exports), the
-                             eight-export identity e8d6582665... kept as history in proof-sets.json (R-64)
+                             eight-export identity e8d6582665... kept as history in proof-sets.json (R-64); D24: the
+                             genericity repair changed the kernel again - exec identity ef5d886a... (FACT-KERNEL-IDENTITY-D24,
+                             R-65), the D23 identity kept as history
   ALL_SOURCES / ALL_MEMBERS_GRAPH   rustfmt over every member / cargo metadata over every member + physical manifests
   CROSS_SET                  --workspace on the host: diagnostic only (factc-wasm-abi is target-specific), weight NONE
   HEURISTIC                  factory nostd-check / depcheck: weight NONE; never a gate
 run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>;
                              27 obligations incl. Q-WASM-08 BUILD + OBSERVE in Chromium == native)
 per crate (D23)              node tests/toolchain/run-crate-dag.mjs --out <dir> [--browser-probe <Q-WASM-08 record>]
+genericity (D24)             node tests/genericity/run-specimens.mjs --factc <bin> --out <dir> (every fixtures/genericity
+                             specimen: build, strategy data, Chromium with/without WebGPU through the generic
+                             host/harness/bundle-probe.mjs, observe bound, integrity); node tests/genericity/run-attacks.mjs
+                             --factc <bin> --specimens <dir> --out <dir>; sh tests/commissioning/run-anti-cheat.sh <out> [tree];
+                             sh tests/genericity/reproduce-base.sh <rev> <out> <target dir> (the defects on an earlier
+                             compiler).  The runtime's execution entry is transfer(relation, bytes)
+                             (FACT-D24-BYTE-RELAY-EXECUTED supersedes the D7 relay facts, R-66)
 history                      tests/toolchain/run-proof-matrix.sh is the D9 matrix, kept for reproduction of D9
 re-prove (D19, D20)          node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out <dir>/identity;
                              node tests/reprove/select.mjs ... --pass <D> --out <dir>/selection.json (environment drift -

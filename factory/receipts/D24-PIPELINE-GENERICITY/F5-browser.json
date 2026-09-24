@@ -1,0 +1,170 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D24-PIPELINE-GENERICITY-F5-browser",
+  "station_id": "S-BROWSER",
+  "station_version": "1",
+  "fixture_id": "F5-browser",
+  "workpiece_id": "W29",
+  "delta_id": "D24-PIPELINE-GENERICITY",
+  "canonical_base": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+  "input_artifacts": [
+    "D24 section 4 (host identity)"
+  ],
+  "open_tree": "05870dfc8c0f825468a33a2649d2fe7fda783ea5",
+  "close_tree": "4785f7f064a58fe80a26bdbcecf2d2bb78c256ea",
+  "changed_paths": [
+    "evidence/D24/identity/browser-default.json",
+    "evidence/D24/identity/browser-gpu-flags.json",
+    "evidence/D24/identity/host.json",
+    "evidence/D24/identity/repo.json",
+    "evidence/D24/identity/tips.json",
+    "evidence/D24/identity/toolchains.json",
+    "evidence/D24/logs/F5-identity.log"
+  ],
+  "output_artifacts": [
+    "evidence/D24/identity/host.json",
+    "evidence/D24/identity/toolchains.json",
+    "evidence/D24/identity/repo.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BROWSER v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D24-PIPELINE-GENERICITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BROWSER_PROBE"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D24/logs/F5-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D24/logs/F5-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out evidence/D24/identity",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D24/logs/F5-identity.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D24/identity/host.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D24/identity/toolchains.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D24/identity/repo.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D24/logs/F5-identity.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T14:54:31Z",
+  "status": "PASS"
+}
