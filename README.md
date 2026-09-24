@@ -1,6 +1,6 @@
 # FactTest
 
-STATUS: PASS 2 EXECUTED — 2026-09-23
+STATUS: PASS 3 EXECUTED - 2026-09-23
 
 FactTest is a governance-first foundry project whose compiler is a \`#![no_std]\`, no-third-party-crate Rust compiler.
 
@@ -20,10 +20,16 @@ The compiler itself is manufactured into this repository under the ASCII Systems
 6. [CAPABILITY-MATRIX.md](CAPABILITY-MATRIX.md)
 7. [CONFLICT-LEDGER.md](CONFLICT-LEDGER.md)
 8. [EVIDENCE-OBLIGATIONS.md](EVIDENCE-OBLIGATIONS.md)
+9. [PASS3.md](PASS3.md)
+10. [BOOTSTRAP-ARCHITECTURE.md](BOOTSTRAP-ARCHITECTURE.md)
+11. [BOOTSTRAP-CONTRACTS.md](BOOTSTRAP-CONTRACTS.md)
+12. [PLANNED-REPO-LAYOUT.md](PLANNED-REPO-LAYOUT.md)
+13. [BOOTSTRAP-TESTS.md](BOOTSTRAP-TESTS.md)
 
 No compiler implementation exists yet. That is intentional.
 
 Pass 1 established identity, law, target preservation, and live-authority rules.
-Pass 2 maps the complete approved target to current clause-level external authority, project decisions, dependency edges, admission conditions, failures, tests, evidence obligations, conflicts, and remaining project-owned design gaps.
+Pass 2 mapped the complete target to current external authority, admission conditions, failures, conflicts, tests, and evidence.
+Pass 3 defines the smallest self-consistent bootstrap compiler/factory substrate that Fable 5.1 may later materialize without inventing the ASCII language, proof logic, planner algorithm, or backend implementations.
 
-The retired reference-warehouse state remains available through Git history but has no current project authority.
+Pass 4 owns the ASCII language kernel.
