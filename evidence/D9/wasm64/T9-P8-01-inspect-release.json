@@ -1,0 +1,24 @@
+{
+  "id": "T9-P8-01-inspect-release",
+  "class": "T9-P8",
+  "invariant": "the built module is wasm64: every memory uses the i64 address type; imports/exports and sha256 recorded",
+  "evaluated": "2026-09-24T04:02:50.347Z",
+  "module": "/home/user/factory-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+  "command": [
+    "/home/user/factory-target/debug/factory",
+    "wasm-inspect",
+    "/home/user/factory-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm"
+  ],
+  "exit": 0,
+  "output": [
+    "== wasm-inspect /home/user/factory-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --out /home/user/factory-workpieces/W9/evidence/D9/wasm64/T9-P8-01-inspect-release.inspect.json : PASS",
+    "  [PASS] module_structure - 12 sections",
+    "  [PASS] memory_declared - I64 min=311 max=None shared=false",
+    "  [PASS] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003",
+    "  [PASS] imports_listed",
+    "  [PASS] exports_listed - memory:2, check_or_compile:0, input_buffer_len:0, input_buffer_ptr:0, output_buffer_ptr:0, query_abi_version:0, query_required_workspace:0, read_artifact_metadata:0, read_diagnostics:0, reset_workspace:0, submit_machine_state:0, submit_source_bytes:0, output_buffer_len:0",
+    "  [PASS] artifact_identity - sha256 309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c bytes 3350252"
+  ],
+  "verdict": "PASS",
+  "reason": "  [PASS] memory_declared - I64 min=311 max=None shared=false;   [PASS] artifact_identity - sha256 309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c bytes 3350252"
+}

@@ -1,0 +1,38 @@
+{
+  "verdict": "FAIL",
+  "reason": "expected 3 x E0308 \"mismatched types\", observed 0; E0308 primary spans [] != expected [11,12,13]; unexpected diagnostic (no code) \"this file contains an unclosed delimiter\" at src/lib.rs:16",
+  "command": [
+    "cargo",
+    "build",
+    "--lib",
+    "--message-format=json"
+  ],
+  "exit": 101,
+  "observed_errors": [
+    {
+      "package": "m2-compile-fail-wrong-reason",
+      "code": null,
+      "message": "this file contains an unclosed delimiter",
+      "file": "src/lib.rs",
+      "line": 16
+    }
+  ],
+  "expected": [
+    {
+      "code": "E0308",
+      "count": 3,
+      "message_contains": "mismatched types",
+      "file": "src/lib.rs",
+      "lines": [
+        11,
+        12,
+        13
+      ]
+    }
+  ],
+  "weak_rule": {
+    "rule": "run-negative-fixtures.sh: cargo build exit != 0",
+    "verdict": "PASS"
+  },
+  "invariant": "B3 typed identity domains"
+}

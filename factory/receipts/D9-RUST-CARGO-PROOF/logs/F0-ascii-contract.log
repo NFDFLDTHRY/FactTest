@@ -1,0 +1,4 @@
+$ sh -c grep -q '^STRUCTURAL CHECK: PASS' design/materialization/D9-INTENDED-PROOF-HARNESS.md && for c in T9-P1 T9-P2 T9-P3 T9-P4 T9-P5 T9-P6 T9-P7 T9-P8 T9-P9; do grep -q "^$c " design/materialization/D9-INTENDED-PROOF-HARNESS.md || { echo missing $c; exit 1; }; done && for m in M1 M2 M3 M4 M5 M6 M7 M8; do grep -q "^  $m " design/materialization/D9-INTENDED-PROOF-HARNESS.md || { echo missing mutant $m; exit 1; }; done && grep -q 'D9-RUST-CARGO-PROOF' design/materialization/LEDGER.md
+(cwd .)
+
+[exit 0] expected 0

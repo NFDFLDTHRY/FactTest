@@ -1,0 +1,10 @@
+[package]
+name = "gamma"
+version = "0.0.0"
+edition = "2021"
+
+# dotted-table dependency section: factory depcheck recognises only [dependencies]/[dev-dependencies]/
+# [build-dependencies]/[*.dependencies] headers and reports "0 dependency entries" for this manifest.
+[dependencies.serde]
+version = "1"
+default-features = false

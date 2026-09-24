@@ -1,0 +1,4 @@
+$ sh -c P=design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md; grep -q 'FACTTEST · COMPUTATIONAL ENVIRONMENT MAPPING' $P && grep -q '^FIRST ACTION' $P && grep -q '^design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md' $P && grep -q '^1. RUST → WASM64' $P && grep -q '^2. WEBGPU' $P && grep -q '^3. FACTORY EXECUTION ENVIRONMENT' $P && grep -q '^WHAT FACTTEST IS ACTUALLY ENTITLED TO CLAIM.' $P && [ $(grep -cF '[INV]' $P) -eq 11 ] && grep -q 'D10-PROMPT-INTAKE' design/materialization/LEDGER.md
+(cwd .)
+
+[exit 0] expected 0

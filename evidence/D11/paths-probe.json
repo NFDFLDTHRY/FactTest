@@ -1,0 +1,652 @@
+{
+  "tool": "tests/envmap/envmap.mjs paths-probe",
+  "rule": "covers(surface, path): '*' | 'dir/' prefix | exact file; no glob (restated from factory/src/paths.rs)",
+  "files_considered": 792,
+  "status": "OBS",
+  "dead_wildcard_surfaces": [
+    "S-FIXTURE may_change compiler/*/tests/",
+    "S-FIXTURE must_not_change compiler/*/src/"
+  ],
+  "surfaces": [
+    {
+      "station": "S-BROWSER",
+      "kind": "may_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "compiler/",
+      "matched_paths": 68,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "factory/src/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "factory/registry/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "design/",
+      "matched_paths": 7,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "fixtures/",
+      "matched_paths": 97,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "tests/",
+      "matched_paths": 9,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BROWSER",
+      "kind": "must_not_change",
+      "surface": "COMMISSIONING-ASCII.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "may_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "compiler/",
+      "matched_paths": 68,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "factory/src/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "factory/registry/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "design/",
+      "matched_paths": 7,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "fixtures/",
+      "matched_paths": 97,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUILD",
+      "kind": "must_not_change",
+      "surface": "tests/",
+      "matched_paths": 9,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "may_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "compiler/",
+      "matched_paths": 68,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "factory/src/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "factory/registry/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "design/",
+      "matched_paths": 7,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "fixtures/",
+      "matched_paths": 97,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "tests/",
+      "matched_paths": 9,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-BUNDLE",
+      "kind": "must_not_change",
+      "surface": "COMMISSIONING-ASCII.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "design/",
+      "matched_paths": 7,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "factory/registry/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "factory/deltas/",
+      "matched_paths": 11,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "factory/fixtures/",
+      "matched_paths": 54,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "README.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "Cargo.toml",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": ".gitignore",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "fixtures/",
+      "matched_paths": 97,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "docs/",
+      "matched_paths": 0,
+      "wildcard_looking": false,
+      "verdict": "matches nothing today"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "may_change",
+      "surface": "factory/receipts/",
+      "matched_paths": 146,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "must_not_change",
+      "surface": "compiler/",
+      "matched_paths": 68,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "must_not_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-DOC",
+      "kind": "must_not_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "may_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "compiler/",
+      "matched_paths": 68,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "factory/src/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "factory/registry/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "design/",
+      "matched_paths": 7,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "fixtures/",
+      "matched_paths": 97,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-EVIDENCE",
+      "kind": "must_not_change",
+      "surface": "tests/",
+      "matched_paths": 9,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "may_change",
+      "surface": "fixtures/",
+      "matched_paths": 97,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "may_change",
+      "surface": "tests/",
+      "matched_paths": 9,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "may_change",
+      "surface": "factory/fixtures/",
+      "matched_paths": 54,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "may_change",
+      "surface": "factory/tests/",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "may_change",
+      "surface": "compiler/*/tests/",
+      "matched_paths": 0,
+      "wildcard_looking": true,
+      "verdict": "DEAD (literal rule: authorizes nothing)"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "may_change",
+      "surface": "factory/receipts/",
+      "matched_paths": 146,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "must_not_change",
+      "surface": "compiler/*/src/",
+      "matched_paths": 0,
+      "wildcard_looking": true,
+      "verdict": "DEAD (literal rule: authorizes nothing)"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "must_not_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-FIXTURE",
+      "kind": "must_not_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "may_change",
+      "surface": "compiler/",
+      "matched_paths": 68,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "may_change",
+      "surface": "factory/",
+      "matched_paths": 229,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "may_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "may_change",
+      "surface": "Cargo.toml",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "may_change",
+      "surface": "Cargo.lock",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "may_change",
+      "surface": ".gitignore",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "may_change",
+      "surface": "rust-toolchain.toml",
+      "matched_paths": 0,
+      "wildcard_looking": false,
+      "verdict": "matches nothing today"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "must_not_change",
+      "surface": "COMMISSIONING-ASCII.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-RUST",
+      "kind": "must_not_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "may_change",
+      "surface": "host/",
+      "matched_paths": 4,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "may_change",
+      "surface": "compiler/codegen/templates/",
+      "matched_paths": 8,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "may_change",
+      "surface": "factory/receipts/",
+      "matched_paths": 146,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "must_not_change",
+      "surface": "FACTORY-LAW.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "must_not_change",
+      "surface": "COMMISSIONING-ASCII.md",
+      "matched_paths": 1,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "must_not_change",
+      "surface": "compiler/semantic/",
+      "matched_paths": 7,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "must_not_change",
+      "surface": "compiler/verifier/",
+      "matched_paths": 3,
+      "wildcard_looking": false,
+      "verdict": "live"
+    },
+    {
+      "station": "S-WEB",
+      "kind": "must_not_change",
+      "surface": "evidence/",
+      "matched_paths": 331,
+      "wildcard_looking": false,
+      "verdict": "live"
+    }
+  ]
+}

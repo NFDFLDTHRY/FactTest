@@ -1,0 +1,4 @@
+$ sh -c [ "$(awk 'FNR==1{sec=""} /^\[/{sec=$0} { if (sec ~ /dependencies/) { if ($0 ~ /(version|git|registry) *=/ || $0 ~ /^[A-Za-z0-9_-]+ *= *"/) print FILENAME } }' $(find fixtures/toolchain/mutants -name Cargo.toml | sort) | sort -u)" = "fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml" ]
+(cwd .)
+
+[exit 0] expected 0

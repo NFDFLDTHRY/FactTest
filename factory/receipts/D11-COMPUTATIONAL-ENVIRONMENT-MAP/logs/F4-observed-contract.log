@@ -1,0 +1,4 @@
+$ sh -c O=design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md; for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15; do grep -q "$q" $O || { echo missing $q; exit 1; }; done; for t in '[RUN]' '[ERR]' '[GAP]' '[UNK]'; do grep -qF "$t" $O || { echo missing $t; exit 1; }; done; grep -q 'MATCH' $O && grep -q 'NO PRODUCTION REPAIR' $O && ! node -e 'const g=JSON.parse(require("fs").readFileSync("design/environment-map/graph.json"));process.exit(g.nodes.some(n=>n.class==="EVIDENCE"&&n.status==="PENDING")?0:1)'
+(cwd .)
+
+[exit 0] expected 0

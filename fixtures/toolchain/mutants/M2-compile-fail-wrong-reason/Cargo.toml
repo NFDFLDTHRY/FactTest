@@ -1,0 +1,8 @@
+[package]
+name = "m2-compile-fail-wrong-reason"
+version = "0.0.0"
+edition = "2021"
+[lib]
+path = "src/lib.rs"
+[dependencies]
+factc-foundation = { path = "__REPO_ROOT__/compiler/foundation" }

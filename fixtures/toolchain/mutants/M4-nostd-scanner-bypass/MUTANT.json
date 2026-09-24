@@ -1,0 +1,6 @@
+{
+  "id": "M4-nostd-scanner-bypass", "attacks": "T9-P5 no_std",
+  "description": "production std usage placed after the file's first #[cfg(test)] line (plus ::std spelling); native tests pass and the textual scanner reports no offender.",
+  "weak": { "check": "nostd-scan", "crates": ["."], "expect": "PASS", "note": "factory nostd-check (factory/src/checks.rs) textual heuristic" },
+  "qualified": { "check": "nostd-graph", "package": "m4-nostd-scanner-bypass", "profile": "dev", "intended": ["m4-nostd-scanner-bypass"], "expect": "FAIL", "reason_must_contain": "std", "note": "T9-P5-02: core-only wasm64 build cannot find crate std" }
+}

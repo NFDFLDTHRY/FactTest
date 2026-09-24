@@ -1,0 +1,6 @@
+{
+  "id": "M6-native-pass-wasm64-fail", "attacks": "T9-P5 / T9-P8 wasm64 participation",
+  "description": "cfg-gated std: every native build/test is green (the only kind of evidence D4..D8 recorded for new crates); the wasm64 core-only graph rejects it.",
+  "weak": { "check": "cargo", "args": ["test"], "expect": "PASS", "note": "native cargo test green" },
+  "qualified": { "check": "nostd-graph", "package": "m6-native-pass-wasm64-fail", "profile": "release", "intended": ["m6-native-pass-wasm64-fail"], "expect": "FAIL", "reason_must_contain": "std", "note": "T9-P5-02/P8-01: wasm64 build with core only fails naming std" }
+}

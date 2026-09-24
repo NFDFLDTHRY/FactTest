@@ -1,0 +1,4 @@
+$ sh -c for id in $(node -e 'const s=JSON.parse(require("fs").readFileSync("evidence/D9/summary.json"));console.log(s.obligations.map(o=>o.id).join(" "))'); do grep -q "$id" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo "observed ASCII does not mention $id"; exit 1; }; done; for m in M1 M2 M3 M4 M5 M6 M7 M8; do grep -q "$m-" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $m; exit 1; }; done
+(cwd .)
+
+[exit 0] expected 0

@@ -1,0 +1,17 @@
+{
+  "id": "M2-compile-fail-wrong-reason",
+  "attacks": "T9-P4 compile-fail",
+  "description": "id-substitution fixture plus an unclosed delimiter: the build fails before type checking; the intended E0308 witnesses never appear.",
+  "weak": {
+    "check": "compile-fail-weak",
+    "expect": "PASS",
+    "note": "run-negative-fixtures.sh rule: cargo build exit != 0 => rejected (expected)"
+  },
+  "qualified": {
+    "check": "compile-fail",
+    "expect_file": "expect.json",
+    "expect": "FAIL",
+    "reason_must_contain": "E0308",
+    "note": "T9-P4: diagnostics must equal the expected {code,count,span} set"
+  }
+}

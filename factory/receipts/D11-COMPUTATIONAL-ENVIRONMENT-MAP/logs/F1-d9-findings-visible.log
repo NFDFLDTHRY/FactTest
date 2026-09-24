@@ -1,0 +1,4 @@
+$ sh -c for t in ERR-001 ERR-002 ERR-003 T9-P7 'compiler/*/tests/' 6eeff9a52 6bb1652a0; do grep -qF "$t" design/environment-map/graph.json || { echo "D9 finding $t not visible in graph"; exit 1; }; done; node -e 'const g=JSON.parse(require("fs").readFileSync("design/environment-map/graph.json"));const s=g.nodes.filter(n=>n.class==="COMPUTATIONAL_FACT").map(n=>n.status);for(const st of ["ERR","GAP","UNK"]) if(!s.includes(st)) process.exit(1); const d=g.nodes.filter(n=>n.class==="AUTHORITY"&&n.reopen_status==="DENIED"&&n.observed_date!=="2026-09-23"); if(d.length) process.exit(2)'
+(cwd .)
+
+[exit 0] expected 0

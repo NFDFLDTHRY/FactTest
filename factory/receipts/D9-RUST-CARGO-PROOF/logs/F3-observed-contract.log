@@ -1,0 +1,4 @@
+$ sh -c for c in T9-P1 T9-P2 T9-P3 T9-P4 T9-P5 T9-P6 T9-P7 T9-P8 T9-P9; do grep -q "$c" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $c; exit 1; }; done; for t in '[RUN]' '[ERR]' '[GAP]' '[UNK]'; do grep -qF "$t" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $t; exit 1; }; done; grep -q 'HISTORICAL CLAIM' design/materialization/D9-OBSERVED-PROOF-HARNESS.md && grep -q 'NO PRODUCTION COMPILER REPAIR' design/materialization/D9-OBSERVED-PROOF-HARNESS.md
+(cwd .)
+
+[exit 0] expected 0

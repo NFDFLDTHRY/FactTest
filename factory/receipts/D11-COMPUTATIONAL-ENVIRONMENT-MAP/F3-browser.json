@@ -1,0 +1,117 @@
+{
+  "receipt_id": "R-D11-COMPUTATIONAL-ENVIRONMENT-MAP-F3-browser",
+  "station_id": "S-BROWSER",
+  "station_version": "1",
+  "fixture_id": "F3-browser",
+  "workpiece_id": "W11",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "canonical_base": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+  "input_artifacts": [
+    "tests/envmap/browser-probe.mjs"
+  ],
+  "open_tree": "07d5cfe50d130214286c3fadfa9eb470c076b408",
+  "close_tree": "27deab0df0dba08d38713f25e46a8976b03c80fa",
+  "changed_paths": [
+    "evidence/D11/browser/default.json",
+    "evidence/D11/browser/default.log",
+    "evidence/D11/browser/gpu-flags.json",
+    "evidence/D11/browser/gpu-flags.log"
+  ],
+  "output_artifacts": [
+    "evidence/D11/browser/gpu-flags.json",
+    "evidence/D11/browser/default.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BROWSER v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D11-COMPUTATIONAL-ENVIRONMENT-MAP"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BROWSER_PROBE"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D11/browser/gpu-flags.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D11/browser/default.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/browser-probe.mjs evidence/D11/browser/gpu-flags.json --gpu-flags",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D11/browser/gpu-flags.log"
+    },
+    {
+      "check": "command:node tests/envmap/browser-probe.mjs evidence/D11/browser/default.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D11/browser/default.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D11/browser/gpu-flags.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D11/browser/default.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D11/browser/gpu-flags.log",
+    "evidence/D11/browser/default.log"
+  ],
+  "closed": "2026-09-24T05:18:46Z",
+  "status": "PASS"
+}

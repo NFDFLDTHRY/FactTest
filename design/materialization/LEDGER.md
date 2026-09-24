@@ -376,3 +376,116 @@ AFTER
 - a delta cannot carry its own integration result; D8's receipts, verification.json and integration commit are
   read from factory/receipts/D8-REOBSERVE/ and `git log` (author FactTest Factory), and W8.state.json outside the tree.
 
+
+---
+
+## D9-RUST-CARGO-PROOF  (proof-harness commissioning)
+
+BEFORE
+- DELTA: D9-RUST-CARGO-PROOF (factory/deltas/D9.json)
+- BASE: f4395dfb79f19cf5fe1ce23891a5157b55fe53a4 (branch main = owner-approved merge of PR #1; development branch
+  claude/d9-rust-cargo-proof-4nys6s at the same commit)  tree d8e565205d90d0cee6bbf6a7c79e944c4caa0f0c
+- STATION: S-DOC, S-FIXTURE, S-BUILD, S-EVIDENCE (all from the canonical registry; no new station)
+- FIXTURE: F0-doc, F1-fixture, F2-build, F3-doc, F4-evidence
+- READ: everything.  CHANGE: design/materialization/D9-INTENDED-PROOF-HARNESS.md, D9-OBSERVED-PROOF-HARNESS.md, this
+  ledger, factory/deltas/D9.json, factory/fixtures/D9/, factory/receipts/D9-RUST-CARGO-PROOF/, tests/toolchain/,
+  fixtures/toolchain/, evidence/D9/.  FORBIDDEN: every law/pass/design document, compiler/, host/, factory/src/,
+  factory/registry/, factory/tests/, Cargo.toml, Cargo.lock, rust-toolchain.toml (must stay absent), D0-D8 deltas/
+  fixtures/receipts/evidence, fixtures/{language,compiler,commissioning}, tests/{bootstrap,commissioning,language},
+  M0, M9, COMMISSIONING-RECORD.md, README.md.
+- INVARIANTS: D9 evaluates the judge and repairs nothing in production; no third-party crate; no toolchain pin; SUT
+  failures are evidence verdicts, never station failures; every obligation record names command, toolchain,
+  package/target/profile selection, observed result, verdict and reason; compile-fail verdicts never from exit codes;
+  no_std weight only from the core-only wasm64 graph; wasm64-unknown-unknown only; fixture trees never written by
+  build commands; mutants outside the product workspace.
+- TESTS: tests/toolchain/run-proof-matrix.sh (T9-P1..P8), tests/toolchain/run-mutants.sh (T9-P9, M1..M8),
+  harness syntax and mutant-contract checks (F1), observed-ASCII completeness (F3).
+- EXPECTED EVIDENCE: evidence/D9/{toolchain,selection,native,lint,compile-fail,nostd,deps,wasm64}/*.json,
+  evidence/D9/mutants/*/{weak,qualified,mutant}.json, summary.json/.txt, index.json; 5 FactoryReceipts;
+  verification.json.
+- PREDICTED (design/materialization/D9-INTENDED-PROOF-HARNESS.md section 2): T9-P1-01 FAIL (wasm-abi omitted from
+  default-members), T9-P2-02 / T9-P3-02 FAIL (native --workspace: wasm-abi panic_handler gated to wasm64), T9-P7 GAP
+  (no pin, nightly drifted), everything else PASS, all eight mutants RUN.
+
+AFTER
+- RESULT: workpiece W9 verified and integrated by the Factory (ff-only from f4395df); the integration commit is read
+  from `git log` (author FactTest Factory) and W9.state.json outside the tree.
+- RECEIPTS: factory/receipts/D9-RUST-CARGO-PROOF/{F0-doc,F1-fixture,F2-build,F3-doc,F4-evidence}.json PASS
+  (F1 closed FAIL once on a mis-written fixture check that matched `version = "0.0.0"` under [package]; the fixture was
+  corrected on the ASCII/control surface; F1 was then re-run from a workpiece state without its outputs so that the
+  PASS receipt carries every harness/fixture path; independent verification first returned FAIL no_unreceipted_change
+  on the receipt-less files and PASS after the re-run; no harness or fixture content changed).
+- EVIDENCE: evidence/D9/summary.txt - 25 obligation records: PASS 20, FAIL 3, GAP 1, plus T9-P6-03 negative fixture
+  rejected as required; evidence/D9/mutants/summary.txt - 8/8 mutants caught (weak PASS, qualified FAIL for the named
+  reason); toolchains stable 1.94.1 (e408947bf) and nightly 1.100.0 (6eeff9a52 2026-09-23); index.json.
+- OBSERVED ASCII: design/materialization/D9-OBSERVED-PROOF-HARNESS.md.
+- MATCH/DIFFER: MATCH on every prediction.  Preserved: [ERR] the workspace is not natively buildable as a whole
+  (factc-wasm-abi omitted from default-members; --workspace build/clippy fail on x86_64), [GAP] no toolchain pin,
+  [GAP] heuristic nostd-check/depcheck remain in factory/src with verdict weight none, [GAP] literal wildcard surfaces
+  in factory/src/paths.rs, [UNK] vendored-code blindness of path rules, [UNK] dev-profile wasm reproducibility.
+- HISTORY: "95/0" remains valid for 13 default-member packages; "full suite", "clippy --all-targets clean",
+  "rejected by rustc (expected)", "nostd-check PASS", "depcheck PASS" were overstated; wasm64 compiler build evidence
+  was valid for D3's 6-crate graph only and is re-proved in D9 for 12 crates.
+- NO PRODUCTION COMPILER REPAIR: the [ERR] above is returned to ASCII for a D10 design against the qualified judge.
+
+---
+
+## D10-PROMPT-INTAKE  (computational environment mapping - prompt routed as the FIRST ACTION)
+
+BEFORE
+- DELTA: D10-PROMPT-INTAKE (factory/deltas/D10.json)
+- BASE: e10d2799002682ee8c047de42050f7e9d5ddf5ad (D9 head on branch claude/d9-rust-cargo-proof-4nys6s, Factory-authored,
+  descending from main f4395df).  [OBS] git state at intake: PR #1 merged to main; D9 lives on an unmerged branch; the
+  prompt requires the D9 documents and evidence, which exist only there, so the designated development branch
+  claude/facttest-materialization-27amc7 was fast-forwarded to e10d279 (no history discarded) and is the canonical
+  branch for D10/D11.  If D9 is merged to main independently, this lineage still descends from it.
+- STATION: S-DOC.  FIXTURE: F0-doc.
+- READ: everything.  CHANGE: design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md (the exact prompt),
+  this ledger, factory/deltas/D10.json, factory/fixtures/D10/, factory/receipts/D10-PROMPT-INTAKE/.
+  FORBIDDEN: everything else, including every law/pass/design document, compiler/, host/, factory/src/, factory/registry/,
+  tests/, fixtures/, evidence/D0..D9, receipts D0..D9, Cargo.toml, Cargo.lock, rust-toolchain.toml (stays absent).
+- INVARIANTS: the prompt file is the prompt verbatim (no routing header, no edits); no production change; no pin; no
+  capability implementation; D9 [RUN]/[ERR]/[GAP]/[UNK] untouched.
+- TESTS: F0 checks the prompt file carries its title box, the FIRST ACTION path, the three vertical traces and the
+  FINAL comparison; ledger names D10; authority/production surfaces byte-identical to the base.
+- EXPECTED EVIDENCE: FactoryReceipt F0-doc, verification.json.  (No build/probe: intake only.)
+- NEXT: the mapping pass itself is assembled in ASCII as design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md and
+  routed as D11-COMPUTATIONAL-ENVIRONMENT-MAP only after its own structural check.
+
+AFTER
+- RESULT: integrated as 4a151c9ae58f9968c70b9b85cef82a02fba12b85 (ff-only from e10d279); one refusal before the workpiece
+  existed (the delta JSON carried an invalid backslash escape; regenerated with a serializer; no ref moved).
+- RECEIPTS: factory/receipts/D10-PROMPT-INTAKE/F0-doc.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- OBSERVED: the prompt file is tracked verbatim (392 lines, sha256 9a3d0f75...).  MATCH.
+
+---
+
+## D11-COMPUTATIONAL-ENVIRONMENT-MAP  (mapping pass)
+
+BEFORE
+- DELTA: D11-COMPUTATIONAL-ENVIRONMENT-MAP (factory/deltas/D11.json)
+- BASE: 4a151c9ae58f9968c70b9b85cef82a02fba12b85
+- STATION: S-FIXTURE, S-DOC, S-BUILD, S-BROWSER, S-DOC, S-BUILD, S-EVIDENCE (existing registry; no station forged)
+- FIXTURE: F0-fixture, F1-doc, F2-build, F3-browser, F4-doc, F5-build, F6-evidence
+- READ: everything, plus authority SOURCE files pinned by commit (published hosts denied by the network policy: recorded).
+  CHANGE: design/environment-map/{graph.json, SCHEMA.md, ENVIRONMENT-MAP.md, AUTHORITY-REGISTER.md, TRACEABILITY.md},
+  design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md, D11-OBSERVED-ENVIRONMENT-MAP.md, this ledger, tests/envmap/,
+  factory/deltas/D11.json, factory/fixtures/D11/, receipts, evidence/D11/.  FORBIDDEN: every law/pass/design document,
+  compiler/, host/, factory/src/, factory/registry/, fixtures/, tests/{bootstrap,commissioning,language,toolchain}/,
+  Cargo.toml, Cargo.lock, rust-toolchain.toml (stays absent), D0-D10 deltas/fixtures/receipts/evidence, M0, M9,
+  COMMISSIONING-RECORD.md, D9 documents, the D10 prompt file.
+- INVARIANTS: I1-I11 of the delta (production untouched; no third-party dependency; authority != implementation;
+  current authority != pin; presence != admission; synthetic != physical; recorded != pinned toolchain; evidence
+  without environment fails validation; every D9 finding is a node; generic machinery; probes only observe).
+- TESTS: validate / render-check / query Q01..Q15 / stale / paths-probe; authority-fetch; host-identity;
+  browser-probe (GPU flags | default); bind-evidence then final validate/render-check; syntax checks.
+- EXPECTED EVIDENCE: evidence/D11/{validate,render-check,stale,paths-probe}.json, queries/Q01..Q15.json,
+  authority/fetch-records.json, host/identity.json, browser/{gpu-flags,default}.json, final/*, index.json.
+- PREDICTED (design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md section 2): validate PASS; render-check PASS;
+  published hosts DENIED; 40 external pins PIN_MATCH; host nightly 6bb1652a0 without clippy; browser product
+  HeadlessChrome/141.0.7390.37 with SwiftShader fallback adapter under the flag set and null adapter by default;
+  Q09/Q11/Q12/Q13 non-empty as listed; Q10 and Q14 empty; Q15 = ERR-001 plus the SwiftShader documentation gap.
+
+AFTER
+- recorded by the next delta (a delta cannot carry its own integration result).
+

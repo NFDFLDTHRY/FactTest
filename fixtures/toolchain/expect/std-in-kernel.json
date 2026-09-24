@@ -1,0 +1,8 @@
+{
+  "fixture": "fixtures/compiler/negative/std-in-kernel",
+  "invariant": "B1: a #![no_std] kernel-style crate that names std fails to resolve `std` (not any other error)",
+  "expected_errors": [
+    { "code": "E0433", "count": 2, "message_contains": "`std`", "file": "src/lib.rs", "lines": [3, 4] }
+  ],
+  "forbid_other_errors": true
+}

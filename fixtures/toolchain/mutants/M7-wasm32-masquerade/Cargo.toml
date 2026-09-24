@@ -1,0 +1,8 @@
+[package]
+name = "m7-wasm32-masquerade"
+version = "0.0.0"
+edition = "2021"
+[lib]
+crate-type = ["cdylib"]
+[profile.release]
+panic = "abort"

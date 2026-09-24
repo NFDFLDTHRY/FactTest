@@ -1,0 +1,69 @@
+{
+  "fixture_id": "F5-build",
+  "station_id": "S-BUILD",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "selected_inputs": [
+    "design/environment-map/graph.json",
+    "tests/envmap/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D11/final/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D11/final/validate.json"
+        ],
+        "log": "evidence/D11/final/validate.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render-check",
+          "design/environment-map/graph.json",
+          "--dir",
+          "design/environment-map",
+          "--out",
+          "evidence/D11/final/render-check.json"
+        ],
+        "log": "evidence/D11/final/render-check.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "query",
+          "design/environment-map/graph.json",
+          "--all",
+          "--out",
+          "evidence/D11/final/queries"
+        ],
+        "log": "evidence/D11/final/queries.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D11/final/validate.json",
+    "evidence/D11/final/render-check.json",
+    "evidence/D11/final/queries/Q11.json"
+  ],
+  "tests": [
+    "final graph (with bound D11 evidence) validates, renders identically, answers Q01..Q15"
+  ],
+  "evidence_requirements": [
+    "records"
+  ]
+}

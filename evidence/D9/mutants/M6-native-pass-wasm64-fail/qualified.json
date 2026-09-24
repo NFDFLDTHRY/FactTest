@@ -1,0 +1,55 @@
+{
+  "verdict": "FAIL",
+  "reason": "exit 101: m6-native-pass-wasm64-fail E0433 cannot find module or crate `std` in this scope; intended crates absent from the core-only graph: m6-native-pass-wasm64-fail",
+  "command": [
+    "cargo",
+    "+nightly",
+    "build",
+    "-p",
+    "m6-native-pass-wasm64-fail",
+    "-Z",
+    "build-std=core",
+    "--target",
+    "wasm64-unknown-unknown",
+    "--release",
+    "--message-format=json"
+  ],
+  "env": {
+    "RUSTFLAGS": "-C link-arg=-zstack-size=16777216",
+    "CARGO_TARGET_DIR": "/home/user/factory-target/d9-mutants/M6-native-pass-wasm64-fail/target"
+  },
+  "exit": 101,
+  "compiled": [],
+  "sysroot": [
+    "compiler_builtins[custom-build]<sysroot-or-external-path>",
+    "compiler_builtins[lib]<sysroot-or-external-path>",
+    "core[lib]<sysroot-or-external-path>"
+  ],
+  "intended": [
+    "m6-native-pass-wasm64-fail"
+  ],
+  "missing": [
+    "m6-native-pass-wasm64-fail"
+  ],
+  "std_errors": [
+    {
+      "package": "m6-native-pass-wasm64-fail",
+      "code": "E0433",
+      "message": "cannot find module or crate `std` in this scope",
+      "file": "src/lib.rs",
+      "line": 14
+    }
+  ],
+  "errors": [
+    {
+      "package": "m6-native-pass-wasm64-fail",
+      "code": "E0433",
+      "message": "cannot find module or crate `std` in this scope",
+      "file": "src/lib.rs",
+      "line": 14
+    }
+  ],
+  "target": "wasm64-unknown-unknown",
+  "profile": "release",
+  "artifact": null
+}

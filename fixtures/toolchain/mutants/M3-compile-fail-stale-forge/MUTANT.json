@@ -1,0 +1,6 @@
+{
+  "id": "M3-compile-fail-stale-forge", "attacks": "T9-P4 compile-fail",
+  "description": "forge-verified-strategy fixture with one stale public field name: only E0560 is reported and the private-field (sealing) error disappears while the build still fails.",
+  "weak": { "check": "compile-fail-weak", "expect": "PASS", "note": "exit-code rule accepts any failure" },
+  "qualified": { "check": "compile-fail", "expect_file": "expect.json", "expect": "FAIL", "reason_must_contain": "E0560", "note": "T9-P4: the private-field diagnostic must be the one observed" }
+}

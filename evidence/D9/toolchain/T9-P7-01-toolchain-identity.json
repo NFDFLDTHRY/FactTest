@@ -1,0 +1,61 @@
+{
+  "id": "T9-P7-01-toolchain-identity",
+  "class": "T9-P7",
+  "invariant": "toolchain identity is recorded, not assumed; pin status is stated",
+  "evaluated": "2026-09-24T04:01:49.269Z",
+  "active_toolchain": "stable-x86_64-unknown-linux-gnu (default)",
+  "stable": {
+    "channel": "stable",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "rustc_release": "1.94.1",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "21.1.8",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "available": true,
+    "error": null
+  },
+  "nightly": {
+    "channel": "nightly",
+    "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+    "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "rustc_release": "1.100.0-nightly",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "23.1.1",
+    "cargo": "cargo 1.100.0-nightly (98a09e7e7 2026-09-21)",
+    "available": true,
+    "error": null
+  },
+  "default": {
+    "channel": "default(active)",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "rustc_release": "1.94.1",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "21.1.8",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "available": true,
+    "error": null
+  },
+  "nightly_components": [
+    "cargo-x86_64-unknown-linux-gnu",
+    "clippy-x86_64-unknown-linux-gnu",
+    "rust-src",
+    "rust-std-x86_64-unknown-linux-gnu",
+    "rustc-x86_64-unknown-linux-gnu"
+  ],
+  "repository_pin": "ABSENT: no rust-toolchain.toml; toolchains are environmental",
+  "requires_stable": [
+    "T9-P2-*",
+    "T9-P3-01..03",
+    "T9-P4-*",
+    "T9-P6-*"
+  ],
+  "requires_nightly": [
+    "T9-P3-04",
+    "T9-P5-02",
+    "T9-P8-*"
+  ],
+  "verdict": "GAP",
+  "reason": "no repository pin; stable=rustc 1.94.1 (e408947bf 2026-03-25) nightly=rustc 1.100.0-nightly (6eeff9a52 2026-09-23); pin authorization returned to ASCII (D10)"
+}

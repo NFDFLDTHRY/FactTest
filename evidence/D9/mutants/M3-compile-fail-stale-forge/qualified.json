@@ -1,0 +1,41 @@
+{
+  "verdict": "FAIL",
+  "reason": "expected 1 x (no code) \"private fields\", observed 0; (no code) primary spans [] != expected [9]; unexpected diagnostic E0560 \"struct `factc_verifier::VerifiedStrategy` has no field named `certificate_id`\" at src/lib.rs:16",
+  "command": [
+    "cargo",
+    "build",
+    "--lib",
+    "--message-format=json"
+  ],
+  "exit": 101,
+  "observed_errors": [
+    {
+      "package": "m3-compile-fail-stale-forge",
+      "code": "E0560",
+      "message": "struct `factc_verifier::VerifiedStrategy` has no field named `certificate_id`",
+      "file": "src/lib.rs",
+      "line": 16
+    }
+  ],
+  "expected": [
+    {
+      "code": null,
+      "count": 1,
+      "message_contains": "private fields",
+      "message_contains_all": [
+        "VerifiedStrategy",
+        "struct literal",
+        "private fields"
+      ],
+      "file": "src/lib.rs",
+      "lines": [
+        9
+      ]
+    }
+  ],
+  "weak_rule": {
+    "rule": "run-negative-fixtures.sh: cargo build exit != 0",
+    "verdict": "PASS"
+  },
+  "invariant": "P5-V01 / P6-G05 sealed VerifiedStrategy"
+}

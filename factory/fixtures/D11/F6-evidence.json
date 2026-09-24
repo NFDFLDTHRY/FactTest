@@ -1,0 +1,38 @@
+{
+  "fixture_id": "F6-evidence",
+  "station_id": "S-EVIDENCE",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "selected_inputs": [
+    "evidence/D11/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D11/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D11",
+          "evidence/D11/index.json"
+        ],
+        "log": "evidence/D11/index.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D11/index.json"
+  ],
+  "tests": [
+    "evidence indexed"
+  ],
+  "evidence_requirements": [
+    "index"
+  ]
+}

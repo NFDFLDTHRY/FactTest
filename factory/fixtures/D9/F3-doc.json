@@ -1,0 +1,13 @@
+{
+  "fixture_id": "F3-doc", "station_id": "S-DOC", "delta_id": "D9-RUST-CARGO-PROOF",
+  "selected_inputs": ["design/materialization/D9-INTENDED-PROOF-HARNESS.md", "evidence/D9/summary.txt", "evidence/D9/mutants/summary.txt", "design/materialization/LEDGER.md", "evidence/D1/", "evidence/D3/", "evidence/D8/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/D9-OBSERVED-PROOF-HARNESS.md", "design/materialization/LEDGER.md", "factory/receipts/D9-RUST-CARGO-PROOF/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "for c in T9-P1 T9-P2 T9-P3 T9-P4 T9-P5 T9-P6 T9-P7 T9-P8 T9-P9; do grep -q \"$c\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $c; exit 1; }; done; for t in '[RUN]' '[ERR]' '[GAP]' '[UNK]'; do grep -qF \"$t\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $t; exit 1; }; done; grep -q 'HISTORICAL CLAIM' design/materialization/D9-OBSERVED-PROOF-HARNESS.md && grep -q 'NO PRODUCTION COMPILER REPAIR' design/materialization/D9-OBSERVED-PROOF-HARNESS.md"], "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-observed-contract.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "for id in $(node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D9/summary.json\"));console.log(s.obligations.map(o=>o.id).join(\" \"))'); do grep -q \"$id\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo \"observed ASCII does not mention $id\"; exit 1; }; done; for m in M1 M2 M3 M4 M5 M6 M7 M8; do grep -q \"$m-\" design/materialization/D9-OBSERVED-PROOF-HARNESS.md || { echo missing $m; exit 1; }; done"], "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-every-obligation-observed.log"},
+    {"cwd": ".", "program": "git", "args": ["diff", "--exit-code", "f4395dfb79f19cf5fe1ce23891a5157b55fe53a4", "--", "design/materialization/M0-INTENDED-SYSTEM.md", "design/materialization/M9-OBSERVED-SYSTEM.md", "compiler", "host"], "log": "factory/receipts/D9-RUST-CARGO-PROOF/logs/F3-drawings-and-production-untouched.log"}
+  ]},
+  "expected_outputs": ["design/materialization/D9-OBSERVED-PROOF-HARNESS.md"],
+  "tests": ["observed ASCII names every obligation and mutant with RUN/ERR/GAP/UNK", "historical claim audit present", "no production compiler repair"], "evidence_requirements": ["receipt"]
+}

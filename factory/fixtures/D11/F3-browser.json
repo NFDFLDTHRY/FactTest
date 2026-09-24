@@ -1,0 +1,53 @@
+{
+  "fixture_id": "F3-browser",
+  "station_id": "S-BROWSER",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "selected_inputs": [
+    "tests/envmap/browser-probe.mjs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D11/browser/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/browser-probe.mjs",
+          "evidence/D11/browser/gpu-flags.json",
+          "--gpu-flags"
+        ],
+        "env": {
+          "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers"
+        },
+        "log": "evidence/D11/browser/gpu-flags.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/browser-probe.mjs",
+          "evidence/D11/browser/default.json"
+        ],
+        "env": {
+          "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers"
+        },
+        "log": "evidence/D11/browser/default.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D11/browser/gpu-flags.json",
+    "evidence/D11/browser/default.json"
+  ],
+  "tests": [
+    "browser identity (product/revision/jsVersion) and exposure with and without the GPU flag set"
+  ],
+  "evidence_requirements": [
+    "RuntimeEvidence-class records"
+  ]
+}

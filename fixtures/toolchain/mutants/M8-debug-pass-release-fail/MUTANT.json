@@ -1,0 +1,6 @@
+{
+  "id": "M8-debug-pass-release-fail", "attacks": "T9-P2 debug/release matrix",
+  "description": "overflow-panic-as-bounds-check: green under the dev profile, red under release (profile.release of the product sets panic=abort and opt-level s, so release behaviour is what ships).",
+  "weak": { "check": "cargo", "args": ["test"], "expect": "PASS", "note": "debug-only cargo test" },
+  "qualified": { "check": "cargo", "args": ["test", "--release"], "expect": "FAIL", "reason_must_contain": "failed", "note": "T9-P2-05/07: release-profile tests are part of the matrix" }
+}

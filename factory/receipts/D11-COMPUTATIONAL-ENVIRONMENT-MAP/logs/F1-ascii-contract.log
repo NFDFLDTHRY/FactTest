@@ -1,0 +1,4 @@
+$ sh -c grep -q '^STRUCTURAL CHECK: PASS' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && grep -q 'TRACE 1  RUST -> WASM64' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && grep -q 'TRACE 2  WEBGPU' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && grep -q 'TRACE 3  FACTORY EXECUTION ENVIRONMENT' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15; do grep -q "^$q " design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md || { echo missing $q; exit 1; }; done && grep -q 'D11-COMPUTATIONAL-ENVIRONMENT-MAP' design/materialization/LEDGER.md && grep -q 'D10-PROMPT-INTAKE' design/materialization/LEDGER.md
+(cwd .)
+
+[exit 0] expected 0

@@ -1,0 +1,151 @@
+{
+  "receipt_id": "R-D11-COMPUTATIONAL-ENVIRONMENT-MAP-F5-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F5-build",
+  "workpiece_id": "W11",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "canonical_base": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+  "input_artifacts": [
+    "design/environment-map/graph.json",
+    "tests/envmap/"
+  ],
+  "open_tree": "e40bee933223d46d4a8ce13bdd4a73ef6109bff5",
+  "close_tree": "62c4d1b54a7e10b288a4cb54df666bf6fa712de0",
+  "changed_paths": [
+    "evidence/D11/final/queries.log",
+    "evidence/D11/final/queries/Q01.json",
+    "evidence/D11/final/queries/Q02.json",
+    "evidence/D11/final/queries/Q03.json",
+    "evidence/D11/final/queries/Q04.json",
+    "evidence/D11/final/queries/Q05.json",
+    "evidence/D11/final/queries/Q06.json",
+    "evidence/D11/final/queries/Q07.json",
+    "evidence/D11/final/queries/Q08.json",
+    "evidence/D11/final/queries/Q09.json",
+    "evidence/D11/final/queries/Q10.json",
+    "evidence/D11/final/queries/Q11.json",
+    "evidence/D11/final/queries/Q12.json",
+    "evidence/D11/final/queries/Q13.json",
+    "evidence/D11/final/queries/Q14.json",
+    "evidence/D11/final/queries/Q15.json",
+    "evidence/D11/final/render-check.json",
+    "evidence/D11/final/render-check.log",
+    "evidence/D11/final/validate.json",
+    "evidence/D11/final/validate.log"
+  ],
+  "output_artifacts": [
+    "evidence/D11/final/validate.json",
+    "evidence/D11/final/render-check.json",
+    "evidence/D11/final/queries/Q11.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D11-COMPUTATIONAL-ENVIRONMENT-MAP"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D11/final/validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D11/final/render-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D11/final/queries.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D11/final/validate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D11/final/validate.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map --out evidence/D11/final/render-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D11/final/render-check.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out evidence/D11/final/queries",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D11/final/queries.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D11/final/validate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D11/final/render-check.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D11/final/queries/Q11.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D11/final/validate.log",
+    "evidence/D11/final/render-check.log",
+    "evidence/D11/final/queries.log"
+  ],
+  "closed": "2026-09-24T05:21:52Z",
+  "status": "PASS"
+}
