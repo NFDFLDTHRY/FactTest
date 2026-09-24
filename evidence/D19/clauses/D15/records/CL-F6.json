@@ -1,0 +1,29 @@
+{
+ "id": "CL-F6",
+ "trace": "F",
+ "authority": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/ServiceWorker",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+  "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+  "bytes": 297377
+ },
+ "locator": {
+  "text": "<{iframe}>s without the sandboxing directives",
+  "line_start": 353,
+  "line_end": 355,
+  "derivation": "anchor text",
+  "enclosing_section": "#control-and-use-window-client (line 336)"
+ },
+ "window": 3,
+ "consequence": "sandboxed (opaque) frames have no active service worker: a confined generation cannot be served by the seed's router and must be bootstrapped inline (D12 P16, B-10)",
+ "excerpt": "      Note: <a element-attr for=iframe lt=sandbox>Sandboxed</a> <{iframe}>s without the sandboxing directives, `allow-same-origin` and `allow-scripts`, result in having the [=active service worker=] value of null as their [=/origin=] is an [=opaque origin=].\n    </section>\n",
+ "excerpt_sha256": "b3764163418d3b7f44db1648ffeaec27a1240eab5fc149f2c2cbfabc7c843b0b",
+ "must_contain": {
+  "null": true
+ },
+ "status": "VERIFIED"
+}

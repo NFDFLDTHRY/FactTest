@@ -1,0 +1,29 @@
+{
+ "id": "CL-T1",
+ "trace": "T",
+ "authority": "AUTH-WASM-JSAPI-STORAGE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/js-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+  "bytes": 114471
+ },
+ "locator": {
+  "fragment": "#store",
+  "line_start": 330,
+  "line_end": 336,
+  "derivation": "PRESENT_EXPLICIT (id attribute)",
+  "enclosing_section": "#store (line 330)"
+ },
+ "window": 7,
+ "consequence": "the current JS embedding is agent-local (the clause behind CON-WA-005; cited at #store / #webassembly-storage, not #internal-storage)",
+ "excerpt": "<h3 id=\"store\">Interaction of the WebAssembly Store with JavaScript</h3>\n\nNote: WebAssembly semantics are defined in terms of an abstract [=store=], representing the state of the WebAssembly abstract machine. WebAssembly operations take a store and return an updated store.\n\nEach [=agent=] has an <dfn>associated store</dfn>. When a new agent is created, its associated store is set to the result of [=store_init=]().\n\nNote: In this specification, no WebAssembly-related objects, memory or addresses can be shared among agents in an [=agent cluster=]. In a future version of WebAssembly, this may change.",
+ "excerpt_sha256": "9878c3458b0c11c90293e9b8c7b1eef9ac11d77ae4f0072484431de47795566a",
+ "must_contain": {
+  "no WebAssembly-related objects, memory or addresses can be shared among agents": true
+ },
+ "status": "VERIFIED"
+}

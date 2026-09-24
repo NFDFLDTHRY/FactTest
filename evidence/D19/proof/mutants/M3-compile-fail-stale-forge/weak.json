@@ -1,0 +1,12 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "build",
+    "--lib",
+    "--message-format=json"
+  ],
+  "exit": 101,
+  "reason": "cargo build exit 101 -> weak rule says \"rejected by rustc (expected)\" without reading the diagnostic (E0560)"
+}

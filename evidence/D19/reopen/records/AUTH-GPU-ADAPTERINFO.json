@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GPU-ADAPTERINFO",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://gpuweb.github.io/gpuweb/",
+  "fragment": "#gpuadapterinfo",
+  "fragment_status_recorded": "DERIVED_FROM_DFN_UNVERIFIED",
+  "maturity_recorded": "Status: w3c/ED",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "path": "spec/index.bs",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "observed": "2026-09-24",
+  "locator": "interface GPUAdapterInfo (lines 2057-2066) and attribute definitions (2068-2120)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#gpuadapterinfo",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 2023,
+   "kind": "id attribute"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 2023,
+   "kind": "id attribute"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   2057,
+   2066
+  ],
+  "window_sha256": "baf87f3c926e6aae5106ed64dcd9bbe9f3b959af855bca53df4aa65a4df574aa",
+  "window_excerpt": "interface GPUAdapterInfo {\n    readonly attribute DOMString vendor;\n    readonly attribute DOMString architecture;\n    readonly attribute DOMString device;\n    readonly attribute DOMString description;\n    readonly attribute unsigned long subgroupMinSize;\n    readonly attribute unsigned long subgroupMaxSize;\n    readonly attribute boolean isFallbackAdapter;\n};\n</script>",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   2057,
+   2066
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "drift": "NONE"
+ }
+}

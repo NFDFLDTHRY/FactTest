@@ -1,0 +1,29 @@
+{
+ "id": "CL-S3",
+ "trace": "S",
+ "authority": "AUTH-FETCH",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/fetch",
+  "branch": "main",
+  "path": "fetch.bs",
+  "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+  "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36",
+  "bytes": 444018
+ },
+ "locator": {
+  "text": "<p>An <dfn export>ok status</dfn>",
+  "line_start": 1474,
+  "line_end": 1474,
+  "derivation": "anchor text",
+  "enclosing_section": "#statuses (line 1465)"
+ },
+ "window": 1,
+ "consequence": "ok status = 200..299",
+ "excerpt": "<p>An <dfn export>ok status</dfn> is a <a for=/>status</a> in the range 200 to 299, inclusive.",
+ "excerpt_sha256": "13c98c47e9a9b62985c09c86e865c9c0c1adbe93a47c5f2c93b8a8637ffd5346",
+ "must_contain": {
+  "200 to 299": true
+ },
+ "status": "VERIFIED"
+}

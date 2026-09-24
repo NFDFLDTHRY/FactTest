@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F7-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "selection of F3"
+  ],
+  "narrowed_may_change": [
+    "evidence/D19/lineage/",
+    "evidence/D19/paths/",
+    "evidence/D19/status-reprove/",
+    "evidence/D19/results/",
+    "evidence/D19/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D19"
+        ],
+        "log": "evidence/D19/logs/F7-repo.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D19/results/lineage.json",
+    "evidence/D19/results/paths.json",
+    "evidence/D19/results/status.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

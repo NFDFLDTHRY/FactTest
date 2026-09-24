@@ -1,0 +1,320 @@
+$ cargo +1.94.1 test --workspace --message-format=json
+(cwd /home/user/factory-workpieces/W22)
+   Compiling factc-wasm-abi v0.1.0 (/home/user/factory-workpieces/W22/compiler/wasm-abi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.28s
+     Running unittests src/main.rs (/home/user/factory-builds/d19-target/debug/deps/factc-3bce99a9ab01d2dd)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_bundle-909042719beea4ab)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_capability-6ca0f07c2ebb67d6)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_codegen-f2b9a4a95494026b)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_foundation-4680fb8d21471dda)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_implementation-70939c88abf93950)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_kernel-4774ab11cdd63a8d)
+     Running tests/bootstrap_ladder.rs (/home/user/factory-builds/d19-target/debug/deps/bootstrap_ladder-6d31523a85210e57)
+     Running tests/bundle_ladder.rs (/home/user/factory-builds/d19-target/debug/deps/bundle_ladder-935637b8c442089a)
+     Running tests/commissioning_ladder.rs (/home/user/factory-builds/d19-target/debug/deps/commissioning_ladder-3e7c5d3e3b04d3fe)
+     Running tests/language_ladder.rs (/home/user/factory-builds/d19-target/debug/deps/language_ladder-b096519482161f98)
+     Running tests/lowering_ladder.rs (/home/user/factory-builds/d19-target/debug/deps/lowering_ladder-998aa51be48683a7)
+     Running tests/observe_ladder.rs (/home/user/factory-builds/d19-target/debug/deps/observe_ladder-92877860eab04228)
+     Running tests/strategy_ladder.rs (/home/user/factory-builds/d19-target/debug/deps/strategy_ladder-619e49d88d66cb9c)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_observe-cc717d68995ef00f)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_planning-df1613e510906490)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_semantic-0a6f9591d3515681)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_source-282ed32ba1465d07)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_verifier-89dc5b161cd7c8af)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factc_wasm_abi-9d207eea785b52a0)
+     Running unittests src/lib.rs (/home/user/factory-builds/d19-target/debug/deps/factory-7f03e9cc2885e627)
+     Running unittests src/main.rs (/home/user/factory-builds/d19-target/debug/deps/factory-3be3f278e1e07394)
+     Running tests/factory_law.rs (/home/user/factory-builds/d19-target/debug/deps/factory_law-d56c0c15998918b0)
+   Doc-tests factc_bundle
+   Doc-tests factc_capability
+   Doc-tests factc_codegen
+   Doc-tests factc_foundation
+   Doc-tests factc_implementation
+   Doc-tests factc_kernel
+   Doc-tests factc_observe
+   Doc-tests factc_planning
+   Doc-tests factc_semantic
+   Doc-tests factc_source
+   Doc-tests factc_verifier
+   Doc-tests factory
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test wasm::tests::emits_memory64_module_with_exports ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 9 tests
+test tests_foundation::b3_span_requires_valid_interval ... ok
+test tests_foundation::b4_diagnostics_deterministic_order ... ok
+test tests_foundation::json_writer_is_deterministic_and_escapes ... ok
+test tests_foundation::bvec_exhaustion_is_a_value ... ok
+test tests_foundation::text_arena_interns_and_compares_by_bytes ... ok
+test wasm::tests::reads_memory64_flag ... ok
+test tests_foundation::outbuf_reports_output_too_small ... ok
+test wasm::tests::rejects_bad_magic ... ok
+test sha256::tests::known_answers ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 4 tests
+test b7_opaque_source_reaches_front_end_boundary ... ok
+test no_source_is_a_diagnostic_not_a_panic ... ok
+test b2_workspace_exhaustion_is_structured ... ok
+test b8_front_end_boundary_is_structured_and_deterministic ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 9 tests
+test p5_c02_c03_adapter_inventory_matches_verified_plan ... ok
+test p6_b01_b02_c1_c2_bundle_emits_both_verified_variants_and_selector_only ... ok
+test bundle_manifest_records_lineage_and_roles ... ok
+test p5_c01_p6_g04_codegen_requires_verified_strategy_and_analyze_emits_no_bundle ... ok
+test p6_b03_undeclared_third_adapter_fails ... ok
+test p6_b05_wasm_module_is_memory64_with_recipe_exports ... ok
+test p6_b04_missing_strategy_variant_fails ... ok
+test p6_b06_p5_c05_lineage_mismatch_fails ... ok
+test p6_x06_bundle_content_is_recipe_driven_not_slice_named ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+
+running 4 tests
+test p6_x05_failures_use_generic_rule_ids ... ok
+test p6_x04_display_label_rename_changes_nothing_executable ... ok
+test p6_x01_same_structure_under_different_system_id_compiles_identically_shaped ... ok
+test p6_a01_x03_compact_layout_is_semantically_identical ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+
+running 30 tests
+test invariant_failure_is_reported_not_repaired ... ok
+test l00_minimal_source_unit ... ok
+test l06_unresolved_endpoint ... ok
+test b4_b8_diagnostics_json_deterministic_and_kernel_present ... ok
+test l05_duplicate_identity_with_both_spans ... ok
+test l07_ambiguous_import_reference_is_not_chosen ... ok
+test l08_direction_check ... ok
+test l10_private_boundary_protection ... ok
+test l01_l02_l03_l04_l24_presentation_invariance ... ok
+test l09_type_compatibility_and_alias ... ok
+test l11_incomplete_abstract_boundary_fails_refinement ... ok
+test l13_effect_escape ... ok
+test l12_compatible_refinement_passes ... ok
+test l18_prose_cannot_create_semantics_but_pin_can ... ok
+test l16_l25_relation_kinds_separate_and_sequence_explicit ... ok
+test l14_l15_l17_l35_governance_preserved_analyze_vs_build ... ok
+test l21_span_integrity ... ok
+test l26_transfer_modes_distinct ... ok
+test l23_unknown_keyword_rejected_not_ignored ... ok
+test l22_escaping_and_unclosed ... ok
+test l29_recursive_refinement ... ok
+test l28_private_visual_exposure_stays_private ... ok
+test l33_drawn_arrow_creates_no_relation ... ok
+test l27_source_unit_path_independence ... ok
+test l31_semantic_mutation_sensitivity ... ok
+test p6_g01_a03_objective_parses_and_renders ... ok
+test system_declaration_rules ... ok
+test p6_g02_metric_and_objective_are_distinct_namespaces ... ok
+test l34_invariant_kernel_boundedness ... ok
+test l19_l20_canonical_round_trip_and_idempotence ... ok
+
+test result: ok. 30 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+
+running 10 tests
+test capability_ir_extracts_transfer_and_obligations_without_choosing_a_backend ... ok
+test p5_l02_implementation_pin_restricts_candidates ... ok
+test metric_evidence_and_epochs_parse_into_the_registry ... ok
+test p5_l01_h_g_contains_explicit_w_and_g_paths ... ok
+test p5_l06_p6_v03_copy_only_conversions_cannot_serve_move ... ok
+test p5_s01_every_capability_family_of_g_is_represented ... ok
+test p5_l04_missing_representation_path_yields_no_candidate ... ok
+test registry_rejects_unknown_keywords_and_duplicates ... ok
+test p5_l03_h_a_filters_by_epoch_admission_while_h_g_keeps_the_edge ... ok
+test p6_g03_ready_contract_requires_a_codegen_recipe ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+
+running 6 tests
+test negative_10_missing_transition_and_mismatch_are_visible_not_hidden ... ok
+test p6_r07_observation_delta_renders_observed_ascii ... ok
+test tape_parses_into_records ... ok
+test negative_11_runtime_source_mutation_is_a_source_of_record_failure ... ok
+test tape_dialect_rejects_unknown_records ... ok
+test observed_ascii_is_itself_a_valid_analyze_unit_and_never_the_source ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+
+running 13 tests
+test p5_v07_hard_constraint_excludes_candidates_before_ranking ... ok
+test p5_v03_v04_strength_never_claims_optimum_without_complete_known_costs ... ok
+test p6_g04_g05_only_verifier_constructs_verified_strategy ... ok
+test p5_v06_stale_epoch_activation_is_not_reused ... ok
+test p6_m03_unknown_metric_is_not_zero ... ok
+test p6_m01_model_epoch_0_selects_g ... ok
+test p6_v01_type_mismatch_never_reaches_planning ... ok
+test p6_m02_model_epoch_1_selects_w_without_replanning ... ok
+test p6_v03_p5_l06_move_only_representation_cannot_satisfy_copy ... ok
+test p6_m04_p6_g06_selector_activates_only_verified_variants ... ok
+test p6_v05_invalid_candidate_cannot_be_rescued_by_preference_rank ... ok
+test p6_v04_undeclared_conversion_and_p6_v02_missing_conversion_fail ... ok
+test strategy_has_two_conditionally_verified_variants_dispatched_by_objective ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 17 tests
+test f02_fixture_authority_expansion_rejected_at_open ... ok
+test f03_missing_receipt_blocks_verification ... ok
+test f01_unauthorized_mutation_fails_verification ... ok
+test f00_happy_path_integrates_and_reinspects ... ok
+test f04_failed_station_check_cannot_be_pass ... ok
+test f08_delta_with_overlapping_authority_fails_structural_check ... ok
+test f09_wildcard_station_surface_rejected_at_open ... ok
+test f06_read_only_station_mutating_source_fails ... ok
+test f11_literal_surface_forms ... ok
+test f10_wildcard_delta_surface_rejected_at_check ... ok
+test f12_fixture_wildcard_rejected_at_open ... ok
+test f05_moved_base_blocks_integration_without_force ... ok
+test f07_unreceipted_change_fails_verification ... ok
+test f16_heuristic_checkers_carry_proof_weight_none ... ok
+test f13_receipt_and_verification_carry_environment_identity ... ok
+test f15_retire_removes_exactly_the_proven_objects ... ok
+test f14_audit_classifies_only_proven_objects_retirable ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.27s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+[exit 0]

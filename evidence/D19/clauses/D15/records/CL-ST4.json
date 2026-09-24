@@ -1,0 +1,30 @@
+{
+ "id": "CL-ST4",
+ "trace": "ST",
+ "authority": "AUTH-FS-OPFS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/fs",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+  "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+  "bytes": 85583
+ },
+ "locator": {
+  "text": "[Exposed=(Window,Worker), SecureContext, Serializable]",
+  "after": "## The {{FileSystemFileHandle}} interface",
+  "line_start": 429,
+  "line_end": 431,
+  "derivation": "anchor text after \"## The {{FileSystemFileHandle}} interfac\"",
+  "enclosing_section": "#api-filesystemfilehandle (line 422)"
+ },
+ "window": 3,
+ "consequence": "OPFS file handles are [SecureContext] in windows and workers",
+ "excerpt": "[Exposed=(Window,Worker), SecureContext, Serializable]\ninterface FileSystemFileHandle : FileSystemHandle {\n  Promise<File> getFile();",
+ "excerpt_sha256": "2b48bd38d5d12cdf399f53cbfc14f64405c271cf1eeae8085553d7d4f8dfc7d8",
+ "must_contain": {
+  "interface FileSystemFileHandle": true
+ },
+ "status": "VERIFIED"
+}

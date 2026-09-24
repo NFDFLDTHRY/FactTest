@@ -1,0 +1,81 @@
+{
+ "authority": "AUTH-FS-OPFS",
+ "authority_class": "LIVING_STANDARD",
+ "cited": {
+  "url": "https://fs.spec.whatwg.org/",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "living standard source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/whatwg/fs",
+  "branch": "main",
+  "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+  "path": "index.bs",
+  "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+  "observed": "2026-09-24",
+  "locator": "lines 429-434 ([Exposed=(Window,Worker), SecureContext]; createSyncAccessHandle [Exposed=DedicatedWorker])"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   429,
+   434
+  ],
+  "window_sha256": "9e7d77b6694bdd0a814bf08caba9d99b4a718a104a0782d325152d034d9fb987",
+  "window_excerpt": "[Exposed=(Window,Worker), SecureContext, Serializable]\ninterface FileSystemFileHandle : FileSystemHandle {\n  Promise<File> getFile();\n  Promise<FileSystemWritableFileStream> createWritable(optional FileSystemCreateWritableOptions options = {});\n  [Exposed=DedicatedWorker]\n  Promise<FileSystemSyncAccessHandle> createSyncAccessHandle();",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   429,
+   434
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "group": "WHATWG"
+  },
+  "declared_at_tip": {
+   "group": "WHATWG"
+  },
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 429,
+  "candidates": {
+   "section": {
+    "id": "#api-filesystemfilehandle",
+    "line": 422,
+    "kind": "bikeshed heading id"
+   },
+   "definition": {
+    "id": "#dom-filesystemhandle-issameentry",
+    "line": 409,
+    "kind": "bikeshed IDL dfn"
+   }
+  }
+ }
+}

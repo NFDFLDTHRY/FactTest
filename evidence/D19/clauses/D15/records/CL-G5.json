@@ -1,0 +1,29 @@
+{
+ "id": "CL-G5",
+ "trace": "G",
+ "authority": "AUTH-GIT-SHA256-TRANSITION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "path": "Documentation/technical/hash-function-transition.adoc",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "sha256": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d",
+  "bytes": 36295
+ },
+ "locator": {
+  "text": "`extensions.compatObjectFormat` (see linkgit:git-config[1]) set to:",
+  "line_start": 152,
+  "line_end": 159,
+  "derivation": "anchor text",
+  "enclosing_section": "#_repository_format_extension (line 148)"
+ },
+ "window": 8,
+ "consequence": "a repository may use SHA-256 object names (with a SHA-1 compat map): object-hash choice is D-6 (owner)",
+ "excerpt": "`extensions.compatObjectFormat` (see linkgit:git-config[1]) set to:\n\n\t[core]\n\t\trepositoryFormatVersion = 1\n\t[extensions]\n\t\tobjectFormat = sha256\n\t\tcompatObjectFormat = sha1\n",
+ "excerpt_sha256": "645ef54ebd4a8385314e53cb0a570ab9a230fb5c075665c54ede31f9bbd15df3",
+ "must_contain": {
+  "objectFormat = sha256": true
+ },
+ "status": "VERIFIED"
+}

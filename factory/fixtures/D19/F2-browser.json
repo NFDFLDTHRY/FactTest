@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F2-browser",
+  "station_id": "S-BROWSER",
+  "selected_inputs": [
+    "D19 section 1"
+  ],
+  "narrowed_may_change": [
+    "evidence/D19/identity/",
+    "evidence/D19/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reprove/identity.mjs",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D19/identity"
+        ],
+        "log": "evidence/D19/logs/F2-identity.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D19/identity/host.json",
+    "evidence/D19/identity/browser-default.json",
+    "evidence/D19/identity/tips.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

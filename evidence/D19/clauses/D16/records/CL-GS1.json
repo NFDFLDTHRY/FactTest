@@ -1,0 +1,30 @@
+{
+ "id": "CL-GS1",
+ "trace": "GS",
+ "authority": "AUTH-GENERIC-SENSOR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/sensors",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+  "sha256": "584e6b7e5743d0c79f36696742a857f115128433d63112401b3f19b62dc5fdbf",
+  "bytes": 107462
+ },
+ "locator": {
+  "text": "interface Sensor : EventTarget {",
+  "after": "[SecureContext, Exposed=(DedicatedWorker, Window)]",
+  "line_start": 885,
+  "line_end": 885,
+  "derivation": "anchor text after \"[SecureContext, Exposed=(DedicatedWorker\"",
+  "enclosing_section": "#the-sensor-interface (line 881)"
+ },
+ "window": 1,
+ "consequence": "Sensor is [SecureContext] in Window and DedicatedWorker",
+ "excerpt": "interface Sensor : EventTarget {",
+ "excerpt_sha256": "ea05e38a332ad5ec5b9ba0e22c5b9529c8cbb8df74308e4d22abdcf75c10ccc0",
+ "must_contain": {
+  "interface Sensor : EventTarget": true
+ },
+ "status": "VERIFIED"
+}

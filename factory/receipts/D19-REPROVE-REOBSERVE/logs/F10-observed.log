@@ -1,0 +1,5 @@
+$ sh -c O=design/materialization/D19-OBSERVED-REPROVE-REOBSERVE.md; B=design/materialization/D19-STABLE-BASELINE.md; for k in P1 P2 P3 P4 P5 P6 P7 Q22 FACT-D19-MINIMUM-SET headless_shell; do grep -q "$k" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O && grep -q '^STABLE-BASELINE: ESTABLISHED' $B && T=$(mktemp -d) && sh tests/hygiene/handoff-check.sh $T/h.json && grep -q 'last delta         D19-REPROVE-REOBSERVE' docs/HANDOFF.md && grep -q 'D19-STABLE-BASELINE' docs/HANDOFF.md && grep -q 'D19-STABLE-BASELINE' README.md && grep -q 'explicit_stops' design/environment-map/SCHEMA.md
+(cwd .)
+handoff check PASS
+
+[exit 0] expected 0

@@ -1,0 +1,153 @@
+{
+ "schema": "facttest-reprove-dimensions/1",
+ "note": "how each STALE_IF dimension is compared: the recorded value on the ENVIRONMENT node (first path present) against the current identity capture (tests/reprove/identity.mjs); SAME, DRIFT or UNK (not comparable from what was recorded).  env_kind names the D19 environment that re-proved facts are bound to.",
+ "dimensions": {
+  "toolchain.nightly.rustc_commit": {
+   "kind": "toolchain_commit",
+   "channel": "nightly",
+   "env_kind": "host"
+  },
+  "toolchain.stable.rustc_commit": {
+   "kind": "toolchain_commit",
+   "channel": "stable",
+   "env_kind": "host"
+  },
+  "toolchain.stable.rustc_release": {
+   "kind": "toolchain_release",
+   "channel": "stable",
+   "env_kind": "host"
+  },
+  "toolchain.nightly.components": {
+   "kind": "toolchain_components",
+   "channel": "nightly",
+   "env_kind": "host"
+  },
+  "toolchain.nightly.install_name": {
+   "kind": "toolchain_install",
+   "channel": "nightly",
+   "env_kind": "host"
+  },
+  "host_runtime.node_version": {
+   "kind": "version",
+   "recorded": [
+    "versions.node"
+   ],
+   "current": "host.host_runtime.node.node",
+   "normalize": "semver",
+   "env_kind": "host"
+  },
+  "host_runtime.git_version": {
+   "kind": "version",
+   "recorded": [
+    "versions.git"
+   ],
+   "current": "host.host_runtime.git",
+   "normalize": "semver",
+   "env_kind": "host"
+  },
+  "host.gpu_device_node": {
+   "kind": "version",
+   "recorded": [
+    "hardware.gpu_device_node",
+    "other_state.gpu_device_node"
+   ],
+   "current": "host.hardware.gpu_device_node",
+   "normalize": "text",
+   "env_kind": "host"
+  },
+  "browser.product": {
+   "kind": "version",
+   "recorded": [
+    "versions.product",
+    "versions.userAgent",
+    "versions.chromium",
+    "host_runtime"
+   ],
+   "current": "browser.cdp_browser_version.product",
+   "normalize": "chrome",
+   "env_kind": "browser"
+  },
+  "browser.revision": {
+   "kind": "version",
+   "recorded": [
+    "versions.revision"
+   ],
+   "current": "browser.cdp_browser_version.revision",
+   "normalize": "hex",
+   "env_kind": "browser"
+  },
+  "browser.js_engine": {
+   "kind": "version",
+   "recorded": [
+    "versions.js_engine",
+    "versions.v8"
+   ],
+   "current": "browser.cdp_browser_version.jsVersion",
+   "normalize": "semver4",
+   "env_kind": "browser"
+  },
+  "browser.flags": {
+   "kind": "launch_flags",
+   "env_kind": "browser"
+  },
+  "origin_security.origin": {
+   "kind": "version",
+   "recorded": [
+    "origin_security.origin"
+   ],
+   "current": "browser.origin",
+   "normalize": "origin",
+   "env_kind": "browser"
+  },
+  "origin_security.secure_context": {
+   "kind": "version",
+   "recorded": [
+    "origin_security.secure_context"
+   ],
+   "current": "browser.page.isSecureContext",
+   "normalize": "bool",
+   "env_kind": "browser"
+  },
+  "origin_security.cross_origin_isolated": {
+   "kind": "version",
+   "recorded": [
+    "origin_security.cross_origin_isolated"
+   ],
+   "current": "browser.page.crossOriginIsolated",
+   "normalize": "bool",
+   "env_kind": "browser"
+  },
+  "authority.source_commit": {
+   "kind": "source_tips",
+   "env_kind": "sources"
+  },
+  "network_egress.policy": {
+   "kind": "unk",
+   "reason": "policy recorded as prose; the current proxy status is captured (host.json network_egress) but not comparable to it",
+   "env_kind": "host"
+  },
+  "repo.commit": {
+   "kind": "repo_paths",
+   "paths": "implementation",
+   "env_kind": "host"
+  },
+  "repository.workspace_members": {
+   "kind": "repo_paths",
+   "paths": [
+    "Cargo.toml"
+   ],
+   "env_kind": "host"
+  },
+  "dependency_graph_identity": {
+   "kind": "repo_paths",
+   "paths": [
+    "Cargo.toml",
+    "Cargo.lock",
+    "compiler/",
+    "host/factc/Cargo.toml",
+    "factory/Cargo.toml"
+   ],
+   "env_kind": "host"
+  }
+ }
+}

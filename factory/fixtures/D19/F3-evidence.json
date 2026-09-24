@@ -1,0 +1,46 @@
+{
+  "fixture_id": "F3-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "D19 section 2",
+    "identity capture of F2"
+  ],
+  "narrowed_may_change": [
+    "evidence/D19/selection.json",
+    "evidence/D19/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reprove/select.mjs",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--identity",
+          "evidence/D19/identity",
+          "--dimensions",
+          "tests/reprove/dimensions.json",
+          "--runbook",
+          "tests/reprove/runbook.json",
+          "--obligations",
+          "tests/reprove/obligations.json",
+          "--out",
+          "evidence/D19/selection.json"
+        ],
+        "log": "evidence/D19/logs/F3-selection.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D19/selection.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

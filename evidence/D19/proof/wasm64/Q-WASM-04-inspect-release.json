@@ -1,0 +1,27 @@
+{
+  "id": "Q-WASM-04-inspect-release",
+  "class": "T9-P8",
+  "invariant": "the built module is wasm64: every memory uses the i64 address type; imports/exports and sha256 recorded",
+  "proof_set": "WASM64_KERNEL_SET",
+  "evaluated": "2026-09-24T10:45:31.672Z",
+  "target": "wasm64-unknown-unknown",
+  "profile": "release",
+  "module": "/home/user/factory-builds/d19-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+  "command": [
+    "/home/user/factory-builds/d19-target/debug/factory",
+    "wasm-inspect",
+    "/home/user/factory-builds/d19-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm"
+  ],
+  "exit": 0,
+  "output": [
+    "== wasm-inspect /home/user/factory-builds/d19-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --out /home/user/factory-workpieces/W22/evidence/D19/proof/wasm64/Q-WASM-04-inspect-release.inspect.json : PASS",
+    "  [PASS] module_structure - 12 sections",
+    "  [PASS] memory_declared - I64 min=311 max=None shared=false",
+    "  [PASS] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003",
+    "  [PASS] imports_listed",
+    "  [PASS] exports_listed - memory:2, check_or_compile:0, input_buffer_len:0, input_buffer_ptr:0, output_buffer_ptr:0, query_abi_version:0, query_required_workspace:0, read_artifact_metadata:0, read_diagnostics:0, reset_workspace:0, submit_machine_state:0, submit_source_bytes:0, output_buffer_len:0",
+    "  [PASS] artifact_identity - sha256 6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81 bytes 3350254"
+  ],
+  "verdict": "PASS",
+  "reason": "  [PASS] memory_declared - I64 min=311 max=None shared=false;   [PASS] artifact_identity - sha256 6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81 bytes 3350254"
+}

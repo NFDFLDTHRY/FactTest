@@ -1,0 +1,49 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "D19 sections 1-4"
+  ],
+  "narrowed_may_change": [
+    "tests/reprove/",
+    "tests/envmap/envmap.mjs",
+    "tests/envmap/browser-probe.mjs",
+    "tests/hygiene/status-scan.mjs",
+    "factory/receipts/D19-REPROVE-REOBSERVE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in tests/reprove/identity.mjs tests/reprove/select.mjs tests/reprove/run-selected.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs tests/reprove/gate.mjs tests/envmap/envmap.mjs tests/envmap/browser-probe.mjs tests/hygiene/status-scan.mjs; do node --check $f || exit 1; done; for j in dimensions runbook obligations; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' tests/reprove/$j.json || exit 1; done; ! grep -nE \"'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]\" tests/reprove/identity.mjs tests/reprove/select.mjs tests/reprove/run-selected.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs tests/reprove/gate.mjs tests/envmap/envmap.mjs tests/envmap/browser-probe.mjs tests/hygiene/status-scan.mjs && git diff --exit-code b509fb00920443930aa75b10dae05b9683d2fe1b -- tests ':!tests/reprove' ':!tests/envmap/envmap.mjs' ':!tests/envmap/browser-probe.mjs' ':!tests/hygiene/status-scan.mjs' && echo 'tools parse; generic; no other test changed'"
+        ],
+        "log": "factory/receipts/D19-REPROVE-REOBSERVE/logs/F1-syntax-generic.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q >/dev/null && for q in $(ls evidence/D18R/envmap/queries); do cmp evidence/D18R/envmap/queries/$q $T/q/$q || exit 1; done && node -e 'const a=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).answer;console.log(\"Q22\",a.current_facts,JSON.stringify(a.run_claims));if(a.current_facts!==109)process.exit(1)' $T/q/Q22.json && echo 'D18R graph: validate 42, render/merge identical, Q01-Q21 byte-identical to evidence/D18R'"
+        ],
+        "log": "factory/receipts/D19-REPROVE-REOBSERVE/logs/F1-regression.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/reprove/select.mjs",
+    "tests/reprove/runbook.json",
+    "tests/reprove/build-reprove.mjs",
+    "tests/reprove/gate.mjs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

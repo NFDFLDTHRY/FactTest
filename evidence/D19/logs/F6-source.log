@@ -1,0 +1,15 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind source --out evidence/D19
+(cwd .)
+PASS clauses: node tests/reference/clauses.mjs tests/reference/d15-clauses.json design/environment-map/graph.json evidence/D (41 s)
+PASS clauses: node tests/reference/clauses.mjs tests/reference/d16-clauses.json design/environment-map/graph.json evidence/D (29 s)
+PASS clauses FACT-CHOOSER-FAMILIES-NEED-ACTIVATION
+PASS clauses FACT-D15-CLAUSES-VERIFIED
+PASS clauses FACT-D16-CLAUSES-VERIFIED
+PASS clauses FACT-SENSOR-FAMILY-ADVISEMENT
+PASS reopen: T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs (63 s)
+PASS reopen FACT-FRONTIER-SOURCES-AT-PIN
+PASS reopen FACT-MEMORY64-FINISHED
+PASS reopen FACT-WASM-SET-PHASE-1
+PASS reopen FACT-WASM-THREADS-PHASE-4
+
+[exit 0] expected 0

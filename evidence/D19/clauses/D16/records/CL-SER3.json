@@ -1,0 +1,30 @@
+{
+ "id": "CL-SER3",
+ "trace": "DEV",
+ "authority": "AUTH-SERIAL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/serial",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+  "sha256": "48d0a5629c71f2b523108b817d9c0c8c2851959d442f37a3a1b3094b3313dcc3",
+  "bytes": 84878
+ },
+ "locator": {
+  "text": "The [=policy-controlled feature/default allowlist=] for this feature",
+  "after": "\"policy-controlled feature\"><code>serial</code></dfn>",
+  "line_start": 1883,
+  "line_end": 1884,
+  "derivation": "anchor text after \"\"policy-controlled feature\"><code>serial\"",
+  "enclosing_section": null
+ },
+ "window": 2,
+ "consequence": "serial is policy-controlled with default 'self'",
+ "excerpt": "          The [=policy-controlled feature/default allowlist=] for this feature\n          is `'self'`.",
+ "excerpt_sha256": "f8ca623f00004bfbc0a8620df9bd6232c6f2ab8bb2de4a3afba73dfec054ff99",
+ "must_contain": {
+  "is `'self'`.": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,613 @@
+{
+ "schema": "facttest-reprove-runbook/1",
+ "note": "reviewed map from a selected fact to the group that re-proves it and the records whose expected observation decides PASS; a selected fact without an entry is a [GAP] (it stays stale)",
+ "groups": {
+  "identity": {
+   "kind": "cite",
+   "env_kind": "browser",
+   "note": "produced by the identity capture (tests/reprove/identity.mjs -> tests/envmap/browser-probe.mjs)",
+   "commands": []
+  },
+  "qualified-proof": {
+   "kind": "build",
+   "env_kind": "host",
+   "commands": [
+    "CARGO_TARGET_DIR=/home/user/factory-builds/d19-target cargo +1.94.1 build -p factory",
+    "CARGO_TARGET_DIR=/home/user/factory-builds/d19-target sh tests/toolchain/run-qualified-proof.sh @OUT@/proof"
+   ]
+  },
+  "kernel-sections": {
+   "kind": "build",
+   "env_kind": "host",
+   "commands": [
+    "sh tests/implementation/build-kernels.sh @OUT@/kernel /home/user/factory-builds/d19-kernels"
+   ]
+  },
+  "paths": {
+   "kind": "repo",
+   "env_kind": "host",
+   "commands": [
+    "node tests/envmap/envmap.mjs paths-probe . --out @OUT@/paths/paths-probe.json"
+   ]
+  },
+  "lineage": {
+   "kind": "repo",
+   "env_kind": "host",
+   "commands": [
+    "node tests/reprove/lineage.mjs --from 4a151c9ae58f9968c70b9b85cef82a02fba12b85 --out @OUT@/lineage/lineage.json"
+   ]
+  },
+  "clauses": {
+   "kind": "source",
+   "env_kind": "sources",
+   "commands": [
+    "node tests/reference/clauses.mjs tests/reference/d15-clauses.json design/environment-map/graph.json @OUT@/clauses/D15",
+    "node tests/reference/clauses.mjs tests/reference/d16-clauses.json design/environment-map/graph.json @OUT@/clauses/D16"
+   ]
+  },
+  "reopen": {
+   "kind": "source",
+   "env_kind": "sources",
+   "commands": [
+    "T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json --out $T/g13.json >/dev/null && node tests/reference/reopen.mjs $T/g13.json @OUT@/reopen"
+   ]
+  },
+  "status": {
+   "kind": "repo",
+   "env_kind": "host",
+   "commands": [
+    "node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out @OUT@/status-reprove",
+    "sh tests/hygiene/handoff-check.sh @OUT@/status-reprove/handoff-check.json"
+   ]
+  }
+ },
+ "facts": {
+  "FACT-GPU-ADAPTER-SWIFTSHADER": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "expect": [
+      {
+       "path": "page.adapter.info.isFallbackAdapter",
+       "eq": true
+      },
+      {
+       "path": "page.adapter.info.architecture",
+       "eq": "swiftshader"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-GPU-ADAPTER-NULL-DEFAULT": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "expect": [
+      {
+       "path": "page.adapter",
+       "eq": null
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-GPU-EXPOSED": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "expect": [
+      {
+       "path": "page.gpu_exposed",
+       "eq": true
+      }
+     ]
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "expect": [
+      {
+       "path": "page.gpu_exposed",
+       "eq": true
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-LOOPBACK-SECURE-CONTEXT": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "expect": [
+      {
+       "path": "page.isSecureContext",
+       "eq": true
+      }
+     ]
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "expect": [
+      {
+       "path": "page.isSecureContext",
+       "eq": true
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-MEMORY64-DISCOVERED": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "expect": [
+      {
+       "path": "page.memory64_validates",
+       "eq": true
+      }
+     ]
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "expect": [
+      {
+       "path": "page.memory64_validates",
+       "eq": true
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-TOOLCHAIN-PINNED": {
+   "group": "qualified-proof",
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "records": [
+    {
+     "file": "proof/pins/T13-PIN-01-toolchain-pins.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-PROOF-SETS-DECLARED": {
+   "group": "qualified-proof",
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "records": [
+    {
+     "file": "proof/sets/T13-SETS-01-roots-partition.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-QUALIFIED-JUDGE-RERUN": {
+   "group": "qualified-proof",
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "records": [
+    {
+     "file": "proof/summary.json",
+     "expect": [
+      {
+       "path": "mutants.verdict",
+       "eq": "RUN"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-KERNEL-IDENTITY-DEFINED-D18": {
+   "group": "qualified-proof",
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-06-kernel-identity.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-COMPILE-FAIL-WITNESSED": {
+   "group": "qualified-proof",
+   "probe": "PROBE-COMPILE-FAIL-DIAG",
+   "records": [
+    {
+     "file": "proof/host/Q-HOST-06-std-in-kernel.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    },
+    {
+     "file": "proof/host/Q-HOST-07-id-substitution.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    },
+    {
+     "file": "proof/host/Q-HOST-08-forge-verified-strategy.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-FIRST-PARTY-GRAPH": {
+   "group": "qualified-proof",
+   "probe": "PROBE-DEPS-AUDIT",
+   "records": [
+    {
+     "file": "proof/all/Q-ALL-02-resolved-graph-first-party.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    },
+    {
+     "file": "proof/all/Q-ALL-03-third-party-dep-fixture-rejected.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-CORE-ONLY-GRAPH": {
+   "group": "qualified-proof",
+   "probe": "PROBE-NOSTD-GRAPH",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-02-core-only-graph-dev.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    },
+    {
+     "file": "proof/wasm64/Q-WASM-03-core-only-graph-release.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-WASM64-MODULE-I64": {
+   "group": "qualified-proof",
+   "probe": "PROBE-WASM-INSPECT",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-04-inspect-release.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    },
+    {
+     "file": "proof/wasm64/Q-WASM-05-inspect-dev.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-WASM64-ABI-EXEC": {
+   "group": "qualified-proof",
+   "probe": "PROBE-KERNEL-HOST-BROWSER",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-07-chromium-abi-release.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT": {
+   "group": "kernel-sections",
+   "probe": "PROBE-KERNEL-SECTIONS",
+   "records": [
+    {
+     "file": "kernel/sections.json",
+     "expect": [
+      {
+       "path": "identical_excluding_custom",
+       "eq": true
+      },
+      {
+       "path": "differing_sections",
+       "eq": [
+        "custom:name"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-SURFACES-LITERAL-ENFORCED": {
+   "group": "paths",
+   "probe": "PROBE-PATHS-LITERAL",
+   "records": [
+    {
+     "file": "paths/paths-probe.json",
+     "expect": [
+      {
+       "path": "dead_wildcard_surfaces",
+       "eq": []
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-FF-ONLY-INTEGRATION": {
+   "group": "lineage",
+   "probe": "PROBE-WORKPIECE-VERIFY",
+   "records": [
+    {
+     "file": "lineage/lineage.json",
+     "expect": [
+      {
+       "path": "first_parent_linear",
+       "eq": true
+      },
+      {
+       "path": "factory_authored",
+       "eq": true
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-WORKPIECE-ISOLATION": {
+   "group": "lineage",
+   "probe": "PROBE-WORKPIECE-VERIFY",
+   "records": [
+    {
+     "file": "lineage/lineage.json",
+     "expect": [
+      {
+       "path": "latest_verification.state_base_tree_matches_canonical_base",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D15-CLAUSES-VERIFIED": {
+   "group": "clauses",
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "records": [
+    {
+     "file": "clauses/D15/summary.json",
+     "expect": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 60
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D16-CLAUSES-VERIFIED": {
+   "group": "clauses",
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "expect": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-FRONTIER-SOURCES-AT-PIN": {
+   "group": "reopen",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "records": [
+    {
+     "file": "reopen/summary.json",
+     "expect": [
+      {
+       "path": "clause.CHANGED",
+       "absent": true
+      },
+      {
+       "path": "clause.NOT_FOUND_AT_TIP",
+       "absent": true
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION": {
+   "group": "clauses",
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "expect": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-SENSOR-FAMILY-ADVISEMENT": {
+   "group": "clauses",
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "expect": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-MEMORY64-FINISHED": {
+   "group": "reopen",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "records": [
+    {
+     "file": "reopen/proposal-phases.json",
+     "expect": [
+      {
+       "path": "finished",
+       "includes": "Memory64"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-WASM-SET-PHASE-1": {
+   "group": "reopen",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "records": [
+    {
+     "file": "reopen/proposal-phases.json",
+     "expect": [
+      {
+       "path": "phases.Shared-Everything Threads",
+       "eq": 1
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-WASM-THREADS-PHASE-4": {
+   "group": "reopen",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "records": [
+    {
+     "file": "reopen/proposal-phases.json",
+     "expect": [
+      {
+       "path": "phases.Threads",
+       "eq": 4
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-SAB-GLOBAL-HOST-DEFINED": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "expect": [
+      {
+       "path": "page.sharedArrayBuffer_present",
+       "eq": false
+      },
+      {
+       "path": "page.crossOriginIsolated",
+       "eq": false
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-STATUS-INVENTORIED": {
+   "group": "status",
+   "probe": "PROBE-STATUS-SCAN",
+   "records": [
+    {
+     "file": "status-reprove/inventory.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      },
+      {
+       "path": "unclassified",
+       "eq": []
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-HANDOFF-MODEL-INDEPENDENT": {
+   "group": "status",
+   "probe": "PROBE-STATUS-SCAN",
+   "records": [
+    {
+     "file": "status-reprove/handoff-check.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "process": {
+  "note": "reviewed ties of the pass's process facts: the probe that records browser identity, the law that requires the launched executable to be named (EVIDENCE-OBLIGATIONS, D18 annotation) and the implementation clause that says which binary a headless launch selects, the constraint that requires toolchain identity per evidence record",
+  "browser_probe": "PROBE-BROWSER-IDENTITY",
+  "executable_authorities": [
+   "LAW-EVIDENCE-OBLIGATIONS"
+  ],
+  "executable_clauses": [
+   "CL-IMP-PW1"
+  ],
+  "identity_constraints": [
+   "CON-EM-005"
+  ]
+ }
+}

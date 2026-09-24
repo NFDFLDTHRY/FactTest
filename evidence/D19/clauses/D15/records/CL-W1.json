@@ -1,0 +1,30 @@
+{
+ "id": "CL-W1",
+ "trace": "W",
+ "authority": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/core/syntax/types.rst",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d",
+  "bytes": 17872
+ },
+ "locator": {
+  "fragment": "#syntax-addrtype",
+  "line_start": 330,
+  "line_end": 337,
+  "derivation": "PRESENT_EXPLICIT (rst label)",
+  "enclosing_section": "#syntax-addrtype (line 330)"
+ },
+ "window": 8,
+ "consequence": "address types classify memory/table offsets; i64 is one of them in Core 3.0",
+ "excerpt": ".. _syntax-addrtype:\n\nAddress Types\n~~~~~~~~~~~~~\n\n*Address types* are a subset of :ref:`number types <syntax-numtype>` that classify the values that can be used as offsets into\n:ref:`memories <syntax-mem>` and :ref:`tables <syntax-table>`.\n",
+ "excerpt_sha256": "ac41a5791dbb567e38985d768e437178cbc5bed8685c0edfd30900bda1fb5418",
+ "must_contain": {
+  "Address types": true,
+  "offsets into": true
+ },
+ "status": "VERIFIED"
+}

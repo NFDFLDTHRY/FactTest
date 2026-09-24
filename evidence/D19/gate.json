@@ -1,0 +1,31 @@
+{
+ "tool": "tests/reprove/gate.mjs",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "selection_complete",
+   "status": "PASS",
+   "detail": "29 selected of 90; groups clauses, qualified-proof, lineage, reopen, identity, status, kernel-sections, paths"
+  },
+  {
+   "check": "reproved",
+   "status": "PASS",
+   "detail": "29 selected facts re-proved with D19 evidence"
+  },
+  {
+   "check": "obligations_fulfilled",
+   "status": "PASS",
+   "detail": "4 obligations fulfilled"
+  },
+  {
+   "check": "identity_recorded",
+   "status": "PASS",
+   "detail": "ENV-D19-HOST, ENV-D19-BROWSER-DEFAULT, ENV-D19-BROWSER-GPUFLAGS, ENV-D19-SOURCES, FACT-D19-ENVIRONMENT-IDENTITY, FACT-D19-LAUNCHED-EXECUTABLE, FACT-D19-MINIMUM-SET"
+  },
+  {
+   "check": "claim_surface",
+   "status": "PASS",
+   "detail": "50 current RUN claims: 49 claimable, 1 invalidated; 29 re-proved in D19"
+  }
+ ]
+}

@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GPU-ADAPTER-EXPIRE",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://gpuweb.github.io/gpuweb/",
+  "fragment": "#adapter-selection",
+  "fragment_status_recorded": "DERIVED_FROM_DFN_UNVERIFIED",
+  "maturity_recorded": "Status: w3c/ED (followed sublink: lifecycle)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "path": "spec/index.bs",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "observed": "2026-09-24",
+  "locator": "adapter [[state]] valid/consumed/expired (lines 1349-1372); 'Adapters may expire at any time' (lines 2611-2623)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#adapter-selection",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 2680,
+   "kind": "bikeshed heading id"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 2680,
+   "kind": "bikeshed heading id"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   1349,
+   1372
+  ],
+  "window_sha256": "39b29b0df5a301147ded0cf0b9838bc848c286ce8a38a6a2ed2a956d2bf8d77e",
+  "window_excerpt": "<dl dfn-type=attribute dfn-for=adapter data-timeline=device>\n    : <dfn>\\[[state]]</dfn>, initially {{adapter/[[state]]/\"valid\"}}\n    ::\n        <dl dfn-type=enum-value dfn-for=\"adapter/[[state]]\">\n            : <dfn>\"valid\"</dfn>\n            :: The adapter can be used to create a device.\n            : <dfn>\"consumed\"</dfn>\n            :: The adapter has already been used to create a device, and cannot be used again.\n            : <dfn>\"expired\"</dfn>\n            :: The adapter has expired for some other reason.\n        </dl>\n</dl>\n\n<div algorithm data-timeline=device>\n    To <dfn abstract-op lt='expire|Expire|expires'>expire</dfn> a {{GPUAdapter}} |adapter|, run the\n    following [=device timeline=] steps:\n\n    1. Set |adapter|.{{GPUAdapter/[[adapter]]}}.{{adapter/[[state]]}} to\n        {{adapter/[[state]]/\"expired\"}}.\n</div>\n\n### Devices ### {#devices}\n\nA <dfn dfn>device</dfn> is the logical instantiation of an [=adapter=],",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   1349,
+   1372
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "drift": "NONE"
+ }
+}

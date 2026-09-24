@@ -1,0 +1,29 @@
+{
+ "id": "CL-WK3",
+ "trace": "WK",
+ "authority": "AUTH-HTML-WORKERS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+  "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+  "bytes": 7915656
+ },
+ "locator": {
+  "text": "<p>The <dfn method for=\"Worker\"><code data-x=\"dom-Worker-terminate\">terminate()</code></dfn>",
+  "line_start": 136450,
+  "line_end": 136451,
+  "derivation": "anchor text",
+  "enclosing_section": "#the-abstractworker-abstract-interface (line 136251)"
+ },
+ "window": 2,
+ "consequence": "terminate() ends a worker: lifecycle",
+ "excerpt": "  <p>The <dfn method for=\"Worker\"><code data-x=\"dom-Worker-terminate\">terminate()</code></dfn>\n  method steps are to <span>terminate a worker</span> given <span>this</span>'s worker.</p>",
+ "excerpt_sha256": "ba7f4a9b38e6c1272c77f5439ff0c124172b27d052e69ed1f40290d361ef9701",
+ "must_contain": {
+  "terminate()": true
+ },
+ "status": "VERIFIED"
+}

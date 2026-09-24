@@ -225,3 +225,13 @@ D18R   D18R-CHAIN-REPAIR           R-52 supersedes FACT-WORKERS-D18 (its "hardwa
                                    D11/D16 evidence) by FACT-WORKERS-D18R; R-53 corrects the reading of the D12
                                    executable field (default path, not the launched binary); epochs/D18R.json.
 ```
+
+## 12. Re-proof epoch D19 (added by D19-REPROVE-REOBSERVE)
+
+```text
+D19    D19-REPROVE-REOBSERVE       the current environment identity (ENV-D19-HOST, ENV-D19-BROWSER-DEFAULT,
+                                   ENV-D19-BROWSER-GPUFLAGS, ENV-D19-SOURCES) compared with every stale condition of the
+                                   current claims; the minimum affected set re-proved physically (qualified proof, kernel
+                                   sections, browser identity, clause re-verification, frontier reopen, lineage, paths);
+                                   D18 obligations fulfilled; epochs/D19.json.  Q22 is the entitled-claim surface.
+```

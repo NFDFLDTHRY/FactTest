@@ -8,8 +8,10 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D18R-CHAIN-REPAIR (repair of pass 5, D18-REPO-RECONCILIATION, before pass 6 of the D14-D19
-                   technical reference review series; integration commits in design/materialization/LEDGER.md)
+last delta         D19-REPROVE-REOBSERVE (pass 6, the last of the D14-D19 technical reference review series;
+                   integration commit in design/materialization/LEDGER.md)
+baseline           design/materialization/D19-STABLE-BASELINE.md (STABLE-BASELINE: ESTABLISHED) - what later work may
+                   rely on, the entitled-claim surface (graph query Q22) and how to re-verify it
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in the Chromium 141 headless shell (SwiftShader CPU fallback
                    WebGPU under the unsafe WebGPU switches, plus wasm64), D9 qualified Rust/Cargo proof harness, D11
@@ -21,17 +23,17 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    clauses pinned to the versions run, kernel section identity, label audit, Q20), D18 reconciliation
                    (one current model: 36 reconciliations, 15 supersessions, 19 constraints ledgered, 6 label findings
                    resolved, kernel identity defined; law annotated insertion-only; Q21), D18R chain repair (one D18
-                   worker statement contradicted committed evidence: superseded; D12 executable field corrected)
+                   worker statement contradicted committed evidence: superseded; D12 executable field corrected), D19
+                   re-proof (environment identity captured; the minimum affected set selected from the graph and
+                   re-proved physically; current evidence epoch; entitled-claim surface Q22)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): one StructuralDelta
-                   per pass, each closed, verified, integrated and re-observed before the next
-next               D19-REPROVE-REOBSERVE (select the minimum affected physical test set from graph staleness and execute
-                   it), starting from design/materialization/D18R-OBSERVED-CHAIN-REPAIR.md and graph query Q21 (probe
-                   obligations: the qualified proof with the exec-identity kernel check; environment identity including
-                   the executable actually launched).
-                   Historical evidence is never mutated.  The owner PAUSED the D12-predicted seed/broker
-                   qualification; it is renumbered after D19.
+series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): CLOSED - one
+                   StructuralDelta per pass (plus the D18R chain repair), each closed, verified, integrated and
+                   re-observed before the next
+next               an OWNER decision: the paused D12-predicted seed/broker qualification (renumbered after D19) or any
+                   row of section 6.  Before building on a claim, re-run the D19 selection (section 7) against the then
+                   current environment; historical evidence is never mutated.
 ```
 
 ## 2. Mutation law
@@ -60,6 +62,8 @@ HEAD, tree, status, ancestry to main) before drawing anything.
              mutation plan by station, predictions, "STRUCTURAL CHECK: PASS"
              (absence: check an absence claim against the committed evidence - grep evidence/ and the graph's
              EVIDENCE observed_result - before asserting "never observed" / "no fixture"; D18R lesson)
+             (closed statements: a [GAP]/[ERR]/[UNK] fact INVALIDATED_BY later evidence is history, not an open
+             stop - read Q22 explicit_stops, never a bare status count; D19 lesson)
 2  payload   stage the files outside the repository (e.g. /home/user/factory-workpieces/<W>-stage); write
              factory/deltas/<D>.json (canonical_base = current HEAD, workpiece_id, may_change / must_not_change as
              LITERAL surfaces: "*", "dir/" or an exact file - wildcard-looking entries are rejected) and one fixture per
@@ -101,10 +105,11 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
-               epochs/D12.json .. epochs/D18.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
+               epochs/D12.json .. epochs/D19.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
                tests/reference/<epoch>-clauses.json (exact-clause manifests; the constraints they proposed are ledgered
                in CONSTRAINT-LEDGER.md since D18); tests/reconcile/d18-reconciliation.json (the reviewed D18 register:
-               supersessions, ledgering, resolutions; graph query Q21 is the current model);
+               supersessions, ledgering, resolutions; graph query Q21 is the current model); tests/reprove/
+               (D19 dimension rules, runbook, obligations; Q22 is the entitled-claim surface);
                tests/capability/universe.json (the G trace + reviewed classification; G itself is CAPABILITY-MATRIX.md);
                tests/implementation/{reality.json, label-audit.json} (implementation behaviours; reviewed label findings);
                this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml
@@ -178,7 +183,8 @@ D      git tree-entry order (D15 CL-G3)     "normalized by mktree" with no docum
                                             ordering source not traced (D17 traced browser and toolchain sources)
 D      Q18 claim traversal                  current RUN claims that stop before COMPLETE: IMPLEMENTATION CONTRACT,  [GAP]
                                             CURRENT AUTHORITY (process facts), EXACT CLAUSE (project facts cited at
-                                            locator level), PROJECT CONSTRAINT (evidence/D18/envmap/queries/Q18.json)
+                                            locator level), PROJECT CONSTRAINT; each stop is explicit
+                                            (evidence/D19/envmap/queries/Q18.json, Q22)
 D      published frontier (D14)             53 renderings refused + 2 github.com 403: no current published      [UNK]
                                             authority verified in D14 (FACT-PUBLISHED-FRONTIER-UNVERIFIED); D15
                                             clauses are likewise verified at source tips only
@@ -187,13 +193,20 @@ D      D11 FACT-AUTHORITY-REOPEN-DENIED     37 of 48 D11 authorities and all 16 
 D      D12 B-19                             githack public-origin path unreachable (proxy 403)                  [UNK]
 D      D12 B-18, B-20                       GitHub smart-HTTP CORS; browser update behaviour                    [OBS]/[UNK]
 D      CONFLICT-LEDGER ERR-001 et al.       authority conflicts preserved as ledger rows                        [ERR]
-B      D0-D12 receipts/evidence             incomplete environment identity (receipt format 2 from D14 on)      kept
+B      D0-D12 receipts/evidence             incomplete environment identity (receipt format 2 from D14 on); D19:      kept
+                                            9 stale-condition pairs undecidable (V8 version, GPU device node, launch
+                                            options or components never recorded; evidence/D19/selection.json unk)
 B      D3-D8 fixture wording                "all ladders" / "full suite" overstated the selection               kept
 B      D1-D8 heuristic gates                nostd-check/depcheck used as gates (proof weight now NONE)          kept
+C      D9 native --workspace                cargo build/clippy --workspace fail on the host: factc-wasm-abi's   [ERR] kept
+       (FACT-NATIVE-WORKSPACE-UNBUILDABLE)  panic_handler is wasm64-only; the proof sets partition the roots
+                                            (section 7: CROSS_SET is diagnostic, weight NONE)
 B      scratch-only tooling                 D0-D13 route scripts, D11 graph generator (procedure: section 4)    kept
 B      workpiece root                       W11-stage, W14-stage hold base-era graph views that are not in the      [GAP] kept
                                             canonical history; W16-W19-stage are proven superseded (every file blob
-                                            is in the canonical history: evidence/D18/workpieces/stages.json) but
+                                            is in the canonical history: evidence/D18/workpieces/stages.json);
+                                            W20-W21-stage differ from their integrated trees only in the three
+                                            generated graph views (evidence/D19/workpieces/audit-after.json);
                                             factory workpiece retire handles worktrees only; factory-bootstrap-bin
                                             (unmanaged)
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
@@ -238,4 +251,8 @@ tests/toolchain/proof-sets.json
   HEURISTIC                  factory nostd-check / depcheck: weight NONE; never a gate
 run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>)
 history                      tests/toolchain/run-proof-matrix.sh is the D9 matrix, kept for reproduction of D9
+re-prove (D19)               node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out <dir>/identity;
+                             node tests/reprove/select.mjs ... --out <dir>/selection.json (environment drift, implementation
+                             change, obligations); node tests/reprove/run-selected.mjs --kind cite|build|source|repo; the
+                             runbook (tests/reprove/runbook.json) names each claim's re-proof and expected observation
 ```

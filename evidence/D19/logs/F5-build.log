@@ -1,0 +1,17 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind build --out evidence/D19
+(cwd .)
+PASS kernel-sections: sh tests/implementation/build-kernels.sh evidence/D19/kernel /home/user/factory-builds/d19-kernels (31 s)
+PASS kernel-sections FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT
+PASS qualified-proof: CARGO_TARGET_DIR=/home/user/factory-builds/d19-target cargo +1.94.1 build -p factory (2 s)
+PASS qualified-proof: CARGO_TARGET_DIR=/home/user/factory-builds/d19-target sh tests/toolchain/run-qualified-proof.sh evidence/D19/p (50 s)
+PASS qualified-proof FACT-COMPILE-FAIL-WITNESSED
+PASS qualified-proof FACT-CORE-ONLY-GRAPH
+PASS qualified-proof FACT-FIRST-PARTY-GRAPH
+PASS qualified-proof FACT-KERNEL-IDENTITY-DEFINED-D18
+PASS qualified-proof FACT-PROOF-SETS-DECLARED
+PASS qualified-proof FACT-QUALIFIED-JUDGE-RERUN
+PASS qualified-proof FACT-TOOLCHAIN-PINNED
+PASS qualified-proof FACT-WASM64-ABI-EXEC
+PASS qualified-proof FACT-WASM64-MODULE-I64
+
+[exit 0] expected 0

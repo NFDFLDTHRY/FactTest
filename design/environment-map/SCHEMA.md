@@ -265,3 +265,26 @@ retired_texts           register field: texts no current AUTHORITY / COMPUTATION
 Q21                     revised_by on a reconciliation row and its obligation when a successor it introduced was
                         superseded later
 ```
+
+## 13. Re-proof and the entitled-claim surface (D19)
+
+```text
+FULFILLS                EVIDENCE -> RECONCILIATION + obligation: the evidence discharges the probe obligation a
+                        reconciliation addressed to a later pass (Q21 fulfilled_by).  Declared by epoch D19.
+re-proof epoch          new ENVIRONMENT nodes for the current identity (host as the proof sets bind it, browser default
+                        and GPU flag set with the executable launched, authority sources with every tip read recorded in
+                        other_state.sources); one EVIDENCE node per record a re-proved fact rests on; the re-proved fact
+                        is EVIDENCED_BY it and STALE_IF the new environment in each dimension it was already stale in;
+                        a failed re-proof is INVALIDATED_BY its record
+selection               tests/reprove/select.mjs: a current RUN/OBS fact is selected on DRIFT of a STALE_IF dimension
+                        (tests/reprove/dimensions.json rules; UNK never counts as SAME), on a change of its
+                        implementation or probe harness after its newest physical evidence (git), or on an obligation
+                        addressed to the pass; tests/reprove/runbook.json maps each to the group that re-proves it
+Q22                     entitled-claim surface: per current fact the claim bounded to the environments of its newest
+                        physical evidence, that epoch, whether the current epoch re-proved it, and its Q18 terminal;
+                        explicit_stops separates open [GAP]/[ERR]/[UNK] facts from those later evidence INVALIDATED
+                        (closed history; D19 route finding, repaired by fixture F11 before the graph was built)
+tools                   tests/reprove/{identity.mjs, select.mjs, run-selected.mjs, lineage.mjs, build-reprove.mjs,
+                        gate.mjs, dimensions.json, runbook.json, obligations.json}; tests/envmap/browser-probe.mjs records
+                        the executable launched
+```

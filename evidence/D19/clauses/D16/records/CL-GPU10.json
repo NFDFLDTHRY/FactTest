@@ -1,0 +1,29 @@
+{
+ "id": "CL-GPU10",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-REQUESTDEVICE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "    : <dfn>createShaderModule(descriptor)</dfn>",
+  "line_start": 7237,
+  "line_end": 7239,
+  "derivation": "anchor text",
+  "enclosing_section": "#shader-module-creation (line 7186)"
+ },
+ "window": 3,
+ "consequence": "shader modules are created from WGSL source by createShaderModule: the WGSL step of the WebGPU admission contract",
+ "excerpt": "    : <dfn>createShaderModule(descriptor)</dfn>\n    ::\n        Creates a {{GPUShaderModule}}.",
+ "excerpt_sha256": "a94e41e2beaf6dc77d1b23d9ddfddccee176b4d0caf25209d13b03d981498373",
+ "must_contain": {
+  "Creates a {{GPUShaderModule}}.": true
+ },
+ "status": "VERIFIED"
+}

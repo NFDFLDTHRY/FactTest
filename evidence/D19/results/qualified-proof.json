@@ -1,0 +1,262 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "qualified-proof",
+ "kind": "build",
+ "started": "2026-09-24T10:44:53.288Z",
+ "commands": [
+  {
+   "command": "CARGO_TARGET_DIR=/home/user/factory-builds/d19-target cargo +1.94.1 build -p factory",
+   "exit": 0,
+   "seconds": 2
+  },
+  {
+   "command": "CARGO_TARGET_DIR=/home/user/factory-builds/d19-target sh tests/toolchain/run-qualified-proof.sh evidence/D19/proof",
+   "exit": 0,
+   "seconds": 50
+  }
+ ],
+ "facts": {
+  "FACT-COMPILE-FAIL-WITNESSED": {
+   "probe": "PROBE-COMPILE-FAIL-DIAG",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/host/Q-HOST-06-std-in-kernel.json",
+     "sha256": "fe47b879996f2b486a8686021fa1c4eb51ec018e9cfc69ec5cfc899fcf28b683",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/host/Q-HOST-07-id-substitution.json",
+     "sha256": "5f9545680a9df462800fb5f4130e0ed888d798865138a2ebbbf25e44348c4fdd",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/host/Q-HOST-08-forge-verified-strategy.json",
+     "sha256": "bbcb8478d00f4bc7cfc8430bc0c876647f3083a2a5f9668f4f2ae162f6e41944",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-CORE-ONLY-GRAPH": {
+   "probe": "PROBE-NOSTD-GRAPH",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-02-core-only-graph-dev.json",
+     "sha256": "1c561a2a02c5e9c610b5a93b1e71ff8ae3e16dcbe3d504cd30e70bb8455b3719",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/wasm64/Q-WASM-03-core-only-graph-release.json",
+     "sha256": "6e144339b18f77c61584ee74b274b3b647974684dfb3a4d0758657944b236e3d",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-FIRST-PARTY-GRAPH": {
+   "probe": "PROBE-DEPS-AUDIT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/all/Q-ALL-02-resolved-graph-first-party.json",
+     "sha256": "04b30f04cf1cffaa59780e524b136f614f8b018a7a9c896c5b984d0820a55dad",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/all/Q-ALL-03-third-party-dep-fixture-rejected.json",
+     "sha256": "737a2716094510007ed2abdd1731045c840a7386343b7b0ed46d74dab7d06111",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-KERNEL-IDENTITY-DEFINED-D18": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-06-kernel-identity.json",
+     "sha256": "e1e06d9adef90e321887652c92150d49ac961ce3f7b3b2c01c5645dc8ce3a099",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-PROOF-SETS-DECLARED": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/sets/T13-SETS-01-roots-partition.json",
+     "sha256": "d581bc4367c03554c7b825cd5e5af1d5fb5b20480bf237f3868a4b84b65b0705",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-QUALIFIED-JUDGE-RERUN": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/summary.json",
+     "sha256": "b0041fb4064e5692958679cb52900231db1a806993a7efba71f1462ec5497c84",
+     "checks": [
+      {
+       "path": "mutants.verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-TOOLCHAIN-PINNED": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/pins/T13-PIN-01-toolchain-pins.json",
+     "sha256": "881bef5eaa3fa17e9f116f2eac300815d0608c22ef0d0e2c911956ac9be4ebd5",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-WASM64-ABI-EXEC": {
+   "probe": "PROBE-KERNEL-HOST-BROWSER",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-07-chromium-abi-release.json",
+     "sha256": "f81bd3c5fd361ccfcaadb8247414923aec9fbbb056dacbe2489af1a33012823c",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-WASM64-MODULE-I64": {
+   "probe": "PROBE-WASM-INSPECT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-04-inspect-release.json",
+     "sha256": "0994b2b01b48abb7dd3831b58fb8603b3e384fc3b1a39322b7e8215d83dc666c",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/wasm64/Q-WASM-05-inspect-dev.json",
+     "sha256": "ba62d418d4a83425d3286e2f309d17e1fd2c8f4a4148fb0c9c49a7247a53bdec",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [
+  "R-04",
+  "R-49"
+ ],
+ "finished": "2026-09-24T10:45:45.165Z",
+ "status": "PASS"
+}

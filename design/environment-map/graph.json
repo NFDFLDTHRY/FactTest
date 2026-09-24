@@ -569,6 +569,19 @@
    ],
    "meaning": "the PROPOSED constraint is recorded in that project-law ledger (current status LEDGER; the node keeps PROPOSED as history)",
    "declared_in": "D18"
+  },
+  "FULFILLS": {
+   "from": [
+    "EVIDENCE"
+   ],
+   "to": [
+    "RECONCILIATION"
+   ],
+   "requires": [
+    "obligation"
+   ],
+   "meaning": "the evidence discharges the probe obligation the reconciliation addressed to a later pass",
+   "declared_in": "D19"
   }
  },
  "nodes": [
@@ -28750,6 +28763,1194 @@
    "new_probe_obligation": "D19: record the executable actually launched (the browser process image) with the browser identity",
    "owner": "tests/reconcile/d18r-reconciliation.json (reviewed; D18R)",
    "introduced_in": "D18R"
+  },
+  {
+   "id": "ENV-D19-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D19-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "dev + release (proof sets)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "b509fb00920443930aa75b10dae05b9683d2fe1b",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": [
+      "api.w3.org:443",
+      "gpuweb.github.io:443",
+      "raw.githack.com:443",
+      "rawcdn.githack.com:443",
+      "source.chromium.org:443",
+      "w3c.github.io:443",
+      "webassembly.github.io:443",
+      "www.w3.org:443"
+     ]
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D19/identity/{host,toolchains,repo}.json",
+   "note": "D19 environment identity (the proof sets' pinned toolchains)",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "ENV-D19-BROWSER-DEFAULT",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D19-BROWSER-DEFAULT",
+   "environment_class": "PHYSICAL_BROWSER",
+   "toolchain": null,
+   "target": "probe page (no bundle)",
+   "host_runtime": "HeadlessChrome/141.0.7390.37 via Playwright 1.56.1 (/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell)",
+   "versions": {
+    "product": "HeadlessChrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "js_engine": "14.1.146.11",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "playwright_browser_version": "141.0.7390.37"
+   },
+   "flags": {
+    "launch": {
+     "headless": true
+    },
+    "launch_args": []
+   },
+   "build_profile": null,
+   "origin_security": {
+    "origin": "http://127.0.0.1:<port>/",
+    "secure_context": true,
+    "cross_origin_isolated": false
+   },
+   "permissions_policy": null,
+   "implementation_hardware_class": "no WebGPU adapter",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": null,
+   "other_state": {
+    "launched_executable": [
+     "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+    ],
+    "hardwareConcurrency": 4
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "CDP product/revision/jsVersion",
+     "launch options",
+     "executable launched",
+     "origin"
+    ]
+   },
+   "owner": "evidence/D19/identity/browser-default.json",
+   "note": "D19 browser identity (default launch)",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "ENV-D19-BROWSER-GPUFLAGS",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D19-BROWSER-GPUFLAGS",
+   "environment_class": "PHYSICAL_BROWSER",
+   "toolchain": null,
+   "target": "probe page (no bundle)",
+   "host_runtime": "HeadlessChrome/141.0.7390.37 via Playwright 1.56.1 (/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell)",
+   "versions": {
+    "product": "HeadlessChrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "js_engine": "14.1.146.11",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "playwright_browser_version": "141.0.7390.37"
+   },
+   "flags": {
+    "launch": {
+     "headless": true,
+     "ignoreDefaultArgs": [
+      "--disable-gpu"
+     ],
+     "args": [
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader",
+      "--ignore-gpu-blocklist"
+     ]
+    },
+    "launch_args": [
+     "--enable-unsafe-webgpu",
+     "--enable-features=Vulkan",
+     "--use-angle=swiftshader",
+     "--enable-unsafe-swiftshader",
+     "--ignore-gpu-blocklist"
+    ]
+   },
+   "build_profile": null,
+   "origin_security": {
+    "origin": "http://127.0.0.1:<port>/",
+    "secure_context": true,
+    "cross_origin_isolated": false
+   },
+   "permissions_policy": null,
+   "implementation_hardware_class": "software GPU: {\"vendor\":\"google\",\"architecture\":\"swiftshader\",\"device\":\"\",\"description\":\"\",\"isFallbackAdapter\":true}",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": null,
+   "other_state": {
+    "launched_executable": [
+     "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+    ],
+    "hardwareConcurrency": 4
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "CDP product/revision/jsVersion",
+     "launch options",
+     "executable launched",
+     "origin"
+    ]
+   },
+   "owner": "evidence/D19/identity/browser-gpu-flags.json",
+   "note": "D19 browser identity (GPU flag set)",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "ENV-D19-SOURCES",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D19-SOURCES",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": null,
+   "target": "authority sources (no build)",
+   "host_runtime": "git ls-remote + raw source fetch through the session proxy",
+   "versions": {
+    "git": "2.43.0"
+   },
+   "flags": null,
+   "build_profile": null,
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "none (source observation)",
+   "dependency_graph_identity": null,
+   "other_state": {
+    "sources": [
+     {
+      "key": "https://github.com/chromium/chromium#main",
+      "commit": "6411417c09acaf1bbdf294f6bac805fabcc49ba9",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/git/git#master",
+      "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/google/swiftshader#master",
+      "commit": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/gpuweb/gpuweb#main",
+      "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/immersive-web/webxr#main",
+      "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/NFDFLDTHRY/FactTest#claude/facttest-materialization-27amc7",
+      "commit": "b509fb00920443930aa75b10dae05b9683d2fe1b",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/rust-lang/cargo#master",
+      "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/rust-lang/reference#master",
+      "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/rust-lang/rust#master",
+      "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/tc39/ecma262#main",
+      "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/v8/v8#main",
+      "commit": "010a4b88b61d7df1b0f8b84cf7be8409d3f4c1a2",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/w3c/accelerometer#main",
+      "commit": "9f0a66ddab67fbb3fffcf3118fd6a8e1d30e558e",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/ambient-light#main",
+      "commit": "381d5dd21deb386282bbc72147201a8e6ff3b5ea",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/deviceorientation#main",
+      "commit": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/geolocation#main",
+      "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/gyroscope#main",
+      "commit": "335dc6ecc5f85289a2745810a086e7f1c7237cdb",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/IndexedDB#main",
+      "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/magnetometer#main",
+      "commit": "40801a25e7ad6c0ea12b1777f1d913f21e680e87",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/manifest#main",
+      "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/mediacapture-main#main",
+      "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/orientation-sensor#main",
+      "commit": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/permissions#main",
+      "commit": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/proximity#main",
+      "commit": "1d43739eea15981bb6cab10224929c53ae6f51ed",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/sensors#main",
+      "commit": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/ServiceWorker#main",
+      "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/web-locks#main",
+      "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webappsec-permissions-policy#main",
+      "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webappsec-secure-contexts#main",
+      "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webcodecs#main",
+      "commit": "91160a493a2f59060c8b1ba4831e398f820c6e6d",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/w3c/webcrypto#main",
+      "commit": "811c24c69eb22d477af5f1678cb70dbc611c7c40",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/WebAssembly/shared-everything-threads#main",
+      "commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WebAssembly/spec#main",
+      "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WebAssembly/threads#main",
+      "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WebBluetoothCG/web-bluetooth#main",
+      "commit": "2e451c162f6a3f2277f86104223de4630710506e",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/webmachinelearning/webnn#main",
+      "commit": "59db71f24cc87fe31b764bd06ca24c215c1755a4",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/compression#main",
+      "commit": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+      "read_by": "git ls-remote (identity capture)"
+     },
+     {
+      "key": "https://github.com/whatwg/fetch#main",
+      "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/fs#main",
+      "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/html#main",
+      "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/serial#main",
+      "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/storage#main",
+      "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/streams#main",
+      "commit": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/whatwg/webidl#main",
+      "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+      "read_by": "D15 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WICG/webhid#main",
+      "commit": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+      "read_by": "D16 clause re-verification"
+     },
+     {
+      "key": "https://github.com/WICG/webusb#main",
+      "commit": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+      "read_by": "D16 clause re-verification"
+     }
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": [
+      "api.w3.org:443",
+      "gpuweb.github.io:443",
+      "raw.githack.com:443",
+      "rawcdn.githack.com:443",
+      "source.chromium.org:443",
+      "w3c.github.io:443",
+      "webassembly.github.io:443",
+      "www.w3.org:443"
+     ]
+    }
+   },
+   "identity_completeness": {
+    "missing": [
+     "published renderings (policy)"
+    ],
+    "present": [
+     "branch tip per source read"
+    ]
+   },
+   "owner": "evidence/D19/identity/tips.json",
+   "note": "D19 authority source tips",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "IMPL-REPROVE",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-REPROVE",
+   "repo_path": "tests/reprove/{identity.mjs,select.mjs,run-selected.mjs,lineage.mjs,build-reprove.mjs,gate.mjs,dimensions.json,runbook.json,obligations.json}",
+   "commit": "introduced by D19-REPROVE-REOBSERVE (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "environment identity capture, graph-driven minimum affected set, selected re-proof runner",
+   "owner": "FactTest repository path tests/reprove/",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "PROBE-ENV-IDENTITY",
+   "class": "PROBE",
+   "probe_id": "PROBE-ENV-IDENTITY",
+   "proves_fact": [
+    "FACT-D19-ENVIRONMENT-IDENTITY",
+    "FACT-D19-LAUNCHED-EXECUTABLE"
+   ],
+   "command_or_operation": "node tests/reprove/identity.mjs --graph <graph> --out <dir>: host identity, toolchains by rustup name, repository, browser identity (default + GPU flags, executable launched), authority source tips",
+   "expected_observations": [
+    "every STALE_IF dimension of the current claims has a current value to compare with"
+   ],
+   "failure_meaning": [
+    "a dimension cannot be observed: claims bound to it stay undecided [UNK]"
+   ],
+   "implemented_by": "IMPL-REPROVE",
+   "owner": "IMPL-REPROVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "PROBE-REPROOF-SELECTION",
+   "class": "PROBE",
+   "probe_id": "PROBE-REPROOF-SELECTION",
+   "proves_fact": [
+    "FACT-D19-MINIMUM-SET"
+   ],
+   "command_or_operation": "node tests/reprove/select.mjs (graph + identity + git) -> selection; node tests/reprove/run-selected.mjs per kind -> results",
+   "expected_observations": [
+    "every selected fact re-proved by its runbook group, every obligation addressed to the pass discharged"
+   ],
+   "failure_meaning": [
+    "a selected fact fails its expectation: DIFFER, the claim is invalidated and returns to ASCII"
+   ],
+   "implemented_by": "IMPL-REPROVE",
+   "owner": "IMPL-REPROVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-IDENTITY-HOST",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-IDENTITY-HOST",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/identity/host.json",
+    "sha256": "9ce75568d93c3f5c4de20fbbcfd0d7ec6826d8a15d9c90351c2b78025069e3b0",
+    "bytes": 4504,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "node 22.22.2, git version 2.43.0, Playwright 1.56.1, GPU device node ABSENT (no /dev/dri)",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-IDENTITY-TOOLCHAINS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-IDENTITY-TOOLCHAINS",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/identity/toolchains.json",
+    "sha256": "a1a5a08d72cdc68dc0cfa04bb150fe3f55367ed0b9890b9dae4db585cc2577fb",
+    "bytes": 2333,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "1.94.1 e408947bf, nightly 6bb1652a0, nightly-2026-09-24 6eeff9a52, stable e408947bf",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-IDENTITY-REPO",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-IDENTITY-REPO",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/identity/repo.json",
+    "sha256": "9feaa3df64b0206b8ddd835427b3de3f752b158ea07d5386056063c4927de75d",
+    "bytes": 788,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "head b509fb009; 14 workspace members; 10 working-tree changes",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-IDENTITY-BROWSER-DEFAULT",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-IDENTITY-BROWSER-DEFAULT",
+   "probe_ref": "PROBE-BROWSER-IDENTITY",
+   "environment_ref": "ENV-D19-BROWSER-DEFAULT",
+   "artifact_identity": {
+    "path": "evidence/D19/identity/browser-default.json",
+    "sha256": "6f29e15617b1866a3dfe24b230259ffaa67c72b2d24cc551e07ce6a4a4ba433c",
+    "bytes": 1374,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "HeadlessChrome/141.0.7390.37 @9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e; launched /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_BROWSER",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+   "probe_ref": "PROBE-BROWSER-IDENTITY",
+   "environment_ref": "ENV-D19-BROWSER-GPUFLAGS",
+   "artifact_identity": {
+    "path": "evidence/D19/identity/browser-gpu-flags.json",
+    "sha256": "6eb3b8f9630fd1fc6c194a7125d8ba3624f117e0eebc7a51ad80d2c56b3e0c37",
+    "bytes": 2738,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "HeadlessChrome/141.0.7390.37 @9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e; launched /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_BROWSER",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-IDENTITY-TIPS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-IDENTITY-TIPS",
+   "probe_ref": "PROBE-ENV-IDENTITY",
+   "environment_ref": "ENV-D19-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D19/identity/tips.json",
+    "sha256": "218396531444a84fb3c247ac477fba693e88c7bdca10fd5069fbc55dc9d5dd28",
+    "bytes": 13022,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "45 source tips; moved since recorded: 3",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-SELECTION",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-SELECTION",
+   "probe_ref": "PROBE-REPROOF-SELECTION",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/selection.json",
+    "sha256": "efcd186d4850b1f72a31db98887995fce5360e294bd205ad494c7230560567f3",
+    "bytes": 89908,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "90 current RUN/OBS facts evaluated; selected 29 (environment 6, implementation 27, obligation 4); gaps 0; environment pairs {\"SAME\":114,\"DRIFT\":7,\"UNK\":9}",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-CLAUSES-D16-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-CLAUSES-D16-SUMMARY",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D19-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D19/clauses/D16/summary.json",
+    "sha256": "efd59bf5dcc54df125f7975b4cb4501b809944f64c3d55e919b4b636dd48cc28",
+    "bytes": 6460,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "status.VERIFIED holds (90)",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-CLAUSES-D15-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-CLAUSES-D15-SUMMARY",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D19-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D19/clauses/D15/summary.json",
+    "sha256": "5001caa77d0126035ab2809071bc831f80e4ced31d320b43e4a83e93da71b0b8",
+    "bytes": 8317,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "status.VERIFIED holds (60)",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-KERNEL-SECTIONS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-KERNEL-SECTIONS",
+   "probe_ref": "PROBE-KERNEL-SECTIONS",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/kernel/sections.json",
+    "sha256": "9000e20c63eb0ccc375394231cb0dfe0eb628a44cb14bdea8c7527d4412c54cd",
+    "bytes": 5485,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "identical_excluding_custom holds (true); differing_sections holds ([\"custom:name\"])",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-LINEAGE-LINEAGE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-LINEAGE-LINEAGE",
+   "probe_ref": "PROBE-WORKPIECE-VERIFY",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/lineage/lineage.json",
+    "sha256": "6f3c32620c35b1e250451aa582b5538f397f4ff5fcb9339ec80f1d2ac0eb6c61",
+    "bytes": 1276,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "first_parent_linear holds (true); factory_authored holds (true)",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PATHS-PATHS-PROBE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PATHS-PATHS-PROBE",
+   "probe_ref": "PROBE-PATHS-LITERAL",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/paths/paths-probe.json",
+    "sha256": "9be2a198f78d61c4bcd8ede6fc146e7d45baa4d082d1581e4f767affd79cb329",
+    "bytes": 19902,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "dead_wildcard_surfaces holds ([])",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL",
+   "probe_ref": "PROBE-COMPILE-FAIL-DIAG",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/host/Q-HOST-06-std-in-kernel.json",
+    "sha256": "fe47b879996f2b486a8686021fa1c4eb51ec018e9cfc69ec5cfc899fcf28b683",
+    "bytes": 1727,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION",
+   "probe_ref": "PROBE-COMPILE-FAIL-DIAG",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/host/Q-HOST-07-id-substitution.json",
+    "sha256": "5f9545680a9df462800fb5f4130e0ed888d798865138a2ebbbf25e44348c4fdd",
+    "bytes": 1891,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY",
+   "probe_ref": "PROBE-COMPILE-FAIL-DIAG",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/host/Q-HOST-08-forge-verified-strategy.json",
+    "sha256": "bbcb8478d00f4bc7cfc8430bc0c876647f3083a2a5f9668f4f2ae162f6e41944",
+    "bytes": 1850,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+   "probe_ref": "PROBE-NOSTD-GRAPH",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/wasm64/Q-WASM-02-core-only-graph-dev.json",
+    "sha256": "1c561a2a02c5e9c610b5a93b1e71ff8ae3e16dcbe3d504cd30e70bb8455b3719",
+    "bytes": 2242,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+   "probe_ref": "PROBE-NOSTD-GRAPH",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/wasm64/Q-WASM-03-core-only-graph-release.json",
+    "sha256": "6e144339b18f77c61584ee74b274b3b647974684dfb3a4d0758657944b236e3d",
+    "bytes": 2273,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY",
+   "probe_ref": "PROBE-DEPS-AUDIT",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/all/Q-ALL-02-resolved-graph-first-party.json",
+    "sha256": "04b30f04cf1cffaa59780e524b136f614f8b018a7a9c896c5b984d0820a55dad",
+    "bytes": 17777,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED",
+   "probe_ref": "PROBE-DEPS-AUDIT",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/all/Q-ALL-03-third-party-dep-fixture-rejected.json",
+    "sha256": "737a2716094510007ed2abdd1731045c840a7386343b7b0ed46d74dab7d06111",
+    "bytes": 20839,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/wasm64/Q-WASM-06-kernel-identity.json",
+    "sha256": "e1e06d9adef90e321887652c92150d49ac961ce3f7b3b2c01c5645dc8ce3a099",
+    "bytes": 1945,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/sets/T13-SETS-01-roots-partition.json",
+    "sha256": "d581bc4367c03554c7b825cd5e5af1d5fb5b20480bf237f3868a4b84b65b0705",
+    "bytes": 4788,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-SUMMARY",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/summary.json",
+    "sha256": "b0041fb4064e5692958679cb52900231db1a806993a7efba71f1462ec5497c84",
+    "bytes": 30139,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "mutants.verdict holds (\"RUN\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/pins/T13-PIN-01-toolchain-pins.json",
+    "sha256": "881bef5eaa3fa17e9f116f2eac300815d0608c22ef0d0e2c911956ac9be4ebd5",
+    "bytes": 2414,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+   "probe_ref": "PROBE-KERNEL-HOST-BROWSER",
+   "environment_ref": "ENV-D19-BROWSER-DEFAULT",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/wasm64/Q-WASM-07-chromium-abi-release.json",
+    "sha256": "f81bd3c5fd361ccfcaadb8247414923aec9fbbb056dacbe2489af1a33012823c",
+    "bytes": 1473,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_BROWSER",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+   "probe_ref": "PROBE-WASM-INSPECT",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/wasm64/Q-WASM-04-inspect-release.json",
+    "sha256": "0994b2b01b48abb7dd3831b58fb8603b3e384fc3b1a39322b7e8215d83dc666c",
+    "bytes": 1772,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+   "probe_ref": "PROBE-WASM-INSPECT",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/proof/wasm64/Q-WASM-05-inspect-dev.json",
+    "sha256": "ba62d418d4a83425d3286e2f309d17e1fd2c8f4a4148fb0c9c49a7247a53bdec",
+    "bytes": 1756,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "verdict holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-REOPEN-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-REOPEN-SUMMARY",
+   "probe_ref": "PROBE-AUTHORITY-REOPEN",
+   "environment_ref": "ENV-D19-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D19/reopen/summary.json",
+    "sha256": "0e2f8b89fba2542bd4e52465e59d25e47e1809247b3830c3d1aad9f73bdd7eb5",
+    "bytes": 3762,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "clause.CHANGED holds (\"(absent)\"); clause.NOT_FOUND_AT_TIP holds (\"(absent)\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-REOPEN-PROPOSAL-PHASES",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-REOPEN-PROPOSAL-PHASES",
+   "probe_ref": "PROBE-AUTHORITY-REOPEN",
+   "environment_ref": "ENV-D19-SOURCES",
+   "artifact_identity": {
+    "path": "evidence/D19/reopen/proposal-phases.json",
+    "sha256": "42804a3eb685100ad3af07f0b58e7469f1d841fb877e9afd8fc53b0d48194c41",
+    "bytes": 1760,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "finished holds (\"20 entries\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-STATUS-REPROVE-HANDOFF-CHECK",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-STATUS-REPROVE-HANDOFF-CHECK",
+   "probe_ref": "PROBE-STATUS-SCAN",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/status-reprove/handoff-check.json",
+    "sha256": "06c50e44e6041f9c7c14536d8bf475639d613ab362fcea1f18b73491c30d4eb9",
+    "bytes": 1408,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "status holds (\"PASS\")",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "EV-D19-STATUS-REPROVE-INVENTORY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D19-STATUS-REPROVE-INVENTORY",
+   "probe_ref": "PROBE-STATUS-SCAN",
+   "environment_ref": "ENV-D19-HOST",
+   "artifact_identity": {
+    "path": "evidence/D19/status-reprove/inventory.json",
+    "sha256": "05f5dcf4b7ddbbc498e27aa5d6bf6d3d1a62fd58347d1a2bfb1b3cba978e976a",
+    "bytes": 689687,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "status holds (\"PASS\"); unclassified holds ([])",
+   "epoch": "D19",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D19-REPROVE-REOBSERVE",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "subject": "D19 computational environment",
+   "predicate": "the current environment matches the recorded identity on 114 of 130 (environment, dimension) stale conditions of the current claims; drift on 7 (ENV-D9-HOST:toolchain.nightly.components, ENV-D9-HOST:toolchain.nightly.rustc_commit, ENV-D14-HOST:authority.source_commit); undecidable on 9 (the recorded identity carries no comparable value)",
+   "required_environment": [
+    "the proof sets' pinned toolchains",
+    "chromium-headless-shell via the installed Playwright"
+   ],
+   "constraint_refs": [
+    "CON-EM-005"
+   ],
+   "status": "RUN",
+   "note": "drift selects the claims bound to it for re-proof (FACT-D19-MINIMUM-SET); UNK pairs are listed in the selection record",
+   "source_ref": "evidence/D19/selection.json",
+   "owner": "D19 (derived from the evidence named by its edges)",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "subject": "browser executable launched by Playwright 1.56.1 (headless)",
+   "predicate": "the default launch runs /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell and the GPU flag set runs /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell (process image under /proc), reporting HeadlessChrome/141.0.7390.37",
+   "required_environment": [
+    "Playwright headless launch"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "the D12 executable field named chromium.executablePath() instead (D18R R-53)",
+   "source_ref": "evidence/D19/identity/browser-*.json",
+   "owner": "D19 (derived from the evidence named by its edges)",
+   "introduced_in": "D19"
+  },
+  {
+   "id": "FACT-D19-MINIMUM-SET",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D19-MINIMUM-SET",
+   "subject": "D19 minimum affected physical test set",
+   "predicate": "90 current RUN/OBS facts evaluated against environment drift, implementation change and obligations: 29 selected (environment 6, implementation 27, obligation 4), 29 re-proved, 0 failed, 0 without a runbook entry; the other 61 keep their evidence (no drift, implementation unchanged)",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "groups: clauses, qualified-proof, lineage, reopen, identity, status, kernel-sections, paths",
+   "source_ref": "evidence/D19/selection.json",
+   "owner": "D19 (derived from the evidence named by its edges)",
+   "introduced_in": "D19"
   }
  ],
  "edges": [
@@ -41855,6 +43056,992 @@
    "type": "WITNESSED_BY",
    "from": "CAP-WORKER-DEDICATED",
    "to": "FACT-WORKERS-D18R"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-ENV-IDENTITY",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-REPROOF-SELECTION",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION",
+   "to": "EV-D19-CLAUSES-D16-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "EV-D19-CLAUSES-D15-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D15-CLAUSES-VERIFIED",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any clause source tip moves with the clause window changed"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D16-CLAUSES-VERIFIED",
+   "to": "EV-D19-CLAUSES-D16-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D16-CLAUSES-VERIFIED",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any clause source tip moves with the clause window changed"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SENSOR-FAMILY-ADVISEMENT",
+   "to": "EV-D19-CLAUSES-D16-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+   "to": "ENV-D19-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "host.gpu_device_node",
+    "relation": "a hardware adapter appears"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+   "to": "ENV-D19-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: Chromium enables WebGPUService on Linux, or the launch switch set changes (IB-GPU-LINUX-SERVICE-OFF)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-GPU-ADAPTER-SWIFTSHADER",
+   "to": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-ADAPTER-SWIFTSHADER",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-ADAPTER-SWIFTSHADER",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "host.gpu_device_node",
+    "relation": "a hardware adapter appears (then a different fact)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-GPU-EXPOSED",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-GPU-EXPOSED",
+   "to": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-EXPOSED",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-EXPOSED",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "origin_security.secure_context",
+    "relation": "becomes false"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-EXPOSED",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LOOPBACK-SECURE-CONTEXT",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LOOPBACK-SECURE-CONTEXT",
+   "to": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-LOOPBACK-SECURE-CONTEXT",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "origin_security.origin",
+    "relation": "scheme/host changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-LOOPBACK-SECURE-CONTEXT",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-MEMORY64-DISCOVERED",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-MEMORY64-DISCOVERED",
+   "to": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-MEMORY64-DISCOVERED",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.js_engine",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-MEMORY64-DISCOVERED",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-MEMORY64-DISCOVERED",
+   "to": "ENV-D19-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.js_engine",
+    "relation": "implementation: another V8 version (browser or Node) (IB-V8-MEMORY64-VERSIONED)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SAB-GLOBAL-HOST-DEFINED",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "EV-D19-KERNEL-SECTIONS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.components",
+    "relation": "implementation: another toolchain, another install path, or a profile that strips the name section (IB-KERNEL-NAME-SECTION-HASH)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-FF-ONLY-INTEGRATION",
+   "to": "EV-D19-LINEAGE-LINEAGE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-FF-ONLY-INTEGRATION",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "host_runtime.git_version",
+    "relation": "changes (commit-object and ref compare-and-set semantics), or IMPL-FACTORY-OPS changes the integrate rule"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WORKPIECE-ISOLATION",
+   "to": "EV-D19-LINEAGE-LINEAGE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WORKPIECE-ISOLATION",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "host_runtime.git_version",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SURFACES-LITERAL-ENFORCED",
+   "to": "EV-D19-PATHS-PATHS-PROBE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-COMPILE-FAIL-WITNESSED",
+   "to": "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-COMPILE-FAIL-WITNESSED",
+   "to": "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-COMPILE-FAIL-WITNESSED",
+   "to": "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-COMPILE-FAIL-WITNESSED",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.stable.rustc_release",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-CORE-ONLY-GRAPH",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-CORE-ONLY-GRAPH",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CORE-ONLY-GRAPH",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.components",
+    "relation": "rust-src removed"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CORE-ONLY-GRAPH",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-FIRST-PARTY-GRAPH",
+   "to": "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-FIRST-PARTY-GRAPH",
+   "to": "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-FIRST-PARTY-GRAPH",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "dependency_graph_identity",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.install_name",
+    "relation": "changes (build-std hashes the rust-src path)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-PROOF-SETS-DECLARED",
+   "to": "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-PROOF-SETS-DECLARED",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "repository.workspace_members",
+    "relation": "a workspace member or default-members changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-QUALIFIED-JUDGE-RERUN",
+   "to": "EV-D19-PROOF-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-QUALIFIED-JUDGE-RERUN",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-TOOLCHAIN-PINNED",
+   "to": "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-TOOLCHAIN-PINNED",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.stable.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WASM64-ABI-EXEC",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM64-ABI-EXEC",
+   "to": "ENV-D19-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.js_engine",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM64-ABI-EXEC",
+   "to": "ENV-D19-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WASM64-MODULE-I64",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WASM64-MODULE-I64",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM64-MODULE-I64",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM64-MODULE-I64",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "implementation: another pinned nightly (IB-RUSTC-PIN-EQUALS-TIP)"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-FRONTIER-SOURCES-AT-PIN",
+   "to": "EV-D19-REOPEN-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-FRONTIER-SOURCES-AT-PIN",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any pinned repository tip moves with the cited file changed"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-MEMORY64-FINISHED",
+   "to": "EV-D19-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-MEMORY64-FINISHED",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "registry tip moves"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WASM-SET-PHASE-1",
+   "to": "EV-D19-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM-SET-PHASE-1",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "registry tip moves"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WASM-THREADS-PHASE-4",
+   "to": "EV-D19-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM-THREADS-PHASE-4",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "registry tip moves"
+   }
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-HANDOFF-MODEL-INDEPENDENT",
+   "to": "EV-D19-STATUS-REPROVE-HANDOFF-CHECK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-STATUS-INVENTORIED",
+   "to": "EV-D19-STATUS-REPROVE-INVENTORY"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "PROBE-ENV-IDENTITY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D19-IDENTITY-HOST"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D19-IDENTITY-TOOLCHAINS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D19-IDENTITY-REPO"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D19-IDENTITY-TIPS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "EV-D19-SELECTION"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D19-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "PROBE-BROWSER-IDENTITY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "ENV-D19-BROWSER-DEFAULT"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "PROBE-REPROOF-SELECTION"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-SELECTION"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-CLAUSES-D16-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-CLAUSES-D15-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-IDENTITY-BROWSER-DEFAULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-KERNEL-SECTIONS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-LINEAGE-LINEAGE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PATHS-PATHS-PROBE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-REOPEN-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-REOPEN-PROPOSAL-PHASES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-STATUS-REPROVE-HANDOFF-CHECK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "EV-D19-STATUS-REPROVE-INVENTORY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "ENV-D19-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another pinned nightly"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-ENVIRONMENT-IDENTITY",
+   "to": "ENV-D19-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "another browser build"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-LAUNCHED-EXECUTABLE",
+   "to": "ENV-D19-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "another Playwright or browser build"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D19-MINIMUM-SET",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any later change of an implementation or environment"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "LAW-EVIDENCE-OBLIGATIONS",
+   "to": "FACT-D19-LAUNCHED-EXECUTABLE"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-IMP-PW1",
+   "to": "FACT-D19-LAUNCHED-EXECUTABLE"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-IDENTITY-BROWSER-DEFAULT",
+   "to": "R-03",
+   "obligation": "D19: environment identity - the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+   "to": "R-03",
+   "obligation": "D19: environment identity - the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-SUMMARY",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+   "to": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-SUMMARY",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+   "to": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-IDENTITY-BROWSER-DEFAULT",
+   "to": "R-53",
+   "obligation": "D19: record the executable actually launched (the browser process image) with the browser identity"
+  },
+  {
+   "type": "FULFILLS",
+   "from": "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+   "to": "R-53",
+   "obligation": "D19: record the executable actually launched (the browser process image) with the browser identity"
   }
  ],
  "epochs": [
@@ -41958,7 +44145,18 @@
    "summary": "2 reconciliations (SUPERSEDED 1, CORRECTED 1); 1 supersessions (9 inherited edges); 0 constraints ledgered; 0 clauses",
    "nodes_added": 3,
    "edges_added": 20
+  },
+  {
+   "epoch": "D19",
+   "delta": "D19-REPROVE-REOBSERVE",
+   "commit": "b509fb00920443930aa75b10dae05b9683d2fe1b (canonical base; integration commit in LEDGER AFTER)",
+   "summary": "re-proof: 29 of 90 current RUN/OBS facts selected by environment drift, implementation change and obligations; 29 re-proved, 0 failed; obligations fulfilled R-03, R-04, R-49, R-53; environments ENV-D19-HOST, ENV-D19-BROWSER-DEFAULT, ENV-D19-BROWSER-GPUFLAGS, ENV-D19-SOURCES",
+   "nodes_added": 40,
+   "edges_added": 158,
+   "declares": [
+    "FULFILLS"
+   ]
   }
  ],
- "current_epoch": "D18R"
+ "current_epoch": "D19"
 }

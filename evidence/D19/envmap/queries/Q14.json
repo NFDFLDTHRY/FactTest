@@ -1,0 +1,29 @@
+{
+  "query": "Q14",
+  "title": "Where does a proposal get mistaken for baseline semantics?",
+  "answer": {
+    "proposal_authorizing_run_fact": [],
+    "ready_contract_on_proposal": [],
+    "proposals_correctly_bounded": [
+      {
+        "authority": "AUTH-WASM-SET",
+        "authorizes": [
+          "CON-THREAD-002"
+        ],
+        "conflicts": [
+          "ERR-003"
+        ]
+      },
+      {
+        "authority": "AUTH-WASM-THREADS",
+        "authorizes": [
+          "CON-IC-WASM_SHARED_THREADS",
+          "CON-THREAD-001",
+          "FACT-SHARED-THREADS-UNADMITTED",
+          "FACT-SHARED-THREADS-UNADMITTED-D18"
+        ],
+        "conflicts": []
+      }
+    ]
+  }
+}

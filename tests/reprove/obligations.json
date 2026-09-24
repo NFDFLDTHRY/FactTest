@@ -1,0 +1,30 @@
+{
+ "schema": "facttest-reprove-obligations/1",
+ "note": "reviewed reading of the D18/D18R obligations addressed to D19: the groups that discharge each (Q21 rows whose obligation starts 'D19:' and is not revised)",
+ "obligations": {
+  "R-03": {
+   "groups": [
+    "identity"
+   ],
+   "reading": "environment identity: the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set"
+  },
+  "R-04": {
+   "groups": [
+    "qualified-proof"
+   ],
+   "reading": "qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the exec-identity check"
+  },
+  "R-49": {
+   "groups": [
+    "qualified-proof"
+   ],
+   "reading": "the qualified proof rebuilds the kernel and applies T13-KRN exec identity"
+  },
+  "R-53": {
+   "groups": [
+    "identity"
+   ],
+   "reading": "record the executable actually launched"
+  }
+ }
+}

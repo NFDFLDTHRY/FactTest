@@ -7,6 +7,9 @@
 //      (docs/HANDOFF.md section 6, design/environment-map/ node classes, the D13 records)
 //   N  not a status claim: the word is vocabulary, data or code semantics (cache "stale", envmap PENDING, a rule text)
 // Exit 1 when an occurrence matches no rule or a defect pattern is outside its bound; exit 0 otherwise.
+// D19: earlier inventories written by this tool (evidence/<delta>/status*/inventory.json) are derived copies of the
+// occurrences they list; scanning them made every inventory contain all earlier ones (doubling per delta), so they are
+// excluded and named in the output.
 // Usage: node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out DIR
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
@@ -18,7 +21,9 @@ const rules = JSON.parse(readFileSync(opt.rules, 'utf8'));
 const MARKERS = rules.markers.map(m => ({ name: m.name, re: new RegExp(m.regex, m.flags || 'g') }));
 const ls = spawnSync('git', ['ls-files', '-co', '--exclude-standard'], { encoding: 'utf8', maxBuffer: 1 << 28 });
 if (ls.status !== 0) { console.error('git ls-files failed: ' + ls.stderr); process.exit(2); }
-const files = [...new Set(ls.stdout.split('\n').filter(Boolean))].sort();
+const listed = [...new Set(ls.stdout.split('\n').filter(Boolean))].sort();
+const ownInventories = listed.filter(f => /^evidence\/[^/]+\/status[^/]*\/inventory\.json$/.test(f));
+const files = listed.filter(f => !ownInventories.includes(f));
 const matchPath = (m, p) => (m.exact || []).includes(p) || (m.prefix || []).some(x => p.startsWith(x)) || (m.regex ? new RegExp(m.regex).test(p) : false);
 
 const occurrences = []; const unclassified = []; const texts = new Map();
@@ -49,7 +54,7 @@ const status = !unclassified.length && defects.every(d => d.status === 'PASS') ?
 const res = { tool: 'tests/hygiene/status-scan.mjs', note: 'inventory, not proof', files_scanned: texts.size, occurrences_total: occurrences.length,
   by_class: tally(o => o.class || 'UNCLASSIFIED'), by_marker: tally(o => o.marker),
   by_rule: Object.fromEntries(Object.entries(byRule).sort()).valueOf(), rules: rules.zones.map(z => ({ id: z.id, class: z.class, rationale: z.rationale, count: byRule[z.id] || 0 })),
-  defect_patterns: defects, unclassified, status, occurrences };
+  defect_patterns: defects, unclassified, excluded_own_inventories: ownInventories, status, occurrences };
 mkdirSync(opt.out, { recursive: true });
 writeFileSync(join(opt.out, 'inventory.json'), JSON.stringify(res, null, 1) + '\n');
 const L = [`STATUS INVENTORY ${status}: ${occurrences.length} occurrences in ${texts.size} files; unclassified ${unclassified.length}`, '',

@@ -1,0 +1,30 @@
+{
+ "id": "CL-NN2",
+ "trace": "NN",
+ "authority": "AUTH-WEBNN",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/webmachinelearning/webnn",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "59db71f24cc87fe31b764bd06ca24c215c1755a4",
+  "sha256": "f818eace15b8ba8fc9ae4696379c60bdc386f594946bf9618044e34ed4108cff",
+  "bytes": 605058
+ },
+ "locator": {
+  "text": "This specification defines a [=policy-controlled feature=] identified by the",
+  "line_start": 963,
+  "line_end": 965,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-policy-integration (line 961)"
+ },
+ "window": 3,
+ "consequence": "WebNN is policy-controlled (webnn, default 'self') and defines no permission prompt",
+ "excerpt": "This specification defines a [=policy-controlled feature=] identified by the\nstring \"<code><dfn data-lt=\"webnn-feature\">webnn</dfn></code>\".\nIts [=policy-controlled feature/default allowlist=] is <code>'self'</code>.",
+ "excerpt_sha256": "0d9e4c54c9a30277a8b4b6b02b25bd0fd6612be20b1608d2324842bd3b05b0ff",
+ "must_contain": {
+  "webnn": true,
+  "default allowlist=] is <code>'self'</code>": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,29 @@
+{
+ "id": "CL-WC3",
+ "trace": "WC",
+ "authority": "AUTH-WEBCODECS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/webcodecs",
+  "branch": "main",
+  "path": "index.src.html",
+  "commit": "91160a493a2f59060c8b1ba4831e398f820c6e6d",
+  "sha256": "6ce711783ba8e084a286a40a4d71e4bd380002470922afa93b568a065a5bb324",
+  "bytes": 293911
+ },
+ "locator": {
+  "text": "To <dfn>reclaim a codec</dfn>, a User Agent <em class=\"rfc2119\">MUST</em> run",
+  "line_start": 6229,
+  "line_end": 6232,
+  "derivation": "anchor text",
+  "enclosing_section": "#resource-reclamation (line 6222)"
+ },
+ "window": 4,
+ "consequence": "the user agent may reclaim codecs, closing them with QuotaExceededError: resource reclamation is a loss mode",
+ "excerpt": "To <dfn>reclaim a codec</dfn>, a User Agent <em class=\"rfc2119\">MUST</em> run\nthe appropriate close algorithm (amongst [=Close AudioDecoder=],\n[=Close AudioEncoder=], [=Close VideoDecoder=] and [=Close VideoEncoder=]) with\na {{QuotaExceededError}}.",
+ "excerpt_sha256": "195be5144299fbacce356c567676ed8daeca2b2897c3f21d2c189f4116e760dc",
+ "must_contain": {
+  "{{QuotaExceededError}}": true
+ },
+ "status": "VERIFIED"
+}

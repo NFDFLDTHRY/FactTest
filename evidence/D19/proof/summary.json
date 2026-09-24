@@ -1,0 +1,771 @@
+{
+  "generated": "2026-09-24T10:45:45.152Z",
+  "obligations": [
+    {
+      "id": "Q-ALL-01-fmt-check",
+      "class": "T9-P3",
+      "proof_set": "ALL_SOURCES",
+      "target": "none (rustfmt)",
+      "profile": null,
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exit 0; 14 workspace packages [compiler/bundle compiler/capability compiler/codegen compiler/foundation compiler/implementation compiler/kernel compiler/observe compiler/planning compiler/semantic compiler/source compiler/verifier compiler/wasm-abi factory host/factc]",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 fmt --all --check -v",
+      "packages": [
+        "compiler/bundle",
+        "compiler/capability",
+        "compiler/codegen",
+        "compiler/foundation",
+        "compiler/implementation",
+        "compiler/kernel",
+        "compiler/observe",
+        "compiler/planning",
+        "compiler/semantic",
+        "compiler/source",
+        "compiler/verifier",
+        "compiler/wasm-abi",
+        "factory",
+        "host/factc"
+      ],
+      "file": "all/Q-ALL-01-fmt-check.json"
+    },
+    {
+      "id": "Q-ALL-02-resolved-graph-first-party",
+      "class": "T9-P6",
+      "proof_set": "ALL_MEMBERS_GRAPH",
+      "target": "none (cargo metadata)",
+      "profile": null,
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "14 packages, all path sources inside root; 49 declared dependency edges all path-inside-root; resolve graph 14 nodes; physical manifests not in the product graph: fixtures/compiler/negative/forge-verified-strategy/Cargo.toml(excluded), fixtures/compiler/negative/id-substitution/Cargo.toml(excluded), fixtures/compiler/negative/std-in-kernel/Cargo.toml(excluded), fixtures/compiler/negative/third-party-dep/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/Cargo.toml(excluded), fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/Cargo.toml(excluded), fixtures/toolchain/mutants/M3-compile-fail-stale-forge/Cargo.toml(excluded), fixtures/toolchain/mutants/M4-nostd-scanner-bypass/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml(excluded), fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/Cargo.toml(excluded), fixtures/toolchain/mutants/M7-wasm32-masquerade/Cargo.toml(excluded), fixtures/toolchain/mutants/M8-debug-pass-release-fail/Cargo.toml(excluded)",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 metadata --format-version 1 --locked",
+      "packages": [
+        {
+          "name": "factc",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "host/factc/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-bundle",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/bundle/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-capability",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/capability/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-codegen",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/codegen/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-foundation",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/foundation/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-implementation",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/implementation/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-kernel",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/kernel/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-observe",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/observe/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-planning",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/planning/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-semantic",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/semantic/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-source",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/source/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-verifier",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/verifier/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factc-wasm-abi",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "compiler/wasm-abi/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "factory",
+          "version": "0.1.0",
+          "source": null,
+          "manifest": "factory/Cargo.toml",
+          "inside_root": true
+        }
+      ],
+      "file": "all/Q-ALL-02-resolved-graph-first-party.json"
+    },
+    {
+      "id": "Q-ALL-03-third-party-dep-fixture-rejected",
+      "class": "T9-P6",
+      "proof_set": "ALL_MEMBERS_GRAPH",
+      "target": "none (cargo metadata)",
+      "profile": null,
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "rejected as required: neg-third-party-dep -> serde (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1; package proc-macro2@1.0.107 source registry+https://github.com/rust-lang/crates.io-index; package proc-macro2 manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml; proc-macro2 -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> flate2 (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> quote (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 metadata --format-version 1",
+      "packages": [
+        {
+          "name": "neg-third-party-dep",
+          "version": "0.0.0",
+          "source": null,
+          "manifest": "Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.107",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "quote",
+          "version": "1.0.47",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/quote-1.0.47/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "serde",
+          "version": "1.0.229",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.229",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.229",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_derive-1.0.229/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "syn",
+          "version": "3.0.6",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/syn-3.0.6/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.26",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/unicode-ident-1.0.26/Cargo.toml",
+          "inside_root": false
+        }
+      ],
+      "file": "all/Q-ALL-03-third-party-dep-fixture-rejected.json"
+    },
+    {
+      "id": "Q-HOST-01-build-dev",
+      "class": "T9-P2",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 build --message-format=json",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factory"
+      ],
+      "file": "host/Q-HOST-01-build-dev.json"
+    },
+    {
+      "id": "Q-HOST-02-build-release",
+      "class": "T9-P2",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "release",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 build --release --message-format=json",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factory"
+      ],
+      "file": "host/Q-HOST-02-build-release.json"
+    },
+    {
+      "id": "Q-HOST-03-test-dev",
+      "class": "T9-P2",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; tests 103 passed / 0 failed over 34 harness runs",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 test --message-format=json",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factory"
+      ],
+      "file": "host/Q-HOST-03-test-dev.json"
+    },
+    {
+      "id": "Q-HOST-04-test-release",
+      "class": "T9-P2",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "release",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; tests 103 passed / 0 failed over 34 harness runs",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 test --release --message-format=json",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factory"
+      ],
+      "file": "host/Q-HOST-04-test-release.json"
+    },
+    {
+      "id": "Q-HOST-05-clippy-all-targets",
+      "class": "T9-P3",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 clippy --all-targets --message-format=json -- -D warnings",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factory"
+      ],
+      "file": "host/Q-HOST-05-clippy-all-targets.json"
+    },
+    {
+      "id": "Q-HOST-06-std-in-kernel",
+      "class": "T9-P4",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "rejected for the expected reason: 2xE0433 (E0433:2)",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 build --lib --message-format=json",
+      "packages": null,
+      "file": "host/Q-HOST-06-std-in-kernel.json"
+    },
+    {
+      "id": "Q-HOST-07-id-substitution",
+      "class": "T9-P4",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "rejected for the expected reason: 3xE0308 (E0308:3)",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 build --lib --message-format=json",
+      "packages": null,
+      "file": "host/Q-HOST-07-id-substitution.json"
+    },
+    {
+      "id": "Q-HOST-08-forge-verified-strategy",
+      "class": "T9-P4",
+      "proof_set": "HOST_NATIVE_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "rejected for the expected reason: 1xprivate-field ((no code):1)",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 build --lib --message-format=json",
+      "packages": null,
+      "file": "host/Q-HOST-08-forge-verified-strategy.json"
+    },
+    {
+      "id": "Q-WASM-01-clippy-core-graph",
+      "class": "T9-P3",
+      "proof_set": "WASM64_KERNEL_SET",
+      "target": "wasm64-unknown-unknown",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exit 0; 12 workspace packages [factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi]",
+      "toolchain": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+      "command": "cargo +nightly-2026-09-24 clippy -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --message-format=json -- -D warnings",
+      "packages": [
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factc-wasm-abi"
+      ],
+      "file": "wasm64/Q-WASM-01-clippy-core-graph.json"
+    },
+    {
+      "id": "Q-WASM-02-core-only-graph-dev",
+      "class": "T9-P5",
+      "proof_set": "WASM64_KERNEL_SET",
+      "target": "wasm64-unknown-unknown",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "12 workspace crates compiled with core only on wasm64-unknown-unknown (dev); sysroot: compiler_builtins[custom-build]<sysroot-or-external-path> compiler_builtins[lib]<sysroot-or-external-path> core[lib]<sysroot-or-external-path>",
+      "toolchain": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+      "command": "cargo +nightly-2026-09-24 build -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --message-format=json",
+      "packages": [
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factc-wasm-abi"
+      ],
+      "file": "wasm64/Q-WASM-02-core-only-graph-dev.json"
+    },
+    {
+      "id": "Q-WASM-03-core-only-graph-release",
+      "class": "T9-P5",
+      "proof_set": "WASM64_KERNEL_SET",
+      "target": "wasm64-unknown-unknown",
+      "profile": "release",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "12 workspace crates compiled with core only on wasm64-unknown-unknown (release); sysroot: compiler_builtins[custom-build]<sysroot-or-external-path> compiler_builtins[lib]<sysroot-or-external-path> core[lib]<sysroot-or-external-path>",
+      "toolchain": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+      "command": "cargo +nightly-2026-09-24 build -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --release --message-format=json",
+      "packages": [
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factc-wasm-abi"
+      ],
+      "file": "wasm64/Q-WASM-03-core-only-graph-release.json"
+    },
+    {
+      "id": "Q-WASM-04-inspect-release",
+      "class": "T9-P8",
+      "proof_set": "WASM64_KERNEL_SET",
+      "target": "wasm64-unknown-unknown",
+      "profile": "release",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "  [PASS] memory_declared - I64 min=311 max=None shared=false;   [PASS] artifact_identity - sha256 6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81 bytes 3350254",
+      "toolchain": null,
+      "command": "/home/user/factory-builds/d19-target/debug/factory wasm-inspect /home/user/factory-builds/d19-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+      "packages": null,
+      "file": "wasm64/Q-WASM-04-inspect-release.json"
+    },
+    {
+      "id": "Q-WASM-05-inspect-dev",
+      "class": "T9-P8",
+      "proof_set": "WASM64_KERNEL_SET",
+      "target": "wasm64-unknown-unknown",
+      "profile": "dev",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "  [PASS] memory_declared - I64 min=312 max=None shared=false;   [PASS] artifact_identity - sha256 7d8dd80623cfc7278851988dda0607fe8e00d8d0050ef79e390038d13e63ef6a bytes 12452308",
+      "toolchain": null,
+      "command": "/home/user/factory-builds/d19-target/debug/factory wasm-inspect /home/user/factory-builds/d19-target/wasm64-unknown-unknown/debug/factc_wasm_abi.wasm",
+      "packages": null,
+      "file": "wasm64/Q-WASM-05-inspect-dev.json"
+    },
+    {
+      "id": "Q-WASM-06-kernel-identity",
+      "class": "T13-KRN",
+      "proof_set": "WASM64_KERNEL_SET",
+      "target": "wasm64-unknown-unknown",
+      "profile": "release",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "exec identity e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2 == declared (install nightly-2026-09-24-x86_64-unknown-linux-gnu); whole file == recorded for install nightly-2026-09-24-x86_64-unknown-linux-gnu (informational)",
+      "toolchain": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+      "command": null,
+      "packages": null,
+      "file": "wasm64/Q-WASM-06-kernel-identity.json"
+    },
+    {
+      "id": "Q-WASM-07-chromium-abi-release",
+      "class": "T9-P8",
+      "proof_set": "WASM64_KERNEL_SET",
+      "target": "wasm64-unknown-unknown",
+      "profile": "release",
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "Chromium HeadlessChrome/141.0.7390.37: abi_version 1, imports [], 13 exports, memory_pages 311",
+      "toolchain": null,
+      "command": "node host/harness/kernel-host.mjs /home/user/factory-builds/d19-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm tests/bootstrap/b7-opaque.ascii --browser",
+      "packages": null,
+      "file": "wasm64/Q-WASM-07-chromium-abi-release.json"
+    },
+    {
+      "id": "T13-PIN-01-toolchain-pins",
+      "class": "T13-PIN",
+      "proof_set": null,
+      "target": null,
+      "profile": null,
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "HOST_NATIVE_SET 1.94.1 (e408947bf) via rust-toolchain.toml; WASM64_KERNEL_SET nightly-2026-09-24 (6eeff9a52) via proof-sets.json; components present",
+      "toolchain": null,
+      "command": null,
+      "packages": null,
+      "file": "pins/T13-PIN-01-toolchain-pins.json"
+    },
+    {
+      "id": "T13-SETS-01-roots-partition",
+      "class": "T13-SETS",
+      "proof_set": null,
+      "target": null,
+      "profile": null,
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "14 members = 13 HOST_NATIVE_SET roots (== default-members) + 1 WASM64_KERNEL_SET root (factc-wasm-abi); disjoint and complete; 31 physical manifests accounted",
+      "toolchain": null,
+      "command": "cargo +1.94.1 metadata --format-version 1 --locked",
+      "packages": null,
+      "file": "sets/T13-SETS-01-roots-partition.json"
+    },
+    {
+      "id": "T9-P7-01-toolchain-identity",
+      "class": "T9-P7",
+      "proof_set": null,
+      "target": null,
+      "profile": null,
+      "verdict": "PASS",
+      "proof_weight": null,
+      "reason": "repository pins its toolchain",
+      "toolchain": null,
+      "command": null,
+      "packages": null,
+      "file": "toolchain/T9-P7-01-toolchain-identity.json"
+    },
+    {
+      "id": "X-01-build-workspace-host",
+      "class": "T9-P2",
+      "proof_set": "CROSS_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "OBS",
+      "proof_weight": "NONE",
+      "reason": "CROSS_SET diagnostic (proof weight NONE): exit 101; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; first error: factc-wasm-abi (no code) `#[panic_handler]` function required, but not found",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 build --workspace --message-format=json",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factory"
+      ],
+      "file": "cross/X-01-build-workspace-host.json"
+    },
+    {
+      "id": "X-02-clippy-workspace-host",
+      "class": "T9-P3",
+      "proof_set": "CROSS_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "OBS",
+      "proof_weight": "NONE",
+      "reason": "CROSS_SET diagnostic (proof weight NONE): exit 101; 14 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi factory]; first error: factc-wasm-abi (no code) `#[panic_handler]` function required, but not found",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 clippy --workspace --all-targets --message-format=json -- -D warnings",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factc-wasm-abi",
+        "factory"
+      ],
+      "file": "cross/X-02-clippy-workspace-host.json"
+    },
+    {
+      "id": "X-03-test-workspace-host",
+      "class": "T9-P2",
+      "proof_set": "CROSS_SET",
+      "target": "host",
+      "profile": "dev",
+      "verdict": "OBS",
+      "proof_weight": "NONE",
+      "reason": "CROSS_SET diagnostic (proof weight NONE): exit 0; 14 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi factory]; tests 103 passed / 0 failed over 35 harness runs",
+      "toolchain": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "command": "cargo +1.94.1 test --workspace --message-format=json",
+      "packages": [
+        "factc",
+        "factc-bundle",
+        "factc-capability",
+        "factc-codegen",
+        "factc-foundation",
+        "factc-implementation",
+        "factc-kernel",
+        "factc-observe",
+        "factc-planning",
+        "factc-semantic",
+        "factc-source",
+        "factc-verifier",
+        "factc-wasm-abi",
+        "factory"
+      ],
+      "file": "cross/X-03-test-workspace-host.json"
+    },
+    {
+      "id": "Z-01-nostd-textual-scan",
+      "class": "T9-P5",
+      "proof_set": "HEURISTIC",
+      "target": null,
+      "profile": null,
+      "verdict": "HEURISTIC",
+      "proof_weight": "NONE",
+      "reason": "proof weight NONE; scanner said PASS: textual scan found no offender [HEURISTIC: cfg(test)/::std/grouped-use bypasses known; verdict weight none]",
+      "toolchain": null,
+      "command": "/home/user/factory-builds/d19-target/debug/factory nostd-check compiler/foundation compiler/source compiler/semantic compiler/capability compiler/implementation compiler/planning compiler/verifier compiler/codegen compiler/bundle compiler/observe compiler/kernel compiler/wasm-abi",
+      "packages": null,
+      "file": "heuristic/Z-01-nostd-textual-scan.json"
+    },
+    {
+      "id": "Z-02-depcheck-explicit-list",
+      "class": "T9-P6",
+      "proof_set": "HEURISTIC",
+      "target": null,
+      "profile": null,
+      "verdict": "HEURISTIC",
+      "proof_weight": "NONE",
+      "reason": "proof weight NONE; scanner said PASS: explicit-list scan accepted 14 manifests [HEURISTIC: unlisted manifests and dotted-table sections are never read; verdict weight none]",
+      "toolchain": null,
+      "command": "/home/user/factory-builds/d19-target/debug/factory depcheck /home/user/factory-workpieces/W22 factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/capability/Cargo.toml compiler/implementation/Cargo.toml compiler/planning/Cargo.toml compiler/verifier/Cargo.toml compiler/codegen/Cargo.toml compiler/bundle/Cargo.toml compiler/observe/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml",
+      "packages": null,
+      "file": "heuristic/Z-02-depcheck-explicit-list.json"
+    }
+  ],
+  "tally": {
+    "PASS": 21,
+    "OBS": 3,
+    "HEURISTIC": 2
+  },
+  "proof_tally": {
+    "PASS": 21
+  },
+  "mutants": {
+    "verdict": "RUN",
+    "reason": "8 mutants: every weak check accepted the mutant and every qualified check rejected it for the named reason",
+    "mutants": [
+      {
+        "id": "M1-omitted-workspace-member",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      },
+      {
+        "id": "M2-compile-fail-wrong-reason",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      },
+      {
+        "id": "M3-compile-fail-stale-forge",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      },
+      {
+        "id": "M4-nostd-scanner-bypass",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      },
+      {
+        "id": "M5-uninspected-manifest",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      },
+      {
+        "id": "M6-native-pass-wasm64-fail",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      },
+      {
+        "id": "M7-wasm32-masquerade",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      },
+      {
+        "id": "M8-debug-pass-release-fail",
+        "verdict": "RUN",
+        "observed": {
+          "weak": "PASS",
+          "qualified": "FAIL"
+        }
+      }
+    ]
+  }
+}

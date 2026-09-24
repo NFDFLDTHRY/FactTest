@@ -1,0 +1,39 @@
+{
+  "verdict": "FAIL",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "test",
+    "--release",
+    "--message-format=json"
+  ],
+  "exit": 101,
+  "packages": [
+    "m8-debug-pass-release-fail"
+  ],
+  "selection": [
+    "m8-debug-pass-release-fail:m8_debug_pass_release_fail[lib]",
+    "m8-debug-pass-release-fail:m8_debug_pass_release_fail[lib]{test}"
+  ],
+  "tests": {
+    "binaries": [
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../target/release/deps/m8_debug_pass_release_fail-25485d5848180d08"
+      }
+    ],
+    "results": [
+      {
+        "status": "FAILED",
+        "passed": 0,
+        "failed": 1,
+        "ignored": 0
+      }
+    ],
+    "passed": 0,
+    "failed": 1,
+    "failed_names": [],
+    "finished": "Finished `release` profile [optimized] target(s) in 0.10s"
+  },
+  "reason": "exit 101; packages [m8-debug-pass-release-fail]; 0 passed / 1 failed"
+}

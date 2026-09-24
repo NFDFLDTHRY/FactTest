@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q >/dev/null && node -e 'const a=JSON.parse(require("fs").readFileSync(process.argv[1])).answer;console.log(a.current_facts,JSON.stringify(a.by_status),JSON.stringify(a.run_claims),a.reproved_in_current_epoch.length);if(a.run_claims.total!==a.run_claims.claimable+a.run_claims.invalidated)process.exit(1);const st=a.rows.filter(r=>["GAP","ERR","UNK"].includes(r.status));const n=Object.values(a.explicit_stops.open).reduce((x,y)=>x+y,0);console.log("stops open",JSON.stringify(a.explicit_stops.open),"closed",a.explicit_stops.closed_by_evidence.join(" "));if(n+a.explicit_stops.closed_by_evidence.length!==st.length||st.some(r=>r.invalidated_by.length?!/closed: invalidated by/.test(r.entitled_claim):r.entitled_claim!=="no claim ["+r.status+"]"))process.exit(1)' $T/q/Q22.json
+(cwd .)
+109 {"UNK":5,"OBS":43,"RUN":47,"ERR":4,"GAP":10} {"total":47,"claimable":46,"invalidated":1,"traversal":{"stops at IMPLEMENTATION CONTRACT":17,"COMPLETE":20,"stops at CURRENT AUTHORITY":5,"stops at EXACT CLAUSE":4,"stops at PROJECT CONSTRAINT":1}} 0
+stops open {"UNK":5,"ERR":4,"GAP":8} closed FACT-TOOLCHAIN-DRIFT FACT-WILDCARD-SURFACES-DEAD
+
+[exit 0] expected 0

@@ -1,0 +1,8 @@
+$ cargo +1.94.1 clippy --workspace --all-targets --message-format=json -- -D warnings
+(cwd /home/user/factory-workpieces/W22)
+    Checking factc-wasm-abi v0.1.0 (/home/user/factory-workpieces/W22/compiler/wasm-abi)
+error: could not compile `factc-wasm-abi` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+
+
+[exit 101]

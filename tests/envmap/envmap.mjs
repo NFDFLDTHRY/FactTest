@@ -37,6 +37,11 @@
 //   the reconciliation.  Graphs without these edges and nodes answer, validate and render exactly as before.
 //   D18R: when a successor is itself superseded later, Q21 names the reconciliation that revised it (revised_by) on the
 //   row and on its obligation; a graph without such chains answers as before.
+// D19 (re-prove / re-observe): FULFILLS (EVIDENCE -> RECONCILIATION {obligation}) marks an obligation discharged by new
+//   evidence (Q21 fulfilled_by).  Q22 is the entitled-claim surface: per current fact (neither superseded nor resolved)
+//   what FactTest may claim, bounded to the environments of its physical evidence, with the epoch of its newest physical
+//   evidence, whether the current epoch re-proved it, and its Q18 terminal.  A [GAP]/[ERR]/[UNK]/[OBS] statement that
+//   later evidence INVALIDATED is closed history, not an open stop (explicit_stops separates open from closed).
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -364,7 +369,30 @@ const Q = {
         facts: { total: facts.length, current: current.length, superseded: facts.filter(f => !isCurrent(g, f.id)).length, resolved: resolved.size, current_by_status: st },
         constraints: { total: cons.length, ledger: cons.filter(c => c.ledger_status !== 'PROPOSED' || led.has(c.id)).length, proposed: cons.filter(c => c.ledger_status === 'PROPOSED' && !led.has(c.id)).map(c => c.id) },
         authorities: { total: g.nodes.filter(n => n.class === 'AUTHORITY').length, superseded: g.nodes.filter(n => n.class === 'AUTHORITY' && !isCurrent(g, n.id)).length } },
-      new_probe_obligations: rows.filter(r => r.new_probe_obligation).map(r => ({ reconciliation: r.reconciliation, obligation: r.new_probe_obligation, ...(r.revised_by ? { revised_by: r.revised_by } : {}) })), rows };
+      new_probe_obligations: rows.filter(r => r.new_probe_obligation).map(r => { const ful = sortIds(inc(g, r.reconciliation, 'FULFILLS').map(e => e.from)); return { reconciliation: r.reconciliation, obligation: r.new_probe_obligation, ...(r.revised_by ? { revised_by: r.revised_by } : {}), ...(ful.length ? { fulfilled_by: ful } : {}) }; }), rows };
+  } },
+  Q22: { title: 'What is FactTest entitled to claim now: every current fact, bounded to the environments of its physical evidence, with the epoch that last proved it and where its traversal ends?', fn: (g, ids) => {
+    const order = (g.epochs || []).map(e => e.epoch); const cur = g.current_epoch || order[order.length - 1];
+    const resolved = new Set(g.edges.filter(e => e.type === 'RECONCILES' && (ids.get(e.from) || {}).outcome === 'RESOLVED').map(e => e.to));
+    const facts = g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT' && isCurrent(g, n.id) && !resolved.has(n.id)).sort((a, b) => a.id.localeCompare(b.id));
+    const rows = facts.map(f => {
+      const phys = evidenceOf(g, ids, f.id).filter(e => e.status === 'RUN' && String(e.evidence_class).startsWith('PHYSICAL'));
+      const epochs = sortIds(phys.map(e => e.epoch)).sort((x, y) => order.indexOf(x) - order.indexOf(y)); const newest = epochs[epochs.length - 1] || null;
+      const envs = sortIds(phys.filter(e => e.epoch === newest).map(e => e.environment_ref));
+      const invalid = sortIds(out(g, f.id, 'INVALIDATED_BY').map(e => e.to));
+      const t = Q.Q18.fn(g, ids, f).terminal;
+      const fb = sortIds(out(g, f.id, 'FALLS_BACK_TO').map(e => e.to));
+      const claim = f.status === 'RUN' ? (invalid.length ? `invalidated by ${invalid.join(', ')}${fb.length ? ` (falls back to ${fb.join(', ')})` : ''}: held only before that evidence` : phys.length ? `claimable for ${envs.join(', ')} (physical evidence of ${newest})` : 'no physical evidence: not claimable')
+        : invalid.length ? `no claim [${f.status}]; the statement itself is closed: invalidated by ${invalid.join(', ')} (history, not an open stop)`
+        : f.status === 'OBS' ? `observation only${envs.length ? ` in ${envs.join(', ')}` : ''}: not an execution claim` : `no claim [${f.status}]`;
+      return { fact: f.id, status: f.status, entitled_claim: claim, newest_physical_evidence_epoch: newest, reproved_in_current_epoch: newest === cur && order.indexOf(f.introduced_in || order[0]) < order.indexOf(cur), environments: envs, invalidated_by: invalid, traversal_terminal: t };
+    });
+    const by = {}; for (const r of rows) by[r.status] = (by[r.status] || 0) + 1;
+    const run = rows.filter(r => r.status === 'RUN'); const term = {}; for (const r of run) { const k = r.traversal_terminal === 'COMPLETE' ? 'COMPLETE' : r.traversal_terminal.split(':')[0]; term[k] = (term[k] || 0) + 1; }
+    const ep = {}; for (const r of rows.filter(x => x.newest_physical_evidence_epoch)) ep[r.newest_physical_evidence_epoch] = (ep[r.newest_physical_evidence_epoch] || 0) + 1;
+    const stops = rows.filter(r => ['GAP', 'ERR', 'UNK'].includes(r.status)); const open = {}; for (const r of stops.filter(x => !x.invalidated_by.length)) open[r.status] = (open[r.status] || 0) + 1;
+    return { current_epoch: cur, current_facts: rows.length, by_status: by, explicit_stops: { open, closed_by_evidence: stops.filter(r => r.invalidated_by.length).map(r => r.fact) }, run_claims: { total: run.length, claimable: run.filter(r => /^claimable/.test(r.entitled_claim)).length, invalidated: run.filter(r => /^invalidated/.test(r.entitled_claim)).length, traversal: term },
+      reproved_in_current_epoch: rows.filter(r => r.reproved_in_current_epoch).map(r => r.fact), newest_evidence_epochs: ep, rows };
   } },
   Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
     const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;

@@ -1,0 +1,37 @@
+{
+  "fixture_id": "F6-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "selection of F3"
+  ],
+  "narrowed_may_change": [
+    "evidence/D19/clauses/",
+    "evidence/D19/reopen/",
+    "evidence/D19/results/",
+    "evidence/D19/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind source --out evidence/D19"
+        ],
+        "log": "evidence/D19/logs/F6-source.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D19/results/clauses.json",
+    "evidence/D19/results/reopen.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

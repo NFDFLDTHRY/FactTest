@@ -1,0 +1,5 @@
+$ node tests/reprove/select.mjs --graph design/environment-map/graph.json --identity evidence/D19/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --out evidence/D19/selection.json
+(cwd .)
+evaluated 90 current RUN/OBS facts: selected 29 (environment 6, implementation 27, obligation 4); gaps 0; environment pairs {"SAME":114,"DRIFT":7,"UNK":9}; groups clauses, qualified-proof, lineage, reopen, identity, status, kernel-sections, paths
+
+[exit 0] expected 0

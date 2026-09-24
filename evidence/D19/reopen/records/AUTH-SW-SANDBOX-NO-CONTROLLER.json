@@ -1,0 +1,85 @@
+{
+ "authority": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://w3c.github.io/ServiceWorker/",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "editor's draft source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/w3c/ServiceWorker",
+  "branch": "main",
+  "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+  "path": "index.bs",
+  "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+  "observed": "2026-09-24",
+  "locator": "line 353"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   353,
+   353
+  ],
+  "window_sha256": "2f64a8c8206771c65701f990b7184d746235c40fc010c35dc99da2f67e6e3d9a",
+  "window_excerpt": "      Note: <a element-attr for=iframe lt=sandbox>Sandboxed</a> <{iframe}>s without the sandboxing directives, `allow-same-origin` and `allow-scripts`, result in having the [=active service worker=] value of null as their [=/origin=] is an [=opaque origin=].",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   353,
+   353
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "ED",
+   "group": "webapps",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "ED",
+   "group": "webapps",
+   "level": "None"
+  },
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 353,
+  "candidates": {
+   "section": {
+    "id": "#control-and-use-window-client",
+    "line": 336,
+    "kind": "id attribute"
+   },
+   "definition": {
+    "id": "#dfn-control",
+    "line": 328,
+    "kind": "id attribute"
+   }
+  }
+ }
+}

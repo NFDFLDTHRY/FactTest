@@ -1,0 +1,30 @@
+{
+ "id": "CL-GEO1",
+ "trace": "GEO",
+ "authority": "AUTH-GEOLOCATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/geolocation",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+  "sha256": "5bc468fd115c1e17e53496a6c5329e7c4efa90c822aaf41d491abfbd465093a1",
+  "bytes": 59983
+ },
+ "locator": {
+  "text": "interface Geolocation {",
+  "after": "[Exposed=Window]",
+  "line_start": 501,
+  "line_end": 501,
+  "derivation": "anchor text after \"[Exposed=Window]\"",
+  "enclosing_section": null
+ },
+ "window": 1,
+ "consequence": "Geolocation is exposed in Window WITHOUT [SecureContext]: presence proves nothing about usability",
+ "excerpt": "        interface Geolocation {",
+ "excerpt_sha256": "cbc9014b5b6089029d3ec60089873aa2ba956bd3d6f17e26475b326c2a0769e4",
+ "must_contain": {
+  "interface Geolocation {": true
+ },
+ "status": "VERIFIED"
+}

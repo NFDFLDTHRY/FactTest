@@ -775,4 +775,32 @@ BEFORE
   gates PASS; Q21 38 rows with R-32 revised_by R-52.
 
 AFTER
+- RESULT: integrated as b509fb00920443930aa75b10dae05b9683d2fe1b (ff-only from 1b81dc0); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-doc F3-doc F4-evidence F5-doc PASS (format 2).  VERIFICATION: PASS (first run).
+  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D18R.json rebuilt byte-identically; repair gate re-run PASS).
+  Pushed.
+- OBSERVED: D18R-OBSERVED-CHAIN-REPAIR.md - P1-P5 MATCH; the D18 defect removed from every current node and the live
+  handoff; the absence-claim rule added to docs/HANDOFF.md section 4.
+- (recorded by D19-REPROVE-REOBSERVE, the next delta.)
+
+---
+
+## D19-REPROVE-REOBSERVE  (pass 6 of 6: does the updated model survive execution?)
+
+BEFORE
+- DELTA: D19-REPROVE-REOBSERVE (factory/deltas/D19.json), workpiece W22, base b509fb0.
+- ASCII: design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F8, F10), S-FIXTURE (F1), S-BROWSER (F2 identity capture, F4 browser group), S-EVIDENCE (F3
+  selection, F7 repository group, F9 evidence), S-BUILD (F5 qualified proof + kernel sections, F6 source re-verification).
+- CHANGE: tests/reprove/ (identity capture, graph-driven selection, runbook, runner, lineage, epoch builder, gate),
+  tests/envmap/{envmap.mjs (Q21 fulfilled_by, Q22), browser-probe.mjs (executable launched)}, tests/hygiene/
+  status-scan.mjs (earlier inventories excluded), evidence/D19/,
+  design/environment-map/ (epoch D19, merged graph, views, SCHEMA section 13, ENVIRONMENT-MAP section 12), README.md,
+  docs/HANDOFF.md, D19 records incl. the stable baseline, this ledger.  FORBIDDEN: law and pass documents, compiler/,
+  host/, factory/, fixtures/, earlier epochs and D0-D18R evidence.
+- PREDICTED: selection 29 of 90 current RUN/OBS facts (gaps 0); every group PASS; epoch about 40 nodes / 160 edges;
+  merged about 1141 / 2574; validate 42 PASS; gate PASS; R-03, R-04, R-49, R-53 fulfilled; Q22 50 RUN claims (49
+  claimable, 1 invalidated by design), 29 re-proved in D19; the status inventory no longer re-scans earlier ones.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
