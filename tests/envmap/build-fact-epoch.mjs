@@ -4,6 +4,7 @@
 // The spec is a delta-owned record { environment?, probes: [...], facts: [...] }.  Adds, without editing any earlier node:
 //   ENV-<E>-HOST     when --identity DIR (a tests/reprove/identity.mjs capture) is given; otherwise spec.environment must
 //                    name an existing ENVIRONMENT node
+//   IMPL-*           each spec implementation (a repository path with no node yet; D23) before the probes need it
 //   PROBE-*          each spec probe the graph does not yet hold (implemented_by an existing IMPLEMENTATION node)
 //   EV-<E>-<FILE>    one sha256-bound EVIDENCE node per evidence file (paths relative to --root; a file several facts
 //                    cite is one node; an evidence entry may name its own probe)
@@ -41,6 +42,10 @@ if (o.identity) {
     identity_completeness: { missing: [], present: ['pinned toolchains (commit, components)', 'rustup names', 'node/V8', 'git', 'Playwright', 'OS/kernel', 'GPU device node', 'repository head and members'] },
     owner: `${relpath(o.identity)}/{host,toolchains,repo}.json`, note: `${E} environment identity (host of the run this epoch binds)` });
 } else need(HOST);
+for (const im of S.implementations || []) {
+  if (ids.has(im.id)) continue;
+  N({ id: im.id, class: 'IMPLEMENTATION', impl_id: im.id, repo_path: im.repo_path, commit: `introduced by ${o.delta} (integration commit in LEDGER AFTER)`, kind: im.kind, note: im.note, owner: im.owner || im.repo_path });
+}
 for (const p of S.probes || []) {
   if (ids.has(p.id)) continue;
   N({ id: p.id, class: 'PROBE', probe_id: p.id, proves_fact: S.facts.filter(f => f.probe === p.id).map(f => f.id), command_or_operation: p.command_or_operation, expected_observations: p.expected_observations, failure_meaning: p.failure_meaning, implemented_by: need(p.implemented_by), owner: p.implemented_by });
@@ -52,7 +57,10 @@ for (const f of S.facts) {
   need(f.probe);
   const evs = (f.evidence || []).map(ev => {
     if (evByPath.has(ev.path)) return evByPath.get(ev.path);
-    const id = `EV-${E}-` + ev.path.split('/').pop().replace(/\.[A-Za-z0-9]+$/, '').replace(/[^A-Za-z0-9]+/g, '-').toUpperCase(); const p = join(o.root, ev.path);
+    // the id names the record's path inside the epoch's package (evidence/<E>/a/b.json -> EV-<E>-A-B); a record outside it
+    // is named by its file name
+    const inside = ev.path.replace(/^\.\//, '').replace(new RegExp(`^evidence/${E}/`), '');
+    const id = `EV-${E}-` + (inside === ev.path ? ev.path.split('/').pop() : inside).replace(/\.[A-Za-z0-9]+$/, '').replace(/[^A-Za-z0-9]+/g, '-').toUpperCase(); const p = join(o.root, ev.path);
     N({ id, class: 'EVIDENCE', evidence_id: id, probe_ref: need(ev.probe || f.probe), environment_ref: HOST, artifact_identity: { path: ev.path, sha256: sha(p), bytes: readFileSync(p).length, locator: 'record', identity_source: 'sha256 of the committed record' }, observed_result: ev.observed_result, epoch: E, status: ev.status || 'RUN', evidence_class: ev.evidence_class || 'PHYSICAL_HOST', owner: own });
     evByPath.set(ev.path, id); return id;
   });

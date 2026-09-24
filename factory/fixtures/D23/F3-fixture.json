@@ -1,0 +1,78 @@
+{
+  "fixture_id": "F3-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "D23 sections 2-4"
+  ],
+  "narrowed_may_change": [
+    "tests/toolchain/run-crate-dag.mjs",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/run-qualified-proof.sh",
+    "tests/toolchain/proof-sets.json",
+    "tests/reconcile/d23-reconciliation.json",
+    "tests/reconcile/d23-surfaces.json",
+    "tests/envmap/build-fact-epoch.mjs",
+    "tests/envmap/facts/",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "tests/manifest/gate.mjs",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check tests/toolchain/run-crate-dag.mjs && node --check tests/toolchain/proof.mjs && node --check tests/envmap/build-fact-epoch.mjs && node --check tests/manifest/gate.mjs && sh -n tests/toolchain/run-qualified-proof.sh && for j in tests/toolchain/proof-sets.json tests/reconcile/d23-reconciliation.json tests/reconcile/d23-surfaces.json tests/envmap/facts/D23.json tests/manifest/components.json tests/manifest/issues.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -nE 'factc-[a-z]|byte[-_]relay|commissioning' tests/toolchain/run-crate-dag.mjs && T=$(mktemp -d) && node tests/implementation/wasm-sections.mjs --label K=/home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --exclude-custom name --out $T/s.json >/dev/null && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).builds[0].identity_excluding_custom;const p=JSON.parse(require(\"fs\").readFileSync(\"tests/toolchain/proof-sets.json\")).sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256;console.log(\"pin\",p,\"kernel\",s);if(s!==p)process.exit(1)' $T/s.json && echo 'syntax and generic scan clean; the pin equals the identity of the kernel F1 built'"
+        ],
+        "log": "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-syntax-generic.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660",
+          "--",
+          "tests",
+          ":!tests/toolchain/run-crate-dag.mjs",
+          ":!tests/toolchain/proof.mjs",
+          ":!tests/toolchain/run-qualified-proof.sh",
+          ":!tests/toolchain/proof-sets.json",
+          ":!tests/reconcile/d23-reconciliation.json",
+          ":!tests/reconcile/d23-surfaces.json",
+          ":!tests/envmap/build-fact-epoch.mjs",
+          ":!tests/envmap/facts",
+          ":!tests/manifest/components.json",
+          ":!tests/manifest/issues.json",
+          ":!tests/manifest/gate.mjs"
+        ],
+        "log": "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-other-tests-untouched.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json --out $T/g.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D22.json --identity evidence/D22/identity --epoch D22 --delta D22-FACTORY-SELF-QUALIFICATION --commit '88564a0eccd934d6a017faf65435bc871bcd2f94 (canonical base; integration commit in LEDGER AFTER)' --graph $T/g.json --out $T/D22.json >/dev/null && cmp $T/D22.json design/environment-map/epochs/D22.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json --out $T/g21.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D21R.json --identity evidence/D21R/identity --epoch D21R --delta D21R-MANIFEST-REPAIR --commit '910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb (canonical base; integration commit in LEDGER AFTER)' --graph $T/g21.json --out $T/D21R.json >/dev/null && cmp $T/D21R.json design/environment-map/epochs/D21R.json && echo 'D21R and D22 epochs rebuilt byte-identically by the extended builder'"
+        ],
+        "log": "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-builder-regression.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/toolchain/run-crate-dag.mjs",
+    "tests/envmap/facts/D23.json",
+    "tests/reconcile/d23-reconciliation.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D23-COMPILER-ABI-EXECUTION"
+}

@@ -1,0 +1,36 @@
+$ cargo +1.94.1 test -p factc
+(cwd .)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 7 tests
+test d01_queries_report_abi_and_workspace ... ok
+test d03_analyze_writes_diagnostics_lineage_and_artifacts ... ok
+test d02_usage_and_missing_inputs_are_driver_exit_codes ... ok
+test d05_build_without_registry_is_the_recorded_b07_behaviour ... ok
+test d04_build_with_registry_emits_bundle_and_certificates ... ok
+test d07_observe_renders_delta_and_observed_ascii ... ok
+test d06_build_is_deterministic ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+   Compiling factc-foundation v0.1.0 (/home/user/factory-workpieces/W28/compiler/foundation)
+   Compiling factc-source v0.1.0 (/home/user/factory-workpieces/W28/compiler/source)
+   Compiling factc-semantic v0.1.0 (/home/user/factory-workpieces/W28/compiler/semantic)
+   Compiling factc-observe v0.1.0 (/home/user/factory-workpieces/W28/compiler/observe)
+   Compiling factc-capability v0.1.0 (/home/user/factory-workpieces/W28/compiler/capability)
+   Compiling factc-implementation v0.1.0 (/home/user/factory-workpieces/W28/compiler/implementation)
+   Compiling factc-planning v0.1.0 (/home/user/factory-workpieces/W28/compiler/planning)
+   Compiling factc-verifier v0.1.0 (/home/user/factory-workpieces/W28/compiler/verifier)
+   Compiling factc-codegen v0.1.0 (/home/user/factory-workpieces/W28/compiler/codegen)
+   Compiling factc-bundle v0.1.0 (/home/user/factory-workpieces/W28/compiler/bundle)
+   Compiling factc-kernel v0.1.0 (/home/user/factory-workpieces/W28/compiler/kernel)
+   Compiling factc v0.1.0 (/home/user/factory-workpieces/W28/host/factc)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.10s
+     Running unittests src/main.rs (/home/user/factory-target-w28/debug/deps/factc-3bce99a9ab01d2dd)
+     Running tests/driver.rs (/home/user/factory-target-w28/debug/deps/driver-e3cf271627571e89)
+
+[exit 0] expected 0

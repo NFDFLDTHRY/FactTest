@@ -1029,4 +1029,35 @@ BEFORE
   1284 / 3284; validate 42; Q22 180 current facts (RUN 113); W26 RETIRABLE -> REMOVED.
 
 AFTER
+- RESULT: integrated as a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 (ff-only from 88564a0); no refusal, no repair, no re-run.
+- RECEIPTS: F0-doc F1-rust F2-rust F3-fixture F4-browser F5-evidence F6-doc F7-evidence F8-doc F9-annotate F10-evidence
+  F11-doc PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (the
+  repaired judge built from the canonical tree re-ran the witness register: 29 ok, 16 of 16; epochs/D22.json rebuilt
+  byte-identically).  Pushed.
+- OBSERVED: D22-OBSERVED-FACTORY-SELF-QUALIFICATION.md - P1-P6 MATCH.
+
+---
+
+## D23-COMPILER-ABI-EXECUTION  (task 3 of 6: does the complete CURRENT compiler DAG execute according to its contracts, including the browser transport boundary?)
+
+BEFORE
+- DELTA: D23-COMPILER-ABI-EXECUTION (factory/deltas/D23.json), workpiece W28, base a43c0ce.
+- ASCII: design/materialization/D23-INTENDED-COMPILER-ABI-EXECUTION.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F6, F8, F10), S-RUST (F1), S-WEB (F2), S-FIXTURE (F3), S-BROWSER (F4), S-BUILD (F5),
+  S-EVIDENCE (F7, F9).
+- CHANGE: compiler/wasm-abi/src/lib.rs (the transport extension: nine exports, 512 KiB I/O buffers),
+  compiler/kernel/src/lib.rs (header, I-10), host/factc/tests/driver.rs (I-19), host/harness/kernel-build-probe.mjs
+  (BUILD + OBSERVE in Chromium compared byte-for-byte with the native driver), tests/toolchain/{run-crate-dag.mjs,
+  proof.mjs (browser-build), run-qualified-proof.sh (Q-WASM-08), proof-sets.json (kernel identity pin + history)},
+  tests/reconcile/d23-reconciliation.json (the kernel-identity fact superseded), tests/envmap/{build-fact-epoch.mjs,
+  facts/D23.json}, tests/manifest/{components,issues}.json, design/execution-manifest/ (rebuilt), evidence/D23/,
+  design/environment-map/ (epoch D23, graph, views, SCHEMA 15, ENVIRONMENT-MAP 14), docs/HANDOFF.md, README.md, D23
+  records, this ledger.  FORBIDDEN: every other compiler and host source (no semantic changes: transport only), law
+  and pass documents (C14 text is an owner item, I-29), factory/, fixtures/, earlier epochs, D0-D22 evidence.
+- PREDICTED: transport 22 exports, Q-WASM-08 PASS 21/21 identical; DAG 14 crates PASS, 931 tests; matrix 27 = PASS 22 /
+  OBS 3 / HEURISTIC 2; kernel identity fcaee2a6... under both install names; factc driver 7/7; manifest 3295 files,
+  gate PASS (29 issues); epoch D23 20 nodes / 67 edges; merged 1304 / 3351; validate 42; Q22 184 current facts
+  (RUN 116, GAP 11); W27 RETIRABLE -> REMOVED.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

@@ -1,0 +1,214 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D23-COMPILER-ABI-EXECUTION-F3-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F3-fixture",
+  "workpiece_id": "W28",
+  "delta_id": "D23-COMPILER-ABI-EXECUTION",
+  "canonical_base": "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660",
+  "input_artifacts": [
+    "D23 sections 2-4"
+  ],
+  "open_tree": "e4902e56b6c727eb1e9e73b4e8d77d89d7c411e1",
+  "close_tree": "56143a23be53028f7b03a325efc329e1f83128bd",
+  "changed_paths": [
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-builder-regression.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-other-tests-untouched.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-syntax-generic.log",
+    "tests/envmap/build-fact-epoch.mjs",
+    "tests/envmap/facts/D23.json",
+    "tests/manifest/components.json",
+    "tests/manifest/gate.mjs",
+    "tests/manifest/issues.json",
+    "tests/reconcile/d23-reconciliation.json",
+    "tests/reconcile/d23-surfaces.json",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/run-crate-dag.mjs",
+    "tests/toolchain/run-qualified-proof.sh"
+  ],
+  "output_artifacts": [
+    "tests/toolchain/run-crate-dag.mjs",
+    "tests/envmap/facts/D23.json",
+    "tests/reconcile/d23-reconciliation.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D23-COMPILER-ABI-EXECUTION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-builder-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-builder-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node --check tests/toolchain/run-crate-dag.mjs && node --check tests/toolchain/proof.mjs && node --check tests/envmap/build-fact-epoch.mjs && node --check tests/manifest/gate.mjs && sh -n tests/toolchain/run-qualified-proof.sh && for j in tests/toolchain/proof-sets.json tests/reconcile/d23-reconciliation.json tests/reconcile/d23-surfaces.json tests/envmap/facts/D23.json tests/manifest/components.json tests/manifest/issues.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -nE 'factc-[a-z]|byte[-_]relay|commissioning' tests/toolchain/run-crate-dag.mjs && T=$(mktemp -d) && node tests/implementation/wasm-sections.mjs --label K=/home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --exclude-custom name --out $T/s.json >/dev/null && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).builds[0].identity_excluding_custom;const p=JSON.parse(require(\"fs\").readFileSync(\"tests/toolchain/proof-sets.json\")).sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256;console.log(\"pin\",p,\"kernel\",s);if(s!==p)process.exit(1)' $T/s.json && echo 'syntax and generic scan clean; the pin equals the identity of the kernel F1 built'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-syntax-generic.log"
+    },
+    {
+      "check": "command:git diff --exit-code a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 -- tests :!tests/toolchain/run-crate-dag.mjs :!tests/toolchain/proof.mjs :!tests/toolchain/run-qualified-proof.sh :!tests/toolchain/proof-sets.json :!tests/reconcile/d23-reconciliation.json :!tests/reconcile/d23-surfaces.json :!tests/envmap/build-fact-epoch.mjs :!tests/envmap/facts :!tests/manifest/components.json :!tests/manifest/issues.json :!tests/manifest/gate.mjs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-other-tests-untouched.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json --out $T/g.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D22.json --identity evidence/D22/identity --epoch D22 --delta D22-FACTORY-SELF-QUALIFICATION --commit '88564a0eccd934d6a017faf65435bc871bcd2f94 (canonical base; integration commit in LEDGER AFTER)' --graph $T/g.json --out $T/D22.json >/dev/null && cmp $T/D22.json design/environment-map/epochs/D22.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json --out $T/g21.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D21R.json --identity evidence/D21R/identity --epoch D21R --delta D21R-MANIFEST-REPAIR --commit '910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb (canonical base; integration commit in LEDGER AFTER)' --graph $T/g21.json --out $T/D21R.json >/dev/null && cmp $T/D21R.json design/environment-map/epochs/D21R.json && echo 'D21R and D22 epochs rebuilt byte-identically by the extended builder'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-builder-regression.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/toolchain/run-crate-dag.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/facts/D23.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reconcile/d23-reconciliation.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-syntax-generic.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-other-tests-untouched.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-builder-regression.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T13:54:07Z",
+  "status": "PASS"
+}

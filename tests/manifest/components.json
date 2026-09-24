@@ -524,7 +524,8 @@
    "focused_tests": [
     "compiler/foundation/src/tests_foundation.rs",
     "compiler/foundation/src/{sha256,wasm}.rs unit tests",
-    "compiler/kernel/tests/bootstrap_ladder.rs"
+    "compiler/kernel/tests/bootstrap_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -553,7 +554,8 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
-    "compiler/kernel/tests/language_ladder.rs (L00-L35, P6-G01/G02, B4/B8)"
+    "compiler/kernel/tests/language_ladder.rs (L00-L35, P6-G01/G02, B4/B8)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -587,7 +589,8 @@
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
     "compiler/kernel/tests/language_ladder.rs",
-    "commissioning_ladder.rs"
+    "commissioning_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -617,7 +620,8 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
-    "compiler/kernel/tests/lowering_ladder.rs"
+    "compiler/kernel/tests/lowering_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -647,7 +651,8 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
-    "compiler/kernel/tests/lowering_ladder.rs (P5-L01..L06, P5-S01, P6-G03, registry rejections)"
+    "compiler/kernel/tests/lowering_ladder.rs (P5-L01..L06, P5-S01, P6-G03, registry rejections)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -674,7 +679,8 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
-    "compiler/kernel/tests/strategy_ladder.rs (P6-M01..M04, P5-V03/V04/V07)"
+    "compiler/kernel/tests/strategy_ladder.rs (P6-M01..M04, P5-V03/V04/V07)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -704,7 +710,8 @@
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
     "compiler/kernel/tests/strategy_ladder.rs (P6-V01..V05, P5-V06, P6-G04/G05)",
-    "fixtures/compiler/negative/forge-verified-strategy"
+    "fixtures/compiler/negative/forge-verified-strategy",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -733,7 +740,8 @@
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
     "compiler/kernel/tests/bundle_ladder.rs (P6-B01..B06, P5-C01..C05, P6-X06)",
-    "compiler/codegen/src/wasm.rs unit test"
+    "compiler/codegen/src/wasm.rs unit test",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -763,7 +771,8 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
-    "compiler/kernel/tests/bundle_ladder.rs"
+    "compiler/kernel/tests/bundle_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -790,7 +799,8 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
-    "compiler/kernel/tests/observe_ladder.rs (P6-R07, negatives 10/11)"
+    "compiler/kernel/tests/observe_ladder.rs (P6-R07, negatives 10/11)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "none",
@@ -818,7 +828,8 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
    "focused_tests": [
-    "compiler/kernel/tests/*.rs (7 ladders)"
+    "compiler/kernel/tests/*.rs (7 ladders)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "PROBE-KERNEL-HOST-BROWSER",
@@ -849,7 +860,9 @@
    "toolchain_target": "WASM64_KERNEL_SET nightly-2026-09-24 (wasm64-unknown-unknown, -Z build-std=core)",
    "focused_tests": [
     "tests/bootstrap/run-b9-b11.sh (B9-B11)",
-    "tests/toolchain/run-qualified-proof.sh (Q-WASM-*, T13-KRN)"
+    "tests/toolchain/run-qualified-proof.sh (Q-WASM-*, T13-KRN)",
+    "tests/toolchain/run-qualified-proof.sh (Q-WASM-08: the whole transport in Chromium, byte-identical to the native driver)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
    ],
    "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
    "runtime_probe": "PROBE-KERNEL-HOST-BROWSER",
@@ -915,6 +928,7 @@
    "fixture_type": "rust bin",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
    "focused_tests": [
+    "host/factc/tests/driver.rs (d01-d07: queries, exit codes, analyze, build, B-07 behaviour, determinism, observe)",
     "tests/language/run-byte-relay.sh (P6-A01/A03, P5-L01/L03, M5, M6)",
     "tests/commissioning/run-physical.sh (compile step, observe step)"
    ],
@@ -927,7 +941,8 @@
    "tier": "TEST",
    "area": "host",
    "paths": [
-    "host/harness/kernel-host.mjs"
+    "host/harness/kernel-host.mjs",
+    "host/harness/kernel-build-probe.mjs"
    ],
    "owner": [
     "BOOTSTRAP-TESTS.md B7, B8, B10, B11"
@@ -946,7 +961,8 @@
    "fixture_type": "node esm",
    "toolchain_target": "node v22.22.2; Playwright 1.56.1; Chromium 141",
    "focused_tests": [
-    "tests/bootstrap/run-b9-b11.sh"
+    "tests/bootstrap/run-b9-b11.sh",
+    "tests/toolchain/run-qualified-proof.sh (Q-WASM-08: BUILD + OBSERVE in Chromium byte-identical to host/factc)"
    ],
    "task_regression": "D23 (Chromium ABI execution)",
    "runtime_probe": "PROBE-KERNEL-HOST-BROWSER"
@@ -1311,7 +1327,8 @@
     "tests/toolchain/run-qualified-proof.sh",
     "tests/toolchain/proof.mjs",
     "tests/toolchain/proof-sets.json",
-    "tests/toolchain/run-mutants.sh"
+    "tests/toolchain/run-mutants.sh",
+    "tests/toolchain/run-crate-dag.mjs"
    ],
    "owner": [
     "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 3.2-3.3",
@@ -1333,7 +1350,8 @@
    "fixture_type": "node esm / sh",
    "toolchain_target": "node v22.22.2; sh; (cargo where named)",
    "focused_tests": [
-    "tests/toolchain/run-mutants.sh (judge self-attack)"
+    "tests/toolchain/run-mutants.sh (judge self-attack)",
+    "tests/toolchain/run-crate-dag.mjs (per-crate compile -> focused tests -> consumer test, D23)"
    ],
    "task_regression": "D23 (qualified sets), D26",
    "runtime_probe": "PROBE-QUALIFIED-PROOF, PROBE-COMPILE-FAIL-DIAG, PROBE-DEPS-AUDIT, PROBE-NOSTD-GRAPH, PROBE-SELECTION-AUDIT, PROBE-TOOLCHAIN-IDENTITY"

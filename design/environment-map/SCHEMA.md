@@ -338,4 +338,10 @@ witness register        tests/factory/witnesses.json (D22): every refusal reason
                         stage; tests/factory/run-witnesses.sh builds the judge from the tree, runs the suite, checks the
                         register and records the judge's sha256; tests/sync/collision-witness.sh witnesses the import
                         collision in a scratch repository.  A witness that fails for an unrelated reason is not a pass.
+crate DAG execution     tests/toolchain/run-crate-dag.mjs (D23): every HOST_NATIVE_SET root in Cargo's dependency order -
+                        build dev, build release, focused tests, the tests of each direct consumer - then the
+                        WASM64_KERNEL_SET root built core-only; per-crate records and a summary (evidence/<E>/crates)
+transport probe         host/harness/kernel-build-probe.mjs (D23; proof.mjs browser-build, Q-WASM-08): BUILD and OBSERVE
+                        driven in Chromium through the wasm exports, every artifact and bundle file compared
+                        byte-for-byte with host/factc; the wasm export surface is the whole kernel API (21 exports)
 ```

@@ -9,9 +9,10 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D22-FACTORY-SELF-QUALIFICATION (task 2 of the six-task whole-repository execution + gap closure
-                   series D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; after D21 execution
-                   manifest and D21R manifest repair; integration commits in design/materialization/LEDGER.md)
+last delta         D23-COMPILER-ABI-EXECUTION (task 3 of the six-task whole-repository execution + gap closure series
+                   D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; after D21 execution
+                   manifest, D21R manifest repair and D22 Factory self-qualification; integration commits in
+                   design/materialization/LEDGER.md)
 judge              the Factory built from this tree (tests/factory/run-witnesses.sh records its sha256): every refusal
                    reason of the prompt witnessed (tests/factory/witnesses.json, factory/tests/factory_law.rs f00-f28,
                    tests/sync/collision-witness.sh); six accepted attacks found by D22 and repaired before D23
@@ -39,18 +40,21 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    83 reproducibility copies, D11 pins re-checked) joined by D20 with a second re-proof, D21 execution
                    manifest (the current executable system enumerated and every problem classified before repair), D22
                    Factory self-qualification (the judge attacked with every refusal reason of the prompt; receipt
-                   integrity, identity probes, command and canonical confinement repaired)
+                   integrity, identity probes, command and canonical confinement repaired), D23 compiler + ABI
+                   execution (every crate compile -> focused tests -> consumer test in dependency order on the
+                   qualified proof sets; the wasm transport completed: BUILD + OBSERVE in Chromium byte-identical to
+                   the native driver; D12 B-06 closed as transport-only)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-2 of 6 closed; D21's
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-3 of 6 closed; D21's
                    re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
                    verified, integrated and re-observed before the next; a repair is tested before the next repair
                    (GLOBAL TEST-EVERY-ITERATION LAW)
-next               D23-COMPILER-ABI-EXECUTION: every compiler crate bottom-up under HOST_NATIVE_SET and WASM64_KERNEL_SET
-                   (deps, manifests, fmt, mutants), the public kernel API against the factc and wasm-abi transports,
-                   D12 B-06 decided as A/B or D/G (I-06, I-10, I-19).  Then D24 genericity (I-07, I-08, I-09, I-20), D25
-                   physical runtime (I-05, I-11), D26 clean whole-repository commissioning (STALE_IF-selected re-proof,
-                   consistency audit, baseline and boundary register)
+next               D24-PIPELINE-GENERICITY: the generated pipeline attacked physically with at least three semantically
+                   distinct specimens (I-07 payload A + WEBGPU destroy in the shell, I-08 anti-cheat byte form, I-09
+                   single-relation runtime / relay-only export library / two named adapters, I-20 single-specimen
+                   claims); no fix by renaming.  Then D25 physical runtime (I-05, I-11), D26 clean whole-repository
+                   commissioning (STALE_IF-selected re-proof, consistency audit, baseline and boundary register)
 ```
 
 ## 2. Mutation law
@@ -183,8 +187,10 @@ factory/src/ops.rs, witnessed (f17-f28) before D23.
 ```text
 CLASS  ID / SOURCE                          BOUNDARY                                                          STATUS
 C      D12 B-01, B-02                       no Factory WebApp / browser state model; git subprocess state      [GAP]
-C      D12 B-06 (P10)                       six wasm ABI exports absent; BUILD in the browser stops at          [GAP]
-                                            CAPABILITY_IR
+C      D12 B-06 (P10) -> D23                closed as transport-only (A/B): the wasm export surface is the whole    [RUN]
+                                            kernel API (21 exports); BUILD + OBSERVE in Chromium byte-identical to
+                                            host/factc (FACT-D23-WASM-TRANSPORT-COMPLETE, Q-WASM-08); the C14 contract
+                                            TEXT still names eight operations - an owner annotation (I-29), below
 C      D12 B-05, B-17                       templates compiled into the kernel; packfile import/export         [GAP]
 C      D12 B-11 (P07)                       persist() false in the Chromium 141 headless shell (every permission     [UNK]
                                             ASK); installed-Factory durability never observed - full Chrome grants
@@ -333,11 +339,15 @@ tests/toolchain/proof-sets.json
   WASM64_KERNEL_SET          nightly-2026-09-24 (rustc 6eeff9a52) + rust-src, clippy; wasm64-unknown-unknown,
                              -Z build-std=core, -p factc-wasm-abi (12-crate core-only graph); kernel identity =
                              exec identity (every section except the custom "name" section; install-name independent,
-                             D18); whole-file sha256 recorded per rust-src install name (informational)
+                             D18); whole-file sha256 recorded per rust-src install name (informational); D23: the
+                             transport extension changed the kernel - exec identity fcaee2a6... (22 exports), the
+                             eight-export identity e8d6582665... kept as history in proof-sets.json (R-64)
   ALL_SOURCES / ALL_MEMBERS_GRAPH   rustfmt over every member / cargo metadata over every member + physical manifests
   CROSS_SET                  --workspace on the host: diagnostic only (factc-wasm-abi is target-specific), weight NONE
   HEURISTIC                  factory nostd-check / depcheck: weight NONE; never a gate
-run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>)
+run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>;
+                             27 obligations incl. Q-WASM-08 BUILD + OBSERVE in Chromium == native)
+per crate (D23)              node tests/toolchain/run-crate-dag.mjs --out <dir> [--browser-probe <Q-WASM-08 record>]
 history                      tests/toolchain/run-proof-matrix.sh is the D9 matrix, kept for reproduction of D9
 re-prove (D19, D20)          node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out <dir>/identity;
                              node tests/reprove/select.mjs ... --pass <D> --out <dir>/selection.json (environment drift -

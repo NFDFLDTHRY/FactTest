@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D23.json --identity evidence/D23/identity --epoch D23 --delta D23-COMPILER-ABI-EXECUTION --commit 'a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out $T/facts.json && node tests/reconcile/build-reconciliation.mjs --clause-epoch $T/facts.json --register tests/reconcile/d23-reconciliation.json --graph design/environment-map/graph.json --root . --epoch D23 --delta D23-COMPILER-ABI-EXECUTION --commit 'a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 (canonical base; integration commit in LEDGER AFTER)' --out design/environment-map/epochs/D23.json
+(cwd .)
+D23: 19 nodes, 49 edges -> /tmp/tmp.LwuEYnovnt/facts.json; facts FACT-D23-COMPILER-DAG-EXECUTED [RUN], FACT-D23-QUALIFIED-PROOF [RUN], FACT-D23-WASM-TRANSPORT-COMPLETE [RUN], FACT-KERNEL-IDENTITY-D23 [RUN], FACT-D23-C14-TEXT-OWNER [GAP]
+D23: 20 nodes, 67 edges -> design/environment-map/epochs/D23.json; {"SUPERSEDED":1}; supersessions 1; inherited 16; ledgered 0
+
+[exit 0] expected 0

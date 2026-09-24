@@ -1,0 +1,519 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D23-COMPILER-ABI-EXECUTION-F9-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F9-evidence",
+  "workpiece_id": "W28",
+  "delta_id": "D23-COMPILER-ABI-EXECUTION",
+  "canonical_base": "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660",
+  "input_artifacts": [
+    "the D23 graph",
+    "evidence/D23/"
+  ],
+  "open_tree": "01dca760cc6102ba9c7609195f822ea19bf7c8fd",
+  "close_tree": "e2ad9dc3e1ae4876bfc9c0c0b97d6dd2b3c4fc1f",
+  "changed_paths": [
+    "evidence/D23/envmap/merge-check.json",
+    "evidence/D23/envmap/queries/Q01.json",
+    "evidence/D23/envmap/queries/Q02.json",
+    "evidence/D23/envmap/queries/Q03.json",
+    "evidence/D23/envmap/queries/Q04.json",
+    "evidence/D23/envmap/queries/Q05.json",
+    "evidence/D23/envmap/queries/Q06.json",
+    "evidence/D23/envmap/queries/Q07.json",
+    "evidence/D23/envmap/queries/Q08.json",
+    "evidence/D23/envmap/queries/Q09.json",
+    "evidence/D23/envmap/queries/Q10.json",
+    "evidence/D23/envmap/queries/Q11.json",
+    "evidence/D23/envmap/queries/Q12.json",
+    "evidence/D23/envmap/queries/Q13.json",
+    "evidence/D23/envmap/queries/Q14.json",
+    "evidence/D23/envmap/queries/Q15.json",
+    "evidence/D23/envmap/queries/Q16.json",
+    "evidence/D23/envmap/queries/Q17.json",
+    "evidence/D23/envmap/queries/Q18.json",
+    "evidence/D23/envmap/queries/Q19.json",
+    "evidence/D23/envmap/queries/Q20.json",
+    "evidence/D23/envmap/queries/Q21.json",
+    "evidence/D23/envmap/queries/Q22.json",
+    "evidence/D23/envmap/render-check.json",
+    "evidence/D23/envmap/stale.json",
+    "evidence/D23/envmap/validate.json",
+    "evidence/D23/handoff-check.json",
+    "evidence/D23/index.json",
+    "evidence/D23/logs/F9-audit-after.log",
+    "evidence/D23/logs/F9-audit-before.log",
+    "evidence/D23/logs/F9-cleanup-gate.log",
+    "evidence/D23/logs/F9-earlier-gates.log",
+    "evidence/D23/logs/F9-handoff-check.log",
+    "evidence/D23/logs/F9-index.log",
+    "evidence/D23/logs/F9-merge-check.log",
+    "evidence/D23/logs/F9-q22.log",
+    "evidence/D23/logs/F9-queries.log",
+    "evidence/D23/logs/F9-reconciliation-gates.log",
+    "evidence/D23/logs/F9-render-check.log",
+    "evidence/D23/logs/F9-retire.log",
+    "evidence/D23/logs/F9-stale.log",
+    "evidence/D23/logs/F9-status-scan.log",
+    "evidence/D23/logs/F9-validate.log",
+    "evidence/D23/regress/capability-gate.json",
+    "evidence/D23/regress/d18-gate.json",
+    "evidence/D23/regress/d18r-gate.json",
+    "evidence/D23/regress/d20-sync-gate.json",
+    "evidence/D23/regress/d23-gate.json",
+    "evidence/D23/regress/implementation-gate.json",
+    "evidence/D23/status/inventory.json",
+    "evidence/D23/status/summary.txt",
+    "evidence/D23/surfaces.json",
+    "evidence/D23/workpieces/audit-after.json",
+    "evidence/D23/workpieces/audit-before.json",
+    "evidence/D23/workpieces/retire.json"
+  ],
+  "output_artifacts": [
+    "evidence/D23/envmap/queries/Q22.json",
+    "evidence/D23/surfaces.json",
+    "evidence/D23/regress/d23-gate.json",
+    "evidence/D23/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D23-COMPILER-ABI-EXECUTION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-queries.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-queries.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-stale.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-stale.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-merge-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-merge-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-render-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-render-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-q22.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-q22.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-reconciliation-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-reconciliation-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-earlier-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-earlier-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-status-scan.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-status-scan.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-handoff-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-handoff-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-audit-before.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-audit-before.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-retire.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-retire.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-audit-after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-audit-after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-cleanup-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-cleanup-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D23/logs/F9-index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D23/logs/F9-index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D23/envmap/validate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-validate.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out evidence/D23/envmap/queries",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-queries.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs stale design/environment-map/graph.json --out evidence/D23/envmap/stale.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-stale.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json --out evidence/D23/envmap/merge-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-merge-check.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map --out evidence/D23/envmap/render-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-render-check.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D23/envmap/queries/Q22.json\")).answer;console.log(a.current_facts,JSON.stringify(a.by_status),JSON.stringify(a.run_claims),a.reproved_in_current_epoch.length);if(a.run_claims.total!==a.run_claims.claimable+a.run_claims.invalidated)process.exit(1);const st=a.rows.filter(r=>[\"GAP\",\"ERR\",\"UNK\"].includes(r.status));const n=Object.values(a.explicit_stops.open).reduce((x,y)=>x+y,0);console.log(\"stops open\",JSON.stringify(a.explicit_stops.open),\"closed\",a.explicit_stops.closed_by_evidence.join(\" \"));if(n+a.explicit_stops.closed_by_evidence.length!==st.length||st.some(r=>r.invalidated_by.length?!/closed: invalidated by/.test(r.entitled_claim):r.entitled_claim!==\"no claim [\"+r.status+\"]\"))process.exit(1);const d=a.rows.filter(r=>/^FACT-D21-/.test(r.fact));if(d.length!==2||d.some(r=>r.status!==\"OBS\"))process.exit(1);console.log(\"D21 facts\",d.map(r=>r.fact+\" \"+r.status).join(\", \"))' && node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D23/envmap/queries/Q22.json\")).answer;const d=a.rows.filter(r=>/^FACT-D23-|^FACT-KERNEL-IDENTITY-D23/.test(r.fact));console.log(JSON.stringify(d.map(r=>[r.fact,r.status,r.newest_physical_evidence_epoch])));const run=d.filter(r=>r.status===\"RUN\");if(d.length!==5||run.length!==4||run.some(r=>r.newest_physical_evidence_epoch!==\"D23\")||!d.some(r=>r.fact===\"FACT-D23-C14-TEXT-OWNER\"&&r.status===\"GAP\"))process.exit(1);if(a.rows.some(r=>r.fact===\"FACT-KERNEL-IDENTITY-DEFINED-D18\"))process.exit(1);if(a.current_facts!==184)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-q22.log"
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D23/regress && node tests/reconcile/gate.mjs --register tests/reconcile/d18-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D18/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d18-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d18r-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D18R/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d18r-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d20-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D20/sync/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d20-sync-gate.json && node tests/reconcile/surfaces.mjs tests/reconcile/d23-surfaces.json --out evidence/D23/surfaces.json && node tests/reconcile/gate.mjs --register tests/reconcile/d23-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D23/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d23-gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-reconciliation-gates.log"
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D23/regress && node tests/capability/gate.mjs --universe tests/capability/universe.json --matrix CAPABILITY-MATRIX.md --census evidence/D16/census --graph design/environment-map/graph.json --out evidence/D23/regress/capability-gate.json && node tests/implementation/gate.mjs --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph design/environment-map/graph.json --out evidence/D23/regress/implementation-gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-earlier-gates.log"
+    },
+    {
+      "check": "command:node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D23/status",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-status-scan.log"
+    },
+    {
+      "check": "command:sh tests/hygiene/handoff-check.sh evidence/D23/handoff-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-handoff-check.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W28 --out evidence/D23/workpieces/audit-before.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-audit-before.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece retire /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W28 --out evidence/D23/workpieces/retire.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-retire.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W28 --out evidence/D23/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-audit-after.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D23/workpieces/audit-after.json\"));console.log(JSON.stringify(a.totals));if(a.totals.RETIRABLE!==0)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-cleanup-gate.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory evidence index evidence/D21 evidence/D23/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D23/logs/F9-index.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D23/envmap/queries/Q22.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D23/surfaces.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D23/regress/d23-gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D23/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D23/logs/F9-validate.log",
+    "evidence/D23/logs/F9-queries.log",
+    "evidence/D23/logs/F9-stale.log",
+    "evidence/D23/logs/F9-merge-check.log",
+    "evidence/D23/logs/F9-render-check.log",
+    "evidence/D23/logs/F9-q22.log",
+    "evidence/D23/logs/F9-reconciliation-gates.log",
+    "evidence/D23/logs/F9-earlier-gates.log",
+    "evidence/D23/logs/F9-status-scan.log",
+    "evidence/D23/logs/F9-handoff-check.log",
+    "evidence/D23/logs/F9-audit-before.log",
+    "evidence/D23/logs/F9-retire.log",
+    "evidence/D23/logs/F9-audit-after.log",
+    "evidence/D23/logs/F9-cleanup-gate.log",
+    "evidence/D23/logs/F9-index.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T13:56:48Z",
+  "status": "PASS"
+}

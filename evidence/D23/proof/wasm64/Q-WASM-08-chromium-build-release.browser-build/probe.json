@@ -1,0 +1,180 @@
+{
+ "tool": "host/harness/kernel-build-probe.mjs",
+ "host": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+ "module": "/home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+ "kernel_sha256": "fa5c7131fa8c6d43090672ae718dccbb536cc6d4a3ca70b6f54c4259412ae42f",
+ "kernel_bytes": 3373536,
+ "exports": [
+  "artifact_count",
+  "bundle_file_bytes",
+  "bundle_file_count",
+  "bundle_file_path",
+  "check_or_compile",
+  "input_buffer_len",
+  "input_buffer_ptr",
+  "memory",
+  "observe",
+  "output_buffer_len",
+  "output_buffer_ptr",
+  "query_abi_version",
+  "query_required_workspace",
+  "read_artifact",
+  "read_artifact_metadata",
+  "read_diagnostics",
+  "reset_workspace",
+  "submit_contracts",
+  "submit_evidence_tape",
+  "submit_machine_state",
+  "submit_metrics",
+  "submit_source_bytes"
+ ],
+ "imports": [],
+ "abi_version": 1,
+ "required_workspace": "2865440",
+ "input_buffer_len": 524288,
+ "build": {
+  "status": 1,
+  "ms": 16,
+  "artifacts": [
+   "CANONICAL_ASCII:OK:1000",
+   "TYPED_SYSTEM_IR:OK:1486",
+   "CAPABILITY_IR:OK:1041",
+   "IMPLEMENTATION_HYPERGRAPH:OK:2246",
+   "CANDIDATE_STRATEGY:OK:895",
+   "VERIFICATION_CERTIFICATES:OK:5536",
+   "VERIFIED_STRATEGY:OK:576",
+   "BUNDLE_CERTIFICATE:OK:2807"
+  ],
+  "bundle_files": [
+   "wasm64_relay.wasm",
+   "membrane.js",
+   "selector.js",
+   "runtime.js",
+   "index.html",
+   "manifest.webmanifest",
+   "sw.js",
+   "bundle.json"
+  ],
+  "compare": [
+   {
+    "file": "artifacts.json",
+    "verdict": "IDENTICAL",
+    "bytes": 1898
+   },
+   {
+    "file": "bundle/bundle.json",
+    "verdict": "IDENTICAL",
+    "bytes": 2434
+   },
+   {
+    "file": "bundle/index.html",
+    "verdict": "IDENTICAL",
+    "bytes": 1447
+   },
+   {
+    "file": "bundle/manifest.webmanifest",
+    "verdict": "IDENTICAL",
+    "bytes": 264
+   },
+   {
+    "file": "bundle/membrane.js",
+    "verdict": "IDENTICAL",
+    "bytes": 8868
+   },
+   {
+    "file": "bundle/runtime.js",
+    "verdict": "IDENTICAL",
+    "bytes": 7567
+   },
+   {
+    "file": "bundle/selector.js",
+    "verdict": "IDENTICAL",
+    "bytes": 1378
+   },
+   {
+    "file": "bundle/sw.js",
+    "verdict": "IDENTICAL",
+    "bytes": 844
+   },
+   {
+    "file": "bundle/wasm64_relay.wasm",
+    "verdict": "IDENTICAL",
+    "bytes": 162
+   },
+   {
+    "file": "bundle-certificate.json",
+    "verdict": "IDENTICAL",
+    "bytes": 2807
+   },
+   {
+    "file": "candidate-strategy.json",
+    "verdict": "IDENTICAL",
+    "bytes": 895
+   },
+   {
+    "file": "canonical-ascii-0.ascii",
+    "verdict": "IDENTICAL",
+    "bytes": 1000
+   },
+   {
+    "file": "capability-ir.json",
+    "verdict": "IDENTICAL",
+    "bytes": 1041
+   },
+   {
+    "file": "diagnostics.json",
+    "verdict": "IDENTICAL",
+    "bytes": 86
+   },
+   {
+    "file": "implementation-hypergraph.json",
+    "verdict": "IDENTICAL",
+    "bytes": 2246
+   },
+   {
+    "file": "typed-system-ir.json",
+    "verdict": "IDENTICAL",
+    "bytes": 1486
+   },
+   {
+    "file": "verification-certificates.json",
+    "verdict": "IDENTICAL",
+    "bytes": 5536
+   },
+   {
+    "file": "verified-strategy.json",
+    "verdict": "IDENTICAL",
+    "bytes": 576
+   }
+  ]
+ },
+ "observe": {
+  "status": 1,
+  "ms": 2,
+  "artifacts": [
+   "OBSERVATION_DELTA:OK:1888",
+   "OBSERVED_ASCII:OK:1520"
+  ],
+  "source_sha256_after": "80ac0559b102540b7692ab74e3f24336b76f81f6dd9a3dab1419d4c7ee76ed95",
+  "lineage_sha256": "80ac0559b102540b7692ab74e3f24336b76f81f6dd9a3dab1419d4c7ee76ed95",
+  "compare": [
+   {
+    "file": "diagnostics.json",
+    "verdict": "IDENTICAL",
+    "bytes": 86
+   },
+   {
+    "file": "observation-delta.json",
+    "verdict": "IDENTICAL",
+    "bytes": 1888
+   },
+   {
+    "file": "observed.ascii",
+    "verdict": "IDENTICAL",
+    "bytes": 1520
+   }
+  ]
+ },
+ "problems": [],
+ "status": "PASS"
+}

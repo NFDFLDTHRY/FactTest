@@ -58,6 +58,12 @@ $P wasm-inspect --out "$OUT/wasm64" --id Q-WASM-04-inspect-release $W --factory 
 $P wasm-inspect --out "$OUT/wasm64" --id Q-WASM-05-inspect-dev $W --factory "$FACTORY" --module "$CARGO_TARGET_DIR/wasm64-unknown-unknown/debug/factc_wasm_abi.wasm"
 $P kernel-identity --out "$OUT/wasm64" --id Q-WASM-06-kernel-identity --root . $S --module "$CARGO_TARGET_DIR/wasm64-unknown-unknown/release/factc_wasm_abi.wasm"
 $P browser-abi --out "$OUT/wasm64" --id Q-WASM-07-chromium-abi-release $W --module "$CARGO_TARGET_DIR/wasm64-unknown-unknown/release/factc_wasm_abi.wasm" --source tests/bootstrap/b7-opaque.ascii
+# D23: the whole transport in Chromium - BUILD + OBSERVE through the wasm exports, compared byte-for-byte with the native
+# driver (built by Q-HOST-01) on the commissioning fixtures; the native run is the reference, never the verdict
+NB="$OUT/wasm64/native"; mkdir -p "$NB"
+"$CARGO_TARGET_DIR/debug/factc" check build --out "$NB/build" --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii fixtures/commissioning/byte-relay.ascii > "$NB/build.log" 2>&1 || true
+"$CARGO_TARGET_DIR/debug/factc" observe --out "$NB/observe" --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --source fixtures/commissioning/byte-relay.ascii --bundle-manifest "$NB/build/bundle/bundle.json" --evidence-class PHYSICAL_BROWSER > "$NB/observe.log" 2>&1 || true
+$P browser-build --out "$OUT/wasm64" --id Q-WASM-08-chromium-build-release $W --module "$CARGO_TARGET_DIR/wasm64-unknown-unknown/release/factc_wasm_abi.wasm" --source fixtures/commissioning/byte-relay.ascii --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --native-build "$NB/build" --native-observe "$NB/observe"
 
 echo "== CROSS_SET diagnostics ($HOST_TC; proof weight NONE)"
 X="--set CROSS_SET $S --chan stable --root ."

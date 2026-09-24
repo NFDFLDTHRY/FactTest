@@ -7,7 +7,8 @@
 //   findings_classified        every automated finding item is covered by exactly the issue inventory (no finding
 //                              unclassified, no issue covering nothing)
 //   issues_well_formed         every issue has a class A..G, a task (D22..D26, owner or none), existing surfaces and,
-//                              for stale-documentation issues, a marker still present in the file (D21 = this delta)
+//                              for stale-documentation issues, a marker still present in the file while the issue is open
+//                              and absent once its status starts with REPAIRED (D21 = this delta)
 //   historical_not_executable  no live tool reads a historical evidence package except where an issue records it
 // Generic: names no component, file or issue itself.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -32,7 +33,9 @@ for (const is of I.issues) {
   if (!/^[A-G]$/.test(is.class)) bad.push(`${is.id}: class ${is.class}`);
   if (!/^(D2[1-6]|owner|none)$/.test(is.task)) bad.push(`${is.id}: task ${is.task}`);
   for (const s of is.surfaces || []) if (!existsSync(join(o.root, s))) bad.push(`${is.id}: surface ${s} absent`);
-  for (const m of is.markers || []) { const body = existsSync(join(o.root, m.file)) ? readFileSync(join(o.root, m.file), 'utf8') : ''; if (!new RegExp(m.pattern).test(body)) bad.push(`${is.id}: marker not found in ${m.file}`); }
+  // an open issue's marker (the stale text) is still in the file; a REPAIRED issue's marker is gone (D23)
+  const repaired = /^REPAIRED\b/.test(is.status || '');
+  for (const m of is.markers || []) { const body = existsSync(join(o.root, m.file)) ? readFileSync(join(o.root, m.file), 'utf8') : ''; const present = new RegExp(m.pattern).test(body); if (!repaired && !present) bad.push(`${is.id}: marker not found in ${m.file}`); if (repaired && present) bad.push(`${is.id}: repaired, but its marker is still in ${m.file}`); }
   if (!is.finding_text || !is.repair) bad.push(`${is.id}: finding_text or repair missing`);
 }
 add('issues_well_formed', bad, `${I.issues.length} issues: ${Object.entries(I.issues.reduce((m, is) => (m[is.class] = (m[is.class] || 0) + 1, m), {})).sort().map(([k, v]) => `${k} ${v}`).join(', ')}`);

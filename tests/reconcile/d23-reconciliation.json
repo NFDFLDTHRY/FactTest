@@ -1,0 +1,42 @@
+{
+ "schema": "facttest-reconciliation/1",
+ "epoch": "D23",
+ "law": "design/materialization/D23-INTENDED-COMPILER-ABI-EXECUTION.md",
+ "question": "Which current statement does the D23 transport extension of the wasm64 kernel supersede?",
+ "traversal_steps": ["AUTHORITY_CHANGED", "CONSTRAINT", "FACT", "IMPLEMENTATION_CONTRACT", "ENVIRONMENT", "OLD_PROBE_SUFFICIENT", "OLD_EVIDENCE_APPLICABLE"],
+ "outcomes": {
+  "SUPERSEDED": "a successor node is now the current statement; the superseded node stays in the graph as history"
+ },
+ "inherits": {
+  "AUTHORITY": {"out": ["AUTHORIZES", "DEPENDS_ON", "CONFLICTS_WITH"], "in": ["DEPENDS_ON", "CONFLICTS_WITH"]},
+  "COMPUTATIONAL_FACT": {"out": ["PROBED_BY", "EVIDENCED_BY", "ADMITTED_BY", "REQUIRES", "EXPOSED_BY", "STALE_IF", "IMPLEMENTED_BY"], "in": ["AUTHORIZES", "GROUNDS", "EXPLAINS", "WITNESSED_BY", "REQUIRES"]}
+ },
+ "retired_texts": [
+  "the kernel identity is the exec identity e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2"
+ ],
+ "new_facts": [],
+ "supersessions": [
+  {"old": "FACT-KERNEL-IDENTITY-DEFINED-D18", "new": "FACT-KERNEL-IDENTITY-D23", "reconciliation": "R-64"}
+ ],
+ "add_edges": [],
+ "items": [
+  {
+   "id": "R-64",
+   "subject": "kernel identity after the D23 transport extension",
+   "reconciles": ["FACT-KERNEL-IDENTITY-DEFINED-D18"],
+   "outcome": "SUPERSEDED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none (AUTH-CARGO-BUILD-STD unchanged; the same pinned nightly)",
+    "CONSTRAINT": "none",
+    "FACT": "FACT-KERNEL-IDENTITY-DEFINED-D18 states the exec identity e8d6582665... of the eight-export kernel; D23 changed compiler/wasm-abi/src/lib.rs (nine transport exports, 512 KiB I/O buffers), so the release kernel built by the same toolchain has a new exec identity fcaee2a6... - identical under both rustup install names, as D17/D18 defined identity to be",
+    "IMPLEMENTATION_CONTRACT": "tests/toolchain/proof-sets.json kernel_identity: exec_identity re-pinned from the committed source (the identity is source-exact: panic locations carry line numbers); the eight-export identity and its whole-file shas kept under kernel_identity.history",
+    "ENVIRONMENT": "ENV-D23-HOST (nightly-2026-09-24, rustc 6eeff9a52); the kernel-sections probe ran under both install names (tests/implementation/build-kernels.sh)",
+    "OLD_PROBE_SUFFICIENT": "yes: PROBE-KERNEL-SECTIONS and PROBE-QUALIFIED-PROOF (Q-WASM-06) measure the new kernel exactly as they measured the old one",
+    "OLD_EVIDENCE_APPLICABLE": "no for the identity value: EV-D13-KERNEL-IDENTITY, EV-D17-KERNEL-SECTIONS, EV-D18-KERNEL-IDENTITY-A/B and EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY record the eight-export kernel; they remain the history of that kernel (inherited edges carry the reconciliation)"
+   },
+   "surfaces": ["tests/toolchain/proof-sets.json", "docs/HANDOFF.md"],
+   "note": "successor FACT-KERNEL-IDENTITY-D23 [RUN]: the same definition (every section except the custom name section, install-name independent), a new value; the definition fact's history is untouched",
+   "new_probe_obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+$ node tests/toolchain/run-crate-dag.mjs --out evidence/D23/crates --target /home/user/factory-target-w28 --browser-probe evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.json
+(cwd .)
+PASS factc-foundation: build-dev, build-release, focused-tests 9/9, consumer:factory 29/29, consumer:factc-source -, consumer:factc-semantic -, consumer:factc-capability -, consumer:factc-implementation -, consumer:factc-planning -, consumer:factc-verifier -, consumer:factc-codegen 1/1, consumer:factc-bundle -, consumer:factc-observe -, consumer:factc-kernel 76/76, consumer:factc-wasm-abi -, consumer:factc 7/7
+PASS factc-source: build-dev, build-release, focused-tests -, consumer:factc-semantic -, consumer:factc-capability -, consumer:factc-implementation -, consumer:factc-planning -, consumer:factc-verifier -, consumer:factc-codegen 1/1, consumer:factc-observe -, consumer:factc-kernel 76/76
+PASS factc-semantic: build-dev, build-release, focused-tests -, consumer:factc-capability -, consumer:factc-implementation -, consumer:factc-planning -, consumer:factc-verifier -, consumer:factc-codegen 1/1, consumer:factc-bundle -, consumer:factc-kernel 76/76
+PASS factc-capability: build-dev, build-release, focused-tests -, consumer:factc-implementation -, consumer:factc-planning -, consumer:factc-verifier -, consumer:factc-codegen 1/1, consumer:factc-kernel 76/76
+PASS factc-implementation: build-dev, build-release, focused-tests -, consumer:factc-planning -, consumer:factc-verifier -, consumer:factc-codegen 1/1, consumer:factc-bundle -, consumer:factc-kernel 76/76
+PASS factc-planning: build-dev, build-release, focused-tests -, consumer:factc-verifier -, consumer:factc-kernel 76/76
+PASS factc-verifier: build-dev, build-release, focused-tests -, consumer:factc-codegen 1/1, consumer:factc-bundle -, consumer:factc-kernel 76/76
+PASS factc-codegen: build-dev, build-release, focused-tests 1/1, consumer:factc-bundle -, consumer:factc-kernel 76/76
+PASS factc-bundle: build-dev, build-release, focused-tests -, consumer:factc-kernel 76/76
+PASS factc-observe: build-dev, build-release, focused-tests -, consumer:factc-kernel 76/76
+PASS factc-kernel: build-dev, build-release, focused-tests 76/76, consumer:factc-wasm-abi -, consumer:factc 7/7
+PASS factc: build-dev, build-release, focused-tests 7/7
+PASS factory: build-dev, build-release, focused-tests 29/29
+PASS factc-wasm-abi: build-dev, build-release, focused-tests, consumer:browser
+PASS crate DAG: 14 crates in dependency order; 931 tests passed, 0 failed
+
+[exit 0] expected 0

@@ -1,0 +1,8 @@
+$ sh -c node -e 'const s=JSON.parse(require("fs").readFileSync("evidence/D23/proof/summary.json"));const t=s.tally;console.log(JSON.stringify(t),s.obligations.length);if(s.obligations.length!==27||t.PASS!==22||t.FAIL||t.OBS!==3||t.HEURISTIC!==2)process.exit(1);const q8=s.obligations.find(o=>o.id==="Q-WASM-08-chromium-build-release");const q6=s.obligations.find(o=>o.id==="Q-WASM-06-kernel-identity");if(!q8||q8.verdict!=="PASS"||!q6||q6.verdict!=="PASS")process.exit(1);const c=JSON.parse(require("fs").readFileSync("evidence/D23/crates/summary.json"));console.log(c.status,c.order.length,JSON.stringify(c.tests_run));if(c.status!=="PASS"||c.order.length!==14||c.tests_run.failed)process.exit(1);const k=JSON.parse(require("fs").readFileSync("evidence/D23/kernel/sections.json"));const pin=JSON.parse(require("fs").readFileSync("tests/toolchain/proof-sets.json")).sets.WASM64_KERNEL_SET.kernel_identity;console.log(k.builds.map(b=>b.label+":"+b.identity_excluding_custom.slice(0,12)).join(" "));if(!k.builds.every(b=>b.identity_excluding_custom===pin.exec_identity.sha256))process.exit(1);const bl=JSON.parse(require("fs").readFileSync("evidence/D23/kernel/builds.json"));for(const b of bl.builds){const w=pin.by_install_name[b.install_name+"-x86_64-unknown-linux-gnu"];if(!w||w.sha256!==b.wasm_sha256||w.bytes!==b.bytes){console.log("whole-file sha not as pinned",b.label);process.exit(1)}}console.log("matrix, DAG and kernel identity as predicted")'
+(cwd .)
+{"PASS":22,"OBS":3,"HEURISTIC":2} 27
+PASS 14 {"passed":931,"failed":0}
+INSTALL-PINNED:fcaee2a6973e INSTALL-RENAMED:fcaee2a6973e
+matrix, DAG and kernel identity as predicted
+
+[exit 0] expected 0

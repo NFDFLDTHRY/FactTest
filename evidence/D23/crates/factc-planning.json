@@ -1,0 +1,63 @@
+{
+ "crate": "factc-planning",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "compiler/planning/Cargo.toml",
+ "dependencies": [
+  "factc-capability",
+  "factc-foundation",
+  "factc-implementation",
+  "factc-semantic",
+  "factc-source"
+ ],
+ "consumers": [
+  "factc-verifier",
+  "factc-kernel"
+ ],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factc-planning",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factc-planning",
+   "exit": 0,
+   "ms": 33,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "exit": null,
+   "note": "no tests of its own: exercised by its consumers below"
+  },
+  {
+   "step": "consumer:factc-verifier",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-kernel",
+   "command": "cargo +1.94.1 test -p factc-kernel",
+   "exit": 0,
+   "ms": 596,
+   "tests": {
+    "passed": 76,
+    "failed": 0
+   },
+   "tail": [
+    "     Running tests/observe_ladder.rs (/home/user/factory-target-w28/debug/deps/observe_ladder-92877860eab04228)",
+    "     Running tests/strategy_ladder.rs (/home/user/factory-target-w28/debug/deps/strategy_ladder-619e49d88d66cb9c)",
+    "   Doc-tests factc_kernel"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

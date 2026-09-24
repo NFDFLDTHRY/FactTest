@@ -33501,6 +33501,442 @@
    "source_ref": "evidence/D22/witnesses.json",
    "owner": "D22 (derived from the evidence named by its edges)",
    "introduced_in": "D22"
+  },
+  {
+   "id": "ENV-D23-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D23-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "none (records compared; cargo metadata only)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": []
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D23/identity/{host,toolchains,repo}.json",
+   "note": "D23 environment identity (host of the run this epoch binds)",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "IMPL-KERNEL-BUILD-PROBE",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-KERNEL-BUILD-PROBE",
+   "repo_path": "host/harness/kernel-build-probe.mjs",
+   "commit": "introduced by D23-COMPILER-ABI-EXECUTION (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "BUILD + OBSERVE driven in Chromium through the wasm exports; every artifact and bundle file compared byte-for-byte with host/factc (D23)",
+   "owner": "host/harness/kernel-build-probe.mjs",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "IMPL-CRATE-DAG",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-CRATE-DAG",
+   "repo_path": "tests/toolchain/run-crate-dag.mjs",
+   "commit": "introduced by D23-COMPILER-ABI-EXECUTION (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "per-crate compile -> focused tests -> consumer test in Cargo's dependency order over the proof sets (D23)",
+   "owner": "tests/toolchain/run-crate-dag.mjs",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "PROBE-CRATE-DAG",
+   "class": "PROBE",
+   "probe_id": "PROBE-CRATE-DAG",
+   "proves_fact": [
+    "FACT-D23-COMPILER-DAG-EXECUTED"
+   ],
+   "command_or_operation": "node tests/toolchain/run-crate-dag.mjs --out DIR --browser-probe Q-WASM-08-RECORD: for every HOST_NATIVE_SET root in dependency order cargo build (dev), build (release), test (focused), then the tests of every direct consumer; the WASM64_KERNEL_SET root built core-only under the pinned nightly with the browser build probe as its consumer test",
+   "expected_observations": [
+    "every crate PASS in dependency order",
+    "every consumer test that exists passes",
+    "the wasm64 root builds dev and release and its browser consumer PASS"
+   ],
+   "failure_meaning": [
+    "a crate does not compile, its own tests fail, or a consumer's tests fail after it: the DAG does not execute according to its contracts"
+   ],
+   "implemented_by": "IMPL-CRATE-DAG",
+   "owner": "IMPL-CRATE-DAG",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "PROBE-BROWSER-BUILD",
+   "class": "PROBE",
+   "probe_id": "PROBE-BROWSER-BUILD",
+   "proves_fact": [
+    "FACT-D23-WASM-TRANSPORT-COMPLETE",
+    "FACT-D23-C14-TEXT-OWNER"
+   ],
+   "command_or_operation": "node tests/toolchain/proof.mjs browser-build (Q-WASM-08) -> node host/harness/kernel-build-probe.mjs MODULE --source --contracts --metrics --tape --system --native-build --native-observe --out: Chromium instantiates the release wasm64 kernel with zero imports, submits source + registry + metrics, runs CHECK_OR_COMPILE(BUILD), reads diagnostics, metadata, every artifact and every bundle file; resets; submits the tape and the identities, runs OBSERVE, reads its artifacts; each file compared byte-for-byte with the native driver's run",
+   "expected_observations": [
+    "BUILD status 1 and OBSERVE status 1 in Chromium",
+    "every artifact and bundle file identical to host/factc's"
+   ],
+   "failure_meaning": [
+    "an export is missing, refuses, or produces bytes that differ from the native transport: the browser boundary does not carry the kernel API"
+   ],
+   "implemented_by": "IMPL-KERNEL-BUILD-PROBE",
+   "owner": "IMPL-KERNEL-BUILD-PROBE",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-CRATES-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-CRATES-SUMMARY",
+   "probe_ref": "PROBE-CRATE-DAG",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/crates/summary.json",
+    "sha256": "468df27533a13cf224f00616c29e325fee1caf27457a24cc44e0f163e13c42d1",
+    "bytes": 1981,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "14 crates PASS in dependency order; 931 tests passed, 0 failed",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-CRATES-FACTC-KERNEL",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-CRATES-FACTC-KERNEL",
+   "probe_ref": "PROBE-CRATE-DAG",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/crates/factc-kernel.json",
+    "sha256": "33e25c07070d5e30441d98793357d7ade7fefad48909fb77b7995aa13a32d462",
+    "bytes": 1913,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "the kernel: build dev + release, 76 ladder tests, consumers factc (7 driver tests) and the wasm64 root",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-CRATES-FACTC",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-CRATES-FACTC",
+   "probe_ref": "PROBE-CRATE-DAG",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/crates/factc.json",
+    "sha256": "817edcebc7a2a48fd1b073ff7cabfa29ea4df5fe489ca9f2199a05be874bd100",
+    "bytes": 1092,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "the native driver: build dev + release, 7 driver tests (queries, exit codes, analyze, build, B-07 behaviour, determinism, observe)",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "subject": "the compiler DAG (foundation -> source -> semantic -> capability -> implementation -> planning -> verifier -> codegen -> bundle -> observe -> kernel), the native driver, the Factory crate and the wasm64 root at the D23 tree",
+   "predicate": "every crate compiles (dev and release) under HOST_NATIVE_SET in Cargo's dependency order, its focused tests pass, and the tests of each direct consumer pass after it (foundation 9 unit tests, codegen 1, kernel ladders 76, factc driver 7, factory law 29; 931 test executions in the run); the wasm64 root builds core-only (dev, release) under WASM64_KERNEL_SET and its browser consumer passes",
+   "required_environment": [
+    "HOST_NATIVE_SET (rustc 1.94.1) and WASM64_KERNEL_SET (nightly-2026-09-24) on the host; Chromium headless shell 141 via Playwright for the wasm64 consumer"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "I-19 closed: the DAG order and the consumer tests are executed and recorded per crate (evidence/D23/crates); crates without tests of their own say so and are exercised by their consumers",
+   "source_ref": "evidence/D23/crates/summary.json",
+   "owner": "D23 (derived from the evidence named by its edges)",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-PROOF-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-PROOF-SUMMARY",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/proof/summary.json",
+    "sha256": "1cbf461a3ebe37737e7e5981691fe6d9a3831266629eb9570d099fc5f81e0818",
+    "bytes": 31233,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "27 obligations: PASS 22, OBS 3, HEURISTIC 2; mutants: 8 of 8 refused by the qualified check and accepted by the weak check",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "FACT-D23-QUALIFIED-PROOF",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D23-QUALIFIED-PROOF",
+   "subject": "the qualified proof matrix (tests/toolchain/run-qualified-proof.sh) at the D23 tree",
+   "predicate": "27 obligations: HOST_NATIVE_SET build dev, build release, test dev, test release, clippy, three exact compile-fail diagnostics; ALL_SOURCES fmt; ALL_MEMBERS_GRAPH Cargo-resolved first-party graph and physical manifest accounting, third-party fixture rejected; WASM64_KERNEL_SET clippy, core-only graph dev and release, wasm inspect dev and release, kernel identity, Chromium ABI (ANALYZE) and Chromium BUILD + OBSERVE (Q-WASM-08); pins and set partition; CROSS_SET diagnostics (weight NONE) and heuristic scanners (weight NONE); the eight mutants refused by the qualified judge - PASS 22, OBS 3, HEURISTIC 2, no FAIL",
+   "required_environment": [
+    "HOST_NATIVE_SET and WASM64_KERNEL_SET on the host; Chromium headless shell 141 via Playwright"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "the D23 matrix adds Q-WASM-08 to the D13 matrix; every cargo call names its pinned toolchain",
+   "source_ref": "evidence/D23/proof/summary.json",
+   "owner": "D23 (derived from the evidence named by its edges)",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-PROOF-WASM64-Q-WASM-08-CHROMIUM-BUILD-RELEASE-BROWSER-BUILD-PROBE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-PROOF-WASM64-Q-WASM-08-CHROMIUM-BUILD-RELEASE-BROWSER-BUILD-PROBE",
+   "probe_ref": "PROBE-BROWSER-BUILD",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/probe.json",
+    "sha256": "5aa43b56d9705b95b7386295dbc6c935c4cb6eef65d8920e06d635b1a5911613",
+    "bytes": 3814,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "BUILD status 1, OBSERVE status 1; 21/21 files identical to the native driver; 22 exports, imports []",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-PROOF-WASM64-Q-WASM-08-CHROMIUM-BUILD-RELEASE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-PROOF-WASM64-Q-WASM-08-CHROMIUM-BUILD-RELEASE",
+   "probe_ref": "PROBE-BROWSER-BUILD",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.json",
+    "sha256": "bf7ad89be5e9e6d4524185996674ac6c59f9116080386ff2fc0c26eebf2ee9f7",
+    "bytes": 1860,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "obligation record: verdict PASS on the release kernel",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "subject": "the browser transport boundary (compiler/wasm-abi) against the public kernel API (compiler/kernel/src/abi.rs) and the native transport (host/factc)",
+   "predicate": "the wasm64 export surface carries every kernel operation the native driver carries (22 exports: the C14 eight, the buffer accessors, and submit_contracts, submit_metrics, submit_evidence_tape, observe, artifact_count, read_artifact, bundle_file_count, bundle_file_path, bundle_file_bytes); in Chromium, BUILD from source + registry + metrics and OBSERVE from the tape produce diagnostics, artifact metadata, every artifact and every bundle file byte-for-byte identical to the native driver's run (21 of 21 files); the module has zero imports",
+   "required_environment": [
+    "Chromium headless shell 141 (Playwright 1.56.1) with wasm64 (memory64) enabled by default",
+    "WASM64_KERNEL_SET release kernel"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "D12 B-06 decided from the current contracts as A/B (missing transport for implemented semantics): no compiler semantic was invented - every export calls one existing kernel function, the observe frame is transport encoding, which C14 defers; the eight-operation C14 text is an owner item (I-29)",
+   "source_ref": "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/probe.json",
+   "owner": "D23 (derived from the evidence named by its edges)",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-KERNEL-BUILDS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-KERNEL-BUILDS",
+   "probe_ref": "PROBE-KERNEL-SECTIONS",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/kernel/builds.json",
+    "sha256": "a5531fb6ed15b5c613af913033dde271c74d45ade0f76f199954100f45704a19",
+    "bytes": 1084,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "INSTALL-PINNED and INSTALL-RENAMED release builds under rustc 6eeff9a52; whole-file sha256 per install name",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-KERNEL-SECTIONS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-KERNEL-SECTIONS",
+   "probe_ref": "PROBE-KERNEL-SECTIONS",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/kernel/sections.json",
+    "sha256": "c22de5dff453713b73cd85318fc35838cec9ffd5edfc335c6675af9dc142a162",
+    "bytes": 5485,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "section-by-section comparison: only the custom name section differs; identity excluding it identical for both builds",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "EV-D23-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D23-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D23-HOST",
+   "artifact_identity": {
+    "path": "evidence/D23/proof/wasm64/Q-WASM-06-kernel-identity.json",
+    "sha256": "7640d383e61e280d3f070c18347fd60a6ab15a565dcd44cbeaa5b59bf842786f",
+    "bytes": 1962,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "the matrix's release kernel has the declared exec identity",
+   "epoch": "D23",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D23-COMPILER-ABI-EXECUTION",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "FACT-KERNEL-IDENTITY-D23",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-KERNEL-IDENTITY-D23",
+   "subject": "WASM64_KERNEL_SET release kernel identity after the D23 transport extension",
+   "predicate": "the kernel identity is the exec identity fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976 (sha256 over every section except the custom \"name\" section; tests/toolchain/proof-sets.json exec_identity, checked by tests/toolchain/proof.mjs kernel-identity), equal for the builds under both rustup install names; the whole-file sha256 stays recorded per install name (fa5c7131... pinned name, 6deeebc6... renamed); the identity is source-exact (panic locations carry line numbers), so it is pinned from the committed source",
+   "required_environment": [
+    "pinned toolchain WASM64_KERNEL_SET nightly-2026-09-24 (rustc 6eeff9a52), -Z build-std=core, -C link-arg=-zstack-size=16777216"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "supersedes FACT-KERNEL-IDENTITY-DEFINED-D18 (R-64): the same definition, a new value; the eight-export identity e8d6582665... is kept as history in proof-sets.json",
+   "source_ref": "evidence/D23/kernel/sections.json; evidence/D23/proof/wasm64/Q-WASM-06-kernel-identity.json",
+   "owner": "D23 (derived from the evidence named by its edges)",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "FACT-D23-C14-TEXT-OWNER",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D23-C14-TEXT-OWNER",
+   "subject": "BOOTSTRAP-CONTRACTS.md C14 (the bootstrap ABI contract text)",
+   "predicate": "the contract text lists eight semantic operations and defers transport encoding, while the kernel API and both transports carry fourteen operations (22 wasm exports); no registered station may annotate BOOTSTRAP-CONTRACTS.md, so the text can be amended only by the owner (I-29); until then compiler/kernel/src/abi.rs is the record of the operations and D23 the proof of both transports",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "GAP",
+   "note": "explicit stop: OWNER decision (an insertion-only C14 annotation, or a StationSpec granting the document); not a defect of the implementation",
+   "source_ref": "tests/manifest/issues.json I-29",
+   "owner": "D23 (derived from the evidence named by its edges)",
+   "introduced_in": "D23"
+  },
+  {
+   "id": "R-64",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-64",
+   "subject": "kernel identity after the D23 transport extension",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none (AUTH-CARGO-BUILD-STD unchanged; the same pinned nightly)",
+    "CONSTRAINT": "none",
+    "FACT": "FACT-KERNEL-IDENTITY-DEFINED-D18 states the exec identity e8d6582665... of the eight-export kernel; D23 changed compiler/wasm-abi/src/lib.rs (nine transport exports, 512 KiB I/O buffers), so the release kernel built by the same toolchain has a new exec identity fcaee2a6... - identical under both rustup install names, as D17/D18 defined identity to be",
+    "IMPLEMENTATION_CONTRACT": "tests/toolchain/proof-sets.json kernel_identity: exec_identity re-pinned from the committed source (the identity is source-exact: panic locations carry line numbers); the eight-export identity and its whole-file shas kept under kernel_identity.history",
+    "ENVIRONMENT": "ENV-D23-HOST (nightly-2026-09-24, rustc 6eeff9a52); the kernel-sections probe ran under both install names (tests/implementation/build-kernels.sh)",
+    "OLD_PROBE_SUFFICIENT": "yes: PROBE-KERNEL-SECTIONS and PROBE-QUALIFIED-PROOF (Q-WASM-06) measure the new kernel exactly as they measured the old one",
+    "OLD_EVIDENCE_APPLICABLE": "no for the identity value: EV-D13-KERNEL-IDENTITY, EV-D17-KERNEL-SECTIONS, EV-D18-KERNEL-IDENTITY-A/B and EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY record the eight-export kernel; they remain the history of that kernel (inherited edges carry the reconciliation)"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "tests/toolchain/proof-sets.json",
+    "docs/HANDOFF.md"
+   ],
+   "note": "successor FACT-KERNEL-IDENTITY-D23 [RUN]: the same definition (every section except the custom name section, install-name independent), a new value; the definition fact's history is untouched",
+   "new_probe_obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)",
+   "owner": "tests/reconcile/d23-reconciliation.json (reviewed; D23)",
+   "introduced_in": "D23"
   }
  ],
  "edges": [
@@ -51807,6 +52243,416 @@
     "dimension": "toolchain.stable.rustc_commit",
     "relation": "the HOST_NATIVE_SET toolchain changes"
    }
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-CRATE-DAG",
+   "to": "IMPL-CRATE-DAG"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-BROWSER-BUILD",
+   "to": "IMPL-KERNEL-BUILD-PROBE"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "PROBE-CRATE-DAG"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "EV-D23-CRATES-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "EV-D23-CRATES-FACTC-KERNEL"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "EV-D23-CRATES-FACTC"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "ENV-D23-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "IMPL-KERNEL-CRATES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "IMPL-CRATE-DAG"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "compiler/, host/ or the proof sets change"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-COMPILER-DAG-EXECUTED",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "toolchain.stable.rustc_commit",
+    "relation": "the HOST_NATIVE_SET toolchain changes"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "EV-D23-PROOF-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "ENV-D23-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "IMPL-QUALIFIED-PROOF"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "IMPL-KERNEL-CRATES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "compiler/, host/, fixtures/ or tests/toolchain change"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "toolchain.stable.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-QUALIFIED-PROOF",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "PROBE-BROWSER-BUILD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "EV-D23-PROOF-WASM64-Q-WASM-08-CHROMIUM-BUILD-RELEASE-BROWSER-BUILD-PROBE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "EV-D23-PROOF-WASM64-Q-WASM-08-CHROMIUM-BUILD-RELEASE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "ENV-D23-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "IMPL-KERNEL-CRATES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "IMPL-KERNEL-BUILD-PROBE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "compiler/wasm-abi, compiler/kernel/src/abi.rs, host/factc or host/harness change"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "PROBE-KERNEL-SECTIONS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D23-KERNEL-BUILDS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D23-KERNEL-SECTIONS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D23-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D23-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "IMPL-QUALIFIED-PROOF"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "IMPL-KERNEL-SECTIONS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any source of the core-only wasm64 graph changes (the identity is source-exact)"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D23-C14-TEXT-OWNER",
+   "to": "PROBE-BROWSER-BUILD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D23-C14-TEXT-OWNER",
+   "to": "EV-D23-PROOF-WASM64-Q-WASM-08-CHROMIUM-BUILD-RELEASE-BROWSER-BUILD-PROBE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D23-C14-TEXT-OWNER",
+   "to": "ENV-D23-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D23-C14-TEXT-OWNER",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D23-C14-TEXT-OWNER",
+   "to": "ENV-D23-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "BOOTSTRAP-CONTRACTS.md or a StationSpec changes"
+   }
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-64",
+   "to": "FACT-KERNEL-IDENTITY-DEFINED-D18"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "reconciliation": "R-64"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D17-KERNEL-SECTIONS",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D18-KERNEL-IDENTITY-A",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D18-KERNEL-IDENTITY-B",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D17-TOOLCHAIN",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D17-TOOLCHAIN",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   },
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "IMPL-QUALIFIED-PROOF",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D13-KERNEL-IDENTITY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.install_name",
+    "relation": "changes (build-std hashes the rust-src path)"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CARGO-BUILD-STD",
+   "to": "FACT-KERNEL-IDENTITY-D23"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "FACT-KERNEL-IDENTITY-D23"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-D23",
+   "to": "ENV-D19-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.install_name",
+    "relation": "changes (build-std hashes the rust-src path)"
+   }
   }
  ],
  "epochs": [
@@ -51970,7 +52816,15 @@
    "summary": "Factory self-qualification: 16 refusal reasons witnessed (29 law tests + collision witness), 6 accepted attacks reproduced and repaired, the judge built from this tree identified and qualified for D23-D26 (3 facts [RUN], 5 evidence records)",
    "nodes_added": 10,
    "edges_added": 34
+  },
+  {
+   "epoch": "D23",
+   "delta": "D23-COMPILER-ABI-EXECUTION",
+   "commit": "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 (canonical base; integration commit in LEDGER AFTER)",
+   "summary": "1 reconciliations (SUPERSEDED 1); 1 supersessions (16 inherited edges); 0 constraints ledgered; 0 clauses",
+   "nodes_added": 20,
+   "edges_added": 67
   }
  ],
- "current_epoch": "D22"
+ "current_epoch": "D23"
 }

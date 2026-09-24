@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D23-INTENDED-COMPILER-ABI-EXECUTION.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as a43c0ce9496bb62f5dc8b8d68dc746ca9e453660' design/materialization/LEDGER.md && grep -q '^## D23-COMPILER-ABI-EXECUTION' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]
+(cwd .)
+
+[exit 0] expected 0

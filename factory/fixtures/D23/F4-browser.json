@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F4-browser",
+  "station_id": "S-BROWSER",
+  "selected_inputs": [
+    "D23 section 4 (host identity)"
+  ],
+  "narrowed_may_change": [
+    "evidence/D23/identity/",
+    "evidence/D23/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reprove/identity.mjs",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D23/identity"
+        ],
+        "log": "evidence/D23/logs/F4-identity.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D23/identity/host.json",
+    "evidence/D23/identity/toolchains.json",
+    "evidence/D23/identity/repo.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D23-COMPILER-ABI-EXECUTION"
+}

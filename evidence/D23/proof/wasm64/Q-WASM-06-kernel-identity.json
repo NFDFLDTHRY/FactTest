@@ -1,0 +1,39 @@
+{
+  "id": "Q-WASM-06-kernel-identity",
+  "class": "T13-KRN",
+  "invariant": "the release kernel built by the pinned nightly has the declared exec identity (install-name independent); whole-file sha256 reported per install name",
+  "proof_set": "WASM64_KERNEL_SET",
+  "evaluated": "2026-09-24T13:55:12.571Z",
+  "target": "wasm64-unknown-unknown",
+  "profile": "release",
+  "toolchain": {
+    "channel": "nightly-2026-09-24",
+    "requested": "nightly-2026-09-24",
+    "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+    "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "rustc_release": "1.100.0-nightly",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "23.1.1",
+    "cargo": "cargo 1.100.0-nightly (98a09e7e7 2026-09-21)",
+    "available": true,
+    "error": null
+  },
+  "sysroot": "/root/.rustup/toolchains/nightly-2026-09-24-x86_64-unknown-linux-gnu",
+  "install_name": "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+  "module": "/home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+  "sha256": "fa5c7131fa8c6d43090672ae718dccbb536cc6d4a3ca70b6f54c4259412ae42f",
+  "bytes": 3373536,
+  "exec_identity": "fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976",
+  "declared_exec_identity": "fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976",
+  "excluded_custom_sections": [
+    "name"
+  ],
+  "whole_file": "whole file == recorded for install nightly-2026-09-24-x86_64-unknown-linux-gnu (informational)",
+  "declared": {
+    "sha256": "fa5c7131fa8c6d43090672ae718dccbb536cc6d4a3ca70b6f54c4259412ae42f",
+    "bytes": 3373536,
+    "source": "evidence/D23/kernel/builds.json (INSTALL-PINNED)"
+  },
+  "verdict": "PASS",
+  "reason": "exec identity fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976 == declared (install nightly-2026-09-24-x86_64-unknown-linux-gnu); whole file == recorded for install nightly-2026-09-24-x86_64-unknown-linux-gnu (informational)"
+}

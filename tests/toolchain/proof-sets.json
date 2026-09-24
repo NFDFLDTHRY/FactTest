@@ -7,33 +7,108 @@
     "HOST_NATIVE_SET": {
       "toolchain": "1.94.1",
       "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
-      "components": ["clippy", "rustfmt"],
+      "components": [
+        "clippy",
+        "rustfmt"
+      ],
       "target": "host (x86_64-unknown-linux-gnu)",
       "selection": "default-members (bare cargo)",
-      "roots": ["factory", "factc-foundation", "factc-source", "factc-semantic", "factc-capability", "factc-implementation", "factc-planning", "factc-verifier", "factc-codegen", "factc-bundle", "factc-observe", "factc-kernel", "factc"],
-      "profiles": ["dev", "release"],
+      "roots": [
+        "factory",
+        "factc-foundation",
+        "factc-source",
+        "factc-semantic",
+        "factc-capability",
+        "factc-implementation",
+        "factc-planning",
+        "factc-verifier",
+        "factc-codegen",
+        "factc-bundle",
+        "factc-observe",
+        "factc-kernel",
+        "factc"
+      ],
+      "profiles": [
+        "dev",
+        "release"
+      ],
       "evidence_basis": "D9 T9-P2-*, T9-P3-01..03, T9-P4-*, T9-P6-* ran on rustc 1.94.1 (e408947bf 2026-03-25)"
     },
     "WASM64_KERNEL_SET": {
       "toolchain": "nightly-2026-09-24",
       "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
-      "components": ["rust-src", "clippy"],
+      "components": [
+        "rust-src",
+        "clippy"
+      ],
       "target": "wasm64-unknown-unknown",
       "build_std": "core",
       "rustflags": "-C link-arg=-zstack-size=16777216",
       "selection": "-p factc-wasm-abi",
-      "roots": ["factc-wasm-abi"],
-      "graph": ["factc-wasm-abi", "factc-foundation", "factc-source", "factc-semantic", "factc-capability", "factc-implementation", "factc-planning", "factc-verifier", "factc-codegen", "factc-bundle", "factc-observe", "factc-kernel"],
-      "profiles": ["dev", "release"],
+      "roots": [
+        "factc-wasm-abi"
+      ],
+      "graph": [
+        "factc-wasm-abi",
+        "factc-foundation",
+        "factc-source",
+        "factc-semantic",
+        "factc-capability",
+        "factc-implementation",
+        "factc-planning",
+        "factc-verifier",
+        "factc-codegen",
+        "factc-bundle",
+        "factc-observe",
+        "factc-kernel"
+      ],
+      "profiles": [
+        "dev",
+        "release"
+      ],
       "evidence_basis": "D9 T9-P3-04, T9-P5-02/03, T9-P8-* ran on rustc 1.100.0-nightly (6eeff9a52 2026-09-23); KRN-D13-B reproduced D9's kernel byte-for-byte",
       "kernel_identity": {
         "note": "D18: the kernel identity is exec_identity - install-name independent (D17 FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT: under two rustup install names only the custom \"name\" section differs, LLVM promoted-symbol hashes).  The whole-file sha256 differs per install name and stays recorded in by_install_name (informational, never the verdict).  Historical: D13 declared identity per install name only (H-12 [GAP]).",
         "artifact": "wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
-        "exec_identity": { "sha256": "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2", "excluded_custom_sections": ["name"], "algorithm": "sha256 over (section id byte ++ section body) of every section except the excluded custom sections, in module order (tests/implementation/wasm-sections.mjs identity_excluding_custom)", "source": "evidence/D17/kernel/sections.json (INSTALL-PINNED and INSTALL-RENAMED builds, rustc 6eeff9a52)" },
+        "exec_identity": {
+          "sha256": "fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976",
+          "excluded_custom_sections": [
+            "name"
+          ],
+          "algorithm": "sha256 over (section id byte ++ section body) of every section except the excluded custom sections, in module order (tests/implementation/wasm-sections.mjs identity_excluding_custom)",
+          "source": "evidence/D23/kernel/sections.json (D23 transport extension, 22 exports; INSTALL-PINNED and INSTALL-RENAMED builds, rustc 6eeff9a52); the identity is source-exact (panic locations carry line numbers), so it is pinned from the committed source"
+        },
         "by_install_name": {
-          "nightly-2026-09-24-x86_64-unknown-linux-gnu": { "sha256": "6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81", "bytes": 3350254, "source": "KRN-D13-A (D13 assembly)" },
-          "nightly-x86_64-unknown-linux-gnu": { "sha256": "309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c", "bytes": 3350252, "source": "D9 T9-P8-01; reproduced by KRN-D13-B" }
-        }
+          "nightly-2026-09-24-x86_64-unknown-linux-gnu": {
+            "sha256": "fa5c7131fa8c6d43090672ae718dccbb536cc6d4a3ca70b6f54c4259412ae42f",
+            "bytes": 3373536,
+            "source": "evidence/D23/kernel/builds.json (INSTALL-PINNED)"
+          },
+          "nightly-x86_64-unknown-linux-gnu": {
+            "sha256": "6deeebc649a01337c94d10a389c1ad1ad300621672fadd9e7d2eacf3344f1ace",
+            "bytes": 3373534,
+            "source": "evidence/D23/kernel/builds.json (INSTALL-RENAMED)"
+          }
+        },
+        "history": [
+          {
+            "until": "D22 (a43c0ce)",
+            "exec_identity_sha256": "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2",
+            "by_install_name": {
+              "nightly-2026-09-24-x86_64-unknown-linux-gnu": {
+                "sha256": "6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81",
+                "bytes": 3350254,
+                "source": "KRN-D13-A (D13 assembly)"
+              },
+              "nightly-x86_64-unknown-linux-gnu": {
+                "sha256": "309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c",
+                "bytes": 3350252,
+                "source": "D9 T9-P8-01; reproduced by KRN-D13-B"
+              }
+            },
+            "note": "eight-operation transport (C14 bootstrap exports only); superseded by the D23 transport extension"
+          }
+        ]
       }
     },
     "ALL_SOURCES": {
@@ -57,8 +132,14 @@
     },
     "HEURISTIC": {
       "proof_weight": "NONE",
-      "members": ["factory nostd-check", "factory depcheck"],
-      "authoritative_replacement": { "no_std": "WASM64_KERNEL_SET core-only graph (T9-P5-02/03)", "dependencies": "ALL_MEMBERS_GRAPH Cargo-resolved graph + physical manifests (T9-P6-01/03)" }
+      "members": [
+        "factory nostd-check",
+        "factory depcheck"
+      ],
+      "authoritative_replacement": {
+        "no_std": "WASM64_KERNEL_SET core-only graph (T9-P5-02/03)",
+        "dependencies": "ALL_MEMBERS_GRAPH Cargo-resolved graph + physical manifests (T9-P6-01/03)"
+      }
     }
   }
 }

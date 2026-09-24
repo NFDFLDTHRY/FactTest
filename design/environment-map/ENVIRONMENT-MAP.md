@@ -268,4 +268,8 @@ D22    D22-FACTORY-SELF-QUALIFICATION  the Factory attacked with every refusal r
                                    Factory and repaired in ops.rs (receipt integrity, identity probes, command and
                                    canonical confinement); the judge built from the tree identified; epochs/D22.json
                                    (three [RUN] facts, five records).  Judge of D23-D26.
+D23    D23-COMPILER-ABI-EXECUTION      the compiler DAG executed bottom-up on the qualified proof sets (per-crate compile,
+                                   focused tests, consumer tests; the 27-obligation matrix); the wasm transport completed
+                                   (D12 B-06 was A/B: nine exports added, BUILD + OBSERVE in Chromium byte-identical to
+                                   the native driver); the kernel identity superseded (R-64); epochs/D23.json.
 ```
