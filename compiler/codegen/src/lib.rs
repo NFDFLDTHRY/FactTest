@@ -150,6 +150,22 @@ pub fn strategy_data_json(
         .map(|r| m.name(r.name))
         .unwrap_or(b"data");
     w.kv_str("relation", rel)?;
+    w.key("goals")?;
+    w.arr()?;
+    for g in vs.goals.iter().take(vs.ngoals as usize).flatten() {
+        w.obj()?;
+        w.kv_str("metric", m.name(m.metrics[g.1 as usize].name))?;
+        w.kv_str(
+            "direction",
+            if g.0 == factc_source::GoalDir::Minimize {
+                b"minimize"
+            } else {
+                b"maximize"
+            },
+        )?;
+        w.obj_end()?;
+    }
+    w.arr_end()?;
     w.key("dispatch_order")?;
     w.arr()?;
     for v in vs.ordered() {

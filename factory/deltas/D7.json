@@ -1,0 +1,26 @@
+{
+  "delta_id": "D7-COMMISSIONING-GATE",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "578108e85c909a9f56f147b1f52e27bd02b33c34",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W7",
+  "approved_ascii_refs": ["design/materialization/M0-INTENDED-SYSTEM.md", "PASS6-TESTS.md", "PASS6.md", "COMMISSIONING-PROOF.md", "FINAL-HANDOFF-REQUIREMENTS.md"],
+  "intent": "M8 commissioning gate: anti-cheating witnesses (P6-X01/X03/X04/X05 at the compiler level, P6-X06 machinery scan), P6-A01 for the Byte Relay, removal of the last slice-specific string from the runtime template (metric refs now derive from strategy data), a second physical run under the Factory, the commissioning record mapping every PASS6-TESTS id to its evidence, and the README status",
+  "may_read": ["*"],
+  "may_change": ["compiler/codegen/", "compiler/kernel/tests/", "factory/deltas/", "factory/fixtures/", "factory/receipts/D7-COMMISSIONING-GATE/", "fixtures/commissioning/byte-relay-renamed.ascii", "fixtures/commissioning/byte-relay-compact.ascii", "fixtures/commissioning/byte-relay-labels.ascii", "tests/commissioning/", "design/materialization/LEDGER.md", "design/materialization/COMMISSIONING-RECORD.md", "README.md", "evidence/D7/", "Cargo.lock"],
+  "must_not_change": ["ASCII-GRAMMAR.md","ASCII-LANGUAGE.md","BOOTSTRAP-ARCHITECTURE.md","BOOTSTRAP-CONTRACTS.md","BOOTSTRAP-TESTS.md","CAPABILITY-MATRIX.md","CODEGEN-BUNDLE-CONTRACT.md","COMMISSIONING-ASCII.md","COMMISSIONING-FACTORY.md","COMMISSIONING-FIXTURE.md","COMMISSIONING-PROOF.md","COMMISSIONING-RUNTIME.md","COMMISSIONING-SLICE.md","COMMISSIONING-TRACE.md","CONFLICT-LEDGER.md","CONSTRAINT-LEDGER.md","EVIDENCE-OBLIGATIONS.md","FABLE-ASCII-SYSTEM-PROMPT.md","FACTORY-CONTRACTS.md","FACTORY-LAW.md","FINAL-HANDOFF-REQUIREMENTS.md","IMPLEMENTATION-CONTRACTS.md","LANGUAGE-TESTS.md","LICENSE","LOWERING-MODEL.md","PASS1.md","PASS2.md","PASS3.md","PASS4.md","PASS5-TESTS.md","PASS5.md","PASS6-GAP-REPAIRS.md","PASS6-TESTS.md","PASS6.md","PLANNED-REPO-LAYOUT.md","PLANNER-COST-MODEL.md","REFERENCE-AUTHORITY.md","REFINEMENT-LAW.md","REPRESENTATION-TRANSFER.md","RUNTIME-ADMISSION-REPLAN.md","SEMANTIC-MODEL.md","STATION-REGISTRY.md","VERIFICATION-CERTIFICATES.md", "factory/receipts/D0-BOOTSTRAP-FACTORY/", "factory/receipts/D1-COMPILER-FOUNDATION/", "factory/receipts/D2-LANGUAGE-KERNEL/", "factory/receipts/D3-LOWERING-CONTRACTS/", "factory/receipts/D4-PLANNER-VERIFIER/", "factory/receipts/D5-CODEGEN-BUNDLE/", "factory/receipts/D6-RUNTIME-EVIDENCE/", "factory/src/", "factory/registry/", "evidence/D0/", "evidence/D1/", "evidence/D2/", "evidence/D3/", "evidence/D4/", "evidence/D5/", "evidence/D6/", "design/materialization/M0-INTENDED-SYSTEM.md", "fixtures/language/", "fixtures/compiler/", "fixtures/commissioning/byte-relay.ascii", "fixtures/commissioning/contracts.ascii", "fixtures/commissioning/metrics.ascii", "fixtures/commissioning/payloads.json", "compiler/foundation/", "compiler/source/", "compiler/semantic/", "compiler/capability/", "compiler/implementation/", "compiler/planning/", "compiler/verifier/", "compiler/bundle/", "compiler/observe/", "compiler/kernel/src/", "host/"],
+  "required_station_capabilities": ["DOC_CONTRACT_FORGE", "RUST_FORGE", "WEB_HOST_FORGE", "FIXTURE_FORGE", "BUILD_VERIFY", "BROWSER_PROBE", "EVIDENCE_ASSEMBLER"],
+  "invariants": ["no slice name in compiler/factory/host machinery (P6-X06)", "semantic identity is independent of layout, labels and SystemId (P6-A01/X01/X03/X04)", "failure identities are generic (P6-X05)", "authored commissioning source and registry untouched", "physical evidence class stays PHYSICAL_BROWSER; synthetic stays SYNTHETIC_MODEL"],
+  "tests": ["compiler/kernel/tests/commissioning_ladder.rs", "tests/commissioning/run-anti-cheat.sh", "tests/commissioning/run-physical.sh (second physical run)", "all prior suites"],
+  "evidence_requirements": ["FactoryReceipt per fixture", "evidence/D7/build/test.log", "evidence/D7/anti-cheat/summary.log", "evidence/D7/physical/*", "evidence index"],
+  "expected_output_contract": {
+    "required_paths": ["compiler/kernel/tests/commissioning_ladder.rs", "tests/commissioning/run-anti-cheat.sh", "design/materialization/COMMISSIONING-RECORD.md", "evidence/D7/anti-cheat/summary.log", "evidence/D7/physical/probe-webgpu/probe-record.json", "evidence/D7/physical/observed/observed.ascii", "evidence/D7/index.json"],
+    "forbidden_paths": ["target"]
+  },
+  "fixtures": ["factory/fixtures/D7/F0-doc.json", "factory/fixtures/D7/F1-web.json", "factory/fixtures/D7/F2-rust.json", "factory/fixtures/D7/F3-fixture.json", "factory/fixtures/D7/F4-build.json", "factory/fixtures/D7/F5-browser.json", "factory/fixtures/D7/F6-evidence.json"],
+  "reinspect_commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "reinspect-test.log"}
+  ],
+  "commit_trailers": ["Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>", "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"]
+}

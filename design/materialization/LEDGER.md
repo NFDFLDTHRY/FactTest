@@ -311,5 +311,41 @@ BEFORE
         runtime records `admission WEBGPU REJECTED evidence=request reason=request_unavailable`.
 
 AFTER
+- RESULT: integrated as 578108e85c909a9f56f147b1f52e27bd02b33c34 (ff-only from e72fbe7) after one refusal
+  (MAY CHANGE `compiler/` overlapped the protected `compiler/codegen/templates/`; narrowed, W6 re-created).
+- RECEIPTS: factory/receipts/D6-RUNTIME-EVIDENCE/{F0-doc,F1-rust,F2-web,F3-fixture,F4-build,F5-browser,F6-evidence}.json PASS.
+- VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- EVIDENCE (PHYSICAL_BROWSER, produced by the S-BROWSER station): evidence/D6/physical/probe-webgpu/probe-record.json
+  verdict {e0_all_exact:true, e0_backend:WEBGPU, loss_witnessed:true, e1_all_exact:true, e1_backend:CPU_WASM64,
+  epochs:[E0,E1], no_compiler_invoked:true, bundle_unchanged:true}; adapter info vendor=google
+  architecture=swiftshader; payload A `00 01 7f 80 ff 55 aa 10` and B `de ad be ef 00 13 37 c0 ff ee` exact at E0
+  (plan 1) and E1 (plan 0); loss detail "destroy() invoked; lost reason destroyed"; probe-no-webgpu: E0 via
+  CPU_WASM64 with WEBGPU REJECTED request_unavailable (no fake GPU evidence); observed/observed.ascii with 14 derived
+  governance islands and `source_of_record OBS "authored source unchanged"`.
+- OBSERVED ASCII: the RUNTIME PLANE and the evidence loop of M0 section 1 exist and closed once physically.
+- MATCH/DIFFER: MATCH with the honesty boundary [UNK] hardware GPU (SwiftShader only on this host).
+
+---
+
+## D7-COMMISSIONING-GATE  (M8)
+
+BEFORE
+- DELTA: D7-COMMISSIONING-GATE (factory/deltas/D7.json)
+- BASE: 578108e85c909a9f56f147b1f52e27bd02b33c34
+- STATION: S-DOC, S-WEB, S-RUST, S-FIXTURE, S-BUILD, S-BROWSER, S-EVIDENCE
+- FIXTURE: F0-doc, F1-web, F2-rust, F3-fixture, F4-build, F5-browser, F6-evidence
+- READ: everything.  CHANGE: codegen template runtime.js (metric refs from strategy data) + strategy data
+  (goals), commissioning ladder tests, three commissioning witness fixtures, tests/commissioning/run-anti-cheat.sh,
+  COMMISSIONING-RECORD.md, README.md status, ledger, evidence/D7/.  FORBIDDEN: every other crate, host/, the
+  authoritative commissioning data, D0-D6 receipts/evidence, law/pass docs, M0 ASCII.
+- INVARIANTS: no slice name in machinery; identity independent of layout/labels/SystemId; generic failure ids;
+  evidence classes never conflated.
+- TESTS: commissioning ladder (4): P6-A01/X03 compact layout identical (canonical, typed IR, VerifiedStrategy,
+  emitted bundle files); P6-X01 renamed system same strategy shape and no slice name in the selector; P6-X04
+  labels change canonical text only; P6-X05 failing diagnostics/certificates carry generic ids.  run-anti-cheat.sh
+  (P6-X06).  Second physical run (P6-R01..R08, X02) under the Factory.
+- EXPECTED EVIDENCE: evidence/D7/{build,anti-cheat,physical}/*, index.json.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

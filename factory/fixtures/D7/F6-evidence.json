@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F6-evidence", "station_id": "S-EVIDENCE", "delta_id": "D7-COMMISSIONING-GATE",
+  "selected_inputs": ["evidence/D7/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D7/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["evidence", "index", "evidence/D7", "evidence/D7/index.json"], "log": "evidence/D7/index.log"}
+  ]},
+  "expected_outputs": ["evidence/D7/index.json"],
+  "tests": ["evidence indexed"], "evidence_requirements": ["index"]
+}

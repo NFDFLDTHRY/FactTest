@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F5-browser", "station_id": "S-BROWSER", "delta_id": "D7-COMMISSIONING-GATE",
+  "selected_inputs": ["fixtures/commissioning/byte-relay.ascii", "fixtures/commissioning/contracts.ascii", "fixtures/commissioning/metrics.ascii", "fixtures/commissioning/payloads.json"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D7/physical/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["tests/commissioning/run-physical.sh", "evidence/D7/physical"], "env": {"FACTC_BIN": "/home/user/factory-target/debug/factc", "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers"}, "log": "evidence/D7/physical/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D7/physical/compile/bundle-certificate.json", "evidence/D7/physical/probe-webgpu/probe-record.json", "evidence/D7/physical/probe-no-webgpu/probe-record.json", "evidence/D7/physical/observed/observed.ascii"],
+  "tests": ["P6-R01..R08 physical (second run, with the metric-ref template fix)"], "evidence_requirements": ["RuntimeEvidence", "ObservationDelta", "observed ASCII"]
+}

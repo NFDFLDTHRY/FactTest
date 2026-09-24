@@ -1,6 +1,6 @@
 # FactTest
 
-STATUS: SIX-PASS PREPARATION COMPLETE - PHYSICAL COMMISSIONING PENDING
+STATUS: MATERIALIZED THROUGH THE FACTORY - BYTE RELAY PHYSICALLY COMMISSIONED (SwiftShader WebGPU + wasm64 in Chromium 141)
 
 FactTest is a governance-first foundry project for a `#![no_std]`, no-third-party-crate Rust compiler whose source language is AI-authored ASCII Systems Diagrams and whose generated target is a capability-parametric Chrome WebApp.
 
@@ -26,10 +26,21 @@ Pass 6 package:
 - PASS6-TESTS.md
 - FINAL-HANDOFF-REQUIREMENTS.md
 
-No compiler implementation exists yet. That is intentional.
+The six-pass preparation is complete and the machine has been materialized under Factory Law:
 
-The six-pass preparation is complete.
-Actual parser/compiler/Factory/browser execution remains [GAP] until Fable 5.1 materializes the machine and closes the physical Byte Relay commissioning gate.
+- factory/ - the Factory plane (StructuralDelta router, isolated git-worktree workpieces, station registry,
+  receipts, independent verification, fast-forward integration gate, re-inspection).
+- compiler/ - the `#![no_std]`, no-third-party-crate compiler kernel (foundation, source, semantic, capability,
+  implementation, planning, verifier, codegen, bundle, observe, kernel, wasm-abi).
+- host/ - the `factc` host driver and the browser harnesses (bootstrap ABI host, bundle probe).
+- fixtures/ - language, negative and commissioning fixtures (the Byte Relay source, contract registry, metric
+  evidence, model epochs, payloads are slice DATA).
+- evidence/ - per-delta evidence packages, including the physical Byte Relay commissioning run.
+- design/materialization/ - M0 intended-system ASCII, the materialization ledger (BEFORE/AFTER per delta), the
+  commissioning record (PASS6-TESTS map) and the M9 observed-system ASCII.
+
+Every implementation commit on the materialization branch was produced by the Factory itself
+(`factory/receipts/<delta>/`), never by an agent writing to the canonical repository.
 
 
 ## Fable implementation session

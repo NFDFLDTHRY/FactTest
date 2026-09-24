@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F4-build", "station_id": "S-BUILD", "delta_id": "D7-COMMISSIONING-GATE",
+  "selected_inputs": ["compiler/", "host/", "fixtures/", "tests/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D7/build/", "evidence/D7/anti-cheat/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D7/build/test.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/commissioning/run-anti-cheat.sh", "evidence/D7/anti-cheat"], "log": "evidence/D7/anti-cheat/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D7/build/test.log", "evidence/D7/anti-cheat/summary.log"],
+  "tests": ["cargo test (all ladders incl. commissioning)", "P6-X06 machinery scan"], "evidence_requirements": ["logs"]
+}
