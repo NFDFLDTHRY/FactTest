@@ -523,5 +523,27 @@ BEFORE
   githack DENIED; kernel sha256 a1bb6f86... with nightly 6bb1652a0 (differs from D9's 30958994...).
 
 AFTER
+- RESULT: integrated as 52d7d1425028dac6ef9f77b4a4cb178b96217864 (ff-only from f71c59b); no refusal.
+- RECEIPTS: factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/{F0-doc,F1-fixture,F2-build,F3-browser,F4-doc,F5-evidence}.json
+  PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- EVIDENCE: evidence/D12/ (22 files): P01-P06, P08, P09, P14, P15, P16 RUN; P07 GAP; P10 OBS; kernel sha256 a1bb6f86...
+  (nightly 6bb1652a0); githack DENIED.
+- OBSERVED ASCII: design/materialization/D12-OBSERVED-SELF-HOSTING.md.  MATCH on every prediction.
+- LATER: PR #3 merged D12 into main as 8e5dd6f (owner action on GitHub).  The owner then paused the predicted
+  D13-SEED-BROKER-QUALIFICATION and ordered a repository-hygiene pass first (D13-REPO-HYGIENE-PROMPT.md).
+
+---
+
+## D13-PROMPT-INTAKE  (FIRST ACTION of the repository-hygiene pass)
+
+BEFORE
+- DELTA: D13-PROMPT-INTAKE (factory/deltas/D13-PROMPT-INTAKE.json)
+- BASE: 8e5dd6fe0d35669867dc7894434e68b13abeb158 (main after PR #3; branch fast-forwarded, merged history only)
+- STATION: S-DOC.  FIXTURE: F0-doc.
+- CHANGE: design/materialization/D13-REPO-HYGIENE-PROMPT.md (verbatim), this ledger, the delta, its fixture, receipts.
+  FORBIDDEN: everything else.
+- NEXT: the hygiene pass itself is D13-REPO-HYGIENE, assembled in design/materialization/D13-INTENDED-REPO-HYGIENE.md.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

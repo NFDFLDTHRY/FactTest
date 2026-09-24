@@ -1,0 +1,4 @@
+$ sh -c grep -q 'FACTTEST · D13 REPO HYGIENE / CHAIN CLOSURE' design/materialization/D13-REPO-HYGIENE-PROMPT.md && grep -q '^CURRENT KNOWN MAIN' design/materialization/D13-REPO-HYGIENE-PROMPT.md && grep -q '^design/materialization/D13-REPO-HYGIENE-PROMPT.md' design/materialization/D13-REPO-HYGIENE-PROMPT.md && [ $(grep -c '^\[PASS\]' design/materialization/D13-REPO-HYGIENE-PROMPT.md) -eq 12 ] && grep -q 'D13-PROMPT-INTAKE' design/materialization/LEDGER.md
+(cwd .)
+
+[exit 0] expected 0

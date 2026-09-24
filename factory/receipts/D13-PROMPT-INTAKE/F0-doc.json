@@ -1,0 +1,107 @@
+{
+  "receipt_id": "R-D13-PROMPT-INTAKE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W13",
+  "delta_id": "D13-PROMPT-INTAKE",
+  "canonical_base": "8e5dd6fe0d35669867dc7894434e68b13abeb158",
+  "input_artifacts": [
+    "owner prompt (session input)",
+    "design/materialization/LEDGER.md"
+  ],
+  "open_tree": "493fadfb4344e7897843d6a62795ac5f640c5c7f",
+  "close_tree": "ac991de8bd7d1cc45b54675e98be7059846be1e4",
+  "changed_paths": [
+    "design/materialization/D13-REPO-HYGIENE-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D13-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D13-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D13-REPO-HYGIENE-PROMPT.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-PROMPT-INTAKE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-PROMPT-INTAKE/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c grep -q 'FACTTEST · D13 REPO HYGIENE / CHAIN CLOSURE' design/materialization/D13-REPO-HYGIENE-PROMPT.md && grep -q '^CURRENT KNOWN MAIN' design/materialization/D13-REPO-HYGIENE-PROMPT.md && grep -q '^design/materialization/D13-REPO-HYGIENE-PROMPT.md' design/materialization/D13-REPO-HYGIENE-PROMPT.md && [ $(grep -c '^\\[PASS\\]' design/materialization/D13-REPO-HYGIENE-PROMPT.md) -eq 12 ] && grep -q 'D13-PROMPT-INTAKE' design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code 8e5dd6fe0d35669867dc7894434e68b13abeb158 -- compiler host factory/src factory/registry evidence tests fixtures design/environment-map FACTORY-LAW.md README.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-PROMPT-INTAKE/logs/F0-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D13-REPO-HYGIENE-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D13-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "closed": "2026-09-24T06:37:16Z",
+  "status": "PASS"
+}
