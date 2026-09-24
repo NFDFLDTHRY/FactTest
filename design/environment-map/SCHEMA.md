@@ -185,3 +185,22 @@ proposed constraints    CONSTRAINT nodes with ledger_status PROPOSED (not yet in
 extractor / builder     tests/reference/clauses.mjs (manifest tests/reference/<epoch>-clauses.json) and
                         tests/reference/build-clauses.mjs
 ```
+
+## 9. Capability universe (D16)
+
+```text
+CAPABILITY_FAMILY       one approved family of G (one row of CAPABILITY-MATRIX.md): family_id, matrix_row, in_G,
+                        current_authority, admission_contract, lifecycle_failure, evidence_required (verbatim from the
+                        matrix), steps {API, SECURE_CONTEXT, PERMISSION_POLICY, REQUEST, FEATURES_LIMITS, LIFECYCLE, LOSS:
+                        CLAUSE | NONE_DEFINED | GAP + reason}, census {state, record}, classification [RUN|OBS|GAP|ERR|UNK],
+                        rationale, run_parts, maturity.  Declared by epoch D16.  Only an ASCII decision removes a family.
+TRACE_STEP              CAPABILITY_FAMILY -> CLAUSE  + step (+ none_defined when the clause verified an absence)
+WITNESSED_BY            CAPABILITY_FAMILY -> COMPUTATIONAL_FACT (the runtime/evidence facts the classification rests on)
+CLAUSE (extension)      absent_in_document[]: phrases verified absent from the whole source at the tip
+validate                + family_classification_vocabulary, family_steps_match_edges; clause_connected counts TRACE_STEP
+Q19                     per family: the seven authority steps, RUNTIME ADMISSION (classification), PROBE OBLIGATION (matrix
+                        evidence + witness probes), EVIDENCE; first gap; totals by classification
+census facts            FACT-CAP-<family>-EXPOSURE [OBS]: exposure / non-prompting discovery / permission state / policy
+                        answer in one browser environment; never admission (CON-CAP-001)
+tools                   tests/capability/{census.mjs, universe.json, build-universe.mjs, gate.mjs}
+```

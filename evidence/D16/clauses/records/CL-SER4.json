@@ -1,0 +1,29 @@
+{
+ "id": "CL-SER4",
+ "trace": "DEV",
+ "authority": "AUTH-SERIAL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/serial",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+  "sha256": "48d0a5629c71f2b523108b817d9c0c8c2851959d442f37a3a1b3094b3313dcc3",
+  "bytes": 84878
+ },
+ "locator": {
+  "text": "</h3>{{SerialPort/ondisconnect}} is an [=event handler IDL attribute=]",
+  "line_start": 595,
+  "line_end": 596,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 2,
+ "consequence": "ports disconnect; forget() revokes access",
+ "excerpt": "        </h3>{{SerialPort/ondisconnect}} is an [=event handler IDL attribute=]\n        for the {{disconnect}} event type.",
+ "excerpt_sha256": "ae3a965742b15031365fa8e2e48ee22e1d80c887140b9914bf1d4e02ef9d5e5a",
+ "must_contain": {
+  "{{disconnect}} event type": true
+ },
+ "status": "VERIFIED"
+}

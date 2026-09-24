@@ -1,0 +1,29 @@
+{
+  "tool": "tests/envmap/envmap.mjs merge-check",
+  "base_rev": "fdb9c32",
+  "epochs": [
+    "design/environment-map/epochs/D12.json",
+    "design/environment-map/epochs/D13.json",
+    "design/environment-map/epochs/D14.json",
+    "design/environment-map/epochs/D15.json",
+    "design/environment-map/epochs/D16.json"
+  ],
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "base_nodes_preserved",
+      "status": "PASS",
+      "detail": "211 base nodes identical"
+    },
+    {
+      "check": "base_edges_preserved",
+      "status": "PASS",
+      "detail": "475 base edges present"
+    },
+    {
+      "check": "graph_equals_merge_of_base_and_epochs",
+      "status": "PASS",
+      "detail": "1053390 bytes identical"
+    }
+  ]
+}

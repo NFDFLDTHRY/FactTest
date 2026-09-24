@@ -1,0 +1,30 @@
+{
+ "id": "CL-GPU7",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-LOSE-DEVICE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "To <dfn dfn>lose the device</dfn>(|device|, |reason|)",
+  "line_start": 1459,
+  "line_end": 1466,
+  "derivation": "anchor text",
+  "enclosing_section": "#devices (line 1370)"
+ },
+ "window": 8,
+ "consequence": "device loss invalidates the device and resolves device.lost with a reason: loss is lifecycle, observed through the promise",
+ "excerpt": "    To <dfn dfn>lose the device</dfn>(|device|, |reason|) run the following [=device timeline=] steps:\n\n    1. [$Invalidate$] |device|.\n    1. Issue the following steps on the [=content timeline=] of |device|.{{device/[[content device]]}}:\n        <div data-timeline=content>\n            1. Resolve |device|.{{GPUDevice/lost}} with a new {{GPUDeviceLostInfo}} with\n                {{GPUDeviceLostInfo/reason}} set to |reason| and\n                {{GPUDeviceLostInfo/message}} set to an [=implementation-defined=] value.",
+ "excerpt_sha256": "a26b9d4571d4d5a24254775800653626a02d302ef652f4d37d6d7de30f55a503",
+ "must_contain": {
+  "[$Invalidate$] |device|": true,
+  "Resolve |device|.{{GPUDevice/lost}}": true
+ },
+ "status": "VERIFIED"
+}

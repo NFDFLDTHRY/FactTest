@@ -1,0 +1,17 @@
+{
+ "family": "CAP-PERMISSIONS",
+ "matrix_row": "Permissions",
+ "observed": "2026-09-24T08:42:27.924Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "!!(navigator.permissions && navigator.permissions.query)",
+ "discovery_expr": null,
+ "exposed": true,
+ "permissions": {
+  "geolocation": "prompt",
+  "camera": "prompt",
+  "microphone": "prompt",
+  "persistent-storage": "prompt"
+ },
+ "policy": {}
+}

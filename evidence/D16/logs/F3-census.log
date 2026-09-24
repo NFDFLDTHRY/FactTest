@@ -1,0 +1,37 @@
+$ node tests/capability/census.mjs tests/capability/universe.json evidence/D16/census
+(cwd .)
+EXPOSED       CAP-CPU-WASM64 {"memory64_validates":true}
+EXPOSED       CAP-WORKER-DEDICATED {"shared_worker":true,"hardwareConcurrency":4}
+ABSENT        CAP-WASM-SHARED-THREADS
+EXPOSED       CAP-WEBGPU {"adapter":null}
+ABSENT        CAP-WEBNN
+EXPOSED       CAP-WEBCODECS {"vp8_encode":true,"vp8_decode":true,"opus_encode":true}
+EXPOSED       CAP-CAMERA {"audioinput":0,"videoinput":0,"audiooutput":0}
+EXPOSED       CAP-MICROPHONE {"audioinput":0,"videoinput":0,"audiooutput":0}
+EXPOSED       CAP-GENERIC-SENSOR
+EXPOSED       CAP-ACCELEROMETER
+EXPOSED       CAP-GYROSCOPE
+ABSENT        CAP-MAGNETOMETER
+EXPOSED       CAP-ORIENTATION-SENSOR {"relative":true}
+EXPOSED       CAP-DEVICE-ORIENTATION {"requestPermission":"undefined","motion":true}
+ABSENT        CAP-PROXIMITY
+ABSENT        CAP-AMBIENT-LIGHT
+EXPOSED       CAP-GEOLOCATION
+EXPOSED       CAP-XR {"inline":true,"immersive_vr":false}
+EXPOSED       CAP-FETCH {"response_body":true}
+EXPOSED       CAP-STORAGE-QUOTA {"quota":946970982,"usage":0,"persisted":false}
+EXPOSED       CAP-OPFS {"kind":"directory"}
+EXPOSED       CAP-INDEXEDDB
+EXPOSED       CAP-CACHESTORAGE {"keys":0}
+EXPOSED       CAP-SERVICE-WORKER
+UNDETERMINED  CAP-MANIFEST {"before_install_prompt_event":true,"get_installed_related_apps":true}
+EXPOSED       CAP-SECURE-CONTEXT {"isSecureContext":true,"crossOriginIsolated":false}
+EXPOSED       CAP-PERMISSIONS
+EXPOSED       CAP-PERMISSIONS-POLICY 77
+EXPOSED       CAP-HID {"devices":0}
+EXPOSED       CAP-USB {"devices":0}
+EXPOSED       CAP-SERIAL {"ports":0}
+ABSENT        CAP-BLUETOOTH
+{"families":32,"exposed":25,"absent":6,"undetermined":1}
+
+[exit 0] expected 0

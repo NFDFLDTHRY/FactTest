@@ -1,0 +1,488 @@
+{
+  "delta_id": "D16-CAPABILITY-UNIVERSE",
+  "workpiece_id": "W18",
+  "canonical_base": "3748fa7bd15d74e560951f31338b8c94820c2830",
+  "base_tree": "de523355f550fbc5e02f8f5fbe0e95848b9af10e",
+  "verified_tree": "4adef012a928ff969d02c74bc95a8613c17844fb",
+  "changed_paths": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D16.json",
+    "design/environment-map/graph.json",
+    "design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md",
+    "design/materialization/D16-OBSERVED-CAPABILITY-UNIVERSE.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D16/census/identity.json",
+    "evidence/D16/census/records/CAP-ACCELEROMETER.json",
+    "evidence/D16/census/records/CAP-AMBIENT-LIGHT.json",
+    "evidence/D16/census/records/CAP-BLUETOOTH.json",
+    "evidence/D16/census/records/CAP-CACHESTORAGE.json",
+    "evidence/D16/census/records/CAP-CAMERA.json",
+    "evidence/D16/census/records/CAP-CPU-WASM64.json",
+    "evidence/D16/census/records/CAP-DEVICE-ORIENTATION.json",
+    "evidence/D16/census/records/CAP-FETCH.json",
+    "evidence/D16/census/records/CAP-GENERIC-SENSOR.json",
+    "evidence/D16/census/records/CAP-GEOLOCATION.json",
+    "evidence/D16/census/records/CAP-GYROSCOPE.json",
+    "evidence/D16/census/records/CAP-HID.json",
+    "evidence/D16/census/records/CAP-INDEXEDDB.json",
+    "evidence/D16/census/records/CAP-MAGNETOMETER.json",
+    "evidence/D16/census/records/CAP-MANIFEST.json",
+    "evidence/D16/census/records/CAP-MICROPHONE.json",
+    "evidence/D16/census/records/CAP-OPFS.json",
+    "evidence/D16/census/records/CAP-ORIENTATION-SENSOR.json",
+    "evidence/D16/census/records/CAP-PERMISSIONS-POLICY.json",
+    "evidence/D16/census/records/CAP-PERMISSIONS.json",
+    "evidence/D16/census/records/CAP-PROXIMITY.json",
+    "evidence/D16/census/records/CAP-SECURE-CONTEXT.json",
+    "evidence/D16/census/records/CAP-SERIAL.json",
+    "evidence/D16/census/records/CAP-SERVICE-WORKER.json",
+    "evidence/D16/census/records/CAP-STORAGE-QUOTA.json",
+    "evidence/D16/census/records/CAP-USB.json",
+    "evidence/D16/census/records/CAP-WASM-SHARED-THREADS.json",
+    "evidence/D16/census/records/CAP-WEBCODECS.json",
+    "evidence/D16/census/records/CAP-WEBGPU.json",
+    "evidence/D16/census/records/CAP-WEBNN.json",
+    "evidence/D16/census/records/CAP-WORKER-DEDICATED.json",
+    "evidence/D16/census/records/CAP-XR.json",
+    "evidence/D16/census/summary.json",
+    "evidence/D16/clauses/records/CL-ACC0.json",
+    "evidence/D16/clauses/records/CL-ACC1.json",
+    "evidence/D16/clauses/records/CL-ACC2.json",
+    "evidence/D16/clauses/records/CL-ALS0.json",
+    "evidence/D16/clauses/records/CL-ALS1.json",
+    "evidence/D16/clauses/records/CL-ALS2.json",
+    "evidence/D16/clauses/records/CL-ALS3.json",
+    "evidence/D16/clauses/records/CL-BT1.json",
+    "evidence/D16/clauses/records/CL-BT2.json",
+    "evidence/D16/clauses/records/CL-BT3.json",
+    "evidence/D16/clauses/records/CL-BT4.json",
+    "evidence/D16/clauses/records/CL-BT5.json",
+    "evidence/D16/clauses/records/CL-CS1.json",
+    "evidence/D16/clauses/records/CL-CS2.json",
+    "evidence/D16/clauses/records/CL-DO1.json",
+    "evidence/D16/clauses/records/CL-DO2.json",
+    "evidence/D16/clauses/records/CL-DO3.json",
+    "evidence/D16/clauses/records/CL-DO4.json",
+    "evidence/D16/clauses/records/CL-GEO1.json",
+    "evidence/D16/clauses/records/CL-GEO2.json",
+    "evidence/D16/clauses/records/CL-GEO3.json",
+    "evidence/D16/clauses/records/CL-GEO4.json",
+    "evidence/D16/clauses/records/CL-GEO5.json",
+    "evidence/D16/clauses/records/CL-GPU1.json",
+    "evidence/D16/clauses/records/CL-GPU10.json",
+    "evidence/D16/clauses/records/CL-GPU11.json",
+    "evidence/D16/clauses/records/CL-GPU2.json",
+    "evidence/D16/clauses/records/CL-GPU3.json",
+    "evidence/D16/clauses/records/CL-GPU4.json",
+    "evidence/D16/clauses/records/CL-GPU5.json",
+    "evidence/D16/clauses/records/CL-GPU6.json",
+    "evidence/D16/clauses/records/CL-GPU7.json",
+    "evidence/D16/clauses/records/CL-GPU8.json",
+    "evidence/D16/clauses/records/CL-GPU9.json",
+    "evidence/D16/clauses/records/CL-GS0.json",
+    "evidence/D16/clauses/records/CL-GS1.json",
+    "evidence/D16/clauses/records/CL-GS2.json",
+    "evidence/D16/clauses/records/CL-GS3.json",
+    "evidence/D16/clauses/records/CL-GS4.json",
+    "evidence/D16/clauses/records/CL-GYR0.json",
+    "evidence/D16/clauses/records/CL-GYR1.json",
+    "evidence/D16/clauses/records/CL-GYR2.json",
+    "evidence/D16/clauses/records/CL-HID1.json",
+    "evidence/D16/clauses/records/CL-HID2.json",
+    "evidence/D16/clauses/records/CL-HID3.json",
+    "evidence/D16/clauses/records/CL-HID4.json",
+    "evidence/D16/clauses/records/CL-IDB1.json",
+    "evidence/D16/clauses/records/CL-MAG0.json",
+    "evidence/D16/clauses/records/CL-MAG1.json",
+    "evidence/D16/clauses/records/CL-MAG2.json",
+    "evidence/D16/clauses/records/CL-MC1.json",
+    "evidence/D16/clauses/records/CL-MC2.json",
+    "evidence/D16/clauses/records/CL-MC3.json",
+    "evidence/D16/clauses/records/CL-MC4.json",
+    "evidence/D16/clauses/records/CL-MC5.json",
+    "evidence/D16/clauses/records/CL-MC6.json",
+    "evidence/D16/clauses/records/CL-NN1.json",
+    "evidence/D16/clauses/records/CL-NN2.json",
+    "evidence/D16/clauses/records/CL-NN3.json",
+    "evidence/D16/clauses/records/CL-NN4.json",
+    "evidence/D16/clauses/records/CL-OPFS1.json",
+    "evidence/D16/clauses/records/CL-ORI0.json",
+    "evidence/D16/clauses/records/CL-ORI1.json",
+    "evidence/D16/clauses/records/CL-ORI2.json",
+    "evidence/D16/clauses/records/CL-PRX0.json",
+    "evidence/D16/clauses/records/CL-PRX1.json",
+    "evidence/D16/clauses/records/CL-PRX2.json",
+    "evidence/D16/clauses/records/CL-SER1.json",
+    "evidence/D16/clauses/records/CL-SER2.json",
+    "evidence/D16/clauses/records/CL-SER3.json",
+    "evidence/D16/clauses/records/CL-SER4.json",
+    "evidence/D16/clauses/records/CL-STQ1.json",
+    "evidence/D16/clauses/records/CL-USB1.json",
+    "evidence/D16/clauses/records/CL-USB2.json",
+    "evidence/D16/clauses/records/CL-USB3.json",
+    "evidence/D16/clauses/records/CL-WC1.json",
+    "evidence/D16/clauses/records/CL-WC2.json",
+    "evidence/D16/clauses/records/CL-WC3.json",
+    "evidence/D16/clauses/records/CL-WC4.json",
+    "evidence/D16/clauses/records/CL-WJ1.json",
+    "evidence/D16/clauses/records/CL-WJ2.json",
+    "evidence/D16/clauses/records/CL-WK1.json",
+    "evidence/D16/clauses/records/CL-WK2.json",
+    "evidence/D16/clauses/records/CL-WK3.json",
+    "evidence/D16/clauses/records/CL-XR1.json",
+    "evidence/D16/clauses/records/CL-XR2.json",
+    "evidence/D16/clauses/records/CL-XR3.json",
+    "evidence/D16/clauses/records/CL-XR4.json",
+    "evidence/D16/clauses/records/CL-XR5.json",
+    "evidence/D16/clauses/records/CL-XR6.json",
+    "evidence/D16/clauses/summary.json",
+    "evidence/D16/envmap/merge-check.json",
+    "evidence/D16/envmap/queries/Q01.json",
+    "evidence/D16/envmap/queries/Q02.json",
+    "evidence/D16/envmap/queries/Q03.json",
+    "evidence/D16/envmap/queries/Q04.json",
+    "evidence/D16/envmap/queries/Q05.json",
+    "evidence/D16/envmap/queries/Q06.json",
+    "evidence/D16/envmap/queries/Q07.json",
+    "evidence/D16/envmap/queries/Q08.json",
+    "evidence/D16/envmap/queries/Q09.json",
+    "evidence/D16/envmap/queries/Q10.json",
+    "evidence/D16/envmap/queries/Q11.json",
+    "evidence/D16/envmap/queries/Q12.json",
+    "evidence/D16/envmap/queries/Q13.json",
+    "evidence/D16/envmap/queries/Q14.json",
+    "evidence/D16/envmap/queries/Q15.json",
+    "evidence/D16/envmap/queries/Q16.json",
+    "evidence/D16/envmap/queries/Q17.json",
+    "evidence/D16/envmap/queries/Q18.json",
+    "evidence/D16/envmap/queries/Q19.json",
+    "evidence/D16/envmap/render-check.json",
+    "evidence/D16/envmap/stale.json",
+    "evidence/D16/envmap/validate.json",
+    "evidence/D16/gate.json",
+    "evidence/D16/index.json",
+    "evidence/D16/logs/F2-clauses.log",
+    "evidence/D16/logs/F3-census.log",
+    "evidence/D16/logs/F5-audit-after.log",
+    "evidence/D16/logs/F5-audit-before.log",
+    "evidence/D16/logs/F5-capability-gate.log",
+    "evidence/D16/logs/F5-cleanup-gate.log",
+    "evidence/D16/logs/F5-index.log",
+    "evidence/D16/logs/F5-merge-check.log",
+    "evidence/D16/logs/F5-q18-gate.log",
+    "evidence/D16/logs/F5-q19-gate.log",
+    "evidence/D16/logs/F5-queries.log",
+    "evidence/D16/logs/F5-render-check.log",
+    "evidence/D16/logs/F5-retire.log",
+    "evidence/D16/logs/F5-stale.log",
+    "evidence/D16/logs/F5-validate.log",
+    "evidence/D16/workpieces/audit-after.json",
+    "evidence/D16/workpieces/audit-before.json",
+    "evidence/D16/workpieces/retire.json",
+    "factory/deltas/D16.json",
+    "factory/fixtures/D16/F0-doc.json",
+    "factory/fixtures/D16/F1-fixture.json",
+    "factory/fixtures/D16/F2-build.json",
+    "factory/fixtures/D16/F3-browser.json",
+    "factory/fixtures/D16/F4-doc.json",
+    "factory/fixtures/D16/F5-evidence.json",
+    "factory/fixtures/D16/F6-doc.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/F0-doc.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/F1-fixture.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/F2-build.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/F3-browser.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/F4-doc.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/F5-evidence.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/F6-doc.json",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F0-ascii.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F0-untouched.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F1-regression.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F1-syntax-generic.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F4-build-epoch.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F4-checks.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F4-merge.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F4-render.log",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F6-observed.log",
+    "tests/capability/build-universe.mjs",
+    "tests/capability/census.mjs",
+    "tests/capability/gate.mjs",
+    "tests/capability/universe.json",
+    "tests/envmap/envmap.mjs",
+    "tests/reference/build-clauses.mjs",
+    "tests/reference/clauses.mjs",
+    "tests/reference/d16-clauses.json"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "de523355f550fbc5e02f8f5fbe0e95848b9af10e"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D16-CAPABILITY-UNIVERSE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D16-CAPABILITY-UNIVERSE/F1-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D16-CAPABILITY-UNIVERSE/F2-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-browser",
+      "status": "PASS",
+      "detail": "factory/receipts/D16-CAPABILITY-UNIVERSE/F3-browser.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D16-CAPABILITY-UNIVERSE/F4-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D16-CAPABILITY-UNIVERSE/F5-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D16-CAPABILITY-UNIVERSE/F6-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BROWSER_PROBE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D16-OBSERVED-CAPABILITY-UNIVERSE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reference/d16-clauses.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/capability/universe.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/capability/census.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/capability/build-universe.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/capability/gate.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D16.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D16/clauses/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D16/census/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D16/envmap/queries/Q19.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D16/gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D16/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T08:43:38Z",
+  "status": "PASS"
+}

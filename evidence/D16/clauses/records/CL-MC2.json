@@ -1,0 +1,30 @@
+{
+ "id": "CL-MC2",
+ "trace": "MC",
+ "authority": "AUTH-MEDIACAPTURE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/mediacapture-main",
+  "branch": "main",
+  "path": "getusermedia.html",
+  "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+  "sha256": "2807a41827e9573e6eed4be0116217a8053902dc621dc915d5ccc0d1322c9774",
+  "bytes": 309541
+ },
+ "locator": {
+  "text": "This specification defines two [=powerful features=] identified by the",
+  "line_start": 5738,
+  "line_end": 5739,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-integration (line 5737)"
+ },
+ "window": 2,
+ "consequence": "camera and microphone are powerful features (express permission)",
+ "excerpt": "    <p>This specification defines two [=powerful features=] identified by the\n    [=powerful feature/names=] <code><dfn class=\"permission\">\"camera\"</dfn></code> and <code><dfn class=\"permission\">\"microphone\"</dfn></code>.</p>",
+ "excerpt_sha256": "3ee36b83a248b9ca711475bcabaed5c306869c11672585c7653a6c977793d971",
+ "must_contain": {
+  "\"camera\"": true,
+  "\"microphone\"": true
+ },
+ "status": "VERIFIED"
+}

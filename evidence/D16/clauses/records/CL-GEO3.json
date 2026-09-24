@@ -1,0 +1,30 @@
+{
+ "id": "CL-GEO3",
+ "trace": "GEO",
+ "authority": "AUTH-GEOLOCATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/geolocation",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+  "sha256": "5bc468fd115c1e17e53496a6c5329e7c4efa90c822aaf41d491abfbd465093a1",
+  "bytes": 59983
+ },
+ "locator": {
+  "text": "<li data-tests=\"\">If |document| is not [=allowed to use=] the",
+  "line_start": 655,
+  "line_end": 662,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 8,
+ "consequence": "a policy-disallowed document gets PERMISSION_DENIED",
+ "excerpt": "          <li data-tests=\"\">If |document| is not [=allowed to use=] the\n          \"geolocation\" feature:\n            <ol>\n              <li>If |watchId| was passed, [=List/remove=] |watchId| from\n              |watchIDs|.\n              </li>\n              <li>[=Call back with error=] passing |errorCallback| and\n              {{GeolocationPositionError/PERMISSION_DENIED}}.",
+ "excerpt_sha256": "f4c6ab866f6b92df87d5236d5e004fccc02c7bd294089c9a2e81ccdc048686eb",
+ "must_contain": {
+  "\"geolocation\" feature": true,
+  "{{GeolocationPositionError/PERMISSION_DENIED}}": true
+ },
+ "status": "VERIFIED"
+}

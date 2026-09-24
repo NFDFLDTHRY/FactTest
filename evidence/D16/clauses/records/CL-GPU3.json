@@ -1,0 +1,29 @@
+{
+ "id": "CL-GPU3",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-REQUESTADAPTER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "`null`, if the user agent is unable to return an adapter, or makes an",
+  "line_start": 2544,
+  "line_end": 2545,
+  "derivation": "anchor text",
+  "enclosing_section": "#gpu-interface (line 2476)"
+ },
+ "window": 2,
+ "consequence": "a null adapter is a lawful answer (unavailability, not an error): admission must treat it as REJECTED request_unavailable",
+ "excerpt": "                    - `null`, if the user agent is unable to return an adapter, or makes an\n                        [=implementation-defined=] choice not to return an adapter.",
+ "excerpt_sha256": "2bb3fe7d445e6ece2b60743b0f17630af64cecc012e8929e3e3712b1ecb4e64d",
+ "must_contain": {
+  "[=implementation-defined=] choice not to return an adapter": true
+ },
+ "status": "VERIFIED"
+}

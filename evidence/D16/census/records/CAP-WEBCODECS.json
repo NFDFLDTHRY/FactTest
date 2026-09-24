@@ -1,0 +1,17 @@
+{
+ "family": "CAP-WEBCODECS",
+ "matrix_row": "WebCodecs",
+ "observed": "2026-09-24T08:42:27.821Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "typeof VideoEncoder === 'function'",
+ "discovery_expr": "Promise.all([VideoEncoder.isConfigSupported({codec: 'vp8', width: 64, height: 64}), VideoDecoder.isConfigSupported({codec: 'vp8'}), AudioEncoder.isConfigSupported({codec: 'opus', sampleRate: 48000, numberOfChannels: 1})]).then(r => ({vp8_encode: r[0].supported, vp8_decode: r[1].supported, opus_encode: r[2].supported}))",
+ "exposed": true,
+ "discovery": {
+  "vp8_encode": true,
+  "vp8_decode": true,
+  "opus_encode": true
+ },
+ "permissions": {},
+ "policy": {}
+}

@@ -58,11 +58,18 @@ for (const c of M.clauses) {
       rec.excerpt_sha256 = sha(Buffer.from(win));
       rec.must_contain = Object.fromEntries((c.must_contain || []).map(p => [p, hay.includes(norm(p)) || hayStripped.includes(norm(stripTags(p)))]));
       rec.status = Object.values(rec.must_contain).every(Boolean) ? 'VERIFIED' : 'TEXT_MISSING';
+      // D16: a clause may also state that the WHOLE document never says something (e.g. that no policy-controlled
+      // feature is defined).  Each phrase must be absent from the entire source at the tip (true = verified absent).
+      if (c.absent_in_document) {
+        const doc = norm(s.text), docStripped = norm(stripTags(s.text));
+        rec.absent_in_document = Object.fromEntries(c.absent_in_document.map(p => [p, !doc.includes(norm(p)) && !docStripped.includes(norm(stripTags(p)))]));
+        if (rec.status === 'VERIFIED' && !Object.values(rec.absent_in_document).every(Boolean)) rec.status = 'TEXT_PRESENT';
+      }
     }
   }
   records.push(rec);
   writeFileSync(join(outDir, 'records', c.id + '.json'), JSON.stringify(rec, null, 1) + '\n');
-  console.log(`${rec.status.padEnd(18)} ${c.id}  ${c.authority}${rec.locator.line_start ? ' @' + rec.locator.line_start : ''}${rec.must_contain ? ' ' + Object.entries(rec.must_contain).filter(([, v]) => !v).map(([k]) => 'MISSING "' + k.slice(0, 50) + '"').join(' ') : ''}`);
+  console.log(`${rec.status.padEnd(18)} ${c.id}  ${c.authority}${rec.locator.line_start ? ' @' + rec.locator.line_start : ''}${rec.must_contain ? ' ' + Object.entries(rec.must_contain).filter(([, v]) => !v).map(([k]) => 'MISSING "' + k.slice(0, 50) + '"').join(' ') : ''}${rec.absent_in_document ? ' ' + Object.entries(rec.absent_in_document).filter(([, v]) => !v).map(([k]) => 'PRESENT "' + k.slice(0, 50) + '"').join(' ') : ''}`);
 }
 const sources = [...srcCache.entries()].map(([k, v]) => ({ key: k, commit: v.commit || null, sha256: v.sha256 || null, bytes: v.bytes || null, ok: v.ok }));
 const count = {}; for (const r of records) count[r.status] = (count[r.status] || 0) + 1;

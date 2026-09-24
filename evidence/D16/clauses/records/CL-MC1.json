@@ -1,0 +1,29 @@
+{
+ "id": "CL-MC1",
+ "trace": "MC",
+ "authority": "AUTH-MEDIACAPTURE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/mediacapture-main",
+  "branch": "main",
+  "path": "getusermedia.html",
+  "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+  "sha256": "2807a41827e9573e6eed4be0116217a8053902dc621dc915d5ccc0d1322c9774",
+  "bytes": 309541
+ },
+ "locator": {
+  "text": "[SameObject, SecureContext] readonly attribute MediaDevices mediaDevices;",
+  "line_start": 2787,
+  "line_end": 2787,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 1,
+ "consequence": "navigator.mediaDevices exists only in secure contexts",
+ "excerpt": "  [SameObject, SecureContext] readonly attribute MediaDevices mediaDevices;",
+ "excerpt_sha256": "a347c67f0272c6b91e1a6045df681d406ae56aa9ecb2d231842af21fbd5a1845",
+ "must_contain": {
+  "SecureContext": true
+ },
+ "status": "VERIFIED"
+}

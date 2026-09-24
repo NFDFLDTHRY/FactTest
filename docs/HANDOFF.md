@@ -8,23 +8,25 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D15-FOUNDATIONAL-SEMANTICS (pass 2 of the D14-D19 technical reference review series; integration
+last delta         D16-CAPABILITY-UNIVERSE (pass 3 of the D14-D19 technical reference review series; integration
                    commit in design/materialization/LEDGER.md)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64), D9 qualified
                    Rust/Cargo proof harness, D11 computational environment map, D12 self-hosting architecture (ASCII +
                    primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces),
                    D14 authority frontier epoch (64 AUTHORITY_REVISION nodes, Q17 staleness traversal), D15 foundational
-                   clause epoch (60 exact clauses VERIFIED at source tips, 6 PROPOSED constraints, Q18 claim traversal)
+                   clause epoch (60 exact clauses VERIFIED at source tips, 6 PROPOSED constraints, Q18 claim traversal),
+                   D16 capability universe (33 families of G traced at 90 more clauses, exposure census, Q19)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
-                   WGSL, shared/threaded Wasm, broad capability families (section 6)
+                   WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
 series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): one StructuralDelta
                    per pass, each closed, verified, integrated and re-observed before the next
-next               D16-CAPABILITY-UNIVERSE (which capability families does the platform expose, and which does FactTest
-                   use, probe or leave [GAP]?), starting from design/materialization/D15-OBSERVED-FOUNDATIONAL-SEMANTICS.md
-                   and graph query Q18 (the GPU facts stop at EXACT CLAUSE).  No approved capability is removed for
-                   missing support.  The owner PAUSED the D12-predicted seed/broker qualification; it is renumbered
-                   after D19.
+next               D17-IMPLEMENTATION-REALITY (what do rustc, Cargo, Chromium/Blink/V8/Dawn/SwiftShader, headless mode,
+                   flags, storage/SW implementations and Playwright actually do?), starting from
+                   design/materialization/D16-OBSERVED-CAPABILITY-UNIVERSE.md: the census implementation signals, the
+                   SAB-global and git tree-order questions carried from D15.  Implementation documentation is labelled
+                   implementation, never standards law.  The owner PAUSED the D12-predicted seed/broker qualification; it
+                   is renumbered after D19.
 ```
 
 ## 2. Mutation law
@@ -89,8 +91,9 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
-               epochs/D12.json .. epochs/D15.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
+               epochs/D12.json .. epochs/D16.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
                tests/reference/<epoch>-clauses.json (exact-clause manifests; constraints there are PROPOSED until D18);
+               tests/capability/universe.json (the G trace + reviewed classification; G itself is CAPABILITY-MATRIX.md);
                this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml
 HISTORICAL     FABLE-ASCII-SYSTEM-PROMPT.md (bootloader of the original Fable 5.1 materialization session; carries a
                HISTORICAL banner), PASS1.md-PASS6.md, PASS5-TESTS.md, PASS6-TESTS.md, PASS6-GAP-REPAIRS.md,
@@ -128,8 +131,16 @@ C      D13 H-12 (FACT-KERNEL-IDENTITY-      kernel bytes depend on the rust-src 
 C      D11 WGSL / CON-GPU-003               WGSL never compiled or dispatched                                  [GAP]
 C      D11 hardware GPU                     only SwiftShader fallback adapters ever observed                   [UNK]
 C      ERR-002 / ERR-003                    shared/threaded Wasm unadmitted (presence only)                    [ERR]
-C      D11 Q09                              streaming/MIME, workers, hardwareConcurrency unprobed; 29 GAP       [GAP]
-                                            registry families not yet authority nodes
+C      D11 Q09 -> D16 Q19                   the capability map is no longer hidden: 33 families traced (174 clause  [GAP] mapped
+                                            steps, 6 verified absences, 51 explicit GAP steps); RUN 6, OBS 16,
+                                            GAP 10, ERR 1 (evidence/D16/envmap/queries/Q19.json)
+C      D16 chooser/activation families      HID, USB, Serial, Bluetooth, immersive XR, device-orientation          [OBS]/[GAP]
+                                            permission need a user gesture or virtual device path to be admitted
+                                            (CON-CAP-002 PROPOSED)
+D      D16 Generic Sensor advisements       whole family flagged at its tips (Proximity: no engine; Magnetometer,  [OBS]
+                                            Ambient Light: not default anywhere; motion sensors: new projects ->
+                                            Device Orientation and Motion); all kept in G; routing decision D18
+D      D16 stale claim                      FACT-WORKERS-UNPROBED (D11) contradicted by D12 worker evidence (D18)   [ERR]
 C      CAPABILITY-MATRIX / CONSTRAINT-      capability rows marked [GAP]/[ERR]/[UNK] in the law ledgers        as marked
        LEDGER rows
 D      web-api #streaming-module-compilation-  D14: the cited id never existed at the pin (explicit id           [ERR]
@@ -169,8 +180,9 @@ B      D0-D12 receipts/evidence             incomplete environment identity (rec
 B      D3-D8 fixture wording                "all ladders" / "full suite" overstated the selection               kept
 B      D1-D8 heuristic gates                nostd-check/depcheck used as gates (proof weight now NONE)          kept
 B      scratch-only tooling                 D0-D13 route scripts, D11 graph generator (procedure: section 4)    kept
-B      workpiece root                       W11-stage, W14-stage, W16-stage (pre-binding graph drafts),          [GAP] kept
-                                            factory-bootstrap-bin (unmanaged)
+B      workpiece root                       W11-stage, W14-stage, W16-stage, W17-stage (base-era graph views       [GAP] kept
+                                            the audit cannot prove superseded; comparing stage blobs with
+                                            canonical_base is a D18 item), factory-bootstrap-bin (unmanaged)
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
        (B-07); D-6 object hash; D-8 seed replacement; D-9 history horizon; deleting the fully merged remote branches
        claude/d9-rust-cargo-proof-4nys6s, factory/reference-corpus-wasm64, work/pass2-5-reference-ingress-1

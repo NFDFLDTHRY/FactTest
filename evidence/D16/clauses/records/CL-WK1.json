@@ -1,0 +1,31 @@
+{
+ "id": "CL-WK1",
+ "trace": "WK",
+ "authority": "AUTH-HTML-WORKERS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+  "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+  "bytes": 7915656
+ },
+ "locator": {
+  "text": "interface <dfn interface>Worker</dfn> : <span>EventTarget</span> {",
+  "after": "[Exposed=(Window,DedicatedWorker,SharedWorker)]",
+  "line_start": 136388,
+  "line_end": 136391,
+  "derivation": "anchor text after \"[Exposed=(Window,DedicatedWorker,SharedW\"",
+  "enclosing_section": "#the-abstractworker-abstract-interface (line 136251)"
+ },
+ "window": 4,
+ "consequence": "Worker is exposed to Window, DedicatedWorker and SharedWorker without [SecureContext]; no permission or policy gate",
+ "excerpt": "interface <dfn interface>Worker</dfn> : <span>EventTarget</span> {\n  <span data-x=\"dom-Worker\">constructor</span>((<code data-x=\"tt-trustedscripturl\">TrustedScriptURL</code> or USVString) scriptURL, optional <span>WorkerOptions</span> options = {});\n\n  undefined <span data-x=\"dom-Worker-terminate\">terminate</span>();",
+ "excerpt_sha256": "26c4688901cb3a244f88b6f8f7f3b06246b55c3608cf300e1efbadddf10cf33e",
+ "must_contain": {
+  "constructor</span>((<code data-x=\"tt-trustedscripturl\">TrustedScriptURL</code> or USVString) scriptURL": true,
+  "terminate</span>();": true
+ },
+ "status": "VERIFIED"
+}

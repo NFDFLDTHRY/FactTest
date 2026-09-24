@@ -1,0 +1,5 @@
+$ sh -c for f in tests/reference/clauses.mjs tests/reference/build-clauses.mjs tests/capability/census.mjs tests/capability/build-universe.mjs tests/capability/gate.mjs tests/envmap/envmap.mjs; do node --check $f || exit 1; done; node -e 'const fs=require("fs");const m=JSON.parse(fs.readFileSync("tests/reference/d16-clauses.json"));const u=JSON.parse(fs.readFileSync("tests/capability/universe.json"));console.log(m.clauses.length+" clauses, "+m.new_authorities.length+" authorities, "+u.families.length+" families")' && ! grep -nE "'(AUTH|FACT|CON|LAW|CL|CAP)-[A-Z0-9]" tests/reference/clauses.mjs tests/reference/build-clauses.mjs tests/capability/census.mjs tests/capability/build-universe.mjs tests/capability/gate.mjs tests/envmap/envmap.mjs && git diff --exit-code 3748fa7bd15d74e560951f31338b8c94820c2830 -- tests/reference/gate.mjs tests/reference/build-revisions.mjs tests/reference/d14-review.json tests/reference/reopen.mjs tests/reference/lib.mjs tests/reference/regress-reopen.mjs tests/reference/d15-clauses.json CAPABILITY-MATRIX.md
+(cwd .)
+90 clauses, 18 authorities, 33 families
+
+[exit 0] expected 0

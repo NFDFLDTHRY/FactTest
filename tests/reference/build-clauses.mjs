@@ -7,7 +7,9 @@
 //   new AUTHORITY nodes (pins = the commit/sha the extraction read), new CONSTRAINT and COMPUTATIONAL_FACT nodes
 // Generic: never names a clause, authority or trace itself.  Usage:
 //   node tests/reference/build-clauses.mjs --clauses DIR --manifest FILE --epoch D15 --delta ID --commit SHA
-//        [--declare] [--env-from FILE] --out FILE
+//        [--declare] [--env-from FILE] [--harness-in GRAPH] --out FILE
+// --harness-in (D16): when GRAPH already holds the extraction PROBE and IMPLEMENTATION (introduced by an earlier epoch),
+// they are referenced, not re-created (epochs are add-only); without it the output is unchanged.
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
@@ -25,15 +27,17 @@ const bad = recs.filter(x => x.r.status !== 'VERIFIED');
 if (bad.length) { console.error('refusing to build: unverified clauses ' + bad.map(x => x.r.id).join(' ')); process.exit(1); }
 
 const ENV = `ENV-${E}-HOST`, PROBE = 'PROBE-CLAUSE-EXTRACT', IMPL = 'IMPL-REFERENCE-CLAUSES';
+const existing = new Set(o['harness-in'] ? JSON.parse(readFileSync(o['harness-in'], 'utf8')).nodes.map(n => n.id) : []);
+const reuse = existing.has(PROBE) && existing.has(IMPL);
 N({ id: ENV, class: 'ENVIRONMENT', environment_id: ENV, environment_class: 'PHYSICAL_HOST', toolchain: null, target: 'authority sources (no build)', host_runtime: 'node + curl + git through the session proxy (sources only)',
   versions: null, flags: { channels: 'raw.githubusercontent.com bytes at each source tip; git ls-remote tips' }, build_profile: null, origin_security: null, permissions_policy: null,
   implementation_hardware_class: 'none (source extraction)', dependency_graph_identity: null, other_state: { network_egress: 'published renderings denied (unchanged since D14)' },
   identity_completeness: { missing: ['published renderings (policy)'], present: ['source commit + sha256 per clause'] }, owner: `evidence/${E}/clauses/summary.json`, note: `${E} clause extraction; observed ${summary.observed}` });
-N({ id: IMPL, class: 'IMPLEMENTATION', impl_id: IMPL, repo_path: 'tests/reference/{clauses.mjs,lib.mjs,build-clauses.mjs}', commit: `introduced by ${o.delta} (integration commit in LEDGER AFTER)`, kind: 'harness',
+if (!reuse) N({ id: IMPL, class: 'IMPLEMENTATION', impl_id: IMPL, repo_path: 'tests/reference/{clauses.mjs,lib.mjs,build-clauses.mjs}', commit: `introduced by ${o.delta} (integration commit in LEDGER AFTER)`, kind: 'harness',
   note: 'exact-clause extraction at each source tip with phrase verification', owner: 'FactTest repository path tests/reference/' });
-N({ id: PROBE, class: 'PROBE', probe_id: PROBE, proves_fact: [], command_or_operation: `node tests/reference/clauses.mjs tests/reference/<epoch>-clauses.json design/environment-map/graph.json evidence/<epoch>/clauses`,
+if (!reuse) N({ id: PROBE, class: 'PROBE', probe_id: PROBE, proves_fact: [], command_or_operation: `node tests/reference/clauses.mjs tests/reference/<epoch>-clauses.json design/environment-map/graph.json evidence/<epoch>/clauses`,
   expected_observations: ['every manifest clause VERIFIED: located at the tip and every must_contain phrase present'], failure_meaning: ['a clause the authority does not (or no longer) say: the dependent constraint returns to ASCII'], implemented_by: IMPL, owner: IMPL });
-edge('IMPLEMENTED_BY', PROBE, IMPL);
+if (!reuse) edge('IMPLEMENTED_BY', PROBE, IMPL);
 const evSum = N({ id: `EV-${E}-CLAUSES-SUMMARY`, class: 'EVIDENCE', evidence_id: `EV-${E}-CLAUSES-SUMMARY`, probe_ref: PROBE, environment_ref: ENV,
   artifact_identity: { path: join(o.clauses, 'summary.json'), sha256: sha(join(o.clauses, 'summary.json')), locator: 'status, sources', identity_source: 'sha256 of the committed file' },
   observed_result: `${summary.clauses} clauses ${JSON.stringify(summary.status)} over ${summary.sources.length} sources`, epoch: E, status: 'RUN', evidence_class: 'PHYSICAL_HOST', owner: `Factory receipt of ${o.delta}` });
@@ -41,7 +45,7 @@ edge('EVIDENCED_BY', PROBE, evSum);
 const FV = `FACT-${E}-CLAUSES-VERIFIED`;
 N({ id: FV, class: 'COMPUTATIONAL_FACT', fact_id: FV, subject: `${E} clause manifest`, predicate: `every one of ${summary.clauses} manifest clauses is present at its source tip with each quoted phrase (the consequences stated on the CLAUSE nodes rest on text the authorities contain)`,
   required_environment: [], constraint_refs: [], status: 'RUN', note: 'source level only: published renderings unverified (network policy)', source_ref: join(o.clauses, 'summary.json'), owner: `${E} (derived from the evidence named by its edges)` });
-nodes.find(n => n.id === PROBE).proves_fact.push(FV);
+if (!reuse) nodes.find(n => n.id === PROBE).proves_fact.push(FV);
 edge('PROBED_BY', FV, PROBE); edge('EVIDENCED_BY', FV, evSum); edge('REQUIRES', FV, ENV);
 edge('STALE_IF', FV, ENV, { condition: { dimension: 'authority.source_commit', relation: 'any clause source tip moves with the clause window changed' } });
 
@@ -62,7 +66,8 @@ for (const { path, r } of recs) {
   N({ id: r.id, class: 'CLAUSE', clause_id: r.id, authority_ref: r.authority, trace: r.trace, epoch: E,
     source: { repo: r.source.repo, commit: r.source.commit, path: r.source.path, sha256: r.source.sha256 },
     locator: { requested: c.locator, line_start: r.locator.line_start, line_end: r.locator.line_end, derivation: r.locator.derivation, enclosing_section: r.locator.enclosing_section },
-    excerpt_sha256: r.excerpt_sha256, quoted: Object.keys(r.must_contain), consequence: r.consequence, owner: `${o.manifest} (clause), ${path} (extraction)` });
+    excerpt_sha256: r.excerpt_sha256, quoted: Object.keys(r.must_contain), ...(r.absent_in_document ? { absent_in_document: Object.keys(r.absent_in_document) } : {}),
+    consequence: r.consequence, owner: `${o.manifest} (clause), ${path} (extraction)` });
   edge('CLAUSE_OF', r.id, r.authority); edge('EXTRACTED_IN', r.id, ev);
   for (const t of c.grounds || []) edge('GROUNDS', r.id, t);
   for (const t of c.leads_to || []) edge('LEADS_TO', r.id, t);

@@ -1,0 +1,16 @@
+{
+ "family": "CAP-SECURE-CONTEXT",
+ "matrix_row": "Secure-context state",
+ "observed": "2026-09-24T08:42:27.922Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "typeof isSecureContext === 'boolean'",
+ "discovery_expr": "({isSecureContext, crossOriginIsolated: self.crossOriginIsolated})",
+ "exposed": true,
+ "discovery": {
+  "isSecureContext": true,
+  "crossOriginIsolated": false
+ },
+ "permissions": {},
+ "policy": {}
+}

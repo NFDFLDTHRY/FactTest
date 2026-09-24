@@ -20,6 +20,10 @@
 //   connection; TRACEABILITY lists the clauses grounding each fact; Q18 traverses every claim CLAIM -> AUTHORITY ->
 //   CLAUSE -> MATURITY -> PIN -> CONSTRAINT -> CONTRACT -> ENVIRONMENT -> PROBE -> EVIDENCE -> STALE and reports where
 //   it stops ([GAP] / [ERR] / [UNK]) or COMPLETE.
+// D16 (capability universe): CAPABILITY_FAMILY nodes (one per CAPABILITY-MATRIX.md row) are validated for classification
+//   vocabulary and step/edge agreement; a clause traced by a family (TRACE_STEP) is connected; Q19 walks every family
+//   API -> SECURE_CONTEXT -> PERMISSION_POLICY -> REQUEST -> FEATURES_LIMITS -> LIFECYCLE -> LOSS -> RUNTIME ADMISSION ->
+//   PROBE OBLIGATION -> EVIDENCE; TRACEABILITY lists the universe.  Graphs without families render and validate as before.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -125,8 +129,15 @@ function validate(g) {
     add('clause_of_its_authority', badC.length ? 'FAIL' : 'PASS', badC.map(c => c.id).join(' ') || `${clauses.length} clauses`);
     const noX = clauses.filter(c => !c.excerpt_sha256 || !c.source || !c.source.commit || !out(g, c.id, 'EXTRACTED_IN').length);
     add('clause_has_extraction_identity', noX.length ? 'FAIL' : 'PASS', noX.map(c => c.id).join(' '));
-    const orphan = clauses.filter(c => !out(g, c.id, 'GROUNDS').length && !out(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'LEADS_TO').length);
+    const orphan = clauses.filter(c => !out(g, c.id, 'GROUNDS').length && !out(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'TRACE_STEP').length);
     add('clause_connected', orphan.length ? 'FAIL' : 'PASS', orphan.map(c => c.id).join(' ') || 'every clause grounds something or is on a sublink chain');
+  }
+  const fams = g.nodes.filter(n => n.class === 'CAPABILITY_FAMILY');
+  if (fams.length) {
+    const badCls = fams.filter(f => !['RUN', 'OBS', 'GAP', 'ERR', 'UNK'].includes(f.classification));
+    add('family_classification_vocabulary', badCls.length ? 'FAIL' : 'PASS', badCls.map(f => f.id).join(' ') || `${fams.length} families`);
+    const mism = fams.filter(f => Object.entries(f.steps).some(([s, x]) => x.status !== 'GAP' && x.clauses.some(c => !out(g, f.id, 'TRACE_STEP').some(e => e.to === c && e.step === s))) || out(g, f.id, 'TRACE_STEP').some(e => !(f.steps[e.step] && f.steps[e.step].clauses.includes(e.to))));
+    add('family_steps_match_edges', mism.length ? 'FAIL' : 'PASS', mism.map(f => f.id).join(' ') || 'every traced step has its TRACE_STEP edges and nothing else');
   }
   if (g.epochs) {
     const names = g.epochs.map(e => e.epoch);
@@ -226,6 +237,24 @@ const Q = {
     const terminal = f.status !== 'RUN' ? `[${f.status}] the claim itself is not a run claim: ${f.note || f.predicate}` : firstBreak ? `stops at ${firstBreak[0]}: ${firstBreak[2]}` : 'COMPLETE';
     return { fact: f.id, status: f.status, traversal: steps.map(([step, ok, detail]) => ({ step, ok, detail })), maturity, terminal };
   } },
+  Q19: { title: 'For every approved capability family in G: API -> SECURE_CONTEXT -> PERMISSION_POLICY -> REQUEST -> FEATURES_LIMITS -> LIFECYCLE -> LOSS -> RUNTIME ADMISSION -> PROBE OBLIGATION -> EVIDENCE, and what is it?', fn: (g, ids) => {
+    const fams = g.nodes.filter(n => n.class === 'CAPABILITY_FAMILY');
+    if (!fams.length) return { families: 0, note: 'no CAPABILITY_FAMILY nodes in this graph' };
+    const rows = fams.map(f => {
+      const wit = sortIds(out(g, f.id, 'WITNESSED_BY').map(e => e.to));
+      const probes = sortIds(wit.flatMap(w => out(g, w, 'PROBED_BY').map(e => e.to)));
+      const evidence = sortIds(wit.flatMap(w => evidenceOf(g, ids, w)).filter(e => e.status === 'RUN').map(e => e.evidence_id));
+      const trace = Object.entries(f.steps).map(([step, x]) => ({ step, status: x.status, detail: x.status === 'GAP' ? `[GAP] ${x.reason}` : x.clauses.join(', ') }));
+      trace.push({ step: 'RUNTIME ADMISSION', status: f.classification === 'RUN' ? 'ADMITTED' : 'NOT ADMITTED', detail: `${f.admission_contract} -> [${f.classification}] ${f.rationale}` });
+      trace.push({ step: 'PROBE OBLIGATION', status: probes.length ? 'PROBED' : 'GAP', detail: `required: ${f.evidence_required}; probes: ${probes.join(', ') || '(none)'}` });
+      trace.push({ step: 'EVIDENCE', status: evidence.length ? 'EVIDENCE' : 'GAP', detail: evidence.join(', ') || '(none)' });
+      const firstGap = trace.find(t => t.status === 'GAP');
+      return { family: f.id, matrix_row: f.matrix_row, in_G: f.in_G, classification: f.classification, census: f.census ? f.census.state : null, maturity: f.maturity, witnesses: wit, trace, first_gap: firstGap ? firstGap.step : null };
+    });
+    const by = {}; for (const r of rows) (by[r.classification] = by[r.classification] || []).push(r.family);
+    const stepStatus = {}; for (const r of rows) for (const t of r.trace.slice(0, 7)) stepStatus[t.status] = (stepStatus[t.status] || 0) + 1;
+    return { families: rows.length, in_G: rows.filter(r => r.in_G).length, by_classification: Object.fromEntries(Object.entries(by).map(([k, v]) => [k, v.length])), families_by_classification: by, authority_step_status: stepStatus, rows };
+  } },
   Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
     const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;
     const ep = n => n.introduced_in || first;
@@ -312,6 +341,11 @@ function renderTrace(g) {
   for (const d of Object.keys(st.dimensions)) { L.push(`- ${d}:`); for (const s of st.dimensions[d]) L.push(`  - ${s.subject} @ ${s.environment} (${s.relation})`); }
   L.push('', '## Conflicts preserved', '');
   for (const e of g.edges.filter(x => x.type === 'CONFLICTS_WITH').sort((a, b) => String(a.conflict_id).localeCompare(String(b.conflict_id)))) L.push(`- ${e.conflict_id}: ${e.from} <-> ${e.to}${e.note ? ' - ' + e.note : ''}`);
+  const fams = g.nodes.filter(x => x.class === 'CAPABILITY_FAMILY');
+  if (fams.length) {
+    L.push('', '## Capability universe (G = CAPABILITY-MATRIX.md; Q19 has the full trace)', '');
+    for (const f of fams) L.push(`- ${f.id} [${f.classification}] ${f.matrix_row}: census ${f.census ? f.census.state : 'none'}; steps ${Object.entries(f.steps).map(([s, x]) => `${s}=${x.status}`).join(' ')}; witnesses ${sortIds(out(g, f.id, 'WITNESSED_BY').map(e => e.to)).join(', ') || '(none)'}`);
+  }
   L.push('', '## Environments', '');
   for (const n of g.nodes.filter(x => x.class === 'ENVIRONMENT').sort((a, b) => a.id.localeCompare(b.id))) L.push(`- ${n.id} [${n.environment_class}] ${n.host_runtime || ''}${n.toolchain && n.toolchain.nightly ? '; nightly ' + n.toolchain.nightly.rustc : ''}; missing identity: ${(n.identity_completeness.missing || []).join(', ') || 'none'}`);
   return L.join('\n') + '\n';

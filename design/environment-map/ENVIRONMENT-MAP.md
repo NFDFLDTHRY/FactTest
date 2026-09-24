@@ -188,3 +188,12 @@ D15    D15-FOUNDATIONAL-SEMANTICS  60 CLAUSE nodes over 11 traces (Rust no_std/b
                                document-level AUTHORITY nodes, 6 PROPOSED constraints, 5 facts; epochs/D15.json.
                                Q18 walks every claim to COMPLETE or its first broken step.
 ```
+
+## 8. Capability universe epoch D16 (added by D16-CAPABILITY-UNIVERSE)
+
+```text
+D16    D16-CAPABILITY-UNIVERSE     33 CAPABILITY_FAMILY nodes (G = CAPABILITY-MATRIX.md, every row kept), 90 CLAUSE
+                                   nodes over 18 new capability authorities, an exposure census of 32 families in
+                                   ENV-D16-BROWSER (HeadlessChrome 141), 2 PROPOSED constraints; epochs/D16.json.
+                                   Q19 walks every family API -> ... -> EVIDENCE and names its first gap.
+```

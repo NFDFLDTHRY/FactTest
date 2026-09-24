@@ -1,0 +1,22 @@
+{
+ "family": "CAP-DEVICE-ORIENTATION",
+ "matrix_row": "Device Orientation / Motion",
+ "observed": "2026-09-24T08:42:27.872Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "typeof DeviceOrientationEvent === 'function'",
+ "discovery_expr": "({requestPermission: typeof DeviceOrientationEvent.requestPermission, motion: typeof DeviceMotionEvent === 'function'})",
+ "exposed": true,
+ "discovery": {
+  "requestPermission": "undefined",
+  "motion": true
+ },
+ "permissions": {
+  "accelerometer": "prompt",
+  "gyroscope": "prompt"
+ },
+ "policy": {
+  "accelerometer": true,
+  "gyroscope": true
+ }
+}

@@ -661,4 +661,31 @@ BEFORE
   host behaviour; git tree order [GAP].
 
 AFTER
+- RESULT: integrated as 3748fa7bd15d74e560951f31338b8c94820c2830 (ff-only from 46cc28b); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-doc F4-evidence F5-doc PASS (format 2).  VERIFICATION: PASS (first run).
+  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree de523355; epochs/D15.json rebuilt byte-identically from the
+  committed evidence).  Pushed.
+- OBSERVED: D15-OBSERVED-FOUNDATIONAL-SEMANTICS.md - P1-P5 MATCH; one editorial drawing error recorded (intended
+  section 0 counted 29 source documents; the Factory read 31 in 21 repositories).
+- (recorded by D16-CAPABILITY-UNIVERSE, the next delta.)
+
+---
+
+## D16-CAPABILITY-UNIVERSE  (pass 3 of 6: what does each approved capability require?)
+
+BEFORE
+- DELTA: D16-CAPABILITY-UNIVERSE (factory/deltas/D16.json), workpiece W18, base 3748fa7.
+- ASCII: design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4, F6), S-FIXTURE (F1), S-BUILD (F2 clause extraction), S-BROWSER (F3 exposure census),
+  S-EVIDENCE (F5).
+- CHANGE: tests/reference/ (absent_in_document, --harness-in, D16 clause manifest), tests/capability/ (census, universe
+  manifest, epoch builder, gate), tests/envmap/envmap.mjs (family checks, Q19, universe view), evidence/D16/,
+  design/environment-map/ (epoch D16, merged graph, views, SCHEMA section 9, ENVIRONMENT-MAP section 8),
+  docs/HANDOFF.md, D16 records, this ledger.  FORBIDDEN: every law and pass document (CAPABILITY-MATRIX.md is read as G,
+  never written), compiler/, host/, factory/ machinery, fixtures/, earlier epochs and D0-D15 evidence.
+- PREDICTED: 90/90 clauses VERIFIED; census 32 records (25 EXPOSED, 6 ABSENT, 1 UNDETERMINED); epoch 305 nodes / 745
+  edges; merged 891 / 1845; gate PASS with 33 rows = 33 families, RUN 6 / OBS 16 / GAP 10 / ERR 1 / UNK 0; Q18 14
+  COMPLETE of 43 RUN claims; Q19 33 families.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

@@ -1,0 +1,30 @@
+{
+ "id": "CL-MAG1",
+ "trace": "MS",
+ "authority": "AUTH-MAGNETOMETER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/magnetometer",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "40801a25e7ad6c0ea12b1777f1d913f21e680e87",
+  "sha256": "4fc6eaf877c8b09e6d72d4269011b9c7afdd0fd3eb02834e815a7b06710ec1e4",
+  "bytes": 25647
+ },
+ "locator": {
+  "text": "interface Magnetometer : Sensor {",
+  "after": "[SecureContext,",
+  "line_start": 243,
+  "line_end": 243,
+  "derivation": "anchor text after \"[SecureContext,\"",
+  "enclosing_section": "#magnetometer-interface (line 237)"
+ },
+ "window": 1,
+ "consequence": "Magnetometer is [SecureContext, Exposed=Window]",
+ "excerpt": "  interface Magnetometer : Sensor {",
+ "excerpt_sha256": "d70286db6a0a64db92598a9279c508b10a6c3f0efb1c6dd1a9e491190e7284cc",
+ "must_contain": {
+  "interface Magnetometer : Sensor": true
+ },
+ "status": "VERIFIED"
+}
