@@ -11,12 +11,35 @@ dependencies = [
 ]
 
 [[package]]
+name = "factc-bundle"
+version = "0.1.0"
+dependencies = [
+ "factc-codegen",
+ "factc-foundation",
+ "factc-implementation",
+ "factc-semantic",
+ "factc-verifier",
+]
+
+[[package]]
 name = "factc-capability"
 version = "0.1.0"
 dependencies = [
  "factc-foundation",
  "factc-semantic",
  "factc-source",
+]
+
+[[package]]
+name = "factc-codegen"
+version = "0.1.0"
+dependencies = [
+ "factc-capability",
+ "factc-foundation",
+ "factc-implementation",
+ "factc-semantic",
+ "factc-source",
+ "factc-verifier",
 ]
 
 [[package]]
@@ -37,7 +60,9 @@ dependencies = [
 name = "factc-kernel"
 version = "0.1.0"
 dependencies = [
+ "factc-bundle",
  "factc-capability",
+ "factc-codegen",
  "factc-foundation",
  "factc-implementation",
  "factc-planning",

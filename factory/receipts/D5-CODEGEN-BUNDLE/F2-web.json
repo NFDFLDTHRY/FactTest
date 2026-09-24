@@ -1,0 +1,168 @@
+{
+  "receipt_id": "R-D5-CODEGEN-BUNDLE-F2-web",
+  "station_id": "S-WEB",
+  "station_version": "1",
+  "fixture_id": "F2-web",
+  "workpiece_id": "W5",
+  "delta_id": "D5-CODEGEN-BUNDLE",
+  "canonical_base": "77fb4594d52d02ebda3b1ea42959507f932af5e0",
+  "input_artifacts": [
+    "BOOTSTRAP-CONTRACTS.md C13",
+    "IMPLEMENTATION-CONTRACTS.md CPU_WASM64/WEBGPU",
+    "RUNTIME-ADMISSION-REPLAN.md"
+  ],
+  "open_tree": "dca17d77a93d5431d86057753d3647d092f941b7",
+  "close_tree": "88748ffa944058de63197ee83b8076cb590e91ea",
+  "changed_paths": [
+    "compiler/codegen/templates/adapter-wasm64_relay.js",
+    "compiler/codegen/templates/adapter-webgpu_relay.js",
+    "compiler/codegen/templates/index.html",
+    "compiler/codegen/templates/manifest.webmanifest",
+    "compiler/codegen/templates/membrane-core.js",
+    "compiler/codegen/templates/runtime.js",
+    "compiler/codegen/templates/selector.js",
+    "compiler/codegen/templates/sw.js",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-authority-links.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-membrane-syntax.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-selector-runtime-syntax.log"
+  ],
+  "output_artifacts": [
+    "compiler/codegen/templates/membrane-core.js",
+    "compiler/codegen/templates/adapter-wasm64_relay.js",
+    "compiler/codegen/templates/adapter-webgpu_relay.js",
+    "compiler/codegen/templates/selector.js",
+    "compiler/codegen/templates/runtime.js",
+    "compiler/codegen/templates/index.html",
+    "compiler/codegen/templates/manifest.webmanifest",
+    "compiler/codegen/templates/sw.js"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-WEB v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D5-CODEGEN-BUNDLE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "WEB_HOST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-membrane-syntax.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-selector-runtime-syntax.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-authority-links.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in membrane-core adapter-wasm64_relay adapter-webgpu_relay; do cat compiler/codegen/templates/$f.js; done > /tmp/facttest-membrane-check.mjs && node --check /tmp/facttest-membrane-check.mjs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-membrane-syntax.log"
+    },
+    {
+      "check": "command:sh -c sed 's#__STRATEGY_JSON__#{}#' compiler/codegen/templates/selector.js > /tmp/facttest-selector-check.mjs && node --check /tmp/facttest-selector-check.mjs && cp compiler/codegen/templates/runtime.js /tmp/facttest-runtime-check.mjs && node --check /tmp/facttest-runtime-check.mjs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-selector-runtime-syntax.log"
+    },
+    {
+      "check": "command:sh -c grep -q 'dom-gpudevice-destroy' compiler/codegen/templates/adapter-webgpu_relay.js && grep -q 'js-api/#memories' compiler/codegen/templates/adapter-wasm64_relay.js",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-authority-links.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/membrane-core.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/adapter-wasm64_relay.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/adapter-webgpu_relay.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/selector.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/runtime.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/index.html",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/manifest.webmanifest",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/codegen/templates/sw.js",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-membrane-syntax.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-selector-runtime-syntax.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-authority-links.log"
+  ],
+  "closed": "2026-09-24T02:42:39Z",
+  "status": "PASS"
+}

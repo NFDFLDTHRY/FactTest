@@ -29,7 +29,7 @@ target preservation (PASS1 section 6, CAPABILITY-MATRIX.md) is data-visible, not
 @{authority_link WEBGPU "https://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy"}
 
 --- codegen recipes (CODEGEN-BUNDLE-CONTRACT.md) ---
-@{recipe R_WASM64_RELAY backend=CPU_WASM64 roles=wasm_module,host_adapter exports=memory,abi_version,copy_bytes imports=none adapter=wasm64_relay}
+@{recipe R_WASM64_RELAY backend=CPU_WASM64 roles=wasm_module,host_adapter exports=memory,abi_version,copy_bytes,region_in,region_out,region_capacity imports=none adapter=wasm64_relay}
 @{recipe R_WEBGPU_RELAY backend=WEBGPU roles=host_adapter exports=none imports=none adapter=webgpu_relay}
 
 --- every other capability family of G (CAPABILITY-MATRIX.md): present, not materialized ---

@@ -1,0 +1,15 @@
+// FactTest generated runtime selector (RUNTIME-ADMISSION-REPLAN.md Pass 6 amendment).
+// STRATEGY is the VerifiedStrategy as data; select() evaluates activation guards over admissions in dispatch
+// order and can only ever name a plan_id that appears in STRATEGY.variants.  Nothing here generates code.
+export const STRATEGY = /*STRATEGY-BEGIN*/__STRATEGY_JSON__/*STRATEGY-END*/;
+export function select(admissions) {
+  const guardResults = [];
+  let chosen = null;
+  for (const pid of STRATEGY.dispatch_order) {
+    const v = STRATEGY.variants.find(x => x.plan_id === pid);
+    const satisfied = v.guard.every(b => admissions[b] && admissions[b].decision === 'ADMITTED');
+    guardResults.push({ plan_id: pid, guard: v.guard, satisfied });
+    if (satisfied && chosen === null) chosen = v;
+  }
+  return { strategy_id: STRATEGY.strategy_id, plan_id: chosen ? chosen.plan_id : null, variant: chosen, status: chosen ? 'PASS' : 'NO_ACTIVE_PLAN', guard_results: guardResults };
+}

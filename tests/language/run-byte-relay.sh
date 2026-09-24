@@ -24,6 +24,11 @@ for E in E_model_0 E_model_1; do
   grep -q '"planner_result_strength":"EXACT_OPTIMUM"' "$OUT/$E/verified-strategy.json"
   grep -q '"verified_strategy_constructed":true' "$OUT/$E/verification-certificates.json"
   grep -q '"evidence_class":"SYNTHETIC_MODEL"' "$OUT/$E/activation-receipt-model.json"
+  # M6: generated bundle + PASS BundleCertificate; emitted modules are memory64; JS parses as ES modules
+  grep -q '"status":"PASS"' "$OUT/$E/bundle-certificate.json"
+  test -s "$OUT/$E/bundle/wasm64_relay.wasm" && test -s "$OUT/$E/bundle/membrane.js" && test -s "$OUT/$E/bundle/selector.js" && test -s "$OUT/$E/bundle/runtime.js" && test -s "$OUT/$E/bundle/bundle.json"
+  for f in membrane selector runtime; do cp "$OUT/$E/bundle/$f.js" "$OUT/$E/bundle/.check-$f.mjs"; node --check "$OUT/$E/bundle/.check-$f.mjs"; rm "$OUT/$E/bundle/.check-$f.mjs"; done
+  "${FACTORY_BIN:-target/debug/factory}" wasm-inspect "$OUT/$E/bundle/wasm64_relay.wasm" --out "$OUT/$E/bundle-wasm-inspect.json" > "$OUT/$E/bundle-wasm-inspect.log"
 done
 # P6-M01 / P6-M02 at the artifact level: E_model_0 activates the WEBGPU guard, E_model_1 the CPU_WASM64 guard
 python3 - "$OUT" <<'PY'

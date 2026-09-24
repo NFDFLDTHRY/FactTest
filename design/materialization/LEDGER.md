@@ -208,5 +208,63 @@ BEFORE
   [GAP] Sequence obligations are acknowledged (endpoints resolved) but no plan-level ordering model exists in v1.
 
 AFTER
+- RESULT: integrated as 77fb4594d52d02ebda3b1ea42959507f932af5e0 (ff-only from a39ea02).
+- RECEIPTS: factory/receipts/D4-PLANNER-VERIFIER/{F0-doc,F1-rust,F2-fixture,F3-build,F4-evidence}.json PASS.
+- VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- EVIDENCE: evidence/D4/build/test.log (13 strategy witnesses + all prior), evidence/D4/byte-relay/E_model_{0,1}/
+  {candidate-strategy,verification-certificates,verified-strategy,activation-receipt-model}.json (two variants,
+  21 obligation results each PASS, strategy certificate PASS, EXACT_OPTIMUM, E_model_0 -> plan 1 [WEBGPU],
+  E_model_1 -> plan 0 [CPU_WASM64], byte-identical VerifiedStrategy across epochs), evidence/D4/negative/summary.log
+  (forge-verified-strategy rejected: "cannot construct VerifiedStrategy ... due to private fields").
+- OBSERVED ASCII: compiler/planning and compiler/verifier exist as drawn; planning does not depend on verifier.
+- MATCH/DIFFER: MATCH.
+
+---
+
+## D5-CODEGEN-BUNDLE  (M6)
+
+BEFORE
+- DELTA: D5-CODEGEN-BUNDLE (factory/deltas/D5.json)
+- BASE: 77fb4594d52d02ebda3b1ea42959507f932af5e0
+- STATION: S-DOC, S-RUST, S-WEB, S-FIXTURE, S-BUILD, S-EVIDENCE
+- FIXTURE: F0-doc, F1-rust, F2-web, F3-fixture, F4-build, F5-evidence
+- READ: everything.  CHANGE: compiler/ (new crates codegen, bundle; kernel/factc wiring), codegen templates
+  (S-WEB), fixtures/commissioning/contracts.ascii (recipe exports gain region_in/region_out/region_capacity),
+  tests/, ledger, evidence/D5/.  FORBIDDEN: law/design/pass docs, D0-D4 receipts/evidence, factory/src,
+  factory/registry, host/harness, fixtures/language, fixtures/compiler, the other commissioning fixtures, M0 ASCII.
+- INVARIANTS: codegen takes &VerifiedStrategy only; adapters = recipes of verified variants (no selection);
+  wasm emitter never writes an i32-address memory; selector/runtime contain no code generation; lineage manifest
+  names source/canonical/typed-IR hashes, strategy and certificate ids; BundleVerifier is independent (tamper tests).
+- TESTS: bundle ladder (8): both variants + selector emitted, no third adapter (P6-B01/B02/C1/C2); wasm memory64
+  + recipe exports, wasm32 tamper FAIL (P6-B05/P5-C04); undeclared third adapter FAIL (P6-B03/P5-C02); missing
+  variant in membrane or selector FAIL (P6-B04/P5-C03); lineage/identity tamper FAIL (P6-B06/P5-C05); registry
+  without the GPU path emits exactly one adapter; ANALYZE emits no bundle and failed verification leaves none
+  (P5-C01/P6-G04); bundle content is recipe-driven, never slice-named (P6-X06); manifest roles/lineage.
+- EXPECTED EVIDENCE: evidence/D5/{build,byte-relay/E_model_0/bundle,...}/*, bundle-certificate.json,
+  bundle-wasm-inspect.json (memory I64 min=32), index.json.
+- COMPILER-PLANE DECISIONS RECORDED:
+  [NEW] Bundle layout: <adapter>.wasm per wasm_module recipe, membrane.js (core + adapter templates delimited by
+        /*ADAPTER-BEGIN:name*/ ... /*ADAPTER-END:name*/), selector.js (/*STRATEGY-BEGIN*/json/*STRATEGY-END*/),
+        runtime.js (evidence hooks /*EVIDENCE-HOOK:...*/), index.html, manifest.webmanifest, sw.js (cache versioned
+        by bundle id), bundle.json (GeneratedBundle manifest).
+  [NEW] wasm64 relay module layout: memory 32 pages (2 MiB), region_in at 0, region_out at 1 MiB, capacity 1 MiB;
+        copy_bytes(src,dst,len) is memory.copy with i64 operands.  Function library keyed by recipe export names.
+  [NEW] Adapter template library keyed by recipe adapter names (wasm64_relay, webgpu_relay); an unknown adapter name
+        is a structured codegen GAP, never a substitution.
+  [NEW] Evidence tape dialect emitted by the runtime: @{epoch E}, @{admission B DECISION evidence=... [reason=...]},
+        @{activation E plan=N status=...}, @{executed E plan=N relation=R bytes=N input="sha" output="sha" exact=b},
+        @{loss E B reason=...}, @{transition E -> E' stale_plan=N replacement=N}, @{no_active_plan E}.
+        Consumed by the kernel observe phase (M7).
+  [OBS] The bundle_id in bundle.json is the identity of the files emitted before the shell/manifest/sw (they embed
+        it); the BundleVerifier binds the manifest to every file through per-file sha256 (B-08-artifact-identities).
+  [ERR->fixed] The first D5 routing attempt was refused by the Factory: fixture F1-rust ran `cargo build` before
+        F2-web had placed compiler/codegen/templates (the codegen crate include_str!s them), so the F1 receipt was
+        FAIL, independent verification FAILed and the integration gate STOPped without moving any ref.  The station
+        order was corrected to F0-doc, F2-web, F1-rust, F3-fixture, F4-build, F5-evidence and W5 re-created.
+        A second attempt was refused at F2-web (changed paths outside the fixture's MAY CHANGE) because the
+        operator's staging step copied the templates directory to the wrong location; W5 was re-created again.
+        Both refusals moved no ref and left no trace in the canonical repository.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

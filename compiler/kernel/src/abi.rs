@@ -121,6 +121,18 @@ pub fn artifact_count(ws: &Workspace) -> usize {
     ws.artifacts.len()
 }
 
+/// READ_BUNDLE_FILE (transport): path and bytes of generated bundle file `index`.
+pub fn bundle_file_count(ws: &Workspace) -> usize {
+    ws.bundle.files.len()
+}
+
+pub fn bundle_file(ws: &Workspace, index: usize) -> Option<(&[u8], &[u8])> {
+    ws.bundle
+        .files
+        .get(index)
+        .map(|f| (f.path(), ws.bundle.bytes(f)))
+}
+
 /// READ_DIAGNOSTICS: deterministic JSON rendering of the structured diagnostics.
 pub fn read_diagnostics(
     ws: &Workspace,

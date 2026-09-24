@@ -1,0 +1,4 @@
+$ sh -c for f in membrane-core adapter-wasm64_relay adapter-webgpu_relay; do cat compiler/codegen/templates/$f.js; done > /tmp/facttest-membrane-check.mjs && node --check /tmp/facttest-membrane-check.mjs
+(cwd .)
+
+[exit 0] expected 0

@@ -80,6 +80,8 @@ pub struct Workspace {
     pub strategy: factc_planning::CandidateStrategy,
     pub verification: factc_verifier::Verification,
     pub activation: Option<factc_verifier::activation::ActivationReceipt>,
+    pub bundle: factc_codegen::bundle::BundleStore,
+    pub bundle_certificate: factc_bundle::BundleCertificate,
     pub artifact_bytes: [u8; ARTIFACT_BYTES],
     pub artifact_used: usize,
     pub artifacts: BVec<ArtifactSlot, MAX_ARTIFACTS>,
@@ -118,6 +120,8 @@ impl Workspace {
             strategy: factc_planning::CandidateStrategy::new(),
             verification: factc_verifier::Verification::new(),
             activation: None,
+            bundle: factc_codegen::bundle::BundleStore::new(),
+            bundle_certificate: factc_bundle::BundleCertificate::new(),
             artifact_bytes: [0; ARTIFACT_BYTES],
             artifact_used: 0,
             artifacts: BVec::new(),
@@ -142,6 +146,8 @@ impl Workspace {
         self.strategy.clear();
         self.verification.clear();
         self.activation = None;
+        self.bundle.clear();
+        self.bundle_certificate = factc_bundle::BundleCertificate::new();
         self.artifact_used = 0;
         self.artifacts.clear();
         self.last_status = Status::Idle;

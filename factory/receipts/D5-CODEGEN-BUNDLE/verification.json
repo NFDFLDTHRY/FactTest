@@ -1,0 +1,363 @@
+{
+  "delta_id": "D5-CODEGEN-BUNDLE",
+  "workpiece_id": "W5",
+  "canonical_base": "77fb4594d52d02ebda3b1ea42959507f932af5e0",
+  "base_tree": "21baf1fb92c599747b140d8b136bee6b3536e5db",
+  "verified_tree": "6175fc07738883439afcd81ba0c088c405ff7e56",
+  "changed_paths": [
+    "Cargo.lock",
+    "Cargo.toml",
+    "compiler/bundle/Cargo.toml",
+    "compiler/bundle/src/lib.rs",
+    "compiler/codegen/Cargo.toml",
+    "compiler/codegen/src/bundle.rs",
+    "compiler/codegen/src/lib.rs",
+    "compiler/codegen/src/wasm.rs",
+    "compiler/codegen/templates/adapter-wasm64_relay.js",
+    "compiler/codegen/templates/adapter-webgpu_relay.js",
+    "compiler/codegen/templates/index.html",
+    "compiler/codegen/templates/manifest.webmanifest",
+    "compiler/codegen/templates/membrane-core.js",
+    "compiler/codegen/templates/runtime.js",
+    "compiler/codegen/templates/selector.js",
+    "compiler/codegen/templates/sw.js",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/bundle_ladder.rs",
+    "design/materialization/LEDGER.md",
+    "evidence/D5/build/test.log",
+    "evidence/D5/byte-relay/E_model_0/activation-receipt-model.json",
+    "evidence/D5/byte-relay/E_model_0/artifacts.json",
+    "evidence/D5/byte-relay/E_model_0/bundle-certificate.json",
+    "evidence/D5/byte-relay/E_model_0/bundle-wasm-inspect.json",
+    "evidence/D5/byte-relay/E_model_0/bundle-wasm-inspect.log",
+    "evidence/D5/byte-relay/E_model_0/bundle/bundle.json",
+    "evidence/D5/byte-relay/E_model_0/bundle/index.html",
+    "evidence/D5/byte-relay/E_model_0/bundle/manifest.webmanifest",
+    "evidence/D5/byte-relay/E_model_0/bundle/membrane.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/runtime.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/selector.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/sw.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/wasm64_relay.wasm",
+    "evidence/D5/byte-relay/E_model_0/candidate-strategy.json",
+    "evidence/D5/byte-relay/E_model_0/canonical-ascii-0.ascii",
+    "evidence/D5/byte-relay/E_model_0/capability-ir.json",
+    "evidence/D5/byte-relay/E_model_0/diagnostics.json",
+    "evidence/D5/byte-relay/E_model_0/factc.log",
+    "evidence/D5/byte-relay/E_model_0/implementation-hypergraph.json",
+    "evidence/D5/byte-relay/E_model_0/source-lineage.json",
+    "evidence/D5/byte-relay/E_model_0/typed-system-ir.json",
+    "evidence/D5/byte-relay/E_model_0/verification-certificates.json",
+    "evidence/D5/byte-relay/E_model_0/verified-strategy.json",
+    "evidence/D5/byte-relay/E_model_1/activation-receipt-model.json",
+    "evidence/D5/byte-relay/E_model_1/artifacts.json",
+    "evidence/D5/byte-relay/E_model_1/bundle-certificate.json",
+    "evidence/D5/byte-relay/E_model_1/bundle-wasm-inspect.json",
+    "evidence/D5/byte-relay/E_model_1/bundle-wasm-inspect.log",
+    "evidence/D5/byte-relay/E_model_1/bundle/bundle.json",
+    "evidence/D5/byte-relay/E_model_1/bundle/index.html",
+    "evidence/D5/byte-relay/E_model_1/bundle/manifest.webmanifest",
+    "evidence/D5/byte-relay/E_model_1/bundle/membrane.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/runtime.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/selector.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/sw.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/wasm64_relay.wasm",
+    "evidence/D5/byte-relay/E_model_1/candidate-strategy.json",
+    "evidence/D5/byte-relay/E_model_1/canonical-ascii-0.ascii",
+    "evidence/D5/byte-relay/E_model_1/capability-ir.json",
+    "evidence/D5/byte-relay/E_model_1/diagnostics.json",
+    "evidence/D5/byte-relay/E_model_1/factc.log",
+    "evidence/D5/byte-relay/E_model_1/implementation-hypergraph.json",
+    "evidence/D5/byte-relay/E_model_1/source-lineage.json",
+    "evidence/D5/byte-relay/E_model_1/typed-system-ir.json",
+    "evidence/D5/byte-relay/E_model_1/verification-certificates.json",
+    "evidence/D5/byte-relay/E_model_1/verified-strategy.json",
+    "evidence/D5/byte-relay/artifacts.json",
+    "evidence/D5/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D5/byte-relay/capability-ir.json",
+    "evidence/D5/byte-relay/diagnostics.json",
+    "evidence/D5/byte-relay/factc.log",
+    "evidence/D5/byte-relay/run.log",
+    "evidence/D5/byte-relay/source-lineage.json",
+    "evidence/D5/byte-relay/typed-system-ir.json",
+    "evidence/D5/index.json",
+    "evidence/D5/index.log",
+    "factory/deltas/D5.json",
+    "factory/fixtures/D5/F0-doc.json",
+    "factory/fixtures/D5/F1-rust.json",
+    "factory/fixtures/D5/F2-web.json",
+    "factory/fixtures/D5/F3-fixture.json",
+    "factory/fixtures/D5/F4-build.json",
+    "factory/fixtures/D5/F5-evidence.json",
+    "factory/receipts/D5-CODEGEN-BUNDLE/F0-doc.json",
+    "factory/receipts/D5-CODEGEN-BUNDLE/F1-rust.json",
+    "factory/receipts/D5-CODEGEN-BUNDLE/F2-web.json",
+    "factory/receipts/D5-CODEGEN-BUNDLE/F3-fixture.json",
+    "factory/receipts/D5-CODEGEN-BUNDLE/F4-build.json",
+    "factory/receipts/D5-CODEGEN-BUNDLE/F5-evidence.json",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F0-ledger.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F1-build.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F1-clippy.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F1-depcheck.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F1-fmt.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F1-nostd.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-authority-links.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-membrane-syntax.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-selector-runtime-syntax.log",
+    "factory/receipts/D5-CODEGEN-BUNDLE/logs/F3-recipe-exports.log",
+    "fixtures/commissioning/contracts.ascii",
+    "host/factc/src/main.rs",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "21baf1fb92c599747b140d8b136bee6b3536e5db"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D5-CODEGEN-BUNDLE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-web",
+      "status": "PASS",
+      "detail": "factory/receipts/D5-CODEGEN-BUNDLE/F2-web.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D5-CODEGEN-BUNDLE/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D5-CODEGEN-BUNDLE/F3-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D5-CODEGEN-BUNDLE/F4-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D5-CODEGEN-BUNDLE/F5-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:WEB_HOST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/src/wasm.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/src/bundle.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/templates/membrane-core.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/templates/adapter-wasm64_relay.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/templates/adapter-webgpu_relay.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/templates/selector.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/codegen/templates/runtime.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/bundle/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/kernel/tests/bundle_ladder.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D5/byte-relay/E_model_0/bundle/wasm64_relay.wasm",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D5/byte-relay/E_model_0/bundle/bundle.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D5/byte-relay/E_model_0/bundle-certificate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D5/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T02:42:45Z",
+  "status": "PASS"
+}

@@ -203,8 +203,105 @@ pub fn plan_and_verify(ws: &mut Workspace) -> bool {
     true
 }
 
+/// Codegen + BundleVerifier.  Runs only with a VerifiedStrategy (the type guarantees it) in BUILD mode.
+pub fn codegen_and_bundle(
+    ws: &mut Workspace,
+    source_sha: &[u8; 32],
+    canonical_sha: &[u8; 32],
+    typed_sha: &[u8; 32],
+) -> bool {
+    let Some(vs) = ws.verification.verified.clone() else {
+        return false;
+    };
+    let mut scratch = [0u8; 128 * 1024];
+    let sys_name_len;
+    let mut sys_name = [0u8; 64];
+    {
+        let n = ws.model.name(ws.model.systems[0].name);
+        sys_name_len = n.len().min(64);
+        sys_name[..sys_name_len].copy_from_slice(&n[..sys_name_len]);
+    }
+    let lineage = factc_codegen::Lineage {
+        system_name: &sys_name[..sys_name_len],
+        source_sha256: source_sha,
+        canonical_sha256: canonical_sha,
+        typed_ir_sha256: typed_sha,
+    };
+    {
+        let (model, reg, hg, store) = (&ws.model, &ws.registry, &ws.hypergraph, &mut ws.bundle);
+        if let Err(e) = factc_codegen::generate(model, reg, hg, &vs, &lineage, store, &mut scratch)
+        {
+            let class: &'static str = match e {
+                factc_codegen::CodegenError::UnknownAdapterTemplate => {
+                    "recipe names an adapter template absent from the codegen library [GAP]"
+                }
+                factc_codegen::CodegenError::UnknownExport => {
+                    "recipe names a wasm export absent from the function library [GAP]"
+                }
+                factc_codegen::CodegenError::RecipeMissing => {
+                    "verified backend has no CodegenRecipe"
+                }
+                factc_codegen::CodegenError::TooManyAdapters => "adapter arena exhausted",
+                factc_codegen::CodegenError::Output => "bundle arena exhausted",
+            };
+            ws.diagnostics.push(Diagnostic::new(
+                DiagCode::BundleCheckFailed,
+                Phase::Codegen,
+                SourceId::default(),
+                None,
+                class,
+            ));
+            return false;
+        }
+    }
+    let store = &ws.bundle;
+    let mut flat: [factc_bundle::File<'_>; factc_codegen::bundle::MAX_FILES] =
+        core::array::from_fn(|_| factc_bundle::File {
+            path: b"",
+            bytes: b"",
+        });
+    let mut n = 0;
+    for f in store.files.iter() {
+        flat[n] = factc_bundle::File {
+            path: f.path(),
+            bytes: store.bytes(f),
+        };
+        n += 1;
+    }
+    let expected = factc_bundle::Expected {
+        source_sha256: source_sha,
+        canonical_sha256: canonical_sha,
+    };
+    let mut cert = factc_bundle::BundleCertificate::new();
+    factc_bundle::verify(
+        &ws.model,
+        &ws.registry,
+        &ws.hypergraph,
+        &vs,
+        &flat[..n],
+        &expected,
+        &mut cert,
+    );
+    let pass = cert.pass;
+    ws.bundle_certificate = cert;
+    if !pass {
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::BundleCheckFailed,
+            Phase::Bundle,
+            SourceId::default(),
+            None,
+            "BundleVerifier rejected the generated bundle",
+        ));
+    }
+    pass
+}
+
 /// Emit artifacts: canonical ASCII per system, TypedSystemIR JSON.
-pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace::ArenaExhausted> {
+pub fn emit(
+    ws: &mut Workspace,
+    well_typed: bool,
+    mode: Mode,
+) -> Result<(), crate::workspace::ArenaExhausted> {
     let mut scratch = [0u8; SCRATCH];
     let status = if well_typed {
         ArtifactStatus::Ok
@@ -374,6 +471,39 @@ pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace
                     &[certs],
                     None,
                 )?;
+                if mode == Mode::Build {
+                    let source_sha = factc_foundation::sha256::digest(ws.source(&ws.sources[0]));
+                    let canonical_sha = ws
+                        .artifacts
+                        .iter()
+                        .find(|a| a.kind == ArtifactKind::CanonicalAscii)
+                        .map(|a| a.sha256)
+                        .unwrap_or([0; 32]);
+                    let typed_sha = ws
+                        .artifacts
+                        .iter()
+                        .find(|a| a.kind == ArtifactKind::TypedSystemIr)
+                        .map(|a| a.sha256)
+                        .unwrap_or([0; 32]);
+                    let ok = codegen_and_bundle(ws, &source_sha, &canonical_sha, &typed_sha);
+                    let mut o = OutBuf::new(&mut scratch);
+                    if factc_bundle::certificate_json(&ws.bundle_certificate, &mut o).is_err() {
+                        return Err(crate::workspace::ArenaExhausted);
+                    }
+                    let n = o.len();
+                    ws.store_artifact(
+                        ArtifactKind::BundleCertificate,
+                        "factc-bundle/verify",
+                        if ok {
+                            ArtifactStatus::Ok
+                        } else {
+                            ArtifactStatus::Failed
+                        },
+                        &scratch[..n],
+                        &[vsid],
+                        None,
+                    )?;
+                }
                 let activation = ws.activation;
                 if let Some(act) = activation.as_ref() {
                     let mut o = OutBuf::new(&mut scratch);
@@ -454,7 +584,7 @@ pub fn run(ws: &mut Workspace, mode: Mode) -> Status {
             );
         }
     }
-    if emit(ws, well_typed).is_err() {
+    if emit(ws, well_typed, mode).is_err() {
         ws.last_status = Status::Exhausted;
         ws.diagnostics.sort();
         return ws.last_status;

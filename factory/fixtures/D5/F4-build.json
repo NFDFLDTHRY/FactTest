@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F4-build", "station_id": "S-BUILD", "delta_id": "D5-CODEGEN-BUNDLE",
+  "selected_inputs": ["compiler/", "host/", "fixtures/", "tests/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D5/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D5/build/test.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/language/run-byte-relay.sh", "evidence/D5/byte-relay"], "env": {"FACTC_BIN": "/home/user/factory-target/debug/factc", "FACTORY_BIN": "/home/user/factory-target/debug/factory"}, "log": "evidence/D5/byte-relay/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D5/build/test.log", "evidence/D5/byte-relay/E_model_0/bundle/wasm64_relay.wasm", "evidence/D5/byte-relay/E_model_0/bundle-certificate.json", "evidence/D5/byte-relay/E_model_0/bundle-wasm-inspect.json"],
+  "tests": ["cargo test (all ladders incl. bundle)", "factc on Byte Relay with bundle output"], "evidence_requirements": ["logs", "bundle", "certificate"]
+}

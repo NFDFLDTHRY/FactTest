@@ -1,0 +1,17 @@
+[package]
+name = "factc-bundle"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "FactTest BundleVerifier: independent checks of a GeneratedBundle against the VerifiedStrategy, contracts and lineage; emits a BundleCertificate (CODEGEN-BUNDLE-CONTRACT.md section 5 and Pass 6 amendment). Shares no generation logic with codegen."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+factc-foundation = { path = "../foundation" }
+factc-semantic = { path = "../semantic" }
+factc-implementation = { path = "../implementation" }
+factc-verifier = { path = "../verifier" }
+factc-codegen = { path = "../codegen" }

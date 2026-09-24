@@ -175,6 +175,15 @@ fn check(args: &[String]) -> i32 {
         };
         std::fs::write(out_dir.join(&name), &out_bytes[..n]).expect("write artifact");
     }
+    if factc_kernel::bundle_file_count(&ws) > 0 {
+        let bdir = out_dir.join("bundle");
+        std::fs::create_dir_all(&bdir).expect("bundle dir");
+        for i in 0..factc_kernel::bundle_file_count(&ws) {
+            let (path, bytes) = factc_kernel::bundle_file(&ws, i).unwrap();
+            std::fs::write(bdir.join(std::str::from_utf8(path).unwrap()), bytes)
+                .expect("write bundle file");
+        }
+    }
     println!("factc: status {}", factc_kernel::status_name(status));
     match status {
         factc_kernel::Status::Ok => 0,

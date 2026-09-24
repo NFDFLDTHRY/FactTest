@@ -1,0 +1,49 @@
+{
+  "module": "evidence/D5/byte-relay/E_model_1/bundle/wasm64_relay.wasm",
+  "sha256": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11",
+  "byte_len": 162,
+  "memories": [
+    "I64 min=32 max=None shared=false"
+  ],
+  "imports": [],
+  "exports": [
+    "memory:2",
+    "abi_version:0",
+    "copy_bytes:0",
+    "region_in:0",
+    "region_out:0",
+    "region_capacity:0"
+  ],
+  "checks": [
+    {
+      "check": "module_structure",
+      "status": "PASS",
+      "detail": "5 sections"
+    },
+    {
+      "check": "memory_declared",
+      "status": "PASS",
+      "detail": "I64 min=32 max=None shared=false"
+    },
+    {
+      "check": "all_memories_i64_address_type",
+      "status": "PASS",
+      "detail": "wasm32 (i32 address) memories are forbidden by project law FT-003"
+    },
+    {
+      "check": "imports_listed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exports_listed",
+      "status": "PASS",
+      "detail": "memory:2, abi_version:0, copy_bytes:0, region_in:0, region_out:0, region_capacity:0"
+    },
+    {
+      "check": "artifact_identity",
+      "status": "PASS",
+      "detail": "sha256 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11 bytes 162"
+    }
+  ]
+}

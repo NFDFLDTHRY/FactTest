@@ -1,0 +1,98 @@
+{
+  "receipt_id": "R-D5-CODEGEN-BUNDLE-F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F5-evidence",
+  "workpiece_id": "W5",
+  "delta_id": "D5-CODEGEN-BUNDLE",
+  "canonical_base": "77fb4594d52d02ebda3b1ea42959507f932af5e0",
+  "input_artifacts": [
+    "evidence/D5/"
+  ],
+  "open_tree": "8c9d5b8e2cbdedf8c3f8b48b9c0e463173d031c8",
+  "close_tree": "22d60d01e265f43d5d34de8d2330719b6a4f97e0",
+  "changed_paths": [
+    "evidence/D5/index.json",
+    "evidence/D5/index.log"
+  ],
+  "output_artifacts": [
+    "evidence/D5/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D5-CODEGEN-BUNDLE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D5/index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory evidence index evidence/D5 evidence/D5/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D5/index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D5/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D5/index.log"
+  ],
+  "closed": "2026-09-24T02:42:45Z",
+  "status": "PASS"
+}
