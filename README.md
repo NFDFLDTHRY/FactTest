@@ -1,10 +1,12 @@
 # FactTest
 
-STATUS: PASS 3 EXECUTED - 2026-09-23
+STATUS: PASS 4 EXECUTED - 2026-09-23
 
 FactTest is a governance-first foundry project whose compiler is a \`#![no_std]\`, no-third-party-crate Rust compiler.
 
 Its source language is AI-authored ASCII Systems Diagrams.
+
+The ASCII Systems Diagram is also the shared human/AI interaction layer. Human and AI collaborators design, question, correct, abstract, refine, and inspect the same visible source that the compiler interprets.
 
 Its generated target is a capability-parametric Chrome WebApp whose legal execution plan is selected against observed runtime capability state and must preserve the compiled invariants of the ASCII source.
 
@@ -25,11 +27,13 @@ The compiler itself is manufactured into this repository under the ASCII Systems
 11. [BOOTSTRAP-CONTRACTS.md](BOOTSTRAP-CONTRACTS.md)
 12. [PLANNED-REPO-LAYOUT.md](PLANNED-REPO-LAYOUT.md)
 13. [BOOTSTRAP-TESTS.md](BOOTSTRAP-TESTS.md)
+14. [PASS4.md](PASS4.md)
+15. [ASCII-LANGUAGE.md](ASCII-LANGUAGE.md)
+16. [ASCII-GRAMMAR.md](ASCII-GRAMMAR.md)
+17. [SEMANTIC-MODEL.md](SEMANTIC-MODEL.md)
+18. [REFINEMENT-LAW.md](REFINEMENT-LAW.md)
+19. [LANGUAGE-TESTS.md](LANGUAGE-TESTS.md)
 
-No compiler implementation exists yet. That is intentional.
+No compiler implementation exists yet. That remains intentional.
 
-Pass 1 established identity, law, target preservation, and live-authority rules.
-Pass 2 mapped the complete target to current external authority, admission conditions, failures, conflicts, tests, and evidence.
-Pass 3 defines the smallest self-consistent bootstrap compiler/factory substrate that Fable 5.1 may later materialize without inventing the ASCII language, proof logic, planner algorithm, or backend implementations.
-
-Pass 4 owns the ASCII language kernel.
+Pass 4 defines the ASCII language kernel without materializing parser/compiler source. Pass 5 owns concrete factory/lowering/backend/planner/proof/codegen contracts. Pass 6 owns one complete vertical proof.
