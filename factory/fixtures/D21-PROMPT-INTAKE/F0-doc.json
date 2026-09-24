@@ -1,0 +1,92 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "owner prompt (session input)",
+    "design/materialization/LEDGER.md"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D21-PROMPT-INTAKE.json",
+    "factory/fixtures/D21-PROMPT-INTAKE/",
+    "factory/receipts/D21-PROMPT-INTAKE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q 'FACTTEST \u00b7 WHOLE-REPO FACTORY EXECUTION + GAP CLOSURE' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && for d in 'D21 \u00b7 CURRENT IMPLEMENTATION / EXECUTION MANIFEST' 'D22 \u00b7 FACTORY PROVES FACTORY' 'D23 \u00b7 COMPILER + ABI EXECUTION / REPAIR' 'D24 \u00b7 PIPELINE GENERICITY / MULTI-SPECIMEN EXECUTION' 'D25 \u00b7 PHYSICAL WEBAPP / RUNTIME EXECUTION' 'D26 \u00b7 CLEAN WHOLE-REPO COMMISSIONING'; do grep -qF \"$d\" design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md || { echo missing $d; exit 1; }; done && for c in 'A  INTERNAL REPO / IMPLEMENTATION DEFECT' 'B  TEST / PROOF GAP FOR IMPLEMENTED BEHAVIOR' 'C  GENERICITY / SPECIAL-CASE DEFECT' 'D  APPROVED BUT UNIMPLEMENTED CAPABILITY' 'E  EXTERNAL / ENVIRONMENT LIMIT' 'F  HISTORICAL EVIDENCE LIMIT' 'G  OWNER / SEMANTIC DECISION'; do grep -qF \"$c\" design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md || { echo missing $c; exit 1; }; done && [ $(grep -c '^\\[PASS\\]' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md) -eq 21 ] && grep -q '^design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md$' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && grep -q 'using a D21-PROMPT-INTAKE delta' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && grep -q 'b22bcbb6ed8cf49983c919beedd93541a761567c' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && grep -q 'integrated as ca540647db00c72fa0570f7f4f59a20c299172b7' design/materialization/LEDGER.md && grep -q '^## D21-PROMPT-INTAKE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && echo 'prompt tracked: 6 tasks, 7 gap classes, 21 final conditions; ledger D20 AFTER + intake BEFORE'"
+        ],
+        "log": "factory/receipts/D21-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "b22bcbb6ed8cf49983c919beedd93541a761567c",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "evidence",
+          "tests",
+          "fixtures",
+          "design/environment-map",
+          "docs",
+          "README.md",
+          "rust-toolchain.toml",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "STATION-REGISTRY.md",
+          "CAPABILITY-MATRIX.md",
+          "BOOTSTRAP-TESTS.md",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md"
+        ],
+        "log": "factory/receipts/D21-PROMPT-INTAKE/logs/F0-untouched.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md"
+  ],
+  "tests": [
+    "prompt structure (6 tasks, 7 gap classes, 21 final conditions, intake path, baseline commit)",
+    "ledger D20 AFTER + intake BEFORE",
+    "untouched"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D21-PROMPT-INTAKE"
+}

@@ -916,4 +916,30 @@ BEFORE
   open stops GAP 8 / ERR 5 / UNK 4.
 
 AFTER
+- RESULT: integrated as ca540647db00c72fa0570f7f4f59a20c299172b7 (ff-only from the sync merge c3159d5, whose tree equals
+  780aee1's); no refusal, no repair, no re-run.  One wording defect found in the dry run before routing (a successor's
+  note quoted the text its reconciliation retires) was corrected in the register before any station ran.
+- RECEIPTS: F0-F14 (15) PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection
+  MATCH (D20-SYNC and D20 epochs rebuilt byte-identically; re-proof gate and import check re-run PASS).  Pushed.
+- OBSERVED: D20-OBSERVED-MAIN-SYNC.md - P1-P7 MATCH; GATE: PASS; the branch merges into main without conflict.
+- LATER: the owner closed pull request #6 unmerged (it predated the sync) and merged pull request #7 (this branch at
+  ca54064) into main as b22bcbb6ed8cf49983c919beedd93541a761567c; the branch was fast-forwarded to b22bcbb (tree
+  bca6411, identical to ca54064's: the owner merge carries no content).  [OBS] no content sync was needed.
+  The owner then issued the six-task whole-repository execution series D21-D26.
+- (recorded by D21-PROMPT-INTAKE, the next delta.)
+
+---
+
+## D21-PROMPT-INTAKE  (FIRST ACTION of the six-task whole-repository execution + gap closure series)
+
+BEFORE
+- DELTA: D21-PROMPT-INTAKE (factory/deltas/D21-PROMPT-INTAKE.json), workpiece W24.
+- BASE: b22bcbb6ed8cf49983c919beedd93541a761567c (main after PR #7; branch fast-forwarded, merged history only).
+- STATION: S-DOC.  FIXTURE: F0-doc.  JUDGE: the factory binary built from b22bcbb.
+- CHANGE: design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md (verbatim), this ledger, the delta, its
+  fixture, receipts.  FORBIDDEN: everything else.
+- NEXT: D21-EXECUTION-MANIFEST, assembled in design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md.  Prompt intake
+  is not one of the six tasks.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

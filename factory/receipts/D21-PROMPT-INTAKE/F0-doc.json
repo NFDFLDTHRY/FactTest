@@ -1,0 +1,177 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21-PROMPT-INTAKE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W24",
+  "delta_id": "D21-PROMPT-INTAKE",
+  "canonical_base": "b22bcbb6ed8cf49983c919beedd93541a761567c",
+  "input_artifacts": [
+    "owner prompt (session input)",
+    "design/materialization/LEDGER.md"
+  ],
+  "open_tree": "f8f3e3791e2d78ba507bb4871988e0fe223be68f",
+  "close_tree": "ee693f6f43e596adcf7da7bf904808b64a7f4bc9",
+  "changed_paths": [
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D21-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D21-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21-PROMPT-INTAKE"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-PROMPT-INTAKE/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c grep -q 'FACTTEST · WHOLE-REPO FACTORY EXECUTION + GAP CLOSURE' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && for d in 'D21 · CURRENT IMPLEMENTATION / EXECUTION MANIFEST' 'D22 · FACTORY PROVES FACTORY' 'D23 · COMPILER + ABI EXECUTION / REPAIR' 'D24 · PIPELINE GENERICITY / MULTI-SPECIMEN EXECUTION' 'D25 · PHYSICAL WEBAPP / RUNTIME EXECUTION' 'D26 · CLEAN WHOLE-REPO COMMISSIONING'; do grep -qF \"$d\" design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md || { echo missing $d; exit 1; }; done && for c in 'A  INTERNAL REPO / IMPLEMENTATION DEFECT' 'B  TEST / PROOF GAP FOR IMPLEMENTED BEHAVIOR' 'C  GENERICITY / SPECIAL-CASE DEFECT' 'D  APPROVED BUT UNIMPLEMENTED CAPABILITY' 'E  EXTERNAL / ENVIRONMENT LIMIT' 'F  HISTORICAL EVIDENCE LIMIT' 'G  OWNER / SEMANTIC DECISION'; do grep -qF \"$c\" design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md || { echo missing $c; exit 1; }; done && [ $(grep -c '^\\[PASS\\]' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md) -eq 21 ] && grep -q '^design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md$' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && grep -q 'using a D21-PROMPT-INTAKE delta' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && grep -q 'b22bcbb6ed8cf49983c919beedd93541a761567c' design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md && grep -q 'integrated as ca540647db00c72fa0570f7f4f59a20c299172b7' design/materialization/LEDGER.md && grep -q '^## D21-PROMPT-INTAKE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && echo 'prompt tracked: 6 tasks, 7 gap classes, 21 final conditions; ledger D20 AFTER + intake BEFORE'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code b22bcbb6ed8cf49983c919beedd93541a761567c -- compiler host factory/src factory/registry evidence tests fixtures design/environment-map docs README.md rust-toolchain.toml REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md STATION-REGISTRY.md CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md FACTORY-LAW.md FACTORY-CONTRACTS.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-PROMPT-INTAKE/logs/F0-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D21-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D21-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": [
+      {
+        "name": "git",
+        "command": [
+          "git",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "git version 2.43.0"
+        ]
+      },
+      {
+        "name": "rustc-host-set",
+        "command": [
+          "rustc",
+          "+1.94.1",
+          "-vV"
+        ],
+        "exit": 0,
+        "output": [
+          "rustc 1.94.1 (e408947bf 2026-03-25)",
+          "binary: rustc",
+          "commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1",
+          "commit-date: 2026-03-25",
+          "host: x86_64-unknown-linux-gnu",
+          "release: 1.94.1",
+          "LLVM version: 21.1.8"
+        ]
+      }
+    ]
+  },
+  "closed": "2026-09-24T12:00:00Z",
+  "status": "PASS"
+}
