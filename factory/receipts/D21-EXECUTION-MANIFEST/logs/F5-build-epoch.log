@@ -1,0 +1,5 @@
+$ sh -c node tests/manifest/build-epoch.mjs --manifest evidence/D21/manifest.json --issues evidence/D21/issues.json --gate evidence/D21/gate.json --identity evidence/D21/identity --epoch D21 --delta D21-EXECUTION-MANIFEST --commit '4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out design/environment-map/epochs/D21.json
+(cwd .)
+D21: 17 nodes, 51 edges -> design/environment-map/epochs/D21.json; implementation nodes added 10; issues 20
+
+[exit 0] expected 0

@@ -1,0 +1,569 @@
+{
+ "schema": "facttest-environment-map-epoch/1",
+ "epoch": "D21",
+ "delta": "D21-EXECUTION-MANIFEST",
+ "commit": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (canonical base; integration commit in LEDGER AFTER)",
+ "summary": "execution manifest: 2966 files, 51 live components, 10 implementation nodes added, 20 issues classified (A 1, B 7, C 2, D 2, E 1, F 4, G 3)",
+ "nodes": [
+  {
+   "id": "ENV-D21-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D21-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "none (manifest computed from the tree; cargo metadata only)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": []
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D21/identity/{host,toolchains,repo}.json",
+   "note": "D21 environment identity (manifest computation host)"
+  },
+  {
+   "id": "IMPL-FACTORY-CLI",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-FACTORY-CLI",
+   "repo_path": "factory/src/main.rs + factory/src/lib.rs + factory/Cargo.toml",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "factory",
+   "note": "FACTORY: router: dispatch delta check / workpiece create|audit|retire / station open|close / verify / integrate / reinspect / depcheck / nostd-check / wasm-inspect / evidence index",
+   "owner": "tests/manifest/components.json (FACTORY-CLI)"
+  },
+  {
+   "id": "IMPL-FACTORY-MODEL",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-FACTORY-MODEL",
+   "repo_path": "factory/src/model.rs + factory/src/json.rs",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "factory",
+   "note": "FACTORY: parse and validate StructuralDelta, Fixture, StationSpec, WorkpieceState; first-party JSON reader/writer",
+   "owner": "tests/manifest/components.json (FACTORY-MODEL)"
+  },
+  {
+   "id": "IMPL-FACTORY-TESTS",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-FACTORY-TESTS",
+   "repo_path": "factory/tests/factory_law.rs",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "TEST: f00 happy path; f01-f13 negative witnesses (unauthorized mutation, fixture wider than station, missing receipt, failed check, moved base, read-only station mutation, unreceipted change, overlapping au",
+   "owner": "tests/manifest/components.json (FACTORY-TESTS)"
+  },
+  {
+   "id": "IMPL-SYNC-IMPORT",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-SYNC-IMPORT",
+   "repo_path": "tests/sync/",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "factory",
+   "note": "FACTORY: import-line: copy the other line's changes byte-identically from git objects, relocate collisions, union law documents insertion-only, embed ledger blocks; --check verifies every treatment",
+   "owner": "tests/manifest/components.json (SYNC-IMPORT)"
+  },
+  {
+   "id": "IMPL-FACTC",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-FACTC",
+   "repo_path": "host/factc/",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "compiler",
+   "note": "PRODUCTION: native host driver: abi-version, required-workspace, check analyze|build (writes diagnostics.json, source-lineage.json, artifacts.json, every artifact by kind, bundle/), observe (tape -> observation d",
+   "owner": "tests/manifest/components.json (FACTC)"
+  },
+  {
+   "id": "IMPL-TEST-LANGUAGE",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-TEST-LANGUAGE",
+   "repo_path": "tests/language/",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "TEST: run-byte-relay.sh: factc BUILD without and with the registry under both synthetic epochs; artifact-level checks (canonical, typed IR, H_G, strategy strength, certificates, bundle files parse, wasm-ins",
+   "owner": "tests/manifest/components.json (TEST-LANGUAGE)"
+  },
+  {
+   "id": "IMPL-TEST-COMMISSIONING",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-TEST-COMMISSIONING",
+   "repo_path": "tests/commissioning/",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "TEST: run-physical.sh (compile, WebGPU probe, no-WebGPU probe, observe, source-of-record checks); run-anti-cheat.sh (slice names absent from machinery: grep over compiler/*/src, templates, factory/src, host",
+   "owner": "tests/manifest/components.json (TEST-COMMISSIONING)"
+  },
+  {
+   "id": "IMPL-TEST-RECONCILE",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-TEST-RECONCILE",
+   "repo_path": "tests/reconcile/",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "TEST: reconciliation epoch builder (supersession inheritance), surfaces check (insertion-only annotations, retired texts), gate, stage audit",
+   "owner": "tests/manifest/components.json (TEST-RECONCILE)"
+  },
+  {
+   "id": "IMPL-TEST-MANIFEST",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-TEST-MANIFEST",
+   "repo_path": "tests/manifest/",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "TEST: deterministic CURRENT EXECUTION MANIFEST: tier every tracked path; enrich each component with stations, receipts, graph claims, probes, evidence, stale dimensions, test references; automated findings;",
+   "owner": "tests/manifest/components.json (TEST-MANIFEST)"
+  },
+  {
+   "id": "IMPL-WORKSPACE-ROOT",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-WORKSPACE-ROOT",
+   "repo_path": "Cargo.toml + Cargo.lock + rust-toolchain.toml + .gitignore",
+   "commit": "enumerated by D21-EXECUTION-MANIFEST at 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (integration commit in LEDGER AFTER)",
+   "kind": "compiler",
+   "note": "PRODUCTION: workspace manifest (members, default-members = HOST_NATIVE_SET roots, fixtures excluded), lock file, toolchain pin 1.94.1",
+   "owner": "tests/manifest/components.json (WORKSPACE-ROOT)"
+  },
+  {
+   "id": "PROBE-EXECUTION-MANIFEST",
+   "class": "PROBE",
+   "probe_id": "PROBE-EXECUTION-MANIFEST",
+   "proves_fact": [
+    "FACT-D21-LIVE-SURFACES-ENUMERATED",
+    "FACT-D21-ISSUES-CLASSIFIED"
+   ],
+   "command_or_operation": "node tests/manifest/build-manifest.mjs (git ls-files + cargo metadata + graph + receipts + registry -> manifest); node tests/manifest/gate.mjs (findings <-> issue inventory)",
+   "expected_observations": [
+    "every tracked path assigned to one tier",
+    "every required coverage item live",
+    "every automated finding classified A..G"
+   ],
+   "failure_meaning": [
+    "a live surface is outside the manifest, or a finding has no classification: repair may not begin (D21 PASS condition)"
+   ],
+   "implemented_by": "IMPL-TEST-MANIFEST",
+   "owner": "IMPL-TEST-MANIFEST"
+  },
+  {
+   "id": "EV-D21-MANIFEST",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D21-MANIFEST",
+   "probe_ref": "PROBE-EXECUTION-MANIFEST",
+   "environment_ref": "ENV-D21-HOST",
+   "artifact_identity": {
+    "path": "evidence/D21/manifest.json",
+    "sha256": "98b6bf908e7a399bcea36df86bc92b74042aa36c45807f5d0bbdcea77ad187e0",
+    "bytes": 311530,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "2966 tracked files at 4b86df9c0 in 65 components (FACTORY 23, TEST 82, PRODUCTION 67, FIXTURE 97, REFERENCE 86, RECORD 669, LAW 32, HISTORICAL 11, EVIDENCE 1899); 29 finding items",
+   "epoch": "D21",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D21-EXECUTION-MANIFEST"
+  },
+  {
+   "id": "EV-D21-GATE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D21-GATE",
+   "probe_ref": "PROBE-EXECUTION-MANIFEST",
+   "environment_ref": "ENV-D21-HOST",
+   "artifact_identity": {
+    "path": "evidence/D21/gate.json",
+    "sha256": "b38e29b41d436ddabf0cdc86936f33546f3f80a82706ea2d57f3c2a42881ff71",
+    "bytes": 1087,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "PASS: every_path_tiered PASS, coverage_complete PASS, live_components_connected PASS, findings_classified PASS, issues_well_formed PASS, historical_not_executable PASS",
+   "epoch": "D21",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D21-EXECUTION-MANIFEST"
+  },
+  {
+   "id": "EV-D21-ISSUES",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D21-ISSUES",
+   "probe_ref": "PROBE-EXECUTION-MANIFEST",
+   "environment_ref": "ENV-D21-HOST",
+   "artifact_identity": {
+    "path": "evidence/D21/issues.json",
+    "sha256": "7febea534dbe9bb37800c82bb01e04d58f290e593be77f755dba6ae7bfdfe8e5",
+    "bytes": 16614,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "20 issues: A 1, B 7, C 2, D 2, E 1, F 4, G 3; by task D21 1, D22 1, D23 3, D24 4, D25 2, none 6, owner 3",
+   "epoch": "D21",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D21-EXECUTION-MANIFEST"
+  },
+  {
+   "id": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "subject": "current executable FactTest at 4b86df9c0",
+   "predicate": "2966 tracked files tiered (FACTORY 23, TEST 82, PRODUCTION 67, FIXTURE 97, REFERENCE 86, RECORD 669, LAW 32, HISTORICAL 11, EVIDENCE 1899); 51 live components (22 production, 10 factory, 19 test), each with owner, consumer and station; required coverage complete; 0 unassigned paths; 11 live components had no governing claim before this epoch (now carried by this fact)",
+   "required_environment": [
+    "the canonical tree at the recorded head"
+   ],
+   "constraint_refs": [],
+   "status": "OBS",
+   "note": "an enumeration, not an execution claim: D22-D26 execute the components",
+   "source_ref": "evidence/D21/manifest.json",
+   "owner": "D21 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D21-ISSUES-CLASSIFIED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D21-ISSUES-CLASSIFIED",
+   "subject": "D21 issue inventory",
+   "predicate": "29 automated finding items across 16 finding kinds classified into 20 issues: A 1, B 7, C 2, D 2, E 1, F 4, G 3; scheduled D21 1, D22 1, D23 3, D24 4, D25 2, none 6, owner 3",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "OBS",
+   "note": "classification precedes repair (GAP CLASSIFICATION LAW); each issue names its task and surfaces",
+   "source_ref": "evidence/D21/issues.json",
+   "owner": "D21 (derived from the evidence named by its edges)"
+  }
+ ],
+ "edges": [
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-EXECUTION-MANIFEST",
+   "to": "IMPL-TEST-MANIFEST"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "PROBE-EXECUTION-MANIFEST"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "EV-D21-MANIFEST"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "EV-D21-GATE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "ENV-D21-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-TEST-MANIFEST"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D21-ISSUES-CLASSIFIED",
+   "to": "PROBE-EXECUTION-MANIFEST"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21-ISSUES-CLASSIFIED",
+   "to": "EV-D21-ISSUES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21-ISSUES-CLASSIFIED",
+   "to": "EV-D21-GATE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D21-ISSUES-CLASSIFIED",
+   "to": "ENV-D21-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-ISSUES-CLASSIFIED",
+   "to": "IMPL-TEST-MANIFEST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-CLI"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-MODEL"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-HYGIENE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-PATHS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-STATION-S-FIXTURE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-OPS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-GIT"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-CHECKS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTORY-TESTS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-SYNC-IMPORT"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-KERNEL-CRATES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-CODEGEN-EMITTER"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-WASM-ABI"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-KERNEL-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-BUNDLE-PROBE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-ADAPTER-WASM64"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-ADAPTER-WEBGPU"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-RUNTIME-JS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-B9-B11"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-TEST-LANGUAGE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-TEST-COMMISSIONING"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-D9-PROOF"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-QUALIFIED-PROOF"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-ENVMAP"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-ENVMAP-PROBES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-SELFHOST-NETWORK"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-SELFHOST-PROBES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-STATUS-SCAN"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-REFERENCE-CLAUSES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-REFERENCE-REOPEN"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-CAPABILITY-CENSUS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-KERNEL-SECTIONS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-LABEL-AUDIT"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-TEST-RECONCILE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-REPROVE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "IMPL-WORKSPACE-ROOT"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D21-LIVE-SURFACES-ENUMERATED",
+   "to": "ENV-D21-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any tracked file added, removed or moved"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D21-ISSUES-CLASSIFIED",
+   "to": "ENV-D21-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of a surface an issue names"
+   }
+  }
+ ]
+}

@@ -54,6 +54,9 @@ Every implementation commit on the materialization branch was produced by the Fa
    baseline after the D14-D19 technical reference review: what FactTest may rely on and how to re-verify it; the current
    claim surface of the joined model (after main's parallel D14 line) is in
    [design/materialization/D20-OBSERVED-MAIN-SYNC.md](design/materialization/D20-OBSERVED-MAIN-SYNC.md).
+5. [design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md](design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md) -
+   the current executable system enumerated (D21): every tracked path tiered, every live component connected; the issue
+   inventory [tests/manifest/issues.json](tests/manifest/issues.json) classifies every finding before repair (D22-D26).
 
 No session prompt is required: the entry is model-independent.  Proof sets and the toolchain pin are in
 [tests/toolchain/proof-sets.json](tests/toolchain/proof-sets.json) and [rust-toolchain.toml](rust-toolchain.toml).
@@ -72,4 +75,5 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
   D13 repository hygiene, D14-D19 technical reference review series (D14 authority frontier, D15 foundational clauses,
   D16 capability universe, D17 implementation reality, D18 repository reconciliation, D18R chain repair, D19 re-proof
   and stable baseline), a parallel D14 technical reference rescan on main (pull request #5: reference corpus in
-  fixtures/reference/), joined by D20 main sync with a second re-proof; see the ledger.
+  fixtures/reference/), joined by D20 main sync with a second re-proof; D21-D26 whole-repository execution + gap closure
+  (D21 execution manifest); see the ledger.

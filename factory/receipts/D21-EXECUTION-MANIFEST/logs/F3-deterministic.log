@@ -1,0 +1,5 @@
+$ sh -c T=$(mktemp -d) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b --delta D21-EXECUTION-MANIFEST --epoch D21 --out $T >/dev/null && cmp $T/manifest.json design/execution-manifest/manifest.json && cmp $T/CURRENT-EXECUTION-MANIFEST.md design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md && echo 'manifest deterministic (rebuilt byte-identically)'
+(cwd .)
+manifest deterministic (rebuilt byte-identically)
+
+[exit 0] expected 0

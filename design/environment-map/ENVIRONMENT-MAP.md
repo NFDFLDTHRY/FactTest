@@ -250,3 +250,13 @@ D20         D20-MAIN-SYNC                    second re-proof: the selection on t
                                              on its own inputs, D19's process facts by replay, the lineage with the sync
                                              merge, clauses and frontier at moved tips); Q22 on the joined model
 ```
+
+## 14. Execution-manifest epoch D21 (added by D21-EXECUTION-MANIFEST)
+
+```text
+D21    D21-EXECUTION-MANIFEST      the current executable FactTest enumerated from the joined repository: every tracked
+                                   path tiered, every live component connected to its owner, consumers, stations, tests,
+                                   probes and claims; ten implementation nodes added for components the graph had not
+                                   covered; the issue inventory (A..G) classified before any repair; epochs/D21.json.
+                                   D22-D26 execute the enumerated components and add their execution epochs.
+```

@@ -1,0 +1,5 @@
+$ sh -c node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b --delta D21-EXECUTION-MANIFEST --epoch D21 --out design/execution-manifest
+(cwd .)
+manifest: 2966 files, 65 components (FACTORY 23, TEST 82, PRODUCTION 67, FIXTURE 97, REFERENCE 86, RECORD 669, LAW 32, HISTORICAL 11, EVIDENCE 1899); findings unassigned_paths 0, ambiguous_assignments 0, live_files_without_authorized_station 0, live_files_never_receipted 3, live_components_without_test 0, live_components_without_graph_implementation 10, live_components_without_governing_claim 11, components_without_consumer 0, components_without_owner 0, implementation_paths_missing 0, graph_implementations_unmapped 0, declared_crate_consumers_unknown_to_cargo 0, dead_fixtures 0, historical_tools 2, live_tools_reading_evidence_packages 3, required_coverage_missing 0
+
+[exit 0] expected 0

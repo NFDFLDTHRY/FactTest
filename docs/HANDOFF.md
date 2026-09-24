@@ -9,8 +9,12 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D20-MAIN-SYNC (joins the parallel D14 line of main after the D14-D19 series; integration commits in
+last delta         D21-EXECUTION-MANIFEST (task 1 of the six-task whole-repository execution + gap closure series
+                   D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; integration commits in
                    design/materialization/LEDGER.md)
+manifest           design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md (generated): every tracked path tiered, every
+                   live component with owner, consumers, stations, tests, probes, claims, evidence and stale dimensions;
+                   tests/manifest/issues.json: every finding classified A..G with the task that repairs it
 baseline           design/materialization/D19-STABLE-BASELINE.md (STABLE-BASELINE: ESTABLISHED) - what later work may
                    rely on and how to re-verify it; the current entitled-claim surface of the joined model is graph
                    query Q22 of the D20 graph (design/materialization/D20-OBSERVED-MAIN-SYNC.md, section 6)
@@ -27,18 +31,19 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    resolved, kernel identity defined; law annotated insertion-only; Q21), D18R chain repair (one D18
                    worker statement contradicted committed evidence: superseded; D12 executable field corrected), D19
                    re-proof (environment identity captured; the minimum affected set selected from the graph and
-                   re-proved physically; current evidence epoch; entitled-claim surface Q22), and main's parallel D14 line
+                   re-proved physically; current evidence epoch; entitled-claim surface Q22), main's parallel D14 line
                    (pull request #5: a Pages-branch retrieval route under the egress policy, fixtures/reference/ corpus of
-                   83 reproducibility copies, D11 pins re-checked) joined by D20 with a second re-proof
+                   83 reproducibility copies, D11 pins re-checked) joined by D20 with a second re-proof, D21 execution
+                   manifest (the current executable system enumerated and every problem classified before repair)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): CLOSED - one
-                   StructuralDelta per pass (plus the D18R chain repair), each closed, verified, integrated and
-                   re-observed before the next
-next               an OWNER decision: the paused D12-predicted seed/broker qualification (renumbered after D20), the law
-                   delta for the 7 drifted fragments, adopting CON-EM-D14-001, or any row of section 6.  Before building
-                   on a claim, re-run the selection (section 7) against the then current environment; historical evidence
-                   is never mutated.
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (task 1 of 6 closed): one
+                   StructuralDelta per task, each closed, verified, integrated and re-observed before the next; a repair
+                   is tested before the next repair (GLOBAL TEST-EVERY-ITERATION LAW)
+next               D22-FACTORY-SELF-QUALIFICATION: the Factory through itself, positive path and the negative witnesses
+                   of tests/manifest/issues.json I-14, refused for the named reason; every A/B Factory defect repaired
+                   before D23.  Then D23 compiler + ABI (I-06, I-10, I-19), D24 genericity (I-07, I-08, I-09, I-20),
+                   D25 physical runtime (I-05, I-11), D26 whole-repo commissioning.  Owner decisions stay in section 6.
 ```
 
 ## 2. Mutation law
@@ -119,6 +124,8 @@ LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.
                in CONSTRAINT-LEDGER.md since D18); tests/reconcile/d18-reconciliation.json (the reviewed D18 register:
                supersessions, ledgering, resolutions; graph query Q21 is the current model); tests/reprove/
                (D19 dimension rules, runbook, obligations; Q22 is the entitled-claim surface);
+               tests/manifest/{components.json (reviewed component register), issues.json (issue inventory A..G)} and
+               design/execution-manifest/ (the generated CURRENT EXECUTION MANIFEST; render-checked);
                fixtures/reference/ (the imported line's ROUTES.json retrieval route, REGISTER.json copy identities,
                published/ and sources/ reproducibility copies: pins, never current authority; re-check with
                tests/reference/ingress.mjs on that line's inputs); tests/sync/ (line import map of D20);
@@ -148,7 +155,15 @@ environment-map), docs/ (this page), root law documents.
 ## 6. Open-boundary register
 
 Every remaining [ERR]/[GAP]/[UNK] is one of these rows.  Class: C capability gap, D authority uncertainty, B historical
-evidence limit, OWNER decision.  None is an internal chain defect (D13 PRE-RESCAN-BASELINE).
+evidence limit, OWNER decision.  None is an internal chain defect (D13 PRE-RESCAN-BASELINE).  The D21 issue inventory
+(tests/manifest/issues.json) maps these classes to the prompt's A..G (C -> D, D -> E, B -> F, OWNER -> G) and records
+the internal findings the D21 survey added, each with the task that repairs it: A (1) a stale kernel crate header
+(D23); B (7) missing Factory negative witnesses (D22), the wasm transport beyond the bootstrap eight (D23), per-crate
+consumer execution (D23), the anti-cheat scan's byte form (D24), the shell never exercised and a probe defaulting to a
+historical bundle (D25), graph claims for eleven live components (D21, done); C (2) the specimen payload compiled into
+the generated shell and the single-relation runtime (D24 proves, then repairs or records the exact architectural GAP);
+G (3) law-text presentation and wording (owner).  Until each task closes, these are open internal findings, not
+boundaries.
 
 ```text
 CLASS  ID / SOURCE                          BOUNDARY                                                          STATUS

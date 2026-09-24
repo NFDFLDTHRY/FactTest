@@ -1,0 +1,11 @@
+$ sh -c cp design/execution-manifest/manifest.json evidence/D21/manifest.json && cp tests/manifest/issues.json evidence/D21/issues.json && node tests/manifest/gate.mjs --manifest evidence/D21/manifest.json --issues tests/manifest/issues.json --out evidence/D21/gate.json
+(cwd .)
+PASS every_path_tiered: 2966 tracked files assigned to 65 components
+PASS coverage_complete: 41 required items covered by live components
+PASS live_components_connected: 51 live components with owner, consumer and station
+PASS findings_classified: 29 finding items covered by 5 issues; 20 issues in the inventory
+PASS issues_well_formed: 20 issues: A 1, B 7, C 2, D 2, E 1, F 4, G 3
+PASS historical_not_executable: 3 live tool(s) reading evidence packages, each recorded as an issue
+PASS
+
+[exit 0] expected 0

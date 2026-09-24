@@ -1,0 +1,155 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21-EXECUTION-MANIFEST-F2-browser",
+  "station_id": "S-BROWSER",
+  "station_version": "1",
+  "fixture_id": "F2-browser",
+  "workpiece_id": "W25",
+  "delta_id": "D21-EXECUTION-MANIFEST",
+  "canonical_base": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+  "input_artifacts": [
+    "D21 section 5 (host identity)"
+  ],
+  "open_tree": "5d47b3a031a23dae1afd00299bafbc46f07c6eff",
+  "close_tree": "53f486d515fee074d6eab2c448fbd48fbb63de70",
+  "changed_paths": [
+    "evidence/D21/identity/browser-default.json",
+    "evidence/D21/identity/browser-gpu-flags.json",
+    "evidence/D21/identity/host.json",
+    "evidence/D21/identity/repo.json",
+    "evidence/D21/identity/tips.json",
+    "evidence/D21/identity/toolchains.json",
+    "evidence/D21/logs/F2-identity.log"
+  ],
+  "output_artifacts": [
+    "evidence/D21/identity/host.json",
+    "evidence/D21/identity/toolchains.json",
+    "evidence/D21/identity/repo.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BROWSER v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21-EXECUTION-MANIFEST"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BROWSER_PROBE"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D21/logs/F2-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out evidence/D21/identity",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D21/logs/F2-identity.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D21/identity/host.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D21/identity/toolchains.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D21/identity/repo.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D21/logs/F2-identity.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T12:27:23Z",
+  "status": "PASS"
+}

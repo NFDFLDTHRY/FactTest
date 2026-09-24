@@ -942,4 +942,29 @@ BEFORE
   is not one of the six tasks.
 
 AFTER
+- RESULT: integrated as 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (ff-only from b22bcbb); no refusal.  RECEIPTS:
+  factory/receipts/D21-PROMPT-INTAKE/F0-doc.json PASS (format 2).  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE:
+  re-inspection MATCH.  Pushed.
+- (recorded by D21-EXECUTION-MANIFEST, the next delta.)
+
+---
+
+## D21-EXECUTION-MANIFEST  (task 1 of 6: what exactly is CURRENT executable FactTest, and is every live component connected?)
+
+BEFORE
+- DELTA: D21-EXECUTION-MANIFEST (factory/deltas/D21.json), workpiece W25, base 4b86df9.
+- ASCII: design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F3, F5, F7), S-FIXTURE (F1), S-BROWSER (F2), S-EVIDENCE (F4, F6).
+- CHANGE: tests/manifest/ (reviewed component register, deterministic manifest builder, issue inventory, gate, epoch
+  builder); design/execution-manifest/ (generated manifest); design/environment-map/ (epoch D21, graph, views, SCHEMA
+  15, ENVIRONMENT-MAP 14); evidence/D21/; docs/HANDOFF.md; README.md; this ledger; D21 records.  FORBIDDEN: every
+  implementation surface (compiler/, host/, factory/src|registry, templates, fixtures/, every existing test), law and
+  pass documents, earlier epochs, D0-D20 evidence: classification only, no repair.
+- PREDICTED: 2966 tracked files in 65 components (51 live), 0 unassigned, required coverage 41/41; findings: 3 D0
+  registry files never receipted, 10 live components without an implementation node and 11 without a claim, 2
+  historical tools, 3 live tools naming evidence packages, 0 dead fixtures; 20 issues (A 1, B 7, C 2, D 2, E 1, F 4,
+  G 3); epoch D21 about 17 nodes / 51 edges; merged about 1267 / 3241; validate 42; gate PASS; Q22 176 current facts
+  (the two D21 facts [OBS]); W24 RETIRABLE -> REMOVED.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
