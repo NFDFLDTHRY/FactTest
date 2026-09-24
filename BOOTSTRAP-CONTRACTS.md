@@ -199,46 +199,48 @@ Pass 4/5 define the actual proof logic.
 
 Planner input:
 
-\`\`\`text
+```text
 TypedSystemIr
 CapabilityIr
 ImplementationHypergraph
 AdmittedMachineState
 Objective
-\`\`\`
+```
 
 Planner output:
 
-\`\`\`text
-CandidatePlan
-\`\`\`
+```text
+CandidateStrategy
+```
+
+A one-variant CandidateStrategy is the non-adaptive case.
 
 Planner may rank/search legal candidates.
-
 Planner may not certify itself correct.
-
-No planner algorithm is selected in Pass 3.
+No planner algorithm is architecture law.
 
 ## C9 - Independent verifier contract
 
 Verifier input:
 
-\`\`\`text
+```text
 TypedSystemIr
 ObligationSet
 CapabilityIr / requirements
 ImplementationContracts
-AdmittedMachineState
-CandidatePlan
-\`\`\`
+Admission contracts
+CandidateStrategy
+```
 
 Verifier output:
 
-\`\`\`text
-VerificationPass(VerifiedPlan)
+```text
+VerificationPass(VerifiedStrategy)
 or
 VerificationFailure(diagnostics)
-\`\`\`
+```
+
+Each strategy variant is independently checked as a VerifiedPlanVariant under an explicit activation guard.
 
 Verifier does not consume planner heuristic internals or trust planner validity assertions.
 
