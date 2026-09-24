@@ -1,0 +1,10 @@
+@{system kinds}
+@{type T}
+@{component a}
+@{component b}
+@{port a.o out: T public}
+@{port b.i in: T public}
+@{data d a.o -> b.i mode=copy}
+@{sequence s a -> b}
+@{invariant inv_seq sequence_before(a, b)}
+@{invariant inv_reach reachable(a, b)}

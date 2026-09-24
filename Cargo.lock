@@ -19,6 +19,23 @@ name = "factc-kernel"
 version = "0.1.0"
 dependencies = [
  "factc-foundation",
+ "factc-semantic",
+ "factc-source",
+]
+
+[[package]]
+name = "factc-semantic"
+version = "0.1.0"
+dependencies = [
+ "factc-foundation",
+ "factc-source",
+]
+
+[[package]]
+name = "factc-source"
+version = "0.1.0"
+dependencies = [
+ "factc-foundation",
 ]
 
 [[package]]

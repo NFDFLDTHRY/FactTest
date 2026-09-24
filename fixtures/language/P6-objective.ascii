@@ -1,0 +1,5 @@
+@{system obj}
+@{metric preference_rank ordinal "commissioning preference only; not performance"}
+@{objective commissioning}
+@{goal commissioning 1 minimize preference_rank}
+@{hard commissioning preference_rank at_most 5}

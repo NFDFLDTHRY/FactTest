@@ -1,0 +1,95 @@
+{
+  "receipt_id": "R-D2-LANGUAGE-KERNEL-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W2",
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "canonical_base": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+  "input_artifacts": [
+    "LANGUAGE-TESTS.md",
+    "SEMANTIC-MODEL.md"
+  ],
+  "open_tree": "19b14cac4ab2396fb798f9c5bcc656f708c08b63",
+  "close_tree": "20d8b6d7f228f8dea0b24cd71285338aeb6e6d89",
+  "changed_paths": [
+    "Cargo.toml",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F0-ledger.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/LEDGER.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D2-LANGUAGE-KERNEL"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F0-ledger.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:grep -q D2-LANGUAGE-KERNEL design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F0-ledger.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F0-ledger.log"
+  ],
+  "closed": "2026-09-24T02:10:42Z",
+  "status": "PASS"
+}

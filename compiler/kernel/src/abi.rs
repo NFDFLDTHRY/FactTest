@@ -48,60 +48,41 @@ pub fn submit_source_bytes(ws: &mut Workspace, bytes: &[u8]) -> Result<SourceId,
 
 /// SUBMIT_MACHINE_STATE: opaque bytes in the machine-state dialect (consumed by planning once it exists).
 pub fn submit_machine_state(ws: &mut Workspace, bytes: &[u8]) -> Result<(), Status> {
-    ws.machine_state.clear();
-    for &b in bytes {
-        if ws.machine_state.push(b).is_err() {
-            ws.diagnostics.push(Diagnostic::new(
-                DiagCode::WorkspaceExhausted,
-                Phase::Bootstrap,
-                SourceId::default(),
-                None,
-                "machine-state arena exhausted",
-            ));
-            ws.last_status = Status::Exhausted;
-            return Err(Status::Exhausted);
-        }
-    }
-    Ok(())
-}
-
-/// CHECK_OR_COMPILE.  Bootstrap-era behaviour (B8): every submitted source reaches the front-end boundary and
-/// receives a deterministic LANGUAGE_KERNEL_NOT_IMPLEMENTED diagnostic with exact source lineage.
-pub fn check_or_compile(ws: &mut Workspace, _mode: Mode) -> Status {
-    ws.diagnostics.clear();
-    if ws.sources.is_empty() {
+    if bytes.len() > ws.machine_state.len() {
         ws.diagnostics.push(Diagnostic::new(
-            DiagCode::NoSourceSubmitted,
+            DiagCode::WorkspaceExhausted,
             Phase::Bootstrap,
             SourceId::default(),
             None,
-            "no source unit submitted",
+            "machine-state arena exhausted",
         ));
-        ws.last_status = Status::Diagnostics;
-        return ws.last_status;
+        ws.last_status = Status::Exhausted;
+        return Err(Status::Exhausted);
     }
-    let units: [Option<SourceUnit>; factc_foundation::limits::MAX_SOURCE_UNITS] = {
-        let mut u = [None; factc_foundation::limits::MAX_SOURCE_UNITS];
-        for (i, s) in ws.sources.iter().enumerate() {
-            u[i] = Some(*s);
-        }
-        u
-    };
-    for unit in units.iter().flatten() {
-        ws.diagnostics.push(
-            Diagnostic::new(
-                DiagCode::LanguageKernelNotImplemented,
-                Phase::Scan,
-                unit.id,
-                Some(unit.span()),
-                "front-end boundary reached; ASCII language kernel not materialized",
-            )
-            .with_params(unit.len, 0, 0),
-        );
+    ws.machine_state[..bytes.len()].copy_from_slice(bytes);
+    ws.machine_state_len = bytes.len();
+    Ok(())
+}
+
+/// CHECK_OR_COMPILE: run the phase spine (front end -> semantic -> emit).
+pub fn check_or_compile(ws: &mut Workspace, mode: Mode) -> Status {
+    crate::phases::run(ws, mode)
+}
+
+/// READ_ARTIFACT (transport extension of C14): bytes of artifact `index` into `out`.
+pub fn read_artifact(
+    ws: &Workspace,
+    index: usize,
+    out: &mut OutBuf<'_>,
+) -> Result<(), factc_foundation::OutputTooSmall> {
+    match ws.artifact(index) {
+        Some(b) => out.bytes(b),
+        None => Err(factc_foundation::OutputTooSmall),
     }
-    ws.diagnostics.sort();
-    ws.last_status = Status::NotImplemented;
-    ws.last_status
+}
+
+pub fn artifact_count(ws: &Workspace) -> usize {
+    ws.artifacts.len()
 }
 
 /// READ_DIAGNOSTICS: deterministic JSON rendering of the structured diagnostics.
@@ -184,7 +165,11 @@ pub fn read_artifact_metadata(
         w.kv_str("producer", a.producer.as_bytes())?;
         w.kv_str("status", a.status.name().as_bytes())?;
         w.kv_hex("sha256", &a.sha256)?;
-        w.kv_uint("byte_len", a.byte_len as u64)?;
+        w.kv_uint("byte_len", a.len as u64)?;
+        match a.system {
+            Some(sy) => w.kv_uint("system", sy as u64)?,
+            None => w.kv_null("system")?,
+        }
         w.key("inputs")?;
         w.arr()?;
         for i in a.inputs.iter().flatten() {

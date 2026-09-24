@@ -70,4 +70,48 @@ BEFORE
   Chromium record, Node record), evidence/D1/index.json, six FactoryReceipts, verification.json.
 
 AFTER
+- RESULT: integrated as 8ab25c9af3401ffd14b99c2b5d9333763b130be2 (ff-only from 25ef9e3).
+- RECEIPTS: factory/receipts/D1-COMPILER-FOUNDATION/{F0-doc,F1-rust,F2-web,F3-fixture,F4-build,F5-evidence}.json PASS.
+- VERIFICATION: verification.json PASS.  INTEGRATION: gate PASS.  PROBE: re-inspection MATCH (`cargo test` in canonical).
+- EVIDENCE: evidence/D1/bootstrap/factc_wasm_abi.wasm (sha256 529ee8da...abbc, 124754 bytes, memory I64 min=26),
+  b9-inspect.json (all memories i64), b10-b11-chromium.json (HeadlessChrome/141, imports [], abi_version 1,
+  LANGUAGE_KERNEL_NOT_IMPLEMENTED span 0..N), b10-node.json (Node 22/V8 12.4 cannot compile the memory64 module:
+  recorded, Node is not the host), negative/summary.log (B1/B2/B3 fixtures rejected), index.json (B12).
+- OBSERVED ASCII: compiler/foundation, compiler/kernel (ABI), compiler/wasm-abi, host/factc, host/harness exist
+  as drawn in M0 section 1; B0-B12 rungs CLAIMED->CHECKED->BUILT->EXECUTED (browser).  [RUN]
+- MATCH/DIFFER: MATCH.  [OBS] the integration-gate hardening (clean canonical tree check, idempotent commit)
+  described in D0 AFTER was carried by this delta's factory/src/ops.rs.
+
+---
+
+## D2-LANGUAGE-KERNEL  (M3)
+
+BEFORE
+- DELTA: D2-LANGUAGE-KERNEL (factory/deltas/D2.json)
+- BASE: 8ab25c9af3401ffd14b99c2b5d9333763b130be2
+- STATION: S-DOC, S-RUST, S-FIXTURE, S-BUILD, S-EVIDENCE
+- FIXTURE: F0-doc, F1-rust, F2-fixture, F3-build, F4-evidence
+- READ: everything.  CHANGE: compiler/, host/factc/, fixtures/language/, fixtures/commissioning/, tests/, ledger,
+  evidence/D2/, Cargo.toml/Cargo.lock.  FORBIDDEN: law/design/pass docs, D0/D1 receipts and evidence,
+  factory/src/, factory/registry/, host/harness/, M0 ASCII.
+- INVARIANTS: islands are the only semantic entry; ambiguity is an error; kernel crates no_std + forbid(unsafe);
+  no third-party crates; canonical rendering round-trip/idempotence; authored source never mutated.
+- TESTS: L0-L35 (fixtures/language + compiler/kernel/tests/language_ladder.rs), P6-G01/G02/A01-A03, B7/B8 updated
+  (kernel present), B9-B11 rerun with the Byte Relay source in Chromium, negative fixtures, factory law.
+- EXPECTED EVIDENCE: evidence/D2/{build,byte-relay,bootstrap,negative}/*, index.json, five receipts, verification.
+- COMPILER-PLANE DECISIONS RECORDED (not source semantics; see M0 section 4):
+  [NEW] reachable(a, b) is reflexive-transitive over DATA (component-level) and SEQUENCE edges; sequence_before is
+        transitive over SEQUENCE edges only; acyclic(scope) is over the same edge set restricted to the scope.
+  [NEW] BUILD is blocked by GAP/ERR/UNK on any object status or issue (execution-critical governance); ANALYZE keeps
+        the partial graph.  OBS/RUN/NEW never block.
+  [NEW] Refinement law v1 checks interface/direction/types/effects/capabilities/pins/promised invariants; sequence
+        and failure-contract preservation are [GAP] (not modeled in language version 1).
+  [NEW] Cross-unit references reach only public ports (`sys::comp.port`); types/components/etc. are private in
+        language version 1, so cross-system DATA relations need a future public-type language change: [GAP].
+  [NEW] `use`d systems must be submitted in the same kernel session; SystemId identity is by bytes, never by path.
+  [NEW] Canonical rendering: fixed 72-dash rules, `| ` prefixed lines, grouping prose headers, deterministic
+        name order; positional arena ids never appear in canonical ASCII or typed IR.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
+

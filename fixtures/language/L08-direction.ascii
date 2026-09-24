@@ -1,0 +1,7 @@
+@{system dir}
+@{type T}
+@{component a}
+@{component b}
+@{port a.i in: T public}
+@{port b.o out: T public}
+@{data wrong a.i -> b.o mode=copy}

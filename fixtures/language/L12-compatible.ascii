@@ -1,0 +1,18 @@
+@{system refine_ok}
+@{type T}
+@{capability GPU_COMPUTE}
+@{effect NET}
+@{subsystem abstract_x}
+@{port abstract_x.i in: T public}
+@{port abstract_x.o out: T public}
+@{requires abstract_x GPU_COMPUTE}
+@{uses abstract_x NET}
+@{subsystem concrete_x}
+@{port concrete_x.i in: T public}
+@{port concrete_x.o out: T public}
+@{requires concrete_x GPU_COMPUTE}
+@{component inner}
+@{contains concrete_x -> inner}
+@{uses inner NET}
+@{refines concrete_x -> abstract_x}
+@{invariant inv_ref refines(concrete_x, abstract_x)}

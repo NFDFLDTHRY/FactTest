@@ -7,6 +7,7 @@
 #![forbid(unsafe_code)]
 
 pub mod abi;
+pub mod phases;
 pub mod workspace;
 
 pub use abi::*;

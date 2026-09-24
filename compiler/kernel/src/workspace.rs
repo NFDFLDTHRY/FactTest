@@ -1,7 +1,11 @@
 //! Caller-owned bootstrap workspace (C2): borrowed inputs, bounded arenas, structured capacity errors.
+//! Phase state (parsed units, semantic model) and emitted artifacts live here so the host only ever moves bytes.
 
 use factc_foundation::limits::*;
-use factc_foundation::{ArtifactMeta, BVec, Diagnostics, SourceId, Span};
+use factc_foundation::{ArtifactKind, ArtifactStatus, BVec, Diagnostics, SourceId, Span};
+
+pub const ARTIFACT_BYTES: usize = 512 * 1024;
+pub const MACHINE_STATE_BYTES: usize = 16 * 1024;
 
 #[derive(Copy, Clone, Debug)]
 pub struct SourceUnit {
@@ -22,47 +26,24 @@ pub enum Mode {
     Build,
 }
 
-#[derive(Clone, Debug)]
-pub struct Workspace {
-    pub source_bytes: [u8; SOURCE_BYTES],
-    pub source_used: usize,
-    pub sources: BVec<SourceUnit, MAX_SOURCE_UNITS>,
-    pub machine_state: BVec<u8, 4096>,
-    pub diagnostics: Diagnostics<MAX_DIAGNOSTICS>,
-    pub artifacts: BVec<ArtifactMetaSlot, MAX_ARTIFACTS>,
-    pub last_status: Status,
-}
+/// Artifact arena or slot table exhausted (structured, never a panic).
+#[derive(Copy, Clone, PartialEq, Eq, Debug)]
+pub struct ArenaExhausted;
 
-/// ArtifactMeta is not Copy (it carries a BVec); store a compact copyable slot instead.
+/// Emitted artifact: envelope + location in the artifact arena.
 #[derive(Copy, Clone, Debug)]
-pub struct ArtifactMetaSlot {
+pub struct ArtifactSlot {
     pub id: u32,
-    pub kind: factc_foundation::ArtifactKind,
+    pub kind: ArtifactKind,
     pub schema_version: u32,
     pub producer: &'static str,
-    pub status: factc_foundation::ArtifactStatus,
+    pub status: ArtifactStatus,
     pub sha256: [u8; 32],
-    pub byte_len: u32,
+    pub off: u32,
+    pub len: u32,
     pub inputs: [Option<u32>; MAX_INPUT_IDS],
-}
-
-impl From<&ArtifactMeta> for ArtifactMetaSlot {
-    fn from(m: &ArtifactMeta) -> Self {
-        let mut inputs = [None; MAX_INPUT_IDS];
-        for (i, id) in m.inputs.iter().enumerate() {
-            inputs[i] = Some(id.raw());
-        }
-        ArtifactMetaSlot {
-            id: m.id.raw(),
-            kind: m.kind,
-            schema_version: m.schema_version,
-            producer: m.producer,
-            status: m.status,
-            sha256: m.sha256,
-            byte_len: m.byte_len,
-            inputs,
-        }
-    }
+    /// which system (unit) the artifact belongs to, if any
+    pub system: Option<u32>,
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]
@@ -75,14 +56,48 @@ pub enum Status {
     NotImplemented = 4,
 }
 
+pub type Unit = factc_source::ParsedUnit<MAX_ISLANDS, MAX_EXPR_NODES>;
+
+pub struct Workspace {
+    pub source_bytes: [u8; SOURCE_BYTES],
+    pub source_used: usize,
+    pub sources: BVec<SourceUnit, MAX_SOURCE_UNITS>,
+    pub machine_state: [u8; MACHINE_STATE_BYTES],
+    pub machine_state_len: usize,
+    pub diagnostics: Diagnostics<MAX_DIAGNOSTICS>,
+    pub islands: BVec<factc_source::Island, MAX_ISLANDS>,
+    pub units: [Option<Unit>; MAX_SOURCE_UNITS],
+    pub model: factc_semantic::Model,
+    pub artifact_bytes: [u8; ARTIFACT_BYTES],
+    pub artifact_used: usize,
+    pub artifacts: BVec<ArtifactSlot, MAX_ARTIFACTS>,
+    pub last_status: Status,
+}
+
+impl core::fmt::Debug for Workspace {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        f.debug_struct("Workspace")
+            .field("sources", &self.sources.len())
+            .field("artifacts", &self.artifacts.len())
+            .field("status", &self.last_status)
+            .finish()
+    }
+}
+
 impl Workspace {
     pub const fn new() -> Self {
         Workspace {
             source_bytes: [0; SOURCE_BYTES],
             source_used: 0,
             sources: BVec::new(),
-            machine_state: BVec::new(),
+            machine_state: [0; MACHINE_STATE_BYTES],
+            machine_state_len: 0,
             diagnostics: Diagnostics::new(),
+            islands: BVec::new(),
+            units: [None, None, None, None, None, None, None, None],
+            model: factc_semantic::Model::new(),
+            artifact_bytes: [0; ARTIFACT_BYTES],
+            artifact_used: 0,
             artifacts: BVec::new(),
             last_status: Status::Idle,
         }
@@ -90,13 +105,62 @@ impl Workspace {
     pub fn reset(&mut self) {
         self.source_used = 0;
         self.sources.clear();
-        self.machine_state.clear();
+        self.machine_state_len = 0;
         self.diagnostics.clear();
+        self.islands.clear();
+        for u in self.units.iter_mut() {
+            *u = None;
+        }
+        self.model.clear();
+        self.artifact_used = 0;
         self.artifacts.clear();
         self.last_status = Status::Idle;
     }
     pub fn source(&self, unit: &SourceUnit) -> &[u8] {
         &self.source_bytes[unit.off as usize..(unit.off + unit.len) as usize]
+    }
+    pub fn artifact(&self, i: usize) -> Option<&[u8]> {
+        self.artifacts
+            .get(i)
+            .map(|a| &self.artifact_bytes[a.off as usize..(a.off + a.len) as usize])
+    }
+    /// Copy rendered bytes into the artifact arena and register the envelope.  Returns the artifact index.
+    pub fn store_artifact(
+        &mut self,
+        kind: ArtifactKind,
+        producer: &'static str,
+        status: ArtifactStatus,
+        bytes: &[u8],
+        inputs: &[u32],
+        system: Option<u32>,
+    ) -> Result<u32, ArenaExhausted> {
+        if self.artifact_used + bytes.len() > ARTIFACT_BYTES
+            || self.artifacts.len() >= self.artifacts.capacity()
+        {
+            return Err(ArenaExhausted);
+        }
+        let off = self.artifact_used;
+        self.artifact_bytes[off..off + bytes.len()].copy_from_slice(bytes);
+        self.artifact_used += bytes.len();
+        let mut ins = [None; MAX_INPUT_IDS];
+        for (i, x) in inputs.iter().take(MAX_INPUT_IDS).enumerate() {
+            ins[i] = Some(*x);
+        }
+        let id = self.artifacts.len() as u32;
+        let slot = ArtifactSlot {
+            id,
+            kind,
+            schema_version: 1,
+            producer,
+            status,
+            sha256: factc_foundation::sha256::digest(bytes),
+            off: off as u32,
+            len: bytes.len() as u32,
+            inputs: ins,
+            system,
+        };
+        self.artifacts.push(slot).map_err(|_| ArenaExhausted)?;
+        Ok(id)
     }
 }
 

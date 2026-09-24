@@ -1,0 +1,7 @@
+@{system consumer}
+@{use impa}
+@{use impb}
+@{type T}
+@{component sink}
+@{port sink.q in: T public}
+@{data d shared.p -> sink.q mode=copy}

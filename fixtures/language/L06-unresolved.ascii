@@ -1,0 +1,5 @@
+@{system unres}
+@{type T}
+@{component a}
+@{port a.out out: T public}
+@{data d a.out -> ghost.in mode=copy}

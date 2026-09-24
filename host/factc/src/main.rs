@@ -112,6 +112,36 @@ fn check(args: &[String]) -> i32 {
         let n = buf.len();
         std::fs::write(out_dir.join("artifacts.json"), &out_bytes[..n]).expect("write artifacts");
     }
+    // every emitted artifact, named by kind (and system index where applicable)
+    for i in 0..factc_kernel::artifact_count(&ws) {
+        let slot = *ws.artifacts.get(i).unwrap();
+        let mut buf = OutBuf::new(&mut out_bytes);
+        if factc_kernel::read_artifact(&ws, i, &mut buf).is_err() {
+            eprintln!("factc: artifact {} too large for output buffer", i);
+            return 3;
+        }
+        let n = buf.len();
+        let ext = match slot.kind {
+            factc_foundation::ArtifactKind::CanonicalAscii
+            | factc_foundation::ArtifactKind::ObservedAscii => "ascii",
+            factc_foundation::ArtifactKind::GeneratedBundle => "bin",
+            _ => "json",
+        };
+        let name = match slot.system {
+            Some(s) => format!(
+                "{}-{}.{}",
+                slot.kind.name().to_lowercase().replace('_', "-"),
+                s,
+                ext
+            ),
+            None => format!(
+                "{}.{}",
+                slot.kind.name().to_lowercase().replace('_', "-"),
+                ext
+            ),
+        };
+        std::fs::write(out_dir.join(&name), &out_bytes[..n]).expect("write artifact");
+    }
     println!("factc: status {}", factc_kernel::status_name(status));
     match status {
         factc_kernel::Status::Ok => 0,

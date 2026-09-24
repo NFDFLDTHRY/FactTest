@@ -97,12 +97,12 @@ fn b4_diagnostics_deterministic_order() {
     b.push(d2);
     b.sort();
     let ka: [_; 3] = [
-        a.iter().nth(0).unwrap().key(),
+        a.iter().next().unwrap().key(),
         a.iter().nth(1).unwrap().key(),
         a.iter().nth(2).unwrap().key(),
     ];
     let kb: [_; 3] = [
-        b.iter().nth(0).unwrap().key(),
+        b.iter().next().unwrap().key(),
         b.iter().nth(1).unwrap().key(),
         b.iter().nth(2).unwrap().key(),
     ];

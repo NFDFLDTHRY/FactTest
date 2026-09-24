@@ -1,0 +1,14 @@
+[package]
+name = "factc-semantic"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "FactTest semantic kernel: SystemAst/ResolvedSystem/TypedSystemIR construction, invariant kernel, refinement law, canonical rendering, ANALYZE/BUILD (SEMANTIC-MODEL.md, REFINEMENT-LAW.md)."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+factc-foundation = { path = "../foundation" }
+factc-source = { path = "../source" }

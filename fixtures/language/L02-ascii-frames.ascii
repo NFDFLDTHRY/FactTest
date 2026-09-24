@@ -1,0 +1,23 @@
++------------------------------------------------------+
+| VIDEO CAPTURE                                        |
+| @{system vision "Vision System"}                     |
+| @{type VideoFrame}  @{type EncodedVideo}             |
+| @{capability VIDEO_CAPTURE} @{capability VIDEO_ENCODE}
+| @{effect STORAGE_WRITE}                              |
+| +-------------------+    +--------------------+      |
+| | Encoder           |    | Camera             |      |
+| | @{component encoder "Encoder"}                     |
+| | @{port encoder.frame in: VideoFrame public}        |
+| | @{port encoder.data out: EncodedVideo public}      |
+| | @{requires encoder VIDEO_ENCODE}                   |
+| | @{uses encoder STORAGE_WRITE}                      |
+| +-------------------+    | @{component camera "Camera"}
+|      ^                   | @{port camera.frame out: VideoFrame public}
+|      |                   | @{requires camera VIDEO_CAPTURE}
+|      +-------------------+--------------------+      |
+| @{data frame_flow camera.frame -> encoder.frame mode=move}
+| @{invariant inv_frame exactly_one_producer(encoder.frame)}
+| @{test t_frame static} @{tests t_frame -> inv_frame} |
+| @{evidence ev_frame static_proof}                    |
+| @{witnesses ev_frame -> t_frame}                     |
++------------------------------------------------------+

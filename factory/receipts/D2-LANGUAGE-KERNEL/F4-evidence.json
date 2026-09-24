@@ -1,0 +1,98 @@
+{
+  "receipt_id": "R-D2-LANGUAGE-KERNEL-F4-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F4-evidence",
+  "workpiece_id": "W2",
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "canonical_base": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+  "input_artifacts": [
+    "evidence/D2/"
+  ],
+  "open_tree": "80971d3f55238ab2985a6432e2d77ff061414037",
+  "close_tree": "e5f096a7775d661d570c2a87b3638685ffb0deef",
+  "changed_paths": [
+    "evidence/D2/index.json",
+    "evidence/D2/index.log"
+  ],
+  "output_artifacts": [
+    "evidence/D2/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D2-LANGUAGE-KERNEL"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D2/index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory evidence index evidence/D2 evidence/D2/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D2/index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D2/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D2/index.log"
+  ],
+  "closed": "2026-09-24T02:10:51Z",
+  "status": "PASS"
+}
