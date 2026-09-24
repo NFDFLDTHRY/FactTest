@@ -1,0 +1,15 @@
+[package]
+name = "factc-capability"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "FactTest capability lowering: TypedSystemIR -> ObligationSet + CapabilityIR (LOWERING-MODEL.md). Selects no implementation."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+factc-foundation = { path = "../foundation" }
+factc-source = { path = "../source" }
+factc-semantic = { path = "../semantic" }

@@ -1,0 +1,4 @@
+$ sh -c awk '/^```text$/{f=1;next} /^```$/{f=0} f' COMMISSIONING-ASCII.md | cmp - fixtures/commissioning/byte-relay.ascii
+(cwd .)
+
+[exit 0] expected 0

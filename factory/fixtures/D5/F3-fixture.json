@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F3-fixture", "station_id": "S-FIXTURE", "delta_id": "D5-CODEGEN-BUNDLE",
+  "selected_inputs": ["PASS6-TESTS.md Bundle", "PASS5-TESTS.md Codegen/bundle"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["fixtures/commissioning/contracts.ascii", "tests/", "factory/receipts/D5-CODEGEN-BUNDLE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "grep", "args": ["-q", "region_capacity", "fixtures/commissioning/contracts.ascii"], "log": "factory/receipts/D5-CODEGEN-BUNDLE/logs/F3-recipe-exports.log"}
+  ]},
+  "expected_outputs": ["fixtures/commissioning/contracts.ascii", "tests/language/run-byte-relay.sh"],
+  "tests": ["recipe declares region exports"], "evidence_requirements": ["receipt"]
+}

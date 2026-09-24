@@ -1,0 +1,13 @@
+{
+  "fixture_id": "F3-build", "station_id": "S-BUILD", "delta_id": "D3-LOWERING-CONTRACTS",
+  "selected_inputs": ["compiler/", "host/", "fixtures/", "tests/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D3/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D3/build/test.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/language/run-byte-relay.sh", "evidence/D3/byte-relay"], "env": {"FACTC_BIN": "/home/user/factory-target/debug/factc"}, "log": "evidence/D3/byte-relay/run.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/bootstrap/run-b9-b11.sh", "evidence/D3/bootstrap"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory", "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers", "KERNEL_HOST_SOURCE": "fixtures/commissioning/byte-relay.ascii"}, "log": "evidence/D3/bootstrap/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D3/build/test.log", "evidence/D3/byte-relay/E_model_0/implementation-hypergraph.json", "evidence/D3/byte-relay/E_model_1/implementation-hypergraph.json", "evidence/D3/bootstrap/b9-inspect.json"],
+  "tests": ["cargo test (all ladders)", "factc on Byte Relay under both model epochs", "B9-B11"], "evidence_requirements": ["logs", "artifacts"]
+}

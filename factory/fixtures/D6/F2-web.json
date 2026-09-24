@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F2-web", "station_id": "S-WEB", "delta_id": "D6-RUNTIME-EVIDENCE",
+  "selected_inputs": ["COMMISSIONING-RUNTIME.md", "COMMISSIONING-FIXTURE.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["host/harness/", "factory/receipts/D6-RUNTIME-EVIDENCE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "node", "args": ["--check", "host/harness/bundle-probe.mjs"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F2-syntax.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "! grep -q 'factc' host/harness/bundle-probe.mjs"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F2-harness-never-compiles.log"}
+  ]},
+  "expected_outputs": ["host/harness/bundle-probe.mjs"],
+  "tests": ["harness parses", "harness has no compiler invocation"], "evidence_requirements": ["receipt"]
+}

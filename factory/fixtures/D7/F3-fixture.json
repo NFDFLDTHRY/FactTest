@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F3-fixture", "station_id": "S-FIXTURE", "delta_id": "D7-COMMISSIONING-GATE",
+  "selected_inputs": ["PASS6-TESTS.md Anti-cheating"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["fixtures/commissioning/byte-relay-renamed.ascii", "fixtures/commissioning/byte-relay-compact.ascii", "fixtures/commissioning/byte-relay-labels.ascii", "tests/commissioning/", "factory/receipts/D7-COMMISSIONING-GATE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-n", "tests/commissioning/run-anti-cheat.sh"], "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F3-script-syntax.log"}
+  ]},
+  "expected_outputs": ["fixtures/commissioning/byte-relay-renamed.ascii", "fixtures/commissioning/byte-relay-compact.ascii", "fixtures/commissioning/byte-relay-labels.ascii", "tests/commissioning/run-anti-cheat.sh"],
+  "tests": ["fixtures present"], "evidence_requirements": ["receipt"]
+}

@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F4-build", "station_id": "S-BUILD", "delta_id": "D6-RUNTIME-EVIDENCE",
+  "selected_inputs": ["compiler/", "host/", "fixtures/", "tests/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D6/build/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D6/build/test.log"}
+  ]},
+  "expected_outputs": ["evidence/D6/build/test.log"],
+  "tests": ["cargo test (all ladders incl. observe)"], "evidence_requirements": ["logs"]
+}

@@ -1,0 +1,155 @@
+{
+  "delta_id": "D1-COMPILER-FOUNDATION",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "25ef9e372a62f62a08371027b71bf0b4cd4b77ff",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W1",
+  "approved_ascii_refs": [
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "BOOTSTRAP-ARCHITECTURE.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-TESTS.md",
+    "PLANNED-REPO-LAYOUT.md"
+  ],
+  "intent": "M2 compiler foundation: no_std foundation and kernel crates, bootstrap ABI, wasm64 export surface, factc host driver, Factory verification tools, bootstrap ladder B0-B12 evidence",
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "compiler/",
+    "host/",
+    "factory/src/",
+    "factory/Cargo.toml",
+    "factory/deltas/",
+    "factory/fixtures/",
+    "factory/receipts/D1-COMPILER-FOUNDATION/",
+    "fixtures/",
+    "tests/",
+    "design/materialization/LEDGER.md",
+    "evidence/D1/",
+    "Cargo.toml",
+    "Cargo.lock",
+    ".gitignore"
+  ],
+  "must_not_change": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "BOOTSTRAP-ARCHITECTURE.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-TESTS.md",
+    "CAPABILITY-MATRIX.md",
+    "CODEGEN-BUNDLE-CONTRACT.md",
+    "COMMISSIONING-ASCII.md",
+    "COMMISSIONING-FACTORY.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md",
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-SLICE.md",
+    "COMMISSIONING-TRACE.md",
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FACTORY-CONTRACTS.md",
+    "FACTORY-LAW.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "LANGUAGE-TESTS.md",
+    "LICENSE",
+    "LOWERING-MODEL.md",
+    "PASS1.md",
+    "PASS2.md",
+    "PASS3.md",
+    "PASS4.md",
+    "PASS5-TESTS.md",
+    "PASS5.md",
+    "PASS6-GAP-REPAIRS.md",
+    "PASS6-TESTS.md",
+    "PASS6.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "PLANNER-COST-MODEL.md",
+    "README.md",
+    "REFERENCE-AUTHORITY.md",
+    "REFINEMENT-LAW.md",
+    "REPRESENTATION-TRANSFER.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "SEMANTIC-MODEL.md",
+    "STATION-REGISTRY.md",
+    "VERIFICATION-CERTIFICATES.md",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/",
+    "evidence/D0/",
+    "design/materialization/M0-INTENDED-SYSTEM.md"
+  ],
+  "required_station_capabilities": [
+    "DOC_CONTRACT_FORGE",
+    "RUST_FORGE",
+    "WEB_HOST_FORGE",
+    "FIXTURE_FORGE",
+    "BUILD_VERIFY",
+    "EVIDENCE_ASSEMBLER"
+  ],
+  "invariants": [
+    "kernel crates no_std",
+    "no third-party crates",
+    "wasm64 only; no wasm32 fallback",
+    "verifier/planner separation reserved by crate DAG",
+    "language kernel deliberately absent (B8)"
+  ],
+  "tests": [
+    "B0-B12 (BOOTSTRAP-TESTS.md)",
+    "factory_law",
+    "foundation unit tests",
+    "kernel bootstrap_ladder"
+  ],
+  "evidence_requirements": [
+    "FactoryReceipt per fixture",
+    "evidence/D1 build/test logs",
+    "wasm64 module identity + inspection",
+    "Chromium instantiation record",
+    "evidence index"
+  ],
+  "expected_output_contract": {
+    "required_paths": [
+      "compiler/foundation/src/lib.rs",
+      "compiler/kernel/src/abi.rs",
+      "compiler/wasm-abi/src/lib.rs",
+      "host/factc/src/main.rs",
+      "host/harness/kernel-host.mjs",
+      "factory/src/checks.rs",
+      "tests/bootstrap/run-b9-b11.sh",
+      "evidence/D1/bootstrap/factc_wasm_abi.wasm",
+      "evidence/D1/bootstrap/b10-b11-chromium.json",
+      "evidence/D1/index.json",
+      "design/materialization/LEDGER.md"
+    ],
+    "forbidden_paths": [
+      "target"
+    ]
+  },
+  "fixtures": [
+    "factory/fixtures/D1/F0-doc.json",
+    "factory/fixtures/D1/F1-rust.json",
+    "factory/fixtures/D1/F2-web.json",
+    "factory/fixtures/D1/F3-fixture.json",
+    "factory/fixtures/D1/F4-build.json",
+    "factory/fixtures/D1/F5-evidence.json"
+  ],
+  "reinspect_commands": [
+    {
+      "cwd": ".",
+      "program": "cargo",
+      "args": [
+        "test"
+      ],
+      "env": {
+        "CARGO_TARGET_DIR": "/home/user/factory-target"
+      },
+      "log": "reinspect-test.log"
+    }
+  ],
+  "commit_trailers": [
+    "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+    "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"
+  ]
+}

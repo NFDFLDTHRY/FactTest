@@ -1,0 +1,22 @@
+[package]
+name = "factc-kernel"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "FactTest no_std compiler kernel: phase facade and bootstrap ABI (C14)."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+factc-foundation = { path = "../foundation" }
+factc-source = { path = "../source" }
+factc-semantic = { path = "../semantic" }
+factc-capability = { path = "../capability" }
+factc-implementation = { path = "../implementation" }
+factc-planning = { path = "../planning" }
+factc-verifier = { path = "../verifier" }
+factc-codegen = { path = "../codegen" }
+factc-bundle = { path = "../bundle" }
+factc-observe = { path = "../observe" }

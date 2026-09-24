@@ -1,0 +1,24 @@
+This diagram is described in prose first.  The camera requires WebGPU (this sentence is prose and must
+create NO capability requirement, see L18).  @@{ this is an escaped literal, not an island }
+@{system vision "Vision System"}
+@{type VideoFrame}
+@{type EncodedVideo}
+@{capability VIDEO_CAPTURE}
+@{capability VIDEO_ENCODE}
+@{effect STORAGE_WRITE}
+@{component camera "Camera"}
+NOTE: the camera is the only producer.
+@{port camera.frame out: VideoFrame public}
+@{requires camera VIDEO_CAPTURE}
+@{data frame_flow camera.frame -> encoder.frame mode=move}
+@{component encoder "Encoder"}
+RATIONALE: encoding happens before storage.
+@{port encoder.frame in: VideoFrame public}
+@{port encoder.data out: EncodedVideo public}
+@{requires encoder VIDEO_ENCODE}
+@{uses encoder STORAGE_WRITE}
+@{invariant inv_frame exactly_one_producer(encoder.frame)}
+@{test t_frame static}
+@{tests t_frame -> inv_frame}
+@{evidence ev_frame static_proof}
+@{witnesses ev_frame -> t_frame}

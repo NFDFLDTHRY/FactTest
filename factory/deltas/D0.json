@@ -1,0 +1,62 @@
+{
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "32b7e65f8653427e7fc2d05ef3bad6c06f2f022c",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W0",
+  "approved_ascii_refs": [
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "STATION-REGISTRY.md",
+    "COMMISSIONING-FACTORY.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md"
+  ],
+  "intent": "M1 bootstrap: materialize minimum Factory machinery (delta check, isolated workpiece, station registry, receipts, independent verification, integration gate, re-inspection) so that all later Factory work is enforced",
+  "may_read": ["*"],
+  "may_change": ["factory/", "design/materialization/", "evidence/D0/", "Cargo.toml", "Cargo.lock", ".gitignore"],
+  "must_not_change": ["ASCII-GRAMMAR.md","ASCII-LANGUAGE.md","BOOTSTRAP-ARCHITECTURE.md","BOOTSTRAP-CONTRACTS.md","BOOTSTRAP-TESTS.md","CAPABILITY-MATRIX.md","CODEGEN-BUNDLE-CONTRACT.md","COMMISSIONING-ASCII.md","COMMISSIONING-FACTORY.md","COMMISSIONING-FIXTURE.md","COMMISSIONING-PROOF.md","COMMISSIONING-RUNTIME.md","COMMISSIONING-SLICE.md","COMMISSIONING-TRACE.md","CONFLICT-LEDGER.md","CONSTRAINT-LEDGER.md","EVIDENCE-OBLIGATIONS.md","FABLE-ASCII-SYSTEM-PROMPT.md","FACTORY-CONTRACTS.md","FACTORY-LAW.md","FINAL-HANDOFF-REQUIREMENTS.md","IMPLEMENTATION-CONTRACTS.md","LANGUAGE-TESTS.md","LICENSE","LOWERING-MODEL.md","PASS1.md","PASS2.md","PASS3.md","PASS4.md","PASS5-TESTS.md","PASS5.md","PASS6-GAP-REPAIRS.md","PASS6-TESTS.md","PASS6.md","PLANNED-REPO-LAYOUT.md","PLANNER-COST-MODEL.md","README.md","REFERENCE-AUTHORITY.md","REFINEMENT-LAW.md","REPRESENTATION-TRANSFER.md","RUNTIME-ADMISSION-REPLAN.md","SEMANTIC-MODEL.md","STATION-REGISTRY.md","VERIFICATION-CERTIFICATES.md"],
+  "required_station_capabilities": ["DOC_CONTRACT_FORGE", "RUST_FORGE", "FIXTURE_FORGE", "BUILD_VERIFY"],
+  "invariants": [
+    "no third-party crates",
+    "law/design surfaces byte-identical",
+    "mutation only inside workpiece W0",
+    "integration fast-forward only when canonical base unmoved"
+  ],
+  "tests": ["factory/tests/factory_law.rs (P5-F01..F06, P6-F01..F06 witnesses)", "cargo build/fmt/clippy"],
+  "evidence_requirements": ["FactoryReceipt per fixture", "verification.json", "evidence/D0 build+test logs", "cargo tree dependency graph"],
+  "expected_output_contract": {
+    "required_paths": [
+      "factory/Cargo.toml",
+      "factory/src/main.rs",
+      "factory/src/ops.rs",
+      "factory/registry/stations/S-DOC.json",
+      "factory/registry/stations/S-RUST.json",
+      "factory/registry/stations/S-WEB.json",
+      "factory/registry/stations/S-FIXTURE.json",
+      "factory/registry/stations/S-BUILD.json",
+      "factory/registry/stations/S-BROWSER.json",
+      "factory/registry/stations/S-EVIDENCE.json",
+      "factory/registry/stations/S-BUNDLE.json",
+      "factory/tests/factory_law.rs",
+      "design/materialization/M0-INTENDED-SYSTEM.md",
+      "evidence/D0/build/test.log",
+      "evidence/D0/build/cargo-tree.log"
+    ],
+    "forbidden_paths": ["compiler", "host", "target"]
+  },
+  "fixtures": [
+    "factory/fixtures/D0/F0-doc.json",
+    "factory/fixtures/D0/F1-rust.json",
+    "factory/fixtures/D0/F2-fixture.json",
+    "factory/fixtures/D0/F3-build.json"
+  ],
+  "reinspect_commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test", "-p", "factory"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "reinspect-test.log"}
+  ],
+  "commit_trailers": [
+    "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+    "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"
+  ]
+}

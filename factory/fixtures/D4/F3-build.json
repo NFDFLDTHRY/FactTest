@@ -1,0 +1,13 @@
+{
+  "fixture_id": "F3-build", "station_id": "S-BUILD", "delta_id": "D4-PLANNER-VERIFIER",
+  "selected_inputs": ["compiler/", "host/", "fixtures/", "tests/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D4/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D4/build/test.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/language/run-byte-relay.sh", "evidence/D4/byte-relay"], "env": {"FACTC_BIN": "/home/user/factory-target/debug/factc"}, "log": "evidence/D4/byte-relay/run.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/bootstrap/run-negative-fixtures.sh", "evidence/D4/negative"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory"}, "log": "evidence/D4/negative/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D4/build/test.log", "evidence/D4/byte-relay/E_model_0/verified-strategy.json", "evidence/D4/byte-relay/E_model_1/activation-receipt-model.json", "evidence/D4/negative/summary.log"],
+  "tests": ["cargo test (all ladders)", "factc on Byte Relay under both model epochs", "negative fixtures incl. forge-verified-strategy"], "evidence_requirements": ["logs", "artifacts"]
+}

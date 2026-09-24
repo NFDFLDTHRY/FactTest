@@ -1,0 +1,43 @@
+{
+  "station_id": "S-FIXTURE",
+  "version": "1",
+  "capability_tags": [
+    "FIXTURE_FORGE"
+  ],
+  "input_kinds": [
+    "test_contracts"
+  ],
+  "operation_class": "create_deterministic_fixtures",
+  "output_kinds": [
+    "fixtures",
+    "tests"
+  ],
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "fixtures/",
+    "tests/",
+    "factory/fixtures/",
+    "factory/tests/",
+    "compiler/*/tests/",
+    "factory/receipts/"
+  ],
+  "must_not_change": [
+    "FACTORY-LAW.md",
+    "compiler/*/src/",
+    "host/",
+    "evidence/"
+  ],
+  "preconditions": [
+    "explicit expected outcome"
+  ],
+  "invariants": [
+    "production semantics never changed to make a test pass"
+  ],
+  "verification": [
+    "fixture bounded and deterministic where required"
+  ],
+  "source_nonmutating": false,
+  "receipt_schema_version": "1"
+}

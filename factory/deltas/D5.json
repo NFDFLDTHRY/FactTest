@@ -1,0 +1,173 @@
+{
+  "delta_id": "D5-CODEGEN-BUNDLE",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "77fb4594d52d02ebda3b1ea42959507f932af5e0",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W5",
+  "approved_ascii_refs": [
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "CODEGEN-BUNDLE-CONTRACT.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "COMMISSIONING-SLICE.md"
+  ],
+  "intent": "M6 codegen and bundle: CodegenRecipe engine realizing the VerifiedStrategy into a GeneratedBundle (first-party wasm64 emitter, host membrane adapters from recipe templates, runtime selector with embedded strategy data, runtime evidence, shell, manifest, versioned service worker, lineage manifest) and an independent BundleVerifier with BundleCertificate; bundle ladder P6-B01..B06, P6-C1/C2, P5-C01..C05",
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "compiler/",
+    "host/factc/",
+    "factory/deltas/",
+    "factory/fixtures/",
+    "factory/receipts/D5-CODEGEN-BUNDLE/",
+    "fixtures/commissioning/contracts.ascii",
+    "tests/",
+    "design/materialization/LEDGER.md",
+    "evidence/D5/",
+    "Cargo.toml",
+    "Cargo.lock"
+  ],
+  "must_not_change": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "BOOTSTRAP-ARCHITECTURE.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-TESTS.md",
+    "CAPABILITY-MATRIX.md",
+    "CODEGEN-BUNDLE-CONTRACT.md",
+    "COMMISSIONING-ASCII.md",
+    "COMMISSIONING-FACTORY.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md",
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-SLICE.md",
+    "COMMISSIONING-TRACE.md",
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FACTORY-CONTRACTS.md",
+    "FACTORY-LAW.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "LANGUAGE-TESTS.md",
+    "LICENSE",
+    "LOWERING-MODEL.md",
+    "PASS1.md",
+    "PASS2.md",
+    "PASS3.md",
+    "PASS4.md",
+    "PASS5-TESTS.md",
+    "PASS5.md",
+    "PASS6-GAP-REPAIRS.md",
+    "PASS6-TESTS.md",
+    "PASS6.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "PLANNER-COST-MODEL.md",
+    "README.md",
+    "REFERENCE-AUTHORITY.md",
+    "REFINEMENT-LAW.md",
+    "REPRESENTATION-TRANSFER.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "SEMANTIC-MODEL.md",
+    "STATION-REGISTRY.md",
+    "VERIFICATION-CERTIFICATES.md",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/",
+    "factory/receipts/D1-COMPILER-FOUNDATION/",
+    "factory/receipts/D2-LANGUAGE-KERNEL/",
+    "factory/receipts/D3-LOWERING-CONTRACTS/",
+    "factory/receipts/D4-PLANNER-VERIFIER/",
+    "factory/src/",
+    "factory/registry/",
+    "evidence/D0/",
+    "evidence/D1/",
+    "evidence/D2/",
+    "evidence/D3/",
+    "evidence/D4/",
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "host/harness/",
+    "fixtures/language/",
+    "fixtures/compiler/",
+    "fixtures/commissioning/byte-relay.ascii",
+    "fixtures/commissioning/metrics.ascii",
+    "fixtures/commissioning/epoch-model-0.ascii",
+    "fixtures/commissioning/epoch-model-1.ascii"
+  ],
+  "required_station_capabilities": [
+    "DOC_CONTRACT_FORGE",
+    "RUST_FORGE",
+    "WEB_HOST_FORGE",
+    "FIXTURE_FORGE",
+    "BUILD_VERIFY",
+    "EVIDENCE_ASSEMBLER"
+  ],
+  "invariants": [
+    "codegen accepts VerifiedStrategy only (sealed type)",
+    "codegen selects no backend: adapters come from verified variants' recipes",
+    "no i32-address memory is ever emitted (wasm64 only)",
+    "runtime/selector contain no code generation",
+    "bundle lineage names source, canonical, strategy and certificates",
+    "BundleVerifier shares no generation logic with codegen except the deterministic strategy-data rendering it compares byte for byte",
+    "no_std / no third-party unchanged"
+  ],
+  "tests": [
+    "compiler/kernel/tests/bundle_ladder.rs (P6-B01..B06, P6-C1/C2, P5-C01..C05, P6-X06)",
+    "wasm emitter unit test",
+    "all prior suites",
+    "factc on Byte Relay: bundle + PASS BundleCertificate, node --check on emitted modules, wasm-inspect on the emitted module"
+  ],
+  "evidence_requirements": [
+    "FactoryReceipt per fixture",
+    "evidence/D5 build/test logs",
+    "emitted bundle for E_model_0 with bundle-certificate.json and bundle-wasm-inspect.json",
+    "evidence index"
+  ],
+  "expected_output_contract": {
+    "required_paths": [
+      "compiler/codegen/src/lib.rs",
+      "compiler/codegen/src/wasm.rs",
+      "compiler/codegen/src/bundle.rs",
+      "compiler/codegen/templates/membrane-core.js",
+      "compiler/codegen/templates/adapter-wasm64_relay.js",
+      "compiler/codegen/templates/adapter-webgpu_relay.js",
+      "compiler/codegen/templates/selector.js",
+      "compiler/codegen/templates/runtime.js",
+      "compiler/bundle/src/lib.rs",
+      "compiler/kernel/tests/bundle_ladder.rs",
+      "evidence/D5/byte-relay/E_model_0/bundle/wasm64_relay.wasm",
+      "evidence/D5/byte-relay/E_model_0/bundle/bundle.json",
+      "evidence/D5/byte-relay/E_model_0/bundle-certificate.json",
+      "evidence/D5/index.json"
+    ],
+    "forbidden_paths": [
+      "target"
+    ]
+  },
+  "fixtures": [
+    "factory/fixtures/D5/F0-doc.json",
+    "factory/fixtures/D5/F2-web.json",
+    "factory/fixtures/D5/F1-rust.json",
+    "factory/fixtures/D5/F3-fixture.json",
+    "factory/fixtures/D5/F4-build.json",
+    "factory/fixtures/D5/F5-evidence.json"
+  ],
+  "reinspect_commands": [
+    {
+      "cwd": ".",
+      "program": "cargo",
+      "args": [
+        "test"
+      ],
+      "env": {
+        "CARGO_TARGET_DIR": "/home/user/factory-target"
+      },
+      "log": "reinspect-test.log"
+    }
+  ],
+  "commit_trailers": [
+    "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+    "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"
+  ]
+}

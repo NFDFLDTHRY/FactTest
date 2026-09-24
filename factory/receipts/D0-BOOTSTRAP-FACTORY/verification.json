@@ -1,0 +1,264 @@
+{
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "workpiece_id": "W0",
+  "canonical_base": "32b7e65f8653427e7fc2d05ef3bad6c06f2f022c",
+  "base_tree": "ab9109c6711ca5341dfcd0c4b9888658befc51b6",
+  "verified_tree": "70f39602cd90d2f0769bd9b0c7118ac9e8681d8f",
+  "changed_paths": [
+    ".gitignore",
+    "Cargo.lock",
+    "Cargo.toml",
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "evidence/D0/build/cargo-tree.log",
+    "evidence/D0/build/test.log",
+    "evidence/D0/build/toolchain.log",
+    "factory/Cargo.toml",
+    "factory/deltas/D0.json",
+    "factory/fixtures/D0/F0-doc.json",
+    "factory/fixtures/D0/F1-rust.json",
+    "factory/fixtures/D0/F2-fixture.json",
+    "factory/fixtures/D0/F3-build.json",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/F0-doc.json",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/F1-rust.json",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/F2-fixture.json",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/F3-build.json",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-m0-present.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-structural-check.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-build.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-clippy.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-deps-section.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-fmt.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-no-third-party.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F2-witness-count.log",
+    "factory/registry/stations/S-BROWSER.json",
+    "factory/registry/stations/S-BUILD.json",
+    "factory/registry/stations/S-BUNDLE.json",
+    "factory/registry/stations/S-DOC.json",
+    "factory/registry/stations/S-EVIDENCE.json",
+    "factory/registry/stations/S-FIXTURE.json",
+    "factory/registry/stations/S-RUST.json",
+    "factory/registry/stations/S-WEB.json",
+    "factory/src/git.rs",
+    "factory/src/json.rs",
+    "factory/src/lib.rs",
+    "factory/src/main.rs",
+    "factory/src/model.rs",
+    "factory/src/ops.rs",
+    "factory/src/paths.rs",
+    "factory/tests/factory_law.rs"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "ab9109c6711ca5341dfcd0c4b9888658befc51b6"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D0-BOOTSTRAP-FACTORY/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D0-BOOTSTRAP-FACTORY/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D0-BOOTSTRAP-FACTORY/F2-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D0-BOOTSTRAP-FACTORY/F3-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/Cargo.toml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/src/main.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/src/ops.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-DOC.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-RUST.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-WEB.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-FIXTURE.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-BUILD.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-BROWSER.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-EVIDENCE.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-BUNDLE.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/tests/factory_law.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/M0-INTENDED-SYSTEM.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D0/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D0/build/cargo-tree.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:compiler",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:host",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T01:36:00Z",
+  "status": "PASS"
+}

@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D5-CODEGEN-BUNDLE",
+  "selected_inputs": ["CODEGEN-BUNDLE-CONTRACT.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/LEDGER.md", "factory/deltas/", "factory/fixtures/", "Cargo.toml", "factory/receipts/D5-CODEGEN-BUNDLE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "grep", "args": ["-q", "D5-CODEGEN-BUNDLE", "design/materialization/LEDGER.md"], "log": "factory/receipts/D5-CODEGEN-BUNDLE/logs/F0-ledger.log"}
+  ]},
+  "expected_outputs": ["design/materialization/LEDGER.md"],
+  "tests": ["ledger names this delta"], "evidence_requirements": ["receipt"]
+}

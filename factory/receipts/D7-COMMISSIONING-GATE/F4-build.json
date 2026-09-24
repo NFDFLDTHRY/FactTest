@@ -1,0 +1,119 @@
+{
+  "receipt_id": "R-D7-COMMISSIONING-GATE-F4-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F4-build",
+  "workpiece_id": "W7",
+  "delta_id": "D7-COMMISSIONING-GATE",
+  "canonical_base": "578108e85c909a9f56f147b1f52e27bd02b33c34",
+  "input_artifacts": [
+    "compiler/",
+    "host/",
+    "fixtures/",
+    "tests/"
+  ],
+  "open_tree": "e4882610c72fd0ef6c6a74690dd7a4cbccb11885",
+  "close_tree": "3ba3e51978a2bbd4e0775e2422c8cecffb2b307b",
+  "changed_paths": [
+    "evidence/D7/anti-cheat/run.log",
+    "evidence/D7/anti-cheat/summary.log",
+    "evidence/D7/build/test.log"
+  ],
+  "output_artifacts": [
+    "evidence/D7/build/test.log",
+    "evidence/D7/anti-cheat/summary.log"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D7-COMMISSIONING-GATE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D7/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D7/anti-cheat/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo test",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D7/build/test.log"
+    },
+    {
+      "check": "command:sh tests/commissioning/run-anti-cheat.sh evidence/D7/anti-cheat",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D7/anti-cheat/run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D7/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D7/anti-cheat/summary.log",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D7/build/test.log",
+    "evidence/D7/anti-cheat/run.log"
+  ],
+  "closed": "2026-09-24T02:58:05Z",
+  "status": "PASS"
+}

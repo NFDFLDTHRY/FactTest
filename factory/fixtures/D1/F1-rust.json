@@ -1,0 +1,15 @@
+{
+  "fixture_id": "F1-rust", "station_id": "S-RUST", "delta_id": "D1-COMPILER-FOUNDATION",
+  "selected_inputs": ["BOOTSTRAP-CONTRACTS.md", "BOOTSTRAP-ARCHITECTURE.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["compiler/", "host/factc/", "factory/src/", "factory/Cargo.toml", "Cargo.lock", "factory/receipts/D1-COMPILER-FOUNDATION/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["build"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-build.log"},
+    {"cwd": ".", "program": "cargo", "args": ["fmt", "--all", "--check"], "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-fmt.log"},
+    {"cwd": ".", "program": "cargo", "args": ["clippy", "--", "-D", "warnings"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-clippy.log"},
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["depcheck", ".", "factory/Cargo.toml", "compiler/foundation/Cargo.toml", "compiler/kernel/Cargo.toml", "compiler/wasm-abi/Cargo.toml", "host/factc/Cargo.toml"], "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-depcheck.log"},
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["nostd-check", "compiler/foundation", "compiler/kernel", "compiler/wasm-abi"], "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-nostd.log"}
+  ]},
+  "expected_outputs": ["compiler/foundation/src/lib.rs", "compiler/kernel/src/lib.rs", "compiler/wasm-abi/src/lib.rs", "host/factc/src/main.rs", "factory/src/checks.rs"],
+  "tests": ["cargo build/fmt/clippy", "depcheck (B2)", "nostd-check (B1)"], "evidence_requirements": ["receipt", "logs"]
+}

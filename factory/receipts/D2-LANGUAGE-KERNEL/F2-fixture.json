@@ -1,0 +1,159 @@
+{
+  "receipt_id": "R-D2-LANGUAGE-KERNEL-F2-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "1",
+  "fixture_id": "F2-fixture",
+  "workpiece_id": "W2",
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "canonical_base": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+  "input_artifacts": [
+    "LANGUAGE-TESTS.md",
+    "PASS6-TESTS.md",
+    "COMMISSIONING-ASCII.md"
+  ],
+  "open_tree": "b74d94e686c77579c7f6a447e12b1977fce9c8ba",
+  "close_tree": "b6fb7259b0b77eca2831be398798cf5d7f06cca7",
+  "changed_paths": [
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-byte-relay-matches-authority.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-fixture-count.log",
+    "fixtures/commissioning/byte-relay.ascii",
+    "fixtures/language/INV-fail.ascii",
+    "fixtures/language/L00-minimal.ascii",
+    "fixtures/language/L01-base.ascii",
+    "fixtures/language/L01-whitespace.ascii",
+    "fixtures/language/L02-ascii-frames.ascii",
+    "fixtures/language/L04-prose.ascii",
+    "fixtures/language/L05-duplicate.ascii",
+    "fixtures/language/L06-unresolved.ascii",
+    "fixtures/language/L07-ambiguous.ascii",
+    "fixtures/language/L07-imp-a.ascii",
+    "fixtures/language/L07-imp-b.ascii",
+    "fixtures/language/L08-direction.ascii",
+    "fixtures/language/L09-alias-ok.ascii",
+    "fixtures/language/L09-type.ascii",
+    "fixtures/language/L10-private-ref.ascii",
+    "fixtures/language/L10-provider.ascii",
+    "fixtures/language/L11-incomplete-abstract.ascii",
+    "fixtures/language/L12-compatible.ascii",
+    "fixtures/language/L13-effect-escape.ascii",
+    "fixtures/language/L14-gap.ascii",
+    "fixtures/language/L16-relation-kinds.ascii",
+    "fixtures/language/L18-pin.ascii",
+    "fixtures/language/L18-prose-only.ascii",
+    "fixtures/language/L22-escape.ascii",
+    "fixtures/language/L22-unclosed.ascii",
+    "fixtures/language/L23-unknown.ascii",
+    "fixtures/language/L25-nosequence.ascii",
+    "fixtures/language/L26-modes.ascii",
+    "fixtures/language/L28-private-exposed.ascii",
+    "fixtures/language/L29-recursive.ascii",
+    "fixtures/language/L33-drawn-arrow.ascii",
+    "fixtures/language/L34-bad-arity.ascii",
+    "fixtures/language/L34-bad-invariant.ascii",
+    "fixtures/language/P6-dup-priority.ascii",
+    "fixtures/language/P6-objective.ascii",
+    "fixtures/language/P6-undeclared-metric.ascii",
+    "fixtures/language/SYS-missing.ascii",
+    "fixtures/language/SYS-multiple.ascii",
+    "tests/bootstrap/run-b9-b11.sh",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "output_artifacts": [
+    "fixtures/language/L01-base.ascii",
+    "fixtures/commissioning/byte-relay.ascii",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D2-LANGUAGE-KERNEL"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-byte-relay-matches-authority.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-fixture-count.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c awk '/^```text$/{f=1;next} /^```$/{f=0} f' COMMISSIONING-ASCII.md | cmp - fixtures/commissioning/byte-relay.ascii",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-byte-relay-matches-authority.log"
+    },
+    {
+      "check": "command:sh -c test $(ls fixtures/language/*.ascii | wc -l) -ge 36",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-fixture-count.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/language/L01-base.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/commissioning/byte-relay.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/language/run-byte-relay.sh",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-byte-relay-matches-authority.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-fixture-count.log"
+  ],
+  "closed": "2026-09-24T02:10:46Z",
+  "status": "PASS"
+}

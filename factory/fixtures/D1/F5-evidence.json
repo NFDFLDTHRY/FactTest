@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F5-evidence", "station_id": "S-EVIDENCE", "delta_id": "D1-COMPILER-FOUNDATION",
+  "selected_inputs": ["evidence/D1/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D1/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["evidence", "index", "evidence/D1", "evidence/D1/index.json"], "log": "evidence/D1/index.log"}
+  ]},
+  "expected_outputs": ["evidence/D1/index.json"],
+  "tests": ["B12 evidence package indexed with artifact identities"], "evidence_requirements": ["index"]
+}

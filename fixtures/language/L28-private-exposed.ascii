@@ -1,0 +1,12 @@
+@{system expose}
+@{type T}
+@{subsystem box}
+@{component inner}
+@{contains box -> inner}
+@{port inner.hidden out: T private}
+      +-------+
+      | box   |     [inner.hidden] <- drawn outside, still private
+      +-------+
+@{component outsider}
+@{port outsider.i in: T public}
+@{data leak inner.hidden -> outsider.i mode=copy}

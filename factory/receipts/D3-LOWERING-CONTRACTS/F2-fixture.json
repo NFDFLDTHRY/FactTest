@@ -1,0 +1,138 @@
+{
+  "receipt_id": "R-D3-LOWERING-CONTRACTS-F2-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "1",
+  "fixture_id": "F2-fixture",
+  "workpiece_id": "W3",
+  "delta_id": "D3-LOWERING-CONTRACTS",
+  "canonical_base": "4571d1449cc32d28d2c2f601dc4bb2a879dca7d7",
+  "input_artifacts": [
+    "COMMISSIONING-SLICE.md",
+    "COMMISSIONING-FIXTURE.md",
+    "CAPABILITY-MATRIX.md"
+  ],
+  "open_tree": "678a986a385c7c5cedaf0cf8f7c32fecca31eeca",
+  "close_tree": "547c86c5c8a42ca6cabd7c99eb15b93c7fd154c9",
+  "changed_paths": [
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-family-count.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-metric-policy.log",
+    "fixtures/commissioning/byte-relay-move.ascii",
+    "fixtures/commissioning/byte-relay-other-type.ascii",
+    "fixtures/commissioning/byte-relay-pinned.ascii",
+    "fixtures/commissioning/contracts.ascii",
+    "fixtures/commissioning/epoch-model-0.ascii",
+    "fixtures/commissioning/epoch-model-1.ascii",
+    "fixtures/commissioning/metrics.ascii",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "output_artifacts": [
+    "fixtures/commissioning/contracts.ascii",
+    "fixtures/commissioning/metrics.ascii",
+    "fixtures/commissioning/epoch-model-0.ascii",
+    "fixtures/commissioning/epoch-model-1.ascii",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D3-LOWERING-CONTRACTS"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-family-count.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-metric-policy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c test $(grep -c '^@{backend ' fixtures/commissioning/contracts.ascii) -ge 33",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-family-count.log"
+    },
+    {
+      "check": "command:sh -c grep -q 'preference_rank WEBGPU 0' fixtures/commissioning/metrics.ascii && grep -q 'preference_rank CPU_WASM64 1' fixtures/commissioning/metrics.ascii",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-metric-policy.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/commissioning/contracts.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/commissioning/metrics.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/commissioning/epoch-model-0.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/commissioning/epoch-model-1.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/language/run-byte-relay.sh",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-family-count.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-metric-policy.log"
+  ],
+  "closed": "2026-09-24T02:20:50Z",
+  "status": "PASS"
+}

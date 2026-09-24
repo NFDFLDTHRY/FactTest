@@ -1,0 +1,194 @@
+{
+  "receipt_id": "R-D1-COMPILER-FOUNDATION-F1-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F1-rust",
+  "workpiece_id": "W1",
+  "delta_id": "D1-COMPILER-FOUNDATION",
+  "canonical_base": "25ef9e372a62f62a08371027b71bf0b4cd4b77ff",
+  "input_artifacts": [
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-ARCHITECTURE.md"
+  ],
+  "open_tree": "8e2ccbbdd1b2dbf86d0057f5914cd5bcadcbaba1",
+  "close_tree": "1b8897ea1b643d52d1691eae39db607ca9e7ce72",
+  "changed_paths": [
+    "Cargo.lock",
+    "compiler/foundation/Cargo.toml",
+    "compiler/foundation/src/artifact.rs",
+    "compiler/foundation/src/buf.rs",
+    "compiler/foundation/src/bvec.rs",
+    "compiler/foundation/src/diag.rs",
+    "compiler/foundation/src/hex.rs",
+    "compiler/foundation/src/ids.rs",
+    "compiler/foundation/src/json.rs",
+    "compiler/foundation/src/lib.rs",
+    "compiler/foundation/src/limits.rs",
+    "compiler/foundation/src/sha256.rs",
+    "compiler/foundation/src/tests_foundation.rs",
+    "compiler/foundation/src/text.rs",
+    "compiler/foundation/src/wasm.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/lib.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/bootstrap_ladder.rs",
+    "compiler/wasm-abi/Cargo.toml",
+    "compiler/wasm-abi/src/lib.rs",
+    "factory/Cargo.toml",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-build.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-clippy.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-depcheck.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-fmt.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-nostd.log",
+    "factory/src/checks.rs",
+    "factory/src/lib.rs",
+    "factory/src/main.rs",
+    "factory/src/ops.rs",
+    "host/factc/Cargo.toml",
+    "host/factc/src/main.rs"
+  ],
+  "output_artifacts": [
+    "compiler/foundation/src/lib.rs",
+    "compiler/kernel/src/lib.rs",
+    "compiler/wasm-abi/src/lib.rs",
+    "host/factc/src/main.rs",
+    "factory/src/checks.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D1-COMPILER-FOUNDATION"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-depcheck.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-nostd.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo build",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-build.log"
+    },
+    {
+      "check": "command:cargo fmt --all --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-fmt.log"
+    },
+    {
+      "check": "command:cargo clippy -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-clippy.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory depcheck . factory/Cargo.toml compiler/foundation/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-depcheck.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory nostd-check compiler/foundation compiler/kernel compiler/wasm-abi",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-nostd.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/foundation/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/kernel/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/wasm-abi/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:host/factc/src/main.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/checks.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-build.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-fmt.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-clippy.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-depcheck.log",
+    "factory/receipts/D1-COMPILER-FOUNDATION/logs/F1-nostd.log"
+  ],
+  "closed": "2026-09-24T01:47:50Z",
+  "status": "PASS"
+}

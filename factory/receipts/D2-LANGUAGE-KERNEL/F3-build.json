@@ -1,0 +1,175 @@
+{
+  "receipt_id": "R-D2-LANGUAGE-KERNEL-F3-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F3-build",
+  "workpiece_id": "W2",
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "canonical_base": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+  "input_artifacts": [
+    "compiler/",
+    "host/",
+    "fixtures/",
+    "tests/"
+  ],
+  "open_tree": "478c8728b566e7a15e702921dd3caef3eb0d6e9d",
+  "close_tree": "7d37ecf28281297499b78f513cf35fb917ec33b1",
+  "changed_paths": [
+    "evidence/D2/bootstrap/b10-b11-chromium.json",
+    "evidence/D2/bootstrap/b10-node.json",
+    "evidence/D2/bootstrap/b9-build.log",
+    "evidence/D2/bootstrap/b9-inspect.json",
+    "evidence/D2/bootstrap/b9-inspect.log",
+    "evidence/D2/bootstrap/b9-toolchain.log",
+    "evidence/D2/bootstrap/factc_wasm_abi.wasm",
+    "evidence/D2/bootstrap/run.log",
+    "evidence/D2/build/test.log",
+    "evidence/D2/byte-relay/artifacts.json",
+    "evidence/D2/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D2/byte-relay/diagnostics.json",
+    "evidence/D2/byte-relay/factc.log",
+    "evidence/D2/byte-relay/run.log",
+    "evidence/D2/byte-relay/source-lineage.json",
+    "evidence/D2/byte-relay/typed-system-ir.json",
+    "evidence/D2/negative/run.log",
+    "evidence/D2/negative/summary.log",
+    "evidence/D2/negative/third-party-dep.log"
+  ],
+  "output_artifacts": [
+    "evidence/D2/build/test.log",
+    "evidence/D2/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D2/byte-relay/typed-system-ir.json",
+    "evidence/D2/bootstrap/b10-b11-chromium.json",
+    "evidence/D2/negative/summary.log"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D2-LANGUAGE-KERNEL"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D2/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D2/byte-relay/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D2/bootstrap/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D2/negative/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo test",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D2/build/test.log"
+    },
+    {
+      "check": "command:sh tests/language/run-byte-relay.sh evidence/D2/byte-relay",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D2/byte-relay/run.log"
+    },
+    {
+      "check": "command:sh tests/bootstrap/run-b9-b11.sh evidence/D2/bootstrap",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D2/bootstrap/run.log"
+    },
+    {
+      "check": "command:sh tests/bootstrap/run-negative-fixtures.sh evidence/D2/negative",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D2/negative/run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D2/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D2/byte-relay/canonical-ascii-0.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D2/byte-relay/typed-system-ir.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D2/bootstrap/b10-b11-chromium.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D2/negative/summary.log",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D2/build/test.log",
+    "evidence/D2/byte-relay/run.log",
+    "evidence/D2/bootstrap/run.log",
+    "evidence/D2/negative/run.log"
+  ],
+  "closed": "2026-09-24T02:10:51Z",
+  "status": "PASS"
+}

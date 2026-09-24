@@ -1,0 +1,16 @@
+{
+  "station_id": "S-BROWSER",
+  "version": "1",
+  "capability_tags": ["BROWSER_PROBE"],
+  "input_kinds": ["verified_bundle", "probe_fixture"],
+  "operation_class": "run_generated_bundle_probe",
+  "output_kinds": ["runtime_evidence"],
+  "may_read": ["*"],
+  "may_change": ["evidence/"],
+  "must_not_change": ["FACTORY-LAW.md", "compiler/", "host/", "factory/src/", "factory/registry/", "design/", "fixtures/", "tests/", "COMMISSIONING-ASCII.md"],
+  "preconditions": ["PASS BundleCertificate"],
+  "invariants": ["source, law, compiler source and authored ASCII untouched"],
+  "verification": ["evidence records exist", "exit codes"],
+  "source_nonmutating": true,
+  "receipt_schema_version": "1"
+}

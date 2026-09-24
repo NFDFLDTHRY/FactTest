@@ -1,0 +1,6 @@
+@{system leak}
+@{use provider}
+@{type T}
+@{component sink}
+@{port sink.i in: T public}
+@{data d provider::core.secret -> sink.i mode=copy}

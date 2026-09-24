@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F4-evidence", "station_id": "S-EVIDENCE", "delta_id": "D2-LANGUAGE-KERNEL",
+  "selected_inputs": ["evidence/D2/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D2/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["evidence", "index", "evidence/D2", "evidence/D2/index.json"], "log": "evidence/D2/index.log"}
+  ]},
+  "expected_outputs": ["evidence/D2/index.json"],
+  "tests": ["evidence indexed with sha256 identities"], "evidence_requirements": ["index"]
+}

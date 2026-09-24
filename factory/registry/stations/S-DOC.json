@@ -1,0 +1,49 @@
+{
+  "station_id": "S-DOC",
+  "version": "1",
+  "capability_tags": [
+    "DOC_CONTRACT_FORGE"
+  ],
+  "input_kinds": [
+    "approved_ascii_delta",
+    "text_artifacts"
+  ],
+  "operation_class": "materialize_documentation_and_control_surfaces",
+  "output_kinds": [
+    "documentation",
+    "control_files"
+  ],
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "design/",
+    "factory/registry/",
+    "factory/deltas/",
+    "factory/fixtures/",
+    "README.md",
+    "Cargo.toml",
+    ".gitignore",
+    "fixtures/",
+    "docs/",
+    "factory/receipts/"
+  ],
+  "must_not_change": [
+    "FACTORY-LAW.md",
+    "compiler/",
+    "host/",
+    "evidence/"
+  ],
+  "preconditions": [
+    "approved ASCII delta exists"
+  ],
+  "invariants": [
+    "law surfaces untouched unless separately authorized"
+  ],
+  "verification": [
+    "expected paths exist",
+    "content contracts"
+  ],
+  "source_nonmutating": false,
+  "receipt_schema_version": "1"
+}

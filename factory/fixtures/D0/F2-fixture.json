@@ -1,0 +1,16 @@
+{
+  "fixture_id": "F2-fixture",
+  "station_id": "S-FIXTURE",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "selected_inputs": ["PASS5-TESTS.md", "PASS6-TESTS.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["factory/tests/", "factory/receipts/D0-BOOTSTRAP-FACTORY/"],
+  "job_parameters": {
+    "commands": [
+      {"cwd": ".", "program": "grep", "args": ["-c", "^fn f0[0-9]_", "factory/tests/factory_law.rs"], "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F2-witness-count.log"}
+    ]
+  },
+  "expected_outputs": ["factory/tests/factory_law.rs"],
+  "tests": ["P5-F01..F06 witnesses present"],
+  "evidence_requirements": ["receipt"]
+}

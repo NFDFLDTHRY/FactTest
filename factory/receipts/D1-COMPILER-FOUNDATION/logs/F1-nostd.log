@@ -1,0 +1,11 @@
+$ /home/user/factory-target/debug/factory nostd-check compiler/foundation compiler/kernel compiler/wasm-abi
+(cwd .)
+== nostd-check compiler/foundation compiler/kernel compiler/wasm-abi : PASS
+  [PASS] no_std_attribute:compiler/foundation
+  [PASS] no_std_use:compiler/foundation
+  [PASS] no_std_attribute:compiler/kernel
+  [PASS] no_std_use:compiler/kernel
+  [PASS] no_std_attribute:compiler/wasm-abi
+  [PASS] no_std_use:compiler/wasm-abi
+
+[exit 0] expected 0

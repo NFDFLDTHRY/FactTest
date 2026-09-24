@@ -1,0 +1,14 @@
+[package]
+name = "factc-observe"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "FactTest evidence loop: parses the runtime evidence tape into an ObservationDelta model and renders observed ASCII (RUNTIME-ADMISSION-REPLAN.md sections 6-10). Runtime evidence never rewrites source."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+factc-foundation = { path = "../foundation" }
+factc-source = { path = "../source" }

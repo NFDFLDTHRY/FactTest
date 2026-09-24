@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F2-fixture", "station_id": "S-FIXTURE", "delta_id": "D3-LOWERING-CONTRACTS",
+  "selected_inputs": ["COMMISSIONING-SLICE.md", "COMMISSIONING-FIXTURE.md", "CAPABILITY-MATRIX.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["fixtures/commissioning/", "tests/", "factory/receipts/D3-LOWERING-CONTRACTS/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "test $(grep -c '^@{backend ' fixtures/commissioning/contracts.ascii) -ge 33"], "log": "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-family-count.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "grep -q 'preference_rank WEBGPU 0' fixtures/commissioning/metrics.ascii && grep -q 'preference_rank CPU_WASM64 1' fixtures/commissioning/metrics.ascii"], "log": "factory/receipts/D3-LOWERING-CONTRACTS/logs/F2-metric-policy.log"}
+  ]},
+  "expected_outputs": ["fixtures/commissioning/contracts.ascii", "fixtures/commissioning/metrics.ascii", "fixtures/commissioning/epoch-model-0.ascii", "fixtures/commissioning/epoch-model-1.ascii", "tests/language/run-byte-relay.sh"],
+  "tests": ["registry lists every G family", "fixture metric policy matches COMMISSIONING-FIXTURE.md"], "evidence_requirements": ["receipt"]
+}

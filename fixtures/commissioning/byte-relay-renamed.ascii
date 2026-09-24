@@ -1,0 +1,19 @@
+P6-X01 witness: the same structure under a different SystemId (and different relation/invariant ids).
+@{system relay_under_test "Relay Under Test"}
+@{type Bytes}
+@{metric preference_rank ordinal "commissioning preference only; not performance"}
+@{objective commissioning}
+@{goal commissioning 1 minimize preference_rank}
+@{component src}
+@{component dst}
+@{port src.bytes out: Bytes public}
+@{port dst.bytes in: Bytes public}
+@{data flow src.bytes -> dst.bytes mode=copy}
+@{invariant k_type type_equal(src.bytes, dst.bytes)}
+@{invariant k_prod exactly_one_producer(dst.bytes)}
+@{invariant k_cons has_consumer(src.bytes)}
+@{invariant k_path reachable(src, dst)}
+@{test t_rt runtime}
+@{tests t_rt -> k_type}
+@{evidence e_rt runtime_probe}
+@{witnesses e_rt -> t_rt}

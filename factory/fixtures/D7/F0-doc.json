@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D7-COMMISSIONING-GATE",
+  "selected_inputs": ["PASS6-TESTS.md", "COMMISSIONING-PROOF.md", "evidence/D6/physical/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/LEDGER.md", "design/materialization/COMMISSIONING-RECORD.md", "README.md", "factory/deltas/", "factory/fixtures/", "factory/receipts/D7-COMMISSIONING-GATE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "grep", "args": ["-q", "D7-COMMISSIONING-GATE", "design/materialization/LEDGER.md"], "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F0-ledger.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "for t in G01 G02 G03 G04 G05 G06 A01 A02 A03 M01 M02 M03 M04 V01 V02 V03 V04 V05 B01 B02 B03 B04 B05 B06 R01 R02 R03 R04 R05 R06 R07 R08 F01 F02 F03 F04 F05 F06 X01 X02 X03 X04 X05 X06; do grep -q \"P6-$t \" design/materialization/COMMISSIONING-RECORD.md || { echo missing P6-$t; exit 1; }; done"], "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F0-record-complete.log"}
+  ]},
+  "expected_outputs": ["design/materialization/COMMISSIONING-RECORD.md", "README.md"],
+  "tests": ["ledger names this delta", "record covers every PASS6-TESTS id"], "evidence_requirements": ["receipt"]
+}

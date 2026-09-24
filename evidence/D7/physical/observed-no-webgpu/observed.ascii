@@ -1,0 +1,11 @@
++------------------------------------------------------------------------------+
+| OBSERVED byte_relay  (derived from runtime evidence; evidence class PHYSICAL_BROWSER)
+| @{system byte_relay_observed "Observed: byte_relay"}
+| EPOCH E0
+| @{issue admission_E0_CPU_WASM64 RUN "CPU_WASM64 admitted at E0 (evidence wasm64_known_answer)"}
+| @{issue admission_E0_WEBGPU ERR "WEBGPU rejected at E0 (evidence request, reason request_unavailable)"}
+| @{issue activation_E0 RUN "plan 0 active at E0"}
+| @{issue executed_E0_relay_1 RUN "relay: exact roundtrip of 8 bytes at E0 via plan 0 (sha256 831ac9c6497d52737dde5067079f395cc5405fe8dfc15b24e89441c43b8e99c6)"}
+| @{issue executed_E0_relay_2 RUN "relay: exact roundtrip of 10 bytes at E0 via plan 0 (sha256 280e1ee781715936d4bf3ac1244c5a015d50ca33c74cfc7a5c138b9454fbac70)"}
+| @{issue source_of_record OBS "authored source unchanged: sha256 80ac0559b102540b7692ab74e3f24336b76f81f6dd9a3dab1419d4c7ee76ed95"}
++------------------------------------------------------------------------------+

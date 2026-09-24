@@ -1,0 +1,98 @@
+{
+  "receipt_id": "R-D4-PLANNER-VERIFIER-F4-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F4-evidence",
+  "workpiece_id": "W4",
+  "delta_id": "D4-PLANNER-VERIFIER",
+  "canonical_base": "a39ea02ce0170f9bc3f763d106f5cde3f932188a",
+  "input_artifacts": [
+    "evidence/D4/"
+  ],
+  "open_tree": "e94cf70b2a9c01be25ed73cdb60ff751e6a1c933",
+  "close_tree": "be5d6f56aba6bd9b64bf506dd2aa59c7d3ae45e3",
+  "changed_paths": [
+    "evidence/D4/index.json",
+    "evidence/D4/index.log"
+  ],
+  "output_artifacts": [
+    "evidence/D4/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D4-PLANNER-VERIFIER"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D4/index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory evidence index evidence/D4 evidence/D4/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D4/index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D4/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D4/index.log"
+  ],
+  "closed": "2026-09-24T02:30:30Z",
+  "status": "PASS"
+}

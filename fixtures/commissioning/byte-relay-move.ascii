@@ -1,0 +1,8 @@
+P5-L06 / P6-V03 witness: the same relay demanding move semantics; the registry's conversions support copy only.
+@{system byte_relay_move "Byte Relay (move)"}
+@{type Bytes}
+@{component ingress}
+@{component egress}
+@{port ingress.bytes out: Bytes public}
+@{port egress.bytes in: Bytes public}
+@{data relay ingress.bytes -> egress.bytes mode=move}

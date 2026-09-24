@@ -1,0 +1,20 @@
+{
+  "fixture_id": "F1-rust",
+  "station_id": "S-RUST",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "selected_inputs": ["FACTORY-CONTRACTS.md", "STATION-REGISTRY.md", "PLANNED-REPO-LAYOUT.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["factory/Cargo.toml", "factory/src/", "factory/receipts/D0-BOOTSTRAP-FACTORY/", "Cargo.lock"],
+  "job_parameters": {
+    "commands": [
+      {"cwd": ".", "program": "cargo", "args": ["build", "-p", "factory"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-build.log"},
+      {"cwd": ".", "program": "cargo", "args": ["fmt", "-p", "factory", "--check"], "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-fmt.log"},
+      {"cwd": ".", "program": "cargo", "args": ["clippy", "-p", "factory", "--", "-D", "warnings"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-clippy.log"},
+      {"cwd": ".", "program": "grep", "args": ["-c", "^\\[dependencies\\]$", "factory/Cargo.toml"], "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-deps-section.log"},
+      {"cwd": ".", "program": "sh", "args": ["-c", "! grep -A1 '^\\[dependencies\\]' factory/Cargo.toml | grep -E '^[a-zA-Z]'"], "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-no-third-party.log"}
+    ]
+  },
+  "expected_outputs": ["factory/Cargo.toml", "factory/src/main.rs", "factory/src/lib.rs", "factory/src/ops.rs", "factory/src/json.rs", "factory/src/git.rs", "factory/src/paths.rs", "factory/src/model.rs"],
+  "tests": ["cargo build", "cargo fmt --check", "cargo clippy -D warnings", "no third-party dependency"],
+  "evidence_requirements": ["receipt", "logs"]
+}

@@ -1,0 +1,163 @@
+{
+  "receipt_id": "R-D3-LOWERING-CONTRACTS-F1-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F1-rust",
+  "workpiece_id": "W3",
+  "delta_id": "D3-LOWERING-CONTRACTS",
+  "canonical_base": "4571d1449cc32d28d2c2f601dc4bb2a879dca7d7",
+  "input_artifacts": [
+    "LOWERING-MODEL.md",
+    "REPRESENTATION-TRANSFER.md",
+    "IMPLEMENTATION-CONTRACTS.md"
+  ],
+  "open_tree": "08f60715c85b1efc97862938351b8d4e0f5fee58",
+  "close_tree": "5ffe9d3b5f4e4102c888b5522ecca91e071513cb",
+  "changed_paths": [
+    "Cargo.lock",
+    "compiler/capability/Cargo.toml",
+    "compiler/capability/src/lib.rs",
+    "compiler/foundation/src/limits.rs",
+    "compiler/implementation/Cargo.toml",
+    "compiler/implementation/src/hypergraph.rs",
+    "compiler/implementation/src/lib.rs",
+    "compiler/implementation/src/registry.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/lowering_ladder.rs",
+    "compiler/semantic/src/render.rs",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-build.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-clippy.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-depcheck.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-fmt.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-nostd.log",
+    "host/factc/src/main.rs"
+  ],
+  "output_artifacts": [
+    "compiler/capability/src/lib.rs",
+    "compiler/implementation/src/lib.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D3-LOWERING-CONTRACTS"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-depcheck.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-nostd.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo build",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-build.log"
+    },
+    {
+      "check": "command:cargo fmt --all --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-fmt.log"
+    },
+    {
+      "check": "command:cargo clippy --all-targets -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-clippy.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory depcheck . factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/capability/Cargo.toml compiler/implementation/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-depcheck.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory nostd-check compiler/foundation compiler/source compiler/semantic compiler/capability compiler/implementation compiler/kernel compiler/wasm-abi",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-nostd.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/capability/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/implementation/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-build.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-fmt.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-clippy.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-depcheck.log",
+    "factory/receipts/D3-LOWERING-CONTRACTS/logs/F1-nostd.log"
+  ],
+  "closed": "2026-09-24T02:20:50Z",
+  "status": "PASS"
+}

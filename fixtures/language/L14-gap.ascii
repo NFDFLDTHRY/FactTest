@@ -1,0 +1,14 @@
+@{system gaps}
+@{type T}
+@{component gpu_backend}
+@{port gpu_backend.i in: T public}
+@{status gpu_backend GAP "implementation contract not selected"}
+@{component src}
+@{port src.o out: T public}
+@{data d src.o -> gpu_backend.i mode=copy}
+@{status src OBS "observed"}
+@{status d RUN "witnessed"}
+@{issue gap_allocator GAP "first-party allocator unresolved"}
+@{status T NEW "proposed"}
+@{status gpu_backend.i ERR "contradiction"}
+@{issue unknown_thing UNK "not established"}

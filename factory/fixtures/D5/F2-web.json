@@ -1,0 +1,13 @@
+{
+  "fixture_id": "F2-web", "station_id": "S-WEB", "delta_id": "D5-CODEGEN-BUNDLE",
+  "selected_inputs": ["BOOTSTRAP-CONTRACTS.md C13", "IMPLEMENTATION-CONTRACTS.md CPU_WASM64/WEBGPU", "RUNTIME-ADMISSION-REPLAN.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["compiler/codegen/templates/", "factory/receipts/D5-CODEGEN-BUNDLE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "for f in membrane-core adapter-wasm64_relay adapter-webgpu_relay; do cat compiler/codegen/templates/$f.js; done > /tmp/facttest-membrane-check.mjs && node --check /tmp/facttest-membrane-check.mjs"], "log": "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-membrane-syntax.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "sed 's#__STRATEGY_JSON__#{}#' compiler/codegen/templates/selector.js > /tmp/facttest-selector-check.mjs && node --check /tmp/facttest-selector-check.mjs && cp compiler/codegen/templates/runtime.js /tmp/facttest-runtime-check.mjs && node --check /tmp/facttest-runtime-check.mjs"], "log": "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-selector-runtime-syntax.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "grep -q 'dom-gpudevice-destroy' compiler/codegen/templates/adapter-webgpu_relay.js && grep -q 'js-api/#memories' compiler/codegen/templates/adapter-wasm64_relay.js"], "log": "factory/receipts/D5-CODEGEN-BUNDLE/logs/F2-authority-links.log"}
+  ]},
+  "expected_outputs": ["compiler/codegen/templates/membrane-core.js", "compiler/codegen/templates/adapter-wasm64_relay.js", "compiler/codegen/templates/adapter-webgpu_relay.js", "compiler/codegen/templates/selector.js", "compiler/codegen/templates/runtime.js", "compiler/codegen/templates/index.html", "compiler/codegen/templates/manifest.webmanifest", "compiler/codegen/templates/sw.js"],
+  "tests": ["templates parse as ES modules", "authority links present in adapters"], "evidence_requirements": ["receipt"]
+}

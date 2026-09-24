@@ -1,0 +1,4 @@
+$ sh -c sed 's#__STRATEGY_JSON__#{}#' compiler/codegen/templates/selector.js > /tmp/facttest-selector-check.mjs && node --check /tmp/facttest-selector-check.mjs && cp compiler/codegen/templates/runtime.js /tmp/facttest-runtime-check.mjs && node --check /tmp/facttest-runtime-check.mjs
+(cwd .)
+
+[exit 0] expected 0

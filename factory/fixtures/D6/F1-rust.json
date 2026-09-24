@@ -1,0 +1,15 @@
+{
+  "fixture_id": "F1-rust", "station_id": "S-RUST", "delta_id": "D6-RUNTIME-EVIDENCE",
+  "selected_inputs": ["RUNTIME-ADMISSION-REPLAN.md sections 6-10"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["compiler/observe/", "compiler/kernel/", "host/factc/", "Cargo.lock", "factory/receipts/D6-RUNTIME-EVIDENCE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["build"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-build.log"},
+    {"cwd": ".", "program": "cargo", "args": ["fmt", "--all", "--check"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-fmt.log"},
+    {"cwd": ".", "program": "cargo", "args": ["clippy", "--all-targets", "--", "-D", "warnings"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-clippy.log"},
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["depcheck", ".", "factory/Cargo.toml", "compiler/foundation/Cargo.toml", "compiler/source/Cargo.toml", "compiler/semantic/Cargo.toml", "compiler/capability/Cargo.toml", "compiler/implementation/Cargo.toml", "compiler/planning/Cargo.toml", "compiler/verifier/Cargo.toml", "compiler/codegen/Cargo.toml", "compiler/bundle/Cargo.toml", "compiler/observe/Cargo.toml", "compiler/kernel/Cargo.toml", "compiler/wasm-abi/Cargo.toml", "host/factc/Cargo.toml"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-depcheck.log"},
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["nostd-check", "compiler/foundation", "compiler/source", "compiler/semantic", "compiler/capability", "compiler/implementation", "compiler/planning", "compiler/verifier", "compiler/codegen", "compiler/bundle", "compiler/observe", "compiler/kernel", "compiler/wasm-abi"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-nostd.log"}
+  ]},
+  "expected_outputs": ["compiler/observe/src/lib.rs"],
+  "tests": ["cargo build/fmt/clippy", "depcheck", "nostd-check"], "evidence_requirements": ["receipt", "logs"]
+}

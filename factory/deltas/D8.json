@@ -1,0 +1,26 @@
+{
+  "delta_id": "D8-REOBSERVE",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W8",
+  "approved_ascii_refs": ["design/materialization/M0-INTENDED-SYSTEM.md", "FABLE-ASCII-SYSTEM-PROMPT.md FINAL LAW"],
+  "intent": "M9 re-observation: compare the M0 intended ASCII with the materialized canonical tree and physical evidence, preserving every difference as OBS/GAP/UNK without editing the drawing; record the final full test run as evidence",
+  "may_read": ["*"],
+  "may_change": ["design/materialization/M9-OBSERVED-SYSTEM.md", "design/materialization/LEDGER.md", "factory/deltas/", "factory/fixtures/", "factory/receipts/D8-REOBSERVE/", "evidence/D8/"],
+  "must_not_change": ["ASCII-GRAMMAR.md","ASCII-LANGUAGE.md","BOOTSTRAP-ARCHITECTURE.md","BOOTSTRAP-CONTRACTS.md","BOOTSTRAP-TESTS.md","CAPABILITY-MATRIX.md","CODEGEN-BUNDLE-CONTRACT.md","COMMISSIONING-ASCII.md","COMMISSIONING-FACTORY.md","COMMISSIONING-FIXTURE.md","COMMISSIONING-PROOF.md","COMMISSIONING-RUNTIME.md","COMMISSIONING-SLICE.md","COMMISSIONING-TRACE.md","CONFLICT-LEDGER.md","CONSTRAINT-LEDGER.md","EVIDENCE-OBLIGATIONS.md","FABLE-ASCII-SYSTEM-PROMPT.md","FACTORY-CONTRACTS.md","FACTORY-LAW.md","FINAL-HANDOFF-REQUIREMENTS.md","IMPLEMENTATION-CONTRACTS.md","LANGUAGE-TESTS.md","LICENSE","LOWERING-MODEL.md","PASS1.md","PASS2.md","PASS3.md","PASS4.md","PASS5-TESTS.md","PASS5.md","PASS6-GAP-REPAIRS.md","PASS6-TESTS.md","PASS6.md","PLANNED-REPO-LAYOUT.md","PLANNER-COST-MODEL.md","README.md","REFERENCE-AUTHORITY.md","REFINEMENT-LAW.md","REPRESENTATION-TRANSFER.md","RUNTIME-ADMISSION-REPLAN.md","SEMANTIC-MODEL.md","STATION-REGISTRY.md","VERIFICATION-CERTIFICATES.md", "compiler/", "host/", "factory/src/", "factory/registry/", "factory/receipts/D0-BOOTSTRAP-FACTORY/", "factory/receipts/D1-COMPILER-FOUNDATION/", "factory/receipts/D2-LANGUAGE-KERNEL/", "factory/receipts/D3-LOWERING-CONTRACTS/", "factory/receipts/D4-PLANNER-VERIFIER/", "factory/receipts/D5-CODEGEN-BUNDLE/", "factory/receipts/D6-RUNTIME-EVIDENCE/", "factory/receipts/D7-COMMISSIONING-GATE/", "fixtures/", "tests/", "evidence/D0/", "evidence/D1/", "evidence/D2/", "evidence/D3/", "evidence/D4/", "evidence/D5/", "evidence/D6/", "evidence/D7/", "design/materialization/M0-INTENDED-SYSTEM.md", "design/materialization/COMMISSIONING-RECORD.md", "Cargo.toml", "Cargo.lock"],
+  "required_station_capabilities": ["DOC_CONTRACT_FORGE", "BUILD_VERIFY", "EVIDENCE_ASSEMBLER"],
+  "invariants": ["M0 drawing byte-identical", "no source change", "differences preserved, never erased"],
+  "tests": ["M9 covers M0 sections 1-8", "cargo test on the final tree"],
+  "evidence_requirements": ["FactoryReceipt per fixture", "evidence/D8/build/test.log", "evidence index"],
+  "expected_output_contract": {
+    "required_paths": ["design/materialization/M9-OBSERVED-SYSTEM.md", "evidence/D8/build/test.log", "evidence/D8/index.json"],
+    "forbidden_paths": ["target"]
+  },
+  "fixtures": ["factory/fixtures/D8/F0-doc.json", "factory/fixtures/D8/F1-build.json", "factory/fixtures/D8/F2-evidence.json"],
+  "reinspect_commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "grep -q 'STRUCTURAL CHECK: PASS' design/materialization/M0-INTENDED-SYSTEM.md && grep -c '^## ' design/materialization/M9-OBSERVED-SYSTEM.md"], "log": "reinspect-m9.log"}
+  ],
+  "commit_trailers": ["Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>", "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"]
+}

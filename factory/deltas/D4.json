@@ -1,0 +1,26 @@
+{
+  "delta_id": "D4-PLANNER-VERIFIER",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "a39ea02ce0170f9bc3f763d106f5cde3f932188a",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W4",
+  "approved_ascii_refs": ["design/materialization/M0-INTENDED-SYSTEM.md", "PLANNER-COST-MODEL.md", "VERIFICATION-CERTIFICATES.md", "RUNTIME-ADMISSION-REPLAN.md", "PASS6-GAP-REPAIRS.md", "COMMISSIONING-PROOF.md"],
+  "intent": "M5 strategy planner and independent verifier: finite CandidateStrategy with objective dispatch and honest result strength; verifier crate as sole owner of VerifiedStrategy with per-variant ProofCertificates and a StrategyCertificate; activation model (ActivationReceipt over synthetic epochs); strategy ladder P6-M/V, P5-V witnesses",
+  "may_read": ["*"],
+  "may_change": ["compiler/", "host/factc/", "factory/deltas/", "factory/fixtures/", "factory/receipts/D4-PLANNER-VERIFIER/", "fixtures/compiler/negative/forge-verified-strategy/", "tests/", "design/materialization/LEDGER.md", "evidence/D4/", "Cargo.toml", "Cargo.lock"],
+  "must_not_change": ["ASCII-GRAMMAR.md","ASCII-LANGUAGE.md","BOOTSTRAP-ARCHITECTURE.md","BOOTSTRAP-CONTRACTS.md","BOOTSTRAP-TESTS.md","CAPABILITY-MATRIX.md","CODEGEN-BUNDLE-CONTRACT.md","COMMISSIONING-ASCII.md","COMMISSIONING-FACTORY.md","COMMISSIONING-FIXTURE.md","COMMISSIONING-PROOF.md","COMMISSIONING-RUNTIME.md","COMMISSIONING-SLICE.md","COMMISSIONING-TRACE.md","CONFLICT-LEDGER.md","CONSTRAINT-LEDGER.md","EVIDENCE-OBLIGATIONS.md","FABLE-ASCII-SYSTEM-PROMPT.md","FACTORY-CONTRACTS.md","FACTORY-LAW.md","FINAL-HANDOFF-REQUIREMENTS.md","IMPLEMENTATION-CONTRACTS.md","LANGUAGE-TESTS.md","LICENSE","LOWERING-MODEL.md","PASS1.md","PASS2.md","PASS3.md","PASS4.md","PASS5-TESTS.md","PASS5.md","PASS6-GAP-REPAIRS.md","PASS6-TESTS.md","PASS6.md","PLANNED-REPO-LAYOUT.md","PLANNER-COST-MODEL.md","README.md","REFERENCE-AUTHORITY.md","REFINEMENT-LAW.md","REPRESENTATION-TRANSFER.md","RUNTIME-ADMISSION-REPLAN.md","SEMANTIC-MODEL.md","STATION-REGISTRY.md","VERIFICATION-CERTIFICATES.md", "factory/receipts/D0-BOOTSTRAP-FACTORY/", "factory/receipts/D1-COMPILER-FOUNDATION/", "factory/receipts/D2-LANGUAGE-KERNEL/", "factory/receipts/D3-LOWERING-CONTRACTS/", "factory/src/", "factory/registry/", "evidence/D0/", "evidence/D1/", "evidence/D2/", "evidence/D3/", "design/materialization/M0-INTENDED-SYSTEM.md", "host/harness/", "fixtures/language/", "fixtures/commissioning/", "fixtures/compiler/negative/std-in-kernel/", "fixtures/compiler/negative/id-substitution/", "fixtures/compiler/negative/third-party-dep/"],
+  "required_station_capabilities": ["DOC_CONTRACT_FORGE", "RUST_FORGE", "FIXTURE_FORGE", "BUILD_VERIFY", "EVIDENCE_ASSEMBLER"],
+  "invariants": ["planner never constructs VerifiedStrategy (crate DAG + sealed type)", "verifier consumes CandidateStrategy as data, never planner heuristics", "invalid candidate cannot be rescued by preference", "UNKNOWN metric is never zero and forbids EXACT_OPTIMUM", "activation selects only verified variants; NO_ACTIVE_PLAN otherwise", "synthetic epochs are labelled SYNTHETIC_MODEL", "no_std / no third-party unchanged"],
+  "tests": ["compiler/kernel/tests/strategy_ladder.rs (P6-M01..M04, P6-V01..V05, P5-V03..V07, P6-G04..G06)", "fixtures/compiler/negative/forge-verified-strategy (P5-V01/P6-G05 compile-fail)", "all prior suites", "factc on Byte Relay under E_model_0/E_model_1 (activation receipts)"],
+  "evidence_requirements": ["FactoryReceipt per fixture", "evidence/D4 build/test/negative logs", "candidate-strategy.json, verification-certificates.json, verified-strategy.json, activation-receipt-model.json for both model epochs", "evidence index"],
+  "expected_output_contract": {
+    "required_paths": ["compiler/planning/src/lib.rs", "compiler/verifier/src/lib.rs", "compiler/verifier/src/activation.rs", "compiler/kernel/tests/strategy_ladder.rs", "fixtures/compiler/negative/forge-verified-strategy/src/lib.rs", "evidence/D4/byte-relay/E_model_0/verified-strategy.json", "evidence/D4/byte-relay/E_model_0/activation-receipt-model.json", "evidence/D4/byte-relay/E_model_1/activation-receipt-model.json", "evidence/D4/negative/summary.log", "evidence/D4/index.json"],
+    "forbidden_paths": ["target"]
+  },
+  "fixtures": ["factory/fixtures/D4/F0-doc.json", "factory/fixtures/D4/F1-rust.json", "factory/fixtures/D4/F2-fixture.json", "factory/fixtures/D4/F3-build.json", "factory/fixtures/D4/F4-evidence.json"],
+  "reinspect_commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "reinspect-test.log"}
+  ],
+  "commit_trailers": ["Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>", "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"]
+}

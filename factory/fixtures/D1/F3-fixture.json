@@ -1,0 +1,43 @@
+{
+  "fixture_id": "F3-fixture",
+  "station_id": "S-FIXTURE",
+  "delta_id": "D1-COMPILER-FOUNDATION",
+  "selected_inputs": [
+    "BOOTSTRAP-TESTS.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "fixtures/",
+    "tests/",
+    "factory/receipts/D1-COMPILER-FOUNDATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-n",
+          "tests/bootstrap/run-b9-b11.sh"
+        ],
+        "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F3-sh-syntax.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "fixtures/compiler/negative/std-in-kernel/src/lib.rs",
+    "fixtures/compiler/negative/id-substitution/src/lib.rs",
+    "fixtures/compiler/negative/third-party-dep/Cargo.toml",
+    "tests/bootstrap/run-b9-b11.sh",
+    "tests/bootstrap/run-negative-fixtures.sh",
+    "compiler/kernel/tests/bootstrap_ladder.rs"
+  ],
+  "tests": [
+    "negative fixtures exist"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

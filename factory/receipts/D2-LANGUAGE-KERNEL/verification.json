@@ -1,0 +1,334 @@
+{
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "workpiece_id": "W2",
+  "canonical_base": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+  "base_tree": "44e1f5c34d1f68f64a7e639c5a8eaa0993b6e44f",
+  "verified_tree": "517c1438fc7c9ed598c244ed745821efac0f9629",
+  "changed_paths": [
+    "Cargo.lock",
+    "Cargo.toml",
+    "compiler/foundation/src/tests_foundation.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/lib.rs",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/bootstrap_ladder.rs",
+    "compiler/kernel/tests/language_ladder.rs",
+    "compiler/semantic/Cargo.toml",
+    "compiler/semantic/src/build.rs",
+    "compiler/semantic/src/invariants.rs",
+    "compiler/semantic/src/lib.rs",
+    "compiler/semantic/src/model.rs",
+    "compiler/semantic/src/refinement.rs",
+    "compiler/semantic/src/render.rs",
+    "compiler/source/Cargo.toml",
+    "compiler/source/src/ast.rs",
+    "compiler/source/src/lexer.rs",
+    "compiler/source/src/lib.rs",
+    "compiler/source/src/parser.rs",
+    "compiler/source/src/scanner.rs",
+    "design/materialization/LEDGER.md",
+    "evidence/D2/bootstrap/b10-b11-chromium.json",
+    "evidence/D2/bootstrap/b10-node.json",
+    "evidence/D2/bootstrap/b9-build.log",
+    "evidence/D2/bootstrap/b9-inspect.json",
+    "evidence/D2/bootstrap/b9-inspect.log",
+    "evidence/D2/bootstrap/b9-toolchain.log",
+    "evidence/D2/bootstrap/factc_wasm_abi.wasm",
+    "evidence/D2/bootstrap/run.log",
+    "evidence/D2/build/test.log",
+    "evidence/D2/byte-relay/artifacts.json",
+    "evidence/D2/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D2/byte-relay/diagnostics.json",
+    "evidence/D2/byte-relay/factc.log",
+    "evidence/D2/byte-relay/run.log",
+    "evidence/D2/byte-relay/source-lineage.json",
+    "evidence/D2/byte-relay/typed-system-ir.json",
+    "evidence/D2/index.json",
+    "evidence/D2/index.log",
+    "evidence/D2/negative/run.log",
+    "evidence/D2/negative/summary.log",
+    "evidence/D2/negative/third-party-dep.log",
+    "factory/deltas/D2.json",
+    "factory/fixtures/D2/F0-doc.json",
+    "factory/fixtures/D2/F1-rust.json",
+    "factory/fixtures/D2/F2-fixture.json",
+    "factory/fixtures/D2/F3-build.json",
+    "factory/fixtures/D2/F4-evidence.json",
+    "factory/receipts/D2-LANGUAGE-KERNEL/F0-doc.json",
+    "factory/receipts/D2-LANGUAGE-KERNEL/F1-rust.json",
+    "factory/receipts/D2-LANGUAGE-KERNEL/F2-fixture.json",
+    "factory/receipts/D2-LANGUAGE-KERNEL/F3-build.json",
+    "factory/receipts/D2-LANGUAGE-KERNEL/F4-evidence.json",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F0-ledger.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-build.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-clippy.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-depcheck.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-fmt.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-nostd.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-byte-relay-matches-authority.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-fixture-count.log",
+    "fixtures/commissioning/byte-relay.ascii",
+    "fixtures/language/INV-fail.ascii",
+    "fixtures/language/L00-minimal.ascii",
+    "fixtures/language/L01-base.ascii",
+    "fixtures/language/L01-whitespace.ascii",
+    "fixtures/language/L02-ascii-frames.ascii",
+    "fixtures/language/L04-prose.ascii",
+    "fixtures/language/L05-duplicate.ascii",
+    "fixtures/language/L06-unresolved.ascii",
+    "fixtures/language/L07-ambiguous.ascii",
+    "fixtures/language/L07-imp-a.ascii",
+    "fixtures/language/L07-imp-b.ascii",
+    "fixtures/language/L08-direction.ascii",
+    "fixtures/language/L09-alias-ok.ascii",
+    "fixtures/language/L09-type.ascii",
+    "fixtures/language/L10-private-ref.ascii",
+    "fixtures/language/L10-provider.ascii",
+    "fixtures/language/L11-incomplete-abstract.ascii",
+    "fixtures/language/L12-compatible.ascii",
+    "fixtures/language/L13-effect-escape.ascii",
+    "fixtures/language/L14-gap.ascii",
+    "fixtures/language/L16-relation-kinds.ascii",
+    "fixtures/language/L18-pin.ascii",
+    "fixtures/language/L18-prose-only.ascii",
+    "fixtures/language/L22-escape.ascii",
+    "fixtures/language/L22-unclosed.ascii",
+    "fixtures/language/L23-unknown.ascii",
+    "fixtures/language/L25-nosequence.ascii",
+    "fixtures/language/L26-modes.ascii",
+    "fixtures/language/L28-private-exposed.ascii",
+    "fixtures/language/L29-recursive.ascii",
+    "fixtures/language/L33-drawn-arrow.ascii",
+    "fixtures/language/L34-bad-arity.ascii",
+    "fixtures/language/L34-bad-invariant.ascii",
+    "fixtures/language/P6-dup-priority.ascii",
+    "fixtures/language/P6-objective.ascii",
+    "fixtures/language/P6-undeclared-metric.ascii",
+    "fixtures/language/SYS-missing.ascii",
+    "fixtures/language/SYS-multiple.ascii",
+    "host/factc/src/main.rs",
+    "tests/bootstrap/run-b9-b11.sh",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "44e1f5c34d1f68f64a7e639c5a8eaa0993b6e44f"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D2-LANGUAGE-KERNEL/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D2-LANGUAGE-KERNEL/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D2-LANGUAGE-KERNEL/F2-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D2-LANGUAGE-KERNEL/F3-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D2-LANGUAGE-KERNEL/F4-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/source/src/scanner.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/source/src/parser.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/semantic/src/build.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/semantic/src/invariants.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/semantic/src/refinement.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/semantic/src/render.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/kernel/src/phases.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/kernel/tests/language_ladder.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/language/L01-base.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/commissioning/byte-relay.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D2/byte-relay/canonical-ascii-0.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D2/bootstrap/b10-b11-chromium.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D2/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T02:10:51Z",
+  "status": "PASS"
+}

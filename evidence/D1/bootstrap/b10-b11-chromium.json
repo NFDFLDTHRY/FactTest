@@ -1,0 +1,53 @@
+{
+  "host": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "abi_version": 1,
+  "required_workspace": "103608",
+  "input_buffer_len": "262144",
+  "memory_pages": 26,
+  "imports": [],
+  "exports": [
+    "memory:memory",
+    "check_or_compile:function",
+    "input_buffer_len:function",
+    "input_buffer_ptr:function",
+    "output_buffer_ptr:function",
+    "query_abi_version:function",
+    "query_required_workspace:function",
+    "read_artifact_metadata:function",
+    "read_diagnostics:function",
+    "reset_workspace:function",
+    "submit_machine_state:function",
+    "submit_source_bytes:function",
+    "output_buffer_len:function"
+  ],
+  "source_id_plus_one": 1,
+  "status": 4,
+  "diagnostics": {
+    "abi_version": 1,
+    "kernel_version": 1,
+    "status": "NOT_IMPLEMENTED",
+    "overflowed": false,
+    "diagnostics": [
+      {
+        "code": "LANGUAGE_KERNEL_NOT_IMPLEMENTED",
+        "code_id": 1,
+        "severity": "ERROR",
+        "phase": "SCAN",
+        "source": 0,
+        "primary": {
+          "source": 0,
+          "start": 0,
+          "end": 80
+        },
+        "related": [],
+        "message_class": "front-end boundary reached; ASCII language kernel not materialized",
+        "params": [
+          80,
+          0,
+          0
+        ],
+        "authority": null
+      }
+    ]
+  }
+}

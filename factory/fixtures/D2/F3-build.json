@@ -1,0 +1,14 @@
+{
+  "fixture_id": "F3-build", "station_id": "S-BUILD", "delta_id": "D2-LANGUAGE-KERNEL",
+  "selected_inputs": ["compiler/", "host/", "fixtures/", "tests/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D2/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D2/build/test.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/language/run-byte-relay.sh", "evidence/D2/byte-relay"], "env": {"FACTC_BIN": "/home/user/factory-target/debug/factc"}, "log": "evidence/D2/byte-relay/run.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/bootstrap/run-b9-b11.sh", "evidence/D2/bootstrap"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory", "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers", "KERNEL_HOST_SOURCE": "fixtures/commissioning/byte-relay.ascii"}, "log": "evidence/D2/bootstrap/run.log"},
+    {"cwd": ".", "program": "sh", "args": ["tests/bootstrap/run-negative-fixtures.sh", "evidence/D2/negative"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target", "FACTORY_BIN": "/home/user/factory-target/debug/factory"}, "log": "evidence/D2/negative/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D2/build/test.log", "evidence/D2/byte-relay/canonical-ascii-0.ascii", "evidence/D2/byte-relay/typed-system-ir.json", "evidence/D2/bootstrap/b10-b11-chromium.json", "evidence/D2/negative/summary.log"],
+  "tests": ["cargo test (L0-L35, B-ladder, factory law)", "factc on Byte Relay", "B9-B11 with language kernel", "negative fixtures"], "evidence_requirements": ["logs", "artifacts", "browser record"]
+}

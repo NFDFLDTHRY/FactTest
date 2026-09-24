@@ -1,0 +1,115 @@
+{
+  "receipt_id": "R-D7-COMMISSIONING-GATE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W7",
+  "delta_id": "D7-COMMISSIONING-GATE",
+  "canonical_base": "578108e85c909a9f56f147b1f52e27bd02b33c34",
+  "input_artifacts": [
+    "PASS6-TESTS.md",
+    "COMMISSIONING-PROOF.md",
+    "evidence/D6/physical/"
+  ],
+  "open_tree": "01dd0d19206ca18cc7cc90452cff667e5e1d6c2f",
+  "close_tree": "39a64b6f47400afcf0c41962a02933af3d998ded",
+  "changed_paths": [
+    "README.md",
+    "design/materialization/COMMISSIONING-RECORD.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F0-ledger.log",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F0-record-complete.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/COMMISSIONING-RECORD.md",
+    "README.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D7-COMMISSIONING-GATE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D7-COMMISSIONING-GATE/logs/F0-ledger.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D7-COMMISSIONING-GATE/logs/F0-record-complete.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:grep -q D7-COMMISSIONING-GATE design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D7-COMMISSIONING-GATE/logs/F0-ledger.log"
+    },
+    {
+      "check": "command:sh -c for t in G01 G02 G03 G04 G05 G06 A01 A02 A03 M01 M02 M03 M04 V01 V02 V03 V04 V05 B01 B02 B03 B04 B05 B06 R01 R02 R03 R04 R05 R06 R07 R08 F01 F02 F03 F04 F05 F06 X01 X02 X03 X04 X05 X06; do grep -q \"P6-$t \" design/materialization/COMMISSIONING-RECORD.md || { echo missing P6-$t; exit 1; }; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D7-COMMISSIONING-GATE/logs/F0-record-complete.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/COMMISSIONING-RECORD.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:README.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F0-ledger.log",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F0-record-complete.log"
+  ],
+  "closed": "2026-09-24T02:57:54Z",
+  "status": "PASS"
+}

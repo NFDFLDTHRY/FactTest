@@ -1,0 +1,16 @@
+{
+  "station_id": "S-RUST",
+  "version": "1",
+  "capability_tags": ["RUST_FORGE"],
+  "input_kinds": ["crate_contracts", "fixture"],
+  "operation_class": "materialize_first_party_rust",
+  "output_kinds": ["rust_source", "cargo_surfaces"],
+  "may_read": ["*"],
+  "may_change": ["compiler/", "factory/", "host/", "Cargo.toml", "Cargo.lock", ".gitignore", "rust-toolchain.toml"],
+  "must_not_change": ["FACTORY-LAW.md", "COMMISSIONING-ASCII.md", "evidence/"],
+  "preconditions": ["approved crate/module contracts"],
+  "invariants": ["no_std where applicable", "no third-party dependencies", "declared dependency DAG"],
+  "verification": ["cargo build", "cargo test", "dependency graph check"],
+  "source_nonmutating": false,
+  "receipt_schema_version": "1"
+}

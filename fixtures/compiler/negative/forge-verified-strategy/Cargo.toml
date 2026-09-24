@@ -1,0 +1,10 @@
+[package]
+name = "neg-forge-verified-strategy"
+version = "0.0.0"
+edition = "2021"
+[lib]
+path = "src/lib.rs"
+[dependencies]
+factc-planning = { path = "../../../../compiler/planning" }
+factc-verifier = { path = "../../../../compiler/verifier" }
+factc-foundation = { path = "../../../../compiler/foundation" }

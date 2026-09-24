@@ -1,0 +1,177 @@
+{
+  "receipt_id": "R-D2-LANGUAGE-KERNEL-F1-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F1-rust",
+  "workpiece_id": "W2",
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "canonical_base": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+  "input_artifacts": [
+    "ASCII-GRAMMAR.md",
+    "SEMANTIC-MODEL.md",
+    "REFINEMENT-LAW.md"
+  ],
+  "open_tree": "054a7983fc6f2db34420882d9d9bf5b856bf1a04",
+  "close_tree": "bda128b96979a33676693299ae3cf27ac1dd8a31",
+  "changed_paths": [
+    "Cargo.lock",
+    "compiler/foundation/src/tests_foundation.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/lib.rs",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/bootstrap_ladder.rs",
+    "compiler/kernel/tests/language_ladder.rs",
+    "compiler/semantic/Cargo.toml",
+    "compiler/semantic/src/build.rs",
+    "compiler/semantic/src/invariants.rs",
+    "compiler/semantic/src/lib.rs",
+    "compiler/semantic/src/model.rs",
+    "compiler/semantic/src/refinement.rs",
+    "compiler/semantic/src/render.rs",
+    "compiler/source/Cargo.toml",
+    "compiler/source/src/ast.rs",
+    "compiler/source/src/lexer.rs",
+    "compiler/source/src/lib.rs",
+    "compiler/source/src/parser.rs",
+    "compiler/source/src/scanner.rs",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-build.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-clippy.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-depcheck.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-fmt.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-nostd.log",
+    "host/factc/src/main.rs"
+  ],
+  "output_artifacts": [
+    "compiler/source/src/lib.rs",
+    "compiler/semantic/src/lib.rs",
+    "compiler/kernel/src/phases.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D2-LANGUAGE-KERNEL"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-depcheck.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-nostd.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo build",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-build.log"
+    },
+    {
+      "check": "command:cargo fmt --all --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-fmt.log"
+    },
+    {
+      "check": "command:cargo clippy --all-targets -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-clippy.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory depcheck . factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-depcheck.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory nostd-check compiler/foundation compiler/source compiler/semantic compiler/kernel compiler/wasm-abi",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-nostd.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/source/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/semantic/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/kernel/src/phases.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-build.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-fmt.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-clippy.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-depcheck.log",
+    "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-nostd.log"
+  ],
+  "closed": "2026-09-24T02:10:46Z",
+  "status": "PASS"
+}

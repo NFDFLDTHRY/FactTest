@@ -1,0 +1,17 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "selected_inputs": ["design/materialization/M0-INTENDED-SYSTEM.md", "STATION-REGISTRY.md", "FACTORY-CONTRACTS.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/", "factory/registry/", "factory/deltas/", "factory/fixtures/", "factory/receipts/D0-BOOTSTRAP-FACTORY/", "Cargo.toml", ".gitignore"],
+  "job_parameters": {
+    "commands": [
+      {"cwd": ".", "program": "test", "args": ["-s", "design/materialization/M0-INTENDED-SYSTEM.md"], "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-m0-present.log"},
+      {"cwd": ".", "program": "grep", "args": ["-q", "STRUCTURAL CHECK: PASS", "design/materialization/M0-INTENDED-SYSTEM.md"], "log": "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-structural-check.log"}
+    ]
+  },
+  "expected_outputs": ["design/materialization/M0-INTENDED-SYSTEM.md", "factory/registry/stations/S-DOC.json", "Cargo.toml", ".gitignore"],
+  "tests": ["expected paths exist", "M0 structural check recorded PASS"],
+  "evidence_requirements": ["receipt"]
+}

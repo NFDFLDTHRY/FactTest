@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F4-evidence", "station_id": "S-EVIDENCE", "delta_id": "D4-PLANNER-VERIFIER",
+  "selected_inputs": ["evidence/D4/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D4/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["evidence", "index", "evidence/D4", "evidence/D4/index.json"], "log": "evidence/D4/index.log"}
+  ]},
+  "expected_outputs": ["evidence/D4/index.json"],
+  "tests": ["evidence indexed"], "evidence_requirements": ["index"]
+}

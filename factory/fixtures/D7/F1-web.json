@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F1-web", "station_id": "S-WEB", "delta_id": "D7-COMMISSIONING-GATE",
+  "selected_inputs": ["PASS6.md Anti-cheating"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["compiler/codegen/templates/", "factory/receipts/D7-COMMISSIONING-GATE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "! grep -q 'preference_rank' compiler/codegen/templates/runtime.js"], "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F1-no-slice-metric.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "cp compiler/codegen/templates/runtime.js /tmp/facttest-runtime-check.mjs && node --check /tmp/facttest-runtime-check.mjs"], "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F1-syntax.log"}
+  ]},
+  "expected_outputs": ["compiler/codegen/templates/runtime.js"],
+  "tests": ["runtime template names no slice metric"], "evidence_requirements": ["receipt"]
+}

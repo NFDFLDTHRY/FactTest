@@ -1,0 +1,183 @@
+{
+  "receipt_id": "R-D5-CODEGEN-BUNDLE-F4-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F4-build",
+  "workpiece_id": "W5",
+  "delta_id": "D5-CODEGEN-BUNDLE",
+  "canonical_base": "77fb4594d52d02ebda3b1ea42959507f932af5e0",
+  "input_artifacts": [
+    "compiler/",
+    "host/",
+    "fixtures/",
+    "tests/"
+  ],
+  "open_tree": "b42bf2b5df3e5fcd1ca85fae03f029c613c12b0b",
+  "close_tree": "30d1e36f25c0a51e8cbe0a1a70f994cfee17ac81",
+  "changed_paths": [
+    "evidence/D5/build/test.log",
+    "evidence/D5/byte-relay/E_model_0/activation-receipt-model.json",
+    "evidence/D5/byte-relay/E_model_0/artifacts.json",
+    "evidence/D5/byte-relay/E_model_0/bundle-certificate.json",
+    "evidence/D5/byte-relay/E_model_0/bundle-wasm-inspect.json",
+    "evidence/D5/byte-relay/E_model_0/bundle-wasm-inspect.log",
+    "evidence/D5/byte-relay/E_model_0/bundle/bundle.json",
+    "evidence/D5/byte-relay/E_model_0/bundle/index.html",
+    "evidence/D5/byte-relay/E_model_0/bundle/manifest.webmanifest",
+    "evidence/D5/byte-relay/E_model_0/bundle/membrane.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/runtime.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/selector.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/sw.js",
+    "evidence/D5/byte-relay/E_model_0/bundle/wasm64_relay.wasm",
+    "evidence/D5/byte-relay/E_model_0/candidate-strategy.json",
+    "evidence/D5/byte-relay/E_model_0/canonical-ascii-0.ascii",
+    "evidence/D5/byte-relay/E_model_0/capability-ir.json",
+    "evidence/D5/byte-relay/E_model_0/diagnostics.json",
+    "evidence/D5/byte-relay/E_model_0/factc.log",
+    "evidence/D5/byte-relay/E_model_0/implementation-hypergraph.json",
+    "evidence/D5/byte-relay/E_model_0/source-lineage.json",
+    "evidence/D5/byte-relay/E_model_0/typed-system-ir.json",
+    "evidence/D5/byte-relay/E_model_0/verification-certificates.json",
+    "evidence/D5/byte-relay/E_model_0/verified-strategy.json",
+    "evidence/D5/byte-relay/E_model_1/activation-receipt-model.json",
+    "evidence/D5/byte-relay/E_model_1/artifacts.json",
+    "evidence/D5/byte-relay/E_model_1/bundle-certificate.json",
+    "evidence/D5/byte-relay/E_model_1/bundle-wasm-inspect.json",
+    "evidence/D5/byte-relay/E_model_1/bundle-wasm-inspect.log",
+    "evidence/D5/byte-relay/E_model_1/bundle/bundle.json",
+    "evidence/D5/byte-relay/E_model_1/bundle/index.html",
+    "evidence/D5/byte-relay/E_model_1/bundle/manifest.webmanifest",
+    "evidence/D5/byte-relay/E_model_1/bundle/membrane.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/runtime.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/selector.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/sw.js",
+    "evidence/D5/byte-relay/E_model_1/bundle/wasm64_relay.wasm",
+    "evidence/D5/byte-relay/E_model_1/candidate-strategy.json",
+    "evidence/D5/byte-relay/E_model_1/canonical-ascii-0.ascii",
+    "evidence/D5/byte-relay/E_model_1/capability-ir.json",
+    "evidence/D5/byte-relay/E_model_1/diagnostics.json",
+    "evidence/D5/byte-relay/E_model_1/factc.log",
+    "evidence/D5/byte-relay/E_model_1/implementation-hypergraph.json",
+    "evidence/D5/byte-relay/E_model_1/source-lineage.json",
+    "evidence/D5/byte-relay/E_model_1/typed-system-ir.json",
+    "evidence/D5/byte-relay/E_model_1/verification-certificates.json",
+    "evidence/D5/byte-relay/E_model_1/verified-strategy.json",
+    "evidence/D5/byte-relay/artifacts.json",
+    "evidence/D5/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D5/byte-relay/capability-ir.json",
+    "evidence/D5/byte-relay/diagnostics.json",
+    "evidence/D5/byte-relay/factc.log",
+    "evidence/D5/byte-relay/run.log",
+    "evidence/D5/byte-relay/source-lineage.json",
+    "evidence/D5/byte-relay/typed-system-ir.json"
+  ],
+  "output_artifacts": [
+    "evidence/D5/build/test.log",
+    "evidence/D5/byte-relay/E_model_0/bundle/wasm64_relay.wasm",
+    "evidence/D5/byte-relay/E_model_0/bundle-certificate.json",
+    "evidence/D5/byte-relay/E_model_0/bundle-wasm-inspect.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D5-CODEGEN-BUNDLE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D5/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D5/byte-relay/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo test",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D5/build/test.log"
+    },
+    {
+      "check": "command:sh tests/language/run-byte-relay.sh evidence/D5/byte-relay",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D5/byte-relay/run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D5/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D5/byte-relay/E_model_0/bundle/wasm64_relay.wasm",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D5/byte-relay/E_model_0/bundle-certificate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D5/byte-relay/E_model_0/bundle-wasm-inspect.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D5/build/test.log",
+    "evidence/D5/byte-relay/run.log"
+  ],
+  "closed": "2026-09-24T02:42:45Z",
+  "status": "PASS"
+}

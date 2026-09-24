@@ -1,0 +1,134 @@
+{
+  "receipt_id": "R-D0-BOOTSTRAP-FACTORY-F3-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F3-build",
+  "workpiece_id": "W0",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "canonical_base": "32b7e65f8653427e7fc2d05ef3bad6c06f2f022c",
+  "input_artifacts": [
+    "factory/",
+    "Cargo.toml"
+  ],
+  "open_tree": "efabea45d36cdcde71f8a1d3f04359910381e461",
+  "close_tree": "8bbaa7d491584fd3d4eb43b5aa75df84b5a7a7b2",
+  "changed_paths": [
+    "evidence/D0/build/cargo-tree.log",
+    "evidence/D0/build/test.log",
+    "evidence/D0/build/toolchain.log"
+  ],
+  "output_artifacts": [
+    "evidence/D0/build/test.log",
+    "evidence/D0/build/cargo-tree.log",
+    "evidence/D0/build/toolchain.log"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (workpiece-bootstrap)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D0-BOOTSTRAP-FACTORY"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D0/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D0/build/cargo-tree.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D0/build/toolchain.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo test -p factory",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D0/build/test.log"
+    },
+    {
+      "check": "command:cargo tree -p factory --edges normal,build",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D0/build/cargo-tree.log"
+    },
+    {
+      "check": "command:rustc --version --verbose",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D0/build/toolchain.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D0/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D0/build/cargo-tree.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D0/build/toolchain.log",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D0/build/test.log",
+    "evidence/D0/build/cargo-tree.log",
+    "evidence/D0/build/toolchain.log"
+  ],
+  "closed": "2026-09-24T01:36:00Z",
+  "status": "PASS"
+}

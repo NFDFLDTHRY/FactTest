@@ -1,0 +1,18 @@
+[package]
+name = "factc-codegen"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "FactTest codegen: CodegenRecipe engine realizing a VerifiedStrategy into a GeneratedBundle (wasm64 module via first-party emitter, host membrane adapters, runtime selector, shell, manifest, service worker, lineage manifest). Accepts VerifiedStrategy only (CODEGEN-BUNDLE-CONTRACT.md)."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+factc-foundation = { path = "../foundation" }
+factc-source = { path = "../source" }
+factc-semantic = { path = "../semantic" }
+factc-capability = { path = "../capability" }
+factc-implementation = { path = "../implementation" }
+factc-verifier = { path = "../verifier" }

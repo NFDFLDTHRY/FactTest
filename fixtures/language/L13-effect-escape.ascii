@@ -1,0 +1,11 @@
+@{system refine_leak}
+@{type T}
+@{effect NET}
+@{subsystem abstract_x}
+@{port abstract_x.i in: T public}
+@{subsystem concrete_x}
+@{port concrete_x.i in: T public}
+@{component inner}
+@{contains concrete_x -> inner}
+@{uses inner NET}
+@{refines concrete_x -> abstract_x}

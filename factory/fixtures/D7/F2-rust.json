@@ -1,0 +1,13 @@
+{
+  "fixture_id": "F2-rust", "station_id": "S-RUST", "delta_id": "D7-COMMISSIONING-GATE",
+  "selected_inputs": ["CODEGEN-BUNDLE-CONTRACT.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["compiler/codegen/src/", "compiler/kernel/tests/", "Cargo.lock", "factory/receipts/D7-COMMISSIONING-GATE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["build"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-build.log"},
+    {"cwd": ".", "program": "cargo", "args": ["fmt", "--all", "--check"], "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-fmt.log"},
+    {"cwd": ".", "program": "cargo", "args": ["clippy", "--all-targets", "--", "-D", "warnings"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-clippy.log"}
+  ]},
+  "expected_outputs": ["compiler/kernel/tests/commissioning_ladder.rs"],
+  "tests": ["cargo build/fmt/clippy"], "evidence_requirements": ["receipt", "logs"]
+}

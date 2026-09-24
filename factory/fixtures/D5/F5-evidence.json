@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F5-evidence", "station_id": "S-EVIDENCE", "delta_id": "D5-CODEGEN-BUNDLE",
+  "selected_inputs": ["evidence/D5/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D5/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["evidence", "index", "evidence/D5", "evidence/D5/index.json"], "log": "evidence/D5/index.log"}
+  ]},
+  "expected_outputs": ["evidence/D5/index.json"],
+  "tests": ["evidence indexed"], "evidence_requirements": ["index"]
+}

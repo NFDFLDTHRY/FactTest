@@ -1,0 +1,26 @@
+{
+  "delta_id": "D3-LOWERING-CONTRACTS",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "4571d1449cc32d28d2c2f601dc4bb2a879dca7d7",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W3",
+  "approved_ascii_refs": ["design/materialization/M0-INTENDED-SYSTEM.md", "LOWERING-MODEL.md", "IMPLEMENTATION-CONTRACTS.md", "REPRESENTATION-TRANSFER.md", "CAPABILITY-MATRIX.md", "COMMISSIONING-SLICE.md", "COMMISSIONING-FIXTURE.md"],
+  "intent": "M4 lowering and contracts: CapabilityIR + ObligationSet extraction, contract registry dialect (representations, boundaries, explicit conversions, backends, recipes, authority links, metric evidence, machine epochs), implementation hypergraph H_G with H_A(E) admission filter; Byte Relay registry as slice data with every G family present",
+  "may_read": ["*"],
+  "may_change": ["compiler/", "host/factc/", "factory/deltas/", "factory/fixtures/", "factory/receipts/D3-LOWERING-CONTRACTS/", "fixtures/commissioning/", "tests/", "design/materialization/LEDGER.md", "evidence/D3/", "Cargo.toml", "Cargo.lock"],
+  "must_not_change": ["ASCII-GRAMMAR.md","ASCII-LANGUAGE.md","BOOTSTRAP-ARCHITECTURE.md","BOOTSTRAP-CONTRACTS.md","BOOTSTRAP-TESTS.md","CAPABILITY-MATRIX.md","CODEGEN-BUNDLE-CONTRACT.md","COMMISSIONING-ASCII.md","COMMISSIONING-FACTORY.md","COMMISSIONING-FIXTURE.md","COMMISSIONING-PROOF.md","COMMISSIONING-RUNTIME.md","COMMISSIONING-SLICE.md","COMMISSIONING-TRACE.md","CONFLICT-LEDGER.md","CONSTRAINT-LEDGER.md","EVIDENCE-OBLIGATIONS.md","FABLE-ASCII-SYSTEM-PROMPT.md","FACTORY-CONTRACTS.md","FACTORY-LAW.md","FINAL-HANDOFF-REQUIREMENTS.md","IMPLEMENTATION-CONTRACTS.md","LANGUAGE-TESTS.md","LICENSE","LOWERING-MODEL.md","PASS1.md","PASS2.md","PASS3.md","PASS4.md","PASS5-TESTS.md","PASS5.md","PASS6-GAP-REPAIRS.md","PASS6-TESTS.md","PASS6.md","PLANNED-REPO-LAYOUT.md","PLANNER-COST-MODEL.md","README.md","REFERENCE-AUTHORITY.md","REFINEMENT-LAW.md","REPRESENTATION-TRANSFER.md","RUNTIME-ADMISSION-REPLAN.md","SEMANTIC-MODEL.md","STATION-REGISTRY.md","VERIFICATION-CERTIFICATES.md", "factory/receipts/D0-BOOTSTRAP-FACTORY/", "factory/receipts/D1-COMPILER-FOUNDATION/", "factory/receipts/D2-LANGUAGE-KERNEL/", "factory/src/", "factory/registry/", "evidence/D0/", "evidence/D1/", "evidence/D2/", "design/materialization/M0-INTENDED-SYSTEM.md", "host/harness/", "fixtures/language/", "fixtures/compiler/"],
+  "required_station_capabilities": ["DOC_CONTRACT_FORGE", "RUST_FORGE", "FIXTURE_FORGE", "BUILD_VERIFY", "EVIDENCE_ASSEMBLER"],
+  "invariants": ["lowering selects no implementation", "no implicit conversion: only registry conversions form paths", "GAP/ERR/UNK backends never enter H_G (C subset of G)", "H_G is independent of admission; H_A(E) filters it", "kernel crates no_std, forbid(unsafe_code); no third-party crates", "registry is DATA (no commissioning branch in machinery)"],
+  "tests": ["compiler/kernel/tests/lowering_ladder.rs (P5-L01..L04, P5-L06/P6-V03, P5-S01/S03, P6-G03)", "all prior suites", "factc on Byte Relay with registry/metrics/epoch", "B9-B11 rerun"],
+  "evidence_requirements": ["FactoryReceipt per fixture", "evidence/D3 build/test logs", "capability-ir.json + implementation-hypergraph.json for the Byte Relay under E_model_0 and E_model_1", "evidence index"],
+  "expected_output_contract": {
+    "required_paths": ["compiler/capability/src/lib.rs", "compiler/implementation/src/registry.rs", "compiler/implementation/src/hypergraph.rs", "compiler/kernel/tests/lowering_ladder.rs", "fixtures/commissioning/contracts.ascii", "fixtures/commissioning/metrics.ascii", "fixtures/commissioning/epoch-model-0.ascii", "fixtures/commissioning/epoch-model-1.ascii", "evidence/D3/byte-relay/E_model_0/implementation-hypergraph.json", "evidence/D3/byte-relay/E_model_1/implementation-hypergraph.json", "evidence/D3/index.json"],
+    "forbidden_paths": ["target"]
+  },
+  "fixtures": ["factory/fixtures/D3/F0-doc.json", "factory/fixtures/D3/F1-rust.json", "factory/fixtures/D3/F2-fixture.json", "factory/fixtures/D3/F3-build.json", "factory/fixtures/D3/F4-evidence.json"],
+  "reinspect_commands": [
+    {"cwd": ".", "program": "cargo", "args": ["test"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "reinspect-test.log"}
+  ],
+  "commit_trailers": ["Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>", "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"]
+}

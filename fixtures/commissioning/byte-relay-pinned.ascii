@@ -1,0 +1,10 @@
+P5-L02 witness: same Byte Relay with an explicit implementation pin on the egress component.
+@{system byte_relay_pinned "Byte Relay (pinned)"}
+@{type Bytes}
+@{implementation CPU_WASM64}
+@{component ingress}
+@{component egress}
+@{pin egress CPU_WASM64}
+@{port ingress.bytes out: Bytes public}
+@{port egress.bytes in: Bytes public}
+@{data relay ingress.bytes -> egress.bytes mode=copy}

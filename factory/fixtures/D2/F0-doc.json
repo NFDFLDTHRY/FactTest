@@ -1,0 +1,42 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "selected_inputs": [
+    "LANGUAGE-TESTS.md",
+    "SEMANTIC-MODEL.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/LEDGER.md",
+    "factory/deltas/",
+    "factory/fixtures/",
+    "Cargo.toml",
+    "factory/receipts/D2-LANGUAGE-KERNEL/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "grep",
+        "args": [
+          "-q",
+          "D2-LANGUAGE-KERNEL",
+          "design/materialization/LEDGER.md"
+        ],
+        "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F0-ledger.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/LEDGER.md"
+  ],
+  "tests": [
+    "ledger names this delta"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

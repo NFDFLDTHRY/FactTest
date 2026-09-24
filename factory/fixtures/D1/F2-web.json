@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F2-web", "station_id": "S-WEB", "delta_id": "D1-COMPILER-FOUNDATION",
+  "selected_inputs": ["BOOTSTRAP-CONTRACTS.md C13/C14"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["host/harness/", "factory/receipts/D1-COMPILER-FOUNDATION/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "node", "args": ["--check", "host/harness/kernel-host.mjs"], "log": "factory/receipts/D1-COMPILER-FOUNDATION/logs/F2-syntax.log"}
+  ]},
+  "expected_outputs": ["host/harness/kernel-host.mjs"],
+  "tests": ["harness parses"], "evidence_requirements": ["receipt"]
+}

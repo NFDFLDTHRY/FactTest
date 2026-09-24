@@ -1,0 +1,8 @@
+P5-L04 witness: a type with no boundary representation / conversion path in the registry.
+@{system frame_relay "Frame Relay"}
+@{type Frame}
+@{component ingress}
+@{component egress}
+@{port ingress.f out: Frame public}
+@{port egress.f in: Frame public}
+@{data relay ingress.f -> egress.f mode=copy}

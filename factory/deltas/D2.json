@@ -1,0 +1,162 @@
+{
+  "delta_id": "D2-LANGUAGE-KERNEL",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W2",
+  "approved_ascii_refs": [
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "SEMANTIC-MODEL.md",
+    "REFINEMENT-LAW.md",
+    "LANGUAGE-TESTS.md",
+    "COMMISSIONING-ASCII.md"
+  ],
+  "intent": "M3 ASCII language kernel: semantic-island front end, resolver, TypedSystemIR, invariant kernel, refinement law, canonical renderer, ANALYZE/BUILD; language ladder L0-L35 and P6 grammar witnesses; kernel phase spine and artifact arena",
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "compiler/",
+    "host/factc/",
+    "factory/deltas/",
+    "factory/fixtures/",
+    "factory/receipts/D2-LANGUAGE-KERNEL/",
+    "fixtures/language/",
+    "fixtures/commissioning/",
+    "tests/",
+    "design/materialization/LEDGER.md",
+    "evidence/D2/",
+    "Cargo.toml",
+    "Cargo.lock"
+  ],
+  "must_not_change": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "BOOTSTRAP-ARCHITECTURE.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-TESTS.md",
+    "CAPABILITY-MATRIX.md",
+    "CODEGEN-BUNDLE-CONTRACT.md",
+    "COMMISSIONING-ASCII.md",
+    "COMMISSIONING-FACTORY.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md",
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-SLICE.md",
+    "COMMISSIONING-TRACE.md",
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FACTORY-CONTRACTS.md",
+    "FACTORY-LAW.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "LANGUAGE-TESTS.md",
+    "LICENSE",
+    "LOWERING-MODEL.md",
+    "PASS1.md",
+    "PASS2.md",
+    "PASS3.md",
+    "PASS4.md",
+    "PASS5-TESTS.md",
+    "PASS5.md",
+    "PASS6-GAP-REPAIRS.md",
+    "PASS6-TESTS.md",
+    "PASS6.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "PLANNER-COST-MODEL.md",
+    "README.md",
+    "REFERENCE-AUTHORITY.md",
+    "REFINEMENT-LAW.md",
+    "REPRESENTATION-TRANSFER.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "SEMANTIC-MODEL.md",
+    "STATION-REGISTRY.md",
+    "VERIFICATION-CERTIFICATES.md",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/",
+    "factory/receipts/D1-COMPILER-FOUNDATION/",
+    "factory/src/",
+    "factory/registry/",
+    "evidence/D0/",
+    "evidence/D1/",
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "host/harness/"
+  ],
+  "required_station_capabilities": [
+    "DOC_CONTRACT_FORGE",
+    "RUST_FORGE",
+    "FIXTURE_FORGE",
+    "BUILD_VERIFY",
+    "EVIDENCE_ASSEMBLER"
+  ],
+  "invariants": [
+    "semantic islands are the only semantic entry (geometry/prose non-authoritative)",
+    "unique elaboration: ambiguity is a compile error",
+    "kernel crates no_std, forbid(unsafe_code)",
+    "no third-party crates",
+    "canonical rendering: parse(render(AST)) == AST and idempotent",
+    "authored source never mutated"
+  ],
+  "tests": [
+    "L0-L35 (compiler/kernel/tests/language_ladder.rs)",
+    "P6-G01, P6-G02, P6-A01..A03",
+    "B7/B8 (updated: kernel present)",
+    "foundation/factory suites",
+    "B9-B11 rerun with the language kernel in wasm64"
+  ],
+  "evidence_requirements": [
+    "FactoryReceipt per fixture",
+    "evidence/D2 build/test logs",
+    "wasm64 kernel module identity + Chromium record on the Byte Relay source",
+    "factc native run on the Byte Relay source (canonical ASCII, typed IR, diagnostics)",
+    "evidence index"
+  ],
+  "expected_output_contract": {
+    "required_paths": [
+      "compiler/source/src/scanner.rs",
+      "compiler/source/src/parser.rs",
+      "compiler/semantic/src/build.rs",
+      "compiler/semantic/src/invariants.rs",
+      "compiler/semantic/src/refinement.rs",
+      "compiler/semantic/src/render.rs",
+      "compiler/kernel/src/phases.rs",
+      "compiler/kernel/tests/language_ladder.rs",
+      "fixtures/language/L01-base.ascii",
+      "fixtures/commissioning/byte-relay.ascii",
+      "evidence/D2/byte-relay/canonical-ascii-0.ascii",
+      "evidence/D2/bootstrap/b10-b11-chromium.json",
+      "evidence/D2/index.json"
+    ],
+    "forbidden_paths": [
+      "target"
+    ]
+  },
+  "fixtures": [
+    "factory/fixtures/D2/F0-doc.json",
+    "factory/fixtures/D2/F1-rust.json",
+    "factory/fixtures/D2/F2-fixture.json",
+    "factory/fixtures/D2/F3-build.json",
+    "factory/fixtures/D2/F4-evidence.json"
+  ],
+  "reinspect_commands": [
+    {
+      "cwd": ".",
+      "program": "cargo",
+      "args": [
+        "test"
+      ],
+      "env": {
+        "CARGO_TARGET_DIR": "/home/user/factory-target"
+      },
+      "log": "reinspect-test.log"
+    }
+  ],
+  "commit_trailers": [
+    "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+    "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F2-fixture", "station_id": "S-FIXTURE", "delta_id": "D2-LANGUAGE-KERNEL",
+  "selected_inputs": ["LANGUAGE-TESTS.md", "PASS6-TESTS.md", "COMMISSIONING-ASCII.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["fixtures/language/", "fixtures/commissioning/", "tests/", "factory/receipts/D2-LANGUAGE-KERNEL/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "awk '/^```text$/{f=1;next} /^```$/{f=0} f' COMMISSIONING-ASCII.md | cmp - fixtures/commissioning/byte-relay.ascii"], "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-byte-relay-matches-authority.log"},
+    {"cwd": ".", "program": "sh", "args": ["-c", "test $(ls fixtures/language/*.ascii | wc -l) -ge 36"], "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F2-fixture-count.log"}
+  ]},
+  "expected_outputs": ["fixtures/language/L01-base.ascii", "fixtures/commissioning/byte-relay.ascii", "tests/language/run-byte-relay.sh"],
+  "tests": ["byte-relay.ascii is byte-identical to the COMMISSIONING-ASCII.md code block"], "evidence_requirements": ["receipt"]
+}

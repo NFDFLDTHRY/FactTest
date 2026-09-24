@@ -1,0 +1,16 @@
+@{system rec}
+@{type T}
+@{subsystem a_abs}
+@{port a_abs.i in: T public}
+@{subsystem a1}
+@{port a1.i in: T public}
+@{refines a1 -> a_abs}
+@{subsystem a1x_abs}
+@{port a1x_abs.i in: T public}
+@{contains a1 -> a1x_abs}
+@{subsystem a1x1}
+@{port a1x1.i in: T public}
+@{contains a1 -> a1x1}
+@{refines a1x1 -> a1x_abs}
+@{invariant inv_outer refines(a1, a_abs)}
+@{invariant inv_inner refines(a1x1, a1x_abs)}

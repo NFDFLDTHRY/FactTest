@@ -1,0 +1,4 @@
+$ sh -c for s in 1 2 3 4 5 6 7 8; do grep -qE "^$s  " design/materialization/M9-OBSERVED-SYSTEM.md || { echo missing M0 section $s; exit 1; }; done; grep -q 'D8-REOBSERVE' design/materialization/LEDGER.md
+(cwd .)
+
+[exit 0] expected 0

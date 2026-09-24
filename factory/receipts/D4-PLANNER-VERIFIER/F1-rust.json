@@ -1,0 +1,172 @@
+{
+  "receipt_id": "R-D4-PLANNER-VERIFIER-F1-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F1-rust",
+  "workpiece_id": "W4",
+  "delta_id": "D4-PLANNER-VERIFIER",
+  "canonical_base": "a39ea02ce0170f9bc3f763d106f5cde3f932188a",
+  "input_artifacts": [
+    "PLANNER-COST-MODEL.md",
+    "VERIFICATION-CERTIFICATES.md",
+    "RUNTIME-ADMISSION-REPLAN.md"
+  ],
+  "open_tree": "5dec637debb7a796e2c447eabeac4c7745101d2f",
+  "close_tree": "afe86570814ccd38d895e7ac2bae3faeb303cbf7",
+  "changed_paths": [
+    "Cargo.lock",
+    "compiler/foundation/src/bvec.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/strategy_ladder.rs",
+    "compiler/planning/Cargo.toml",
+    "compiler/planning/src/lib.rs",
+    "compiler/verifier/Cargo.toml",
+    "compiler/verifier/src/activation.rs",
+    "compiler/verifier/src/lib.rs",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-build.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-clippy.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-depcheck.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-fmt.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-nostd.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-planner-does-not-depend-on-verifier.log",
+    "host/factc/src/main.rs"
+  ],
+  "output_artifacts": [
+    "compiler/planning/src/lib.rs",
+    "compiler/verifier/src/lib.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D4-PLANNER-VERIFIER"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D4-PLANNER-VERIFIER/logs/F1-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D4-PLANNER-VERIFIER/logs/F1-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D4-PLANNER-VERIFIER/logs/F1-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D4-PLANNER-VERIFIER/logs/F1-depcheck.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D4-PLANNER-VERIFIER/logs/F1-nostd.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D4-PLANNER-VERIFIER/logs/F1-planner-does-not-depend-on-verifier.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo build",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D4-PLANNER-VERIFIER/logs/F1-build.log"
+    },
+    {
+      "check": "command:cargo fmt --all --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D4-PLANNER-VERIFIER/logs/F1-fmt.log"
+    },
+    {
+      "check": "command:cargo clippy --all-targets -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D4-PLANNER-VERIFIER/logs/F1-clippy.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory depcheck . factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/capability/Cargo.toml compiler/implementation/Cargo.toml compiler/planning/Cargo.toml compiler/verifier/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D4-PLANNER-VERIFIER/logs/F1-depcheck.log"
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory nostd-check compiler/foundation compiler/source compiler/semantic compiler/capability compiler/implementation compiler/planning compiler/verifier compiler/kernel compiler/wasm-abi",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D4-PLANNER-VERIFIER/logs/F1-nostd.log"
+    },
+    {
+      "check": "command:sh -c ! grep -q 'factc-verifier' compiler/planning/Cargo.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D4-PLANNER-VERIFIER/logs/F1-planner-does-not-depend-on-verifier.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/planning/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/verifier/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-build.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-fmt.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-clippy.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-depcheck.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-nostd.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-planner-does-not-depend-on-verifier.log"
+  ],
+  "closed": "2026-09-24T02:30:27Z",
+  "status": "PASS"
+}

@@ -1,0 +1,8 @@
+@{system ty}
+@{type A}
+@{type B}
+@{component p}
+@{component q}
+@{port p.o out: A public}
+@{port q.i in: B public}
+@{data d p.o -> q.i mode=copy}

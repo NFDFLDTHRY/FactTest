@@ -1,0 +1,131 @@
+{
+  "receipt_id": "R-D0-BOOTSTRAP-FACTORY-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W0",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "canonical_base": "32b7e65f8653427e7fc2d05ef3bad6c06f2f022c",
+  "input_artifacts": [
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "STATION-REGISTRY.md",
+    "FACTORY-CONTRACTS.md"
+  ],
+  "open_tree": "75a361a91a87b9046ce47087310952b0b4709ac4",
+  "close_tree": "18d5294e4a8a9fd3acc7f117568a45b957eb36cb",
+  "changed_paths": [
+    ".gitignore",
+    "Cargo.toml",
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-m0-present.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-structural-check.log",
+    "factory/registry/stations/S-BROWSER.json",
+    "factory/registry/stations/S-BUNDLE.json",
+    "factory/registry/stations/S-EVIDENCE.json",
+    "factory/registry/stations/S-WEB.json"
+  ],
+  "output_artifacts": [
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "factory/registry/stations/S-DOC.json",
+    "Cargo.toml",
+    ".gitignore"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (workpiece-bootstrap)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D0-BOOTSTRAP-FACTORY"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-m0-present.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-structural-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:test -s design/materialization/M0-INTENDED-SYSTEM.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-m0-present.log"
+    },
+    {
+      "check": "command:grep -q STRUCTURAL CHECK: PASS design/materialization/M0-INTENDED-SYSTEM.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-structural-check.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/M0-INTENDED-SYSTEM.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/registry/stations/S-DOC.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:Cargo.toml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:.gitignore",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-m0-present.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F0-structural-check.log"
+  ],
+  "closed": "2026-09-24T01:35:59Z",
+  "status": "PASS"
+}

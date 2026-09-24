@@ -1,0 +1,46 @@
+[workspace]
+resolver = "2"
+members = [
+    "factory",
+    "compiler/foundation",
+    "compiler/source",
+    "compiler/semantic",
+    "compiler/capability",
+    "compiler/implementation",
+    "compiler/planning",
+    "compiler/verifier",
+    "compiler/codegen",
+    "compiler/bundle",
+    "compiler/observe",
+    "compiler/kernel",
+    "compiler/wasm-abi",
+    "host/factc",
+]
+default-members = [
+    "factory",
+    "compiler/foundation",
+    "compiler/source",
+    "compiler/semantic",
+    "compiler/capability",
+    "compiler/implementation",
+    "compiler/planning",
+    "compiler/verifier",
+    "compiler/codegen",
+    "compiler/bundle",
+    "compiler/observe",
+    "compiler/kernel",
+    "host/factc",
+]
+exclude = [
+    "fixtures",
+]
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+debug = false

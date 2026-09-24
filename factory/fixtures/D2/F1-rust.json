@@ -1,0 +1,15 @@
+{
+  "fixture_id": "F1-rust", "station_id": "S-RUST", "delta_id": "D2-LANGUAGE-KERNEL",
+  "selected_inputs": ["ASCII-GRAMMAR.md", "SEMANTIC-MODEL.md", "REFINEMENT-LAW.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["compiler/", "host/factc/", "Cargo.lock", "factory/receipts/D2-LANGUAGE-KERNEL/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "cargo", "args": ["build"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-build.log"},
+    {"cwd": ".", "program": "cargo", "args": ["fmt", "--all", "--check"], "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-fmt.log"},
+    {"cwd": ".", "program": "cargo", "args": ["clippy", "--all-targets", "--", "-D", "warnings"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-clippy.log"},
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["depcheck", ".", "factory/Cargo.toml", "compiler/foundation/Cargo.toml", "compiler/source/Cargo.toml", "compiler/semantic/Cargo.toml", "compiler/kernel/Cargo.toml", "compiler/wasm-abi/Cargo.toml", "host/factc/Cargo.toml"], "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-depcheck.log"},
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["nostd-check", "compiler/foundation", "compiler/source", "compiler/semantic", "compiler/kernel", "compiler/wasm-abi"], "log": "factory/receipts/D2-LANGUAGE-KERNEL/logs/F1-nostd.log"}
+  ]},
+  "expected_outputs": ["compiler/source/src/lib.rs", "compiler/semantic/src/lib.rs", "compiler/kernel/src/phases.rs"],
+  "tests": ["cargo build/fmt/clippy --all-targets", "depcheck (B2)", "nostd-check (B1)"], "evidence_requirements": ["receipt", "logs"]
+}

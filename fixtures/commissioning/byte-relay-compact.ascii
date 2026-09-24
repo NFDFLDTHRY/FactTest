@@ -1,0 +1,9 @@
+P6-A01 / P6-X03 witness: the Byte Relay islands in a compact one-column layout, drawn without any box art.
+@{system byte_relay "Byte Relay"} @{type Bytes}
+@{metric preference_rank ordinal "commissioning preference only; not performance"} @{objective commissioning} @{goal commissioning 1 minimize preference_rank}
+@{component egress} @{port egress.bytes in: Bytes public}
+@{component ingress} @{port ingress.bytes out: Bytes public}
+@{data relay ingress.bytes -> egress.bytes mode=copy}
+@{invariant i_path reachable(ingress, egress)} @{invariant i_cons has_consumer(ingress.bytes)}
+@{invariant i_prod exactly_one_producer(egress.bytes)} @{invariant i_type type_equal(ingress.bytes, egress.bytes)}
+@{witnesses e_roundtrip -> t_roundtrip} @{evidence e_roundtrip runtime_probe} @{tests t_roundtrip -> i_type} @{test t_roundtrip runtime}

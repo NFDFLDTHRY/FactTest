@@ -1,0 +1,8 @@
+@{system invfail}
+@{type T}
+@{component a}
+@{component b}
+@{port a.o out: T public}
+@{port b.i in: T public}
+@{invariant needs_producer exactly_one_producer(b.i)}
+@{invariant needs_consumer has_consumer(a.o)}

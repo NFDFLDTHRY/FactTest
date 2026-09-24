@@ -1,0 +1,118 @@
+{
+  "receipt_id": "R-D7-COMMISSIONING-GATE-F2-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F2-rust",
+  "workpiece_id": "W7",
+  "delta_id": "D7-COMMISSIONING-GATE",
+  "canonical_base": "578108e85c909a9f56f147b1f52e27bd02b33c34",
+  "input_artifacts": [
+    "CODEGEN-BUNDLE-CONTRACT.md"
+  ],
+  "open_tree": "01a87ba4eb4516ecdddc71e798e18def39f34a15",
+  "close_tree": "9862276faa2731852cc891e54b3a8fa31aa5108d",
+  "changed_paths": [
+    "compiler/codegen/src/lib.rs",
+    "compiler/kernel/tests/commissioning_ladder.rs",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-build.log",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-clippy.log",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-fmt.log"
+  ],
+  "output_artifacts": [
+    "compiler/kernel/tests/commissioning_ladder.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D7-COMMISSIONING-GATE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D7-COMMISSIONING-GATE/logs/F2-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D7-COMMISSIONING-GATE/logs/F2-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D7-COMMISSIONING-GATE/logs/F2-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo build",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D7-COMMISSIONING-GATE/logs/F2-build.log"
+    },
+    {
+      "check": "command:cargo fmt --all --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D7-COMMISSIONING-GATE/logs/F2-fmt.log"
+    },
+    {
+      "check": "command:cargo clippy --all-targets -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D7-COMMISSIONING-GATE/logs/F2-clippy.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:compiler/kernel/tests/commissioning_ladder.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-build.log",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-fmt.log",
+    "factory/receipts/D7-COMMISSIONING-GATE/logs/F2-clippy.log"
+  ],
+  "closed": "2026-09-24T02:58:00Z",
+  "status": "PASS"
+}

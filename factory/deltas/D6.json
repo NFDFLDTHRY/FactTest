@@ -1,0 +1,177 @@
+{
+  "delta_id": "D6-RUNTIME-EVIDENCE",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "e72fbe7e8ea16522bab9619ee7bafa8dd3104a45",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W6",
+  "approved_ascii_refs": [
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md",
+    "EVIDENCE-OBLIGATIONS.md E-025"
+  ],
+  "intent": "M7 runtime admission/selector/evidence loop: observe crate (evidence tape -> ObservationDelta -> observed ASCII), kernel OBSERVE op and factc observe, BROWSER_PROBE harness driving the generated bundle in Chromium (WebGPU via SwiftShader) with the commissioning payloads, controlled GPUDevice.destroy() loss and reselection; first physical commissioning evidence",
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "host/",
+    "factory/deltas/",
+    "factory/fixtures/",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/",
+    "fixtures/commissioning/payloads.json",
+    "fixtures/commissioning/tape-sample.ascii",
+    "tests/",
+    "design/materialization/LEDGER.md",
+    "evidence/D6/",
+    "Cargo.toml",
+    "Cargo.lock",
+    "compiler/observe/",
+    "compiler/kernel/"
+  ],
+  "must_not_change": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "BOOTSTRAP-ARCHITECTURE.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-TESTS.md",
+    "CAPABILITY-MATRIX.md",
+    "CODEGEN-BUNDLE-CONTRACT.md",
+    "COMMISSIONING-ASCII.md",
+    "COMMISSIONING-FACTORY.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md",
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-SLICE.md",
+    "COMMISSIONING-TRACE.md",
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FACTORY-CONTRACTS.md",
+    "FACTORY-LAW.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "LANGUAGE-TESTS.md",
+    "LICENSE",
+    "LOWERING-MODEL.md",
+    "PASS1.md",
+    "PASS2.md",
+    "PASS3.md",
+    "PASS4.md",
+    "PASS5-TESTS.md",
+    "PASS5.md",
+    "PASS6-GAP-REPAIRS.md",
+    "PASS6-TESTS.md",
+    "PASS6.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "PLANNER-COST-MODEL.md",
+    "README.md",
+    "REFERENCE-AUTHORITY.md",
+    "REFINEMENT-LAW.md",
+    "REPRESENTATION-TRANSFER.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "SEMANTIC-MODEL.md",
+    "STATION-REGISTRY.md",
+    "VERIFICATION-CERTIFICATES.md",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/",
+    "factory/receipts/D1-COMPILER-FOUNDATION/",
+    "factory/receipts/D2-LANGUAGE-KERNEL/",
+    "factory/receipts/D3-LOWERING-CONTRACTS/",
+    "factory/receipts/D4-PLANNER-VERIFIER/",
+    "factory/receipts/D5-CODEGEN-BUNDLE/",
+    "factory/src/",
+    "factory/registry/",
+    "evidence/D0/",
+    "evidence/D1/",
+    "evidence/D2/",
+    "evidence/D3/",
+    "evidence/D4/",
+    "evidence/D5/",
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "fixtures/language/",
+    "fixtures/compiler/",
+    "fixtures/commissioning/byte-relay.ascii",
+    "fixtures/commissioning/contracts.ascii",
+    "fixtures/commissioning/metrics.ascii",
+    "fixtures/commissioning/epoch-model-0.ascii",
+    "fixtures/commissioning/epoch-model-1.ascii",
+    "compiler/codegen/templates/"
+  ],
+  "required_station_capabilities": [
+    "DOC_CONTRACT_FORGE",
+    "RUST_FORGE",
+    "WEB_HOST_FORGE",
+    "FIXTURE_FORGE",
+    "BUILD_VERIFY",
+    "BROWSER_PROBE",
+    "EVIDENCE_ASSEMBLER"
+  ],
+  "invariants": [
+    "runtime evidence never rewrites source (observed ASCII is a derived unit)",
+    "the harness never invokes the compiler; bundle hashes identical before/after the session",
+    "exact comparison happens on the harness side, independent of the runtime's own flag",
+    "SwiftShader WebGPU is recorded as such (adapter info in evidence); it is browser WebGPU API execution, not hardware GPU execution",
+    "no_std / no third-party unchanged"
+  ],
+  "tests": [
+    "compiler/kernel/tests/observe_ladder.rs (P6-R07 shape, P5-R04..R06, negative witnesses 10/11)",
+    "tests/commissioning/run-physical.sh (P6-R01..R08 physical, negative witness 5 and 9)",
+    "all prior suites"
+  ],
+  "evidence_requirements": [
+    "FactoryReceipt per fixture",
+    "evidence/D6/physical/compile/* (bundle + certificates)",
+    "evidence/D6/physical/probe-webgpu/{probe-record.json,runtime-evidence.json,evidence-tape.ascii}",
+    "evidence/D6/physical/probe-no-webgpu/*",
+    "evidence/D6/physical/observed/{observed.ascii,observation-delta.json}",
+    "evidence index"
+  ],
+  "expected_output_contract": {
+    "required_paths": [
+      "compiler/observe/src/lib.rs",
+      "host/harness/bundle-probe.mjs",
+      "tests/commissioning/run-physical.sh",
+      "compiler/kernel/tests/observe_ladder.rs",
+      "fixtures/commissioning/payloads.json",
+      "evidence/D6/physical/probe-webgpu/probe-record.json",
+      "evidence/D6/physical/probe-webgpu/evidence-tape.ascii",
+      "evidence/D6/physical/probe-no-webgpu/probe-record.json",
+      "evidence/D6/physical/observed/observed.ascii",
+      "evidence/D6/physical/observed/observation-delta.json",
+      "evidence/D6/index.json"
+    ],
+    "forbidden_paths": [
+      "target"
+    ]
+  },
+  "fixtures": [
+    "factory/fixtures/D6/F0-doc.json",
+    "factory/fixtures/D6/F1-rust.json",
+    "factory/fixtures/D6/F2-web.json",
+    "factory/fixtures/D6/F3-fixture.json",
+    "factory/fixtures/D6/F4-build.json",
+    "factory/fixtures/D6/F5-browser.json",
+    "factory/fixtures/D6/F6-evidence.json"
+  ],
+  "reinspect_commands": [
+    {
+      "cwd": ".",
+      "program": "cargo",
+      "args": [
+        "test"
+      ],
+      "env": {
+        "CARGO_TARGET_DIR": "/home/user/factory-target"
+      },
+      "log": "reinspect-test.log"
+    }
+  ],
+  "commit_trailers": [
+    "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+    "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"
+  ]
+}

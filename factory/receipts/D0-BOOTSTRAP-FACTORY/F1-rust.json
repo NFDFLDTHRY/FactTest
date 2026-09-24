@@ -1,0 +1,193 @@
+{
+  "receipt_id": "R-D0-BOOTSTRAP-FACTORY-F1-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F1-rust",
+  "workpiece_id": "W0",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "canonical_base": "32b7e65f8653427e7fc2d05ef3bad6c06f2f022c",
+  "input_artifacts": [
+    "FACTORY-CONTRACTS.md",
+    "STATION-REGISTRY.md",
+    "PLANNED-REPO-LAYOUT.md"
+  ],
+  "open_tree": "788b05df67dd76e730e146972052ae5acf6eb8b5",
+  "close_tree": "a180050becbc0ac4ebeabf7a06c3952aded8bf82",
+  "changed_paths": [
+    "Cargo.lock",
+    "factory/Cargo.toml",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-build.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-clippy.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-deps-section.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-fmt.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-no-third-party.log",
+    "factory/src/git.rs",
+    "factory/src/json.rs",
+    "factory/src/lib.rs",
+    "factory/src/main.rs",
+    "factory/src/model.rs",
+    "factory/src/ops.rs",
+    "factory/src/paths.rs"
+  ],
+  "output_artifacts": [
+    "factory/Cargo.toml",
+    "factory/src/main.rs",
+    "factory/src/lib.rs",
+    "factory/src/ops.rs",
+    "factory/src/json.rs",
+    "factory/src/git.rs",
+    "factory/src/paths.rs",
+    "factory/src/model.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (workpiece-bootstrap)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D0-BOOTSTRAP-FACTORY"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-deps-section.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-no-third-party.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo build -p factory",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-build.log"
+    },
+    {
+      "check": "command:cargo fmt -p factory --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-fmt.log"
+    },
+    {
+      "check": "command:cargo clippy -p factory -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-clippy.log"
+    },
+    {
+      "check": "command:grep -c ^\\[dependencies\\]$ factory/Cargo.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-deps-section.log"
+    },
+    {
+      "check": "command:sh -c ! grep -A1 '^\\[dependencies\\]' factory/Cargo.toml | grep -E '^[a-zA-Z]'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-no-third-party.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/Cargo.toml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/main.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/ops.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/json.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/git.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/paths.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/model.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-build.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-fmt.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-clippy.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-deps-section.log",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F1-no-third-party.log"
+  ],
+  "closed": "2026-09-24T01:35:59Z",
+  "status": "PASS"
+}
