@@ -1,0 +1,83 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D14-D19-PROMPT-INTAKE",
+  "selected_inputs": [
+    "owner prompt (session input)",
+    "design/materialization/LEDGER.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D14-D19-PROMPT-INTAKE.json",
+    "factory/fixtures/D14-D19-PROMPT-INTAKE/",
+    "factory/receipts/D14-D19-PROMPT-INTAKE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q 'FACTTEST \u00b7 SIX-PASS TECHNICAL REFERENCE REVIEW SERIES' design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md && for d in 'D14 \u00b7 FRONTIER REOPEN' 'D15 \u00b7 FOUNDATIONAL SEMANTICS' 'D16 \u00b7 CAPABILITY UNIVERSE' 'D17 \u00b7 IMPLEMENTATION REALITY' 'D18 \u00b7 REPO RECONCILIATION' 'D19 \u00b7 RE-PROVE / RE-OBSERVE'; do grep -qF \"$d\" design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md || { echo missing $d; exit 1; }; done && [ $(grep -c '^\\[INV\\]' design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md) -eq 14 ] && grep -q '^design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md' design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md && grep -q 'integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca' design/materialization/LEDGER.md && grep -q '^## D14-D19-PROMPT-INTAKE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]"
+        ],
+        "log": "factory/receipts/D14-D19-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+      },
+      {
+        "cwd": ".",
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "evidence",
+          "tests",
+          "fixtures",
+          "design/environment-map",
+          "docs",
+          "FACTORY-LAW.md",
+          "README.md",
+          "rust-toolchain.toml"
+        ],
+        "log": "factory/receipts/D14-D19-PROMPT-INTAKE/logs/F0-untouched.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md"
+  ],
+  "tests": [
+    "prompt structure (6 passes, 14 invariants, intake path)",
+    "ledger D13 AFTER + intake BEFORE",
+    "untouched"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

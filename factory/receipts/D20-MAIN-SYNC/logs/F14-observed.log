@@ -1,0 +1,4 @@
+$ sh -c O=design/materialization/D20-OBSERVED-MAIN-SYNC.md; for k in P1 P2 P3 P4 P5 P6 P7 Q22 c3159d5 D14-RESCAN R-54 R-63; do grep -q "$k" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O
+(cwd .)
+
+[exit 0] expected 0

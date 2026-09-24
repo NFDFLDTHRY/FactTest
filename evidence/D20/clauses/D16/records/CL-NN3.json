@@ -1,0 +1,31 @@
+{
+ "id": "CL-NN3",
+ "trace": "NN",
+ "authority": "AUTH-WEBNN",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/webmachinelearning/webnn",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "59db71f24cc87fe31b764bd06ca24c215c1755a4",
+  "sha256": "f818eace15b8ba8fc9ae4696379c60bdc386f594946bf9618044e34ed4108cff",
+  "bytes": 605058
+ },
+ "locator": {
+  "text": "The <dfn method for=ML>createContext(|options|)</dfn> steps are:",
+  "line_start": 1051,
+  "line_end": 1058,
+  "derivation": "anchor text",
+  "enclosing_section": "#api-ml-createcontext (line 1020)"
+ },
+ "window": 8,
+ "consequence": "createContext rejects SecurityError when the policy disallows webnn and NotSupportedError when no context can be created: interface presence is not admission",
+ "excerpt": "    The <dfn method for=ML>createContext(|options|)</dfn> steps are:\n</summary>\n    1. Let |global| be [=this=]'s [=relevant global object=].\n    1. Let |realm| be [=this=]'s [=relevant realm=].\n    1. If |global|'s [=associated Document=] is not [=allowed to use=] the [=webnn-feature|webnn=] feature, then return [=a new promise=] in |realm| [=rejected=] with a \"{{SecurityError}}\" {{DOMException}}.\n    1. Let |promise| be [=a new promise=] in |realm|.\n    1. Run the following steps [=in parallel=].\n        1. Let |context| be the result of [=creating a context=] given |realm| and |options|. If that returns failure, then [=queue an ML task=] with |global| to [=reject=] |promise| with a \"{{NotSupportedError}}\" {{DOMException}} and abort these steps.",
+ "excerpt_sha256": "3f6a504551a793bdd7fd934d27f13b9bf763871a5d88c08103a48d74482f28f1",
+ "must_contain": {
+  "is not [=allowed to use=] the [=webnn-feature|webnn=] feature": true,
+  "\"{{SecurityError}}\"": true,
+  "\"{{NotSupportedError}}\"": true
+ },
+ "status": "VERIFIED"
+}

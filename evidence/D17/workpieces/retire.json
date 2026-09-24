@@ -1,0 +1,466 @@
+{
+  "workpiece_root": "/home/user/factory-workpieces",
+  "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+  "current_workpiece": "W19",
+  "retired_at": "2026-09-24T09:10:04Z",
+  "actions": [
+    {
+      "object": "/home/user/factory-workpieces/W18",
+      "kind": "worktree",
+      "workpiece_id": "W18",
+      "decision": "RETIRABLE",
+      "reasons": [],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true,
+        "worktree_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "status_porcelain_ignored_entries": 0,
+        "registered_worktree": true
+      },
+      "action": "git worktree remove",
+      "result": "REMOVED",
+      "error": ""
+    }
+  ],
+  "kept": [
+    {
+      "object": "/home/user/factory-workpieces/W0",
+      "kind": "worktree",
+      "workpiece_id": "W0",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "25ef9e372a62f62a08371027b71bf0b4cd4b77ff",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W1",
+      "kind": "worktree",
+      "workpiece_id": "W1",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "8ab25c9af3401ffd14b99c2b5d9333763b130be2",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W10",
+      "kind": "worktree",
+      "workpiece_id": "W10",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W11",
+      "kind": "worktree",
+      "workpiece_id": "W11",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "fdb9c32d1346408f184ccf0cc4880112282f164e",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W11-stage",
+      "kind": "stage",
+      "workpiece_id": "W11",
+      "decision": "KEEP",
+      "reasons": [
+        "2 stage path(s) differ from or are absent in the integrated tree"
+      ],
+      "proof": {
+        "integration": "PASS",
+        "integration_commit": "fdb9c32d1346408f184ccf0cc4880112282f164e",
+        "paths_only_in_integration": 67,
+        "paths_added_or_modified_in_stage": [
+          "M\tdesign/environment-map/TRACEABILITY.md",
+          "M\tdesign/environment-map/graph.json"
+        ]
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W12",
+      "kind": "worktree",
+      "workpiece_id": "W12",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W13",
+      "kind": "worktree",
+      "workpiece_id": "W13",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "205d337a7efef5fa25bb588ec385fa3655acb562",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W14",
+      "kind": "worktree",
+      "workpiece_id": "W14",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W14-stage",
+      "kind": "stage",
+      "workpiece_id": "W14",
+      "decision": "KEEP",
+      "reasons": [
+        "3 stage path(s) differ from or are absent in the integrated tree"
+      ],
+      "proof": {
+        "integration": "PASS",
+        "integration_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+        "paths_only_in_integration": 149,
+        "paths_added_or_modified_in_stage": [
+          "M\tdesign/environment-map/TRACEABILITY.md",
+          "M\tdesign/environment-map/epochs/D13.json",
+          "M\tdesign/environment-map/graph.json"
+        ]
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W15",
+      "kind": "worktree",
+      "workpiece_id": "W15",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "5e57467bd7c984529dc466201629b37e0ee44c4b",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W16",
+      "kind": "worktree",
+      "workpiece_id": "W16",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "46cc28be1486798635eac42a6955dedaba36673f",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W16-stage",
+      "kind": "stage",
+      "workpiece_id": "W16",
+      "decision": "KEEP",
+      "reasons": [
+        "3 stage path(s) differ from or are absent in the integrated tree"
+      ],
+      "proof": {
+        "integration": "PASS",
+        "integration_commit": "46cc28be1486798635eac42a6955dedaba36673f",
+        "paths_only_in_integration": 123,
+        "paths_added_or_modified_in_stage": [
+          "M\tdesign/environment-map/AUTHORITY-REGISTER.md",
+          "M\tdesign/environment-map/TRACEABILITY.md",
+          "M\tdesign/environment-map/graph.json"
+        ]
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W17",
+      "kind": "worktree",
+      "workpiece_id": "W17",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "3748fa7bd15d74e560951f31338b8c94820c2830",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W17-stage",
+      "kind": "stage",
+      "workpiece_id": "W17",
+      "decision": "KEEP",
+      "reasons": [
+        "3 stage path(s) differ from or are absent in the integrated tree"
+      ],
+      "proof": {
+        "integration": "PASS",
+        "integration_commit": "3748fa7bd15d74e560951f31338b8c94820c2830",
+        "paths_only_in_integration": 183,
+        "paths_added_or_modified_in_stage": [
+          "M\tdesign/environment-map/AUTHORITY-REGISTER.md",
+          "M\tdesign/environment-map/TRACEABILITY.md",
+          "M\tdesign/environment-map/graph.json"
+        ]
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W18-stage",
+      "kind": "stage",
+      "workpiece_id": "W18",
+      "decision": "KEEP",
+      "reasons": [
+        "3 stage path(s) differ from or are absent in the integrated tree"
+      ],
+      "proof": {
+        "integration": "PASS",
+        "integration_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "paths_only_in_integration": 186,
+        "paths_added_or_modified_in_stage": [
+          "M\tdesign/environment-map/AUTHORITY-REGISTER.md",
+          "M\tdesign/environment-map/TRACEABILITY.md",
+          "M\tdesign/environment-map/graph.json"
+        ]
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W19",
+      "kind": "worktree",
+      "workpiece_id": "W19",
+      "decision": "CURRENT",
+      "reasons": [
+        "current workpiece of the running delta",
+        "verification MISSING",
+        "integration MISSING",
+        "reinspect MISSING",
+        "integration commit is not an ancestor of the canonical head",
+        "worktree HEAD e4e210304591d99f73873dc719b79f187c4d19a1 != integration commit",
+        "worktree has modified, untracked or ignored entries"
+      ],
+      "proof": {
+        "verification": "",
+        "integration": "",
+        "integration_commit": "",
+        "reinspect": "",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": false,
+        "worktree_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "status_porcelain_ignored_entries": 18,
+        "registered_worktree": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W19-stage",
+      "kind": "stage",
+      "workpiece_id": "W19",
+      "decision": "CURRENT",
+      "reasons": [
+        "staging copy of the current workpiece",
+        "workpiece not integrated"
+      ],
+      "proof": {
+        "integration": "",
+        "integration_commit": ""
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W2",
+      "kind": "worktree",
+      "workpiece_id": "W2",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "4571d1449cc32d28d2c2f601dc4bb2a879dca7d7",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W3",
+      "kind": "worktree",
+      "workpiece_id": "W3",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "a39ea02ce0170f9bc3f763d106f5cde3f932188a",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W4",
+      "kind": "worktree",
+      "workpiece_id": "W4",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "77fb4594d52d02ebda3b1ea42959507f932af5e0",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W5",
+      "kind": "worktree",
+      "workpiece_id": "W5",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "e72fbe7e8ea16522bab9619ee7bafa8dd3104a45",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W6",
+      "kind": "worktree",
+      "workpiece_id": "W6",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "578108e85c909a9f56f147b1f52e27bd02b33c34",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W7",
+      "kind": "worktree",
+      "workpiece_id": "W7",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/W8",
+      "kind": "worktree",
+      "workpiece_id": "W8",
+      "decision": "ABSENT",
+      "reasons": [
+        "worktree directory not present"
+      ],
+      "proof": {
+        "verification": "PASS",
+        "integration": "PASS",
+        "integration_commit": "68efcde69b61f8eacf684a515b41b6a8278869f3",
+        "reinspect": "MATCH",
+        "canonical_head": "e4e210304591d99f73873dc719b79f187c4d19a1",
+        "commit_is_ancestor_of_head": true
+      }
+    },
+    {
+      "object": "/home/user/factory-workpieces/factory-bootstrap-bin",
+      "kind": "unmanaged",
+      "workpiece_id": "",
+      "decision": "KEEP",
+      "reasons": [
+        "no Factory record describes this object"
+      ],
+      "proof": {
+        "registered_worktree": false
+      }
+    }
+  ]
+}

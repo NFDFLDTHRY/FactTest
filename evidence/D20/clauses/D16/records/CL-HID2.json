@@ -1,0 +1,32 @@
+{
+ "id": "CL-HID2",
+ "trace": "DEV",
+ "authority": "AUTH-WEBHID",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WICG/webhid",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+  "sha256": "21ab95f9b4fe9a963b58e0806a7ded26d165d06e969add1cc01ef73499c8f764",
+  "bytes": 115963
+ },
+ "locator": {
+  "text": "Document=] is not [=allowed to use=] the [=policy-controlled",
+  "after": "requestDevice",
+  "line_start": 1047,
+  "line_end": 1058,
+  "derivation": "anchor text after \"requestDevice\"",
+  "enclosing_section": null
+ },
+ "window": 12,
+ "consequence": "requestDevice needs the hid policy, a Window, and transient activation (SecurityError / NotSupportedError otherwise): a user gesture is part of admission",
+ "excerpt": "          Document=] is not [=allowed to use=] the [=policy-controlled\n          feature=] named `\"hid\"`, [=reject=] |promise| with a\n          \"{{SecurityError}}\" {{DOMException}} and return |promise|.\n          </li>\n          <li>If the [=relevant global object=] of [=this=] is not {{Window/window}},\n          [=reject=] |promise| with a \"{{NotSupportedError}}\"\n          {{DOMException}} and return |promise|.\n          </li>\n          <li>If the [=relevant global object=] of [=this=] does not have\n            [=transient activation=], [=reject=] |promise| with a\n            \"{{SecurityError}}\" {{DOMException}} and return |promise|.\n            </li>",
+ "excerpt_sha256": "d0a3a5e27ac01ac9c02f808b719bd5ff8ab85ac1ee6bb93484d2f6445346ad97",
+ "must_contain": {
+  "feature=] named `\"hid\"`": true,
+  "{{Window/window}}": true,
+  "[=transient activation=]": true
+ },
+ "status": "VERIFIED"
+}

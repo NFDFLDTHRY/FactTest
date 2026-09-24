@@ -1,0 +1,31 @@
+{
+ "id": "CL-GS2",
+ "trace": "GS",
+ "authority": "AUTH-GENERIC-SENSOR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/sensors",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+  "sha256": "584e6b7e5743d0c79f36696742a857f115128433d63112401b3f19b62dc5fdbf",
+  "bytes": 107462
+ },
+ "locator": {
+  "text": "The user agent <dfn>can expose sensor readings</dfn> to a {{Document}}",
+  "line_start": 754,
+  "line_end": 758,
+  "derivation": "anchor text",
+  "enclosing_section": "#concepts-can-expose-sensor-readings (line 752)"
+ },
+ "window": 5,
+ "consequence": "readings flow only to a secure, visible, focused document: a headless or background page never receives readings",
+ "excerpt": "The user agent <dfn>can expose sensor readings</dfn> to a {{Document}}\n|document| if and only if all of the following are true:\n - |document|'s [=relevant settings object=] is a [=secure context=].\n - |document|'s [=visibility state=] is \"visible\".\n - The [=focus and origin check=] on |document| returns true.",
+ "excerpt_sha256": "9fa47cb813b3f5a5a4086f122224f0fd7b04c6c1ed848b2b2a24285c859d6fd1",
+ "must_contain": {
+  "is a [=secure context=]": true,
+  "[=visibility state=] is \"visible\"": true,
+  "[=focus and origin check=]": true
+ },
+ "status": "VERIFIED"
+}

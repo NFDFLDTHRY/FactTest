@@ -1,0 +1,8 @@
+$ sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q >/dev/null && for q in $(ls evidence/D18R/envmap/queries); do cmp evidence/D18R/envmap/queries/$q $T/q/$q || exit 1; done && node -e 'const a=JSON.parse(require("fs").readFileSync(process.argv[1])).answer;console.log("Q22",a.current_facts,JSON.stringify(a.run_claims));if(a.current_facts!==109)process.exit(1)' $T/q/Q22.json && echo 'D18R graph: validate 42, render/merge identical, Q01-Q21 byte-identical to evidence/D18R'
+(cwd .)
+PASS AUTHORITY-REGISTER.md: 128676 bytes identical; TRACEABILITY.md: 210354 bytes identical
+PASS base_nodes_preserved: 211 base nodes identical; base_edges_preserved: 475 base edges present; graph_equals_merge_of_base_and_epochs: 1333955 bytes identical
+Q22 109 {"total":47,"claimable":46,"invalidated":1,"traversal":{"stops at IMPLEMENTATION CONTRACT":17,"COMPLETE":20,"stops at CURRENT AUTHORITY":5,"stops at EXACT CLAUSE":4,"stops at PROJECT CONSTRAINT":1}}
+D18R graph: validate 42, render/merge identical, Q01-Q21 byte-identical to evidence/D18R
+
+[exit 0] expected 0

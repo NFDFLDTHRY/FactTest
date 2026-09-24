@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-GPU3",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-GPU-SWITCHES-141",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "gpu/config/gpu_switches.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "4a4002457507c3457d5095b7450d7db1de1bfb632a862ca5d497b3342a2610cb",
+  "bytes": 7659
+ },
+ "locator": {
+  "text": "const char kIgnoreGpuBlocklist[] = \"ignore-gpu-blocklist\";",
+  "line_start": 33,
+  "line_end": 33,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "--ignore-gpu-blocklist is a Chromium 141 switch",
+ "excerpt": "const char kIgnoreGpuBlocklist[] = \"ignore-gpu-blocklist\";",
+ "excerpt_sha256": "f647ba595e17cabccaafc45dd913271743f2c00f1f983d48d26dcc8698755ee7",
+ "must_contain": {
+  "ignore-gpu-blocklist": true
+ },
+ "status": "VERIFIED"
+}

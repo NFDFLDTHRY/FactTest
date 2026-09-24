@@ -1,0 +1,77 @@
+{
+ "authority": "AUTH-HTML-SANDBOX-ORIGIN",
+ "authority_class": "LIVING_STANDARD",
+ "cited": {
+  "url": "https://html.spec.whatwg.org/multipage/browsers.html",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (source line numbers at the pin; D14 rescan)",
+  "maturity_recorded": "living standard source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+  "path": "source",
+  "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+  "observed": "2026-09-24",
+  "locator": "lines 96158-96162 (sandboxed origin browsing context flag forces an opaque origin)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   96158,
+   96162
+  ],
+  "window_sha256": "ff31e824ec529e401ef16f440532ec4dd98f68859bcf9f2623632a830251c451",
+  "window_excerpt": "   <dt>The <dfn export>sandboxed origin browsing context flag</dfn></dt>\n\n   <dd>\n    <p>This flag <a href=\"#sandboxOrigin\">forces content into an opaque origin</a>, thus preventing\n    it from accessing other content from the same <span>origin</span>.</p>",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   96158,
+   96162
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 96158,
+  "candidates": {
+   "section": {
+    "id": "#the-coep-headers",
+    "line": 95839,
+    "kind": "id attribute"
+   },
+   "definition": {
+    "id": "#sandboxed-origin-browsing-context-flag",
+    "line": 96158,
+    "kind": "bikeshed dfn"
+   }
+  }
+ }
+}

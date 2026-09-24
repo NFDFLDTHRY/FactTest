@@ -1,0 +1,31 @@
+{
+ "id": "CL-IMP-RS2",
+ "trace": "RS",
+ "authority": "AUTH-RUSTC-WASM64-DOC",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/rust",
+  "branch": "main",
+  "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+  "pinned": true,
+  "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+  "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+  "bytes": 4126
+ },
+ "locator": {
+  "text": "This target is not a stable target.",
+  "line_start": 33,
+  "line_end": 35,
+  "derivation": "anchor text",
+  "enclosing_section": "#requirements (line 14)"
+ },
+ "window": 3,
+ "consequence": "ERR-001 holds for the toolchain FactTest runs (6eeff9a52), not only for the tip",
+ "excerpt": "This target is not a stable target. The [memory64] WebAssembly proposal is still\nin-progress and not standardized. This means that there are not many engines\nwhich implement the `memory64` feature and if they do they're likely behind a",
+ "excerpt_sha256": "00611bb0dc6179cf15163f7d830196f2f9184d75cff8a152e3c9926d5a5b9e65",
+ "must_contain": {
+  "still": true,
+  "in-progress and not standardized": true
+ },
+ "status": "VERIFIED"
+}

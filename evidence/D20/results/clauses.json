@@ -1,0 +1,61 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "clauses",
+ "kind": "source",
+ "started": "2026-09-24T11:41:04.006Z",
+ "commands": [
+  {
+   "command": "node tests/reference/clauses.mjs tests/reference/d15-clauses.json design/environment-map/graph.json evidence/D20/clauses/D15",
+   "exit": 0,
+   "seconds": 41
+  },
+  {
+   "command": "node tests/reference/clauses.mjs tests/reference/d16-clauses.json design/environment-map/graph.json evidence/D20/clauses/D16",
+   "exit": 0,
+   "seconds": 29
+  }
+ ],
+ "facts": {
+  "FACT-D15-CLAUSES-VERIFIED": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D15/summary.json",
+     "sha256": "a0d87bba7f5b6f1c23cc518b35842e0fd279b4a7bd18905b01f614e4af196be9",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 60,
+       "observed": 60,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D16-CLAUSES-VERIFIED": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "sha256": "f9cfd301639b8aa58e9768794fdab7137cf00192c35905334fd210b736103205",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90,
+       "observed": 90,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T11:42:13.577Z",
+ "status": "PASS"
+}

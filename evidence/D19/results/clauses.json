@@ -1,0 +1,99 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "clauses",
+ "kind": "source",
+ "started": "2026-09-24T10:45:45.855Z",
+ "commands": [
+  {
+   "command": "node tests/reference/clauses.mjs tests/reference/d15-clauses.json design/environment-map/graph.json evidence/D19/clauses/D15",
+   "exit": 0,
+   "seconds": 41
+  },
+  {
+   "command": "node tests/reference/clauses.mjs tests/reference/d16-clauses.json design/environment-map/graph.json evidence/D19/clauses/D16",
+   "exit": 0,
+   "seconds": 29
+  }
+ ],
+ "facts": {
+  "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "sha256": "efd59bf5dcc54df125f7975b4cb4501b809944f64c3d55e919b4b636dd48cc28",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90,
+       "observed": 90,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D15-CLAUSES-VERIFIED": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D15/summary.json",
+     "sha256": "5001caa77d0126035ab2809071bc831f80e4ced31d320b43e4a83e93da71b0b8",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 60,
+       "observed": 60,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D16-CLAUSES-VERIFIED": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "sha256": "efd59bf5dcc54df125f7975b4cb4501b809944f64c3d55e919b4b636dd48cc28",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90,
+       "observed": 90,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SENSOR-FAMILY-ADVISEMENT": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "sha256": "efd59bf5dcc54df125f7975b4cb4501b809944f64c3d55e919b4b636dd48cc28",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90,
+       "observed": 90,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T10:46:55.951Z",
+ "status": "PASS"
+}

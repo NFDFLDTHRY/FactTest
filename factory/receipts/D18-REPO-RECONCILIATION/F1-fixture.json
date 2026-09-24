@@ -1,0 +1,186 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D18-REPO-RECONCILIATION-F1-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F1-fixture",
+  "workpiece_id": "W20",
+  "delta_id": "D18-REPO-RECONCILIATION",
+  "canonical_base": "715ac92d327f5f2677fd7c0b067fa843da6323c4",
+  "input_artifacts": [
+    "D18 section 2 (current-model rules)",
+    "section 4 (surfaces, exec identity)",
+    "assembly trial"
+  ],
+  "open_tree": "bfa46a9cbbb0db1bf1f2f791f350ffdbd9536316",
+  "close_tree": "43d542576e7131b5ac14be96b5e4f441c20ce70e",
+  "changed_paths": [
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-kernel-identity.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-regression.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-syntax-generic.log",
+    "tests/envmap/envmap.mjs",
+    "tests/reconcile/build-reconciliation.mjs",
+    "tests/reconcile/d18-reconciliation.json",
+    "tests/reconcile/gate.mjs",
+    "tests/reconcile/stage-audit.mjs",
+    "tests/reconcile/surfaces.json",
+    "tests/reconcile/surfaces.mjs",
+    "tests/reference/d18-clauses.json",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/proof.mjs"
+  ],
+  "output_artifacts": [
+    "tests/reconcile/d18-reconciliation.json",
+    "tests/reconcile/surfaces.json",
+    "tests/reconcile/build-reconciliation.mjs",
+    "tests/reconcile/gate.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D18-REPO-RECONCILIATION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D18-REPO-RECONCILIATION/logs/F1-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D18-REPO-RECONCILIATION/logs/F1-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D18-REPO-RECONCILIATION/logs/F1-kernel-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in tests/reconcile/build-reconciliation.mjs tests/reconcile/surfaces.mjs tests/reconcile/gate.mjs tests/reconcile/stage-audit.mjs tests/envmap/envmap.mjs tests/toolchain/proof.mjs; do node --check $f || exit 1; done; node -e 'const fs=require(\"fs\");const r=JSON.parse(fs.readFileSync(\"tests/reconcile/d18-reconciliation.json\"));const s=JSON.parse(fs.readFileSync(\"tests/reconcile/surfaces.json\"));const m=JSON.parse(fs.readFileSync(\"tests/reference/d18-clauses.json\"));const p=JSON.parse(fs.readFileSync(\"tests/toolchain/proof-sets.json\"));console.log(r.items.length+\" reconciliations, \"+r.supersessions.length+\" supersessions, \"+r.ledger.constraints.length+\" ledgered, \"+s.surfaces.length+\" surfaces, \"+m.clauses.length+\" clauses, exec \"+p.sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256.slice(0,16))' && ! grep -nE \"'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]\" tests/reconcile/build-reconciliation.mjs tests/reconcile/surfaces.mjs tests/reconcile/gate.mjs tests/reconcile/stage-audit.mjs tests/envmap/envmap.mjs tests/toolchain/proof.mjs && git diff --exit-code 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- tests ':!tests/reconcile' ':!tests/reference/d18-clauses.json' ':!tests/envmap/envmap.mjs' ':!tests/toolchain/proof.mjs' ':!tests/toolchain/proof-sets.json'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D18-REPO-RECONCILIATION/logs/F1-syntax-generic.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 35 checks' && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q && for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18 Q19 Q20; do cmp evidence/D17/envmap/queries/$q.json $T/q/$q.json || exit 1; done && grep -q '\"reconciliations\": 0' $T/q/Q21.json && echo 'D17 graph: validate 35, render/merge identical, Q01-Q20 byte-identical to evidence/D17, Q21 none'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D18-REPO-RECONCILIATION/logs/F1-regression.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && for L in A B; do case $L in A) lab=INSTALL-PINNED;; B) lab=INSTALL-RENAMED;; esac; m=/home/user/factory-builds/d17-kernels/$L/wasm64-unknown-unknown/release/factc_wasm_abi.wasm; want=$(node -e 'const b=JSON.parse(require(\"fs\").readFileSync(\"evidence/D17/kernel/builds.json\"));console.log(b.builds.find(x=>x.label===process.argv[1]).wasm_sha256)' $lab); have=$(sha256sum $m | cut -d' ' -f1); [ \"$have\" = \"$want\" ] || { echo \"$m: $have != $want\"; exit 1; }; echo \"$lab $m sha256 == evidence/D17/kernel/builds.json\"; node tests/toolchain/proof.mjs kernel-identity --sets tests/toolchain/proof-sets.json --out $T/krn --id KRN-F1-$L --root . --module $m || exit 1; grep -q '\"verdict\": \"PASS\"' $T/krn/KRN-F1-$L.json || exit 1; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D18-REPO-RECONCILIATION/logs/F1-kernel-identity.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reconcile/d18-reconciliation.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reconcile/surfaces.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reconcile/build-reconciliation.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reconcile/gate.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-syntax-generic.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-regression.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-kernel-identity.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T09:55:33Z",
+  "status": "PASS"
+}

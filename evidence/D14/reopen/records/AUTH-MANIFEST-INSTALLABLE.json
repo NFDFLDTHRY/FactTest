@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-MANIFEST-INSTALLABLE",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://w3c.github.io/manifest/",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "editor's draft source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/w3c/manifest",
+  "branch": "main",
+  "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+  "path": "index.html",
+  "sha256": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d",
+  "observed": "2026-09-24",
+  "locator": "lines 2612-2615"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   2612,
+   2615
+  ],
+  "window_sha256": "1bf3ff848159b06b9046455c347d46800a11ebae298b6a6f8bdb45232f5b26dc",
+  "window_excerpt": "        Installable web applications\n      </h2>\n      <p>\n        Any website is an <strong>installable web application</strong>.",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   2612,
+   2615
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 2612,
+  "candidates": {
+   "section": {
+    "id": "#CSP3",
+    "line": 2156,
+    "kind": "asciidoc anchor"
+   },
+   "definition": null
+  }
+ }
+}

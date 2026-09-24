@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D17-INTENDED-IMPLEMENTATION-REALITY.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as e4e210304591d99f73873dc719b79f187c4d19a1' design/materialization/LEDGER.md && grep -q '^## D17-IMPLEMENTATION-REALITY' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]
+(cwd .)
+
+[exit 0] expected 0

@@ -1,0 +1,10 @@
+$ sh -c T=$(mktemp -d) && node tests/reference/build-clauses.mjs --clauses evidence/D15/clauses --manifest tests/reference/d15-clauses.json --epoch D15 --delta D15-FOUNDATIONAL-SEMANTICS --commit '46cc28be1486798635eac42a6955dedaba36673f (canonical base; integration commit in LEDGER AFTER)' --declare --out $T/D15.json && cmp $T/D15.json design/environment-map/epochs/D15.json && node tests/reference/build-clauses.mjs --clauses evidence/D16/clauses --manifest tests/reference/d16-clauses.json --epoch D16 --delta D16-CAPABILITY-UNIVERSE --commit '3748fa7bd15d74e560951f31338b8c94820c2830 (canonical base; integration commit in LEDGER AFTER)' --harness-in design/environment-map/graph.json --out $T/c16.json && node tests/capability/build-universe.mjs --clause-epoch $T/c16.json --universe tests/capability/universe.json --census evidence/D16/census --matrix CAPABILITY-MATRIX.md --epoch D16 --delta D16-CAPABILITY-UNIVERSE --commit '3748fa7bd15d74e560951f31338b8c94820c2830 (canonical base; integration commit in LEDGER AFTER)' --declare --out $T/D16.json && cmp $T/D16.json design/environment-map/epochs/D16.json && node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json
+(cwd .)
+D15: 145 nodes, 305 edges -> /tmp/tmp.KCdMAVe2Wv/D15.json
+D16: 205 nodes, 292 edges -> /tmp/tmp.KCdMAVe2Wv/c16.json
+D16: 305 nodes, 745 edges -> /tmp/tmp.KCdMAVe2Wv/D16.json; {"RUN":6,"OBS":16,"ERR":1,"GAP":10}
+PASS 35 checks
+PASS AUTHORITY-REGISTER.md: 118441 bytes identical; TRACEABILITY.md: 174926 bytes identical
+PASS base_nodes_preserved: 211 base nodes identical; base_edges_preserved: 475 base edges present; graph_equals_merge_of_base_and_epochs: 1234276 bytes identical
+
+[exit 0] expected 0

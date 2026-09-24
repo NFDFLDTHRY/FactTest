@@ -1,0 +1,29 @@
+{
+ "id": "CL-XR5",
+ "trace": "XR",
+ "authority": "AUTH-WEBXR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/immersive-web/webxr",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+  "sha256": "2fe7451a82eff47ca0ddd10117f14d0b7f03443cc1cf989d135d88ba92c0cb49",
+  "bytes": 274788
+ },
+ "locator": {
+  "text": "1. If |device| is `null` or |device|'s [=list of supported modes=] does not [=list/contain=] |mode|, run the following steps:",
+  "line_start": 417,
+  "line_end": 418,
+  "derivation": "anchor text",
+  "enclosing_section": "#xrsystem-interface (line 276)"
+ },
+ "window": 2,
+ "consequence": "no device supporting the mode rejects NotSupportedError",
+ "excerpt": "        1. If |device| is `null` or |device|'s [=list of supported modes=] does not [=list/contain=] |mode|, run the following steps:\n            1. [=Reject=] |promise| with a \"{{NotSupportedError}}\" {{DOMException}}.",
+ "excerpt_sha256": "217b3560c3ef6749b808eb2729ee788acc2797e6da3e3dbc5aace396b2f31e71",
+ "must_contain": {
+  "\"{{NotSupportedError}}\"": true
+ },
+ "status": "VERIFIED"
+}

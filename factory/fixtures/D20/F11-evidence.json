@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F11-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "selection of F7"
+  ],
+  "narrowed_may_change": [
+    "evidence/D20/lineage/",
+    "evidence/D20/paths/",
+    "evidence/D20/process/",
+    "evidence/D20/status-reprove/",
+    "evidence/D20/results/",
+    "evidence/D20/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D20/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D20"
+        ],
+        "log": "evidence/D20/logs/F11-repo.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D20/results/lineage.json",
+    "evidence/D20/results/process.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

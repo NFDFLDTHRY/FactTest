@@ -1,0 +1,5 @@
+$ sh -c node tests/reprove/build-reprove.mjs --graph design/environment-map/graph.json --selection evidence/D20/selection.json --evidence evidence/D20 --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --dimensions tests/reprove/dimensions.json --epoch D20 --delta D20-MAIN-SYNC --commit 'c3159d562768d52465ead5e44bc6c5259dfc1b79 (canonical base; integration commit in LEDGER AFTER)' --out design/environment-map/epochs/D20.json
+(cwd .)
+D20: 25 nodes, 191 edges -> design/environment-map/epochs/D20.json; re-proved 71, failed 0; fulfilled R-54 R-59 R-62 R-63
+
+[exit 0] expected 0

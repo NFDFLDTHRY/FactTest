@@ -1,50 +1,41 @@
 {
   "fixture_id": "F1-fixture",
   "station_id": "S-FIXTURE",
-  "delta_id": "D14-TECHNICAL-REFERENCE-RESCAN",
   "selected_inputs": [
-    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
-    "REFERENCE-AUTHORITY.md",
-    "design/environment-map/graph.json",
-    "tests/envmap/authority-fetch.mjs (D11 primitives)",
-    "publisher repositories through the session git proxy and raw.githubusercontent.com (ingest performed in the stage; copies carried in)"
-  ],
-  "narrowed_may_read": [
-    "*"
+    "tests/envmap/envmap.mjs",
+    "graph schema",
+    "assembly findings (section 0 harness defects)"
   ],
   "narrowed_may_change": [
     "tests/reference/",
-    "fixtures/reference/",
-    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/"
+    "tests/envmap/envmap.mjs",
+    "factory/receipts/D14-FRONTIER-REOPEN/"
   ],
   "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in tests/reference/reopen.mjs tests/reference/build-revisions.mjs tests/reference/gate.mjs tests/envmap/envmap.mjs; do node --check $f || exit 1; done; node -e 'JSON.parse(require(\"fs\").readFileSync(\"tests/reference/d14-review.json\"))' && ! grep -nE \"'(AUTH|FACT|CON|LAW)-[A-Z]\" tests/reference/reopen.mjs tests/reference/build-revisions.mjs tests/reference/gate.mjs tests/envmap/envmap.mjs"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F1-syntax-generic.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F1-regression.log",
+        "cwd": "."
+      }
+    ],
     "identity_probes": [
-      {
-        "name": "rustc-host-set",
-        "program": "rustc",
-        "args": [
-          "+1.94.1",
-          "-vV"
-        ]
-      },
-      {
-        "name": "rustc-wasm64-set",
-        "program": "rustc",
-        "args": [
-          "+nightly-2026-09-24",
-          "-vV"
-        ]
-      },
       {
         "name": "node",
         "program": "node",
-        "args": [
-          "--version"
-        ]
-      },
-      {
-        "name": "git",
-        "program": "git",
         "args": [
           "--version"
         ]
@@ -55,65 +46,31 @@
         "args": [
           "--version"
         ]
-      }
-    ],
-    "commands": [
-      {
-        "cwd": ".",
-        "program": "sh",
-        "args": [
-          "-c",
-          "node --check tests/reference/ingress.mjs && sh -n tests/reference/run-ingress-checks.sh && node tests/reference/ingress.mjs plan-check --routes fixtures/reference/ROUTES.json --map REFERENCE-AUTHORITY.md --graph design/environment-map/graph.json"
-        ],
-        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-syntax-and-plan.log"
       },
       {
-        "cwd": ".",
-        "program": "sh",
+        "name": "git",
+        "program": "git",
         "args": [
-          "-c",
-          "T=$(mktemp -d) && node tests/reference/ingress.mjs verify --routes fixtures/reference/ROUTES.json --corpus fixtures/reference --register fixtures/reference/REGISTER.json --out $T/verify.json && grep -q '\"verdict\": \"PASS\"' $T/verify.json && node -e 'const r=JSON.parse(require(\"fs\").readFileSync(\"fixtures/reference/REGISTER.json\"));if(r.totals.ingested!==r.totals.files||r.totals.pin_mismatch!==0)process.exit(1);for(const f of r.files){if(!f.commit||!f.sha256||!f.git_blob_sha1||!f.fetched)process.exit(1)}console.log(\"register:\",JSON.stringify(r.totals))'"
-        ],
-        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-register-and-offline-verify.log"
-      },
-      {
-        "cwd": ".",
-        "program": "sh",
-        "args": [
-          "-c",
-          "for f in $(find fixtures/reference -type f | sort); do case $f in fixtures/reference/README.md|fixtures/reference/ROUTES.json|fixtures/reference/REGISTER.json|fixtures/reference/published/*|fixtures/reference/sources/*) ;; *) echo \"unexpected $f\"; exit 1;; esac; done; n=$(find fixtures/reference/published fixtures/reference/sources -type f | wc -l); r=$(node -e 'console.log(JSON.parse(require(\"fs\").readFileSync(\"fixtures/reference/REGISTER.json\")).totals.ingested)'); [ \"$n\" = \"$r\" ] && echo \"$n copies == register\""
-        ],
-        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-corpus-layout.log"
-      },
-      {
-        "cwd": ".",
-        "program": "sh",
-        "args": [
-          "-c",
-          "grep -q 'REPRODUCIBILITY PIN' fixtures/reference/README.md && grep -q 'never the current authority' fixtures/reference/README.md && ! grep -rqiE 'require\\(|from [\\\"'\\''](?!node:)' tests/reference/ingress.mjs"
-        ],
-        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-law-and-no-deps.log"
+          "--version"
+        ]
       }
     ]
   },
   "expected_outputs": [
-    "tests/reference/ingress.mjs",
-    "tests/reference/run-ingress-checks.sh",
-    "fixtures/reference/README.md",
-    "fixtures/reference/ROUTES.json",
-    "fixtures/reference/REGISTER.json",
-    "fixtures/reference/published/webassembly.github.io/spec/js-api/index.html",
-    "fixtures/reference/sources/whatwg/html/source"
+    "tests/reference/reopen.mjs",
+    "tests/reference/build-revisions.mjs",
+    "tests/reference/gate.mjs",
+    "tests/reference/d14-review.json"
   ],
   "tests": [
-    "harness syntax",
-    "plan-check PASS",
-    "offline verify PASS",
-    "register complete",
-    "corpus layout",
-    "pin law text; no dependencies"
+    "tools parse and name no authority",
+    "the D13 graph still validates, renders and merges identically"
+  ],
+  "narrowed_may_read": [
+    "*"
   ],
   "evidence_requirements": [
     "receipt"
-  ]
+  ],
+  "delta_id": "D14-FRONTIER-REOPEN"
 }

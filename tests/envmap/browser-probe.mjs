@@ -5,7 +5,9 @@
 // crossOriginIsolated, SharedArrayBuffer presence, 'gpu' in navigator, requestAdapter -> info (vendor, architecture,
 // device, description, isFallbackAdapter), features, limits.maxBufferSize, and WebAssembly.validate of the 13-byte
 // i64-memory module used by the generated wasm64 adapter.  Presence is recorded as presence; nothing here admits a backend.
-import { writeFileSync, mkdirSync } from 'node:fs';
+// D19: also records the executable actually launched (the /proc image of every browser process this node process
+// spawned), since chromium.executablePath() names Playwright's default path, not necessarily the binary it runs.
+import { writeFileSync, mkdirSync, readdirSync, readFileSync, readlinkSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createServer } from 'node:http';
 
@@ -21,6 +23,11 @@ const record = { tool: 'tests/envmap/browser-probe.mjs', observed: new Date().to
 const browser = await chromium.launch(launch);
 try {
   record.playwright_browser_version = browser.version();
+  const children = [];
+  for (const d of readdirSync('/proc').filter(x => /^\d+$/.test(x))) {
+    try { const st = readFileSync(`/proc/${d}/stat`, 'utf8'); const ppid = Number(st.slice(st.lastIndexOf(')') + 2).split(' ')[1]); if (ppid === process.pid) children.push({ pid: Number(d), exe: readlinkSync(`/proc/${d}/exe`), argv0: readFileSync(`/proc/${d}/cmdline`, 'utf8').split('\0')[0] }); } catch { }
+  }
+  record.launched_executable = { method: '/proc/<pid>/exe of the processes whose parent is this node process', processes: children.map(c => ({ exe: c.exe, argv0: c.argv0 })) };
   const page = await browser.newPage();
   const cdp = await page.context().newCDPSession(page);
   record.cdp_browser_version = await cdp.send('Browser.getVersion');

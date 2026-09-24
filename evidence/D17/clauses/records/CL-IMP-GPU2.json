@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-GPU2",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-GPU-SWITCHES-141",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "gpu/config/gpu_switches.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "4a4002457507c3457d5095b7450d7db1de1bfb632a862ca5d497b3342a2610cb",
+  "bytes": 7659
+ },
+ "locator": {
+  "text": "const char kEnableUnsafeWebGPU[] = \"enable-unsafe-webgpu\";",
+  "line_start": 44,
+  "line_end": 44,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "--enable-unsafe-webgpu is a Chromium 141 switch (the running revision)",
+ "excerpt": "const char kEnableUnsafeWebGPU[] = \"enable-unsafe-webgpu\";",
+ "excerpt_sha256": "36f439170240d93db2986729de410e2f16d66e5e7cef2793f45d052d157bf1d0",
+ "must_contain": {
+  "enable-unsafe-webgpu": true
+ },
+ "status": "VERIFIED"
+}

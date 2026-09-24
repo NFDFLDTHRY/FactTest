@@ -1,0 +1,5 @@
+$ sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN --out $T/g.json >/dev/null && node tests/reconcile/build-reconciliation.mjs --register tests/reconcile/d20-reconciliation.json --graph $T/g.json --root . --epoch D20-SYNC --delta D20-MAIN-SYNC --commit 'c3159d562768d52465ead5e44bc6c5259dfc1b79 (canonical base; integration commit in LEDGER AFTER)' --out design/environment-map/epochs/D20-SYNC.json
+(cwd .)
+D20-SYNC: 12 nodes, 112 edges -> design/environment-map/epochs/D20-SYNC.json; {"SUPERSEDED":2,"RESOLVED":3,"OPEN":2,"HOLDS":3}; supersessions 2; inherited 16; ledgered 0
+
+[exit 0] expected 0

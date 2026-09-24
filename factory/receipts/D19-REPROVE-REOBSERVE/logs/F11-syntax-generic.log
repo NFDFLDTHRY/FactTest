@@ -1,0 +1,5 @@
+$ sh -c for f in tests/reprove/identity.mjs tests/reprove/select.mjs tests/reprove/run-selected.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs tests/reprove/gate.mjs tests/envmap/envmap.mjs tests/envmap/browser-probe.mjs tests/hygiene/status-scan.mjs; do node --check $f || exit 1; done; for j in dimensions runbook obligations; do node -e 'JSON.parse(require("fs").readFileSync(process.argv[1]))' tests/reprove/$j.json || exit 1; done; ! grep -nE "'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]" tests/reprove/identity.mjs tests/reprove/select.mjs tests/reprove/run-selected.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs tests/reprove/gate.mjs tests/envmap/envmap.mjs tests/envmap/browser-probe.mjs tests/hygiene/status-scan.mjs && git diff --exit-code b509fb00920443930aa75b10dae05b9683d2fe1b -- tests ':!tests/reprove' ':!tests/envmap/envmap.mjs' ':!tests/envmap/browser-probe.mjs' ':!tests/hygiene/status-scan.mjs' && echo 'tools parse; generic; no other test changed'
+(cwd .)
+tools parse; generic; no other test changed
+
+[exit 0] expected 0

@@ -1,0 +1,30 @@
+{
+ "id": "CL-G2",
+ "trace": "G",
+ "authority": "AUTH-GIT-UPDATE-REF-CAS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "path": "Documentation/git-update-ref.adoc",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "sha256": "ba4abaaa5acc9e73587ae2195e0bf431f744258214e575e30f29ae3ff3763a22",
+  "bytes": 7612
+ },
+ "locator": {
+  "text": "Given three arguments, stores the <new-oid> in the <ref>,",
+  "line_start": 21,
+  "line_end": 28,
+  "derivation": "anchor text",
+  "enclosing_section": "#_description (line 15)"
+ },
+ "window": 8,
+ "consequence": "a ref moves only if its current value is the expected old id: the Factory's fast-forward gate and a browser ref store both need compare-and-set",
+ "excerpt": "Given three arguments, stores the <new-oid> in the <ref>,\npossibly dereferencing the symbolic refs, after verifying that\nthe current value of the <ref> matches <old-oid>.\nE.g. `git update-ref refs/heads/master <new-oid> <old-oid>`\nupdates the master branch head to <new-oid> only if its current\nvalue is <old-oid>.  You can specify 40 \"0\" or an empty string\nas <old-oid> to make sure that the ref you are creating does\nnot exist.",
+ "excerpt_sha256": "917c9d41a8e3a4cb134992a6bcdfce1074a7fcb34e33e6eed80efea60c34bdc1",
+ "must_contain": {
+  "only if its current": true,
+  "value is <old-oid>": true
+ },
+ "status": "VERIFIED"
+}

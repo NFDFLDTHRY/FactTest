@@ -1,0 +1,5 @@
+$ sh -c T=$(mktemp -d) && sh tests/hygiene/handoff-check.sh $T/handoff.json && grep -q 'last delta         D18-REPO-RECONCILIATION' docs/HANDOFF.md && grep -q 'D19-REPROVE-REOBSERVE' docs/HANDOFF.md && grep -q 'Resolved by D18-REPO-RECONCILIATION' docs/HANDOFF.md && grep -q 'D18 correction (label audit LBL-07)' README.md && grep -qF '(SwiftShader WebGPU + wasm64 in Chromium 141)' README.md
+(cwd .)
+handoff check PASS
+
+[exit 0] expected 0

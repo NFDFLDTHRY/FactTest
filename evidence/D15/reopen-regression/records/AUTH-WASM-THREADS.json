@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-WASM-THREADS",
+ "authority_class": "PROPOSAL",
+ "cited": {
+  "url": "https://webassembly.github.io/threads/core/",
+  "fragment": null,
+  "fragment_status_recorded": "NO_FRAGMENT_CITED",
+  "maturity_recorded": "proposal document; JS side requires WebAssembly.Memory({shared: true}) backed by SharedArrayBuffer",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/WebAssembly/threads",
+  "branch": "main",
+  "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+  "path": "proposals/threads/Overview.md",
+  "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73",
+  "observed": "2026-09-24",
+  "locator": "Overview: 'shared linear memory type' (line 6), JS example (line 96), validation rules (lines 148-152)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   6,
+   6
+  ],
+  "window_sha256": "6cb1673d6ac4392ec0e99b261dd0261953bc113c957e67936d39ae64524f4b49",
+  "window_excerpt": "This proposal adds a new shared linear memory type and some new operations for",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   6,
+   6
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 6,
+  "candidates": {
+   "section": {
+    "id": "#threading-proposal-for-webassembly",
+    "line": 1,
+    "kind": "markdown heading"
+   },
+   "definition": null
+  }
+ }
+}

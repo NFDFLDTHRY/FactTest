@@ -1,0 +1,21 @@
+{
+ "family": "CAP-CAMERA",
+ "matrix_row": "Camera",
+ "observed": "2026-09-24T08:42:27.853Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)",
+ "discovery_expr": "navigator.mediaDevices.enumerateDevices().then(d => ({audioinput: d.filter(x => x.kind === 'audioinput').length, videoinput: d.filter(x => x.kind === 'videoinput').length, audiooutput: d.filter(x => x.kind === 'audiooutput').length}))",
+ "exposed": true,
+ "discovery": {
+  "audioinput": 0,
+  "videoinput": 0,
+  "audiooutput": 0
+ },
+ "permissions": {
+  "camera": "prompt"
+ },
+ "policy": {
+  "camera": true
+ }
+}

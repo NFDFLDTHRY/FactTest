@@ -1,0 +1,69 @@
+{
+ "authority": "AUTH-CHROMIUM-GPU-SWITCHES",
+ "authority_class": "IMPLEMENTATION_SOURCE",
+ "cited": {
+  "url": "https://source.chromium.org/chromium/chromium/src/+/main:gpu/config/gpu_switches.cc",
+  "fragment": null,
+  "fragment_status_recorded": "NO_FRAGMENT_CITED",
+  "maturity_recorded": "source at the pinned commit",
+  "observed_recorded": "2026-09-24",
+  "reopen_recorded": "OPENED"
+ },
+ "pin": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+  "path": "gpu/config/gpu_switches.cc",
+  "sha256": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640",
+  "observed": "2026-09-24",
+  "locator": "lines 35-36, 55"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "e465e98ebffa362009e470e899a194016b2fec68"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640",
+ "tip_relation": "TIP MOVED, FILE IDENTICAL",
+ "tip_sha256": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   35,
+   36
+  ],
+  "window_sha256": "a3d20d939dde56967a784641ae8a79fdb3675a3fdbd8622f53344dcf3ada2c10",
+  "window_excerpt": "// Ignores GPU blocklist.\nconst char kIgnoreGpuBlocklist[] = \"ignore-gpu-blocklist\";",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   35,
+   36
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 35,
+  "candidates": {
+   "note": "implementation source: line-anchored, no published fragment semantics"
+  }
+ }
+}

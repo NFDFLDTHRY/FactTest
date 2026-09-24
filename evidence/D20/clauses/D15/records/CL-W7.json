@@ -1,0 +1,31 @@
+{
+ "id": "CL-W7",
+ "trace": "W",
+ "authority": "AUTH-WASM-JSAPI-MEMORIES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/js-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+  "bytes": 114471
+ },
+ "locator": {
+  "text": "1. If |addrtype| is \"i64\",",
+  "after": "<dfn>AddressValueToU64</dfn>",
+  "line_start": 1491,
+  "line_end": 1493,
+  "derivation": "anchor text after \"<dfn>AddressValueToU64</dfn>\"",
+  "enclosing_section": "#exported-function-exotic-objects (line 1238)"
+ },
+ "window": 3,
+ "consequence": "i64 address values (grow deltas, sizes) are BigInt in [0, 2^64-1]; a Number throws",
+ "excerpt": "1. If |addrtype| is \"i64\",\n    1. Let |n| be [=?=] [$ToBigInt$](|v|).\n    1. If |n| &lt; 0 or |n| &gt; 2<sup>64</sup> &minus; 1, [=throw=] a {{TypeError}}.",
+ "excerpt_sha256": "0c2ec410f53e378a28ad225f6ffb4886652e2bf034ba814bc3f084de1495eb16",
+ "must_contain": {
+  "[$ToBigInt$](|v|)": true,
+  "2<sup>64</sup> &minus; 1": true
+ },
+ "status": "VERIFIED"
+}

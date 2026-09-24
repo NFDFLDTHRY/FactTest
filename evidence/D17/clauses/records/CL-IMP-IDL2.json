@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-IDL2",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-IDL-AMBIENT-LIGHT",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "9d2e3ec02670b872648e925fbfde51ffe28736e4876a6d6718ecc685e209d6ff",
+  "bytes": 543
+ },
+ "locator": {
+  "text": "RuntimeEnabled=SensorExtraClasses,",
+  "line_start": 8,
+  "line_end": 11,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 4,
+ "consequence": "AmbientLightSensor exists only when SensorExtraClasses is enabled",
+ "excerpt": "    RuntimeEnabled=SensorExtraClasses,\n    SecureContext,\n    Exposed=Window\n] interface AmbientLightSensor : Sensor {",
+ "excerpt_sha256": "cb1920936cb7cc34045b1bfbe8f2a753c055f64371116c501f2a9e83165508a8",
+ "must_contain": {
+  "interface AmbientLightSensor : Sensor": true
+ },
+ "status": "VERIFIED"
+}

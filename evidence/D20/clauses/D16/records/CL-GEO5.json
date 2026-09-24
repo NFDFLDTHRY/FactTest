@@ -1,0 +1,29 @@
+{
+ "id": "CL-GEO5",
+ "trace": "GEO",
+ "authority": "AUTH-GEOLOCATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/geolocation",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+  "sha256": "5bc468fd115c1e17e53496a6c5329e7c4efa90c822aaf41d491abfbd465093a1",
+  "bytes": 59983
+ },
+ "locator": {
+  "text": "If |document:Document|'s [=Document/visibility state=] is",
+  "line_start": 681,
+  "line_end": 682,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 2,
+ "consequence": "a hidden document waits until visible before acquiring a position",
+ "excerpt": "          <li>If |document:Document|'s [=Document/visibility state=] is\n          \"hidden\", wait for the following [=page visibility change steps=] to",
+ "excerpt_sha256": "d17bbd163b47634a3c24890b7ce4336e695e2702b3631cc1765fd819e759641d",
+ "must_contain": {
+  "\"hidden\", wait for the following": true
+ },
+ "status": "VERIFIED"
+}

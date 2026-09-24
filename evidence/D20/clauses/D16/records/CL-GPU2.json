@@ -1,0 +1,29 @@
+{
+ "id": "CL-GPU2",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-REQUESTADAPTER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "Requests an [=adapter=] from the user agent.",
+  "line_start": 2494,
+  "line_end": 2496,
+  "derivation": "anchor text",
+  "enclosing_section": "#gpu-interface (line 2476)"
+ },
+ "window": 3,
+ "consequence": "requestAdapter is a user-agent choice, not a permission request: no prompt, no chooser",
+ "excerpt": "        Requests an [=adapter=] from the user agent.\n        The user agent chooses whether to return an adapter, and, if so,\n        chooses according to the provided options.",
+ "excerpt_sha256": "90e158d9c8e66f76a3bd0c8e681c97bd059473c44f74c2fab91bd875b63ca3f1",
+ "must_contain": {
+  "The user agent chooses whether to return an adapter": true
+ },
+ "status": "VERIFIED"
+}

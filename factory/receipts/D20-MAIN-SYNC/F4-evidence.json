@@ -1,0 +1,188 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D20-MAIN-SYNC-F4-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F4-evidence",
+  "workpiece_id": "W23",
+  "delta_id": "D20-MAIN-SYNC",
+  "canonical_base": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+  "input_artifacts": [
+    "tests/sync/d20-line.json",
+    "git objects of 1205fda"
+  ],
+  "open_tree": "13dbf09b2607ba2bbb3e28ed0359ad3dbbe12c63",
+  "close_tree": "7ed9d63ad2e6771363af9698a27d276499f06cd1",
+  "changed_paths": [
+    "evidence/D14-RESCAN/envmap/after.log",
+    "evidence/D14-RESCAN/envmap/merge-check.json",
+    "evidence/D14-RESCAN/envmap/queries/Q01.json",
+    "evidence/D14-RESCAN/envmap/queries/Q02.json",
+    "evidence/D14-RESCAN/envmap/queries/Q03.json",
+    "evidence/D14-RESCAN/envmap/queries/Q04.json",
+    "evidence/D14-RESCAN/envmap/queries/Q05.json",
+    "evidence/D14-RESCAN/envmap/queries/Q06.json",
+    "evidence/D14-RESCAN/envmap/queries/Q07.json",
+    "evidence/D14-RESCAN/envmap/queries/Q08.json",
+    "evidence/D14-RESCAN/envmap/queries/Q09.json",
+    "evidence/D14-RESCAN/envmap/queries/Q10.json",
+    "evidence/D14-RESCAN/envmap/queries/Q11.json",
+    "evidence/D14-RESCAN/envmap/queries/Q12.json",
+    "evidence/D14-RESCAN/envmap/queries/Q13.json",
+    "evidence/D14-RESCAN/envmap/queries/Q14.json",
+    "evidence/D14-RESCAN/envmap/queries/Q15.json",
+    "evidence/D14-RESCAN/envmap/queries/Q16.json",
+    "evidence/D14-RESCAN/envmap/render-check.json",
+    "evidence/D14-RESCAN/envmap/validate-before.json",
+    "evidence/D14-RESCAN/envmap/validate-before.log",
+    "evidence/D14-RESCAN/envmap/validate.json",
+    "evidence/D14-RESCAN/index.json",
+    "evidence/D14-RESCAN/index.log",
+    "evidence/D14-RESCAN/workpieces/audit-after.json",
+    "evidence/D14-RESCAN/workpieces/audit-after.log",
+    "evidence/D14-RESCAN/workpieces/audit-before.json",
+    "evidence/D14-RESCAN/workpieces/audit-before.log",
+    "evidence/D14-RESCAN/workpieces/retire.json",
+    "evidence/D14-RESCAN/workpieces/retire.log",
+    "evidence/D14/audit/audit.txt",
+    "evidence/D14/audit/fragments.json",
+    "evidence/D14/audit/link-audit.json",
+    "evidence/D14/hygiene/handoff.json",
+    "evidence/D14/hygiene/handoff.log",
+    "evidence/D14/hygiene/status-scan.log",
+    "evidence/D14/hygiene/status/inventory.json",
+    "evidence/D14/hygiene/status/summary.txt",
+    "evidence/D14/ingress/hosts.json",
+    "evidence/D14/ingress/refetch.json",
+    "evidence/D14/ingress/register.json",
+    "evidence/D14/ingress/run.log",
+    "evidence/D14/ingress/verdicts.log",
+    "evidence/D14/ingress/verify.json",
+    "evidence/D20/logs/F4-import-evidence.log"
+  ],
+  "output_artifacts": [
+    "evidence/D14/ingress/register.json",
+    "evidence/D14-RESCAN/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D20-MAIN-SYNC"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D20/logs/F4-import-evidence.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope evidence/D14/audit/,evidence/D14/ingress/,evidence/D14/hygiene/,evidence/D14-RESCAN/ && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope evidence/D14/audit/,evidence/D14/ingress/,evidence/D14/hygiene/,evidence/D14-RESCAN/",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D20/logs/F4-import-evidence.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14/ingress/register.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D14-RESCAN/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D20/logs/F4-import-evidence.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T11:40:29Z",
+  "status": "PASS"
+}

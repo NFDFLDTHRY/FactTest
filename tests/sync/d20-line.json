@@ -1,0 +1,39 @@
+{
+ "schema": "facttest-line-import/1",
+ "law": "design/materialization/D20-INTENDED-MAIN-SYNC.md (owner decision: merge main into the branch; keep this branch's D14 at its paths; relocate the colliding files of the other line; add its graph epoch after D19; keep both lines' law annotations)",
+ "line": {
+  "name": "main after pull request #5 (branch claude/d9-rust-cargo-proof-4nys6s)",
+  "base": "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+  "head": "1205fda00deff8c66cd7e3bb8eb529c87d6a472c",
+  "pull_request": 5,
+  "deltas": ["D14-PROMPT-INTAKE", "D14-TECHNICAL-REFERENCE-RESCAN"],
+  "relocated_id": "D14-RESCAN"
+ },
+ "relocate": [
+  { "from": "factory/deltas/D14.json", "to": "factory/deltas/D14-RESCAN.json" },
+  { "from": "factory/fixtures/D14/", "to": "factory/fixtures/D14-RESCAN/" },
+  { "from": "design/environment-map/epochs/D14.json", "to": "design/environment-map/epochs/D14-RESCAN.json" },
+  { "from": "evidence/D14/envmap/", "to": "evidence/D14-RESCAN/envmap/" },
+  { "from": "evidence/D14/workpieces/", "to": "evidence/D14-RESCAN/workpieces/" },
+  { "from": "evidence/D14/index.json", "to": "evidence/D14-RESCAN/index.json" },
+  { "from": "evidence/D14/index.log", "to": "evidence/D14-RESCAN/index.log" }
+ ],
+ "union": [
+  { "path": "REFERENCE-AUTHORITY.md", "order": "theirs-first" },
+  { "path": "CONSTRAINT-LEDGER.md", "order": "theirs-first" },
+  { "path": "CONFLICT-LEDGER.md", "order": "theirs-first" },
+  { "path": "IMPLEMENTATION-CONTRACTS.md", "order": "theirs-first" },
+  { "path": "EVIDENCE-OBLIGATIONS.md", "order": "theirs-first" }
+ ],
+ "embed": [
+  "design/materialization/LEDGER.md"
+ ],
+ "regenerate": [
+  "design/environment-map/graph.json",
+  "design/environment-map/AUTHORITY-REGISTER.md",
+  "design/environment-map/TRACEABILITY.md"
+ ],
+ "live": [
+  "docs/HANDOFF.md"
+ ]
+}

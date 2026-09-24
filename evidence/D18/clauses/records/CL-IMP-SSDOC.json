@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-SSDOC",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "docs/gpu/swiftshader.md",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0",
+  "bytes": 2763
+ },
+ "locator": {
+  "text": "SwiftShader is an open-source high-performance implementation",
+  "line_start": 3,
+  "line_end": 3,
+  "derivation": "anchor text",
+  "enclosing_section": "#using-chromium-with-swiftshader (line 1)"
+ },
+ "window": 1,
+ "consequence": "SwiftShader in Chromium 141 is CPU-only: no GPU is involved",
+ "excerpt": "SwiftShader is an open-source high-performance implementation of the Vulkan and OpenGL ES graphics APIs which runs purely on the CPU. Thus no graphics processor (GPU) is required for advanced (3D) graphics.",
+ "excerpt_sha256": "e0dbb55304c1735493842fcfa93b772043c2f5c90f59ba1341b8a1cdf144c804",
+ "must_contain": {
+  "which runs purely on the CPU": true
+ },
+ "status": "VERIFIED"
+}

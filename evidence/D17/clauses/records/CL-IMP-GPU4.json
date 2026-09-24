@@ -1,0 +1,31 @@
+{
+ "id": "CL-IMP-GPU4",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-GPU-UTIL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "gpu/config/gpu_util.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "91701bdd395fba5c8514ce5f0faca88b82b063811d9b6d9dba291cac65d7d2aa",
+  "bytes": 42623
+ },
+ "locator": {
+  "text": "GpuFeatureStatus GetWebGPUFeatureStatus(",
+  "line_start": 194,
+  "line_end": 201,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 8,
+ "consequence": "under SwiftShader Chromium reports the WebGPU feature status as Software",
+ "excerpt": "GpuFeatureStatus GetWebGPUFeatureStatus(\n    const std::set<int>& blocklisted_features,\n    bool use_swift_shader) {\n  if (use_swift_shader)\n    return kGpuFeatureStatusSoftware;\n  if (blocklisted_features.count(GPU_FEATURE_TYPE_ACCELERATED_WEBGPU))\n    return kGpuFeatureStatusSoftware;\n  return kGpuFeatureStatusEnabled;",
+ "excerpt_sha256": "d30fe910b31bd5b0a931bd7bacaed05fc54ae9e2de04e3453b0a1cd8d17cccc5",
+ "must_contain": {
+  "if (use_swift_shader)": true,
+  "return kGpuFeatureStatusSoftware;": true
+ },
+ "status": "VERIFIED"
+}

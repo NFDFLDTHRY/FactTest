@@ -1,0 +1,28 @@
+{
+ "tool": "tests/implementation/build-kernels.sh",
+ "rustc": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+ "llvm": "23.1.1",
+ "cargo": "cargo 1.100.0-nightly (98a09e7e7 2026-09-21)",
+ "host": "Linux 6.18.44-fc-v37 x86_64",
+ "rustflags": "-C link-arg=-zstack-size=16777216",
+ "builds": [
+  {
+   "label": "INSTALL-PINNED",
+   "toolchain": "nightly-2026-09-24",
+   "install_name": "nightly-2026-09-24",
+   "install_path": "/root/.rustup/toolchains/nightly-2026-09-24-x86_64-unknown-linux-gnu",
+   "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+   "wasm_sha256": "6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81",
+   "bytes": 3350254
+  },
+  {
+   "label": "INSTALL-RENAMED",
+   "toolchain": "nightly-2026-09-24",
+   "install_name": "nightly",
+   "install_path": "/root/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu (bind mount of nightly-2026-09-24 in a private namespace)",
+   "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+   "wasm_sha256": "309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c",
+   "bytes": 3350252
+  }
+ ]
+}

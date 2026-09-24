@@ -52,6 +52,9 @@ Effect: JS host membrane must represent the current Memory descriptor/address mo
 
 ### WA-004 — Wasm streaming delivery has response requirements
 Clause: https://webassembly.github.io/spec/web-api/#streaming-module-compilation-and-instantiation  
+D18 ANNOTATION (fragment #streaming-module-compilation-and-instantiation): no such id exists in the pinned or current source
+(D14 [ERR]); the clause is at #streaming-modules (D14 revision; D15 clauses CL-S1..CL-S4).  Current authority node:
+AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING).  The URL above is kept as historically written.
 Constraint: streaming compilation rejects unsuitable CORS/status/MIME responses; application/wasm is part of the delivery contract.  
 Test: wrong MIME and non-ok response fixtures must fail admission.
 
@@ -59,6 +62,9 @@ Test: wrong MIME and non-ok response fixtures must fail admission.
 Section: https://webassembly.github.io/spec/js-api/#internal-storage  
 D13 ANNOTATION (fragment #internal-storage): the citation above is preserved exactly as historically written.  It is NOT asserted to be a currently valid fragment: the pinned source WebAssembly/spec@608711107b has no id "internal-storage" (it has #webassembly-storage and #store) - FRAGMENT_DRIFT [ERR]; whether the published rendering still carries an alias is [UNK] (host denied).  Semantic resolution is deferred to the D14 technical reference rescan (design/environment-map/AUTHORITY-REGISTER.md AUTH-WASM-JSAPI-STORAGE; docs/HANDOFF.md section 6).
 D14 ANNOTATION (fragment #internal-storage): confirmed at the published rendering taken from WebAssembly/spec gh-pages@dcb71aa493d7 (fixtures/reference/published/webassembly.github.io/spec/js-api/index.html, evidence/D14/audit/fragments.json): no element carries id "internal-storage"; the section is <h2 id="webassembly-storage"> (also #store).  Historical citation preserved; NOT asserted current [ERR]; the rendering was not observed at the published host (egress denied).
+D18 ANNOTATION (fragment #internal-storage, resolved): D14 found the cited clause at #webassembly-storage in the pinned and
+current source (locator move, clause text unchanged); D15 cites the agent-local clause at #store (CL-T1).  Current authority
+node: AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE).  The URL above is kept as historically written.
 Constraint: current JS Interface's internal-storage model states that WebAssembly objects, memory and addresses are not shared among agents in that specification.  
 Effect: do not model proposal-based shared Wasm threading as an unconditional Core+JS backend.
 
@@ -262,3 +268,104 @@ https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/main/pro
 Effect: do not silently treat shared-everything functionality as current Core 3.0 browser semantics.
 
 See [CONFLICT-LEDGER.md](CONFLICT-LEDGER.md).
+
+D18 ANNOTATION (constraints ledgered): the constraints below were PROPOSED nodes of design/environment-map/graph.json
+(D11, D13, D15, D16).  From D18-REPO-RECONCILIATION on they are project law in this ledger.  Each statement is verbatim
+from the graph node; the authorities are the current ones (superseded pins replaced by their successors, D18
+reconciliation R-10..R-14, R-48).  The graph keeps ledger_status PROPOSED on each node as history; its LEDGERED_IN edge
+to LAW-CONSTRAINT-LEDGER is the current status (tests/reconcile/d18-reconciliation.json R-21).
+
+### CON-EM-001 (D11, external) - ledgered D18
+Constraint: navigator.gpu is a [SecureContext] attribute: WebGPU exposure requires a secure context, and the loopback origin 127.0.0.0/8 is potentially trustworthy.  
+Authorities: AUTH-GPU-NAVIGATOR-GPU, AUTH-SECCTX-TRUSTWORTHY  
+Scope: host
+
+### CON-EM-002 (D11, external) - ledgered D18
+Constraint: A fallback/software adapter (GPUAdapterInfo.isFallbackAdapter, architecture 'swiftshader') is browser WebGPU API execution on the CPU, never hardware GPU execution; hardware evidence needs a non-fallback adapter.  
+Authorities: AUTH-GPU-FALLBACK-ADAPTER, AUTH-GPU-ADAPTERINFO, AUTH-IMPL-SWIFTSHADER-README  
+Scope: host
+
+### CON-EM-003 (D11, external) - ledgered D18
+Constraint: An adapter is single-use (consumed after requestDevice) and may expire at any time; recovery must start again at requestAdapter; requestDevice on an expired adapter yields a device lost with reason 'unknown'.  
+Authorities: AUTH-GPU-ADAPTER-EXPIRE, AUTH-GPU-REQUESTDEVICE  
+Scope: host
+
+### CON-EM-004 (D11, external) - ledgered D18
+Constraint: A wasm64 module produced by rustc assumes bulk-memory, mutable-globals, sign-ext and nontrapping-fptoint; the executing engine must accept these in addition to i64 addresses.  
+Authorities: AUTH-RUSTC-WASM64-TARGET-SPEC-D18, AUTH-RUSTC-WASM64-DOC-D18  
+Scope: target
+
+### CON-EM-005 (D11, project) - ledgered D18
+Constraint: Toolchain identity is recorded per evidence record and never pinned by the repository; a wasm64/no_std claim is valid for the recorded nightly commit and component set only.  
+Authorities: AUTH-CARGO-BUILD-STD, LAW-EVIDENCE-OBLIGATIONS  
+Scope: toolchain
+
+### CON-EM-006 (D11, external) - ledgered D18
+Constraint: Browser flags that enable a software GPU path are implementation switches documented for GL/WebGL; their effect on WebGPU admission is established only by the executed probe, not by documentation.  
+Authorities: AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141, AUTH-IMPL-GPU-SWITCHES-141, AUTH-IMPL-GL-SWITCHES-141, AUTH-IMPL-CONTENT-SWITCHES-141  
+Scope: host
+
+### CON-EM-007 (D13, project) - ledgered D18
+Constraint: Each proof set runs on its pinned toolchain (HOST_NATIVE_SET: rust-toolchain.toml 1.94.1; WASM64_KERNEL_SET: proof-sets.json nightly-2026-09-24, enforced by the qualified runner); evidence still records the observed identity; kernel byte identity is declared per rust-src install name.  
+Authorities: AUTH-CARGO-BUILD-STD, LAW-EVIDENCE-OBLIGATIONS  
+Scope: toolchain
+
+### CON-FT-004 (D11, project) - ledgered D18
+Constraint: canonical_base is a git commit object name; a workpiece is a detached linked worktree at that commit; integration is fast-forward only when the canonical head still equals canonical_base.  
+Authorities: AUTH-GIT-GLOSSARY-COMMIT, AUTH-GIT-REVISIONS, AUTH-GIT-WORKTREE, AUTH-GIT-REPO-LAYOUT, LAW-FACTORY-CONTRACTS  
+Scope: factory
+
+### CON-FT-005 (D11, project) - ledgered D18
+Constraint: Station and fixture surfaces are literal prefix sets ('*', 'dir/', or an exact file); glob-looking entries authorize nothing (D9 [GAP]).  
+Authorities: LAW-FACTORY-CONTRACTS  
+Scope: factory
+
+### CON-FT-006 (D11, project) - ledgered D18
+Constraint: Physical browser evidence is a separate class from synthetic/model evidence; the E0 -> E1 sequence must be witnessed physically with no codegen between epochs and the authored source unchanged.  
+Authorities: LAW-PASS6-COMMISSIONING, LAW-RUNTIME-ADMISSION  
+Scope: runtime
+
+### CON-FT-007 (D13, project) - ledgered D18
+Constraint: Proof records name their proof set, target, profile and toolchain; bare cargo selects HOST_NATIVE_SET (default-members), never the whole project; CROSS_SET and HEURISTIC records carry proof weight NONE.  
+Authorities: LAW-FACTORY-CONTRACTS  
+Scope: proof
+
+### CON-WA-006 (D15, external) - ledgered D18
+Constraint: At the JavaScript boundary every i64 export parameter/result and every i64 address value is a BigInt (ToWebAssemblyValue uses ToBigInt64; ToJSValue returns a mathematical integer; AddressValueToU64 requires BigInt in [0, 2^64-1]); a Number is a TypeError, never a silent coercion.  
+Authorities: AUTH-WASM-JSAPI-VALUES, AUTH-WASM-JSAPI-MEMORIES, AUTH-ECMA-262, AUTH-WEBIDL  
+Scope: host membrane
+
+### CON-SEC-002 (D15, external) - ledgered D18
+Constraint: A secure context is decided by the environment's top-level creation URL, while trust checks on an ORIGIN treat an opaque origin as Not Trustworthy: a sandboxed generation frame under a trustworthy top-level is a secure context with an opaque origin (secure-context APIs exposed; origin storage, SW control and same-origin reach denied).  
+Authorities: AUTH-HTML-SECURE-CONTEXT, AUTH-SECCTX-TRUSTWORTHY, AUTH-HTML-SANDBOX-ORIGIN  
+Scope: confinement
+
+### CON-PP-001 (D15, external) - ledgered D18
+Constraint: A policy-controlled feature whose default allowlist is 'self' is Disabled in a frame that is not same origin with its container unless the container policy (allow attribute) enables it; capability admission inside a confined generation therefore requires an explicit allow= grant AND permission.  
+Authorities: AUTH-PERMISSIONS-POLICY, AUTH-PERMISSIONS  
+Scope: capability admission
+
+### CON-SW-001 (D15, external) - ledgered D18
+Constraint: A service worker's update check fetches its script with service workers bypassed and a failed install keeps the active worker: an installed seed can neither replace itself from its own caches nor be broken by an interrupted update, and cannot be updated at all while its origin is unreachable.  
+Authorities: AUTH-FETCH, AUTH-SW-UPDATE-BYPASS, AUTH-SW-INSTALL-FAILED  
+Scope: seed lifecycle
+
+### CON-ST-001 (D15, external) - ledgered D18
+Constraint: Origin storage is best-effort unless persistence is granted; best-effort buckets may be cleared under storage pressure and persist() is exposed only to windows: durability of Factory-held objects is a UA grant to observe, never an assumption.  
+Authorities: AUTH-STORAGE-BUCKET-MODE  
+Scope: storage
+
+### CON-GIT-001 (D15, external) - ledgered D18
+Constraint: Git object identity is SHA-1 (or SHA-256 by repository format) over the typed header and content, and refs move by compare-and-set; tree-entry ordering is normalized by the implementation without a documented rule, so a non-git tree encoder is correct only where equality with git has been observed.  
+Authorities: AUTH-GIT-OBJECT-FORMAT, AUTH-GIT-UPDATE-REF-CAS, AUTH-GIT-MKTREE, AUTH-GIT-SHA256-TRANSITION  
+Scope: object store
+
+### CON-CAP-001 (D16, admission) - ledgered D18
+Constraint: Interface exposure never admits a capability: admission requires the family's secure-context, policy, permission/chooser and request gates to pass and a known-answer to execute (e.g. Geolocation is exposed without [SecureContext] yet denies every request in a non-secure context; WebNN createContext can reject after navigator.ml is present)  
+Authorities: AUTH-GEOLOCATION, AUTH-WEBNN, AUTH-GPU-REQUESTADAPTER  
+Scope: every capability family in CAPABILITY-MATRIX.md
+
+### CON-CAP-002 (D16, probe_obligation) - ledgered D18
+Constraint: Families whose request algorithm requires transient activation or a chooser (HID, USB, Serial, Bluetooth, immersive XR, device-orientation permission) carry a probe obligation that names its automation path (user gesture, granted permission state, or virtual device); without one they stay [OBS]/[GAP], never [RUN]  
+Authorities: AUTH-WEBHID, AUTH-WEBUSB, AUTH-SERIAL, AUTH-WEB-BLUETOOTH, AUTH-WEBXR, AUTH-DEVICE-ORIENTATION  
+Scope: chooser/activation-gated families

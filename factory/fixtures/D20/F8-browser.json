@@ -1,0 +1,32 @@
+{
+  "fixture_id": "F8-browser",
+  "station_id": "S-BROWSER",
+  "selected_inputs": [
+    "selection of F7"
+  ],
+  "narrowed_may_change": [
+    "evidence/D20/results/",
+    "evidence/D20/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D20/selection.json --runbook tests/reprove/runbook.json --kind cite --out evidence/D20"
+        ],
+        "log": "evidence/D20/logs/F8-cite.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

@@ -1,0 +1,261 @@
+{
+  "fixture_id": "F4-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "D18R graph",
+    "repair register"
+  ],
+  "narrowed_may_change": [
+    "evidence/D18R/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D18R/envmap/validate.json"
+        ],
+        "log": "evidence/D18R/logs/F4-validate.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "query",
+          "design/environment-map/graph.json",
+          "--all",
+          "--out",
+          "evidence/D18R/envmap/queries"
+        ],
+        "log": "evidence/D18R/logs/F4-queries.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "stale",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D18R/envmap/stale.json"
+        ],
+        "log": "evidence/D18R/logs/F4-stale.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge-check",
+          "design/environment-map/graph.json",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json",
+          "--out",
+          "evidence/D18R/envmap/merge-check.json"
+        ],
+        "log": "evidence/D18R/logs/F4-merge-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render-check",
+          "design/environment-map/graph.json",
+          "--dir",
+          "design/environment-map",
+          "--out",
+          "evidence/D18R/envmap/render-check.json"
+        ],
+        "log": "evidence/D18R/logs/F4-render-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/reconcile/surfaces.mjs",
+          "tests/reconcile/d18r-surfaces.json",
+          "--out",
+          "evidence/D18R/surfaces.json"
+        ],
+        "log": "evidence/D18R/logs/F4-surfaces.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/reconcile/gate.mjs",
+          "--register",
+          "tests/reconcile/d18r-reconciliation.json",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--queries",
+          "evidence/D18R/envmap/queries",
+          "--surfaces",
+          "evidence/D18R/surfaces.json",
+          "--label-audit",
+          "tests/implementation/label-audit.json",
+          "--out",
+          "evidence/D18R/gate.json"
+        ],
+        "log": "evidence/D18R/logs/F4-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/reconcile/gate.mjs",
+          "--register",
+          "tests/reconcile/d18-reconciliation.json",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--queries",
+          "evidence/D18R/envmap/queries",
+          "--surfaces",
+          "evidence/D18/surfaces.json",
+          "--label-audit",
+          "tests/implementation/label-audit.json",
+          "--out",
+          "evidence/D18R/regress/d18-gate.json"
+        ],
+        "log": "evidence/D18R/logs/F4-d18-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const q=JSON.parse(require(\"fs\").readFileSync(\"evidence/D18R/envmap/queries/Q21.json\")).answer;const r=q.rows.find(x=>x.reconciliation===\"R-32\");console.log(q.reconciliations,JSON.stringify(q.by_outcome),JSON.stringify(q.current_model.facts),JSON.stringify(r.revised_by));if(!r.revised_by||!r.revised_by.includes(\"R-52\")||q.stale_facts.reconciled!==q.stale_facts.to_recheck)process.exit(1)'"
+        ],
+        "log": "evidence/D18R/logs/F4-q21-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D18R/regress && node tests/capability/gate.mjs --universe tests/capability/universe.json --matrix CAPABILITY-MATRIX.md --census evidence/D16/census --graph design/environment-map/graph.json --out evidence/D18R/regress/capability-gate.json"
+        ],
+        "log": "evidence/D18R/logs/F4-capability-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D18R/regress && node tests/implementation/gate.mjs --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph design/environment-map/graph.json --out evidence/D18R/regress/implementation-gate.json"
+        ],
+        "log": "evidence/D18R/logs/F4-implementation-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/hygiene/status-scan.mjs",
+          "--rules",
+          "tests/hygiene/status-classification.json",
+          "--out",
+          "evidence/D18R/status"
+        ],
+        "log": "evidence/D18R/logs/F4-status-scan.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "tests/hygiene/handoff-check.sh",
+          "evidence/D18R/handoff-check.json"
+        ],
+        "log": "evidence/D18R/logs/F4-handoff-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W21",
+          "--out",
+          "evidence/D18R/workpieces/audit-before.json"
+        ],
+        "log": "evidence/D18R/logs/F4-audit-before.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "retire",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W21",
+          "--out",
+          "evidence/D18R/workpieces/retire.json"
+        ],
+        "log": "evidence/D18R/logs/F4-retire.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W21",
+          "--out",
+          "evidence/D18R/workpieces/audit-after.json"
+        ],
+        "log": "evidence/D18R/logs/F4-audit-after.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D18R/workpieces/audit-after.json\"));console.log(JSON.stringify(a.totals));if(a.totals.RETIRABLE!==0)process.exit(1)'"
+        ],
+        "log": "evidence/D18R/logs/F4-cleanup-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D18R",
+          "evidence/D18R/index.json"
+        ],
+        "log": "evidence/D18R/logs/F4-index.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D18R/envmap/queries/Q21.json",
+    "evidence/D18R/gate.json",
+    "evidence/D18R/index.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18R-CHAIN-REPAIR"
+}

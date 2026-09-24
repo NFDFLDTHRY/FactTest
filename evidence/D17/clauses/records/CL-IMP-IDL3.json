@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-IDL3",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-IDL-DEVICE-ORIENTATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/modules/device_orientation/device_orientation_event.idl",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "c22c110e45b849ae546dfdd5fc466b2c590c40a59f8bfff060a9432cb6b00635",
+  "bytes": 1946
+ },
+ "locator": {
+  "text": "[RuntimeEnabled=DeviceOrientationRequestPermission",
+  "line_start": 36,
+  "line_end": 36,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "requestPermission exists only when DeviceOrientationRequestPermission is enabled",
+ "excerpt": "    [RuntimeEnabled=DeviceOrientationRequestPermission, CallWith=ScriptState, MeasureAs=DeviceOrientationPermissionRequested] static Promise<PermissionState> requestPermission();",
+ "excerpt_sha256": "fb41184fec570612d4c027af4d2a6d75e83c3d8024d7ed1470fc577374d13d9e",
+ "must_contain": {
+  "static Promise<PermissionState> requestPermission();": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,188 @@
+{
+ "schema": "facttest-label-audit/1",
+ "epoch": "D17",
+ "patterns": [
+  "CHROMIUM_AS_STANDARD",
+  "SWIFTSHADER_AS_HARDWARE",
+  "FLAG_AS_ADMISSION",
+  "V8_AS_UNIVERSAL",
+  "HEADLESS_AS_INSTALLED",
+  "IMPLEMENTATION_PIN_NOT_RUN_VERSION"
+ ],
+ "findings": [
+  {
+   "id": "LBL-01",
+   "pattern": "CHROMIUM_AS_STANDARD",
+   "verdict": "MISLABEL",
+   "location": {
+    "file": "design/environment-map/TRACEABILITY.md",
+    "text": "SharedArrayBuffer needs cross-origin isolation"
+   },
+   "evidence": [
+    "CL-T4",
+    "CL-T6",
+    "CL-IMP-SAB1"
+   ],
+   "note": "FACT-SHARED-THREADS-UNADMITTED (D11) states Chromium's constructor hook as a general requirement",
+   "correction": "SharedArrayBuffer serialization needs the cross-origin isolated capability (standard, CL-T4); Chromium additionally hides the constructor outside isolation (implementation, CL-IMP-SAB1)"
+  },
+  {
+   "id": "LBL-02",
+   "pattern": "CHROMIUM_AS_STANDARD",
+   "verdict": "OK",
+   "location": {
+    "file": "design/environment-map/TRACEABILITY.md",
+    "text": "D11's observed absence of the global without COOP/COEP is Chromium behaviour"
+   },
+   "evidence": [
+    "CL-IMP-SAB1"
+   ],
+   "note": "D15 already relabelled the global's absence as host behaviour; D17 pins its source"
+  },
+  {
+   "id": "LBL-03",
+   "pattern": "SWIFTSHADER_AS_HARDWARE",
+   "verdict": "OK",
+   "location": {
+    "file": "docs/HANDOFF.md",
+    "text": "only SwiftShader fallback adapters ever observed"
+   },
+   "evidence": [
+    "CL-IMP-GPU8",
+    "CL-IMP-GPU9"
+   ],
+   "note": "hardware GPU stays [UNK]"
+  },
+  {
+   "id": "LBL-04",
+   "pattern": "SWIFTSHADER_AS_HARDWARE",
+   "verdict": "OK",
+   "location": {
+    "file": "tests/capability/universe.json",
+    "text": "adapter (SwiftShader fallback, flags)"
+   },
+   "evidence": [
+    "CL-IMP-GPU8"
+   ],
+   "note": "the WebGPU family's RUN parts name the fallback adapter and the switches"
+  },
+  {
+   "id": "LBL-05",
+   "pattern": "FLAG_AS_ADMISSION",
+   "verdict": "OK",
+   "location": {
+    "file": "design/environment-map/TRACEABILITY.md",
+    "text": "browser.flags == GPU flag set"
+   },
+   "evidence": [
+    "CL-IMP-GPU1",
+    "CL-IMP-GPU2"
+   ],
+   "note": "the WebGPU admission facts bind their environment to the switch set"
+  },
+  {
+   "id": "LBL-06",
+   "pattern": "FLAG_AS_ADMISSION",
+   "verdict": "MISLABEL",
+   "location": {
+    "file": "docs/HANDOFF.md",
+    "text": "Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64)"
+   },
+   "evidence": [
+    "CL-IMP-GPU1",
+    "CL-IMP-GPU2"
+   ],
+   "note": "the live handoff omits that the WebGPU half needs the unsafe switch set on Linux (WebGPUService is off by default there)",
+   "correction": "... (SwiftShader WebGPU under --enable-unsafe-webgpu + Vulkan switches in the Linux headless shell; wasm64 ungated)"
+  },
+  {
+   "id": "LBL-07",
+   "pattern": "FLAG_AS_ADMISSION",
+   "verdict": "MISLABEL",
+   "location": {
+    "file": "README.md",
+    "text": "(SwiftShader WebGPU + wasm64 in Chromium 141)"
+   },
+   "evidence": [
+    "CL-IMP-GPU1",
+    "CL-IMP-GPU2"
+   ],
+   "note": "same omission in the README",
+   "correction": "(SwiftShader WebGPU under unsafe WebGPU switches in the Chromium 141 headless shell, plus wasm64)"
+  },
+  {
+   "id": "LBL-08",
+   "pattern": "V8_AS_UNIVERSAL",
+   "verdict": "OK",
+   "location": {
+    "file": "design/environment-map/TRACEABILITY.md",
+    "text": "required environment: browser.js_engine"
+   },
+   "evidence": [
+    "CL-IMP-V8A",
+    "CL-IMP-V8B"
+   ],
+   "note": "memory64 discovery is bound to the browser's JS engine; Node's V8 12.4 difference is recorded (FACT-NODE-NO-MEMORY64)"
+  },
+  {
+   "id": "LBL-09",
+   "pattern": "HEADLESS_AS_INSTALLED",
+   "verdict": "OK",
+   "location": {
+    "file": "tests/selfhost/primitives-probe.mjs",
+    "text": "persist() returned false in this headless, non-installed environment"
+   },
+   "evidence": [
+    "CL-IMP-HL1",
+    "CL-IMP-HL3"
+   ],
+   "note": "the D12 probe itself labels the observation headless and non-installed"
+  },
+  {
+   "id": "LBL-10",
+   "pattern": "HEADLESS_AS_INSTALLED",
+   "verdict": "MISLABEL",
+   "location": {
+    "file": "docs/HANDOFF.md",
+    "text": "storage best-effort, persist() false"
+   },
+   "evidence": [
+    "CL-IMP-HL1",
+    "CL-IMP-HL3"
+   ],
+   "note": "the live boundary row drops the qualifier: the headless shell answers ASK to every permission, so persist() cannot succeed there, while full Chrome grants durable storage to installed domains",
+   "correction": "D12 B-11: persist() cannot succeed in the headless shell (every permission ASK); durability of an installed Factory in full Chrome is [UNK] (Chrome grants installed domains)"
+  },
+  {
+   "id": "LBL-11",
+   "pattern": "HEADLESS_AS_INSTALLED",
+   "verdict": "MISLABEL",
+   "location": {
+    "file": "design/environment-map/TRACEABILITY.md",
+    "text": "Chromium 141 persistent profile"
+   },
+   "evidence": [
+    "CL-IMP-PW1",
+    "CL-IMP-PW4"
+   ],
+   "note": "the D12 self-hosting facts name their environment 'Chromium 141 persistent profile' while the executable was chromium-headless-shell (HeadlessChrome) under launchPersistentContext({headless:true})",
+   "correction": "chromium-headless-shell 141 (rev 1194) persistent profile via Playwright launchPersistentContext({headless:true})"
+  },
+  {
+   "id": "LBL-12",
+   "pattern": "IMPLEMENTATION_PIN_NOT_RUN_VERSION",
+   "verdict": "MISLABEL",
+   "location": {
+    "file": "design/environment-map/AUTHORITY-REGISTER.md",
+    "text": "75d6f0c05bd0871db3f3bc97fccf6605115250c4"
+   },
+   "evidence": [
+    "CL-IMP-GPU2",
+    "CL-IMP-GPU5",
+    "CL-IMP-GPU6"
+   ],
+   "note": "D11 pinned Chromium switch sources (and V8 flags) at later main commits whose files differ from the running 141 / 14.1 sources (FACT-IMPL-PINS-NOT-RUNNING-VERSION)",
+   "correction": "re-pin AUTH-CHROMIUM-*-SWITCHES to 9f043f63 and AUTH-V8-FLAGS to ad8af0fc (the running versions)"
+  }
+ ]
+}

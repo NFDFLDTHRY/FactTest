@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GIT-REPO-LAYOUT",
+ "authority_class": "TOOL_DOC",
+ "cited": {
+  "url": "https://git-scm.com/docs/gitrepository-layout",
+  "fragment": "#_worktrees",
+  "fragment_status_recorded": "DERIVED_FROM_HEADING_UNVERIFIED",
+  "maturity_recorded": "manual page",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "path": "Documentation/gitrepository-layout.adoc",
+  "sha256": "39ce8d137a30e1fd80eeae146b1c424e56f688f4ddd001259eb98543d3209439",
+  "observed": "2026-09-24",
+  "locator": "entries worktrees:: and worktrees/<id>/gitdir:: (lines 278-291)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "39ce8d137a30e1fd80eeae146b1c424e56f688f4ddd001259eb98543d3209439",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#_worktrees",
+  "at_pin": {
+   "status": "ABSENT"
+  },
+  "at_tip": {
+   "status": "ABSENT"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   278,
+   291
+  ],
+  "window_sha256": "1075ef2ab5afd946c3d5205781988163936adf36d73d6b02405ac6c5907a7bc0",
+  "window_excerpt": "worktrees::\n\tContains administrative data for linked\n\tworking trees. Each subdirectory contains the working tree-related\n\tpart of a linked working tree. This directory is ignored if\n\t$GIT_COMMON_DIR is set, in which case\n\t\"$GIT_COMMON_DIR/worktrees\" will be used instead.\n\nworktrees/<id>/gitdir::\n\tA text file containing the absolute path back to the .git file\n\tthat points to here. This is used to check if the linked\n\trepository has been manually removed and there is no need to\n\tkeep this directory any more. The mtime of this file should be\n\tupdated every time the linked repository is accessed.\n",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   278,
+   291
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "cited fragment absent at the source tip",
+  "clause_line": 278,
+  "candidates": {
+   "section": {
+    "id": "#_description",
+    "line": 12,
+    "kind": "asciidoctor setext section"
+   },
+   "definition": null
+  }
+ }
+}

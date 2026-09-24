@@ -1,0 +1,78 @@
+{
+  "fixture_id": "F6-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "D18 section 5",
+    "Factory evidence of F2",
+    "annotated ledger of F3"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/graph.json",
+    "design/environment-map/epochs/D18.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json --out $T/g17.json >/dev/null && node tests/reference/build-clauses.mjs --clauses evidence/D18/clauses --manifest tests/reference/d18-clauses.json --epoch D18 --delta D18-REPO-RECONCILIATION --commit '715ac92d327f5f2677fd7c0b067fa843da6323c4 (canonical base; integration commit in LEDGER AFTER)' --harness-in $T/g17.json --out $T/clauses.json && node tests/reconcile/build-reconciliation.mjs --clause-epoch $T/clauses.json --register tests/reconcile/d18-reconciliation.json --graph $T/g17.json --root . --epoch D18 --delta D18-REPO-RECONCILIATION --commit '715ac92d327f5f2677fd7c0b067fa843da6323c4 (canonical base; integration commit in LEDGER AFTER)' --declare --out design/environment-map/epochs/D18.json"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-build-epoch.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json",
+          "--out",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-merge.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-render.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 11. Reconciliation and the current model (D18)' design/environment-map/SCHEMA.md && grep -q 'Reconciliation epoch D18' design/environment-map/ENVIRONMENT-MAP.md"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/epochs/D18.json",
+    "design/environment-map/graph.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18-REPO-RECONCILIATION"
+}

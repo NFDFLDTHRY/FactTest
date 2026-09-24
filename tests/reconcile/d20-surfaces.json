@@ -1,0 +1,74 @@
+{
+ "schema": "facttest-reconcile-surfaces/1",
+ "epoch": "D20-SYNC",
+ "base": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+ "annotated": {
+  "marker": "D14 ANNOTATION",
+  "files": [
+   "REFERENCE-AUTHORITY.md",
+   "CONSTRAINT-LEDGER.md",
+   "CONFLICT-LEDGER.md",
+   "IMPLEMENTATION-CONTRACTS.md",
+   "EVIDENCE-OBLIGATIONS.md"
+  ]
+ },
+ "surfaces": [
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-54",
+   "must_contain": [
+    "FACT-PUBLISHED-FRONTIER-D20",
+    "Pages-branch"
+   ],
+   "must_not_contain": [
+    "no current published authority, fragment or TR maturity could be verified"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-58",
+   "must_contain": [
+    "#database-concept",
+    "#navigator-xr",
+    "owner-approved law delta"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-59",
+   "must_not_contain": [
+    "0 pinned files changed at the current branch head"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-60",
+   "must_contain": [
+    "CON-EM-D14-001"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-63",
+   "must_contain": [
+    "sync merge"
+   ]
+  },
+  {
+   "file": "REFERENCE-AUTHORITY.md",
+   "reconciliation": "R-56",
+   "must_contain": [
+    "D14 ANNOTATION (fragment #internal-storage)",
+    "AUTH-WASM-JSAPI-STORAGE-D18"
+   ]
+  },
+  {
+   "file": "REFERENCE-AUTHORITY.md",
+   "reconciliation": "R-57",
+   "must_contain": [
+    "D14 ANNOTATION (fragment #streaming-module-compilation-and-instantiation)",
+    "AUTH-WASM-WEBAPI-STREAMING-D18"
+   ]
+  }
+ ]
+}

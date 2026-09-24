@@ -1,0 +1,4 @@
+$ sh -c node -e 'const a=JSON.parse(require("fs").readFileSync("evidence/D14/workpieces/audit-after.json"));if(a.totals.RETIRABLE!==0)process.exit(1)'
+(cwd .)
+
+[exit 0] expected 0

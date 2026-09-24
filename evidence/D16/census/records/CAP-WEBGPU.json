@@ -1,0 +1,15 @@
+{
+ "family": "CAP-WEBGPU",
+ "matrix_row": "WebGPU",
+ "observed": "2026-09-24T08:42:27.815Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "'gpu' in navigator",
+ "discovery_expr": "navigator.gpu.requestAdapter().then(a => a ? ({adapter: true, fallback: a.info ? a.info.isFallbackAdapter : null, architecture: a.info ? a.info.architecture : null}) : ({adapter: null}))",
+ "exposed": true,
+ "discovery": {
+  "adapter": null
+ },
+ "permissions": {},
+ "policy": {}
+}

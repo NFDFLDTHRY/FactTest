@@ -1,0 +1,31 @@
+{
+ "id": "CL-IMP-BR1",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+  "bytes": 176139
+ },
+ "locator": {
+  "text": "name: \"WebBluetooth\",",
+  "line_start": 5507,
+  "line_end": 5516,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 10,
+ "consequence": "WebBluetooth is stable on Android, ChromeOS, iOS, Mac and Win but experimental by default elsewhere (Linux): absent from navigator on this host by platform default",
+ "excerpt": "      name: \"WebBluetooth\",\n      public: true,\n      status: {\n        \"Android\": \"stable\",\n        \"ChromeOS\": \"stable\",\n        \"iOS\": \"stable\",\n        \"Mac\": \"stable\",\n        \"Win\": \"stable\",\n        \"default\": \"experimental\",\n      },",
+ "excerpt_sha256": "857c37279d661ea5a8d09727eaf677a7031dbe4134a1ed7265ef4134f4e90e9f",
+ "must_contain": {
+  "\"Win\": \"stable\"": true,
+  "\"default\": \"experimental\"": true
+ },
+ "status": "VERIFIED"
+}

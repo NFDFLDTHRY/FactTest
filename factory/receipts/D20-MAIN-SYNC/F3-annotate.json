@@ -1,0 +1,174 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D20-MAIN-SYNC-F3-annotate",
+  "station_id": "S-ANNOTATE",
+  "station_version": "1",
+  "fixture_id": "F3-annotate",
+  "workpiece_id": "W23",
+  "delta_id": "D20-MAIN-SYNC",
+  "canonical_base": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+  "input_artifacts": [
+    "tests/sync/d20-line.json (union)",
+    "git objects of 4d8a4c0 and 1205fda"
+  ],
+  "open_tree": "ea571e37d53ec6e8d16aebf0e89fd00d8265b0cd",
+  "close_tree": "92766f46b7482259b006d6548af4b4d9bfd1ad12",
+  "changed_paths": [
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "REFERENCE-AUTHORITY.md",
+    "factory/receipts/D20-MAIN-SYNC/logs/F3-import-law.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F3-insertion-only.log"
+  ],
+  "output_artifacts": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-ANNOTATE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D20-MAIN-SYNC"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "LAW_ANNOTATION"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F3-import-law.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F3-insertion-only.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope REFERENCE-AUTHORITY.md,CONSTRAINT-LEDGER.md,CONFLICT-LEDGER.md,IMPLEMENTATION-CONTRACTS.md,EVIDENCE-OBLIGATIONS.md && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope REFERENCE-AUTHORITY.md,CONSTRAINT-LEDGER.md,CONFLICT-LEDGER.md,IMPLEMENTATION-CONTRACTS.md,EVIDENCE-OBLIGATIONS.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F3-import-law.log"
+    },
+    {
+      "check": "command:sh -c git diff --numstat c3159d562768d52465ead5e44bc6c5259dfc1b79 -- REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md | awk '{print} $2!=0{bad=1} END{exit bad}' && echo 'insertion-only: 0 deleted lines'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F3-insertion-only.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:REFERENCE-AUTHORITY.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:CONSTRAINT-LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:CONFLICT-LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:IMPLEMENTATION-CONTRACTS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:EVIDENCE-OBLIGATIONS.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D20-MAIN-SYNC/logs/F3-import-law.log",
+    "factory/receipts/D20-MAIN-SYNC/logs/F3-insertion-only.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T11:40:24Z",
+  "status": "PASS"
+}

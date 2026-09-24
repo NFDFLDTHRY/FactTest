@@ -1,0 +1,101 @@
+{
+  "fixture_id": "F3-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "compiler/",
+    "tests/toolchain/proof-sets.json",
+    "rustup toolchains (read-only; private mount namespace)",
+    "tests/implementation/label-audit.json"
+  ],
+  "narrowed_may_change": [
+    "evidence/D17/kernel/",
+    "evidence/D17/labels/",
+    "evidence/D17/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "tests/implementation/build-kernels.sh",
+          "evidence/D17/kernel",
+          "/home/user/factory-builds/d17-kernels"
+        ],
+        "log": "evidence/D17/logs/F3-kernels.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/implementation/label-audit.mjs",
+          "tests/implementation/label-audit.json",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--clauses",
+          "evidence/D17/clauses",
+          "--root",
+          ".",
+          "--out",
+          "evidence/D17/labels/audit.json"
+        ],
+        "log": "evidence/D17/logs/F3-label-audit.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "rustc-pinned",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "cargo-pinned",
+        "program": "cargo",
+        "args": [
+          "+nightly-2026-09-24",
+          "-V"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D17/kernel/builds.json",
+    "evidence/D17/kernel/sections.json",
+    "evidence/D17/labels/audit.json"
+  ],
+  "tests": [
+    "two kernel builds of one toolchain under two install names, compared by section",
+    "every label-audit location proven"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D17-IMPLEMENTATION-REALITY"
+}

@@ -155,6 +155,9 @@ Pass evidence:
 
 Authority:
 https://webassembly.github.io/spec/web-api/#streaming-module-compilation-and-instantiation
+D18 ANNOTATION (fragment #streaming-module-compilation-and-instantiation): no such id exists in the pinned or current source
+(D14 [ERR]); the clause is at #streaming-modules (D14 revision; D15 clauses CL-S1..CL-S4).  Current authority node:
+AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING).  The URL above is kept as historically written.
 https://webassembly.github.io/spec/js-api/#memories
 
 Test:

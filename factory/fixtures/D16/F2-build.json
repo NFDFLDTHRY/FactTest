@@ -1,0 +1,65 @@
+{
+  "fixture_id": "F2-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "tests/reference/d16-clauses.json",
+    "design/environment-map/graph.json",
+    "raw.githubusercontent.com",
+    "git ls-remote"
+  ],
+  "narrowed_may_change": [
+    "evidence/D16/clauses/",
+    "evidence/D16/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reference/clauses.mjs",
+          "tests/reference/d16-clauses.json",
+          "design/environment-map/graph.json",
+          "evidence/D16/clauses"
+        ],
+        "log": "evidence/D16/logs/F2-clauses.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D16/clauses/summary.json"
+  ],
+  "tests": [
+    "every manifest clause VERIFIED at its tip (absences included)"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D16-CAPABILITY-UNIVERSE"
+}

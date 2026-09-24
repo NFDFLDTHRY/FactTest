@@ -1,0 +1,30 @@
+{
+ "id": "CL-SER2",
+ "trace": "DEV",
+ "authority": "AUTH-SERIAL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/serial",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+  "sha256": "48d0a5629c71f2b523108b817d9c0c8c2851959d442f37a3a1b3094b3313dcc3",
+  "bytes": 84878
+ },
+ "locator": {
+  "text": "feature=] named \"[=policy-controlled feature/serial=]\", [=reject=]",
+  "line_start": 134,
+  "line_end": 140,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 7,
+ "consequence": "requestPort needs the serial policy and transient activation (SecurityError otherwise)",
+ "excerpt": "          feature=] named \"[=policy-controlled feature/serial=]\", [=reject=]\n          |promise| with a \"{{SecurityError}}\" {{DOMException}} and return\n          |promise|.\n          </li>\n          <li>If the [=relevant global object=] of [=this=] does not have\n          [=transient activation=], [=reject=] |promise| with a\n          \"{{SecurityError}}\" {{DOMException}} and return |promise|.",
+ "excerpt_sha256": "615acf1f94dc8894fb1b14ccc0ebd66460399f7c83db72b5e30a75e18dd6e3e5",
+ "must_contain": {
+  "\"{{SecurityError}}\"": true,
+  "[=transient activation=]": true
+ },
+ "status": "VERIFIED"
+}

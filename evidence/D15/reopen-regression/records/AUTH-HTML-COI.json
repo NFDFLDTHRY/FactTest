@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-HTML-COI",
+ "authority_class": "LIVING_STANDARD",
+ "cited": {
+  "url": "https://html.spec.whatwg.org/multipage/nav-history-apis.html",
+  "fragment": "#dom-crossoriginisolated",
+  "fragment_status_recorded": "DERIVED_FROM_DFN_UNVERIFIED",
+  "maturity_recorded": "Living Standard (followed sublink: prerequisite of any shared-memory threading)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+  "path": "source",
+  "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+  "observed": "2026-09-24",
+  "locator": "dfn crossOriginIsolated getter (lines 125305-125309); StructuredSerialize SharedArrayBuffer step (lines 10512-10520)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#dom-crossoriginisolated",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 125305,
+   "kind": "wattsi data-x (multi-line tag)"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 125305,
+   "kind": "wattsi data-x (multi-line tag)"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   125305,
+   125309
+  ],
+  "window_sha256": "41fb55d46464c2f9f2fedd3ef2f376b8b55311d2198a21259ca6de8832857144",
+  "window_excerpt": "  <p>The <dfn attribute for=\"WindowOrWorkerGlobalScope\"\n  data-x=\"dom-crossOriginIsolated\"><code>crossOriginIsolated</code></dfn> getter steps are to return\n  <span>this</span>'s <span>relevant settings object</span>'s <span\n  data-x=\"concept-settings-object-cross-origin-isolated-capability\">cross-origin isolated\n  capability</span>.</p>",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   125305,
+   125309
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

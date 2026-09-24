@@ -1,0 +1,58 @@
+{
+ "authority": "AUTH-GIT-PACK-FORMAT",
+ "authority_class": "TOOL_DOC",
+ "cited": {
+  "url": "https://git-scm.com/docs/gitformat-pack",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "tool documentation (master)",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "path": "Documentation/gitformat-pack.adoc",
+  "sha256": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b",
+  "observed": "2026-09-24",
+  "locator": "whole document (pack/idx layout)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "none (no line locator, fragment not locatable)",
+  "status": "UNCHANGED (file identical)"
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": null,
+  "candidates": {
+   "note": "no line locator: the clause position is not recorded in the pin"
+  }
+ }
+}

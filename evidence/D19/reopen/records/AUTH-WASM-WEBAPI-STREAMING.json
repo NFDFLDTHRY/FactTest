@@ -1,0 +1,85 @@
+{
+ "authority": "AUTH-WASM-WEBAPI-STREAMING",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://webassembly.github.io/spec/web-api/",
+  "fragment": "#streaming-module-compilation-and-instantiation",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "Status: ED, Level 2 (TR: wasm-web-api-2)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "path": "document/web-api/index.bs",
+  "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+  "observed": "2026-09-24",
+  "locator": "dfn 'compile a potential WebAssembly response' (line 109) and its note (lines 111-115)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#streaming-module-compilation-and-instantiation",
+  "at_pin": {
+   "status": "ABSENT"
+  },
+  "at_tip": {
+   "status": "ABSENT"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   109,
+   109
+  ],
+  "window_sha256": "8e74c113abc2dcee84c1798622650811d11e10c663c0fb63e91db45c85b2b5fa",
+  "window_excerpt": "To <dfn>compile a potential WebAssembly response</dfn> with a promise of a {{Response}} |source| and {{WebAssemblyCompileOptions}} |options|, perform the following steps:",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   109,
+   109
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "ED",
+   "group": "wasm",
+   "level": "2"
+  },
+  "declared_at_tip": {
+   "status": "ED",
+   "group": "wasm",
+   "level": "2"
+  },
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "cited fragment absent at the source tip",
+  "clause_line": 109,
+  "candidates": {
+   "section": {
+    "id": "#streaming-modules",
+    "line": 86,
+    "kind": "id attribute"
+   },
+   "definition": {
+    "id": "#compile-a-potential-webassembly-response",
+    "line": 109,
+    "kind": "bikeshed dfn"
+   }
+  }
+ }
+}

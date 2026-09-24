@@ -1,0 +1,16 @@
+{
+ "family": "CAP-MANIFEST",
+ "matrix_row": "Manifest/PWA shell",
+ "observed": "2026-09-24T08:42:27.920Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "UNDETERMINED",
+ "exposure_expr": null,
+ "discovery_expr": "({before_install_prompt_event: typeof BeforeInstallPromptEvent === 'function', get_installed_related_apps: typeof navigator.getInstalledRelatedApps === 'function'})",
+ "exposed": null,
+ "discovery": {
+  "before_install_prompt_event": true,
+  "get_installed_related_apps": true
+ },
+ "permissions": {},
+ "policy": {}
+}

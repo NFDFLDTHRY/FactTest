@@ -1,0 +1,8 @@
+$ sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 35 checks' && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q && for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18 Q19 Q20; do cmp evidence/D17/envmap/queries/$q.json $T/q/$q.json || exit 1; done && grep -q '"reconciliations": 0' $T/q/Q21.json && echo 'D17 graph: validate 35, render/merge identical, Q01-Q20 byte-identical to evidence/D17, Q21 none'
+(cwd .)
+PASS AUTHORITY-REGISTER.md: 118441 bytes identical; TRACEABILITY.md: 174926 bytes identical
+PASS base_nodes_preserved: 211 base nodes identical; base_edges_preserved: 475 base edges present; graph_equals_merge_of_base_and_epochs: 1234276 bytes identical
+21 queries -> /tmp/tmp.7H3HIimc7O/q
+D17 graph: validate 35, render/merge identical, Q01-Q20 byte-identical to evidence/D17, Q21 none
+
+[exit 0] expected 0

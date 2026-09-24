@@ -1,0 +1,30 @@
+{
+ "id": "CL-ALS3",
+ "trace": "ES",
+ "authority": "AUTH-AMBIENT-LIGHT",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/ambient-light",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "381d5dd21deb386282bbc72147201a8e6ff3b5ea",
+  "sha256": "5fd0659a12a245f6c6976131fee365c3d581a6e95bf2a38b7d4a670d8bad354a",
+  "bytes": 19409
+ },
+ "locator": {
+  "text": "interface AmbientLightSensor : Sensor {",
+  "after": "[SecureContext, Exposed=Window]",
+  "line_start": 340,
+  "line_end": 340,
+  "derivation": "anchor text after \"[SecureContext, Exposed=Window]\"",
+  "enclosing_section": "#ambient-light-sensor-interface (line 335)"
+ },
+ "window": 1,
+ "consequence": "AmbientLightSensor is [SecureContext, Exposed=Window]",
+ "excerpt": "  interface AmbientLightSensor : Sensor {",
+ "excerpt_sha256": "532dffa680102f36b1df3d83116471a6d2f18048002aeb73689379392856803e",
+ "must_contain": {
+  "interface AmbientLightSensor : Sensor": true
+ },
+ "status": "VERIFIED"
+}

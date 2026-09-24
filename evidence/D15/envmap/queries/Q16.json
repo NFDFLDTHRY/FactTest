@@ -1,0 +1,1651 @@
+{
+  "query": "Q16",
+  "title": "What did each evidence epoch add, and how is it connected to the earlier graph?",
+  "answer": {
+    "epochs": [
+      {
+        "epoch": "D11",
+        "delta": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "nodes_by_class": {
+          "AUTHORITY": 48,
+          "COMPUTATIONAL_FACT": 37,
+          "CONSTRAINT": 37,
+          "ENVIRONMENT": 10,
+          "EVIDENCE": 38,
+          "IMPLEMENTATION": 18,
+          "PROBE": 23
+        },
+        "facts": [
+          {
+            "fact": "FACT-AUTHORITY-REOPEN-DENIED",
+            "status": "UNK",
+            "probes": [
+              "PROBE-AUTHORITY-FETCH"
+            ],
+            "evidence": [
+              "EV-D11-AUTHORITY-FETCH",
+              "EV-D12-NETWORK"
+            ],
+            "environments": [
+              "ENV-D11-HOST",
+              "ENV-D12-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-COMPILE-FAIL-WITNESSED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-COMPILE-FAIL-DIAG"
+            ],
+            "evidence": [
+              "EV-D9-T9-P4"
+            ],
+            "environments": [
+              "ENV-D9-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-CORE-ONLY-GRAPH",
+            "status": "RUN",
+            "probes": [
+              "PROBE-NOSTD-GRAPH"
+            ],
+            "evidence": [
+              "EV-D1-B9-BUILD",
+              "EV-D9-T9-P5-02",
+              "EV-D9-T9-P5-03"
+            ],
+            "environments": [
+              "ENV-D1-D3-HOST",
+              "ENV-D9-HOST"
+            ],
+            "authorities": [
+              "AUTH-CARGO-BUILD-STD",
+              "AUTH-RUST-REF-NOSTD"
+            ]
+          },
+          {
+            "fact": "FACT-D9-HISTORY-OVERSTATED",
+            "status": "ERR",
+            "probes": [],
+            "evidence": [
+              "EV-D9-MUTANTS",
+              "EV-D9-T9-P1-01"
+            ],
+            "environments": [
+              "ENV-D9-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-DEFAULT-MEMBERS-13",
+            "status": "ERR",
+            "probes": [
+              "PROBE-SELECTION-AUDIT"
+            ],
+            "evidence": [
+              "EV-D9-T9-P1-01"
+            ],
+            "environments": [
+              "ENV-D9-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-FF-ONLY-INTEGRATION",
+            "status": "RUN",
+            "probes": [
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-GIT-LINEAGE-D0-D10"
+            ],
+            "environments": [
+              "ENV-D11-HOST"
+            ],
+            "authorities": [
+              "AUTH-GIT-GLOSSARY-COMMIT",
+              "LAW-FACTORY-CONTRACTS"
+            ]
+          },
+          {
+            "fact": "FACT-FIRST-PARTY-GRAPH",
+            "status": "RUN",
+            "probes": [
+              "PROBE-DEPS-AUDIT"
+            ],
+            "evidence": [
+              "EV-D9-T9-P6-01"
+            ],
+            "environments": [
+              "ENV-D9-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+            "status": "RUN",
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D7-NOWEBGPU-ADM"
+            ],
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-DEFAULT"
+            ],
+            "authorities": [
+              "AUTH-GPU-REQUESTADAPTER"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-ADAPTER-SWIFTSHADER",
+            "status": "RUN",
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ],
+            "environments": [
+              "ENV-D11-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-CHROMIUM-GL-SWITCHES",
+              "AUTH-CHROMIUM-GPU-SWITCHES",
+              "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+              "AUTH-GPU-ADAPTERINFO",
+              "AUTH-GPU-FALLBACK-ADAPTER",
+              "AUTH-GPU-REQUESTADAPTER",
+              "AUTH-PLAYWRIGHT-INSTALLED",
+              "AUTH-SWIFTSHADER-README"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-ADMITTED-E0",
+            "status": "RUN",
+            "probes": [
+              "PROBE-WEBGPU-KNOWN-ANSWER"
+            ],
+            "evidence": [
+              "EV-D7-ADM-E0-WEBGPU"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-GPU-REQUESTDEVICE"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-EPOCH-INVALIDATION",
+            "status": "RUN",
+            "probes": [
+              "PROBE-CONTROLLED-LOSS"
+            ],
+            "evidence": [
+              "EV-D7-ADM-E1-WEBGPU",
+              "EV-D7-OBSERVED-ASCII"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "LAW-RUNTIME-ADMISSION"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-EXPOSED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-WEBGPU-DISCOVER"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-NOWEBGPU-ADM"
+            ],
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT",
+              "ENV-D11-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-GPU-NAVIGATOR-GPU"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-KNOWN-ANSWER",
+            "status": "RUN",
+            "probes": [
+              "PROBE-WEBGPU-KNOWN-ANSWER"
+            ],
+            "evidence": [
+              "EV-D7-ADM-E0-WEBGPU"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-GPU-LOSS-DESTROYED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-CONTROLLED-LOSS"
+            ],
+            "evidence": [
+              "EV-D7-CONTROLLED-LOSS"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-GPU-DESTROY",
+              "AUTH-GPU-LOSE-DEVICE",
+              "AUTH-GPU-LOST"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-MAXBUFFERSIZE-OBSERVED",
+            "status": "OBS",
+            "probes": [
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D7-ADM-E0-WEBGPU"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-GPU-LIMITS-MAXBUFFERSIZE"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-RELAY-EXACT-E0",
+            "status": "RUN",
+            "probes": [
+              "PROBE-RELAY-EXACT"
+            ],
+            "evidence": [
+              "EV-D6-PROBE-RECORD",
+              "EV-D7-E0-RELAY"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-HARDWARE-GPU-UNAVAILABLE",
+            "status": "UNK",
+            "probes": [
+              "PROBE-HOST-IDENTITY"
+            ],
+            "evidence": [
+              "EV-D11-HOST-IDENTITY"
+            ],
+            "environments": [
+              "ENV-D11-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-HEURISTIC-CHECKS-REMAIN",
+            "status": "GAP",
+            "probes": [],
+            "evidence": [
+              "EV-D9-MUTANTS"
+            ],
+            "environments": [
+              "ENV-D9-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-LITERAL-PATH-MATCH",
+            "status": "OBS",
+            "probes": [
+              "PROBE-PATHS-LITERAL"
+            ],
+            "evidence": [
+              "EV-D11-PATHS-PROBE"
+            ],
+            "environments": [
+              "ENV-D11-HOST"
+            ],
+            "authorities": [
+              "LAW-FACTORY-CONTRACTS"
+            ]
+          },
+          {
+            "fact": "FACT-LOOPBACK-SECURE-CONTEXT",
+            "status": "RUN",
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-SECURE-CONTEXT"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D7-ENVIRONMENT-STEP"
+            ],
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT",
+              "ENV-D11-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-SECCTX-TRUSTWORTHY"
+            ]
+          },
+          {
+            "fact": "FACT-MEMORY64-DISCOVERED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-WASM64-DISCOVER"
+            ],
+            "evidence": [
+              "EV-D7-ADM-E0-WASM64",
+              "EV-D7-NOWEBGPU-ADM"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-V8-FLAGS",
+              "AUTH-WASM-JSAPI-MEMORIES",
+              "AUTH-WASM-JSAPI-VALIDATE"
+            ]
+          },
+          {
+            "fact": "FACT-NATIVE-WORKSPACE-UNBUILDABLE",
+            "status": "ERR",
+            "probes": [
+              "PROBE-SELECTION-AUDIT"
+            ],
+            "evidence": [
+              "EV-D9-T9-P2-02"
+            ],
+            "environments": [
+              "ENV-D9-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-NIGHTLY-CLIPPY-ABSENT-D11",
+            "status": "OBS",
+            "probes": [
+              "PROBE-HOST-IDENTITY",
+              "PROBE-TOOLCHAIN-IDENTITY"
+            ],
+            "evidence": [
+              "EV-D11-HOST-IDENTITY"
+            ],
+            "environments": [
+              "ENV-D11-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-NODE-NO-MEMORY64",
+            "status": "OBS",
+            "probes": [
+              "PROBE-NODE-INSTANTIATE"
+            ],
+            "evidence": [
+              "EV-D1-B10-NODE"
+            ],
+            "environments": [
+              "ENV-D1-D3-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-RESELECTION-NO-CODEGEN",
+            "status": "RUN",
+            "probes": [
+              "PROBE-BUNDLE-UNCHANGED"
+            ],
+            "evidence": [
+              "EV-D7-BUNDLE-UNCHANGED",
+              "EV-D7-E1-RELAY"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "LAW-PASS6-COMMISSIONING"
+            ]
+          },
+          {
+            "fact": "FACT-SHARED-THREADS-UNADMITTED",
+            "status": "ERR",
+            "probes": [
+              "PROBE-BROWSER-IDENTITY"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS"
+            ],
+            "environments": [
+              "ENV-D11-BROWSER-GPUFLAGS"
+            ],
+            "authorities": [
+              "AUTH-HTML-COI",
+              "AUTH-WASM-JSAPI-STORAGE",
+              "AUTH-WASM-THREADS"
+            ]
+          },
+          {
+            "fact": "FACT-STATION-ENV-UNRECORDED",
+            "status": "GAP",
+            "probes": [],
+            "evidence": [
+              "EV-D6-F5-RECEIPT"
+            ],
+            "environments": [
+              "ENV-D1-D3-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-STREAMING-UNPROBED",
+            "status": "GAP",
+            "probes": [],
+            "evidence": [],
+            "environments": [],
+            "authorities": [
+              "AUTH-WASM-WEBAPI-STREAMING"
+            ]
+          },
+          {
+            "fact": "FACT-TOOLCHAIN-DRIFT",
+            "status": "GAP",
+            "probes": [
+              "PROBE-HOST-IDENTITY",
+              "PROBE-TOOLCHAIN-IDENTITY"
+            ],
+            "evidence": [
+              "EV-D1-TOOLCHAIN-NIGHTLY",
+              "EV-D11-HOST-IDENTITY",
+              "EV-D12-KERNEL",
+              "EV-D3-B9-TOOLCHAIN",
+              "EV-D9-T9-P7-01"
+            ],
+            "environments": [
+              "ENV-D1-D3-HOST",
+              "ENV-D11-HOST",
+              "ENV-D12-HOST",
+              "ENV-D9-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-WASM64-ABI-EXEC",
+            "status": "RUN",
+            "probes": [
+              "PROBE-KERNEL-HOST-BROWSER"
+            ],
+            "evidence": [
+              "EV-D1-B10-B11-CHROMIUM",
+              "EV-D9-T9-P8-03"
+            ],
+            "environments": [
+              "ENV-D1-D3-BROWSER"
+            ],
+            "authorities": [
+              "AUTH-RUSTC-WASM64-TARGET-SPEC"
+            ]
+          },
+          {
+            "fact": "FACT-WASM64-ADMITTED-E0",
+            "status": "RUN",
+            "probes": [
+              "PROBE-WASM64-KNOWN-ANSWER",
+              "PROBE-WASM64-REQUEST"
+            ],
+            "evidence": [
+              "EV-D7-ADM-E0-WASM64"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-WASM64-ADMITTED-E1",
+            "status": "RUN",
+            "probes": [
+              "PROBE-RELAY-EXACT",
+              "PROBE-WASM64-REQUEST"
+            ],
+            "evidence": [
+              "EV-D7-E1-RELAY"
+            ],
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-WASM64-MODULE-I64",
+            "status": "RUN",
+            "probes": [
+              "PROBE-WASM-INSPECT"
+            ],
+            "evidence": [
+              "EV-D1-B9-INSPECT",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02"
+            ],
+            "environments": [
+              "ENV-D1-D3-HOST",
+              "ENV-D9-HOST"
+            ],
+            "authorities": [
+              "AUTH-RUSTC-WASM64-DOC",
+              "AUTH-WASM-CORE-BINARY-LIMITS",
+              "AUTH-WASM-CORE-CHANGES-64"
+            ]
+          },
+          {
+            "fact": "FACT-WGSL-UNEXERCISED",
+            "status": "GAP",
+            "probes": [],
+            "evidence": [],
+            "environments": [],
+            "authorities": [
+              "AUTH-WGSL"
+            ]
+          },
+          {
+            "fact": "FACT-WILDCARD-SURFACES-DEAD",
+            "status": "GAP",
+            "probes": [
+              "PROBE-PATHS-LITERAL"
+            ],
+            "evidence": [
+              "EV-D11-PATHS-PROBE"
+            ],
+            "environments": [
+              "ENV-D11-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-WORKERS-UNPROBED",
+            "status": "GAP",
+            "probes": [],
+            "evidence": [],
+            "environments": [],
+            "authorities": [
+              "AUTH-HTML-HWCONCURRENCY",
+              "AUTH-HTML-WORKERS"
+            ]
+          },
+          {
+            "fact": "FACT-WORKPIECE-ISOLATION",
+            "status": "RUN",
+            "probes": [
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-D6-F5-RECEIPT",
+              "EV-GIT-LINEAGE-D0-D10"
+            ],
+            "environments": [
+              "ENV-D1-D3-HOST",
+              "ENV-D11-HOST"
+            ],
+            "authorities": [
+              "AUTH-GIT-REPO-LAYOUT",
+              "AUTH-GIT-WORKTREE",
+              "LAW-FACTORY-LAW"
+            ]
+          }
+        ],
+        "cross_epoch_edges": [
+          "AUTHORIZES AUTH-CARGO-BUILD-STD -> FACT-KERNEL-IDENTITY-INSTALL-PATH",
+          "AUTHORIZES AUTH-HTML-COI -> FACT-SH-SW-GRANTS-COI",
+          "AUTHORIZES AUTH-SECCTX-TRUSTWORTHY -> CON-SEC-002",
+          "AUTHORIZES AUTH-WASM-CORE-CHANGES-64 -> FACT-MEMORY64-FINISHED",
+          "AUTHORIZES AUTH-WASM-JSAPI-MEMORIES -> CON-WA-006",
+          "CLAUSE_OF CL-H2 -> AUTH-SECCTX-TRUSTWORTHY",
+          "CLAUSE_OF CL-H3 -> AUTH-SECCTX-TRUSTWORTHY",
+          "CLAUSE_OF CL-R1 -> AUTH-RUST-REF-NOSTD",
+          "CLAUSE_OF CL-R2 -> AUTH-RUST-REF-NOSTD",
+          "CLAUSE_OF CL-R3 -> AUTH-CARGO-BUILD-STD",
+          "CLAUSE_OF CL-R4 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R5 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R6 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R7 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R8 -> AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "CLAUSE_OF CL-R9 -> AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "CLAUSE_OF CL-S1 -> AUTH-WASM-WEBAPI-STREAMING",
+          "CLAUSE_OF CL-S2 -> AUTH-WASM-WEBAPI-STREAMING",
+          "CLAUSE_OF CL-T1 -> AUTH-WASM-JSAPI-STORAGE",
+          "CLAUSE_OF CL-T2 -> AUTH-WASM-THREADS",
+          "CLAUSE_OF CL-T3 -> AUTH-WASM-SET",
+          "CLAUSE_OF CL-T4 -> AUTH-HTML-COI",
+          "CLAUSE_OF CL-T5 -> AUTH-HTML-COI",
+          "CLAUSE_OF CL-T8 -> AUTH-HTML-COI",
+          "CLAUSE_OF CL-W1 -> AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+          "CLAUSE_OF CL-W3 -> AUTH-WASM-CORE-BINARY-LIMITS",
+          "CLAUSE_OF CL-W4 -> AUTH-WASM-CORE-CHANGES-64",
+          "CLAUSE_OF CL-W5 -> AUTH-WASM-JSAPI-MEMORIES",
+          "CLAUSE_OF CL-W6 -> AUTH-WASM-JSAPI-MEMORIES",
+          "CLAUSE_OF CL-W7 -> AUTH-WASM-JSAPI-MEMORIES",
+          "CONFLICTS_WITH CON-EM-007 -> CON-EM-005",
+          "DEPENDS_ON AUTH-WASM-CORE-CHANGES-64 -> AUTH-WASM-PROPOSALS-REGISTRY",
+          "DEPENDS_ON AUTH-WASM-SET -> AUTH-WASM-PROPOSALS-REGISTRY",
+          "DEPENDS_ON AUTH-WASM-THREADS -> AUTH-WASM-PROPOSALS-REGISTRY",
+          "EVIDENCED_BY FACT-AUTHORITY-REOPEN-DENIED -> EV-D12-NETWORK",
+          "EVIDENCED_BY FACT-JS-I64-BIGINT-MEMBRANE -> EV-D9-T9-P8-03",
+          "EVIDENCED_BY FACT-SAB-GLOBAL-HOST-DEFINED -> EV-D11-BROWSER-DEFAULT",
+          "EVIDENCED_BY FACT-TOOLCHAIN-DRIFT -> EV-D12-KERNEL",
+          "EVIDENCED_BY PROBE-PATHS-LITERAL -> EV-D13-PATHS-PROBE",
+          "GROUNDS CL-F4 -> CON-SEC-001",
+          "GROUNDS CL-G1 -> CON-FT-004",
+          "GROUNDS CL-G2 -> CON-FT-004",
+          "GROUNDS CL-G3 -> CON-FT-004",
+          "GROUNDS CL-H1 -> CON-SEC-001",
+          "GROUNDS CL-H2 -> CON-EM-001",
+          "GROUNDS CL-H2 -> CON-SEC-001",
+          "GROUNDS CL-H3 -> CON-SEC-001",
+          "GROUNDS CL-H4 -> CON-SEC-001",
+          "GROUNDS CL-I1 -> CON-EM-001",
+          "GROUNDS CL-I1 -> CON-SEC-001",
+          "GROUNDS CL-I2 -> CON-WA-003",
+          "GROUNDS CL-P1 -> CON-SEC-001",
+          "GROUNDS CL-R1 -> CON-RS-001",
+          "GROUNDS CL-R2 -> CON-RS-001",
+          "GROUNDS CL-R3 -> CON-RS-002",
+          "GROUNDS CL-R3 -> FACT-CORE-ONLY-GRAPH",
+          "GROUNDS CL-R4 -> CON-RS-002",
+          "GROUNDS CL-R5 -> CON-RS-001",
+          "GROUNDS CL-R7 -> CON-RS-003",
+          "GROUNDS CL-R8 -> CON-EM-004",
+          "GROUNDS CL-R8 -> CON-IC-CPU_WASM64",
+          "GROUNDS CL-R9 -> CON-WA-002",
+          "GROUNDS CL-S1 -> CON-WA-004",
+          "GROUNDS CL-S1 -> FACT-STREAMING-UNPROBED",
+          "GROUNDS CL-S2 -> CON-WA-004",
+          "GROUNDS CL-S3 -> CON-WA-004",
+          "GROUNDS CL-S4 -> CON-WA-004",
+          "GROUNDS CL-ST4 -> CON-SEC-001",
+          "GROUNDS CL-ST5 -> CON-WB-001",
+          "GROUNDS CL-ST7 -> CON-SEC-001",
+          "GROUNDS CL-T1 -> CON-WA-005",
+          "GROUNDS CL-T1 -> FACT-SHARED-THREADS-UNADMITTED",
+          "GROUNDS CL-T2 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T2 -> CON-THREAD-001",
+          "GROUNDS CL-T3 -> CON-THREAD-002",
+          "GROUNDS CL-T4 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T5 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T6 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T7 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T8 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T8 -> CON-WB-001",
+          "GROUNDS CL-W1 -> CON-WA-001",
+          "GROUNDS CL-W2 -> CON-WA-002",
+          "GROUNDS CL-W3 -> CON-FT-003",
+          "GROUNDS CL-W3 -> CON-WA-002",
+          "GROUNDS CL-W3 -> FACT-WASM64-MODULE-I64",
+          "GROUNDS CL-W4 -> CON-WA-001",
+          "GROUNDS CL-W5 -> CON-WA-003",
+          "GROUNDS CL-W6 -> CON-WA-003",
+          "GROUNDS CL-W7 -> CON-WA-003",
+          "IMPLEMENTED_BY CON-WA-006 -> IMPL-ADAPTER-WASM64",
+          "IMPLEMENTED_BY CON-WA-006 -> IMPL-KERNEL-HOST",
+          "IMPLEMENTED_BY FACT-JS-I64-BIGINT-MEMBRANE -> IMPL-ADAPTER-WASM64",
+          "IMPLEMENTED_BY FACT-JS-I64-BIGINT-MEMBRANE -> IMPL-KERNEL-HOST",
+          "INVALIDATED_BY FACT-TOOLCHAIN-DRIFT -> EV-D13-PINS",
+          "INVALIDATED_BY FACT-WILDCARD-SURFACES-DEAD -> EV-D13-PATHS-PROBE",
+          "PROBED_BY FACT-JS-I64-BIGINT-MEMBRANE -> PROBE-KERNEL-HOST-BROWSER",
+          "PROBED_BY FACT-SAB-GLOBAL-HOST-DEFINED -> PROBE-BROWSER-IDENTITY",
+          "PROBED_BY FACT-SH-KERNEL-TOOLCHAIN-DRIFT -> PROBE-WASM-INSPECT",
+          "PROBED_BY FACT-SURFACES-LITERAL-ENFORCED -> PROBE-PATHS-LITERAL",
+          "REVISES REV-D14-AUTH-CARGO-BUILD-STD -> AUTH-CARGO-BUILD-STD",
+          "REVISES REV-D14-AUTH-CHROMIUM-CONTENT-SWITCHES -> AUTH-CHROMIUM-CONTENT-SWITCHES",
+          "REVISES REV-D14-AUTH-CHROMIUM-GL-SWITCHES -> AUTH-CHROMIUM-GL-SWITCHES",
+          "REVISES REV-D14-AUTH-CHROMIUM-GPU-SWITCHES -> AUTH-CHROMIUM-GPU-SWITCHES",
+          "REVISES REV-D14-AUTH-CHROMIUM-SWIFTSHADER-DOC -> AUTH-CHROMIUM-SWIFTSHADER-DOC",
+          "REVISES REV-D14-AUTH-GIT-GLOSSARY-COMMIT -> AUTH-GIT-GLOSSARY-COMMIT",
+          "REVISES REV-D14-AUTH-GIT-REPO-LAYOUT -> AUTH-GIT-REPO-LAYOUT",
+          "REVISES REV-D14-AUTH-GIT-REVISIONS -> AUTH-GIT-REVISIONS",
+          "REVISES REV-D14-AUTH-GIT-WORKTREE -> AUTH-GIT-WORKTREE",
+          "REVISES REV-D14-AUTH-GPU-ADAPTER-EXPIRE -> AUTH-GPU-ADAPTER-EXPIRE",
+          "REVISES REV-D14-AUTH-GPU-ADAPTERINFO -> AUTH-GPU-ADAPTERINFO",
+          "REVISES REV-D14-AUTH-GPU-DESTROY -> AUTH-GPU-DESTROY",
+          "REVISES REV-D14-AUTH-GPU-FALLBACK-ADAPTER -> AUTH-GPU-FALLBACK-ADAPTER",
+          "REVISES REV-D14-AUTH-GPU-LIMITS-MAXBUFFERSIZE -> AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+          "REVISES REV-D14-AUTH-GPU-LOSE-DEVICE -> AUTH-GPU-LOSE-DEVICE",
+          "REVISES REV-D14-AUTH-GPU-LOST -> AUTH-GPU-LOST",
+          "REVISES REV-D14-AUTH-GPU-NAVIGATOR-GPU -> AUTH-GPU-NAVIGATOR-GPU",
+          "REVISES REV-D14-AUTH-GPU-REQUESTADAPTER -> AUTH-GPU-REQUESTADAPTER",
+          "REVISES REV-D14-AUTH-GPU-REQUESTDEVICE -> AUTH-GPU-REQUESTDEVICE",
+          "REVISES REV-D14-AUTH-HTML-COI -> AUTH-HTML-COI",
+          "REVISES REV-D14-AUTH-HTML-HWCONCURRENCY -> AUTH-HTML-HWCONCURRENCY",
+          "REVISES REV-D14-AUTH-HTML-WORKERS -> AUTH-HTML-WORKERS",
+          "REVISES REV-D14-AUTH-PLAYWRIGHT-INSTALLED -> AUTH-PLAYWRIGHT-INSTALLED",
+          "REVISES REV-D14-AUTH-RUST-REF-NOSTD -> AUTH-RUST-REF-NOSTD",
+          "REVISES REV-D14-AUTH-RUSTC-WASM64-DOC -> AUTH-RUSTC-WASM64-DOC",
+          "REVISES REV-D14-AUTH-RUSTC-WASM64-TARGET-SPEC -> AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "REVISES REV-D14-AUTH-SECCTX-TRUSTWORTHY -> AUTH-SECCTX-TRUSTWORTHY",
+          "REVISES REV-D14-AUTH-SWIFTSHADER-README -> AUTH-SWIFTSHADER-README",
+          "REVISES REV-D14-AUTH-V8-FLAGS -> AUTH-V8-FLAGS",
+          "REVISES REV-D14-AUTH-WASM-CORE-BINARY-LIMITS -> AUTH-WASM-CORE-BINARY-LIMITS",
+          "REVISES REV-D14-AUTH-WASM-CORE-CHANGES-64 -> AUTH-WASM-CORE-CHANGES-64",
+          "REVISES REV-D14-AUTH-WASM-CORE-SYNTAX-ADDRTYPE -> AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+          "REVISES REV-D14-AUTH-WASM-CORE-TEXT-ADDRTYPE -> AUTH-WASM-CORE-TEXT-ADDRTYPE",
+          "REVISES REV-D14-AUTH-WASM-CORE-TEXT-MEMTYPE -> AUTH-WASM-CORE-TEXT-MEMTYPE",
+          "REVISES REV-D14-AUTH-WASM-JSAPI-MEMORIES -> AUTH-WASM-JSAPI-MEMORIES",
+          "REVISES REV-D14-AUTH-WASM-JSAPI-STORAGE -> AUTH-WASM-JSAPI-STORAGE",
+          "REVISES REV-D14-AUTH-WASM-JSAPI-VALIDATE -> AUTH-WASM-JSAPI-VALIDATE",
+          "REVISES REV-D14-AUTH-WASM-SET -> AUTH-WASM-SET",
+          "REVISES REV-D14-AUTH-WASM-THREADS -> AUTH-WASM-THREADS",
+          "REVISES REV-D14-AUTH-WASM-WEBAPI-STREAMING -> AUTH-WASM-WEBAPI-STREAMING",
+          "REVISES REV-D14-AUTH-WGSL -> AUTH-WGSL",
+          "REVISES REV-D14-LAW-EVIDENCE-OBLIGATIONS -> LAW-EVIDENCE-OBLIGATIONS",
+          "REVISES REV-D14-LAW-FACTORY-CONTRACTS -> LAW-FACTORY-CONTRACTS",
+          "REVISES REV-D14-LAW-FACTORY-LAW -> LAW-FACTORY-LAW",
+          "REVISES REV-D14-LAW-PASS1-FT003 -> LAW-PASS1-FT003",
+          "REVISES REV-D14-LAW-PASS6-COMMISSIONING -> LAW-PASS6-COMMISSIONING",
+          "REVISES REV-D14-LAW-PLANNER-COST-MODEL -> LAW-PLANNER-COST-MODEL",
+          "REVISES REV-D14-LAW-RUNTIME-ADMISSION -> LAW-RUNTIME-ADMISSION"
+        ]
+      },
+      {
+        "epoch": "D12",
+        "delta": "D12-SELF-HOSTING-ARCHITECTURE",
+        "commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+        "nodes_by_class": {
+          "ENVIRONMENT": 2,
+          "IMPLEMENTATION": 2,
+          "PROBE": 14,
+          "EVIDENCE": 16,
+          "COMPUTATIONAL_FACT": 16,
+          "AUTHORITY": 16
+        },
+        "facts": [
+          {
+            "fact": "FACT-SH-BROKEN-SEED-FATAL",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P14"
+            ],
+            "evidence": [
+              "EV-D12-P14"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-SW-REGISTER-TRUST"
+            ]
+          },
+          {
+            "fact": "FACT-SH-BROKER-FED-GENERATION",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P16"
+            ],
+            "evidence": [
+              "EV-D12-P16"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-HTML-SANDBOX-ORIGIN",
+              "AUTH-SW-SANDBOX-NO-CONTROLLER"
+            ]
+          },
+          {
+            "fact": "FACT-SH-GENERATED-OFFLINE",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P01"
+            ],
+            "evidence": [
+              "EV-D12-P01"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-SH-GIT-IDENTITY",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P09"
+            ],
+            "evidence": [
+              "EV-D12-P09"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-COMPRESSION-ZLIB",
+              "AUTH-GIT-OBJECT-FORMAT",
+              "AUTH-GIT-UPDATE-REF-CAS",
+              "AUTH-WEBCRYPTO-DIGEST"
+            ]
+          },
+          {
+            "fact": "FACT-SH-GITHACK-UNREACHABLE",
+            "status": "UNK",
+            "probes": [
+              "PROBE-SH-NETWORK"
+            ],
+            "evidence": [
+              "EV-D12-NETWORK"
+            ],
+            "environments": [
+              "ENV-D12-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-SH-IDB-CAS",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P06"
+            ],
+            "evidence": [
+              "EV-D12-P06"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-IDB-TRANSACTION",
+              "AUTH-WEB-LOCKS"
+            ]
+          },
+          {
+            "fact": "FACT-SH-INTERRUPTED-UPDATE",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P15"
+            ],
+            "evidence": [
+              "EV-D12-P15"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-SW-INSTALL-FAILED"
+            ]
+          },
+          {
+            "fact": "FACT-SH-KERNEL-TOOLCHAIN-DRIFT",
+            "status": "OBS",
+            "probes": [
+              "PROBE-WASM-INSPECT"
+            ],
+            "evidence": [
+              "EV-D12-KERNEL",
+              "EV-D13-KERNEL-IDENTITY"
+            ],
+            "environments": [
+              "ENV-D12-HOST",
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-SH-KERNEL-WORKER-PARTIAL",
+            "status": "GAP",
+            "probes": [
+              "PROBE-SH-P10"
+            ],
+            "evidence": [
+              "EV-D12-P10"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-SH-NO-FACTORY-WEBAPP",
+            "status": "GAP",
+            "probes": [],
+            "evidence": [],
+            "environments": [],
+            "authorities": [
+              "AUTH-MANIFEST-INSTALLABLE"
+            ]
+          },
+          {
+            "fact": "FACT-SH-OPAQUE-CONFINEMENT",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P08"
+            ],
+            "evidence": [
+              "EV-D12-P08"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-HTML-SANDBOX-ORIGIN"
+            ]
+          },
+          {
+            "fact": "FACT-SH-OPFS-SERVED-APP",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P04"
+            ],
+            "evidence": [
+              "EV-D12-P04"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-FS-OPFS"
+            ]
+          },
+          {
+            "fact": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P03"
+            ],
+            "evidence": [
+              "EV-D12-P03"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-STORAGE-BUCKET-MODE"
+            ]
+          },
+          {
+            "fact": "FACT-SH-STORAGE-BEST-EFFORT",
+            "status": "GAP",
+            "probes": [
+              "PROBE-SH-P07"
+            ],
+            "evidence": [
+              "EV-D12-P07"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-STORAGE-BUCKET-MODE"
+            ]
+          },
+          {
+            "fact": "FACT-SH-SW-GRANTS-COI",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P05"
+            ],
+            "evidence": [
+              "EV-D12-P05"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-HTML-COI"
+            ]
+          },
+          {
+            "fact": "FACT-SH-SW-NO-SELF-UPDATE",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P02"
+            ],
+            "evidence": [
+              "EV-D12-P02"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": [
+              "AUTH-SW-UPDATE-BYPASS"
+            ]
+          }
+        ],
+        "cross_epoch_edges": [
+          "AUTHORIZES AUTH-GIT-OBJECT-FORMAT -> CON-GIT-001",
+          "AUTHORIZES AUTH-GIT-SHA256-TRANSITION -> CON-GIT-001",
+          "AUTHORIZES AUTH-GIT-UPDATE-REF-CAS -> CON-GIT-001",
+          "AUTHORIZES AUTH-HTML-COI -> FACT-SH-SW-GRANTS-COI",
+          "AUTHORIZES AUTH-HTML-SANDBOX-ORIGIN -> CON-SEC-002",
+          "AUTHORIZES AUTH-STORAGE-BUCKET-MODE -> CON-ST-001",
+          "AUTHORIZES AUTH-SW-INSTALL-FAILED -> CON-SW-001",
+          "AUTHORIZES AUTH-SW-UPDATE-BYPASS -> CON-SW-001",
+          "CLAUSE_OF CL-F2 -> AUTH-SW-UPDATE-BYPASS",
+          "CLAUSE_OF CL-F3 -> AUTH-SW-UPDATE-BYPASS",
+          "CLAUSE_OF CL-F4 -> AUTH-SW-REGISTER-TRUST",
+          "CLAUSE_OF CL-F5 -> AUTH-SW-INSTALL-FAILED",
+          "CLAUSE_OF CL-F6 -> AUTH-SW-SANDBOX-NO-CONTROLLER",
+          "CLAUSE_OF CL-G1 -> AUTH-GIT-OBJECT-FORMAT",
+          "CLAUSE_OF CL-G2 -> AUTH-GIT-UPDATE-REF-CAS",
+          "CLAUSE_OF CL-G4 -> AUTH-GIT-PACK-FORMAT",
+          "CLAUSE_OF CL-G5 -> AUTH-GIT-SHA256-TRANSITION",
+          "CLAUSE_OF CL-H4 -> AUTH-HTML-SANDBOX-ORIGIN",
+          "CLAUSE_OF CL-MF1 -> AUTH-MANIFEST-INSTALLABLE",
+          "CLAUSE_OF CL-ST1 -> AUTH-STORAGE-BUCKET-MODE",
+          "CLAUSE_OF CL-ST2 -> AUTH-STORAGE-BUCKET-MODE",
+          "CLAUSE_OF CL-ST3 -> AUTH-STORAGE-BUCKET-MODE",
+          "CLAUSE_OF CL-ST4 -> AUTH-FS-OPFS",
+          "CLAUSE_OF CL-ST5 -> AUTH-FS-OPFS",
+          "CLAUSE_OF CL-ST6 -> AUTH-IDB-TRANSACTION",
+          "CLAUSE_OF CL-ST7 -> AUTH-WEB-LOCKS",
+          "EVIDENCED_BY FACT-AUTHORITY-REOPEN-DENIED -> EV-D12-NETWORK",
+          "EVIDENCED_BY FACT-GIT-TREE-ORDER-UNDOCUMENTED -> EV-D12-P09",
+          "EVIDENCED_BY FACT-OPAQUE-FRAME-SECURE-CONTEXT -> EV-D12-P08",
+          "EVIDENCED_BY FACT-OPAQUE-FRAME-SECURE-CONTEXT -> EV-D12-P16",
+          "EVIDENCED_BY FACT-SH-KERNEL-TOOLCHAIN-DRIFT -> EV-D13-KERNEL-IDENTITY",
+          "EVIDENCED_BY FACT-TOOLCHAIN-DRIFT -> EV-D12-KERNEL",
+          "GROUNDS CL-F2 -> FACT-SH-SW-NO-SELF-UPDATE",
+          "GROUNDS CL-F4 -> FACT-SH-BROKEN-SEED-FATAL",
+          "GROUNDS CL-F5 -> FACT-SH-INTERRUPTED-UPDATE",
+          "GROUNDS CL-F6 -> FACT-SH-BROKER-FED-GENERATION",
+          "GROUNDS CL-G1 -> FACT-SH-GIT-IDENTITY",
+          "GROUNDS CL-H4 -> FACT-SH-OPAQUE-CONFINEMENT",
+          "GROUNDS CL-MF1 -> FACT-SH-NO-FACTORY-WEBAPP",
+          "GROUNDS CL-ST1 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "GROUNDS CL-ST2 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "GROUNDS CL-ST3 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "GROUNDS CL-ST4 -> FACT-SH-OPFS-SERVED-APP",
+          "GROUNDS CL-ST6 -> FACT-SH-IDB-CAS",
+          "GROUNDS CL-T5 -> FACT-SH-SW-GRANTS-COI",
+          "PROBED_BY FACT-GIT-TREE-ORDER-UNDOCUMENTED -> PROBE-SH-P09",
+          "PROBED_BY FACT-OPAQUE-FRAME-SECURE-CONTEXT -> PROBE-SH-P08",
+          "PROBED_BY FACT-SH-KERNEL-TOOLCHAIN-DRIFT -> PROBE-WASM-INSPECT",
+          "REQUIRES CON-GIT-001 -> FACT-SH-GIT-IDENTITY",
+          "REQUIRES CON-GIT-001 -> FACT-SH-IDB-CAS",
+          "REQUIRES CON-SEC-002 -> FACT-SH-BROKER-FED-GENERATION",
+          "REQUIRES CON-SEC-002 -> FACT-SH-OPAQUE-CONFINEMENT",
+          "REQUIRES CON-ST-001 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "REQUIRES CON-SW-001 -> FACT-SH-BROKEN-SEED-FATAL",
+          "REQUIRES CON-SW-001 -> FACT-SH-INTERRUPTED-UPDATE",
+          "REQUIRES CON-SW-001 -> FACT-SH-SW-NO-SELF-UPDATE",
+          "REVISES REV-D14-AUTH-COMPRESSION-ZLIB -> AUTH-COMPRESSION-ZLIB",
+          "REVISES REV-D14-AUTH-FS-OPFS -> AUTH-FS-OPFS",
+          "REVISES REV-D14-AUTH-GIT-OBJECT-FORMAT -> AUTH-GIT-OBJECT-FORMAT",
+          "REVISES REV-D14-AUTH-GIT-PACK-FORMAT -> AUTH-GIT-PACK-FORMAT",
+          "REVISES REV-D14-AUTH-GIT-SHA256-TRANSITION -> AUTH-GIT-SHA256-TRANSITION",
+          "REVISES REV-D14-AUTH-GIT-UPDATE-REF-CAS -> AUTH-GIT-UPDATE-REF-CAS",
+          "REVISES REV-D14-AUTH-HTML-SANDBOX-ORIGIN -> AUTH-HTML-SANDBOX-ORIGIN",
+          "REVISES REV-D14-AUTH-IDB-TRANSACTION -> AUTH-IDB-TRANSACTION",
+          "REVISES REV-D14-AUTH-MANIFEST-INSTALLABLE -> AUTH-MANIFEST-INSTALLABLE",
+          "REVISES REV-D14-AUTH-STORAGE-BUCKET-MODE -> AUTH-STORAGE-BUCKET-MODE",
+          "REVISES REV-D14-AUTH-SW-INSTALL-FAILED -> AUTH-SW-INSTALL-FAILED",
+          "REVISES REV-D14-AUTH-SW-REGISTER-TRUST -> AUTH-SW-REGISTER-TRUST",
+          "REVISES REV-D14-AUTH-SW-SANDBOX-NO-CONTROLLER -> AUTH-SW-SANDBOX-NO-CONTROLLER",
+          "REVISES REV-D14-AUTH-SW-UPDATE-BYPASS -> AUTH-SW-UPDATE-BYPASS",
+          "REVISES REV-D14-AUTH-WEB-LOCKS -> AUTH-WEB-LOCKS",
+          "REVISES REV-D14-AUTH-WEBCRYPTO-DIGEST -> AUTH-WEBCRYPTO-DIGEST"
+        ]
+      },
+      {
+        "epoch": "D13",
+        "delta": "D13-REPO-HYGIENE",
+        "commit": "205d337a7efef5fa25bb588ec385fa3655acb562 (canonical base; integration commit in LEDGER AFTER)",
+        "nodes_by_class": {
+          "ENVIRONMENT": 1,
+          "IMPLEMENTATION": 3,
+          "CONSTRAINT": 2,
+          "PROBE": 3,
+          "COMPUTATIONAL_FACT": 8,
+          "EVIDENCE": 8
+        },
+        "facts": [
+          {
+            "fact": "FACT-HANDOFF-MODEL-INDEPENDENT",
+            "status": "RUN",
+            "probes": [
+              "PROBE-STATUS-SCAN"
+            ],
+            "evidence": [
+              "EV-D13-HANDOFF"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+            "status": "GAP",
+            "probes": [
+              "PROBE-QUALIFIED-PROOF"
+            ],
+            "evidence": [
+              "EV-D13-KERNEL-IDENTITY"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": [
+              "AUTH-CARGO-BUILD-STD"
+            ]
+          },
+          {
+            "fact": "FACT-PROOF-SETS-DECLARED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-QUALIFIED-PROOF"
+            ],
+            "evidence": [
+              "EV-D13-SETS"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-QUALIFIED-JUDGE-RERUN",
+            "status": "RUN",
+            "probes": [
+              "PROBE-QUALIFIED-PROOF"
+            ],
+            "evidence": [
+              "EV-D13-PROOF-SUMMARY"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-STATUS-INVENTORIED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-STATUS-SCAN"
+            ],
+            "evidence": [
+              "EV-D13-STATUS"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-SURFACES-LITERAL-ENFORCED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-PATHS-LITERAL"
+            ],
+            "evidence": [
+              "EV-D13-PATHS-PROBE"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-TOOLCHAIN-PINNED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-QUALIFIED-PROOF"
+            ],
+            "evidence": [
+              "EV-D13-PINS"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-WORKPIECES-AUDITED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-WORKPIECE-AUDIT"
+            ],
+            "evidence": [
+              "EV-D13-WORKPIECES"
+            ],
+            "environments": [
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          }
+        ],
+        "cross_epoch_edges": [
+          "AUTHORIZES AUTH-CARGO-BUILD-STD -> FACT-KERNEL-IDENTITY-INSTALL-PATH",
+          "CONFLICTS_WITH CON-EM-007 -> CON-EM-005",
+          "EVIDENCED_BY FACT-JS-I64-BIGINT-MEMBRANE -> EV-D13-PROOF-SUMMARY",
+          "EVIDENCED_BY FACT-SH-KERNEL-TOOLCHAIN-DRIFT -> EV-D13-KERNEL-IDENTITY",
+          "EVIDENCED_BY PROBE-PATHS-LITERAL -> EV-D13-PATHS-PROBE",
+          "GROUNDS CL-R3 -> CON-EM-007",
+          "GROUNDS CL-R6 -> CON-FT-007",
+          "INVALIDATED_BY FACT-TOOLCHAIN-DRIFT -> EV-D13-PINS",
+          "INVALIDATED_BY FACT-WILDCARD-SURFACES-DEAD -> EV-D13-PATHS-PROBE",
+          "PROBED_BY FACT-SURFACES-LITERAL-ENFORCED -> PROBE-PATHS-LITERAL",
+          "STALE_IF FACT-JS-I64-BIGINT-MEMBRANE -> ENV-D13-HOST-PINNED"
+        ]
+      },
+      {
+        "epoch": "D14",
+        "delta": "D14-FRONTIER-REOPEN",
+        "commit": "5e57467bd7c984529dc466201629b37e0ee44c4b (canonical base; integration commit in LEDGER AFTER)",
+        "nodes_by_class": {
+          "ENVIRONMENT": 1,
+          "IMPLEMENTATION": 1,
+          "PROBE": 1,
+          "EVIDENCE": 66,
+          "AUTHORITY_REVISION": 64,
+          "AUTHORITY": 1,
+          "COMPUTATIONAL_FACT": 5
+        },
+        "facts": [
+          {
+            "fact": "FACT-FRONTIER-SOURCES-AT-PIN",
+            "status": "RUN",
+            "probes": [
+              "PROBE-AUTHORITY-REOPEN"
+            ],
+            "evidence": [
+              "EV-D14-REOPEN-SUMMARY"
+            ],
+            "environments": [
+              "ENV-D14-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-MEMORY64-FINISHED",
+            "status": "OBS",
+            "probes": [
+              "PROBE-AUTHORITY-REOPEN"
+            ],
+            "evidence": [
+              "EV-D14-PROPOSAL-PHASES"
+            ],
+            "environments": [
+              "ENV-D14-HOST"
+            ],
+            "authorities": [
+              "AUTH-WASM-CORE-CHANGES-64",
+              "AUTH-WASM-PROPOSALS-REGISTRY"
+            ]
+          },
+          {
+            "fact": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+            "status": "UNK",
+            "probes": [
+              "PROBE-AUTHORITY-REOPEN"
+            ],
+            "evidence": [
+              "EV-D14-REOPEN-SUMMARY"
+            ],
+            "environments": [
+              "ENV-D14-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-WASM-SET-PHASE-1",
+            "status": "OBS",
+            "probes": [
+              "PROBE-AUTHORITY-REOPEN"
+            ],
+            "evidence": [
+              "EV-D14-PROPOSAL-PHASES"
+            ],
+            "environments": [
+              "ENV-D14-HOST"
+            ],
+            "authorities": [
+              "AUTH-WASM-PROPOSALS-REGISTRY"
+            ]
+          },
+          {
+            "fact": "FACT-WASM-THREADS-PHASE-4",
+            "status": "OBS",
+            "probes": [
+              "PROBE-AUTHORITY-REOPEN"
+            ],
+            "evidence": [
+              "EV-D14-PROPOSAL-PHASES"
+            ],
+            "environments": [
+              "ENV-D14-HOST"
+            ],
+            "authorities": [
+              "AUTH-WASM-PROPOSALS-REGISTRY"
+            ]
+          }
+        ],
+        "cross_epoch_edges": [
+          "AUTHORIZES AUTH-WASM-CORE-CHANGES-64 -> FACT-MEMORY64-FINISHED",
+          "DEPENDS_ON AUTH-WASM-CORE-CHANGES-64 -> AUTH-WASM-PROPOSALS-REGISTRY",
+          "DEPENDS_ON AUTH-WASM-SET -> AUTH-WASM-PROPOSALS-REGISTRY",
+          "DEPENDS_ON AUTH-WASM-THREADS -> AUTH-WASM-PROPOSALS-REGISTRY",
+          "REVISES REV-D14-AUTH-CARGO-BUILD-STD -> AUTH-CARGO-BUILD-STD",
+          "REVISES REV-D14-AUTH-CHROMIUM-CONTENT-SWITCHES -> AUTH-CHROMIUM-CONTENT-SWITCHES",
+          "REVISES REV-D14-AUTH-CHROMIUM-GL-SWITCHES -> AUTH-CHROMIUM-GL-SWITCHES",
+          "REVISES REV-D14-AUTH-CHROMIUM-GPU-SWITCHES -> AUTH-CHROMIUM-GPU-SWITCHES",
+          "REVISES REV-D14-AUTH-CHROMIUM-SWIFTSHADER-DOC -> AUTH-CHROMIUM-SWIFTSHADER-DOC",
+          "REVISES REV-D14-AUTH-COMPRESSION-ZLIB -> AUTH-COMPRESSION-ZLIB",
+          "REVISES REV-D14-AUTH-FS-OPFS -> AUTH-FS-OPFS",
+          "REVISES REV-D14-AUTH-GIT-GLOSSARY-COMMIT -> AUTH-GIT-GLOSSARY-COMMIT",
+          "REVISES REV-D14-AUTH-GIT-OBJECT-FORMAT -> AUTH-GIT-OBJECT-FORMAT",
+          "REVISES REV-D14-AUTH-GIT-PACK-FORMAT -> AUTH-GIT-PACK-FORMAT",
+          "REVISES REV-D14-AUTH-GIT-REPO-LAYOUT -> AUTH-GIT-REPO-LAYOUT",
+          "REVISES REV-D14-AUTH-GIT-REVISIONS -> AUTH-GIT-REVISIONS",
+          "REVISES REV-D14-AUTH-GIT-SHA256-TRANSITION -> AUTH-GIT-SHA256-TRANSITION",
+          "REVISES REV-D14-AUTH-GIT-UPDATE-REF-CAS -> AUTH-GIT-UPDATE-REF-CAS",
+          "REVISES REV-D14-AUTH-GIT-WORKTREE -> AUTH-GIT-WORKTREE",
+          "REVISES REV-D14-AUTH-GPU-ADAPTER-EXPIRE -> AUTH-GPU-ADAPTER-EXPIRE",
+          "REVISES REV-D14-AUTH-GPU-ADAPTERINFO -> AUTH-GPU-ADAPTERINFO",
+          "REVISES REV-D14-AUTH-GPU-DESTROY -> AUTH-GPU-DESTROY",
+          "REVISES REV-D14-AUTH-GPU-FALLBACK-ADAPTER -> AUTH-GPU-FALLBACK-ADAPTER",
+          "REVISES REV-D14-AUTH-GPU-LIMITS-MAXBUFFERSIZE -> AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+          "REVISES REV-D14-AUTH-GPU-LOSE-DEVICE -> AUTH-GPU-LOSE-DEVICE",
+          "REVISES REV-D14-AUTH-GPU-LOST -> AUTH-GPU-LOST",
+          "REVISES REV-D14-AUTH-GPU-NAVIGATOR-GPU -> AUTH-GPU-NAVIGATOR-GPU",
+          "REVISES REV-D14-AUTH-GPU-REQUESTADAPTER -> AUTH-GPU-REQUESTADAPTER",
+          "REVISES REV-D14-AUTH-GPU-REQUESTDEVICE -> AUTH-GPU-REQUESTDEVICE",
+          "REVISES REV-D14-AUTH-HTML-COI -> AUTH-HTML-COI",
+          "REVISES REV-D14-AUTH-HTML-HWCONCURRENCY -> AUTH-HTML-HWCONCURRENCY",
+          "REVISES REV-D14-AUTH-HTML-SANDBOX-ORIGIN -> AUTH-HTML-SANDBOX-ORIGIN",
+          "REVISES REV-D14-AUTH-HTML-WORKERS -> AUTH-HTML-WORKERS",
+          "REVISES REV-D14-AUTH-IDB-TRANSACTION -> AUTH-IDB-TRANSACTION",
+          "REVISES REV-D14-AUTH-MANIFEST-INSTALLABLE -> AUTH-MANIFEST-INSTALLABLE",
+          "REVISES REV-D14-AUTH-PLAYWRIGHT-INSTALLED -> AUTH-PLAYWRIGHT-INSTALLED",
+          "REVISES REV-D14-AUTH-RUST-REF-NOSTD -> AUTH-RUST-REF-NOSTD",
+          "REVISES REV-D14-AUTH-RUSTC-WASM64-DOC -> AUTH-RUSTC-WASM64-DOC",
+          "REVISES REV-D14-AUTH-RUSTC-WASM64-TARGET-SPEC -> AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "REVISES REV-D14-AUTH-SECCTX-TRUSTWORTHY -> AUTH-SECCTX-TRUSTWORTHY",
+          "REVISES REV-D14-AUTH-STORAGE-BUCKET-MODE -> AUTH-STORAGE-BUCKET-MODE",
+          "REVISES REV-D14-AUTH-SW-INSTALL-FAILED -> AUTH-SW-INSTALL-FAILED",
+          "REVISES REV-D14-AUTH-SW-REGISTER-TRUST -> AUTH-SW-REGISTER-TRUST",
+          "REVISES REV-D14-AUTH-SW-SANDBOX-NO-CONTROLLER -> AUTH-SW-SANDBOX-NO-CONTROLLER",
+          "REVISES REV-D14-AUTH-SW-UPDATE-BYPASS -> AUTH-SW-UPDATE-BYPASS",
+          "REVISES REV-D14-AUTH-SWIFTSHADER-README -> AUTH-SWIFTSHADER-README",
+          "REVISES REV-D14-AUTH-V8-FLAGS -> AUTH-V8-FLAGS",
+          "REVISES REV-D14-AUTH-WASM-CORE-BINARY-LIMITS -> AUTH-WASM-CORE-BINARY-LIMITS",
+          "REVISES REV-D14-AUTH-WASM-CORE-CHANGES-64 -> AUTH-WASM-CORE-CHANGES-64",
+          "REVISES REV-D14-AUTH-WASM-CORE-SYNTAX-ADDRTYPE -> AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+          "REVISES REV-D14-AUTH-WASM-CORE-TEXT-ADDRTYPE -> AUTH-WASM-CORE-TEXT-ADDRTYPE",
+          "REVISES REV-D14-AUTH-WASM-CORE-TEXT-MEMTYPE -> AUTH-WASM-CORE-TEXT-MEMTYPE",
+          "REVISES REV-D14-AUTH-WASM-JSAPI-MEMORIES -> AUTH-WASM-JSAPI-MEMORIES",
+          "REVISES REV-D14-AUTH-WASM-JSAPI-STORAGE -> AUTH-WASM-JSAPI-STORAGE",
+          "REVISES REV-D14-AUTH-WASM-JSAPI-VALIDATE -> AUTH-WASM-JSAPI-VALIDATE",
+          "REVISES REV-D14-AUTH-WASM-SET -> AUTH-WASM-SET",
+          "REVISES REV-D14-AUTH-WASM-THREADS -> AUTH-WASM-THREADS",
+          "REVISES REV-D14-AUTH-WASM-WEBAPI-STREAMING -> AUTH-WASM-WEBAPI-STREAMING",
+          "REVISES REV-D14-AUTH-WEB-LOCKS -> AUTH-WEB-LOCKS",
+          "REVISES REV-D14-AUTH-WEBCRYPTO-DIGEST -> AUTH-WEBCRYPTO-DIGEST",
+          "REVISES REV-D14-AUTH-WGSL -> AUTH-WGSL",
+          "REVISES REV-D14-LAW-EVIDENCE-OBLIGATIONS -> LAW-EVIDENCE-OBLIGATIONS",
+          "REVISES REV-D14-LAW-FACTORY-CONTRACTS -> LAW-FACTORY-CONTRACTS",
+          "REVISES REV-D14-LAW-FACTORY-LAW -> LAW-FACTORY-LAW",
+          "REVISES REV-D14-LAW-PASS1-FT003 -> LAW-PASS1-FT003",
+          "REVISES REV-D14-LAW-PASS6-COMMISSIONING -> LAW-PASS6-COMMISSIONING",
+          "REVISES REV-D14-LAW-PLANNER-COST-MODEL -> LAW-PLANNER-COST-MODEL",
+          "REVISES REV-D14-LAW-RUNTIME-ADMISSION -> LAW-RUNTIME-ADMISSION"
+        ]
+      },
+      {
+        "epoch": "D15",
+        "delta": "D15-FOUNDATIONAL-SEMANTICS",
+        "commit": "46cc28be1486798635eac42a6955dedaba36673f (canonical base; integration commit in LEDGER AFTER)",
+        "nodes_by_class": {
+          "ENVIRONMENT": 1,
+          "IMPLEMENTATION": 1,
+          "PROBE": 1,
+          "EVIDENCE": 61,
+          "COMPUTATIONAL_FACT": 5,
+          "AUTHORITY": 10,
+          "CLAUSE": 60,
+          "CONSTRAINT": 6
+        },
+        "facts": [
+          {
+            "fact": "FACT-D15-CLAUSES-VERIFIED",
+            "status": "RUN",
+            "probes": [
+              "PROBE-CLAUSE-EXTRACT"
+            ],
+            "evidence": [
+              "EV-D15-CLAUSES-SUMMARY"
+            ],
+            "environments": [
+              "ENV-D15-HOST"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+            "status": "GAP",
+            "probes": [
+              "PROBE-SH-P09"
+            ],
+            "evidence": [
+              "EV-D12-P09"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-JS-I64-BIGINT-MEMBRANE",
+            "status": "RUN",
+            "probes": [
+              "PROBE-KERNEL-HOST-BROWSER"
+            ],
+            "evidence": [
+              "EV-D13-PROOF-SUMMARY",
+              "EV-D9-T9-P8-03"
+            ],
+            "environments": [
+              "ENV-D1-D3-BROWSER",
+              "ENV-D13-HOST-PINNED"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+            "status": "RUN",
+            "probes": [
+              "PROBE-SH-P08"
+            ],
+            "evidence": [
+              "EV-D12-P08",
+              "EV-D12-P16"
+            ],
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ],
+            "authorities": []
+          },
+          {
+            "fact": "FACT-SAB-GLOBAL-HOST-DEFINED",
+            "status": "OBS",
+            "probes": [
+              "PROBE-BROWSER-IDENTITY"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT"
+            ],
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT"
+            ],
+            "authorities": []
+          }
+        ],
+        "cross_epoch_edges": [
+          "AUTHORIZES AUTH-GIT-OBJECT-FORMAT -> CON-GIT-001",
+          "AUTHORIZES AUTH-GIT-SHA256-TRANSITION -> CON-GIT-001",
+          "AUTHORIZES AUTH-GIT-UPDATE-REF-CAS -> CON-GIT-001",
+          "AUTHORIZES AUTH-HTML-SANDBOX-ORIGIN -> CON-SEC-002",
+          "AUTHORIZES AUTH-SECCTX-TRUSTWORTHY -> CON-SEC-002",
+          "AUTHORIZES AUTH-STORAGE-BUCKET-MODE -> CON-ST-001",
+          "AUTHORIZES AUTH-SW-INSTALL-FAILED -> CON-SW-001",
+          "AUTHORIZES AUTH-SW-UPDATE-BYPASS -> CON-SW-001",
+          "AUTHORIZES AUTH-WASM-JSAPI-MEMORIES -> CON-WA-006",
+          "CLAUSE_OF CL-F2 -> AUTH-SW-UPDATE-BYPASS",
+          "CLAUSE_OF CL-F3 -> AUTH-SW-UPDATE-BYPASS",
+          "CLAUSE_OF CL-F4 -> AUTH-SW-REGISTER-TRUST",
+          "CLAUSE_OF CL-F5 -> AUTH-SW-INSTALL-FAILED",
+          "CLAUSE_OF CL-F6 -> AUTH-SW-SANDBOX-NO-CONTROLLER",
+          "CLAUSE_OF CL-G1 -> AUTH-GIT-OBJECT-FORMAT",
+          "CLAUSE_OF CL-G2 -> AUTH-GIT-UPDATE-REF-CAS",
+          "CLAUSE_OF CL-G4 -> AUTH-GIT-PACK-FORMAT",
+          "CLAUSE_OF CL-G5 -> AUTH-GIT-SHA256-TRANSITION",
+          "CLAUSE_OF CL-H2 -> AUTH-SECCTX-TRUSTWORTHY",
+          "CLAUSE_OF CL-H3 -> AUTH-SECCTX-TRUSTWORTHY",
+          "CLAUSE_OF CL-H4 -> AUTH-HTML-SANDBOX-ORIGIN",
+          "CLAUSE_OF CL-MF1 -> AUTH-MANIFEST-INSTALLABLE",
+          "CLAUSE_OF CL-R1 -> AUTH-RUST-REF-NOSTD",
+          "CLAUSE_OF CL-R2 -> AUTH-RUST-REF-NOSTD",
+          "CLAUSE_OF CL-R3 -> AUTH-CARGO-BUILD-STD",
+          "CLAUSE_OF CL-R4 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R5 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R6 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R7 -> AUTH-RUSTC-WASM64-DOC",
+          "CLAUSE_OF CL-R8 -> AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "CLAUSE_OF CL-R9 -> AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "CLAUSE_OF CL-S1 -> AUTH-WASM-WEBAPI-STREAMING",
+          "CLAUSE_OF CL-S2 -> AUTH-WASM-WEBAPI-STREAMING",
+          "CLAUSE_OF CL-ST1 -> AUTH-STORAGE-BUCKET-MODE",
+          "CLAUSE_OF CL-ST2 -> AUTH-STORAGE-BUCKET-MODE",
+          "CLAUSE_OF CL-ST3 -> AUTH-STORAGE-BUCKET-MODE",
+          "CLAUSE_OF CL-ST4 -> AUTH-FS-OPFS",
+          "CLAUSE_OF CL-ST5 -> AUTH-FS-OPFS",
+          "CLAUSE_OF CL-ST6 -> AUTH-IDB-TRANSACTION",
+          "CLAUSE_OF CL-ST7 -> AUTH-WEB-LOCKS",
+          "CLAUSE_OF CL-T1 -> AUTH-WASM-JSAPI-STORAGE",
+          "CLAUSE_OF CL-T2 -> AUTH-WASM-THREADS",
+          "CLAUSE_OF CL-T3 -> AUTH-WASM-SET",
+          "CLAUSE_OF CL-T4 -> AUTH-HTML-COI",
+          "CLAUSE_OF CL-T5 -> AUTH-HTML-COI",
+          "CLAUSE_OF CL-T8 -> AUTH-HTML-COI",
+          "CLAUSE_OF CL-W1 -> AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+          "CLAUSE_OF CL-W3 -> AUTH-WASM-CORE-BINARY-LIMITS",
+          "CLAUSE_OF CL-W4 -> AUTH-WASM-CORE-CHANGES-64",
+          "CLAUSE_OF CL-W5 -> AUTH-WASM-JSAPI-MEMORIES",
+          "CLAUSE_OF CL-W6 -> AUTH-WASM-JSAPI-MEMORIES",
+          "CLAUSE_OF CL-W7 -> AUTH-WASM-JSAPI-MEMORIES",
+          "EVIDENCED_BY FACT-GIT-TREE-ORDER-UNDOCUMENTED -> EV-D12-P09",
+          "EVIDENCED_BY FACT-JS-I64-BIGINT-MEMBRANE -> EV-D13-PROOF-SUMMARY",
+          "EVIDENCED_BY FACT-JS-I64-BIGINT-MEMBRANE -> EV-D9-T9-P8-03",
+          "EVIDENCED_BY FACT-OPAQUE-FRAME-SECURE-CONTEXT -> EV-D12-P08",
+          "EVIDENCED_BY FACT-OPAQUE-FRAME-SECURE-CONTEXT -> EV-D12-P16",
+          "EVIDENCED_BY FACT-SAB-GLOBAL-HOST-DEFINED -> EV-D11-BROWSER-DEFAULT",
+          "GROUNDS CL-F2 -> FACT-SH-SW-NO-SELF-UPDATE",
+          "GROUNDS CL-F4 -> CON-SEC-001",
+          "GROUNDS CL-F4 -> FACT-SH-BROKEN-SEED-FATAL",
+          "GROUNDS CL-F5 -> FACT-SH-INTERRUPTED-UPDATE",
+          "GROUNDS CL-F6 -> FACT-SH-BROKER-FED-GENERATION",
+          "GROUNDS CL-G1 -> CON-FT-004",
+          "GROUNDS CL-G1 -> FACT-SH-GIT-IDENTITY",
+          "GROUNDS CL-G2 -> CON-FT-004",
+          "GROUNDS CL-G3 -> CON-FT-004",
+          "GROUNDS CL-H1 -> CON-SEC-001",
+          "GROUNDS CL-H2 -> CON-EM-001",
+          "GROUNDS CL-H2 -> CON-SEC-001",
+          "GROUNDS CL-H3 -> CON-SEC-001",
+          "GROUNDS CL-H4 -> CON-SEC-001",
+          "GROUNDS CL-H4 -> FACT-SH-OPAQUE-CONFINEMENT",
+          "GROUNDS CL-I1 -> CON-EM-001",
+          "GROUNDS CL-I1 -> CON-SEC-001",
+          "GROUNDS CL-I2 -> CON-WA-003",
+          "GROUNDS CL-MF1 -> FACT-SH-NO-FACTORY-WEBAPP",
+          "GROUNDS CL-P1 -> CON-SEC-001",
+          "GROUNDS CL-R1 -> CON-RS-001",
+          "GROUNDS CL-R2 -> CON-RS-001",
+          "GROUNDS CL-R3 -> CON-EM-007",
+          "GROUNDS CL-R3 -> CON-RS-002",
+          "GROUNDS CL-R3 -> FACT-CORE-ONLY-GRAPH",
+          "GROUNDS CL-R4 -> CON-RS-002",
+          "GROUNDS CL-R5 -> CON-RS-001",
+          "GROUNDS CL-R6 -> CON-FT-007",
+          "GROUNDS CL-R7 -> CON-RS-003",
+          "GROUNDS CL-R8 -> CON-EM-004",
+          "GROUNDS CL-R8 -> CON-IC-CPU_WASM64",
+          "GROUNDS CL-R9 -> CON-WA-002",
+          "GROUNDS CL-S1 -> CON-WA-004",
+          "GROUNDS CL-S1 -> FACT-STREAMING-UNPROBED",
+          "GROUNDS CL-S2 -> CON-WA-004",
+          "GROUNDS CL-S3 -> CON-WA-004",
+          "GROUNDS CL-S4 -> CON-WA-004",
+          "GROUNDS CL-ST1 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "GROUNDS CL-ST2 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "GROUNDS CL-ST3 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "GROUNDS CL-ST4 -> CON-SEC-001",
+          "GROUNDS CL-ST4 -> FACT-SH-OPFS-SERVED-APP",
+          "GROUNDS CL-ST5 -> CON-WB-001",
+          "GROUNDS CL-ST6 -> FACT-SH-IDB-CAS",
+          "GROUNDS CL-ST7 -> CON-SEC-001",
+          "GROUNDS CL-T1 -> CON-WA-005",
+          "GROUNDS CL-T1 -> FACT-SHARED-THREADS-UNADMITTED",
+          "GROUNDS CL-T2 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T2 -> CON-THREAD-001",
+          "GROUNDS CL-T3 -> CON-THREAD-002",
+          "GROUNDS CL-T4 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T5 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T5 -> FACT-SH-SW-GRANTS-COI",
+          "GROUNDS CL-T6 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T7 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T8 -> CON-IC-WASM_SHARED_THREADS",
+          "GROUNDS CL-T8 -> CON-WB-001",
+          "GROUNDS CL-W1 -> CON-WA-001",
+          "GROUNDS CL-W2 -> CON-WA-002",
+          "GROUNDS CL-W3 -> CON-FT-003",
+          "GROUNDS CL-W3 -> CON-WA-002",
+          "GROUNDS CL-W3 -> FACT-WASM64-MODULE-I64",
+          "GROUNDS CL-W4 -> CON-WA-001",
+          "GROUNDS CL-W5 -> CON-WA-003",
+          "GROUNDS CL-W6 -> CON-WA-003",
+          "GROUNDS CL-W7 -> CON-WA-003",
+          "IMPLEMENTED_BY CON-WA-006 -> IMPL-ADAPTER-WASM64",
+          "IMPLEMENTED_BY CON-WA-006 -> IMPL-KERNEL-HOST",
+          "IMPLEMENTED_BY FACT-JS-I64-BIGINT-MEMBRANE -> IMPL-ADAPTER-WASM64",
+          "IMPLEMENTED_BY FACT-JS-I64-BIGINT-MEMBRANE -> IMPL-KERNEL-HOST",
+          "PROBED_BY FACT-GIT-TREE-ORDER-UNDOCUMENTED -> PROBE-SH-P09",
+          "PROBED_BY FACT-JS-I64-BIGINT-MEMBRANE -> PROBE-KERNEL-HOST-BROWSER",
+          "PROBED_BY FACT-OPAQUE-FRAME-SECURE-CONTEXT -> PROBE-SH-P08",
+          "PROBED_BY FACT-SAB-GLOBAL-HOST-DEFINED -> PROBE-BROWSER-IDENTITY",
+          "REQUIRES CON-GIT-001 -> FACT-SH-GIT-IDENTITY",
+          "REQUIRES CON-GIT-001 -> FACT-SH-IDB-CAS",
+          "REQUIRES CON-SEC-002 -> FACT-SH-BROKER-FED-GENERATION",
+          "REQUIRES CON-SEC-002 -> FACT-SH-OPAQUE-CONFINEMENT",
+          "REQUIRES CON-ST-001 -> FACT-SH-STORAGE-BEST-EFFORT",
+          "REQUIRES CON-SW-001 -> FACT-SH-BROKEN-SEED-FATAL",
+          "REQUIRES CON-SW-001 -> FACT-SH-INTERRUPTED-UPDATE",
+          "REQUIRES CON-SW-001 -> FACT-SH-SW-NO-SELF-UPDATE",
+          "STALE_IF FACT-JS-I64-BIGINT-MEMBRANE -> ENV-D13-HOST-PINNED"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "delta_id": "D17-IMPLEMENTATION-REALITY",
+  "workpiece_id": "W19",
+  "canonical_base": "e4e210304591d99f73873dc719b79f187c4d19a1",
+  "base_tree": "7fbdd25ed875c8a1773e428d0b1b68d0d0fbb64b",
+  "verified_tree": "a5b74c142f5927608856ecb8548e441469f4b07b",
+  "changed_paths": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D17.json",
+    "design/environment-map/graph.json",
+    "design/materialization/D17-INTENDED-IMPLEMENTATION-REALITY.md",
+    "design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D17/clauses/records/CL-IMP-BR1.json",
+    "evidence/D17/clauses/records/CL-IMP-BR2.json",
+    "evidence/D17/clauses/records/CL-IMP-BR3.json",
+    "evidence/D17/clauses/records/CL-IMP-BR4.json",
+    "evidence/D17/clauses/records/CL-IMP-BR5.json",
+    "evidence/D17/clauses/records/CL-IMP-BR6.json",
+    "evidence/D17/clauses/records/CL-IMP-BR7.json",
+    "evidence/D17/clauses/records/CL-IMP-BR8.json",
+    "evidence/D17/clauses/records/CL-IMP-DEPS1.json",
+    "evidence/D17/clauses/records/CL-IMP-DEPS2.json",
+    "evidence/D17/clauses/records/CL-IMP-DEPS3.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU1.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU2.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU3.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU4.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU5.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU6.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU7.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU8.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU9.json",
+    "evidence/D17/clauses/records/CL-IMP-HL1.json",
+    "evidence/D17/clauses/records/CL-IMP-HL2.json",
+    "evidence/D17/clauses/records/CL-IMP-HL3.json",
+    "evidence/D17/clauses/records/CL-IMP-HL4.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL1.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL2.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL3.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL4.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL5.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL6.json",
+    "evidence/D17/clauses/records/CL-IMP-PW1.json",
+    "evidence/D17/clauses/records/CL-IMP-PW2.json",
+    "evidence/D17/clauses/records/CL-IMP-PW3.json",
+    "evidence/D17/clauses/records/CL-IMP-PW4.json",
+    "evidence/D17/clauses/records/CL-IMP-RS1.json",
+    "evidence/D17/clauses/records/CL-IMP-RS2.json",
+    "evidence/D17/clauses/records/CL-IMP-RS3.json",
+    "evidence/D17/clauses/records/CL-IMP-RS4.json",
+    "evidence/D17/clauses/records/CL-IMP-RS5.json",
+    "evidence/D17/clauses/records/CL-IMP-SAB1.json",
+    "evidence/D17/clauses/records/CL-IMP-SAB2.json",
+    "evidence/D17/clauses/records/CL-IMP-V8A.json",
+    "evidence/D17/clauses/records/CL-IMP-V8B.json",
+    "evidence/D17/clauses/records/CL-IMP-WN1.json",
+    "evidence/D17/clauses/summary.json",
+    "evidence/D17/envmap/merge-check.json",
+    "evidence/D17/envmap/queries/Q01.json",
+    "evidence/D17/envmap/queries/Q02.json",
+    "evidence/D17/envmap/queries/Q03.json",
+    "evidence/D17/envmap/queries/Q04.json",
+    "evidence/D17/envmap/queries/Q05.json",
+    "evidence/D17/envmap/queries/Q06.json",
+    "evidence/D17/envmap/queries/Q07.json",
+    "evidence/D17/envmap/queries/Q08.json",
+    "evidence/D17/envmap/queries/Q09.json",
+    "evidence/D17/envmap/queries/Q10.json",
+    "evidence/D17/envmap/queries/Q11.json",
+    "evidence/D17/envmap/queries/Q12.json",
+    "evidence/D17/envmap/queries/Q13.json",
+    "evidence/D17/envmap/queries/Q14.json",
+    "evidence/D17/envmap/queries/Q15.json",
+    "evidence/D17/envmap/queries/Q16.json",
+    "evidence/D17/envmap/queries/Q17.json",
+    "evidence/D17/envmap/queries/Q18.json",
+    "evidence/D17/envmap/queries/Q19.json",
+    "evidence/D17/envmap/queries/Q20.json",
+    "evidence/D17/envmap/render-check.json",
+    "evidence/D17/envmap/stale.json",
+    "evidence/D17/envmap/validate.json",
+    "evidence/D17/gate.json",
+    "evidence/D17/index.json",
+    "evidence/D17/kernel/builds.json",
+    "evidence/D17/kernel/sections.json",
+    "evidence/D17/labels/audit.json",
+    "evidence/D17/logs/F2-clauses.log",
+    "evidence/D17/logs/F3-label-audit.log",
+    "evidence/D17/logs/F5-audit-after.log",
+    "evidence/D17/logs/F5-audit-before.log",
+    "evidence/D17/logs/F5-cleanup-gate.log",
+    "evidence/D17/logs/F5-implementation-gate.log",
+    "evidence/D17/logs/F5-index.log",
+    "evidence/D17/logs/F5-merge-check.log",
+    "evidence/D17/logs/F5-q18-gate.log",
+    "evidence/D17/logs/F5-q20-gate.log",
+    "evidence/D17/logs/F5-queries.log",
+    "evidence/D17/logs/F5-render-check.log",
+    "evidence/D17/logs/F5-retire.log",
+    "evidence/D17/logs/F5-stale.log",
+    "evidence/D17/logs/F5-validate.log",
+    "evidence/D17/logs/F8-kernels.log",
+    "evidence/D17/workpieces/audit-after.json",
+    "evidence/D17/workpieces/audit-before.json",
+    "evidence/D17/workpieces/retire.json",
+    "factory/deltas/D17.json",
+    "factory/fixtures/D17/F0-doc.json",
+    "factory/fixtures/D17/F1-fixture.json",
+    "factory/fixtures/D17/F2-build.json",
+    "factory/fixtures/D17/F3-build.json",
+    "factory/fixtures/D17/F4-doc.json",
+    "factory/fixtures/D17/F5-evidence.json",
+    "factory/fixtures/D17/F6-doc.json",
+    "factory/fixtures/D17/F7-fixture.json",
+    "factory/fixtures/D17/F8-build.json",
+    "factory/fixtures/D17/F9-doc.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F0-doc.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F1-fixture.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F2-build.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F3-build.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F4-doc.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F5-evidence.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F6-doc.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F7-fixture.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F8-build.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/F9-doc.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F0-ascii.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F0-untouched.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F1-regression.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F1-syntax-generic.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-build-epoch.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-checks.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-merge.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-render.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F6-observed.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F7-regression.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F7-syntax-generic.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F9-observed.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/verification.json",
+    "tests/envmap/envmap.mjs",
+    "tests/implementation/build-kernels.sh",
+    "tests/implementation/build-reality.mjs",
+    "tests/implementation/gate.mjs",
+    "tests/implementation/label-audit.json",
+    "tests/implementation/label-audit.mjs",
+    "tests/implementation/reality.json",
+    "tests/implementation/wasm-sections.mjs",
+    "tests/reference/build-clauses.mjs",
+    "tests/reference/clauses.mjs",
+    "tests/reference/d17-clauses.json",
+    "tests/reference/lib.mjs"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "7fbdd25ed875c8a1773e428d0b1b68d0d0fbb64b"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F1-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F2-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F3-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F4-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F5-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F6-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F7-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F7-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F7-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F7-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F7-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F8-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F8-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F8-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F8-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F8-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F9-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D17-IMPLEMENTATION-REALITY/F9-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F9-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F9-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F9-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D17-INTENDED-IMPLEMENTATION-REALITY.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reference/d17-clauses.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/implementation/reality.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/implementation/label-audit.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/implementation/label-audit.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/implementation/wasm-sections.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/implementation/build-reality.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/implementation/gate.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/implementation/build-kernels.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D17.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D17/clauses/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D17/kernel/sections.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D17/labels/audit.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D17/envmap/queries/Q20.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D17/gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D17/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T09:14:35Z",
+  "status": "PASS"
+}

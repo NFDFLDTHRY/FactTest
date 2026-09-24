@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+ "authority_class": "STANDARD_RELEASE",
+ "cited": {
+  "url": "https://webassembly.github.io/spec/core/syntax/types.html",
+  "fragment": "#syntax-addrtype",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "Release 3.0 (followed sublink: defines legality of i64 addresses)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "path": "document/core/syntax/types.rst",
+  "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d",
+  "observed": "2026-09-24",
+  "locator": "headings 'Address Types' (line 332) and 'Memory Types' (line 404)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#syntax-addrtype",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 330,
+   "kind": "rst label"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 330,
+   "kind": "rst label"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   332,
+   332
+  ],
+  "window_sha256": "c7d3830cae4df053a2733e842f6b7fc1ac59cb71d3881c3922de3ad91dfddb20",
+  "window_excerpt": "Address Types",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   332,
+   332
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

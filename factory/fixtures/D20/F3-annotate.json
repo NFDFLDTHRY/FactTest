@@ -1,0 +1,52 @@
+{
+  "fixture_id": "F3-annotate",
+  "station_id": "S-ANNOTATE",
+  "selected_inputs": [
+    "tests/sync/d20-line.json (union)",
+    "git objects of 4d8a4c0 and 1205fda"
+  ],
+  "narrowed_may_change": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "factory/receipts/D20-MAIN-SYNC/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope REFERENCE-AUTHORITY.md,CONSTRAINT-LEDGER.md,CONFLICT-LEDGER.md,IMPLEMENTATION-CONTRACTS.md,EVIDENCE-OBLIGATIONS.md && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope REFERENCE-AUTHORITY.md,CONSTRAINT-LEDGER.md,CONFLICT-LEDGER.md,IMPLEMENTATION-CONTRACTS.md,EVIDENCE-OBLIGATIONS.md"
+        ],
+        "log": "factory/receipts/D20-MAIN-SYNC/logs/F3-import-law.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "git diff --numstat c3159d562768d52465ead5e44bc6c5259dfc1b79 -- REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md | awk '{print} $2!=0{bad=1} END{exit bad}' && echo 'insertion-only: 0 deleted lines'"
+        ],
+        "log": "factory/receipts/D20-MAIN-SYNC/logs/F3-insertion-only.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D20-MAIN-SYNC"
+}

@@ -1,0 +1,219 @@
+{
+ "tool": "tests/implementation/label-audit.mjs",
+ "audit": "tests/implementation/label-audit.json",
+ "findings": 12,
+ "mislabels": 6,
+ "by_pattern_verdict": {
+  "CHROMIUM_AS_STANDARD/MISLABEL": 1,
+  "CHROMIUM_AS_STANDARD/OK": 1,
+  "SWIFTSHADER_AS_HARDWARE/OK": 2,
+  "FLAG_AS_ADMISSION/OK": 1,
+  "FLAG_AS_ADMISSION/MISLABEL": 2,
+  "V8_AS_UNIVERSAL/OK": 1,
+  "HEADLESS_AS_INSTALLED/OK": 1,
+  "HEADLESS_AS_INSTALLED/MISLABEL": 2,
+  "IMPLEMENTATION_PIN_NOT_RUN_VERSION/MISLABEL": 1
+ },
+ "unresolved": 0,
+ "results": [
+  {
+   "id": "LBL-01",
+   "pattern": "CHROMIUM_AS_STANDARD",
+   "verdict": "MISLABEL",
+   "file": "design/environment-map/TRACEABILITY.md",
+   "text": "SharedArrayBuffer needs cross-origin isolation",
+   "file_sha256": "1742c49fce184fcff4d2ee24d021d7407f7e863145714c52c411bab1047e461b",
+   "lines": [
+    1458
+   ],
+   "evidence": {
+    "CL-T4": "graph CLAUSE",
+    "CL-T6": "graph CLAUSE",
+    "CL-IMP-SAB1": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-02",
+   "pattern": "CHROMIUM_AS_STANDARD",
+   "verdict": "OK",
+   "file": "design/environment-map/TRACEABILITY.md",
+   "text": "D11's observed absence of the global without COOP/COEP is Chromium behaviour",
+   "file_sha256": "1742c49fce184fcff4d2ee24d021d7407f7e863145714c52c411bab1047e461b",
+   "lines": [
+    1159
+   ],
+   "evidence": {
+    "CL-IMP-SAB1": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-03",
+   "pattern": "SWIFTSHADER_AS_HARDWARE",
+   "verdict": "OK",
+   "file": "docs/HANDOFF.md",
+   "text": "only SwiftShader fallback adapters ever observed",
+   "file_sha256": "57a908834455e4dd88871f61153437cc37b25208f368331328b10ef69c4a8ceb",
+   "lines": [
+    132
+   ],
+   "evidence": {
+    "CL-IMP-GPU8": "VERIFIED record",
+    "CL-IMP-GPU9": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-04",
+   "pattern": "SWIFTSHADER_AS_HARDWARE",
+   "verdict": "OK",
+   "file": "tests/capability/universe.json",
+   "text": "adapter (SwiftShader fallback, flags)",
+   "file_sha256": "7c7abfe6907ac0ddfccb1bfdd6371e33c6901b8af8dcd21fb8d28266504bd135",
+   "lines": [
+    223
+   ],
+   "evidence": {
+    "CL-IMP-GPU8": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-05",
+   "pattern": "FLAG_AS_ADMISSION",
+   "verdict": "OK",
+   "file": "design/environment-map/TRACEABILITY.md",
+   "text": "browser.flags == GPU flag set",
+   "file_sha256": "1742c49fce184fcff4d2ee24d021d7407f7e863145714c52c411bab1047e461b",
+   "lines": [
+    763,
+    818,
+    850,
+    866
+   ],
+   "evidence": {
+    "CL-IMP-GPU1": "VERIFIED record",
+    "CL-IMP-GPU2": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-06",
+   "pattern": "FLAG_AS_ADMISSION",
+   "verdict": "MISLABEL",
+   "file": "docs/HANDOFF.md",
+   "text": "Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64)",
+   "file_sha256": "57a908834455e4dd88871f61153437cc37b25208f368331328b10ef69c4a8ceb",
+   "lines": [
+    14
+   ],
+   "evidence": {
+    "CL-IMP-GPU1": "VERIFIED record",
+    "CL-IMP-GPU2": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-07",
+   "pattern": "FLAG_AS_ADMISSION",
+   "verdict": "MISLABEL",
+   "file": "README.md",
+   "text": "(SwiftShader WebGPU + wasm64 in Chromium 141)",
+   "file_sha256": "8d3948765c007e86cfed6bd2523ed3e9b02edea47190c32b7034f08036444f3f",
+   "lines": [
+    60
+   ],
+   "evidence": {
+    "CL-IMP-GPU1": "VERIFIED record",
+    "CL-IMP-GPU2": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-08",
+   "pattern": "V8_AS_UNIVERSAL",
+   "verdict": "OK",
+   "file": "design/environment-map/TRACEABILITY.md",
+   "text": "required environment: browser.js_engine",
+   "file_sha256": "1742c49fce184fcff4d2ee24d021d7407f7e863145714c52c411bab1047e461b",
+   "lines": [
+    1001
+   ],
+   "evidence": {
+    "CL-IMP-V8A": "VERIFIED record",
+    "CL-IMP-V8B": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-09",
+   "pattern": "HEADLESS_AS_INSTALLED",
+   "verdict": "OK",
+   "file": "tests/selfhost/primitives-probe.mjs",
+   "text": "persist() returned false in this headless, non-installed environment",
+   "file_sha256": "1bdc4af6ff9cf837bea616200088f36451a94bf35cb2d0c3239bbd957f1d35d0",
+   "lines": [
+    245
+   ],
+   "evidence": {
+    "CL-IMP-HL1": "VERIFIED record",
+    "CL-IMP-HL3": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-10",
+   "pattern": "HEADLESS_AS_INSTALLED",
+   "verdict": "MISLABEL",
+   "file": "docs/HANDOFF.md",
+   "text": "storage best-effort, persist() false",
+   "file_sha256": "57a908834455e4dd88871f61153437cc37b25208f368331328b10ef69c4a8ceb",
+   "lines": [
+    125
+   ],
+   "evidence": {
+    "CL-IMP-HL1": "VERIFIED record",
+    "CL-IMP-HL3": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-11",
+   "pattern": "HEADLESS_AS_INSTALLED",
+   "verdict": "MISLABEL",
+   "file": "design/environment-map/TRACEABILITY.md",
+   "text": "Chromium 141 persistent profile",
+   "file_sha256": "1742c49fce184fcff4d2ee24d021d7407f7e863145714c52c411bab1047e461b",
+   "lines": [
+    1083,
+    1203,
+    1219,
+    1235,
+    1251,
+    1284,
+    1300,
+    1335,
+    1366,
+    1382,
+    1398,
+    1415,
+    1431,
+    1447
+   ],
+   "evidence": {
+    "CL-IMP-PW1": "VERIFIED record",
+    "CL-IMP-PW4": "VERIFIED record"
+   }
+  },
+  {
+   "id": "LBL-12",
+   "pattern": "IMPLEMENTATION_PIN_NOT_RUN_VERSION",
+   "verdict": "MISLABEL",
+   "file": "design/environment-map/AUTHORITY-REGISTER.md",
+   "text": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+   "file_sha256": "854e1a289107d5f60a059fc254483d468f8fc7c6265b4b1f73c7528f36d829d2",
+   "lines": [
+    538,
+    564,
+    576,
+    588
+   ],
+   "evidence": {
+    "CL-IMP-GPU2": "VERIFIED record",
+    "CL-IMP-GPU5": "VERIFIED record",
+    "CL-IMP-GPU6": "VERIFIED record"
+   }
+  }
+ ]
+}

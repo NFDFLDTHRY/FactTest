@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-IDL1",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-IDL-MAGNETOMETER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/modules/sensor/magnetometer.idl",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "003675f222b8c526217a2e64866017399b4bc8d6538f18d1ecaf2599afb4b2f0",
+  "bytes": 613
+ },
+ "locator": {
+  "text": "RuntimeEnabled=SensorExtraClasses,",
+  "line_start": 9,
+  "line_end": 11,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 3,
+ "consequence": "Magnetometer exists only when SensorExtraClasses is enabled",
+ "excerpt": "    RuntimeEnabled=SensorExtraClasses,\n    SecureContext\n] interface Magnetometer : Sensor {",
+ "excerpt_sha256": "910b48df13a9cb22239c9a1ffbbef84be3ff6c46be22569b71ffdbf5e164a33c",
+ "must_contain": {
+  "interface Magnetometer : Sensor": true
+ },
+ "status": "VERIFIED"
+}

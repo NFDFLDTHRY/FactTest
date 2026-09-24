@@ -1,0 +1,439 @@
+{
+ "schema": "facttest-reconciliation/1",
+ "law": "design/materialization/D20-INTENDED-MAIN-SYNC.md",
+ "question": "The other line (main after pull request #5, D14-TECHNICAL-REFERENCE-RESCAN) joins this branch: which statements of the two lines contradict each other, which of the other line's claims touch nodes this line superseded, and what is the one current reading?",
+ "traversal_steps": [
+  "AUTHORITY_CHANGED",
+  "CONSTRAINT",
+  "FACT",
+  "IMPLEMENTATION_CONTRACT",
+  "ENVIRONMENT",
+  "OLD_PROBE_SUFFICIENT",
+  "OLD_EVIDENCE_APPLICABLE"
+ ],
+ "outcomes": {
+  "HOLDS": "the statement stays current as written (with the reconciliation note as its reading in the joined model)",
+  "OPEN": "the statement stays current; resolving it needs an owner decision or later work (named in the note)",
+  "SUPERSEDED": "a successor node is now the current statement; the superseded node stays in the graph as history",
+  "RESOLVED": "the [ERR]/[GAP] the node states is closed by the named current nodes; the node stays as history"
+ },
+ "inherits": {
+  "AUTHORITY": {
+   "out": [
+    "AUTHORIZES",
+    "DEPENDS_ON",
+    "CONFLICTS_WITH"
+   ],
+   "in": [
+    "DEPENDS_ON",
+    "CONFLICTS_WITH"
+   ]
+  },
+  "COMPUTATIONAL_FACT": {
+   "out": [
+    "PROBED_BY",
+    "EVIDENCED_BY",
+    "ADMITTED_BY",
+    "REQUIRES",
+    "EXPOSED_BY",
+    "STALE_IF",
+    "IMPLEMENTED_BY"
+   ],
+   "in": [
+    "AUTHORIZES",
+    "GROUNDS",
+    "EXPLAINS",
+    "WITNESSED_BY",
+    "REQUIRES"
+   ]
+  }
+ },
+ "retired_texts": [
+  "no current published authority, fragment or TR maturity could be verified",
+  "0 pinned files changed at the current branch head"
+ ],
+ "new_facts": [
+  {
+   "id": "FACT-PUBLISHED-FRONTIER-D20",
+   "subject": "published (current) authority renderings",
+   "status": "UNK",
+   "predicate": "the published authority hosts refuse the session egress proxy (23 hosts answer CONNECT 403; the git smart-HTTP endpoint of github.com and raw.githubusercontent.com are reachable, github.com blob pages answer 403); 39 published renderings exist as byte-exact copies of their publishers' GitHub Pages branches (fixtures/reference/published, ingested by the other line), in which 36 cited fragments are present and 9 are absent; no rendering has been observed at its published host, and hosts without a Pages branch (WHATWG, doc.rust-lang.org, git-scm.com, Chromium) stay source-pinned - every external claim rests on a pin (a source commit or a Pages-branch commit), never on the live published document",
+   "required_environment": [
+    "network egress policy of the session container"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "note": "supersedes FACT-PUBLISHED-FRONTIER-UNVERIFIED, whose statement that no published fragment could be verified no longer holds for the Pages-branch renderings the other line ingested (D20)",
+   "source_ref": "evidence/D14/ingress/hosts.json; evidence/D14/audit/link-audit.json; evidence/D14/reopen/summary.json"
+  },
+  {
+   "id": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "subject": "D11/D12 authority reproducibility pins",
+   "status": "RUN",
+   "predicate": "every D11/D12 authority pin re-fetches by its commit and matches its recorded sha256 (the other line: 56 external pins matched, 7 project-law pins read at the branch head; frontier reopen: 63 PIN_MATCH); a file at a moving branch head may change without changing the cited clause (D19: the V8 flag file at the v8 tip; the project-law documents by annotation), so the head relation is not part of this claim - the clause-level reading is FACT-FRONTIER-SOURCES-AT-PIN",
+   "required_environment": [
+    "network egress policy of the session container"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "note": "supersedes FACT-D14-D11-PINS-RECHECKED, whose claim that no pinned file had changed at the branch head held at the other line's read (2026-09-24, before 09:00 UTC) and not at D19's (AUTH-V8-FLAGS: TIP MOVED, FILE CHANGED, clause identical) (D20)",
+   "source_ref": "evidence/D14/ingress/register.json; evidence/D19/reopen/summary.json"
+  }
+ ],
+ "supersessions": [
+  {
+   "old": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+   "new": "FACT-PUBLISHED-FRONTIER-D20",
+   "reconciliation": "R-54"
+  },
+  {
+   "old": "FACT-D14-D11-PINS-RECHECKED",
+   "new": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "reconciliation": "R-59"
+  }
+ ],
+ "add_edges": [
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "EV-D14-HOSTS",
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "EV-D14-LINK-AUDIT",
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "PROBE-D14-REFERENCE-INGRESS",
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "changes"
+   },
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "EV-D19-REOPEN-SUMMARY",
+   "reconciliation": "R-59"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "PROBE-AUTHORITY-REOPEN",
+   "reconciliation": "R-59"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   },
+   "reconciliation": "R-59"
+  }
+ ],
+ "items": [
+  {
+   "id": "R-54",
+   "subject": "published frontier after the two lines join",
+   "reconciles": [
+    "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+    "FACT-D14-PUBLISHED-HOSTS-DENIED",
+    "FACT-D14-PAGES-BRANCH-ROUTE",
+    "FACT-D14-MAP-LINKS-AUDITED"
+   ],
+   "outcome": "SUPERSEDED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none: the published hosts still refuse; the other line found a policy-conforming route to Pages-branch copies of 39 renderings",
+    "CONSTRAINT": "CON-EM-D14-001 (PROPOSED by the other line: copies are pins, never current authority) - R-60",
+    "FACT": "FACT-PUBLISHED-FRONTIER-UNVERIFIED (this line's D14) said no published fragment could be verified; the other line verified 36 fragments in Pages-branch renderings (FACT-D14-PAGES-BRANCH-ROUTE, FACT-D14-MAP-LINKS-AUDITED)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "session container network policy (ENV-D14-HOST, ENV-D14-HOST-NETWORK, ENV-D19-SOURCES)",
+    "OLD_PROBE_SUFFICIENT": "yes: tests/reference/ingress.mjs probe-hosts / audit (the other line) and tests/reference/reopen.mjs (this line)",
+    "OLD_EVIDENCE_APPLICABLE": "yes, bounded to the Pages-branch copies; re-proved in D20"
+   },
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "successor FACT-PUBLISHED-FRONTIER-D20 [UNK]: narrowed, not closed - no rendering observed at its published host",
+   "new_probe_obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)"
+  },
+  {
+   "id": "R-55",
+   "subject": "D11 reopen denial in the joined model",
+   "reconciles": [
+    "FACT-AUTHORITY-REOPEN-DENIED"
+   ],
+   "outcome": "RESOLVED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "the D11 statement (published documents could not be re-opened in D11; clauses came only from source pins) is true of D11; the other line already INVALIDATED it (EV-D14-REGISTER: Pages-branch copies exist for the authorities with a route)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D11-HOST",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes for D11; superseded in substance by EV-D14-REGISTER"
+   },
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "closed by the other line's evidence (INVALIDATED_BY EV-D14-REGISTER); the uncertainty that remains (hosts still refuse, hosts without a Pages branch stay source-pinned) is carried by FACT-PUBLISHED-FRONTIER-D20 [UNK] (R-54)"
+  },
+  {
+   "id": "R-56",
+   "subject": "js-api #internal-storage in the other line's reopen",
+   "reconciles": [
+    "FACT-D14-REOPEN-WASM-JSAPI-STORAGE"
+   ],
+   "outcome": "RESOLVED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "AUTH-WASM-JSAPI-STORAGE superseded by AUTH-WASM-JSAPI-STORAGE-D18 (R-10): #webassembly-storage",
+    "CONSTRAINT": "none",
+    "FACT": "the other line's [ERR] (fragment absent in the Pages-branch rendering; nearest id webassembly-storage) is the same finding D18 resolved",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes: the D18 successor cites the id the other line names"
+   },
+   "surfaces": [
+    "REFERENCE-AUTHORITY.md"
+   ],
+   "note": "closed by AUTH-WASM-JSAPI-STORAGE-D18; the law citation stays as historically written (D13, D14 and D18 annotations)"
+  },
+  {
+   "id": "R-57",
+   "subject": "web-api streaming fragment in the other line's reopen",
+   "reconciles": [
+    "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING"
+   ],
+   "outcome": "RESOLVED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "AUTH-WASM-WEBAPI-STREAMING superseded by AUTH-WASM-WEBAPI-STREAMING-D18 (R-11): #streaming-modules",
+    "CONSTRAINT": "none",
+    "FACT": "the other line's [ERR] (fragment absent; nearest id streaming-modules) is the same finding D18 resolved",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes: the D18 successor cites the id the other line names"
+   },
+   "surfaces": [
+    "REFERENCE-AUTHORITY.md"
+   ],
+   "note": "closed by AUTH-WASM-WEBAPI-STREAMING-D18; the law citation stays as historically written"
+  },
+  {
+   "id": "R-58",
+   "subject": "drifted fragment citations in REFERENCE-AUTHORITY.md",
+   "reconciles": [
+    "FACT-D14-MAP-LINKS-AUDITED"
+   ],
+   "outcome": "OPEN",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "9 links cite fragments absent in the Pages-branch renderings; 2 of them (#internal-storage, #streaming-module-compilation-and-instantiation) have current successor authorities since D18 (R-10, R-11)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "yes (link audit)",
+    "OLD_EVIDENCE_APPLICABLE": "yes"
+   },
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "7 open: sensors #extending-the-permission-api and #extending-the-permissions-policy-api, deviceorientation #permissions, IndexedDB #database-concept, ServiceWorker #fetch-event, ambient-light #ambientlightsensor-interface, webxr #navigator-xr; replacing the citations is an owner-approved law delta",
+   "new_probe_obligation": "OWNER: a law delta replacing the 7 drifted fragments (nearest ids in the D14 ANNOTATION lines)"
+  },
+  {
+   "id": "R-59",
+   "subject": "pin re-check after the two lines join",
+   "reconciles": [
+    "FACT-D14-D11-PINS-RECHECKED",
+    "FACT-FRONTIER-SOURCES-AT-PIN"
+   ],
+   "outcome": "SUPERSEDED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "the other line: 0 pinned files changed at the branch head (before 09:00 UTC); this line's D19 reopen: AUTH-V8-FLAGS file changed at the v8 tip, clause identical",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D14-HOST-NETWORK, ENV-D19-SOURCES",
+    "OLD_PROBE_SUFFICIENT": "yes: both lines re-fetch pins by commit",
+    "OLD_EVIDENCE_APPLICABLE": "yes for the pins; the head relation is time-bound"
+   },
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "successor FACT-D14-D11-PINS-RECHECKED-D20 [RUN] keeps the pin claim and drops the head relation; FACT-FRONTIER-SOURCES-AT-PIN (clause level) holds",
+   "new_probe_obligation": "D20: re-prove the pin re-check (tests/reference/reopen.mjs on the D11-D13 authorities)"
+  },
+  {
+   "id": "R-60",
+   "subject": "the other line's proposed constraint",
+   "reconciles": [
+    "CON-EM-D14-001"
+   ],
+   "outcome": "OPEN",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-EM-D14-001 PROPOSED (copies in fixtures/reference/ are pins; a Pages-branch rendering is never claimed as observed at its host; the current authority is the hyperlink)",
+    "FACT": "consistent with this line's rule CURRENT AUTHORITY != REPRODUCIBILITY PIN",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "adoption into CONSTRAINT-LEDGER.md is an owner decision (the other line returned it to ASCII)"
+  },
+  {
+   "id": "R-61",
+   "subject": "the other line's edges on authorities D18 superseded",
+   "reconciles": [
+    "AUTH-CHROMIUM-CONTENT-SWITCHES",
+    "AUTH-CHROMIUM-GL-SWITCHES",
+    "AUTH-CHROMIUM-GPU-SWITCHES",
+    "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+    "AUTH-RUSTC-WASM64-DOC",
+    "AUTH-RUSTC-WASM64-TARGET-SPEC",
+    "AUTH-SWIFTSHADER-README",
+    "AUTH-V8-FLAGS",
+    "AUTH-WASM-JSAPI-STORAGE",
+    "AUTH-WASM-WEBAPI-STREAMING",
+    "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+    "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+    "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+    "FACT-D14-REOPEN-SWIFTSHADER-README",
+    "FACT-D14-REOPEN-V8-FLAGS"
+   ],
+   "outcome": "HOLDS",
+   "traversal": {
+    "AUTHORITY_CHANGED": "10 authorities the other line reopened were superseded in D18 (pins moved to the versions run, fragments corrected)",
+    "CONSTRAINT": "none",
+    "FACT": "the other line's reopen facts observe the historical pins (CURRENT AUTHORITY != REPRODUCIBILITY PIN)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes for the historical pins"
+   },
+   "surfaces": [],
+   "note": "the 10 AUTHORIZES edges are carried to the current successors by the D18 inheritance rule (tests/reconcile/build-reconciliation.mjs, D20: inheritance over the graph's existing supersessions)"
+  },
+  {
+   "id": "R-62",
+   "subject": "the other line's execution claims",
+   "reconciles": [
+    "FACT-D14-CORPUS-INGESTED",
+    "FACT-D14-CORPUS-REPRODUCIBLE",
+    "FACT-D14-REOPEN-CARGO-BUILD-STD",
+    "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+    "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+    "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+    "FACT-D14-REOPEN-FS-OPFS",
+    "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+    "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+    "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+    "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+    "FACT-D14-REOPEN-GIT-REVISIONS",
+    "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+    "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+    "FACT-D14-REOPEN-GIT-WORKTREE",
+    "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+    "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+    "FACT-D14-REOPEN-GPU-DESTROY",
+    "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+    "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+    "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+    "FACT-D14-REOPEN-GPU-LOST",
+    "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+    "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+    "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+    "FACT-D14-REOPEN-HTML-COI",
+    "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+    "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+    "FACT-D14-REOPEN-HTML-WORKERS",
+    "FACT-D14-REOPEN-IDB-TRANSACTION",
+    "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+    "FACT-D14-REOPEN-RUST-REF-NOSTD",
+    "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+    "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+    "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+    "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+    "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+    "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+    "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+    "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+    "FACT-D14-REOPEN-SWIFTSHADER-README",
+    "FACT-D14-REOPEN-V8-FLAGS",
+    "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+    "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+    "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+    "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+    "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+    "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+    "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+    "FACT-D14-REOPEN-WASM-SET",
+    "FACT-D14-REOPEN-WASM-THREADS",
+    "FACT-D14-REOPEN-WEB-LOCKS",
+    "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+    "FACT-D14-REOPEN-WGSL"
+   ],
+   "outcome": "HOLDS",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-EM-D14-001 (R-60)",
+    "FACT": "corpus ingested and reproducible; 54 authority reopen observations on the pins of the D13 graph",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D14-HOST-NETWORK (the other line's container)",
+    "OLD_PROBE_SUFFICIENT": "yes: tests/reference/ingress.mjs",
+    "OLD_EVIDENCE_APPLICABLE": "to be re-proved in this environment (D20)"
+   },
+   "surfaces": [],
+   "note": "claimable for the other line's environment until re-proved; its route table covers the authorities of the D13 graph only (the authorities added by D14-D19 of this line have no route rule)",
+   "new_probe_obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)"
+  },
+  {
+   "id": "R-63",
+   "subject": "the sync merge enters the integration lineage",
+   "reconciles": [
+    "FACT-FF-ONLY-INTEGRATION",
+    "FACT-WORKPIECE-ISOLATION"
+   ],
+   "outcome": "HOLDS",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "Factory integration stays fast-forward only; the branch now also contains a non-Factory SYNC merge (tree equal to its first parent) that made the other line an ancestor, and the other line's own owner merge",
+    "IMPLEMENTATION_CONTRACT": "factory integrate (unchanged)",
+    "ENVIRONMENT": "ENV-D19-HOST",
+    "OLD_PROBE_SUFFICIENT": "yes, with tests/reprove/lineage.mjs classifying owner and sync merges (D20)",
+    "OLD_EVIDENCE_APPLICABLE": "to be re-proved over the new history (D20)"
+   },
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "a sync merge carries no content: every change after it is a Factory delta; lineage.mjs reports it apart from the owner merges and fails on any other merge",
+   "new_probe_obligation": "D20: re-prove the lineage over the history that now includes the sync merge (tests/reprove/lineage.mjs)"
+  }
+ ]
+}

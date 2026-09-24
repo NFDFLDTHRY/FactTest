@@ -1,0 +1,18 @@
+$ cargo +nightly-2026-09-24 clippy -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --message-format=json -- -D warnings
+(cwd /home/user/factory-workpieces/W22)
+    Checking factc-foundation v0.1.0 (/home/user/factory-workpieces/W22/compiler/foundation)
+    Checking factc-source v0.1.0 (/home/user/factory-workpieces/W22/compiler/source)
+    Checking factc-semantic v0.1.0 (/home/user/factory-workpieces/W22/compiler/semantic)
+    Checking factc-observe v0.1.0 (/home/user/factory-workpieces/W22/compiler/observe)
+    Checking factc-capability v0.1.0 (/home/user/factory-workpieces/W22/compiler/capability)
+    Checking factc-implementation v0.1.0 (/home/user/factory-workpieces/W22/compiler/implementation)
+    Checking factc-planning v0.1.0 (/home/user/factory-workpieces/W22/compiler/planning)
+    Checking factc-verifier v0.1.0 (/home/user/factory-workpieces/W22/compiler/verifier)
+    Checking factc-codegen v0.1.0 (/home/user/factory-workpieces/W22/compiler/codegen)
+    Checking factc-bundle v0.1.0 (/home/user/factory-workpieces/W22/compiler/bundle)
+    Checking factc-kernel v0.1.0 (/home/user/factory-workpieces/W22/compiler/kernel)
+    Checking factc-wasm-abi v0.1.0 (/home/user/factory-workpieces/W22/compiler/wasm-abi)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.98s
+
+
+[exit 0]

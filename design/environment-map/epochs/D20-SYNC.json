@@ -1,0 +1,847 @@
+{
+ "schema": "facttest-environment-map-epoch/1",
+ "epoch": "D20-SYNC",
+ "delta": "D20-MAIN-SYNC",
+ "commit": "c3159d562768d52465ead5e44bc6c5259dfc1b79 (canonical base; integration commit in LEDGER AFTER)",
+ "summary": "10 reconciliations (SUPERSEDED 2, RESOLVED 3, OPEN 2, HOLDS 3); 2 supersessions (16 inherited edges); 0 constraints ledgered; 0 clauses",
+ "nodes": [
+  {
+   "id": "FACT-PUBLISHED-FRONTIER-D20",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-PUBLISHED-FRONTIER-D20",
+   "subject": "published (current) authority renderings",
+   "predicate": "the published authority hosts refuse the session egress proxy (23 hosts answer CONNECT 403; the git smart-HTTP endpoint of github.com and raw.githubusercontent.com are reachable, github.com blob pages answer 403); 39 published renderings exist as byte-exact copies of their publishers' GitHub Pages branches (fixtures/reference/published, ingested by the other line), in which 36 cited fragments are present and 9 are absent; no rendering has been observed at its published host, and hosts without a Pages branch (WHATWG, doc.rust-lang.org, git-scm.com, Chromium) stay source-pinned - every external claim rests on a pin (a source commit or a Pages-branch commit), never on the live published document",
+   "required_environment": [
+    "network egress policy of the session container"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "UNK",
+   "note": "supersedes FACT-PUBLISHED-FRONTIER-UNVERIFIED, whose statement that no published fragment could be verified no longer holds for the Pages-branch renderings the other line ingested (D20)",
+   "source_ref": "evidence/D14/ingress/hosts.json; evidence/D14/audit/link-audit.json; evidence/D14/reopen/summary.json",
+   "owner": "D20-SYNC reconciliation (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "subject": "D11/D12 authority reproducibility pins",
+   "predicate": "every D11/D12 authority pin re-fetches by its commit and matches its recorded sha256 (the other line: 56 external pins matched, 7 project-law pins read at the branch head; frontier reopen: 63 PIN_MATCH); a file at a moving branch head may change without changing the cited clause (D19: the V8 flag file at the v8 tip; the project-law documents by annotation), so the head relation is not part of this claim - the clause-level reading is FACT-FRONTIER-SOURCES-AT-PIN",
+   "required_environment": [
+    "network egress policy of the session container"
+   ],
+   "constraint_refs": [
+    "CON-EM-D14-001"
+   ],
+   "status": "RUN",
+   "note": "supersedes FACT-D14-D11-PINS-RECHECKED, whose claim that no pinned file had changed at the branch head held at the other line's read (2026-09-24, before 09:00 UTC) and not at D19's (AUTH-V8-FLAGS: TIP MOVED, FILE CHANGED, clause identical) (D20)",
+   "source_ref": "evidence/D14/ingress/register.json; evidence/D19/reopen/summary.json",
+   "owner": "D20-SYNC reconciliation (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "R-54",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-54",
+   "subject": "published frontier after the two lines join",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none: the published hosts still refuse; the other line found a policy-conforming route to Pages-branch copies of 39 renderings",
+    "CONSTRAINT": "CON-EM-D14-001 (PROPOSED by the other line: copies are pins, never current authority) - R-60",
+    "FACT": "FACT-PUBLISHED-FRONTIER-UNVERIFIED (this line's D14) said no published fragment could be verified; the other line verified 36 fragments in Pages-branch renderings (FACT-D14-PAGES-BRANCH-ROUTE, FACT-D14-MAP-LINKS-AUDITED)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "session container network policy (ENV-D14-HOST, ENV-D14-HOST-NETWORK, ENV-D19-SOURCES)",
+    "OLD_PROBE_SUFFICIENT": "yes: tests/reference/ingress.mjs probe-hosts / audit (the other line) and tests/reference/reopen.mjs (this line)",
+    "OLD_EVIDENCE_APPLICABLE": "yes, bounded to the Pages-branch copies; re-proved in D20"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "successor FACT-PUBLISHED-FRONTIER-D20 [UNK]: narrowed, not closed - no rendering observed at its published host",
+   "new_probe_obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-55",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-55",
+   "subject": "D11 reopen denial in the joined model",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "the D11 statement (published documents could not be re-opened in D11; clauses came only from source pins) is true of D11; the other line already INVALIDATED it (EV-D14-REGISTER: Pages-branch copies exist for the authorities with a route)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D11-HOST",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes for D11; superseded in substance by EV-D14-REGISTER"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "closed by the other line's evidence (INVALIDATED_BY EV-D14-REGISTER); the uncertainty that remains (hosts still refuse, hosts without a Pages branch stay source-pinned) is carried by FACT-PUBLISHED-FRONTIER-D20 [UNK] (R-54)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-56",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-56",
+   "subject": "js-api #internal-storage in the other line's reopen",
+   "traversal": {
+    "AUTHORITY_CHANGED": "AUTH-WASM-JSAPI-STORAGE superseded by AUTH-WASM-JSAPI-STORAGE-D18 (R-10): #webassembly-storage",
+    "CONSTRAINT": "none",
+    "FACT": "the other line's [ERR] (fragment absent in the Pages-branch rendering; nearest id webassembly-storage) is the same finding D18 resolved",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes: the D18 successor cites the id the other line names"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [
+    "REFERENCE-AUTHORITY.md"
+   ],
+   "note": "closed by AUTH-WASM-JSAPI-STORAGE-D18; the law citation stays as historically written (D13, D14 and D18 annotations)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-57",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-57",
+   "subject": "web-api streaming fragment in the other line's reopen",
+   "traversal": {
+    "AUTHORITY_CHANGED": "AUTH-WASM-WEBAPI-STREAMING superseded by AUTH-WASM-WEBAPI-STREAMING-D18 (R-11): #streaming-modules",
+    "CONSTRAINT": "none",
+    "FACT": "the other line's [ERR] (fragment absent; nearest id streaming-modules) is the same finding D18 resolved",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes: the D18 successor cites the id the other line names"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [
+    "REFERENCE-AUTHORITY.md"
+   ],
+   "note": "closed by AUTH-WASM-WEBAPI-STREAMING-D18; the law citation stays as historically written",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-58",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-58",
+   "subject": "drifted fragment citations in REFERENCE-AUTHORITY.md",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "9 links cite fragments absent in the Pages-branch renderings; 2 of them (#internal-storage, #streaming-module-compilation-and-instantiation) have current successor authorities since D18 (R-10, R-11)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "yes (link audit)",
+    "OLD_EVIDENCE_APPLICABLE": "yes"
+   },
+   "outcome": "OPEN",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "7 open: sensors #extending-the-permission-api and #extending-the-permissions-policy-api, deviceorientation #permissions, IndexedDB #database-concept, ServiceWorker #fetch-event, ambient-light #ambientlightsensor-interface, webxr #navigator-xr; replacing the citations is an owner-approved law delta",
+   "new_probe_obligation": "OWNER: a law delta replacing the 7 drifted fragments (nearest ids in the D14 ANNOTATION lines)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-59",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-59",
+   "subject": "pin re-check after the two lines join",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "the other line: 0 pinned files changed at the branch head (before 09:00 UTC); this line's D19 reopen: AUTH-V8-FLAGS file changed at the v8 tip, clause identical",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D14-HOST-NETWORK, ENV-D19-SOURCES",
+    "OLD_PROBE_SUFFICIENT": "yes: both lines re-fetch pins by commit",
+    "OLD_EVIDENCE_APPLICABLE": "yes for the pins; the head relation is time-bound"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "successor FACT-D14-D11-PINS-RECHECKED-D20 [RUN] keeps the pin claim and drops the head relation; FACT-FRONTIER-SOURCES-AT-PIN (clause level) holds",
+   "new_probe_obligation": "D20: re-prove the pin re-check (tests/reference/reopen.mjs on the D11-D13 authorities)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-60",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-60",
+   "subject": "the other line's proposed constraint",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-EM-D14-001 PROPOSED (copies in fixtures/reference/ are pins; a Pages-branch rendering is never claimed as observed at its host; the current authority is the hyperlink)",
+    "FACT": "consistent with this line's rule CURRENT AUTHORITY != REPRODUCIBILITY PIN",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "OPEN",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "adoption into CONSTRAINT-LEDGER.md is an owner decision (the other line returned it to ASCII)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-61",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-61",
+   "subject": "the other line's edges on authorities D18 superseded",
+   "traversal": {
+    "AUTHORITY_CHANGED": "10 authorities the other line reopened were superseded in D18 (pins moved to the versions run, fragments corrected)",
+    "CONSTRAINT": "none",
+    "FACT": "the other line's reopen facts observe the historical pins (CURRENT AUTHORITY != REPRODUCIBILITY PIN)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "yes for the historical pins"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "the 10 AUTHORIZES edges are carried to the current successors by the D18 inheritance rule (tests/reconcile/build-reconciliation.mjs, D20: inheritance over the graph's existing supersessions)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-62",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-62",
+   "subject": "the other line's execution claims",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-EM-D14-001 (R-60)",
+    "FACT": "corpus ingested and reproducible; 54 authority reopen observations on the pins of the D13 graph",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D14-HOST-NETWORK (the other line's container)",
+    "OLD_PROBE_SUFFICIENT": "yes: tests/reference/ingress.mjs",
+    "OLD_EVIDENCE_APPLICABLE": "to be re-proved in this environment (D20)"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "claimable for the other line's environment until re-proved; its route table covers the authorities of the D13 graph only (the authorities added by D14-D19 of this line have no route rule)",
+   "new_probe_obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  },
+  {
+   "id": "R-63",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-63",
+   "subject": "the sync merge enters the integration lineage",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "none",
+    "FACT": "Factory integration stays fast-forward only; the branch now also contains a non-Factory SYNC merge (tree equal to its first parent) that made the other line an ancestor, and the other line's own owner merge",
+    "IMPLEMENTATION_CONTRACT": "factory integrate (unchanged)",
+    "ENVIRONMENT": "ENV-D19-HOST",
+    "OLD_PROBE_SUFFICIENT": "yes, with tests/reprove/lineage.mjs classifying owner and sync merges (D20)",
+    "OLD_EVIDENCE_APPLICABLE": "to be re-proved over the new history (D20)"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "a sync merge carries no content: every change after it is a Factory delta; lineage.mjs reports it apart from the owner merges and fails on any other merge",
+   "new_probe_obligation": "D20: re-prove the lineage over the history that now includes the sync merge (tests/reprove/lineage.mjs)",
+   "owner": "tests/reconcile/d20-reconciliation.json (reviewed; D20-SYNC)"
+  }
+ ],
+ "edges": [
+  {
+   "type": "RECONCILES",
+   "from": "R-54",
+   "to": "FACT-PUBLISHED-FRONTIER-UNVERIFIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-54",
+   "to": "FACT-D14-PUBLISHED-HOSTS-DENIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-54",
+   "to": "FACT-D14-PAGES-BRANCH-ROUTE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-54",
+   "to": "FACT-D14-MAP-LINKS-AUDITED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-55",
+   "to": "FACT-AUTHORITY-REOPEN-DENIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-56",
+   "to": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-57",
+   "to": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-58",
+   "to": "FACT-D14-MAP-LINKS-AUDITED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-59",
+   "to": "FACT-D14-D11-PINS-RECHECKED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-59",
+   "to": "FACT-FRONTIER-SOURCES-AT-PIN"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-60",
+   "to": "CON-EM-D14-001"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-CHROMIUM-CONTENT-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-CHROMIUM-GL-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-CHROMIUM-GPU-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-CHROMIUM-SWIFTSHADER-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-RUSTC-WASM64-TARGET-SPEC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-SWIFTSHADER-README"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-V8-FLAGS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-WASM-JSAPI-STORAGE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "AUTH-WASM-WEBAPI-STREAMING"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-SWIFTSHADER-README"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-61",
+   "to": "FACT-D14-REOPEN-V8-FLAGS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-CORPUS-INGESTED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-CORPUS-REPRODUCIBLE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-CARGO-BUILD-STD"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-COMPRESSION-ZLIB"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-FS-OPFS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-PACK-FORMAT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-REPO-LAYOUT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-REVISIONS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GIT-WORKTREE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-ADAPTERINFO"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-DESTROY"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-LOSE-DEVICE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-LOST"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-REQUESTADAPTER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-GPU-REQUESTDEVICE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-HTML-COI"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-HTML-HWCONCURRENCY"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-HTML-WORKERS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-IDB-TRANSACTION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-RUST-REF-NOSTD"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-SW-INSTALL-FAILED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-SW-REGISTER-TRUST"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-SW-UPDATE-BYPASS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-SWIFTSHADER-README"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-V8-FLAGS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-SET"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WASM-THREADS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WEB-LOCKS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-62",
+   "to": "FACT-D14-REOPEN-WGSL"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-63",
+   "to": "FACT-FF-ONLY-INTEGRATION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-63",
+   "to": "FACT-WORKPIECE-ISOLATION"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "FACT-D14-D11-PINS-RECHECKED",
+   "reconciliation": "R-59"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "EV-D14-HOSTS",
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "EV-D14-LINK-AUDIT",
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "PROBE-D14-REFERENCE-INGRESS",
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "ENV-D14-HOST-NETWORK",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "changes"
+   },
+   "reconciliation": "R-54"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "EV-D19-REOPEN-SUMMARY",
+   "reconciliation": "R-59"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "PROBE-AUTHORITY-REOPEN",
+   "reconciliation": "R-59"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "ENV-D19-SOURCES",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "changes"
+   },
+   "reconciliation": "R-59"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "PROBE-AUTHORITY-REOPEN"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "EV-D14-REOPEN-SUMMARY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-PUBLISHED-FRONTIER-D20",
+   "to": "ENV-D14-HOST",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "published hosts admitted"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "ENV-D14-HOST-NETWORK"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D14-D11-PINS-RECHECKED-D20",
+   "to": "EV-D14-REGISTER"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "to": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-WEBAPI-STREAMING-D18",
+   "to": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+   "to": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-GPU-SWITCHES-141",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-GL-SWITCHES-141",
+   "to": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "to": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-V8-WASM-FLAGS-141",
+   "to": "FACT-D14-REOPEN-V8-FLAGS",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-SWIFTSHADER-README",
+   "to": "FACT-D14-REOPEN-SWIFTSHADER-README",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "to": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+   "note": "D14 reopen observation of this authority (the fact restates the cited clause location at the copy commit)"
+  }
+ ]
+}

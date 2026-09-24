@@ -1,0 +1,37 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "paths",
+ "kind": "repo",
+ "started": "2026-09-24T10:48:54.092Z",
+ "commands": [
+  {
+   "command": "node tests/envmap/envmap.mjs paths-probe . --out evidence/D19/paths/paths-probe.json",
+   "exit": 0,
+   "seconds": 0
+  }
+ ],
+ "facts": {
+  "FACT-SURFACES-LITERAL-ENFORCED": {
+   "probe": "PROBE-PATHS-LITERAL",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "paths/paths-probe.json",
+     "sha256": "9be2a198f78d61c4bcd8ede6fc146e7d45baa4d082d1581e4f767affd79cb329",
+     "checks": [
+      {
+       "path": "dead_wildcard_surfaces",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T10:48:54.176Z",
+ "status": "PASS"
+}

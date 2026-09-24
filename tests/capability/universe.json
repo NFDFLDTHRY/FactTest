@@ -1,0 +1,1506 @@
+{
+ "schema": "facttest-capability-universe/1",
+ "epoch": "D16",
+ "law": "design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md",
+ "g_source": "CAPABILITY-MATRIX.md",
+ "steps": [
+  "API",
+  "SECURE_CONTEXT",
+  "PERMISSION_POLICY",
+  "REQUEST",
+  "FEATURES_LIMITS",
+  "LIFECYCLE",
+  "LOSS"
+ ],
+ "classification_rules": {
+  "RUN": "a witness fact is RUN with evidence and the matrix admission contract is physically met",
+  "ERR": "a witness fact is ERR (conflict)",
+  "GAP": "the census found the interface ABSENT, or a witness fact is GAP, or no authority is named",
+  "OBS": "the census found the interface EXPOSED (or a witness is OBS/RUN) and no FactTest admission contract is met",
+  "UNK": "a witness is UNK or the census could not determine exposure"
+ },
+ "families": [
+  {
+   "id": "CAP-CPU-WASM64",
+   "matrix_row": "CPU / Wasm64",
+   "steps": {
+    "API": [
+     "CL-WJ1",
+     "CL-W5",
+     "CL-W6"
+    ],
+    "SECURE_CONTEXT": {
+     "none_defined": "CL-WJ1"
+    },
+    "PERMISSION_POLICY": {
+     "none_defined": "CL-WJ1"
+    },
+    "REQUEST": [
+     "CL-WJ2",
+     "CL-W7"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-W2",
+     "CL-W4",
+     "CL-R8",
+     "CL-R9"
+    ],
+    "LIFECYCLE": {
+     "gap": "module compile/link/instantiate/trap lifecycle not clause-traced beyond instantiate"
+    },
+    "LOSS": {
+     "gap": "Wasm defines traps, not capability loss; no loss clause traced"
+    }
+   },
+   "witnesses": [
+    "FACT-WASM64-ADMITTED-E0",
+    "FACT-WASM64-ADMITTED-E1",
+    "FACT-WASM64-ABI-EXEC",
+    "FACT-WASM64-MODULE-I64",
+    "FACT-MEMORY64-DISCOVERED",
+    "FACT-JS-I64-BIGINT-MEMBRANE"
+   ],
+   "census": {
+    "exposure": "typeof WebAssembly === 'object'",
+    "discovery": "({memory64_validates: WebAssembly.validate(new Uint8Array([0,0x61,0x73,0x6d,1,0,0,0,5,3,1,0x04,1]))})",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "RUN",
+   "rationale": "the matrix contract (artifact validates as wasm64; host compiles/instantiates; known operation executes) is physically satisfied by the E0/E1 admissions and the ABI execution",
+   "run_parts": [
+    "validate",
+    "instantiate",
+    "known-answer 256 bytes",
+    "membrane BigInt"
+   ],
+   "maturity": null
+  },
+  {
+   "id": "CAP-WORKER-DEDICATED",
+   "matrix_row": "Dedicated workers",
+   "steps": {
+    "API": [
+     "CL-WK1"
+    ],
+    "SECURE_CONTEXT": {
+     "gap": "HTML defines [SecureContext] elsewhere, so absence cannot be verified document-wide; the Worker IDL window carries none (CL-WK1)"
+    },
+    "PERMISSION_POLICY": {
+     "gap": "no permission/policy gate stated in the traced windows; not verifiable document-wide in HTML"
+    },
+    "REQUEST": [
+     "CL-WK2"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-T8"
+    ],
+    "LIFECYCLE": [
+     "CL-WK3"
+    ],
+    "LOSS": {
+     "gap": "worker error/termination by the user agent not clause-traced"
+    }
+   },
+   "witnesses": [
+    "FACT-WORKERS-UNPROBED",
+    "FACT-SH-KERNEL-WORKER-PARTIAL"
+   ],
+   "census": {
+    "exposure": "typeof Worker === 'function'",
+    "discovery": "({shared_worker: typeof SharedWorker === 'function', hardwareConcurrency: navigator.hardwareConcurrency})",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "OBS",
+   "rationale": "the D12 kernel ran ANALYZE and BUILD in a dedicated worker (FACT-SH-KERNEL-WORKER-PARTIAL), so a worker was constructed and messaged, but no FactTest admission contract for workers exists; FACT-WORKERS-UNPROBED (D11) is stale against that evidence (D18)",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-WASM-SHARED-THREADS",
+   "matrix_row": "Shared/threaded Wasm",
+   "steps": {
+    "API": [
+     "CL-T2"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-T4",
+     "CL-T5"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-T5"
+    ],
+    "REQUEST": [
+     "CL-T6"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-T3",
+     "CL-T7"
+    ],
+    "LIFECYCLE": [
+     "CL-T8"
+    ],
+    "LOSS": {
+     "gap": "worker loss/deadlock not clause-traced"
+    }
+   },
+   "witnesses": [
+    "FACT-SHARED-THREADS-UNADMITTED",
+    "FACT-SH-SW-GRANTS-COI",
+    "FACT-SAB-GLOBAL-HOST-DEFINED",
+    "FACT-WASM-THREADS-PHASE-4",
+    "FACT-WASM-SET-PHASE-1"
+   ],
+   "census": {
+    "exposure": "typeof SharedArrayBuffer === 'function'",
+    "discovery": "({crossOriginIsolated: self.crossOriginIsolated})",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "ERR",
+   "rationale": "ERR-002/ERR-003 preserved: the current JS embedding is agent-local while the Threads proposal is Phase 4; COI is reachable (FACT-SH-SW-GRANTS-COI) but no fixture admits shared memory",
+   "run_parts": [],
+   "maturity": "Threads Phase 4; shared-everything threads Phase 1"
+  },
+  {
+   "id": "CAP-WEBGPU",
+   "matrix_row": "WebGPU",
+   "steps": {
+    "API": [
+     "CL-GPU1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-GPU1"
+    ],
+    "PERMISSION_POLICY": {
+     "none_defined": "CL-GPU1"
+    },
+    "REQUEST": [
+     "CL-GPU2",
+     "CL-GPU3",
+     "CL-GPU4"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-GPU4",
+     "CL-GPU5",
+     "CL-GPU8",
+     "CL-GPU10",
+     "CL-GPU11"
+    ],
+    "LIFECYCLE": [
+     "CL-GPU6",
+     "CL-GPU9"
+    ],
+    "LOSS": [
+     "CL-GPU6",
+     "CL-GPU7"
+    ]
+   },
+   "witnesses": [
+    "FACT-GPU-EXPOSED",
+    "FACT-GPU-ADAPTER-NULL-DEFAULT",
+    "FACT-GPU-ADAPTER-SWIFTSHADER",
+    "FACT-GPU-ADMITTED-E0",
+    "FACT-GPU-KNOWN-ANSWER",
+    "FACT-GPU-RELAY-EXACT-E0",
+    "FACT-GPU-LOSS-DESTROYED",
+    "FACT-GPU-EPOCH-INVALIDATION",
+    "FACT-GPU-MAXBUFFERSIZE-OBSERVED",
+    "FACT-WGSL-UNEXERCISED",
+    "FACT-HARDWARE-GPU-UNAVAILABLE"
+   ],
+   "census": {
+    "exposure": "'gpu' in navigator",
+    "discovery": "navigator.gpu.requestAdapter().then(a => a ? ({adapter: true, fallback: a.info ? a.info.isFallbackAdapter : null, architecture: a.info ? a.info.architecture : null}) : ({adapter: null}))",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "GAP",
+   "rationale": "the matrix contract requires a known WGSL dispatch/readback and a shader compile; FactTest's admitted WebGPU path is buffer copies only (FACT-WGSL-UNEXERCISED) and only a fallback adapter was ever observed (FACT-HARDWARE-GPU-UNAVAILABLE [UNK])",
+   "run_parts": [
+    "exposure",
+    "adapter (SwiftShader fallback, flags)",
+    "requestDevice",
+    "buffer known-answer readback",
+    "controlled loss + re-selection"
+   ],
+   "maturity": null
+  },
+  {
+   "id": "CAP-WEBNN",
+   "matrix_row": "WebNN",
+   "steps": {
+    "API": [
+     "CL-NN1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-NN1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-NN2"
+    ],
+    "REQUEST": [
+     "CL-NN3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "operator support / device selection not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-NN4"
+    ],
+    "LOSS": [
+     "CL-NN4"
+    ]
+   },
+   "witnesses": [],
+   "census": {
+    "exposure": "'ml' in navigator",
+    "discovery": "navigator.ml.createContext().then(c => ({context: true}))",
+    "permissions": [],
+    "policy": [
+     "webnn"
+    ]
+   },
+   "classification": "GAP",
+   "rationale": "navigator.ml is absent in ENV-D16-BROWSER and the policy query does not know webnn; no FactTest mechanism",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-WEBCODECS",
+   "matrix_row": "WebCodecs",
+   "steps": {
+    "API": [
+     "CL-WC1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-WC1"
+    ],
+    "PERMISSION_POLICY": {
+     "none_defined": "CL-WC1"
+    },
+    "REQUEST": [
+     "CL-WC2"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-WC2"
+    ],
+    "LIFECYCLE": [
+     "CL-WC3"
+    ],
+    "LOSS": [
+     "CL-WC3",
+     "CL-WC4"
+    ]
+   },
+   "witnesses": [],
+   "census": {
+    "exposure": "typeof VideoEncoder === 'function'",
+    "discovery": "Promise.all([VideoEncoder.isConfigSupported({codec: 'vp8', width: 64, height: 64}), VideoDecoder.isConfigSupported({codec: 'vp8'}), AudioEncoder.isConfigSupported({codec: 'opus', sampleRate: 48000, numberOfChannels: 1})]).then(r => ({vp8_encode: r[0].supported, vp8_decode: r[1].supported, opus_encode: r[2].supported}))",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "OBS",
+   "rationale": "codec interfaces are exposed and vp8 encode/decode and opus encode report supported (non-prompting isConfigSupported); no FactTest known-media round trip",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-CAMERA",
+   "matrix_row": "Camera",
+   "steps": {
+    "API": [
+     "CL-MC1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-MC1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-MC2",
+     "CL-MC3"
+    ],
+    "REQUEST": [
+     "CL-MC4",
+     "CL-MC5"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "constraints/capabilities (getCapabilities, applyConstraints) not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-MC6"
+    ],
+    "LOSS": [
+     "CL-MC6"
+    ]
+   },
+   "witnesses": [],
+   "census": {
+    "exposure": "!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)",
+    "discovery": "navigator.mediaDevices.enumerateDevices().then(d => ({audioinput: d.filter(x => x.kind === 'audioinput').length, videoinput: d.filter(x => x.kind === 'videoinput').length, audiooutput: d.filter(x => x.kind === 'audiooutput').length}))",
+    "permissions": [
+     "camera"
+    ],
+    "policy": [
+     "camera"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "getUserMedia is exposed, camera permission 'prompt', policy allows; zero video inputs in the container; no stream was requested",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-MICROPHONE",
+   "matrix_row": "Microphone",
+   "steps": {
+    "API": [
+     "CL-MC1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-MC1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-MC2",
+     "CL-MC3"
+    ],
+    "REQUEST": [
+     "CL-MC4",
+     "CL-MC5"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "constraints/capabilities (getCapabilities, applyConstraints) not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-MC6"
+    ],
+    "LOSS": [
+     "CL-MC6"
+    ]
+   },
+   "witnesses": [],
+   "census": {
+    "exposure": "!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)",
+    "discovery": "navigator.mediaDevices.enumerateDevices().then(d => ({audioinput: d.filter(x => x.kind === 'audioinput').length, videoinput: d.filter(x => x.kind === 'videoinput').length, audiooutput: d.filter(x => x.kind === 'audiooutput').length}))",
+    "permissions": [
+     "microphone"
+    ],
+    "policy": [
+     "microphone"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "getUserMedia is exposed, microphone permission 'prompt', policy allows; zero audio inputs in the container; no stream was requested",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-GENERIC-SENSOR",
+   "matrix_row": "Generic Sensor",
+   "steps": {
+    "API": [
+     "CL-GS1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-GS1",
+     "CL-GS2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-GS4"
+    ],
+    "REQUEST": [
+     "CL-GS3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "frequency/reading model not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-GS2",
+     "CL-GS3"
+    ],
+    "LOSS": [
+     "CL-GS3"
+    ]
+   },
+   "witnesses": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "census": {
+    "exposure": "typeof Sensor === 'function'",
+    "discovery": null,
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "OBS",
+   "rationale": "Sensor is exposed; no sensor was started (readings need a visible focused document and a device)",
+   "run_parts": [],
+   "maturity": "Chromium-only; not expected to advance (CL-GS0)"
+  },
+  {
+   "id": "CAP-ACCELEROMETER",
+   "matrix_row": "Accelerometer",
+   "steps": {
+    "API": [
+     "CL-ACC1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-ACC1",
+     "CL-GS2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-ACC2",
+     "CL-DO1",
+     "CL-GS4"
+    ],
+    "REQUEST": [
+     "CL-GS3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "reading model/coordinate system not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-GS2"
+    ],
+    "LOSS": [
+     "CL-GS3"
+    ]
+   },
+   "witnesses": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "census": {
+    "exposure": "typeof Accelerometer === 'function'",
+    "discovery": null,
+    "permissions": [
+     "accelerometer"
+    ],
+    "policy": [
+     "accelerometer"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "Accelerometer is exposed, permission 'prompt', policy allows; not started",
+   "run_parts": [],
+   "maturity": "maintained for existing deployments; new projects -> Device Orientation and Motion (CL-ACC0)"
+  },
+  {
+   "id": "CAP-GYROSCOPE",
+   "matrix_row": "Gyroscope",
+   "steps": {
+    "API": [
+     "CL-GYR1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-GYR1",
+     "CL-GS2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-GYR2",
+     "CL-DO1",
+     "CL-GS4"
+    ],
+    "REQUEST": [
+     "CL-GS3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "reading model/coordinate system not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-GS2"
+    ],
+    "LOSS": [
+     "CL-GS3"
+    ]
+   },
+   "witnesses": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "census": {
+    "exposure": "typeof Gyroscope === 'function'",
+    "discovery": null,
+    "permissions": [
+     "gyroscope"
+    ],
+    "policy": [
+     "gyroscope"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "Gyroscope is exposed, permission 'prompt', policy allows; not started",
+   "run_parts": [],
+   "maturity": "maintained for existing deployments; new projects -> Device Orientation and Motion (CL-GYR0)"
+  },
+  {
+   "id": "CAP-MAGNETOMETER",
+   "matrix_row": "Magnetometer",
+   "steps": {
+    "API": [
+     "CL-MAG1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-MAG1",
+     "CL-GS2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-MAG2",
+     "CL-DO1",
+     "CL-GS4"
+    ],
+    "REQUEST": [
+     "CL-GS3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "reading model/coordinate system not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-GS2"
+    ],
+    "LOSS": [
+     "CL-GS3"
+    ]
+   },
+   "witnesses": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "census": {
+    "exposure": "typeof Magnetometer === 'function'",
+    "discovery": null,
+    "permissions": [
+     "magnetometer"
+    ],
+    "policy": [
+     "magnetometer"
+    ]
+   },
+   "classification": "GAP",
+   "rationale": "Magnetometer is absent in ENV-D16-BROWSER although the 'magnetometer' permission is queryable (implementation flag: D17); the authority says it is not available by default in any engine",
+   "run_parts": [],
+   "maturity": "not available by default in any engine (CL-MAG0)"
+  },
+  {
+   "id": "CAP-ORIENTATION-SENSOR",
+   "matrix_row": "Orientation Sensor",
+   "steps": {
+    "API": {
+     "gap": "OrientationSensor IDL not clause-traced (CL-ORI1 covers its policy features)"
+    },
+    "SECURE_CONTEXT": [
+     "CL-GS2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-ORI1",
+     "CL-DO1"
+    ],
+    "REQUEST": [
+     "CL-ORI2",
+     "CL-GS3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "quaternion model not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-GS2"
+    ],
+    "LOSS": [
+     "CL-GS3"
+    ]
+   },
+   "witnesses": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "census": {
+    "exposure": "typeof AbsoluteOrientationSensor === 'function'",
+    "discovery": "({relative: typeof RelativeOrientationSensor === 'function'})",
+    "permissions": [
+     "accelerometer",
+     "gyroscope",
+     "magnetometer"
+    ],
+    "policy": [
+     "accelerometer",
+     "gyroscope",
+     "magnetometer"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "Absolute/RelativeOrientationSensor are exposed; the underlying permissions are 'prompt'; not started",
+   "run_parts": [],
+   "maturity": "maintained for existing deployments; new projects -> Device Orientation and Motion (CL-ORI0)"
+  },
+  {
+   "id": "CAP-DEVICE-ORIENTATION",
+   "matrix_row": "Device Orientation / Motion",
+   "steps": {
+    "API": [
+     "CL-DO3"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-DO3"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-DO1"
+    ],
+    "REQUEST": [
+     "CL-DO2",
+     "CL-DO4"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "coordinate/precision requirements not clause-traced"
+    },
+    "LIFECYCLE": {
+     "gap": "event dispatch/permission change not clause-traced"
+    },
+    "LOSS": {
+     "gap": "revocation not clause-traced"
+    }
+   },
+   "witnesses": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+   ],
+   "census": {
+    "exposure": "typeof DeviceOrientationEvent === 'function'",
+    "discovery": "({requestPermission: typeof DeviceOrientationEvent.requestPermission, motion: typeof DeviceMotionEvent === 'function'})",
+    "permissions": [
+     "accelerometer",
+     "gyroscope"
+    ],
+    "policy": [
+     "accelerometer",
+     "gyroscope"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "orientation/motion events are exposed; DeviceOrientationEvent.requestPermission is NOT implemented in this build (the specified permission integration is at risk: CL-DO4); no event observed",
+   "run_parts": [],
+   "maturity": "permission integration at risk (CL-DO4)"
+  },
+  {
+   "id": "CAP-PROXIMITY",
+   "matrix_row": "Proximity",
+   "steps": {
+    "API": [
+     "CL-PRX1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-PRX1",
+     "CL-GS2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-PRX2"
+    ],
+    "REQUEST": [
+     "CL-GS3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "distance/near model not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-GS2"
+    ],
+    "LOSS": [
+     "CL-GS3"
+    ]
+   },
+   "witnesses": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "census": {
+    "exposure": "typeof ProximitySensor === 'function'",
+    "discovery": null,
+    "permissions": [],
+    "policy": [
+     "proximity-sensor"
+    ]
+   },
+   "classification": "GAP",
+   "rationale": "ProximitySensor is absent and proximity-sensor is not an allowed feature; the authority states no engine implements it",
+   "run_parts": [],
+   "maturity": "not implemented in any browser engine (CL-PRX0)"
+  },
+  {
+   "id": "CAP-AMBIENT-LIGHT",
+   "matrix_row": "Ambient light",
+   "steps": {
+    "API": [
+     "CL-ALS3"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-ALS3",
+     "CL-GS2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-ALS1"
+    ],
+    "REQUEST": [
+     "CL-GS3"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-ALS2"
+    ],
+    "LIFECYCLE": [
+     "CL-GS2"
+    ],
+    "LOSS": [
+     "CL-GS3"
+    ]
+   },
+   "witnesses": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "census": {
+    "exposure": "typeof AmbientLightSensor === 'function'",
+    "discovery": null,
+    "permissions": [
+     "ambient-light-sensor"
+    ],
+    "policy": [
+     "ambient-light-sensor"
+    ]
+   },
+   "classification": "GAP",
+   "rationale": "AmbientLightSensor is absent; the permission query reports the implementation flag GenericSensorExtraClasses disabled (D17)",
+   "run_parts": [],
+   "maturity": "not available by default in any engine (CL-ALS0)"
+  },
+  {
+   "id": "CAP-GEOLOCATION",
+   "matrix_row": "Geolocation",
+   "steps": {
+    "API": [
+     "CL-GEO1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-GEO2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-GEO3",
+     "CL-GEO4"
+    ],
+    "REQUEST": [
+     "CL-GEO2",
+     "CL-GEO3"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "PositionOptions (accuracy, timeout, maximumAge) not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-GEO5"
+    ],
+    "LOSS": {
+     "gap": "watch clearing / permission revocation not clause-traced"
+    }
+   },
+   "witnesses": [],
+   "census": {
+    "exposure": "'geolocation' in navigator",
+    "discovery": null,
+    "permissions": [
+     "geolocation"
+    ],
+    "policy": [
+     "geolocation"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "navigator.geolocation is exposed, permission 'prompt', policy allows; no position requested",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-XR",
+   "matrix_row": "XR",
+   "steps": {
+    "API": [
+     "CL-XR1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-XR1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-XR2"
+    ],
+    "REQUEST": [
+     "CL-XR3",
+     "CL-XR4",
+     "CL-XR5"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-XR5"
+    ],
+    "LIFECYCLE": [
+     "CL-XR6"
+    ],
+    "LOSS": [
+     "CL-XR6"
+    ]
+   },
+   "witnesses": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+   ],
+   "census": {
+    "exposure": "'xr' in navigator",
+    "discovery": "Promise.all([navigator.xr.isSessionSupported('inline'), navigator.xr.isSessionSupported('immersive-vr')]).then(r => ({inline: r[0], immersive_vr: r[1]}))",
+    "permissions": [],
+    "policy": [
+     "xr-spatial-tracking"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "navigator.xr is exposed; isSessionSupported('inline') true, ('immersive-vr') false (no XR device); no session requested",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-FETCH",
+   "matrix_row": "Fetch / network",
+   "steps": {
+    "API": [
+     "CL-F1"
+    ],
+    "SECURE_CONTEXT": {
+     "gap": "fetch is not SecureContext-gated; mixed-content rules not clause-traced"
+    },
+    "PERMISSION_POLICY": {
+     "gap": "CORS/policy interplay not clause-traced beyond streaming"
+    },
+    "REQUEST": [
+     "CL-S1",
+     "CL-S3"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-S2",
+     "CL-S4"
+    ],
+    "LIFECYCLE": [
+     "CL-F1"
+    ],
+    "LOSS": {
+     "gap": "network error/abort not clause-traced"
+    }
+   },
+   "witnesses": [
+    "FACT-STREAMING-UNPROBED"
+   ],
+   "census": {
+    "exposure": "typeof fetch === 'function' && typeof ReadableStream === 'function'",
+    "discovery": "({response_body: 'body' in Response.prototype})",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "GAP",
+   "rationale": "the matrix evidence (fixture requests and streamed bytes; CORS/status/content handling) is missing: streaming and MIME/ok/CORS rejection were never exercised (FACT-STREAMING-UNPROBED)",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-STORAGE-QUOTA",
+   "matrix_row": "Storage quota/persistence",
+   "steps": {
+    "API": [
+     "CL-STQ1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-STQ1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-ST3"
+    ],
+    "REQUEST": [
+     "CL-ST3",
+     "CL-STQ1"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-ST1"
+    ],
+    "LIFECYCLE": [
+     "CL-ST1"
+    ],
+    "LOSS": [
+     "CL-ST2"
+    ]
+   },
+   "witnesses": [
+    "FACT-SH-STORAGE-BEST-EFFORT"
+   ],
+   "census": {
+    "exposure": "!!(navigator.storage && navigator.storage.estimate)",
+    "discovery": "Promise.all([navigator.storage.estimate(), navigator.storage.persisted()]).then(r => ({quota: r[0].quota, usage: r[0].usage, persisted: r[1]}))",
+    "permissions": [
+     "persistent-storage"
+    ],
+    "policy": []
+   },
+   "classification": "GAP",
+   "rationale": "persist() returned false in D12 (FACT-SH-STORAGE-BEST-EFFORT) and the matrix failure fixture (quota pressure) does not exist",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-OPFS",
+   "matrix_row": "OPFS",
+   "steps": {
+    "API": [
+     "CL-OPFS1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-OPFS1",
+     "CL-ST4"
+    ],
+    "PERMISSION_POLICY": {
+     "gap": "OPFS has no permission prompt in the traced windows; not verified document-wide"
+    },
+    "REQUEST": [
+     "CL-OPFS1"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-ST5"
+    ],
+    "LIFECYCLE": [
+     "CL-ST1"
+    ],
+    "LOSS": [
+     "CL-ST2"
+    ]
+   },
+   "witnesses": [
+    "FACT-SH-OPFS-SERVED-APP",
+    "FACT-SH-ORIGIN-SCOPED-STORAGE"
+   ],
+   "census": {
+    "exposure": "!!(navigator.storage && navigator.storage.getDirectory)",
+    "discovery": "navigator.storage.getDirectory().then(d => ({kind: d.kind}))",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "RUN",
+   "rationale": "a generated app written to OPFS was served byte-exact offline and after restart (D12), meeting the matrix evidence (byte-exact write/reload/read)",
+   "run_parts": [
+    "write",
+    "reload after restart",
+    "read byte-exact"
+   ],
+   "maturity": null
+  },
+  {
+   "id": "CAP-INDEXEDDB",
+   "matrix_row": "IndexedDB",
+   "steps": {
+    "API": [
+     "CL-IDB1"
+    ],
+    "SECURE_CONTEXT": {
+     "none_defined": "CL-IDB1"
+    },
+    "PERMISSION_POLICY": {
+     "none_defined": "CL-IDB1"
+    },
+    "REQUEST": [
+     "CL-ST6"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-ST6"
+    ],
+    "LIFECYCLE": [
+     "CL-ST6"
+    ],
+    "LOSS": [
+     "CL-ST2"
+    ]
+   },
+   "witnesses": [
+    "FACT-SH-IDB-CAS",
+    "FACT-SH-ORIGIN-SCOPED-STORAGE"
+   ],
+   "census": {
+    "exposure": "typeof indexedDB === 'object'",
+    "discovery": null,
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "RUN",
+   "rationale": "an IndexedDB transaction gave an atomic compare-and-set with abort leaving the old value (D12), meeting the matrix transactional known-answer",
+   "run_parts": [
+    "transaction commit/abort",
+    "CAS known-answer",
+    "restart survival"
+   ],
+   "maturity": null
+  },
+  {
+   "id": "CAP-CACHESTORAGE",
+   "matrix_row": "CacheStorage",
+   "steps": {
+    "API": [
+     "CL-CS1",
+     "CL-CS2"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-CS1",
+     "CL-CS2"
+    ],
+    "PERMISSION_POLICY": {
+     "gap": "no permission/policy gate in the traced windows; not verified document-wide"
+    },
+    "REQUEST": [
+     "CL-CS2"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "quota interplay not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-F3"
+    ],
+    "LOSS": [
+     "CL-ST2"
+    ]
+   },
+   "witnesses": [
+    "FACT-SH-GENERATED-OFFLINE",
+    "FACT-SH-ORIGIN-SCOPED-STORAGE",
+    "FACT-SH-SW-NO-SELF-UPDATE"
+   ],
+   "census": {
+    "exposure": "typeof caches === 'object'",
+    "discovery": "caches.keys().then(k => ({keys: k.length}))",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "RUN",
+   "rationale": "the generated bundle launched offline from its own versioned CacheStorage shell and the update/failure behaviour was observed (D12)",
+   "run_parts": [
+    "offline retrieval",
+    "versioned cache",
+    "update failure retention"
+   ],
+   "maturity": null
+  },
+  {
+   "id": "CAP-SERVICE-WORKER",
+   "matrix_row": "Service Worker",
+   "steps": {
+    "API": [
+     "CL-F4"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-F4"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-F6"
+    ],
+    "REQUEST": [
+     "CL-F4"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-F1"
+    ],
+    "LIFECYCLE": [
+     "CL-F2",
+     "CL-F3",
+     "CL-F5"
+    ],
+    "LOSS": [
+     "CL-F5",
+     "CL-F6"
+    ]
+   },
+   "witnesses": [
+    "FACT-SH-SW-NO-SELF-UPDATE",
+    "FACT-SH-BROKEN-SEED-FATAL",
+    "FACT-SH-INTERRUPTED-UPDATE",
+    "FACT-SH-GENERATED-OFFLINE"
+   ],
+   "census": {
+    "exposure": "'serviceWorker' in navigator",
+    "discovery": null,
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "RUN",
+   "rationale": "registration, control, fetch interception, failed-update retention and interrupted update were observed physically (D12)",
+   "run_parts": [
+    "register/install/activate",
+    "control + fetch",
+    "failed update keeps active"
+   ],
+   "maturity": null
+  },
+  {
+   "id": "CAP-MANIFEST",
+   "matrix_row": "Manifest/PWA shell",
+   "steps": {
+    "API": {
+     "gap": "the manifest is declarative; no script surface defined by the authority"
+    },
+    "SECURE_CONTEXT": {
+     "gap": "installability criteria are user-agent defined; not clause-traced"
+    },
+    "PERMISSION_POLICY": {
+     "gap": "not applicable in the traced authority; not verified"
+    },
+    "REQUEST": [
+     "CL-MF1"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "scope/display members not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-MF1"
+    ],
+    "LOSS": {
+     "gap": "uninstall/update not clause-traced"
+    }
+   },
+   "witnesses": [
+    "FACT-SH-NO-FACTORY-WEBAPP"
+   ],
+   "census": {
+    "exposure": null,
+    "discovery": "({before_install_prompt_event: typeof BeforeInstallPromptEvent === 'function', get_installed_related_apps: typeof navigator.getInstalledRelatedApps === 'function'})",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "GAP",
+   "rationale": "installation is a user-agent offer (CL-MF1) and no installed/standalone launch was ever observed; no Factory web app exists (FACT-SH-NO-FACTORY-WEBAPP)",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-SECURE-CONTEXT",
+   "matrix_row": "Secure-context state",
+   "steps": {
+    "API": [
+     "CL-I1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-H1",
+     "CL-H2"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-H3",
+     "CL-H4"
+    ],
+    "REQUEST": [
+     "CL-H1"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-H2"
+    ],
+    "LIFECYCLE": [
+     "CL-H1"
+    ],
+    "LOSS": [
+     "CL-H3",
+     "CL-H4"
+    ]
+   },
+   "witnesses": [
+    "FACT-LOOPBACK-SECURE-CONTEXT",
+    "FACT-OPAQUE-FRAME-SECURE-CONTEXT"
+   ],
+   "census": {
+    "exposure": "typeof isSecureContext === 'boolean'",
+    "discovery": "({isSecureContext, crossOriginIsolated: self.crossOriginIsolated})",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "RUN",
+   "rationale": "the loopback origin reported a secure context and opaque frames behaved as specified (D11, D12)",
+   "run_parts": [
+    "loopback trust",
+    "opaque-frame secure context"
+   ],
+   "maturity": null
+  },
+  {
+   "id": "CAP-PERMISSIONS",
+   "matrix_row": "Permissions",
+   "steps": {
+    "API": [
+     "CL-P1"
+    ],
+    "SECURE_CONTEXT": {
+     "gap": "Permissions API exposure not clause-traced"
+    },
+    "PERMISSION_POLICY": [
+     "CL-P1"
+    ],
+    "REQUEST": [
+     "CL-P1"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "descriptor types per feature traced on the feature families"
+    },
+    "LIFECYCLE": {
+     "gap": "permission lifetime not clause-traced"
+    },
+    "LOSS": {
+     "gap": "revocation traced per feature (CL-MC6, CL-BT5), not generically"
+    }
+   },
+   "witnesses": [],
+   "census": {
+    "exposure": "!!(navigator.permissions && navigator.permissions.query)",
+    "discovery": null,
+    "permissions": [
+     "geolocation",
+     "camera",
+     "microphone",
+     "persistent-storage"
+    ],
+    "policy": []
+   },
+   "classification": "OBS",
+   "rationale": "permissions.query answers 'prompt' for geolocation, camera, microphone and persistent-storage; no permission request exercised",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-PERMISSIONS-POLICY",
+   "matrix_row": "Permissions Policy",
+   "steps": {
+    "API": {
+     "gap": "the policy query API is implementation-specific (census records which)"
+    },
+    "SECURE_CONTEXT": {
+     "gap": "not a secure-context gate"
+    },
+    "PERMISSION_POLICY": [
+     "CL-P2",
+     "CL-P3"
+    ],
+    "REQUEST": [
+     "CL-P3"
+    ],
+    "FEATURES_LIMITS": [
+     "CL-P2"
+    ],
+    "LIFECYCLE": {
+     "gap": "policy is fixed per document; not clause-traced"
+    },
+    "LOSS": {
+     "gap": "not applicable in the traced windows"
+    }
+   },
+   "witnesses": [
+    "FACT-SH-OPAQUE-CONFINEMENT"
+   ],
+   "census": {
+    "exposure": "!!(document.permissionsPolicy || document.featurePolicy)",
+    "discovery": "((document.permissionsPolicy || document.featurePolicy).allowedFeatures() || []).length",
+    "permissions": [],
+    "policy": []
+   },
+   "classification": "OBS",
+   "rationale": "the implementation exposes document.featurePolicy (implementation-specific, 77 allowed features); no blocked/allowed fixture exists",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-HID",
+   "matrix_row": "HID",
+   "steps": {
+    "API": [
+     "CL-HID1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-HID1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-HID2",
+     "CL-HID3"
+    ],
+    "REQUEST": [
+     "CL-HID2"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "device filters/blocklist not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-HID4"
+    ],
+    "LOSS": [
+     "CL-HID4"
+    ]
+   },
+   "witnesses": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+   ],
+   "census": {
+    "exposure": "'hid' in navigator",
+    "discovery": "navigator.hid.getDevices().then(d => ({devices: d.length}))",
+    "permissions": [],
+    "policy": [
+     "hid"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "navigator.hid is exposed, policy allows hid, getDevices() returns 0 devices; requestDevice needs a gesture + chooser",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-USB",
+   "matrix_row": "USB",
+   "steps": {
+    "API": [
+     "CL-USB1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-USB1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-USB3"
+    ],
+    "REQUEST": [
+     "CL-USB2"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "device filters/blocklist not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-USB1"
+    ],
+    "LOSS": [
+     "CL-USB1"
+    ]
+   },
+   "witnesses": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+   ],
+   "census": {
+    "exposure": "'usb' in navigator",
+    "discovery": "navigator.usb.getDevices().then(d => ({devices: d.length}))",
+    "permissions": [],
+    "policy": [
+     "usb"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "navigator.usb is exposed, policy allows usb, getDevices() returns 0 devices; requestDevice needs a gesture + chooser",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-SERIAL",
+   "matrix_row": "Serial",
+   "steps": {
+    "API": [
+     "CL-SER1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-SER1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-SER2",
+     "CL-SER3"
+    ],
+    "REQUEST": [
+     "CL-SER2"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "device filters/blocklist not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-SER4"
+    ],
+    "LOSS": [
+     "CL-SER4"
+    ]
+   },
+   "witnesses": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+   ],
+   "census": {
+    "exposure": "'serial' in navigator",
+    "discovery": "navigator.serial.getPorts().then(p => ({ports: p.length}))",
+    "permissions": [],
+    "policy": [
+     "serial"
+    ]
+   },
+   "classification": "OBS",
+   "rationale": "navigator.serial is exposed, policy allows serial, getPorts() returns 0 ports; requestPort needs a gesture + chooser",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-BLUETOOTH",
+   "matrix_row": "Bluetooth",
+   "steps": {
+    "API": [
+     "CL-BT1"
+    ],
+    "SECURE_CONTEXT": [
+     "CL-BT1"
+    ],
+    "PERMISSION_POLICY": [
+     "CL-BT2",
+     "CL-BT3",
+     "CL-BT4"
+    ],
+    "REQUEST": [
+     "CL-BT2"
+    ],
+    "FEATURES_LIMITS": {
+     "gap": "device filters/blocklist not clause-traced"
+    },
+    "LIFECYCLE": [
+     "CL-BT5"
+    ],
+    "LOSS": [
+     "CL-BT5"
+    ]
+   },
+   "witnesses": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+   ],
+   "census": {
+    "exposure": "'bluetooth' in navigator",
+    "discovery": "navigator.bluetooth.getAvailability().then(a => ({available: a}))",
+    "permissions": [
+     "bluetooth"
+    ],
+    "policy": [
+     "bluetooth"
+    ]
+   },
+   "classification": "GAP",
+   "rationale": "navigator.bluetooth is absent in ENV-D16-BROWSER and 'bluetooth' is not a valid PermissionName in this build",
+   "run_parts": [],
+   "maturity": null
+  },
+  {
+   "id": "CAP-FUTURE-EXPLICIT",
+   "matrix_row": "Future explicit capability",
+   "steps": {
+    "API": {
+     "gap": "no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+    },
+    "SECURE_CONTEXT": {
+     "gap": "no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+    },
+    "PERMISSION_POLICY": {
+     "gap": "no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+    },
+    "REQUEST": {
+     "gap": "no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+    },
+    "FEATURES_LIMITS": {
+     "gap": "no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+    },
+    "LIFECYCLE": {
+     "gap": "no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+    },
+    "LOSS": {
+     "gap": "no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+    }
+   },
+   "witnesses": [],
+   "census": null,
+   "classification": "GAP",
+   "rationale": "template row of G: preserved; nothing to probe until an explicit authority is named",
+   "run_parts": [],
+   "maturity": null
+  }
+ ]
+}

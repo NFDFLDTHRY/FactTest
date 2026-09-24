@@ -1,0 +1,316 @@
+{
+  "delta_id": "D18R-CHAIN-REPAIR",
+  "workpiece_id": "W21",
+  "canonical_base": "1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c",
+  "base_tree": "3a7487c110606d64579cdef89504bb74c7afd54c",
+  "verified_tree": "ee3e2187fe3ccd01d337b911b23efa1cc1e9c84b",
+  "changed_paths": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D18R.json",
+    "design/environment-map/graph.json",
+    "design/materialization/D18R-INTENDED-CHAIN-REPAIR.md",
+    "design/materialization/D18R-OBSERVED-CHAIN-REPAIR.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D18R/envmap/merge-check.json",
+    "evidence/D18R/envmap/queries/Q01.json",
+    "evidence/D18R/envmap/queries/Q02.json",
+    "evidence/D18R/envmap/queries/Q03.json",
+    "evidence/D18R/envmap/queries/Q04.json",
+    "evidence/D18R/envmap/queries/Q05.json",
+    "evidence/D18R/envmap/queries/Q06.json",
+    "evidence/D18R/envmap/queries/Q07.json",
+    "evidence/D18R/envmap/queries/Q08.json",
+    "evidence/D18R/envmap/queries/Q09.json",
+    "evidence/D18R/envmap/queries/Q10.json",
+    "evidence/D18R/envmap/queries/Q11.json",
+    "evidence/D18R/envmap/queries/Q12.json",
+    "evidence/D18R/envmap/queries/Q13.json",
+    "evidence/D18R/envmap/queries/Q14.json",
+    "evidence/D18R/envmap/queries/Q15.json",
+    "evidence/D18R/envmap/queries/Q16.json",
+    "evidence/D18R/envmap/queries/Q17.json",
+    "evidence/D18R/envmap/queries/Q18.json",
+    "evidence/D18R/envmap/queries/Q19.json",
+    "evidence/D18R/envmap/queries/Q20.json",
+    "evidence/D18R/envmap/queries/Q21.json",
+    "evidence/D18R/envmap/render-check.json",
+    "evidence/D18R/envmap/stale.json",
+    "evidence/D18R/envmap/validate.json",
+    "evidence/D18R/gate.json",
+    "evidence/D18R/handoff-check.json",
+    "evidence/D18R/index.json",
+    "evidence/D18R/logs/F4-audit-after.log",
+    "evidence/D18R/logs/F4-audit-before.log",
+    "evidence/D18R/logs/F4-capability-gate.log",
+    "evidence/D18R/logs/F4-cleanup-gate.log",
+    "evidence/D18R/logs/F4-d18-gate.log",
+    "evidence/D18R/logs/F4-gate.log",
+    "evidence/D18R/logs/F4-handoff-check.log",
+    "evidence/D18R/logs/F4-implementation-gate.log",
+    "evidence/D18R/logs/F4-index.log",
+    "evidence/D18R/logs/F4-merge-check.log",
+    "evidence/D18R/logs/F4-q21-gate.log",
+    "evidence/D18R/logs/F4-queries.log",
+    "evidence/D18R/logs/F4-render-check.log",
+    "evidence/D18R/logs/F4-retire.log",
+    "evidence/D18R/logs/F4-stale.log",
+    "evidence/D18R/logs/F4-status-scan.log",
+    "evidence/D18R/logs/F4-surfaces.log",
+    "evidence/D18R/logs/F4-validate.log",
+    "evidence/D18R/regress/capability-gate.json",
+    "evidence/D18R/regress/d18-gate.json",
+    "evidence/D18R/regress/implementation-gate.json",
+    "evidence/D18R/status/inventory.json",
+    "evidence/D18R/status/summary.txt",
+    "evidence/D18R/surfaces.json",
+    "evidence/D18R/workpieces/audit-after.json",
+    "evidence/D18R/workpieces/audit-before.json",
+    "evidence/D18R/workpieces/retire.json",
+    "factory/deltas/D18R.json",
+    "factory/fixtures/D18R/F0-doc.json",
+    "factory/fixtures/D18R/F1-fixture.json",
+    "factory/fixtures/D18R/F2-doc.json",
+    "factory/fixtures/D18R/F3-doc.json",
+    "factory/fixtures/D18R/F4-evidence.json",
+    "factory/fixtures/D18R/F5-doc.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/F0-doc.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/F1-fixture.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/F2-doc.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/F3-doc.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/F4-evidence.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/F5-doc.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F0-ascii.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F0-scope.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F1-regression.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F1-syntax-generic.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F2-handoff.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-build-epoch.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-checks.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-merge.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-render.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F5-observed.log",
+    "tests/envmap/envmap.mjs",
+    "tests/reconcile/build-reconciliation.mjs",
+    "tests/reconcile/d18r-reconciliation.json",
+    "tests/reconcile/d18r-surfaces.json",
+    "tests/reconcile/gate.mjs"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "3a7487c110606d64579cdef89504bb74c7afd54c"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18R-CHAIN-REPAIR/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D18R-CHAIN-REPAIR/F1-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18R-CHAIN-REPAIR/F2-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18R-CHAIN-REPAIR/F3-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D18R-CHAIN-REPAIR/F4-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18R-CHAIN-REPAIR/F5-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D18R-INTENDED-CHAIN-REPAIR.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D18R-OBSERVED-CHAIN-REPAIR.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/d18r-reconciliation.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/d18r-surfaces.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D18R.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18R/envmap/queries/Q21.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18R/gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18R/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T10:05:23Z",
+  "status": "PASS"
+}

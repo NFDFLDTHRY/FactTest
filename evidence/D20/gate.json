@@ -1,0 +1,31 @@
+{
+ "tool": "tests/reprove/gate.mjs",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "selection_complete",
+   "status": "PASS",
+   "detail": "71 selected of 152; groups ingress, reopen, clauses, process, identity, lineage, paths"
+  },
+  {
+   "check": "reproved",
+   "status": "PASS",
+   "detail": "71 selected facts re-proved with D20 evidence"
+  },
+  {
+   "check": "obligations_fulfilled",
+   "status": "PASS",
+   "detail": "4 obligations fulfilled"
+  },
+  {
+   "check": "identity_recorded",
+   "status": "PASS",
+   "detail": "ENV-D20-HOST, ENV-D20-BROWSER-DEFAULT, ENV-D20-BROWSER-GPUFLAGS, ENV-D20-SOURCES, FACT-D20-ENVIRONMENT-IDENTITY, FACT-D20-LAUNCHED-EXECUTABLE, FACT-D20-MINIMUM-SET"
+  },
+  {
+   "check": "claim_surface",
+   "status": "PASS",
+   "detail": "109 current RUN claims: 108 claimable, 1 invalidated; 71 re-proved in D20"
+  }
+ ]
+}

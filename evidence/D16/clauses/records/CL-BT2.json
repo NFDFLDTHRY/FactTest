@@ -1,0 +1,31 @@
+{
+ "id": "CL-BT2",
+ "trace": "DEV",
+ "authority": "AUTH-WEB-BLUETOOTH",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebBluetoothCG/web-bluetooth",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "2e451c162f6a3f2277f86104223de4630710506e",
+  "sha256": "8228a08036cc1aaa119aba51fea7c32e5f4dc52b29066b09420058290d44bc7e",
+  "bytes": 307044
+ },
+ "locator": {
+  "text": "1. If |document| is not [=allowed to use=] the [=policy-controlled feature=]",
+  "line_start": 1447,
+  "line_end": 1455,
+  "derivation": "anchor text",
+  "enclosing_section": "#device-discovery (line 521)"
+ },
+ "window": 9,
+ "consequence": "requestDevice needs the bluetooth policy and transient activation (SecurityError otherwise)",
+ "excerpt": "1. If |document| is not [=allowed to use=] the [=policy-controlled feature=]\n    named \"[=policy-controlled feature/bluetooth=]\", throw a {{SecurityError}}\n    and abort these steps.\n1. <p id=\"requestDevice-user-gesture\">Check that the algorithm is triggered\n    while its [=relevant global object=] has a\n    <a href=\"https://html.spec.whatwg.org/#tracking-user-activation\"> transient\n    activation</a>, otherwise throw a {{SecurityError}} and abort these\n    steps.</p>\n1. In order to convert the arguments from service names and aliases to just",
+ "excerpt_sha256": "60e81f8dc8adf57a10a37f2736175fbb1f043a03c9b72045487856293fc2f023",
+ "must_contain": {
+  "named \"[=policy-controlled feature/bluetooth=]\", throw a {{SecurityError}}": true,
+  "transient": true,
+  "activation</a>, otherwise throw a {{SecurityError}}": true
+ },
+ "status": "VERIFIED"
+}

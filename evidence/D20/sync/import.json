@@ -1,0 +1,1487 @@
+{
+ "tool": "tests/sync/import-line.mjs",
+ "map": "tests/sync/d20-line.json",
+ "line": {
+  "name": "main after pull request #5 (branch claude/d9-rust-cargo-proof-4nys6s)",
+  "base": "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+  "head": "1205fda00deff8c66cd7e3bb8eb529c87d6a472c",
+  "pull_request": 5,
+  "deltas": [
+   "D14-PROMPT-INTAKE",
+   "D14-TECHNICAL-REFERENCE-RESCAN"
+  ],
+  "relocated_id": "D14-RESCAN"
+ },
+ "ours": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+ "scope": null,
+ "changes": 181,
+ "by_treatment": {
+  "union": 5,
+  "regenerate": 3,
+  "relocated": 38,
+  "added": 133,
+  "embed": 1,
+  "live": 1
+ },
+ "checked": 177,
+ "status": "PASS",
+ "problems": [],
+ "failures": [],
+ "rows": [
+  {
+   "path": "CONFLICT-LEDGER.md",
+   "status": "M",
+   "treatment": "union",
+   "order": "theirs-first",
+   "lines_added_by_line": 1,
+   "ours_kept_in_order": true,
+   "line_additions_missing": 0,
+   "verdict": "UNION_COMPLETE"
+  },
+  {
+   "path": "CONSTRAINT-LEDGER.md",
+   "status": "M",
+   "treatment": "union",
+   "order": "theirs-first",
+   "lines_added_by_line": 1,
+   "ours_kept_in_order": true,
+   "line_additions_missing": 0,
+   "verdict": "UNION_COMPLETE"
+  },
+  {
+   "path": "EVIDENCE-OBLIGATIONS.md",
+   "status": "M",
+   "treatment": "union",
+   "order": "theirs-first",
+   "lines_added_by_line": 6,
+   "ours_kept_in_order": true,
+   "line_additions_missing": 0,
+   "verdict": "UNION_COMPLETE"
+  },
+  {
+   "path": "IMPLEMENTATION-CONTRACTS.md",
+   "status": "M",
+   "treatment": "union",
+   "order": "theirs-first",
+   "lines_added_by_line": 4,
+   "ours_kept_in_order": true,
+   "line_additions_missing": 0,
+   "verdict": "UNION_COMPLETE"
+  },
+  {
+   "path": "REFERENCE-AUTHORITY.md",
+   "status": "M",
+   "treatment": "union",
+   "order": "theirs-first",
+   "lines_added_by_line": 9,
+   "ours_kept_in_order": true,
+   "line_additions_missing": 0,
+   "verdict": "UNION_COMPLETE"
+  },
+  {
+   "path": "design/environment-map/AUTHORITY-REGISTER.md",
+   "status": "M",
+   "treatment": "regenerate"
+  },
+  {
+   "path": "design/environment-map/TRACEABILITY.md",
+   "status": "M",
+   "treatment": "regenerate"
+  },
+  {
+   "path": "design/environment-map/epochs/D14.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "design/environment-map/epochs/D14-RESCAN.json",
+   "sha256": "874e6107410c4d3511eb8c8e47798f70bc0457adebc2b554c7a77e7afa043cb3",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "design/environment-map/graph.json",
+   "status": "M",
+   "treatment": "regenerate"
+  },
+  {
+   "path": "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+   "sha256": "a2bb09f21b60b9fb5bcdbbd294b3e67af6f09fe8fb738cb43aab750b967f7b06",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md",
+   "sha256": "76a8396615e2aa90d7fbe7f0dbcc22617593891a486fd8d2f7c2fc0f3dd785f9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+   "sha256": "1cb15cd8488a335cc28b1e92866d1032d714f3378ff9c89e822cb09aaddf3ddc",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "design/materialization/LEDGER.md",
+   "status": "M",
+   "treatment": "embed",
+   "lines_added_by_line": 55,
+   "verdict": "EMBEDDED"
+  },
+  {
+   "path": "docs/HANDOFF.md",
+   "status": "M",
+   "treatment": "live"
+  },
+  {
+   "path": "evidence/D14/audit/audit.txt",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/audit/audit.txt",
+   "sha256": "674168589bfed05dc1fe36b729cb3ce012397c9767c085b44a48e513bde3cdac",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/audit/fragments.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/audit/fragments.json",
+   "sha256": "04c1ebb392e430713e7fc5c2ef07d8ed9a9839d08ee0ac4b610f2b7b5c7723d9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/audit/link-audit.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/audit/link-audit.json",
+   "sha256": "02e9e8d0500801cf192b65cda9e9a75db32d9dc7c0b374997e9fa13155c0bdc5",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/after.log",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/after.log",
+   "sha256": "6902cb5c59c82f12c60d14e42110be39ae1bccbc37a7555cea7336fd329b94d4",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/merge-check.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/merge-check.json",
+   "sha256": "bb8a014b3cfa4f7f66711a4b4e6c6dc948bb4c64dd19cd0cab542012f9900cd4",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q01.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q01.json",
+   "sha256": "2f2149a6a1f0097267012b981aee9734e7866426fec73d95f743cd25622b1286",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q02.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q02.json",
+   "sha256": "2e0fbeb9074bc71c80733835345c07ae5ff8a3a6cee6c882a8a52a50e0eb3540",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q03.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q03.json",
+   "sha256": "72570f3f941a3581167a6c3caf25745cf25bbdbd9bc3c96008c2c73948f7628e",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q04.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q04.json",
+   "sha256": "25121853692a0daa200b62bcfa72f64e0eaeadc95efa99b145180252a0772ac1",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q05.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q05.json",
+   "sha256": "296b804ad89486089664c823db951ebac657dbcff6e289bf76e9e65c58f07744",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q06.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q06.json",
+   "sha256": "7a370da3ba783529828e518ccaa7268fd9bc7c6957f340e3a0b8a6a6de3f8481",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q07.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q07.json",
+   "sha256": "a86805995e8288c034c3be955c59cb461f639f555160ff10fe2fe2c7d9b90316",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q08.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q08.json",
+   "sha256": "e6ca279028d9351628eca9d1fd2798f400f44ce08f781d633325ca904bc89762",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q09.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q09.json",
+   "sha256": "d06ba7b76d809ec32bfe60fb4fd22aca4440b99bf275f84517a0ac01d3a3aa06",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q10.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q10.json",
+   "sha256": "4c5e81e8c8dfedcaa4362c051e1320067c328ca62e2acf1c96174a57bc2b796d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q11.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q11.json",
+   "sha256": "195762bbe8b27c9933bbcc203086ae8f4e4df02294dbfa1e9678da86a1d3dfc3",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q12.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q12.json",
+   "sha256": "e2df9b9e1ecf55d733d9d380298d104aaab75c25f064f12d64e4f59b277ee097",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q13.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q13.json",
+   "sha256": "baf2f1f73628a277db4931db46ac619001b08bb9f913733a02505208280ef891",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q14.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q14.json",
+   "sha256": "62224fdc68d1f602e89ebc3e39887c4d742c0168e32655d019c4412eb1c7ffef",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q15.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q15.json",
+   "sha256": "764c815782098273eb0649039db9f214e8540f21d27fa9bc7020df661b0ea102",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/queries/Q16.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/queries/Q16.json",
+   "sha256": "cda7fddf0409a231f9a50c7314c666adab608fe2297aae064a833e27c2b1fa0e",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/render-check.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/render-check.json",
+   "sha256": "8b8d070555483a375655e985dfe00cde28501108319c38367d34d4ff9b10443f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/validate-before.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/validate-before.json",
+   "sha256": "52e8ff6eba5f024cb36d9d37232e6273c7271e143fd7c099269ddaf8cb19cd6b",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/validate-before.log",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/validate-before.log",
+   "sha256": "264d8e83dedce45c2679e8a4d021d86e69f2ba38c1eca000b6c9dc89c7aa6007",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/envmap/validate.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/envmap/validate.json",
+   "sha256": "f8c9b799ae5d630634203a1b22dd926605a38247f7e19bed081558d1d4bbb2a2",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/hygiene/handoff.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/hygiene/handoff.json",
+   "sha256": "06c50e44e6041f9c7c14536d8bf475639d613ab362fcea1f18b73491c30d4eb9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/hygiene/handoff.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/hygiene/handoff.log",
+   "sha256": "c76f4232689570f1e0980a6acafba4f4c168f73ebd67373b84848748b8508c30",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/hygiene/status-scan.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/hygiene/status-scan.log",
+   "sha256": "00150d95d2b1df2fe907592ef43f3b629f0abbd8bef88c31eb9669f1f08a400c",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/hygiene/status/inventory.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/hygiene/status/inventory.json",
+   "sha256": "8d65514d36a57c500a45d71cc617a60a89a87e4e4c0a0d3598f9b0214d47e72f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/hygiene/status/summary.txt",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/hygiene/status/summary.txt",
+   "sha256": "6daf0c1111e0a9b4bbf6bc5bdad95ae0904724b94453f8b4698c7619bfad8578",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/index.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/index.json",
+   "sha256": "5d2ffeeb6628cabfba34f009030206bcfc463fe30a69b2fa6c8c213ea6c86352",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/index.log",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/index.log",
+   "sha256": "3c132a8c3047df828476d061386dc9e84741a356593546696bc819ae11007570",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/ingress/hosts.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/ingress/hosts.json",
+   "sha256": "808516c2f4363fa75ab021a6bd8f820a0af651469a10edaa74b547e3c8c46350",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/ingress/refetch.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/ingress/refetch.json",
+   "sha256": "79f0086f6b8a626f3f5f17f27b67fc95652b4cfd7c43f95852e4695e80fad000",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/ingress/register.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/ingress/register.json",
+   "sha256": "68392b28e07f05deb29d2f9b25403863add779577397161e6b3257ff3ca59334",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/ingress/run.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/ingress/run.log",
+   "sha256": "abf192ef583eeef56b2cb2e72d011fc0fc561abb789c4d163dfe0dbf3c8815ac",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/ingress/verdicts.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/ingress/verdicts.log",
+   "sha256": "fce36bc0d7218c345233c0bd1b80a7936c73f394c0346cf4777236928be310b8",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/ingress/verify.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "evidence/D14/ingress/verify.json",
+   "sha256": "a02bc028393c8253b80a0310a37b96274f5e1bd01681e91f4d0a5e2b50873369",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/workpieces/audit-after.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/workpieces/audit-after.json",
+   "sha256": "8653c1a5e5fcaa1a3753a4519c4af95c0f145237671d6aef3d8a5d5388bfc278",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/workpieces/audit-after.log",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/workpieces/audit-after.log",
+   "sha256": "30abca88980832884a460a54af1568aac130a95936b33c3ec41124cb4fcf3b47",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/workpieces/audit-before.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/workpieces/audit-before.json",
+   "sha256": "8653c1a5e5fcaa1a3753a4519c4af95c0f145237671d6aef3d8a5d5388bfc278",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/workpieces/audit-before.log",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/workpieces/audit-before.log",
+   "sha256": "4da1817b9522c05c1807df4730fc785cbfd88138dcf11a8ece87095433d540ca",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/workpieces/retire.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/workpieces/retire.json",
+   "sha256": "c2523913c119473d8e37b2a3f6636e1c46253add1a6f22eb4ca1c7c2f2d16918",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "evidence/D14/workpieces/retire.log",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "evidence/D14-RESCAN/workpieces/retire.log",
+   "sha256": "f391e23de70fcb02735833bddbf9581309840b70c41b06ed3742e709a80458c6",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/deltas/D14-PROMPT-INTAKE.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/deltas/D14-PROMPT-INTAKE.json",
+   "sha256": "922feb496ed5d27ebcf237aefa91b78b83c388781438e9e15441efc54db1f80b",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/deltas/D14.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "factory/deltas/D14-RESCAN.json",
+   "sha256": "e10eaca878f966d3e6c68383d9ab3c2591f94ea4bbe5d6c1ae4a1d056516eb0d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/fixtures/D14-PROMPT-INTAKE/F0-doc.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/fixtures/D14-PROMPT-INTAKE/F0-doc.json",
+   "sha256": "9efdfa9595c67a1ee7c7c583b605f8f5ce3ebdaa86941cf698dc7120d79f0015",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/fixtures/D14/F0-doc.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "factory/fixtures/D14-RESCAN/F0-doc.json",
+   "sha256": "62b473e3b894fc74ee7f39c5970caaea7748299b0a2e34e6600d2b9a51debba4",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/fixtures/D14/F1-fixture.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "factory/fixtures/D14-RESCAN/F1-fixture.json",
+   "sha256": "1066e5daf41d0b5fa122df06bf3a817cc89736eacabed9df4b0bdfeea38ffd71",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/fixtures/D14/F2-build.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "factory/fixtures/D14-RESCAN/F2-build.json",
+   "sha256": "6d80989cde09a2c3a3a6c6b5b27f42db85c9fb9c886237e1117bf66acdb2e09d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/fixtures/D14/F3-annotate.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "factory/fixtures/D14-RESCAN/F3-annotate.json",
+   "sha256": "95e4294fb231d8330bf9f323c6a6ffe0f37e7de254c2d4fa85aaddc54a0fb116",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/fixtures/D14/F4-doc.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "factory/fixtures/D14-RESCAN/F4-doc.json",
+   "sha256": "84bb7a9aeb88dfedd869434b54d6594c70a50582adf4dc03f4182681aa38315f",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/fixtures/D14/F5-evidence.json",
+   "status": "A",
+   "treatment": "relocated",
+   "destination": "factory/fixtures/D14-RESCAN/F5-evidence.json",
+   "sha256": "cbf5727c7ae80d2ced78015bece099f20c255628e93277076aed1a6badc2a32e",
+   "note": "relocated with its set (the original path is free)",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-PROMPT-INTAKE/F0-doc.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-PROMPT-INTAKE/F0-doc.json",
+   "sha256": "00474ad02fe1ab9df7e72778296e43a17ba6653628e44994a0d4811c9a428ea4",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.json",
+   "sha256": "06c50e44e6041f9c7c14536d8bf475639d613ab362fcea1f18b73491c30d4eb9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log",
+   "sha256": "e0849e14ede49ce6b26a14adec8d594d1c61621d67c810efca7537c60ed6e5dd",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log",
+   "sha256": "1bf4c7c6dad8ca40a1e7578f85e1a7052e0f6b8982e162b9f2f158247ff6df73",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log",
+   "sha256": "467090ca4fb7ff8b429f283e69c4271c8709f1c0f7d4a399e524f66a9d5d35e1",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-PROMPT-INTAKE/verification.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-PROMPT-INTAKE/verification.json",
+   "sha256": "79ab90bc5110d8cc09725462efd9da54140d86407703711ea36dc378e90d562d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F0-doc.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F0-doc.json",
+   "sha256": "99afa2d4dbec0d1aa26ab9f46fef38ecb22c04dc6f9889ed13a2380c283b7e0f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F1-fixture.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F1-fixture.json",
+   "sha256": "6088ed75c359bc7ed1a23d1c6525daf25a0eb20eb9adb92e196d18af1425ff53",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F2-build.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F2-build.json",
+   "sha256": "1a2c6e0600cbe8e5f698929c89c712adf5db3dd4033890c719bcd16d57fd83eb",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F3-annotate.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F3-annotate.json",
+   "sha256": "19569f5a23ac8d4b2592880bbbf96885eba937af27e305d0e99fbd550c2b3548",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F4-doc.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F4-doc.json",
+   "sha256": "0f7c91d094e02a09c015adbe4b46c6f6d1cee67727a988192b1fe1ffaaa20787",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F5-evidence.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F5-evidence.json",
+   "sha256": "1d9f9ffe2da6640b0633f3b6d7fe7f2ce9b170ad8cf6357f2236b4c749a20677",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log",
+   "sha256": "139c626a9b6956e232518bf6fce9bed375aa5ba4939e622acedf3361fffe0e76",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log",
+   "sha256": "03db38e0e602f698021242bc55d9e27f421a48cc25ca29e33bb6d4b40fb661c1",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-corpus-layout.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-corpus-layout.log",
+   "sha256": "ce6e805f7a589c3113daa169b1733c8403432345cce112b0341ed4aa47a3af26",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-law-and-no-deps.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-law-and-no-deps.log",
+   "sha256": "1a206f732bb81701a86653914730e109cb310524a4374e2227cdaf3b21f0fa9f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-register-and-offline-verify.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-register-and-offline-verify.log",
+   "sha256": "4edb426c81cef1acbcdca4c223e05e25a95da118a7350e0bb286082ba3499dba",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-syntax-and-plan.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-syntax-and-plan.log",
+   "sha256": "b9b5f1fbb934108030504268681c03b64a9875c0ce758852387be7999dbf53c5",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-handoff.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-handoff.json",
+   "sha256": "06c50e44e6041f9c7c14536d8bf475639d613ab362fcea1f18b73491c30d4eb9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-handoff.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-handoff.log",
+   "sha256": "7a52f863549febd4fabe97ac0a9dd873796a693be83f7fa8f9f81a25b1f8d094",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-insertion-only.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-insertion-only.log",
+   "sha256": "b229c3ae643b88d2a7a18ebce3a4b2fd7a302b5f6769a5177ce4c5378804e15f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-law-untouched.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-law-untouched.log",
+   "sha256": "fc000c8e24cac365cb997285cb7ffe0df0027a5d1ca261775087ee6b20bc7743",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-graph.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-graph.log",
+   "sha256": "3975901b94ae64af021931bb79f9cab280b90d6a1dc0d400e2a782eaaa32671e",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-hygiene.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-hygiene.log",
+   "sha256": "f2231d40063fe6fc1333ac4c26b83afda3fb3ba2a1fe1a3f89a77bdf1491f04d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-observed-and-handoff.log",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-observed-and-handoff.log",
+   "sha256": "2a2ba42f3cb297f794d2b3702acae8944aea854fe70914a48b6562f272585cf3",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/verification.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/verification.json",
+   "sha256": "1d7aceb15ca4e2465f28b89cd5b0864aca572863dcb6f3a8dead2dbc1f4acd69",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/README.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/README.md",
+   "sha256": "2e56fa56b8b019be020879dcb9c4ce1628d4dc1709f2647b4aec81cf0f7c7269",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/REGISTER.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/REGISTER.json",
+   "sha256": "68392b28e07f05deb29d2f9b25403863add779577397161e6b3257ff3ca59334",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/ROUTES.json",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/ROUTES.json",
+   "sha256": "d59cccf1b2ff0e6021d5d2e1926b649485ac499efabf935cabfd6e0240fafb6c",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/gpuweb.github.io/gpuweb/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/gpuweb.github.io/gpuweb/index.html",
+   "sha256": "99118cd7f49e962cbc65160560f89bd960bd39a5321ee94c14f5ed5c99e0c7f9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/gpuweb.github.io/gpuweb/wgsl/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/gpuweb.github.io/gpuweb/wgsl/index.html",
+   "sha256": "3958c198bd96b6be4e8de1070b47959faa7b7a84d31e79cce0fa18cdfe8629d6",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/immersive-web.github.io/webxr/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/immersive-web.github.io/webxr/index.html",
+   "sha256": "5c57ef3cb1205cf7268050b361ed4f7c3bd2542c592d8fbdd64e22c44e2dbd6d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/serial.spec.whatwg.org/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/serial.spec.whatwg.org/index.html",
+   "sha256": "9b94a6ce9d62af923a02c61093cf37051d02d1ce5b8e32d39ae802d84493da39",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/tc39.es/ecma262/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/tc39.es/ecma262/index.html",
+   "sha256": "e2b29c85f37b8ded51873ce385b6573a35cbc26b467c21c14f8184f3bab5aa26",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/IndexedDB/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/IndexedDB/index.html",
+   "sha256": "a63ab4f3bad56a3600d8e55df22c2144023aa795f4796acf7fc16a705503769d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/ServiceWorker/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/ServiceWorker/index.html",
+   "sha256": "eafd5978cb0ea5f56ae7c9f57d88048065d816154abafce4bc2c475b6d48c0ec",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/accelerometer/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/accelerometer/index.html",
+   "sha256": "37a8bc2cb45432ab82806c602261f1a4ca3d21bed67262b2c5826102eb70f248",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/ambient-light/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/ambient-light/index.html",
+   "sha256": "f3a01370a5c8c38998733c96bb2f0ba7dfbd340b833e207867db9193054b3de9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/deviceorientation/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/deviceorientation/index.html",
+   "sha256": "6185a82d9cc8dee9fe9bbb78429a6c2a4335012689309e98743e1720c781cafc",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/geolocation/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/geolocation/index.html",
+   "sha256": "4c95d461fb82779eb9e977e64025a4d3b5ea5ef4738d16e7ad50dcaaa9ec29d3",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/gyroscope/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/gyroscope/index.html",
+   "sha256": "d9b208a2d54ea9d181ecc18540141ce059a48457b0432d71aadc344bfffc901a",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/magnetometer/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/magnetometer/index.html",
+   "sha256": "6053fc1a26b9a7d226c34027d49c2850faf45a4315fa87dfdd1f30e2de1c7036",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/manifest/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/manifest/index.html",
+   "sha256": "57b96d0aaaad7f30e2430efafeb2fa2e82ee71ae0adb6b02d425a096c1b80924",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/mediacapture-main/getusermedia.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/mediacapture-main/getusermedia.html",
+   "sha256": "0901bb87d24561d407d0c1892d6f0b47c3d12a38776064b0ba62b25f4f445f14",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/orientation-sensor/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/orientation-sensor/index.html",
+   "sha256": "b56e3ec1b763d609092500c2535595ebcc7600071ac935720584e41d361d9510",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/permissions/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/permissions/index.html",
+   "sha256": "e355948becd1c0327d9768aaa4e97dc801b4faae1d35c7d7e3f66c68c4cf55f8",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/proximity/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/proximity/index.html",
+   "sha256": "b77998d9d1665118ba2e81c223a4db2c14372d556be2c231e21808f786a91317",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/sensors/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/sensors/index.html",
+   "sha256": "85047b1c1474f29ee4e2a6d110643c93079c265ea03b0f598ed09309910d6ae8",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/web-locks/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/web-locks/index.html",
+   "sha256": "a8e7d4216fe29a829d2ad9cf620470228c3f68a9cfd88be708280a22136ec91f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/webappsec-permissions-policy/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/webappsec-permissions-policy/index.html",
+   "sha256": "accd154d3f3cbd2003fa18aaa52d3cadb6ccba25b4868de660ff4cc88ac5b29f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/webappsec-secure-contexts/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/webappsec-secure-contexts/index.html",
+   "sha256": "7c3806c45a63d8078970a5760b8f31457aadc9f7705c4ec8ca11b4a10291e0e3",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/webcodecs/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/webcodecs/index.html",
+   "sha256": "48c188b038d1996daf02409ef17b249c9008e457254278e84c98b719d1358120",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/w3c.github.io/webcrypto/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/w3c.github.io/webcrypto/index.html",
+   "sha256": "0a7ea877940f255d9f9b6477a2be55a0ddf7319fa194008fadc41e8b2a0e9a6e",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/spec/core/appendix/changes.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/spec/core/appendix/changes.html",
+   "sha256": "6505c30084c1f71027667b8befc2de36ead8f2f3c048f54da51858b65a2f245d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/spec/core/binary/types.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/spec/core/binary/types.html",
+   "sha256": "c7a2a369e712f2138fceef1c871569d11b8ba91ed8aec9afb47f59f4c253662d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/spec/core/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/spec/core/index.html",
+   "sha256": "88708593a992766bc98cd8ff17d6550d1854a52ac13cab8c8b292977ff5f02cb",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/spec/core/syntax/types.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/spec/core/syntax/types.html",
+   "sha256": "5a4c2283a80a074d4ecaff484a34fbdd3fa110b4f4cd39e1c80ac69cd2d1cd18",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/spec/core/text/types.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/spec/core/text/types.html",
+   "sha256": "eb080a737e3d3c0d9060654e33ff0569a26f57e73097cedc8bf5d7aa6a50f56c",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/spec/js-api/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/spec/js-api/index.html",
+   "sha256": "9594fb78ee1e17339ea06c8b7d41f083982377873dbf7b77b22f6da22adf98e1",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/spec/web-api/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/spec/web-api/index.html",
+   "sha256": "385d79f0f451a8ed88a7b4fe8dd2795d78abad3346301e86d0b8e86f84d9894c",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/threads/core/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/threads/core/index.html",
+   "sha256": "c932623bfa65d40fa253962a8f1f6a770e97c9f3d020d7a4789b194761c55f75",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/threads/core/syntax/types.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/threads/core/syntax/types.html",
+   "sha256": "5ca7e70f923df0e1b7a23538a138f7278e43648cbb08d01cb297bf0f9a03064c",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/threads/js-api/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/threads/js-api/index.html",
+   "sha256": "af8bf32ff33d2029424a316b217ed5191a779524ab9e4e97d2c4d80e6e5a5ac9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webassembly.github.io/threads/web-api/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webassembly.github.io/threads/web-api/index.html",
+   "sha256": "c07b7b670e0a379ce5c93dfdc45a08ac839b8b1a20e14f30952f36334599d468",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webbluetoothcg.github.io/web-bluetooth/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webbluetoothcg.github.io/web-bluetooth/index.html",
+   "sha256": "e5fb075be03bb70f5f3a7677dbf889856c6fc011c90e7fe28dab3c321fd6874f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/webmachinelearning.github.io/webnn/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/webmachinelearning.github.io/webnn/index.html",
+   "sha256": "7676dea50c9b2821d5163a5a4bfdde31021cba59666c26e4f69d44f452a29302",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/wicg.github.io/webhid/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/wicg.github.io/webhid/index.html",
+   "sha256": "6cb359dae15fe9d9b600e2433200a1c51617c3f78ce59f6144d2a109556eb62b",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/published/wicg.github.io/webusb/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/published/wicg.github.io/webusb/index.html",
+   "sha256": "095c43b9423c44702382304ec1839270372c0609f94f14ea24d869683edc28cd",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/shared-everything-threads/proposals/shared-everything-threads/Overview.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/shared-everything-threads/proposals/shared-everything-threads/Overview.md",
+   "sha256": "5eea594af9ec935cdbcfdefd62131905aded7a2c8f85e4b033e03800ed713e7d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/spec/document/core/appendix/changes.rst",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/spec/document/core/appendix/changes.rst",
+   "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/spec/document/core/binary/types.rst",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/spec/document/core/binary/types.rst",
+   "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/spec/document/core/syntax/types.rst",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/spec/document/core/syntax/types.rst",
+   "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/spec/document/core/text/types.rst",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/spec/document/core/text/types.rst",
+   "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/spec/document/js-api/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/spec/document/js-api/index.bs",
+   "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/spec/document/web-api/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/spec/document/web-api/index.bs",
+   "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/WebAssembly/threads/proposals/threads/Overview.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/WebAssembly/threads/proposals/threads/Overview.md",
+   "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/chromium/chromium/content/public/common/content_switches.cc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/chromium/chromium/content/public/common/content_switches.cc",
+   "sha256": "0262144447bae97b511b1f4e3cfcda4dcd58c5775c890b0b2ff517a3d1b4764e",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/chromium/chromium/docs/gpu/swiftshader.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/chromium/chromium/docs/gpu/swiftshader.md",
+   "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/chromium/chromium/gpu/config/gpu_switches.cc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/chromium/chromium/gpu/config/gpu_switches.cc",
+   "sha256": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/chromium/chromium/ui/gl/gl_switches.cc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/chromium/chromium/ui/gl/gl_switches.cc",
+   "sha256": "8762d5ed6fd4e565e0632d33dad588cf29d6df8089cdc4deab5f3e8e218ffd5e",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/git-update-ref.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/git-update-ref.adoc",
+   "sha256": "ba4abaaa5acc9e73587ae2195e0bf431f744258214e575e30f29ae3ff3763a22",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/git-worktree.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/git-worktree.adoc",
+   "sha256": "ee8a368564ace74a07e4a034e080b26fb1c3b35d17ef1fe41dcbfcc5595fe8dc",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/gitformat-pack.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/gitformat-pack.adoc",
+   "sha256": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/gitrepository-layout.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/gitrepository-layout.adoc",
+   "sha256": "39ce8d137a30e1fd80eeae146b1c424e56f688f4ddd001259eb98543d3209439",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/gitrevisions.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/gitrevisions.adoc",
+   "sha256": "afe4cab8520820d9bf583ec5688beea000d50cce6fdd3c841eb9df94763feadd",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/glossary-content.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/glossary-content.adoc",
+   "sha256": "0635310817aac48a1b2087e957f60be0d95d05834670460143dbde85c8a7be7e",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/technical/hash-function-transition.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/technical/hash-function-transition.adoc",
+   "sha256": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/git/git/Documentation/user-manual.adoc",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/git/git/Documentation/user-manual.adoc",
+   "sha256": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/google/swiftshader/README.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/google/swiftshader/README.md",
+   "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/gpuweb/gpuweb/spec/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/gpuweb/gpuweb/spec/index.bs",
+   "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/gpuweb/gpuweb/wgsl/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/gpuweb/gpuweb/wgsl/index.bs",
+   "sha256": "11b1020a2fec581050599ae8e035a7138de551129c0856e055b41b4342d658fd",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/rust-lang/cargo/src/doc/src/reference/unstable.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/rust-lang/cargo/src/doc/src/reference/unstable.md",
+   "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/rust-lang/reference/src/names/preludes.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/rust-lang/reference/src/names/preludes.md",
+   "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/rust-lang/rust/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/rust-lang/rust/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/rust-lang/rust/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/rust-lang/rust/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/v8/v8/src/flags/flag-definitions.h",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/v8/v8/src/flags/flag-definitions.h",
+   "sha256": "1940dff6a404265f61f0fd763ca36a3ceba47ab5a3a9d2a7b44c79dbd6cc780d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/w3c/IndexedDB/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/w3c/IndexedDB/index.bs",
+   "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/w3c/ServiceWorker/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/w3c/ServiceWorker/index.bs",
+   "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/w3c/manifest/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/w3c/manifest/index.html",
+   "sha256": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/w3c/web-locks/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/w3c/web-locks/index.bs",
+   "sha256": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/w3c/webappsec-secure-contexts/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/w3c/webappsec-secure-contexts/index.bs",
+   "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/w3c/webcrypto/spec/Overview.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/w3c/webcrypto/spec/Overview.html",
+   "sha256": "00a094ac4298f0c7a5a4afe599281827c98fefbe72b09756f1f5859746f52c97",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/compression/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/compression/index.bs",
+   "sha256": "15ae346d1a953f4b65dee0d4f4dfe1d5252d790e5bef496d8f29ddf9c14a8e2f",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/dom/dom.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/dom/dom.bs",
+   "sha256": "d98c6542f35f2aa976cfbf037f8cd1f556c09a704700f19a0a163100935098ff",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/fetch/fetch.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/fetch/fetch.bs",
+   "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/fs/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/fs/index.bs",
+   "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/html/source",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/html/source",
+   "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/infra/infra.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/infra/infra.bs",
+   "sha256": "7c38e6e25ef21f536142cfc6d94954c41bc9889cd0b6fd67ab34571215acd8eb",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/serial/index.html",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/serial/index.html",
+   "sha256": "48d0a5629c71f2b523108b817d9c0c8c2851959d442f37a3a1b3094b3313dcc3",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/storage/storage.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/storage/storage.bs",
+   "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/streams/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/streams/index.bs",
+   "sha256": "24360b4f8446e6c80e185c5021fcca9b67a7e0bb62490a00109080ebc04c6440",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "fixtures/reference/sources/whatwg/webidl/index.bs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "fixtures/reference/sources/whatwg/webidl/index.bs",
+   "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "tests/reference/ingress.mjs",
+   "status": "A",
+   "treatment": "added",
+   "destination": "tests/reference/ingress.mjs",
+   "sha256": "e8de36987986afce0eb63413f054eac5cb9a1aebcf3fd05da4b376a01192a997",
+   "verdict": "IDENTICAL"
+  },
+  {
+   "path": "tests/reference/run-ingress-checks.sh",
+   "status": "A",
+   "treatment": "added",
+   "destination": "tests/reference/run-ingress-checks.sh",
+   "sha256": "2ddaba996d0330c325fad095ddef602416e12535fef3c074efef02c12e895422",
+   "verdict": "IDENTICAL"
+  }
+ ]
+}

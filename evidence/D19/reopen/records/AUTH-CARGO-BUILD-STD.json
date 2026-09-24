@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-CARGO-BUILD-STD",
+ "authority_class": "TOOL_DOC",
+ "cited": {
+  "url": "https://doc.rust-lang.org/nightly/cargo/reference/unstable.html",
+  "fragment": "#build-std",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "unstable (-Z flag; tracking repository rust-lang/wg-cargo-std-aware)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/rust-lang/cargo",
+  "branch": "master",
+  "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+  "path": "doc/book/src/reference/unstable.md",
+  "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd",
+  "observed": "2026-09-24",
+  "locator": "section '## build-std' and '### Requirements'"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/master",
+  "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#build-std",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 507,
+   "kind": "markdown heading"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 507,
+   "kind": "markdown heading"
+  }
+ },
+ "clause": {
+  "method": "fragment line + 24",
+  "pin_lines": [
+   507,
+   531
+  ],
+  "window_sha256": "5b775433e67b8a7c2bb08cfa86a19c4ae536d328e0ce28e17be8976bfc5fad1c",
+  "window_excerpt": "## build-std\n* Tracking Repository: <https://github.com/rust-lang/wg-cargo-std-aware>\n\nThe `build-std` feature enables Cargo to compile the standard library itself as\npart of a crate graph compilation. This feature has also historically been known\nas \"std-aware Cargo\". This feature is still in very early stages of development,\nand is also a possible massive feature addition to Cargo. This is a very large\nfeature to document, even in the minimal form that it exists in today, so if\nyou're curious to stay up to date you'll want to follow the [tracking\nrepository](https://github.com/rust-lang/wg-cargo-std-aware) and its set of\nissues.\n\nThe functionality implemented today is behind a flag called `-Z build-std`. This\nflag indicates that Cargo should compile the standard library from source code\nusing the same profile as the main build itself. Note that for this to work you\nneed to have the source code for the standard library available, and at this\ntime the only supported method of doing so is to add the `rust-src` rust rustup\ncomponent:\n\n```console\n$ rustup component add rust-src --toolchain nightly\n```\n\nUsage looks like:\n",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   507,
+   531
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

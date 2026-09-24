@@ -1,0 +1,391 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D18R-CHAIN-REPAIR-F4-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F4-evidence",
+  "workpiece_id": "W21",
+  "delta_id": "D18R-CHAIN-REPAIR",
+  "canonical_base": "1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c",
+  "input_artifacts": [
+    "D18R graph",
+    "repair register"
+  ],
+  "open_tree": "6355540896586beb87205446db5f61cd3a1dd746",
+  "close_tree": "c2e85a86a95291592de092a131b81adf3cd5f39d",
+  "changed_paths": [
+    "evidence/D18R/envmap/merge-check.json",
+    "evidence/D18R/envmap/queries/Q01.json",
+    "evidence/D18R/envmap/queries/Q02.json",
+    "evidence/D18R/envmap/queries/Q03.json",
+    "evidence/D18R/envmap/queries/Q04.json",
+    "evidence/D18R/envmap/queries/Q05.json",
+    "evidence/D18R/envmap/queries/Q06.json",
+    "evidence/D18R/envmap/queries/Q07.json",
+    "evidence/D18R/envmap/queries/Q08.json",
+    "evidence/D18R/envmap/queries/Q09.json",
+    "evidence/D18R/envmap/queries/Q10.json",
+    "evidence/D18R/envmap/queries/Q11.json",
+    "evidence/D18R/envmap/queries/Q12.json",
+    "evidence/D18R/envmap/queries/Q13.json",
+    "evidence/D18R/envmap/queries/Q14.json",
+    "evidence/D18R/envmap/queries/Q15.json",
+    "evidence/D18R/envmap/queries/Q16.json",
+    "evidence/D18R/envmap/queries/Q17.json",
+    "evidence/D18R/envmap/queries/Q18.json",
+    "evidence/D18R/envmap/queries/Q19.json",
+    "evidence/D18R/envmap/queries/Q20.json",
+    "evidence/D18R/envmap/queries/Q21.json",
+    "evidence/D18R/envmap/render-check.json",
+    "evidence/D18R/envmap/stale.json",
+    "evidence/D18R/envmap/validate.json",
+    "evidence/D18R/gate.json",
+    "evidence/D18R/handoff-check.json",
+    "evidence/D18R/index.json",
+    "evidence/D18R/logs/F4-audit-after.log",
+    "evidence/D18R/logs/F4-audit-before.log",
+    "evidence/D18R/logs/F4-capability-gate.log",
+    "evidence/D18R/logs/F4-cleanup-gate.log",
+    "evidence/D18R/logs/F4-d18-gate.log",
+    "evidence/D18R/logs/F4-gate.log",
+    "evidence/D18R/logs/F4-handoff-check.log",
+    "evidence/D18R/logs/F4-implementation-gate.log",
+    "evidence/D18R/logs/F4-index.log",
+    "evidence/D18R/logs/F4-merge-check.log",
+    "evidence/D18R/logs/F4-q21-gate.log",
+    "evidence/D18R/logs/F4-queries.log",
+    "evidence/D18R/logs/F4-render-check.log",
+    "evidence/D18R/logs/F4-retire.log",
+    "evidence/D18R/logs/F4-stale.log",
+    "evidence/D18R/logs/F4-status-scan.log",
+    "evidence/D18R/logs/F4-surfaces.log",
+    "evidence/D18R/logs/F4-validate.log",
+    "evidence/D18R/regress/capability-gate.json",
+    "evidence/D18R/regress/d18-gate.json",
+    "evidence/D18R/regress/implementation-gate.json",
+    "evidence/D18R/status/inventory.json",
+    "evidence/D18R/status/summary.txt",
+    "evidence/D18R/surfaces.json",
+    "evidence/D18R/workpieces/audit-after.json",
+    "evidence/D18R/workpieces/audit-before.json",
+    "evidence/D18R/workpieces/retire.json"
+  ],
+  "output_artifacts": [
+    "evidence/D18R/envmap/queries/Q21.json",
+    "evidence/D18R/gate.json",
+    "evidence/D18R/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D18R-CHAIN-REPAIR"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-queries.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-stale.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-merge-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-render-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-surfaces.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-d18-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-q21-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-capability-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-implementation-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-status-scan.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-handoff-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-audit-before.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-retire.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-audit-after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-cleanup-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D18R/logs/F4-index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D18R/envmap/validate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-validate.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out evidence/D18R/envmap/queries",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-queries.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs stale design/environment-map/graph.json --out evidence/D18R/envmap/stale.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-stale.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out evidence/D18R/envmap/merge-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-merge-check.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map --out evidence/D18R/envmap/render-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-render-check.log"
+    },
+    {
+      "check": "command:node tests/reconcile/surfaces.mjs tests/reconcile/d18r-surfaces.json --out evidence/D18R/surfaces.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-surfaces.log"
+    },
+    {
+      "check": "command:node tests/reconcile/gate.mjs --register tests/reconcile/d18r-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D18R/envmap/queries --surfaces evidence/D18R/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D18R/gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-gate.log"
+    },
+    {
+      "check": "command:node tests/reconcile/gate.mjs --register tests/reconcile/d18-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D18R/envmap/queries --surfaces evidence/D18/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D18R/regress/d18-gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-d18-gate.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const q=JSON.parse(require(\"fs\").readFileSync(\"evidence/D18R/envmap/queries/Q21.json\")).answer;const r=q.rows.find(x=>x.reconciliation===\"R-32\");console.log(q.reconciliations,JSON.stringify(q.by_outcome),JSON.stringify(q.current_model.facts),JSON.stringify(r.revised_by));if(!r.revised_by||!r.revised_by.includes(\"R-52\")||q.stale_facts.reconciled!==q.stale_facts.to_recheck)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-q21-gate.log"
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D18R/regress && node tests/capability/gate.mjs --universe tests/capability/universe.json --matrix CAPABILITY-MATRIX.md --census evidence/D16/census --graph design/environment-map/graph.json --out evidence/D18R/regress/capability-gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-capability-gate.log"
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D18R/regress && node tests/implementation/gate.mjs --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph design/environment-map/graph.json --out evidence/D18R/regress/implementation-gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-implementation-gate.log"
+    },
+    {
+      "check": "command:node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D18R/status",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-status-scan.log"
+    },
+    {
+      "check": "command:sh tests/hygiene/handoff-check.sh evidence/D18R/handoff-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-handoff-check.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W21 --out evidence/D18R/workpieces/audit-before.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-audit-before.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece retire /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W21 --out evidence/D18R/workpieces/retire.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-retire.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W21 --out evidence/D18R/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-audit-after.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D18R/workpieces/audit-after.json\"));console.log(JSON.stringify(a.totals));if(a.totals.RETIRABLE!==0)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-cleanup-gate.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory evidence index evidence/D18R evidence/D18R/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D18R/logs/F4-index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D18R/envmap/queries/Q21.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D18R/gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D18R/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D18R/logs/F4-validate.log",
+    "evidence/D18R/logs/F4-queries.log",
+    "evidence/D18R/logs/F4-stale.log",
+    "evidence/D18R/logs/F4-merge-check.log",
+    "evidence/D18R/logs/F4-render-check.log",
+    "evidence/D18R/logs/F4-surfaces.log",
+    "evidence/D18R/logs/F4-gate.log",
+    "evidence/D18R/logs/F4-d18-gate.log",
+    "evidence/D18R/logs/F4-q21-gate.log",
+    "evidence/D18R/logs/F4-capability-gate.log",
+    "evidence/D18R/logs/F4-implementation-gate.log",
+    "evidence/D18R/logs/F4-status-scan.log",
+    "evidence/D18R/logs/F4-handoff-check.log",
+    "evidence/D18R/logs/F4-audit-before.log",
+    "evidence/D18R/logs/F4-retire.log",
+    "evidence/D18R/logs/F4-audit-after.log",
+    "evidence/D18R/logs/F4-cleanup-gate.log",
+    "evidence/D18R/logs/F4-index.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T10:04:41Z",
+  "status": "PASS"
+}

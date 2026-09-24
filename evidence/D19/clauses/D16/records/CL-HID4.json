@@ -1,0 +1,29 @@
+{
+ "id": "CL-HID4",
+ "trace": "DEV",
+ "authority": "AUTH-WEBHID",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WICG/webhid",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+  "sha256": "21ab95f9b4fe9a963b58e0806a7ded26d165d06e969add1cc01ef73499c8f764",
+  "bytes": 115963
+ },
+ "locator": {
+  "text": "{{HID/ondisconnect}} is an [=event handler IDL attribute=] for the",
+  "line_start": 346,
+  "line_end": 347,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 2,
+ "consequence": "devices disconnect (disconnect event); forget() revokes access",
+ "excerpt": "          {{HID/ondisconnect}} is an [=event handler IDL attribute=] for the\n          <dfn>disconnect</dfn> event type.",
+ "excerpt_sha256": "aa9b2e3ec80a62f620b0e7dbd983c2cee32462602c929a8c74904c2d3d9fd77a",
+ "must_contain": {
+  "<dfn>disconnect</dfn> event type": true
+ },
+ "status": "VERIFIED"
+}

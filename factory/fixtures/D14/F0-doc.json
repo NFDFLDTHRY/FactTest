@@ -1,52 +1,67 @@
 {
   "fixture_id": "F0-doc",
   "station_id": "S-DOC",
-  "delta_id": "D14-TECHNICAL-REFERENCE-RESCAN",
   "selected_inputs": [
-    "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
-    "design/materialization/D13-PRE-RESCAN-BASELINE.md",
-    "REFERENCE-AUTHORITY.md",
-    "design/environment-map/graph.json",
-    "scratch probes (section 0)"
-  ],
-  "narrowed_may_read": [
-    "*"
+    "D14-D19 prompt",
+    "D13-PRE-RESCAN-BASELINE",
+    "graph AUTHORITY nodes",
+    "assembly reopen run (section 0)"
   ],
   "narrowed_may_change": [
-    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+    "design/materialization/D14-INTENDED-FRONTIER-REOPEN.md",
     "design/materialization/LEDGER.md",
     "factory/deltas/D14.json",
     "factory/fixtures/D14/",
-    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/"
+    "factory/receipts/D14-FRONTIER-REOPEN/"
   ],
   "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D14-INTENDED-FRONTIER-REOPEN.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 5e57467bd7c984529dc466201629b37e0ee44c4b' design/materialization/LEDGER.md && grep -q '^## D14-FRONTIER-REOPEN' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F0-ascii.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "5e57467bd7c984529dc466201629b37e0ee44c4b",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "tests",
+          "evidence",
+          "fixtures",
+          "design/environment-map",
+          "docs",
+          "rust-toolchain.toml",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "CAPABILITY-MATRIX.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "RUNTIME-ADMISSION-REPLAN.md",
+          "PLANNER-COST-MODEL.md",
+          "README.md"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F0-untouched.log",
+        "cwd": "."
+      }
+    ],
     "identity_probes": [
-      {
-        "name": "rustc-host-set",
-        "program": "rustc",
-        "args": [
-          "+1.94.1",
-          "-vV"
-        ]
-      },
-      {
-        "name": "rustc-wasm64-set",
-        "program": "rustc",
-        "args": [
-          "+nightly-2026-09-24",
-          "-vV"
-        ]
-      },
       {
         "name": "node",
         "program": "node",
-        "args": [
-          "--version"
-        ]
-      },
-      {
-        "name": "git",
-        "program": "git",
         "args": [
           "--version"
         ]
@@ -57,57 +72,29 @@
         "args": [
           "--version"
         ]
-      }
-    ],
-    "commands": [
-      {
-        "cwd": ".",
-        "program": "sh",
-        "args": [
-          "-c",
-          "I=design/materialization/D14-INTENDED-REFERENCE-RESCAN.md; grep -q '^STRUCTURAL CHECK: PASS' $I && for s in '## 0.' '## 1.' '### 1.1' '### 1.2' '### 1.3' '### 1.4' '### 1.5' '## 2.' '## 3.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done && for t in T14-R1 T14-R2 T14-R3 T14-R4 T14-R5 T14-R6 T14-R7 T14-R8; do grep -q \"^$t \" $I || { echo missing $t; exit 1; }; done && grep -q '^## D14-TECHNICAL-REFERENCE-RESCAN' design/materialization/LEDGER.md && grep -q 'integrated as 6778133c35a96d5e356df283aa1676ee428766bb' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ]"
-        ],
-        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log"
       },
       {
-        "cwd": ".",
+        "name": "git",
         "program": "git",
         "args": [
-          "diff",
-          "--exit-code",
-          "6778133c35a96d5e356df283aa1676ee428766bb",
-          "--",
-          "FACTORY-LAW.md",
-          "compiler",
-          "host",
-          "factory/src",
-          "factory/registry",
-          "factory/tests",
-          "fixtures/language",
-          "fixtures/compiler",
-          "fixtures/commissioning",
-          "fixtures/toolchain",
-          "tests/toolchain",
-          "tests/envmap",
-          "tests/hygiene",
-          "design/materialization/M0-INTENDED-SYSTEM.md",
-          "design/materialization/D13-PRE-RESCAN-BASELINE.md",
-          "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md"
-        ],
-        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log"
+          "--version"
+        ]
       }
     ]
   },
   "expected_outputs": [
-    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
-    "factory/deltas/D14.json"
+    "design/materialization/D14-INTENDED-FRONTIER-REOPEN.md"
   ],
   "tests": [
-    "intended ASCII carries STRUCTURAL CHECK: PASS, sections, T14-R1..R8",
-    "ledger: intake AFTER recorded, single placeholder",
-    "authority untouched"
+    "ASCII sections 0-10 + STRUCTURAL CHECK",
+    "ledger intake AFTER + D14 BEFORE",
+    "nothing else changed"
+  ],
+  "narrowed_may_read": [
+    "*"
   ],
   "evidence_requirements": [
     "receipt"
-  ]
+  ],
+  "delta_id": "D14-FRONTIER-REOPEN"
 }

@@ -13,6 +13,12 @@ Legend:
 
 Every row below is in G. Pass 2 does not claim it is in C or A.
 
+D18 ANNOTATION (current classification): this table is the approved universe G and deliberately carries no status.  The
+current trace of every row (authority clauses per step, verified absences, census exposure, witnesses) and its classification
+live in graph query Q19 (design/environment-map/graph.json; D16: RUN 6, OBS 16, GAP 10, ERR 1, UNK 0).  Authority
+advisements for the sensor rows: CONFLICT-LEDGER.md OBS-004 (extended by D18).  WebGPU on Linux Chromium is
+implementation-gated (D17 IB-GPU-LINUX-SERVICE-OFF); every row stays in G.
+
 | Capability family | Current authority | Admission contract | Lifecycle/failure | Evidence required |
 |---|---|---|---|---|
 | CPU / Wasm64 | Rust wasm64 target + WebAssembly Core address/memory types | artifact validates as wasm64; host can compile/instantiate; known operation executes | compile/link/instantiate/trap/resource failure | artifact identity + validation + known-answer execution |

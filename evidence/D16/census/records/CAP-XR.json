@@ -1,0 +1,18 @@
+{
+ "family": "CAP-XR",
+ "matrix_row": "XR",
+ "observed": "2026-09-24T08:42:27.901Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "'xr' in navigator",
+ "discovery_expr": "Promise.all([navigator.xr.isSessionSupported('inline'), navigator.xr.isSessionSupported('immersive-vr')]).then(r => ({inline: r[0], immersive_vr: r[1]}))",
+ "exposed": true,
+ "discovery": {
+  "inline": true,
+  "immersive_vr": false
+ },
+ "permissions": {},
+ "policy": {
+  "xr-spatial-tracking": true
+ }
+}

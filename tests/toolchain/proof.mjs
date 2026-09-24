@@ -283,19 +283,39 @@ function obSetsCheck(opts) {
     command: md.argv, members: md.members, default_members: md.default_members, host_roots: host, wasm64_roots: wasm, physical_manifests: audit.table,
     verdict: reasons.length ? 'FAIL' : 'PASS', reason: reasons.length ? reasons.join('; ') : `${md.members.length} members = ${host.length} HOST_NATIVE_SET roots (== default-members) + ${wasm.length} WASM64_KERNEL_SET root (${wasm.join(',')}); disjoint and complete; ${audit.table.length} physical manifests accounted` });
 }
+// D18: the kernel identity is the EXEC identity - sha256 over (section id byte ++ section body) of every section except
+// the excluded custom sections, in module order (the identity_excluding_custom of tests/implementation/wasm-sections.mjs).
+// It is install-name independent (D17: only LLVM's promoted-symbol names in the custom "name" section carry the rustup
+// install name).  The whole-file sha256 stays recorded per install name and is reported, never the verdict.
+function wasmExecIdentity(bytes, exclude) {
+  if (bytes.length < 8 || bytes.readUInt32LE(0) !== 0x6d736100) return null;
+  const leb = i => { let r = 0, s = 0; for (;;) { const x = bytes[i++]; r += (x & 0x7f) * 2 ** s; s += 7; if (x < 0x80) return [r, i]; } };
+  const parts = []; let i = 8;
+  while (i < bytes.length) {
+    const id = bytes[i++]; const [n, j] = leb(i); const body = bytes.subarray(j, j + n); let name = null;
+    if (id === 0) { let k = 0, l = 0, s = 0; for (;;) { const x = body[k++]; l += (x & 0x7f) * 2 ** s; s += 7; if (x < 0x80) break; } name = body.subarray(k, k + l).toString('utf8'); }
+    if (!(id === 0 && exclude.includes(name))) parts.push(Buffer.from([id]), body);
+    i = j + n;
+  }
+  return createHash('sha256').update(Buffer.concat(parts)).digest('hex');
+}
 function obKernelIdentity(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.'); const sets = loadSets(opts);
-  const d = sets.WASM64_KERNEL_SET; const ki = d.kernel_identity;
+  const d = sets.WASM64_KERNEL_SET; const ki = d.kernel_identity; const ex = ki.exec_identity;
   const sysroot = run('rustc', ['+' + d.toolchain, '--print', 'sysroot'], root).stdout.trim();
   const install = sysroot.split('/').pop();
   const mod = resolve(root, opts.module);
   let bytes = null; try { bytes = readFileSync(mod); } catch { }
   const sha = bytes ? createHash('sha256').update(bytes).digest('hex') : null;
+  const exec = bytes ? wasmExecIdentity(bytes, ex.excluded_custom_sections) : null;
   const want = ki.by_install_name[install] || null;
-  const verdict = !bytes ? 'UNK' : !want ? 'GAP' : (want.sha256 === sha && want.bytes === bytes.length ? 'PASS' : 'FAIL');
-  record(out, { ...baseRecord({ id: opts.id, set: 'WASM64_KERNEL_SET' }, 'T13-KRN', 'the release kernel built by the pinned nightly has the identity declared for its install name'),
-    target: WASM64, profile: 'release', toolchain: toolchainIdentity(d.toolchain), sysroot, install_name: install, module: opts.module, sha256: sha, bytes: bytes ? bytes.length : null, declared: want,
-    verdict, reason: verdict === 'PASS' ? `sha256 ${sha} (${bytes.length} bytes) == declared for install ${install}` : verdict === 'GAP' ? `no identity declared for install name ${install} (identity is install-path dependent) ; observed ${sha}` : verdict === 'UNK' ? 'module missing: ' + mod : `observed ${sha} (${bytes.length} bytes) != declared ${want.sha256} (${want.bytes}) for ${install}` });
+  const matches = bytes ? Object.entries(ki.by_install_name).filter(([, w]) => w.sha256 === sha && w.bytes === bytes.length).map(([k]) => k) : [];
+  const whole = !bytes ? null : matches.length ? `whole file == recorded for install ${matches.join(', ')} (informational)` : `whole file ${sha} (${bytes.length} bytes) matches no recorded install name (informational)`;
+  const verdict = !bytes ? 'UNK' : !exec ? 'FAIL' : (exec === ex.sha256 ? 'PASS' : 'FAIL');
+  record(out, { ...baseRecord({ id: opts.id, set: 'WASM64_KERNEL_SET' }, 'T13-KRN', 'the release kernel built by the pinned nightly has the declared exec identity (install-name independent); whole-file sha256 reported per install name'),
+    target: WASM64, profile: 'release', toolchain: toolchainIdentity(d.toolchain), sysroot, install_name: install, module: opts.module, sha256: sha, bytes: bytes ? bytes.length : null,
+    exec_identity: exec, declared_exec_identity: ex.sha256, excluded_custom_sections: ex.excluded_custom_sections, whole_file: whole, declared: want,
+    verdict, reason: verdict === 'UNK' ? 'module missing: ' + mod : !exec ? 'not a wasm module: ' + mod : verdict === 'PASS' ? `exec identity ${exec} == declared (install ${install}); ${whole}` : `exec identity ${exec} != declared ${ex.sha256} (install ${install}); ${whole}` });
 }
 
 function obToolchain(opts) {

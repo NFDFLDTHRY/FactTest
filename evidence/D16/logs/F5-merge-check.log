@@ -1,0 +1,5 @@
+$ node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json --out evidence/D16/envmap/merge-check.json
+(cwd .)
+PASS base_nodes_preserved: 211 base nodes identical; base_edges_preserved: 475 base edges present; graph_equals_merge_of_base_and_epochs: 1053390 bytes identical
+
+[exit 0] expected 0

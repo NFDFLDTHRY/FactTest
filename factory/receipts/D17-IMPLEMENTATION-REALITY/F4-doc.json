@@ -1,0 +1,185 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D17-IMPLEMENTATION-REALITY-F4-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F4-doc",
+  "workpiece_id": "W19",
+  "delta_id": "D17-IMPLEMENTATION-REALITY",
+  "canonical_base": "e4e210304591d99f73873dc719b79f187c4d19a1",
+  "input_artifacts": [
+    "evidence/D17/clauses/",
+    "evidence/D17/kernel/",
+    "evidence/D17/labels/",
+    "tests/reference/d17-clauses.json",
+    "tests/implementation/reality.json",
+    "tests/implementation/label-audit.json"
+  ],
+  "open_tree": "479be6178729774f66438dd63fcb354abc72ff77",
+  "close_tree": "86e10fa76b4bd39e928eac5a84b447da1e1356c3",
+  "changed_paths": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D17.json",
+    "design/environment-map/graph.json",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-build-epoch.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-checks.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-merge.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-render.log"
+  ],
+  "output_artifacts": [
+    "design/environment-map/epochs/D17.json",
+    "design/environment-map/graph.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D17-IMPLEMENTATION-REALITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-build-epoch.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-merge.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json --out $T/g16.json >/dev/null && node tests/reference/build-clauses.mjs --clauses evidence/D17/clauses --manifest tests/reference/d17-clauses.json --epoch D17 --delta D17-IMPLEMENTATION-REALITY --commit 'e4e210304591d99f73873dc719b79f187c4d19a1 (canonical base; integration commit in LEDGER AFTER)' --harness-in $T/g16.json --out $T/clauses.json && node tests/implementation/build-reality.mjs --clause-epoch $T/clauses.json --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph $T/g16.json --epoch D17 --delta D17-IMPLEMENTATION-REALITY --commit 'e4e210304591d99f73873dc719b79f187c4d19a1 (canonical base; integration commit in LEDGER AFTER)' --declare --out design/environment-map/epochs/D17.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-build-epoch.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json --out design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-merge.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render design/environment-map/graph.json --out design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-render.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 10. Implementation behaviour' design/environment-map/SCHEMA.md && grep -q 'Implementation reality epoch D17' design/environment-map/ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-checks.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D17.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-build-epoch.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-merge.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-render.log",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F4-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T09:10:02Z",
+  "status": "PASS"
+}

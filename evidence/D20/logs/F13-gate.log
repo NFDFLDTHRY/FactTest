@@ -1,0 +1,10 @@
+$ node tests/reprove/gate.mjs --selection evidence/D20/selection.json --results evidence/D20/results --graph design/environment-map/graph.json --queries evidence/D20/envmap/queries --epoch D20 --out evidence/D20/gate.json
+(cwd .)
+PASS selection_complete: 71 selected of 152; groups ingress, reopen, clauses, process, identity, lineage, paths
+PASS reproved: 71 selected facts re-proved with D20 evidence
+PASS obligations_fulfilled: 4 obligations fulfilled
+PASS identity_recorded: ENV-D20-HOST, ENV-D20-BROWSER-DEFAULT, ENV-D20-BROWSER-GPUFLAGS, ENV-D20-SOURCES, FACT-D20-ENVIRONMENT-IDENTITY, FACT-D20-LAUNCHED-EXECUTABLE, FACT-D20-MINIMUM-SET
+PASS claim_surface: 109 current RUN claims: 108 claimable, 1 invalidated; 71 re-proved in D20
+PASS
+
+[exit 0] expected 0

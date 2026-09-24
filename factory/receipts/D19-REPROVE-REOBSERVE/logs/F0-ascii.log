@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as b509fb00920443930aa75b10dae05b9683d2fe1b' design/materialization/LEDGER.md && grep -q '^## D19-REPROVE-REOBSERVE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]
+(cwd .)
+
+[exit 0] expected 0

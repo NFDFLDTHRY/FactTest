@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-BR7",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+  "bytes": 176139
+ },
+ "locator": {
+  "text": "name: \"WebUSB\",",
+  "line_start": 5706,
+  "line_end": 5708,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 3,
+ "consequence": "WebUSB is stable",
+ "excerpt": "      name: \"WebUSB\",\n      public: true,\n      status: \"stable\",",
+ "excerpt_sha256": "9e15fcfb3b6800937c9d3e44d21ebcac284a5da78a5477ef4ea3b7e6baa3f5da",
+ "must_contain": {
+  "status: \"stable\"": true
+ },
+ "status": "VERIFIED"
+}

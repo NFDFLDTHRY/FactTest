@@ -1,0 +1,34 @@
+{
+  "fixture_id": "F4-browser",
+  "station_id": "S-BROWSER",
+  "selected_inputs": [
+    "selection of F3"
+  ],
+  "narrowed_may_change": [
+    "evidence/D19/results/",
+    "evidence/D19/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind cite --out evidence/D19"
+        ],
+        "log": "evidence/D19/logs/F4-cite.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D19/results/identity.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

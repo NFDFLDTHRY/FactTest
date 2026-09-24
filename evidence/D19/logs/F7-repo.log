@@ -1,0 +1,13 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D19
+(cwd .)
+PASS lineage: node tests/reprove/lineage.mjs --from 4a151c9ae58f9968c70b9b85cef82a02fba12b85 --out evidence/D19/lineage/line (0 s)
+PASS lineage FACT-FF-ONLY-INTEGRATION
+PASS lineage FACT-WORKPIECE-ISOLATION
+PASS paths: node tests/envmap/envmap.mjs paths-probe . --out evidence/D19/paths/paths-probe.json (0 s)
+PASS paths FACT-SURFACES-LITERAL-ENFORCED
+PASS status: node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D19/status- (0 s)
+PASS status: sh tests/hygiene/handoff-check.sh evidence/D19/status-reprove/handoff-check.json (0 s)
+PASS status FACT-HANDOFF-MODEL-INDEPENDENT
+PASS status FACT-STATUS-INVENTORIED
+
+[exit 0] expected 0

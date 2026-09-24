@@ -1,0 +1,28 @@
+{
+ "tool": "tests/reference/clauses.mjs",
+ "manifest": "tests/reference/d18-clauses.json",
+ "observed": "2026-09-24T09:55:34.049Z",
+ "clauses": 2,
+ "status": {
+  "VERIFIED": 2
+ },
+ "traces": [
+  "GPU"
+ ],
+ "sources": [
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:content/public/common/content_switches.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "e8321b499ab2f425cd6fcdf8bddff07988bef70c4c2784c46e99ef56f585e8cf",
+   "bytes": 45626,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:docs/gpu/swiftshader.md",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0",
+   "bytes": 2763,
+   "ok": true
+  }
+ ]
+}

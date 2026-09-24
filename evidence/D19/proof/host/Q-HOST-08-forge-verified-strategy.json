@@ -1,0 +1,62 @@
+{
+  "id": "Q-HOST-08-forge-verified-strategy",
+  "class": "T9-P4",
+  "invariant": "P5-V01 / P6-G05: VerifiedStrategy cannot be constructed outside the verifier because of its private sealing field; the failure must be the private-field rejection of the struct literal, not a stale-field, import or syntax error",
+  "proof_set": "HOST_NATIVE_SET",
+  "evaluated": "2026-09-24T10:45:22.485Z",
+  "target": "host",
+  "profile": "dev",
+  "fixture": "fixtures/compiler/negative/forge-verified-strategy",
+  "expect_file": "fixtures/toolchain/expect/forge-verified-strategy.json",
+  "toolchain": {
+    "channel": "1.94.1",
+    "requested": "stable",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "rustc_release": "1.94.1",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "21.1.8",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "available": true,
+    "error": null
+  },
+  "verdict": "PASS",
+  "reason": "rejected for the expected reason: 1xprivate-field ((no code):1)",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "build",
+    "--lib",
+    "--message-format=json"
+  ],
+  "exit": 101,
+  "observed_errors": [
+    {
+      "package": "neg-forge-verified-strategy",
+      "code": null,
+      "message": "cannot construct `factc_verifier::VerifiedStrategy` with struct literal syntax due to private fields",
+      "file": "src/lib.rs",
+      "line": 8
+    }
+  ],
+  "expected": [
+    {
+      "code": null,
+      "count": 1,
+      "message_contains": "private fields",
+      "message_contains_all": [
+        "VerifiedStrategy",
+        "struct literal",
+        "private fields"
+      ],
+      "file": "src/lib.rs",
+      "lines": [
+        8
+      ]
+    }
+  ],
+  "weak_rule": {
+    "rule": "run-negative-fixtures.sh: cargo build exit != 0",
+    "verdict": "PASS"
+  }
+}

@@ -140,3 +140,169 @@ validate    + epochs_consistent (every introduced_in names an epoch; node counts
 Q16         what each epoch added (nodes by class, facts -> probes -> evidence -> environments, authorities) and its
             cross-epoch edges.
 ```
+
+## 7. Authority revisions (D14)
+
+```text
+epoch-declared schema   an epoch file may declare node_classes / edge_semantics (add-only; redeclaring a name is an
+                        error); merge records them in the envelope with declared_in = <epoch>
+AUTHORITY_REVISION      a later observation of one AUTHORITY: current_authority {url, status, fragment_published},
+                        source {repo, branch, ref_status, commit, path, sha256, pin_check, relation_to_pin},
+                        fragment {cited, recorded, at_pin, at_tip}, clause {method, status, pin_lines, tip_lines},
+                        maturity {recorded, declared_at_pin, declared_at_tip, observed, drift}, movement[] (UNCHANGED
+                        MOVED EDITORIAL SEMANTIC MATURITY REMOVED SPLIT/MERGED UNREACHABLE AMBIGUOUS), locator
+                        {old, new, kind, verified} | null, rationale.  The AUTHORITY node is never edited.
+REVISES                 AUTHORITY_REVISION -> AUTHORITY
+OBSERVED_IN             AUTHORITY_REVISION -> EVIDENCE (the reopen record)
+validate                + revision_revises_its_authority, revision_movement_vocabulary, revision_has_reopen_evidence
+Q17                     latest revision per authority (epoch order) -> movement -> downstream constraints, facts,
+                        probes, evidence, with the consequence of each class; facts_to_recheck excludes EDITORIAL and
+                        UNREACHABLE (which alone change no claim)
+builder                 tests/reference/build-revisions.mjs (reopen evidence + tests/reference/<epoch>-review.json)
+```
+
+
+## 8. Exact clauses and claim traversal (D15)
+
+```text
+CLAUSE                  one exact clause of one AUTHORITY at a named source tip: clause_id, authority_ref, trace, epoch,
+                        source {repo, commit, path, sha256}, locator {requested, line_start, line_end, derivation,
+                        enclosing_section}, excerpt_sha256, quoted[] (the phrases verified present), consequence.
+                        Admitted only VERIFIED (located at the tip, every quoted phrase present).  Declared by epoch D15.
+CLAUSE_OF               CLAUSE -> AUTHORITY (the document the clause lives in)
+GROUNDS                 CLAUSE -> CONSTRAINT | COMPUTATIONAL_FACT (the clause text is the ground)
+LEADS_TO                CLAUSE -> CLAUSE (a sublink followed because it changes legality, lifecycle, failure, security,
+                        storage, admission or proof interpretation)
+EXTRACTED_IN            CLAUSE -> EVIDENCE (the extraction record: commit, sha256, lines, excerpt)
+validate                + clause_of_its_authority, clause_has_extraction_identity, clause_connected (every clause grounds
+                        something or leads to a clause that does)
+Q18                     claim traversal for every COMPUTATIONAL_FACT: CLAIM -> CURRENT AUTHORITY -> EXACT CLAUSE ->
+                        AUTHORITY MATURITY -> REPRODUCIBILITY PIN -> PROJECT CONSTRAINT -> IMPLEMENTATION CONTRACT ->
+                        ENVIRONMENT -> PROBE -> PHYSICAL EVIDENCE -> STALE CONDITIONS; terminal COMPLETE, the first
+                        broken step, or the claim's own [GAP]/[OBS]/[UNK]/[ERR] status.  An unverified published
+                        rendering is an annotation on the maturity step, not a stop.
+proposed constraints    CONSTRAINT nodes with ledger_status PROPOSED (not yet in CONSTRAINT-LEDGER.md; reconciled in D18)
+extractor / builder     tests/reference/clauses.mjs (manifest tests/reference/<epoch>-clauses.json) and
+                        tests/reference/build-clauses.mjs
+```
+
+## 9. Capability universe (D16)
+
+```text
+CAPABILITY_FAMILY       one approved family of G (one row of CAPABILITY-MATRIX.md): family_id, matrix_row, in_G,
+                        current_authority, admission_contract, lifecycle_failure, evidence_required (verbatim from the
+                        matrix), steps {API, SECURE_CONTEXT, PERMISSION_POLICY, REQUEST, FEATURES_LIMITS, LIFECYCLE, LOSS:
+                        CLAUSE | NONE_DEFINED | GAP + reason}, census {state, record}, classification [RUN|OBS|GAP|ERR|UNK],
+                        rationale, run_parts, maturity.  Declared by epoch D16.  Only an ASCII decision removes a family.
+TRACE_STEP              CAPABILITY_FAMILY -> CLAUSE  + step (+ none_defined when the clause verified an absence)
+WITNESSED_BY            CAPABILITY_FAMILY -> COMPUTATIONAL_FACT (the runtime/evidence facts the classification rests on)
+CLAUSE (extension)      absent_in_document[]: phrases verified absent from the whole source at the tip
+validate                + family_classification_vocabulary, family_steps_match_edges; clause_connected counts TRACE_STEP
+Q19                     per family: the seven authority steps, RUNTIME ADMISSION (classification), PROBE OBLIGATION (matrix
+                        evidence + witness probes), EVIDENCE; first gap; totals by classification
+census facts            FACT-CAP-<family>-EXPOSURE [OBS]: exposure / non-prompting discovery / permission state / policy
+                        answer in one browser environment; never admission (CON-CAP-001)
+tools                   tests/capability/{census.mjs, universe.json, build-universe.mjs, gate.mjs}
+```
+
+## 10. Implementation behaviour (D17)
+
+```text
+IMPLEMENTATION_BEHAVIOR what a named implementation version does: behavior_id, implementation, version,
+                        relation_to_standard (CONFORMS | HOST_CHOICE_PERMITTED | PLATFORM_DEFAULT | FLAG_GATED |
+                        EXPERIMENTAL_NOT_SHIPPED | NOT_IMPLEMENTED | SHIPPED | VERSION_SPECIFIC | TEST_HARNESS_CHOICE |
+                        TOOLING), statement, environment_dimension, stale_if, runtime_status (OBS | UNK), label.  The class
+                        declaration carries the vocabularies and the implementation authority classes (IMPLEMENTATION_SOURCE,
+                        IMPLEMENTATION_DOC, TARGET_DOC, TOOL_DOC).  Declared by epoch D17.
+SOURCED_BY              IMPLEMENTATION_BEHAVIOR -> CLAUSE of an implementation-class authority, pinned to the version run
+RELATES_TO_STANDARD     IMPLEMENTATION_BEHAVIOR -> CLAUSE (standard class) | CONSTRAINT  + relation
+EXPLAINS                IMPLEMENTATION_BEHAVIOR -> COMPUTATIONAL_FACT (observed runtime); the builder adds STALE_IF on the
+                        explained fact for the behaviour's environment dimension
+clause sources          a branch tip (D15/D16), a pinned commit, or an installed local file (tests/reference/lib.mjs sourceKey)
+validate                + behavior_vocabulary, behavior_sourced_by_implementation, behavior_standard_is_not_implementation;
+                        clause_connected counts SOURCED_BY
+Q18                     EXACT CLAUSE also accepts implementation clauses reached through a behaviour that EXPLAINS the claim
+                        (labelled "implementation")
+Q20                     per behaviour: implementation layer, standard layer, runtime layer, stale condition
+tools                   tests/implementation/{reality.json, label-audit.json, label-audit.mjs, build-kernels.sh,
+                        wasm-sections.mjs, build-reality.mjs, gate.mjs}
+```
+
+## 11. Reconciliation and the current model (D18)
+
+```text
+RECONCILIATION          one re-examination: reconciliation_id, subject, traversal {AUTHORITY_CHANGED, CONSTRAINT, FACT,
+                        IMPLEMENTATION_CONTRACT, ENVIRONMENT, OLD_PROBE_SUFFICIENT, OLD_EVIDENCE_APPLICABLE}, outcome
+                        (HOLDS | SUPERSEDED | RESOLVED | CORRECTED | LEDGERED | ANNOTATED | OPEN), surfaces, note,
+                        new_probe_obligation.  The class declaration carries both vocabularies.  Declared by epoch D18.
+RECONCILES              RECONCILIATION -> any node it re-examined
+SUPERSEDES              successor -> superseded (AUTHORITY or COMPUTATIONAL_FACT, same class) + reconciliation; the
+                        superseded node stays as history; the declaration lists the inheritable edge types per class and
+                        direction, and the successor carries each such edge with both endpoints mapped to current nodes
+LEDGERED_IN             CONSTRAINT (ledger_status PROPOSED on the node) -> project-law AUTHORITY + locator, reconciliation
+current                 a node is current unless superseded; RESOLVED closes a non-RUN fact record; CORRECTED attaches
+                        the current reading of a wording
+validate                + reconciliation_vocabulary, reconciliation_has_subject, resolved_only_non_run_facts,
+                        supersession_well_formed, successor_carries_inherited_edges, ledgered_constraints_well_formed,
+                        stale_facts_reconciled
+Q17                     a claim introduced at or after a revision's epoch is not made stale by it; with reconciliations:
+                        reconciled_by / current_authority per movement, facts_reconciled, facts_open
+Q18                     authority steps use current authorities; terminal [SUPERSEDED] by X / [RESOLVED]; reconciled_by
+Q19, Q20                current witnesses / explained facts only; Q02, Q09 mark superseded_by
+Q21                     reconciliation traversal, current model, new probe obligations
+tools                   tests/reconcile/{d18-reconciliation.json, surfaces.json, build-reconciliation.mjs, surfaces.mjs,
+                        gate.mjs, stage-audit.mjs}
+```
+
+## 12. Repair epochs (D18R)
+
+```text
+repair epoch            an epoch that declares nothing and uses the reconciliation classes to correct what contradicts
+                        committed evidence (register tests/reconcile/<epoch>-reconciliation.json with optional parts)
+supersession chains     a successor may itself be superseded; currentOf follows the chain; the builder inherits through
+                        the graph's existing SUPERSEDES edges; validate checks every link
+retired_texts           register field: texts no current AUTHORITY / COMPUTATIONAL_FACT may carry (gate)
+Q21                     revised_by on a reconciliation row and its obligation when a successor it introduced was
+                        superseded later
+```
+
+## 13. Re-proof and the entitled-claim surface (D19)
+
+```text
+FULFILLS                EVIDENCE -> RECONCILIATION + obligation: the evidence discharges the probe obligation a
+                        reconciliation addressed to a later pass (Q21 fulfilled_by).  Declared by epoch D19.
+re-proof epoch          new ENVIRONMENT nodes for the current identity (host as the proof sets bind it, browser default
+                        and GPU flag set with the executable launched, authority sources with every tip read recorded in
+                        other_state.sources); one EVIDENCE node per record a re-proved fact rests on; the re-proved fact
+                        is EVIDENCED_BY it and STALE_IF the new environment in each dimension it was already stale in;
+                        a failed re-proof is INVALIDATED_BY its record
+selection               tests/reprove/select.mjs: a current RUN/OBS fact is selected on DRIFT of a STALE_IF dimension
+                        (tests/reprove/dimensions.json rules; UNK never counts as SAME), on a change of its
+                        implementation or probe harness after its newest physical evidence (git), or on an obligation
+                        addressed to the pass; tests/reprove/runbook.json maps each to the group that re-proves it
+Q22                     entitled-claim surface: per current fact the claim bounded to the environments of its newest
+                        physical evidence, that epoch, whether the current epoch re-proved it, and its Q18 terminal;
+                        explicit_stops separates open [GAP]/[ERR]/[UNK] facts from those later evidence INVALIDATED
+                        (closed history; D19 route finding, repaired by fixture F11 before the graph was built)
+tools                   tests/reprove/{identity.mjs, select.mjs, run-selected.mjs, lineage.mjs, build-reprove.mjs,
+                        gate.mjs, dimensions.json, runbook.json, obligations.json}; tests/envmap/browser-probe.mjs records
+                        the executable launched
+```
+
+## 14. Joined lines and the second re-proof (D20)
+
+```text
+epoch alias             an epoch entry FILE=LABEL merges FILE under LABEL when its own label is taken by another line's
+                        epoch; the file stays byte-identical and the merged epoch list records relabeled_from
+                        (epochs/D14-RESCAN.json is the D14 epoch of the line merged into main by pull request #5)
+line import             tests/sync/import-line.mjs with a map (tests/sync/<delta>-line.json): every change of the other
+                        line is added or relocated byte-identically, unioned (law documents, insertion-only), embedded
+                        (the ledger block), regenerated (graph and views) or live (the handoff); --check verifies each
+inheritance             build-reconciliation.mjs carries inheritable edges for every supersession in the graph, so an
+                        epoch merged later that attached edges to a superseded node has them on the current successor
+carried conditions      select.mjs: once a claim was re-proved, the stale condition carried to the environment of its
+                        newest evidence (same dimension and relation) supersedes the older one (superseded_conditions);
+                        --pass names the pass the obligations are addressed to
+lineage                 non-Factory merges are owner pull-request merges or SYNC merges (tree equal to the first parent:
+                        no content); any other merge is a violation
+```

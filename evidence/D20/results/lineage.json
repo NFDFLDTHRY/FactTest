@@ -1,0 +1,70 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "lineage",
+ "kind": "repo",
+ "started": "2026-09-24T11:43:45.347Z",
+ "commands": [
+  {
+   "command": "node tests/reprove/lineage.mjs --from 4a151c9ae58f9968c70b9b85cef82a02fba12b85 --out evidence/D20/lineage/lineage.json",
+   "exit": 0,
+   "seconds": 0
+  }
+ ],
+ "facts": {
+  "FACT-FF-ONLY-INTEGRATION": {
+   "probe": "PROBE-WORKPIECE-VERIFY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "lineage/lineage.json",
+     "sha256": "8715f26a7431b524b4265c9502379eb755822e769ab90be2a5b8da3f9c8b1bc6",
+     "checks": [
+      {
+       "path": "first_parent_linear",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "factory_authored",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "unclassified_merges",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-WORKPIECE-ISOLATION": {
+   "probe": "PROBE-WORKPIECE-VERIFY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "lineage/lineage.json",
+     "sha256": "8715f26a7431b524b4265c9502379eb755822e769ab90be2a5b8da3f9c8b1bc6",
+     "checks": [
+      {
+       "path": "latest_verification.state_base_tree_matches_canonical_base",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [
+  "R-63"
+ ],
+ "finished": "2026-09-24T11:43:45.435Z",
+ "status": "PASS"
+}

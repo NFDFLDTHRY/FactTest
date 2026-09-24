@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && sh tests/hygiene/handoff-check.sh $T/h.json && node tests/reconcile/surfaces.mjs tests/reconcile/d18r-surfaces.json --out $T/s.json && grep -q 'last delta         D18R-CHAIN-REPAIR' docs/HANDOFF.md
+(cwd .)
+handoff check PASS
+PASS 2 surface checks
+
+[exit 0] expected 0

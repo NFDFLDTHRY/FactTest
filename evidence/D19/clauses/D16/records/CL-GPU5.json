@@ -1,0 +1,30 @@
+{
+ "id": "CL-GPU5",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-REQUESTDEVICE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "must not be {{adapter/[[state]]/\"consumed\"}}.",
+  "line_start": 2950,
+  "line_end": 2970,
+  "derivation": "anchor text",
+  "enclosing_section": "#gpuadapter (line 2837)"
+ },
+ "window": 21,
+ "consequence": "a consumed adapter or a required limit better than the adapter's rejects with OperationError: limits are part of admission",
+ "excerpt": "                        1. |adapter|.{{adapter/[[state]]}} must not be {{adapter/[[state]]/\"consumed\"}}.\n                        1. For each [|key|, |value|] in |descriptor|.{{GPUDeviceDescriptor/requiredLimits}}\n                            for which |value| is not `undefined`:\n                            1. |key| |must| be the name of a member of [=supported limits=].\n                            1. |value| |must| be no [=limit/better=] than |adapter|.{{adapter/[[limits]]}}[|key|].\n                            1. If |key|'s [=limit class|class=] is [=limit class/alignment=],\n                                |value| |must| be a power of 2 less than 2<sup>32</sup>.\n\n                            Note:\n                            User agents should consider issuing developer-visible warnings when\n                            |key| is not recognized, even when |value| is `undefined`.\n                    </div>\n\n                    If any are unmet, issue the following steps on <var data-timeline=content>contentTimeline</var>\n                    and return:\n\n                    <div data-timeline=content>\n                        [=Content timeline=] steps:\n\n                        1. [=Reject=] |promise| with an {{OperationError}}.\n                    </div>",
+ "excerpt_sha256": "ef300b6190f0399c874faa0d2e72d51984186c602ac93412dfcd664601c6d4d5",
+ "must_contain": {
+  "no [=limit/better=] than": true,
+  "[=Reject=] |promise| with an {{OperationError}}": true
+ },
+ "status": "VERIFIED"
+}

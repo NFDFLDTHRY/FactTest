@@ -1,0 +1,100 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "D14-D19 prompt (pass D16)",
+    "D15-OBSERVED-FOUNDATIONAL-SEMANTICS",
+    "CAPABILITY-MATRIX.md (G)",
+    "assembly clause run + census (section 0)"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D16.json",
+    "factory/fixtures/D16/",
+    "factory/receipts/D16-CAPABILITY-UNIVERSE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 3748fa7bd15d74e560951f31338b8c94820c2830' design/materialization/LEDGER.md && grep -q '^## D16-CAPABILITY-UNIVERSE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]"
+        ],
+        "log": "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F0-ascii.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "3748fa7bd15d74e560951f31338b8c94820c2830",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "tests",
+          "evidence",
+          "fixtures",
+          "design/environment-map",
+          "docs",
+          "rust-toolchain.toml",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "CAPABILITY-MATRIX.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "RUNTIME-ADMISSION-REPLAN.md",
+          "PLANNER-COST-MODEL.md",
+          "README.md"
+        ],
+        "log": "factory/receipts/D16-CAPABILITY-UNIVERSE/logs/F0-untouched.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md"
+  ],
+  "tests": [
+    "ASCII sections 0-10 + STRUCTURAL CHECK",
+    "ledger D15 AFTER + D16 BEFORE",
+    "nothing else changed"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D16-CAPABILITY-UNIVERSE"
+}

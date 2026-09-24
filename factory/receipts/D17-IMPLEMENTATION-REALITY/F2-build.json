@@ -1,0 +1,221 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D17-IMPLEMENTATION-REALITY-F2-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F2-build",
+  "workpiece_id": "W19",
+  "delta_id": "D17-IMPLEMENTATION-REALITY",
+  "canonical_base": "e4e210304591d99f73873dc719b79f187c4d19a1",
+  "input_artifacts": [
+    "tests/reference/d17-clauses.json",
+    "raw.githubusercontent.com",
+    "installed Playwright package"
+  ],
+  "open_tree": "dee24723cc1f560f03474d476b18e059db0d6412",
+  "close_tree": "b1192ac1cdf02d7d6859138fb865362d80739f97",
+  "changed_paths": [
+    "evidence/D17/clauses/records/CL-IMP-BR1.json",
+    "evidence/D17/clauses/records/CL-IMP-BR2.json",
+    "evidence/D17/clauses/records/CL-IMP-BR3.json",
+    "evidence/D17/clauses/records/CL-IMP-BR4.json",
+    "evidence/D17/clauses/records/CL-IMP-BR5.json",
+    "evidence/D17/clauses/records/CL-IMP-BR6.json",
+    "evidence/D17/clauses/records/CL-IMP-BR7.json",
+    "evidence/D17/clauses/records/CL-IMP-BR8.json",
+    "evidence/D17/clauses/records/CL-IMP-DEPS1.json",
+    "evidence/D17/clauses/records/CL-IMP-DEPS2.json",
+    "evidence/D17/clauses/records/CL-IMP-DEPS3.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU1.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU2.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU3.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU4.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU5.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU6.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU7.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU8.json",
+    "evidence/D17/clauses/records/CL-IMP-GPU9.json",
+    "evidence/D17/clauses/records/CL-IMP-HL1.json",
+    "evidence/D17/clauses/records/CL-IMP-HL2.json",
+    "evidence/D17/clauses/records/CL-IMP-HL3.json",
+    "evidence/D17/clauses/records/CL-IMP-HL4.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL1.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL2.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL3.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL4.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL5.json",
+    "evidence/D17/clauses/records/CL-IMP-IDL6.json",
+    "evidence/D17/clauses/records/CL-IMP-PW1.json",
+    "evidence/D17/clauses/records/CL-IMP-PW2.json",
+    "evidence/D17/clauses/records/CL-IMP-PW3.json",
+    "evidence/D17/clauses/records/CL-IMP-PW4.json",
+    "evidence/D17/clauses/records/CL-IMP-RS1.json",
+    "evidence/D17/clauses/records/CL-IMP-RS2.json",
+    "evidence/D17/clauses/records/CL-IMP-RS3.json",
+    "evidence/D17/clauses/records/CL-IMP-RS4.json",
+    "evidence/D17/clauses/records/CL-IMP-RS5.json",
+    "evidence/D17/clauses/records/CL-IMP-SAB1.json",
+    "evidence/D17/clauses/records/CL-IMP-SAB2.json",
+    "evidence/D17/clauses/records/CL-IMP-V8A.json",
+    "evidence/D17/clauses/records/CL-IMP-V8B.json",
+    "evidence/D17/clauses/records/CL-IMP-WN1.json",
+    "evidence/D17/clauses/summary.json",
+    "evidence/D17/logs/F2-clauses.log"
+  ],
+  "output_artifacts": [
+    "evidence/D17/clauses/summary.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D17-IMPLEMENTATION-REALITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D17/logs/F2-clauses.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/reference/clauses.mjs tests/reference/d17-clauses.json design/environment-map/graph.json evidence/D17/clauses",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D17/logs/F2-clauses.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D17/clauses/summary.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D17/logs/F2-clauses.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": [
+      {
+        "name": "node",
+        "command": [
+          "node",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "v22.22.2"
+        ]
+      },
+      {
+        "name": "curl",
+        "command": [
+          "curl",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10",
+          "Release-Date: 2023-12-06, security patched: 8.5.0-2ubuntu10.8",
+          "Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp",
+          "Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd"
+        ]
+      },
+      {
+        "name": "git",
+        "command": [
+          "git",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "git version 2.43.0"
+        ]
+      }
+    ]
+  },
+  "closed": "2026-09-24T09:08:22Z",
+  "status": "PASS"
+}

@@ -43,6 +43,9 @@ Evidence:
 Authority:
 https://webassembly.github.io/spec/web-api/#streaming-module-compilation-and-instantiation
 D14 ANNOTATION (fragment #streaming-module-compilation-and-instantiation): reopened at the published rendering taken from the publisher's gh-pages branch @dcb71aa493d7 (fixtures/reference/published/webassembly.github.io/spec/web-api/index.html, evidence/D14/audit/link-audit.json): no element carries id "streaming-module-compilation-and-instantiation"; nearest ids in that rendering: #streaming-modules, #ref-for-module, #ref-for-module①, #ref-for-module②.  The citation above is preserved exactly as written and is NOT asserted current [ERR] until an owner-approved law delta replaces the fragment; the rendering was not observed at the published host (egress denied).
+D18 ANNOTATION (fragment #streaming-module-compilation-and-instantiation): no such id exists in the pinned or current source
+(D14 [ERR]); the clause is at #streaming-modules (D14 revision; D15 clauses CL-S1..CL-S4).  Current authority node:
+AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING).  The URL above is kept as historically written.
 
 Future tests:
 - application/wasm + successful response -> compilation path succeeds.
@@ -319,6 +322,9 @@ Current JS authority:
 https://webassembly.github.io/spec/js-api/#internal-storage
 D13 ANNOTATION (fragment #internal-storage): the citation above is preserved exactly as historically written.  It is NOT asserted to be a currently valid fragment: the pinned source WebAssembly/spec@608711107b has no id "internal-storage" (it has #webassembly-storage and #store) - FRAGMENT_DRIFT [ERR]; whether the published rendering still carries an alias is [UNK] (host denied).  Semantic resolution is deferred to the D14 technical reference rescan (design/environment-map/AUTHORITY-REGISTER.md AUTH-WASM-JSAPI-STORAGE; docs/HANDOFF.md section 6).
 D14 ANNOTATION (fragment #internal-storage): confirmed at the published rendering taken from WebAssembly/spec gh-pages@dcb71aa493d7 (fixtures/reference/published/webassembly.github.io/spec/js-api/index.html, evidence/D14/audit/fragments.json): no element carries id "internal-storage"; the section is <h2 id="webassembly-storage"> (also #store).  Historical citation preserved; NOT asserted current [ERR]; the rendering was not observed at the published host (egress denied).
+D18 ANNOTATION (fragment #internal-storage, resolved): D14 found the cited clause at #webassembly-storage in the pinned and
+current source (locator move, clause text unchanged); D15 cites the agent-local clause at #store (CL-T1).  Current authority
+node: AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE).  The URL above is kept as historically written.
 
 Threads proposal:
 https://webassembly.github.io/threads/core/
@@ -372,3 +378,13 @@ Required future physical evidence after materialization:
 10. authored ASCII remains unchanged.
 
 If the physical browser cannot admit either backend, record [GAP]. Model/synthetic evidence cannot substitute for physical evidence.
+
+D18 ANNOTATION (evidence identity after D17; design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md).
+- Browser evidence names the executable actually launched: every Playwright headless launch in FactTest runs
+  chromium-headless-shell (HeadlessChrome), not the Chrome browser; no installed-Chrome evidence exists.  The headless shell
+  answers ASK to every permission, so a permission-dependent result there says nothing about an installed application.
+- Launch switches are part of the environment: WebGPU on Linux Chromium 141 needs the unsafe WebGPU switch set (the service is
+  off by default), and Playwright disables field trials and third-party storage partitioning on every launch.
+- Implementation versions are recorded as run (Chromium revision, V8 version, toolchain commit), never as a branch tip.
+- Kernel identity: sha256 over every WebAssembly section except the custom "name" section (install-path independent,
+  tests/toolchain/proof-sets.json exec_identity); the whole-file sha256 stays recorded per install name.

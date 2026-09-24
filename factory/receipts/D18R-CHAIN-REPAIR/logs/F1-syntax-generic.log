@@ -1,0 +1,5 @@
+$ sh -c for f in tests/reconcile/build-reconciliation.mjs tests/reconcile/gate.mjs tests/envmap/envmap.mjs; do node --check $f || exit 1; done; node -e 'const fs=require("fs");const r=JSON.parse(fs.readFileSync("tests/reconcile/d18r-reconciliation.json"));console.log(r.items.length+" reconciliations, "+r.supersessions.length+" supersession, "+r.retired_texts.length+" retired texts")' && ! grep -nE "'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]" tests/reconcile/build-reconciliation.mjs tests/reconcile/gate.mjs tests/envmap/envmap.mjs && git diff --exit-code 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c -- tests ':!tests/reconcile/d18r-reconciliation.json' ':!tests/reconcile/d18r-surfaces.json' ':!tests/reconcile/build-reconciliation.mjs' ':!tests/reconcile/gate.mjs' ':!tests/envmap/envmap.mjs'
+(cwd .)
+2 reconciliations, 1 supersession, 2 retired texts
+
+[exit 0] expected 0

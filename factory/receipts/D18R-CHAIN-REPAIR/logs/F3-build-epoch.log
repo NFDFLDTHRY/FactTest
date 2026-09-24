@@ -1,0 +1,5 @@
+$ node tests/reconcile/build-reconciliation.mjs --register tests/reconcile/d18r-reconciliation.json --graph design/environment-map/graph.json --root . --epoch D18R --delta D18R-CHAIN-REPAIR --commit 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c (canonical base; integration commit in LEDGER AFTER) --out design/environment-map/epochs/D18R.json
+(cwd .)
+D18R: 3 nodes, 20 edges -> design/environment-map/epochs/D18R.json; {"SUPERSEDED":1,"CORRECTED":1}; supersessions 1; inherited 9; ledgered 0
+
+[exit 0] expected 0

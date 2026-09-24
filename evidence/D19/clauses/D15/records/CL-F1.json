@@ -1,0 +1,30 @@
+{
+ "id": "CL-F1",
+ "trace": "F",
+ "authority": "AUTH-FETCH",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/fetch",
+  "branch": "main",
+  "path": "fetch.bs",
+  "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+  "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36",
+  "bytes": 444018
+ },
+ "locator": {
+  "text": "has an associated <dfn for=request export>service-workers mode</dfn>",
+  "line_start": 1795,
+  "line_end": 1800,
+  "derivation": "anchor text",
+  "enclosing_section": "#requests (line 1657)"
+ },
+ "window": 6,
+ "consequence": "requests carry a service-workers mode; \"none\" bypasses service workers",
+ "excerpt": "<p>A <a for=/>request</a> has an associated <dfn for=request export>service-workers mode</dfn>, that\nis \"<code>all</code>\" or \"<code>none</code>\". Unless stated otherwise it is \"<code>all</code>\".\n\n<div class=note>\n <p>This determines which service workers will receive a {{fetch!!event}} event for this fetch.\n",
+ "excerpt_sha256": "3cf520208d38467f137c943c8c4d94e90ca95880715d51d9b29d47072ee85869",
+ "must_contain": {
+  "\"<code>all</code>\"": true,
+  "\"<code>none</code>\"": true
+ },
+ "status": "VERIFIED"
+}

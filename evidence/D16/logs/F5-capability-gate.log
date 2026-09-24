@@ -1,0 +1,11 @@
+$ node tests/capability/gate.mjs --universe tests/capability/universe.json --matrix CAPABILITY-MATRIX.md --census evidence/D16/census --graph design/environment-map/graph.json --out evidence/D16/gate.json
+(cwd .)
+PASS g_rows_preserved: 33 matrix rows = 33 families, in order
+PASS graph_families_match: 33 CAPABILITY_FAMILY nodes
+PASS steps_complete: {"CLAUSE":174,"NONE_DEFINED":6,"GAP":51}
+PASS census_complete: 32 records
+PASS witnesses_resolve: 54 witness references
+PASS classification_allowed: RUN 6, OBS 16, ERR 1, GAP 10
+PASS
+
+[exit 0] expected 0

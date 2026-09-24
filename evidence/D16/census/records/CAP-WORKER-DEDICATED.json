@@ -1,0 +1,16 @@
+{
+ "family": "CAP-WORKER-DEDICATED",
+ "matrix_row": "Dedicated workers",
+ "observed": "2026-09-24T08:42:27.802Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "typeof Worker === 'function'",
+ "discovery_expr": "({shared_worker: typeof SharedWorker === 'function', hardwareConcurrency: navigator.hardwareConcurrency})",
+ "exposed": true,
+ "discovery": {
+  "shared_worker": true,
+  "hardwareConcurrency": 4
+ },
+ "permissions": {},
+ "policy": {}
+}

@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D20-INTENDED-MAIN-SYNC.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 780aee1b50c4a799a62b760823a3d1460d386d0f' design/materialization/LEDGER.md && grep -q '^## D20-MAIN-SYNC' design/materialization/LEDGER.md && grep -q '^## MAIN LINE' design/materialization/LEDGER.md && grep -q 'integrated as 8d5ea6f95e90961959cd9f8df4d9db22eb37aa85' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]
+(cwd .)
+
+[exit 0] expected 0

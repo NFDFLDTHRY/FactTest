@@ -1,0 +1,65 @@
+{
+ "authority": "LAW-PASS6-COMMISSIONING",
+ "authority_class": "PROJECT_LAW",
+ "cited": {
+  "url": "PASS6.md",
+  "fragment": "## Required future physical runtime sequence",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "project law at commit 4a151c9",
+  "observed_recorded": "2026-09-24",
+  "reopen_recorded": "OPENED"
+ },
+ "pin": {
+  "repo": "https://github.com/NFDFLDTHRY/FactTest",
+  "branch": "claude/facttest-materialization-27amc7",
+  "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+  "path": "PASS6.md",
+  "sha256": "3a02497309dc0c31a7f28006f105a6b4b76b4d265dc262a67685fced2662c250",
+  "observed": "2026-09-24",
+  "locator": "## Required future physical runtime sequence"
+ },
+ "published": {
+  "status": "REPOSITORY_LAW (read at canonical HEAD)"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "canonical HEAD",
+  "commit": "c3159d562768d52465ead5e44bc6c5259dfc1b79"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "3a02497309dc0c31a7f28006f105a6b4b76b4d265dc262a67685fced2662c250",
+ "tip_relation": "TIP MOVED, FILE IDENTICAL",
+ "tip_sha256": "3a02497309dc0c31a7f28006f105a6b4b76b4d265dc262a67685fced2662c250",
+ "fragment": {
+  "cited": "## Required future physical runtime sequence",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 98,
+   "kind": "heading line"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 98,
+   "kind": "heading line"
+  }
+ },
+ "clause": {
+  "method": "fragment line + 24",
+  "pin_lines": [
+   98,
+   122
+  ],
+  "window_sha256": "6b30c9a758e20159365a4cb6606c6c79014ceb9056c0ce868d91c801c84a964f",
+  "window_excerpt": "## Required future physical runtime sequence\n\n```text\nE0\n  WebGPU ADMITTED\n  Wasm64 ADMITTED\n  selector -> GPU\n\nexact byte roundtrip\n\nGPUDevice.destroy()\n  -> device lost\n  -> evidence\n  -> E1\n\nE1\n  WebGPU stale/rejected\n  Wasm64 ADMITTED\n  selector -> Wasm64\n\nsame exact byte roundtrip\n```\n\nControlled loss authority:\nhttps://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   98,
+   122
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

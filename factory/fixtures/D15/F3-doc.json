@@ -1,0 +1,95 @@
+{
+  "fixture_id": "F3-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "evidence/D15/clauses/",
+    "tests/reference/d15-clauses.json"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/graph.json",
+    "design/environment-map/epochs/D15.json",
+    "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reference/build-clauses.mjs",
+          "--clauses",
+          "evidence/D15/clauses",
+          "--manifest",
+          "tests/reference/d15-clauses.json",
+          "--epoch",
+          "D15",
+          "--delta",
+          "D15-FOUNDATIONAL-SEMANTICS",
+          "--commit",
+          "46cc28be1486798635eac42a6955dedaba36673f (canonical base; integration commit in LEDGER AFTER)",
+          "--declare",
+          "--out",
+          "design/environment-map/epochs/D15.json"
+        ],
+        "log": "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-build-epoch.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json",
+          "--out",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-merge.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-render.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 8. Exact clauses and claim traversal' design/environment-map/SCHEMA.md && grep -q 'Foundational clause epoch D15' design/environment-map/ENVIRONMENT-MAP.md"
+        ],
+        "log": "factory/receipts/D15-FOUNDATIONAL-SEMANTICS/logs/F3-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/epochs/D15.json",
+    "design/environment-map/graph.json"
+  ],
+  "tests": [
+    "epoch built from Factory evidence",
+    "D11-D14 preserved",
+    "views rendered",
+    "SCHEMA section 8 and ENVIRONMENT-MAP section 7 present"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D15-FOUNDATIONAL-SEMANTICS"
+}

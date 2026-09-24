@@ -1,0 +1,268 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D16-CAPABILITY-UNIVERSE-F2-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F2-build",
+  "workpiece_id": "W18",
+  "delta_id": "D16-CAPABILITY-UNIVERSE",
+  "canonical_base": "3748fa7bd15d74e560951f31338b8c94820c2830",
+  "input_artifacts": [
+    "tests/reference/d16-clauses.json",
+    "design/environment-map/graph.json",
+    "raw.githubusercontent.com",
+    "git ls-remote"
+  ],
+  "open_tree": "f5906c9f3634adcedd1d29d912922143a27914b7",
+  "close_tree": "175cbe824d1e738e289f465e67ab58d10807c8f0",
+  "changed_paths": [
+    "evidence/D16/clauses/records/CL-ACC0.json",
+    "evidence/D16/clauses/records/CL-ACC1.json",
+    "evidence/D16/clauses/records/CL-ACC2.json",
+    "evidence/D16/clauses/records/CL-ALS0.json",
+    "evidence/D16/clauses/records/CL-ALS1.json",
+    "evidence/D16/clauses/records/CL-ALS2.json",
+    "evidence/D16/clauses/records/CL-ALS3.json",
+    "evidence/D16/clauses/records/CL-BT1.json",
+    "evidence/D16/clauses/records/CL-BT2.json",
+    "evidence/D16/clauses/records/CL-BT3.json",
+    "evidence/D16/clauses/records/CL-BT4.json",
+    "evidence/D16/clauses/records/CL-BT5.json",
+    "evidence/D16/clauses/records/CL-CS1.json",
+    "evidence/D16/clauses/records/CL-CS2.json",
+    "evidence/D16/clauses/records/CL-DO1.json",
+    "evidence/D16/clauses/records/CL-DO2.json",
+    "evidence/D16/clauses/records/CL-DO3.json",
+    "evidence/D16/clauses/records/CL-DO4.json",
+    "evidence/D16/clauses/records/CL-GEO1.json",
+    "evidence/D16/clauses/records/CL-GEO2.json",
+    "evidence/D16/clauses/records/CL-GEO3.json",
+    "evidence/D16/clauses/records/CL-GEO4.json",
+    "evidence/D16/clauses/records/CL-GEO5.json",
+    "evidence/D16/clauses/records/CL-GPU1.json",
+    "evidence/D16/clauses/records/CL-GPU10.json",
+    "evidence/D16/clauses/records/CL-GPU11.json",
+    "evidence/D16/clauses/records/CL-GPU2.json",
+    "evidence/D16/clauses/records/CL-GPU3.json",
+    "evidence/D16/clauses/records/CL-GPU4.json",
+    "evidence/D16/clauses/records/CL-GPU5.json",
+    "evidence/D16/clauses/records/CL-GPU6.json",
+    "evidence/D16/clauses/records/CL-GPU7.json",
+    "evidence/D16/clauses/records/CL-GPU8.json",
+    "evidence/D16/clauses/records/CL-GPU9.json",
+    "evidence/D16/clauses/records/CL-GS0.json",
+    "evidence/D16/clauses/records/CL-GS1.json",
+    "evidence/D16/clauses/records/CL-GS2.json",
+    "evidence/D16/clauses/records/CL-GS3.json",
+    "evidence/D16/clauses/records/CL-GS4.json",
+    "evidence/D16/clauses/records/CL-GYR0.json",
+    "evidence/D16/clauses/records/CL-GYR1.json",
+    "evidence/D16/clauses/records/CL-GYR2.json",
+    "evidence/D16/clauses/records/CL-HID1.json",
+    "evidence/D16/clauses/records/CL-HID2.json",
+    "evidence/D16/clauses/records/CL-HID3.json",
+    "evidence/D16/clauses/records/CL-HID4.json",
+    "evidence/D16/clauses/records/CL-IDB1.json",
+    "evidence/D16/clauses/records/CL-MAG0.json",
+    "evidence/D16/clauses/records/CL-MAG1.json",
+    "evidence/D16/clauses/records/CL-MAG2.json",
+    "evidence/D16/clauses/records/CL-MC1.json",
+    "evidence/D16/clauses/records/CL-MC2.json",
+    "evidence/D16/clauses/records/CL-MC3.json",
+    "evidence/D16/clauses/records/CL-MC4.json",
+    "evidence/D16/clauses/records/CL-MC5.json",
+    "evidence/D16/clauses/records/CL-MC6.json",
+    "evidence/D16/clauses/records/CL-NN1.json",
+    "evidence/D16/clauses/records/CL-NN2.json",
+    "evidence/D16/clauses/records/CL-NN3.json",
+    "evidence/D16/clauses/records/CL-NN4.json",
+    "evidence/D16/clauses/records/CL-OPFS1.json",
+    "evidence/D16/clauses/records/CL-ORI0.json",
+    "evidence/D16/clauses/records/CL-ORI1.json",
+    "evidence/D16/clauses/records/CL-ORI2.json",
+    "evidence/D16/clauses/records/CL-PRX0.json",
+    "evidence/D16/clauses/records/CL-PRX1.json",
+    "evidence/D16/clauses/records/CL-PRX2.json",
+    "evidence/D16/clauses/records/CL-SER1.json",
+    "evidence/D16/clauses/records/CL-SER2.json",
+    "evidence/D16/clauses/records/CL-SER3.json",
+    "evidence/D16/clauses/records/CL-SER4.json",
+    "evidence/D16/clauses/records/CL-STQ1.json",
+    "evidence/D16/clauses/records/CL-USB1.json",
+    "evidence/D16/clauses/records/CL-USB2.json",
+    "evidence/D16/clauses/records/CL-USB3.json",
+    "evidence/D16/clauses/records/CL-WC1.json",
+    "evidence/D16/clauses/records/CL-WC2.json",
+    "evidence/D16/clauses/records/CL-WC3.json",
+    "evidence/D16/clauses/records/CL-WC4.json",
+    "evidence/D16/clauses/records/CL-WJ1.json",
+    "evidence/D16/clauses/records/CL-WJ2.json",
+    "evidence/D16/clauses/records/CL-WK1.json",
+    "evidence/D16/clauses/records/CL-WK2.json",
+    "evidence/D16/clauses/records/CL-WK3.json",
+    "evidence/D16/clauses/records/CL-XR1.json",
+    "evidence/D16/clauses/records/CL-XR2.json",
+    "evidence/D16/clauses/records/CL-XR3.json",
+    "evidence/D16/clauses/records/CL-XR4.json",
+    "evidence/D16/clauses/records/CL-XR5.json",
+    "evidence/D16/clauses/records/CL-XR6.json",
+    "evidence/D16/clauses/summary.json",
+    "evidence/D16/logs/F2-clauses.log"
+  ],
+  "output_artifacts": [
+    "evidence/D16/clauses/summary.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D16-CAPABILITY-UNIVERSE"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D16/logs/F2-clauses.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/reference/clauses.mjs tests/reference/d16-clauses.json design/environment-map/graph.json evidence/D16/clauses",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D16/logs/F2-clauses.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D16/clauses/summary.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D16/logs/F2-clauses.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": [
+      {
+        "name": "node",
+        "command": [
+          "node",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "v22.22.2"
+        ]
+      },
+      {
+        "name": "curl",
+        "command": [
+          "curl",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10",
+          "Release-Date: 2023-12-06, security patched: 8.5.0-2ubuntu10.8",
+          "Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp",
+          "Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd"
+        ]
+      },
+      {
+        "name": "git",
+        "command": [
+          "git",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "git version 2.43.0"
+        ]
+      }
+    ]
+  },
+  "closed": "2026-09-24T08:42:27Z",
+  "status": "PASS"
+}

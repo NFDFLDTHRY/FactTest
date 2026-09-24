@@ -1,0 +1,29 @@
+{
+ "id": "CL-W2",
+ "trace": "W",
+ "authority": "AUTH-WASM-SPECTEC-VALIDATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "specification/wasm-3.0/2.1-validation.types.spectec",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "fe29444726505af0328144b93ebec011446afe298d19832f2e4537cd755dfd78",
+  "bytes": 8011
+ },
+ "locator": {
+  "text": "rule Memtype_ok:",
+  "line_start": 228,
+  "line_end": 235,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 8,
+ "consequence": "a memory type is valid only if its limits are within 2^(bits-16) pages: 2^48 pages for i64 (FactTest's kernel declares I64 min 311)",
+ "excerpt": "rule Memtype_ok:\n  C |- addrtype limits PAGE : OK\n  -- Limits_ok: C |- limits : $(2^($size(addrtype) - 16))\n\nrule Tabletype_ok:\n  C |- addrtype limits reftype : OK\n  -- Limits_ok: C |- limits : $(2^$size(addrtype) - 1)\n  -- Reftype_ok: C |- reftype : OK",
+ "excerpt_sha256": "6c4844f037f563fbd4d5f771ff36a2c2948624d58ec4e177bf3b92faa650f25a",
+ "must_contain": {
+  "Limits_ok: C |- limits : $(2^($size(addrtype) - 16))": true
+ },
+ "status": "VERIFIED"
+}

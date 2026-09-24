@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/user/factory-builds/d19-target/debug/factory",
+    "nostd-check",
+    "."
+  ],
+  "exit": 0,
+  "output": [
+    "== nostd-check . : PASS [HEURISTIC: proof weight NONE]",
+    "  [PASS] no_std_attribute:.",
+    "  [PASS] no_std_use:."
+  ],
+  "verdict": "PASS",
+  "reason": "textual scan found no offender [HEURISTIC: cfg(test)/::std/grouped-use bypasses known; verdict weight none]"
+}

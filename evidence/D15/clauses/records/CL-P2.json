@@ -1,0 +1,30 @@
+{
+ "id": "CL-P2",
+ "trace": "P",
+ "authority": "AUTH-PERMISSIONS-POLICY",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/webappsec-permissions-policy",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+  "sha256": "51a87c5f4008510e501b5a4fe553baf8271e0e3af6ce6e8feece987639794c9a",
+  "bytes": 78906
+ },
+ "locator": {
+  "text": "If |feature|'s <a>default allowlist</a> is <code>'self'</code>, and",
+  "line_start": 1082,
+  "line_end": 1085,
+  "derivation": "anchor text",
+  "enclosing_section": "#algo-define-inherited-policy-in-container (line 1056)"
+ },
+ "window": 4,
+ "consequence": "a 'self'-default feature is Disabled in a frame whose origin is not same origin with its container: an opaque-origin generation frame loses every 'self' feature unless the container policy (allow attribute) grants it",
+ "excerpt": "    1. If |feature|'s <a>default allowlist</a> is <code>'self'</code>, and\n      |origin| is [=same origin=] with |container|'s <a>node document</a>'s\n      [=Document/origin=], return \"<code>Enabled</code>\".\n    1. Otherwise return \"<code>Disabled</code>\".",
+ "excerpt_sha256": "bc226268ee0aa472edc3a069d029c23db5975ac4882b1545576424c3fb5b5d7c",
+ "must_contain": {
+  "[=same origin=]": true,
+  "Disabled": true
+ },
+ "status": "VERIFIED"
+}

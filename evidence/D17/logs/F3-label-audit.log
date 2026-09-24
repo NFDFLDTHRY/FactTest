@@ -1,0 +1,17 @@
+$ node tests/implementation/label-audit.mjs tests/implementation/label-audit.json --graph design/environment-map/graph.json --clauses evidence/D17/clauses --root . --out evidence/D17/labels/audit.json
+(cwd .)
+OK   LBL-01 CHROMIUM_AS_STANDARD MISLABEL design/environment-map/TRACEABILITY.md:1458
+OK   LBL-02 CHROMIUM_AS_STANDARD OK design/environment-map/TRACEABILITY.md:1159
+OK   LBL-03 SWIFTSHADER_AS_HARDWARE OK docs/HANDOFF.md:132
+OK   LBL-04 SWIFTSHADER_AS_HARDWARE OK tests/capability/universe.json:223
+OK   LBL-05 FLAG_AS_ADMISSION OK design/environment-map/TRACEABILITY.md:763,818,850,866
+OK   LBL-06 FLAG_AS_ADMISSION MISLABEL docs/HANDOFF.md:14
+OK   LBL-07 FLAG_AS_ADMISSION MISLABEL README.md:60
+OK   LBL-08 V8_AS_UNIVERSAL OK design/environment-map/TRACEABILITY.md:1001
+OK   LBL-09 HEADLESS_AS_INSTALLED OK tests/selfhost/primitives-probe.mjs:245
+OK   LBL-10 HEADLESS_AS_INSTALLED MISLABEL docs/HANDOFF.md:125
+OK   LBL-11 HEADLESS_AS_INSTALLED MISLABEL design/environment-map/TRACEABILITY.md:1083,1203,1219,1235,1251,1284,1300,1335,1366,1382,1398,1415,1431,1447
+OK   LBL-12 IMPLEMENTATION_PIN_NOT_RUN_VERSION MISLABEL design/environment-map/AUTHORITY-REGISTER.md:538,564,576,588
+{"findings":12,"mislabels":6,"unresolved":0}
+
+[exit 0] expected 0

@@ -1,0 +1,19 @@
+{
+ "family": "CAP-STORAGE-QUOTA",
+ "matrix_row": "Storage quota/persistence",
+ "observed": "2026-09-24T08:42:27.907Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "!!(navigator.storage && navigator.storage.estimate)",
+ "discovery_expr": "Promise.all([navigator.storage.estimate(), navigator.storage.persisted()]).then(r => ({quota: r[0].quota, usage: r[0].usage, persisted: r[1]}))",
+ "exposed": true,
+ "discovery": {
+  "quota": 946970982,
+  "usage": 0,
+  "persisted": false
+ },
+ "permissions": {
+  "persistent-storage": "prompt"
+ },
+ "policy": {}
+}

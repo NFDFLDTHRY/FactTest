@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-BR5",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+  "bytes": 176139
+ },
+ "locator": {
+  "text": "name: \"WebHID\",",
+  "line_start": 5609,
+  "line_end": 5610,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 2,
+ "consequence": "WebHID is stable (not on Android)",
+ "excerpt": "      name: \"WebHID\",\n      status: {\"Android\": \"\", \"default\": \"stable\"},",
+ "excerpt_sha256": "f96e360b43f70807657761fdba117b8ee02e0decbbdf0d660855d9d0ccaf8fed",
+ "must_contain": {
+  "status: {\"Android\": \"\", \"default\": \"stable\"}": true
+ },
+ "status": "VERIFIED"
+}

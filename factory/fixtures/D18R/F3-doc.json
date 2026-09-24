@@ -1,0 +1,90 @@
+{
+  "fixture_id": "F3-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "D18R section 3",
+    "repair register"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/graph.json",
+    "design/environment-map/epochs/D18R.json",
+    "factory/receipts/D18R-CHAIN-REPAIR/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reconcile/build-reconciliation.mjs",
+          "--register",
+          "tests/reconcile/d18r-reconciliation.json",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--root",
+          ".",
+          "--epoch",
+          "D18R",
+          "--delta",
+          "D18R-CHAIN-REPAIR",
+          "--commit",
+          "1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c (canonical base; integration commit in LEDGER AFTER)",
+          "--out",
+          "design/environment-map/epochs/D18R.json"
+        ],
+        "log": "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-build-epoch.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json",
+          "--out",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-merge.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-render.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 12. Repair epochs (D18R)' design/environment-map/SCHEMA.md && grep -q 'Repair epoch D18R' design/environment-map/ENVIRONMENT-MAP.md"
+        ],
+        "log": "factory/receipts/D18R-CHAIN-REPAIR/logs/F3-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/epochs/D18R.json",
+    "design/environment-map/graph.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18R-CHAIN-REPAIR"
+}

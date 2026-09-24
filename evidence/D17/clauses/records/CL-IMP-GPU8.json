@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-GPU8",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-BLINK-GPU-ADAPTER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/modules/webgpu/gpu_adapter.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "21a1e76781e8084159e761c193ab72df2adc4abc763bc7e0a628244852dce030",
+  "bytes": 13192
+ },
+ "locator": {
+  "text": "bool is_fallback_adapter = adapter_type_ == wgpu::AdapterType::CPU;",
+  "line_start": 124,
+  "line_end": 124,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "Blink reports isFallbackAdapter exactly when Dawn reports a CPU adapter",
+ "excerpt": "  bool is_fallback_adapter = adapter_type_ == wgpu::AdapterType::CPU;",
+ "excerpt_sha256": "416b65a33f4075082cc7b67a8972a81aa7487689ae240340773ee2de62e38a68",
+ "must_contain": {
+  "wgpu::AdapterType::CPU": true
+ },
+ "status": "VERIFIED"
+}

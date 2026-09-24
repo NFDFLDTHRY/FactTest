@@ -1,0 +1,78 @@
+{
+  "fixture_id": "F2-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "tests/reference/d15-clauses.json",
+    "design/environment-map/graph.json",
+    "raw.githubusercontent.com",
+    "git ls-remote",
+    "evidence/D14/reopen/records"
+  ],
+  "narrowed_may_change": [
+    "evidence/D15/clauses/",
+    "evidence/D15/reopen-regression/",
+    "evidence/D15/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reference/clauses.mjs",
+          "tests/reference/d15-clauses.json",
+          "design/environment-map/graph.json",
+          "evidence/D15/clauses"
+        ],
+        "log": "evidence/D15/logs/F2-clauses.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && git show 5e57467bd7c984529dc466201629b37e0ee44c4b:design/environment-map/graph.json > $T/graph.json && node tests/reference/reopen.mjs $T/graph.json evidence/D15/reopen-regression --repo-root . && node tests/reference/regress-reopen.mjs evidence/D15/reopen-regression/records evidence/D14/reopen/records --allow .source_tip.commit,.coarse.candidates.section"
+        ],
+        "log": "evidence/D15/logs/F2-reopen-regression.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D15/clauses/summary.json",
+    "evidence/D15/reopen-regression/summary.json"
+  ],
+  "tests": [
+    "every manifest clause VERIFIED at its source tip",
+    "reopen refactor reproduces the D14 records (allowed: moved tips, corrected coarse candidate)"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D15-FOUNDATIONAL-SEMANTICS"
+}

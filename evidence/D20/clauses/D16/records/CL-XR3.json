@@ -1,0 +1,29 @@
+{
+ "id": "CL-XR3",
+ "trace": "XR",
+ "authority": "AUTH-WEBXR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/immersive-web/webxr",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+  "sha256": "2fe7451a82eff47ca0ddd10117f14d0b7f03443cc1cf989d135d88ba92c0cb49",
+  "bytes": 274788
+ },
+ "locator": {
+  "text": "Calling {{XRSystem/isSessionSupported()}} MUST NOT trigger device-selection UI",
+  "line_start": 373,
+  "line_end": 373,
+  "derivation": "anchor text",
+  "enclosing_section": "#xrsystem-interface (line 276)"
+ },
+ "window": 1,
+ "consequence": "isSessionSupported is a non-prompting discovery call (the census may call it)",
+ "excerpt": "It is expected that most pages with XR content will call {{XRSystem/isSessionSupported()}} early in the document lifecycle. As such, calling {{XRSystem/isSessionSupported()}} SHOULD avoid displaying any modal or otherwise intrusive UI. Calling {{XRSystem/isSessionSupported()}} MUST NOT trigger device-selection UI, MUST NOT interfere with any running XR applications on the system, and MUST NOT cause XR-related applications to launch such as system trays or storefronts.",
+ "excerpt_sha256": "9560a17cf280562ad5b6103c867ca80e738cddd55783f9ea65c454a3ed250c36",
+ "must_contain": {
+  "MUST NOT trigger device-selection UI": true
+ },
+ "status": "VERIFIED"
+}

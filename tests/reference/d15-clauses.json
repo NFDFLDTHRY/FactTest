@@ -1,0 +1,1502 @@
+{
+ "schema": "facttest-clause-manifest/1",
+ "epoch": "D15",
+ "law": "design/materialization/D15-INTENDED-FOUNDATIONAL-SEMANTICS.md",
+ "new_authorities": [
+  {
+   "id": "AUTH-ECMA-262",
+   "title": "ECMAScript Language Specification (draft)",
+   "exact_url": "https://tc39.es/ecma262/",
+   "exact_fragment": null,
+   "authority_owner": "Ecma TC39",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "living draft (ES annual editions snapshot it)",
+   "source": {
+    "repo": "https://github.com/tc39/ecma262",
+    "branch": "main",
+    "path": "spec.html"
+   },
+   "extracted_consequence": "agents and [[CanBlock]], ToBigInt64, SharedArrayBuffer (host may omit the global)"
+  },
+  {
+   "id": "AUTH-WEBIDL",
+   "title": "Web IDL Standard",
+   "exact_url": "https://webidl.spec.whatwg.org/",
+   "exact_fragment": null,
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "source": {
+    "repo": "https://github.com/whatwg/webidl",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "[SecureContext] exposure, [EnforceRange], bigint conversion"
+  },
+  {
+   "id": "AUTH-FETCH",
+   "title": "Fetch Standard",
+   "exact_url": "https://fetch.spec.whatwg.org/",
+   "exact_fragment": null,
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "source": {
+    "repo": "https://github.com/whatwg/fetch",
+    "branch": "main",
+    "path": "fetch.bs"
+   },
+   "extracted_consequence": "ok status; request service-workers mode"
+  },
+  {
+   "id": "AUTH-STREAMS",
+   "title": "Streams Standard",
+   "exact_url": "https://streams.spec.whatwg.org/",
+   "exact_fragment": null,
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "source": {
+    "repo": "https://github.com/whatwg/streams",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "readable streams (Response bodies consumed by compileStreaming)"
+  },
+  {
+   "id": "AUTH-PERMISSIONS",
+   "title": "Permissions",
+   "exact_url": "https://w3c.github.io/permissions/",
+   "exact_fragment": null,
+   "authority_owner": "W3C WebAppSec",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "editor's draft source",
+   "source": {
+    "repo": "https://github.com/w3c/permissions",
+    "branch": "main",
+    "path": "index.html"
+   },
+   "extracted_consequence": "powerful features need express permission; most are also policy-controlled"
+  },
+  {
+   "id": "AUTH-PERMISSIONS-POLICY",
+   "title": "Permissions Policy",
+   "exact_url": "https://w3c.github.io/webappsec-permissions-policy/",
+   "exact_fragment": null,
+   "authority_owner": "W3C WebAppSec",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "editor's draft source",
+   "source": {
+    "repo": "https://github.com/w3c/webappsec-permissions-policy",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "default allowlist '*' or 'self'; container policy from the allow attribute"
+  },
+  {
+   "id": "AUTH-WASM-SPECTEC-VALIDATION",
+   "title": "WebAssembly Core 3.0 validation rules (SpecTec source of the published prose)",
+   "exact_url": "https://webassembly.github.io/spec/core/valid/types.html",
+   "exact_fragment": "#valid-memtype",
+   "authority_owner": "WebAssembly WG",
+   "authority_class": "STANDARD_RELEASE",
+   "maturity": "Release 3.0 (rule source spliced into the published rendering)",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "branch": "main",
+    "path": "specification/wasm-3.0/2.1-validation.types.spectec"
+   },
+   "extracted_consequence": "Memtype_ok bounds limits by 2^(size(addrtype)-16) pages"
+  },
+  {
+   "id": "AUTH-WASM-JSAPI-VALUES",
+   "title": "WebAssembly JavaScript Interface - value conversion (ToJSValue / ToWebAssemblyValue)",
+   "exact_url": "https://webassembly.github.io/spec/js-api/",
+   "exact_fragment": "#towebassemblyvalue",
+   "authority_owner": "WebAssembly WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "Status: ED, Level 2",
+   "source": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "branch": "main",
+    "path": "document/js-api/index.bs"
+   },
+   "extracted_consequence": "i64 values cross the JS boundary as BigInt only"
+  },
+  {
+   "id": "AUTH-HTML-SECURE-CONTEXT",
+   "title": "HTML - secure context",
+   "exact_url": "https://html.spec.whatwg.org/multipage/webappapis.html",
+   "exact_fragment": "#secure-context",
+   "authority_owner": "WHATWG",
+   "authority_class": "LIVING_STANDARD",
+   "maturity": "living standard",
+   "source": {
+    "repo": "https://github.com/whatwg/html",
+    "branch": "main",
+    "path": "source"
+   },
+   "extracted_consequence": "an environment is a secure context when its top-level creation URL is potentially trustworthy"
+  },
+  {
+   "id": "AUTH-GIT-MKTREE",
+   "title": "git mktree",
+   "exact_url": "https://git-scm.com/docs/git-mktree",
+   "exact_fragment": null,
+   "authority_owner": "git project",
+   "authority_class": "TOOL_DOC",
+   "maturity": "tool documentation (master)",
+   "source": {
+    "repo": "https://github.com/git/git",
+    "branch": "master",
+    "path": "Documentation/git-mktree.adoc"
+   },
+   "extracted_consequence": "tree entry order is normalized by the tool; the rule is not stated"
+  }
+ ],
+ "traces": {
+  "R": "Rust no_std -> build-std -> rust-src -> wasm64 target -> core-only graph -> proof obligation",
+  "W": "Wasm Core memory64 -> JS API address-typed memories -> BigInt membrane",
+  "S": "Wasm Web API streaming -> Fetch ok status -> Streams",
+  "T": "agent-local JS embedding -> Threads (Phase 4) / SET (Phase 1) -> HTML COI + agent canBlock -> ECMA SharedArrayBuffer",
+  "I": "Web IDL exposure and conversions -> ECMA ToBigInt64",
+  "H": "HTML secure context -> Secure Contexts trustworthiness -> sandboxed opaque origin",
+  "F": "Fetch service-workers mode -> SW update / register / install / sandbox -> seed consequences",
+  "P": "Permissions powerful features -> Permissions Policy default allowlist + container policy",
+  "ST": "Storage buckets / persistence -> OPFS exposure -> IDB atomicity -> Web Locks",
+  "MF": "Manifest installability is UA behaviour",
+  "G": "git object format -> ref CAS -> tree order -> pack -> SHA-256 transition"
+ },
+ "clauses": [
+  {
+   "id": "CL-R1",
+   "trace": "R",
+   "authority": "AUTH-RUST-REF-NOSTD",
+   "locator": {
+    "text": "r[names.preludes.extern.std]"
+   },
+   "window": 2,
+   "must_contain": [
+    "is added as long as the [`no_std` attribute] is not specified in the crate root"
+   ],
+   "consequence": "a #![no_std] crate root does not get std in its extern prelude: every compiler crate links only what it names from core",
+   "grounds": [
+    "CON-RS-001"
+   ],
+   "leads_to": [
+    "CL-R2"
+   ]
+  },
+  {
+   "id": "CL-R2",
+   "trace": "R",
+   "authority": "AUTH-RUST-REF-NOSTD",
+   "locator": {
+    "text": "r[names.preludes.std.module]"
+   },
+   "window": 9,
+   "must_contain": [
+    "`no_std` applied",
+    "core::prelude::rust_2021"
+   ],
+   "consequence": "under no_std the standard-library prelude is core's; FactTest's 2021-edition crates see core::prelude::rust_2021",
+   "grounds": [
+    "CON-RS-001"
+   ],
+   "leads_to": [
+    "CL-R3"
+   ]
+  },
+  {
+   "id": "CL-R3",
+   "trace": "R",
+   "authority": "AUTH-CARGO-BUILD-STD",
+   "locator": {
+    "text": "### Requirements",
+    "after": "## build-std"
+   },
+   "window": 8,
+   "must_contain": [
+    "rust-src",
+    "nightly Cargo and a nightly rustc",
+    "must be passed to all `cargo` invocations"
+   ],
+   "consequence": "building core for wasm64 needs rust-src and a nightly Cargo+rustc, and -Z build-std on every invocation: WASM64_KERNEL_SET runs on the pinned nightly with rust-src (D13 pin)",
+   "grounds": [
+    "CON-RS-002",
+    "CON-EM-007",
+    "FACT-CORE-ONLY-GRAPH"
+   ],
+   "leads_to": [
+    "CL-R4"
+   ]
+  },
+  {
+   "id": "CL-R4",
+   "trace": "R",
+   "authority": "AUTH-RUSTC-WASM64-DOC",
+   "locator": {
+    "text": "## Building Rust programs"
+   },
+   "window": 8,
+   "must_contain": [
+    "does not yet ship pre-compiled artifacts for this target",
+    "`build-std`"
+   ],
+   "consequence": "no prebuilt core/std exists for wasm64-unknown-unknown: build-std is the only way FactTest obtains core for the kernel",
+   "grounds": [
+    "CON-RS-002"
+   ],
+   "leads_to": [
+    "CL-R6",
+    "CL-R8"
+   ]
+  },
+  {
+   "id": "CL-R5",
+   "trace": "R",
+   "authority": "AUTH-RUSTC-WASM64-DOC",
+   "locator": {
+    "text": "This target does not support `panic=unwind`"
+   },
+   "window": 1,
+   "must_contain": [
+    "does not support `panic=unwind`"
+   ],
+   "consequence": "the wasm64 kernel must use panic=abort (FactTest's release profile sets panic = \"abort\"; the wasm-abi crate supplies its own panic_handler)",
+   "grounds": [
+    "CON-RS-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-R6",
+   "trace": "R",
+   "authority": "AUTH-RUSTC-WASM64-DOC",
+   "locator": {
+    "text": "`cfg(target_arch = \"wasm64\")`"
+   },
+   "window": 1,
+   "must_contain": [
+    "cfg(target_arch = \"wasm64\")"
+   ],
+   "consequence": "cfg(target_arch = \"wasm64\") is the target's predicate: factc-wasm-abi's panic_handler is gated on it, which is why the crate is target-specific (WASM64_KERNEL_SET root; CROSS_SET on the host)",
+   "grounds": [
+    "CON-FT-007"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-R7",
+   "trace": "R",
+   "authority": "AUTH-RUSTC-WASM64-DOC",
+   "locator": {
+    "text": "This target is not a stable target."
+   },
+   "window": 3,
+   "must_contain": [
+    "still",
+    "in-progress and not standardized"
+   ],
+   "consequence": "the implementation doc still calls memory64 unstandardized while the proposal registry lists Memory64 as finished and Core 3.0 carries 64-bit address types: ERR-001 persists (implementation documentation is not standards law, CON-RS-003)",
+   "grounds": [
+    "CON-RS-003"
+   ],
+   "leads_to": [
+    "CL-W4"
+   ]
+  },
+  {
+   "id": "CL-R8",
+   "trace": "R",
+   "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "locator": {
+    "text": "options.features ="
+   },
+   "window": 1,
+   "must_contain": [
+    "+bulk-memory,+mutable-globals,+sign-ext,+nontrapping-fptoint"
+   ],
+   "consequence": "the rustc wasm64 target emits code assuming bulk-memory, mutable-globals, sign-ext and nontrapping-fptoint: CPU_WASM64 admission needs an engine with memory64 AND these features",
+   "grounds": [
+    "CON-EM-004",
+    "CON-IC-CPU_WASM64"
+   ],
+   "leads_to": [
+    "CL-W1"
+   ]
+  },
+  {
+   "id": "CL-R9",
+   "trace": "R",
+   "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "locator": {
+    "text": "pointer_width: 64"
+   },
+   "window": 2,
+   "must_contain": [
+    "p:64:64"
+   ],
+   "consequence": "usize and pointers are 64-bit: every pointer/length crossing the ABI is an i64 (hence BigInt in JS, trace W)",
+   "grounds": [
+    "CON-WA-002"
+   ],
+   "leads_to": [
+    "CL-W8"
+   ]
+  },
+  {
+   "id": "CL-W1",
+   "trace": "W",
+   "authority": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+   "locator": {
+    "fragment": "#syntax-addrtype"
+   },
+   "window": 8,
+   "must_contain": [
+    "Address types",
+    "offsets into"
+   ],
+   "consequence": "address types classify memory/table offsets; i64 is one of them in Core 3.0",
+   "grounds": [
+    "CON-WA-001"
+   ],
+   "leads_to": [
+    "CL-W2",
+    "CL-W3"
+   ]
+  },
+  {
+   "id": "CL-W2",
+   "trace": "W",
+   "authority": "AUTH-WASM-SPECTEC-VALIDATION",
+   "locator": {
+    "text": "rule Memtype_ok:"
+   },
+   "window": 8,
+   "must_contain": [
+    "Limits_ok: C |- limits : $(2^($size(addrtype) - 16))"
+   ],
+   "consequence": "a memory type is valid only if its limits are within 2^(bits-16) pages: 2^48 pages for i64 (FactTest's kernel declares I64 min 311)",
+   "grounds": [
+    "CON-WA-002"
+   ],
+   "leads_to": [
+    "CL-W3"
+   ]
+  },
+  {
+   "id": "CL-W3",
+   "trace": "W",
+   "authority": "AUTH-WASM-CORE-BINARY-LIMITS",
+   "locator": {
+    "fragment": "#binary-limits"
+   },
+   "window": 8,
+   "must_contain": [
+    "flag for the :ref:`address type"
+   ],
+   "consequence": "the binary limits flag carries the address type: the emitted module declares i64 memory in its encoding (what factory wasm-inspect reads)",
+   "grounds": [
+    "CON-WA-002",
+    "CON-FT-003",
+    "FACT-WASM64-MODULE-I64"
+   ],
+   "leads_to": [
+    "CL-W5"
+   ]
+  },
+  {
+   "id": "CL-W4",
+   "trace": "W",
+   "authority": "AUTH-WASM-CORE-CHANGES-64",
+   "locator": {
+    "text": "64-bit Address Space"
+   },
+   "window": 6,
+   "must_contain": [
+    "64-bit Address Space"
+   ],
+   "consequence": "Release 3.0 lists 64-bit address space as a change: memory64 is standard semantics (registry: Memory64 finished)",
+   "grounds": [
+    "CON-WA-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-W5",
+   "trace": "W",
+   "authority": "AUTH-WASM-JSAPI-MEMORIES",
+   "locator": {
+    "text": "dictionary MemoryDescriptor {"
+   },
+   "window": 5,
+   "must_contain": [
+    "AddressType address;"
+   ],
+   "consequence": "the JS Memory descriptor carries the address type",
+   "grounds": [
+    "CON-WA-003"
+   ],
+   "leads_to": [
+    "CL-W6"
+   ]
+  },
+  {
+   "id": "CL-W6",
+   "trace": "W",
+   "authority": "AUTH-WASM-JSAPI-MEMORIES",
+   "locator": {
+    "text": "constructor, when invoked, performs the following steps:",
+    "after": "The <dfn constructor for=\"Memory\">Memory("
+   },
+   "window": 3,
+   "must_contain": [
+    "otherwise, let |addrtype| be \"i32\""
+   ],
+   "consequence": "a JS-constructed Memory defaults to i32: a host that constructs memories must pass address: \"i64\" explicitly (FactTest's kernel defines its own memory, so this binds only host-created memories)",
+   "grounds": [
+    "CON-WA-003"
+   ],
+   "leads_to": [
+    "CL-W7"
+   ]
+  },
+  {
+   "id": "CL-W7",
+   "trace": "W",
+   "authority": "AUTH-WASM-JSAPI-MEMORIES",
+   "locator": {
+    "text": "1. If |addrtype| is \"i64\",",
+    "after": "<dfn>AddressValueToU64</dfn>"
+   },
+   "window": 3,
+   "must_contain": [
+    "[$ToBigInt$](|v|)",
+    "2<sup>64</sup> &minus; 1"
+   ],
+   "consequence": "i64 address values (grow deltas, sizes) are BigInt in [0, 2^64-1]; a Number throws",
+   "grounds": [
+    "CON-WA-003"
+   ],
+   "leads_to": [
+    "CL-W8"
+   ]
+  },
+  {
+   "id": "CL-W8",
+   "trace": "W",
+   "authority": "AUTH-WASM-JSAPI-VALUES",
+   "locator": {
+    "text": "<dfn>ToWebAssemblyValue</dfn>"
+   },
+   "window": 8,
+   "must_contain": [
+    "If |type| is [=i64=]",
+    "[$ToBigInt64$](|v|)"
+   ],
+   "consequence": "every i64 parameter passed from JS to an export is converted with ToBigInt64: the FactTest host membrane passes BigInt for every pointer/length (kernel-host.mjs, adapter-wasm64_relay.js)",
+   "grounds": [
+    "FACT-JS-I64-BIGINT-MEMBRANE"
+   ],
+   "leads_to": [
+    "CL-W9",
+    "CL-I4"
+   ]
+  },
+  {
+   "id": "CL-W9",
+   "trace": "W",
+   "authority": "AUTH-WASM-JSAPI-VALUES",
+   "locator": {
+    "text": "<dfn>ToJSValue</dfn>"
+   },
+   "window": 7,
+   "must_contain": [
+    "If |w| is of the form [=i64.const=]",
+    "ℤ"
+   ],
+   "consequence": "every i64 result returned to JS is a BigInt (ℤ), never a Number",
+   "grounds": [
+    "FACT-JS-I64-BIGINT-MEMBRANE"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-S1",
+   "trace": "S",
+   "authority": "AUTH-WASM-WEBAPI-STREAMING",
+   "locator": {
+    "text": "does not represent an [=ok status=]"
+   },
+   "window": 2,
+   "must_contain": [
+    "[=CORS-same-origin=]",
+    "`application/wasm`"
+   ],
+   "consequence": "compileStreaming rejects a response that is not CORS-same-origin, not ok, or not application/wasm",
+   "grounds": [
+    "CON-WA-004",
+    "FACT-STREAMING-UNPROBED"
+   ],
+   "leads_to": [
+    "CL-S2",
+    "CL-S3",
+    "CL-S4"
+   ]
+  },
+  {
+   "id": "CL-S2",
+   "trace": "S",
+   "authority": "AUTH-WASM-WEBAPI-STREAMING",
+   "locator": {
+    "text": "If |mimeType| is not a [=byte-case-insensitive=] match"
+   },
+   "window": 3,
+   "must_contain": [
+    "extra parameters are not allowed"
+   ],
+   "consequence": "the MIME check is exact (no parameters): a server sending application/wasm;charset=... fails streaming",
+   "grounds": [
+    "CON-WA-004"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-S3",
+   "trace": "S",
+   "authority": "AUTH-FETCH",
+   "locator": {
+    "text": "<p>An <dfn export>ok status</dfn>"
+   },
+   "window": 1,
+   "must_contain": [
+    "200 to 299"
+   ],
+   "consequence": "ok status = 200..299",
+   "grounds": [
+    "CON-WA-004"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-S4",
+   "trace": "S",
+   "authority": "AUTH-STREAMS",
+   "locator": {
+    "text": "A <dfn export>readable stream</dfn> represents"
+   },
+   "window": 2,
+   "must_contain": [
+    "represents a source of data"
+   ],
+   "consequence": "the Response body is a readable stream consumed incrementally by streaming compilation; FactTest's harness instead instantiates from bytes (no streaming probe: FACT-STREAMING-UNPROBED stays [GAP])",
+   "grounds": [
+    "CON-WA-004"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-T1",
+   "trace": "T",
+   "authority": "AUTH-WASM-JSAPI-STORAGE",
+   "locator": {
+    "fragment": "#store"
+   },
+   "window": 7,
+   "must_contain": [
+    "no WebAssembly-related objects, memory or addresses can be shared among agents"
+   ],
+   "consequence": "the current JS embedding is agent-local (the clause behind CON-WA-005; cited at #store / #webassembly-storage, not #internal-storage)",
+   "grounds": [
+    "CON-WA-005",
+    "FACT-SHARED-THREADS-UNADMITTED"
+   ],
+   "leads_to": [
+    "CL-T2"
+   ]
+  },
+  {
+   "id": "CL-T2",
+   "trace": "T",
+   "authority": "AUTH-WASM-THREADS",
+   "locator": {
+    "text": "A linear memory can be marked as shared"
+   },
+   "window": 3,
+   "must_contain": [
+    "shared between",
+    "all agents in an agent cluster"
+   ],
+   "consequence": "shared memory belongs to the Threads proposal (Phase 4, not standard): a distinct family, never baseline",
+   "grounds": [
+    "CON-THREAD-001",
+    "CON-IC-WASM_SHARED_THREADS"
+   ],
+   "leads_to": [
+    "CL-T3",
+    "CL-T4"
+   ]
+  },
+  {
+   "id": "CL-T3",
+   "trace": "T",
+   "authority": "AUTH-WASM-SET",
+   "locator": {
+    "text": "Expect frequent and significant changes"
+   },
+   "window": 1,
+   "must_contain": [
+    "Expect frequent and significant changes"
+   ],
+   "consequence": "Shared-Everything Threads is a Phase 1 proposal: future machinery only",
+   "grounds": [
+    "CON-THREAD-002"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-T4",
+   "trace": "T",
+   "authority": "AUTH-HTML-COI",
+   "locator": {
+    "text": "<p>If <span>IsSharedArrayBuffer</span>(<var>value</var>) is true:"
+   },
+   "window": 8,
+   "must_contain": [
+    "cross-origin isolated",
+    "DataCloneError"
+   ],
+   "consequence": "posting a SharedArrayBuffer to another agent requires the cross-origin isolated capability (the standard gate for sharing memory with a worker)",
+   "grounds": [
+    "CON-IC-WASM_SHARED_THREADS"
+   ],
+   "leads_to": [
+    "CL-T5",
+    "CL-T6"
+   ]
+  },
+  {
+   "id": "CL-T5",
+   "trace": "T",
+   "authority": "AUTH-HTML-COI",
+   "locator": {
+    "text": "data-x=\"concept-settings-object-cross-origin-isolated-capability\" export"
+   },
+   "window": 7,
+   "must_contain": [
+    "allowed to use APIs that require cross-origin isolation"
+   ],
+   "consequence": "cross-origin isolated capability is a per-environment boolean (COOP/COEP; D12 P05 observed it granted by SW-set headers)",
+   "grounds": [
+    "CON-IC-WASM_SHARED_THREADS",
+    "FACT-SH-SW-GRANTS-COI"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-T6",
+   "trace": "T",
+   "authority": "AUTH-ECMA-262",
+   "locator": {
+    "fragment": "#sec-sharedarraybuffer-constructor"
+   },
+   "window": 7,
+   "must_contain": [
+    "if that property is present"
+   ],
+   "consequence": "ECMA-262 lets the host omit the SharedArrayBuffer global: its ABSENCE outside cross-origin isolation (D11 FACT-SHARED-THREADS-UNADMITTED) is host/implementation behaviour, not an HTML/ECMA requirement - only the serialization gate (CL-T4) is standard",
+   "grounds": [
+    "CON-IC-WASM_SHARED_THREADS",
+    "FACT-SAB-GLOBAL-HOST-DEFINED"
+   ],
+   "leads_to": [
+    "CL-T7"
+   ]
+  },
+  {
+   "id": "CL-T7",
+   "trace": "T",
+   "authority": "AUTH-ECMA-262",
+   "locator": {
+    "text": "<h1>AgentCanSuspend ( ): a Boolean</h1>"
+   },
+   "window": 7,
+   "must_contain": [
+    "[[CanBlock]]"
+   ],
+   "consequence": "whether an agent may block (Atomics.wait) is its [[CanBlock]] field",
+   "grounds": [
+    "CON-IC-WASM_SHARED_THREADS"
+   ],
+   "leads_to": [
+    "CL-T8"
+   ]
+  },
+  {
+   "id": "CL-T8",
+   "trace": "T",
+   "authority": "AUTH-HTML-COI",
+   "locator": {
+    "text": "<li><p>Add the result of <span data-x=\"create an agent\">creating an agent</span>, given false,"
+   },
+   "window": 2,
+   "must_contain": [
+    "given false"
+   ],
+   "consequence": "HTML creates similar-origin window agents with canBlock false: a shared-memory backend can block only in workers, never on the page's main thread",
+   "grounds": [
+    "CON-IC-WASM_SHARED_THREADS",
+    "CON-WB-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-I1",
+   "trace": "I",
+   "authority": "AUTH-WEBIDL",
+   "locator": {
+    "fragment": "#SecureContext"
+   },
+   "window": 18,
+   "must_contain": [
+    "only within a [=secure context=]"
+   ],
+   "consequence": "a [SecureContext] construct is not exposed at all outside a secure context: absence of an API in an insecure context is exposure, not a runtime failure - admission probes must run in a secure context",
+   "grounds": [
+    "CON-SEC-001",
+    "CON-EM-001"
+   ],
+   "leads_to": [
+    "CL-H1"
+   ]
+  },
+  {
+   "id": "CL-I2",
+   "trace": "I",
+   "authority": "AUTH-WEBIDL",
+   "locator": {
+    "fragment": "#EnforceRange"
+   },
+   "window": 3,
+   "must_contain": [
+    "[{{EnforceRange}}]"
+   ],
+   "consequence": "[EnforceRange] throws instead of wrapping; the JS API emulates it for i64 address values (CL-W7)",
+   "grounds": [
+    "CON-WA-003"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-I3",
+   "trace": "I",
+   "authority": "AUTH-WEBIDL",
+   "locator": {
+    "fragment": "#js-bigint"
+   },
+   "window": 10,
+   "must_contain": [
+    "[$ToBigInt$](|V|)"
+   ],
+   "consequence": "IDL bigint conversion is ToBigInt: Numbers are rejected rather than coerced",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-I4",
+   "trace": "I",
+   "authority": "AUTH-ECMA-262",
+   "locator": {
+    "fragment": "#sec-tobigint64"
+   },
+   "window": 8,
+   "must_contain": [
+    "ToBigInt64"
+   ],
+   "consequence": "ToBigInt64 wraps modulo 2^64 after ToBigInt (which throws for Numbers): the membrane must hand BigInt, and values are two's-complement i64",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-H1",
+   "trace": "H",
+   "authority": "AUTH-HTML-SECURE-CONTEXT",
+   "locator": {
+    "text": "is a <dfn export data-lt=\"secure context|Is"
+   },
+   "window": 46,
+   "must_contain": [
+    "top-level creation URL",
+    "Potentially"
+   ],
+   "consequence": "secure context is decided by the environment's TOP-LEVEL CREATION URL: an opaque sandboxed frame under a loopback top-level is still a secure context (D12 P08/P16 observed exactly this)",
+   "grounds": [
+    "CON-SEC-001",
+    "FACT-OPAQUE-FRAME-SECURE-CONTEXT"
+   ],
+   "leads_to": [
+    "CL-H2",
+    "CL-H3"
+   ]
+  },
+  {
+   "id": "CL-H2",
+   "trace": "H",
+   "authority": "AUTH-SECCTX-TRUSTWORTHY",
+   "locator": {
+    "text": "matches one of the CIDR"
+   },
+   "window": 3,
+   "must_contain": [
+    "127.0.0.0/8",
+    "::1/128"
+   ],
+   "consequence": "loopback 127.0.0.0/8 and ::1 are potentially trustworthy: every FactTest browser probe (127.0.0.1) runs in a secure context",
+   "grounds": [
+    "CON-SEC-001",
+    "CON-EM-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-H3",
+   "trace": "H",
+   "authority": "AUTH-SECCTX-TRUSTWORTHY",
+   "locator": {
+    "text": "If |origin| is an <a>opaque origin</a>, return"
+   },
+   "window": 1,
+   "must_contain": [
+    "Not Trustworthy"
+   ],
+   "consequence": "an opaque ORIGIN is not trustworthy (origin-keyed checks such as SW registration fail) even though the environment is a secure context by its top-level creation URL",
+   "grounds": [
+    "CON-SEC-001"
+   ],
+   "leads_to": [
+    "CL-H4"
+   ]
+  },
+  {
+   "id": "CL-H4",
+   "trace": "H",
+   "authority": "AUTH-HTML-SANDBOX-ORIGIN",
+   "locator": {
+    "fragment": "#sandboxed-origin-browsing-context-flag"
+   },
+   "window": 8,
+   "must_contain": [
+    "opaque origin"
+   ],
+   "consequence": "the sandboxed origin flag forces an opaque origin: confined generations cannot reach the Factory origin's storage (D12 B-09 broker requirement)",
+   "grounds": [
+    "CON-SEC-001",
+    "FACT-SH-OPAQUE-CONFINEMENT"
+   ],
+   "leads_to": [
+    "CL-P2"
+   ]
+  },
+  {
+   "id": "CL-F1",
+   "trace": "F",
+   "authority": "AUTH-FETCH",
+   "locator": {
+    "text": "has an associated <dfn for=request export>service-workers mode</dfn>"
+   },
+   "window": 6,
+   "must_contain": [
+    "\"<code>all</code>\"",
+    "\"<code>none</code>\""
+   ],
+   "consequence": "requests carry a service-workers mode; \"none\" bypasses service workers",
+   "grounds": [],
+   "leads_to": [
+    "CL-F2"
+   ]
+  },
+  {
+   "id": "CL-F2",
+   "trace": "F",
+   "authority": "AUTH-SW-UPDATE-BYPASS",
+   "locator": {
+    "text": "1. Set |request|'s [=service-workers mode=] to \"`none`\".",
+    "after": "<h3 id=\"update-algorithm\">"
+   },
+   "window": 1,
+   "must_contain": [
+    "service-workers mode=] to \"`none`\""
+   ],
+   "consequence": "the update check fetches the new script with service workers bypassed: a seed cannot supply its own replacement from its caches (D12 P02, B-08)",
+   "grounds": [
+    "FACT-SH-SW-NO-SELF-UPDATE"
+   ],
+   "leads_to": [
+    "CL-F3"
+   ]
+  },
+  {
+   "id": "CL-F3",
+   "trace": "F",
+   "authority": "AUTH-SW-UPDATE-BYPASS",
+   "locator": {
+    "text": "is said to be <dfn>stale</dfn> if"
+   },
+   "window": 1,
+   "must_contain": [
+    "last update check time"
+   ],
+   "consequence": "a registration becomes stale by elapsed time since its last update check (86400 s), so the browser re-fetches the seed script whenever reachable",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-F4",
+   "trace": "F",
+   "authority": "AUTH-SW-REGISTER-TRUST",
+   "locator": {
+    "text": "<a>potentially trustworthy origin</a> with the"
+   },
+   "window": 3,
+   "must_contain": [
+    "Not Trusted"
+   ],
+   "consequence": "registration requires a potentially trustworthy script origin: the seed's home origin must be HTTPS or loopback (D-1)",
+   "grounds": [
+    "CON-SEC-001",
+    "FACT-SH-BROKEN-SEED-FATAL"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-F5",
+   "trace": "F",
+   "authority": "AUTH-SW-INSTALL-FAILED",
+   "locator": {
+    "text": "1. If |installFailed| is true, then:"
+   },
+   "window": 4,
+   "must_contain": [
+    "\"`redundant`\""
+   ],
+   "consequence": "a failed install discards the installing worker and keeps the active one: an interrupted/broken update cannot replace a working seed (D12 P15)",
+   "grounds": [
+    "FACT-SH-INTERRUPTED-UPDATE"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-F6",
+   "trace": "F",
+   "authority": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+   "locator": {
+    "text": "<{iframe}>s without the sandboxing directives"
+   },
+   "window": 3,
+   "must_contain": [
+    "null"
+   ],
+   "consequence": "sandboxed (opaque) frames have no active service worker: a confined generation cannot be served by the seed's router and must be bootstrapped inline (D12 P16, B-10)",
+   "grounds": [
+    "FACT-SH-BROKER-FED-GENERATION"
+   ],
+   "leads_to": [
+    "CL-H4"
+   ]
+  },
+  {
+   "id": "CL-P1",
+   "trace": "P",
+   "authority": "AUTH-PERMISSIONS",
+   "locator": {
+    "text": "A <dfn class=\"export\" data-local-lt=\"feature\">powerful feature</dfn> is a web platform"
+   },
+   "window": 5,
+   "must_contain": [
+    "express permission",
+    "policy-controlled features"
+   ],
+   "consequence": "powerful features need express permission and are usually also policy-controlled: capability admission is permission AND policy, never presence",
+   "grounds": [
+    "CON-SEC-001"
+   ],
+   "leads_to": [
+    "CL-P2"
+   ]
+  },
+  {
+   "id": "CL-P2",
+   "trace": "P",
+   "authority": "AUTH-PERMISSIONS-POLICY",
+   "locator": {
+    "text": "If |feature|'s <a>default allowlist</a> is <code>'self'</code>, and"
+   },
+   "window": 4,
+   "must_contain": [
+    "[=same origin=]",
+    "Disabled"
+   ],
+   "consequence": "a 'self'-default feature is Disabled in a frame whose origin is not same origin with its container: an opaque-origin generation frame loses every 'self' feature unless the container policy (allow attribute) grants it",
+   "grounds": [],
+   "leads_to": [
+    "CL-P3"
+   ]
+  },
+  {
+   "id": "CL-P3",
+   "trace": "P",
+   "authority": "AUTH-PERMISSIONS-POLICY",
+   "locator": {
+    "text": "Let |container policy| be the result of running <a abstract-op>Process"
+   },
+   "window": 5,
+   "must_contain": [
+    "container policy",
+    "Enabled"
+   ],
+   "consequence": "the container policy (iframe allow attribute) decides first: the broker must declare allow= for every capability a confined generation may use",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ST1",
+   "trace": "ST",
+   "authority": "AUTH-STORAGE-BUCKET-MODE",
+   "locator": {
+    "fragment": "#bucket-mode"
+   },
+   "window": 3,
+   "must_contain": [
+    "\"<code>best-effort</code>\""
+   ],
+   "consequence": "local storage buckets start best-effort",
+   "grounds": [
+    "FACT-SH-STORAGE-BEST-EFFORT"
+   ],
+   "leads_to": [
+    "CL-ST2",
+    "CL-ST3"
+   ]
+  },
+  {
+   "id": "CL-ST2",
+   "trace": "ST",
+   "authority": "AUTH-STORAGE-BUCKET-MODE",
+   "locator": {
+    "text": "<p>A user agent that comes under storage pressure should clear network state and"
+   },
+   "window": 3,
+   "must_contain": [
+    "\"<code>best-effort</code>\""
+   ],
+   "consequence": "under storage pressure best-effort buckets may be cleared: an installed Factory's objects are not durable without persistence (D12 P07, B-11)",
+   "grounds": [
+    "FACT-SH-STORAGE-BEST-EFFORT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ST3",
+   "trace": "ST",
+   "authority": "AUTH-STORAGE-BUCKET-MODE",
+   "locator": {
+    "text": "[Exposed=Window] Promise&lt;boolean> persist();"
+   },
+   "window": 1,
+   "must_contain": [
+    "[Exposed=Window]"
+   ],
+   "consequence": "persist() exists only in windows (not workers): durability must be requested from the page, and its answer is UA policy (D12 P07 observed false)",
+   "grounds": [
+    "FACT-SH-STORAGE-BEST-EFFORT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ST4",
+   "trace": "ST",
+   "authority": "AUTH-FS-OPFS",
+   "locator": {
+    "text": "[Exposed=(Window,Worker), SecureContext, Serializable]",
+    "after": "## The {{FileSystemFileHandle}} interface"
+   },
+   "window": 3,
+   "must_contain": [
+    "interface FileSystemFileHandle"
+   ],
+   "consequence": "OPFS file handles are [SecureContext] in windows and workers",
+   "grounds": [
+    "CON-SEC-001",
+    "FACT-SH-OPFS-SERVED-APP"
+   ],
+   "leads_to": [
+    "CL-ST5"
+   ]
+  },
+  {
+   "id": "CL-ST5",
+   "trace": "ST",
+   "authority": "AUTH-FS-OPFS",
+   "locator": {
+    "text": "[Exposed=DedicatedWorker]"
+   },
+   "window": 2,
+   "must_contain": [
+    "createSyncAccessHandle"
+   ],
+   "consequence": "synchronous access handles exist only in dedicated workers: a synchronous object store must run in a worker",
+   "grounds": [
+    "CON-WB-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ST6",
+   "trace": "ST",
+   "authority": "AUTH-IDB-TRANSACTION",
+   "locator": {
+    "text": "represents an atomic and durable set of data access"
+   },
+   "window": 1,
+   "must_contain": [
+    "atomic and durable"
+   ],
+   "consequence": "an IndexedDB transaction is atomic: the generation pointer can be swapped with compare-and-set semantics (D12 P06)",
+   "grounds": [
+    "FACT-SH-IDB-CAS"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ST7",
+   "trace": "ST",
+   "authority": "AUTH-WEB-LOCKS",
+   "locator": {
+    "text": "[SecureContext, Exposed=(Window,Worker)]"
+   },
+   "window": 2,
+   "must_contain": [
+    "interface LockManager"
+   ],
+   "consequence": "Web Locks coordinate writers across tabs and workers of one origin (secure context only)",
+   "grounds": [
+    "CON-SEC-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MF1",
+   "trace": "MF",
+   "authority": "AUTH-MANIFEST-INSTALLABLE",
+   "locator": {
+    "text": "Any website is an <strong>installable web application</strong>."
+   },
+   "window": 8,
+   "must_contain": [
+    "A user agent can provide a way"
+   ],
+   "consequence": "installation is user-agent behaviour offered to the user, not something a manifest guarantees: the installed-Factory level L0 needs an installation OBSERVATION, never a manifest-only claim",
+   "grounds": [
+    "FACT-SH-NO-FACTORY-WEBAPP"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-G1",
+   "trace": "G",
+   "authority": "AUTH-GIT-OBJECT-FORMAT",
+   "locator": {
+    "fragment": "#object-details"
+   },
+   "window": 16,
+   "must_contain": [
+    "deflated with zlib",
+    "hash of the original data"
+   ],
+   "consequence": "object id = SHA-1 over \"<type> <size>\\0\" + content; loose objects are zlib-deflated: the browser object store must hash the header, not the bytes (D12 P09 matched 880/880)",
+   "grounds": [
+    "CON-FT-004",
+    "FACT-SH-GIT-IDENTITY"
+   ],
+   "leads_to": [
+    "CL-G2",
+    "CL-G3",
+    "CL-G4",
+    "CL-G5"
+   ]
+  },
+  {
+   "id": "CL-G2",
+   "trace": "G",
+   "authority": "AUTH-GIT-UPDATE-REF-CAS",
+   "locator": {
+    "text": "Given three arguments, stores the <new-oid> in the <ref>,"
+   },
+   "window": 8,
+   "must_contain": [
+    "only if its current",
+    "value is <old-oid>"
+   ],
+   "consequence": "a ref moves only if its current value is the expected old id: the Factory's fast-forward gate and a browser ref store both need compare-and-set",
+   "grounds": [
+    "CON-FT-004"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-G3",
+   "trace": "G",
+   "authority": "AUTH-GIT-MKTREE",
+   "locator": {
+    "text": "The order of the tree entries is normalized by mktree"
+   },
+   "window": 2,
+   "must_contain": [
+    "normalized by mktree"
+   ],
+   "consequence": "tree-entry order is normalized by git but the rule is not stated in the documentation: browser-computed tree ids are correct only as far as observed equality with git goes (P09) - the ordering rule is an implementation fact (D17) [GAP]",
+   "grounds": [
+    "CON-FT-004",
+    "FACT-GIT-TREE-ORDER-UNDOCUMENTED"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-G4",
+   "trace": "G",
+   "authority": "AUTH-GIT-PACK-FORMAT",
+   "locator": {
+    "text": "4-byte signature:"
+   },
+   "window": 6,
+   "must_contain": [
+    "version number"
+   ],
+   "consequence": "packfiles start with a signature and a version: history import/export (D12 B-17) needs a pack reader/writer",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-G5",
+   "trace": "G",
+   "authority": "AUTH-GIT-SHA256-TRANSITION",
+   "locator": {
+    "text": "`extensions.compatObjectFormat` (see linkgit:git-config[1]) set to:"
+   },
+   "window": 8,
+   "must_contain": [
+    "objectFormat = sha256"
+   ],
+   "consequence": "a repository may use SHA-256 object names (with a SHA-1 compat map): object-hash choice is D-6 (owner)",
+   "grounds": [],
+   "leads_to": []
+  }
+ ],
+ "constraints": [
+  {
+   "id": "CON-WA-006",
+   "statement": "At the JavaScript boundary every i64 export parameter/result and every i64 address value is a BigInt (ToWebAssemblyValue uses ToBigInt64; ToJSValue returns a mathematical integer; AddressValueToU64 requires BigInt in [0, 2^64-1]); a Number is a TypeError, never a silent coercion.",
+   "authority_refs": [
+    "AUTH-WASM-JSAPI-VALUES",
+    "AUTH-WASM-JSAPI-MEMORIES",
+    "AUTH-ECMA-262",
+    "AUTH-WEBIDL"
+   ],
+   "scope": "host membrane",
+   "kind": "external",
+   "grounded_by": [
+    "CL-W7",
+    "CL-W8",
+    "CL-W9",
+    "CL-I3",
+    "CL-I4"
+   ],
+   "requires": [
+    "FACT-JS-I64-BIGINT-MEMBRANE"
+   ],
+   "implemented_by": [
+    "IMPL-KERNEL-HOST",
+    "IMPL-ADAPTER-WASM64"
+   ]
+  },
+  {
+   "id": "CON-SEC-002",
+   "statement": "A secure context is decided by the environment's top-level creation URL, while trust checks on an ORIGIN treat an opaque origin as Not Trustworthy: a sandboxed generation frame under a trustworthy top-level is a secure context with an opaque origin (secure-context APIs exposed; origin storage, SW control and same-origin reach denied).",
+   "authority_refs": [
+    "AUTH-HTML-SECURE-CONTEXT",
+    "AUTH-SECCTX-TRUSTWORTHY",
+    "AUTH-HTML-SANDBOX-ORIGIN"
+   ],
+   "scope": "confinement",
+   "kind": "external",
+   "grounded_by": [
+    "CL-H1",
+    "CL-H3",
+    "CL-H4"
+   ],
+   "requires": [
+    "FACT-SH-OPAQUE-CONFINEMENT",
+    "FACT-SH-BROKER-FED-GENERATION",
+    "FACT-OPAQUE-FRAME-SECURE-CONTEXT"
+   ],
+   "implemented_by": []
+  },
+  {
+   "id": "CON-PP-001",
+   "statement": "A policy-controlled feature whose default allowlist is 'self' is Disabled in a frame that is not same origin with its container unless the container policy (allow attribute) enables it; capability admission inside a confined generation therefore requires an explicit allow= grant AND permission.",
+   "authority_refs": [
+    "AUTH-PERMISSIONS-POLICY",
+    "AUTH-PERMISSIONS"
+   ],
+   "scope": "capability admission",
+   "kind": "external",
+   "grounded_by": [
+    "CL-P1",
+    "CL-P2",
+    "CL-P3"
+   ],
+   "requires": [],
+   "implemented_by": []
+  },
+  {
+   "id": "CON-SW-001",
+   "statement": "A service worker's update check fetches its script with service workers bypassed and a failed install keeps the active worker: an installed seed can neither replace itself from its own caches nor be broken by an interrupted update, and cannot be updated at all while its origin is unreachable.",
+   "authority_refs": [
+    "AUTH-FETCH",
+    "AUTH-SW-UPDATE-BYPASS",
+    "AUTH-SW-INSTALL-FAILED"
+   ],
+   "scope": "seed lifecycle",
+   "kind": "external",
+   "grounded_by": [
+    "CL-F1",
+    "CL-F2",
+    "CL-F5"
+   ],
+   "requires": [
+    "FACT-SH-SW-NO-SELF-UPDATE",
+    "FACT-SH-INTERRUPTED-UPDATE",
+    "FACT-SH-BROKEN-SEED-FATAL"
+   ],
+   "implemented_by": []
+  },
+  {
+   "id": "CON-ST-001",
+   "statement": "Origin storage is best-effort unless persistence is granted; best-effort buckets may be cleared under storage pressure and persist() is exposed only to windows: durability of Factory-held objects is a UA grant to observe, never an assumption.",
+   "authority_refs": [
+    "AUTH-STORAGE-BUCKET-MODE"
+   ],
+   "scope": "storage",
+   "kind": "external",
+   "grounded_by": [
+    "CL-ST1",
+    "CL-ST2",
+    "CL-ST3"
+   ],
+   "requires": [
+    "FACT-SH-STORAGE-BEST-EFFORT"
+   ],
+   "implemented_by": []
+  },
+  {
+   "id": "CON-GIT-001",
+   "statement": "Git object identity is SHA-1 (or SHA-256 by repository format) over the typed header and content, and refs move by compare-and-set; tree-entry ordering is normalized by the implementation without a documented rule, so a non-git tree encoder is correct only where equality with git has been observed.",
+   "authority_refs": [
+    "AUTH-GIT-OBJECT-FORMAT",
+    "AUTH-GIT-UPDATE-REF-CAS",
+    "AUTH-GIT-MKTREE",
+    "AUTH-GIT-SHA256-TRANSITION"
+   ],
+   "scope": "object store",
+   "kind": "external",
+   "grounded_by": [
+    "CL-G1",
+    "CL-G2",
+    "CL-G3",
+    "CL-G5"
+   ],
+   "requires": [
+    "FACT-SH-GIT-IDENTITY",
+    "FACT-SH-IDB-CAS",
+    "FACT-GIT-TREE-ORDER-UNDOCUMENTED"
+   ],
+   "implemented_by": []
+  }
+ ],
+ "facts": [
+  {
+   "id": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "subject": "FactTest host membrane (host/harness/kernel-host.mjs, codegen adapter-wasm64_relay.js)",
+   "predicate": "passes every i64 ABI argument as BigInt and the wasm64 kernel executes in Chromium through it (D9 T9-P8-03, D13 Q-WASM-07)",
+   "status": "RUN",
+   "constraint_refs": [
+    "CON-WA-006",
+    "CON-WA-003"
+   ],
+   "evidence": [
+    "EV-D9-T9-P8-03",
+    "EV-D13-PROOF-SUMMARY"
+   ],
+   "probe": "PROBE-KERNEL-HOST-BROWSER",
+   "required_environment": [
+    "Chromium 141 (memory64 enabled by default)"
+   ],
+   "stale_if": {
+    "env": "ENV-D13-HOST-PINNED",
+    "dimension": "browser.product",
+    "relation": "changes"
+   },
+   "implemented_by": [
+    "IMPL-KERNEL-HOST",
+    "IMPL-ADAPTER-WASM64"
+   ]
+  },
+  {
+   "id": "FACT-SAB-GLOBAL-HOST-DEFINED",
+   "subject": "SharedArrayBuffer global outside cross-origin isolation",
+   "predicate": "the standard gates only SAB serialization on the cross-origin isolated capability and lets the host omit the global; D11's observed absence of the global without COOP/COEP is Chromium behaviour (implementation fact for D17), not a standard requirement",
+   "status": "OBS",
+   "constraint_refs": [
+    "CON-IC-WASM_SHARED_THREADS"
+   ],
+   "evidence": [
+    "EV-D11-BROWSER-DEFAULT"
+   ],
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "required_environment": []
+  },
+  {
+   "id": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+   "subject": "sandboxed (opaque-origin) generation frames",
+   "predicate": "are secure contexts by their top-level creation URL while their origin is opaque: the D12 P08/P16 observations are exactly what HTML + Secure Contexts require",
+   "status": "RUN",
+   "constraint_refs": [
+    "CON-SEC-002"
+   ],
+   "evidence": [
+    "EV-D12-P08",
+    "EV-D12-P16"
+   ],
+   "probe": "PROBE-SH-P08",
+   "required_environment": [
+    "Chromium 141 persistent profile, loopback top-level origin"
+   ]
+  },
+  {
+   "id": "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+   "subject": "git tree-entry ordering",
+   "predicate": "normalized by git mktree without a documented rule; FactTest's browser tree encoder matched git on the observed repository (P09) only",
+   "status": "GAP",
+   "constraint_refs": [
+    "CON-GIT-001"
+   ],
+   "evidence": [
+    "EV-D12-P09"
+   ],
+   "probe": "PROBE-SH-P09",
+   "required_environment": [],
+   "note": "implementation source of the ordering rule -> D17"
+  }
+ ]
+}

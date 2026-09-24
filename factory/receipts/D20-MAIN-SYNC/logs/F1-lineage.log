@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && node tests/reprove/lineage.mjs --from 4a151c9ae58f9968c70b9b85cef82a02fba12b85 --out $T/l.json && node -e 'const l=JSON.parse(require("fs").readFileSync(process.argv[1]));if(!l.first_parent_linear||!l.factory_authored||l.unclassified_merges.length||l.sync_merges.length!==1||l.sync_merges[0].commit!=="c3159d562768d52465ead5e44bc6c5259dfc1b79")process.exit(1);console.log("sync merge classified:",l.sync_merges[0].commit.slice(0,9),"owner merges",l.owner_merges.length)' $T/l.json
+(cwd .)
+19 commits from 4a151c9ae (14 Factory, 4 owner merges, 1 sync merges, 0 unclassified): fast-forward true, non-merge commits Factory-authored true; latest verification D19-REPROVE-REOBSERVE PASS
+sync merge classified: c3159d562 owner merges 4
+
+[exit 0] expected 0

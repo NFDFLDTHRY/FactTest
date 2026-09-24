@@ -1,0 +1,270 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D20-MAIN-SYNC-F2-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F2-doc",
+  "workpiece_id": "W23",
+  "delta_id": "D20-MAIN-SYNC",
+  "canonical_base": "c3159d562768d52465ead5e44bc6c5259dfc1b79",
+  "input_artifacts": [
+    "tests/sync/d20-line.json",
+    "git objects of 1205fda"
+  ],
+  "open_tree": "5550777356f0f1fb3edc701e15e986ec1b5a812f",
+  "close_tree": "499c1c2e745460a537365b0a8aa97be49bfd55ff",
+  "changed_paths": [
+    "design/environment-map/epochs/D14-RESCAN.json",
+    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+    "design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md",
+    "design/materialization/D14-REFERENCE-RESCAN-PROMPT.md",
+    "factory/deltas/D14-PROMPT-INTAKE.json",
+    "factory/deltas/D14-RESCAN.json",
+    "factory/fixtures/D14-PROMPT-INTAKE/F0-doc.json",
+    "factory/fixtures/D14-RESCAN/F0-doc.json",
+    "factory/fixtures/D14-RESCAN/F1-fixture.json",
+    "factory/fixtures/D14-RESCAN/F2-build.json",
+    "factory/fixtures/D14-RESCAN/F3-annotate.json",
+    "factory/fixtures/D14-RESCAN/F4-doc.json",
+    "factory/fixtures/D14-RESCAN/F5-evidence.json",
+    "factory/receipts/D14-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.json",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-handoff.log",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-prompt-and-ledger.log",
+    "factory/receipts/D14-PROMPT-INTAKE/logs/F0-untouched.log",
+    "factory/receipts/D14-PROMPT-INTAKE/verification.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F0-doc.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F1-fixture.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F2-build.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F3-annotate.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F4-doc.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/F5-evidence.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-ascii-contract.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F0-authority-untouched.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-corpus-layout.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-law-and-no-deps.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-register-and-offline-verify.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F1-syntax-and-plan.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-handoff.json",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-handoff.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-insertion-only.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F3-law-untouched.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-graph.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-hygiene.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-observed-and-handoff.log",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/verification.json",
+    "factory/receipts/D20-MAIN-SYNC/logs/F2-import-doc.log",
+    "fixtures/reference/README.md",
+    "fixtures/reference/REGISTER.json",
+    "fixtures/reference/ROUTES.json",
+    "fixtures/reference/published/gpuweb.github.io/gpuweb/index.html",
+    "fixtures/reference/published/gpuweb.github.io/gpuweb/wgsl/index.html",
+    "fixtures/reference/published/immersive-web.github.io/webxr/index.html",
+    "fixtures/reference/published/serial.spec.whatwg.org/index.html",
+    "fixtures/reference/published/tc39.es/ecma262/index.html",
+    "fixtures/reference/published/w3c.github.io/IndexedDB/index.html",
+    "fixtures/reference/published/w3c.github.io/ServiceWorker/index.html",
+    "fixtures/reference/published/w3c.github.io/accelerometer/index.html",
+    "fixtures/reference/published/w3c.github.io/ambient-light/index.html",
+    "fixtures/reference/published/w3c.github.io/deviceorientation/index.html",
+    "fixtures/reference/published/w3c.github.io/geolocation/index.html",
+    "fixtures/reference/published/w3c.github.io/gyroscope/index.html",
+    "fixtures/reference/published/w3c.github.io/magnetometer/index.html",
+    "fixtures/reference/published/w3c.github.io/manifest/index.html",
+    "fixtures/reference/published/w3c.github.io/mediacapture-main/getusermedia.html",
+    "fixtures/reference/published/w3c.github.io/orientation-sensor/index.html",
+    "fixtures/reference/published/w3c.github.io/permissions/index.html",
+    "fixtures/reference/published/w3c.github.io/proximity/index.html",
+    "fixtures/reference/published/w3c.github.io/sensors/index.html",
+    "fixtures/reference/published/w3c.github.io/web-locks/index.html",
+    "fixtures/reference/published/w3c.github.io/webappsec-permissions-policy/index.html",
+    "fixtures/reference/published/w3c.github.io/webappsec-secure-contexts/index.html",
+    "fixtures/reference/published/w3c.github.io/webcodecs/index.html",
+    "fixtures/reference/published/w3c.github.io/webcrypto/index.html",
+    "fixtures/reference/published/webassembly.github.io/spec/core/appendix/changes.html",
+    "fixtures/reference/published/webassembly.github.io/spec/core/binary/types.html",
+    "fixtures/reference/published/webassembly.github.io/spec/core/index.html",
+    "fixtures/reference/published/webassembly.github.io/spec/core/syntax/types.html",
+    "fixtures/reference/published/webassembly.github.io/spec/core/text/types.html",
+    "fixtures/reference/published/webassembly.github.io/spec/js-api/index.html",
+    "fixtures/reference/published/webassembly.github.io/spec/web-api/index.html",
+    "fixtures/reference/published/webassembly.github.io/threads/core/index.html",
+    "fixtures/reference/published/webassembly.github.io/threads/core/syntax/types.html",
+    "fixtures/reference/published/webassembly.github.io/threads/js-api/index.html",
+    "fixtures/reference/published/webassembly.github.io/threads/web-api/index.html",
+    "fixtures/reference/published/webbluetoothcg.github.io/web-bluetooth/index.html",
+    "fixtures/reference/published/webmachinelearning.github.io/webnn/index.html",
+    "fixtures/reference/published/wicg.github.io/webhid/index.html",
+    "fixtures/reference/published/wicg.github.io/webusb/index.html",
+    "fixtures/reference/sources/WebAssembly/shared-everything-threads/proposals/shared-everything-threads/Overview.md",
+    "fixtures/reference/sources/WebAssembly/spec/document/core/appendix/changes.rst",
+    "fixtures/reference/sources/WebAssembly/spec/document/core/binary/types.rst",
+    "fixtures/reference/sources/WebAssembly/spec/document/core/syntax/types.rst",
+    "fixtures/reference/sources/WebAssembly/spec/document/core/text/types.rst",
+    "fixtures/reference/sources/WebAssembly/spec/document/js-api/index.bs",
+    "fixtures/reference/sources/WebAssembly/spec/document/web-api/index.bs",
+    "fixtures/reference/sources/WebAssembly/threads/proposals/threads/Overview.md",
+    "fixtures/reference/sources/chromium/chromium/content/public/common/content_switches.cc",
+    "fixtures/reference/sources/chromium/chromium/docs/gpu/swiftshader.md",
+    "fixtures/reference/sources/chromium/chromium/gpu/config/gpu_switches.cc",
+    "fixtures/reference/sources/chromium/chromium/ui/gl/gl_switches.cc",
+    "fixtures/reference/sources/git/git/Documentation/git-update-ref.adoc",
+    "fixtures/reference/sources/git/git/Documentation/git-worktree.adoc",
+    "fixtures/reference/sources/git/git/Documentation/gitformat-pack.adoc",
+    "fixtures/reference/sources/git/git/Documentation/gitrepository-layout.adoc",
+    "fixtures/reference/sources/git/git/Documentation/gitrevisions.adoc",
+    "fixtures/reference/sources/git/git/Documentation/glossary-content.adoc",
+    "fixtures/reference/sources/git/git/Documentation/technical/hash-function-transition.adoc",
+    "fixtures/reference/sources/git/git/Documentation/user-manual.adoc",
+    "fixtures/reference/sources/google/swiftshader/README.md",
+    "fixtures/reference/sources/gpuweb/gpuweb/spec/index.bs",
+    "fixtures/reference/sources/gpuweb/gpuweb/wgsl/index.bs",
+    "fixtures/reference/sources/rust-lang/cargo/src/doc/src/reference/unstable.md",
+    "fixtures/reference/sources/rust-lang/reference/src/names/preludes.md",
+    "fixtures/reference/sources/rust-lang/rust/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+    "fixtures/reference/sources/rust-lang/rust/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "fixtures/reference/sources/v8/v8/src/flags/flag-definitions.h",
+    "fixtures/reference/sources/w3c/IndexedDB/index.bs",
+    "fixtures/reference/sources/w3c/ServiceWorker/index.bs",
+    "fixtures/reference/sources/w3c/manifest/index.html",
+    "fixtures/reference/sources/w3c/web-locks/index.bs",
+    "fixtures/reference/sources/w3c/webappsec-secure-contexts/index.bs",
+    "fixtures/reference/sources/w3c/webcrypto/spec/Overview.html",
+    "fixtures/reference/sources/whatwg/compression/index.bs",
+    "fixtures/reference/sources/whatwg/dom/dom.bs",
+    "fixtures/reference/sources/whatwg/fetch/fetch.bs",
+    "fixtures/reference/sources/whatwg/fs/index.bs",
+    "fixtures/reference/sources/whatwg/html/source",
+    "fixtures/reference/sources/whatwg/infra/infra.bs",
+    "fixtures/reference/sources/whatwg/serial/index.html",
+    "fixtures/reference/sources/whatwg/storage/storage.bs",
+    "fixtures/reference/sources/whatwg/streams/index.bs",
+    "fixtures/reference/sources/whatwg/webidl/index.bs"
+  ],
+  "output_artifacts": [
+    "factory/deltas/D14-RESCAN.json",
+    "design/environment-map/epochs/D14-RESCAN.json",
+    "fixtures/reference/REGISTER.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D20-MAIN-SYNC"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D20-MAIN-SYNC/logs/F2-import-doc.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --write --scope design/materialization/D14-REFERENCE-RESCAN-PROMPT.md,design/materialization/D14-INTENDED-REFERENCE-RESCAN.md,design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md,factory/deltas/D14-PROMPT-INTAKE.json,factory/deltas/D14-RESCAN.json,factory/fixtures/D14-PROMPT-INTAKE/,factory/fixtures/D14-RESCAN/,factory/receipts/D14-PROMPT-INTAKE/,factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/,fixtures/reference/,design/environment-map/epochs/D14-RESCAN.json && node tests/sync/import-line.mjs --map tests/sync/d20-line.json --ours c3159d562768d52465ead5e44bc6c5259dfc1b79 --check --scope design/materialization/D14-REFERENCE-RESCAN-PROMPT.md,design/materialization/D14-INTENDED-REFERENCE-RESCAN.md,design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md,factory/deltas/D14-PROMPT-INTAKE.json,factory/deltas/D14-RESCAN.json,factory/fixtures/D14-PROMPT-INTAKE/,factory/fixtures/D14-RESCAN/,factory/receipts/D14-PROMPT-INTAKE/,factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/,fixtures/reference/,design/environment-map/epochs/D14-RESCAN.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D20-MAIN-SYNC/logs/F2-import-doc.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/deltas/D14-RESCAN.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D14-RESCAN.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/reference/REGISTER.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D20-MAIN-SYNC/logs/F2-import-doc.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T11:40:19Z",
+  "status": "PASS"
+}

@@ -1,0 +1,167 @@
+{
+ "schema": "facttest-reconciliation/1",
+ "epoch": "D18R",
+ "law": "design/materialization/D18R-INTENDED-CHAIN-REPAIR.md",
+ "question": "Which D18 statements contradict evidence already in the repository, and what is the current reading?",
+ "traversal_steps": [
+  "AUTHORITY_CHANGED",
+  "CONSTRAINT",
+  "FACT",
+  "IMPLEMENTATION_CONTRACT",
+  "ENVIRONMENT",
+  "OLD_PROBE_SUFFICIENT",
+  "OLD_EVIDENCE_APPLICABLE"
+ ],
+ "outcomes": {
+  "SUPERSEDED": "a successor node is now the current statement; the superseded node stays in the graph as history",
+  "CORRECTED": "a wording on a node is imprecise; the reconciliation note is its current reading (the node is not rewritten)"
+ },
+ "inherits": {
+  "AUTHORITY": {
+   "out": [
+    "AUTHORIZES",
+    "DEPENDS_ON",
+    "CONFLICTS_WITH"
+   ],
+   "in": [
+    "DEPENDS_ON",
+    "CONFLICTS_WITH"
+   ]
+  },
+  "COMPUTATIONAL_FACT": {
+   "out": [
+    "PROBED_BY",
+    "EVIDENCED_BY",
+    "ADMITTED_BY",
+    "REQUIRES",
+    "EXPOSED_BY",
+    "STALE_IF",
+    "IMPLEMENTED_BY"
+   ],
+   "in": [
+    "AUTHORIZES",
+    "GROUNDS",
+    "EXPLAINS",
+    "WITNESSED_BY",
+    "REQUIRES"
+   ]
+  }
+ },
+ "retired_texts": [
+  "hardwareConcurrency was never read",
+  "reads hardwareConcurrency"
+ ],
+ "new_facts": [
+  {
+   "id": "FACT-WORKERS-D18R",
+   "subject": "WORKER_DEDICATED family and hardwareConcurrency",
+   "predicate": "a dedicated Worker was constructed and messaged by the D12 kernel-in-worker probe (EV-D12-P10); navigator.hardwareConcurrency reads 4 in the Chromium 141 headless shell (D11 browser probe, EV-D11-BROWSER-DEFAULT and EV-D11-BROWSER-GPUFLAGS; D16 census, EV-D16-CENSUS-WORKER-DEDICATED); no FactTest admission contract for workers exists",
+   "required_environment": [
+    "chromium-headless-shell 141 (rev 1194) via Playwright 1.56.1 (headless)"
+   ],
+   "constraint_refs": [
+    "CON-WB-001",
+    "CON-WB-002"
+   ],
+   "status": "GAP",
+   "note": "supersedes FACT-WORKERS-D18, whose wording claimed hardwareConcurrency had not been observed although D11's own browser probe and the D16 census recorded it (D18R)",
+   "source_ref": "evidence/D11/browser/default.json, evidence/D11/browser/gpu-flags.json, evidence/D16/census/records/CAP-WORKER-DEDICATED.json, evidence/D12/probes/P10-KERNEL-IN-WORKER.json; tests/reconcile/d18r-reconciliation.json R-52"
+  }
+ ],
+ "supersessions": [
+  {
+   "old": "FACT-WORKERS-D18",
+   "new": "FACT-WORKERS-D18R",
+   "reconciliation": "R-52"
+  }
+ ],
+ "add_edges": [
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-WORKERS-D18R",
+   "to": "PROBE-BROWSER-IDENTITY",
+   "reconciliation": "R-52"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-WORKERS-D18R",
+   "to": "PROBE-CAPABILITY-CENSUS",
+   "reconciliation": "R-52"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WORKERS-D18R",
+   "to": "EV-D11-BROWSER-DEFAULT",
+   "reconciliation": "R-52"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WORKERS-D18R",
+   "to": "EV-D11-BROWSER-GPUFLAGS",
+   "reconciliation": "R-52"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WORKERS-D18R",
+   "to": "EV-D16-CENSUS-WORKER-DEDICATED",
+   "reconciliation": "R-52"
+  },
+  {
+   "type": "INVALIDATED_BY",
+   "from": "FACT-WORKERS-D18",
+   "to": "EV-D11-BROWSER-GPUFLAGS",
+   "reconciliation": "R-52"
+  },
+  {
+   "type": "INVALIDATED_BY",
+   "from": "FACT-WORKERS-UNPROBED",
+   "to": "EV-D11-BROWSER-GPUFLAGS",
+   "reconciliation": "R-52"
+  }
+ ],
+ "items": [
+  {
+   "id": "R-52",
+   "subject": "worker claim contradicted by evidence already in the repository",
+   "reconciles": [
+    "FACT-WORKERS-D18",
+    "FACT-WORKERS-UNPROBED"
+   ],
+   "outcome": "SUPERSEDED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-WB-001, CON-WB-002 unchanged",
+    "FACT": "FACT-WORKERS-UNPROBED (D11) said no fixture reads hardwareConcurrency although the D11 browser probe itself recorded it; D18 carried that half into FACT-WORKERS-D18",
+    "IMPLEMENTATION_CONTRACT": "none (no worker admission contract)",
+    "ENVIRONMENT": "Chromium 141 headless shell (ENV-D11-BROWSER-DEFAULT/-GPUFLAGS, ENV-D16-BROWSER, ENV-D12-BROWSER-PERSISTENT)",
+    "OLD_PROBE_SUFFICIENT": "yes: PROBE-BROWSER-IDENTITY and the capability census read it; P10 constructed the worker",
+    "OLD_EVIDENCE_APPLICABLE": "yes: EV-D11-BROWSER-DEFAULT, EV-D11-BROWSER-GPUFLAGS and EV-D16-CENSUS-WORKER-DEDICATED record hardwareConcurrency 4; EV-D12-P10 records the worker"
+   },
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "successor FACT-WORKERS-D18R [GAP] (only the admission contract is missing); R-32's hardwareConcurrency obligation was already met by D11",
+   "new_probe_obligation": "capability work (not D19): a worker admission contract; D19 re-observes hardwareConcurrency in its browser identity capture"
+  },
+  {
+   "id": "R-53",
+   "subject": "D12 browser environment executable field",
+   "reconciles": [
+    "ENV-D12-BROWSER-PERSISTENT"
+   ],
+   "outcome": "CORRECTED",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "n/a",
+    "FACT": "the 13 D12 facts corrected by R-45 hold",
+    "IMPLEMENTATION_CONTRACT": "tests/selfhost/primitives-probe.mjs records executable = chromium.executablePath()",
+    "ENVIRONMENT": "ENV-D12-BROWSER-PERSISTENT other_state.executable",
+    "OLD_PROBE_SUFFICIENT": "no: executablePath() returns the default path of Playwright's full 'chromium' browser, not the binary launched; for headless launches Playwright 1.56 selects chromium-headless-shell (D17 CL-IMP-PW1)",
+    "OLD_EVIDENCE_APPLICABLE": "the version fields (HeadlessChrome/141.0.7390.37, revision 9f043f63, V8 14.1.146.11) are observed; the executable field is not an observation"
+   },
+   "surfaces": [],
+   "note": "read other_state.executable as 'Playwright default chromium path (not the launched binary)'; D18 R-45 cited it as launch identity, which it is not; the launched executable was never recorded",
+   "new_probe_obligation": "D19: record the executable actually launched (the browser process image) with the browser identity"
+  }
+ ]
+}
