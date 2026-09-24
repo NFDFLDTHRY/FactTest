@@ -30,3 +30,9 @@ No compiler implementation exists yet. That is intentional.
 
 The six-pass preparation is complete.
 Actual parser/compiler/Factory/browser execution remains [GAP] until Fable 5.1 materializes the machine and closes the physical Byte Relay commissioning gate.
+
+
+## Fable implementation session
+
+Read [FABLE-ASCII-SYSTEM-PROMPT.md](FABLE-ASCII-SYSTEM-PROMPT.md) first when beginning the Fable 5.1 materialization session.
+It is the session bootloader; the repo owner contracts remain the detailed specification.

@@ -66,7 +66,7 @@ admission contracts-+
                  codegen
 \`\`\`
 
-Codegen accepts VerifiedPlan, not CandidatePlan.
+Codegen accepts VerifiedStrategy, not CandidatePlan or CandidateStrategy. A non-adaptive target is a one-variant VerifiedStrategy.
 
 ## 3. Forbidden dependencies
 

@@ -576,3 +576,21 @@ These gaps are not Pass-3 failures because Pass 4/5 own their definition.
 Pass 3 closes as bootstrap architecture and contracts only.
 
 Next: Pass 4 - ASCII / Language Kernel.
+
+
+## Pass 6 supersession note
+
+Pass 6 repaired the singular-plan shorthand used in this historical pass.
+
+For adaptive targets, read the current architecture as:
+
+```text
+CandidateStrategy
+  -> Independent Verifier
+  -> VerifiedStrategy
+  -> Codegen
+  -> epoch-bound ActivationReceipt
+  -> ActivePlan
+```
+
+The earlier CandidatePlan/VerifiedPlan diagrams remain historical bootstrap framing and do not override PASS6-GAP-REPAIRS.md, VERIFICATION-CERTIFICATES.md, CODEGEN-BUNDLE-CONTRACT.md, or RUNTIME-ADMISSION-REPLAN.md.

@@ -59,7 +59,7 @@ Purpose:
 materialize approved JavaScript/HTML/manifest/service-worker host machinery.
 
 INPUT:
-VerifiedPlan/codegen contract or explicitly authorized host fixture.
+VerifiedStrategy/codegen contract or explicitly authorized host fixture.
 
 OUTPUT:
 host/WebApp surfaces in workpiece.
@@ -137,7 +137,7 @@ Purpose:
 assemble manufactured object B from already verified compiler/codegen outputs.
 
 INPUT:
-bundle parts + VerifiedPlan + codegen/bundle manifest.
+bundle parts + VerifiedStrategy + codegen/bundle manifest.
 
 OUTPUT:
 GeneratedBundle workpiece.

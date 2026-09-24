@@ -146,15 +146,15 @@ ImplementationHypergraph
 Planner                   ObligationSet
    |                          |
    v                          |
-CandidatePlan                 |
+CandidateStrategy             |
    +------------+-------------+
                 |
                 v
-            Verifier
+        Independent Verifier
              |   |
              |   +--> VerificationFailure
              v
-         VerifiedPlan
+       VerifiedStrategy
                 |
                 v
              Codegen
@@ -204,7 +204,7 @@ Obligations
 CapabilityIr
 Implementation contracts
 Machine/admission state
-CandidatePlan
+CandidateStrategy
        |
        v
 Verifier
@@ -242,7 +242,7 @@ G = approved target universe
 C = materialized implementations
 M = runtime observations
 A = admitted implementations
-P = verified plan
+P = active plan selected from a VerifiedStrategy
 \`\`\`
 
 Required relationships:
@@ -335,3 +335,17 @@ verification metadata
 \`\`\`
 
 The concrete bundle naming/layout is deferred to Pass 5.
+
+
+## Pass 6 supersession note
+
+For adaptive generated applications, Pass 6 supersedes the earlier singular-plan shorthand in this document.
+
+Current flow:
+
+```text
+Planner -> CandidateStrategy -> Independent Verifier -> VerifiedStrategy -> Codegen
+Runtime epoch -> ActivationReceipt -> ActivePlan
+```
+
+A non-adaptive target is the one-variant degenerate case.
