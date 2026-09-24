@@ -578,4 +578,30 @@ BEFORE
   unchanged.
 
 AFTER
+- RESULT: integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca (ff-only from 205d337); no refusal at the gate.  One
+  fixture (F5-build) was refused at station open before any command ran (receipts directory outside S-BUILD's
+  surface) and corrected; recorded in D13-OBSERVED-REPO-HYGIENE.md section 1.
+- RECEIPTS: factory/receipts/D13-REPO-HYGIENE/{F0-doc..F9-doc}.json (10) PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.
+  PROBE: re-inspection MATCH (status scan, handoff check, graph validate/merge-check, registry check re-run on the
+  canonical tree).
+- EVIDENCE: evidence/D13/ (qualified proof 21/21 weight-bearing PASS on pinned toolchains, mutants 8/8 RUN; status
+  inventory 0 unclassified; 25 proven-disposable workpiece objects retired; graph 302 nodes / 641 edges).
+- LATER: PR #4 merged D13 into main as 4d8a4c0 (owner action on GitHub, merge commit); the branch was fast-forwarded to
+  4d8a4c0.  The owner then issued the six-pass technical reference review series D14-D19.
+- (recorded by D14-D19-PROMPT-INTAKE, the next delta.)
+
+---
+
+## D14-D19-PROMPT-INTAKE  (FIRST ACTION of the six-pass technical reference review series)
+
+BEFORE
+- DELTA: D14-D19-PROMPT-INTAKE (factory/deltas/D14-D19-PROMPT-INTAKE.json), workpiece W15.
+- BASE: 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (main after PR #4; branch fast-forwarded, merged history only).
+- STATION: S-DOC.  FIXTURE: F0-doc.  JUDGE: the factory binary built from 4d8a4c0, i.e. the first delta judged by the
+  D13-repaired Factory (literal surfaces, receipt format 2, verifier identity).
+- CHANGE: design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md (verbatim), this ledger, the delta, its
+  fixture, receipts.  FORBIDDEN: everything else.
+- NEXT: D14-FRONTIER-REOPEN, assembled in design/materialization/D14-INTENDED-FRONTIER-REOPEN.md.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

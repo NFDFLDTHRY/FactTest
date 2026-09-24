@@ -1,0 +1,85 @@
+{
+  "delta_id": "D14-D19-PROMPT-INTAKE",
+  "workpiece_id": "W15",
+  "canonical_base": "4d8a4c0e2568ecda75981aeaef0dc797fb23d928",
+  "base_tree": "4605c1186a7ae991a1b8b9ea48f932f8cb662e3d",
+  "verified_tree": "2b4564b346ac48d34c5fe4dde38817d4e3125de0",
+  "changed_paths": [
+    "design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D14-D19-PROMPT-INTAKE.json",
+    "factory/fixtures/D14-D19-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D14-D19-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D14-D19-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D14-D19-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "4605c1186a7ae991a1b8b9ea48f932f8cb662e3d"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D14-D19-PROMPT-INTAKE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T07:27:00Z",
+  "status": "PASS"
+}
