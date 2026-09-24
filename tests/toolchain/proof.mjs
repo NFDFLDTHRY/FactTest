@@ -6,9 +6,18 @@
 // a mutant's observed (weak, qualified) verdicts differ from the expected ones, because that means the judge is not
 // qualified.  Compile-fail verdicts never come from an exit code alone; no_std verdict weight comes only from the
 // core-only wasm64 compiler graph; the only accepted wasm triple is wasm64-unknown-unknown.
+//
+// D13 (design/materialization/D13-INTENDED-REPO-HYGIENE.md section 3): proof sets.  With --set <SET> and
+// --sets tests/toolchain/proof-sets.json an obligation records proof_set / target / profile / toolchain and FAILS when
+// the observed selection or the rustc commit differs from the declaration.  PROOF_CHAN_MAP (e.g.
+// "default=1.94.1,stable=1.94.1,nightly=nightly-2026-09-24") maps every requested channel, including the implicit
+// default, to an explicit toolchain: copies outside the repository (compile-fail fixtures, mutants) never fall back
+// to whatever rustup would pick.  CROSS_SET records are diagnostics (verdict OBS) and HEURISTIC records carry
+// verdict HEURISTIC; both have proof_weight NONE and never count as proof.
 import { spawnSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, existsSync, cpSync } from 'node:fs';
 import { join, resolve, dirname, relative, sep } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const WASM64 = 'wasm64-unknown-unknown';
 const STACK_FLAG = '-C link-arg=-zstack-size=16777216'; // as in tests/bootstrap/run-b9-b11.sh
@@ -41,7 +50,10 @@ function run(program, args, cwd, env = {}) {
   if (r.error) return { spawn_error: String(r.error.code || r.error.message), exit: -1, stdout: '', stderr: '' };
   return { exit: r.status === null ? -1 : r.status, stdout: r.stdout || '', stderr: r.stderr || '' };
 }
-function toolchainIdentity(chan) {
+const CHAN_MAP = Object.fromEntries((process.env.PROOF_CHAN_MAP || '').split(',').filter(Boolean).map(kv => kv.split('=')));
+function mapChan(chan) { return chan ? (CHAN_MAP[chan] || chan) : (CHAN_MAP.default || null); }
+function toolchainIdentity(requested) {
+  const chan = mapChan(requested);
   const rustc = chan ? ['+' + chan, '-vV'] : ['-vV'];
   const cargo = chan ? ['+' + chan, '-vV'] : ['-vV'];
   const r = run('rustc', rustc, process.cwd());
@@ -49,6 +61,7 @@ function toolchainIdentity(chan) {
   const pick = (t, k) => (t.match(new RegExp('^' + k + ': (.*)$', 'm')) || [])[1] || null;
   return {
     channel: chan || 'default(active)',
+    requested: requested || 'default',
     rustc: r.exit === 0 ? r.stdout.trim().split('\n')[0] : null,
     rustc_commit: pick(r.stdout, 'commit-hash'),
     rustc_release: pick(r.stdout, 'release'),
@@ -125,7 +138,8 @@ function cargoJson(chan, args, cwd, env, root) {
   const isFmt = args[0] === 'fmt';
   const sep = args.indexOf('--');
   const withJson = isFmt ? [...args] : (sep >= 0 ? [...args.slice(0, sep), '--message-format=json', ...args.slice(sep)] : [...args, '--message-format=json']);
-  const argv = [...(chan ? ['+' + chan] : []), ...withJson];
+  const tc = mapChan(chan);
+  const argv = [...(tc ? ['+' + tc] : []), ...withJson];
   const r = run('cargo', argv, cwd, env);
   const parsed = r.spawn_error ? null : parseCargoStream(r.stdout, r.stderr, root);
   if (parsed && isFmt) {
@@ -155,7 +169,8 @@ function rootExcludes(root) {
   const m = t.match(/^\s*exclude\s*=\s*\[([^\]]*)\]/m);
   return m ? [...m[1].matchAll(/"([^"]+)"/g)].map(x => x[1]) : [];
 }
-function metadata(root, locked, chan) {
+function metadata(root, locked, requested) {
+  const chan = mapChan(requested);
   const args = [...(chan ? ['+' + chan] : []), 'metadata', '--format-version', '1', ...(locked ? ['--locked'] : [])];
   const r = run('cargo', args, root);
   if (r.exit !== 0) return { ok: false, error: r.spawn_error || r.stderr.trim(), argv: ['cargo', ...args] };
@@ -201,14 +216,93 @@ function copyCrate(src, dst, repoRoot) {
 
 // ----------------------------------------------------------------------------------------------- obligations
 function baseRecord(opts, cls, invariant) {
-  return { id: opts.id, class: cls, invariant, evaluated: new Date().toISOString() };
+  return { id: opts.id, class: cls, invariant, proof_set: opts.set || null, evaluated: new Date().toISOString() };
+}
+// ----------------------------------------------------------------------------------------------- proof sets (D13)
+function loadSets(opts) { return opts.sets ? JSON.parse(readFileSync(resolve(opts.sets), 'utf8')).sets : null; }
+function targetOf(args) { const i = args.indexOf('--target'); return i >= 0 ? args[i + 1] : (args[0] === 'fmt' ? 'none (rustfmt)' : 'host'); }
+function profileOf(args) { return args[0] === 'fmt' ? null : (args.includes('--release') ? 'release' : 'dev'); }
+// Apply the declared set to a finished record: selection and toolchain must match; CROSS_SET is diagnostic only.
+function applySet(rec, sets, observedPackages) {
+  if (!rec.proof_set) return rec;
+  const decl = sets && sets[rec.proof_set];
+  if (!decl) { rec.verdict = 'FAIL'; rec.reason = `undeclared proof set ${rec.proof_set}; ` + rec.reason; return rec; }
+  const reasons = [];
+  if (decl.rustc_commit && rec.toolchain && rec.toolchain.rustc_commit !== decl.rustc_commit)
+    reasons.push(`toolchain ${rec.toolchain.rustc || 'ABSENT'} != pinned ${decl.toolchain} (${decl.rustc_commit.slice(0, 9)})`);
+  const want = decl.graph || decl.roots;
+  if (want && observedPackages && observedPackages.length) {
+    const got = [...observedPackages].sort(), exp = [...want].sort();
+    if (got.join(',') !== exp.join(',')) reasons.push(`selection [${got.join(' ')}] != declared ${rec.proof_set} [${exp.join(' ')}]`);
+  }
+  if (rec.proof_set === 'CROSS_SET') {
+    rec.observed_verdict = rec.verdict; rec.verdict = 'OBS'; rec.proof_weight = 'NONE';
+    rec.reason = `CROSS_SET diagnostic (proof weight NONE): ${rec.reason}`;
+  } else if (reasons.length && rec.verdict !== 'UNK') { rec.verdict = 'FAIL'; rec.reason = reasons.join('; ') + '; ' + rec.reason; }
+  return rec;
+}
+function obPins(opts) {
+  const out = resolve(opts.out); const root = resolve(opts.root || '.'); const sets = loadSets(opts);
+  const toml = existsSync(join(root, 'rust-toolchain.toml')) ? readFileSync(join(root, 'rust-toolchain.toml'), 'utf8') : '';
+  const fileChannel = (toml.match(/^\s*channel\s*=\s*"([^"]+)"/m) || [])[1] || null;
+  const rows = []; const reasons = [];
+  for (const [name, d] of Object.entries(sets)) {
+    if (!d.rustc_commit) continue;
+    const id = toolchainIdentity(d.toolchain);
+    const comps = run('rustup', ['component', 'list', '--installed', '--toolchain', d.toolchain], root);
+    const installed = comps.exit === 0 ? comps.stdout.trim().split('\n') : [];
+    const missing = (d.components || []).filter(c => !installed.some(i => i === c || i.startsWith(c + '-')));
+    const sysroot = run('rustc', ['+' + d.toolchain, '--print', 'sysroot'], root).stdout.trim();
+    rows.push({ set: name, toolchain: d.toolchain, identity: id, components_installed: installed, components_missing: missing, sysroot });
+    if (id.rustc_commit !== d.rustc_commit) reasons.push(`${name}: ${d.toolchain} resolves to ${id.rustc || 'ABSENT'}, pinned commit ${d.rustc_commit}`);
+    if (missing.length) reasons.push(`${name}: components missing ${missing.join(',')}`);
+  }
+  const host = sets.HOST_NATIVE_SET;
+  if (fileChannel !== host.toolchain) reasons.push(`rust-toolchain.toml channel ${fileChannel || 'ABSENT'} != HOST_NATIVE_SET ${host.toolchain}`);
+  const bare = run('rustc', ['-vV'], root);
+  const bareCommit = (bare.stdout.match(/^commit-hash: (.*)$/m) || [])[1] || null;
+  if (bareCommit !== host.rustc_commit) reasons.push(`bare rustc in the repository resolves to ${bareCommit}, not the pin`);
+  record(out, { ...baseRecord({ id: opts.id || 'T13-PIN-01-toolchain-pins' }, 'T13-PIN', 'each proof set runs on its pinned toolchain; rust-toolchain.toml pins HOST_NATIVE_SET; bare rustc in the repository resolves to the pin'),
+    rust_toolchain_toml: fileChannel, bare_rustc_commit: bareCommit, sets: rows,
+    verdict: reasons.length ? 'FAIL' : 'PASS', reason: reasons.length ? reasons.join('; ') : `HOST_NATIVE_SET ${host.toolchain} (${host.rustc_commit.slice(0, 9)}) via rust-toolchain.toml; WASM64_KERNEL_SET ${sets.WASM64_KERNEL_SET.toolchain} (${sets.WASM64_KERNEL_SET.rustc_commit.slice(0, 9)}) via proof-sets.json; components present` });
+}
+function obSetsCheck(opts) {
+  const out = resolve(opts.out); const root = resolve(opts.root || '.'); const sets = loadSets(opts);
+  const md = metadata(root, true, 'stable');
+  if (!md.ok) return record(out, { ...baseRecord({ id: opts.id }, 'T13-SETS', 'proof sets partition the workspace roots'), verdict: 'FAIL', reason: 'cargo metadata failed: ' + md.error.split('\n')[0] });
+  const host = [...sets.HOST_NATIVE_SET.roots].sort(), wasm = [...sets.WASM64_KERNEL_SET.roots].sort();
+  const nonDefault = md.members.filter(m => !md.default_members.includes(m)).sort();
+  const reasons = [];
+  if (host.join(',') !== md.default_members.join(',')) reasons.push(`HOST_NATIVE_SET roots [${host}] != default-members [${md.default_members}]`);
+  if (wasm.join(',') !== nonDefault.join(',')) reasons.push(`WASM64_KERNEL_SET roots [${wasm}] != members outside default-members [${nonDefault}]`);
+  const both = host.filter(h => wasm.includes(h)); if (both.length) reasons.push('roots in both sets: ' + both.join(','));
+  const uncovered = md.members.filter(m => !host.includes(m) && !wasm.includes(m)); if (uncovered.length) reasons.push('members in no set: ' + uncovered.join(','));
+  const graphOk = sets.WASM64_KERNEL_SET.graph.every(g => md.members.includes(g)); if (!graphOk) reasons.push('WASM64 graph names a non-member');
+  const audit = selectionAudit(root, md); if (audit.unaccounted.length) reasons.push('physical manifests unaccounted: ' + audit.unaccounted.join(','));
+  record(out, { ...baseRecord({ id: opts.id }, 'T13-SETS', 'every workspace member is the root of exactly one proof set; bare cargo (default-members) == HOST_NATIVE_SET'),
+    command: md.argv, members: md.members, default_members: md.default_members, host_roots: host, wasm64_roots: wasm, physical_manifests: audit.table,
+    verdict: reasons.length ? 'FAIL' : 'PASS', reason: reasons.length ? reasons.join('; ') : `${md.members.length} members = ${host.length} HOST_NATIVE_SET roots (== default-members) + ${wasm.length} WASM64_KERNEL_SET root (${wasm.join(',')}); disjoint and complete; ${audit.table.length} physical manifests accounted` });
+}
+function obKernelIdentity(opts) {
+  const out = resolve(opts.out); const root = resolve(opts.root || '.'); const sets = loadSets(opts);
+  const d = sets.WASM64_KERNEL_SET; const ki = d.kernel_identity;
+  const sysroot = run('rustc', ['+' + d.toolchain, '--print', 'sysroot'], root).stdout.trim();
+  const install = sysroot.split('/').pop();
+  const mod = resolve(root, opts.module);
+  let bytes = null; try { bytes = readFileSync(mod); } catch { }
+  const sha = bytes ? createHash('sha256').update(bytes).digest('hex') : null;
+  const want = ki.by_install_name[install] || null;
+  const verdict = !bytes ? 'UNK' : !want ? 'GAP' : (want.sha256 === sha && want.bytes === bytes.length ? 'PASS' : 'FAIL');
+  record(out, { ...baseRecord({ id: opts.id, set: 'WASM64_KERNEL_SET' }, 'T13-KRN', 'the release kernel built by the pinned nightly has the identity declared for its install name'),
+    target: WASM64, profile: 'release', toolchain: toolchainIdentity(d.toolchain), sysroot, install_name: install, module: opts.module, sha256: sha, bytes: bytes ? bytes.length : null, declared: want,
+    verdict, reason: verdict === 'PASS' ? `sha256 ${sha} (${bytes.length} bytes) == declared for install ${install}` : verdict === 'GAP' ? `no identity declared for install name ${install} (identity is install-path dependent) ; observed ${sha}` : verdict === 'UNK' ? 'module missing: ' + mod : `observed ${sha} (${bytes.length} bytes) != declared ${want.sha256} (${want.bytes}) for ${install}` });
 }
 
 function obToolchain(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.');
   const stable = toolchainIdentity('stable'), nightly = toolchainIdentity('nightly'), active = toolchainIdentity(null);
   const show = run('rustup', ['show', 'active-toolchain'], root);
-  const comps = run('rustup', ['component', 'list', '--installed', '--toolchain', 'nightly'], root);
+  const comps = run('rustup', ['component', 'list', '--installed', '--toolchain', mapChan('nightly') || 'nightly'], root);
   const pin = existsSync(join(root, 'rust-toolchain.toml')) || existsSync(join(root, 'rust-toolchain'));
   const rec = {
     ...baseRecord({ id: 'T9-P7-01-toolchain-identity' }, 'T9-P7', 'toolchain identity is recorded, not assumed; pin status is stated'),
@@ -255,6 +349,7 @@ function obCargo(opts) {
   mkdirSync(out, { recursive: true });
   writeFileSync(join(out, opts.id + '.log'), `$ ${r.argv.join(' ')}\n(cwd ${cwd})\n${r.stderr}\n${r.stdout.split('\n').filter(l => !l.startsWith('{')).join('\n')}\n[exit ${r.exit}]\n`);
   const rec = { ...baseRecord(opts, opts.class || 'T9-P2', opts.invariant || 'declared cargo invocation exits 0 over an explicitly recorded selection'),
+    target: targetOf(opts.rest), profile: profileOf(opts.rest),
     command: r.argv, cwd, env, toolchain: toolchainIdentity(chan), exit: r.exit, spawn_error: r.spawn_error || null };
   if (r.parsed) {
     Object.assign(rec, { selection: r.parsed.selection, packages: r.parsed.packages, sysroot_artifacts: r.parsed.sysroot, tests: r.parsed.tests, errors: r.parsed.errors.slice(0, 30), finished: r.parsed.tests.finished || null });
@@ -275,7 +370,7 @@ function obCargo(opts) {
     }
     if (expectFail) rec.expected_on_sut = 'FAIL';
   }
-  record(out, rec);
+  record(out, applySet(rec, loadSets(opts), opts.rest[0] === 'fmt' ? null : (r.parsed ? r.parsed.packages : null)));
 }
 
 function compileFailCheck(fixtureDir, expectFile, scratch, repoRoot, chan) {
@@ -307,9 +402,15 @@ function obCompileFail(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.');
   const scratch = join(process.env.CARGO_TARGET_DIR || join(root, 'target'), 'd9-scratch', opts.id);
   const res = compileFailCheck(resolve(root, opts.fixture), resolve(root, opts.expect), scratch, root, opts.chan);
-  record(out, { ...baseRecord(opts, 'T9-P4', res.invariant || 'compile-fail for the expected reason'), fixture: opts.fixture, expect_file: opts.expect, toolchain: toolchainIdentity(opts.chan || null), ...res });
+  record(out, applySet({ ...baseRecord(opts, 'T9-P4', res.invariant || 'compile-fail for the expected reason'), target: 'host', profile: 'dev', fixture: opts.fixture, expect_file: opts.expect, toolchain: toolchainIdentity(opts.chan || null), ...res }, loadSets(opts), null));
 }
 
+// D13: under --set HEURISTIC the record's verdict is HEURISTIC (proof weight NONE); the scanner's own answer is kept
+// as heuristic_result.  Without --set the D9 record shape is unchanged.  Mutant weak checks use the raw result.
+function heuristic(rec, opts) {
+  if (opts.set !== 'HEURISTIC') return rec;
+  return { ...rec, heuristic_result: rec.verdict, verdict: 'HEURISTIC', proof_weight: 'NONE', reason: `proof weight NONE; scanner said ${rec.verdict}: ${rec.reason}` };
+}
 function nostdScan(factory, root, crates) {
   const r = run(factory, ['nostd-check', ...crates], root);
   return { command: [factory, 'nostd-check', ...crates], exit: r.exit, output: (r.stdout + r.stderr).trim().split('\n').slice(0, 40), verdict: r.exit === 0 ? 'PASS' : 'FAIL', reason: (r.exit === 0 ? 'textual scan found no offender' : 'textual scan flagged: ' + (r.stdout.match(/\[FAIL\][^\n]*/g) || []).join(' | ').slice(0, 300)) + ' [HEURISTIC: cfg(test)/::std/grouped-use bypasses known; verdict weight none]' };
@@ -317,13 +418,14 @@ function nostdScan(factory, root, crates) {
 function obNostdScan(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.');
   const res = nostdScan(resolve(opts.factory), root, opts.crates.split(','));
-  record(out, { ...baseRecord(opts, 'T9-P5', 'textual no_std scan (heuristic reference only)'), cwd: root, ...res, weight: 'none' });
+  record(out, heuristic({ ...baseRecord(opts, 'T9-P5', 'textual no_std scan (heuristic reference only)'), cwd: root, ...res, weight: 'none' }, opts));
 }
 function nostdGraph(root, cwd, pkg, profile, intended, scratchTarget, extraEnv = {}) {
   const args = ['build', '-p', pkg, '-Z', 'build-std=core', '--target', WASM64, ...(profile === 'release' ? ['--release'] : [])];
   const env = { RUSTFLAGS: STACK_FLAG, ...(scratchTarget ? { CARGO_TARGET_DIR: scratchTarget } : {}), ...extraEnv };
   const r = cargoJson('nightly', args, cwd, env, cwd);
   if (r.spawn_error) return { verdict: 'UNK', reason: 'nightly cargo unavailable: ' + r.spawn_error, command: r.argv };
+  if (!r.parsed) return { verdict: 'UNK', reason: 'no cargo output', command: r.argv };
   const compiled = r.parsed.packages;
   const missing = intended.filter(i => !compiled.includes(i));
   const stdErrors = r.parsed.errors.filter(e => /\bstd\b/.test(e.message));
@@ -337,7 +439,7 @@ function obNostdGraph(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.');
   const res = nostdGraph(root, root, opts.package, opts.profile || 'dev', (opts.intended || '').split(',').filter(Boolean), null);
   mkdirSync(out, { recursive: true });
-  record(out, { ...baseRecord(opts, opts.class || 'T9-P5', 'compiler-enforced no_std: the intended crate graph compiles with core only for wasm64'), cwd: root, toolchain: toolchainIdentity('nightly'), ...res });
+  record(out, applySet({ ...baseRecord(opts, opts.class || 'T9-P5', 'compiler-enforced no_std: the intended crate graph compiles with core only for wasm64'), cwd: root, toolchain: toolchainIdentity('nightly'), ...res }, loadSets(opts), res.compiled));
 }
 
 function depsAudit(root, locked, chan) {
@@ -375,7 +477,7 @@ function obDeps(opts) {
     res.verdict = rejected ? 'PASS' : 'FAIL';
     res.reason = rejected ? 'rejected as required: ' + res.reason : 'NOT rejected: ' + res.reason;
   }
-  record(out, { ...baseRecord(opts, 'T9-P6', 'first-party only: every package and dependency Cargo resolves is a path inside the repository'), cwd: root, toolchain: toolchainIdentity(opts.chan || null), ...res, note: 'vendored third-party code inside root is indistinguishable from first-party by path rules alone [UNK]' });
+  record(out, { ...baseRecord(opts, 'T9-P6', 'first-party only: every package and dependency Cargo resolves is a path inside the repository'), target: 'none (cargo metadata)', profile: null, cwd: root, toolchain: toolchainIdentity(opts.chan || null), ...res, note: 'vendored third-party code inside root is indistinguishable from first-party by path rules alone [UNK]' });
 }
 function depcheckWeak(factory, root, manifests) {
   const r = run(factory, ['depcheck', root, ...manifests], root);
@@ -384,7 +486,7 @@ function depcheckWeak(factory, root, manifests) {
 function obDepcheckWeak(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.');
   const res = depcheckWeak(resolve(opts.factory), root, opts.manifests.split(','));
-  record(out, { ...baseRecord(opts, 'T9-P6', 'explicit-list dependency scan (heuristic reference only)'), ...res, weight: 'none' });
+  record(out, heuristic({ ...baseRecord(opts, 'T9-P6', 'explicit-list dependency scan (heuristic reference only)'), ...res, weight: 'none' }, opts));
 }
 
 function wasmInspect(factory, module, outJson, cwd) {
@@ -397,7 +499,7 @@ function obWasmInspect(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.');
   mkdirSync(out, { recursive: true });
   const res = wasmInspect(resolve(opts.factory), resolve(root, opts.module), join(out, opts.id + '.inspect.json'), root);
-  record(out, { ...baseRecord(opts, 'T9-P8', 'the built module is wasm64: every memory uses the i64 address type; imports/exports and sha256 recorded'), module: opts.module, ...res });
+  record(out, { ...baseRecord(opts, 'T9-P8', 'the built module is wasm64: every memory uses the i64 address type; imports/exports and sha256 recorded'), target: WASM64, profile: /\/release\//.test(opts.module) ? 'release' : 'dev', module: opts.module, ...res });
 }
 function obBrowserAbi(opts) {
   const out = resolve(opts.out); const root = resolve(opts.root || '.');
@@ -410,7 +512,7 @@ function obBrowserAbi(opts) {
   if (r.spawn_error) reasons.push('node unavailable: ' + r.spawn_error);
   else if (r.exit !== 0 || !j) reasons.push(`harness exit ${r.exit}: ${r.stderr.trim().split('\n').slice(-1)[0] || 'no JSON'}`);
   else { if (!Array.isArray(j.imports) || j.imports.length) reasons.push('undeclared imports: ' + JSON.stringify(j.imports)); if (j.abi_version !== 1) reasons.push('abi_version ' + j.abi_version); if (!j.diagnostics) reasons.push('no diagnostics object'); }
-  record(out, { ...baseRecord(opts, 'T9-P8', 'the wasm64 module executes in Chromium through the bootstrap ABI with zero imports'), command: ['node', 'host/harness/kernel-host.mjs', opts.module, opts.source, '--browser'], cwd: root, exit: r.exit,
+  record(out, { ...baseRecord(opts, 'T9-P8', 'the wasm64 module executes in Chromium through the bootstrap ABI with zero imports'), target: WASM64, profile: /\/release\//.test(opts.module) ? 'release' : 'dev', command: ['node', 'host/harness/kernel-host.mjs', opts.module, opts.source, '--browser'], cwd: root, exit: r.exit,
     observed: j ? { host: j.host, abi_version: j.abi_version, required_workspace: j.required_workspace, memory_pages: j.memory_pages, imports: j.imports, exports: j.exports, status: j.status } : null,
     verdict: r.spawn_error ? 'UNK' : (reasons.length ? 'FAIL' : 'PASS'), reason: reasons.length ? reasons.join('; ') : `Chromium ${(j.host || '').match(/HeadlessChrome\/[\d.]+/)?.[0] || j.host}: abi_version 1, imports [], ${j.exports.length} exports, memory_pages ${j.memory_pages}` });
 }
@@ -488,16 +590,17 @@ function obSummary(opts) {
       const p = join(d, e.name);
       if (e.isDirectory()) { if (e.name !== 'mutants') walk(p); }
       else if (e.name.endsWith('.json') && !e.name.includes('.inspect.') && !e.name.includes('.browser.') && e.name !== 'summary.json' && e.name !== 'index.json') {
-        try { const j = JSON.parse(readFileSync(p, 'utf8')); if (j.id && j.verdict) recs.push({ id: j.id, class: j.class, verdict: j.verdict, reason: j.reason, toolchain: j.toolchain ? j.toolchain.rustc : null, command: j.command ? j.command.join(' ') : null, packages: j.packages || j.compiled || null, file: relative(out, p) }); } catch { }
+        try { const j = JSON.parse(readFileSync(p, 'utf8')); if (j.id && j.verdict) recs.push({ id: j.id, class: j.class, proof_set: j.proof_set || null, target: j.target || null, profile: j.profile === undefined ? null : j.profile, verdict: j.verdict, proof_weight: j.proof_weight || null, reason: j.reason, toolchain: j.toolchain ? j.toolchain.rustc : null, command: j.command ? j.command.join(' ') : null, packages: j.packages || j.compiled || null, file: relative(out, p) }); } catch { }
       }
     }
   })(out);
   recs.sort((a, b) => a.id.localeCompare(b.id));
   let mut = null; try { mut = JSON.parse(readFileSync(join(out, 'mutants', 'summary.json'), 'utf8')); } catch { }
   const tally = {}; for (const r of recs) tally[r.verdict] = (tally[r.verdict] || 0) + 1;
-  writeJson(join(out, 'summary.json'), { generated: new Date().toISOString(), obligations: recs, tally, mutants: mut ? { verdict: mut.verdict, reason: mut.reason, mutants: mut.mutants.map(m => ({ id: m.id, verdict: m.verdict, observed: m.observed })) } : null });
+  const proofTally = {}; for (const r of recs) if (!r.proof_weight) proofTally[r.verdict] = (proofTally[r.verdict] || 0) + 1;
+  writeJson(join(out, 'summary.json'), { generated: new Date().toISOString(), obligations: recs, tally, proof_tally: proofTally, mutants: mut ? { verdict: mut.verdict, reason: mut.reason, mutants: mut.mutants.map(m => ({ id: m.id, verdict: m.verdict, observed: m.observed })) } : null });
   const w = Math.max(...recs.map(r => r.id.length));
-  writeFileSync(join(out, 'summary.txt'), ['D9 PROOF MATRIX (verdicts are about the system under test; the harness ran)', ...recs.map(r => `${r.verdict.padEnd(4)} ${r.id.padEnd(w)}  ${r.toolchain || ''}\n     ${r.command || ''}\n     ${r.reason}`), '', mut ? `MUTANTS ${mut.verdict}: ${mut.reason}` : 'MUTANTS: not run', ...(mut ? mut.mutants.map(m => `  ${m.verdict} ${m.id} weak=${m.observed.weak} qualified=${m.observed.qualified}`) : []), ''].join('\n'));
+  writeFileSync(join(out, 'summary.txt'), ['D9 PROOF MATRIX (verdicts are about the system under test; the harness ran)', ...recs.map(r => `${r.verdict.padEnd(4)} ${r.id.padEnd(w)}  ${r.toolchain || ''}${r.proof_set ? `\n     set ${r.proof_set}  target ${r.target}  profile ${r.profile}${r.proof_weight ? '  proof weight ' + r.proof_weight : ''}` : ''}\n     ${r.command || ''}\n     ${r.reason}`), '', mut ? `MUTANTS ${mut.verdict}: ${mut.reason}` : 'MUTANTS: not run', ...(mut ? mut.mutants.map(m => `  ${m.verdict} ${m.id} weak=${m.observed.weak} qualified=${m.observed.qualified}`) : []), ''].join('\n'));
   console.log(JSON.stringify(tally), mut ? 'mutants ' + mut.verdict : '');
 }
 
@@ -518,8 +621,11 @@ try {
     case 'browser-abi': obBrowserAbi(opts); break;
     case 'mutants': obMutants(opts); break;
     case 'summary': obSummary(opts); break;
+    case 'pins': obPins(opts); break;
+    case 'sets-check': obSetsCheck(opts); break;
+    case 'kernel-identity': obKernelIdentity(opts); break;
     default:
-      console.error('usage: proof.mjs <toolchain|selection|cargo|compile-fail|nostd-scan|nostd-graph|deps|depcheck-weak|wasm-inspect|browser-abi|mutants|summary> --out DIR [--root DIR] [--id ID] ...');
+      console.error('usage: proof.mjs <toolchain|selection|cargo|compile-fail|nostd-scan|nostd-graph|deps|depcheck-weak|wasm-inspect|browser-abi|mutants|summary|pins|sets-check|kernel-identity> --out DIR [--root DIR] [--id ID] ...');
       process.exit(2);
   }
 } catch (e) { console.error('harness malfunction:', e && e.stack || e); process.exit(3); }

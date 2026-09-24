@@ -1,3 +1,5 @@
+D13 ANNOTATION - HISTORICAL DOCUMENT: this is the session bootloader of the original Fable 5.1 materialization session (M0-M9, D0-D8).  It is not the live entry and its ENTRY steps (HEAD must contain this prompt and descend from 5727c1f...) describe that historical session only.  The live, model-independent entry is README.md -> docs/HANDOFF.md; the constitution is FACTORY-LAW.md.  The text below is preserved unchanged.
+
 ╔══════════════════════════════════════════════════════════════════════╗
 ║ FACTTEST · FABLE 5.1 · ASCII SYSTEMS MANUFACTURING PROMPT          ║
 ║ READ FIRST · REPO CONTRACTS CARRY DETAIL                           ║

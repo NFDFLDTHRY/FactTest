@@ -1,0 +1,83 @@
+{
+  "fixture_id": "F9-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "evidence/D13/",
+    "factory/receipts/D13-REPO-HYGIENE/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D13-OBSERVED-REPO-HYGIENE.md",
+    "design/materialization/D13-PRE-RESCAN-BASELINE.md",
+    "factory/receipts/D13-REPO-HYGIENE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "for k in 'Factory authority surfaces mean what they claim' 'unsupported wildcard-looking authority cannot match nothing' 'proof sets distinguish native and wasm64 targets' 'authoritative no_std/dependency proofs use the qualified judge' 'live handoff no longer depends on Fable/Opus identity' 'D12 is traversable from the environment graph' 'historical evidence remains immutable' 'unresolved technical capability gaps remain visible' 'unresolved external authority questions remain visible' 'cleanup deleted nothing not proven disposable' 'full post-repair verification/evidence succeeds' 'intended and observed D13 structures agree'; do grep -F \"$k\" design/materialization/D13-OBSERVED-REPO-HYGIENE.md | grep -q '^\\[PASS\\]' || { echo \"not PASS: $k\"; exit 1; }; done; grep -q 'TOOLCHAIN: PINNED' design/materialization/D13-OBSERVED-REPO-HYGIENE.md && grep -q '^PRE-RESCAN-BASELINE: ESTABLISHED' design/materialization/D13-PRE-RESCAN-BASELINE.md"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F9-observed.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "for id in $(node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/proof/summary.json\"));console.log(s.obligations.map(o=>o.id).join(\" \"))'); do grep -q \"$id\" design/materialization/D13-OBSERVED-REPO-HYGIENE.md || { echo missing $id; exit 1; }; done"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F9-every-obligation-named.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D13-OBSERVED-REPO-HYGIENE.md",
+    "design/materialization/D13-PRE-RESCAN-BASELINE.md"
+  ],
+  "tests": [
+    "12 final-verification conditions PASS",
+    "every proof obligation named",
+    "baseline established"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

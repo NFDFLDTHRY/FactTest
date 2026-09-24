@@ -1,0 +1,166 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F3-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F3-doc",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md section 18",
+    "evidence/D12/",
+    "design/environment-map/graph.json (D11 epoch)",
+    "docs register (section 5)"
+  ],
+  "open_tree": "94bfd2a3dee51a7100a57e1a09cfae33e079321a",
+  "close_tree": "8dd8774dced5f387da9fedf2f9373f31170a1fa7",
+  "changed_paths": [
+    "README.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D12.json",
+    "design/environment-map/epochs/D13.json",
+    "design/environment-map/graph.json",
+    "docs/HANDOFF.md",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-delta-check-repaired-binary.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-graph.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-handoff-present.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-registry.log",
+    "factory/registry/stations/S-ANNOTATE.json",
+    "factory/registry/stations/S-FIXTURE.json"
+  ],
+  "output_artifacts": [
+    "README.md",
+    "docs/HANDOFF.md",
+    "design/environment-map/epochs/D12.json",
+    "design/environment-map/epochs/D13.json",
+    "factory/registry/stations/S-ANNOTATE.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F3-graph.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F3-registry.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F3-delta-check-repaired-binary.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F3-handoff-present.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json && node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F3-graph.log"
+    },
+    {
+      "check": "command:sh -c node tests/hygiene/registry-check.mjs --base-rev 205d337a7efef5fa25bb588ec385fa3655acb562",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F3-registry.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-d13w/debug/factory delta check factory/deltas/D13.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F3-delta-check-repaired-binary.log"
+    },
+    {
+      "check": "command:sh -c grep -q 'docs/HANDOFF.md' README.md && for s in '## 1. Current state' '## 6. Open-boundary register' '## 7. Proof sets and toolchain'; do grep -qF \"$s\" docs/HANDOFF.md || exit 1; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F3-handoff-present.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:README.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:docs/HANDOFF.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D12.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D13.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/registry/stations/S-ANNOTATE.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-graph.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-registry.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-delta-check-repaired-binary.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-handoff-present.log"
+  ],
+  "closed": "2026-09-24T07:11:43Z",
+  "status": "PASS"
+}

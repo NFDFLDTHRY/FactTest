@@ -1,0 +1,154 @@
+{
+  "fixture_id": "F1-rust",
+  "station_id": "S-RUST",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "factory/src/",
+    "factory/tests/",
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 2.1, 2.4, 2.8, 2.9, 3.2"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "factory/src/",
+    "factory/tests/",
+    "rust-toolchain.toml",
+    "factory/receipts/D13-REPO-HYGIENE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "fmt",
+          "-p",
+          "factory",
+          "--check"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F1-fmt.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-d13w"
+        }
+      },
+      {
+        "cwd": ".",
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "clippy",
+          "-p",
+          "factory",
+          "--all-targets",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F1-clippy.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-d13w"
+        }
+      },
+      {
+        "cwd": ".",
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "test",
+          "-p",
+          "factory"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F1-test.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-d13w"
+        }
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "cargo +1.94.1 test -p factory -- --list 2>/dev/null | grep -c ': test$' | grep -qx 17 && for t in f09_wildcard_station_surface_rejected_at_open f10_wildcard_delta_surface_rejected_at_check f11_literal_surface_forms f12_fixture_wildcard_rejected_at_open f13_receipt_and_verification_carry_environment_identity f14_audit_classifies_only_proven_objects_retirable f15_retire_removes_exactly_the_proven_objects f16_heuristic_checkers_carry_proof_weight_none; do grep -q \"fn $t\" factory/tests/factory_law.rs || { echo missing $t; exit 1; }; done"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F1-witnesses.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-d13w"
+        }
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "rustc -vV | grep -qx 'commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1' && grep -qx 'channel = \"1.94.1\"' rust-toolchain.toml"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F1-pin-resolves.log"
+      },
+      {
+        "cwd": ".",
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "205d337a7efef5fa25bb588ec385fa3655acb562",
+          "--",
+          "compiler",
+          "host",
+          "Cargo.toml",
+          "Cargo.lock",
+          "factory/Cargo.toml"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F1-compiler-untouched.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "factory/src/paths.rs",
+    "factory/src/identity.rs",
+    "factory/src/hygiene.rs",
+    "factory/tests/factory_law.rs",
+    "rust-toolchain.toml"
+  ],
+  "tests": [
+    "f00..f16 PASS",
+    "clippy/fmt clean",
+    "bare rustc resolves the pin"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

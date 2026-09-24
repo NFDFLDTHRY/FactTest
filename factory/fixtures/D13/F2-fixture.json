@@ -1,0 +1,104 @@
+{
+  "fixture_id": "F2-fixture",
+  "station_id": "S-FIXTURE",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "tests/toolchain/",
+    "tests/envmap/envmap.mjs",
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 2.2, 2.6, 2.10, 3.3, 6"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/run-qualified-proof.sh",
+    "tests/hygiene/",
+    "tests/envmap/envmap.mjs",
+    "factory/receipts/D13-REPO-HYGIENE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check tests/toolchain/proof.mjs && node --check tests/envmap/envmap.mjs && node --check tests/hygiene/status-scan.mjs && node --check tests/hygiene/registry-check.mjs && sh -n tests/toolchain/run-qualified-proof.sh && sh -n tests/hygiene/handoff-check.sh && node -e 'for (const f of process.argv.slice(1)) JSON.parse(require(\"fs\").readFileSync(f))' tests/toolchain/proof-sets.json tests/hygiene/status-classification.json"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F2-syntax.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/toolchain/proof.mjs sets-check --out $T --id S --root . --sets tests/toolchain/proof-sets.json && grep -q '\"verdict\": \"PASS\"' $T/S.json"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F2-sets-check.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-d13w"
+        }
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json && git diff --exit-code 205d337a7efef5fa25bb588ec385fa3655acb562 -- tests/toolchain/run-proof-matrix.sh tests/toolchain/run-mutants.sh fixtures/toolchain"
+        ],
+        "log": "factory/receipts/D13-REPO-HYGIENE/logs/F2-d11-graph-still-valid.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/run-qualified-proof.sh",
+    "tests/hygiene/status-scan.mjs",
+    "tests/hygiene/status-classification.json",
+    "tests/hygiene/handoff-check.sh",
+    "tests/hygiene/registry-check.mjs"
+  ],
+  "tests": [
+    "harnesses parse",
+    "proof sets partition the workspace roots",
+    "D11 graph validates under the extended validator; D9 scripts and mutants untouched"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

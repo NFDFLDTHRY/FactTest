@@ -1,0 +1,64 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D13-PROMPT-INTAKE",
+  "selected_inputs": [
+    "owner prompt (session input)",
+    "design/materialization/LEDGER.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D13-REPO-HYGIENE-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D13-PROMPT-INTAKE.json",
+    "factory/fixtures/D13-PROMPT-INTAKE/",
+    "factory/receipts/D13-PROMPT-INTAKE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q 'FACTTEST · D13 REPO HYGIENE / CHAIN CLOSURE' design/materialization/D13-REPO-HYGIENE-PROMPT.md && grep -q '^CURRENT KNOWN MAIN' design/materialization/D13-REPO-HYGIENE-PROMPT.md && grep -q '^design/materialization/D13-REPO-HYGIENE-PROMPT.md' design/materialization/D13-REPO-HYGIENE-PROMPT.md && [ $(grep -c '^\\[PASS\\]' design/materialization/D13-REPO-HYGIENE-PROMPT.md) -eq 12 ] && grep -q 'D13-PROMPT-INTAKE' design/materialization/LEDGER.md"
+        ],
+        "log": "factory/receipts/D13-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+      },
+      {
+        "cwd": ".",
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "8e5dd6fe0d35669867dc7894434e68b13abeb158",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "evidence",
+          "tests",
+          "fixtures",
+          "design/environment-map",
+          "FACTORY-LAW.md",
+          "README.md"
+        ],
+        "log": "factory/receipts/D13-PROMPT-INTAKE/logs/F0-untouched.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D13-REPO-HYGIENE-PROMPT.md"
+  ],
+  "tests": [
+    "prompt structure",
+    "ledger",
+    "untouched"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

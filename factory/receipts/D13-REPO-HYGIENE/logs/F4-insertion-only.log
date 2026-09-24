@@ -1,0 +1,4 @@
+$ sh -c for f in FABLE-ASCII-SYSTEM-PROMPT.md FINAL-HANDOFF-REQUIREMENTS.md PLANNED-REPO-LAYOUT.md STATION-REGISTRY.md FACTORY-CONTRACTS.md REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do d=$(git diff --numstat 205d337a7efef5fa25bb588ec385fa3655acb562 -- $f | cut -f2); [ "$d" = 0 ] || { echo "$f deleted $d lines"; exit 1; }; grep -q '^D13 ANNOTATION' $f || { echo "$f no annotation"; exit 1; }; done
+(cwd .)
+
+[exit 0] expected 0

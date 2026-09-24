@@ -1,0 +1,4 @@
+$ sh -c node --check tests/toolchain/proof.mjs && node --check tests/envmap/envmap.mjs && node --check tests/hygiene/status-scan.mjs && node --check tests/hygiene/registry-check.mjs && sh -n tests/toolchain/run-qualified-proof.sh && sh -n tests/hygiene/handoff-check.sh && node -e 'for (const f of process.argv.slice(1)) JSON.parse(require("fs").readFileSync(f))' tests/toolchain/proof-sets.json tests/hygiene/status-classification.json
+(cwd .)
+
+[exit 0] expected 0

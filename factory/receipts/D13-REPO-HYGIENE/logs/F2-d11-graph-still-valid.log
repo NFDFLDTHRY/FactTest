@@ -1,0 +1,5 @@
+$ sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json && git diff --exit-code 205d337a7efef5fa25bb588ec385fa3655acb562 -- tests/toolchain/run-proof-matrix.sh tests/toolchain/run-mutants.sh fixtures/toolchain
+(cwd .)
+PASS 23 checks
+
+[exit 0] expected 0

@@ -1,0 +1,714 @@
+{
+ "schema": "facttest-environment-map-epoch/1",
+ "epoch": "D13",
+ "delta": "D13-REPO-HYGIENE",
+ "commit": "205d337a7efef5fa25bb588ec385fa3655acb562 (canonical base; integration commit in LEDGER AFTER)",
+ "summary": "repository hygiene: pinned proof sets, literal surfaces, status inventory, live handoff, workpiece audit; evidence bound after the stations ran",
+ "nodes": [
+  {
+   "id": "ENV-D13-HOST-PINNED",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D13-HOST-PINNED",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1 (rust-toolchain.toml)",
+     "rustc": "1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "components": [
+      "clippy",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24 (tests/toolchain/proof-sets.json)",
+     "rustc": "1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "components": [
+      "rust-src",
+      "clippy"
+     ],
+     "install_name": "nightly-2026-09-24-x86_64-unknown-linux-gnu"
+    }
+   },
+   "target": "x86_64-unknown-linux-gnu (HOST_NATIVE_SET) + wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "cargo / node v22.22.2 / Chromium 141 (Playwright 1.56.1) / git 2.43.0",
+   "versions": {
+    "node": "v22.22.2",
+    "git": "2.43.0",
+    "chromium": "HeadlessChrome/141.0.7390.37"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216 (WASM64_KERNEL_SET)",
+    "cargo": "-Z build-std=core (WASM64_KERNEL_SET); dev + release"
+   },
+   "build_profile": "dev + release",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "CPU only",
+   "dependency_graph_identity": "cargo metadata --locked: 14 path packages (Q-ALL-02)",
+   "other_state": {
+    "repository_pin": "rust-toolchain.toml 1.94.1 + proof-sets.json nightly-2026-09-24"
+   },
+   "identity_completeness": {
+    "missing": [
+     "CPU identity"
+    ],
+    "present": [
+     "both pinned toolchains with commits and install names",
+     "kernel release (receipts format 2 from D14 on)",
+     "node/git/chromium versions"
+    ]
+   },
+   "owner": "evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+   "note": "first epoch with a repository toolchain pin"
+  },
+  {
+   "id": "IMPL-QUALIFIED-PROOF",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-QUALIFIED-PROOF",
+   "repo_path": "tests/toolchain/{run-qualified-proof.sh,proof.mjs,proof-sets.json}",
+   "commit": "introduced by D13-REPO-HYGIENE (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "proof sets HOST_NATIVE_SET / WASM64_KERNEL_SET / ALL_SOURCES / ALL_MEMBERS_GRAPH / CROSS_SET / HEURISTIC on pinned toolchains",
+   "owner": "FactTest repository path tests/toolchain/"
+  },
+  {
+   "id": "IMPL-FACTORY-HYGIENE",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-FACTORY-HYGIENE",
+   "repo_path": "factory/src/{paths.rs,identity.rs,hygiene.rs}",
+   "commit": "introduced by D13-REPO-HYGIENE (integration commit in LEDGER AFTER)",
+   "kind": "factory",
+   "note": "literal-surface validation, receipt format 2 environment identity, workpiece audit and guarded retire",
+   "owner": "FactTest repository path factory/src/"
+  },
+  {
+   "id": "IMPL-STATUS-SCAN",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-STATUS-SCAN",
+   "repo_path": "tests/hygiene/{status-scan.mjs,status-classification.json,handoff-check.sh}",
+   "commit": "introduced by D13-REPO-HYGIENE (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "status-marker inventory against declared zone classes; live-handoff check",
+   "owner": "FactTest repository path tests/hygiene/"
+  },
+  {
+   "id": "CON-EM-007",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-EM-007",
+   "statement": "Each proof set runs on its pinned toolchain (HOST_NATIVE_SET: rust-toolchain.toml 1.94.1; WASM64_KERNEL_SET: proof-sets.json nightly-2026-09-24, enforced by the qualified runner); evidence still records the observed identity; kernel byte identity is declared per rust-src install name.",
+   "authority_refs": [
+    "AUTH-CARGO-BUILD-STD",
+    "LAW-EVIDENCE-OBLIGATIONS"
+   ],
+   "scope": "toolchain",
+   "conflicts": [
+    "CON-EM-005 (D11: \"never pinned by the repository\"), superseded prospectively from D13"
+   ],
+   "ledger_status": "PROPOSED",
+   "kind": "project",
+   "owner": "D13 (proposed; not yet in CONSTRAINT-LEDGER.md)"
+  },
+  {
+   "id": "CON-FT-007",
+   "class": "CONSTRAINT",
+   "constraint_id": "CON-FT-007",
+   "statement": "Proof records name their proof set, target, profile and toolchain; bare cargo selects HOST_NATIVE_SET (default-members), never the whole project; CROSS_SET and HEURISTIC records carry proof weight NONE.",
+   "authority_refs": [
+    "LAW-FACTORY-CONTRACTS"
+   ],
+   "scope": "proof",
+   "conflicts": [],
+   "ledger_status": "PROPOSED",
+   "kind": "project",
+   "owner": "D13 (proposed)"
+  },
+  {
+   "id": "PROBE-QUALIFIED-PROOF",
+   "class": "PROBE",
+   "probe_id": "PROBE-QUALIFIED-PROOF",
+   "proves_fact": [
+    "FACT-TOOLCHAIN-PINNED",
+    "FACT-PROOF-SETS-DECLARED",
+    "FACT-QUALIFIED-JUDGE-RERUN",
+    "FACT-KERNEL-IDENTITY-INSTALL-PATH"
+   ],
+   "command_or_operation": "sh tests/toolchain/run-qualified-proof.sh evidence/D13/proof (S-BUILD, pinned toolchains via PROOF_CHAN_MAP)",
+   "expected_observations": [
+    "pins PASS",
+    "sets-check PASS",
+    "HOST/WASM64/ALL obligations PASS",
+    "CROSS_SET OBS",
+    "HEURISTIC weight NONE",
+    "mutants RUN"
+   ],
+   "failure_meaning": [
+    "a pinned toolchain drifted or a set selection differs from its declaration: return to ASCII"
+   ],
+   "implemented_by": "IMPL-QUALIFIED-PROOF",
+   "owner": "IMPL-QUALIFIED-PROOF"
+  },
+  {
+   "id": "PROBE-STATUS-SCAN",
+   "class": "PROBE",
+   "probe_id": "PROBE-STATUS-SCAN",
+   "proves_fact": [
+    "FACT-STATUS-INVENTORIED",
+    "FACT-HANDOFF-MODEL-INDEPENDENT"
+   ],
+   "command_or_operation": "node tests/hygiene/status-scan.mjs; sh tests/hygiene/handoff-check.sh",
+   "expected_observations": [
+    "0 unclassified occurrences",
+    "defect patterns within bounds",
+    "handoff checks PASS"
+   ],
+   "failure_meaning": [
+    "an unclassified marker or a recurring defect pattern: the chain is not closed"
+   ],
+   "implemented_by": "IMPL-STATUS-SCAN",
+   "owner": "IMPL-STATUS-SCAN"
+  },
+  {
+   "id": "PROBE-WORKPIECE-AUDIT",
+   "class": "PROBE",
+   "probe_id": "PROBE-WORKPIECE-AUDIT",
+   "proves_fact": [
+    "FACT-WORKPIECES-AUDITED"
+   ],
+   "command_or_operation": "factory workpiece audit -> factory workpiece retire -> factory workpiece audit",
+   "expected_observations": [
+    "after retire: 0 RETIRABLE; kept objects carry reasons"
+   ],
+   "failure_meaning": [
+    "a retire failed or removed something unproven"
+   ],
+   "implemented_by": "IMPL-FACTORY-HYGIENE",
+   "owner": "IMPL-FACTORY-HYGIENE"
+  },
+  {
+   "id": "FACT-TOOLCHAIN-PINNED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-TOOLCHAIN-PINNED",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "both proof sets resolve to their pinned toolchains; bare rustc in the repository resolves to the HOST_NATIVE_SET pin",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-EM-007"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "D13-OBSERVED; evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-PINS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-PINS",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+    "sha256": "d55a874afc30c53d00fe6af7241ad2d136728548c1773dea11c31afc71afd6b1",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 2414
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  },
+  {
+   "id": "FACT-PROOF-SETS-DECLARED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-PROOF-SETS-DECLARED",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "every workspace member is the root of exactly one proof set; default-members == HOST_NATIVE_SET; factc-wasm-abi is the WASM64_KERNEL_SET root; physical manifests accounted",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-FT-007"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "D13-OBSERVED; evidence/D13/proof/sets/T13-SETS-01-roots-partition.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-SETS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-SETS",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/proof/sets/T13-SETS-01-roots-partition.json",
+    "sha256": "fc49f2cd5dff14f3155894894c83d21b78bc26f195f12250fad58b5b7d39f5d4",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 4788
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  },
+  {
+   "id": "FACT-QUALIFIED-JUDGE-RERUN",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-QUALIFIED-JUDGE-RERUN",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "the qualified matrix passes on the pinned toolchains and the 8 mutants still separate weak from qualified checks",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-FT-007",
+    "CON-RS-002"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "D13-OBSERVED; evidence/D13/proof/summary.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-PROOF-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-PROOF-SUMMARY",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/proof/summary.json",
+    "sha256": "cb6ad163d83fc5875bbc85e8bd6b33c2c95c67b23df55307e33db6d15bd28e77",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 30012
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  },
+  {
+   "id": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "the release kernel bytes depend on the rust-src install path: pinned nightly-2026-09-24 gives 6f25ce43... while the same rustc mounted at D9's install name reproduces D9's 309589947e16...; identity is declared per install name",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-EM-007"
+   ],
+   "status": "GAP",
+   "note": "H-12 [GAP] kept visible",
+   "source_ref": "D13-OBSERVED; evidence/D13/proof/wasm64/Q-WASM-06-kernel-identity.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-KERNEL-IDENTITY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-KERNEL-IDENTITY",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/proof/wasm64/Q-WASM-06-kernel-identity.json",
+    "sha256": "68539c9161afcbd6ad33e2d7a9b407cae365f95362fbc31e0e7bde527b03b160",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 1453
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  },
+  {
+   "id": "FACT-SURFACES-LITERAL-ENFORCED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-SURFACES-LITERAL-ENFORCED",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "the Factory rejects wildcard-looking, absolute and dot-segment surfaces in deltas, fixtures and station specs (f09-f12); the registry has no such entry",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-FT-005"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "D13-OBSERVED; evidence/D13/paths/paths-probe.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-PATHS-PROBE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-PATHS-PROBE",
+   "probe_ref": "PROBE-PATHS-LITERAL",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/paths/paths-probe.json",
+    "sha256": "443262e291150a6cc98d11271249f280649463ed6e4f33b32032c20390e87be2",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 18322
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  },
+  {
+   "id": "FACT-STATUS-INVENTORIED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-STATUS-INVENTORIED",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "every status-marker occurrence in the tree falls in a declared zone class; defect patterns within bounds",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-FT-002"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "D13-OBSERVED; evidence/D13/status/inventory.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-STATUS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-STATUS",
+   "probe_ref": "PROBE-STATUS-SCAN",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/status/inventory.json",
+    "sha256": "8eb4a1a7b5bd97ebbeb69bebd79b3fd81fe581b3188674d7f9cd966fd2e282f1",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 157377
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  },
+  {
+   "id": "FACT-HANDOFF-MODEL-INDEPENDENT",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-HANDOFF-MODEL-INDEPENDENT",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "README -> docs/HANDOFF.md give state, law, entrypoint and procedure; live model/session mentions are marked historical",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-FT-001"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "D13-OBSERVED; evidence/D13/handoff/check.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-HANDOFF",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-HANDOFF",
+   "probe_ref": "PROBE-STATUS-SCAN",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/handoff/check.json",
+    "sha256": "06c50e44e6041f9c7c14536d8bf475639d613ab362fcea1f18b73491c30d4eb9",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 1408
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  },
+  {
+   "id": "FACT-WORKPIECES-AUDITED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-WORKPIECES-AUDITED",
+   "subject": "FactTest repository chain (D13)",
+   "predicate": "every object under the workpiece root is classified; only proven-disposable objects were retired",
+   "required_environment": [
+    "pinned toolchains (ENV-D13-HOST-PINNED)"
+   ],
+   "constraint_refs": [
+    "CON-FT-004"
+   ],
+   "status": "RUN",
+   "note": null,
+   "source_ref": "D13-OBSERVED; evidence/D13/workpieces/audit-after.json",
+   "owner": "D13 (derived from the evidence named by its edges)"
+  },
+  {
+   "id": "EV-D13-WORKPIECES",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D13-WORKPIECES",
+   "probe_ref": "PROBE-WORKPIECE-AUDIT",
+   "environment_ref": "ENV-D13-HOST-PINNED",
+   "artifact_identity": {
+    "path": "evidence/D13/workpieces/audit-after.json",
+    "sha256": "675c1faa5bb74ec9a4606effda5bd6e4ce14d315a7a071f60de2065a7b2b06f9",
+    "locator": "verdict/reason",
+    "identity_source": "sha256 of the committed file (bound after the station ran)",
+    "bytes": 9368
+   },
+   "observed_result": "see the bound artifact (D13-OBSERVED)",
+   "epoch": "D13",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D13-REPO-HYGIENE"
+  }
+ ],
+ "edges": [
+  {
+   "type": "CONFLICTS_WITH",
+   "from": "CON-EM-007",
+   "to": "CON-EM-005",
+   "conflict_id": "D13-PIN",
+   "note": "D11 recorded the absence of a pin as a rule; D13 pins by evidence under the owner prompt (target 3); D11 evidence keeps its recorded identities"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-QUALIFIED-PROOF",
+   "to": "IMPL-QUALIFIED-PROOF"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-STATUS-SCAN",
+   "to": "IMPL-STATUS-SCAN"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-WORKPIECE-AUDIT",
+   "to": "IMPL-FACTORY-HYGIENE"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-TOOLCHAIN-PINNED",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-TOOLCHAIN-PINNED",
+   "to": "EV-D13-PINS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-QUALIFIED-PROOF",
+   "to": "EV-D13-PINS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-TOOLCHAIN-PINNED",
+   "to": "ENV-D13-HOST-PINNED"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-PROOF-SETS-DECLARED",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-PROOF-SETS-DECLARED",
+   "to": "EV-D13-SETS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-QUALIFIED-PROOF",
+   "to": "EV-D13-SETS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-PROOF-SETS-DECLARED",
+   "to": "ENV-D13-HOST-PINNED"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-QUALIFIED-JUDGE-RERUN",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-QUALIFIED-JUDGE-RERUN",
+   "to": "EV-D13-PROOF-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-QUALIFIED-PROOF",
+   "to": "EV-D13-PROOF-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-QUALIFIED-JUDGE-RERUN",
+   "to": "ENV-D13-HOST-PINNED"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+   "to": "EV-D13-KERNEL-IDENTITY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-QUALIFIED-PROOF",
+   "to": "EV-D13-KERNEL-IDENTITY"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-SURFACES-LITERAL-ENFORCED",
+   "to": "PROBE-PATHS-LITERAL"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SURFACES-LITERAL-ENFORCED",
+   "to": "EV-D13-PATHS-PROBE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-PATHS-LITERAL",
+   "to": "EV-D13-PATHS-PROBE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-SURFACES-LITERAL-ENFORCED",
+   "to": "ENV-D13-HOST-PINNED"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-STATUS-INVENTORIED",
+   "to": "PROBE-STATUS-SCAN"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-STATUS-INVENTORIED",
+   "to": "EV-D13-STATUS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-STATUS-SCAN",
+   "to": "EV-D13-STATUS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-STATUS-INVENTORIED",
+   "to": "ENV-D13-HOST-PINNED"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-HANDOFF-MODEL-INDEPENDENT",
+   "to": "PROBE-STATUS-SCAN"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-HANDOFF-MODEL-INDEPENDENT",
+   "to": "EV-D13-HANDOFF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-STATUS-SCAN",
+   "to": "EV-D13-HANDOFF"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-HANDOFF-MODEL-INDEPENDENT",
+   "to": "ENV-D13-HOST-PINNED"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-WORKPIECES-AUDITED",
+   "to": "PROBE-WORKPIECE-AUDIT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WORKPIECES-AUDITED",
+   "to": "EV-D13-WORKPIECES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-WORKPIECE-AUDIT",
+   "to": "EV-D13-WORKPIECES"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-WORKPIECES-AUDITED",
+   "to": "ENV-D13-HOST-PINNED"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-TOOLCHAIN-PINNED",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.stable.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.install_name",
+    "relation": "changes (build-std hashes the rust-src path)"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-QUALIFIED-JUDGE-RERUN",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "INVALIDATED_BY",
+   "from": "FACT-WILDCARD-SURFACES-DEAD",
+   "to": "EV-D13-PATHS-PROBE"
+  },
+  {
+   "type": "INVALIDATED_BY",
+   "from": "FACT-TOOLCHAIN-DRIFT",
+   "to": "EV-D13-PINS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SH-KERNEL-TOOLCHAIN-DRIFT",
+   "to": "EV-D13-KERNEL-IDENTITY"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CARGO-BUILD-STD",
+   "to": "FACT-KERNEL-IDENTITY-INSTALL-PATH"
+  }
+ ]
+}

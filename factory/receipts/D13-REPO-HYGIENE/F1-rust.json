@@ -1,0 +1,188 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F1-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F1-rust",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "factory/src/",
+    "factory/tests/",
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 2.1, 2.4, 2.8, 2.9, 3.2"
+  ],
+  "open_tree": "b7b85675ed23c014913d4d4e3214f760db13c02c",
+  "close_tree": "caec60388ea0f53f8d578373d853ca4728543308",
+  "changed_paths": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-clippy.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-compiler-untouched.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-fmt.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-pin-resolves.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-test.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-witnesses.log",
+    "factory/src/checks.rs",
+    "factory/src/hygiene.rs",
+    "factory/src/identity.rs",
+    "factory/src/lib.rs",
+    "factory/src/main.rs",
+    "factory/src/model.rs",
+    "factory/src/ops.rs",
+    "factory/src/paths.rs",
+    "factory/tests/factory_law.rs",
+    "rust-toolchain.toml"
+  ],
+  "output_artifacts": [
+    "factory/src/paths.rs",
+    "factory/src/identity.rs",
+    "factory/src/hygiene.rs",
+    "factory/tests/factory_law.rs",
+    "rust-toolchain.toml"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F1-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F1-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F1-test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F1-witnesses.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F1-pin-resolves.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F1-compiler-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo +1.94.1 fmt -p factory --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F1-fmt.log"
+    },
+    {
+      "check": "command:cargo +1.94.1 clippy -p factory --all-targets -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F1-clippy.log"
+    },
+    {
+      "check": "command:cargo +1.94.1 test -p factory",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F1-test.log"
+    },
+    {
+      "check": "command:sh -c cargo +1.94.1 test -p factory -- --list 2>/dev/null | grep -c ': test$' | grep -qx 17 && for t in f09_wildcard_station_surface_rejected_at_open f10_wildcard_delta_surface_rejected_at_check f11_literal_surface_forms f12_fixture_wildcard_rejected_at_open f13_receipt_and_verification_carry_environment_identity f14_audit_classifies_only_proven_objects_retirable f15_retire_removes_exactly_the_proven_objects f16_heuristic_checkers_carry_proof_weight_none; do grep -q \"fn $t\" factory/tests/factory_law.rs || { echo missing $t; exit 1; }; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F1-witnesses.log"
+    },
+    {
+      "check": "command:sh -c rustc -vV | grep -qx 'commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1' && grep -qx 'channel = \"1.94.1\"' rust-toolchain.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F1-pin-resolves.log"
+    },
+    {
+      "check": "command:git diff --exit-code 205d337a7efef5fa25bb588ec385fa3655acb562 -- compiler host Cargo.toml Cargo.lock factory/Cargo.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F1-compiler-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/paths.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/identity.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/hygiene.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/tests/factory_law.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:rust-toolchain.toml",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-fmt.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-clippy.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-test.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-witnesses.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-pin-resolves.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-compiler-untouched.log"
+  ],
+  "closed": "2026-09-24T07:11:42Z",
+  "status": "PASS"
+}

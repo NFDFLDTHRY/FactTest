@@ -1,6 +1,7 @@
 # FactTest
 
-STATUS: MATERIALIZED THROUGH THE FACTORY - BYTE RELAY PHYSICALLY COMMISSIONED (SwiftShader WebGPU + wasm64 in Chromium 141)
+STATUS: LIVE - model-independent entry.  Current state, mutation law, operating procedure, document register and the
+open-boundary register: [docs/HANDOFF.md](docs/HANDOFF.md).  Constitution: [FACTORY-LAW.md](FACTORY-LAW.md).
 
 FactTest is a governance-first foundry project for a `#![no_std]`, no-third-party-crate Rust compiler whose source language is AI-authored ASCII Systems Diagrams and whose generated target is a capability-parametric Chrome WebApp.
 
@@ -43,7 +44,22 @@ Every implementation commit on the materialization branch was produced by the Fa
 (`factory/receipts/<delta>/`), never by an agent writing to the canonical repository.
 
 
-## Fable implementation session
+## Start here
 
-Read [FABLE-ASCII-SYSTEM-PROMPT.md](FABLE-ASCII-SYSTEM-PROMPT.md) first when beginning the Fable 5.1 materialization session.
-It is the session bootloader; the repo owner contracts remain the detailed specification.
+1. [docs/HANDOFF.md](docs/HANDOFF.md) - current state, the next delta, how to route a delta through the Factory,
+   which documents are live law and which are historical, and every open [ERR]/[GAP]/[UNK] with its class.
+2. [FACTORY-LAW.md](FACTORY-LAW.md) - AGENT -> ASCII -> FACTORY -> WORKPIECE -> VERIFY -> REPO; never AGENT -> REPO.
+3. [design/materialization/LEDGER.md](design/materialization/LEDGER.md) - BEFORE/AFTER of every delta (D0 onward).
+
+No session prompt is required: the entry is model-independent.  Proof sets and the toolchain pin are in
+[tests/toolchain/proof-sets.json](tests/toolchain/proof-sets.json) and [rust-toolchain.toml](rust-toolchain.toml).
+
+## History
+
+- Former status line (M9, historical): "MATERIALIZED THROUGH THE FACTORY - BYTE RELAY PHYSICALLY COMMISSIONED
+  (SwiftShader WebGPU + wasm64 in Chromium 141)".
+- The original materialization session (historical) was bootstrapped by
+  [FABLE-ASCII-SYSTEM-PROMPT.md](FABLE-ASCII-SYSTEM-PROMPT.md), the Fable 5.1 session bootloader (historical; kept
+  unchanged apart from its D13 HISTORICAL banner).  It is not the entry for new work.
+- Later deltas: D9 Rust/Cargo proof harness, D10-D11 computational environment map, D12 self-hosting architecture,
+  D13 repository hygiene (see the ledger).

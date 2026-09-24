@@ -1,5 +1,7 @@
 # Final Fable 5.1 Handoff Requirements
 
+D13 ANNOTATION: the title names the historical Fable 5.1 session (historical).  The requirements below remain live law for any agent or person continuing FactTest; the live handoff is docs/HANDOFF.md, which carries them forward model-independently.
+
 STATUS: PASS 6 OUTPUT
 
 This is not yet the final condensed ASCII system prompt.

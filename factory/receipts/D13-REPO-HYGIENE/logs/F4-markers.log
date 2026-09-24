@@ -1,0 +1,4 @@
+$ sh -c for f in REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md; do grep -q 'https://webassembly.github.io/spec/js-api/#internal-storage' $f && grep -A1 'https://webassembly.github.io/spec/js-api/#internal-storage' $f | grep -q '^D13 ANNOTATION (fragment #internal-storage)' || { echo $f; exit 1; }; done; head -1 FABLE-ASCII-SYSTEM-PROMPT.md | grep -q '^D13 ANNOTATION - HISTORICAL'
+(cwd .)
+
+[exit 0] expected 0

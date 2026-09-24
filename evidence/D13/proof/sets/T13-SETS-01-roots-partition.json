@@ -1,0 +1,192 @@
+{
+  "id": "T13-SETS-01-roots-partition",
+  "class": "T13-SETS",
+  "invariant": "every workspace member is the root of exactly one proof set; bare cargo (default-members) == HOST_NATIVE_SET",
+  "proof_set": null,
+  "evaluated": "2026-09-24T07:12:17.356Z",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "metadata",
+    "--format-version",
+    "1",
+    "--locked"
+  ],
+  "members": [
+    "factc",
+    "factc-bundle",
+    "factc-capability",
+    "factc-codegen",
+    "factc-foundation",
+    "factc-implementation",
+    "factc-kernel",
+    "factc-observe",
+    "factc-planning",
+    "factc-semantic",
+    "factc-source",
+    "factc-verifier",
+    "factc-wasm-abi",
+    "factory"
+  ],
+  "default_members": [
+    "factc",
+    "factc-bundle",
+    "factc-capability",
+    "factc-codegen",
+    "factc-foundation",
+    "factc-implementation",
+    "factc-kernel",
+    "factc-observe",
+    "factc-planning",
+    "factc-semantic",
+    "factc-source",
+    "factc-verifier",
+    "factory"
+  ],
+  "host_roots": [
+    "factc",
+    "factc-bundle",
+    "factc-capability",
+    "factc-codegen",
+    "factc-foundation",
+    "factc-implementation",
+    "factc-kernel",
+    "factc-observe",
+    "factc-planning",
+    "factc-semantic",
+    "factc-source",
+    "factc-verifier",
+    "factory"
+  ],
+  "wasm64_roots": [
+    "factc-wasm-abi"
+  ],
+  "physical_manifests": [
+    {
+      "manifest": "Cargo.toml",
+      "class": "root"
+    },
+    {
+      "manifest": "compiler/bundle/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/capability/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/codegen/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/foundation/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/implementation/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/kernel/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/observe/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/planning/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/semantic/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/source/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/verifier/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/wasm-abi/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "factory/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/forge-verified-strategy/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/id-substitution/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/std-in-kernel/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/third-party-dep/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M3-compile-fail-stale-forge/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M4-nostd-scanner-bypass/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M7-wasm32-masquerade/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M8-debug-pass-release-fail/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "host/factc/Cargo.toml",
+      "class": "member"
+    }
+  ],
+  "verdict": "PASS",
+  "reason": "14 members = 13 HOST_NATIVE_SET roots (== default-members) + 1 WASM64_KERNEL_SET root (factc-wasm-abi); disjoint and complete; 31 physical manifests accounted"
+}

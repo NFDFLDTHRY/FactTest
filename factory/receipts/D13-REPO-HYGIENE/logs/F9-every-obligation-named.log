@@ -1,0 +1,4 @@
+$ sh -c for id in $(node -e 'const s=JSON.parse(require("fs").readFileSync("evidence/D13/proof/summary.json"));console.log(s.obligations.map(o=>o.id).join(" "))'); do grep -q "$id" design/materialization/D13-OBSERVED-REPO-HYGIENE.md || { echo missing $id; exit 1; }; done
+(cwd .)
+
+[exit 0] expected 0

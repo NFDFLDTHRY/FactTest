@@ -1,0 +1,574 @@
+{
+  "id": "M5-uninspected-manifest",
+  "attacks": "T9-P6 dependency law",
+  "description": "workspace member gamma declares a crates.io dependency in a dotted [dependencies.serde] table; the explicit-list scan accepts both manifests (0 entries seen). An unlisted manifest would escape by construction.",
+  "weak": {
+    "check": "depcheck-weak",
+    "manifests": [
+      "alpha/Cargo.toml",
+      "gamma/Cargo.toml"
+    ],
+    "expect": "PASS",
+    "note": "factory depcheck with every manifest listed still passes",
+    "observed": {
+      "command": [
+        "/home/user/factory-target-d13w/debug/factory",
+        "depcheck",
+        "/home/user/factory-target-d13w/d9-mutants/M5-uninspected-manifest/src-copy",
+        "alpha/Cargo.toml",
+        "gamma/Cargo.toml"
+      ],
+      "exit": 0,
+      "output": [
+        "== depcheck /home/user/factory-target-d13w/d9-mutants/M5-uninspected-manifest/src-copy alpha/Cargo.toml gamma/Cargo.toml : PASS [HEURISTIC: proof weight NONE]",
+        "  [PASS] first_party_only:alpha/Cargo.toml:gamma - path ../gamma",
+        "  [PASS] manifest_scanned:alpha/Cargo.toml - 1 dependency entries",
+        "  [PASS] manifest_scanned:gamma/Cargo.toml - 0 dependency entries"
+      ],
+      "verdict": "PASS",
+      "reason": "explicit-list scan accepted 2 manifests [HEURISTIC: unlisted manifests and dotted-table sections are never read; verdict weight none]"
+    }
+  },
+  "qualified": {
+    "check": "deps",
+    "expect": "FAIL",
+    "reason_must_contain": "serde",
+    "note": "T9-P6: Cargo's resolved graph shows a registry source (or resolution from first-party sources fails)",
+    "observed": {
+      "verdict": "FAIL",
+      "reason": "gamma -> serde (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1; package proc-macro2@1.0.107 source registry+https://github.com/rust-lang/crates.io-index; package proc-macro2 manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml; proc-macro2 -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> flate2 (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> quote (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0",
+      "command": [
+        "cargo",
+        "+1.94.1",
+        "metadata",
+        "--format-version",
+        "1"
+      ],
+      "packages": [
+        {
+          "name": "alpha",
+          "version": "0.0.0",
+          "source": null,
+          "manifest": "alpha/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "gamma",
+          "version": "0.0.0",
+          "source": null,
+          "manifest": "gamma/Cargo.toml",
+          "inside_root": true
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.107",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "quote",
+          "version": "1.0.47",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/quote-1.0.47/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "serde",
+          "version": "1.0.229",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.229",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.229",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_derive-1.0.229/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "syn",
+          "version": "3.0.6",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/syn-3.0.6/Cargo.toml",
+          "inside_root": false
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.26",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "manifest": "/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/unicode-ident-1.0.26/Cargo.toml",
+          "inside_root": false
+        }
+      ],
+      "dependencies": [
+        {
+          "from": "alpha",
+          "name": "gamma",
+          "kind": "normal",
+          "target": null,
+          "source": null,
+          "path": "gamma",
+          "req": "*"
+        },
+        {
+          "from": "gamma",
+          "name": "serde",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "proc-macro2",
+          "name": "unicode-ident",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0"
+        },
+        {
+          "from": "proc-macro2",
+          "name": "flate2",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0"
+        },
+        {
+          "from": "proc-macro2",
+          "name": "quote",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0"
+        },
+        {
+          "from": "proc-macro2",
+          "name": "rayon",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0"
+        },
+        {
+          "from": "proc-macro2",
+          "name": "rustversion",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "proc-macro2",
+          "name": "tar",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.4"
+        },
+        {
+          "from": "quote",
+          "name": "proc-macro2",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0.80"
+        },
+        {
+          "from": "quote",
+          "name": "rustversion",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0"
+        },
+        {
+          "from": "quote",
+          "name": "trybuild",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0.108"
+        },
+        {
+          "from": "serde",
+          "name": "serde_core",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "=1.0.229"
+        },
+        {
+          "from": "serde",
+          "name": "serde_derive",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "serde_core",
+          "name": "serde",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "serde_core",
+          "name": "serde_derive",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "serde_core",
+          "name": "serde_derive",
+          "kind": "normal",
+          "target": "cfg(any())",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "=1.0.229"
+        },
+        {
+          "from": "serde_derive",
+          "name": "proc-macro2",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0.74"
+        },
+        {
+          "from": "serde_derive",
+          "name": "quote",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0.35"
+        },
+        {
+          "from": "serde_derive",
+          "name": "syn",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^3"
+        },
+        {
+          "from": "serde_derive",
+          "name": "serde",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "proc-macro2",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0.91"
+        },
+        {
+          "from": "syn",
+          "name": "quote",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1.0.35"
+        },
+        {
+          "from": "syn",
+          "name": "unicode-ident",
+          "kind": "normal",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "anyhow",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "automod",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "insta",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "ref-cast",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "rustversion",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "syn-test-suite",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0"
+        },
+        {
+          "from": "syn",
+          "name": "termcolor",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "flate2",
+          "kind": "dev",
+          "target": "cfg(not(miri))",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "rayon",
+          "kind": "dev",
+          "target": "cfg(not(miri))",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^1"
+        },
+        {
+          "from": "syn",
+          "name": "reqwest",
+          "kind": "dev",
+          "target": "cfg(not(miri))",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.13"
+        },
+        {
+          "from": "syn",
+          "name": "tar",
+          "kind": "dev",
+          "target": "cfg(not(miri))",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.4.16"
+        },
+        {
+          "from": "syn",
+          "name": "walkdir",
+          "kind": "dev",
+          "target": "cfg(not(miri))",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^2.3.2"
+        },
+        {
+          "from": "unicode-ident",
+          "name": "fst",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.4"
+        },
+        {
+          "from": "unicode-ident",
+          "name": "rand",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.10"
+        },
+        {
+          "from": "unicode-ident",
+          "name": "roaring",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.11"
+        },
+        {
+          "from": "unicode-ident",
+          "name": "ucd-trie",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.1"
+        },
+        {
+          "from": "unicode-ident",
+          "name": "unicode-xid",
+          "kind": "dev",
+          "target": null,
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.2.6"
+        },
+        {
+          "from": "unicode-ident",
+          "name": "criterion",
+          "kind": "dev",
+          "target": "cfg(not(miri))",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "path": null,
+          "req": "^0.8"
+        }
+      ],
+      "resolved_nodes": 9,
+      "physical_manifests": [
+        {
+          "manifest": "Cargo.toml",
+          "class": "root"
+        },
+        {
+          "manifest": "alpha/Cargo.toml",
+          "class": "member"
+        },
+        {
+          "manifest": "gamma/Cargo.toml",
+          "class": "member"
+        }
+      ],
+      "unaccounted": [],
+      "offenders": [
+        "gamma -> serde (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "package proc-macro2@1.0.107 source registry+https://github.com/rust-lang/crates.io-index",
+        "package proc-macro2 manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml",
+        "proc-macro2 -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0",
+        "proc-macro2 -> flate2 (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0",
+        "proc-macro2 -> quote (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0",
+        "proc-macro2 -> rayon (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0",
+        "proc-macro2 -> rustversion (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "proc-macro2 -> tar (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.4",
+        "package quote@1.0.47 source registry+https://github.com/rust-lang/crates.io-index",
+        "package quote manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/quote-1.0.47/Cargo.toml",
+        "quote -> proc-macro2 (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0.80",
+        "quote -> rustversion (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0",
+        "quote -> trybuild (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0.108",
+        "package serde@1.0.229 source registry+https://github.com/rust-lang/crates.io-index",
+        "package serde manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/Cargo.toml",
+        "serde -> serde_core (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req =1.0.229",
+        "serde -> serde_derive (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "package serde_core@1.0.229 source registry+https://github.com/rust-lang/crates.io-index",
+        "package serde_core manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/Cargo.toml",
+        "serde_core -> serde (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "serde_core -> serde_derive (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "serde_core -> serde_derive (normal, target cfg(any())) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req =1.0.229",
+        "package serde_derive@1.0.229 source registry+https://github.com/rust-lang/crates.io-index",
+        "package serde_derive manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_derive-1.0.229/Cargo.toml",
+        "serde_derive -> proc-macro2 (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0.74",
+        "serde_derive -> quote (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0.35",
+        "serde_derive -> syn (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^3",
+        "serde_derive -> serde (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "package syn@3.0.6 source registry+https://github.com/rust-lang/crates.io-index",
+        "package syn manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/syn-3.0.6/Cargo.toml",
+        "syn -> proc-macro2 (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0.91",
+        "syn -> quote (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0.35",
+        "syn -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> anyhow (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> automod (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> insta (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> ref-cast (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> rustversion (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> syn-test-suite (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0",
+        "syn -> termcolor (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> flate2 (dev, target cfg(not(miri))) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> rayon (dev, target cfg(not(miri))) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1",
+        "syn -> reqwest (dev, target cfg(not(miri))) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.13",
+        "syn -> tar (dev, target cfg(not(miri))) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.4.16",
+        "syn -> walkdir (dev, target cfg(not(miri))) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^2.3.2",
+        "package unicode-ident@1.0.26 source registry+https://github.com/rust-lang/crates.io-index",
+        "package unicode-ident manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/unicode-ident-1.0.26/Cargo.toml",
+        "unicode-ident -> fst (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.4",
+        "unicode-ident -> rand (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.10",
+        "unicode-ident -> roaring (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.11",
+        "unicode-ident -> ucd-trie (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.1",
+        "unicode-ident -> unicode-xid (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.2.6",
+        "unicode-ident -> criterion (dev, target cfg(not(miri))) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^0.8",
+        "resolved node registry+https://github.com/rust-lang/crates.io-index#proc-macro2@1.0.107 is not a path package",
+        "resolved node registry+https://github.com/rust-lang/crates.io-index#quote@1.0.47 is not a path package",
+        "resolved node registry+https://github.com/rust-lang/crates.io-index#serde@1.0.229 is not a path package",
+        "resolved node registry+https://github.com/rust-lang/crates.io-index#serde_core@1.0.229 is not a path package",
+        "resolved node registry+https://github.com/rust-lang/crates.io-index#serde_derive@1.0.229 is not a path package",
+        "resolved node registry+https://github.com/rust-lang/crates.io-index#syn@3.0.6 is not a path package",
+        "resolved node registry+https://github.com/rust-lang/crates.io-index#unicode-ident@1.0.26 is not a path package"
+      ]
+    }
+  },
+  "expected": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "observed": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "verdict": "RUN",
+  "reason": "weak check PASS (would accept the mutant); qualified check FAIL: gamma -> serde (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1; package proc-macro2@1.0.107 source registry+https://github.com/rust-lang/crates.io-index; package proc-macro2 manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml; proc-macro2 -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> flate2 (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> quote (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0"
+}

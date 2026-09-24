@@ -1,0 +1,555 @@
+{
+  "delta_id": "D13-REPO-HYGIENE",
+  "workpiece_id": "W14",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "base_tree": "ec6b667806cde1c663e97f1334ed048cfe080096",
+  "verified_tree": "4fbcd8e5587374ef8c655ce4810b59af826db833",
+  "changed_paths": [
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FACTORY-CONTRACTS.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "README.md",
+    "REFERENCE-AUTHORITY.md",
+    "STATION-REGISTRY.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D12.json",
+    "design/environment-map/epochs/D13.json",
+    "design/environment-map/graph.json",
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md",
+    "design/materialization/D13-OBSERVED-REPO-HYGIENE.md",
+    "design/materialization/D13-PRE-RESCAN-BASELINE.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D13/envmap/merge-check.json",
+    "evidence/D13/envmap/queries/Q01.json",
+    "evidence/D13/envmap/queries/Q02.json",
+    "evidence/D13/envmap/queries/Q03.json",
+    "evidence/D13/envmap/queries/Q04.json",
+    "evidence/D13/envmap/queries/Q05.json",
+    "evidence/D13/envmap/queries/Q06.json",
+    "evidence/D13/envmap/queries/Q07.json",
+    "evidence/D13/envmap/queries/Q08.json",
+    "evidence/D13/envmap/queries/Q09.json",
+    "evidence/D13/envmap/queries/Q10.json",
+    "evidence/D13/envmap/queries/Q11.json",
+    "evidence/D13/envmap/queries/Q12.json",
+    "evidence/D13/envmap/queries/Q13.json",
+    "evidence/D13/envmap/queries/Q14.json",
+    "evidence/D13/envmap/queries/Q15.json",
+    "evidence/D13/envmap/queries/Q16.json",
+    "evidence/D13/envmap/render-check.json",
+    "evidence/D13/envmap/stale.json",
+    "evidence/D13/envmap/validate.json",
+    "evidence/D13/handoff/check.json",
+    "evidence/D13/index.json",
+    "evidence/D13/logs/F5-factory-build.log",
+    "evidence/D13/logs/F5-qualified-proof.log",
+    "evidence/D13/logs/F5-summary-gate.log",
+    "evidence/D13/logs/F6-audit-after.log",
+    "evidence/D13/logs/F6-audit-before.log",
+    "evidence/D13/logs/F6-cleanup-gate.log",
+    "evidence/D13/logs/F6-handoff-check.log",
+    "evidence/D13/logs/F6-paths-probe.log",
+    "evidence/D13/logs/F6-retire.log",
+    "evidence/D13/logs/F6-status-scan.log",
+    "evidence/D13/logs/F8-d12-traversable.log",
+    "evidence/D13/logs/F8-index.log",
+    "evidence/D13/logs/F8-merge-check.log",
+    "evidence/D13/logs/F8-queries.log",
+    "evidence/D13/logs/F8-render-check.log",
+    "evidence/D13/logs/F8-stale.log",
+    "evidence/D13/logs/F8-validate.log",
+    "evidence/D13/paths/paths-probe.json",
+    "evidence/D13/proof/all/Q-ALL-01-fmt-check.json",
+    "evidence/D13/proof/all/Q-ALL-01-fmt-check.log",
+    "evidence/D13/proof/all/Q-ALL-02-resolved-graph-first-party.json",
+    "evidence/D13/proof/all/Q-ALL-03-third-party-dep-fixture-rejected.json",
+    "evidence/D13/proof/cross/X-01-build-workspace-host.json",
+    "evidence/D13/proof/cross/X-01-build-workspace-host.log",
+    "evidence/D13/proof/cross/X-02-clippy-workspace-host.json",
+    "evidence/D13/proof/cross/X-02-clippy-workspace-host.log",
+    "evidence/D13/proof/cross/X-03-test-workspace-host.json",
+    "evidence/D13/proof/cross/X-03-test-workspace-host.log",
+    "evidence/D13/proof/heuristic/Z-01-nostd-textual-scan.json",
+    "evidence/D13/proof/heuristic/Z-02-depcheck-explicit-list.json",
+    "evidence/D13/proof/host/Q-HOST-01-build-dev.json",
+    "evidence/D13/proof/host/Q-HOST-01-build-dev.log",
+    "evidence/D13/proof/host/Q-HOST-02-build-release.json",
+    "evidence/D13/proof/host/Q-HOST-02-build-release.log",
+    "evidence/D13/proof/host/Q-HOST-03-test-dev.json",
+    "evidence/D13/proof/host/Q-HOST-03-test-dev.log",
+    "evidence/D13/proof/host/Q-HOST-04-test-release.json",
+    "evidence/D13/proof/host/Q-HOST-04-test-release.log",
+    "evidence/D13/proof/host/Q-HOST-05-clippy-all-targets.json",
+    "evidence/D13/proof/host/Q-HOST-05-clippy-all-targets.log",
+    "evidence/D13/proof/host/Q-HOST-06-std-in-kernel.json",
+    "evidence/D13/proof/host/Q-HOST-07-id-substitution.json",
+    "evidence/D13/proof/host/Q-HOST-08-forge-verified-strategy.json",
+    "evidence/D13/proof/mutants/M1-omitted-workspace-member/mutant.json",
+    "evidence/D13/proof/mutants/M1-omitted-workspace-member/qualified.json",
+    "evidence/D13/proof/mutants/M1-omitted-workspace-member/weak.json",
+    "evidence/D13/proof/mutants/M2-compile-fail-wrong-reason/mutant.json",
+    "evidence/D13/proof/mutants/M2-compile-fail-wrong-reason/qualified.json",
+    "evidence/D13/proof/mutants/M2-compile-fail-wrong-reason/weak.json",
+    "evidence/D13/proof/mutants/M3-compile-fail-stale-forge/mutant.json",
+    "evidence/D13/proof/mutants/M3-compile-fail-stale-forge/qualified.json",
+    "evidence/D13/proof/mutants/M3-compile-fail-stale-forge/weak.json",
+    "evidence/D13/proof/mutants/M4-nostd-scanner-bypass/mutant.json",
+    "evidence/D13/proof/mutants/M4-nostd-scanner-bypass/qualified.json",
+    "evidence/D13/proof/mutants/M4-nostd-scanner-bypass/weak.json",
+    "evidence/D13/proof/mutants/M5-uninspected-manifest/mutant.json",
+    "evidence/D13/proof/mutants/M5-uninspected-manifest/qualified.json",
+    "evidence/D13/proof/mutants/M5-uninspected-manifest/weak.json",
+    "evidence/D13/proof/mutants/M6-native-pass-wasm64-fail/mutant.json",
+    "evidence/D13/proof/mutants/M6-native-pass-wasm64-fail/qualified.json",
+    "evidence/D13/proof/mutants/M6-native-pass-wasm64-fail/weak.json",
+    "evidence/D13/proof/mutants/M7-wasm32-masquerade/mutant.json",
+    "evidence/D13/proof/mutants/M7-wasm32-masquerade/qualified.json",
+    "evidence/D13/proof/mutants/M7-wasm32-masquerade/weak.json",
+    "evidence/D13/proof/mutants/M8-debug-pass-release-fail/mutant.json",
+    "evidence/D13/proof/mutants/M8-debug-pass-release-fail/qualified.json",
+    "evidence/D13/proof/mutants/M8-debug-pass-release-fail/weak.json",
+    "evidence/D13/proof/mutants/summary.json",
+    "evidence/D13/proof/mutants/summary.txt",
+    "evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+    "evidence/D13/proof/sets/T13-SETS-01-roots-partition.json",
+    "evidence/D13/proof/summary.json",
+    "evidence/D13/proof/summary.txt",
+    "evidence/D13/proof/toolchain/T9-P7-01-toolchain-identity.json",
+    "evidence/D13/proof/wasm64/Q-WASM-01-clippy-core-graph.json",
+    "evidence/D13/proof/wasm64/Q-WASM-01-clippy-core-graph.log",
+    "evidence/D13/proof/wasm64/Q-WASM-02-core-only-graph-dev.json",
+    "evidence/D13/proof/wasm64/Q-WASM-03-core-only-graph-release.json",
+    "evidence/D13/proof/wasm64/Q-WASM-04-inspect-release.inspect.json",
+    "evidence/D13/proof/wasm64/Q-WASM-04-inspect-release.json",
+    "evidence/D13/proof/wasm64/Q-WASM-05-inspect-dev.inspect.json",
+    "evidence/D13/proof/wasm64/Q-WASM-05-inspect-dev.json",
+    "evidence/D13/proof/wasm64/Q-WASM-06-kernel-identity.json",
+    "evidence/D13/proof/wasm64/Q-WASM-07-chromium-abi-release.browser.err.log",
+    "evidence/D13/proof/wasm64/Q-WASM-07-chromium-abi-release.browser.json",
+    "evidence/D13/proof/wasm64/Q-WASM-07-chromium-abi-release.json",
+    "evidence/D13/status/inventory.json",
+    "evidence/D13/status/summary.txt",
+    "evidence/D13/workpieces/audit-after.json",
+    "evidence/D13/workpieces/audit-before.json",
+    "evidence/D13/workpieces/retire.json",
+    "factory/deltas/D13.json",
+    "factory/fixtures/D13/F0-doc.json",
+    "factory/fixtures/D13/F1-rust.json",
+    "factory/fixtures/D13/F2-fixture.json",
+    "factory/fixtures/D13/F3-doc.json",
+    "factory/fixtures/D13/F4-annotate.json",
+    "factory/fixtures/D13/F5-build.json",
+    "factory/fixtures/D13/F6-evidence.json",
+    "factory/fixtures/D13/F7-doc.json",
+    "factory/fixtures/D13/F8-evidence.json",
+    "factory/fixtures/D13/F9-doc.json",
+    "factory/receipts/D13-REPO-HYGIENE/F0-doc.json",
+    "factory/receipts/D13-REPO-HYGIENE/F1-rust.json",
+    "factory/receipts/D13-REPO-HYGIENE/F2-fixture.json",
+    "factory/receipts/D13-REPO-HYGIENE/F3-doc.json",
+    "factory/receipts/D13-REPO-HYGIENE/F4-annotate.json",
+    "factory/receipts/D13-REPO-HYGIENE/F5-build.json",
+    "factory/receipts/D13-REPO-HYGIENE/F6-evidence.json",
+    "factory/receipts/D13-REPO-HYGIENE/F7-doc.json",
+    "factory/receipts/D13-REPO-HYGIENE/F8-evidence.json",
+    "factory/receipts/D13-REPO-HYGIENE/F9-doc.json",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-ascii-contract.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-no-pin-yet.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-production-untouched.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-clippy.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-compiler-untouched.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-fmt.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-pin-resolves.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-test.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F1-witnesses.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-d11-graph-still-valid.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-sets-check.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-syntax.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-delta-check-repaired-binary.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-graph.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-handoff-present.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F3-registry.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-constitution-untouched.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-insertion-only.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F4-markers.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-bind.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-checks.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-merge.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-render.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F9-every-obligation-named.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F9-observed.log",
+    "factory/registry/stations/S-ANNOTATE.json",
+    "factory/registry/stations/S-FIXTURE.json",
+    "factory/src/checks.rs",
+    "factory/src/hygiene.rs",
+    "factory/src/identity.rs",
+    "factory/src/lib.rs",
+    "factory/src/main.rs",
+    "factory/src/model.rs",
+    "factory/src/ops.rs",
+    "factory/src/paths.rs",
+    "factory/tests/factory_law.rs",
+    "rust-toolchain.toml",
+    "tests/envmap/envmap.mjs",
+    "tests/hygiene/handoff-check.sh",
+    "tests/hygiene/registry-check.mjs",
+    "tests/hygiene/status-classification.json",
+    "tests/hygiene/status-scan.mjs",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/run-qualified-proof.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "ec6b667806cde1c663e97f1334ed048cfe080096"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F2-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F3-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-annotate",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F4-annotate.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F5-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F6-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F7-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F7-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F7-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F7-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F7-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F8-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F8-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F8-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F8-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F8-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F9-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-REPO-HYGIENE/F9-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F9-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F9-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F9-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:LAW_ANNOTATION",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D13-INTENDED-REPO-HYGIENE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D13-OBSERVED-REPO-HYGIENE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D13-PRE-RESCAN-BASELINE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:docs/HANDOFF.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:rust-toolchain.toml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/toolchain/proof-sets.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/toolchain/run-qualified-proof.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/src/hygiene.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/src/identity.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-ANNOTATE.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D12.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D13.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D13/proof/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D13/status/inventory.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D13/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D13/envmap/queries/Q16.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D13/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T07:16:12Z",
+  "status": "PASS"
+}

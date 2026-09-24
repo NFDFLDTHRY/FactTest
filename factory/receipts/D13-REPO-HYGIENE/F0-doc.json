@@ -1,0 +1,131 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "design/materialization/D13-REPO-HYGIENE-PROMPT.md",
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "design/materialization/D9-*, D11-*, D12-* records",
+    "evidence/D9/, evidence/D11/, evidence/D12/",
+    "factory/src/",
+    "factory/registry/",
+    "assembly probes (section 0.2)"
+  ],
+  "open_tree": "68b2f60e5450b53f0c7234cabfba61d47e0cc2fc",
+  "close_tree": "fec40580ec4aed5383363efa2debc48d6e1017bf",
+  "changed_paths": [
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-ascii-contract.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-no-pin-yet.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-production-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md",
+    "design/materialization/LEDGER.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F0-ascii-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F0-production-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F0-no-pin-yet.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D13-INTENDED-REPO-HYGIENE.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.' '## 11.' '## 12.'; do grep -qF \"$s\" $I || { echo missing section $s; exit 1; }; done; for h in H-01 H-02 H-03 H-04 H-05 H-06 H-07 H-08 H-09 H-10 H-11 H-12 H-13 H-14 H-15 H-16 H-17 H-18 H-19 H-20 H-21 H-22 H-23 H-24 H-25 H-26 H-27 H-28 H-29 H-30 H-31 H-32 H-33 H-34 H-35 H-36 H-37 H-38 H-39 H-40 H-41 H-42 H-43 H-44 H-45; do grep -q \"^$h \" $I || { echo missing $h; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'S-ANNOTATE' $I && grep -q 'PINNED' $I && grep -q '^## D13-REPO-HYGIENE' design/materialization/LEDGER.md && grep -q 'integrated as 205d337a7efef5fa25bb588ec385fa3655acb562' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) = 1 ]",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F0-ascii-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code 205d337a7efef5fa25bb588ec385fa3655acb562 -- FACTORY-LAW.md compiler host factory/src factory/registry fixtures design/environment-map tests evidence Cargo.toml Cargo.lock README.md FABLE-ASCII-SYSTEM-PROMPT.md FINAL-HANDOFF-REQUIREMENTS.md PLANNED-REPO-LAYOUT.md STATION-REGISTRY.md FACTORY-CONTRACTS.md REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F0-production-untouched.log"
+    },
+    {
+      "check": "command:sh -c test ! -e rust-toolchain.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F0-no-pin-yet.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D13-INTENDED-REPO-HYGIENE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-ascii-contract.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-production-untouched.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F0-no-pin-yet.log"
+  ],
+  "closed": "2026-09-24T07:11:35Z",
+  "status": "PASS"
+}

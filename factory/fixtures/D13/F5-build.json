@@ -1,0 +1,106 @@
+{
+  "fixture_id": "F5-build",
+  "station_id": "S-BUILD",
+  "delta_id": "D13-REPO-HYGIENE",
+  "selected_inputs": [
+    "compiler/",
+    "factory/",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "tests/toolchain/proof-sets.json",
+    "fixtures/toolchain/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D13/proof/",
+    "evidence/D13/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "build",
+          "-p",
+          "factory"
+        ],
+        "log": "evidence/D13/logs/F5-factory-build.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-d13w"
+        }
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "tests/toolchain/run-qualified-proof.sh",
+          "evidence/D13/proof"
+        ],
+        "log": "evidence/D13/logs/F5-qualified-proof.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-d13w",
+          "FACTORY_BIN": "/home/user/factory-target-d13w/debug/factory"
+        }
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D13/proof/summary.json\"));const bad=s.obligations.filter(o=>![\"PASS\",\"OBS\",\"HEURISTIC\"].includes(o.verdict));if(bad.length||s.mutants.verdict!==\"RUN\"||s.proof_tally.PASS<20){console.log(JSON.stringify(bad));process.exit(1)}console.log(JSON.stringify(s.tally))'"
+        ],
+        "log": "evidence/D13/logs/F5-summary-gate.log"
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D13/proof/summary.json",
+    "evidence/D13/proof/pins/T13-PIN-01-toolchain-pins.json",
+    "evidence/D13/proof/wasm64/Q-WASM-06-kernel-identity.json"
+  ],
+  "tests": [
+    "every qualified obligation PASS on the pinned toolchains",
+    "CROSS_SET OBS and HEURISTIC weight NONE only",
+    "mutants RUN"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

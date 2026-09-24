@@ -1,0 +1,5 @@
+$ sh -c node -e 'const a=JSON.parse(require("fs").readFileSync("evidence/D13/workpieces/audit-after.json"));if(a.totals.RETIRABLE!==0)process.exit(1);const r=JSON.parse(require("fs").readFileSync("evidence/D13/workpieces/retire.json"));if(r.actions.some(x=>x.result!=="REMOVED"))process.exit(1);console.log(r.actions.length+" retired; kept "+r.kept.length)'
+(cwd .)
+25 retired; kept 4
+
+[exit 0] expected 0

@@ -1,5 +1,7 @@
 # FactTest Planned Repository Layout
 
+D13 ANNOTATION: historical PASS 5 plan written for the historical Fable 5.1 materialization.  The materialized layout differs: no law/ zone was created (the law documents stayed at the repository root), and docs/, tests/, evidence/, factory/{deltas,fixtures,receipts,registry} exist.  The observed layout is recorded in docs/HANDOFF.md section 5; this plan is not permission or instruction for new paths.
+
 STATUS: PASS 5  
 DATE: 2026-09-23
 

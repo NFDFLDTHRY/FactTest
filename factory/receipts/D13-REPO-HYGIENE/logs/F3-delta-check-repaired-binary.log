@@ -1,0 +1,25 @@
+$ /home/user/factory-target-d13w/debug/factory delta check factory/deltas/D13.json
+(cwd .)
+== delta check factory/deltas/D13.json : PASS
+  [PASS] delta_id_present - D13-REPO-HYGIENE
+  [PASS] canonical_base_resolves - tree ec6b667806cde1c663e97f1334ed048cfe080096
+  [PASS] delta_may_read_surfaces_literal
+  [PASS] delta_may_change_surfaces_literal
+  [PASS] delta_must_not_change_surfaces_literal
+  [PASS] may_change_disjoint_from_must_not_change
+  [PASS] may_change_nonempty
+  [PASS] intent_present
+  [PASS] approved_ascii_refs_present - design/materialization/D13-INTENDED-REPO-HYGIENE.md, design/materialization/D13-REPO-HYGIENE-PROMPT.md, FACTORY-LAW.md, FACTORY-CONTRACTS.md, design/materialization/D12-INTENDED-SELF-HOSTING.md, design/environment-map/graph.json
+  [PASS] tests_attached - 10 tests
+  [PASS] evidence_requirements_attached - 7 requirements
+  [PASS] invariants_attached - 6 invariants
+  [PASS] fixtures_listed - 10 fixtures
+  [PASS] receipts_dir_within_may_change - factory/receipts/D13-REPO-HYGIENE/
+  [PASS] station_capability_registered:DOC_CONTRACT_FORGE - S-DOC
+  [PASS] station_capability_registered:RUST_FORGE - S-RUST
+  [PASS] station_capability_registered:FIXTURE_FORGE - S-FIXTURE
+  [PASS] station_capability_registered:LAW_ANNOTATION - S-ANNOTATE
+  [PASS] station_capability_registered:BUILD_VERIFY - S-BUILD
+  [PASS] station_capability_registered:EVIDENCE_ASSEMBLER - S-EVIDENCE
+
+[exit 0] expected 0

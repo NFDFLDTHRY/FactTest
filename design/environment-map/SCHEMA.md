@@ -123,3 +123,20 @@ date; authorities have exact_url; IMPLEMENTATION never carries authority_class a
 probes prove resolvable facts and state failure meanings; evidence has environment and probe refs; non-PENDING evidence
 carries an artifact identity; SYNTHETIC_MODEL evidence never has status RUN; every RUN fact has EVIDENCED_BY or
 ADMITTED_BY; fact status vocabulary; refs resolve; the eleven prompt invariants are carried.
+
+## 6. Evidence epochs (D13)
+
+```text
+graph.json = merge( D11 graph at fdb9c32 , epochs/D12.json , epochs/D13.json )      tests/envmap/envmap.mjs merge
+epoch file  { schema "facttest-environment-map-epoch/1", epoch, delta, commit, summary, nodes[], edges[] }
+merge law   an epoch only ADDS nodes and edges (an existing id or an identical edge is an error); each added node gets
+            introduced_in = <epoch>; the envelope gains epochs[] {epoch, delta, commit, summary, nodes_added,
+            edges_added} and current_epoch.  Earlier nodes are never edited: a later epoch that supersedes an earlier
+            fact adds INVALIDATED_BY / CONFLICTS_WITH edges and new nodes instead.
+merge-check re-merges and byte-compares graph.json; every base node and edge must be present unchanged.
+bind        fills sha256/bytes of an epoch's PENDING evidence from the committed files after the stations ran
+            (status_after_bind), then the graph is re-merged and the views re-rendered.
+validate    + epochs_consistent (every introduced_in names an epoch; node counts add up)
+Q16         what each epoch added (nodes by class, facts -> probes -> evidence -> environments, authorities) and its
+            cross-epoch edges.
+```

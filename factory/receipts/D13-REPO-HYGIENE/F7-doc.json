@@ -1,0 +1,138 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F7-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F7-doc",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "evidence/D13/",
+    "design/environment-map/epochs/D13.json"
+  ],
+  "open_tree": "23a5556d71f2fd3e9bb2c7a3477e3ffb3dc3f0af",
+  "close_tree": "c322934da561826e2d55352eb420e8498b3cda28",
+  "changed_paths": [
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D13.json",
+    "design/environment-map/graph.json",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-bind.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-checks.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-merge.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-render.log"
+  ],
+  "output_artifacts": [
+    "design/environment-map/graph.json",
+    "design/environment-map/epochs/D13.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F7-bind.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F7-merge.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F7-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F7-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs bind design/environment-map/epochs/D13.json --root .",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F7-bind.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json --out design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F7-merge.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render design/environment-map/graph.json --out design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F7-render.log"
+    },
+    {
+      "check": "command:sh -c ! grep -q '\"PENDING\"' design/environment-map/epochs/D13.json && node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F7-checks.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D13.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-bind.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-merge.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-render.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F7-checks.log"
+  ],
+  "closed": "2026-09-24T07:14:23Z",
+  "status": "PASS"
+}

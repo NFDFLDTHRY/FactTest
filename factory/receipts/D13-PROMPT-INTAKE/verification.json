@@ -1,0 +1,75 @@
+{
+  "delta_id": "D13-PROMPT-INTAKE",
+  "workpiece_id": "W13",
+  "canonical_base": "8e5dd6fe0d35669867dc7894434e68b13abeb158",
+  "base_tree": "88e029936ee3a643be2549e7f876e62bf8345ab9",
+  "verified_tree": "19fbfbd6a0af186e6941d0686d05eec062cdaa87",
+  "changed_paths": [
+    "design/materialization/D13-REPO-HYGIENE-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D13-PROMPT-INTAKE.json",
+    "factory/fixtures/D13-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D13-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D13-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D13-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "88e029936ee3a643be2549e7f876e62bf8345ab9"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D13-PROMPT-INTAKE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D13-REPO-HYGIENE-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T06:37:16Z",
+  "status": "PASS"
+}

@@ -185,3 +185,10 @@ Compiler contracts transform source semantics into compiler artifacts/generated 
 A compiler backend may not claim Factory authority.
 
 A Factory station receipt may not be used as a compiler proof certificate.
+
+D13 ANNOTATION (contract amendment, D13-REPO-HYGIENE; prospective, historical receipts unchanged):
+
+- Literal authority: every MAY READ / MAY CHANGE / MUST NOT CHANGE entry of a delta, fixture or station spec is "*", "dir/" or an exact relative file; delta check and fixture check fail on any other form (factory/src/paths.rs validate_surface).
+- FactoryReceipt receipt_format "2": environment_identity = { factory_binary {path, sha256, bytes}, host {os, arch, kernel_release}, git, identity_probes[] }; a fixture declares job_parameters.identity_probes (toolchain, runtime, browser identity commands) and states target, profile and flags in its command arguments.  verification.json carries verifier_identity and host.  Receipts written before D14 (including D13's own, judged by the D13 base binary) are format 1.
+- Workpiece hygiene: `factory workpiece audit` classifies every object under the workpiece root (RETIRABLE, KEEP, CURRENT, ABSENT, with reasons); `factory workpiece retire` removes only RETIRABLE objects (integrated, reinspected, ancestor of the canonical head, clean, not current; staging copies only when every byte is already in the integrated tree) and writes a retire receipt.  Nothing is forced.
+- Proof weight: heuristic scanners carry proof weight NONE and are never gates; authoritative no_std and dependency proofs are the core-only wasm64 graph and the Cargo-resolved graph (tests/toolchain/proof-sets.json).

@@ -1,0 +1,162 @@
+{
+  "receipt_id": "R-D13-REPO-HYGIENE-F2-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "1",
+  "fixture_id": "F2-fixture",
+  "workpiece_id": "W14",
+  "delta_id": "D13-REPO-HYGIENE",
+  "canonical_base": "205d337a7efef5fa25bb588ec385fa3655acb562",
+  "input_artifacts": [
+    "tests/toolchain/",
+    "tests/envmap/envmap.mjs",
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 2.2, 2.6, 2.10, 3.3, 6"
+  ],
+  "open_tree": "dea72d761629cc92440dbf654eb2496b9cf6f7b2",
+  "close_tree": "525cdc9685b1d8f8e9f4ffd239a7b511ebe63d12",
+  "changed_paths": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-d11-graph-still-valid.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-sets-check.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-syntax.log",
+    "tests/envmap/envmap.mjs",
+    "tests/hygiene/handoff-check.sh",
+    "tests/hygiene/registry-check.mjs",
+    "tests/hygiene/status-classification.json",
+    "tests/hygiene/status-scan.mjs",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/run-qualified-proof.sh"
+  ],
+  "output_artifacts": [
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/run-qualified-proof.sh",
+    "tests/hygiene/status-scan.mjs",
+    "tests/hygiene/status-classification.json",
+    "tests/hygiene/handoff-check.sh",
+    "tests/hygiene/registry-check.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D13-REPO-HYGIENE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F2-syntax.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F2-sets-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D13-REPO-HYGIENE/logs/F2-d11-graph-still-valid.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node --check tests/toolchain/proof.mjs && node --check tests/envmap/envmap.mjs && node --check tests/hygiene/status-scan.mjs && node --check tests/hygiene/registry-check.mjs && sh -n tests/toolchain/run-qualified-proof.sh && sh -n tests/hygiene/handoff-check.sh && node -e 'for (const f of process.argv.slice(1)) JSON.parse(require(\"fs\").readFileSync(f))' tests/toolchain/proof-sets.json tests/hygiene/status-classification.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F2-syntax.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/toolchain/proof.mjs sets-check --out $T --id S --root . --sets tests/toolchain/proof-sets.json && grep -q '\"verdict\": \"PASS\"' $T/S.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F2-sets-check.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json && git diff --exit-code 205d337a7efef5fa25bb588ec385fa3655acb562 -- tests/toolchain/run-proof-matrix.sh tests/toolchain/run-mutants.sh fixtures/toolchain",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D13-REPO-HYGIENE/logs/F2-d11-graph-still-valid.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/toolchain/proof.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/toolchain/proof-sets.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/toolchain/run-qualified-proof.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/hygiene/status-scan.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/hygiene/status-classification.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/hygiene/handoff-check.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/hygiene/registry-check.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-syntax.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-sets-check.log",
+    "factory/receipts/D13-REPO-HYGIENE/logs/F2-d11-graph-still-valid.log"
+  ],
+  "closed": "2026-09-24T07:11:42Z",
+  "status": "PASS"
+}
