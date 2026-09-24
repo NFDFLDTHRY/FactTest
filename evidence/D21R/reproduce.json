@@ -1,0 +1,16 @@
+{
+ "tool": "tests/manifest/rebuild-check.sh",
+ "commit": "910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb",
+ "rev": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+ "delta": "D21-EXECUTION-MANIFEST",
+ "epoch": "D21",
+ "builder": "/tmp/tmp.vSGETgZFI3/committed-builder.mjs",
+ "committed_manifest_sha256": "ffd00a55e5049d13195de907858854714466d2cc5d6a47154629f525663bccfc",
+ "status": "FAIL",
+ "checks": [
+  {"check": "rebuild_from_committed_graph_md", "status": "FAIL"},
+  {"check": "rebuild_from_committed_graph_json", "status": "FAIL"},
+  {"check": "rebuild_without_own_epoch_md", "status": "PASS"},
+  {"check": "rebuild_without_own_epoch_json", "status": "PASS"}
+ ]
+}

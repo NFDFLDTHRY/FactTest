@@ -1,0 +1,80 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "manifest",
+ "kind": "repo",
+ "started": "2026-09-24T18:54:31.419Z",
+ "commands": [
+  {
+   "command": "H=$(git rev-parse HEAD) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev $H --delta REPROVE --epoch NONE --out evidence/D26/manifest-reprove && node tests/manifest/gate.mjs --manifest evidence/D26/manifest-reprove/manifest.json --issues tests/manifest/issues.json --out evidence/D26/manifest-reprove/gate.json",
+   "exit": 0,
+   "seconds": 1
+  },
+  {
+   "command": "M=design/execution-manifest/manifest.json && D=$(node -e 'const m=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));console.log(m.excluded_current_delta)' $M) && EP=$(node -e 'const m=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));const e=m.graph_epochs.map(x=>x.epoch||x);const g=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/graph.json\")).epochs.map(x=>x.epoch||x);console.log(g[g.indexOf(e[e.length-1])+1])' $M) && P=$(node -e 'const e=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/graph.json\")).epochs.map(x=>x.epoch||x);const i=e.indexOf(process.argv[1]);console.log(e.slice(1,i).map(x=>\"design/environment-map/epochs/\"+x+\".json\"+(x===\"D14-RESCAN\"?\"=D14-RESCAN\":\"\")).join(\",\"))' $EP) && L=$(git log -1 --format=%H -- $M) && sh tests/manifest/rebuild-check.sh $L $(node -e 'console.log(JSON.parse(require(\"fs\").readFileSync(process.argv[1])).rev)' $M) $D $EP fdb9c32 $P evidence/D26/manifest-reprove/rebuild-check.json",
+   "exit": 0,
+   "seconds": 3
+  }
+ ],
+ "facts": {
+  "FACT-D21-ISSUES-CLASSIFIED": {
+   "probe": "PROBE-EXECUTION-MANIFEST",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "manifest-reprove/gate.json",
+     "sha256": "a023b5097f498b8af0a9917b4a6f0337e8afdb68ef05a35010b259a7b94bdd28",
+     "checks": [
+      {
+       "path": "status",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D21-LIVE-SURFACES-ENUMERATED": {
+   "probe": "PROBE-EXECUTION-MANIFEST",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "manifest-reprove/gate.json",
+     "sha256": "a023b5097f498b8af0a9917b4a6f0337e8afdb68ef05a35010b259a7b94bdd28",
+     "checks": [
+      {
+       "path": "status",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D21R-MANIFEST-REBUILD-STABLE": {
+   "probe": "PROBE-MANIFEST-REBUILD",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "manifest-reprove/rebuild-check.json",
+     "sha256": "d39e2fa15a0b13cf5468716af8c20a1362bf7dbfcbbd7d800449af295f1e8608",
+     "checks": [
+      {
+       "path": "status",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T18:54:35.571Z",
+ "status": "PASS"
+}

@@ -1,0 +1,5 @@
+$ sh -c grep -q '^D22 ANNOTATION (contract amendment, D22-FACTORY-SELF-QUALIFICATION' FACTORY-CONTRACTS.md && git diff --numstat 88564a0eccd934d6a017faf65435bc871bcd2f94 -- FACTORY-CONTRACTS.md | awk '{ if ($2 != 0) exit 1; if ($1 < 5) exit 1 }' && echo 'insertion-only: 0 deleted lines'
+(cwd .)
+insertion-only: 0 deleted lines
+
+[exit 0] expected 0

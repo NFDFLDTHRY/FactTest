@@ -1,0 +1,79 @@
+{
+  "schema": "facttest-fact-epoch-spec/1",
+  "summary": "Factory self-qualification: 16 refusal reasons witnessed (29 law tests + collision witness), 6 accepted attacks reproduced and repaired, the judge built from this tree identified and qualified for D23-D26 (3 facts [RUN], 5 evidence records)",
+  "probes": [
+    {
+      "id": "PROBE-FACTORY-WITNESSES",
+      "command_or_operation": "sh tests/factory/run-witnesses.sh tests/factory/witnesses.json TARGET_DIR OUT LOG_DIR collision=REPORT (builds the Factory from the tree, runs cargo test -p factory, checks the witness register: every named witness ok, every refusal text present in a refusal source, every external report PASS; records the judge's sha256); sh tests/sync/collision-witness.sh REPORT (scratch repository: the parallel-line import collision refused, the relocated import byte-identical)",
+      "expected_observations": [
+        "every reason of the register REFUSED_FOR_NAMED_REASON",
+        "every positive path PASS",
+        "the judge's sha256 recorded"
+      ],
+      "failure_meaning": [
+        "an attack the prompt names is accepted, or refused for an unrelated reason: the Factory is not qualified to judge the repairs that follow"
+      ],
+      "implemented_by": "IMPL-FACTORY-TESTS"
+    }
+  ],
+  "facts": [
+    {
+      "id": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+      "subject": "the Factory (factory/src, factory/tests/factory_law.rs f00-f28, tests/sync/import-line.mjs) at the D22 tree",
+      "predicate": "each of the 16 refusal reasons of the D21-D26 prompt (unauthorized changed path, wildcard-looking surface, fixture wider than station, MAY/MUST overlap, missing receipt, forged receipt identity, stale verification, workpiece changed after verification, canonical base movement, unreceipted mutation, malformed fixture, bad environment identity, unsafe cleanup candidate, unintegrated workpiece retirement, parallel-line import collision, attempted direct canonical mutation) is refused for its named check by a passing witness; the positive path (intake to re-inspection, identity, audit, retire, relocation import) passes",
+      "status": "RUN",
+      "note": "tests/factory/witnesses.json is the register; a witness asserts the refusing check name, so a failure for an unrelated reason cannot pass",
+      "source_ref": "evidence/D22/witnesses.json",
+      "required_environment": ["the HOST_NATIVE_SET toolchain, node and git on the host"],
+      "constraint_refs": [],
+      "probe": "PROBE-FACTORY-WITNESSES",
+      "evidence": [
+        {"path": "evidence/D22/witnesses.json", "observed_result": "29 tests ok, 0 failed; 16 of 16 reasons REFUSED_FOR_NAMED_REASON; 5 of 5 positive paths PASS; judge sha256 recorded"},
+        {"path": "evidence/D22/collision-witness.json", "observed_result": "collision refused naming the path; relocated import byte-identical and the colliding path untouched"}
+      ],
+      "implemented_by": ["IMPL-FACTORY-OPS", "IMPL-FACTORY-HYGIENE", "IMPL-FACTORY-PATHS", "IMPL-FACTORY-MODEL", "IMPL-FACTORY-TESTS", "IMPL-SYNC-IMPORT"],
+      "stale_if": [
+        {"dimension": "repo.commit", "relation": "factory/src, factory/tests, tests/factory or tests/sync changes"},
+        {"dimension": "toolchain.stable.rustc_commit", "relation": "the HOST_NATIVE_SET toolchain changes"}
+      ]
+    },
+    {
+      "id": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+      "subject": "factory/src/ops.rs as committed at 88564a0 versus the D22 tree",
+      "predicate": "with the Factory as committed at 88564a0 six attacks were accepted (an edited FAIL receipt verified, a hand-written receipt verified, a failed identity probe closed PASS, a command with an escaping cwd or log opened, a station that wrote into the canonical checkout closed PASS, a re-inspection that littered the canonical checkout reported MATCH: 23 witnesses passed, 6 failed); after the repair of ops.rs (receipt_matches_station_run, identity_probe_observed, command_cwd_within_workpiece, command_log_within_workpiece, canonical_repository_untouched_by_station, canonical_repository_untouched_by_reinspect) all 29 witnesses pass",
+      "status": "RUN",
+      "note": "class A defects of live Factory machinery (I-21..I-26), reproduced before repair, repaired before D23; no station authority widened",
+      "source_ref": "evidence/D22/reproduce.log",
+      "required_environment": ["the HOST_NATIVE_SET toolchain on the host"],
+      "constraint_refs": [],
+      "probe": "PROBE-FACTORY-WITNESSES",
+      "evidence": [
+        {"path": "evidence/D22/reproduce.log", "observed_result": "cargo test -p factory with the witnesses added and ops.rs as committed at 88564a0: 23 passed, 6 failed (f17, f18, f22, f23, f24, f26)"},
+        {"path": "evidence/D22/witnesses.json", "observed_result": "the same suite after the repair: 29 ok"}
+      ],
+      "implemented_by": ["IMPL-FACTORY-OPS"],
+      "stale_if": [{"dimension": "repo.commit", "relation": "factory/src/ops.rs or factory/tests/factory_law.rs changes"}]
+    },
+    {
+      "id": "FACT-D22-JUDGE-QUALIFIED",
+      "subject": "the Factory built from the D22 tree (judge sha256 in evidence/D22/witnesses.json)",
+      "predicate": "the judge refuses every attack the prompt names for its named reason, passes its positive path, and its live surfaces remain fully enumerated (CURRENT EXECUTION MANIFEST rebuilt at 88564a0 plus the D22 additions, gate PASS): it is qualified to judge D23-D26",
+      "status": "RUN",
+      "note": "D22 itself was judged by the Factory as committed at 88564a0 (the D13 precedent: a Factory repair is judged by its predecessor); the repaired judge is built by every route from D23 on and by the D22 re-inspection",
+      "source_ref": "evidence/D22/witnesses.json",
+      "required_environment": ["the HOST_NATIVE_SET toolchain, node, cargo metadata and git on the host"],
+      "constraint_refs": [],
+      "probe": "PROBE-FACTORY-WITNESSES",
+      "evidence": [
+        {"path": "evidence/D22/witnesses.json", "observed_result": "judge identity and the witness verdicts"},
+        {"path": "evidence/D22/manifest.json", "probe": "PROBE-EXECUTION-MANIFEST", "observed_result": "the manifest at 88564a0 plus the live files D22 adds: every tracked path tiered, required coverage complete"},
+        {"path": "evidence/D22/gate.json", "probe": "PROBE-EXECUTION-MANIFEST", "observed_result": "manifest gate PASS with the D22 issue inventory (I-01 and I-14 repaired, I-21..I-26 added)"}
+      ],
+      "implemented_by": ["IMPL-FACTORY-CLI", "IMPL-FACTORY-OPS", "IMPL-FACTORY-MODEL", "IMPL-FACTORY-HYGIENE", "IMPL-FACTORY-PATHS", "IMPL-FACTORY-GIT", "IMPL-FACTORY-CHECKS", "IMPL-FACTORY-TESTS"],
+      "stale_if": [
+        {"dimension": "repo.commit", "relation": "factory/ or tests/factory changes"},
+        {"dimension": "toolchain.stable.rustc_commit", "relation": "the HOST_NATIVE_SET toolchain changes"}
+      ]
+    }
+  ]
+}

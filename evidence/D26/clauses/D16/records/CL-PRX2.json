@@ -1,0 +1,30 @@
+{
+ "id": "CL-PRX2",
+ "trace": "ES",
+ "authority": "AUTH-PROXIMITY",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/proximity",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "1d43739eea15981bb6cab10224929c53ae6f51ed",
+  "sha256": "07339c828ca4ed54e00ecf6deb983bbc1c8d160a94ccaecb005e40f5765961bc",
+  "bytes": 11758
+ },
+ "locator": {
+  "text": "This specification defines a [=policy-controlled feature=] identified by the string",
+  "line_start": 110,
+  "line_end": 110,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-policy-integration (line 107)"
+ },
+ "window": 1,
+ "consequence": "proximity-sensor is policy-controlled with default 'self'",
+ "excerpt": "This specification defines a [=policy-controlled feature=] identified by the string \"<code><dfn data-lt=\"proximity-sensor-feature\" export>proximity-sensor</dfn></code>\". Its [=default allowlist=] is \"`self`\".",
+ "excerpt_sha256": "ce8c3a94539a478f95c3c67029c7cb94f291343fdf8a6ef9001149bef24ebc8e",
+ "must_contain": {
+  "proximity-sensor": true,
+  "[=default allowlist=] is \"`self`\"": true
+ },
+ "status": "VERIFIED"
+}

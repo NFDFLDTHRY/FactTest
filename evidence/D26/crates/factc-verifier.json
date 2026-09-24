@@ -1,0 +1,80 @@
+{
+ "crate": "factc-verifier",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "compiler/verifier/Cargo.toml",
+ "dependencies": [
+  "factc-capability",
+  "factc-foundation",
+  "factc-implementation",
+  "factc-planning",
+  "factc-semantic",
+  "factc-source"
+ ],
+ "consumers": [
+  "factc-codegen",
+  "factc-bundle",
+  "factc-kernel"
+ ],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factc-verifier",
+   "exit": 0,
+   "ms": 29,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factc-verifier",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "exit": null,
+   "note": "no tests of its own: exercised by its consumers below"
+  },
+  {
+   "step": "consumer:factc-codegen",
+   "command": "cargo +1.94.1 test -p factc-codegen",
+   "exit": 0,
+   "ms": 76,
+   "tests": {
+    "passed": 1,
+    "failed": 0
+   },
+   "tail": [
+    "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s",
+    "     Running unittests src/lib.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factc_codegen-f2b9a4a95494026b)",
+    "   Doc-tests factc_codegen"
+   ]
+  },
+  {
+   "step": "consumer:factc-bundle",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-kernel",
+   "command": "cargo +1.94.1 test -p factc-kernel",
+   "exit": 0,
+   "ms": 800,
+   "tests": {
+    "passed": 83,
+    "failed": 0
+   },
+   "tail": [
+    "     Running tests/observe_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/observe_ladder-92877860eab04228)",
+    "     Running tests/strategy_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/strategy_ladder-619e49d88d66cb9c)",
+    "   Doc-tests factc_kernel"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

@@ -1,0 +1,149 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D23-COMPILER-ABI-EXECUTION-F2-web",
+  "station_id": "S-WEB",
+  "station_version": "1",
+  "fixture_id": "F2-web",
+  "workpiece_id": "W28",
+  "delta_id": "D23-COMPILER-ABI-EXECUTION",
+  "canonical_base": "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660",
+  "input_artifacts": [
+    "D23 section 1 (proof)",
+    "F1 kernel and driver"
+  ],
+  "open_tree": "ce879331f7bd7f1a6a4a50a8403bb7e1d217226f",
+  "close_tree": "eea3e0e16be858edaa1160d22adab5421e29d0f4",
+  "changed_paths": [
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F2-probe-trial.log",
+    "host/harness/kernel-build-probe.mjs"
+  ],
+  "output_artifacts": [
+    "host/harness/kernel-build-probe.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-WEB v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D23-COMPILER-ABI-EXECUTION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "WEB_HOST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F2-probe-trial.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F2-probe-trial.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node --check host/harness/kernel-build-probe.mjs && ! grep -nE 'byte[-_]relay|commissioning|D23' host/harness/kernel-build-probe.mjs | grep -vE '^[0-9]+://' && T=$(mktemp -d) && /home/user/factory-target-w28/debug/factc check build --out $T/native/build --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii fixtures/commissioning/byte-relay.ascii >/dev/null && /home/user/factory-target-w28/debug/factc observe --out $T/native/observe --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --source fixtures/commissioning/byte-relay.ascii --bundle-manifest $T/native/build/bundle/bundle.json --evidence-class PHYSICAL_BROWSER >/dev/null && node host/harness/kernel-build-probe.mjs /home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --source fixtures/commissioning/byte-relay.ascii --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --evidence-class PHYSICAL_BROWSER --native-build $T/native/build --native-observe $T/native/observe --out $T/probe",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F2-probe-trial.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:host/harness/kernel-build-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F2-probe-trial.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T13:54:05Z",
+  "status": "PASS"
+}

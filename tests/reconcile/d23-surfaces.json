@@ -1,0 +1,10 @@
+{
+ "schema": "facttest-reconcile-surfaces/1",
+ "epoch": "D23",
+ "base": "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660",
+ "annotated": {"marker": "D23 ANNOTATION", "files": []},
+ "surfaces": [
+  {"file": "tests/toolchain/proof-sets.json", "reconciliation": "R-64", "must_contain": ["\"exec_identity\"", "fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976", "\"history\"", "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2"], "must_not_contain": ["[GAP: not install-path independent]"]},
+  {"file": "docs/HANDOFF.md", "reconciliation": "R-64", "must_contain": ["FACT-D23-WASM-TRANSPORT-COMPLETE", "fcaee2a6", "R-64"], "must_not_contain": ["six wasm ABI exports absent; BUILD in the browser stops at"]}
+ ]
+}

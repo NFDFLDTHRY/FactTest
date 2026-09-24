@@ -1,0 +1,37 @@
+{
+  "tool": "tests/envmap/envmap.mjs merge-check",
+  "base_rev": "fdb9c32",
+  "epochs": [
+    "design/environment-map/epochs/D12.json",
+    "design/environment-map/epochs/D13.json",
+    "design/environment-map/epochs/D14.json",
+    "design/environment-map/epochs/D15.json",
+    "design/environment-map/epochs/D16.json",
+    "design/environment-map/epochs/D17.json",
+    "design/environment-map/epochs/D18.json",
+    "design/environment-map/epochs/D18R.json",
+    "design/environment-map/epochs/D19.json",
+    "design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN",
+    "design/environment-map/epochs/D20-SYNC.json",
+    "design/environment-map/epochs/D20.json",
+    "design/environment-map/epochs/D21.json"
+  ],
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "base_nodes_preserved",
+      "status": "PASS",
+      "detail": "211 base nodes identical"
+    },
+    {
+      "check": "base_edges_preserved",
+      "status": "PASS",
+      "detail": "475 base edges present"
+    },
+    {
+      "check": "graph_equals_merge_of_base_and_epochs",
+      "status": "PASS",
+      "detail": "1631069 bytes identical"
+    }
+  ]
+}

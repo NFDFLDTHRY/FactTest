@@ -1,0 +1,10 @@
+DUAL STREAM REGISTRY (two READY backends for one type; recipe names of its own; every other family absent by design)
+@{registry dual_stream_registry version=1}
+@{representation HOST_CHUNK type=Chunk domain=ARRAY_BUFFER modes=copy,move,borrow lifetime=host_scope}
+@{representation WASM_CHUNK type=Chunk domain=WASM_LINEAR modes=copy lifetime=instance}
+@{boundary Chunk HOST_CHUNK}
+@{conversion chunk_to_wasm HOST_CHUNK -> WASM_CHUNK mode=copy preserves=value requires=CPU_WASM64}
+@{conversion chunk_from_wasm WASM_CHUNK -> HOST_CHUNK mode=copy preserves=value requires=CPU_WASM64}
+@{backend CPU_WASM64 status=READY-CONTRACT capabilities=COMPUTE accepts=WASM_CHUNK produces=WASM_CHUNK modes=copy effects=none probes=wasm64_instantiate,wasm64_known_answer recipe=R_CHUNK_WASM lifecycle=READY,ACTIVE,CLOSED failures=TRANSIENT_OPERATION_FAILURE,PERMANENT_FOR_EPOCH}
+@{authority_link CPU_WASM64 "https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html"}
+@{recipe R_CHUNK_WASM backend=CPU_WASM64 roles=wasm_module,host_adapter exports=memory,abi_version,copy_bytes,region_in,region_out,region_capacity imports=none adapter=wasm64_relay}

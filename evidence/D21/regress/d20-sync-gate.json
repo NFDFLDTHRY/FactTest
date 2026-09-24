@@ -1,0 +1,36 @@
+{
+ "tool": "tests/reconcile/gate.mjs",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "register_in_graph",
+   "status": "PASS",
+   "detail": "10 reconciliations, 2 supersessions, 0 ledgered, 7 added edges"
+  },
+  {
+   "check": "ledger_text_present",
+   "status": "PASS",
+   "detail": "0 constraints verbatim in (no ledger in this register)"
+  },
+  {
+   "check": "labels_resolved",
+   "status": "PASS",
+   "detail": "6 MISLABEL facts resolved"
+  },
+  {
+   "check": "stale_facts_reconciled",
+   "status": "PASS",
+   "detail": "8 Q17 facts re-examined"
+  },
+  {
+   "check": "current_statements_clean",
+   "status": "PASS",
+   "detail": "291 current authorities/facts; MISLABEL texts only on superseded, resolved or CORRECTED nodes; 2 retired texts absent"
+  },
+  {
+   "check": "surfaces_pass",
+   "status": "PASS",
+   "detail": "12 surface checks PASS"
+  }
+ ]
+}

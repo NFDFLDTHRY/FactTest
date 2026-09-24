@@ -1,0 +1,4 @@
+$ sh -c O=design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md; for k in P1 P2 P3 P4 P5 P6 CURRENT-EXECUTION-MANIFEST 'I-06' 'I-09' 'D22' 'D26'; do grep -q -- "$k" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O
+(cwd .)
+
+[exit 0] expected 0

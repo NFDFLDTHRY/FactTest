@@ -1,0 +1,30 @@
+{
+ "id": "CL-H2",
+ "trace": "H",
+ "authority": "AUTH-SECCTX-TRUSTWORTHY",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/webappsec-secure-contexts",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+  "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1",
+  "bytes": 39524
+ },
+ "locator": {
+  "text": "matches one of the CIDR",
+  "line_start": 556,
+  "line_end": 558,
+  "derivation": "anchor text",
+  "enclosing_section": "#is-origin-trustworthy (line 517)"
+ },
+ "window": 3,
+ "consequence": "loopback 127.0.0.0/8 and ::1 are potentially trustworthy: every FactTest browser probe (127.0.0.1) runs in a secure context",
+ "excerpt": "  4.  If |origin|'s <a for=\"origin\">host</a> matches one of the CIDR\n      notations `127.0.0.0/8` or `::1/128` [[!RFC4632]], return \"`Potentially\n      Trustworthy`\".",
+ "excerpt_sha256": "05f3d27317404779acb76ae47ed1ea0e33f6454523ecb63b272ed9a3de374081",
+ "must_contain": {
+  "127.0.0.0/8": true,
+  "::1/128": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,9 @@
+$ sh -c node -e 'const J=p=>JSON.parse(require("fs").readFileSync(p));for(const g of ["qualified-proof","kernel-sections","physical","identity"]){const r=J("evidence/D26/results/"+g+".json");const bad=Object.entries(r.facts).filter(([k,v])=>v.verdict!=="PASS").map(([k])=>k);if(bad.length||r.commands.some(c=>c.exit!==0)){console.log(g,"FAIL",bad);process.exit(1)}console.log(g,Object.keys(r.facts).length,"facts PASS")}const p=J("evidence/D26/proof/summary.json");if(p.tally.FAIL||p.obligations.length!==27||p.mutants.verdict!=="RUN")process.exit(1);const c=J("evidence/D26/crates/summary.json");if(c.status!=="PASS"||c.order.length!==14||c.tests_run.failed)process.exit(1);const w=J("evidence/D26/factory/witnesses.json");if(w.status!=="PASS")process.exit(1);const s=J("evidence/D26/specimens/summary.json"),a=J("evidence/D26/attacks/summary.json"),ph=J("evidence/D26/physical/summary.json");if(s.status!=="PASS"||s.specimens.length!==4||a.status!=="PASS"||a.attacks.length!==13||ph.status!=="PASS"||ph.specimens.length!==4)process.exit(1);const k=J("evidence/D26/kernel/sections.json");const pin=J("tests/toolchain/proof-sets.json").sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256;if(!k.builds.every(b=>b.identity_excluding_custom===pin))process.exit(1);console.log("proof",JSON.stringify(p.tally),"crates",c.order.length,c.tests_run.passed,"witnesses",w.status,"specimens",s.specimens.length,"attacks",a.attacks.length,"physical",ph.status,"kernel == pin")' && grep -q ': clean' evidence/D26/anti-cheat/summary.log && ! grep -q 'in machinery' evidence/D26/anti-cheat/summary.log
+(cwd .)
+qualified-proof 10 facts PASS
+kernel-sections 2 facts PASS
+physical 14 facts PASS
+identity 3 facts PASS
+proof {"PASS":22,"OBS":3,"HEURISTIC":2} crates 14 1011 witnesses PASS specimens 4 attacks 13 physical PASS kernel == pin
+
+[exit 0] expected 0

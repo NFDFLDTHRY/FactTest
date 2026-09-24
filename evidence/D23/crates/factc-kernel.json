@@ -1,0 +1,78 @@
+{
+ "crate": "factc-kernel",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "compiler/kernel/Cargo.toml",
+ "dependencies": [
+  "factc-bundle",
+  "factc-capability",
+  "factc-codegen",
+  "factc-foundation",
+  "factc-implementation",
+  "factc-observe",
+  "factc-planning",
+  "factc-semantic",
+  "factc-source",
+  "factc-verifier"
+ ],
+ "consumers": [
+  "factc-wasm-abi",
+  "factc"
+ ],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factc-kernel",
+   "exit": 0,
+   "ms": 32,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factc-kernel",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "command": "cargo +1.94.1 test -p factc-kernel",
+   "exit": 0,
+   "ms": 578,
+   "tests": {
+    "passed": 76,
+    "failed": 0
+   },
+   "tail": [
+    "     Running tests/observe_ladder.rs (/home/user/factory-target-w28/debug/deps/observe_ladder-92877860eab04228)",
+    "     Running tests/strategy_ladder.rs (/home/user/factory-target-w28/debug/deps/strategy_ladder-619e49d88d66cb9c)",
+    "   Doc-tests factc_kernel"
+   ]
+  },
+  {
+   "step": "consumer:factc-wasm-abi",
+   "exit": null,
+   "note": "WASM64_KERNEL_SET root: built and driven in Chromium below"
+  },
+  {
+   "step": "consumer:factc",
+   "command": "cargo +1.94.1 test -p factc",
+   "exit": 0,
+   "ms": 112,
+   "tests": {
+    "passed": 7,
+    "failed": 0
+   },
+   "tail": [
+    "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s",
+    "     Running unittests src/main.rs (/home/user/factory-target-w28/debug/deps/factc-3bce99a9ab01d2dd)",
+    "     Running tests/driver.rs (/home/user/factory-target-w28/debug/deps/driver-e3cf271627571e89)"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

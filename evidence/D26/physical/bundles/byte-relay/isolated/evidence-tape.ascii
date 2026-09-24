@@ -1,0 +1,14 @@
+@{bundle strategy_data="46a712089c3077d5924ec725affb2d6293a24a9c034b4704a224b2fd705a0b38" strategy=1 certificate=1000}
+@{epoch E0}
+@{admission CPU_WASM64 ADMITTED evidence=wasm64_known_answer}
+@{admission WEBGPU ADMITTED evidence=webgpu_known_answer}
+@{activation E0 plan=1 status=PASS}
+@{executed E0 plan=1 relation=relay bytes=8 input="831ac9c6497d52737dde5067079f395cc5405fe8dfc15b24e89441c43b8e99c6" output="831ac9c6497d52737dde5067079f395cc5405fe8dfc15b24e89441c43b8e99c6" exact=true}
+@{executed E0 plan=1 relation=relay bytes=10 input="280e1ee781715936d4bf3ac1244c5a015d50ca33c74cfc7a5c138b9454fbac70" output="280e1ee781715936d4bf3ac1244c5a015d50ca33c74cfc7a5c138b9454fbac70" exact=true}
+@{loss E0 WEBGPU reason=destroyed}
+@{epoch E1}
+@{admission WEBGPU REJECTED evidence=device_lost reason=destroyed}
+@{activation E1 plan=0 status=PASS}
+@{transition E0 -> E1 stale_plan=1 replacement=0}
+@{executed E1 plan=0 relation=relay bytes=8 input="831ac9c6497d52737dde5067079f395cc5405fe8dfc15b24e89441c43b8e99c6" output="831ac9c6497d52737dde5067079f395cc5405fe8dfc15b24e89441c43b8e99c6" exact=true}
+@{executed E1 plan=0 relation=relay bytes=10 input="280e1ee781715936d4bf3ac1244c5a015d50ca33c74cfc7a5c138b9454fbac70" output="280e1ee781715936d4bf3ac1244c5a015d50ca33c74cfc7a5c138b9454fbac70" exact=true}

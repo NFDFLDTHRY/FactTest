@@ -1,0 +1,49 @@
+{
+  "fixture_id": "F8-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "evidence/D26/ (identity, selection, results, groups)",
+    "the D25 graph",
+    "the registers"
+  ],
+  "narrowed_may_change": [
+    "evidence/D26/envmap-preview/",
+    "evidence/D26/status-preview/",
+    "evidence/D26/handoff-check-preview.json",
+    "evidence/D26/audit/",
+    "evidence/D26/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/reprove/build-reprove.mjs --graph design/environment-map/graph.json --selection evidence/D26/selection.json --evidence evidence/D26 --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --dimensions tests/reprove/dimensions.json --epoch D26 --delta D26-CLEAN-COMMISSIONING --commit '2c0aeda18d0b42eb97fa060f5603b65e986851cb (canonical base; integration commit in LEDGER AFTER)' --out $T/reprove.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,$T/reprove.json --out $T/g.json >/dev/null && node tests/envmap/envmap.mjs query $T/g.json --all --out evidence/D26/envmap-preview/queries >/dev/null && node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D26/status-preview >/dev/null && sh tests/hygiene/handoff-check.sh evidence/D26/handoff-check-preview.json >/dev/null && mkdir -p evidence/D26/audit && node tests/audit/consistency-audit.mjs --current-delta D26-CLEAN-COMMISSIONING --manifest evidence/D26/manifest.json --gate evidence/D26/gate.json --graph $T/g.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D26/envmap-preview/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D26/audit/consistency.json && node tests/audit/final-condition.mjs --evidence evidence/D26 --audit evidence/D26/audit/consistency.json --manifest evidence/D26/manifest.json --gate evidence/D26/gate.json --graph $T/g.json --issues tests/manifest/issues.json --selection evidence/D26/selection.json --results evidence/D26/results --status evidence/D26/status-preview/inventory.json --handoff-check evidence/D26/handoff-check-preview.json --handoff docs/HANDOFF.md --base 2c0aeda18d0b42eb97fa060f5603b65e986851cb --out evidence/D26/audit/final-condition.json"
+        ],
+        "log": "evidence/D26/logs/F8-preview-audit.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const a=J(\"evidence/D26/audit/consistency.json\"),f=J(\"evidence/D26/audit/final-condition.json\");console.log(\"audit\",a.status,a.checks.length,\"final\",f.status,f.lines.filter(l=>l.status===\"PASS\").length+\"/\"+f.lines.length);if(a.status!==\"PASS\"||f.status!==\"PASS\"||f.lines.length!==21)process.exit(1)'"
+        ],
+        "log": "evidence/D26/logs/F8-preview-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D26/audit/consistency.json",
+    "evidence/D26/audit/final-condition.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

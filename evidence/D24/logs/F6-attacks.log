@@ -1,0 +1,18 @@
+$ node tests/genericity/run-attacks.mjs --factc /home/user/factory-target-w29/debug/factc --specimens evidence/D24/specimens --out evidence/D24/attacks
+(cwd .)
+PASS renamed-relation [ledger-mirror]: exit 0; transfers ["posted","mirror"]; identity changed; old tape observe exit 1 EVIDENCE_UNBOUND
+PASS changed-order [ledger-mirror]: exit 0; transfers ["mirror","post"]; identity changed
+PASS different-legal-recipe [ledger-mirror]: exit 0; recipes ["R_ENTRY_MIRROR"]; strategy identity identical
+PASS single-backend-registry [dual-stream]: exit 0; 1 variant(s): CPU_WASM64
+PASS missing-conversion [ledger-mirror]: exit 1; NO_LEGAL_PLAN; bundle absent
+PASS undeclared-adapter [ledger-mirror]: exit 1; BUNDLE_CHECK_FAILED; certificate FAIL with 1 checks
+PASS unexpected-implementation-family [pixel-vault]: exit 1; failing B-11-adapter-realizes-backend
+PASS tampered-strategy [ledger-mirror]: check exit 1; selector.js: sha256 96642880908fba5ea1a7818badf0c852315e04900ca68d25c3aacfb0d5551666 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94
+PASS tampered-bundle [ledger-mirror]: check exit 1; wasm64_relay.wasm: sha256 e9327087659add1a5081c2a63b5b9d7eec442776ddc7bfe707afb690e7fc014f != recorded 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11
+PASS invalid-guard [ledger-mirror]: check exit 1; selector.js: sha256 252f76be72ff2b1674f61f2ad2a8e02aafcdf915d3e2d5c5b7ea1fbb8661f786 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94; selector.js: 1766 bytes != recorded 1767
+PASS wrong-certificate [ledger-mirror]: check exit 1; selector.js: sha256 3666dbfa635831efd1fbe4a32d549389f1c7685ba96a75f09eb23994b2c9945b != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94
+PASS stale-evidence [byte-relay -> ledger-mirror]: exit 1; EVIDENCE_UNBOUND
+PASS genuine-evidence [ledger-mirror]: exit 0
+PASS
+
+[exit 0] expected 0

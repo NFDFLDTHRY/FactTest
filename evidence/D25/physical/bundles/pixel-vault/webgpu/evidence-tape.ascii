@@ -1,0 +1,11 @@
+@{bundle strategy_data="dfdceb5aab517ceb2954c015157a272e8a0bf023a7b8dea328dc1149d7e9207b" strategy=1 certificate=1000}
+@{epoch E0}
+@{admission WEBGPU ADMITTED evidence=webgpu_known_answer}
+@{activation E0 plan=0 status=PASS}
+@{executed E0 plan=0 relation=stash bytes=3 input="8e1336ab78ebe687fd8056a37f2d3b0c32f4cf8fa8b691b653800fa693d570b9" output="8e1336ab78ebe687fd8056a37f2d3b0c32f4cf8fa8b691b653800fa693d570b9" exact=true}
+@{executed E0 plan=0 relation=stash bytes=17 input="45e73ee93254114fd513dec79e8be44533f27689f1386a015f40e47ef8d34cc7" output="45e73ee93254114fd513dec79e8be44533f27689f1386a015f40e47ef8d34cc7" exact=true}
+@{loss E0 WEBGPU reason=destroyed}
+@{epoch E1}
+@{admission WEBGPU REJECTED evidence=device_lost reason=destroyed}
+@{activation E1 plan=none status=NO_ACTIVE_PLAN}
+@{transition E0 -> E1 stale_plan=0 replacement=none}

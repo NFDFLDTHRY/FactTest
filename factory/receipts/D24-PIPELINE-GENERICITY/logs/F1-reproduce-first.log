@@ -1,0 +1,5 @@
+$ sh -c sh tests/genericity/reproduce-base.sh 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 factory/receipts/D24-PIPELINE-GENERICITY/logs/reproduce-base /home/user/factory-target-d24base && grep -q '"status": "REPRODUCED"' factory/receipts/D24-PIPELINE-GENERICITY/logs/reproduce-base/summary.json
+(cwd .)
+REPRODUCED at 6bcc86cd50f9787c0afd3b65a113812bea2de2d7: {"single_relation_strategy":true,"fixed_operation":true,"first_backend_execution":true,"payload_in_shell":true,"anti_cheat_detects":true}
+
+[exit 0] expected 0

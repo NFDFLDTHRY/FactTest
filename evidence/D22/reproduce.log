@@ -1,0 +1,180 @@
+$ cargo +1.94.1 test -p factory
+(cwd .)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 29 tests
+test f02_fixture_authority_expansion_rejected_at_open ... ok
+test f03_missing_receipt_blocks_verification ... ok
+test f01_unauthorized_mutation_fails_verification ... ok
+test f00_happy_path_integrates_and_reinspects ... ok
+test f04_failed_station_check_cannot_be_pass ... ok
+test f08_delta_with_overlapping_authority_fails_structural_check ... ok
+test f09_wildcard_station_surface_rejected_at_open ... ok
+test f10_wildcard_delta_surface_rejected_at_check ... ok
+test f11_literal_surface_forms ... ok
+test f06_read_only_station_mutating_source_fails ... ok
+test f12_fixture_wildcard_rejected_at_open ... ok
+test f05_moved_base_blocks_integration_without_force ... ok
+test f07_unreceipted_change_fails_verification ... ok
+test f16_heuristic_checkers_carry_proof_weight_none ... ok
+test f13_receipt_and_verification_carry_environment_identity ... ok
+test f15_retire_removes_exactly_the_proven_objects ... ok
+test f14_audit_classifies_only_proven_objects_retirable ... ok
+test f18_handwritten_receipt_rejected_by_verify ... FAILED
+test f17_edited_receipt_rejected_by_verify ... FAILED
+test f21_malformed_fixture_rejected ... ok
+test f23_command_escaping_the_workpiece_rejected_at_open ... FAILED
+test f22_failed_identity_probe_rejected_at_close ... FAILED
+test f20_workpiece_changed_after_verification_rejected ... ok
+test f19_stale_verification_rejected_by_integrate ... ok
+test f24_station_command_writing_into_canonical_rejected_at_close ... FAILED
+test f25_direct_canonical_edit_blocks_integration ... ok
+test f26_reinspect_command_writing_into_canonical_is_differ ... FAILED
+test f27_unintegrated_workpiece_never_retired ... ok
+test f28_differing_reinspection_keeps_the_workpiece ... ok
+
+failures:
+
+---- f18_handwritten_receipt_rejected_by_verify stdout ----
+
+thread 'f18_handwritten_receipt_rejected_by_verify' (3833) panicked at factory/tests/factory_law.rs:703:5:
+a receipt no station wrote must not verify: Report { checks: [("state_base_tree_matches_canonical_base", true, "3d5ddc8e75334b58856d993364fdad5ac22e2f2d"), ("changed_paths_within_delta_may_change", true, ""), ("must_not_change_tree_identical", true, ""), ("receipt_pass:fx", true, "factory/receipts/D-F18/fx.json status PASS"), ("receipt_station_matches_fixture:fx", true, ""), ("receipt_base_matches:fx", true, ""), ("receipt_all_checks_pass:fx", true, ""), ("required_capability_receipted:DOC_CONTRACT_FORGE", true, ""), ("no_unreceipted_change", true, ""), ("required_path_exists:design/ASCII.md", true, ""), ("verification_written", true, "factory/receipts/D-F18/verification.json final_tree 0b10b40c48a8217a4171494e7f32fd5ee48a450a")], weight: None }
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/panicking.rs:80:14
+   2: factory_law::f18_handwritten_receipt_rejected_by_verify
+             at ./tests/factory_law.rs:703:5
+   3: factory_law::f18_handwritten_receipt_rejected_by_verify::{{closure}}
+             at ./tests/factory_law.rs:681:48
+   4: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+   5: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- f17_edited_receipt_rejected_by_verify stdout ----
+
+thread 'f17_edited_receipt_rejected_by_verify' (3799) panicked at factory/tests/factory_law.rs:674:5:
+an edited receipt must not verify: Report { checks: [("state_base_tree_matches_canonical_base", true, "3d5ddc8e75334b58856d993364fdad5ac22e2f2d"), ("changed_paths_within_delta_may_change", true, ""), ("must_not_change_tree_identical", true, ""), ("receipt_pass:fx", true, "factory/receipts/D-F17/fx.json status PASS"), ("receipt_station_matches_fixture:fx", true, ""), ("receipt_base_matches:fx", true, ""), ("receipt_all_checks_pass:fx", true, ""), ("required_capability_receipted:DOC_CONTRACT_FORGE", true, ""), ("no_unreceipted_change", true, ""), ("required_path_exists:design/ASCII.md", true, ""), ("verification_written", true, "factory/receipts/D-F17/verification.json final_tree 76040581056ac0f7f7362dc1fed3bac610ac6eb4")], weight: None }
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/panicking.rs:80:14
+   2: factory_law::f17_edited_receipt_rejected_by_verify
+             at ./tests/factory_law.rs:674:5
+   3: factory_law::f17_edited_receipt_rejected_by_verify::{{closure}}
+             at ./tests/factory_law.rs:647:43
+   4: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+   5: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- f23_command_escaping_the_workpiece_rejected_at_open stdout ----
+
+thread 'f23_command_escaping_the_workpiece_rejected_at_open' (4152) panicked at factory/tests/factory_law.rs:866:5:
+Report { checks: [("station_registered", true, "S-DOC v1 (canonical-base)"), ("fixture_delta_matches", true, "D-F23"), ("station_may_read_surfaces_literal", true, ""), ("station_may_change_surfaces_literal", true, ""), ("station_must_not_change_surfaces_literal", true, ""), ("fixture_may_read_surfaces_literal", true, ""), ("fixture_may_change_surfaces_literal", true, ""), ("fixture_may_change_subset_of_station", true, ""), ("fixture_may_read_subset_of_station", true, ""), ("fixture_may_change_subset_of_delta", true, ""), ("fixture_may_change_disjoint_from_station_must_not_change", true, ""), ("fixture_may_change_disjoint_from_delta_must_not_change", true, ""), ("station_capability_required_by_delta", true, "DOC_CONTRACT_FORGE"), ("command_log_within_may_change:design/up.log", true, ""), ("command_log_within_may_change:design/abs.log", true, ""), ("command_log_within_may_change:../escaped.log", false, "")], weight: None }
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/panicking.rs:80:14
+   2: factory_law::f23_command_escaping_the_workpiece_rejected_at_open
+             at ./tests/factory_law.rs:866:5
+   3: factory_law::f23_command_escaping_the_workpiece_rejected_at_open::{{closure}}
+             at ./tests/factory_law.rs:844:57
+   4: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+   5: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- f22_failed_identity_probe_rejected_at_close stdout ----
+
+thread 'f22_failed_identity_probe_rejected_at_close' (4102) panicked at factory/tests/factory_law.rs:827:5:
+a receipt whose environment could not be identified is not PASS: Report { checks: [("station_registered", true, "S-DOC v1 (canonical-base)"), ("fixture_delta_matches", true, "D-F22"), ("station_may_read_surfaces_literal", true, ""), ("station_may_change_surfaces_literal", true, ""), ("station_must_not_change_surfaces_literal", true, ""), ("fixture_may_read_surfaces_literal", true, ""), ("fixture_may_change_surfaces_literal", true, ""), ("fixture_may_change_subset_of_station", true, ""), ("fixture_may_read_subset_of_station", true, ""), ("fixture_may_change_subset_of_delta", true, ""), ("fixture_may_change_disjoint_from_station_must_not_change", true, ""), ("fixture_may_change_disjoint_from_delta_must_not_change", true, ""), ("station_capability_required_by_delta", true, "DOC_CONTRACT_FORGE"), ("changed_paths_within_fixture_may_change", true, ""), ("must_not_change_untouched", true, ""), ("receipt_written", true, "factory/receipts/D-F22/fx.json")], weight: None }
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/panicking.rs:80:14
+   2: factory_law::f22_failed_identity_probe_rejected_at_close
+             at ./tests/factory_law.rs:827:5
+   3: factory_law::f22_failed_identity_probe_rejected_at_close::{{closure}}
+             at ./tests/factory_law.rs:793:49
+   4: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+   5: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- f24_station_command_writing_into_canonical_rejected_at_close stdout ----
+
+thread 'f24_station_command_writing_into_canonical_rejected_at_close' (4186) panicked at factory/tests/factory_law.rs:911:5:
+a station that wrote into the canonical repository is not PASS: Report { checks: [("station_registered", true, "S-DOC v1 (canonical-base)"), ("fixture_delta_matches", true, "D-F24"), ("station_may_read_surfaces_literal", true, ""), ("station_may_change_surfaces_literal", true, ""), ("station_must_not_change_surfaces_literal", true, ""), ("fixture_may_read_surfaces_literal", true, ""), ("fixture_may_change_surfaces_literal", true, ""), ("fixture_may_change_subset_of_station", true, ""), ("fixture_may_read_subset_of_station", true, ""), ("fixture_may_change_subset_of_delta", true, ""), ("fixture_may_change_disjoint_from_station_must_not_change", true, ""), ("fixture_may_change_disjoint_from_delta_must_not_change", true, ""), ("station_capability_required_by_delta", true, "DOC_CONTRACT_FORGE"), ("command_log_within_may_change:design/direct.log", true, ""), ("command:sh -c echo direct > /tmp/factory-law-f24-3240/canonical/direct.txt", true, "exit 0 (expected 0) log design/direct.log"), ("changed_paths_within_fixture_may_change", true, ""), ("must_not_change_untouched", true, ""), ("receipt_written", true, "factory/receipts/D-F24/fx.json")], weight: None }
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/panicking.rs:80:14
+   2: factory_law::f24_station_command_writing_into_canonical_rejected_at_close
+             at ./tests/factory_law.rs:911:5
+   3: factory_law::f24_station_command_writing_into_canonical_rejected_at_close::{{closure}}
+             at ./tests/factory_law.rs:884:66
+   4: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+   5: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- f26_reinspect_command_writing_into_canonical_is_differ stdout ----
+
+thread 'f26_reinspect_command_writing_into_canonical_is_differ' (4260) panicked at factory/tests/factory_law.rs:965:5:
+Report { checks: [("canonical_head_is_integrated_commit", true, "head 18282004c0486185e9de598149413a4bf33a4832 commit 18282004c0486185e9de598149413a4bf33a4832"), ("canonical_tree_matches_verified_workpiece", true, "a2942fe77e98b6700539be1d184a50121c1fd1a9 vs a2942fe77e98b6700539be1d184a50121c1fd1a9"), ("reinspect_command:sh -c echo litter > reinspect-litter.txt", true, "exit 0 (expected 0) log /tmp/factory-law-f26-3240/workpieces/W-D-F26.reinspect/litter.log")], weight: None }
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/panicking.rs:80:14
+   2: factory_law::f26_reinspect_command_writing_into_canonical_is_differ
+             at ./tests/factory_law.rs:965:5
+   3: factory_law::f26_reinspect_command_writing_into_canonical_is_differ::{{closure}}
+             at ./tests/factory_law.rs:946:60
+   4: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+   5: core::ops::function::FnOnce::call_once
+             at /rustc/e408947bfd200af42db322daf0fadfe7e26d3bd1/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+failures:
+    f17_edited_receipt_rejected_by_verify
+    f18_handwritten_receipt_rejected_by_verify
+    f22_failed_identity_probe_rejected_at_close
+    f23_command_escaping_the_workpiece_rejected_at_open
+    f24_station_command_writing_into_canonical_rejected_at_close
+    f26_reinspect_command_writing_into_canonical_is_differ
+
+test result: FAILED. 23 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.76s
+
+   Compiling factc-foundation v0.1.0 (/home/user/factory-workpieces/W27/compiler/foundation)
+   Compiling factory v0.1.0 (/home/user/factory-workpieces/W27/factory)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.32s
+     Running unittests src/lib.rs (/home/user/factory-target-w27/debug/deps/factory-7f03e9cc2885e627)
+     Running unittests src/main.rs (/home/user/factory-target-w27/debug/deps/factory-3be3f278e1e07394)
+     Running tests/factory_law.rs (/home/user/factory-target-w27/debug/deps/factory_law-d56c0c15998918b0)
+error: test failed, to rerun pass `-p factory --test factory_law`
+
+[exit 101] expected 101

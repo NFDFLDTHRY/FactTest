@@ -1,0 +1,29 @@
+{
+ "id": "CL-T6",
+ "trace": "T",
+ "authority": "AUTH-ECMA-262",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/tc39/ecma262",
+  "branch": "main",
+  "path": "spec.html",
+  "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+  "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af",
+  "bytes": 3087902
+ },
+ "locator": {
+  "fragment": "#sec-sharedarraybuffer-constructor",
+  "line_start": 46276,
+  "line_end": 46282,
+  "derivation": "PRESENT_EXPLICIT (id attribute)",
+  "enclosing_section": null
+ },
+ "window": 7,
+ "consequence": "ECMA-262 lets the host omit the SharedArrayBuffer global: its ABSENCE outside cross-origin isolation (D11 FACT-SHARED-THREADS-UNADMITTED) is host/implementation behaviour, not an HTML/ECMA requirement - only the serialization gate (CL-T4) is standard",
+ "excerpt": "    <emu-clause id=\"sec-sharedarraybuffer-constructor\">\n      <h1>The SharedArrayBuffer Constructor</h1>\n      <p>The SharedArrayBuffer constructor:</p>\n      <ul>\n        <li>is <dfn>%SharedArrayBuffer%</dfn>.</li>\n        <li>is the initial value of the *\"SharedArrayBuffer\"* property of the global object, if that property is present (see below).</li>\n        <li>creates and initializes a new SharedArrayBuffer when called as a constructor.</li>",
+ "excerpt_sha256": "00e0adcbfff02f45f3597aa64dbe2f940d985018c93e21bc9e4bc81f9a9305d4",
+ "must_contain": {
+  "if that property is present": true
+ },
+ "status": "VERIFIED"
+}

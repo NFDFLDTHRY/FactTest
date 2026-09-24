@@ -1,0 +1,34 @@
+{
+  "id": "P14-BROKEN-SW-RECOVERY",
+  "question": "Can a broken service worker be recovered without the origin server?",
+  "needed_for": "recovery",
+  "started": "2026-09-24T17:44:35.197Z",
+  "observed": {
+    "broken_with_origin_up": {
+      "ok": false,
+      "error": "page.goto: net::ERR_FAILED at http://127.0.0.1:47311/p14/index.html"
+    },
+    "broken_offline": {
+      "ok": false,
+      "error": "page.goto: net::ERR_FAILED at http://127.0.0.1:47311/p14/index.html"
+    },
+    "recover_page_offline": {
+      "ok": false,
+      "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:47311/p14-recover.html"
+    },
+    "recover_page_online": {
+      "ok": true,
+      "status": 200,
+      "title": "recovered:1",
+      "title_after": "recovered:1"
+    },
+    "after_unregister": {
+      "ok": true,
+      "status": 200,
+      "title": "p14"
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "a broken service worker blocks every navigation in its scope even with the origin up; offline there is no page that can reach and unregister it; recovery needed the origin server (or browser-UI site-data clearing). The seed must be correct by construction and minimal",
+  "finished": "2026-09-24T17:44:35.580Z"
+}

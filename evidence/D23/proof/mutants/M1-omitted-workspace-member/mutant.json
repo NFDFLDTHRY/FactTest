@@ -1,0 +1,134 @@
+{
+  "id": "M1-omitted-workspace-member",
+  "attacks": "T9-P1 package selection",
+  "description": "two-member workspace whose default-members lists only alpha; beta carries a failing test. Bare `cargo test` reports green.",
+  "weak": {
+    "check": "cargo",
+    "args": [
+      "test"
+    ],
+    "expect": "PASS",
+    "note": "historical rule: bare cargo test exit 0 == 'full suite'",
+    "observed": {
+      "verdict": "PASS",
+      "command": [
+        "cargo",
+        "+1.94.1",
+        "test",
+        "--message-format=json"
+      ],
+      "exit": 0,
+      "packages": [
+        "alpha"
+      ],
+      "selection": [
+        "alpha:alpha[lib]",
+        "alpha:alpha[lib]{test}"
+      ],
+      "tests": {
+        "binaries": [
+          {
+            "target": "unittests src/lib.rs",
+            "exe": "../target/debug/deps/alpha-55c3578d728afc76"
+          },
+          {
+            "target": "doc-tests alpha",
+            "exe": null
+          }
+        ],
+        "results": [
+          {
+            "status": "ok",
+            "passed": 1,
+            "failed": 0,
+            "ignored": 0
+          },
+          {
+            "status": "ok",
+            "passed": 0,
+            "failed": 0,
+            "ignored": 0
+          }
+        ],
+        "passed": 1,
+        "failed": 0,
+        "failed_names": [],
+        "finished": "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s"
+      },
+      "reason": "exit 0; packages [alpha]; 1 passed / 0 failed"
+    }
+  },
+  "qualified": {
+    "check": "selection",
+    "expect": "FAIL",
+    "reason_must_contain": "beta",
+    "note": "T9-P1: default-members must equal members and --workspace must pass",
+    "observed": {
+      "verdict": "FAIL",
+      "reason": "members omitted from default-members: beta; cargo test --workspace exit 101: 1 failed (t::beta_is_broken)",
+      "members": [
+        "alpha",
+        "beta"
+      ],
+      "default_members": [
+        "alpha"
+      ],
+      "workspace_test": {
+        "command": [
+          "cargo",
+          "+1.94.1",
+          "test",
+          "--workspace",
+          "--message-format=json"
+        ],
+        "exit": 101,
+        "packages": [
+          "alpha",
+          "beta"
+        ],
+        "tests": {
+          "binaries": [
+            {
+              "target": "unittests src/lib.rs",
+              "exe": "../target/debug/deps/alpha-55c3578d728afc76"
+            },
+            {
+              "target": "unittests src/lib.rs",
+              "exe": "../target/debug/deps/beta-83b36f7268bf3aeb"
+            }
+          ],
+          "results": [
+            {
+              "status": "ok",
+              "passed": 1,
+              "failed": 0,
+              "ignored": 0
+            },
+            {
+              "status": "FAILED",
+              "passed": 0,
+              "failed": 1,
+              "ignored": 0
+            }
+          ],
+          "passed": 1,
+          "failed": 1,
+          "failed_names": [
+            "t::beta_is_broken"
+          ],
+          "finished": "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s"
+        }
+      }
+    }
+  },
+  "expected": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "observed": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "verdict": "RUN",
+  "reason": "weak check PASS (would accept the mutant); qualified check FAIL: members omitted from default-members: beta; cargo test --workspace exit 101: 1 failed (t::beta_is_broken)"
+}

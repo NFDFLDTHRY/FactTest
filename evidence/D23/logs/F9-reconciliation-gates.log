@@ -1,0 +1,33 @@
+$ sh -c mkdir -p evidence/D23/regress && node tests/reconcile/gate.mjs --register tests/reconcile/d18-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D18/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d18-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d18r-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D18R/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d18r-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d20-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D20/sync/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d20-sync-gate.json && node tests/reconcile/surfaces.mjs tests/reconcile/d23-surfaces.json --out evidence/D23/surfaces.json && node tests/reconcile/gate.mjs --register tests/reconcile/d23-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D23/envmap/queries --surfaces evidence/D23/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D23/regress/d23-gate.json
+(cwd .)
+PASS register_in_graph: 36 reconciliations, 15 supersessions, 19 ledgered, 22 added edges
+PASS ledger_text_present: 19 constraints verbatim in CONSTRAINT-LEDGER.md
+PASS labels_resolved: 6 MISLABEL facts resolved
+PASS stale_facts_reconciled: 8 Q17 facts re-examined
+PASS current_statements_clean: 299 current authorities/facts; MISLABEL texts only on superseded, resolved or CORRECTED nodes
+PASS surfaces_pass: 35 surface checks PASS
+PASS
+PASS register_in_graph: 2 reconciliations, 1 supersessions, 0 ledgered, 7 added edges
+PASS ledger_text_present: 0 constraints verbatim in (no ledger in this register)
+PASS labels_resolved: 6 MISLABEL facts resolved
+PASS stale_facts_reconciled: 8 Q17 facts re-examined
+PASS current_statements_clean: 299 current authorities/facts; MISLABEL texts only on superseded, resolved or CORRECTED nodes; 2 retired texts absent
+PASS surfaces_pass: 2 surface checks PASS
+PASS
+PASS register_in_graph: 10 reconciliations, 2 supersessions, 0 ledgered, 7 added edges
+PASS ledger_text_present: 0 constraints verbatim in (no ledger in this register)
+PASS labels_resolved: 6 MISLABEL facts resolved
+PASS stale_facts_reconciled: 8 Q17 facts re-examined
+PASS current_statements_clean: 299 current authorities/facts; MISLABEL texts only on superseded, resolved or CORRECTED nodes; 2 retired texts absent
+PASS surfaces_pass: 12 surface checks PASS
+PASS
+PASS 2 surface checks
+PASS register_in_graph: 1 reconciliations, 1 supersessions, 0 ledgered, 0 added edges
+PASS ledger_text_present: 0 constraints verbatim in (no ledger in this register)
+PASS labels_resolved: 6 MISLABEL facts resolved
+PASS stale_facts_reconciled: 8 Q17 facts re-examined
+PASS current_statements_clean: 299 current authorities/facts; MISLABEL texts only on superseded, resolved or CORRECTED nodes; 1 retired texts absent
+PASS surfaces_pass: 2 surface checks PASS
+PASS
+
+[exit 0] expected 0

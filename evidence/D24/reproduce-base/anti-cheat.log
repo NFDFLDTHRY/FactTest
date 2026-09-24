@@ -1,0 +1,19 @@
+compiler-src: clean
+codegen-templates: specimen semantics in machinery:
+compiler/codegen/templates/index.html:13:<div><button id="init">init (E0)</button><button id="relay">relay payload</button><button id="destroy">destroy WEBGPU (controlled loss)</button></div>
+compiler/codegen/templates/index.html:20:document.getElementById('relay').onclick = async () => { await relay(new Uint8Array([0x00,0x01,0x7f,0x80,0xff,0x55,0xaa,0x10])); show(); };
+compiler/codegen/templates/runtime.js:91:export async function relay(bytes) {
+compiler/codegen/templates/runtime.js:94:  if (!state.activePlan) { record('EXECUTE', 'relay', { status: 'NO_ACTIVE_PLAN' }, null); island('no_active_plan ' + epochId()); return { status: 'NO_ACTIVE_PLAN' }; }
+compiler/codegen/templates/runtime.js:100:    record('EXECUTE', 'relay', { status: 'FAILED', result: out.result, detail: out.detail, input_sha256: inputSha }, null);
+compiler/codegen/templates/runtime.js:106:  record('EXECUTE', 'relay', { status: 'EXECUTED', plan_id: plan.plan_id, backend: plan.guard[0], conversions: plan.conversions, bytes: bytes.length, input_sha256: inputSha, output_sha256: outputSha, exact }, { output_sha256: inputSha });
+factory-src: clean
+host: specimen semantics in machinery:
+host/harness/bundle-probe.mjs:42:    const r = await page.evaluate(async (bytes) => { const out = await window.factRuntime.relay(new Uint8Array(bytes)); return { ...out, bytes: out.bytes ? [...out.bytes] : null }; }, [...p.bytes]);
+backend-names: fixed backend assumption outside adapter templates:
+compiler/codegen/templates/index.html:13:<div><button id="init">init (E0)</button><button id="relay">relay payload</button><button id="destroy">destroy WEBGPU (controlled loss)</button></div>
+compiler/codegen/templates/index.html:21:document.getElementById('destroy').onclick = async () => { await destroyBackend('WEBGPU'); show(); };
+host/harness/bundle-probe.mjs:7://   controlled loss: destroyBackend('WEBGPU') (GPUDevice.destroy()) -> device.lost -> E1 -> reselection.
+host/harness/bundle-probe.mjs:57:if (!noWebgpu && act0.admissions.WEBGPU && act0.admissions.WEBGPU.decision === 'ADMITTED') {
+host/harness/bundle-probe.mjs:58:  loss = await page.evaluate(async () => { const r = await window.factRuntime.destroyBackend('WEBGPU'); const s = window.factRuntime.snapshot(); return { release: r, activation: s.activation, admissions: s.admissions, epochs: s.epochs, deltas: s.observation_deltas }; });
+host/harness/bundle-probe.mjs:72:  loss_witnessed: loss ? /destroyed/.test(loss.release.detail || '') && loss.admissions.WEBGPU.decision === 'REJECTED' : null,
+host/harness/bundle-probe.mjs:80:const ok = record.verdict.e0_all_exact && record.verdict.bundle_unchanged && (noWebgpu ? record.verdict.e0_backend === 'CPU_WASM64' : (record.verdict.e0_backend === 'WEBGPU' && record.verdict.loss_witnessed && record.verdict.e1_all_exact && record.verdict.e1_backend === 'CPU_WASM64'));

@@ -1,0 +1,30 @@
+{
+ "id": "CL-GPU6",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-ADAPTER-EXPIRE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "If |adapter|.{{adapter/[[state]]}} is {{adapter/[[state]]/\"expired\"}}",
+  "line_start": 2972,
+  "line_end": 2976,
+  "derivation": "anchor text",
+  "enclosing_section": "#gpuadapter (line 2837)"
+ },
+ "window": 5,
+ "consequence": "an expired adapter still returns a device, already lost: recovery restarts at requestAdapter",
+ "excerpt": "                1. If |adapter|.{{adapter/[[state]]}} is {{adapter/[[state]]/\"expired\"}}\n                    or the user agent otherwise cannot fulfill the request:\n\n                    1. Let |device| be a new [=device=].\n                    1. [=Lose the device=](|device|, {{GPUDeviceLostReason/\"unknown\"}}).",
+ "excerpt_sha256": "1483fef6e2116fcef056f83c6d9858d6a9150dbf1c34fdee38b1403ce5eef6b7",
+ "must_contain": {
+  "or the user agent otherwise cannot fulfill the request": true,
+  "[=Lose the device=](|device|, {{GPUDeviceLostReason/\"unknown\"}})": true
+ },
+ "status": "VERIFIED"
+}

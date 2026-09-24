@@ -1,0 +1,29 @@
+{
+ "id": "CL-S4",
+ "trace": "S",
+ "authority": "AUTH-STREAMS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/streams",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+  "sha256": "24360b4f8446e6c80e185c5021fcca9b67a7e0bb62490a00109080ebc04c6440",
+  "bytes": 417076
+ },
+ "locator": {
+  "text": "A <dfn export>readable stream</dfn> represents",
+  "line_start": 123,
+  "line_end": 124,
+  "derivation": "anchor text",
+  "enclosing_section": "#rs-model (line 121)"
+ },
+ "window": 2,
+ "consequence": "the Response body is a readable stream consumed incrementally by streaming compilation; FactTest's harness instead instantiates from bytes (no streaming probe: FACT-STREAMING-UNPROBED stays [GAP])",
+ "excerpt": "A <dfn export>readable stream</dfn> represents a source of data, from which you can read. In other\nwords, data comes",
+ "excerpt_sha256": "71fcb29d6ce9ffd0d983f7bd56485ea53017599ba8c7eb7939361e225d551712",
+ "must_contain": {
+  "represents a source of data": true
+ },
+ "status": "VERIFIED"
+}

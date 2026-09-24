@@ -92,6 +92,8 @@ pub enum DiagCode {
     BundleCheckFailed = 700,
     // observe
     EvidenceParse = 800,
+    /// the evidence tape names another bundle than the manifest the host supplied (stale or foreign evidence)
+    EvidenceUnbound = 801,
 }
 
 impl DiagCode {
@@ -129,6 +131,7 @@ impl DiagCode {
             DiagCode::ProofFailed => "PROOF_FAILED",
             DiagCode::BundleCheckFailed => "BUNDLE_CHECK_FAILED",
             DiagCode::EvidenceParse => "EVIDENCE_PARSE",
+            DiagCode::EvidenceUnbound => "EVIDENCE_UNBOUND",
         }
     }
     pub const fn severity(self) -> Severity {

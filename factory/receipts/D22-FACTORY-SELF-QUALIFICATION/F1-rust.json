@@ -1,0 +1,146 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D22-FACTORY-SELF-QUALIFICATION-F1-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F1-rust",
+  "workpiece_id": "W27",
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION",
+  "canonical_base": "88564a0eccd934d6a017faf65435bc871bcd2f94",
+  "input_artifacts": [
+    "D22 section 1 (witnesses f17-f28)",
+    "factory/src as committed at the base"
+  ],
+  "open_tree": "cecdf32b95fac5f2c01d8fa680f7c6a66be70bf3",
+  "close_tree": "55a616bb71481f4aae084b87752221dbc5cfcca9",
+  "changed_paths": [
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce-check.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log",
+    "factory/tests/factory_law.rs"
+  ],
+  "output_artifacts": [
+    "factory/tests/factory_law.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D22-FACTORY-SELF-QUALIFICATION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo +1.94.1 test -p factory",
+      "status": "PASS",
+      "detail": "exit 101 (expected 101) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log"
+    },
+    {
+      "check": "command:sh -c L=factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log; for t in f17 f18 f22 f23 f24 f26; do grep -q \"^test ${t}_.* FAILED$\" $L || { echo $t not failing; exit 1; }; done; [ $(grep -c '^test f.* FAILED$' $L) -eq 6 ] && [ $(grep -c '^test f.* ok$' $L) -eq 23 ] && grep -q 'test result: FAILED. 23 passed; 6 failed' $L && git diff --exit-code 88564a0eccd934d6a017faf65435bc871bcd2f94 -- factory/src compiler host Cargo.toml Cargo.lock factory/Cargo.toml && echo 'six accepted attacks reproduced with the Factory as committed'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce-check.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/tests/factory_law.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce-check.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T13:13:40Z",
+  "status": "PASS"
+}

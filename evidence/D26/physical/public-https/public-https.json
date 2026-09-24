@@ -1,0 +1,90 @@
+{
+ "tool": "tests/physical/public-https-probe.sh",
+ "observed": "2026-09-24T18:48:47.148Z",
+ "branch": "claude/facttest-materialization-27amc7",
+ "revision": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+ "bundle_path": "evidence/D25/physical/bundles/byte-relay/compile/bundle",
+ "bundle": {
+  "bundle_id": "0f4a1ec14b9e1159e4b6c19f058467cf15cc441e04d0b7cfe17a0f184761cdf1",
+  "strategy_data_sha256": "46a712089c3077d5924ec725affb2d6293a24a9c034b4704a224b2fd705a0b38",
+  "artifacts": {
+   "wasm64_relay.wasm": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11",
+   "membrane.js": "be152864f0125baa793e6b36c4471fd87296f0ee67feb15fb78eafeb4d891743",
+   "selector.js": "e37b56a2d932682dff4cd1f79cdef838a0056230f34169fdfc348788dbc6cb9f",
+   "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+   "index.html": "86876c88a50605e593a1d164b69961b8af3aa0fdbab8b7079f34f6a611188c59",
+   "manifest.webmanifest": "5d16d70b9b46d1fa74ba0427c5474e37f7eef0f13d7ff5e0c9af127cbb400129",
+   "sw.js": "efd088718d47a36c0557cef432165a1b21e82662214de22c9bf136b8593bb235"
+  }
+ },
+ "served_bundle_json_at_pushed_path": {
+  "bundle_id": "0f4a1ec14b9e1159e4b6c19f058467cf15cc441e04d0b7cfe17a0f184761cdf1",
+  "strategy_data_sha256": "46a712089c3077d5924ec725affb2d6293a24a9c034b4704a224b2fd705a0b38",
+  "equals_fresh_build": true
+ },
+ "routes": [
+  {
+   "route": "githack dev host (the owner's requested secure-context test route)",
+   "url": "https://raw.githack.com/NFDFLDTHRY/FactTest/claude/facttest-materialization-27amc7/evidence/D25/physical/bundles/byte-relay/compile/bundle/index.html",
+   "curl_exit": 56,
+   "reachable": false,
+   "status": null,
+   "content_type": "text/plain; charset=utf-8",
+   "x_content_type_options": "nosniff",
+   "content_security_policy": null,
+   "curl_error": "curl: (56) CONNECT tunnel failed, response 403",
+   "hosts_module_webapp": false
+  },
+  {
+   "route": "githack CDN host",
+   "url": "https://rawcdn.githack.com/NFDFLDTHRY/FactTest/2c0aeda18d0b42eb97fa060f5603b65e986851cb/evidence/D25/physical/bundles/byte-relay/compile/bundle/index.html",
+   "curl_exit": 56,
+   "reachable": false,
+   "status": null,
+   "content_type": "text/plain; charset=utf-8",
+   "x_content_type_options": "nosniff",
+   "content_security_policy": null,
+   "curl_error": "curl: (56) CONNECT tunnel failed, response 403",
+   "hosts_module_webapp": false
+  },
+  {
+   "route": "GitHub Pages origin",
+   "url": "https://nfdfldthry.github.io/FactTest/",
+   "curl_exit": 56,
+   "reachable": false,
+   "status": null,
+   "content_type": "text/plain; charset=utf-8",
+   "x_content_type_options": "nosniff",
+   "content_security_policy": null,
+   "curl_error": "curl: (56) CONNECT tunnel failed, response 403",
+   "hosts_module_webapp": false
+  },
+  {
+   "route": "raw.githubusercontent (html)",
+   "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/claude/facttest-materialization-27amc7/evidence/D25/physical/bundles/byte-relay/compile/bundle/index.html",
+   "curl_exit": 0,
+   "reachable": true,
+   "status": 200,
+   "content_type": "text/plain; charset=utf-8",
+   "x_content_type_options": "nosniff",
+   "content_security_policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+   "curl_error": null,
+   "hosts_module_webapp": false
+  },
+  {
+   "route": "raw.githubusercontent (module script)",
+   "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/claude/facttest-materialization-27amc7/evidence/D25/physical/bundles/byte-relay/compile/bundle/runtime.js",
+   "curl_exit": 0,
+   "reachable": true,
+   "status": 200,
+   "content_type": "text/plain; charset=utf-8",
+   "x_content_type_options": "nosniff",
+   "content_security_policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+   "curl_error": null,
+   "hosts_module_webapp": false
+  }
+ ],
+ "usable_public_origin": null,
+ "boundary": "no reachable public HTTPS origin can host the module WebApp from this environment: CONNECT refused by the egress policy for the candidate hosts, and the reachable raw host serves text/plain with nosniff and a sandboxing CSP (module scripts are refused); the public-HTTPS claim stays [UNK] until an external run supplies evidence (tests/physical/PUBLIC-HTTPS-PROBE.md)",
+ "status": "UNREACHABLE"
+}

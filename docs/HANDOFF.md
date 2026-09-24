@@ -9,8 +9,16 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D20-MAIN-SYNC (joins the parallel D14 line of main after the D14-D19 series; integration commits in
-                   design/materialization/LEDGER.md)
+last delta         D26-CLEAN-COMMISSIONING (task 6 of 6 of the whole-repository execution + gap closure series
+                   D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md: the final commissioning
+                   run; integration commits in design/materialization/LEDGER.md; the implementation baseline is
+                   design/materialization/D26-STABLE-BASELINE.md)
+judge              the Factory built from this tree (tests/factory/run-witnesses.sh records its sha256): every refusal
+                   reason of the prompt witnessed (tests/factory/witnesses.json, factory/tests/factory_law.rs f00-f28,
+                   tests/sync/collision-witness.sh); six accepted attacks found by D22 and repaired before D23
+manifest           design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md (generated): every tracked path tiered, every
+                   live component with owner, consumers, stations, tests, probes, claims, evidence and stale dimensions;
+                   tests/manifest/issues.json: every finding classified A..G with the task that repairs it
 baseline           design/materialization/D19-STABLE-BASELINE.md (STABLE-BASELINE: ESTABLISHED) - what later work may
                    rely on and how to re-verify it; the current entitled-claim surface of the joined model is graph
                    query Q22 of the D20 graph (design/materialization/D20-OBSERVED-MAIN-SYNC.md, section 6)
@@ -27,18 +35,39 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    resolved, kernel identity defined; law annotated insertion-only; Q21), D18R chain repair (one D18
                    worker statement contradicted committed evidence: superseded; D12 executable field corrected), D19
                    re-proof (environment identity captured; the minimum affected set selected from the graph and
-                   re-proved physically; current evidence epoch; entitled-claim surface Q22), and main's parallel D14 line
+                   re-proved physically; current evidence epoch; entitled-claim surface Q22), main's parallel D14 line
                    (pull request #5: a Pages-branch retrieval route under the egress policy, fixtures/reference/ corpus of
-                   83 reproducibility copies, D11 pins re-checked) joined by D20 with a second re-proof
+                   83 reproducibility copies, D11 pins re-checked) joined by D20 with a second re-proof, D21 execution
+                   manifest (the current executable system enumerated and every problem classified before repair), D22
+                   Factory self-qualification (the judge attacked with every refusal reason of the prompt; receipt
+                   integrity, identity probes, command and canonical confinement repaired), D23 compiler + ABI
+                   execution (every crate compile -> focused tests -> consumer test in dependency order on the
+                   qualified proof sets; the wasm transport completed: BUILD + OBSERVE in Chromium byte-identical to
+                   the native driver; D12 B-06 closed as transport-only), D24 pipeline genericity (four semantically
+                   distinct specimens - Byte Relay, ledger-mirror, pixel-vault, dual-stream - through one compiler, one
+                   generic browser harness, observe and integrity; the runtime executes transfer(relation, bytes) by
+                   the verified requirement of each authored relation, the shell is data-driven, every tape is bound
+                   to its bundle's strategy data identity, the adapter family is verified; the attack list refused),
+                   D25 physical runtime (the four fresh bundles driven through their own shells in Chromium with and
+                   without WebGPU and under isolation headers, every runtime behaviour of the prompt with fresh
+                   evidence and the exact environment identity; the selfhost primitives on the fresh bundle; the
+                   public-HTTPS route unreachable from this environment - recorded as an exact boundary with a
+                   deployable probe, never substituted by localhost), D26 clean commissioning (the complete implemented
+                   system manufactured, verified and executed from the canonical source on a clean workpiece with
+                   fresh build directories; the STALE_IF-selected claims re-proved through the runbook; the five
+                   consistency equalities and the 21 lines of the six-task final condition computed from evidence:
+                   tests/audit/)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): CLOSED - one
-                   StructuralDelta per pass (plus the D18R chain repair), each closed, verified, integrated and
-                   re-observed before the next
-next               an OWNER decision: the paused D12-predicted seed/broker qualification (renumbered after D20), the law
-                   delta for the 7 drifted fragments, adopting CON-EM-D14-001, or any row of section 6.  Before building
-                   on a claim, re-run the selection (section 7) against the then current environment; historical evidence
-                   is never mutated.
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure CLOSED by D26 (six tasks; D21's
+                   re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
+                   verified, integrated and re-observed before the next; a repair is tested before the next repair
+                   (GLOBAL TEST-EVERY-ITERATION LAW)
+next               no task is open.  The entitled-claim surface is graph query Q22 of the D26 graph
+                   (evidence/D26/envmap/queries/Q22.json); the remaining stops are the boundary rows of section 6 and
+                   the open issues of tests/manifest/issues.json (every one class D/E/F/G); the public-HTTPS run
+                   (tests/physical/PUBLIC-HTTPS-PROBE.md) and the owner decisions (I-12, I-13, I-18, I-29, I-33)
+                   are the external inputs a later delta would carry
 ```
 
 ## 2. Mutation law
@@ -69,6 +98,9 @@ HEAD, tree, status, ancestry to main) before drawing anything.
              EVIDENCE observed_result - before asserting "never observed" / "no fixture"; D18R lesson)
              (closed statements: a [GAP]/[ERR]/[UNK] fact INVALIDATED_BY later evidence is history, not an open
              stop - read Q22 explicit_stops, never a bare status count; D19 lesson)
+             (re-inspection: a refused re-inspection of an integrated delta is an internal defect of that delta; a repair
+             delta reproduces the refusal at the integration commit, preserves it as evidence and witnesses the repair
+             there before the next task starts; D21R lesson)
              (parallel lines: a line merged into main from another branch is joined by a content-neutral sync merge -
              git merge -s ours, tree equal to the first parent - and a Factory delta that imports its files from git
              objects with tests/sync/import-line.mjs, relocating what collides; D20 lesson)
@@ -111,7 +143,8 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                ASCII-GRAMMAR.md, ASCII-LANGUAGE.md, SEMANTIC-MODEL.md, LOWERING-MODEL.md, REFINEMENT-LAW.md,
                REPRESENTATION-TRANSFER.md, VERIFICATION-CERTIFICATES.md, PLANNER-COST-MODEL.md,
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
-               BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
+               BOOTSTRAP-*.md (owner contracts; "current owner contracts govern"); LICENSE (the repository's
+               license: the owner's terms, held with the law tier)
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
                epochs/D12.json .. epochs/D19.json, epochs/D14-RESCAN.json=D14-RESCAN, epochs/D20-SYNC.json,
                epochs/D20.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
@@ -119,6 +152,8 @@ LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.
                in CONSTRAINT-LEDGER.md since D18); tests/reconcile/d18-reconciliation.json (the reviewed D18 register:
                supersessions, ledgering, resolutions; graph query Q21 is the current model); tests/reprove/
                (D19 dimension rules, runbook, obligations; Q22 is the entitled-claim surface);
+               tests/manifest/{components.json (reviewed component register), issues.json (issue inventory A..G)} and
+               design/execution-manifest/ (the generated CURRENT EXECUTION MANIFEST; render-checked);
                fixtures/reference/ (the imported line's ROUTES.json retrieval route, REGISTER.json copy identities,
                published/ and sources/ reproducibility copies: pins, never current authority; re-check with
                tests/reference/ingress.mjs on that line's inputs); tests/sync/ (line import map of D20);
@@ -148,13 +183,41 @@ environment-map), docs/ (this page), root law documents.
 ## 6. Open-boundary register
 
 Every remaining [ERR]/[GAP]/[UNK] is one of these rows.  Class: C capability gap, D authority uncertainty, B historical
-evidence limit, OWNER decision.  None is an internal chain defect (D13 PRE-RESCAN-BASELINE).
+evidence limit, OWNER decision.  None is an internal chain defect (D13 PRE-RESCAN-BASELINE).  The D21 issue inventory
+(tests/manifest/issues.json) maps these classes to the prompt's A..G (C -> D, D -> E, B -> F, OWNER -> G) and records
+the internal findings the D21 survey added, each with the task that repairs it: A (1) a stale kernel crate header
+(D23); B (7) missing Factory negative witnesses (D22), the wasm transport beyond the bootstrap eight (D23), per-crate
+consumer execution (D23), the anti-cheat scan's byte form (D24, done), the shell never exercised and a probe defaulting
+to a historical bundle (D25), graph claims for eleven live components (D21, done); C (2) the specimen payload compiled
+into the generated shell and the single-relation runtime (D24: both were real defects, repaired and proven by three
+non-relay specimens; no architectural GAP remained in the claimed semantics); G (3) law-text presentation and wording
+(owner).  Until each task closes, these are open internal findings, not boundaries.  D24 found three more accepted
+attacks in the compiler (I-30 a foreign evidence tape observed as PASS, I-31 a backend realized by an adapter of another
+family verified PASS, I-32 an empty bundle certificate reading PASS): reproduced on the base compiler
+(tests/genericity/reproduce-base.sh), repaired, witnessed by tests/genericity/run-attacks.mjs and the genericity ladder;
+one class D stop recorded (I-33 runtime self-integrity, D25).  The D21 re-inspection found one more class A defect (the manifest builder read its own epoch after
+integration, changing two findings): repaired and witnessed by D21R-MANIFEST-REPAIR before D22.  D22 closed I-14 (every
+reason witnessed) and found six accepted attacks in the Factory itself (I-21..I-26, class A: edited and hand-written
+receipts verified, a failed identity probe closed PASS, escaping command cwd/log opened, a station writing into the
+canonical checkout closed PASS, a littering re-inspection matched): reproduced with the committed Factory, repaired in
+factory/src/ops.rs, witnessed (f17-f28) before D23.
 
 ```text
 CLASS  ID / SOURCE                          BOUNDARY                                                          STATUS
 C      D12 B-01, B-02                       no Factory WebApp / browser state model; git subprocess state      [GAP]
-C      D12 B-06 (P10)                       six wasm ABI exports absent; BUILD in the browser stops at          [GAP]
-                                            CAPABILITY_IR
+C      D12 B-06 (P10) -> D23                closed as transport-only (A/B): the wasm export surface is the whole    [RUN]
+                                            kernel API (21 exports); BUILD + OBSERVE in Chromium byte-identical to
+                                            host/factc (FACT-D23-WASM-TRANSPORT-COMPLETE, Q-WASM-08); the C14 contract
+                                            TEXT still names eight operations - an owner annotation (I-29), below
+OWNER  I-33 (D24) -> D25 decided           runtime self-integrity: post-build tamper detection rests on bundle.json  [GAP]
+                                            (check-bundle.mjs, run-attacks tampered-*); the generated runtime does not
+                                            verify its own files at load (FACT-D24-RUNTIME-SELF-INTEGRITY); D25 kept it
+                                            unclaimed: CODEGEN-BUNDLE-CONTRACT.md does not require it (owner decision)
+D      FACT-D25-PUBLIC-HTTPS                 public-HTTPS execution of a generated bundle: the githack and GitHub    [UNK]
+                                            Pages hosts are refused at CONNECT by this environment's egress policy;
+                                            raw.githubusercontent serves text/plain + nosniff + sandbox CSP (no module
+                                            WebApp); the deployable probe and its evidence schema are in
+                                            tests/physical/PUBLIC-HTTPS-PROBE.md; localhost is not substituted
 C      D12 B-05, B-17                       templates compiled into the kernel; packfile import/export         [GAP]
 C      D12 B-11 (P07)                       persist() false in the Chromium 141 headless shell (every permission     [UNK]
                                             ASK); installed-Factory durability never observed - full Chrome grants
@@ -303,11 +366,34 @@ tests/toolchain/proof-sets.json
   WASM64_KERNEL_SET          nightly-2026-09-24 (rustc 6eeff9a52) + rust-src, clippy; wasm64-unknown-unknown,
                              -Z build-std=core, -p factc-wasm-abi (12-crate core-only graph); kernel identity =
                              exec identity (every section except the custom "name" section; install-name independent,
-                             D18); whole-file sha256 recorded per rust-src install name (informational)
+                             D18); whole-file sha256 recorded per rust-src install name (informational); D23: the
+                             transport extension changed the kernel - exec identity fcaee2a6... (22 exports), the
+                             eight-export identity e8d6582665... kept as history in proof-sets.json (R-64); D24: the
+                             genericity repair changed the kernel again - exec identity ef5d886a... (FACT-KERNEL-IDENTITY-D24,
+                             R-65), the D23 identity kept as history
   ALL_SOURCES / ALL_MEMBERS_GRAPH   rustfmt over every member / cargo metadata over every member + physical manifests
   CROSS_SET                  --workspace on the host: diagnostic only (factc-wasm-abi is target-specific), weight NONE
   HEURISTIC                  factory nostd-check / depcheck: weight NONE; never a gate
-run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>)
+run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>;
+                             27 obligations incl. Q-WASM-08 BUILD + OBSERVE in Chromium == native)
+per crate (D23)              node tests/toolchain/run-crate-dag.mjs --out <dir> [--browser-probe <Q-WASM-08 record>]
+physical runtime (D25)       node tests/physical/run-webapp.mjs --factc <bin> --out <dir> [--kernel <wasm>] [--pushed-bundle
+                             <path>] (every specimen freshly built, driven through its shell by host/harness/webapp-probe.mjs
+                             with WebGPU / without / isolated, observed; selfhost primitives on the fresh bundle with
+                             BUNDLE_DIR; the public-HTTPS routes probed); node host/harness/webapp-probe.mjs --url https://...
+                             for an external public run (tests/physical/PUBLIC-HTTPS-PROBE.md)
+commissioning (D26)          node tests/reprove/select.mjs ... --pass D26 (the STALE_IF selection over the current graph);
+                             REPROVE_TARGET=<fresh dir> REPROVE_KERNELS=<fresh dir> node tests/reprove/run-selected.mjs
+                             --kind build|cite|repo|source (the runbook groups incl. qualified-proof + crate DAG,
+                             kernel-sections, physical, manifest); node tests/audit/consistency-audit.mjs (the five
+                             equalities); node tests/audit/final-condition.mjs (the 21 lines)
+genericity (D24)             node tests/genericity/run-specimens.mjs --factc <bin> --out <dir> (every fixtures/genericity
+                             specimen: build, strategy data, Chromium with/without WebGPU through the generic
+                             host/harness/bundle-probe.mjs, observe bound, integrity); node tests/genericity/run-attacks.mjs
+                             --factc <bin> --specimens <dir> --out <dir>; sh tests/commissioning/run-anti-cheat.sh <out> [tree];
+                             sh tests/genericity/reproduce-base.sh <rev> <out> <target dir> (the defects on an earlier
+                             compiler).  The runtime's execution entry is transfer(relation, bytes)
+                             (FACT-D24-BYTE-RELAY-EXECUTED supersedes the D7 relay facts, R-66)
 history                      tests/toolchain/run-proof-matrix.sh is the D9 matrix, kept for reproduction of D9
 re-prove (D19, D20)          node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out <dir>/identity;
                              node tests/reprove/select.mjs ... --pass <D> --out <dir>/selection.json (environment drift -

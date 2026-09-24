@@ -1,0 +1,210 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D24-PIPELINE-GENERICITY-F4-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F4-fixture",
+  "workpiece_id": "W29",
+  "delta_id": "D24-PIPELINE-GENERICITY",
+  "canonical_base": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+  "input_artifacts": [
+    "D24 section 4 (evidence binding)",
+    "F3 kernel (identity pin)"
+  ],
+  "open_tree": "ed8222e033cdc78885554eba68fb34c1b1b2f35f",
+  "close_tree": "b9e7fbb5738cc69a6087388685c1cd52ac4146d3",
+  "changed_paths": [
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-epoch-regression.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-other-tests-untouched.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-registers.log",
+    "tests/envmap/facts/D24.json",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "tests/reconcile/d24-reconciliation.json",
+    "tests/reconcile/d24-surfaces.json",
+    "tests/toolchain/proof-sets.json"
+  ],
+  "output_artifacts": [
+    "tests/toolchain/proof-sets.json",
+    "tests/envmap/facts/D24.json",
+    "tests/reconcile/d24-reconciliation.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D24-PIPELINE-GENERICITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-epoch-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-epoch-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for j in tests/toolchain/proof-sets.json tests/reconcile/d24-reconciliation.json tests/reconcile/d24-surfaces.json tests/envmap/facts/D24.json tests/manifest/components.json tests/manifest/issues.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && T=$(mktemp -d) && node tests/implementation/wasm-sections.mjs --label K=/home/user/factory-target-w29/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --exclude-custom name --out $T/s.json >/dev/null && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).builds[0].identity_excluding_custom;const p=JSON.parse(require(\"fs\").readFileSync(\"tests/toolchain/proof-sets.json\")).sets.WASM64_KERNEL_SET.kernel_identity;console.log(\"pin\",p.exec_identity.sha256,\"kernel\",s);if(s!==p.exec_identity.sha256||p.history[0].exec_identity_sha256!==\"fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976\")process.exit(1)' $T/s.json && node -e 'const I=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/issues.json\")).issues;const by=Object.fromEntries(I.map(i=>[i.id,i]));for(const id of [\"I-07\",\"I-08\",\"I-09\",\"I-20\",\"I-30\",\"I-31\",\"I-32\"])if(!/^REPAIRED/.test(by[id].status||\"\"))process.exit(1);if(by[\"I-33\"].class!==\"D\"||I.length!==34)process.exit(1);const C=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/components.json\")).components;if(!C.some(c=>c.id===\"TEST-GENERICITY\")||!C.some(c=>c.id===\"FIXTURE-GENERICITY\"))process.exit(1);console.log(\"issues\",I.length,\"components\",C.length)' && echo 'registers well-formed; the pin equals the identity of the kernel F3 built; D23 kept as history'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-registers.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json --out $T/g22.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D23.json --identity evidence/D23/identity --epoch D23 --delta D23-COMPILER-ABI-EXECUTION --commit 'a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 (canonical base; integration commit in LEDGER AFTER)' --graph $T/g22.json --out $T/f23.json && node tests/reconcile/build-reconciliation.mjs --clause-epoch $T/f23.json --register tests/reconcile/d23-reconciliation.json --graph $T/g22.json --root . --epoch D23 --delta D23-COMPILER-ABI-EXECUTION --commit 'a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 (canonical base; integration commit in LEDGER AFTER)' --out $T/D23.json && cmp $T/D23.json design/environment-map/epochs/D23.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json --out $T/g.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D22.json --identity evidence/D22/identity --epoch D22 --delta D22-FACTORY-SELF-QUALIFICATION --commit '88564a0eccd934d6a017faf65435bc871bcd2f94 (canonical base; integration commit in LEDGER AFTER)' --graph $T/g.json --out $T/D22.json >/dev/null && cmp $T/D22.json design/environment-map/epochs/D22.json && echo 'D22 and D23 epochs rebuilt byte-identically'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-epoch-regression.log"
+    },
+    {
+      "check": "command:git diff --exit-code 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 -- tests fixtures :!fixtures/genericity :!fixtures/commissioning/tape-sample.ascii :!tests/genericity :!tests/commissioning/run-anti-cheat.sh :!tests/commissioning/run-physical.sh :!tests/selfhost/primitives-probe.mjs :!tests/toolchain/proof-sets.json :!tests/reconcile/d24-reconciliation.json :!tests/reconcile/d24-surfaces.json :!tests/envmap/facts/D24.json :!tests/manifest/components.json :!tests/manifest/issues.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-other-tests-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/toolchain/proof-sets.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/facts/D24.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reconcile/d24-reconciliation.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-registers.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-epoch-regression.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F4-other-tests-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T14:53:59Z",
+  "status": "PASS"
+}

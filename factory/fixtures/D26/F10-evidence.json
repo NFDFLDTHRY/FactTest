@@ -1,0 +1,238 @@
+{
+  "fixture_id": "F10-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the D26 graph",
+    "evidence/D26/"
+  ],
+  "narrowed_may_change": [
+    "evidence/D26/envmap/",
+    "evidence/D26/regress/",
+    "evidence/D26/status/",
+    "evidence/D26/workpieces/",
+    "evidence/D26/logs/",
+    "evidence/D26/handoff-check.json",
+    "evidence/D26/index.json",
+    "evidence/D26/surfaces.json",
+    "evidence/D26/surfaces.json",
+    "evidence/D26/audit/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D26/envmap/validate.json"
+        ],
+        "log": "evidence/D26/logs/F10-validate.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "query",
+          "design/environment-map/graph.json",
+          "--all",
+          "--out",
+          "evidence/D26/envmap/queries"
+        ],
+        "log": "evidence/D26/logs/F10-queries.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "stale",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D26/envmap/stale.json"
+        ],
+        "log": "evidence/D26/logs/F10-stale.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge-check",
+          "design/environment-map/graph.json",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json",
+          "--out",
+          "evidence/D26/envmap/merge-check.json"
+        ],
+        "log": "evidence/D26/logs/F10-merge-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render-check",
+          "design/environment-map/graph.json",
+          "--dir",
+          "design/environment-map",
+          "--out",
+          "evidence/D26/envmap/render-check.json"
+        ],
+        "log": "evidence/D26/logs/F10-render-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D26/envmap/queries/Q22.json\")).answer;console.log(a.current_facts,JSON.stringify(a.by_status),JSON.stringify(a.run_claims),a.reproved_in_current_epoch.length);if(a.run_claims.total!==a.run_claims.claimable+a.run_claims.invalidated)process.exit(1);const st=a.rows.filter(r=>[\"GAP\",\"ERR\",\"UNK\"].includes(r.status));const n=Object.values(a.explicit_stops.open).reduce((x,y)=>x+y,0);console.log(\"stops open\",JSON.stringify(a.explicit_stops.open),\"closed\",a.explicit_stops.closed_by_evidence.join(\" \"));if(n+a.explicit_stops.closed_by_evidence.length!==st.length||st.some(r=>r.invalidated_by.length?!/closed: invalidated by/.test(r.entitled_claim):r.entitled_claim!==\"no claim [\"+r.status+\"]\"))process.exit(1);const d=a.rows.filter(r=>/^FACT-D21-/.test(r.fact));if(d.length!==2||d.some(r=>r.status!==\"OBS\"))process.exit(1);console.log(\"D21 facts\",d.map(r=>r.fact+\" \"+r.status).join(\", \"))' && node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D26/envmap/queries/Q22.json\")).answer;const d=a.rows.filter(r=>/^FACT-D26-/.test(r.fact));console.log(JSON.stringify(d.map(r=>[r.fact,r.status,r.newest_physical_evidence_epoch])));if(d.length<3||d.some(r=>r.status!==\"RUN\"||r.newest_physical_evidence_epoch!==\"D26\"))process.exit(1);const rp=a.reproved_in_current_epoch||[];console.log(\"reproved in D26\",rp.length);if(a.current_facts!==197)process.exit(1)'"
+        ],
+        "log": "evidence/D26/logs/F10-q22.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D26/regress && node tests/reconcile/gate.mjs --register tests/reconcile/d18-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D26/envmap/queries --surfaces evidence/D18/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D26/regress/d18-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d18r-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D26/envmap/queries --surfaces evidence/D18R/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D26/regress/d18r-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d20-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D26/envmap/queries --surfaces evidence/D20/sync/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D26/regress/d20-sync-gate.json && node tests/reconcile/surfaces.mjs tests/reconcile/d23-surfaces.json --out evidence/D26/surfaces.json && node tests/reconcile/gate.mjs --register tests/reconcile/d23-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D26/envmap/queries --surfaces evidence/D24/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D26/regress/d23-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d24-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D26/envmap/queries --surfaces evidence/D24/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D26/regress/d24-gate.json"
+        ],
+        "log": "evidence/D26/logs/F10-reconciliation-gates.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D26/regress && node tests/capability/gate.mjs --universe tests/capability/universe.json --matrix CAPABILITY-MATRIX.md --census evidence/D16/census --graph design/environment-map/graph.json --out evidence/D26/regress/capability-gate.json && node tests/implementation/gate.mjs --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph design/environment-map/graph.json --out evidence/D26/regress/implementation-gate.json"
+        ],
+        "log": "evidence/D26/logs/F10-earlier-gates.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/hygiene/status-scan.mjs",
+          "--rules",
+          "tests/hygiene/status-classification.json",
+          "--out",
+          "evidence/D26/status"
+        ],
+        "log": "evidence/D26/logs/F10-status-scan.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "tests/hygiene/handoff-check.sh",
+          "evidence/D26/handoff-check.json"
+        ],
+        "log": "evidence/D26/logs/F10-handoff-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W32",
+          "--out",
+          "evidence/D26/workpieces/audit-before.json"
+        ],
+        "log": "evidence/D26/logs/F10-audit-before.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "retire",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W32",
+          "--out",
+          "evidence/D26/workpieces/retire.json"
+        ],
+        "log": "evidence/D26/logs/F10-retire.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W32",
+          "--out",
+          "evidence/D26/workpieces/audit-after.json"
+        ],
+        "log": "evidence/D26/logs/F10-audit-after.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D26/workpieces/audit-after.json\"));console.log(JSON.stringify(a.totals));if(a.totals.RETIRABLE!==0)process.exit(1)'"
+        ],
+        "log": "evidence/D26/logs/F10-cleanup-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/audit/consistency-audit.mjs --current-delta D26-CLEAN-COMMISSIONING --manifest evidence/D26/manifest.json --gate evidence/D26/gate.json --graph design/environment-map/graph.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D26/envmap/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D26/audit/consistency-final.json"
+        ],
+        "log": "evidence/D26/logs/F10-consistency-audit.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/audit/final-condition.mjs --evidence evidence/D26 --audit evidence/D26/audit/consistency.json --manifest evidence/D26/manifest.json --gate evidence/D26/gate.json --graph design/environment-map/graph.json --issues tests/manifest/issues.json --selection evidence/D26/selection.json --results evidence/D26/results --status evidence/D26/status/inventory.json --handoff-check evidence/D26/handoff-check.json --handoff docs/HANDOFF.md --base 2c0aeda18d0b42eb97fa060f5603b65e986851cb --out evidence/D26/audit/final-condition-final.json && node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const a=J(\"evidence/D26/audit/final-condition.json\"),b=J(\"evidence/D26/audit/final-condition-final.json\"),c=J(\"evidence/D26/audit/consistency.json\"),d=J(\"evidence/D26/audit/consistency-final.json\");const v=x=>JSON.stringify(x.lines.map(l=>l.status));const w=x=>JSON.stringify(x.checks.map(l=>l.status));if(b.status!==\"PASS\"||v(a)!==v(b)||d.status!==\"PASS\"||w(c)!==w(d))process.exit(1);console.log(\"final condition and audit identical on the committed graph: 21 PASS\")'"
+        ],
+        "log": "evidence/D26/logs/F10-final-condition.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D21",
+          "evidence/D26/index.json"
+        ],
+        "log": "evidence/D26/logs/F10-index.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D26/envmap/queries/Q22.json",
+    "evidence/D26/audit/consistency-final.json",
+    "evidence/D26/audit/final-condition-final.json",
+    "evidence/D26/index.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

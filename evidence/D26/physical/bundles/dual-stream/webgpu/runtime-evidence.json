@@ -1,0 +1,601 @@
+{
+  "epochs": [
+    {
+      "epoch_id": "E0",
+      "reason": "initial observation",
+      "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secure_context": true,
+      "established": "2026-09-24T18:47:52.108Z"
+    },
+    {
+      "epoch_id": "E1",
+      "reason": "loss of CPU_WASM64 (released)",
+      "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secure_context": true,
+      "established": "2026-09-24T18:47:53.202Z"
+    }
+  ],
+  "admissions": {
+    "CPU_WASM64": {
+      "receipt_id": "ADM-E1-CPU_WASM64",
+      "epoch_id": "E1",
+      "implementation_id": "CPU_WASM64",
+      "decision": "REJECTED",
+      "evaluated_requirements": [
+        {
+          "step": "DISCOVER",
+          "result": "OK",
+          "detail": "WebAssembly + memory64 present"
+        },
+        {
+          "step": "REQUEST",
+          "result": "OK",
+          "detail": "instantiated; abi_version 1; module sha256 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+        },
+        {
+          "step": "PROBE",
+          "result": "OK",
+          "detail": "wasm64_known_answer roundtrip exact (256 bytes)",
+          "probe": "wasm64_known_answer"
+        }
+      ],
+      "rejection_reason": "released",
+      "adapter_info": null,
+      "status": "REJECTED"
+    },
+    "WEBGPU": {
+      "receipt_id": "ADM-E0-WEBGPU",
+      "epoch_id": "E0",
+      "implementation_id": "WEBGPU",
+      "decision": "ADMITTED",
+      "evaluated_requirements": [
+        {
+          "step": "DISCOVER",
+          "result": "OK",
+          "detail": "navigator.gpu present"
+        },
+        {
+          "step": "REQUEST",
+          "result": "OK",
+          "detail": "device acquired; adapter {\"vendor\":\"google\",\"architecture\":\"swiftshader\",\"device\":\"\",\"description\":\"\"}; maxBufferSize 1073741824",
+          "info": {
+            "vendor": "google",
+            "architecture": "swiftshader",
+            "device": "",
+            "description": ""
+          }
+        },
+        {
+          "step": "PROBE",
+          "result": "OK",
+          "detail": "webgpu_known_answer buffer upload/copy/readback exact (256 bytes)",
+          "probe": "webgpu_known_answer"
+        }
+      ],
+      "rejection_reason": null,
+      "adapter_info": {
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "device": "",
+        "description": ""
+      },
+      "status": "ADMITTED"
+    }
+  },
+  "activation": {
+    "epoch_id": "E1",
+    "strategy_id": 1,
+    "plan_id": 3,
+    "admission_refs": [
+      "ADM-E1-CPU_WASM64",
+      "ADM-E0-WEBGPU"
+    ],
+    "metric_evidence_refs": [
+      "metric:preference_rank"
+    ],
+    "guard_result": [
+      {
+        "plan_id": 0,
+        "guard": [
+          "CPU_WASM64"
+        ],
+        "satisfied": false
+      },
+      {
+        "plan_id": 1,
+        "guard": [
+          "WEBGPU",
+          "CPU_WASM64"
+        ],
+        "satisfied": false
+      },
+      {
+        "plan_id": 2,
+        "guard": [
+          "CPU_WASM64",
+          "WEBGPU"
+        ],
+        "satisfied": false
+      },
+      {
+        "plan_id": 3,
+        "guard": [
+          "WEBGPU"
+        ],
+        "satisfied": true
+      }
+    ],
+    "status": "PASS"
+  },
+  "evidence": [
+    {
+      "evidence_id": "RE-1",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "ADMISSION",
+      "subject": "CPU_WASM64",
+      "observation": {
+        "receipt_id": "ADM-E0-CPU_WASM64",
+        "epoch_id": "E0",
+        "implementation_id": "CPU_WASM64",
+        "decision": "ADMITTED",
+        "evaluated_requirements": [
+          {
+            "step": "DISCOVER",
+            "result": "OK",
+            "detail": "WebAssembly + memory64 present"
+          },
+          {
+            "step": "REQUEST",
+            "result": "OK",
+            "detail": "instantiated; abi_version 1; module sha256 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+          },
+          {
+            "step": "PROBE",
+            "result": "OK",
+            "detail": "wasm64_known_answer roundtrip exact (256 bytes)",
+            "probe": "wasm64_known_answer"
+          }
+        ],
+        "rejection_reason": null,
+        "adapter_info": null,
+        "status": "ADMITTED"
+      },
+      "expected": "ADMITTED",
+      "monotonic_marker": 414.29999999981374,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-2",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "ADMISSION",
+      "subject": "WEBGPU",
+      "observation": {
+        "receipt_id": "ADM-E0-WEBGPU",
+        "epoch_id": "E0",
+        "implementation_id": "WEBGPU",
+        "decision": "ADMITTED",
+        "evaluated_requirements": [
+          {
+            "step": "DISCOVER",
+            "result": "OK",
+            "detail": "navigator.gpu present"
+          },
+          {
+            "step": "REQUEST",
+            "result": "OK",
+            "detail": "device acquired; adapter {\"vendor\":\"google\",\"architecture\":\"swiftshader\",\"device\":\"\",\"description\":\"\"}; maxBufferSize 1073741824",
+            "info": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": ""
+            }
+          },
+          {
+            "step": "PROBE",
+            "result": "OK",
+            "detail": "webgpu_known_answer buffer upload/copy/readback exact (256 bytes)",
+            "probe": "webgpu_known_answer"
+          }
+        ],
+        "rejection_reason": null,
+        "adapter_info": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": ""
+        },
+        "status": "ADMITTED"
+      },
+      "expected": "ADMITTED",
+      "monotonic_marker": 422.29999999981374,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-3",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "ACTIVATION",
+      "subject": "selector",
+      "observation": {
+        "epoch_id": "E0",
+        "strategy_id": 1,
+        "plan_id": 0,
+        "admission_refs": [
+          "ADM-E0-CPU_WASM64",
+          "ADM-E0-WEBGPU"
+        ],
+        "metric_evidence_refs": [
+          "metric:preference_rank"
+        ],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "CPU_WASM64"
+            ],
+            "satisfied": true
+          },
+          {
+            "plan_id": 1,
+            "guard": [
+              "WEBGPU",
+              "CPU_WASM64"
+            ],
+            "satisfied": true
+          },
+          {
+            "plan_id": 2,
+            "guard": [
+              "CPU_WASM64",
+              "WEBGPU"
+            ],
+            "satisfied": true
+          },
+          {
+            "plan_id": 3,
+            "guard": [
+              "WEBGPU"
+            ],
+            "satisfied": true
+          }
+        ],
+        "status": "PASS"
+      },
+      "expected": "PASS",
+      "monotonic_marker": 422.59999999962747,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-4",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "feed",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "chunk_to_wasm",
+          "chunk_from_wasm"
+        ],
+        "bytes": 4,
+        "input_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a"
+      },
+      "monotonic_marker": 640,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-5",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "feed",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "chunk_to_wasm",
+          "chunk_from_wasm"
+        ],
+        "bytes": 513,
+        "input_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514"
+      },
+      "monotonic_marker": 870.2999999998137,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-6",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "drain",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "chunk_to_wasm",
+          "chunk_from_wasm"
+        ],
+        "bytes": 4,
+        "input_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a"
+      },
+      "monotonic_marker": 1086.7999999998137,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-7",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "drain",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "chunk_to_wasm",
+          "chunk_from_wasm"
+        ],
+        "bytes": 513,
+        "input_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514"
+      },
+      "monotonic_marker": 1315.699999999255,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-8",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "LOSS",
+      "subject": "CPU_WASM64",
+      "observation": {
+        "backend": "CPU_WASM64",
+        "reason": "released"
+      },
+      "expected": null,
+      "monotonic_marker": 1501.2999999998137,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-9",
+      "epoch_id": "E1",
+      "plan_id": 3,
+      "event_class": "ACTIVATION",
+      "subject": "selector",
+      "observation": {
+        "epoch_id": "E1",
+        "strategy_id": 1,
+        "plan_id": 3,
+        "admission_refs": [
+          "ADM-E1-CPU_WASM64",
+          "ADM-E0-WEBGPU"
+        ],
+        "metric_evidence_refs": [
+          "metric:preference_rank"
+        ],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "CPU_WASM64"
+            ],
+            "satisfied": false
+          },
+          {
+            "plan_id": 1,
+            "guard": [
+              "WEBGPU",
+              "CPU_WASM64"
+            ],
+            "satisfied": false
+          },
+          {
+            "plan_id": 2,
+            "guard": [
+              "CPU_WASM64",
+              "WEBGPU"
+            ],
+            "satisfied": false
+          },
+          {
+            "plan_id": 3,
+            "guard": [
+              "WEBGPU"
+            ],
+            "satisfied": true
+          }
+        ],
+        "status": "PASS"
+      },
+      "expected": "PASS",
+      "monotonic_marker": 1501.5,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-10",
+      "epoch_id": "E1",
+      "plan_id": 3,
+      "event_class": "OBSERVATION_DELTA",
+      "subject": "runtime",
+      "observation": {
+        "from_epoch": "E0",
+        "to_epoch": "E1",
+        "changed_observations": [
+          {
+            "backend": "CPU_WASM64",
+            "from": "ADMITTED",
+            "to": "REJECTED",
+            "reason": "released"
+          }
+        ],
+        "invalidated_admissions": [
+          "ADM-E0-CPU_WASM64"
+        ],
+        "stale_plans": [
+          0
+        ],
+        "replacement_plan": 3,
+        "evidence_refs": [
+          "RE-7",
+          "RE-8",
+          "RE-9"
+        ]
+      },
+      "expected": null,
+      "monotonic_marker": 1501.5,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-11",
+      "epoch_id": "E1",
+      "plan_id": 3,
+      "event_class": "EXECUTE",
+      "subject": "feed",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 3,
+        "backend": "WEBGPU",
+        "conversions": [
+          "chunk_to_gpu",
+          "chunk_from_gpu"
+        ],
+        "bytes": 4,
+        "input_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a"
+      },
+      "monotonic_marker": 1721.5999999996275,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-12",
+      "epoch_id": "E1",
+      "plan_id": 3,
+      "event_class": "EXECUTE",
+      "subject": "feed",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 3,
+        "backend": "WEBGPU",
+        "conversions": [
+          "chunk_to_gpu",
+          "chunk_from_gpu"
+        ],
+        "bytes": 513,
+        "input_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514"
+      },
+      "monotonic_marker": 1940,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-13",
+      "epoch_id": "E1",
+      "plan_id": 3,
+      "event_class": "EXECUTE",
+      "subject": "drain",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 3,
+        "backend": "WEBGPU",
+        "conversions": [
+          "chunk_to_gpu",
+          "chunk_from_gpu"
+        ],
+        "bytes": 4,
+        "input_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9f64a747e1b97f131fabb6b447296c9b6f0201e79fb3c5356e6c77e89b6a806a"
+      },
+      "monotonic_marker": 2155.399999999441,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-14",
+      "epoch_id": "E1",
+      "plan_id": 3,
+      "event_class": "EXECUTE",
+      "subject": "drain",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 3,
+        "backend": "WEBGPU",
+        "conversions": [
+          "chunk_to_gpu",
+          "chunk_from_gpu"
+        ],
+        "bytes": 513,
+        "input_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "9987b6609789df83b895850308b1e1a04c31bd496acdc0ac3a231ba0f7075514"
+      },
+      "monotonic_marker": 2371.899999999441,
+      "artifact_refs": []
+    }
+  ],
+  "observation_deltas": [
+    {
+      "from_epoch": "E0",
+      "to_epoch": "E1",
+      "changed_observations": [
+        {
+          "backend": "CPU_WASM64",
+          "from": "ADMITTED",
+          "to": "REJECTED",
+          "reason": "released"
+        }
+      ],
+      "invalidated_admissions": [
+        "ADM-E0-CPU_WASM64"
+      ],
+      "stale_plans": [
+        0
+      ],
+      "replacement_plan": 3,
+      "evidence_refs": [
+        "RE-7",
+        "RE-8",
+        "RE-9"
+      ]
+    }
+  ]
+}

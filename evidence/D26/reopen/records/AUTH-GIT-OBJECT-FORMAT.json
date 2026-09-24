@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GIT-OBJECT-FORMAT",
+ "authority_class": "TOOL_DOC",
+ "cited": {
+  "url": "https://git-scm.com/docs/user-manual",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "tool documentation (master)",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "path": "Documentation/user-manual.adoc",
+  "sha256": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424",
+  "observed": "2026-09-24",
+  "locator": "lines 4082-4097"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   4082,
+   4097
+  ],
+  "window_sha256": "9aba9661663f63b9e47b0c4d05a071e1b38df7a16f3d8fdc6467a351229204d7",
+  "window_excerpt": "[[object-details]]\n=== Object storage format\n\nAll objects have a statically determined \"type\" which identifies the\nformat of the object (i.e. how it is used, and how it can refer to other\nobjects).  There are currently four different object types: \"blob\",\n\"tree\", \"commit\", and \"tag\".\n\nRegardless of object type, all objects share the following\ncharacteristics: they are all deflated with zlib, and have a header\nthat not only specifies their type, but also provides size information\nabout the data in the object.  It's worth noting that the SHA-1 hash\nthat is used to name the object is the hash of the original data\nplus this header, so `sha1sum` 'file' does not match the object name\nfor 'file' (the earliest versions of Git hashed slightly differently\nbut the conclusion is still the same).",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   4082,
+   4097
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 4082,
+  "candidates": {
+   "section": {
+    "id": "#object-details",
+    "line": 4082,
+    "kind": "asciidoc anchor"
+   },
+   "definition": null
+  }
+ }
+}

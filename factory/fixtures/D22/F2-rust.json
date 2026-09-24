@@ -1,0 +1,85 @@
+{
+  "fixture_id": "F2-rust",
+  "station_id": "S-RUST",
+  "selected_inputs": [
+    "D22 section 2 (repairs)",
+    "F1 receipt"
+  ],
+  "narrowed_may_change": [
+    "factory/src/ops.rs",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "fmt",
+          "-p",
+          "factory",
+          "--check"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w27"
+        },
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-fmt.log",
+        "cwd": "."
+      },
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "clippy",
+          "-p",
+          "factory",
+          "--all-targets",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w27"
+        },
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-clippy.log",
+        "cwd": "."
+      },
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "test",
+          "-p",
+          "factory"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w27"
+        },
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "L=factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log; grep -q 'test result: ok. 29 passed; 0 failed' $L && [ $(cargo +1.94.1 test -p factory -- --list 2>/dev/null | grep -c ': test$') -eq 29 ] && git diff --exit-code 88564a0eccd934d6a017faf65435bc871bcd2f94 -- factory/src ':!factory/src/ops.rs' compiler host Cargo.toml Cargo.lock factory/Cargo.toml factory/registry && echo 'ops.rs is the only Rust source changed; 29 witnesses pass'"
+        ],
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-check.log",
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w27"
+        },
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "factory/src/ops.rs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION"
+}

@@ -1,0 +1,206 @@
+{
+ "tool": "tests/audit/final-condition.mjs",
+ "status": "PASS",
+ "lines": [
+  {
+   "n": 1,
+   "condition": "every live production component is in the execution manifest",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/manifest.json",
+    "evidence/D26/gate.json"
+   ],
+   "observed": "22 production components; 4434 tracked files; unassigned 0; coverage missing 0"
+  },
+  {
+   "n": 2,
+   "condition": "every live component has an owner and consumer/terminal role",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/gate.json",
+    "evidence/D26/audit/consistency.json"
+   ],
+   "observed": "55 live components with owner, consumer and station"
+  },
+  {
+   "n": 3,
+   "condition": "every production mutation surface is Factory-controlled",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/audit/consistency.json"
+   ],
+   "observed": "10 registered stations cover every file of every live component"
+  },
+  {
+   "n": 4,
+   "condition": "Factory positive and adversarial tests pass",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/factory/witnesses.json",
+    "evidence/D26/factory/collision.json"
+   ],
+   "observed": "PASS: {\"total\":29,\"passed\":29,\"failed\":0,\"ignored\":0}"
+  },
+  {
+   "n": 5,
+   "condition": "qualified HOST_NATIVE_SET passes",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/proof/summary.json"
+   ],
+   "observed": "8 HOST obligations: PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS"
+  },
+  {
+   "n": 6,
+   "condition": "qualified WASM64_KERNEL_SET passes",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/proof/summary.json"
+   ],
+   "observed": "8 WASM64 obligations: PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS"
+  },
+  {
+   "n": 7,
+   "condition": "dependency / manifest proof passes",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/proof/summary.json"
+   ],
+   "observed": "5 ALL/pin obligations; tally {\"PASS\":22,\"OBS\":3,\"HEURISTIC\":2}"
+  },
+  {
+   "n": 8,
+   "condition": "mutant judge self-attack passes",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/proof/summary.json"
+   ],
+   "observed": "mutants RUN: /"
+  },
+  {
+   "n": 9,
+   "condition": "every implemented compiler stage executes through its consumer",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/crates/summary.json"
+   ],
+   "observed": "14 crates in dependency order; tests {\"passed\":1011,\"failed\":0}"
+  },
+  {
+   "n": 10,
+   "condition": "every promised ABI surface is implemented/proved or explicitly classified as future scope",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/proof/summary.json",
+    "tests/manifest/issues.json"
+   ],
+   "observed": "Q-WASM-08 PASS; owner stops on the contract text: I-29"
+  },
+  {
+   "n": 11,
+   "condition": "genericity is demonstrated with multiple specimens",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/specimens/summary.json",
+    "evidence/D26/attacks/summary.json"
+   ],
+   "observed": "4 specimens PASS; 13 attacks PASS"
+  },
+  {
+   "n": 12,
+   "condition": "Byte Relay is DATA, not hidden compiler architecture",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/anti-cheat/summary.log",
+    "evidence/D26/manifest.json"
+   ],
+   "observed": "anti-cheat: compiler-src: clean; codegen-templates: clean; factory-src: clean; host: clean; backend-names: clean; commissioning specimen in FIXTURE tier (FIXTURE-COMMISSIONING)"
+  },
+  {
+   "n": 13,
+   "condition": "generated bundles independently verify",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/physical/summary.json"
+   ],
+   "observed": "4 fresh bundles: certificate PASS and integrity PASS"
+  },
+  {
+   "n": 14,
+   "condition": "fresh physical runtime probes support current runtime claims",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/physical/summary.json",
+    "evidence/D26/results/physical.json"
+   ],
+   "observed": "physical PASS; re-proved runtime facts 14"
+  },
+  {
+   "n": 15,
+   "condition": "every repair was tested before another repair",
+   "status": "PASS",
+   "evidence": [
+    "design/materialization/LEDGER.md",
+    "evidence/D26/audit/consistency.json"
+   ],
+   "observed": "D21R, D22, D23, D24, D25: each integrated (verified receipts) before the next began; every delta receipted and verified"
+  },
+  {
+   "n": 16,
+   "condition": "stale affected claims were selected and re-proved",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/selection.json",
+    "evidence/D26/results"
+   ],
+   "observed": "101 selected of 169 (gaps 0); 11 groups ran, 101 facts re-proved"
+  },
+  {
+   "n": 17,
+   "condition": "current environment graph contains D21-D26 execution epochs",
+   "status": "PASS",
+   "evidence": [
+    "design/environment-map/graph.json"
+   ],
+   "observed": "epochs: D11 D12 D13 D14 D15 D16 D17 D18 D18R D19 D14-RESCAN D20-SYNC D20 D21 D21R D22 D23 D24 D25 D26"
+  },
+  {
+   "n": 18,
+   "condition": "current handoff describes the observed system",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/handoff-check.json",
+    "docs/HANDOFF.md"
+   ],
+   "observed": "handoff check PASS; last delta D26 named: true"
+  },
+  {
+   "n": 19,
+   "condition": "historical evidence is untouched",
+   "status": "PASS",
+   "evidence": [
+    "git diff 2c0aeda18d0b42eb97fa060f5603b65e986851cb -- evidence"
+   ],
+   "observed": "no change to any earlier evidence package"
+  },
+  {
+   "n": 20,
+   "condition": "remaining GAP/ERR/UNK are capability, external, historical, conflict, environmental or owner-decision boundaries",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/audit/consistency.json"
+   ],
+   "observed": "11 open issues, every one class D/E/F/G (I-02:F, I-03:F, I-04:F, I-12:G, I-13:G, I-15:D, I-16:E, I-17:F, I-18:G, I-29:G, I-33:D)"
+  },
+  {
+   "n": 21,
+   "condition": "no known internal repo/implementation defect remains hidden behind a historical status marker",
+   "status": "PASS",
+   "evidence": [
+    "evidence/D26/status/inventory.json",
+    "evidence/D26/audit/consistency.json"
+   ],
+   "observed": "status scan PASS, unclassified 0; 25 A/B/C issues all REPAIRED"
+  }
+ ]
+}

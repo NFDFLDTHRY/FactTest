@@ -1,0 +1,2228 @@
+{
+  "query": "Q19",
+  "title": "For every approved capability family in G: API -> SECURE_CONTEXT -> PERMISSION_POLICY -> REQUEST -> FEATURES_LIMITS -> LIFECYCLE -> LOSS -> RUNTIME ADMISSION -> PROBE OBLIGATION -> EVIDENCE, and what is it?",
+  "answer": {
+    "families": 33,
+    "in_G": 33,
+    "by_classification": {
+      "RUN": 6,
+      "OBS": 16,
+      "ERR": 1,
+      "GAP": 10
+    },
+    "families_by_classification": {
+      "RUN": [
+        "CAP-CPU-WASM64",
+        "CAP-OPFS",
+        "CAP-INDEXEDDB",
+        "CAP-CACHESTORAGE",
+        "CAP-SERVICE-WORKER",
+        "CAP-SECURE-CONTEXT"
+      ],
+      "OBS": [
+        "CAP-WORKER-DEDICATED",
+        "CAP-WEBCODECS",
+        "CAP-CAMERA",
+        "CAP-MICROPHONE",
+        "CAP-GENERIC-SENSOR",
+        "CAP-ACCELEROMETER",
+        "CAP-GYROSCOPE",
+        "CAP-ORIENTATION-SENSOR",
+        "CAP-DEVICE-ORIENTATION",
+        "CAP-GEOLOCATION",
+        "CAP-XR",
+        "CAP-PERMISSIONS",
+        "CAP-PERMISSIONS-POLICY",
+        "CAP-HID",
+        "CAP-USB",
+        "CAP-SERIAL"
+      ],
+      "ERR": [
+        "CAP-WASM-SHARED-THREADS"
+      ],
+      "GAP": [
+        "CAP-WEBGPU",
+        "CAP-WEBNN",
+        "CAP-MAGNETOMETER",
+        "CAP-PROXIMITY",
+        "CAP-AMBIENT-LIGHT",
+        "CAP-FETCH",
+        "CAP-STORAGE-QUOTA",
+        "CAP-MANIFEST",
+        "CAP-BLUETOOTH",
+        "CAP-FUTURE-EXPLICIT"
+      ]
+    },
+    "authority_step_status": {
+      "CLAUSE": 174,
+      "NONE_DEFINED": 6,
+      "GAP": 51
+    },
+    "rows": [
+      {
+        "family": "CAP-CPU-WASM64",
+        "matrix_row": "CPU / Wasm64",
+        "in_G": true,
+        "classification": "RUN",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-CPU-WASM64-EXPOSURE",
+          "FACT-D24-BYTE-RELAY-EXECUTED",
+          "FACT-JS-I64-BIGINT-MEMBRANE",
+          "FACT-MEMORY64-DISCOVERED",
+          "FACT-WASM64-ABI-EXEC",
+          "FACT-WASM64-ADMITTED-E0",
+          "FACT-WASM64-MODULE-I64"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-WJ1, CL-W5, CL-W6"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "NONE_DEFINED",
+            "detail": "CL-WJ1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "NONE_DEFINED",
+            "detail": "CL-WJ1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-WJ2, CL-W7"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-W2, CL-W4, CL-R8, CL-R9"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "GAP",
+            "detail": "[GAP] module compile/link/instantiate/trap lifecycle not clause-traced beyond instantiate"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] Wasm defines traps, not capability loss; no loss clause traced"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "ADMITTED",
+            "detail": "artifact validates as wasm64; host can compile/instantiate; known operation executes -> [RUN] the matrix contract (artifact validates as wasm64; host compiles/instantiates; known operation executes) is physically satisfied by the E0/E1 admissions and the ABI execution"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: artifact identity + validation + known-answer execution; probes: PROBE-BROWSER-IDENTITY, PROBE-CAPABILITY-CENSUS, PROBE-GENERICITY-SPECIMENS, PROBE-KERNEL-HOST-BROWSER, PROBE-RELAY-EXACT, PROBE-WASM-INSPECT, PROBE-WASM64-DISCOVER, PROBE-WASM64-KNOWN-ANSWER, PROBE-WASM64-REQUEST"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D1-B10-B11-CHROMIUM, EV-D1-B9-INSPECT, EV-D13-PROOF-SUMMARY, EV-D16-CENSUS-CPU-WASM64, EV-D19-IDENTITY-BROWSER-DEFAULT, EV-D19-IDENTITY-BROWSER-GPU-FLAGS, EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE, EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV, EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE, EV-D24-PHYSICAL-PROBE-NO-WEBGPU-PROBE-RECORD, EV-D24-PHYSICAL-PROBE-WEBGPU-PROBE-RECORD, EV-D24-SELFHOST-SUMMARY, EV-D26-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE, EV-D26-PROOF-WASM64-Q-WASM-05-INSPECT-DEV, EV-D6-PROBE-RECORD, EV-D7-ADM-E0-WASM64, EV-D7-E0-RELAY, EV-D7-E1-RELAY, EV-D7-NOWEBGPU-ADM, EV-D9-T9-P8-01, EV-D9-T9-P8-02, EV-D9-T9-P8-03"
+          }
+        ],
+        "first_gap": "LIFECYCLE"
+      },
+      {
+        "family": "CAP-WORKER-DEDICATED",
+        "matrix_row": "Dedicated workers",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-WORKER-DEDICATED-EXPOSURE",
+          "FACT-SH-KERNEL-WORKER-PARTIAL",
+          "FACT-WORKERS-D18R"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-WK1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "GAP",
+            "detail": "[GAP] HTML defines [SecureContext] elsewhere, so absence cannot be verified document-wide; the Worker IDL window carries none (CL-WK1)"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "GAP",
+            "detail": "[GAP] no permission/policy gate stated in the traced windows; not verifiable document-wide in HTML"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-WK2"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-T8"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-WK3"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] worker error/termination by the user agent not clause-traced"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "Worker constructible; messaging/transfer contract works -> [OBS] the D12 kernel ran ANALYZE and BUILD in a dedicated worker (FACT-SH-KERNEL-WORKER-PARTIAL), so a worker was constructed and messaged, but no FactTest admission contract for workers exists; FACT-WORKERS-UNPROBED (D11) is stale against that evidence (D18)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: known job in worker + message round trip; probes: PROBE-BROWSER-IDENTITY, PROBE-CAPABILITY-CENSUS, PROBE-SH-P10"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D11-BROWSER-DEFAULT, EV-D11-BROWSER-GPUFLAGS, EV-D12-P10, EV-D16-CENSUS-WORKER-DEDICATED"
+          }
+        ],
+        "first_gap": "SECURE_CONTEXT"
+      },
+      {
+        "family": "CAP-WASM-SHARED-THREADS",
+        "matrix_row": "Shared/threaded Wasm",
+        "in_G": true,
+        "classification": "ERR",
+        "census": "ABSENT",
+        "maturity": "Threads Phase 4; shared-everything threads Phase 1",
+        "witnesses": [
+          "FACT-CAP-WASM-SHARED-THREADS-EXPOSURE",
+          "FACT-SAB-GLOBAL-HOST-DEFINED",
+          "FACT-SH-SW-GRANTS-COI",
+          "FACT-SHARED-THREADS-UNADMITTED-D18",
+          "FACT-WASM-SET-PHASE-1",
+          "FACT-WASM-THREADS-PHASE-4"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-T2"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-T4, CL-T5"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-T5"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-T6"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-T3, CL-T7"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-T8"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] worker loss/deadlock not clause-traced"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "proposal/runtime support proven; isolation/shared-memory conditions met; atomic known-answer test passes -> [ERR] ERR-002/ERR-003 preserved: the current JS embedding is agent-local while the Threads proposal is Phase 4; COI is reachable (FACT-SH-SW-GRANTS-COI) but no fixture admits shared memory"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: concurrency test + memory/atomic witness + conflict receipt; probes: PROBE-AUTHORITY-REOPEN, PROBE-BROWSER-IDENTITY, PROBE-CAPABILITY-CENSUS, PROBE-SH-P05"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D11-BROWSER-DEFAULT, EV-D11-BROWSER-GPUFLAGS, EV-D12-P05, EV-D14-PROPOSAL-PHASES, EV-D16-CENSUS-WASM-SHARED-THREADS, EV-D19-IDENTITY-BROWSER-DEFAULT, EV-D19-REOPEN-PROPOSAL-PHASES, EV-D20-REOPEN-PROPOSAL-PHASES, EV-D26-PHYSICAL-SELFHOST-PROBES-P05-SW-CROSS-ORIGIN-ISOLATION, EV-D26-REOPEN-PROPOSAL-PHASES"
+          }
+        ],
+        "first_gap": "LOSS"
+      },
+      {
+        "family": "CAP-WEBGPU",
+        "matrix_row": "WebGPU",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-WEBGPU-EXPOSURE",
+          "FACT-D24-BYTE-RELAY-EXECUTED",
+          "FACT-GPU-ADAPTER-NULL-DEFAULT",
+          "FACT-GPU-ADAPTER-SWIFTSHADER",
+          "FACT-GPU-ADMITTED-E0",
+          "FACT-GPU-EPOCH-INVALIDATION",
+          "FACT-GPU-EXPOSED",
+          "FACT-GPU-KNOWN-ANSWER",
+          "FACT-GPU-LOSS-DESTROYED",
+          "FACT-GPU-MAXBUFFERSIZE-OBSERVED",
+          "FACT-HARDWARE-GPU-UNAVAILABLE",
+          "FACT-WGSL-UNEXERCISED"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-GPU1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-GPU1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "NONE_DEFINED",
+            "detail": "CL-GPU1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GPU2, CL-GPU3, CL-GPU4"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-GPU4, CL-GPU5, CL-GPU8, CL-GPU10, CL-GPU11"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GPU6, CL-GPU9"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GPU6, CL-GPU7"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "navigator.gpu; requestAdapter; required features/limits; requestDevice; known WGSL dispatch/readback -> [GAP] the matrix contract requires a known WGSL dispatch/readback and a shader compile; FactTest's admitted WebGPU path is buffer copies only (FACT-WGSL-UNEXERCISED) and only a fallback adapter was ever observed (FACT-HARDWARE-GPU-UNAVAILABLE [UNK])"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: feature/limit receipt + shader compile + known-answer readback + loss test; probes: PROBE-BROWSER-IDENTITY, PROBE-CAPABILITY-CENSUS, PROBE-CONTROLLED-LOSS, PROBE-GENERICITY-SPECIMENS, PROBE-HOST-IDENTITY, PROBE-RELAY-EXACT, PROBE-WASM64-REQUEST, PROBE-WEBGPU-DISCOVER, PROBE-WEBGPU-KNOWN-ANSWER, PROBE-WEBGPU-REQUEST"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D11-BROWSER-DEFAULT, EV-D11-BROWSER-GPUFLAGS, EV-D16-CENSUS-WEBGPU, EV-D19-IDENTITY-BROWSER-DEFAULT, EV-D19-IDENTITY-BROWSER-GPU-FLAGS, EV-D24-PHYSICAL-PROBE-NO-WEBGPU-PROBE-RECORD, EV-D24-PHYSICAL-PROBE-WEBGPU-PROBE-RECORD, EV-D24-SELFHOST-SUMMARY, EV-D26-PHYSICAL-BUNDLES-BYTE-RELAY-WEBGPU-PROBE-RECORD, EV-D6-PROBE-RECORD, EV-D7-ADM-E0-WEBGPU, EV-D7-ADM-E1-WEBGPU, EV-D7-CONTROLLED-LOSS, EV-D7-E0-RELAY, EV-D7-E1-RELAY, EV-D7-NOWEBGPU-ADM, EV-D7-OBSERVED-ASCII"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-WEBNN",
+        "matrix_row": "WebNN",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "ABSENT",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-WEBNN-EXPOSURE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-NN1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-NN1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-NN2"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-NN3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] operator support / device selection not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-NN4"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-NN4"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "navigator.ml; policy allowed; createContext; required graph operations; known graph executes -> [GAP] navigator.ml is absent in ENV-D16-BROWSER and the policy query does not know webnn; no FactTest mechanism"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: context receipt + supported graph + known-answer tensor; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-WEBNN"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-WEBCODECS",
+        "matrix_row": "WebCodecs",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-WEBCODECS-EXPOSURE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-WC1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-WC1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "NONE_DEFINED",
+            "detail": "CL-WC1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-WC2"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-WC2"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-WC3"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-WC3, CL-WC4"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "isConfigSupported; configure; known encode/decode -> [OBS] codec interfaces are exposed and vp8 encode/decode and opus encode report supported (non-prompting isConfigSupported); no FactTest known-media round trip"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: config support receipt + known media round trip; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-WEBCODECS"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-CAMERA",
+        "matrix_row": "Camera",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-CAMERA-EXPOSURE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-MC1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-MC1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-MC2, CL-MC3"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-MC4, CL-MC5"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] constraints/capabilities (getCapabilities, applyConstraints) not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-MC6"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-MC6"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "secure context; policy/permission; getUserMedia(video); usable track/frame -> [OBS] getUserMedia is exposed, camera permission 'prompt', policy allows; zero video inputs in the container; no stream was requested"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: successful stream/track + frame evidence + end handling; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-CAMERA"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-MICROPHONE",
+        "matrix_row": "Microphone",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-MICROPHONE-EXPOSURE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-MC1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-MC1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-MC2, CL-MC3"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-MC4, CL-MC5"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] constraints/capabilities (getCapabilities, applyConstraints) not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-MC6"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-MC6"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "secure context; policy/permission; getUserMedia(audio); usable track/data -> [OBS] getUserMedia is exposed, microphone permission 'prompt', policy allows; zero audio inputs in the container; no stream was requested"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: successful audio track + sample evidence; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-MICROPHONE"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-GENERIC-SENSOR",
+        "matrix_row": "Generic Sensor",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": "Chromium-only; not expected to advance (CL-GS0)",
+        "witnesses": [
+          "FACT-CAP-GENERIC-SENSOR-EXPOSURE",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-GS1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-GS1, CL-GS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-GS4"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] frequency/reading model not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GS2, CL-GS3"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "interface; policy/permission; Sensor.start; reading -> [OBS] Sensor is exposed; no sensor was started (readings need a visible focused document and a device)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: timestamped reading + error/lifecycle evidence; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-GENERIC-SENSOR, EV-D16-CL-ACC0, EV-D16-CL-ALS0, EV-D16-CL-GS0, EV-D16-CL-GYR0, EV-D16-CL-MAG0, EV-D16-CL-ORI0, EV-D16-CL-PRX0, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-ACCELEROMETER",
+        "matrix_row": "Accelerometer",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": "maintained for existing deployments; new projects -> Device Orientation and Motion (CL-ACC0)",
+        "witnesses": [
+          "FACT-CAP-ACCELEROMETER-EXPOSURE",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-ACC1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-ACC1, CL-GS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-ACC2, CL-DO1, CL-GS4"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] reading model/coordinate system not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GS2"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "generic-sensor gates + valid acceleration reading -> [OBS] Accelerometer is exposed, permission 'prompt', policy allows; not started"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: x/y/z known motion or virtual-sensor test; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-ACCELEROMETER, EV-D16-CL-ACC0, EV-D16-CL-ALS0, EV-D16-CL-GS0, EV-D16-CL-GYR0, EV-D16-CL-MAG0, EV-D16-CL-ORI0, EV-D16-CL-PRX0, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-GYROSCOPE",
+        "matrix_row": "Gyroscope",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": "maintained for existing deployments; new projects -> Device Orientation and Motion (CL-GYR0)",
+        "witnesses": [
+          "FACT-CAP-GYROSCOPE-EXPOSURE",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-GYR1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-GYR1, CL-GS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-GYR2, CL-DO1, CL-GS4"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] reading model/coordinate system not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GS2"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "generic-sensor gates; retain as implementation edge -> [OBS] Gyroscope is exposed, permission 'prompt', policy allows; not started"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: angular-rate reading/probe; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-GYROSCOPE, EV-D16-CL-ACC0, EV-D16-CL-ALS0, EV-D16-CL-GS0, EV-D16-CL-GYR0, EV-D16-CL-MAG0, EV-D16-CL-ORI0, EV-D16-CL-PRX0, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-MAGNETOMETER",
+        "matrix_row": "Magnetometer",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "ABSENT",
+        "maturity": "not available by default in any engine (CL-MAG0)",
+        "witnesses": [
+          "FACT-CAP-MAGNETOMETER-EXPOSURE",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-MAG1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-MAG1, CL-GS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-MAG2, CL-DO1, CL-GS4"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] reading model/coordinate system not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GS2"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "permission/policy including magnetometer semantics -> [GAP] Magnetometer is absent in ENV-D16-BROWSER although the 'magnetometer' permission is queryable (implementation flag: D17); the authority says it is not available by default in any engine"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: magnetic-field reading/probe; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-MAGNETOMETER, EV-D16-CL-ACC0, EV-D16-CL-ALS0, EV-D16-CL-GS0, EV-D16-CL-GYR0, EV-D16-CL-MAG0, EV-D16-CL-ORI0, EV-D16-CL-PRX0, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-ORIENTATION-SENSOR",
+        "matrix_row": "Orientation Sensor",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": "maintained for existing deployments; new projects -> Device Orientation and Motion (CL-ORI0)",
+        "witnesses": [
+          "FACT-CAP-ORIENTATION-SENSOR-EXPOSURE",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "GAP",
+            "detail": "[GAP] OrientationSensor IDL not clause-traced (CL-ORI1 covers its policy features)"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-GS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-ORI1, CL-DO1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-ORI2, CL-GS3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] quaternion model not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GS2"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "underlying/fused sensors admitted; permission composition satisfied -> [OBS] Absolute/RelativeOrientationSensor are exposed; the underlying permissions are 'prompt'; not started"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: quaternion/orientation known-answer; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-ORIENTATION-SENSOR, EV-D16-CL-ACC0, EV-D16-CL-ALS0, EV-D16-CL-GS0, EV-D16-CL-GYR0, EV-D16-CL-MAG0, EV-D16-CL-ORI0, EV-D16-CL-PRX0, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "API"
+      },
+      {
+        "family": "CAP-DEVICE-ORIENTATION",
+        "matrix_row": "Device Orientation / Motion",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": "permission integration at risk (CL-DO4)",
+        "witnesses": [
+          "FACT-CAP-DEVICE-ORIENTATION-EXPOSURE",
+          "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-DO3"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-DO3"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-DO1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-DO2, CL-DO4"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] coordinate/precision requirements not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "GAP",
+            "detail": "[GAP] event dispatch/permission change not clause-traced"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] revocation not clause-traced"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "secure context; policy; requestPermission where required; events observed -> [OBS] orientation/motion events are exposed; DeviceOrientationEvent.requestPermission is NOT implemented in this build (the specified permission integration is at risk: CL-DO4); no event observed"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: event evidence + permission receipt; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-DEVICE-ORIENTATION, EV-D16-CL-BT2, EV-D16-CL-DO2, EV-D16-CL-HID2, EV-D16-CL-SER2, EV-D16-CL-USB2, EV-D16-CL-XR4, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-PROXIMITY",
+        "matrix_row": "Proximity",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "ABSENT",
+        "maturity": "not implemented in any browser engine (CL-PRX0)",
+        "witnesses": [
+          "FACT-CAP-PROXIMITY-EXPOSURE",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-PRX1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-PRX1, CL-GS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-PRX2"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] distance/near model not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GS2"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "generic-sensor gates + proximity reading -> [GAP] ProximitySensor is absent and proximity-sensor is not an allowed feature; the authority states no engine implements it"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: known/virtual proximity reading; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-PROXIMITY, EV-D16-CL-ACC0, EV-D16-CL-ALS0, EV-D16-CL-GS0, EV-D16-CL-GYR0, EV-D16-CL-MAG0, EV-D16-CL-ORI0, EV-D16-CL-PRX0, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-AMBIENT-LIGHT",
+        "matrix_row": "Ambient light",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "ABSENT",
+        "maturity": "not available by default in any engine (CL-ALS0)",
+        "witnesses": [
+          "FACT-CAP-AMBIENT-LIGHT-EXPOSURE",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-ALS3"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-ALS3, CL-GS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-ALS1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-ALS2"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GS2"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-GS3"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "generic-sensor gates + quantized illuminance reading -> [GAP] AmbientLightSensor is absent; the permission query reports the implementation flag GenericSensorExtraClasses disabled (D17)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: reading evidence respecting spec precision model; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-AMBIENT-LIGHT, EV-D16-CL-ACC0, EV-D16-CL-ALS0, EV-D16-CL-GS0, EV-D16-CL-GYR0, EV-D16-CL-MAG0, EV-D16-CL-ORI0, EV-D16-CL-PRX0, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-GEOLOCATION",
+        "matrix_row": "Geolocation",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-GEOLOCATION-EXPOSURE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-GEO1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-GEO2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-GEO3, CL-GEO4"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-GEO2, CL-GEO3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] PositionOptions (accuracy, timeout, maximumAge) not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-GEO5"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] watch clearing / permission revocation not clause-traced"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "policy/permission + getCurrentPosition/watchPosition success -> [OBS] navigator.geolocation is exposed, permission 'prompt', policy allows; no position requested"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: position callback/error evidence; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-GEOLOCATION"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-XR",
+        "matrix_row": "XR",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-XR-EXPOSURE",
+          "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-XR1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-XR1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-XR2"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-XR3, CL-XR4, CL-XR5"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-XR5"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-XR6"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-XR6"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "navigator.xr; isSessionSupported; policy/permission; requestSession; required features -> [OBS] navigator.xr is exposed; isSessionSupported('inline') true, ('immersive-vr') false (no XR device); no session requested"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: session receipt + frame/reference-space evidence; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-XR, EV-D16-CL-BT2, EV-D16-CL-DO2, EV-D16-CL-HID2, EV-D16-CL-SER2, EV-D16-CL-USB2, EV-D16-CL-XR4, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-FETCH",
+        "matrix_row": "Fetch / network",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-FETCH-EXPOSURE",
+          "FACT-STREAMING-UNPROBED"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-F1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "GAP",
+            "detail": "[GAP] fetch is not SecureContext-gated; mixed-content rules not clause-traced"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "GAP",
+            "detail": "[GAP] CORS/policy interplay not clause-traced beyond streaming"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-S1, CL-S3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-S2, CL-S4"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-F1"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] network error/abort not clause-traced"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "request/response semantics admitted; required CORS/status/content handling -> [GAP] the matrix evidence (fixture requests and streamed bytes; CORS/status/content handling) is missing: streaming and MIME/ok/CORS rejection were never exercised (FACT-STREAMING-UNPROBED)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: fixture requests and streamed bytes; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-FETCH"
+          }
+        ],
+        "first_gap": "SECURE_CONTEXT"
+      },
+      {
+        "family": "CAP-STORAGE-QUOTA",
+        "matrix_row": "Storage quota/persistence",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-STORAGE-QUOTA-EXPOSURE",
+          "FACT-SH-STORAGE-DURABILITY-D18"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-STQ1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-STQ1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-ST3"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-ST3, CL-STQ1"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-ST1"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-ST1"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-ST2"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "estimate; optional persist; quota sufficient for plan -> [GAP] persist() returned false in D12 (FACT-SH-STORAGE-BEST-EFFORT) and the matrix failure fixture (quota pressure) does not exist"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: quota/persist receipt + failure fixture; probes: PROBE-CAPABILITY-CENSUS, PROBE-SH-P07"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D12-P07, EV-D16-CENSUS-STORAGE-QUOTA"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-OPFS",
+        "matrix_row": "OPFS",
+        "in_G": true,
+        "classification": "RUN",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-OPFS-EXPOSURE",
+          "FACT-SH-OPFS-SERVED-APP",
+          "FACT-SH-ORIGIN-SCOPED-STORAGE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-OPFS1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-OPFS1, CL-ST4"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "GAP",
+            "detail": "[GAP] OPFS has no permission prompt in the traced windows; not verified document-wide"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-OPFS1"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-ST5"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-ST1"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-ST2"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "ADMITTED",
+            "detail": "getDirectory; handle acquisition; read/write/reopen -> [RUN] a generated app written to OPFS was served byte-exact offline and after restart (D12), meeting the matrix evidence (byte-exact write/reload/read)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: byte-exact write/reload/read evidence; probes: PROBE-CAPABILITY-CENSUS, PROBE-SH-P03, PROBE-SH-P04"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D12-P03, EV-D12-P04, EV-D16-CENSUS-OPFS, EV-D26-PHYSICAL-SELFHOST-PROBES-P03-STORAGE-RESTART-ORIGIN, EV-D26-PHYSICAL-SELFHOST-PROBES-P04-OPFS-SERVED-APP"
+          }
+        ],
+        "first_gap": "PERMISSION_POLICY"
+      },
+      {
+        "family": "CAP-INDEXEDDB",
+        "matrix_row": "IndexedDB",
+        "in_G": true,
+        "classification": "RUN",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-INDEXEDDB-EXPOSURE",
+          "FACT-SH-IDB-CAS",
+          "FACT-SH-ORIGIN-SCOPED-STORAGE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-IDB1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "NONE_DEFINED",
+            "detail": "CL-IDB1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "NONE_DEFINED",
+            "detail": "CL-IDB1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-ST6"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-ST6"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-ST6"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-ST2"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "ADMITTED",
+            "detail": "open DB; schema/transaction complete; read/write semantics verified -> [RUN] an IndexedDB transaction gave an atomic compare-and-set with abort leaving the old value (D12), meeting the matrix transactional known-answer"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: transactional known-answer test; probes: PROBE-CAPABILITY-CENSUS, PROBE-SH-P03, PROBE-SH-P06"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D12-P03, EV-D12-P06, EV-D16-CENSUS-INDEXEDDB, EV-D26-PHYSICAL-SELFHOST-PROBES-P03-STORAGE-RESTART-ORIGIN, EV-D26-PHYSICAL-SELFHOST-PROBES-P06-IDB-ATOMIC-POINTER"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-CACHESTORAGE",
+        "matrix_row": "CacheStorage",
+        "in_G": true,
+        "classification": "RUN",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-CACHESTORAGE-EXPOSURE",
+          "FACT-SH-GENERATED-OFFLINE",
+          "FACT-SH-ORIGIN-SCOPED-STORAGE",
+          "FACT-SH-SW-NO-SELF-UPDATE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-CS1, CL-CS2"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-CS1, CL-CS2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "GAP",
+            "detail": "[GAP] no permission/policy gate in the traced windows; not verified document-wide"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-CS2"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] quota interplay not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-F3"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-ST2"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "ADMITTED",
+            "detail": "caches exposed; versioned cache contract; match/put/delete work -> [RUN] the generated bundle launched offline from its own versioned CacheStorage shell and the update/failure behaviour was observed (D12)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: offline asset retrieval + update/failure evidence; probes: PROBE-CAPABILITY-CENSUS, PROBE-SH-P01, PROBE-SH-P02, PROBE-SH-P03"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D12-P01, EV-D12-P02, EV-D12-P03, EV-D16-CENSUS-CACHESTORAGE, EV-D26-PHYSICAL-SELFHOST-PROBES-P01-GENERATED-BUNDLE-OFFLINE, EV-D26-PHYSICAL-SELFHOST-PROBES-P02-SW-CANNOT-SELF-UPDATE, EV-D26-PHYSICAL-SELFHOST-PROBES-P03-STORAGE-RESTART-ORIGIN"
+          }
+        ],
+        "first_gap": "PERMISSION_POLICY"
+      },
+      {
+        "family": "CAP-SERVICE-WORKER",
+        "matrix_row": "Service Worker",
+        "in_G": true,
+        "classification": "RUN",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-SERVICE-WORKER-EXPOSURE",
+          "FACT-SH-BROKEN-SEED-FATAL",
+          "FACT-SH-GENERATED-OFFLINE",
+          "FACT-SH-INTERRUPTED-UPDATE",
+          "FACT-SH-SW-NO-SELF-UPDATE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-F4"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-F4"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-F6"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-F4"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-F1"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-F2, CL-F3, CL-F5"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-F5, CL-F6"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "ADMITTED",
+            "detail": "registration/install/activate/control/fetch -> [RUN] registration, control, fetch interception, failed-update retention and interrupted update were observed physically (D12)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: control + fetch interception + failed-update retention; probes: PROBE-CAPABILITY-CENSUS, PROBE-SH-P01, PROBE-SH-P02, PROBE-SH-P14, PROBE-SH-P15"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D12-P01, EV-D12-P02, EV-D12-P14, EV-D12-P15, EV-D16-CENSUS-SERVICE-WORKER, EV-D26-PHYSICAL-SELFHOST-PROBES-P01-GENERATED-BUNDLE-OFFLINE, EV-D26-PHYSICAL-SELFHOST-PROBES-P02-SW-CANNOT-SELF-UPDATE, EV-D26-PHYSICAL-SELFHOST-PROBES-P14-BROKEN-SW-RECOVERY, EV-D26-PHYSICAL-SELFHOST-PROBES-P15-INTERRUPTED-SW-UPDATE"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-MANIFEST",
+        "matrix_row": "Manifest/PWA shell",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "UNDETERMINED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-MANIFEST-EXPOSURE",
+          "FACT-SH-NO-FACTORY-WEBAPP"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "GAP",
+            "detail": "[GAP] the manifest is declarative; no script surface defined by the authority"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "GAP",
+            "detail": "[GAP] installability criteria are user-agent defined; not clause-traced"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "GAP",
+            "detail": "[GAP] not applicable in the traced authority; not verified"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-MF1"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] scope/display members not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-MF1"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] uninstall/update not clause-traced"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "structural manifest valid; launch/scope metadata; runtime installation/launch observed -> [GAP] installation is a user-agent offer (CL-MF1) and no installed/standalone launch was ever observed; no Factory web app exists (FACT-SH-NO-FACTORY-WEBAPP)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: installed/standalone launch evidence where supported; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-MANIFEST"
+          }
+        ],
+        "first_gap": "API"
+      },
+      {
+        "family": "CAP-SECURE-CONTEXT",
+        "matrix_row": "Secure-context state",
+        "in_G": true,
+        "classification": "RUN",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-SECURE-CONTEXT-EXPOSURE",
+          "FACT-LOOPBACK-SECURE-CONTEXT",
+          "FACT-OPAQUE-FRAME-SECURE-CONTEXT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-I1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-H1, CL-H2"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-H3, CL-H4"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-H1"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-H2"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-H1"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-H3, CL-H4"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "ADMITTED",
+            "detail": "environment reports/qualifies as secure/trustworthy -> [RUN] the loopback origin reported a secure context and opaque frames behaved as specified (D11, D12)"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: trust/secure-context receipt; probes: PROBE-BROWSER-IDENTITY, PROBE-CAPABILITY-CENSUS, PROBE-SECURE-CONTEXT, PROBE-SH-P08"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D11-BROWSER-DEFAULT, EV-D11-BROWSER-GPUFLAGS, EV-D12-P08, EV-D12-P16, EV-D16-CENSUS-SECURE-CONTEXT, EV-D19-IDENTITY-BROWSER-DEFAULT, EV-D19-IDENTITY-BROWSER-GPU-FLAGS, EV-D26-IDENTITY-BROWSER-DEFAULT, EV-D26-IDENTITY-BROWSER-GPU-FLAGS, EV-D26-PHYSICAL-SELFHOST-PROBES-P08-CANDIDATE-CONFINEMENT, EV-D26-PHYSICAL-SELFHOST-PROBES-P16-CONFINED-GENERATION-LOAD, EV-D7-ENVIRONMENT-STEP"
+          }
+        ],
+        "first_gap": null
+      },
+      {
+        "family": "CAP-PERMISSIONS",
+        "matrix_row": "Permissions",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-PERMISSIONS-EXPOSURE"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-P1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "GAP",
+            "detail": "[GAP] Permissions API exposure not clause-traced"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-P1"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-P1"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] descriptor types per feature traced on the feature families"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "GAP",
+            "detail": "[GAP] permission lifetime not clause-traced"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] revocation traced per feature (CL-MC6, CL-BT5), not generically"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "query where applicable; feature-specific request/chooser succeeds -> [OBS] permissions.query answers 'prompt' for geolocation, camera, microphone and persistent-storage; no permission request exercised"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: state changes and feature outcome; probes: PROBE-CAPABILITY-CENSUS"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-PERMISSIONS"
+          }
+        ],
+        "first_gap": "SECURE_CONTEXT"
+      },
+      {
+        "family": "CAP-PERMISSIONS-POLICY",
+        "matrix_row": "Permissions Policy",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-PERMISSIONS-POLICY-EXPOSURE",
+          "FACT-SH-OPAQUE-CONFINEMENT"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "GAP",
+            "detail": "[GAP] the policy query API is implementation-specific (census records which)"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "GAP",
+            "detail": "[GAP] not a secure-context gate"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-P2, CL-P3"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-P3"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "CLAUSE",
+            "detail": "CL-P2"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "GAP",
+            "detail": "[GAP] policy is fixed per document; not clause-traced"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] not applicable in the traced windows"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "document allowed to use feature -> [OBS] the implementation exposes document.featurePolicy (implementation-specific, 77 allowed features); no blocked/allowed fixture exists"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: blocked/allowed fixture; probes: PROBE-CAPABILITY-CENSUS, PROBE-SH-P08"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D12-P08, EV-D16-CENSUS-PERMISSIONS-POLICY, EV-D26-PHYSICAL-SELFHOST-PROBES-P08-CANDIDATE-CONFINEMENT"
+          }
+        ],
+        "first_gap": "API"
+      },
+      {
+        "family": "CAP-HID",
+        "matrix_row": "HID",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-HID-EXPOSURE",
+          "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-HID1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-HID1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-HID2, CL-HID3"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-HID2"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] device filters/blocklist not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-HID4"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-HID4"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "policy; requestDevice; open; supported report path -> [OBS] navigator.hid is exposed, policy allows hid, getDevices() returns 0 devices; requestDevice needs a gesture + chooser"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: input/output/feature report fixture where hardware/virtual test exists; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-HID, EV-D16-CL-BT2, EV-D16-CL-DO2, EV-D16-CL-HID2, EV-D16-CL-SER2, EV-D16-CL-USB2, EV-D16-CL-XR4, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-USB",
+        "matrix_row": "USB",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-USB-EXPOSURE",
+          "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-USB1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-USB1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-USB3"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-USB2"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] device filters/blocklist not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-USB1"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-USB1"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "policy/user-selection; device open/config/select interface; transfer path -> [OBS] navigator.usb is exposed, policy allows usb, getDevices() returns 0 devices; requestDevice needs a gesture + chooser"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: known control/bulk transfer fixture; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-USB, EV-D16-CL-BT2, EV-D16-CL-DO2, EV-D16-CL-HID2, EV-D16-CL-SER2, EV-D16-CL-USB2, EV-D16-CL-XR4, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-SERIAL",
+        "matrix_row": "Serial",
+        "in_G": true,
+        "classification": "OBS",
+        "census": "EXPOSED",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-SERIAL-EXPOSURE",
+          "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-SER1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-SER1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-SER2, CL-SER3"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-SER2"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] device filters/blocklist not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-SER4"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-SER4"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "policy + transient activation for chooser; port open; streams -> [OBS] navigator.serial is exposed, policy allows serial, getPorts() returns 0 ports; requestPort needs a gesture + chooser"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: loopback/known serial transaction; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-SERIAL, EV-D16-CL-BT2, EV-D16-CL-DO2, EV-D16-CL-HID2, EV-D16-CL-SER2, EV-D16-CL-USB2, EV-D16-CL-XR4, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-BLUETOOTH",
+        "matrix_row": "Bluetooth",
+        "in_G": true,
+        "classification": "GAP",
+        "census": "ABSENT",
+        "maturity": null,
+        "witnesses": [
+          "FACT-CAP-BLUETOOTH-EXPOSURE",
+          "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+        ],
+        "trace": [
+          {
+            "step": "API",
+            "status": "CLAUSE",
+            "detail": "CL-BT1"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "CLAUSE",
+            "detail": "CL-BT1"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "CLAUSE",
+            "detail": "CL-BT2, CL-BT3, CL-BT4"
+          },
+          {
+            "step": "REQUEST",
+            "status": "CLAUSE",
+            "detail": "CL-BT2"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] device filters/blocklist not clause-traced"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "CLAUSE",
+            "detail": "CL-BT5"
+          },
+          {
+            "step": "LOSS",
+            "status": "CLAUSE",
+            "detail": "CL-BT5"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "policy/user-selection; GATT connect; required service/characteristic -> [GAP] navigator.bluetooth is absent in ENV-D16-BROWSER and 'bluetooth' is not a valid PermissionName in this build"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "PROBED",
+            "detail": "required: known GATT read/write/notification fixture; probes: PROBE-CAPABILITY-CENSUS, PROBE-CLAUSE-EXTRACT"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "EVIDENCE",
+            "detail": "EV-D16-CENSUS-BLUETOOTH, EV-D16-CL-BT2, EV-D16-CL-DO2, EV-D16-CL-HID2, EV-D16-CL-SER2, EV-D16-CL-USB2, EV-D16-CL-XR4, EV-D19-CLAUSES-D16-SUMMARY"
+          }
+        ],
+        "first_gap": "FEATURES_LIMITS"
+      },
+      {
+        "family": "CAP-FUTURE-EXPLICIT",
+        "matrix_row": "Future explicit capability",
+        "in_G": true,
+        "classification": "GAP",
+        "census": null,
+        "maturity": null,
+        "witnesses": [],
+        "trace": [
+          {
+            "step": "API",
+            "status": "GAP",
+            "detail": "[GAP] no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+          },
+          {
+            "step": "SECURE_CONTEXT",
+            "status": "GAP",
+            "detail": "[GAP] no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+          },
+          {
+            "step": "PERMISSION_POLICY",
+            "status": "GAP",
+            "detail": "[GAP] no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+          },
+          {
+            "step": "REQUEST",
+            "status": "GAP",
+            "detail": "[GAP] no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+          },
+          {
+            "step": "FEATURES_LIMITS",
+            "status": "GAP",
+            "detail": "[GAP] no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+          },
+          {
+            "step": "LIFECYCLE",
+            "status": "GAP",
+            "detail": "[GAP] no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+          },
+          {
+            "step": "LOSS",
+            "status": "GAP",
+            "detail": "[GAP] no authority named: the row requires the same admission/lifecycle/evidence shape once one is"
+          },
+          {
+            "step": "RUNTIME ADMISSION",
+            "status": "NOT ADMITTED",
+            "detail": "must define the same admission/lifecycle/evidence shape -> [GAP] template row of G: preserved; nothing to probe until an explicit authority is named"
+          },
+          {
+            "step": "PROBE OBLIGATION",
+            "status": "GAP",
+            "detail": "required: explicit; probes: (none)"
+          },
+          {
+            "step": "EVIDENCE",
+            "status": "GAP",
+            "detail": "(none)"
+          }
+        ],
+        "first_gap": "API"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "test",
+    "--message-format=json"
+  ],
+  "exit": 0,
+  "packages": [
+    "alpha"
+  ],
+  "selection": [
+    "alpha:alpha[lib]",
+    "alpha:alpha[lib]{test}"
+  ],
+  "tests": {
+    "binaries": [
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../target/debug/deps/alpha-55c3578d728afc76"
+      },
+      {
+        "target": "doc-tests alpha",
+        "exe": null
+      }
+    ],
+    "results": [
+      {
+        "status": "ok",
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      }
+    ],
+    "passed": 1,
+    "failed": 0,
+    "failed_names": [],
+    "finished": "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.19s"
+  },
+  "reason": "exit 0; packages [alpha]; 1 passed / 0 failed"
+}

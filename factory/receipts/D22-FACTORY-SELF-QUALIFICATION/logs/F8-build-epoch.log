@@ -1,0 +1,5 @@
+$ sh -c node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D22.json --identity evidence/D22/identity --epoch D22 --delta D22-FACTORY-SELF-QUALIFICATION --commit '88564a0eccd934d6a017faf65435bc871bcd2f94 (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out design/environment-map/epochs/D22.json
+(cwd .)
+D22: 10 nodes, 34 edges -> design/environment-map/epochs/D22.json; facts FACT-D22-FACTORY-NEGATIVE-WITNESSES [RUN], FACT-D22-FACTORY-DEFECTS-REPAIRED [RUN], FACT-D22-JUDGE-QUALIFIED [RUN]
+
+[exit 0] expected 0

@@ -1,0 +1,20 @@
++------------------------------------------------------------------------------+
+| OBSERVED ledger_mirror  (derived from runtime evidence; evidence class UNSPECIFIED)
+| @{system ledger_mirror_observed "Observed: ledger_mirror"}
+| EPOCH E0
+| @{issue admission_E0_CPU_WASM64 RUN "CPU_WASM64 admitted at E0 (evidence wasm64_known_answer)"}
+| @{issue activation_E0 RUN "plan 0 active at E0"}
+| @{issue executed_E0_post_1 RUN "post: exact roundtrip of 1 bytes at E0 via plan 0 (sha256 684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1)"}
+| @{issue executed_E0_post_2 RUN "post: exact roundtrip of 0 bytes at E0 via plan 0 (sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)"}
+| @{issue executed_E0_post_3 RUN "post: exact roundtrip of 1000 bytes at E0 via plan 0 (sha256 533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba)"}
+| @{issue executed_E0_mirror_4 RUN "mirror: exact roundtrip of 1 bytes at E0 via plan 0 (sha256 684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1)"}
+| @{issue executed_E0_mirror_5 RUN "mirror: exact roundtrip of 0 bytes at E0 via plan 0 (sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)"}
+| @{issue executed_E0_mirror_6 RUN "mirror: exact roundtrip of 1000 bytes at E0 via plan 0 (sha256 533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba)"}
+| @{issue loss_E0_CPU_WASM64 ERR "CPU_WASM64 lost at E0 (reason released)"}
+| EPOCH E1
+| @{issue admission_E1_CPU_WASM64 ERR "CPU_WASM64 rejected at E1 (evidence device_lost, reason released)"}
+| @{issue activation_E1 ERR "no active plan at E1"}
+| @{issue transition_E0_E1 OBS "E0 -> E1: plan 0 -> plan none; reselection inside the VerifiedStrategy, no codegen"}
+| @{issue source_of_record UNK "host did not supply source identities"}
+| @{issue evidence_lineage ERR "evidence tape is not bound to this bundle: tape strategy data b24987f2fb65946daf9605143dcb0d92d02214722ae3e6b5ffdb264c5445d142 vs manifest 9bccc23f57529c06f7e243b9b25132e4a50297cdfa57d2b6ee9dd574d36d6fd4"}
++------------------------------------------------------------------------------+

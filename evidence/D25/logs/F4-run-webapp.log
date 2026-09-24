@@ -1,0 +1,11 @@
+$ node tests/physical/run-webapp.mjs --factc /home/user/factory-target-w30/debug/factc --out evidence/D25/physical --kernel /home/user/factory-target-w30/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --pushed-bundle evidence/D24/physical/compile/bundle --pushed-branch claude/facttest-materialization-27amc7
+(cwd .)
+byte-relay: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+dual-stream: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+ledger-mirror: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+pixel-vault: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+selfhost: ok selfhost_P01_run, ok selfhost_P04_run, ok selfhost_bundle_is_the_fresh_one; {"P01-GENERATED-BUNDLE-OFFLINE":"RUN","P02-SW-CANNOT-SELF-UPDATE":"RUN","P03-STORAGE-RESTART-ORIGIN":"RUN","P04-OPFS-SERVED-APP":"RUN","P05-SW-CROSS-ORIGIN-ISOLATION":"RUN","P06-IDB-ATOMIC-POINTER":"RUN","P07-STORAGE-PERSISTENCE":"GAP","P08-CANDIDATE-CONFINEMENT":"RUN","P09-GIT-OBJECTS-IN-BROWSER":"RUN","P10-KERNEL-IN-WORKER":"OBS","P14-BROKEN-SW-RECOVERY":"RUN","P16-CONFINED-GENERATION-LOAD":"RUN","P15-INTERRUPTED-SW-UPDATE":"RUN"}
+public https: UNREACHABLE
+PASS
+
+[exit 0] expected 0

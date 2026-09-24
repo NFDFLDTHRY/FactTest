@@ -1,0 +1,125 @@
+{
+  "schema": "facttest-fact-epoch-spec/1",
+  "summary": "compiler + ABI execution: every crate compile -> focused tests -> consumer test in dependency order, the 27-obligation qualified matrix, the wasm transport completed (D12 B-06 transport-only) and proved in Chromium byte-for-byte against the native driver, the kernel identity re-pinned (4 facts [RUN], 1 [GAP] owner item, 8 evidence records)",
+  "implementations": [
+    {"id": "IMPL-KERNEL-BUILD-PROBE", "repo_path": "host/harness/kernel-build-probe.mjs", "kind": "harness", "note": "BUILD + OBSERVE driven in Chromium through the wasm exports; every artifact and bundle file compared byte-for-byte with host/factc (D23)"},
+    {"id": "IMPL-CRATE-DAG", "repo_path": "tests/toolchain/run-crate-dag.mjs", "kind": "harness", "note": "per-crate compile -> focused tests -> consumer test in Cargo's dependency order over the proof sets (D23)"}
+  ],
+  "probes": [
+    {
+      "id": "PROBE-CRATE-DAG",
+      "command_or_operation": "node tests/toolchain/run-crate-dag.mjs --out DIR --browser-probe Q-WASM-08-RECORD: for every HOST_NATIVE_SET root in dependency order cargo build (dev), build (release), test (focused), then the tests of every direct consumer; the WASM64_KERNEL_SET root built core-only under the pinned nightly with the browser build probe as its consumer test",
+      "expected_observations": ["every crate PASS in dependency order", "every consumer test that exists passes", "the wasm64 root builds dev and release and its browser consumer PASS"],
+      "failure_meaning": ["a crate does not compile, its own tests fail, or a consumer's tests fail after it: the DAG does not execute according to its contracts"],
+      "implemented_by": "IMPL-CRATE-DAG"
+    },
+    {
+      "id": "PROBE-BROWSER-BUILD",
+      "command_or_operation": "node tests/toolchain/proof.mjs browser-build (Q-WASM-08) -> node host/harness/kernel-build-probe.mjs MODULE --source --contracts --metrics --tape --system --native-build --native-observe --out: Chromium instantiates the release wasm64 kernel with zero imports, submits source + registry + metrics, runs CHECK_OR_COMPILE(BUILD), reads diagnostics, metadata, every artifact and every bundle file; resets; submits the tape and the identities, runs OBSERVE, reads its artifacts; each file compared byte-for-byte with the native driver's run",
+      "expected_observations": ["BUILD status 1 and OBSERVE status 1 in Chromium", "every artifact and bundle file identical to host/factc's"],
+      "failure_meaning": ["an export is missing, refuses, or produces bytes that differ from the native transport: the browser boundary does not carry the kernel API"],
+      "implemented_by": "IMPL-KERNEL-BUILD-PROBE"
+    }
+  ],
+  "facts": [
+    {
+      "id": "FACT-D23-COMPILER-DAG-EXECUTED",
+      "subject": "the compiler DAG (foundation -> source -> semantic -> capability -> implementation -> planning -> verifier -> codegen -> bundle -> observe -> kernel), the native driver, the Factory crate and the wasm64 root at the D23 tree",
+      "predicate": "every crate compiles (dev and release) under HOST_NATIVE_SET in Cargo's dependency order, its focused tests pass, and the tests of each direct consumer pass after it (foundation 9 unit tests, codegen 1, kernel ladders 76, factc driver 7, factory law 29; 931 test executions in the run); the wasm64 root builds core-only (dev, release) under WASM64_KERNEL_SET and its browser consumer passes",
+      "status": "RUN",
+      "note": "I-19 closed: the DAG order and the consumer tests are executed and recorded per crate (evidence/D23/crates); crates without tests of their own say so and are exercised by their consumers",
+      "source_ref": "evidence/D23/crates/summary.json",
+      "required_environment": ["HOST_NATIVE_SET (rustc 1.94.1) and WASM64_KERNEL_SET (nightly-2026-09-24) on the host; Chromium headless shell 141 via Playwright for the wasm64 consumer"],
+      "constraint_refs": [],
+      "probe": "PROBE-CRATE-DAG",
+      "evidence": [
+        {"path": "evidence/D23/crates/summary.json", "observed_result": "14 crates PASS in dependency order; 931 tests passed, 0 failed"},
+        {"path": "evidence/D23/crates/factc-kernel.json", "observed_result": "the kernel: build dev + release, 76 ladder tests, consumers factc (7 driver tests) and the wasm64 root"},
+        {"path": "evidence/D23/crates/factc.json", "observed_result": "the native driver: build dev + release, 7 driver tests (queries, exit codes, analyze, build, B-07 behaviour, determinism, observe)"}
+      ],
+      "implemented_by": ["IMPL-KERNEL-CRATES", "IMPL-FACTC", "IMPL-WASM-ABI", "IMPL-CRATE-DAG"],
+      "stale_if": [
+        {"dimension": "repo.commit", "relation": "compiler/, host/ or the proof sets change"},
+        {"dimension": "toolchain.stable.rustc_commit", "relation": "the HOST_NATIVE_SET toolchain changes"}
+      ]
+    },
+    {
+      "id": "FACT-D23-QUALIFIED-PROOF",
+      "subject": "the qualified proof matrix (tests/toolchain/run-qualified-proof.sh) at the D23 tree",
+      "predicate": "27 obligations: HOST_NATIVE_SET build dev, build release, test dev, test release, clippy, three exact compile-fail diagnostics; ALL_SOURCES fmt; ALL_MEMBERS_GRAPH Cargo-resolved first-party graph and physical manifest accounting, third-party fixture rejected; WASM64_KERNEL_SET clippy, core-only graph dev and release, wasm inspect dev and release, kernel identity, Chromium ABI (ANALYZE) and Chromium BUILD + OBSERVE (Q-WASM-08); pins and set partition; CROSS_SET diagnostics (weight NONE) and heuristic scanners (weight NONE); the eight mutants refused by the qualified judge - PASS 22, OBS 3, HEURISTIC 2, no FAIL",
+      "status": "RUN",
+      "note": "the D23 matrix adds Q-WASM-08 to the D13 matrix; every cargo call names its pinned toolchain",
+      "source_ref": "evidence/D23/proof/summary.json",
+      "required_environment": ["HOST_NATIVE_SET and WASM64_KERNEL_SET on the host; Chromium headless shell 141 via Playwright"],
+      "constraint_refs": [],
+      "probe": "PROBE-QUALIFIED-PROOF",
+      "evidence": [
+        {"path": "evidence/D23/proof/summary.json", "observed_result": "27 obligations: PASS 22, OBS 3, HEURISTIC 2; mutants: 8 of 8 refused by the qualified check and accepted by the weak check"}
+      ],
+      "implemented_by": ["IMPL-QUALIFIED-PROOF", "IMPL-KERNEL-CRATES", "IMPL-WASM-ABI", "IMPL-FACTC"],
+      "stale_if": [
+        {"dimension": "repo.commit", "relation": "compiler/, host/, fixtures/ or tests/toolchain change"},
+        {"dimension": "toolchain.stable.rustc_commit", "relation": "changes"},
+        {"dimension": "toolchain.nightly.rustc_commit", "relation": "changes"}
+      ]
+    },
+    {
+      "id": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+      "subject": "the browser transport boundary (compiler/wasm-abi) against the public kernel API (compiler/kernel/src/abi.rs) and the native transport (host/factc)",
+      "predicate": "the wasm64 export surface carries every kernel operation the native driver carries (22 exports: the C14 eight, the buffer accessors, and submit_contracts, submit_metrics, submit_evidence_tape, observe, artifact_count, read_artifact, bundle_file_count, bundle_file_path, bundle_file_bytes); in Chromium, BUILD from source + registry + metrics and OBSERVE from the tape produce diagnostics, artifact metadata, every artifact and every bundle file byte-for-byte identical to the native driver's run (21 of 21 files); the module has zero imports",
+      "status": "RUN",
+      "note": "D12 B-06 decided from the current contracts as A/B (missing transport for implemented semantics): no compiler semantic was invented - every export calls one existing kernel function, the observe frame is transport encoding, which C14 defers; the eight-operation C14 text is an owner item (I-29)",
+      "source_ref": "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/probe.json",
+      "required_environment": ["Chromium headless shell 141 (Playwright 1.56.1) with wasm64 (memory64) enabled by default", "WASM64_KERNEL_SET release kernel"],
+      "constraint_refs": [],
+      "probe": "PROBE-BROWSER-BUILD",
+      "evidence": [
+        {"path": "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/probe.json", "observed_result": "BUILD status 1, OBSERVE status 1; 21/21 files identical to the native driver; 22 exports, imports []"},
+        {"path": "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.json", "observed_result": "obligation record: verdict PASS on the release kernel"}
+      ],
+      "implemented_by": ["IMPL-WASM-ABI", "IMPL-KERNEL-CRATES", "IMPL-FACTC", "IMPL-KERNEL-BUILD-PROBE"],
+      "stale_if": [
+        {"dimension": "repo.commit", "relation": "compiler/wasm-abi, compiler/kernel/src/abi.rs, host/factc or host/harness change"},
+        {"dimension": "browser.revision", "relation": "changes"},
+        {"dimension": "toolchain.nightly.rustc_commit", "relation": "changes"}
+      ]
+    },
+    {
+      "id": "FACT-KERNEL-IDENTITY-D23",
+      "subject": "WASM64_KERNEL_SET release kernel identity after the D23 transport extension",
+      "predicate": "the kernel identity is the exec identity fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976 (sha256 over every section except the custom \"name\" section; tests/toolchain/proof-sets.json exec_identity, checked by tests/toolchain/proof.mjs kernel-identity), equal for the builds under both rustup install names; the whole-file sha256 stays recorded per install name (fa5c7131... pinned name, 6deeebc6... renamed); the identity is source-exact (panic locations carry line numbers), so it is pinned from the committed source",
+      "status": "RUN",
+      "note": "supersedes FACT-KERNEL-IDENTITY-DEFINED-D18 (R-64): the same definition, a new value; the eight-export identity e8d6582665... is kept as history in proof-sets.json",
+      "source_ref": "evidence/D23/kernel/sections.json; evidence/D23/proof/wasm64/Q-WASM-06-kernel-identity.json",
+      "required_environment": ["pinned toolchain WASM64_KERNEL_SET nightly-2026-09-24 (rustc 6eeff9a52), -Z build-std=core, -C link-arg=-zstack-size=16777216"],
+      "constraint_refs": [],
+      "probe": "PROBE-KERNEL-SECTIONS",
+      "evidence": [
+        {"path": "evidence/D23/kernel/builds.json", "observed_result": "INSTALL-PINNED and INSTALL-RENAMED release builds under rustc 6eeff9a52; whole-file sha256 per install name"},
+        {"path": "evidence/D23/kernel/sections.json", "observed_result": "section-by-section comparison: only the custom name section differs; identity excluding it identical for both builds"},
+        {"path": "evidence/D23/proof/wasm64/Q-WASM-06-kernel-identity.json", "observed_result": "the matrix's release kernel has the declared exec identity", "probe": "PROBE-QUALIFIED-PROOF"}
+      ],
+      "implemented_by": ["IMPL-WASM-ABI", "IMPL-QUALIFIED-PROOF", "IMPL-KERNEL-SECTIONS"],
+      "stale_if": [
+        {"dimension": "toolchain.nightly.rustc_commit", "relation": "another nightly or codegen profile changes the exec sections"},
+        {"dimension": "repo.commit", "relation": "any source of the core-only wasm64 graph changes (the identity is source-exact)"}
+      ]
+    },
+    {
+      "id": "FACT-D23-C14-TEXT-OWNER",
+      "subject": "BOOTSTRAP-CONTRACTS.md C14 (the bootstrap ABI contract text)",
+      "predicate": "the contract text lists eight semantic operations and defers transport encoding, while the kernel API and both transports carry fourteen operations (22 wasm exports); no registered station may annotate BOOTSTRAP-CONTRACTS.md, so the text can be amended only by the owner (I-29); until then compiler/kernel/src/abi.rs is the record of the operations and D23 the proof of both transports",
+      "status": "GAP",
+      "note": "explicit stop: OWNER decision (an insertion-only C14 annotation, or a StationSpec granting the document); not a defect of the implementation",
+      "source_ref": "tests/manifest/issues.json I-29",
+      "required_environment": [],
+      "constraint_refs": [],
+      "probe": "PROBE-BROWSER-BUILD",
+      "evidence": [
+        {"path": "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/probe.json", "observed_result": "the 22 exports the transport carries, against the eight the contract text names"}
+      ],
+      "implemented_by": ["IMPL-WASM-ABI"],
+      "stale_if": [{"dimension": "repo.commit", "relation": "BOOTSTRAP-CONTRACTS.md or a StationSpec changes"}]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+RUN M1-omitted-workspace-member [T9-P1 package selection] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL: members omitted from default-members: beta; cargo test --workspace exit 101: 1 failed (t::beta_is_broken)
+RUN M2-compile-fail-wrong-reason [T9-P4 compile-fail] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL: expected 3 x E0308 "mismatched types", observed 0; E0308 primary spans [] != expected [11,12,13]; unexpected diagnostic (no code) "this file contains an unclosed delimiter" at src/lib.rs:16
+RUN M3-compile-fail-stale-forge [T9-P4 compile-fail] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL: expected 1 x (no code) "private fields", observed 0; (no code) primary spans [] != expected [9]; unexpected diagnostic E0560 "struct `factc_verifier::VerifiedStrategy` has no field named `certificate_id`" at src/lib.rs:16
+RUN M4-nostd-scanner-bypass [T9-P5 no_std] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL: exit 101: m4-nostd-scanner-bypass E0463 can't find crate for `std`; intended crates absent from the core-only graph: m4-nostd-scanner-bypass
+RUN M5-uninspected-manifest [T9-P6 dependency law] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL: gamma -> serde (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1; package proc-macro2@1.0.107 source registry+https://github.com/rust-lang/crates.io-index; package proc-macro2 manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml; proc-macro2 -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> flate2 (dev) is not a path dependency: sou
+RUN M6-native-pass-wasm64-fail [T9-P5 / T9-P8 wasm64 participation] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL: exit 101: m6-native-pass-wasm64-fail E0433 cannot find module or crate `std` in this scope; intended crates absent from the core-only graph: m6-native-pass-wasm64-fail
+RUN M7-wasm32-masquerade [T9-P8 wasm64 / no wasm32 fallback] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL:   [FAIL] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003
+RUN M8-debug-pass-release-fail [T9-P2 debug/release matrix] weak=PASS(exp PASS) qualified=FAIL(exp FAIL)
+    weak check PASS (would accept the mutant); qualified check FAIL: exit 101; packages [m8-debug-pass-release-fail]; 0 passed / 1 failed

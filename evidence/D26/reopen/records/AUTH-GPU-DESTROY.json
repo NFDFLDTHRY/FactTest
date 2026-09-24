@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GPU-DESTROY",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://gpuweb.github.io/gpuweb/",
+  "fragment": "#dom-gpudevice-destroy",
+  "fragment_status_recorded": "DERIVED_FROM_DFN_UNVERIFIED",
+  "maturity_recorded": "Status: w3c/ED",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "path": "spec/index.bs",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "observed": "2026-09-24",
+  "locator": "<dfn>destroy()</dfn> under dfn-for=GPUDevice (lines 3190-3216)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#dom-gpudevice-destroy",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 3190,
+   "kind": "bikeshed IDL dfn"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 3190,
+   "kind": "bikeshed IDL dfn"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   3190,
+   3216
+  ],
+  "window_sha256": "f9baf00d72ecf42fc16b2151fc4859091c1674bc33eb7a8fa2d4100b7348994a",
+  "window_excerpt": "    : <dfn>destroy()</dfn>\n    ::\n        Destroys the [=device=], preventing further operations on it.\n        Outstanding asynchronous operations will fail.\n\n        Note: It is valid to destroy a device multiple times.\n\n        <div algorithm=GPUDevice.destroy()>\n            <div data-timeline=content>\n                **Called on:** {{GPUDevice}} |this|.\n\n                [=Content timeline=] steps:\n\n                1. {{GPUBuffer/unmap()}} all {{GPUBuffer}}s from this device.\n\n                    <!-- POSTV1(multithreading) tentative text:\n                    ... which are mapped in this [=agent=] (thread).\n\n                    Note: Any buffers which are mapped in a different thread are not unmapped.\n                    They can be unmapped only from the thread on which they are mapped, either by\n                    another call to {{GPUDevice/destroy()|GPUDevice.destroy()}}, or by\n                    {{GPUBuffer/destroy()|GPUBuffer.destroy()}} or {{GPUBuffer/unmap()|GPUBuffer.unmap()}}.\n                    -->\n                1. Issue the subsequent steps on the [=Device timeline=] of |this|.\n            </div>\n            <div data-timeline=device>\n                1. [=Lose t",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   3190,
+   3216
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "drift": "NONE"
+ }
+}

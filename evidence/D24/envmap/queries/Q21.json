@@ -1,0 +1,2940 @@
+{
+  "query": "Q21",
+  "title": "What did the reconciliation re-examine (AUTHORITY CHANGED -> CONSTRAINT -> FACT -> IMPLEMENTATION CONTRACT -> ENVIRONMENT -> OLD PROBE SUFFICIENT? -> OLD EVIDENCE APPLICABLE?), what is current now, and which new probe obligations follow?",
+  "answer": {
+    "reconciliations": 51,
+    "by_outcome": {
+      "HOLDS": 11,
+      "OPEN": 7,
+      "SUPERSEDED": 15,
+      "ANNOTATED": 6,
+      "LEDGERED": 1,
+      "RESOLVED": 9,
+      "CORRECTED": 2
+    },
+    "stale_facts": {
+      "to_recheck": 8,
+      "reconciled": 8
+    },
+    "current_model": {
+      "supersessions": [
+        "AUTH-CHROMIUM-CONTENT-SWITCHES -> AUTH-IMPL-CONTENT-SWITCHES-141",
+        "AUTH-CHROMIUM-GL-SWITCHES -> AUTH-IMPL-GL-SWITCHES-141",
+        "AUTH-CHROMIUM-GPU-SWITCHES -> AUTH-IMPL-GPU-SWITCHES-141",
+        "AUTH-CHROMIUM-SWIFTSHADER-DOC -> AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+        "AUTH-PLAYWRIGHT-INSTALLED -> AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+        "AUTH-RUSTC-WASM64-DOC -> AUTH-RUSTC-WASM64-DOC-D18",
+        "AUTH-RUSTC-WASM64-TARGET-SPEC -> AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+        "AUTH-SWIFTSHADER-README -> AUTH-IMPL-SWIFTSHADER-README",
+        "AUTH-V8-FLAGS -> AUTH-IMPL-V8-WASM-FLAGS-141",
+        "AUTH-WASM-JSAPI-STORAGE -> AUTH-WASM-JSAPI-STORAGE-D18",
+        "AUTH-WASM-WEBAPI-STREAMING -> AUTH-WASM-WEBAPI-STREAMING-D18",
+        "FACT-D14-D11-PINS-RECHECKED -> FACT-D14-D11-PINS-RECHECKED-D20",
+        "FACT-GPU-RELAY-EXACT-E0 -> FACT-D24-BYTE-RELAY-EXECUTED",
+        "FACT-KERNEL-IDENTITY-D23 -> FACT-KERNEL-IDENTITY-D24",
+        "FACT-KERNEL-IDENTITY-DEFINED-D18 -> FACT-KERNEL-IDENTITY-D23",
+        "FACT-KERNEL-IDENTITY-INSTALL-PATH -> FACT-KERNEL-IDENTITY-DEFINED-D18",
+        "FACT-PUBLISHED-FRONTIER-UNVERIFIED -> FACT-PUBLISHED-FRONTIER-D20",
+        "FACT-SH-STORAGE-BEST-EFFORT -> FACT-SH-STORAGE-DURABILITY-D18",
+        "FACT-SHARED-THREADS-UNADMITTED -> FACT-SHARED-THREADS-UNADMITTED-D18",
+        "FACT-WASM64-ADMITTED-E1 -> FACT-D24-BYTE-RELAY-EXECUTED",
+        "FACT-WORKERS-D18 -> FACT-WORKERS-D18R",
+        "FACT-WORKERS-UNPROBED -> FACT-WORKERS-D18"
+      ],
+      "facts": {
+        "total": 208,
+        "current": 187,
+        "superseded": 11,
+        "resolved": 10,
+        "current_by_status": {
+          "RUN": 118,
+          "ERR": 5,
+          "OBS": 48,
+          "UNK": 4,
+          "GAP": 12
+        }
+      },
+      "constraints": {
+        "total": 48,
+        "ledger": 47,
+        "proposed": [
+          "CON-EM-D14-001"
+        ]
+      },
+      "authorities": {
+        "total": 126,
+        "superseded": 11
+      }
+    },
+    "new_probe_obligations": [
+      {
+        "reconciliation": "R-03",
+        "obligation": "D19: environment identity - the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set",
+        "fulfilled_by": [
+          "EV-D19-IDENTITY-BROWSER-DEFAULT",
+          "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+        ]
+      },
+      {
+        "reconciliation": "R-04",
+        "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check",
+        "fulfilled_by": [
+          "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY",
+          "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED",
+          "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL",
+          "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION",
+          "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY",
+          "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS",
+          "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION",
+          "EV-D19-PROOF-SUMMARY",
+          "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+          "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+          "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+          "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+          "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+          "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE"
+        ]
+      },
+      {
+        "reconciliation": "R-05",
+        "obligation": "capability work (not D19 re-proof): a compileStreaming/instantiateStreaming probe with application/wasm, and MIME/ok/CORS rejection"
+      },
+      {
+        "reconciliation": "R-19",
+        "obligation": "extraction work (not D19): cargo book at 98a09e7e7 and git documentation at the host git version"
+      },
+      {
+        "reconciliation": "R-32",
+        "obligation": "capability work (not D19): a worker admission contract and a hardwareConcurrency observation",
+        "revised_by": [
+          "R-52"
+        ]
+      },
+      {
+        "reconciliation": "R-43",
+        "obligation": "needs an installed Chrome (not available here): [UNK] kept"
+      },
+      {
+        "reconciliation": "R-49",
+        "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity",
+        "revised_by": [
+          "R-64"
+        ],
+        "fulfilled_by": [
+          "EV-D19-PROOF-ALL-Q-ALL-02-RESOLVED-GRAPH-FIRST-PARTY",
+          "EV-D19-PROOF-ALL-Q-ALL-03-THIRD-PARTY-DEP-FIXTURE-REJECTED",
+          "EV-D19-PROOF-HOST-Q-HOST-06-STD-IN-KERNEL",
+          "EV-D19-PROOF-HOST-Q-HOST-07-ID-SUBSTITUTION",
+          "EV-D19-PROOF-HOST-Q-HOST-08-FORGE-VERIFIED-STRATEGY",
+          "EV-D19-PROOF-PINS-T13-PIN-01-TOOLCHAIN-PINS",
+          "EV-D19-PROOF-SETS-T13-SETS-01-ROOTS-PARTITION",
+          "EV-D19-PROOF-SUMMARY",
+          "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+          "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+          "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+          "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+          "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+          "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE"
+        ]
+      },
+      {
+        "reconciliation": "R-52",
+        "obligation": "capability work (not D19): a worker admission contract; D19 re-observes hardwareConcurrency in its browser identity capture"
+      },
+      {
+        "reconciliation": "R-53",
+        "obligation": "D19: record the executable actually launched (the browser process image) with the browser identity",
+        "fulfilled_by": [
+          "EV-D19-IDENTITY-BROWSER-DEFAULT",
+          "EV-D19-IDENTITY-BROWSER-GPU-FLAGS"
+        ]
+      },
+      {
+        "reconciliation": "R-54",
+        "obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)",
+        "fulfilled_by": [
+          "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+          "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS",
+          "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH",
+          "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY"
+        ]
+      },
+      {
+        "reconciliation": "R-58",
+        "obligation": "OWNER: a law delta replacing the 7 drifted fragments (nearest ids in the D14 ANNOTATION lines)"
+      },
+      {
+        "reconciliation": "R-59",
+        "obligation": "D20: re-prove the pin re-check (tests/reference/reopen.mjs on the D11-D13 authorities)",
+        "fulfilled_by": [
+          "EV-D20-REOPEN-PROPOSAL-PHASES",
+          "EV-D20-REOPEN-SUMMARY"
+        ]
+      },
+      {
+        "reconciliation": "R-62",
+        "obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)",
+        "fulfilled_by": [
+          "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+          "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS",
+          "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH",
+          "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY"
+        ]
+      },
+      {
+        "reconciliation": "R-63",
+        "obligation": "D20: re-prove the lineage over the history that now includes the sync merge (tests/reprove/lineage.mjs)",
+        "fulfilled_by": [
+          "EV-D20-LINEAGE-LINEAGE"
+        ]
+      },
+      {
+        "reconciliation": "R-64",
+        "obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)",
+        "revised_by": [
+          "R-65"
+        ]
+      },
+      {
+        "reconciliation": "R-65",
+        "obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)"
+      },
+      {
+        "reconciliation": "R-66",
+        "obligation": "D25: the physical webapp run exercises the generated shell's controls (I-11) and the public HTTPS boundary with the same specimen"
+      }
+    ],
+    "rows": [
+      {
+        "reconciliation": "R-01",
+        "subject": "FF-only integration (Q17 recheck)",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "FACT-FF-ONLY-INTEGRATION"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "no semantic movement: git glossary/revisions/worktree renderings UNREACHABLE with sources unchanged (D14); #_worktrees AMBIGUOUS (R-13); FACTORY-CONTRACTS lines shifted editorially (R-16)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-FT-004 (ledgered, R-21)"
+          },
+          {
+            "step": "FACT",
+            "answer": "holds: every delta D14-D17 was integrated fast-forward only by factory integrate"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "IMPL-FACTORY-OPS unchanged since D13"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "host git in the build container"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: factory integrate re-witnesses it on every delta (D18's own integration included)"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes: EV-GIT-LINEAGE-D0-D10 and every later receipt"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "stale condition declared (host git version / integrate rule), so the Q18 traversal no longer stops at STALE CONDITIONS",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-02",
+        "subject": "workpiece isolation (Q17 recheck)",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "FACT-WORKPIECE-ISOLATION"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "no semantic movement (git renderings UNREACHABLE, sources unchanged; #_worktrees AMBIGUOUS, R-13)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-FT-004 (ledgered, R-21)"
+          },
+          {
+            "step": "FACT",
+            "answer": "holds: every D14-D17 workpiece was a detached linked worktree at its canonical_base"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "IMPL-FACTORY-GIT unchanged"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "host git in the build container"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: factory workpiece create/verify re-witness it per delta"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "no change needed",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-03",
+        "subject": "SwiftShader fallback adapter (Q17 recheck)",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "FACT-GPU-ADAPTER-SWIFTSHADER"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "Chromium switch and SwiftShader-doc authorities re-pinned to the running revision (R-48); the installed Playwright authority is now pinned by sha256 (R-14); WebGPU editor's-draft renderings UNREACHABLE with sources unchanged"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-GPU-001, CON-EM-002, CON-EM-006 (ledgered, R-21)"
+          },
+          {
+            "step": "FACT",
+            "answer": "holds: the only adapter ever observed is SwiftShader's CPU fallback adapter under the unsafe WebGPU switch set in chromium-headless-shell 141 (D17 IB-GPU-UNSAFE-SWITCHES, IB-GPU-SOFTWARE-FALLBACK, IB-GPU-LINUX-SERVICE-OFF)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "IMPL-ADAPTER-WEBGPU unchanged"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D6-D7/D11-BROWSER-GPUFLAGS: chromium-headless-shell 141.0.7390.37 (rev 1194) with the D6/D7 switch set"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes while the installed browser is the same build (D19 re-reads the browser identity)"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "D19: environment identity - the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set",
+        "note": "the claim's authority set is now fully pinned (Q18 no longer stops at REPRODUCIBILITY PIN)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-04",
+        "subject": "wasm64 execution and module claims (Q17 recheck)",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "FACT-WASM64-ABI-EXEC",
+          "FACT-WASM64-ADMITTED-E0",
+          "FACT-WASM64-MODULE-I64"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "rustc wasm64 doc/spec pins: reference branch renamed master -> main, same commit (D14); now pinned at the toolchain FactTest runs (R-12); Core 3.0 memory64 authorities UNREACHABLE with sources unchanged"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-004 (ledgered), CON-WA-001..003, CON-FT-003, CON-FT-006 (ledgered)"
+          },
+          {
+            "step": "FACT",
+            "answer": "holds"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "IMPL-WASM-ABI, IMPL-KERNEL-HOST, IMPL-ADAPTER-WASM64, IMPL-CODEGEN-EMITTER unchanged"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "WASM64_KERNEL_SET nightly-2026-09-24 (rustc 6eeff9a52); Chromium 141 headless shell"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes (same toolchain commit and browser build); the kernel identity definition changed (R-49)"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check",
+        "note": "no claim change",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-05",
+        "subject": "streaming delivery (Q17 recheck)",
+        "outcome": "OPEN",
+        "reconciles": [
+          "FACT-STREAMING-UNPROBED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "MOVED: the cited id never existed; the clause is at #streaming-modules (D14); current authority AUTH-WASM-WEBAPI-STREAMING-D18 (R-11)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-WA-004 (LEDGER; WA-004 annotated)"
+          },
+          {
+            "step": "FACT",
+            "answer": "[GAP] holds: the generated adapter compiles from fetched bytes; no fixture checks MIME/ok/CORS rejection"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "IMPL-ADAPTER-WASM64 unchanged"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "none bound"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "no probe exists"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "none exists"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "capability work (not D19 re-proof): a compileStreaming/instantiateStreaming probe with application/wasm, and MIME/ok/CORS rejection",
+        "note": "the citation is corrected; the capability gap remains",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-06",
+        "subject": "shared/threaded Wasm claim wording (Q17 recheck, LBL-01)",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "FACT-SHARED-THREADS-UNADMITTED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "MATURITY: Threads Phase 4, shared-everything threads Phase 1 (D14); js-api locator MOVED (R-10); D15 CL-T4/CL-T6 and D17 CL-IMP-SAB1 separate standard (serialization gated on the COI capability, global host-defined) from Chromium's constructor hook"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-WA-005, CON-THREAD-001, CON-THREAD-002 (unchanged)"
+          },
+          {
+            "step": "FACT",
+            "answer": "[ERR] holds (ERR-002/ERR-003) but the D11 wording stated Chromium behaviour as standard: superseded by FACT-SHARED-THREADS-UNADMITTED-D18"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none (unadmitted)"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D11-BROWSER-GPUFLAGS"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes for presence; no fixture executes shared memory"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes (presence only)"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "successor states the three layers apart",
+        "supersessions": [
+          {
+            "superseded": "FACT-SHARED-THREADS-UNADMITTED",
+            "current": "FACT-SHARED-THREADS-UNADMITTED-D18"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-10",
+        "subject": "js-api #internal-storage citation",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "AUTH-WASM-JSAPI-STORAGE"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "MOVED: #internal-storage is not an id at the pin or tip; the clause is at #webassembly-storage (h2) with the agent-local note under #store (D14; D15 CL-T1)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-WA-005 and CON-IC-WASM_SHARED_THREADS keep their authority through the successor"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-SHARED-THREADS-UNADMITTED-D18 (R-06)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "fixtures/commissioning/contracts.ascii:39 keeps the historical URL as compiler input: its bytes are part of the commissioned Byte Relay input (M8); changing it belongs to a delta that re-commissions"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a (document)"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "law citations kept as historically written with D13 + D18 annotations in REFERENCE-AUTHORITY, CONSTRAINT-LEDGER, CONFLICT-LEDGER, EVIDENCE-OBLIGATIONS, IMPLEMENTATION-CONTRACTS",
+        "supersessions": [
+          {
+            "superseded": "AUTH-WASM-JSAPI-STORAGE",
+            "current": "AUTH-WASM-JSAPI-STORAGE-D18"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-11",
+        "subject": "web-api #streaming-module-compilation-and-instantiation citation",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "AUTH-WASM-WEBAPI-STREAMING"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "MOVED: the cited id never existed at the pin (D11's PRESENT_IN_SOURCE was false); section #streaming-modules, definition #compile-a-potential-webassembly-response (D14)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-WA-004 keeps its authority through the successor"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-STREAMING-UNPROBED unchanged (R-05)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "BOOTSTRAP-TESTS.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "law citations kept as historically written with D18 annotations in REFERENCE-AUTHORITY, CONSTRAINT-LEDGER, EVIDENCE-OBLIGATIONS, BOOTSTRAP-TESTS",
+        "supersessions": [
+          {
+            "superseded": "AUTH-WASM-WEBAPI-STREAMING",
+            "current": "AUTH-WASM-WEBAPI-STREAMING-D18"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-12",
+        "subject": "rustc wasm64 pins (branch master removed)",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "AUTH-RUSTC-WASM64-DOC",
+          "AUTH-RUSTC-WASM64-TARGET-SPEC"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "MOVED (pin reference only): branch master removed, pinned commit 3670d2532b on main (D14); D17 read both files at the toolchain FactTest runs (6eeff9a52: CL-IMP-RS1 target spec identical in features, CL-IMP-RS2 platform doc, ERR-001 current)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-004, CON-RS-* keep their authority through the successors"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-WASM64-* hold (R-04)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "WASM64_KERNEL_SET nightly-2026-09-24"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "successors pinned at rust-lang/rust@6eeff9a52 (the version run), per the D17 rule that implementation and tool sources are pinned to the version FactTest ran",
+        "supersessions": [
+          {
+            "superseded": "AUTH-RUSTC-WASM64-DOC",
+            "current": "AUTH-RUSTC-WASM64-DOC-D18"
+          },
+          {
+            "superseded": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+            "current": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-13",
+        "subject": "git repository-layout #_worktrees",
+        "outcome": "OPEN",
+        "reconciles": [
+          "AUTH-GIT-REPO-LAYOUT"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "AMBIGUOUS: a definition-list term carries no asciidoctor id; the published rendering is UNREACHABLE (D14)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-FT-004"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-FF-ONLY-INTEGRATION, FACT-WORKPIECE-ISOLATION hold (R-01, R-02)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "[UNK] kept: resolvable only by opening the published git-scm.com page",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-14",
+        "subject": "installed Playwright authority",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "AUTH-PLAYWRIGHT-INSTALLED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "AMBIGUOUS in D14 (local file, no pinned sha256); D17 pinned the same installed browsers.json by sha256 (AUTH-IMPL-PLAYWRIGHT-BROWSERS, 1387ec66...) and chromiumSwitches.js separately (AUTH-IMPL-PLAYWRIGHT-SWITCHES)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-GPU-ADAPTER-SWIFTSHADER holds (R-03)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "Playwright 1.56.1 installed under /opt/node22"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "the switch half of the old authority is carried by an added AUTHORIZES edge from AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+        "supersessions": [
+          {
+            "superseded": "AUTH-PLAYWRIGHT-INSTALLED",
+            "current": "AUTH-IMPL-PLAYWRIGHT-BROWSERS"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-15",
+        "subject": "maturity movement (Threads Phase 4, shared-everything threads Phase 1)",
+        "outcome": "ANNOTATED",
+        "reconciles": [
+          "AUTH-WASM-SET",
+          "AUTH-WASM-THREADS"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "MATURITY: Threads Phase 4 (not yet standard), shared-everything threads Phase 1 (D14 proposal registry); V8 14.1 keeps shared-everything threads experimental (D17 CL-IMP-V8A)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-THREAD-001/002 unchanged"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-SHARED-THREADS-UNADMITTED-D18 (R-06)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "CONFLICT-LEDGER.md",
+          "REFERENCE-AUTHORITY.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "CONFLICT-LEDGER ERR-003 and REFERENCE-AUTHORITY carry the current maturity (D18 annotation)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-16",
+        "subject": "project-law pins moved editorially",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "LAW-EVIDENCE-OBLIGATIONS",
+          "LAW-FACTORY-CONTRACTS"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "EDITORIAL: headings shifted by insertion-only annotations (D14)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-TOOLCHAIN-DRIFT, FACT-FF-ONLY-INTEGRATION, FACT-LITERAL-PATH-MATCH, FACT-WORKPIECE-ISOLATION unaffected"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "no claim change; annotations are insertion-only",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-17",
+        "subject": "locator refinements of document-root citations",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "AUTH-COMPRESSION-ZLIB",
+          "AUTH-FS-OPFS",
+          "AUTH-GIT-OBJECT-FORMAT",
+          "AUTH-GIT-UPDATE-REF-CAS",
+          "AUTH-HTML-SANDBOX-ORIGIN",
+          "AUTH-IDB-TRANSACTION",
+          "AUTH-MANIFEST-INSTALLABLE",
+          "AUTH-STORAGE-BUCKET-MODE",
+          "AUTH-SW-INSTALL-FAILED",
+          "AUTH-SW-REGISTER-TRUST",
+          "AUTH-SW-SANDBOX-NO-CONTROLLER",
+          "AUTH-SW-UPDATE-BYPASS",
+          "AUTH-WASM-CORE-CHANGES-64",
+          "AUTH-WEB-LOCKS",
+          "AUTH-WEBCRYPTO-DIGEST"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "UNREACHABLE published renderings; D14 found candidate exact ids in unchanged sources (reviewed candidates)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "dependent facts unaffected (sources unchanged)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "document-root citations are coarse, not stale; the candidate ids stay on the D14 revisions until a published rendering can be verified",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-18",
+        "subject": "published frontier unverified",
+        "outcome": "OPEN",
+        "reconciles": [
+          "FACT-AUTHORITY-REOPEN-DENIED",
+          "FACT-PUBLISHED-FRONTIER-UNVERIFIED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "UNREACHABLE: 53 renderings refused, 2 github.com 403 (D14); every clause since D15 verified at source level"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "[UNK] holds"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "network policy of the build container"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "[UNK] kept: needs a network policy that permits the published hosts",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-19",
+        "subject": "tool documentation still pinned at branch tips",
+        "outcome": "OPEN",
+        "reconciles": [
+          "AUTH-CARGO-BUILD-STD",
+          "AUTH-GIT-GLOSSARY-COMMIT",
+          "AUTH-GIT-MKTREE",
+          "AUTH-GIT-OBJECT-FORMAT",
+          "AUTH-GIT-PACK-FORMAT",
+          "AUTH-GIT-REPO-LAYOUT",
+          "AUTH-GIT-REVISIONS",
+          "AUTH-GIT-SHA256-TRANSITION",
+          "AUTH-GIT-UPDATE-REF-CAS",
+          "AUTH-GIT-WORKTREE",
+          "AUTH-RUST-REF-NOSTD"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "no semantic movement at the tips (D14/D15); the cargo book (694054f34b), git documentation (0f8e75a) and Rust Reference (52ffdc0) are pinned at branch commits, not at the tool versions FactTest runs (cargo 98a09e7e7; the host git)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-FT-004, CON-GIT-001, CON-EM-005, CON-EM-007, CON-RS-* unchanged"
+          },
+          {
+            "step": "FACT",
+            "answer": "dependent facts hold (R-01, R-02, R-22)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "host git and cargo of the build container"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "extraction work (not D19): cargo book at 98a09e7e7 and git documentation at the host git version",
+        "note": "[GAP] kept: D17's version-run rule covers implementation sources; these are tool and language documents cited for semantics the tips did not change.  Re-pinning them needs the documents read at the running tool versions (extraction work)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-20",
+        "subject": "ERR-001 is current",
+        "outcome": "ANNOTATED",
+        "reconciles": [
+          "AUTH-RUSTC-WASM64-DOC-D18",
+          "AUTH-WASM-CORE-CHANGES-64"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "SEMANTIC at the rust tip (D15 CL-R7) and at the toolchain run (D17 CL-IMP-RS2): the rustc page still calls memory64 not standardized; Core 3.0 standardizes 64-bit address types (D15 CL-W4)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-RS-003 (the Core governs)"
+          },
+          {
+            "step": "FACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "CONFLICT-LEDGER.md",
+          "REFERENCE-AUTHORITY.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "CONFLICT-LEDGER ERR-001 and REFERENCE-AUTHORITY state it is current (D18 annotation)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-21",
+        "subject": "PROPOSED constraints entered into the ledger",
+        "outcome": "LEDGERED",
+        "reconciles": [
+          "CON-CAP-001",
+          "CON-CAP-002",
+          "CON-EM-001",
+          "CON-EM-002",
+          "CON-EM-003",
+          "CON-EM-004",
+          "CON-EM-005",
+          "CON-EM-006",
+          "CON-EM-007",
+          "CON-FT-004",
+          "CON-FT-005",
+          "CON-FT-006",
+          "CON-FT-007",
+          "CON-GIT-001",
+          "CON-PP-001",
+          "CON-SEC-002",
+          "CON-ST-001",
+          "CON-SW-001",
+          "CON-WA-006"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "authorities as current after R-10..R-14, R-48"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "19 constraints proposed by D11 (CON-EM-001..006, CON-FT-004..006), D13 (CON-EM-007, CON-FT-007), D15 (CON-WA-006, CON-SEC-002, CON-PP-001, CON-SW-001, CON-ST-001, CON-GIT-001), D16 (CON-CAP-001, CON-CAP-002)"
+          },
+          {
+            "step": "FACT",
+            "answer": "their facts unchanged"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "CONSTRAINT-LEDGER.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "CONSTRAINT-LEDGER.md D18 section lists each id, statement and current authorities; LEDGERED_IN edges to LAW-CONSTRAINT-LEDGER",
+        "supersessions": [],
+        "ledgered": [
+          {
+            "constraint": "CON-EM-001",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-001"
+          },
+          {
+            "constraint": "CON-EM-002",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-002"
+          },
+          {
+            "constraint": "CON-EM-003",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-003"
+          },
+          {
+            "constraint": "CON-EM-004",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-004"
+          },
+          {
+            "constraint": "CON-EM-005",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-005"
+          },
+          {
+            "constraint": "CON-EM-006",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-006"
+          },
+          {
+            "constraint": "CON-EM-007",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-007"
+          },
+          {
+            "constraint": "CON-FT-004",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-004"
+          },
+          {
+            "constraint": "CON-FT-005",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-005"
+          },
+          {
+            "constraint": "CON-FT-006",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-006"
+          },
+          {
+            "constraint": "CON-FT-007",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-007"
+          },
+          {
+            "constraint": "CON-WA-006",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-WA-006"
+          },
+          {
+            "constraint": "CON-SEC-002",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-SEC-002"
+          },
+          {
+            "constraint": "CON-PP-001",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-PP-001"
+          },
+          {
+            "constraint": "CON-SW-001",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-SW-001"
+          },
+          {
+            "constraint": "CON-ST-001",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-ST-001"
+          },
+          {
+            "constraint": "CON-GIT-001",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-GIT-001"
+          },
+          {
+            "constraint": "CON-CAP-001",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-CAP-001"
+          },
+          {
+            "constraint": "CON-CAP-002",
+            "ledger": "LAW-CONSTRAINT-LEDGER",
+            "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-CAP-002"
+          }
+        ],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-22",
+        "subject": "git tree-entry order",
+        "outcome": "OPEN",
+        "reconciles": [
+          "FACT-GIT-TREE-ORDER-UNDOCUMENTED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "no movement: git documents mktree normalization without an ordering rule (D15 CL-G3); D17 did not trace git sources"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-GIT-001 (ledgered)"
+          },
+          {
+            "step": "FACT",
+            "answer": "[GAP] holds"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "P09 observed equality on one repository only"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "[GAP] kept: needs git's tree-entry ordering source pinned at the git version used",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-23",
+        "subject": "Q18 stops of project facts",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "FACT-D15-CLAUSES-VERIFIED",
+          "FACT-D16-CLAUSES-VERIFIED",
+          "FACT-D17-CLAUSES-VERIFIED",
+          "FACT-FRONTIER-SOURCES-AT-PIN",
+          "FACT-HANDOFF-MODEL-INDEPENDENT",
+          "FACT-PROOF-SETS-DECLARED",
+          "FACT-RESELECTION-NO-CODEGEN",
+          "FACT-STATUS-INVENTORIED",
+          "FACT-SURFACES-LITERAL-ENFORCED",
+          "FACT-TOOLCHAIN-PINNED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-007 and CON-FT-007 named authorities (authority_refs) without AUTHORIZES edges (D13 epoch): the three edges are added"
+          },
+          {
+            "step": "FACT",
+            "answer": "the facts hold"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "the proof sets and the toolchain pin are realized by IMPL-QUALIFIED-PROOF (tests/toolchain/proof-sets.json declares them; proof.mjs sets-check and pins verify them): IMPLEMENTED_BY added"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D13-HOST-PINNED; the proof-set partition goes stale when the workspace member set changes: STALE_IF added"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "the proof-set and toolchain facts reach their authorities and their implementation; the clause-verification and frontier facts have no project-law authority (process facts) and four project facts are grounded in project law cited at locator level - those Q18 stops remain as reported",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-24",
+        "subject": "SharedArrayBuffer global (ERR-002 precision)",
+        "outcome": "ANNOTATED",
+        "reconciles": [
+          "FACT-SAB-GLOBAL-HOST-DEFINED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none: D15 CL-T4/CL-T6 (standard) and D17 CL-IMP-SAB1 (Chromium 141) settle the layers"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-WA-005, CON-THREAD-001"
+          },
+          {
+            "step": "FACT",
+            "answer": "[OBS] holds"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "CONFLICT-LEDGER.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "CONFLICT-LEDGER ERR-002 states the three layers (D18 annotation)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-30",
+        "subject": "capability matrix points at the current classification",
+        "outcome": "ANNOTATED",
+        "reconciles": [
+          "CAP-ACCELEROMETER",
+          "CAP-AMBIENT-LIGHT",
+          "CAP-BLUETOOTH",
+          "CAP-CACHESTORAGE",
+          "CAP-CAMERA",
+          "CAP-CPU-WASM64",
+          "CAP-DEVICE-ORIENTATION",
+          "CAP-FETCH",
+          "CAP-FUTURE-EXPLICIT",
+          "CAP-GENERIC-SENSOR",
+          "CAP-GEOLOCATION",
+          "CAP-GYROSCOPE",
+          "CAP-HID",
+          "CAP-INDEXEDDB",
+          "CAP-MAGNETOMETER",
+          "CAP-MANIFEST",
+          "CAP-MICROPHONE",
+          "CAP-OPFS",
+          "CAP-ORIENTATION-SENSOR",
+          "CAP-PERMISSIONS",
+          "CAP-PERMISSIONS-POLICY",
+          "CAP-PROXIMITY",
+          "CAP-SECURE-CONTEXT",
+          "CAP-SERIAL",
+          "CAP-SERVICE-WORKER",
+          "CAP-STORAGE-QUOTA",
+          "CAP-USB",
+          "CAP-WASM-SHARED-THREADS",
+          "CAP-WEBCODECS",
+          "CAP-WEBGPU",
+          "CAP-WEBNN",
+          "CAP-WORKER-DEDICATED",
+          "CAP-XR"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "every family stays in G; classification and trace live in Q19 (D16)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "CAPABILITY-MATRIX.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "CAPABILITY-MATRIX.md carries no status by design; the D18 annotation points at Q19",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-31",
+        "subject": "Generic Sensor advisements and routing",
+        "outcome": "ANNOTATED",
+        "reconciles": [
+          "CAP-ACCELEROMETER",
+          "CAP-AMBIENT-LIGHT",
+          "CAP-DEVICE-ORIENTATION",
+          "CAP-GENERIC-SENSOR",
+          "CAP-GYROSCOPE",
+          "CAP-MAGNETOMETER",
+          "CAP-ORIENTATION-SENSOR",
+          "CAP-PROXIMITY",
+          "FACT-SENSOR-FAMILY-ADVISEMENT"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "D16: every Generic Sensor draft carries an advisement (FACT-SENSOR-FAMILY-ADVISEMENT)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "families stay in G with their D16 classifications"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "CONFLICT-LEDGER.md",
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "CONFLICT-LEDGER OBS-004 extended (D18 annotation); choosing one routing (Generic Sensor vs Device Orientation and Motion) is an OWNER decision (docs/HANDOFF.md D-10)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-32",
+        "subject": "stale worker claim",
+        "outcome": "SUPERSEDED",
+        "revised_by": [
+          "R-52"
+        ],
+        "reconciles": [
+          "FACT-WORKERS-UNPROBED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-WB-001, CON-WB-002 unchanged"
+          },
+          {
+            "step": "FACT",
+            "answer": "'no fixture constructs a Worker' is false since D12 (P10 ran the kernel in a dedicated worker)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D12-BROWSER-PERSISTENT"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "the old claim had no probe; P10 is sufficient for construction, not for hardwareConcurrency"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "EV-D12-P10 invalidates the old claim"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "capability work (not D19): a worker admission contract and a hardwareConcurrency observation",
+        "note": "INVALIDATED_BY EV-D12-P10; successor FACT-WORKERS-D18 [GAP] (hardwareConcurrency unread, no worker admission contract)",
+        "supersessions": [
+          {
+            "superseded": "FACT-WORKERS-UNPROBED",
+            "current": "FACT-WORKERS-D18"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": [
+          {
+            "subject": "FACT-WORKERS-UNPROBED",
+            "by": "EV-D12-P10"
+          }
+        ]
+      },
+      {
+        "reconciliation": "R-40",
+        "subject": "label LBL-01 (Chromium hook stated as standard)",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-LBL-01"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "the mislabelled predicate belongs to FACT-SHARED-THREADS-UNADMITTED, now superseded (R-06)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "TRACEABILITY renders the old fact as [SUPERSEDED]; the current fact states standard and implementation apart",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-41",
+        "subject": "label LBL-06 (WebGPU switch set omitted, live handoff)",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-LBL-06"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "docs/HANDOFF.md section 1 now names the headless shell, the unsafe WebGPU switches and SwiftShader's CPU fallback"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "text replaced in the live handoff",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-42",
+        "subject": "label LBL-07 (README historical status line)",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-LBL-07"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "the README line is a historical quotation and stays verbatim; a D18 correction line follows it"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "README.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "correction note under the historical quotation",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-43",
+        "subject": "storage durability claim (D12 B-11)",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "FACT-SH-STORAGE-BEST-EFFORT"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-ST-001 (ledgered)"
+          },
+          {
+            "step": "FACT",
+            "answer": "persist() false is a property of the headless shell's permission manager (D17), not evidence about an installed Factory"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D12-BROWSER-PERSISTENT = chromium-headless-shell 141 persistent profile"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "sufficient for the headless shell; installed Chrome never observed"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "applicable to the headless shell only"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "needs an installed Chrome (not available here): [UNK] kept",
+        "note": "successor FACT-SH-STORAGE-DURABILITY-D18 [UNK]",
+        "supersessions": [
+          {
+            "superseded": "FACT-SH-STORAGE-BEST-EFFORT",
+            "current": "FACT-SH-STORAGE-DURABILITY-D18"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-44",
+        "subject": "label LBL-10 (headless qualifier dropped, live boundary row)",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-LBL-10"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "the docs/HANDOFF.md B-11 row names the headless shell and the installed-Chrome [UNK]"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "text replaced in the live handoff",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-45",
+        "subject": "D12 facts name 'Chromium 141 persistent profile'",
+        "outcome": "CORRECTED",
+        "reconciles": [
+          "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+          "FACT-SH-BROKEN-SEED-FATAL",
+          "FACT-SH-BROKER-FED-GENERATION",
+          "FACT-SH-GENERATED-OFFLINE",
+          "FACT-SH-GIT-IDENTITY",
+          "FACT-SH-IDB-CAS",
+          "FACT-SH-INTERRUPTED-UPDATE",
+          "FACT-SH-KERNEL-WORKER-PARTIAL",
+          "FACT-SH-OPAQUE-CONFINEMENT",
+          "FACT-SH-OPFS-SERVED-APP",
+          "FACT-SH-ORIGIN-SCOPED-STORAGE",
+          "FACT-SH-SW-GRANTS-COI",
+          "FACT-SH-SW-NO-SELF-UPDATE"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "the facts hold; their required_environment wording omits the headless shell"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D12-BROWSER-PERSISTENT already records HeadlessChrome/141.0.7390.37 and executable /opt/pw-browsers/chromium-1194"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "read 'Chromium 141 persistent profile' as: chromium-headless-shell 141 (rev 1194) persistent profile via Playwright launchPersistentContext({headless:true})",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-46",
+        "subject": "label LBL-11",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-LBL-11"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "corrected reading attached to the 13 current facts (R-45); the fourteenth is superseded (R-43)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "TRACEABILITY shows the correction on each fact",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-47",
+        "subject": "labels LBL-12 and implementation pins not the version run",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-IMPL-PINS-NOT-RUNNING-VERSION",
+          "FACT-LBL-12"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "the D11 main-branch implementation authorities are superseded by authorities pinned to Chromium 141.0.7390.37 / V8 14.1.146.11 / SwiftShader 7cd1022 (R-48)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "AUTHORITY-REGISTER renders the old pins as SUPERSEDED",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-48",
+        "subject": "implementation authorities re-pinned to the versions run",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "AUTH-CHROMIUM-CONTENT-SWITCHES",
+          "AUTH-CHROMIUM-GL-SWITCHES",
+          "AUTH-CHROMIUM-GPU-SWITCHES",
+          "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+          "AUTH-SWIFTSHADER-README",
+          "AUTH-V8-FLAGS"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "D11 pinned chromium main 75d6f0c, v8 main 36de2a2, swiftshader master 1e80438; FactTest ran Chromium 141.0.7390.37 (9f043f63), V8 14.1.146.11 (ad8af0fc), SwiftShader 7cd1022 (D17)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-002, CON-EM-006 keep their authority through the successors"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-GPU-ADAPTER-SWIFTSHADER, FACT-HARDWARE-GPU-UNAVAILABLE, FACT-MEMORY64-DISCOVERED hold"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "Chromium 141 headless shell"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "successors: AUTH-IMPL-GPU-SWITCHES-141, AUTH-IMPL-GL-SWITCHES-141, AUTH-IMPL-CONTENT-SWITCHES-141 (D18 clause CL-IMP-GPU0), AUTH-IMPL-V8-WASM-FLAGS-141 (the memory64 flag lives in wasm-feature-flags.h at 14.1), AUTH-IMPL-SWIFTSHADER-README, AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141 (D18 clause CL-IMP-SSDOC)",
+        "supersessions": [
+          {
+            "superseded": "AUTH-CHROMIUM-GPU-SWITCHES",
+            "current": "AUTH-IMPL-GPU-SWITCHES-141"
+          },
+          {
+            "superseded": "AUTH-CHROMIUM-GL-SWITCHES",
+            "current": "AUTH-IMPL-GL-SWITCHES-141"
+          },
+          {
+            "superseded": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+            "current": "AUTH-IMPL-CONTENT-SWITCHES-141"
+          },
+          {
+            "superseded": "AUTH-V8-FLAGS",
+            "current": "AUTH-IMPL-V8-WASM-FLAGS-141"
+          },
+          {
+            "superseded": "AUTH-SWIFTSHADER-README",
+            "current": "AUTH-IMPL-SWIFTSHADER-README"
+          },
+          {
+            "superseded": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+            "current": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-49",
+        "subject": "kernel identity defined",
+        "outcome": "SUPERSEDED",
+        "revised_by": [
+          "R-64"
+        ],
+        "reconciles": [
+          "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+          "FACT-KERNEL-IDENTITY-INSTALL-PATH"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-005, CON-EM-007 (ledgered)"
+          },
+          {
+            "step": "FACT",
+            "answer": "H-12: identity was declared per install name; D17 proved only the custom name section differs"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "tests/toolchain/proof-sets.json exec_identity; tests/toolchain/proof.mjs kernel-identity checks the exec identity (whole-file sha256 informational)"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D17-TOOLCHAIN (rustc 6eeff9a52, both install names)"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: the D17 builds re-checked with the new rule (evidence/D18/kernel)"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes"
+          }
+        ],
+        "surfaces": [
+          "tests/toolchain/proof-sets.json",
+          "tests/toolchain/proof.mjs"
+        ],
+        "new_probe_obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity",
+        "note": "successor FACT-KERNEL-IDENTITY-DEFINED-D18 [RUN]; FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT gains its implementation contract",
+        "supersessions": [
+          {
+            "superseded": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+            "current": "FACT-KERNEL-IDENTITY-DEFINED-D18"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-50",
+        "subject": "admission, planning and commissioning law",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "LAW-PASS6-COMMISSIONING",
+          "LAW-PLANNER-COST-MODEL",
+          "LAW-RUNTIME-ADMISSION"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none (project law, no D14-D17 movement)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-FT-006 (ledgered)"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-RESELECTION-NO-CODEGEN, FACT-WASM64-ADMITTED-E0, FACT-GPU-ADMITTED-E0 hold"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "unchanged"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "unchanged"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": null,
+        "note": "reviewed: no statement in RUNTIME-ADMISSION-REPLAN.md, PLANNER-COST-MODEL.md or the commissioning contracts conflicts with D14-D17",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-51",
+        "subject": "evidence identity and implementation reality in the obligations and contracts",
+        "outcome": "ANNOTATED",
+        "reconciles": [
+          "IB-GPU-LINUX-SERVICE-OFF",
+          "IB-HEADLESS-PERMISSIONS-ASK",
+          "IB-KERNEL-NAME-SECTION-HASH",
+          "IB-PLAYWRIGHT-HEADLESS-SHELL",
+          "LAW-EVIDENCE-OBLIGATIONS"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "n/a"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "n/a"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "IMPLEMENTATION-CONTRACTS.md: WebGPU on Linux is implementation-gated, persist() cannot succeed in the headless shell, kernel identity is install-name independent"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "every browser fact came from chromium-headless-shell"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "REFERENCE-AUTHORITY.md",
+          "STATION-REGISTRY.md"
+        ],
+        "new_probe_obligation": null,
+        "note": "EVIDENCE-OBLIGATIONS and IMPLEMENTATION-CONTRACTS carry D18 annotations (D18 annotation); REFERENCE-AUTHORITY states the current authority model",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-52",
+        "subject": "worker claim contradicted by evidence already in the repository",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "FACT-WORKERS-D18",
+          "FACT-WORKERS-UNPROBED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-WB-001, CON-WB-002 unchanged"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-WORKERS-UNPROBED (D11) said no fixture reads hardwareConcurrency although the D11 browser probe itself recorded it; D18 carried that half into FACT-WORKERS-D18"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none (no worker admission contract)"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "Chromium 141 headless shell (ENV-D11-BROWSER-DEFAULT/-GPUFLAGS, ENV-D16-BROWSER, ENV-D12-BROWSER-PERSISTENT)"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: PROBE-BROWSER-IDENTITY and the capability census read it; P10 constructed the worker"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes: EV-D11-BROWSER-DEFAULT, EV-D11-BROWSER-GPUFLAGS and EV-D16-CENSUS-WORKER-DEDICATED record hardwareConcurrency 4; EV-D12-P10 records the worker"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": "capability work (not D19): a worker admission contract; D19 re-observes hardwareConcurrency in its browser identity capture",
+        "note": "successor FACT-WORKERS-D18R [GAP] (only the admission contract is missing); R-32's hardwareConcurrency obligation was already met by D11",
+        "supersessions": [
+          {
+            "superseded": "FACT-WORKERS-D18",
+            "current": "FACT-WORKERS-D18R"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": [
+          {
+            "subject": "FACT-WORKERS-D18",
+            "by": "EV-D11-BROWSER-GPUFLAGS"
+          },
+          {
+            "subject": "FACT-WORKERS-UNPROBED",
+            "by": "EV-D11-BROWSER-GPUFLAGS"
+          }
+        ]
+      },
+      {
+        "reconciliation": "R-53",
+        "subject": "D12 browser environment executable field",
+        "outcome": "CORRECTED",
+        "reconciles": [
+          "ENV-D12-BROWSER-PERSISTENT"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "n/a"
+          },
+          {
+            "step": "FACT",
+            "answer": "the 13 D12 facts corrected by R-45 hold"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "tests/selfhost/primitives-probe.mjs records executable = chromium.executablePath()"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D12-BROWSER-PERSISTENT other_state.executable"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "no: executablePath() returns the default path of Playwright's full 'chromium' browser, not the binary launched; for headless launches Playwright 1.56 selects chromium-headless-shell (D17 CL-IMP-PW1)"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "the version fields (HeadlessChrome/141.0.7390.37, revision 9f043f63, V8 14.1.146.11) are observed; the executable field is not an observation"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "D19: record the executable actually launched (the browser process image) with the browser identity",
+        "note": "read other_state.executable as 'Playwright default chromium path (not the launched binary)'; D18 R-45 cited it as launch identity, which it is not; the launched executable was never recorded",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-54",
+        "subject": "published frontier after the two lines join",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "FACT-D14-MAP-LINKS-AUDITED",
+          "FACT-D14-PAGES-BRANCH-ROUTE",
+          "FACT-D14-PUBLISHED-HOSTS-DENIED",
+          "FACT-PUBLISHED-FRONTIER-UNVERIFIED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none: the published hosts still refuse; the other line found a policy-conforming route to Pages-branch copies of 39 renderings"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-D14-001 (PROPOSED by the other line: copies are pins, never current authority) - R-60"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-PUBLISHED-FRONTIER-UNVERIFIED (this line's D14) said no published fragment could be verified; the other line verified 36 fragments in Pages-branch renderings (FACT-D14-PAGES-BRANCH-ROUTE, FACT-D14-MAP-LINKS-AUDITED)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "session container network policy (ENV-D14-HOST, ENV-D14-HOST-NETWORK, ENV-D19-SOURCES)"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: tests/reference/ingress.mjs probe-hosts / audit (the other line) and tests/reference/reopen.mjs (this line)"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes, bounded to the Pages-branch copies; re-proved in D20"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": "D20: re-prove the other line's host and route claims in this environment (tests/reference/ingress.mjs probe-hosts, verify, audit on the line's own inputs)",
+        "note": "successor FACT-PUBLISHED-FRONTIER-D20 [UNK]: narrowed, not closed - no rendering observed at its published host",
+        "supersessions": [
+          {
+            "superseded": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+            "current": "FACT-PUBLISHED-FRONTIER-D20"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-55",
+        "subject": "D11 reopen denial in the joined model",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-AUTHORITY-REOPEN-DENIED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "the D11 statement (published documents could not be re-opened in D11; clauses came only from source pins) is true of D11; the other line already INVALIDATED it (EV-D14-REGISTER: Pages-branch copies exist for the authorities with a route)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D11-HOST"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes for D11; superseded in substance by EV-D14-REGISTER"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "note": "closed by the other line's evidence (INVALIDATED_BY EV-D14-REGISTER); the uncertainty that remains (hosts still refuse, hosts without a Pages branch stay source-pinned) is carried by FACT-PUBLISHED-FRONTIER-D20 [UNK] (R-54)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-56",
+        "subject": "js-api #internal-storage in the other line's reopen",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-D14-REOPEN-WASM-JSAPI-STORAGE"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "AUTH-WASM-JSAPI-STORAGE superseded by AUTH-WASM-JSAPI-STORAGE-D18 (R-10): #webassembly-storage"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "the other line's [ERR] (fragment absent in the Pages-branch rendering; nearest id webassembly-storage) is the same finding D18 resolved"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes: the D18 successor cites the id the other line names"
+          }
+        ],
+        "surfaces": [
+          "REFERENCE-AUTHORITY.md"
+        ],
+        "note": "closed by AUTH-WASM-JSAPI-STORAGE-D18; the law citation stays as historically written (D13, D14 and D18 annotations)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-57",
+        "subject": "web-api streaming fragment in the other line's reopen",
+        "outcome": "RESOLVED",
+        "reconciles": [
+          "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "AUTH-WASM-WEBAPI-STREAMING superseded by AUTH-WASM-WEBAPI-STREAMING-D18 (R-11): #streaming-modules"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "the other line's [ERR] (fragment absent; nearest id streaming-modules) is the same finding D18 resolved"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes: the D18 successor cites the id the other line names"
+          }
+        ],
+        "surfaces": [
+          "REFERENCE-AUTHORITY.md"
+        ],
+        "note": "closed by AUTH-WASM-WEBAPI-STREAMING-D18; the law citation stays as historically written",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-58",
+        "subject": "drifted fragment citations in REFERENCE-AUTHORITY.md",
+        "outcome": "OPEN",
+        "reconciles": [
+          "FACT-D14-MAP-LINKS-AUDITED"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "9 links cite fragments absent in the Pages-branch renderings; 2 of them (#internal-storage, #streaming-module-compilation-and-instantiation) have current successor authorities since D18 (R-10, R-11)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes (link audit)"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": "OWNER: a law delta replacing the 7 drifted fragments (nearest ids in the D14 ANNOTATION lines)",
+        "note": "7 open: sensors #extending-the-permission-api and #extending-the-permissions-policy-api, deviceorientation #permissions, IndexedDB #database-concept, ServiceWorker #fetch-event, ambient-light #ambientlightsensor-interface, webxr #navigator-xr; replacing the citations is an owner-approved law delta",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-59",
+        "subject": "pin re-check after the two lines join",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "FACT-D14-D11-PINS-RECHECKED",
+          "FACT-FRONTIER-SOURCES-AT-PIN"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "the other line: 0 pinned files changed at the branch head (before 09:00 UTC); this line's D19 reopen: AUTH-V8-FLAGS file changed at the v8 tip, clause identical"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D14-HOST-NETWORK, ENV-D19-SOURCES"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: both lines re-fetch pins by commit"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes for the pins; the head relation is time-bound"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": "D20: re-prove the pin re-check (tests/reference/reopen.mjs on the D11-D13 authorities)",
+        "note": "successor FACT-D14-D11-PINS-RECHECKED-D20 [RUN] keeps the pin claim and drops the head relation; FACT-FRONTIER-SOURCES-AT-PIN (clause level) holds",
+        "supersessions": [
+          {
+            "superseded": "FACT-D14-D11-PINS-RECHECKED",
+            "current": "FACT-D14-D11-PINS-RECHECKED-D20"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-60",
+        "subject": "the other line's proposed constraint",
+        "outcome": "OPEN",
+        "reconciles": [
+          "CON-EM-D14-001"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-D14-001 PROPOSED (copies in fixtures/reference/ are pins; a Pages-branch rendering is never claimed as observed at its host; the current authority is the hyperlink)"
+          },
+          {
+            "step": "FACT",
+            "answer": "consistent with this line's rule CURRENT AUTHORITY != REPRODUCIBILITY PIN"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "n/a"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "note": "adoption into CONSTRAINT-LEDGER.md is an owner decision (the other line returned it to ASCII)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-61",
+        "subject": "the other line's edges on authorities D18 superseded",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "AUTH-CHROMIUM-CONTENT-SWITCHES",
+          "AUTH-CHROMIUM-GL-SWITCHES",
+          "AUTH-CHROMIUM-GPU-SWITCHES",
+          "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+          "AUTH-RUSTC-WASM64-DOC",
+          "AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "AUTH-SWIFTSHADER-README",
+          "AUTH-V8-FLAGS",
+          "AUTH-WASM-JSAPI-STORAGE",
+          "AUTH-WASM-WEBAPI-STREAMING",
+          "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+          "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+          "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+          "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+          "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+          "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+          "FACT-D14-REOPEN-SWIFTSHADER-README",
+          "FACT-D14-REOPEN-V8-FLAGS"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "10 authorities the other line reopened were superseded in D18 (pins moved to the versions run, fragments corrected)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "the other line's reopen facts observe the historical pins (CURRENT AUTHORITY != REPRODUCIBILITY PIN)"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "n/a"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "yes for the historical pins"
+          }
+        ],
+        "surfaces": [],
+        "note": "the 10 AUTHORIZES edges are carried to the current successors by the D18 inheritance rule (tests/reconcile/build-reconciliation.mjs, D20: inheritance over the graph's existing supersessions)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-62",
+        "subject": "the other line's execution claims",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "FACT-D14-CORPUS-INGESTED",
+          "FACT-D14-CORPUS-REPRODUCIBLE",
+          "FACT-D14-REOPEN-CARGO-BUILD-STD",
+          "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+          "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+          "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+          "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+          "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+          "FACT-D14-REOPEN-FS-OPFS",
+          "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+          "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+          "FACT-D14-REOPEN-GIT-PACK-FORMAT",
+          "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+          "FACT-D14-REOPEN-GIT-REVISIONS",
+          "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+          "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+          "FACT-D14-REOPEN-GIT-WORKTREE",
+          "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+          "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+          "FACT-D14-REOPEN-GPU-DESTROY",
+          "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+          "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+          "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+          "FACT-D14-REOPEN-GPU-LOST",
+          "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+          "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+          "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+          "FACT-D14-REOPEN-HTML-COI",
+          "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+          "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+          "FACT-D14-REOPEN-HTML-WORKERS",
+          "FACT-D14-REOPEN-IDB-TRANSACTION",
+          "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+          "FACT-D14-REOPEN-RUST-REF-NOSTD",
+          "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+          "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+          "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+          "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+          "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+          "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+          "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+          "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+          "FACT-D14-REOPEN-SWIFTSHADER-README",
+          "FACT-D14-REOPEN-V8-FLAGS",
+          "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+          "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+          "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+          "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+          "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+          "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+          "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+          "FACT-D14-REOPEN-WASM-SET",
+          "FACT-D14-REOPEN-WASM-THREADS",
+          "FACT-D14-REOPEN-WEB-LOCKS",
+          "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+          "FACT-D14-REOPEN-WGSL"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "CON-EM-D14-001 (R-60)"
+          },
+          {
+            "step": "FACT",
+            "answer": "corpus ingested and reproducible; 54 authority reopen observations on the pins of the D13 graph"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "none"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D14-HOST-NETWORK (the other line's container)"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: tests/reference/ingress.mjs"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "to be re-proved in this environment (D20)"
+          }
+        ],
+        "surfaces": [],
+        "new_probe_obligation": "D20: re-prove the other line's execution claims in this environment on the line's own inputs (tests/reference/ingress.mjs verify, refetch and audit)",
+        "note": "claimable for the other line's environment until re-proved; its route table covers the authorities of the D13 graph only (the authorities added by D14-D19 of this line have no route rule)",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-63",
+        "subject": "the sync merge enters the integration lineage",
+        "outcome": "HOLDS",
+        "reconciles": [
+          "FACT-FF-ONLY-INTEGRATION",
+          "FACT-WORKPIECE-ISOLATION"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "Factory integration stays fast-forward only; the branch now also contains a non-Factory SYNC merge (tree equal to its first parent) that made the other line an ancestor, and the other line's own owner merge"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "factory integrate (unchanged)"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D19-HOST"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes, with tests/reprove/lineage.mjs classifying owner and sync merges (D20)"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "to be re-proved over the new history (D20)"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": "D20: re-prove the lineage over the history that now includes the sync merge (tests/reprove/lineage.mjs)",
+        "note": "a sync merge carries no content: every change after it is a Factory delta; lineage.mjs reports it apart from the owner merges and fails on any other merge",
+        "supersessions": [],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-64",
+        "subject": "kernel identity after the D23 transport extension",
+        "outcome": "SUPERSEDED",
+        "revised_by": [
+          "R-65"
+        ],
+        "reconciles": [
+          "FACT-KERNEL-IDENTITY-DEFINED-D18"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none (AUTH-CARGO-BUILD-STD unchanged; the same pinned nightly)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-KERNEL-IDENTITY-DEFINED-D18 states the exec identity e8d6582665... of the eight-export kernel; D23 changed compiler/wasm-abi/src/lib.rs (nine transport exports, 512 KiB I/O buffers), so the release kernel built by the same toolchain has a new exec identity fcaee2a6... - identical under both rustup install names, as D17/D18 defined identity to be"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "tests/toolchain/proof-sets.json kernel_identity: exec_identity re-pinned from the committed source (the identity is source-exact: panic locations carry line numbers); the eight-export identity and its whole-file shas kept under kernel_identity.history"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D23-HOST (nightly-2026-09-24, rustc 6eeff9a52); the kernel-sections probe ran under both install names (tests/implementation/build-kernels.sh)"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: PROBE-KERNEL-SECTIONS and PROBE-QUALIFIED-PROOF (Q-WASM-06) measure the new kernel exactly as they measured the old one"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "no for the identity value: EV-D13-KERNEL-IDENTITY, EV-D17-KERNEL-SECTIONS, EV-D18-KERNEL-IDENTITY-A/B and EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY record the eight-export kernel; they remain the history of that kernel (inherited edges carry the reconciliation)"
+          }
+        ],
+        "surfaces": [
+          "tests/toolchain/proof-sets.json",
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)",
+        "note": "successor FACT-KERNEL-IDENTITY-D23 [RUN]: the same definition (every section except the custom name section, install-name independent), a new value; the definition fact's history is untouched",
+        "supersessions": [
+          {
+            "superseded": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+            "current": "FACT-KERNEL-IDENTITY-D23"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-65",
+        "subject": "kernel identity after the D24 genericity repair",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "FACT-KERNEL-IDENTITY-D23"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none (AUTH-CARGO-BUILD-STD unchanged; the same pinned nightly)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "FACT-KERNEL-IDENTITY-D23 states the exec identity fcaee2a6... of the D23 kernel; D24 changed compiler crates the kernel links (codegen: per-transfer strategy data and its identity; bundle: B-06 identity, B-08 strategy-data lineage, B-11 adapter family, an empty certificate never passes; observe: the bundle record and evidence_lineage; kernel: EvidenceUnbound, the observe signature; foundation: the diagnostic code; wasm-abi: observe flag bit 2), so the release kernel built by the same toolchain has a new exec identity ef5d886a... - identical under both rustup install names"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "tests/toolchain/proof-sets.json kernel_identity: exec_identity re-pinned from the committed source; the D23 identity and its whole-file shas kept under kernel_identity.history"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D24-HOST (nightly-2026-09-24, rustc 6eeff9a52); the kernel-sections probe ran under both install names (tests/implementation/build-kernels.sh)"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "yes: PROBE-KERNEL-SECTIONS and PROBE-QUALIFIED-PROOF (Q-WASM-06) measure the new kernel exactly as they measured the old one"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "no for the identity value: EV-D23-KERNEL-SECTIONS and the D23 builds record the D23 kernel; they remain its history (inherited edges carry the reconciliation)"
+          }
+        ],
+        "surfaces": [
+          "tests/toolchain/proof-sets.json",
+          "docs/HANDOFF.md"
+        ],
+        "new_probe_obligation": "D26: re-prove the identity on the final tree of the series (STALE_IF repo.commit, toolchain.nightly.rustc_commit)",
+        "note": "successor FACT-KERNEL-IDENTITY-D24 [RUN]: the same definition (every section except the custom name section, install-name independent), a new value; the D23 fact stays as history",
+        "supersessions": [
+          {
+            "superseded": "FACT-KERNEL-IDENTITY-D23",
+            "current": "FACT-KERNEL-IDENTITY-D24"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      },
+      {
+        "reconciliation": "R-66",
+        "subject": "the Byte Relay execution facts after the runtime's fixed relay operation was replaced by transfer-by-requirement",
+        "outcome": "SUPERSEDED",
+        "reconciles": [
+          "FACT-GPU-RELAY-EXACT-E0",
+          "FACT-WASM64-ADMITTED-E1"
+        ],
+        "traversal": [
+          {
+            "step": "AUTHORITY_CHANGED",
+            "answer": "none (the WebGPU and wasm64 authorities are unchanged)"
+          },
+          {
+            "step": "CONSTRAINT",
+            "answer": "none"
+          },
+          {
+            "step": "FACT",
+            "answer": "both D7 facts state what the Byte Relay bundle did under window.factRuntime.relay(payload): E0 on plan 1 (WEBGPU) payloads A and B exact, and after the WebGPU loss CPU_WASM64 admitted, plan 0 active, A and B exact.  D24 removed relay(bytes) (I-09: a fixed operation executing the first data relation through the first guard backend) and generates transfer(relation, bytes) executing each authored relation through the requirement its verified variant carries; the Byte Relay specimen re-run physically through the generic harness shows the same E0/E1 behaviour (relation relay, WEBGPU then CPU_WASM64, A and B exact in both epochs) with the tape bound to the bundle"
+          },
+          {
+            "step": "IMPLEMENTATION_CONTRACT",
+            "answer": "COMMISSIONING-RUNTIME.md and RUNTIME-ADMISSION-REPLAN.md describe the runtime by its epochs, admissions, activation, execution, loss and reselection; neither fixes the JavaScript name of the execution entry, so no law text changes; the generated-shell and harness contracts in tests/manifest/components.json are updated"
+          },
+          {
+            "step": "ENVIRONMENT",
+            "answer": "ENV-D24-HOST; Chromium headless shell 141 with the same unsafe WebGPU switches (SwiftShader) and without WebGPU, as ENV-D6-D7-BROWSER-GPUFLAGS describes"
+          },
+          {
+            "step": "OLD_PROBE_SUFFICIENT",
+            "answer": "no: PROBE-RELAY-EXACT calls window.factRuntime.relay, which the generated runtime no longer exports; the successor is probed by PROBE-GENERICITY-SPECIMENS (host/harness/bundle-probe.mjs transferring every authored relation with every payload, expectations supplied by the specimen)"
+          },
+          {
+            "step": "OLD_EVIDENCE_APPLICABLE",
+            "answer": "as history of the D7 bundle only: EV-D6-PROBE-RECORD and EV-D7-E0-RELAY record the relay-API runtime; the D24 physical run (evidence/D24/physical, evidence/D24/specimens/byte-relay) is the current evidence"
+          }
+        ],
+        "surfaces": [
+          "docs/HANDOFF.md",
+          "tests/manifest/components.json"
+        ],
+        "new_probe_obligation": "D25: the physical webapp run exercises the generated shell's controls (I-11) and the public HTTPS boundary with the same specimen",
+        "note": "successor FACT-D24-BYTE-RELAY-EXECUTED [RUN] carries both D7 facts' inheritable edges (constraints, clauses, capability witness, the GPU-flags environment)",
+        "supersessions": [
+          {
+            "superseded": "FACT-GPU-RELAY-EXACT-E0",
+            "current": "FACT-D24-BYTE-RELAY-EXECUTED"
+          },
+          {
+            "superseded": "FACT-WASM64-ADMITTED-E1",
+            "current": "FACT-D24-BYTE-RELAY-EXECUTED"
+          }
+        ],
+        "ledgered": [],
+        "invalidated": []
+      }
+    ]
+  }
+}

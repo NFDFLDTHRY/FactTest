@@ -1,0 +1,137 @@
+{
+  "id": "M6-native-pass-wasm64-fail",
+  "attacks": "T9-P5 / T9-P8 wasm64 participation",
+  "description": "cfg-gated std: every native build/test is green (the only kind of evidence D4..D8 recorded for new crates); the wasm64 core-only graph rejects it.",
+  "weak": {
+    "check": "cargo",
+    "args": [
+      "test"
+    ],
+    "expect": "PASS",
+    "note": "native cargo test green",
+    "observed": {
+      "verdict": "PASS",
+      "command": [
+        "cargo",
+        "+1.94.1",
+        "test",
+        "--message-format=json"
+      ],
+      "exit": 0,
+      "packages": [
+        "m6-native-pass-wasm64-fail"
+      ],
+      "selection": [
+        "m6-native-pass-wasm64-fail:m6_native_pass_wasm64_fail[lib]",
+        "m6-native-pass-wasm64-fail:m6_native_pass_wasm64_fail[lib]{test}"
+      ],
+      "tests": {
+        "binaries": [
+          {
+            "target": "unittests src/lib.rs",
+            "exe": "../target/debug/deps/m6_native_pass_wasm64_fail-5c13017d73a5acc0"
+          },
+          {
+            "target": "doc-tests m6_native_pass_wasm64_fail",
+            "exe": null
+          }
+        ],
+        "results": [
+          {
+            "status": "ok",
+            "passed": 1,
+            "failed": 0,
+            "ignored": 0
+          },
+          {
+            "status": "ok",
+            "passed": 0,
+            "failed": 0,
+            "ignored": 0
+          }
+        ],
+        "passed": 1,
+        "failed": 0,
+        "failed_names": [],
+        "finished": "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.20s"
+      },
+      "reason": "exit 0; packages [m6-native-pass-wasm64-fail]; 1 passed / 0 failed"
+    }
+  },
+  "qualified": {
+    "check": "nostd-graph",
+    "package": "m6-native-pass-wasm64-fail",
+    "profile": "release",
+    "intended": [
+      "m6-native-pass-wasm64-fail"
+    ],
+    "expect": "FAIL",
+    "reason_must_contain": "std",
+    "note": "T9-P5-02/P8-01: wasm64 build with core only fails naming std",
+    "observed": {
+      "verdict": "FAIL",
+      "reason": "exit 101: m6-native-pass-wasm64-fail E0433 cannot find module or crate `std` in this scope; intended crates absent from the core-only graph: m6-native-pass-wasm64-fail",
+      "command": [
+        "cargo",
+        "+nightly-2026-09-24",
+        "build",
+        "-p",
+        "m6-native-pass-wasm64-fail",
+        "-Z",
+        "build-std=core",
+        "--target",
+        "wasm64-unknown-unknown",
+        "--release",
+        "--message-format=json"
+      ],
+      "env": {
+        "RUSTFLAGS": "-C link-arg=-zstack-size=16777216",
+        "CARGO_TARGET_DIR": "/home/user/factory-builds/d26-commission-target/d9-mutants/M6-native-pass-wasm64-fail/target"
+      },
+      "exit": 101,
+      "compiled": [],
+      "sysroot": [
+        "compiler_builtins[custom-build]<sysroot-or-external-path>",
+        "compiler_builtins[lib]<sysroot-or-external-path>",
+        "core[lib]<sysroot-or-external-path>"
+      ],
+      "intended": [
+        "m6-native-pass-wasm64-fail"
+      ],
+      "missing": [
+        "m6-native-pass-wasm64-fail"
+      ],
+      "std_errors": [
+        {
+          "package": "m6-native-pass-wasm64-fail",
+          "code": "E0433",
+          "message": "cannot find module or crate `std` in this scope",
+          "file": "src/lib.rs",
+          "line": 14
+        }
+      ],
+      "errors": [
+        {
+          "package": "m6-native-pass-wasm64-fail",
+          "code": "E0433",
+          "message": "cannot find module or crate `std` in this scope",
+          "file": "src/lib.rs",
+          "line": 14
+        }
+      ],
+      "target": "wasm64-unknown-unknown",
+      "profile": "release",
+      "artifact": null
+    }
+  },
+  "expected": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "observed": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "verdict": "RUN",
+  "reason": "weak check PASS (would accept the mutant); qualified check FAIL: exit 101: m6-native-pass-wasm64-fail E0433 cannot find module or crate `std` in this scope; intended crates absent from the core-only graph: m6-native-pass-wasm64-fail"
+}

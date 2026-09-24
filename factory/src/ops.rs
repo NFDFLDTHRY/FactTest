@@ -58,6 +58,27 @@ impl Report {
     }
 }
 
+/// What a station or re-inspection command may never change: the canonical checkout (D22).  Head of the canonical
+/// branch plus the porcelain status of its working tree, taken before and after the commands run.
+fn canonical_snapshot(delta: &StructuralDelta) -> Result<String, String> {
+    let repo = Path::new(&delta.canonical_repo);
+    let head = git::head_of_branch(repo, &delta.canonical_branch)?;
+    let status = git::run(repo, &["status", "--porcelain"])?;
+    Ok(format!("head {}\n{}", head, status))
+}
+
+fn snapshot_detail(before: &str, after: &str) -> String {
+    if before == after {
+        "canonical checkout unchanged".to_string()
+    } else {
+        format!(
+            "canonical checkout changed: before [{}] after [{}]",
+            before.lines().take(4).collect::<Vec<_>>().join("; "),
+            after.lines().take(4).collect::<Vec<_>>().join("; ")
+        )
+    }
+}
+
 fn station_path(delta_id_unused: &str, station_id: &str) -> String {
     let _ = delta_id_unused;
     format!("factory/registry/stations/{}.json", station_id)
@@ -348,6 +369,17 @@ pub fn fixture_check(
             paths::within(&fx.narrowed_may_change, &c.log),
             "",
         );
+        // D22: a command runs inside the workpiece and logs inside it; "." or a literal relative path only
+        r.check(
+            &format!("command_cwd_within_workpiece:{}", c.cwd),
+            c.cwd == "." || paths::validate_surface(&c.cwd).is_ok(),
+            paths::validate_surface(&c.cwd).err().unwrap_or_default(),
+        );
+        r.check(
+            &format!("command_log_within_workpiece:{}", c.log),
+            paths::validate_surface(&c.log).is_ok(),
+            paths::validate_surface(&c.log).err().unwrap_or_default(),
+        );
     }
     Ok((r, spec))
 }
@@ -417,6 +449,7 @@ pub fn station_close(delta: &StructuralDelta, fx: &Fixture) -> Result<Report, St
         .cloned()
         .ok_or_else(|| format!("fixture {} has no OPEN station run", fx.fixture_id))?;
     let open_tree = open.str_field("open_tree")?;
+    let canonical_before = canonical_snapshot(delta)?;
 
     // 1. operation / verification commands
     for c in &fx.commands {
@@ -427,6 +460,13 @@ pub fn station_close(delta: &StructuralDelta, fx: &Fixture) -> Result<Report, St
             detail,
         );
     }
+    // D22: nothing a station runs may reach the canonical checkout
+    let canonical_after = canonical_snapshot(delta)?;
+    r.check(
+        "canonical_repository_untouched_by_station",
+        canonical_before == canonical_after,
+        snapshot_detail(&canonical_before, &canonical_after),
+    );
     // 2. changed paths
     let close_tree = git::write_tree_of_worktree(&wp)?;
     let changed = git::diff_tree_paths(&wp, &open_tree, &close_tree)?;
@@ -471,6 +511,25 @@ pub fn station_close(delta: &StructuralDelta, fx: &Fixture) -> Result<Report, St
             "",
         );
     }
+    // D22: a receipt claims the environment its probes identified; a probe that failed or could not run identifies
+    // nothing, so the receipt cannot be PASS
+    let environment = crate::identity::environment_identity(&wp, &fx.identity_probes);
+    if let Some(probes) = environment.get("identity_probes").and_then(|a| a.as_arr()) {
+        for p in probes {
+            let name = p.get("name").and_then(|s| s.as_str()).unwrap_or("?");
+            let exit = p.get("exit").and_then(|x| x.as_int());
+            let spawn = p.get("spawn_error").and_then(|s| s.as_str());
+            r.check(
+                &format!("identity_probe_observed:{}", name),
+                exit == Some(0) && spawn.is_none(),
+                match (exit, spawn) {
+                    (_, Some(e)) => format!("spawn error: {}", e),
+                    (Some(c), None) => format!("exit {}", c),
+                    (None, None) => "no exit status".to_string(),
+                },
+            );
+        }
+    }
     let status = if r.pass() { "PASS" } else { "FAIL" };
     let receipt_id = format!("R-{}-{}", delta.delta_id, fx.fixture_id);
     let receipt = Value::obj()
@@ -497,14 +556,15 @@ pub fn station_close(delta: &StructuralDelta, fx: &Fixture) -> Result<Report, St
                     .collect::<Vec<_>>(),
             ),
         )
-        .with(
-            "environment_identity",
-            crate::identity::environment_identity(&wp, &fx.identity_probes),
-        )
+        .with("environment_identity", environment)
         .with("closed", Value::s(&now_iso()))
         .with("status", Value::s(status));
     let rel = format!("{}{}.json", delta.receipts_dir(), fx.fixture_id);
     json::write_file(&wp.join(&rel), &receipt)?;
+    // D22: the Factory-owned state (outside the workpiece) remembers the receipt it wrote, byte for byte
+    let receipt_sha256 = std::fs::read(wp.join(&rel))
+        .map(|b| crate::identity::sha256_hex(&b))
+        .map_err(|e| e.to_string())?;
     for run in state.runs_mut().iter_mut().rev() {
         if run.get("fixture_id").and_then(|s| s.as_str()) == Some(fx.fixture_id.as_str())
             && run.get("status").and_then(|s| s.as_str()) == Some("OPEN")
@@ -512,6 +572,7 @@ pub fn station_close(delta: &StructuralDelta, fx: &Fixture) -> Result<Report, St
             run.set("status", Value::s(status));
             run.set("close_tree", Value::s(&close_tree));
             run.set("receipt", Value::s(&rel));
+            run.set("receipt_sha256", Value::s(&receipt_sha256));
             break;
         }
     }
@@ -601,6 +662,57 @@ pub fn verify(delta: &StructuralDelta) -> Result<Report, String> {
                     &format!("receipt_all_checks_pass:{}", fx.fixture_id),
                     all_pass,
                     "",
+                );
+                // D22: a receipt counts only as the Factory wrote it - the latest closed station run of this fixture
+                // in the Factory-owned state must name this receipt, its close tree and its exact bytes, with PASS
+                let latest = state
+                    .runs()
+                    .iter()
+                    .rev()
+                    .find(|x| {
+                        x.get("fixture_id").and_then(|s| s.as_str()) == Some(fx.fixture_id.as_str())
+                            && x.get("status").and_then(|s| s.as_str()) != Some("OPEN")
+                    })
+                    .cloned();
+                let file_sha = std::fs::read(wp.join(&rel))
+                    .map(|b| crate::identity::sha256_hex(&b))
+                    .unwrap_or_default();
+                let (run_ok, run_detail) = match &latest {
+                    None => (
+                        false,
+                        "no closed station run recorded for this fixture".to_string(),
+                    ),
+                    Some(run) => {
+                        let f = |k: &str| {
+                            run.get(k)
+                                .and_then(|s| s.as_str())
+                                .unwrap_or("")
+                                .to_string()
+                        };
+                        let mut bad = Vec::new();
+                        if f("status") != "PASS" {
+                            bad.push(format!("station run status {}", f("status")));
+                        }
+                        if f("receipt") != rel {
+                            bad.push(format!("station run receipt {}", f("receipt")));
+                        }
+                        if rc.get("close_tree").and_then(|s| s.as_str()).unwrap_or("")
+                            != f("close_tree")
+                        {
+                            bad.push("receipt close_tree differs from the station run".to_string());
+                        }
+                        if f("receipt_sha256") != file_sha {
+                            bad.push(
+                                "receipt bytes differ from those the Factory wrote".to_string(),
+                            );
+                        }
+                        (bad.is_empty(), bad.join("; "))
+                    }
+                };
+                r.check(
+                    &format!("receipt_matches_station_run:{}", fx.fixture_id),
+                    run_ok,
+                    run_detail,
                 );
                 receipted.extend(rc.str_list("changed_paths"));
                 if let Ok((spec, _)) = load_station(delta, &fx.station_id) {
@@ -816,6 +928,7 @@ pub fn reinspect(delta: &StructuralDelta) -> Result<Report, String> {
     let out_dir: PathBuf =
         Path::new(&delta.workpiece_root).join(format!("{}.reinspect", delta.workpiece_id));
     std::fs::create_dir_all(&out_dir).map_err(|e| e.to_string())?;
+    let canonical_before = canonical_snapshot(delta)?;
     for c in &delta.reinspect_commands {
         let c2 = Command {
             log: out_dir.join(&c.log).to_string_lossy().to_string(),
@@ -828,6 +941,13 @@ pub fn reinspect(delta: &StructuralDelta) -> Result<Report, String> {
             detail,
         );
     }
+    // D22: a re-inspection probes the canonical checkout; it may not change it
+    let canonical_after = canonical_snapshot(delta)?;
+    r.check(
+        "canonical_repository_untouched_by_reinspect",
+        canonical_before == canonical_after,
+        snapshot_detail(&canonical_before, &canonical_after),
+    );
     let v = Value::obj()
         .with("delta_id", Value::s(&delta.delta_id))
         .with("canonical_head", Value::s(&head))

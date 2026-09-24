@@ -1,0 +1,31 @@
+{
+ "specimen": "pixel-vault",
+ "system": "pixel_vault",
+ "source": "fixtures/genericity/pixel-vault/source.ascii",
+ "contracts": "fixtures/genericity/pixel-vault/contracts.ascii",
+ "metrics": null,
+ "payloads": "fixtures/genericity/pixel-vault/payloads.json",
+ "varies": [
+  "system name pixel_vault",
+  "relation stash of type Tile",
+  "GPU-only registry (WEBGPU READY, CPU_WASM64 status=GAP)",
+  "conversion path tile_up/tile_down",
+  "odd payload sizes 3 and 17",
+  "without WebGPU no plan activates at E0 (NO_ACTIVE_PLAN), and no fake CPU fallback appears"
+ ],
+ "expect": {
+  "transfers": [
+   "stash"
+  ],
+  "variants": 1,
+  "strength": "FEASIBLE",
+  "webgpu": {
+   "e0": "WEBGPU",
+   "loss": "WEBGPU",
+   "e1": "none"
+  },
+  "no_webgpu": {
+   "e0": "none"
+  }
+ }
+}

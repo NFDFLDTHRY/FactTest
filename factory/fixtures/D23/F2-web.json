@@ -1,0 +1,35 @@
+{
+  "fixture_id": "F2-web",
+  "station_id": "S-WEB",
+  "selected_inputs": [
+    "D23 section 1 (proof)",
+    "F1 kernel and driver"
+  ],
+  "narrowed_may_change": [
+    "host/harness/kernel-build-probe.mjs",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check host/harness/kernel-build-probe.mjs && ! grep -nE 'byte[-_]relay|commissioning|D23' host/harness/kernel-build-probe.mjs | grep -vE '^[0-9]+://' && T=$(mktemp -d) && /home/user/factory-target-w28/debug/factc check build --out $T/native/build --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii fixtures/commissioning/byte-relay.ascii >/dev/null && /home/user/factory-target-w28/debug/factc observe --out $T/native/observe --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --source fixtures/commissioning/byte-relay.ascii --bundle-manifest $T/native/build/bundle/bundle.json --evidence-class PHYSICAL_BROWSER >/dev/null && node host/harness/kernel-build-probe.mjs /home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --source fixtures/commissioning/byte-relay.ascii --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --evidence-class PHYSICAL_BROWSER --native-build $T/native/build --native-observe $T/native/observe --out $T/probe"
+        ],
+        "log": "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F2-probe-trial.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "host/harness/kernel-build-probe.mjs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D23-COMPILER-ABI-EXECUTION"
+}

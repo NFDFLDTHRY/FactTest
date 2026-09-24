@@ -1,0 +1,697 @@
+{
+  "delta_id": "D23-COMPILER-ABI-EXECUTION",
+  "workpiece_id": "W28",
+  "canonical_base": "a43c0ce9496bb62f5dc8b8d68dc746ca9e453660",
+  "base_tree": "410203c4128d476e52dd65ae899f43760e29d98c",
+  "verified_tree": "821cb9f72bc40fe853ae131acc4802d3d6a2ce76",
+  "changed_paths": [
+    "README.md",
+    "compiler/kernel/src/lib.rs",
+    "compiler/wasm-abi/src/lib.rs",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D23.json",
+    "design/environment-map/graph.json",
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+    "design/execution-manifest/manifest.json",
+    "design/materialization/D23-INTENDED-COMPILER-ABI-EXECUTION.md",
+    "design/materialization/D23-OBSERVED-COMPILER-ABI-EXECUTION.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D23/crates/factc-bundle.json",
+    "evidence/D23/crates/factc-capability.json",
+    "evidence/D23/crates/factc-codegen.json",
+    "evidence/D23/crates/factc-foundation.json",
+    "evidence/D23/crates/factc-implementation.json",
+    "evidence/D23/crates/factc-kernel.json",
+    "evidence/D23/crates/factc-observe.json",
+    "evidence/D23/crates/factc-planning.json",
+    "evidence/D23/crates/factc-semantic.json",
+    "evidence/D23/crates/factc-source.json",
+    "evidence/D23/crates/factc-verifier.json",
+    "evidence/D23/crates/factc-wasm-abi.json",
+    "evidence/D23/crates/factc.json",
+    "evidence/D23/crates/factory.json",
+    "evidence/D23/crates/summary.json",
+    "evidence/D23/envmap/merge-check.json",
+    "evidence/D23/envmap/queries/Q01.json",
+    "evidence/D23/envmap/queries/Q02.json",
+    "evidence/D23/envmap/queries/Q03.json",
+    "evidence/D23/envmap/queries/Q04.json",
+    "evidence/D23/envmap/queries/Q05.json",
+    "evidence/D23/envmap/queries/Q06.json",
+    "evidence/D23/envmap/queries/Q07.json",
+    "evidence/D23/envmap/queries/Q08.json",
+    "evidence/D23/envmap/queries/Q09.json",
+    "evidence/D23/envmap/queries/Q10.json",
+    "evidence/D23/envmap/queries/Q11.json",
+    "evidence/D23/envmap/queries/Q12.json",
+    "evidence/D23/envmap/queries/Q13.json",
+    "evidence/D23/envmap/queries/Q14.json",
+    "evidence/D23/envmap/queries/Q15.json",
+    "evidence/D23/envmap/queries/Q16.json",
+    "evidence/D23/envmap/queries/Q17.json",
+    "evidence/D23/envmap/queries/Q18.json",
+    "evidence/D23/envmap/queries/Q19.json",
+    "evidence/D23/envmap/queries/Q20.json",
+    "evidence/D23/envmap/queries/Q21.json",
+    "evidence/D23/envmap/queries/Q22.json",
+    "evidence/D23/envmap/render-check.json",
+    "evidence/D23/envmap/stale.json",
+    "evidence/D23/envmap/validate.json",
+    "evidence/D23/gate.json",
+    "evidence/D23/handoff-check.json",
+    "evidence/D23/identity/browser-default.json",
+    "evidence/D23/identity/browser-gpu-flags.json",
+    "evidence/D23/identity/host.json",
+    "evidence/D23/identity/repo.json",
+    "evidence/D23/identity/tips.json",
+    "evidence/D23/identity/toolchains.json",
+    "evidence/D23/index.json",
+    "evidence/D23/issues.json",
+    "evidence/D23/kernel/builds.json",
+    "evidence/D23/kernel/sections.json",
+    "evidence/D23/logs/F4-identity.log",
+    "evidence/D23/logs/F5-checks.log",
+    "evidence/D23/logs/F5-crate-dag.log",
+    "evidence/D23/logs/F5-factory-build.log",
+    "evidence/D23/logs/F5-kernels.log",
+    "evidence/D23/logs/F5-qualified-proof.log",
+    "evidence/D23/logs/F7-gate.log",
+    "evidence/D23/logs/F9-audit-after.log",
+    "evidence/D23/logs/F9-audit-before.log",
+    "evidence/D23/logs/F9-cleanup-gate.log",
+    "evidence/D23/logs/F9-earlier-gates.log",
+    "evidence/D23/logs/F9-handoff-check.log",
+    "evidence/D23/logs/F9-index.log",
+    "evidence/D23/logs/F9-merge-check.log",
+    "evidence/D23/logs/F9-q22.log",
+    "evidence/D23/logs/F9-queries.log",
+    "evidence/D23/logs/F9-reconciliation-gates.log",
+    "evidence/D23/logs/F9-render-check.log",
+    "evidence/D23/logs/F9-retire.log",
+    "evidence/D23/logs/F9-stale.log",
+    "evidence/D23/logs/F9-status-scan.log",
+    "evidence/D23/logs/F9-validate.log",
+    "evidence/D23/manifest.json",
+    "evidence/D23/proof/all/Q-ALL-01-fmt-check.json",
+    "evidence/D23/proof/all/Q-ALL-01-fmt-check.log",
+    "evidence/D23/proof/all/Q-ALL-02-resolved-graph-first-party.json",
+    "evidence/D23/proof/all/Q-ALL-03-third-party-dep-fixture-rejected.json",
+    "evidence/D23/proof/cross/X-01-build-workspace-host.json",
+    "evidence/D23/proof/cross/X-01-build-workspace-host.log",
+    "evidence/D23/proof/cross/X-02-clippy-workspace-host.json",
+    "evidence/D23/proof/cross/X-02-clippy-workspace-host.log",
+    "evidence/D23/proof/cross/X-03-test-workspace-host.json",
+    "evidence/D23/proof/cross/X-03-test-workspace-host.log",
+    "evidence/D23/proof/heuristic/Z-01-nostd-textual-scan.json",
+    "evidence/D23/proof/heuristic/Z-02-depcheck-explicit-list.json",
+    "evidence/D23/proof/host/Q-HOST-01-build-dev.json",
+    "evidence/D23/proof/host/Q-HOST-01-build-dev.log",
+    "evidence/D23/proof/host/Q-HOST-02-build-release.json",
+    "evidence/D23/proof/host/Q-HOST-02-build-release.log",
+    "evidence/D23/proof/host/Q-HOST-03-test-dev.json",
+    "evidence/D23/proof/host/Q-HOST-03-test-dev.log",
+    "evidence/D23/proof/host/Q-HOST-04-test-release.json",
+    "evidence/D23/proof/host/Q-HOST-04-test-release.log",
+    "evidence/D23/proof/host/Q-HOST-05-clippy-all-targets.json",
+    "evidence/D23/proof/host/Q-HOST-05-clippy-all-targets.log",
+    "evidence/D23/proof/host/Q-HOST-06-std-in-kernel.json",
+    "evidence/D23/proof/host/Q-HOST-07-id-substitution.json",
+    "evidence/D23/proof/host/Q-HOST-08-forge-verified-strategy.json",
+    "evidence/D23/proof/mutants/M1-omitted-workspace-member/mutant.json",
+    "evidence/D23/proof/mutants/M1-omitted-workspace-member/qualified.json",
+    "evidence/D23/proof/mutants/M1-omitted-workspace-member/weak.json",
+    "evidence/D23/proof/mutants/M2-compile-fail-wrong-reason/mutant.json",
+    "evidence/D23/proof/mutants/M2-compile-fail-wrong-reason/qualified.json",
+    "evidence/D23/proof/mutants/M2-compile-fail-wrong-reason/weak.json",
+    "evidence/D23/proof/mutants/M3-compile-fail-stale-forge/mutant.json",
+    "evidence/D23/proof/mutants/M3-compile-fail-stale-forge/qualified.json",
+    "evidence/D23/proof/mutants/M3-compile-fail-stale-forge/weak.json",
+    "evidence/D23/proof/mutants/M4-nostd-scanner-bypass/mutant.json",
+    "evidence/D23/proof/mutants/M4-nostd-scanner-bypass/qualified.json",
+    "evidence/D23/proof/mutants/M4-nostd-scanner-bypass/weak.json",
+    "evidence/D23/proof/mutants/M5-uninspected-manifest/mutant.json",
+    "evidence/D23/proof/mutants/M5-uninspected-manifest/qualified.json",
+    "evidence/D23/proof/mutants/M5-uninspected-manifest/weak.json",
+    "evidence/D23/proof/mutants/M6-native-pass-wasm64-fail/mutant.json",
+    "evidence/D23/proof/mutants/M6-native-pass-wasm64-fail/qualified.json",
+    "evidence/D23/proof/mutants/M6-native-pass-wasm64-fail/weak.json",
+    "evidence/D23/proof/mutants/M7-wasm32-masquerade/mutant.json",
+    "evidence/D23/proof/mutants/M7-wasm32-masquerade/qualified.json",
+    "evidence/D23/proof/mutants/M7-wasm32-masquerade/weak.json",
+    "evidence/D23/proof/mutants/M8-debug-pass-release-fail/mutant.json",
+    "evidence/D23/proof/mutants/M8-debug-pass-release-fail/qualified.json",
+    "evidence/D23/proof/mutants/M8-debug-pass-release-fail/weak.json",
+    "evidence/D23/proof/mutants/summary.json",
+    "evidence/D23/proof/mutants/summary.txt",
+    "evidence/D23/proof/pins/T13-PIN-01-toolchain-pins.json",
+    "evidence/D23/proof/sets/T13-SETS-01-roots-partition.json",
+    "evidence/D23/proof/summary.json",
+    "evidence/D23/proof/summary.txt",
+    "evidence/D23/proof/toolchain/T9-P7-01-toolchain-identity.json",
+    "evidence/D23/proof/wasm64/Q-WASM-01-clippy-core-graph.json",
+    "evidence/D23/proof/wasm64/Q-WASM-01-clippy-core-graph.log",
+    "evidence/D23/proof/wasm64/Q-WASM-02-core-only-graph-dev.json",
+    "evidence/D23/proof/wasm64/Q-WASM-03-core-only-graph-release.json",
+    "evidence/D23/proof/wasm64/Q-WASM-04-inspect-release.inspect.json",
+    "evidence/D23/proof/wasm64/Q-WASM-04-inspect-release.json",
+    "evidence/D23/proof/wasm64/Q-WASM-05-inspect-dev.inspect.json",
+    "evidence/D23/proof/wasm64/Q-WASM-05-inspect-dev.json",
+    "evidence/D23/proof/wasm64/Q-WASM-06-kernel-identity.json",
+    "evidence/D23/proof/wasm64/Q-WASM-07-chromium-abi-release.browser.err.log",
+    "evidence/D23/proof/wasm64/Q-WASM-07-chromium-abi-release.browser.json",
+    "evidence/D23/proof/wasm64/Q-WASM-07-chromium-abi-release.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/artifacts.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle-certificate.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/bundle.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/index.html",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/manifest.webmanifest",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/membrane.js",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/runtime.js",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/selector.js",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/sw.js",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/bundle/wasm64_relay.wasm",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/candidate-strategy.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/canonical-ascii-0.ascii",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/capability-ir.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/diagnostics.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/implementation-hypergraph.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/typed-system-ir.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/verification-certificates.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/build/verified-strategy.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/harness.log",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/observe/diagnostics.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/observe/observation-delta.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/observe/observed.ascii",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build/probe.json",
+    "evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.json",
+    "evidence/D23/proof/wasm64/native/build.log",
+    "evidence/D23/proof/wasm64/native/build/artifacts.json",
+    "evidence/D23/proof/wasm64/native/build/bundle-certificate.json",
+    "evidence/D23/proof/wasm64/native/build/bundle/bundle.json",
+    "evidence/D23/proof/wasm64/native/build/bundle/index.html",
+    "evidence/D23/proof/wasm64/native/build/bundle/manifest.webmanifest",
+    "evidence/D23/proof/wasm64/native/build/bundle/membrane.js",
+    "evidence/D23/proof/wasm64/native/build/bundle/runtime.js",
+    "evidence/D23/proof/wasm64/native/build/bundle/selector.js",
+    "evidence/D23/proof/wasm64/native/build/bundle/sw.js",
+    "evidence/D23/proof/wasm64/native/build/bundle/wasm64_relay.wasm",
+    "evidence/D23/proof/wasm64/native/build/candidate-strategy.json",
+    "evidence/D23/proof/wasm64/native/build/canonical-ascii-0.ascii",
+    "evidence/D23/proof/wasm64/native/build/capability-ir.json",
+    "evidence/D23/proof/wasm64/native/build/diagnostics.json",
+    "evidence/D23/proof/wasm64/native/build/implementation-hypergraph.json",
+    "evidence/D23/proof/wasm64/native/build/source-lineage.json",
+    "evidence/D23/proof/wasm64/native/build/typed-system-ir.json",
+    "evidence/D23/proof/wasm64/native/build/verification-certificates.json",
+    "evidence/D23/proof/wasm64/native/build/verified-strategy.json",
+    "evidence/D23/proof/wasm64/native/observe.log",
+    "evidence/D23/proof/wasm64/native/observe/diagnostics.json",
+    "evidence/D23/proof/wasm64/native/observe/observation-delta.json",
+    "evidence/D23/proof/wasm64/native/observe/observed.ascii",
+    "evidence/D23/regress/capability-gate.json",
+    "evidence/D23/regress/d18-gate.json",
+    "evidence/D23/regress/d18r-gate.json",
+    "evidence/D23/regress/d20-sync-gate.json",
+    "evidence/D23/regress/d23-gate.json",
+    "evidence/D23/regress/implementation-gate.json",
+    "evidence/D23/status/inventory.json",
+    "evidence/D23/status/summary.txt",
+    "evidence/D23/surfaces.json",
+    "evidence/D23/workpieces/audit-after.json",
+    "evidence/D23/workpieces/audit-before.json",
+    "evidence/D23/workpieces/retire.json",
+    "factory/deltas/D23.json",
+    "factory/fixtures/D23/F0-doc.json",
+    "factory/fixtures/D23/F1-rust.json",
+    "factory/fixtures/D23/F10-doc.json",
+    "factory/fixtures/D23/F2-web.json",
+    "factory/fixtures/D23/F3-fixture.json",
+    "factory/fixtures/D23/F4-browser.json",
+    "factory/fixtures/D23/F5-build.json",
+    "factory/fixtures/D23/F6-doc.json",
+    "factory/fixtures/D23/F7-evidence.json",
+    "factory/fixtures/D23/F8-doc.json",
+    "factory/fixtures/D23/F9-evidence.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F0-doc.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F1-rust.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F10-doc.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F2-web.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F3-fixture.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F4-browser.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F5-build.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F6-doc.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F7-evidence.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F8-doc.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/F9-evidence.json",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F0-ascii.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F0-untouched.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F1-checks.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F1-clippy-host.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F1-clippy-wasm.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F1-factc-tests.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F1-fmt.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F1-wasm-release.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F10-observed.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F2-probe-trial.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-builder-regression.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-other-tests-untouched.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F3-syntax-generic.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F6-build-manifest.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F6-deterministic.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F8-build-epoch.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F8-checks.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F8-merge.log",
+    "factory/receipts/D23-COMPILER-ABI-EXECUTION/logs/F8-render.log",
+    "host/factc/tests/driver.rs",
+    "host/harness/kernel-build-probe.mjs",
+    "tests/envmap/build-fact-epoch.mjs",
+    "tests/envmap/facts/D23.json",
+    "tests/manifest/components.json",
+    "tests/manifest/gate.mjs",
+    "tests/manifest/issues.json",
+    "tests/reconcile/d23-reconciliation.json",
+    "tests/reconcile/d23-surfaces.json",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/run-crate-dag.mjs",
+    "tests/toolchain/run-qualified-proof.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "410203c4128d476e52dd65ae899f43760e29d98c"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-web",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F2-web.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F3-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-browser",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F4-browser.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F4-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F5-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F6-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F7-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F7-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F8-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F8-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F9-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F9-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F9-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F9-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F9-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F9-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F10-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D23-COMPILER-ABI-EXECUTION/F10-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F10-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F10-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F10-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_matches_station_run:F10-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:WEB_HOST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BROWSER_PROBE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D23-INTENDED-COMPILER-ABI-EXECUTION.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D23-OBSERVED-COMPILER-ABI-EXECUTION.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/wasm-abi/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:host/factc/tests/driver.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:host/harness/kernel-build-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/toolchain/run-crate-dag.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/facts/D23.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/d23-reconciliation.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D23.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D23/proof/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D23/crates/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D23/envmap/queries/Q22.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D23/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+    "bytes": 7377336
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T13:58:25Z",
+  "status": "PASS"
+}

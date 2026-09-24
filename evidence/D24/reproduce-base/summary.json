@@ -1,0 +1,31 @@
+{
+ "tool": "tests/genericity/reproduce-base.sh",
+ "revision": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+ "findings": {
+  "strategy_data": {
+   "authored_transfer_relations": 2,
+   "relations_named": [
+    "post"
+   ],
+   "per_transfer_requirements": false
+  },
+  "runtime": {
+   "fixed_operation_relay": true,
+   "first_guard_backend_execution": true,
+   "transfer_by_requirement": false
+  },
+  "shell": {
+   "payload_bytes_embedded": true,
+   "fixed_backend_name": true
+  },
+  "anti_cheat_exit": 1
+ },
+ "reproduced": {
+  "single_relation_strategy": true,
+  "fixed_operation": true,
+  "first_backend_execution": true,
+  "payload_in_shell": true,
+  "anti_cheat_detects": true
+ },
+ "status": "REPRODUCED"
+}

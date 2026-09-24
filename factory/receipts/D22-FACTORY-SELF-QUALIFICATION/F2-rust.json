@@ -1,0 +1,170 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D22-FACTORY-SELF-QUALIFICATION-F2-rust",
+  "station_id": "S-RUST",
+  "station_version": "1",
+  "fixture_id": "F2-rust",
+  "workpiece_id": "W27",
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION",
+  "canonical_base": "88564a0eccd934d6a017faf65435bc871bcd2f94",
+  "input_artifacts": [
+    "D22 section 2 (repairs)",
+    "F1 receipt"
+  ],
+  "open_tree": "32e2cb7a109ca45cbf1cf4f3802a565376fe3ed5",
+  "close_tree": "c3824e6a71289492e41954d5838449e20cfd127f",
+  "changed_paths": [
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-check.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-clippy.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-fmt.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log",
+    "factory/src/ops.rs"
+  ],
+  "output_artifacts": [
+    "factory/src/ops.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-RUST v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D22-FACTORY-SELF-QUALIFICATION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "RUST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-fmt.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-clippy.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo +1.94.1 fmt -p factory --check",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-fmt.log"
+    },
+    {
+      "check": "command:cargo +1.94.1 clippy -p factory --all-targets -- -D warnings",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-clippy.log"
+    },
+    {
+      "check": "command:cargo +1.94.1 test -p factory",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log"
+    },
+    {
+      "check": "command:sh -c L=factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log; grep -q 'test result: ok. 29 passed; 0 failed' $L && [ $(cargo +1.94.1 test -p factory -- --list 2>/dev/null | grep -c ': test$') -eq 29 ] && git diff --exit-code 88564a0eccd934d6a017faf65435bc871bcd2f94 -- factory/src ':!factory/src/ops.rs' compiler host Cargo.toml Cargo.lock factory/Cargo.toml factory/registry && echo 'ops.rs is the only Rust source changed; 29 witnesses pass'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-check.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/src/ops.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-fmt.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-clippy.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-check.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T13:13:51Z",
+  "status": "PASS"
+}

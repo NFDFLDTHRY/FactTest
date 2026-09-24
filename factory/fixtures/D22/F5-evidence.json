@@ -1,0 +1,58 @@
+{
+  "fixture_id": "F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "F1 reproduce log",
+    "tests/factory/run-witnesses.sh",
+    "tests/sync/collision-witness.sh"
+  ],
+  "narrowed_may_change": [
+    "evidence/D22/reproduce.log",
+    "evidence/D22/collision-witness.json",
+    "evidence/D22/witnesses.json",
+    "evidence/D22/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log evidence/D22/reproduce.log && grep -q 'test result: FAILED. 23 passed; 6 failed' evidence/D22/reproduce.log && echo 'reproduce log preserved'"
+        ],
+        "log": "evidence/D22/logs/F5-reproduce.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "sh tests/sync/collision-witness.sh evidence/D22/collision-witness.json"
+        ],
+        "log": "evidence/D22/logs/F5-collision.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "sh tests/factory/run-witnesses.sh tests/factory/witnesses.json /home/user/factory-target-w27 evidence/D22/witnesses.json evidence/D22/logs/witnesses collision=evidence/D22/collision-witness.json && node -e 'const j=JSON.parse(require(\"fs\").readFileSync(\"evidence/D22/witnesses.json\"));if(j.status!==\"PASS\"||j.reasons.length!==16||j.reasons.some(r=>r.status!==\"REFUSED_FOR_NAMED_REASON\")||j.positive.some(p=>p.status!==\"PASS\")||j.tests.passed!==29||j.tests.failed!==0||!/^[0-9a-f]{64}$/.test(j.judge.sha256))process.exit(1);console.log(\"judge\",j.judge.sha256)'"
+        ],
+        "log": "evidence/D22/logs/F5-witnesses.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D22/reproduce.log",
+    "evidence/D22/collision-witness.json",
+    "evidence/D22/witnesses.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION"
+}

@@ -1,0 +1,2532 @@
+{
+  "query": "Q17",
+  "title": "What moved in the authority frontier, and which claims may now be stale?",
+  "answer": {
+    "revisions": 64,
+    "authorities_without_revision": [
+      "AUTH-ACCELEROMETER",
+      "AUTH-AMBIENT-LIGHT",
+      "AUTH-DEVICE-ORIENTATION",
+      "AUTH-ECMA-262",
+      "AUTH-FETCH",
+      "AUTH-GENERIC-SENSOR",
+      "AUTH-GEOLOCATION",
+      "AUTH-GIT-MKTREE",
+      "AUTH-GYROSCOPE",
+      "AUTH-HTML-SECURE-CONTEXT",
+      "AUTH-IMPL-BLINK-GPU-ADAPTER",
+      "AUTH-IMPL-BLINK-IDL-AMBIENT-LIGHT",
+      "AUTH-IMPL-BLINK-IDL-DEVICE-ORIENTATION",
+      "AUTH-IMPL-BLINK-IDL-MAGNETOMETER",
+      "AUTH-IMPL-BLINK-IDL-MODULES",
+      "AUTH-IMPL-BLINK-IDL-NAVIGATOR-BLUETOOTH",
+      "AUTH-IMPL-BLINK-IDL-NAVIGATOR-ML",
+      "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+      "AUTH-IMPL-BLINK-V8-INITIALIZER",
+      "AUTH-IMPL-CARGO-BUILD-STD",
+      "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+      "AUTH-IMPL-CHROMIUM-DEPS",
+      "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+      "AUTH-IMPL-CONTENT-SWITCHES-141",
+      "AUTH-IMPL-GL-SWITCHES-141",
+      "AUTH-IMPL-GPU-FINCH-FEATURES",
+      "AUTH-IMPL-GPU-SWITCHES-141",
+      "AUTH-IMPL-GPU-UTIL",
+      "AUTH-IMPL-HEADLESS-PERMISSIONS",
+      "AUTH-IMPL-LLVM-FUNCTION-IMPORT",
+      "AUTH-IMPL-LLVM-SUMMARY-INDEX",
+      "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+      "AUTH-IMPL-PLAYWRIGHT-CHROMIUM",
+      "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+      "AUTH-IMPL-SWIFTSHADER-README",
+      "AUTH-IMPL-V8-WASM-FLAGS-141",
+      "AUTH-IMPL-V8-WASM-FLAGS-NODE",
+      "AUTH-IMPL-WEBNN-FEATURES",
+      "AUTH-MAGNETOMETER",
+      "AUTH-MEDIACAPTURE",
+      "AUTH-ORIENTATION-SENSOR",
+      "AUTH-PERMISSIONS",
+      "AUTH-PERMISSIONS-POLICY",
+      "AUTH-PROXIMITY",
+      "AUTH-RUSTC-WASM64-DOC-D18",
+      "AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+      "AUTH-SERIAL",
+      "AUTH-STREAMS",
+      "AUTH-SW-CACHE-OBJECTS",
+      "AUTH-WASM-JSAPI-STORAGE-D18",
+      "AUTH-WASM-JSAPI-VALUES",
+      "AUTH-WASM-PROPOSALS-REGISTRY",
+      "AUTH-WASM-SPECTEC-VALIDATION",
+      "AUTH-WASM-WEBAPI-STREAMING-D18",
+      "AUTH-WEB-BLUETOOTH",
+      "AUTH-WEBCODECS",
+      "AUTH-WEBHID",
+      "AUTH-WEBIDL",
+      "AUTH-WEBNN",
+      "AUTH-WEBUSB",
+      "AUTH-WEBXR",
+      "LAW-CONSTRAINT-LEDGER"
+    ],
+    "movement_counts": {
+      "UNREACHABLE": 55,
+      "AMBIGUOUS": 2,
+      "MOVED": 4,
+      "MATURITY": 2,
+      "EDITORIAL": 2
+    },
+    "by_movement": {
+      "UNREACHABLE": [
+        {
+          "authority": "AUTH-CARGO-BUILD-STD",
+          "revision": "REV-D14-AUTH-CARGO-BUILD-STD",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-RUSTC-WASM64-DOC",
+              "AUTH-RUSTC-WASM64-DOC-D18"
+            ],
+            "constraints": [
+              "CON-EM-005",
+              "CON-EM-007",
+              "CON-RS-002"
+            ],
+            "facts": [
+              "FACT-CORE-ONLY-GRAPH",
+              "FACT-D14-REOPEN-CARGO-BUILD-STD",
+              "FACT-KERNEL-IDENTITY-D23",
+              "FACT-KERNEL-IDENTITY-DEFINED-D18",
+              "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+              "FACT-TOOLCHAIN-DRIFT"
+            ],
+            "probes": [
+              "PROBE-AUTHORITY-FETCH",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-HOST-IDENTITY",
+              "PROBE-KERNEL-SECTIONS",
+              "PROBE-NOSTD-GRAPH",
+              "PROBE-QUALIFIED-PROOF",
+              "PROBE-TOOLCHAIN-IDENTITY"
+            ],
+            "evidence": [
+              "EV-D1-B9-BUILD",
+              "EV-D1-TOOLCHAIN-NIGHTLY",
+              "EV-D11-HOST-IDENTITY",
+              "EV-D12-KERNEL",
+              "EV-D13-KERNEL-IDENTITY",
+              "EV-D14-FRAGMENTS",
+              "EV-D17-KERNEL-SECTIONS",
+              "EV-D18-KERNEL-IDENTITY-A",
+              "EV-D18-KERNEL-IDENTITY-B",
+              "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+              "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D23-KERNEL-BUILDS",
+              "EV-D23-KERNEL-SECTIONS",
+              "EV-D23-PROOF-WASM64-Q-WASM-06-KERNEL-IDENTITY",
+              "EV-D3-B9-TOOLCHAIN",
+              "EV-D9-T9-P5-02",
+              "EV-D9-T9-P5-03",
+              "EV-D9-T9-P7-01"
+            ]
+          },
+          "reconciled_by": [
+            "R-19"
+          ],
+          "current_authority": "AUTH-CARGO-BUILD-STD"
+        },
+        {
+          "authority": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+          "revision": "REV-D14-AUTH-CHROMIUM-CONTENT-SWITCHES",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-006"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
+              "FACT-GPU-ADAPTER-SWIFTSHADER"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [
+            "R-48",
+            "R-61"
+          ],
+          "current_authority": "AUTH-IMPL-CONTENT-SWITCHES-141"
+        },
+        {
+          "authority": "AUTH-CHROMIUM-GL-SWITCHES",
+          "revision": "REV-D14-AUTH-CHROMIUM-GL-SWITCHES",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-CHROMIUM-SWIFTSHADER-DOC"
+            ],
+            "constraints": [
+              "CON-EM-006"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
+              "FACT-GPU-ADAPTER-SWIFTSHADER"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [
+            "R-48",
+            "R-61"
+          ],
+          "current_authority": "AUTH-IMPL-GL-SWITCHES-141"
+        },
+        {
+          "authority": "AUTH-CHROMIUM-GPU-SWITCHES",
+          "revision": "REV-D14-AUTH-CHROMIUM-GPU-SWITCHES",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-006"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
+              "FACT-GPU-ADAPTER-SWIFTSHADER"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [
+            "R-48",
+            "R-61"
+          ],
+          "current_authority": "AUTH-IMPL-GPU-SWITCHES-141"
+        },
+        {
+          "authority": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+          "revision": "REV-D14-AUTH-CHROMIUM-SWIFTSHADER-DOC",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-006"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
+              "FACT-GPU-ADAPTER-SWIFTSHADER"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [
+            "R-48",
+            "R-61"
+          ],
+          "current_authority": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141"
+        },
+        {
+          "authority": "AUTH-COMPRESSION-ZLIB",
+          "revision": "REV-D14-AUTH-COMPRESSION-ZLIB",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#supported-formats",
+            "kind": "Bikeshed heading id (31)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-COMPRESSION-ZLIB",
+              "FACT-SH-GIT-IDENTITY"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P09"
+            ],
+            "evidence": [
+              "EV-D12-P09",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-COMPRESSION-ZLIB"
+        },
+        {
+          "authority": "AUTH-FS-OPFS",
+          "revision": "REV-D14-AUTH-FS-OPFS",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#api-filesystemfilehandle",
+            "kind": "Bikeshed heading id (422) of the interface block cited (429-434)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-FS-OPFS",
+              "FACT-SH-OPFS-SERVED-APP"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P04"
+            ],
+            "evidence": [
+              "EV-D12-P04",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-FS-OPFS"
+        },
+        {
+          "authority": "AUTH-GIT-GLOSSARY-COMMIT",
+          "revision": "REV-D14-AUTH-GIT-GLOSSARY-COMMIT",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GIT-REVISIONS",
+              "LAW-FACTORY-CONTRACTS"
+            ],
+            "constraints": [
+              "CON-FT-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
+              "FACT-FF-ONLY-INTEGRATION",
+              "FACT-WORKPIECE-ISOLATION"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D19-LINEAGE-LINEAGE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D20-LINEAGE-LINEAGE",
+              "EV-D6-F5-RECEIPT",
+              "EV-GIT-LINEAGE-D0-D10"
+            ]
+          },
+          "reconciled_by": [
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-GLOSSARY-COMMIT"
+        },
+        {
+          "authority": "AUTH-GIT-OBJECT-FORMAT",
+          "revision": "REV-D14-AUTH-GIT-OBJECT-FORMAT",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#object-details",
+            "kind": "explicit asciidoc anchor (4082)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-GIT-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
+              "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+              "FACT-SH-GIT-IDENTITY",
+              "FACT-SH-IDB-CAS"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P06",
+              "PROBE-SH-P09"
+            ],
+            "evidence": [
+              "EV-D12-P06",
+              "EV-D12-P09",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17",
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-OBJECT-FORMAT"
+        },
+        {
+          "authority": "AUTH-GIT-PACK-FORMAT",
+          "revision": "REV-D14-AUTH-GIT-PACK-FORMAT",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-PACK-FORMAT"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-PACK-FORMAT"
+        },
+        {
+          "authority": "AUTH-GIT-REPO-LAYOUT",
+          "revision": "REV-D14-AUTH-GIT-REPO-LAYOUT",
+          "epoch": "D14",
+          "locator": {
+            "old": "#_worktrees",
+            "new": "#_description + definition-list entry 'worktrees::' (pin line 278)",
+            "kind": "asciidoctor: a dlist term carries no id unless [[anchor]] is given",
+            "verified": "source rule only; the git-scm.com rendering may differ (UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GIT-WORKTREE"
+            ],
+            "constraints": [
+              "CON-FT-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+              "FACT-FF-ONLY-INTEGRATION",
+              "FACT-WORKPIECE-ISOLATION"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D19-LINEAGE-LINEAGE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D20-LINEAGE-LINEAGE",
+              "EV-D6-F5-RECEIPT",
+              "EV-GIT-LINEAGE-D0-D10"
+            ]
+          },
+          "reconciled_by": [
+            "R-13",
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-REPO-LAYOUT"
+        },
+        {
+          "authority": "AUTH-GIT-REVISIONS",
+          "revision": "REV-D14-AUTH-GIT-REVISIONS",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-FT-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-REVISIONS",
+              "FACT-FF-ONLY-INTEGRATION",
+              "FACT-WORKPIECE-ISOLATION"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D19-LINEAGE-LINEAGE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D20-LINEAGE-LINEAGE",
+              "EV-D6-F5-RECEIPT",
+              "EV-GIT-LINEAGE-D0-D10"
+            ]
+          },
+          "reconciled_by": [
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-REVISIONS"
+        },
+        {
+          "authority": "AUTH-GIT-SHA256-TRANSITION",
+          "revision": "REV-D14-AUTH-GIT-SHA256-TRANSITION",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-GIT-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
+              "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+              "FACT-SH-GIT-IDENTITY",
+              "FACT-SH-IDB-CAS"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P06",
+              "PROBE-SH-P09"
+            ],
+            "evidence": [
+              "EV-D12-P06",
+              "EV-D12-P09",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-SHA256-TRANSITION"
+        },
+        {
+          "authority": "AUTH-GIT-UPDATE-REF-CAS",
+          "revision": "REV-D14-AUTH-GIT-UPDATE-REF-CAS",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#_description",
+            "kind": "asciidoctor setext section (15) containing the old-value rule (23-27)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-GIT-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
+              "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+              "FACT-SH-GIT-IDENTITY",
+              "FACT-SH-IDB-CAS"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P06",
+              "PROBE-SH-P09"
+            ],
+            "evidence": [
+              "EV-D12-P06",
+              "EV-D12-P09",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17",
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-UPDATE-REF-CAS"
+        },
+        {
+          "authority": "AUTH-GIT-WORKTREE",
+          "revision": "REV-D14-AUTH-GIT-WORKTREE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-FT-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-WORKTREE",
+              "FACT-FF-ONLY-INTEGRATION",
+              "FACT-WORKPIECE-ISOLATION"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D19-LINEAGE-LINEAGE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D20-LINEAGE-LINEAGE",
+              "EV-D6-F5-RECEIPT",
+              "EV-GIT-LINEAGE-D0-D10"
+            ]
+          },
+          "reconciled_by": [
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-WORKTREE"
+        },
+        {
+          "authority": "AUTH-GPU-ADAPTER-EXPIRE",
+          "revision": "REV-D14-AUTH-GPU-ADAPTER-EXPIRE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GPU-REQUESTADAPTER",
+              "AUTH-GPU-REQUESTDEVICE"
+            ],
+            "constraints": [
+              "CON-EM-003",
+              "CON-GPU-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
+              "FACT-GPU-ADAPTER-SWIFTSHADER",
+              "FACT-GPU-EPOCH-INVALIDATION"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-CONTROLLED-LOSS",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-ADM-E1-WEBGPU",
+              "EV-D7-OBSERVED-ASCII"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-ADAPTER-EXPIRE"
+        },
+        {
+          "authority": "AUTH-GPU-ADAPTERINFO",
+          "revision": "REV-D14-AUTH-GPU-ADAPTERINFO",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-ADAPTERINFO",
+              "FACT-GPU-ADAPTER-SWIFTSHADER",
+              "FACT-HARDWARE-GPU-UNAVAILABLE"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-HOST-IDENTITY",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D11-HOST-IDENTITY",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-ADAPTERINFO"
+        },
+        {
+          "authority": "AUTH-GPU-DESTROY",
+          "revision": "REV-D14-AUTH-GPU-DESTROY",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-GPU-002",
+              "CON-IC-WEBGPU"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-DESTROY",
+              "FACT-GPU-ADMITTED-E0",
+              "FACT-GPU-EPOCH-INVALIDATION",
+              "FACT-GPU-LOSS-DESTROYED"
+            ],
+            "probes": [
+              "PROBE-CONTROLLED-LOSS",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-KNOWN-ANSWER"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-ADM-E1-WEBGPU",
+              "EV-D7-CONTROLLED-LOSS",
+              "EV-D7-OBSERVED-ASCII"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-DESTROY"
+        },
+        {
+          "authority": "AUTH-GPU-FALLBACK-ADAPTER",
+          "revision": "REV-D14-AUTH-GPU-FALLBACK-ADAPTER",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GPU-ADAPTERINFO",
+              "AUTH-GPU-REQUESTADAPTER"
+            ],
+            "constraints": [
+              "CON-EM-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
+              "FACT-GPU-ADAPTER-SWIFTSHADER",
+              "FACT-HARDWARE-GPU-UNAVAILABLE"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-HOST-IDENTITY",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D11-HOST-IDENTITY",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-FALLBACK-ADAPTER"
+        },
+        {
+          "authority": "AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+          "revision": "REV-D14-AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
+              "FACT-GPU-MAXBUFFERSIZE-OBSERVED"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-LIMITS-MAXBUFFERSIZE"
+        },
+        {
+          "authority": "AUTH-GPU-LOSE-DEVICE",
+          "revision": "REV-D14-AUTH-GPU-LOSE-DEVICE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GPU-DESTROY",
+              "AUTH-GPU-REQUESTDEVICE"
+            ],
+            "constraints": [
+              "CON-GPU-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
+              "FACT-GPU-EPOCH-INVALIDATION",
+              "FACT-GPU-LOSS-DESTROYED"
+            ],
+            "probes": [
+              "PROBE-CONTROLLED-LOSS",
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E1-WEBGPU",
+              "EV-D7-CONTROLLED-LOSS",
+              "EV-D7-OBSERVED-ASCII"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-LOSE-DEVICE"
+        },
+        {
+          "authority": "AUTH-GPU-LOST",
+          "revision": "REV-D14-AUTH-GPU-LOST",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GPU-LOSE-DEVICE"
+            ],
+            "constraints": [
+              "CON-GPU-002",
+              "CON-IC-WEBGPU"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-LOST",
+              "FACT-GPU-ADMITTED-E0",
+              "FACT-GPU-EPOCH-INVALIDATION",
+              "FACT-GPU-LOSS-DESTROYED"
+            ],
+            "probes": [
+              "PROBE-CONTROLLED-LOSS",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-KNOWN-ANSWER"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-ADM-E1-WEBGPU",
+              "EV-D7-CONTROLLED-LOSS",
+              "EV-D7-OBSERVED-ASCII"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-LOST"
+        },
+        {
+          "authority": "AUTH-GPU-NAVIGATOR-GPU",
+          "revision": "REV-D14-AUTH-GPU-NAVIGATOR-GPU",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GPU-REQUESTADAPTER"
+            ],
+            "constraints": [
+              "CON-EM-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
+              "FACT-GPU-EXPOSED"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-DISCOVER"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-DEFAULT",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-NOWEBGPU-ADM"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-NAVIGATOR-GPU"
+        },
+        {
+          "authority": "AUTH-GPU-REQUESTADAPTER",
+          "revision": "REV-D14-AUTH-GPU-REQUESTADAPTER",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-CAP-001",
+              "CON-GPU-001",
+              "CON-IC-WEBGPU"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
+              "FACT-GPU-ADAPTER-NULL-DEFAULT",
+              "FACT-GPU-ADAPTER-SWIFTSHADER",
+              "FACT-GPU-ADMITTED-E0"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-KNOWN-ANSWER",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-DEFAULT",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-NOWEBGPU-ADM"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-REQUESTADAPTER"
+        },
+        {
+          "authority": "AUTH-GPU-REQUESTDEVICE",
+          "revision": "REV-D14-AUTH-GPU-REQUESTDEVICE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-003",
+              "CON-GPU-001",
+              "CON-IC-WEBGPU"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
+              "FACT-GPU-ADAPTER-SWIFTSHADER",
+              "FACT-GPU-ADMITTED-E0",
+              "FACT-GPU-EPOCH-INVALIDATION"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-CONTROLLED-LOSS",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-KNOWN-ANSWER",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-ADM-E1-WEBGPU",
+              "EV-D7-OBSERVED-ASCII"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-GPU-REQUESTDEVICE"
+        },
+        {
+          "authority": "AUTH-HTML-COI",
+          "revision": "REV-D14-AUTH-HTML-COI",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-WASM-THREADS"
+            ],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-HTML-COI",
+              "FACT-SH-SW-GRANTS-COI",
+              "FACT-SHARED-THREADS-UNADMITTED",
+              "FACT-SHARED-THREADS-UNADMITTED-D18"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P05"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D12-P05",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-HTML-COI"
+        },
+        {
+          "authority": "AUTH-HTML-HWCONCURRENCY",
+          "revision": "REV-D14-AUTH-HTML-HWCONCURRENCY",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-WB-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
+              "FACT-WORKERS-D18",
+              "FACT-WORKERS-D18R",
+              "FACT-WORKERS-UNPROBED"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-CAPABILITY-CENSUS",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P10"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D12-P10",
+              "EV-D14-FRAGMENTS",
+              "EV-D16-CENSUS-WORKER-DEDICATED",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-HTML-HWCONCURRENCY"
+        },
+        {
+          "authority": "AUTH-HTML-SANDBOX-ORIGIN",
+          "revision": "REV-D14-AUTH-HTML-SANDBOX-ORIGIN",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#sandboxed-origin-browsing-context-flag",
+            "kind": "Wattsi dfn id from the text (96158)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-SEC-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
+              "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+              "FACT-SH-BROKER-FED-GENERATION",
+              "FACT-SH-OPAQUE-CONFINEMENT"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P08",
+              "PROBE-SH-P16"
+            ],
+            "evidence": [
+              "EV-D12-P08",
+              "EV-D12-P16",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-HTML-SANDBOX-ORIGIN"
+        },
+        {
+          "authority": "AUTH-HTML-WORKERS",
+          "revision": "REV-D14-AUTH-HTML-WORKERS",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-IC-WORKER_DEDICATED",
+              "CON-WB-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-HTML-WORKERS",
+              "FACT-WORKERS-D18",
+              "FACT-WORKERS-D18R",
+              "FACT-WORKERS-UNPROBED"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-CAPABILITY-CENSUS",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P10"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D12-P10",
+              "EV-D14-FRAGMENTS",
+              "EV-D16-CENSUS-WORKER-DEDICATED",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-HTML-WORKERS"
+        },
+        {
+          "authority": "AUTH-IDB-TRANSACTION",
+          "revision": "REV-D14-AUTH-IDB-TRANSACTION",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#transaction-concept",
+            "kind": "explicit dfn id (873); section #transaction-construct",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-IDB-TRANSACTION",
+              "FACT-SH-IDB-CAS"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P06"
+            ],
+            "evidence": [
+              "EV-D12-P06",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-IDB-TRANSACTION"
+        },
+        {
+          "authority": "AUTH-MANIFEST-INSTALLABLE",
+          "revision": "REV-D14-AUTH-MANIFEST-INSTALLABLE",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#installable-web-applications (candidate)",
+            "kind": "ReSpec-derived id of the h2 'Installable web applications' (2611-2613); unverified",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
+              "FACT-SH-NO-FACTORY-WEBAPP"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-MANIFEST-INSTALLABLE"
+        },
+        {
+          "authority": "AUTH-RUST-REF-NOSTD",
+          "revision": "REV-D14-AUTH-RUST-REF-NOSTD",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-CARGO-BUILD-STD"
+            ],
+            "constraints": [
+              "CON-RS-001"
+            ],
+            "facts": [
+              "FACT-CORE-ONLY-GRAPH",
+              "FACT-D14-REOPEN-RUST-REF-NOSTD"
+            ],
+            "probes": [
+              "PROBE-COMPILE-FAIL-DIAG",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-DEPS-AUDIT",
+              "PROBE-NOSTD-GRAPH",
+              "PROBE-SELECTION-AUDIT"
+            ],
+            "evidence": [
+              "EV-D1-B9-BUILD",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-02-CORE-ONLY-GRAPH-DEV",
+              "EV-D19-PROOF-WASM64-Q-WASM-03-CORE-ONLY-GRAPH-RELEASE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D9-T9-P5-02",
+              "EV-D9-T9-P5-03"
+            ]
+          },
+          "reconciled_by": [
+            "R-19"
+          ],
+          "current_authority": "AUTH-RUST-REF-NOSTD"
+        },
+        {
+          "authority": "AUTH-RUSTC-WASM64-DOC",
+          "revision": "REV-D14-AUTH-RUSTC-WASM64-DOC",
+          "epoch": "D14",
+          "locator": {
+            "old": "branch master",
+            "new": "branch main (same commit 3670d2532b)",
+            "kind": "reproducibility pin ref",
+            "verified": "git ls-remote --symref"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-004",
+              "CON-IC-CPU_WASM64",
+              "CON-RS-003"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+              "FACT-WASM64-ABI-EXEC",
+              "FACT-WASM64-ADMITTED-E0",
+              "FACT-WASM64-MODULE-I64"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-KERNEL-HOST-BROWSER",
+              "PROBE-WASM-INSPECT",
+              "PROBE-WASM64-KNOWN-ANSWER",
+              "PROBE-WASM64-REQUEST"
+            ],
+            "evidence": [
+              "EV-D1-B10-B11-CHROMIUM",
+              "EV-D1-B9-INSPECT",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+              "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WASM64",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02",
+              "EV-D9-T9-P8-03"
+            ]
+          },
+          "reconciled_by": [
+            "R-12",
+            "R-61"
+          ],
+          "current_authority": "AUTH-RUSTC-WASM64-DOC-D18"
+        },
+        {
+          "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "revision": "REV-D14-AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "epoch": "D14",
+          "locator": {
+            "old": "branch master",
+            "new": "branch main (same commit 3670d2532b)",
+            "kind": "reproducibility pin ref",
+            "verified": "git ls-remote --symref"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-RUSTC-WASM64-DOC"
+            ],
+            "constraints": [
+              "CON-EM-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+              "FACT-WASM64-ABI-EXEC"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-KERNEL-HOST-BROWSER"
+            ],
+            "evidence": [
+              "EV-D1-B10-B11-CHROMIUM",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D9-T9-P8-03"
+            ]
+          },
+          "reconciled_by": [
+            "R-12",
+            "R-61"
+          ],
+          "current_authority": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18"
+        },
+        {
+          "authority": "AUTH-SECCTX-TRUSTWORTHY",
+          "revision": "REV-D14-AUTH-SECCTX-TRUSTWORTHY",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GPU-NAVIGATOR-GPU"
+            ],
+            "constraints": [
+              "CON-EM-001",
+              "CON-SEC-001",
+              "CON-SEC-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
+              "FACT-GPU-EXPOSED",
+              "FACT-LOOPBACK-SECURE-CONTEXT",
+              "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+              "FACT-SH-BROKER-FED-GENERATION",
+              "FACT-SH-OPAQUE-CONFINEMENT"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SECURE-CONTEXT",
+              "PROBE-SH-P08",
+              "PROBE-SH-P16",
+              "PROBE-WEBGPU-DISCOVER"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-DEFAULT",
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D12-P08",
+              "EV-D12-P16",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-DEFAULT",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU",
+              "EV-D7-ENVIRONMENT-STEP",
+              "EV-D7-NOWEBGPU-ADM"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-SECCTX-TRUSTWORTHY"
+        },
+        {
+          "authority": "AUTH-STORAGE-BUCKET-MODE",
+          "revision": "REV-D14-AUTH-STORAGE-BUCKET-MODE",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#bucket-mode",
+            "kind": "explicit dfn id (363)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-ST-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
+              "FACT-SH-ORIGIN-SCOPED-STORAGE",
+              "FACT-SH-STORAGE-BEST-EFFORT",
+              "FACT-SH-STORAGE-DURABILITY-D18"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P03",
+              "PROBE-SH-P07"
+            ],
+            "evidence": [
+              "EV-D12-P03",
+              "EV-D12-P07",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-STORAGE-BUCKET-MODE"
+        },
+        {
+          "authority": "AUTH-SW-INSTALL-FAILED",
+          "revision": "REV-D14-AUTH-SW-INSTALL-FAILED",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#installation-algorithm",
+            "kind": "explicit h3 id (2954) enclosing the installFailed steps (2994-2998)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-SW-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-SW-INSTALL-FAILED",
+              "FACT-SH-BROKEN-SEED-FATAL",
+              "FACT-SH-INTERRUPTED-UPDATE",
+              "FACT-SH-SW-NO-SELF-UPDATE"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P02",
+              "PROBE-SH-P14",
+              "PROBE-SH-P15"
+            ],
+            "evidence": [
+              "EV-D12-P02",
+              "EV-D12-P14",
+              "EV-D12-P15",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-SW-INSTALL-FAILED"
+        },
+        {
+          "authority": "AUTH-SW-REGISTER-TRUST",
+          "revision": "REV-D14-AUTH-SW-REGISTER-TRUST",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#register-algorithm",
+            "kind": "explicit h3 id (2752) enclosing the trustworthiness steps (2759-2765)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-SW-REGISTER-TRUST",
+              "FACT-SH-BROKEN-SEED-FATAL"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P14"
+            ],
+            "evidence": [
+              "EV-D12-P14",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-SW-REGISTER-TRUST"
+        },
+        {
+          "authority": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+          "revision": "REV-D14-AUTH-SW-SANDBOX-NO-CONTROLLER",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#control-and-use-window-client",
+            "kind": "explicit h4 id (336) enclosing the sandboxed-iframe note (353)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
+              "FACT-SH-BROKER-FED-GENERATION"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P16"
+            ],
+            "evidence": [
+              "EV-D12-P16",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-SW-SANDBOX-NO-CONTROLLER"
+        },
+        {
+          "authority": "AUTH-SW-UPDATE-BYPASS",
+          "revision": "REV-D14-AUTH-SW-UPDATE-BYPASS",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#update-algorithm",
+            "kind": "explicit h3 id (pin line 2780) enclosing the cited step (2821)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-SW-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
+              "FACT-SH-BROKEN-SEED-FATAL",
+              "FACT-SH-INTERRUPTED-UPDATE",
+              "FACT-SH-SW-NO-SELF-UPDATE"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P02",
+              "PROBE-SH-P14",
+              "PROBE-SH-P15"
+            ],
+            "evidence": [
+              "EV-D12-P02",
+              "EV-D12-P14",
+              "EV-D12-P15",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-SW-UPDATE-BYPASS"
+        },
+        {
+          "authority": "AUTH-SWIFTSHADER-README",
+          "revision": "REV-D14-AUTH-SWIFTSHADER-README",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-CHROMIUM-SWIFTSHADER-DOC"
+            ],
+            "constraints": [
+              "CON-EM-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-SWIFTSHADER-README",
+              "FACT-GPU-ADAPTER-SWIFTSHADER",
+              "FACT-HARDWARE-GPU-UNAVAILABLE"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-HOST-IDENTITY",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D11-HOST-IDENTITY",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [
+            "R-48",
+            "R-61"
+          ],
+          "current_authority": "AUTH-IMPL-SWIFTSHADER-README"
+        },
+        {
+          "authority": "AUTH-V8-FLAGS",
+          "revision": "REV-D14-AUTH-V8-FLAGS",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-V8-FLAGS",
+              "FACT-MEMORY64-DISCOVERED"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WASM64-DISCOVER"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-DEFAULT",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WASM64",
+              "EV-D7-NOWEBGPU-ADM"
+            ]
+          },
+          "reconciled_by": [
+            "R-48",
+            "R-61"
+          ],
+          "current_authority": "AUTH-IMPL-V8-WASM-FLAGS-141"
+        },
+        {
+          "authority": "AUTH-WASM-CORE-BINARY-LIMITS",
+          "revision": "REV-D14-AUTH-WASM-CORE-BINARY-LIMITS",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-WASM-CORE-TEXT-MEMTYPE"
+            ],
+            "constraints": [
+              "CON-WA-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
+              "FACT-WASM64-MODULE-I64"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WASM-INSPECT"
+            ],
+            "evidence": [
+              "EV-D1-B9-INSPECT",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-WASM-CORE-BINARY-LIMITS"
+        },
+        {
+          "authority": "AUTH-WASM-CORE-CHANGES-64",
+          "revision": "REV-D14-AUTH-WASM-CORE-CHANGES-64",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root) appendix/changes",
+            "new": "candidate #bit-address-space (docutils id rule strips the leading digits of '64-bit Address Space') under 'Release 3.0'",
+            "kind": "docutils-derived, unverified",
+            "verified": "source rule only"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-WA-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
+              "FACT-MEMORY64-FINISHED",
+              "FACT-WASM64-MODULE-I64"
+            ],
+            "probes": [
+              "PROBE-AUTHORITY-REOPEN",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WASM-INSPECT"
+            ],
+            "evidence": [
+              "EV-D1-B9-INSPECT",
+              "EV-D14-FRAGMENTS",
+              "EV-D14-PROPOSAL-PHASES",
+              "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+              "EV-D19-REOPEN-PROPOSAL-PHASES",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D20-REOPEN-PROPOSAL-PHASES",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02"
+            ]
+          },
+          "reconciled_by": [
+            "R-17",
+            "R-20"
+          ],
+          "current_authority": "AUTH-WASM-CORE-CHANGES-64"
+        },
+        {
+          "authority": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+          "revision": "REV-D14-AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-WASM-CORE-CHANGES-64",
+              "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+              "AUTH-WASM-CORE-TEXT-MEMTYPE",
+              "AUTH-WASM-JSAPI-MEMORIES"
+            ],
+            "constraints": [
+              "CON-WA-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
+              "FACT-WASM64-MODULE-I64"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WASM-INSPECT"
+            ],
+            "evidence": [
+              "EV-D1-B9-INSPECT",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
+        },
+        {
+          "authority": "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+          "revision": "REV-D14-AUTH-WASM-CORE-TEXT-ADDRTYPE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-IC-CPU_WASM64",
+              "CON-WA-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
+              "FACT-WASM64-ADMITTED-E0",
+              "FACT-WASM64-MODULE-I64"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WASM-INSPECT",
+              "PROBE-WASM64-KNOWN-ANSWER",
+              "PROBE-WASM64-REQUEST"
+            ],
+            "evidence": [
+              "EV-D1-B9-INSPECT",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WASM64",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-WASM-CORE-TEXT-ADDRTYPE"
+        },
+        {
+          "authority": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+          "revision": "REV-D14-AUTH-WASM-CORE-TEXT-MEMTYPE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-WA-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
+              "FACT-WASM64-MODULE-I64"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WASM-INSPECT"
+            ],
+            "evidence": [
+              "EV-D1-B9-INSPECT",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-WASM-CORE-TEXT-MEMTYPE"
+        },
+        {
+          "authority": "AUTH-WASM-JSAPI-MEMORIES",
+          "revision": "REV-D14-AUTH-WASM-JSAPI-MEMORIES",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-IC-CPU_WASM64",
+              "CON-WA-003",
+              "CON-WA-006"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
+              "FACT-JS-I64-BIGINT-MEMBRANE",
+              "FACT-MEMORY64-DISCOVERED",
+              "FACT-WASM64-ADMITTED-E0"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-KERNEL-HOST-BROWSER",
+              "PROBE-NODE-INSTANTIATE",
+              "PROBE-WASM64-DISCOVER",
+              "PROBE-WASM64-KNOWN-ANSWER",
+              "PROBE-WASM64-REQUEST"
+            ],
+            "evidence": [
+              "EV-D13-PROOF-SUMMARY",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-DEFAULT",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WASM64",
+              "EV-D7-NOWEBGPU-ADM",
+              "EV-D9-T9-P8-03"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-WASM-JSAPI-MEMORIES"
+        },
+        {
+          "authority": "AUTH-WASM-JSAPI-STORAGE",
+          "revision": "REV-D14-AUTH-WASM-JSAPI-STORAGE",
+          "epoch": "D14",
+          "locator": {
+            "old": "#internal-storage",
+            "new": "#webassembly-storage",
+            "kind": "explicit h2 id (pin line 328); #store (h3) for the agent-local note",
+            "verified": "source only (published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-IC-WASM_SHARED_THREADS",
+              "CON-WA-005"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+              "FACT-SHARED-THREADS-UNADMITTED",
+              "FACT-SHARED-THREADS-UNADMITTED-D18"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-10",
+            "R-61"
+          ],
+          "current_authority": "AUTH-WASM-JSAPI-STORAGE-D18"
+        },
+        {
+          "authority": "AUTH-WASM-JSAPI-VALIDATE",
+          "revision": "REV-D14-AUTH-WASM-JSAPI-VALIDATE",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
+              "FACT-MEMORY64-DISCOVERED"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WASM64-DISCOVER"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D19-IDENTITY-BROWSER-DEFAULT",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WASM64",
+              "EV-D7-NOWEBGPU-ADM"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-WASM-JSAPI-VALIDATE"
+        },
+        {
+          "authority": "AUTH-WASM-THREADS",
+          "revision": "REV-D14-AUTH-WASM-THREADS",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-WASM-SET"
+            ],
+            "constraints": [
+              "CON-IC-WASM_SHARED_THREADS",
+              "CON-THREAD-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-THREADS",
+              "FACT-SHARED-THREADS-UNADMITTED",
+              "FACT-SHARED-THREADS-UNADMITTED-D18"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-15"
+          ],
+          "current_authority": "AUTH-WASM-THREADS"
+        },
+        {
+          "authority": "AUTH-WASM-WEBAPI-STREAMING",
+          "revision": "REV-D14-AUTH-WASM-WEBAPI-STREAMING",
+          "epoch": "D14",
+          "locator": {
+            "old": "#streaming-module-compilation-and-instantiation",
+            "new": "#streaming-modules (section) / #compile-a-potential-webassembly-response (definition)",
+            "kind": "explicit h2 id (pin line 86); Bikeshed dfn (pin line 109)",
+            "verified": "source only"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-WA-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+              "FACT-STREAMING-UNPROBED"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-11",
+            "R-61"
+          ],
+          "current_authority": "AUTH-WASM-WEBAPI-STREAMING-D18"
+        },
+        {
+          "authority": "AUTH-WEB-LOCKS",
+          "revision": "REV-D14-AUTH-WEB-LOCKS",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#api-lock-manager",
+            "kind": "Bikeshed heading id (353)",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-WEB-LOCKS",
+              "FACT-SH-IDB-CAS"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P06"
+            ],
+            "evidence": [
+              "EV-D12-P06",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-WEB-LOCKS"
+        },
+        {
+          "authority": "AUTH-WEBCRYPTO-DIGEST",
+          "revision": "REV-D14-AUTH-WEBCRYPTO-DIGEST",
+          "epoch": "D14",
+          "locator": {
+            "old": "(document root / source lines)",
+            "new": "#SubtleCrypto-method-digest",
+            "kind": "explicit section id (1830); dfn #dfn-SubtleCrypto-method-digest",
+            "verified": "source only (reviewed candidate; published rendering UNREACHABLE)"
+          },
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
+              "FACT-SH-GIT-IDENTITY"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-SH-P09"
+            ],
+            "evidence": [
+              "EV-D12-P09",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-17"
+          ],
+          "current_authority": "AUTH-WEBCRYPTO-DIGEST"
+        },
+        {
+          "authority": "AUTH-WGSL",
+          "revision": "REV-D14-AUTH-WGSL",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "current (published) authority unverified in this epoch",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-GPU-003",
+              "CON-IC-WEBGPU"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WGSL",
+              "FACT-GPU-ADMITTED-E0",
+              "FACT-WGSL-UNEXERCISED"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WEBGPU-KNOWN-ANSWER"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [],
+          "current_authority": "AUTH-WGSL"
+        }
+      ],
+      "AMBIGUOUS": [
+        {
+          "authority": "AUTH-GIT-REPO-LAYOUT",
+          "revision": "REV-D14-AUTH-GIT-REPO-LAYOUT",
+          "epoch": "D14",
+          "locator": {
+            "old": "#_worktrees",
+            "new": "#_description + definition-list entry 'worktrees::' (pin line 278)",
+            "kind": "asciidoctor: a dlist term carries no id unless [[anchor]] is given",
+            "verified": "source rule only; the git-scm.com rendering may differ (UNREACHABLE)"
+          },
+          "consequence": "unresolved: the claim keeps the older certainty only as [UNK]",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-GIT-WORKTREE"
+            ],
+            "constraints": [
+              "CON-FT-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
+              "FACT-FF-ONLY-INTEGRATION",
+              "FACT-WORKPIECE-ISOLATION"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D19-LINEAGE-LINEAGE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D20-LINEAGE-LINEAGE",
+              "EV-D6-F5-RECEIPT",
+              "EV-GIT-LINEAGE-D0-D10"
+            ]
+          },
+          "reconciled_by": [
+            "R-13",
+            "R-19"
+          ],
+          "current_authority": "AUTH-GIT-REPO-LAYOUT"
+        },
+        {
+          "authority": "AUTH-PLAYWRIGHT-INSTALLED",
+          "revision": "REV-D14-AUTH-PLAYWRIGHT-INSTALLED",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "unresolved: the claim keeps the older certainty only as [UNK]",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [],
+            "facts": [
+              "FACT-GPU-ADAPTER-SWIFTSHADER"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-WEBGPU-REQUEST"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D7-ADM-E0-WEBGPU"
+            ]
+          },
+          "reconciled_by": [
+            "R-14"
+          ],
+          "current_authority": "AUTH-IMPL-PLAYWRIGHT-BROWSERS"
+        }
+      ],
+      "MOVED": [
+        {
+          "authority": "AUTH-RUSTC-WASM64-DOC",
+          "revision": "REV-D14-AUTH-RUSTC-WASM64-DOC",
+          "epoch": "D14",
+          "locator": {
+            "old": "branch master",
+            "new": "branch main (same commit 3670d2532b)",
+            "kind": "reproducibility pin ref",
+            "verified": "git ls-remote --symref"
+          },
+          "consequence": "citation locator stale; clause text unchanged",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-004",
+              "CON-IC-CPU_WASM64",
+              "CON-RS-003"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
+              "FACT-WASM64-ABI-EXEC",
+              "FACT-WASM64-ADMITTED-E0",
+              "FACT-WASM64-MODULE-I64"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-KERNEL-HOST-BROWSER",
+              "PROBE-WASM-INSPECT",
+              "PROBE-WASM64-KNOWN-ANSWER",
+              "PROBE-WASM64-REQUEST"
+            ],
+            "evidence": [
+              "EV-D1-B10-B11-CHROMIUM",
+              "EV-D1-B9-INSPECT",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-04-INSPECT-RELEASE",
+              "EV-D19-PROOF-WASM64-Q-WASM-05-INSPECT-DEV",
+              "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D7-ADM-E0-WASM64",
+              "EV-D9-T9-P8-01",
+              "EV-D9-T9-P8-02",
+              "EV-D9-T9-P8-03"
+            ]
+          },
+          "reconciled_by": [
+            "R-12",
+            "R-61"
+          ],
+          "current_authority": "AUTH-RUSTC-WASM64-DOC-D18"
+        },
+        {
+          "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "revision": "REV-D14-AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "epoch": "D14",
+          "locator": {
+            "old": "branch master",
+            "new": "branch main (same commit 3670d2532b)",
+            "kind": "reproducibility pin ref",
+            "verified": "git ls-remote --symref"
+          },
+          "consequence": "citation locator stale; clause text unchanged",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-RUSTC-WASM64-DOC"
+            ],
+            "constraints": [
+              "CON-EM-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
+              "FACT-WASM64-ABI-EXEC"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS",
+              "PROBE-KERNEL-HOST-BROWSER"
+            ],
+            "evidence": [
+              "EV-D1-B10-B11-CHROMIUM",
+              "EV-D14-FRAGMENTS",
+              "EV-D19-PROOF-WASM64-Q-WASM-07-CHROMIUM-ABI-RELEASE",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+              "EV-D9-T9-P8-03"
+            ]
+          },
+          "reconciled_by": [
+            "R-12",
+            "R-61"
+          ],
+          "current_authority": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18"
+        },
+        {
+          "authority": "AUTH-WASM-JSAPI-STORAGE",
+          "revision": "REV-D14-AUTH-WASM-JSAPI-STORAGE",
+          "epoch": "D14",
+          "locator": {
+            "old": "#internal-storage",
+            "new": "#webassembly-storage",
+            "kind": "explicit h2 id (pin line 328); #store (h3) for the agent-local note",
+            "verified": "source only (published rendering UNREACHABLE)"
+          },
+          "consequence": "citation locator stale; clause text unchanged",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-IC-WASM_SHARED_THREADS",
+              "CON-WA-005"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
+              "FACT-SHARED-THREADS-UNADMITTED",
+              "FACT-SHARED-THREADS-UNADMITTED-D18"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-10",
+            "R-61"
+          ],
+          "current_authority": "AUTH-WASM-JSAPI-STORAGE-D18"
+        },
+        {
+          "authority": "AUTH-WASM-WEBAPI-STREAMING",
+          "revision": "REV-D14-AUTH-WASM-WEBAPI-STREAMING",
+          "epoch": "D14",
+          "locator": {
+            "old": "#streaming-module-compilation-and-instantiation",
+            "new": "#streaming-modules (section) / #compile-a-potential-webassembly-response (definition)",
+            "kind": "explicit h2 id (pin line 86); Bikeshed dfn (pin line 109)",
+            "verified": "source only"
+          },
+          "consequence": "citation locator stale; clause text unchanged",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-WA-004"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
+              "FACT-STREAMING-UNPROBED"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-11",
+            "R-61"
+          ],
+          "current_authority": "AUTH-WASM-WEBAPI-STREAMING-D18"
+        }
+      ],
+      "MATURITY": [
+        {
+          "authority": "AUTH-WASM-SET",
+          "revision": "REV-D14-AUTH-WASM-SET",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "maturity-sensitive claims (proposal vs standard) must be re-checked",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-THREAD-002"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-SET"
+            ],
+            "probes": [
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-15"
+          ],
+          "current_authority": "AUTH-WASM-SET"
+        },
+        {
+          "authority": "AUTH-WASM-THREADS",
+          "revision": "REV-D14-AUTH-WASM-THREADS",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "maturity-sensitive claims (proposal vs standard) must be re-checked",
+          "downstream": {
+            "dependent_authorities": [
+              "AUTH-WASM-SET"
+            ],
+            "constraints": [
+              "CON-IC-WASM_SHARED_THREADS",
+              "CON-THREAD-001"
+            ],
+            "facts": [
+              "FACT-D14-REOPEN-WASM-THREADS",
+              "FACT-SHARED-THREADS-UNADMITTED",
+              "FACT-SHARED-THREADS-UNADMITTED-D18"
+            ],
+            "probes": [
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-D14-REFERENCE-INGRESS"
+            ],
+            "evidence": [
+              "EV-D11-BROWSER-GPUFLAGS",
+              "EV-D14-FRAGMENTS",
+              "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS"
+            ]
+          },
+          "reconciled_by": [
+            "R-15"
+          ],
+          "current_authority": "AUTH-WASM-THREADS"
+        }
+      ],
+      "EDITORIAL": [
+        {
+          "authority": "LAW-EVIDENCE-OBLIGATIONS",
+          "revision": "REV-D14-LAW-EVIDENCE-OBLIGATIONS",
+          "epoch": "D14",
+          "locator": {
+            "old": "pin line of '## E-025'",
+            "new": "same heading, lines shifted by the D13 insertion-only annotation",
+            "kind": "heading line",
+            "verified": "canonical HEAD"
+          },
+          "consequence": "no claim change",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-EM-005",
+              "CON-EM-007"
+            ],
+            "facts": [
+              "FACT-D19-LAUNCHED-EXECUTABLE",
+              "FACT-D20-LAUNCHED-EXECUTABLE",
+              "FACT-TOOLCHAIN-DRIFT"
+            ],
+            "probes": [
+              "PROBE-AUTHORITY-FETCH",
+              "PROBE-BROWSER-IDENTITY",
+              "PROBE-HOST-IDENTITY",
+              "PROBE-TOOLCHAIN-IDENTITY"
+            ],
+            "evidence": [
+              "EV-D1-TOOLCHAIN-NIGHTLY",
+              "EV-D11-HOST-IDENTITY",
+              "EV-D12-KERNEL",
+              "EV-D19-IDENTITY-BROWSER-DEFAULT",
+              "EV-D19-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D20-IDENTITY-BROWSER-DEFAULT",
+              "EV-D20-IDENTITY-BROWSER-GPU-FLAGS",
+              "EV-D3-B9-TOOLCHAIN",
+              "EV-D9-T9-P7-01"
+            ]
+          },
+          "reconciled_by": [
+            "R-16",
+            "R-51"
+          ],
+          "current_authority": "LAW-EVIDENCE-OBLIGATIONS"
+        },
+        {
+          "authority": "LAW-FACTORY-CONTRACTS",
+          "revision": "REV-D14-LAW-FACTORY-CONTRACTS",
+          "epoch": "D14",
+          "locator": null,
+          "consequence": "no claim change",
+          "downstream": {
+            "dependent_authorities": [],
+            "constraints": [
+              "CON-FT-004",
+              "CON-FT-005",
+              "CON-FT-007"
+            ],
+            "facts": [
+              "FACT-FF-ONLY-INTEGRATION",
+              "FACT-LITERAL-PATH-MATCH",
+              "FACT-WORKPIECE-ISOLATION"
+            ],
+            "probes": [
+              "PROBE-PATHS-LITERAL",
+              "PROBE-WORKPIECE-VERIFY"
+            ],
+            "evidence": [
+              "EV-D11-PATHS-PROBE",
+              "EV-D19-LINEAGE-LINEAGE",
+              "EV-D20-LINEAGE-LINEAGE",
+              "EV-D6-F5-RECEIPT",
+              "EV-GIT-LINEAGE-D0-D10"
+            ]
+          },
+          "reconciled_by": [
+            "R-16"
+          ],
+          "current_authority": "LAW-FACTORY-CONTRACTS"
+        }
+      ]
+    },
+    "facts_to_recheck": [
+      "FACT-FF-ONLY-INTEGRATION",
+      "FACT-GPU-ADAPTER-SWIFTSHADER",
+      "FACT-SHARED-THREADS-UNADMITTED",
+      "FACT-STREAMING-UNPROBED",
+      "FACT-WASM64-ABI-EXEC",
+      "FACT-WASM64-ADMITTED-E0",
+      "FACT-WASM64-MODULE-I64",
+      "FACT-WORKPIECE-ISOLATION"
+    ],
+    "facts_reconciled": {
+      "FACT-FF-ONLY-INTEGRATION": {
+        "reconciled_by": [
+          "R-01",
+          "R-63"
+        ],
+        "current": "FACT-FF-ONLY-INTEGRATION"
+      },
+      "FACT-GPU-ADAPTER-SWIFTSHADER": {
+        "reconciled_by": [
+          "R-03"
+        ],
+        "current": "FACT-GPU-ADAPTER-SWIFTSHADER"
+      },
+      "FACT-SHARED-THREADS-UNADMITTED": {
+        "reconciled_by": [
+          "R-06"
+        ],
+        "current": "FACT-SHARED-THREADS-UNADMITTED-D18"
+      },
+      "FACT-STREAMING-UNPROBED": {
+        "reconciled_by": [
+          "R-05"
+        ],
+        "current": "FACT-STREAMING-UNPROBED"
+      },
+      "FACT-WASM64-ABI-EXEC": {
+        "reconciled_by": [
+          "R-04"
+        ],
+        "current": "FACT-WASM64-ABI-EXEC"
+      },
+      "FACT-WASM64-ADMITTED-E0": {
+        "reconciled_by": [
+          "R-04"
+        ],
+        "current": "FACT-WASM64-ADMITTED-E0"
+      },
+      "FACT-WASM64-MODULE-I64": {
+        "reconciled_by": [
+          "R-04"
+        ],
+        "current": "FACT-WASM64-MODULE-I64"
+      },
+      "FACT-WORKPIECE-ISOLATION": {
+        "reconciled_by": [
+          "R-02",
+          "R-63"
+        ],
+        "current": "FACT-WORKPIECE-ISOLATION"
+      }
+    },
+    "facts_open": []
+  }
+}

@@ -1,0 +1,5 @@
+$ sh -c node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D21R.json --identity evidence/D21R/identity --epoch D21R --delta D21R-MANIFEST-REPAIR --commit '910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out design/environment-map/epochs/D21R.json
+(cwd .)
+D21R: 7 nodes, 9 edges -> design/environment-map/epochs/D21R.json; facts FACT-D21R-MANIFEST-REBUILD-STABLE [RUN]
+
+[exit 0] expected 0

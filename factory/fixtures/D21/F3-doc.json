@@ -1,0 +1,47 @@
+{
+  "fixture_id": "F3-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "tests/manifest/components.json",
+    "the D20 graph",
+    "receipts",
+    "station registry"
+  ],
+  "narrowed_may_change": [
+    "design/execution-manifest/",
+    "factory/receipts/D21-EXECUTION-MANIFEST/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b --delta D21-EXECUTION-MANIFEST --epoch D21 --out design/execution-manifest"
+        ],
+        "log": "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-build-manifest.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b --delta D21-EXECUTION-MANIFEST --epoch D21 --out $T >/dev/null && cmp $T/manifest.json design/execution-manifest/manifest.json && cmp $T/CURRENT-EXECUTION-MANIFEST.md design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md && echo 'manifest deterministic (rebuilt byte-identically)'"
+        ],
+        "log": "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-deterministic.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/execution-manifest/manifest.json",
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D21-EXECUTION-MANIFEST"
+}

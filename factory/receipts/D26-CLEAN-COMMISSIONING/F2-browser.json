@@ -1,0 +1,170 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D26-CLEAN-COMMISSIONING-F2-browser",
+  "station_id": "S-BROWSER",
+  "station_version": "1",
+  "fixture_id": "F2-browser",
+  "workpiece_id": "W32",
+  "delta_id": "D26-CLEAN-COMMISSIONING",
+  "canonical_base": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+  "input_artifacts": [
+    "D26 section 4 (host identity)"
+  ],
+  "open_tree": "9cd4f2af2273a6f3ace52fa7bed949600e69881e",
+  "close_tree": "88a79ec89bca4ef3ff0c7ab61f7edc8a8cb79460",
+  "changed_paths": [
+    "evidence/D26/identity/browser-default.json",
+    "evidence/D26/identity/browser-gpu-flags.json",
+    "evidence/D26/identity/host.json",
+    "evidence/D26/identity/repo.json",
+    "evidence/D26/identity/tips.json",
+    "evidence/D26/identity/toolchains.json",
+    "evidence/D26/logs/F2-identity.log"
+  ],
+  "output_artifacts": [
+    "evidence/D26/identity/host.json",
+    "evidence/D26/identity/browser-gpu-flags.json",
+    "evidence/D26/identity/tips.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BROWSER v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D26-CLEAN-COMMISSIONING"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BROWSER_PROBE"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D26/logs/F2-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D26/logs/F2-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out evidence/D26/identity",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D26/logs/F2-identity.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D26/identity/host.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D26/identity/browser-gpu-flags.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D26/identity/tips.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D26/logs/F2-identity.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T18:46:34Z",
+  "status": "PASS"
+}

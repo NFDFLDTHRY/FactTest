@@ -1,0 +1,15 @@
+{
+ "tool": "tests/genericity/check-bundle.mjs",
+ "bundle": "/home/user/factory-workpieces/W32/evidence/D26/attacks/invalid-guard/bundle",
+ "integrity": {
+  "bundle_id": "8f6a79646e3e46607116556c17454278b7cf33392d7e8817182736f98ad0cd33",
+  "files": 7,
+  "recorded": 7,
+  "problems": [
+   "selector.js: sha256 252f76be72ff2b1674f61f2ad2a8e02aafcdf915d3e2d5c5b7ea1fbb8661f786 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94",
+   "selector.js: 1766 bytes != recorded 1767"
+  ],
+  "status": "FAIL"
+ },
+ "status": "FAIL"
+}

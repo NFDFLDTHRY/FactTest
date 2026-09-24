@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b' design/materialization/LEDGER.md && grep -q '^## D21-EXECUTION-MANIFEST' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]
+(cwd .)
+
+[exit 0] expected 0

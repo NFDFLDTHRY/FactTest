@@ -1,0 +1,29 @@
+{
+ "id": "CL-ST7",
+ "trace": "ST",
+ "authority": "AUTH-WEB-LOCKS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/web-locks",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+  "sha256": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9",
+  "bytes": 43490
+ },
+ "locator": {
+  "text": "[SecureContext, Exposed=(Window,Worker)]",
+  "line_start": 357,
+  "line_end": 358,
+  "derivation": "anchor text",
+  "enclosing_section": "#api-lock-manager (line 353)"
+ },
+ "window": 2,
+ "consequence": "Web Locks coordinate writers across tabs and workers of one origin (secure context only)",
+ "excerpt": "[SecureContext, Exposed=(Window,Worker)]\ninterface LockManager {",
+ "excerpt_sha256": "7288dfcf00083d441ee890feceb1f1f0079b6547e4493c567783a8eb43dda50e",
+ "must_contain": {
+  "interface LockManager": true
+ },
+ "status": "VERIFIED"
+}

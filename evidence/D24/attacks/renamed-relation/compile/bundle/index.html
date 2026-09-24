@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ledger_mirror</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<style>body{font-family:ui-monospace,monospace;margin:16px;background:#111;color:#eee}pre{white-space:pre-wrap;background:#000;padding:8px;border:1px solid #333}button,input{margin:4px;font-family:inherit}</style>
+</head>
+<body>
+<h1>ledger_mirror</h1>
+<p>Generated capability-parametric WebApp (FactTest object B). Bundle <code>08b8683df3e939f8</code>. Strategy <code>1</code>.</p>
+<div id="controls"></div>
+<pre id="out">idle</pre>
+<script type="module">
+import { init, transfer, destroyBackend, snapshot } from './runtime.js';
+import { STRATEGY } from './selector.js';
+const out = document.getElementById('out');
+const controls = document.getElementById('controls');
+const show = () => { out.textContent = JSON.stringify(snapshot(), (k, v) => (v instanceof Uint8Array ? [...v] : v), 2); };
+const hex = s => Uint8Array.from((s.match(/[0-9a-fA-F]{2}/g) || []).map(h => parseInt(h, 16)));
+const button = (label, fn) => { const b = document.createElement('button'); b.textContent = label; b.onclick = async () => { await fn(); show(); }; controls.appendChild(b); };
+button('init (E0)', init);
+// one payload field and one control per authored transfer relation: the shell knows only the verified strategy data
+for (const t of STRATEGY.transfers) {
+  const input = document.createElement('input'); input.placeholder = 'hex bytes for ' + t.relation; input.size = 40; controls.appendChild(input);
+  button('transfer ' + t.relation + ' (' + t.type + ', ' + t.mode + ')', () => transfer(t.relation, hex(input.value)));
+}
+// controlled loss of any backend a verified variant guards on
+for (const backend of [...new Set(STRATEGY.variants.flatMap(v => v.guard))]) button('release ' + backend + ' (controlled loss)', () => destroyBackend(backend));
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js').catch(() => {}); }
+</script>
+</body>
+</html>

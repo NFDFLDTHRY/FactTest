@@ -1,0 +1,29 @@
+{
+ "id": "CL-H4",
+ "trace": "H",
+ "authority": "AUTH-HTML-SANDBOX-ORIGIN",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "1a249c2a40bd341f7c2c0c9954a9a264b1983b93",
+  "sha256": "2bddefe3791e9003d58e9d438c2dfa98b4a0c1967fc5a1e5327d73a6e3ac9a80",
+  "bytes": 7915793
+ },
+ "locator": {
+  "fragment": "#sandboxed-origin-browsing-context-flag",
+  "line_start": 96158,
+  "line_end": 96165,
+  "derivation": "PRESENT_DERIVED (bikeshed dfn)",
+  "enclosing_section": "#the-coep-headers (line 95839)"
+ },
+ "window": 8,
+ "consequence": "the sandboxed origin flag forces an opaque origin: confined generations cannot reach the Factory origin's storage (D12 B-09 broker requirement)",
+ "excerpt": "   <dt>The <dfn export>sandboxed origin browsing context flag</dfn></dt>\n\n   <dd>\n    <p>This flag <a href=\"#sandboxOrigin\">forces content into an opaque origin</a>, thus preventing\n    it from accessing other content from the same <span>origin</span>.</p>\n\n    <p>This flag also <a href=\"#sandboxCookies\">prevents script from reading from or writing to the\n    <code data-x=\"dom-document-cookie\">document.cookie</code> IDL attribute</a>, and blocks access",
+ "excerpt_sha256": "cd99bc8a8a2025827c502f4d968f6b77386e323a136a9672b49672edf3bf63ac",
+ "must_contain": {
+  "opaque origin": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,34 @@
+{
+ "specimen": "dual-stream",
+ "system": "dual_stream",
+ "source": "fixtures/genericity/dual-stream/source.ascii",
+ "contracts": "fixtures/genericity/dual-stream/contracts.ascii",
+ "metrics": "fixtures/genericity/dual-stream/metrics.ascii",
+ "payloads": "fixtures/genericity/dual-stream/payloads.json",
+ "varies": [
+  "system name dual_stream",
+  "three components (source, splitter, sink)",
+  "TWO relations (feed, drain) of type Chunk",
+  "two backends both READY with recipes R_CHUNK_WASM / R_CHUNK_GPU",
+  "objective MAXIMIZE preference_rank (CPU_WASM64 ranks first: the opposite preference of Byte Relay)",
+  "four verified variants (the product over two slots)",
+  "payloads of 4 and 513 bytes",
+  "controlled loss of CPU_WASM64 reselects the all-WEBGPU variant at E1"
+ ],
+ "expect": {
+  "transfers": [
+   "feed",
+   "drain"
+  ],
+  "variants": 4,
+  "strength": "EXACT_OPTIMUM",
+  "webgpu": {
+   "e0": "CPU_WASM64",
+   "loss": "CPU_WASM64",
+   "e1": "WEBGPU"
+  },
+  "no_webgpu": {
+   "e0": "CPU_WASM64"
+  }
+ }
+}

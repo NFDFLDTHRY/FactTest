@@ -1,0 +1,27 @@
+{
+ "tool": "tests/reconcile/surfaces.mjs",
+ "base": "6bcc86c",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "R-65:tests/toolchain/proof-sets.json",
+   "status": "PASS",
+   "detail": "5 present, 1 absent"
+  },
+  {
+   "check": "R-65:docs/HANDOFF.md",
+   "status": "PASS",
+   "detail": "3 present, 0 absent"
+  },
+  {
+   "check": "R-66:docs/HANDOFF.md",
+   "status": "PASS",
+   "detail": "3 present, 1 absent"
+  },
+  {
+   "check": "R-66:tests/manifest/components.json",
+   "status": "PASS",
+   "detail": "2 present, 2 absent"
+  }
+ ]
+}

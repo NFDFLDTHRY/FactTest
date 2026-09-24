@@ -1,6 +1,6 @@
 {
  "schema": "facttest-reprove-runbook/1",
- "note": "reviewed map from a selected fact to the group that re-proves it and the records whose expected observation decides PASS; a selected fact without an entry is a [GAP] (it stays stale)  D20: group ingress re-proves the claims of the line imported from main (pull request #5) on that line's own inputs (its map and graph at the line head, read from git), against the corpus imported into this tree; the FACT-D14-REOPEN-* expectations are the verdicts that line recorded (evidence/D14/audit/fragments.json).  D20: group process replays the D19 selection with the current selector on the D19 inputs (the tree at 780aee1, the D18R graph, the committed D19 identity): the D19 process facts are re-proved when it reproduces the recorded result.",
+ "note": "reviewed map from a selected fact to the group that re-proves it and the records whose expected observation decides PASS; a selected fact without an entry is a [GAP] (it stays stale)  D20: group ingress re-proves the claims of the line imported from main (pull request #5) on that line's own inputs (its map and graph at the line head, read from git), against the corpus imported into this tree; the FACT-D14-REOPEN-* expectations are the verdicts that line recorded (evidence/D14/audit/fragments.json).  D20: group process replays the D19 selection with the current selector on the D19 inputs (the tree at 780aee1, the D18R graph, the committed D19 identity): the D19 process facts are re-proved when it reproduces the recorded result.  D26: group qualified-proof also runs the per-crate DAG (its browser consumer is the Q-WASM-08 record of the same run); group manifest re-proves the execution-manifest facts (rebuild, gate, stability); group physical regenerates every specimen with the factc built here, drives the bundles through their shells (host/harness/webapp-probe.mjs) and runs the selfhost primitives on the fresh bundle - the D7 runtime facts and the D12 selfhost facts are re-proved on the current bundle; the kernel identity fact (R-65) rests on kernel-sections.  D26: the build directories of the build groups come from REPROVE_TARGET / REPROVE_KERNELS (fresh directories in a clean commissioning run), defaulting to the D19 directories.",
  "groups": {
   "identity": {
    "kind": "cite",
@@ -12,15 +12,16 @@
    "kind": "build",
    "env_kind": "host",
    "commands": [
-    "CARGO_TARGET_DIR=/home/user/factory-builds/d19-target cargo +1.94.1 build -p factory",
-    "CARGO_TARGET_DIR=/home/user/factory-builds/d19-target sh tests/toolchain/run-qualified-proof.sh @OUT@/proof"
+    "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -p factory",
+    "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} sh tests/toolchain/run-qualified-proof.sh @OUT@/proof",
+    "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} node tests/toolchain/run-crate-dag.mjs --out @OUT@/crates --target ${REPROVE_TARGET:-/home/user/factory-builds/d19-target} --browser-probe @OUT@/proof/wasm64/Q-WASM-08-chromium-build-release.json"
    ]
   },
   "kernel-sections": {
    "kind": "build",
    "env_kind": "host",
    "commands": [
-    "sh tests/implementation/build-kernels.sh @OUT@/kernel /home/user/factory-builds/d19-kernels"
+    "sh tests/implementation/build-kernels.sh @OUT@/kernel ${REPROVE_KERNELS:-/home/user/factory-builds/d19-kernels}"
    ]
   },
   "paths": {
@@ -71,7 +72,31 @@
    "kind": "repo",
    "env_kind": "host",
    "commands": [
-    "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 780aee1b50c4a799a62b760823a3d1460d386d0f && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out $T/g18r.json >/dev/null && node tests/reprove/select.mjs --graph $T/g18r.json --identity evidence/D19/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --out $O/d19-replay.json"
+    "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 780aee1b50c4a799a62b760823a3d1460d386d0f && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out $T/g18r.json >/dev/null && node tests/reprove/select.mjs --graph $T/g18r.json --identity evidence/D19/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --out $O/d19-replay.json",
+    "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach ca540647db00c72fa0570f7f4f59a20c299172b7 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json --out $T/g20s.json >/dev/null && node tests/reprove/select.mjs --graph $T/g20s.json --identity evidence/D20/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D20 --out $O/d20-replay.json"
+   ],
+   "note": "D26: the group also replays the D20 selection with the current selector on the D20 inputs (the tree at ca54064, the graph merged through D20-SYNC, the committed D20 identity); the D20 process facts are re-proved when it reproduces the recorded result"
+  },
+  "manifest": {
+   "kind": "repo",
+   "env_kind": "host",
+   "note": "D26: the execution manifest rebuilt from the tree, gated, and its stability shown by the clean-clone rebuild at the last integration commit (tests/manifest/rebuild-check.sh)",
+   "commands": [
+    "H=$(git rev-parse HEAD) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev $H --delta REPROVE --epoch NONE --out @OUT@/manifest-reprove && node tests/manifest/gate.mjs --manifest @OUT@/manifest-reprove/manifest.json --issues tests/manifest/issues.json --out @OUT@/manifest-reprove/gate.json",
+    "M=design/execution-manifest/manifest.json && D=$(node -e 'const m=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));console.log(m.excluded_current_delta)' $M) && EP=$(node -e 'const m=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));const e=m.graph_epochs.map(x=>x.epoch||x);const g=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/graph.json\")).epochs.map(x=>x.epoch||x);console.log(g[g.indexOf(e[e.length-1])+1])' $M) && P=$(node -e 'const e=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/graph.json\")).epochs.map(x=>x.epoch||x);const i=e.indexOf(process.argv[1]);console.log(e.slice(1,i).map(x=>\"design/environment-map/epochs/\"+x+\".json\"+(x===\"D14-RESCAN\"?\"=D14-RESCAN\":\"\")).join(\",\"))' $EP) && L=$(git log -1 --format=%H -- $M) && sh tests/manifest/rebuild-check.sh $L $(node -e 'console.log(JSON.parse(require(\"fs\").readFileSync(process.argv[1])).rev)' $M) $D $EP fdb9c32 $P @OUT@/manifest-reprove/rebuild-check.json"
+   ]
+  },
+  "physical": {
+   "kind": "build",
+   "env_kind": "browser",
+   "note": "D26: fresh factc and kernel, every specimen regenerated and verified, driven through its shell with/without WebGPU and isolated, the selfhost primitives on the fresh Byte Relay bundle, the attack list, the anti-cheat scan",
+   "commands": [
+    "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -q -p factc",
+    "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} RUSTFLAGS='-C link-arg=-zstack-size=16777216' cargo +nightly-2026-09-24 build -q --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown",
+    "node tests/genericity/run-specimens.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --out @OUT@/specimens",
+    "node tests/genericity/run-attacks.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --specimens @OUT@/specimens --out @OUT@/attacks",
+    "sh tests/commissioning/run-anti-cheat.sh @OUT@/anti-cheat",
+    "node tests/physical/run-webapp.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --out @OUT@/physical --kernel ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --pushed-bundle evidence/D25/physical/bundles/byte-relay/compile/bundle --pushed-branch claude/facttest-materialization-27amc7"
    ]
   }
  },
@@ -2235,6 +2260,461 @@
    ]
   },
   "FACT-D19-LAUNCHED-EXECUTABLE": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "env": "browser-default",
+     "expect": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+      }
+     ]
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "env": "browser-gpu-flags",
+     "expect": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D21-LIVE-SURFACES-ENUMERATED": {
+   "group": "manifest",
+   "probe": "PROBE-EXECUTION-MANIFEST",
+   "records": [
+    {
+     "file": "manifest-reprove/gate.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D21-ISSUES-CLASSIFIED": {
+   "group": "manifest",
+   "probe": "PROBE-EXECUTION-MANIFEST",
+   "records": [
+    {
+     "file": "manifest-reprove/gate.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D21R-MANIFEST-REBUILD-STABLE": {
+   "group": "manifest",
+   "probe": "PROBE-MANIFEST-REBUILD",
+   "records": [
+    {
+     "file": "manifest-reprove/rebuild-check.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D23-COMPILER-DAG-EXECUTED": {
+   "group": "qualified-proof",
+   "probe": "PROBE-CRATE-DAG",
+   "records": [
+    {
+     "file": "crates/summary.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      },
+      {
+       "path": "tests_run.failed",
+       "eq": 0
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D23-QUALIFIED-PROOF": {
+   "group": "qualified-proof",
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "records": [
+    {
+     "file": "proof/summary.json",
+     "expect": [
+      {
+       "path": "tally.FAIL",
+       "absent": true
+      },
+      {
+       "path": "mutants.verdict",
+       "eq": "RUN"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D23-WASM-TRANSPORT-COMPLETE": {
+   "group": "qualified-proof",
+   "probe": "PROBE-BROWSER-BUILD",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-08-chromium-build-release.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "PASS"
+      }
+     ],
+     "env": "browser-gpu-flags"
+    }
+   ]
+  },
+  "FACT-KERNEL-IDENTITY-D24": {
+   "group": "kernel-sections",
+   "probe": "PROBE-KERNEL-SECTIONS",
+   "records": [
+    {
+     "file": "kernel/sections.json",
+     "expect": [
+      {
+       "path": "identical_excluding_custom",
+       "eq": true
+      },
+      {
+       "path": "builds.0.identity_excluding_custom",
+       "eq": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115"
+      },
+      {
+       "path": "builds.1.identity_excluding_custom",
+       "eq": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-GPU-EPOCH-INVALIDATION": {
+   "group": "physical",
+   "probe": "PROBE-PHYSICAL-WEBAPP",
+   "records": [
+    {
+     "file": "physical/bundles/byte-relay/webgpu/probe-record.json",
+     "expect": [
+      {
+       "path": "verdict.loss_witnessed",
+       "eq": true
+      },
+      {
+       "path": "verdict.stale_plan_invalidated",
+       "eq": true
+      },
+      {
+       "path": "verdict.epochs",
+       "eq": [
+        "E0",
+        "E1"
+       ]
+      }
+     ],
+     "env": "browser-gpu-flags"
+    }
+   ]
+  },
+  "FACT-RESELECTION-NO-CODEGEN": {
+   "group": "physical",
+   "probe": "PROBE-PHYSICAL-WEBAPP",
+   "records": [
+    {
+     "file": "physical/bundles/byte-relay/webgpu/probe-record.json",
+     "expect": [
+      {
+       "path": "verdict.e1_all_exact",
+       "eq": true
+      },
+      {
+       "path": "verdict.no_runtime_codegen",
+       "eq": true
+      },
+      {
+       "path": "verdict.bundle_unchanged",
+       "eq": true
+      },
+      {
+       "path": "verdict.only_bundle_files_requested",
+       "eq": true
+      }
+     ],
+     "env": "browser-gpu-flags"
+    }
+   ]
+  },
+  "FACT-OPAQUE-FRAME-SECURE-CONTEXT": {
+   "group": "physical",
+   "probe": "PROBE-SH-P08",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P08-CANDIDATE-CONFINEMENT.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    },
+    {
+     "file": "physical/selfhost/probes/P16-CONFINED-GENERATION-LOAD.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-BROKEN-SEED-FATAL": {
+   "group": "physical",
+   "probe": "PROBE-SH-P14",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P14-BROKEN-SW-RECOVERY.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-BROKER-FED-GENERATION": {
+   "group": "physical",
+   "probe": "PROBE-SH-P16",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P16-CONFINED-GENERATION-LOAD.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-GENERATED-OFFLINE": {
+   "group": "physical",
+   "probe": "PROBE-SH-P01",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-GIT-IDENTITY": {
+   "group": "physical",
+   "probe": "PROBE-SH-P09",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P09-GIT-OBJECTS-IN-BROWSER.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-IDB-CAS": {
+   "group": "physical",
+   "probe": "PROBE-SH-P06",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P06-IDB-ATOMIC-POINTER.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-INTERRUPTED-UPDATE": {
+   "group": "physical",
+   "probe": "PROBE-SH-P15",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P15-INTERRUPTED-SW-UPDATE.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-OPAQUE-CONFINEMENT": {
+   "group": "physical",
+   "probe": "PROBE-SH-P08",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P08-CANDIDATE-CONFINEMENT.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-OPFS-SERVED-APP": {
+   "group": "physical",
+   "probe": "PROBE-SH-P04",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P04-OPFS-SERVED-APP.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-ORIGIN-SCOPED-STORAGE": {
+   "group": "physical",
+   "probe": "PROBE-SH-P03",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P03-STORAGE-RESTART-ORIGIN.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-SW-GRANTS-COI": {
+   "group": "physical",
+   "probe": "PROBE-SH-P05",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P05-SW-CROSS-ORIGIN-ISOLATION.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-SH-SW-NO-SELF-UPDATE": {
+   "group": "physical",
+   "probe": "PROBE-SH-P02",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P02-SW-CANNOT-SELF-UPDATE.json",
+     "expect": [
+      {
+       "path": "verdict",
+       "eq": "RUN"
+      }
+     ],
+     "env": "browser-default"
+    }
+   ]
+  },
+  "FACT-D20-ENVIRONMENT-IDENTITY": {
+   "group": "process",
+   "probe": "PROBE-ENV-IDENTITY",
+   "records": [
+    {
+     "file": "process/d20-replay.json",
+     "expect": [
+      {
+       "path": "evaluated",
+       "eq": 152
+      },
+      {
+       "path": "environment_pairs",
+       "eq": {
+        "SAME": 123,
+        "DRIFT": 8,
+        "UNK": 61
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D20-MINIMUM-SET": {
+   "group": "process",
+   "probe": "PROBE-REPROOF-SELECTION",
+   "records": [
+    {
+     "file": "process/d20-replay.json",
+     "expect": [
+      {
+       "path": "selected",
+       "eq": 71
+      },
+      {
+       "path": "selected_by",
+       "eq": {
+        "environment": 8,
+        "implementation": 4,
+        "obligation": 62
+       }
+      },
+      {
+       "path": "gaps",
+       "eq": []
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D20-LAUNCHED-EXECUTABLE": {
    "group": "identity",
    "probe": "PROBE-BROWSER-IDENTITY",
    "records": [

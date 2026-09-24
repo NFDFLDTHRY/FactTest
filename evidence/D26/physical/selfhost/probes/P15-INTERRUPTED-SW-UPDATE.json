@@ -1,0 +1,26 @@
+{
+  "id": "P15-INTERRUPTED-SW-UPDATE",
+  "question": "What survives a service-worker update interrupted by a browser shutdown?",
+  "needed_for": "interrupted update",
+  "started": "2026-09-24T18:48:42.325Z",
+  "observed": {
+    "before": "v1",
+    "v2_install_started": {
+      "installing": true
+    },
+    "restart_navigation": {
+      "ok": true,
+      "status": 200,
+      "title": "ready"
+    },
+    "active_after_restart": "v1",
+    "registration_state": {
+      "active": true,
+      "installing": false,
+      "waiting": false
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "a service-worker update interrupted mid-install (browser closed) leaves the previous worker active after restart: the platform already gives install-or-keep-old semantics for the seed script (Install algorithm, installFailed / discarded task)",
+  "finished": "2026-09-24T18:48:44.832Z"
+}

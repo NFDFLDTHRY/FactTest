@@ -1,0 +1,525 @@
+{
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION",
+  "workpiece_id": "W27",
+  "canonical_base": "88564a0eccd934d6a017faf65435bc871bcd2f94",
+  "base_tree": "fa4077e38b6d8f672e080c5eaaf4e4d49fa5c82e",
+  "verified_tree": "55b52479648c4c2c1565afc4741aa7d97376aa29",
+  "changed_paths": [
+    "FACTORY-CONTRACTS.md",
+    "README.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D22.json",
+    "design/environment-map/graph.json",
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+    "design/execution-manifest/manifest.json",
+    "design/materialization/D22-INTENDED-FACTORY-SELF-QUALIFICATION.md",
+    "design/materialization/D22-OBSERVED-FACTORY-SELF-QUALIFICATION.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D22/collision-witness.json",
+    "evidence/D22/envmap/merge-check.json",
+    "evidence/D22/envmap/queries/Q01.json",
+    "evidence/D22/envmap/queries/Q02.json",
+    "evidence/D22/envmap/queries/Q03.json",
+    "evidence/D22/envmap/queries/Q04.json",
+    "evidence/D22/envmap/queries/Q05.json",
+    "evidence/D22/envmap/queries/Q06.json",
+    "evidence/D22/envmap/queries/Q07.json",
+    "evidence/D22/envmap/queries/Q08.json",
+    "evidence/D22/envmap/queries/Q09.json",
+    "evidence/D22/envmap/queries/Q10.json",
+    "evidence/D22/envmap/queries/Q11.json",
+    "evidence/D22/envmap/queries/Q12.json",
+    "evidence/D22/envmap/queries/Q13.json",
+    "evidence/D22/envmap/queries/Q14.json",
+    "evidence/D22/envmap/queries/Q15.json",
+    "evidence/D22/envmap/queries/Q16.json",
+    "evidence/D22/envmap/queries/Q17.json",
+    "evidence/D22/envmap/queries/Q18.json",
+    "evidence/D22/envmap/queries/Q19.json",
+    "evidence/D22/envmap/queries/Q20.json",
+    "evidence/D22/envmap/queries/Q21.json",
+    "evidence/D22/envmap/queries/Q22.json",
+    "evidence/D22/envmap/render-check.json",
+    "evidence/D22/envmap/stale.json",
+    "evidence/D22/envmap/validate.json",
+    "evidence/D22/gate.json",
+    "evidence/D22/handoff-check.json",
+    "evidence/D22/identity/browser-default.json",
+    "evidence/D22/identity/browser-gpu-flags.json",
+    "evidence/D22/identity/host.json",
+    "evidence/D22/identity/repo.json",
+    "evidence/D22/identity/tips.json",
+    "evidence/D22/identity/toolchains.json",
+    "evidence/D22/index.json",
+    "evidence/D22/issues.json",
+    "evidence/D22/logs/F10-audit-after.log",
+    "evidence/D22/logs/F10-audit-before.log",
+    "evidence/D22/logs/F10-cleanup-gate.log",
+    "evidence/D22/logs/F10-earlier-gates.log",
+    "evidence/D22/logs/F10-handoff-check.log",
+    "evidence/D22/logs/F10-index.log",
+    "evidence/D22/logs/F10-merge-check.log",
+    "evidence/D22/logs/F10-q22.log",
+    "evidence/D22/logs/F10-queries.log",
+    "evidence/D22/logs/F10-reconciliation-gates.log",
+    "evidence/D22/logs/F10-render-check.log",
+    "evidence/D22/logs/F10-retire.log",
+    "evidence/D22/logs/F10-stale.log",
+    "evidence/D22/logs/F10-status-scan.log",
+    "evidence/D22/logs/F10-validate.log",
+    "evidence/D22/logs/F4-identity.log",
+    "evidence/D22/logs/F5-collision.log",
+    "evidence/D22/logs/F5-reproduce.log",
+    "evidence/D22/logs/F5-witnesses.log",
+    "evidence/D22/logs/F7-gate.log",
+    "evidence/D22/logs/witnesses/build.log",
+    "evidence/D22/logs/witnesses/test.log",
+    "evidence/D22/manifest.json",
+    "evidence/D22/regress/capability-gate.json",
+    "evidence/D22/regress/d18-gate.json",
+    "evidence/D22/regress/d18r-gate.json",
+    "evidence/D22/regress/d20-sync-gate.json",
+    "evidence/D22/regress/implementation-gate.json",
+    "evidence/D22/reproduce.log",
+    "evidence/D22/status/inventory.json",
+    "evidence/D22/status/summary.txt",
+    "evidence/D22/witnesses.json",
+    "evidence/D22/workpieces/audit-after.json",
+    "evidence/D22/workpieces/audit-before.json",
+    "evidence/D22/workpieces/retire.json",
+    "factory/deltas/D22.json",
+    "factory/fixtures/D22/F0-doc.json",
+    "factory/fixtures/D22/F1-rust.json",
+    "factory/fixtures/D22/F10-evidence.json",
+    "factory/fixtures/D22/F11-doc.json",
+    "factory/fixtures/D22/F2-rust.json",
+    "factory/fixtures/D22/F3-fixture.json",
+    "factory/fixtures/D22/F4-browser.json",
+    "factory/fixtures/D22/F5-evidence.json",
+    "factory/fixtures/D22/F6-doc.json",
+    "factory/fixtures/D22/F7-evidence.json",
+    "factory/fixtures/D22/F8-doc.json",
+    "factory/fixtures/D22/F9-annotate.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F0-doc.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F1-rust.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F10-evidence.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F11-doc.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F2-rust.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F3-fixture.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F4-browser.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F5-evidence.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F6-doc.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F7-evidence.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F8-doc.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F9-annotate.json",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F0-ascii.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F0-untouched.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce-check.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F11-observed.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-check.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-clippy.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-fmt.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F2-test.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-builder-regression.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-other-tests-untouched.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-syntax-generic.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-witnesses-trial.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F6-build-manifest.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F6-deterministic.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-build-epoch.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-checks.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-merge.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-render.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F9-annotation.log",
+    "factory/src/ops.rs",
+    "factory/tests/factory_law.rs",
+    "tests/envmap/build-fact-epoch.mjs",
+    "tests/envmap/facts/D22.json",
+    "tests/factory/run-witnesses.sh",
+    "tests/factory/witnesses.json",
+    "tests/hygiene/status-classification.json",
+    "tests/manifest/build-epoch.mjs",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "tests/sync/collision-witness.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "fa4077e38b6d8f672e080c5eaaf4e4d49fa5c82e"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F2-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F3-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-browser",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F4-browser.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F5-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F6-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F7-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F7-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F8-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F8-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F9-annotate",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F9-annotate.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F9-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F9-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F9-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F10-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F10-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F10-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F10-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F10-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F11-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/F11-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F11-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F11-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F11-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BROWSER_PROBE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:LAW_ANNOTATION",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D22-INTENDED-FACTORY-SELF-QUALIFICATION.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D22-OBSERVED-FACTORY-SELF-QUALIFICATION.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/tests/factory_law.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/src/ops.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/factory/witnesses.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/factory/run-witnesses.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/sync/collision-witness.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/facts/D22.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D22.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D22/witnesses.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D22/reproduce.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D22/envmap/queries/Q22.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D22/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T13:16:23Z",
+  "status": "PASS"
+}

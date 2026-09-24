@@ -1,0 +1,38 @@
+{
+  "fixture_id": "F8-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the manifest of F7",
+    "tests/manifest/issues.json",
+    "tests/reconcile/d24-surfaces.json"
+  ],
+  "narrowed_may_change": [
+    "evidence/D24/manifest.json",
+    "evidence/D24/issues.json",
+    "evidence/D24/gate.json",
+    "evidence/D24/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp design/execution-manifest/manifest.json evidence/D24/manifest.json && cp tests/manifest/issues.json evidence/D24/issues.json && node tests/manifest/gate.mjs --manifest evidence/D24/manifest.json --issues tests/manifest/issues.json --out evidence/D24/gate.json"
+        ],
+        "log": "evidence/D24/logs/F8-gate.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D24/gate.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D24-PIPELINE-GENERICITY"
+}

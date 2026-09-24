@@ -1,0 +1,116 @@
+D9 PROOF MATRIX (verdicts are about the system under test; the harness ran)
+PASS Q-ALL-01-fmt-check                         rustc 1.94.1 (e408947bf 2026-03-25)
+     set ALL_SOURCES  target none (rustfmt)  profile null
+     cargo +1.94.1 fmt --all --check -v
+     exit 0; 14 workspace packages [compiler/bundle compiler/capability compiler/codegen compiler/foundation compiler/implementation compiler/kernel compiler/observe compiler/planning compiler/semantic compiler/source compiler/verifier compiler/wasm-abi factory host/factc]
+PASS Q-ALL-02-resolved-graph-first-party        rustc 1.94.1 (e408947bf 2026-03-25)
+     set ALL_MEMBERS_GRAPH  target none (cargo metadata)  profile null
+     cargo +1.94.1 metadata --format-version 1 --locked
+     14 packages, all path sources inside root; 49 declared dependency edges all path-inside-root; resolve graph 14 nodes; physical manifests not in the product graph: fixtures/compiler/negative/forge-verified-strategy/Cargo.toml(excluded), fixtures/compiler/negative/id-substitution/Cargo.toml(excluded), fixtures/compiler/negative/std-in-kernel/Cargo.toml(excluded), fixtures/compiler/negative/third-party-dep/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/Cargo.toml(excluded), fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/Cargo.toml(excluded), fixtures/toolchain/mutants/M3-compile-fail-stale-forge/Cargo.toml(excluded), fixtures/toolchain/mutants/M4-nostd-scanner-bypass/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml(excluded), fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/Cargo.toml(excluded), fixtures/toolchain/mutants/M7-wasm32-masquerade/Cargo.toml(excluded), fixtures/toolchain/mutants/M8-debug-pass-release-fail/Cargo.toml(excluded)
+PASS Q-ALL-03-third-party-dep-fixture-rejected  rustc 1.94.1 (e408947bf 2026-03-25)
+     set ALL_MEMBERS_GRAPH  target none (cargo metadata)  profile null
+     cargo +1.94.1 metadata --format-version 1
+     rejected as required: neg-third-party-dep -> serde (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1; package proc-macro2@1.0.107 source registry+https://github.com/rust-lang/crates.io-index; package proc-macro2 manifest outside root: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-1.0.107/Cargo.toml; proc-macro2 -> unicode-ident (normal) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> flate2 (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0; proc-macro2 -> quote (dev) is not a path dependency: source registry+https://github.com/rust-lang/crates.io-index req ^1.0
+PASS Q-HOST-01-build-dev                        rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile dev
+     cargo +1.94.1 build --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]
+PASS Q-HOST-02-build-release                    rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile release
+     cargo +1.94.1 build --release --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]
+PASS Q-HOST-03-test-dev                         rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile dev
+     cargo +1.94.1 test --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; tests 122 passed / 0 failed over 35 harness runs
+PASS Q-HOST-04-test-release                     rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile release
+     cargo +1.94.1 test --release --message-format=json
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; tests 122 passed / 0 failed over 35 harness runs
+PASS Q-HOST-05-clippy-all-targets               rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile dev
+     cargo +1.94.1 clippy --all-targets --message-format=json -- -D warnings
+     exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]
+PASS Q-HOST-06-std-in-kernel                    rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile dev
+     cargo +1.94.1 build --lib --message-format=json
+     rejected for the expected reason: 2xE0433 (E0433:2)
+PASS Q-HOST-07-id-substitution                  rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile dev
+     cargo +1.94.1 build --lib --message-format=json
+     rejected for the expected reason: 3xE0308 (E0308:3)
+PASS Q-HOST-08-forge-verified-strategy          rustc 1.94.1 (e408947bf 2026-03-25)
+     set HOST_NATIVE_SET  target host  profile dev
+     cargo +1.94.1 build --lib --message-format=json
+     rejected for the expected reason: 1xprivate-field ((no code):1)
+PASS Q-WASM-01-clippy-core-graph                rustc 1.100.0-nightly (6eeff9a52 2026-09-23)
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile dev
+     cargo +nightly-2026-09-24 clippy -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --message-format=json -- -D warnings
+     exit 0; 12 workspace packages [factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi]
+PASS Q-WASM-02-core-only-graph-dev              rustc 1.100.0-nightly (6eeff9a52 2026-09-23)
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile dev
+     cargo +nightly-2026-09-24 build -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --message-format=json
+     12 workspace crates compiled with core only on wasm64-unknown-unknown (dev); sysroot: compiler_builtins[custom-build]<sysroot-or-external-path> compiler_builtins[lib]<sysroot-or-external-path> core[lib]<sysroot-or-external-path>
+PASS Q-WASM-03-core-only-graph-release          rustc 1.100.0-nightly (6eeff9a52 2026-09-23)
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile release
+     cargo +nightly-2026-09-24 build -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown --release --message-format=json
+     12 workspace crates compiled with core only on wasm64-unknown-unknown (release); sysroot: compiler_builtins[custom-build]<sysroot-or-external-path> compiler_builtins[lib]<sysroot-or-external-path> core[lib]<sysroot-or-external-path>
+PASS Q-WASM-04-inspect-release                  
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile release
+     /home/user/factory-target-w28/debug/factory wasm-inspect /home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm
+       [PASS] memory_declared - I64 min=319 max=None shared=false;   [PASS] artifact_identity - sha256 fa5c7131fa8c6d43090672ae718dccbb536cc6d4a3ca70b6f54c4259412ae42f bytes 3373536
+PASS Q-WASM-05-inspect-dev                      
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile dev
+     /home/user/factory-target-w28/debug/factory wasm-inspect /home/user/factory-target-w28/wasm64-unknown-unknown/debug/factc_wasm_abi.wasm
+       [PASS] memory_declared - I64 min=320 max=None shared=false;   [PASS] artifact_identity - sha256 c14821d1a031a26cd26930bfd33265e882bd111e33009097f0dac80166329fac bytes 12560982
+PASS Q-WASM-06-kernel-identity                  rustc 1.100.0-nightly (6eeff9a52 2026-09-23)
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile release
+     
+     exec identity fcaee2a6973e14217dccdb147902b62b4503764ad14e72676b6dd7696242c976 == declared (install nightly-2026-09-24-x86_64-unknown-linux-gnu); whole file == recorded for install nightly-2026-09-24-x86_64-unknown-linux-gnu (informational)
+PASS Q-WASM-07-chromium-abi-release             
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile release
+     node host/harness/kernel-host.mjs /home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm tests/bootstrap/b7-opaque.ascii --browser
+     Chromium HeadlessChrome/141.0.7390.37: abi_version 1, imports [], 22 exports, memory_pages 319
+PASS Q-WASM-08-chromium-build-release           
+     set WASM64_KERNEL_SET  target wasm64-unknown-unknown  profile release
+     node host/harness/kernel-build-probe.mjs /home/user/factory-target-w28/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --source fixtures/commissioning/byte-relay.ascii --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --evidence-class PHYSICAL_BROWSER --native-build evidence/D23/proof/wasm64/native/build --native-observe evidence/D23/proof/wasm64/native/observe --out /home/user/factory-workpieces/W28/evidence/D23/proof/wasm64/Q-WASM-08-chromium-build-release.browser-build
+     Chromium HeadlessChrome/141.0.7390.37: BUILD status 1 in 16 ms, OBSERVE status 1; 21/21 files identical to the native driver (22 exports, imports [])
+PASS T13-PIN-01-toolchain-pins                  
+     
+     HOST_NATIVE_SET 1.94.1 (e408947bf) via rust-toolchain.toml; WASM64_KERNEL_SET nightly-2026-09-24 (6eeff9a52) via proof-sets.json; components present
+PASS T13-SETS-01-roots-partition                
+     cargo +1.94.1 metadata --format-version 1 --locked
+     14 members = 13 HOST_NATIVE_SET roots (== default-members) + 1 WASM64_KERNEL_SET root (factc-wasm-abi); disjoint and complete; 31 physical manifests accounted
+PASS T9-P7-01-toolchain-identity                
+     
+     repository pins its toolchain
+OBS  X-01-build-workspace-host                  rustc 1.94.1 (e408947bf 2026-03-25)
+     set CROSS_SET  target host  profile dev  proof weight NONE
+     cargo +1.94.1 build --workspace --message-format=json
+     CROSS_SET diagnostic (proof weight NONE): exit 101; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; first error: factc-wasm-abi (no code) `#[panic_handler]` function required, but not found
+OBS  X-02-clippy-workspace-host                 rustc 1.94.1 (e408947bf 2026-03-25)
+     set CROSS_SET  target host  profile dev  proof weight NONE
+     cargo +1.94.1 clippy --workspace --all-targets --message-format=json -- -D warnings
+     CROSS_SET diagnostic (proof weight NONE): exit 101; 14 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi factory]; first error: factc-wasm-abi (no code) `#[panic_handler]` function required, but not found
+OBS  X-03-test-workspace-host                   rustc 1.94.1 (e408947bf 2026-03-25)
+     set CROSS_SET  target host  profile dev  proof weight NONE
+     cargo +1.94.1 test --workspace --message-format=json
+     CROSS_SET diagnostic (proof weight NONE): exit 0; 14 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factc-wasm-abi factory]; tests 122 passed / 0 failed over 36 harness runs
+HEURISTIC Z-01-nostd-textual-scan                    
+     set HEURISTIC  target null  profile null  proof weight NONE
+     /home/user/factory-target-w28/debug/factory nostd-check compiler/foundation compiler/source compiler/semantic compiler/capability compiler/implementation compiler/planning compiler/verifier compiler/codegen compiler/bundle compiler/observe compiler/kernel compiler/wasm-abi
+     proof weight NONE; scanner said PASS: textual scan found no offender [HEURISTIC: cfg(test)/::std/grouped-use bypasses known; verdict weight none]
+HEURISTIC Z-02-depcheck-explicit-list                
+     set HEURISTIC  target null  profile null  proof weight NONE
+     /home/user/factory-target-w28/debug/factory depcheck /home/user/factory-workpieces/W28 factory/Cargo.toml compiler/foundation/Cargo.toml compiler/source/Cargo.toml compiler/semantic/Cargo.toml compiler/capability/Cargo.toml compiler/implementation/Cargo.toml compiler/planning/Cargo.toml compiler/verifier/Cargo.toml compiler/codegen/Cargo.toml compiler/bundle/Cargo.toml compiler/observe/Cargo.toml compiler/kernel/Cargo.toml compiler/wasm-abi/Cargo.toml host/factc/Cargo.toml
+     proof weight NONE; scanner said PASS: explicit-list scan accepted 14 manifests [HEURISTIC: unlisted manifests and dotted-table sections are never read; verdict weight none]
+
+MUTANTS RUN: 8 mutants: every weak check accepted the mutant and every qualified check rejected it for the named reason
+  RUN M1-omitted-workspace-member weak=PASS qualified=FAIL
+  RUN M2-compile-fail-wrong-reason weak=PASS qualified=FAIL
+  RUN M3-compile-fail-stale-forge weak=PASS qualified=FAIL
+  RUN M4-nostd-scanner-bypass weak=PASS qualified=FAIL
+  RUN M5-uninspected-manifest weak=PASS qualified=FAIL
+  RUN M6-native-pass-wasm64-fail weak=PASS qualified=FAIL
+  RUN M7-wasm32-masquerade weak=PASS qualified=FAIL
+  RUN M8-debug-pass-release-fail weak=PASS qualified=FAIL

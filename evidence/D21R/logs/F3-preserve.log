@@ -1,0 +1,5 @@
+$ sh -c cp /home/user/factory-workpieces/W25.reinspect.json evidence/D21R/reinspect-d21-result.json && cp /home/user/factory-workpieces/W25.reinspect/reinspect-d21.log evidence/D21R/reinspect-d21-run.log && grep -q '"status": "DIFFER"' evidence/D21R/reinspect-d21-result.json && grep -q 'differ: char 273, line 3' evidence/D21R/reinspect-d21-run.log && echo 'D21 re-inspection refusal preserved'
+(cwd .)
+D21 re-inspection refusal preserved
+
+[exit 0] expected 0

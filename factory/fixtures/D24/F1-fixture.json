@@ -1,0 +1,73 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "D24 sections 1-3 (specimens, harness callers, attack tools)",
+    "the base compiler (reproduce first)"
+  ],
+  "narrowed_may_change": [
+    "fixtures/genericity/",
+    "fixtures/commissioning/tape-sample.ascii",
+    "tests/genericity/",
+    "tests/commissioning/run-anti-cheat.sh",
+    "tests/commissioning/run-physical.sh",
+    "tests/selfhost/primitives-probe.mjs",
+    "factory/receipts/D24-PIPELINE-GENERICITY/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in tests/genericity/run-specimens.mjs tests/genericity/run-attacks.mjs tests/genericity/check-bundle.mjs tests/selfhost/primitives-probe.mjs; do node --check $f || exit 1; done && for f in tests/genericity/reproduce-base.sh tests/commissioning/run-anti-cheat.sh tests/commissioning/run-physical.sh; do sh -n $f || exit 1; done && for j in fixtures/genericity/*/specimen.json fixtures/genericity/*/payloads.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && [ $(ls fixtures/genericity/*/specimen.json | wc -l) -eq 4 ] && sed -n 2p fixtures/commissioning/tape-sample.ascii | grep -qE '^@\\{bundle strategy_data=\"[0-9a-f]{64}\" strategy=[0-9]+ certificate=[0-9]+\\}$' && [ $(grep -c '' fixtures/commissioning/tape-sample.ascii) -eq 15 ] && ! grep -nE 'byte[-_]relay|commissioning|WEBGPU|CPU_WASM64' tests/genericity/run-specimens.mjs tests/genericity/check-bundle.mjs && echo 'syntax, JSON, tape record, generic runner clean'"
+        ],
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F1-syntax.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "sh tests/genericity/reproduce-base.sh 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 factory/receipts/D24-PIPELINE-GENERICITY/logs/reproduce-base /home/user/factory-target-d24base && grep -q '\"status\": \"REPRODUCED\"' factory/receipts/D24-PIPELINE-GENERICITY/logs/reproduce-base/summary.json"
+        ],
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F1-reproduce-first.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+          "--",
+          "tests",
+          "fixtures",
+          ":!fixtures/genericity",
+          ":!fixtures/commissioning/tape-sample.ascii",
+          ":!tests/genericity",
+          ":!tests/commissioning/run-anti-cheat.sh",
+          ":!tests/commissioning/run-physical.sh",
+          ":!tests/selfhost/primitives-probe.mjs"
+        ],
+        "log": "factory/receipts/D24-PIPELINE-GENERICITY/logs/F1-other-tests-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "fixtures/genericity/ledger-mirror/specimen.json",
+    "fixtures/genericity/pixel-vault/specimen.json",
+    "fixtures/genericity/dual-stream/specimen.json",
+    "tests/genericity/run-specimens.mjs",
+    "tests/genericity/run-attacks.mjs",
+    "tests/genericity/reproduce-base.sh"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D24-PIPELINE-GENERICITY"
+}

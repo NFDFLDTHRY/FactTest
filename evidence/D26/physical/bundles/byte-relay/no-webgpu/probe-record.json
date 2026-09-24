@@ -1,0 +1,273 @@
+{
+  "harness": "host/harness/webapp-probe.mjs",
+  "started": "2026-09-24T18:47:47.750Z",
+  "mode": "served-loopback",
+  "url": "http://127.0.0.1:36711/index.html",
+  "options": {
+    "bundle": "/home/user/factory-workpieces/W32/evidence/D26/physical/bundles/byte-relay/compile/bundle",
+    "payloads": "fixtures/commissioning/payloads.json",
+    "out": "/home/user/factory-workpieces/W32/evidence/D26/physical/bundles/byte-relay/no-webgpu",
+    "no-webgpu": true,
+    "loss": "none",
+    "expect-e0": "CPU_WASM64"
+  },
+  "steps": [
+    {
+      "step": "E0-init",
+      "activation": {
+        "epoch_id": "E0",
+        "strategy_id": 1,
+        "plan_id": 0,
+        "admission_refs": [
+          "ADM-E0-CPU_WASM64",
+          "ADM-E0-WEBGPU"
+        ],
+        "metric_evidence_refs": [
+          "metric:preference_rank"
+        ],
+        "guard_result": [
+          {
+            "plan_id": 1,
+            "guard": [
+              "WEBGPU"
+            ],
+            "satisfied": false
+          },
+          {
+            "plan_id": 0,
+            "guard": [
+              "CPU_WASM64"
+            ],
+            "satisfied": true
+          }
+        ],
+        "status": "PASS"
+      },
+      "admissions": {
+        "CPU_WASM64": {
+          "decision": "ADMITTED",
+          "reason": null,
+          "adapter_info": null,
+          "probes": [
+            "DISCOVER:OK",
+            "REQUEST:OK",
+            "PROBE:OK"
+          ]
+        },
+        "WEBGPU": {
+          "decision": "REJECTED",
+          "reason": "request_unavailable",
+          "adapter_info": null,
+          "probes": [
+            "DISCOVER:OK",
+            "REQUEST:UNAVAILABLE"
+          ]
+        }
+      },
+      "epochs": [
+        "E0"
+      ]
+    },
+    {
+      "step": "E0-transfer",
+      "results": [
+        {
+          "relation": "relay",
+          "payload": "A",
+          "bytes": 8,
+          "input_sha256_harness": "831ac9c6497d52737dde5067079f395cc5405fe8dfc15b24e89441c43b8e99c6",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "plan_id": 0,
+          "conversions": [
+            "host_to_wasm",
+            "wasm_to_host"
+          ],
+          "output_sha256_runtime": "831ac9c6497d52737dde5067079f395cc5405fe8dfc15b24e89441c43b8e99c6",
+          "exact_runtime": true,
+          "exact_harness": true
+        },
+        {
+          "relation": "relay",
+          "payload": "B",
+          "bytes": 10,
+          "input_sha256_harness": "280e1ee781715936d4bf3ac1244c5a015d50ca33c74cfc7a5c138b9454fbac70",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "plan_id": 0,
+          "conversions": [
+            "host_to_wasm",
+            "wasm_to_host"
+          ],
+          "output_sha256_runtime": "280e1ee781715936d4bf3ac1244c5a015d50ca33c74cfc7a5c138b9454fbac70",
+          "exact_runtime": true,
+          "exact_harness": true
+        }
+      ]
+    },
+    {
+      "step": "service-worker",
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:36711/",
+          "active": true
+        }
+      ],
+      "cache_keys": [
+        "facttest-0f4a1ec14b9e1159"
+      ],
+      "cached": {
+        "facttest-0f4a1ec14b9e1159": [
+          "/wasm64_relay.wasm",
+          "/membrane.js",
+          "/selector.js",
+          "/runtime.js",
+          "/index.html",
+          "/manifest.webmanifest"
+        ]
+      }
+    }
+  ],
+  "identity": {
+    "browser": {
+      "product": "HeadlessChrome/141.0.7390.37",
+      "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+      "js_engine": "V8 14.1.146.11",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "executable": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+      "launch_options": {
+        "headless": true,
+        "args": []
+      },
+      "playwright_default_args_ignored": []
+    },
+    "host": {
+      "platform": "linux",
+      "release": "6.18.44-fc-v37",
+      "arch": "x64",
+      "uname": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+      "hostname": "vm",
+      "cpus": 4,
+      "node": "v22.22.2"
+    },
+    "page": {
+      "origin": "http://127.0.0.1:36711",
+      "secure_context": true,
+      "cross_origin_isolated": false,
+      "shared_array_buffer": "undefined",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "hardware_concurrency": 4,
+      "webgpu_exposed": true,
+      "adapter": {
+        "requested": true,
+        "result": null
+      }
+    },
+    "http_status": 200,
+    "response_headers": {
+      "connection": "keep-alive",
+      "content-length": "2070",
+      "date": "Thu, 24 Sep 2026 18:47:47 GMT",
+      "keep-alive": "timeout=5",
+      "content-type": "text/html"
+    },
+    "toolchain": {
+      "host_native": "1.94.1",
+      "wasm64_kernel": "nightly-2026-09-24",
+      "kernel_exec_identity": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115"
+    },
+    "artifacts": {
+      "bundle_id": "0f4a1ec14b9e1159e4b6c19f058467cf15cc441e04d0b7cfe17a0f184761cdf1",
+      "strategy_data_sha256": "46a712089c3077d5924ec725affb2d6293a24a9c034b4704a224b2fd705a0b38",
+      "fetched_sha256": {
+        "wasm64_relay.wasm": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11",
+        "membrane.js": "be152864f0125baa793e6b36c4471fd87296f0ee67feb15fb78eafeb4d891743",
+        "selector.js": "e37b56a2d932682dff4cd1f79cdef838a0056230f34169fdfc348788dbc6cb9f",
+        "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+        "index.html": "86876c88a50605e593a1d164b69961b8af3aa0fdbab8b7079f34f6a611188c59",
+        "manifest.webmanifest": "5d16d70b9b46d1fa74ba0427c5474e37f7eef0f13d7ff5e0c9af127cbb400129",
+        "sw.js": "efd088718d47a36c0557cef432165a1b21e82662214de22c9bf136b8593bb235"
+      },
+      "on_disk_sha256": {
+        "bundle.json": "fd38964f26d838e5e12bfd8a06b7a42d4e8c56d0b2f7bbeeccae39031174232d",
+        "index.html": "86876c88a50605e593a1d164b69961b8af3aa0fdbab8b7079f34f6a611188c59",
+        "manifest.webmanifest": "5d16d70b9b46d1fa74ba0427c5474e37f7eef0f13d7ff5e0c9af127cbb400129",
+        "membrane.js": "be152864f0125baa793e6b36c4471fd87296f0ee67feb15fb78eafeb4d891743",
+        "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+        "selector.js": "e37b56a2d932682dff4cd1f79cdef838a0056230f34169fdfc348788dbc6cb9f",
+        "sw.js": "efd088718d47a36c0557cef432165a1b21e82662214de22c9bf136b8593bb235",
+        "wasm64_relay.wasm": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+      },
+      "recorded_in_manifest": {
+        "wasm64_relay.wasm": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11",
+        "membrane.js": "be152864f0125baa793e6b36c4471fd87296f0ee67feb15fb78eafeb4d891743",
+        "selector.js": "e37b56a2d932682dff4cd1f79cdef838a0056230f34169fdfc348788dbc6cb9f",
+        "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+        "index.html": "86876c88a50605e593a1d164b69961b8af3aa0fdbab8b7079f34f6a611188c59",
+        "manifest.webmanifest": "5d16d70b9b46d1fa74ba0427c5474e37f7eef0f13d7ff5e0c9af127cbb400129",
+        "sw.js": "efd088718d47a36c0557cef432165a1b21e82662214de22c9bf136b8593bb235"
+      },
+      "every_fetched_file_as_recorded": true
+    }
+  },
+  "bundle_hashes_after": {
+    "bundle.json": "fd38964f26d838e5e12bfd8a06b7a42d4e8c56d0b2f7bbeeccae39031174232d",
+    "index.html": "86876c88a50605e593a1d164b69961b8af3aa0fdbab8b7079f34f6a611188c59",
+    "manifest.webmanifest": "5d16d70b9b46d1fa74ba0427c5474e37f7eef0f13d7ff5e0c9af127cbb400129",
+    "membrane.js": "be152864f0125baa793e6b36c4471fd87296f0ee67feb15fb78eafeb4d891743",
+    "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+    "selector.js": "e37b56a2d932682dff4cd1f79cdef838a0056230f34169fdfc348788dbc6cb9f",
+    "sw.js": "efd088718d47a36c0557cef432165a1b21e82662214de22c9bf136b8593bb235",
+    "wasm64_relay.wasm": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+  },
+  "requests": [
+    "http://127.0.0.1:36711/index.html",
+    "http://127.0.0.1:36711/runtime.js",
+    "http://127.0.0.1:36711/selector.js",
+    "http://127.0.0.1:36711/membrane.js",
+    "http://127.0.0.1:36711/bundle.json",
+    "http://127.0.0.1:36711/wasm64_relay.wasm",
+    "http://127.0.0.1:36711/membrane.js",
+    "http://127.0.0.1:36711/selector.js",
+    "http://127.0.0.1:36711/runtime.js",
+    "http://127.0.0.1:36711/index.html",
+    "http://127.0.0.1:36711/manifest.webmanifest",
+    "http://127.0.0.1:36711/sw.js",
+    "http://127.0.0.1:36711/wasm64_relay.wasm"
+  ],
+  "console": [
+    "WebGPU is experimental on this platform. See https://github.com/gpuweb/gpuweb/wiki/Implementation-Status#implementation-status",
+    "Failed to create WebGPU Context Provider",
+    "WebGPU is experimental on this platform. See https://github.com/gpuweb/gpuweb/wiki/Implementation-Status#implementation-status",
+    "Failed to create WebGPU Context Provider"
+  ],
+  "finished": "2026-09-24T18:47:48.727Z",
+  "verdict": {
+    "driven_through_shell": true,
+    "transfers_executed": 1,
+    "payloads": 2,
+    "e0_plan": 0,
+    "e0_all_exact": true,
+    "e0_backends": [
+      "CPU_WASM64"
+    ],
+    "loss_attempted": null,
+    "loss_witnessed": null,
+    "e1_plan": null,
+    "e1_all_exact": null,
+    "e1_backends": null,
+    "stale_plan_invalidated": null,
+    "epochs": [
+      "E0"
+    ],
+    "bundle_unchanged": true,
+    "artifacts_as_recorded": true,
+    "only_bundle_files_requested": true,
+    "no_runtime_codegen": true,
+    "service_worker_registered": true,
+    "cache_storage_populated": true,
+    "cross_origin_isolated": false,
+    "shared_array_buffer": false,
+    "expectations_met": true
+  }
+}

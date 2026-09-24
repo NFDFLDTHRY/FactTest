@@ -1,0 +1,6 @@
+$ sh -c rm -rf /home/user/factory-target-w32 && mkdir -p evidence/D26/factory && sh tests/sync/collision-witness.sh evidence/D26/factory/collision.json && sh tests/factory/run-witnesses.sh tests/factory/witnesses.json /home/user/factory-target-w32 evidence/D26/factory/witnesses.json evidence/D26/factory/logs collision=evidence/D26/factory/collision.json
+(cwd .)
+PASS collision witness: refused PASS, relocated PASS
+PASS witnesses: 29 tests (29 ok, 0 failed); 16 of 16 reasons refused for the named reason; 5 of 5 positive paths; judge 636a60eac010
+
+[exit 0] expected 0

@@ -1,0 +1,65 @@
+{
+  "module": "/home/user/factory-target-w28/wasm64-unknown-unknown/debug/factc_wasm_abi.wasm",
+  "sha256": "c14821d1a031a26cd26930bfd33265e882bd111e33009097f0dac80166329fac",
+  "byte_len": 12560982,
+  "memories": [
+    "I64 min=320 max=None shared=false"
+  ],
+  "imports": [],
+  "exports": [
+    "memory:2",
+    "artifact_count:0",
+    "bundle_file_bytes:0",
+    "bundle_file_count:0",
+    "bundle_file_path:0",
+    "check_or_compile:0",
+    "input_buffer_len:0",
+    "input_buffer_ptr:0",
+    "observe:0",
+    "output_buffer_len:0",
+    "output_buffer_ptr:0",
+    "query_abi_version:0",
+    "query_required_workspace:0",
+    "read_artifact:0",
+    "read_artifact_metadata:0",
+    "read_diagnostics:0",
+    "reset_workspace:0",
+    "submit_contracts:0",
+    "submit_evidence_tape:0",
+    "submit_machine_state:0",
+    "submit_metrics:0",
+    "submit_source_bytes:0"
+  ],
+  "checks": [
+    {
+      "check": "module_structure",
+      "status": "PASS",
+      "detail": "17 sections"
+    },
+    {
+      "check": "memory_declared",
+      "status": "PASS",
+      "detail": "I64 min=320 max=None shared=false"
+    },
+    {
+      "check": "all_memories_i64_address_type",
+      "status": "PASS",
+      "detail": "wasm32 (i32 address) memories are forbidden by project law FT-003"
+    },
+    {
+      "check": "imports_listed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exports_listed",
+      "status": "PASS",
+      "detail": "memory:2, artifact_count:0, bundle_file_bytes:0, bundle_file_count:0, bundle_file_path:0, check_or_compile:0, input_buffer_len:0, input_buffer_ptr:0, observe:0, output_buffer_len:0, output_buffer_ptr:0, query_abi_version:0, query_required_workspace:0, read_artifact:0, read_artifact_metadata:0, read_diagnostics:0, reset_workspace:0, submit_contracts:0, submit_evidence_tape:0, submit_machine_state:0, submit_metrics:0, submit_source_bytes:0"
+    },
+    {
+      "check": "artifact_identity",
+      "status": "PASS",
+      "detail": "sha256 c14821d1a031a26cd26930bfd33265e882bd111e33009097f0dac80166329fac bytes 12560982"
+    }
+  ]
+}

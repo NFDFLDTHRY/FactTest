@@ -1,0 +1,40 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D26/selection.json --runbook tests/reprove/runbook.json --kind build --out evidence/D26
+(cwd .)
+PASS kernel-sections: sh tests/implementation/build-kernels.sh evidence/D26/kernel ${REPROVE_KERNELS:-/home/user/factory-builds/d19- (33 s)
+PASS kernel-sections FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT
+PASS kernel-sections FACT-KERNEL-IDENTITY-D24
+PASS physical: CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -q -p factc (3 s)
+PASS physical: CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} RUSTFLAGS='-C link-arg=-zstack-size=1 (17 s)
+PASS physical: node tests/genericity/run-specimens.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/ (7 s)
+PASS physical: node tests/genericity/run-attacks.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/fa (0 s)
+PASS physical: sh tests/commissioning/run-anti-cheat.sh evidence/D26/anti-cheat (0 s)
+PASS physical: node tests/physical/run-webapp.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc (63 s)
+PASS physical FACT-GPU-EPOCH-INVALIDATION
+PASS physical FACT-OPAQUE-FRAME-SECURE-CONTEXT
+PASS physical FACT-RESELECTION-NO-CODEGEN
+PASS physical FACT-SH-BROKEN-SEED-FATAL
+PASS physical FACT-SH-BROKER-FED-GENERATION
+PASS physical FACT-SH-GENERATED-OFFLINE
+PASS physical FACT-SH-GIT-IDENTITY
+PASS physical FACT-SH-IDB-CAS
+PASS physical FACT-SH-INTERRUPTED-UPDATE
+PASS physical FACT-SH-OPAQUE-CONFINEMENT
+PASS physical FACT-SH-OPFS-SERVED-APP
+PASS physical FACT-SH-ORIGIN-SCOPED-STORAGE
+PASS physical FACT-SH-SW-GRANTS-COI
+PASS physical FACT-SH-SW-NO-SELF-UPDATE
+PASS qualified-proof: CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -p factory (2 s)
+PASS qualified-proof: CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} sh tests/toolchain/run-qualified-proo (120 s)
+PASS qualified-proof: CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} node tests/toolchain/run-crate-dag.mj (27 s)
+PASS qualified-proof FACT-COMPILE-FAIL-WITNESSED
+PASS qualified-proof FACT-CORE-ONLY-GRAPH
+PASS qualified-proof FACT-D23-COMPILER-DAG-EXECUTED
+PASS qualified-proof FACT-D23-QUALIFIED-PROOF
+PASS qualified-proof FACT-D23-WASM-TRANSPORT-COMPLETE
+PASS qualified-proof FACT-FIRST-PARTY-GRAPH
+PASS qualified-proof FACT-PROOF-SETS-DECLARED
+PASS qualified-proof FACT-QUALIFIED-JUDGE-RERUN
+PASS qualified-proof FACT-TOOLCHAIN-PINNED
+PASS qualified-proof FACT-WASM64-MODULE-I64
+
+[exit 0] expected 0

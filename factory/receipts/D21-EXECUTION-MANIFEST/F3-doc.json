@@ -1,0 +1,155 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21-EXECUTION-MANIFEST-F3-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F3-doc",
+  "workpiece_id": "W25",
+  "delta_id": "D21-EXECUTION-MANIFEST",
+  "canonical_base": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+  "input_artifacts": [
+    "tests/manifest/components.json",
+    "the D20 graph",
+    "receipts",
+    "station registry"
+  ],
+  "open_tree": "1bf165f2fe3f46bdc1793d082ff10f79188ad7d5",
+  "close_tree": "120fd947f1176c10a6c56d82ae8cdad0e692d6a8",
+  "changed_paths": [
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+    "design/execution-manifest/manifest.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-build-manifest.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-deterministic.log"
+  ],
+  "output_artifacts": [
+    "design/execution-manifest/manifest.json",
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21-EXECUTION-MANIFEST"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-build-manifest.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-deterministic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b --delta D21-EXECUTION-MANIFEST --epoch D21 --out design/execution-manifest",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-build-manifest.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b --delta D21-EXECUTION-MANIFEST --epoch D21 --out $T >/dev/null && cmp $T/manifest.json design/execution-manifest/manifest.json && cmp $T/CURRENT-EXECUTION-MANIFEST.md design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md && echo 'manifest deterministic (rebuilt byte-identically)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-deterministic.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/execution-manifest/manifest.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-build-manifest.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-deterministic.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T12:27:25Z",
+  "status": "PASS"
+}

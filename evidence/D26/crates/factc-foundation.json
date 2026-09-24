@@ -1,0 +1,163 @@
+{
+ "crate": "factc-foundation",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "compiler/foundation/Cargo.toml",
+ "dependencies": [],
+ "consumers": [
+  "factory",
+  "factc-source",
+  "factc-semantic",
+  "factc-capability",
+  "factc-implementation",
+  "factc-planning",
+  "factc-verifier",
+  "factc-codegen",
+  "factc-bundle",
+  "factc-observe",
+  "factc-kernel",
+  "factc-wasm-abi",
+  "factc"
+ ],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factc-foundation",
+   "exit": 0,
+   "ms": 27,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factc-foundation",
+   "exit": 0,
+   "ms": 27,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "command": "cargo +1.94.1 test -p factc-foundation",
+   "exit": 0,
+   "ms": 204,
+   "tests": {
+    "passed": 9,
+    "failed": 0
+   },
+   "tail": [
+    "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s",
+    "     Running unittests src/lib.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factc_foundation-4680fb8d21471dda)",
+    "   Doc-tests factc_foundation"
+   ]
+  },
+  {
+   "step": "consumer:factory",
+   "command": "cargo +1.94.1 test -p factory",
+   "exit": 0,
+   "ms": 7744,
+   "tests": {
+    "passed": 29,
+    "failed": 0
+   },
+   "tail": [
+    "     Running unittests src/main.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factory-3be3f278e1e07394)",
+    "     Running tests/factory_law.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factory_law-d56c0c15998918b0)",
+    "   Doc-tests factory"
+   ]
+  },
+  {
+   "step": "consumer:factc-source",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-semantic",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-capability",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-implementation",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-planning",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-verifier",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-codegen",
+   "command": "cargo +1.94.1 test -p factc-codegen",
+   "exit": 0,
+   "ms": 67,
+   "tests": {
+    "passed": 1,
+    "failed": 0
+   },
+   "tail": [
+    "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s",
+    "     Running unittests src/lib.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factc_codegen-f2b9a4a95494026b)",
+    "   Doc-tests factc_codegen"
+   ]
+  },
+  {
+   "step": "consumer:factc-bundle",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-observe",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-kernel",
+   "command": "cargo +1.94.1 test -p factc-kernel",
+   "exit": 0,
+   "ms": 835,
+   "tests": {
+    "passed": 83,
+    "failed": 0
+   },
+   "tail": [
+    "     Running tests/observe_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/observe_ladder-92877860eab04228)",
+    "     Running tests/strategy_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/strategy_ladder-619e49d88d66cb9c)",
+    "   Doc-tests factc_kernel"
+   ]
+  },
+  {
+   "step": "consumer:factc-wasm-abi",
+   "exit": null,
+   "note": "WASM64_KERNEL_SET root: built and driven in Chromium below"
+  },
+  {
+   "step": "consumer:factc",
+   "command": "cargo +1.94.1 test -p factc",
+   "exit": 0,
+   "ms": 127,
+   "tests": {
+    "passed": 8,
+    "failed": 0
+   },
+   "tail": [
+    "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s",
+    "     Running unittests src/main.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factc-3bce99a9ab01d2dd)",
+    "     Running tests/driver.rs (/home/user/factory-builds/d26-commission-target/debug/deps/driver-e3cf271627571e89)"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

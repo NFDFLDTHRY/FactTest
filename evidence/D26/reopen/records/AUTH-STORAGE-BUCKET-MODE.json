@@ -1,0 +1,81 @@
+{
+ "authority": "AUTH-STORAGE-BUCKET-MODE",
+ "authority_class": "LIVING_STANDARD",
+ "cited": {
+  "url": "https://storage.spec.whatwg.org/",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "living standard source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/whatwg/storage",
+  "branch": "main",
+  "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+  "path": "storage.bs",
+  "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+  "observed": "2026-09-24",
+  "locator": "line 364 (mode), lines 568-572 (clear best-effort under pressure), line 619 (persist() [Exposed=Window])"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   364,
+   364
+  ],
+  "window_sha256": "f18b9b6f3abe1720fd1fc5f72cca83e543525468176ea86816010a7e8ef09759",
+  "window_excerpt": "\"<code>best-effort</code>\" or \"<code>persistent</code>\". It is initially \"<code>best-effort</code>\".",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   364,
+   364
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "group": "WHATWG"
+  },
+  "declared_at_tip": {
+   "group": "WHATWG"
+  },
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 364,
+  "candidates": {
+   "section": {
+    "id": "#buckets",
+    "line": 350,
+    "kind": "id attribute"
+   },
+   "definition": {
+    "id": "#bucket-mode",
+    "line": 363,
+    "kind": "id attribute"
+   }
+  }
+ }
+}

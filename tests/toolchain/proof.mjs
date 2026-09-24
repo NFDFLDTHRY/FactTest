@@ -537,6 +537,27 @@ function obBrowserAbi(opts) {
     verdict: r.spawn_error ? 'UNK' : (reasons.length ? 'FAIL' : 'PASS'), reason: reasons.length ? reasons.join('; ') : `Chromium ${(j.host || '').match(/HeadlessChrome\/[\d.]+/)?.[0] || j.host}: abi_version 1, imports [], ${j.exports.length} exports, memory_pages ${j.memory_pages}` });
 }
 
+function obBrowserBuild(opts) {
+  // D23: the whole transport in Chromium - BUILD (source + registry + metrics) and OBSERVE (tape + identities) through
+  // the wasm exports; every artifact and bundle file compared byte-for-byte with the native driver's run
+  const out = resolve(opts.out); const root = resolve(opts.root || '.');
+  const dir = join(out, opts.id + '.browser-build'); mkdirSync(dir, { recursive: true });
+  const args = ['host/harness/kernel-build-probe.mjs', resolve(root, opts.module), '--source', opts.source, '--contracts', opts.contracts, '--metrics', opts.metrics, '--tape', opts.tape, '--system', opts.system,
+    '--evidence-class', opts['evidence-class'] || 'PHYSICAL_BROWSER', '--native-build', opts['native-build'], '--native-observe', opts['native-observe'], '--out', dir];
+  const r = run('node', args, root);
+  writeFileSync(join(dir, 'harness.log'), r.stdout + r.stderr);
+  let j = null; try { j = JSON.parse(readFileSync(join(dir, 'probe.json'), 'utf8')); } catch { }
+  const reasons = [];
+  if (r.spawn_error) reasons.push('node unavailable: ' + r.spawn_error);
+  else if (!j) reasons.push(`harness exit ${r.exit}: ${r.stderr.trim().split('\n').slice(-1)[0] || 'no probe.json'}`);
+  else if (j.status !== 'PASS') reasons.push(...j.problems);
+  const identical = j ? [...j.build.compare, ...j.observe.compare].filter(x => x.verdict === 'IDENTICAL').length : 0;
+  const total = j ? j.build.compare.length + j.observe.compare.length : 0;
+  record(out, { ...baseRecord(opts, 'T9-P8', 'the wasm64 module runs BUILD and OBSERVE in Chromium through the transport exports with zero imports and produces byte-for-byte the native driver\'s diagnostics, artifacts and bundle'), target: WASM64, profile: /\/release\//.test(opts.module) ? 'release' : 'dev', module: opts.module, command: ['node', ...args],
+    observed: j ? { host: j.host, kernel_sha256: j.kernel_sha256, exports: j.exports.length, imports: j.imports, build_status: j.build.status, build_ms: j.build.ms, bundle_files: j.build.bundle_files.length, observe_status: j.observe.status, identical, compared: total } : null,
+    verdict: r.spawn_error ? 'UNK' : (reasons.length ? 'FAIL' : 'PASS'), reason: reasons.length ? reasons.join('; ') : `Chromium ${(j.host || '').match(/HeadlessChrome\/[\d.]+/)?.[0] || j.host}: BUILD status ${j.build.status} in ${j.build.ms} ms, OBSERVE status ${j.observe.status}; ${identical}/${total} files identical to the native driver (${j.exports.length} exports, imports [])` });
+}
+
 // ----------------------------------------------------------------------------------------------- mutants (T9-P9)
 function runCheck(check, ctx) {
   const { dir, target, root, factory } = ctx;
@@ -639,13 +660,14 @@ try {
     case 'depcheck-weak': obDepcheckWeak(opts); break;
     case 'wasm-inspect': obWasmInspect(opts); break;
     case 'browser-abi': obBrowserAbi(opts); break;
+    case 'browser-build': obBrowserBuild(opts); break;
     case 'mutants': obMutants(opts); break;
     case 'summary': obSummary(opts); break;
     case 'pins': obPins(opts); break;
     case 'sets-check': obSetsCheck(opts); break;
     case 'kernel-identity': obKernelIdentity(opts); break;
     default:
-      console.error('usage: proof.mjs <toolchain|selection|cargo|compile-fail|nostd-scan|nostd-graph|deps|depcheck-weak|wasm-inspect|browser-abi|mutants|summary|pins|sets-check|kernel-identity> --out DIR [--root DIR] [--id ID] ...');
+      console.error('usage: proof.mjs <toolchain|selection|cargo|compile-fail|nostd-scan|nostd-graph|deps|depcheck-weak|wasm-inspect|browser-abi|browser-build|mutants|summary|pins|sets-check|kernel-identity> --out DIR [--root DIR] [--id ID] ...');
       process.exit(2);
   }
 } catch (e) { console.error('harness malfunction:', e && e.stack || e); process.exit(3); }

@@ -1,0 +1,30 @@
+{
+ "id": "CL-T4",
+ "trace": "T",
+ "authority": "AUTH-HTML-COI",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "1a249c2a40bd341f7c2c0c9954a9a264b1983b93",
+  "sha256": "2bddefe3791e9003d58e9d438c2dfa98b4a0c1967fc5a1e5327d73a6e3ac9a80",
+  "bytes": 7915793
+ },
+ "locator": {
+  "text": "<p>If <span>IsSharedArrayBuffer</span>(<var>value</var>) is true:",
+  "line_start": 10512,
+  "line_end": 10519,
+  "derivation": "anchor text",
+  "enclosing_section": "#structuredserializeinternal (line 10447)"
+ },
+ "window": 8,
+ "consequence": "posting a SharedArrayBuffer to another agent requires the cross-origin isolated capability (the standard gate for sharing memory with a worker)",
+ "excerpt": "      <p>If <span>IsSharedArrayBuffer</span>(<var>value</var>) is true:\n\n      <ol>\n       <li>\n        <p>If the <span>current settings object</span>'s <span\n        data-x=\"concept-settings-object-cross-origin-isolated-capability\">cross-origin isolated\n        capability</span> is false, then throw a <span>\"<code>DataCloneError</code>\"</span>\n        <code>DOMException</code>.</p>",
+ "excerpt_sha256": "8fead2c0fc93daf4e4eb1c32466a74b8866de293c9b54492bc087d106168babf",
+ "must_contain": {
+  "cross-origin isolated": true,
+  "DataCloneError": true
+ },
+ "status": "VERIFIED"
+}

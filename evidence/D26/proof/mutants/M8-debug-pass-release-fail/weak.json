@@ -1,0 +1,48 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "test",
+    "--message-format=json"
+  ],
+  "exit": 0,
+  "packages": [
+    "m8-debug-pass-release-fail"
+  ],
+  "selection": [
+    "m8-debug-pass-release-fail:m8_debug_pass_release_fail[lib]",
+    "m8-debug-pass-release-fail:m8_debug_pass_release_fail[lib]{test}"
+  ],
+  "tests": {
+    "binaries": [
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../target/debug/deps/m8_debug_pass_release_fail-32045bf8be83af6a"
+      },
+      {
+        "target": "doc-tests m8_debug_pass_release_fail",
+        "exe": null
+      }
+    ],
+    "results": [
+      {
+        "status": "ok",
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      }
+    ],
+    "passed": 1,
+    "failed": 0,
+    "failed_names": [],
+    "finished": "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s"
+  },
+  "reason": "exit 0; packages [m8-debug-pass-release-fail]; 1 passed / 0 failed"
+}

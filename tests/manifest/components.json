@@ -1,0 +1,2326 @@
+{
+ "schema": "facttest-execution-manifest-components/1",
+ "law": "design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md",
+ "tiers": {
+  "PRODUCTION": "LIVE PRODUCTION: shipped machinery (compiler crates, host driver, workspace root) and the generated-object templates",
+  "FACTORY": "LIVE FACTORY MACHINERY: the Factory plane and the line-import tool",
+  "TEST": "LIVE TEST MACHINERY: proof, probe, epoch-builder and gate tools",
+  "FIXTURE": "REFERENCE FIXTURE (specimen/test data consumed by tests)",
+  "REFERENCE": "REFERENCE FIXTURE (reproducibility copies of authorities; pins, never current authority)",
+  "RECORD": "LIVE RECORD (handoff, ledger, graph, manifests, Factory records)",
+  "LAW": "LIVE LAW",
+  "HISTORICAL": "HISTORICAL (never rewritten)",
+  "EVIDENCE": "EVIDENCE (per-delta packages; immutable once integrated)"
+ },
+ "required_coverage": {
+  "FACTORY": {
+   "router": [
+    "FACTORY-CLI",
+    "FACTORY-OPS"
+   ],
+   "path authority": [
+    "FACTORY-PATHS"
+   ],
+   "registry": [
+    "FACTORY-REGISTRY"
+   ],
+   "workpieces": [
+    "FACTORY-OPS",
+    "FACTORY-GIT"
+   ],
+   "receipts": [
+    "FACTORY-OPS",
+    "FACTORY-IDENTITY"
+   ],
+   "verifier": [
+    "FACTORY-OPS"
+   ],
+   "integration": [
+    "FACTORY-OPS",
+    "FACTORY-GIT"
+   ],
+   "reinspection": [
+    "FACTORY-OPS"
+   ],
+   "hygiene": [
+    "FACTORY-HYGIENE",
+    "TEST-HYGIENE"
+   ],
+   "sync/import machinery": [
+    "SYNC-IMPORT"
+   ]
+  },
+  "COMPILER": {
+   "foundation": [
+    "CRATE-FOUNDATION"
+   ],
+   "source": [
+    "CRATE-SOURCE"
+   ],
+   "semantic": [
+    "CRATE-SEMANTIC"
+   ],
+   "capability": [
+    "CRATE-CAPABILITY"
+   ],
+   "implementation": [
+    "CRATE-IMPLEMENTATION"
+   ],
+   "planning": [
+    "CRATE-PLANNING"
+   ],
+   "verifier": [
+    "CRATE-VERIFIER"
+   ],
+   "codegen": [
+    "CRATE-CODEGEN"
+   ],
+   "bundle": [
+    "CRATE-BUNDLE"
+   ],
+   "observe": [
+    "CRATE-OBSERVE"
+   ],
+   "kernel": [
+    "CRATE-KERNEL"
+   ],
+   "wasm-abi": [
+    "CRATE-WASM-ABI"
+   ]
+  },
+  "HOST": {
+   "factc": [
+    "FACTC"
+   ],
+   "browser harnesses": [
+    "HARNESS-KERNEL-HOST",
+    "HARNESS-BUNDLE-PROBE",
+    "HARNESS-WEBAPP-PROBE"
+   ]
+  },
+  "WEB OUTPUT": {
+   "templates": [
+    "TEMPLATE-MEMBRANE",
+    "TEMPLATE-MANIFEST"
+   ],
+   "adapters": [
+    "ADAPTER-WASM64",
+    "ADAPTER-WEBGPU"
+   ],
+   "selector": [
+    "TEMPLATE-SELECTOR"
+   ],
+   "runtime": [
+    "TEMPLATE-RUNTIME"
+   ],
+   "generated shell": [
+    "TEMPLATE-SHELL"
+   ],
+   "service worker": [
+    "TEMPLATE-SW"
+   ]
+  },
+  "PROOF / TEST": {
+   "bootstrap": [
+    "TEST-BOOTSTRAP"
+   ],
+   "language": [
+    "TEST-LANGUAGE",
+    "KERNEL-LADDERS"
+   ],
+   "commissioning": [
+    "TEST-COMMISSIONING"
+   ],
+   "toolchain": [
+    "TEST-TOOLCHAIN"
+   ],
+   "envmap": [
+    "TEST-ENVMAP"
+   ],
+   "selfhost": [
+    "TEST-SELFHOST"
+   ],
+   "hygiene": [
+    "TEST-HYGIENE"
+   ],
+   "reference": [
+    "TEST-REFERENCE"
+   ],
+   "reconcile": [
+    "TEST-RECONCILE"
+   ],
+   "reprove": [
+    "TEST-REPROVE"
+   ],
+   "sync": [
+    "SYNC-IMPORT"
+   ],
+   "genericity": [
+    "TEST-GENERICITY"
+   ],
+   "physical runtime": [
+    "TEST-PHYSICAL"
+   ],
+   "final audit": [
+    "TEST-AUDIT"
+   ]
+  }
+ },
+ "components": [
+  {
+   "id": "FACTORY-CLI",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/main.rs",
+    "factory/src/lib.rs",
+    "factory/Cargo.toml"
+   ],
+   "owner": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "STATION-REGISTRY.md"
+   ],
+   "input": "command line (delta.json, fixture.json, paths)",
+   "operation": "router: dispatch delta check / workpiece create|audit|retire / station open|close / verify / integrate / reinspect / depcheck / nostd-check / wasm-inspect / evidence index",
+   "output": "Report (PASS/FAIL per check, exit code)",
+   "dependencies": [
+    "FACTORY-MODEL",
+    "FACTORY-OPS",
+    "FACTORY-HYGIENE",
+    "FACTORY-CHECKS"
+   ],
+   "consumers": [
+    "route scripts (procedure docs/HANDOFF.md section 4)",
+    "every delta fixture"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "factory/tests/factory_law.rs"
+   ],
+   "task_regression": "D22 factory self-qualification (cargo +1.94.1 test -p factory; negative witnesses)",
+   "runtime_probe": "PROBE-WORKPIECE-VERIFY"
+  },
+  {
+   "id": "FACTORY-MODEL",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/model.rs",
+    "factory/src/json.rs"
+   ],
+   "owner": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md"
+   ],
+   "input": "delta.json / fixture.json / station json / state.json",
+   "operation": "parse and validate StructuralDelta, Fixture, StationSpec, WorkpieceState; first-party JSON reader/writer",
+   "output": "typed records",
+   "dependencies": [],
+   "consumers": [
+    "FACTORY-CLI",
+    "FACTORY-OPS"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "factory/tests/factory_law.rs"
+   ],
+   "task_regression": "D22",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "FACTORY-PATHS",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/paths.rs"
+   ],
+   "owner": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "STATION-REGISTRY.md (D13 annotation: literal surfaces)"
+   ],
+   "input": "surface lists and paths",
+   "operation": "literal path authority: covers / within / subset / overlap / validate_surface (only \"*\", \"dir/\" or an exact file)",
+   "output": "cover decisions; rejected surface forms",
+   "dependencies": [],
+   "consumers": [
+    "FACTORY-OPS",
+    "FACTORY-HYGIENE"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "factory/tests/factory_law.rs (f09-f12)",
+    "tests/envmap/envmap.mjs paths-probe (restated rule)",
+    "tests/hygiene/registry-check.mjs"
+   ],
+   "task_regression": "D22",
+   "runtime_probe": "PROBE-PATHS-LITERAL"
+  },
+  {
+   "id": "FACTORY-REGISTRY",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/registry/stations/"
+   ],
+   "owner": [
+    "STATION-REGISTRY.md",
+    "FACTORY-CONTRACTS.md section 4"
+   ],
+   "input": "station specs (JSON, authoritative for surfaces)",
+   "operation": "StationSpec lookup by station_id; capability tags; MAY/MUST NOT surfaces; source_nonmutating",
+   "output": "the station a fixture binds to",
+   "dependencies": [
+    "FACTORY-PATHS"
+   ],
+   "consumers": [
+    "FACTORY-OPS (load_station)",
+    "tests/hygiene/registry-check.mjs",
+    "tests/envmap/envmap.mjs paths-probe"
+   ],
+   "station": "S-DOC (bootstrap registry material when a delta introduces a spec)",
+   "fixture_type": "json",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "factory/tests/factory_law.rs (station lookup, f02, f09)",
+    "tests/hygiene/registry-check.mjs"
+   ],
+   "task_regression": "D22",
+   "runtime_probe": "PROBE-PATHS-LITERAL",
+   "note": "S-ANNOTATE-OWNER (D18) and S-ANNOTATE (D13) were introduced as bootstrap registry material by the delta that first used them"
+  },
+  {
+   "id": "FACTORY-OPS",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/ops.rs"
+   ],
+   "owner": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md"
+   ],
+   "input": "StructuralDelta + Fixture + workpiece tree + receipts",
+   "operation": "delta_check; workpiece_create (detached worktree at canonical_base); fixture_check; station_open (open tree); station_close (run commands, diff trees, changed paths within fixture/delta authority, must_not_change, read-only stations, expected outputs, receipt format 2); verify (receipts, unreceipted change, required/forbidden paths, must_not_change tree identity, base unmoved, verifier identity); integrate (base unmoved, working tree clean, commit with trailers, ff-only); reinspect (canonical tree == verified tree; reinspect commands)",
+   "output": "receipts, verification.json, integration commit, reinspect report",
+   "dependencies": [
+    "FACTORY-MODEL",
+    "FACTORY-PATHS",
+    "FACTORY-GIT",
+    "FACTORY-IDENTITY",
+    "FACTORY-REGISTRY"
+   ],
+   "consumers": [
+    "FACTORY-CLI"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "factory/tests/factory_law.rs (f00-f28)"
+   ],
+   "task_regression": "D22 (positive path + negative witnesses)",
+   "runtime_probe": "PROBE-WORKPIECE-VERIFY"
+  },
+  {
+   "id": "FACTORY-GIT",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/git.rs"
+   ],
+   "owner": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md"
+   ],
+   "input": "repository paths, revisions",
+   "operation": "git subprocess wrapper: rev-parse, tree of commit, write-tree of worktree, diff-tree paths, worktree add, commit, ff merge, branch head",
+   "output": "strings / errors",
+   "dependencies": [],
+   "consumers": [
+    "FACTORY-OPS",
+    "FACTORY-HYGIENE"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); git 2.43.0",
+   "focused_tests": [
+    "factory/tests/factory_law.rs (through ops)"
+   ],
+   "task_regression": "D22",
+   "runtime_probe": "PROBE-WORKPIECE-VERIFY"
+  },
+  {
+   "id": "FACTORY-IDENTITY",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/identity.rs"
+   ],
+   "owner": [
+    "FACTORY-CONTRACTS.md (D13 annotation: receipt format 2)"
+   ],
+   "input": "fixture identity probes",
+   "operation": "sha256 of the judge binary, host identity, identity probe execution; environment_identity for receipts and verification",
+   "output": "environment_identity object",
+   "dependencies": [],
+   "consumers": [
+    "FACTORY-OPS"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "factory/tests/factory_law.rs (f13, f22)"
+   ],
+   "task_regression": "D22",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "FACTORY-CHECKS",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/checks.rs"
+   ],
+   "owner": [
+    "FACTORY-CONTRACTS.md (D13 annotation: proof weight)",
+    "tests/toolchain/proof-sets.json HEURISTIC"
+   ],
+   "input": "Cargo.toml lists, crate dirs, wasm modules, evidence dirs",
+   "operation": "depcheck and nostd-check (HEURISTIC, proof weight NONE, never gates); wasm-inspect (memory64 module reader; wasm32 refused unless --allow-wasm32); evidence index (sha256 per file)",
+   "output": "reports; wasm inspection json; evidence/<delta>/index.json",
+   "dependencies": [],
+   "consumers": [
+    "tests/bootstrap/run-negative-fixtures.sh (depcheck)",
+    "tests/toolchain/proof.mjs (depcheck-weak, nostd-scan, wasm-inspect)",
+    "tests/bootstrap/run-b9-b11.sh (wasm-inspect)",
+    "tests/language/run-byte-relay.sh (wasm-inspect)",
+    "every F<n>-evidence index step"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "factory/tests/factory_law.rs (f16)",
+    "tests/toolchain/run-mutants.sh (M4 scanner bypass)"
+   ],
+   "task_regression": "D22 (heuristics stay weight NONE); D23 (wasm-inspect on fresh kernels)",
+   "runtime_probe": "PROBE-WASM-INSPECT"
+  },
+  {
+   "id": "FACTORY-HYGIENE",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "factory/src/hygiene.rs"
+   ],
+   "owner": [
+    "FACTORY-CONTRACTS.md (D13 annotation: workpiece hygiene)"
+   ],
+   "input": "workpiece root, canonical repo, branch, current workpiece",
+   "operation": "audit (RETIRABLE / KEEP / CURRENT / ABSENT with reasons and proofs); retire (removes exactly RETIRABLE objects; retire receipt)",
+   "output": "audit.json, retire.json",
+   "dependencies": [
+    "FACTORY-GIT",
+    "FACTORY-PATHS"
+   ],
+   "consumers": [
+    "FACTORY-CLI",
+    "every F<n>-evidence audit -> retire -> audit step"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "factory/tests/factory_law.rs (f14, f15, f27, f28)"
+   ],
+   "task_regression": "D22 (unsafe cleanup candidate, unintegrated retirement witnesses)",
+   "runtime_probe": "PROBE-WORKPIECE-AUDIT"
+  },
+  {
+   "id": "FACTORY-TESTS",
+   "tier": "TEST",
+   "area": "factory",
+   "paths": [
+    "factory/tests/factory_law.rs",
+    "tests/factory/"
+   ],
+   "owner": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md"
+   ],
+   "input": "scratch repositories built in the test",
+   "operation": "f00 happy path; f01-f13 negative witnesses (unauthorized mutation, fixture wider than station, missing receipt, failed check, moved base, read-only station mutation, unreceipted change, overlapping authority, wildcard surfaces, identity); f14-f15 audit/retire; f16 heuristics weight NONE",
+   "output": "cargo test verdicts",
+   "dependencies": [
+    "FACTORY-OPS",
+    "FACTORY-HYGIENE",
+    "FACTORY-CHECKS"
+   ],
+   "consumers": [
+    "terminal: qualification of the judge (D22)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "rust test",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "self",
+    "tests/factory/run-witnesses.sh (witness register f00-f28 against the run)"
+   ],
+   "task_regression": "D22",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "SYNC-IMPORT",
+   "tier": "FACTORY",
+   "area": "factory",
+   "paths": [
+    "tests/sync/"
+   ],
+   "owner": [
+    "docs/HANDOFF.md section 4 (parallel lines; D20 lesson)",
+    "design/materialization/D20-INTENDED-MAIN-SYNC.md"
+   ],
+   "input": "a line map (base, head, relocations, unions, embeds) + git objects",
+   "operation": "import-line: copy the other line's changes byte-identically from git objects, relocate collisions, union law documents insertion-only, embed ledger blocks; --check verifies every treatment",
+   "output": "files in the workpiece; sync/import.json report",
+   "dependencies": [
+    "FACTORY-GIT (git objects)"
+   ],
+   "consumers": [
+    "D20 fixtures (F1-F4, F13)",
+    "a future parallel-line delta"
+   ],
+   "station": "S-FIXTURE (tool) / S-DOC, S-ANNOTATE, S-EVIDENCE (imports)",
+   "fixture_type": "node esm",
+   "toolchain_target": "node v22.22.2; git 2.43.0",
+   "focused_tests": [
+    "evidence/D20/sync/import.json (177 checked)",
+    "tests/sync/collision-witness.sh (collision refused, relocation byte-identical)"
+   ],
+   "task_regression": "D22 (parallel-line import collision witness)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "CRATE-FOUNDATION",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/foundation/"
+   ],
+   "owner": [
+    "C2-C4, C6, C19 (BOOTSTRAP-CONTRACTS.md); PASS3.md"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "typed ids, spans, bounded arenas, diagnostics, output buffers, JSON writer, SHA-256, hex, wasm module reader",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "every crate",
+    "factory",
+    "factc"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/foundation/src/tests_foundation.rs",
+    "compiler/foundation/src/{sha256,wasm}.rs unit tests",
+    "compiler/kernel/tests/bootstrap_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-foundation"
+  },
+  {
+   "id": "CRATE-SOURCE",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/source/"
+   ],
+   "owner": [
+    "ASCII-GRAMMAR.md; C1"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "semantic-island scanner, tokenizer, statement parser (geometry-independent)",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "semantic",
+    "observe",
+    "implementation (registry dialect reuses the scanner)"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/language_ladder.rs (L00-L35, P6-G01/G02, B4/B8)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-source"
+  },
+  {
+   "id": "CRATE-SEMANTIC",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/semantic/"
+   ],
+   "owner": [
+    "SEMANTIC-MODEL.md; REFINEMENT-LAW.md; PASS4.md"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "SystemAst -> ResolvedSystem -> TypedSystemIR, invariant kernel, refinement law, canonical rendering, ANALYZE/BUILD governance",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "capability",
+    "implementation",
+    "planning",
+    "verifier",
+    "codegen",
+    "bundle",
+    "kernel"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/language_ladder.rs",
+    "commissioning_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-semantic"
+  },
+  {
+   "id": "CRATE-CAPABILITY",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/capability/"
+   ],
+   "owner": [
+    "LOWERING-MODEL.md sections 2-3, 9-10; C7"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "TypedSystemIR -> ObligationSet + CapabilityIR (transfer, capability, effect requirements; pins; obligations)",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "implementation",
+    "planning",
+    "verifier",
+    "codegen"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/lowering_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-capability"
+  },
+  {
+   "id": "CRATE-IMPLEMENTATION",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/implementation/"
+   ],
+   "owner": [
+    "IMPLEMENTATION-CONTRACTS.md; REPRESENTATION-TRANSFER.md; LOWERING-MODEL.md 4-6"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "contract registry dialect (representations, conversions, backends, recipes, metric evidence, epochs) and H_G / H_A(E) enumeration",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "planning",
+    "verifier",
+    "codegen",
+    "bundle"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/lowering_ladder.rs (P5-L01..L06, P5-S01, P6-G03, registry rejections)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-implementation"
+  },
+  {
+   "id": "CRATE-PLANNING",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/planning/"
+   ],
+   "owner": [
+    "PLANNER-COST-MODEL.md; C8"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "finite CandidateStrategy over H_G with objective dispatch and honest result strength; never certifies",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "verifier"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/strategy_ladder.rs (P6-M01..M04, P5-V03/V04/V07)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-planning"
+  },
+  {
+   "id": "CRATE-VERIFIER",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/verifier/"
+   ],
+   "owner": [
+    "VERIFICATION-CERTIFICATES.md; C9; PASS5 16-17"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "independent rule classes over TypedSystemIR, obligations, contracts and a CandidateStrategy; sole owner of VerifiedStrategy; activation receipts",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "codegen",
+    "bundle",
+    "kernel"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/strategy_ladder.rs (P6-V01..V05, P5-V06, P6-G04/G05)",
+    "fixtures/compiler/negative/forge-verified-strategy",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-verifier"
+  },
+  {
+   "id": "CRATE-CODEGEN",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/codegen/"
+   ],
+   "owner": [
+    "CODEGEN-BUNDLE-CONTRACT.md sections 1-4, CodegenRecipe; C17"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "CodegenRecipe engine: VerifiedStrategy -> GeneratedBundle (first-party wasm64 emitter, membrane from templates, selector with strategy data - every transfer relation and per-variant requirements (D24) - and its sha256 identity, runtime, shell, manifest, service worker, bundle.json lineage incl. strategy_data_sha256)",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "bundle",
+    "kernel"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/bundle_ladder.rs (P6-B01..B06, P5-C01..C05, P6-X06)",
+    "compiler/codegen/src/wasm.rs unit test",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-codegen",
+   "exclude": [
+    "compiler/codegen/templates/"
+   ]
+  },
+  {
+   "id": "CRATE-BUNDLE",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/bundle/"
+   ],
+   "owner": [
+    "CODEGEN-BUNDLE-CONTRACT.md sections 5-6"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "BundleVerifier: independent checks of a bundle against VerifiedStrategy, registry and lineage (B-01..B-11; D24: strategy data identity in selector and metadata, adapter family per guarded backend); BundleCertificate (an empty certificate never passes)",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "kernel"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/bundle_ladder.rs",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-bundle"
+  },
+  {
+   "id": "CRATE-OBSERVE",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/observe/"
+   ],
+   "owner": [
+    "RUNTIME-ADMISSION-REPLAN.md sections 6-10"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "evidence tape -> ObservationDelta -> observed ASCII; D24: the tape's bundle record is compared with the manifest's strategy data identity (evidence_lineage OBS/ERR, EVIDENCE_UNBOUND)",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "kernel"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/observe_ladder.rs (P6-R07, negatives 10/11)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "none",
+   "crate": "factc-observe"
+  },
+  {
+   "id": "CRATE-KERNEL",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/kernel/"
+   ],
+   "owner": [
+    "C1, C2, C5, C14, C15; BOOTSTRAP-ARCHITECTURE.md sections 2-5"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "phase facade over a caller-owned Workspace (front end, semantic, lowering, contracts, plan_and_verify, codegen_and_bundle, observe, emit) and the kernel API (submit_*, check_or_compile, observe, read_*, bundle_file*)",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "wasm-abi",
+    "factc"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host); also in the WASM64_KERNEL_SET core-only graph",
+   "focused_tests": [
+    "compiler/kernel/tests/*.rs (7 ladders)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "PROBE-KERNEL-HOST-BROWSER",
+   "crate": "factc-kernel",
+   "exclude": [
+    "compiler/kernel/tests/"
+   ]
+  },
+  {
+   "id": "CRATE-WASM-ABI",
+   "tier": "PRODUCTION",
+   "area": "compiler",
+   "paths": [
+    "compiler/wasm-abi/"
+   ],
+   "owner": [
+    "C14; BOOTSTRAP-ARCHITECTURE.md section 11 (bootstrap ABI: 8 operations)"
+   ],
+   "input": "per crate (see operation)",
+   "operation": "wasm64-unknown-unknown cdylib export surface: the 8 C14 operations + input/output buffer accessors over static linear memory; transport only",
+   "output": "typed data / artifacts",
+   "dependencies": [],
+   "consumers": [
+    "host/harness/kernel-host.mjs (browser and node hosts); tests/selfhost/primitives-probe.mjs P10"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust",
+   "toolchain_target": "WASM64_KERNEL_SET nightly-2026-09-24 (wasm64-unknown-unknown, -Z build-std=core)",
+   "focused_tests": [
+    "tests/bootstrap/run-b9-b11.sh (B9-B11)",
+    "tests/toolchain/run-qualified-proof.sh (Q-WASM-*, T13-KRN)",
+    "tests/toolchain/run-qualified-proof.sh (Q-WASM-08: the whole transport in Chromium, byte-identical to the native driver)",
+    "tests/toolchain/run-crate-dag.mjs (compile -> focused tests -> consumer test in dependency order, D23)"
+   ],
+   "task_regression": "D23 (compile -> focused tests -> consumer test; qualified proof sets)",
+   "runtime_probe": "PROBE-KERNEL-HOST-BROWSER",
+   "crate": "factc-wasm-abi"
+  },
+  {
+   "id": "KERNEL-LADDERS",
+   "tier": "TEST",
+   "area": "compiler",
+   "paths": [
+    "compiler/kernel/tests/"
+   ],
+   "owner": [
+    "LANGUAGE-TESTS.md",
+    "PASS5-TESTS.md",
+    "PASS6-TESTS.md",
+    "BOOTSTRAP-TESTS.md"
+   ],
+   "input": "fixtures/language, fixtures/commissioning, fixtures/genericity",
+   "operation": "integration test ladders over the kernel facade: bootstrap (B2/B7/B8), language (L00-L35), lowering (P5-L*), strategy (P6-M*/V*), bundle (P6-B*/P5-C*), commissioning (P6-A*/X*), observe (P6-R07), genericity (D24 g01-g07: four specimens, per-transfer strategy data, cross-specimen hardcode check, compile-level attacks)",
+   "output": "cargo test verdicts",
+   "dependencies": [
+    "CRATE-KERNEL",
+    "FIXTURE-LANGUAGE",
+    "FIXTURE-COMMISSIONING",
+    "FIXTURE-GENERICITY"
+   ],
+   "consumers": [
+    "terminal: qualification of the compiler DAG (D23, D24)"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust test",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D23 / D24",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "FACTC",
+   "tier": "PRODUCTION",
+   "area": "host",
+   "paths": [
+    "host/factc/"
+   ],
+   "owner": [
+    "BOOTSTRAP-ARCHITECTURE.md section 2 (host owns no semantics)",
+    "C0"
+   ],
+   "input": "source files, --contracts, --metrics, --machine, --tape",
+   "operation": "native host driver: abi-version, required-workspace, check analyze|build (writes diagnostics.json, source-lineage.json, artifacts.json, every artifact by kind, bundle/), observe (tape -> observation delta + observed ascii)",
+   "output": "files under --out",
+   "dependencies": [
+    "CRATE-KERNEL",
+    "CRATE-FOUNDATION"
+   ],
+   "consumers": [
+    "tests/language/run-byte-relay.sh",
+    "tests/commissioning/run-physical.sh",
+    "every D24 specimen compilation"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "rust bin",
+   "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
+   "focused_tests": [
+    "host/factc/tests/driver.rs (d01-d08: queries, exit codes, analyze, build, B-07 behaviour, determinism, observe bound, observe rejects unbound evidence)",
+    "tests/language/run-byte-relay.sh (P6-A01/A03, P5-L01/L03, M5, M6)",
+    "tests/commissioning/run-physical.sh (compile step, observe step)",
+    "tests/genericity/run-specimens.mjs (four specimens: build, probe, observe, integrity)"
+   ],
+   "task_regression": "D23 (native transport vs kernel API), D24 (specimens)",
+   "runtime_probe": "none",
+   "note": "no cargo test of its own: qualified through the scripts named"
+  },
+  {
+   "id": "HARNESS-KERNEL-HOST",
+   "tier": "TEST",
+   "area": "host",
+   "paths": [
+    "host/harness/kernel-host.mjs",
+    "host/harness/kernel-build-probe.mjs"
+   ],
+   "owner": [
+    "BOOTSTRAP-TESTS.md B7, B8, B10, B11"
+   ],
+   "input": "wasm64 kernel module + source file",
+   "operation": "drive the bootstrap ABI from Node and from Chromium (Playwright): declared imports only, (address,len) exchange with i64 addresses, check_or_compile, read_diagnostics",
+   "output": "b10-b11-chromium.json / b10-node.json",
+   "dependencies": [
+    "CRATE-WASM-ABI"
+   ],
+   "consumers": [
+    "tests/bootstrap/run-b9-b11.sh",
+    "tests/toolchain/proof.mjs browser-abi"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "node esm",
+   "toolchain_target": "node v22.22.2; Playwright 1.56.1; Chromium 141",
+   "focused_tests": [
+    "tests/bootstrap/run-b9-b11.sh",
+    "tests/toolchain/run-qualified-proof.sh (Q-WASM-08: BUILD + OBSERVE in Chromium byte-identical to host/factc)"
+   ],
+   "task_regression": "D23 (Chromium ABI execution)",
+   "runtime_probe": "PROBE-KERNEL-HOST-BROWSER"
+  },
+  {
+   "id": "HARNESS-BUNDLE-PROBE",
+   "tier": "TEST",
+   "area": "host",
+   "paths": [
+    "host/harness/bundle-probe.mjs"
+   ],
+   "owner": [
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-FIXTURE.md"
+   ],
+   "input": "generated bundle dir + payloads.json",
+   "operation": "serve on 127.0.0.1, launch Chromium, drive window.factRuntime generically (D24): read STRATEGY.transfers from the bundle, E0 init/admissions/activation, transfer every authored relation x every payload, controlled loss of --loss BACKEND (default: the first guard backend of the E0 plan), E1 transfers when a plan activates; bundle hashes before/after; --no-webgpu; --expect-e0/--expect-e1 are the caller's expectations (none in the harness)",
+   "output": "probe records, evidence-tape.ascii",
+   "dependencies": [
+    "TEMPLATE-RUNTIME"
+   ],
+   "consumers": [
+    "tests/commissioning/run-physical.sh",
+    "tests/genericity/run-specimens.mjs"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "node esm",
+   "toolchain_target": "node v22.22.2; Playwright 1.56.1; Chromium 141",
+   "focused_tests": [
+    "tests/commissioning/run-physical.sh"
+   ],
+   "task_regression": "D25 (fresh bundles, multi-specimen)",
+   "runtime_probe": "PROBE-RELAY-EXACT, PROBE-CONTROLLED-LOSS, PROBE-BUNDLE-UNCHANGED, PROBE-SECURE-CONTEXT"
+  },
+  {
+   "id": "HARNESS-WEBAPP-PROBE",
+   "tier": "TEST",
+   "area": "host",
+   "paths": [
+    "host/harness/webapp-probe.mjs"
+   ],
+   "owner": [
+    "design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md",
+    "COMMISSIONING-RUNTIME.md"
+   ],
+   "input": "generated bundle dir (served on 127.0.0.1, optionally with COOP/COEP) or a public https:// URL of a deployed copy; payloads.json; the caller's expectations",
+   "operation": "drive the generated shell through its own controls in Chromium (init, hex input + transfer button per authored relation, release button per guarded backend); record the exact environment identity (browser product/revision/JS engine/executable/launch flags, host, origin, secure context, crossOriginIsolated, SharedArrayBuffer, WebGPU adapter identity/isFallbackAdapter/features/limits, artifact hashes fetched vs bundle.json, toolchain pins, machine epochs); verdict: every transfer exact (harness sha256 vs runtime), loss witnessed, stale plan invalidated, only bundle files requested, no runtime codegen, service worker + CacheStorage, expectations met",
+   "output": "probe-record.json, runtime-evidence.json, evidence-tape.ascii",
+   "dependencies": [
+    "TEMPLATE-SHELL",
+    "TEMPLATE-RUNTIME"
+   ],
+   "consumers": [
+    "tests/physical/run-webapp.mjs",
+    "the public-HTTPS user-run (tests/physical/PUBLIC-HTTPS-PROBE.md)"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "node esm (Playwright)",
+   "toolchain_target": "node v22.22.2; Chromium 141 headless shell",
+   "focused_tests": [
+    "tests/physical/run-webapp.mjs"
+   ],
+   "task_regression": "D25, D26",
+   "runtime_probe": "PROBE-PHYSICAL-WEBAPP"
+  },
+  {
+   "id": "TEMPLATE-MEMBRANE",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/membrane-core.js"
+   ],
+   "owner": [
+    "BOOTSTRAP-CONTRACTS.md C13",
+    "BOOTSTRAP-ARCHITECTURE.md section 9"
+   ],
+   "input": "-",
+   "operation": "host membrane core: Result classes, adapters table, probePattern, bytesEqual, sha256hex; codegen appends one adapter template per verified adapter",
+   "output": "bundle membrane.js",
+   "dependencies": [],
+   "consumers": [
+    "ADAPTER-WASM64",
+    "ADAPTER-WEBGPU",
+    "TEMPLATE-RUNTIME"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "js template",
+   "toolchain_target": "Chromium 141 (ES module)",
+   "focused_tests": [
+    "compiler/kernel/tests/bundle_ladder.rs (adapter inventory)"
+   ],
+   "task_regression": "D24 (emitted per specimen), D25 (executed)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "ADAPTER-WASM64",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/adapter-wasm64_relay.js"
+   ],
+   "owner": [
+    "IMPLEMENTATION-CONTRACTS.md (CPU_WASM64)",
+    "REPRESENTATION-TRANSFER.md",
+    "fixtures/commissioning/contracts.ascii recipe R_WASM64_RELAY (data)"
+   ],
+   "input": "bytes",
+   "operation": "backend CPU_WASM64 adapter: discover (memory64 validate), request (fetch/compile/instantiate the emitted wasm64 module, declared imports none), probe (256-byte known answer), operate (host_to_wasm copy, copy_bytes in i64 memory, wasm_to_host copy), release",
+   "output": "bytes; Result classes",
+   "dependencies": [
+    "TEMPLATE-MEMBRANE"
+   ],
+   "consumers": [
+    "TEMPLATE-RUNTIME (via adapters table)"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "js template",
+   "toolchain_target": "Chromium 141; memory64",
+   "focused_tests": [
+    "tests/commissioning/run-physical.sh (W variant)",
+    "tests/selfhost/primitives-probe.mjs P01"
+   ],
+   "task_regression": "D24 / D25",
+   "runtime_probe": "PROBE-WASM64-DISCOVER, PROBE-WASM64-REQUEST, PROBE-WASM64-KNOWN-ANSWER"
+  },
+  {
+   "id": "ADAPTER-WEBGPU",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/adapter-webgpu_relay.js"
+   ],
+   "owner": [
+    "IMPLEMENTATION-CONTRACTS.md (WEBGPU)",
+    "fixtures/commissioning/contracts.ascii recipe R_WEBGPU_RELAY (data)"
+   ],
+   "input": "bytes",
+   "operation": "backend WEBGPU adapter: discover (navigator.gpu), request (requestAdapter/requestDevice, adapter.info, device.lost), probe (256-byte upload/copy/readback), operate (host_to_gpu copy, copyBufferToBuffer, gpu_to_host copy), release (device.destroy -> lost)",
+   "output": "bytes; Result classes; loss events",
+   "dependencies": [
+    "TEMPLATE-MEMBRANE"
+   ],
+   "consumers": [
+    "TEMPLATE-RUNTIME"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "js template",
+   "toolchain_target": "Chromium 141 unsafe WebGPU switches (SwiftShader fallback adapter)",
+   "focused_tests": [
+    "tests/commissioning/run-physical.sh (G variant, controlled loss)"
+   ],
+   "task_regression": "D24 / D25",
+   "runtime_probe": "PROBE-WEBGPU-DISCOVER, PROBE-WEBGPU-REQUEST, PROBE-WEBGPU-KNOWN-ANSWER, PROBE-CONTROLLED-LOSS"
+  },
+  {
+   "id": "TEMPLATE-SELECTOR",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/selector.js"
+   ],
+   "owner": [
+    "RUNTIME-ADMISSION-REPLAN.md (Pass 6 amendment)",
+    "CODEGEN-BUNDLE-CONTRACT.md section 4"
+   ],
+   "input": "admissions",
+   "operation": "STRATEGY = VerifiedStrategy as data (__STRATEGY_JSON__: transfers, goals, dispatch order, variants with per-transfer requirements) and STRATEGY_SHA256 = its identity (__STRATEGY_SHA256__); select() evaluates guards in dispatch order; names only plan_ids in STRATEGY.variants",
+   "output": "activation selection",
+   "dependencies": [],
+   "consumers": [
+    "TEMPLATE-RUNTIME",
+    "CRATE-BUNDLE (re-renders strategy data byte for byte)"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "js template",
+   "toolchain_target": "Chromium 141",
+   "focused_tests": [
+    "compiler/kernel/tests/bundle_ladder.rs (selector data)",
+    "compiler/kernel/tests/strategy_ladder.rs (P6-M04/G06)"
+   ],
+   "task_regression": "D24 / D25",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "TEMPLATE-RUNTIME",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/runtime.js"
+   ],
+   "owner": [
+    "RUNTIME-ADMISSION-REPLAN.md sections 1-7, 9-10",
+    "COMMISSIONING-RUNTIME.md"
+   ],
+   "input": "adapters, STRATEGY (+ STRATEGY_SHA256), relation name, payload bytes",
+   "operation": "machine epochs; admission (DISCOVER/REQUEST/PROBE); activation; transfer(relation, bytes) execution through the active plan's requirement for that relation (its verified backend and conversions; D24 - no fixed relation, no fixed first backend); loss -> new epoch -> rejection -> reselection -> ObservationDelta; evidence records and tape islands, the tape opened by a bundle record naming the strategy data identity; window.factRuntime",
+   "output": "evidence, tape, snapshot",
+   "dependencies": [
+    "TEMPLATE-MEMBRANE",
+    "TEMPLATE-SELECTOR"
+   ],
+   "consumers": [
+    "TEMPLATE-SHELL",
+    "HARNESS-BUNDLE-PROBE"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "js template",
+   "toolchain_target": "Chromium 141",
+   "focused_tests": [
+    "tests/commissioning/run-physical.sh"
+   ],
+   "task_regression": "D24 (genericity: single relay operation), D25",
+   "runtime_probe": "PROBE-RELAY-EXACT, PROBE-CONTROLLED-LOSS"
+  },
+  {
+   "id": "TEMPLATE-SHELL",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/index.html"
+   ],
+   "owner": [
+    "BOOTSTRAP-ARCHITECTURE.md section 12",
+    "CODEGEN-BUNDLE-CONTRACT.md section 4"
+   ],
+   "input": "-",
+   "operation": "generated HTML shell: title/bundle/strategy substitution; data-driven controls (D24): init (E0), one hex input + transfer button per STRATEGY.transfers relation, one release button per backend a verified variant guards on; no payload and no backend name compiled in; registers sw.js",
+   "output": "bundle index.html",
+   "dependencies": [
+    "TEMPLATE-RUNTIME"
+   ],
+   "consumers": [
+    "browser user; HARNESS-WEBAPP-PROBE drives its controls (D25); HARNESS-BUNDLE-PROBE serves it and drives window.factRuntime directly"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "html template",
+   "toolchain_target": "Chromium 141",
+   "focused_tests": [
+    "compiler/kernel/tests/bundle_ladder.rs (manifest roles)"
+   ],
+   "task_regression": "D24 (anti-cheat), D25 (shell interaction)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "TEMPLATE-MANIFEST",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/manifest.webmanifest"
+   ],
+   "owner": [
+    "EVIDENCE-OBLIGATIONS.md E-017",
+    "IMPLEMENTATION-CONTRACTS.md (WEBAPP_MANIFEST)"
+   ],
+   "input": "-",
+   "operation": "web application manifest with title/short name/bundle id substitution",
+   "output": "bundle manifest.webmanifest",
+   "dependencies": [],
+   "consumers": [
+    "TEMPLATE-SHELL (link rel=manifest)"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "template",
+   "toolchain_target": "Chromium 141",
+   "focused_tests": [
+    "tests/selfhost/primitives-probe.mjs (installability not probed)"
+   ],
+   "task_regression": "D25 (record only)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "TEMPLATE-SW",
+   "tier": "PRODUCTION",
+   "area": "web",
+   "paths": [
+    "compiler/codegen/templates/sw.js"
+   ],
+   "owner": [
+    "EVIDENCE-OBLIGATIONS.md E-016",
+    "IMPLEMENTATION-CONTRACTS.md (SERVICE_WORKER, CACHE_STORAGE)"
+   ],
+   "input": "-",
+   "operation": "generated service worker: versioned CacheStorage of the shell bound to the bundle id (install addAll, activate purge, fetch cache-first)",
+   "output": "bundle sw.js",
+   "dependencies": [],
+   "consumers": [
+    "TEMPLATE-SHELL"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "js template",
+   "toolchain_target": "Chromium 141",
+   "focused_tests": [
+    "tests/selfhost/primitives-probe.mjs P01 (offline launch of the generated bundle), P02"
+   ],
+   "task_regression": "D25 (offline launch, restart survival)",
+   "runtime_probe": "PROBE-SH-P01, PROBE-SH-P02"
+  },
+  {
+   "id": "TEST-BOOTSTRAP",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/bootstrap/"
+   ],
+   "owner": [
+    "BOOTSTRAP-TESTS.md"
+   ],
+   "input": "workspace; negative fixtures",
+   "operation": "run-b9-b11.sh (wasm64 kernel build, wasm-inspect, Chromium + Node ABI hosts); run-negative-fixtures.sh (B1-B3 negatives + depcheck)",
+   "output": "evidence records",
+   "dependencies": [
+    "CRATE-WASM-ABI",
+    "HARNESS-KERNEL-HOST",
+    "FACTORY-CHECKS"
+   ],
+   "consumers": [
+    "tests/toolchain/proof.mjs (browser-abi, compile-fail-weak, depcheck-weak)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "self (asserts)"
+   ],
+   "task_regression": "D23",
+   "runtime_probe": "PROBE-KERNEL-HOST-BROWSER, PROBE-NODE-INSTANTIATE"
+  },
+  {
+   "id": "TEST-LANGUAGE",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/language/"
+   ],
+   "owner": [
+    "PASS6-TESTS.md P6-A01/A03",
+    "PASS5-TESTS.md P5-L01/L03"
+   ],
+   "input": "fixtures/commissioning (Byte Relay source, registry, metrics, model epochs)",
+   "operation": "run-byte-relay.sh: factc BUILD without and with the registry under both synthetic epochs; artifact-level checks (canonical, typed IR, H_G, strategy strength, certificates, bundle files parse, wasm-inspect, activation guards)",
+   "output": "evidence records",
+   "dependencies": [
+    "FACTC",
+    "FACTORY-CHECKS"
+   ],
+   "consumers": [
+    "D2-D5 fixtures"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D24 (extend to every specimen)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "TEST-COMMISSIONING",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/commissioning/"
+   ],
+   "owner": [
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-FIXTURE.md",
+    "PASS6-TESTS.md P6-X06"
+   ],
+   "input": "a specimen: source + registry + payloads (the Byte Relay specimen in run-physical.sh)",
+   "operation": "run-physical.sh (compile, WebGPU probe, no-WebGPU probe with the specimen's expectations passed to the generic harness, observe, source-of-record checks); run-anti-cheat.sh (D24: specimen-derived patterns - every fixture specimen's system and transfer-relation names as quoted strings, calls or members, its payload bytes in spaced-hex, 0x-comma, decimal-comma and contiguous-hex forms -, the fixed forms of a hardcode, backend names outside adapter templates; scans compiler/*/src, templates, factory/src, host; takes an optional tree to scan)",
+   "output": "evidence records",
+   "dependencies": [
+    "FACTC",
+    "HARNESS-BUNDLE-PROBE"
+   ],
+   "consumers": [
+    "D6, D7 fixtures",
+    "tests/genericity/reproduce-base.sh (scans an earlier tree)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D24 (anti-cheat), D25 (physical)",
+   "runtime_probe": "PROBE-RELAY-EXACT"
+  },
+  {
+   "id": "TEST-GENERICITY",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/genericity/"
+   ],
+   "owner": [
+    "design/materialization/D24-INTENDED-PIPELINE-GENERICITY.md",
+    "PASS6-TESTS.md P6-X06"
+   ],
+   "input": "fixtures/genericity/*/specimen.json (every executable specimen with its expectations), a factc binary, the built bundles and tapes",
+   "operation": "run-specimens.mjs (every specimen through BUILD -> strategy data checks -> Chromium with/without WebGPU through the generic harness -> OBSERVE bound -> post-build integrity; cross-specimen hardcode check); run-attacks.mjs (renamed relation, changed order, different legal recipe, single-backend registry, missing conversion, undeclared adapter, wrong implementation family, tampered strategy/bundle/guard/certificate, stale evidence + genuine control); check-bundle.mjs (artifact identities vs bundle.json, tamper detection); reproduce-base.sh (the defects shown on an earlier revision's compiler before repair)",
+   "output": "evidence records (summary.json per tool)",
+   "dependencies": [
+    "FACTC",
+    "HARNESS-BUNDLE-PROBE",
+    "FIXTURE-GENERICITY",
+    "TEST-COMMISSIONING"
+   ],
+   "consumers": [
+    "D24 fixtures",
+    "D26 whole-repo commissioning"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; Chromium 141 (Playwright); sh; cargo for reproduce-base",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D24 (specimens, attacks), D26",
+   "runtime_probe": "PROBE-GENERICITY-SPECIMENS, PROBE-GENERICITY-ATTACKS"
+  },
+  {
+   "id": "TEST-PHYSICAL",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/physical/"
+   ],
+   "owner": [
+    "design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md",
+    "COMMISSIONING-RUNTIME.md"
+   ],
+   "input": "fixtures/genericity/*/specimen.json, a factc binary, the wasm64 kernel (for the worker probe)",
+   "operation": "run-webapp.mjs (every specimen freshly built and verified, driven through its shell with WebGPU, without WebGPU and cross-origin isolated by server headers, observed bound; the selfhost primitives on the fresh Byte Relay bundle; the behaviour -> evidence map of the D25 prompt); public-https-probe.sh (the public-HTTPS routes reachable from this environment, headers that decide module hosting, the served bundle.json identity at the pushed path); PUBLIC-HTTPS-PROBE.md (the deployable probe: exact user-run command, expected evidence schema)",
+   "output": "evidence records (summary.json, public-https.json)",
+   "dependencies": [
+    "FACTC",
+    "HARNESS-WEBAPP-PROBE",
+    "TEST-SELFHOST",
+    "TEST-GENERICITY",
+    "FIXTURE-GENERICITY"
+   ],
+   "consumers": [
+    "D25 fixtures",
+    "D26 whole-repo commissioning",
+    "an external public-HTTPS run"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; Chromium 141 (Playwright); sh; curl",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D25, D26",
+   "runtime_probe": "PROBE-PHYSICAL-WEBAPP, PROBE-PUBLIC-HTTPS"
+  },
+  {
+   "id": "TEST-AUDIT",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/audit/"
+   ],
+   "owner": [
+    "design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md",
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md (final consistency audit, six-task final condition)"
+   ],
+   "input": "the execution manifest, the environment graph, the issue inventory, the station registry, the deltas and receipts, the ledger, the Q22 answer, the D26 evidence directory",
+   "operation": "consistency-audit.mjs (the five equalities of the prompt: live law = current implementation contract, current implementation = execution manifest, execution manifest = factory routes, factory routes = receipts / verification, current claim = current evidence or explicit boundary); final-condition.mjs (the 21 [PASS] lines of the six-task final condition, each computed from named evidence)",
+   "output": "evidence records (consistency.json, final-condition.json)",
+   "dependencies": [
+    "TEST-MANIFEST",
+    "TEST-ENVMAP",
+    "TEST-RECONCILE",
+    "FACTORY-REGISTRY"
+   ],
+   "consumers": [
+    "D26 fixtures",
+    "the handoff (section 1 and 6)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm",
+   "toolchain_target": "node v22.22.2; git",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D26",
+   "runtime_probe": "PROBE-CONSISTENCY-AUDIT"
+  },
+  {
+   "id": "TEST-TOOLCHAIN",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/toolchain/run-qualified-proof.sh",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/run-mutants.sh",
+    "tests/toolchain/run-crate-dag.mjs"
+   ],
+   "owner": [
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md sections 3.2-3.3",
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md"
+   ],
+   "input": "workspace, pinned toolchains, mutants",
+   "operation": "qualified proof matrix on the proof sets (pins, sets, HOST_NATIVE_SET build/test/clippy/compile-fail, WASM64_KERNEL_SET core-only dev/release/clippy/inspect/kernel exec identity/browser ABI, ALL fmt/deps/selection, CROSS_SET diagnostic, HEURISTIC weight NONE, mutants 8)",
+   "output": "obligation records, summary",
+   "dependencies": [
+    "FACTORY-CHECKS",
+    "HARNESS-KERNEL-HOST",
+    "FIXTURE-TOOLCHAIN",
+    "FIXTURE-NEGATIVE"
+   ],
+   "consumers": [
+    "D13, D19 qualified-proof group; tests/reprove/runbook.json"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "tests/toolchain/run-mutants.sh (judge self-attack)",
+    "tests/toolchain/run-crate-dag.mjs (per-crate compile -> focused tests -> consumer test, D23)"
+   ],
+   "task_regression": "D23 (qualified sets), D26",
+   "runtime_probe": "PROBE-QUALIFIED-PROOF, PROBE-COMPILE-FAIL-DIAG, PROBE-DEPS-AUDIT, PROBE-NOSTD-GRAPH, PROBE-SELECTION-AUDIT, PROBE-TOOLCHAIN-IDENTITY"
+  },
+  {
+   "id": "TEST-TOOLCHAIN-HISTORY",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/toolchain/run-proof-matrix.sh"
+   ],
+   "owner": [
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md"
+   ],
+   "input": "workspace",
+   "operation": "the D9 proof matrix (unpinned channels); kept for reproduction of D9 (docs/HANDOFF.md section 7 \"history\")",
+   "output": "obligation records",
+   "dependencies": [
+    "TEST-TOOLCHAIN"
+   ],
+   "consumers": [
+    "terminal: historical reproduction only"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "none current"
+   ],
+   "task_regression": "none (historical)",
+   "runtime_probe": "none",
+   "note": "declared historical in docs/HANDOFF.md section 7; superseded by run-qualified-proof.sh",
+   "historical_tool": true
+  },
+  {
+   "id": "TEST-ENVMAP",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/envmap/envmap.mjs",
+    "tests/envmap/host-identity.sh",
+    "tests/envmap/browser-probe.mjs",
+    "tests/envmap/authority-fetch.mjs",
+    "tests/envmap/run-envmap.sh",
+    "tests/envmap/"
+   ],
+   "owner": [
+    "design/environment-map/SCHEMA.md"
+   ],
+   "input": "graph.json, epochs, evidence",
+   "operation": "environment-map tool: validate (42 checks), query Q01-Q22, stale, render / render-check, paths-probe, merge / merge-check (epoch alias), bind; identity probes (host, browser, authority fetch); run-envmap.sh runner (D11)",
+   "output": "graph, views, query records",
+   "dependencies": [
+    "FACTORY-REGISTRY (paths-probe)"
+   ],
+   "consumers": [
+    "every delta since D11 (F<n>-evidence)",
+    "tests/reprove/*",
+    "tests/reconcile/*",
+    "tests/reference/*"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "tests/reprove regression (D19/D20: Q01-Q22 byte-identical)"
+   ],
+   "task_regression": "D26 (graph epoch, Q01..current)",
+   "runtime_probe": "PROBE-PATHS-LITERAL, PROBE-HOST-IDENTITY, PROBE-BROWSER-IDENTITY, PROBE-AUTHORITY-FETCH",
+   "note": "D22: the directory entry covers later additions (a historical file keeps its own, more specific, component)."
+  },
+  {
+   "id": "TEST-ENVMAP-BIND-D11",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/envmap/bind-evidence.mjs"
+   ],
+   "owner": [
+    "design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md"
+   ],
+   "input": "D11 graph.json + evidence/D11",
+   "operation": "one-shot D11 evidence binding (rewrote the origin graph in place before the epoch model existed)",
+   "output": "graph.json (D11 era)",
+   "dependencies": [],
+   "consumers": [
+    "terminal: historical (D11 only)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "none current"
+   ],
+   "task_regression": "none (historical)",
+   "runtime_probe": "none",
+   "note": "running it now would rewrite the merged graph outside the epoch model; superseded by envmap.mjs bind (per-epoch)",
+   "historical_tool": true
+  },
+  {
+   "id": "TEST-SELFHOST",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/selfhost/"
+   ],
+   "owner": [
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md"
+   ],
+   "input": "kernel module, generated bundle, git repository",
+   "operation": "self-hosting primitive probes P01-P16 (observation only) on a GENERATED bundle named by BUNDLE_DIR (required since D25; no historical default) and host network observations; the summary records the probed bundle's file hashes",
+   "output": "probe records",
+   "dependencies": [
+    "CRATE-WASM-ABI",
+    "TEMPLATE-SW",
+    "ADAPTER-WASM64"
+   ],
+   "consumers": [
+    "D12 fixtures; D16 census; D18R"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D25 (SW/offline/OPFS/IDB/Worker rows on the fresh bundle)",
+   "runtime_probe": "PROBE-SH-P01..P16, PROBE-SH-NETWORK"
+  },
+  {
+   "id": "TEST-HYGIENE",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/hygiene/"
+   ],
+   "owner": [
+    "design/materialization/D13-INTENDED-REPO-HYGIENE.md",
+    "docs/HANDOFF.md"
+   ],
+   "input": "repository tree, HANDOFF, station registry",
+   "operation": "status-scan (classified status-marker inventory), handoff-check (model independence), registry-check (literal surfaces; effective authority unchanged since REV)",
+   "output": "inventory, handoff-check.json, registry-check",
+   "dependencies": [],
+   "consumers": [
+    "every F<n>-evidence since D13"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D26",
+   "runtime_probe": "PROBE-STATUS-SCAN"
+  },
+  {
+   "id": "TEST-REFERENCE",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/reference/"
+   ],
+   "owner": [
+    "REFERENCE-AUTHORITY.md (input)",
+    "design/materialization/D14-INTENDED-FRONTIER-REOPEN.md, D15, D14-RESCAN"
+   ],
+   "input": "graph authorities, pinned sources, clause manifests, ROUTES/REGISTER",
+   "operation": "reopen (frontier tip vs pin, fragment, clause), clauses (exact clause extraction at source tips), build-revisions / build-clauses (epoch builders), gate (reopen classification), regress-reopen, ingress (Pages-branch route, corpus verify/refetch, link + fragment audit)",
+   "output": "reopen/clauses/ingress records; epoch fragments",
+   "dependencies": [
+    "FIXTURE-REFERENCE"
+   ],
+   "consumers": [
+    "tests/reprove/runbook.json groups reopen, clauses, ingress",
+    "tests/capability/build-universe.mjs",
+    "tests/implementation/build-reality.mjs",
+    "tests/reconcile/build-reconciliation.mjs"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "D19/D20 re-proof of D15/D16 clauses and the frontier"
+   ],
+   "task_regression": "D26 (STALE_IF-selected re-proof only; no broad rescan)",
+   "runtime_probe": "PROBE-AUTHORITY-REOPEN, PROBE-CLAUSE-EXTRACT, PROBE-D14-REFERENCE-INGRESS"
+  },
+  {
+   "id": "TEST-CAPABILITY",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/capability/"
+   ],
+   "owner": [
+    "CAPABILITY-MATRIX.md",
+    "design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md"
+   ],
+   "input": "universe.json, census evidence",
+   "operation": "capability universe epoch builder, exposure census (browser), capability gate",
+   "output": "epoch, census, gate",
+   "dependencies": [
+    "TEST-ENVMAP"
+   ],
+   "consumers": [
+    "D16-D20 gates"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "tests/capability/gate.mjs (re-run every delta since D16)"
+   ],
+   "task_regression": "D26",
+   "runtime_probe": "PROBE-CAPABILITY-CENSUS"
+  },
+  {
+   "id": "TEST-IMPLEMENTATION",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/implementation/"
+   ],
+   "owner": [
+    "IMPLEMENTATION-CONTRACTS.md",
+    "design/materialization/D17-INTENDED-IMPLEMENTATION-REALITY.md"
+   ],
+   "input": "reality.json, label-audit.json, kernel builds",
+   "operation": "implementation-reality epoch builder, label audit, kernel section identity (two install names), implementation gate",
+   "output": "epoch, audit, sections, gate",
+   "dependencies": [
+    "TEST-ENVMAP",
+    "TEST-TOOLCHAIN (pin)"
+   ],
+   "consumers": [
+    "D17-D20 gates; tests/reprove/runbook.json kernel-sections"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "tests/implementation/gate.mjs"
+   ],
+   "task_regression": "D23 (kernel exec identity), D26",
+   "runtime_probe": "PROBE-KERNEL-SECTIONS, PROBE-LABEL-AUDIT"
+  },
+  {
+   "id": "TEST-RECONCILE",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/reconcile/"
+   ],
+   "owner": [
+    "design/materialization/D18-INTENDED-REPO-RECONCILIATION.md"
+   ],
+   "input": "reconciliation registers, graph",
+   "operation": "reconciliation epoch builder (supersession inheritance), surfaces check (insertion-only annotations, retired texts), gate, stage audit",
+   "output": "epochs, gates",
+   "dependencies": [
+    "TEST-ENVMAP"
+   ],
+   "consumers": [
+    "D18, D18R, D20; every gate re-run since"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "tests/reconcile/gate.mjs (D18/D18R/D20-SYNC registers re-run each delta)"
+   ],
+   "task_regression": "D26",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "TEST-REPROVE",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/reprove/"
+   ],
+   "owner": [
+    "design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md",
+    "D20"
+   ],
+   "input": "graph, identity capture, runbook, obligations",
+   "operation": "environment identity capture; graph-driven minimum affected set (drift, implementation change, obligations; carried conditions); runner per kind; lineage (owner and sync merges); re-proof epoch builder; gate",
+   "output": "selection, results, epoch, gate",
+   "dependencies": [
+    "TEST-ENVMAP",
+    "TEST-TOOLCHAIN",
+    "TEST-REFERENCE",
+    "TEST-IMPLEMENTATION",
+    "TEST-HYGIENE"
+   ],
+   "consumers": [
+    "D19, D20; D26 (STALE_IF traversal selects the D21-D25 re-proof)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "D20 replay of the D19 selection (byte-identical)"
+   ],
+   "task_regression": "D26",
+   "runtime_probe": "PROBE-ENV-IDENTITY, PROBE-REPROOF-SELECTION"
+  },
+  {
+   "id": "TEST-MANIFEST",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/manifest/"
+   ],
+   "owner": [
+    "design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md",
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md"
+   ],
+   "input": "git ls-files, cargo metadata, graph.json, receipts, station registry, components.json, issues.json",
+   "operation": "deterministic CURRENT EXECUTION MANIFEST: tier every tracked path; enrich each component with stations, receipts, graph claims, probes, evidence, stale dimensions, test references; automated findings; issue-inventory gate; manifest epoch builder",
+   "output": "design/execution-manifest/*, evidence/D21/*, epochs/D21.json",
+   "dependencies": [
+    "TEST-ENVMAP"
+   ],
+   "consumers": [
+    "D21 (this delta); D26 consistency audit"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; sh; (cargo where named)",
+   "focused_tests": [
+    "tests/manifest/gate.mjs"
+   ],
+   "task_regression": "D26",
+   "runtime_probe": "PROBE-EXECUTION-MANIFEST"
+  },
+  {
+   "id": "FIXTURE-LANGUAGE",
+   "tier": "FIXTURE",
+   "area": "fixtures",
+   "paths": [
+    "fixtures/language/"
+   ],
+   "owner": [
+    "LANGUAGE-TESTS.md",
+    "PASS6-TESTS.md P6-G01/G02"
+   ],
+   "input": "-",
+   "operation": "language ladder sources L00-L35, P6 objective fixtures, SYS/INV negatives",
+   "output": "data",
+   "dependencies": [],
+   "consumers": [
+    "KERNEL-LADDERS (language_ladder.rs, strategy_ladder.rs)"
+   ],
+   "station": "S-FIXTURE (compiler/commissioning/language/toolchain) / S-DOC (reference corpus)",
+   "fixture_type": "data",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "consumed by the consumers named"
+   ],
+   "task_regression": "through the consumers",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "FIXTURE-COMMISSIONING",
+   "tier": "FIXTURE",
+   "area": "fixtures",
+   "paths": [
+    "fixtures/commissioning/"
+   ],
+   "owner": [
+    "COMMISSIONING-ASCII.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-SLICE.md"
+   ],
+   "input": "-",
+   "operation": "the Byte Relay SPECIMEN as data: authored source (+ compact/labels/renamed/move/other-type/pinned variants), contract registry (2 READY-CONTRACT backends, every other family of G as GAP), metric evidence, synthetic epochs, payloads A/B, tape-sample.ascii (D24: a physical tape of this specimen carrying the bundle record)",
+   "output": "data",
+   "dependencies": [],
+   "consumers": [
+    "KERNEL-LADDERS",
+    "TEST-LANGUAGE",
+    "TEST-COMMISSIONING",
+    "HARNESS-BUNDLE-PROBE"
+   ],
+   "station": "S-FIXTURE (compiler/commissioning/language/toolchain) / S-DOC (reference corpus)",
+   "fixture_type": "data",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "consumed by the consumers named"
+   ],
+   "task_regression": "through the consumers",
+   "runtime_probe": "none",
+   "note": "specimen DATA, never machinery (P6-X06); fixtures/genericity/ holds the further specimens (D24)"
+  },
+  {
+   "id": "FIXTURE-GENERICITY",
+   "tier": "FIXTURE",
+   "area": "fixtures",
+   "paths": [
+    "fixtures/genericity/"
+   ],
+   "owner": [
+    "design/materialization/D24-INTENDED-PIPELINE-GENERICITY.md",
+    "COMMISSIONING-FIXTURE.md (the specimen form)"
+   ],
+   "input": "-",
+   "operation": "the D24 SPECIMENS as data, each a directory with specimen.json (system, files, what it varies, expectations): byte-relay (the commissioning specimen, by reference), ledger-mirror (two relations, single backend, no objective), pixel-vault (GPU-only registry, odd payloads), dual-stream (two relations, two backends, maximize objective, four variants)",
+   "output": "data",
+   "dependencies": [],
+   "consumers": [
+    "KERNEL-LADDERS",
+    "TEST-GENERICITY"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "data",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "consumed by the consumers named"
+   ],
+   "task_regression": "through the consumers",
+   "runtime_probe": "none",
+   "note": "specimen DATA, never machinery (P6-X06)"
+  },
+  {
+   "id": "FIXTURE-NEGATIVE",
+   "tier": "FIXTURE",
+   "area": "fixtures",
+   "paths": [
+    "fixtures/compiler/negative/"
+   ],
+   "owner": [
+    "BOOTSTRAP-TESTS.md B1-B3",
+    "PASS5-TESTS.md P6-G04"
+   ],
+   "input": "-",
+   "operation": "crates that must be rejected: std-in-kernel, id-substitution, forge-verified-strategy, third-party-dep",
+   "output": "data",
+   "dependencies": [],
+   "consumers": [
+    "TEST-BOOTSTRAP (run-negative-fixtures.sh)",
+    "TEST-TOOLCHAIN (compile-fail obligations, expect files)",
+    "FACTORY-TESTS"
+   ],
+   "station": "S-FIXTURE (compiler/commissioning/language/toolchain) / S-DOC (reference corpus)",
+   "fixture_type": "data",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "consumed by the consumers named"
+   ],
+   "task_regression": "through the consumers",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "FIXTURE-TOOLCHAIN",
+   "tier": "FIXTURE",
+   "area": "fixtures",
+   "paths": [
+    "fixtures/toolchain/"
+   ],
+   "owner": [
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md T9-P4, T9-P9"
+   ],
+   "input": "-",
+   "operation": "exact compile-fail expectations and the 8 judge mutants M1-M8",
+   "output": "data",
+   "dependencies": [],
+   "consumers": [
+    "TEST-TOOLCHAIN (compile-fail, mutants)"
+   ],
+   "station": "S-FIXTURE (compiler/commissioning/language/toolchain) / S-DOC (reference corpus)",
+   "fixture_type": "data",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "consumed by the consumers named"
+   ],
+   "task_regression": "through the consumers",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "FIXTURE-REFERENCE",
+   "tier": "REFERENCE",
+   "area": "fixtures",
+   "paths": [
+    "fixtures/reference/"
+   ],
+   "owner": [
+    "CON-EM-D14-001 (PROPOSED)",
+    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md (imported line)"
+   ],
+   "input": "-",
+   "operation": "reproducibility copies of published renderings and sources (83 files; pins, never current authority) with ROUTES.json and REGISTER.json",
+   "output": "data",
+   "dependencies": [],
+   "consumers": [
+    "TEST-REFERENCE (ingress verify/refetch/audit on the imported line's inputs)"
+   ],
+   "station": "S-FIXTURE (compiler/commissioning/language/toolchain) / S-DOC (reference corpus)",
+   "fixture_type": "data",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "consumed by the consumers named"
+   ],
+   "task_regression": "through the consumers",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "RECORD-HANDOFF",
+   "tier": "RECORD",
+   "area": "records",
+   "paths": [
+    "docs/HANDOFF.md",
+    "README.md"
+   ],
+   "owner": [
+    "FINAL-HANDOFF-REQUIREMENTS.md"
+   ],
+   "input": "-",
+   "operation": "live, model-independent entry: current state, mutation law, procedure, document register, open-boundary register, proof sets",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "any agent or person (entry)"
+   ],
+   "station": "S-DOC",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "RECORD-MATERIALIZATION",
+   "tier": "RECORD",
+   "area": "records",
+   "paths": [
+    "design/materialization/"
+   ],
+   "owner": [
+    "FACTORY-LAW.md (ASCII working surface)"
+   ],
+   "input": "-",
+   "operation": "intended/observed ASCII per delta, prompts tracked verbatim, LEDGER (BEFORE/AFTER), baselines",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "docs/HANDOFF.md (entry order)"
+   ],
+   "station": "S-DOC",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "RECORD-EXECUTION-MANIFEST",
+   "tier": "RECORD",
+   "area": "records",
+   "paths": [
+    "design/execution-manifest/"
+   ],
+   "owner": [
+    "design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md"
+   ],
+   "input": "-",
+   "operation": "the rendered CURRENT EXECUTION MANIFEST and its JSON (generated by tests/manifest/build-manifest.mjs; render-checked)",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "docs/HANDOFF.md",
+    "D26 consistency audit"
+   ],
+   "station": "S-DOC",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "RECORD-ENVIRONMENT-MAP",
+   "tier": "RECORD",
+   "area": "records",
+   "paths": [
+    "design/environment-map/"
+   ],
+   "owner": [
+    "design/environment-map/SCHEMA.md"
+   ],
+   "input": "-",
+   "operation": "graph.json (D11 base + epochs), epochs/, generated AUTHORITY-REGISTER.md and TRACEABILITY.md, SCHEMA.md, ENVIRONMENT-MAP.md",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "tests/envmap/*",
+    "tests/reprove/*",
+    "every gate"
+   ],
+   "station": "S-DOC",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "FACTORY-RECORDS",
+   "tier": "RECORD",
+   "area": "records",
+   "paths": [
+    "factory/deltas/",
+    "factory/fixtures/",
+    "factory/receipts/"
+   ],
+   "owner": [
+    "FACTORY-CONTRACTS.md sections 1, 3, 5"
+   ],
+   "input": "-",
+   "operation": "StructuralDeltas, fixtures and receipts of every integrated delta (delta-owned records; never re-run)",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "factory verify (receipts)",
+    "tests/reprove/lineage.mjs (latest verification)",
+    "tests/manifest (station per path)"
+   ],
+   "station": "delta-owned (no station)",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "LAW-LIVE",
+   "tier": "LAW",
+   "area": "records",
+   "paths": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "STATION-REGISTRY.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "CAPABILITY-MATRIX.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "SEMANTIC-MODEL.md",
+    "LOWERING-MODEL.md",
+    "REFINEMENT-LAW.md",
+    "REPRESENTATION-TRANSFER.md",
+    "VERIFICATION-CERTIFICATES.md",
+    "PLANNER-COST-MODEL.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "CODEGEN-BUNDLE-CONTRACT.md",
+    "LANGUAGE-TESTS.md",
+    "COMMISSIONING-ASCII.md",
+    "COMMISSIONING-FACTORY.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md",
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-SLICE.md",
+    "COMMISSIONING-TRACE.md",
+    "BOOTSTRAP-ARCHITECTURE.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-TESTS.md"
+   ],
+   "owner": [
+    "docs/HANDOFF.md section 5 (LIVE LAW)"
+   ],
+   "input": "-",
+   "operation": "live law and owner contracts (annotated insertion-only by S-ANNOTATE / S-ANNOTATE-OWNER; FACTORY-LAW.md never)",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "every component (owner column)"
+   ],
+   "station": "S-ANNOTATE / S-ANNOTATE-OWNER (insertion-only); FACTORY-LAW.md: none",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "OWNER-LICENSE",
+   "tier": "LAW",
+   "area": "records",
+   "paths": [
+    "LICENSE"
+   ],
+   "owner": [
+    "the owner"
+   ],
+   "input": "-",
+   "operation": "the repository license (owner file; no station may change it)",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "every consumer of the repository"
+   ],
+   "station": "none (owner)",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "DOC-HISTORICAL",
+   "tier": "HISTORICAL",
+   "area": "records",
+   "paths": [
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "PASS1.md",
+    "PASS2.md",
+    "PASS3.md",
+    "PASS4.md",
+    "PASS5.md",
+    "PASS5-TESTS.md",
+    "PASS6.md",
+    "PASS6-TESTS.md",
+    "PASS6-GAP-REPAIRS.md",
+    "PLANNED-REPO-LAYOUT.md"
+   ],
+   "owner": [
+    "docs/HANDOFF.md section 5 (HISTORICAL)"
+   ],
+   "input": "-",
+   "operation": "historical preparation and pass records (never rewritten; D13 banners)",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "terminal: history"
+   ],
+   "station": "S-ANNOTATE (banners only)",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "WORKSPACE-ROOT",
+   "tier": "PRODUCTION",
+   "area": "records",
+   "paths": [
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    ".gitignore"
+   ],
+   "owner": [
+    "tests/toolchain/proof-sets.json",
+    "docs/HANDOFF.md section 7"
+   ],
+   "input": "-",
+   "operation": "workspace manifest (members, default-members = HOST_NATIVE_SET roots, fixtures excluded), lock file, toolchain pin 1.94.1",
+   "output": "documents",
+   "dependencies": [],
+   "consumers": [
+    "cargo (every set)",
+    "tests/toolchain (selection audit)"
+   ],
+   "station": "S-RUST",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/hygiene/handoff-check.sh, status-scan (where applicable)"
+   ],
+   "task_regression": "D26 (consistency audit)",
+   "runtime_probe": "none"
+  },
+  {
+   "id": "EVIDENCE",
+   "tier": "EVIDENCE",
+   "area": "evidence",
+   "paths": [
+    "evidence/"
+   ],
+   "owner": [
+    "FACTORY-LAW.md (evidence honesty)",
+    "EVIDENCE-OBLIGATIONS.md"
+   ],
+   "input": "-",
+   "operation": "per-delta evidence packages (immutable once integrated); the newest epoch's package is the current evidence, earlier packages are historical",
+   "output": [
+    "data"
+   ],
+   "dependencies": [],
+   "consumers": [
+    "design/environment-map/graph.json EVIDENCE nodes (artifact_identity.path)",
+    "tests/reprove (physical evidence per claim)"
+   ],
+   "station": "S-BUILD / S-BROWSER / S-EVIDENCE (produced); never edited after integration",
+   "fixture_type": "evidence",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "factory evidence index (sha256 per file)"
+   ],
+   "task_regression": "D26 (evidence index; STALE_IF traversal)",
+   "runtime_probe": "none"
+  }
+ ]
+}

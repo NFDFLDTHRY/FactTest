@@ -1,0 +1,29 @@
+{
+ "id": "CL-MC5",
+ "trace": "MC",
+ "authority": "AUTH-MEDIACAPTURE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/mediacapture-main",
+  "branch": "main",
+  "path": "getusermedia.html",
+  "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+  "sha256": "2807a41827e9573e6eed4be0116217a8053902dc621dc915d5ccc0d1322c9774",
+  "bytes": 309541
+ },
+ "locator": {
+  "text": "<p><em>Permission Failure</em>: [= Reject =]",
+  "line_start": 4085,
+  "line_end": 4088,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 4,
+ "consequence": "Permission Failure rejects with NotAllowedError",
+ "excerpt": "                      <p><em>Permission Failure</em>: [= Reject =]\n                      <var>p</var> with a new {{DOMException}}\n                      object whose {{DOMException/name}} attribute has the\n                      value {{\"NotAllowedError\"}}.</p>",
+ "excerpt_sha256": "477d45dd4f4581cda6df1024c350bd383a7848211eb30b567026f3f9c4fb3840",
+ "must_contain": {
+  "\"NotAllowedError\"": true
+ },
+ "status": "VERIFIED"
+}

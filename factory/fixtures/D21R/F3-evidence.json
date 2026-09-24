@@ -1,0 +1,59 @@
+{
+  "fixture_id": "F3-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the Factory's re-inspection record and log of D21",
+    "tests/manifest/rebuild-check.sh"
+  ],
+  "narrowed_may_change": [
+    "evidence/D21R/reinspect-d21-result.json",
+    "evidence/D21R/reinspect-d21-run.log",
+    "evidence/D21R/reproduce.json",
+    "evidence/D21R/rebuild-check.json",
+    "evidence/D21R/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp /home/user/factory-workpieces/W25.reinspect.json evidence/D21R/reinspect-d21-result.json && cp /home/user/factory-workpieces/W25.reinspect/reinspect-d21.log evidence/D21R/reinspect-d21-run.log && grep -q '\"status\": \"DIFFER\"' evidence/D21R/reinspect-d21-result.json && grep -q 'differ: char 273, line 3' evidence/D21R/reinspect-d21-run.log && echo 'D21 re-inspection refusal preserved'"
+        ],
+        "log": "evidence/D21R/logs/F3-preserve.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && git show 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb:tests/manifest/build-manifest.mjs > $T/committed-builder.mjs && if TOOL=$T/committed-builder.mjs sh tests/manifest/rebuild-check.sh 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b D21-EXECUTION-MANIFEST D21 fdb9c32 design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json evidence/D21R/reproduce.json; then echo 'defect not reproduced'; exit 1; fi && grep -q '\"rebuild_from_committed_graph_md\", \"status\": \"FAIL\"' evidence/D21R/reproduce.json && grep -q '\"rebuild_from_committed_graph_json\", \"status\": \"FAIL\"' evidence/D21R/reproduce.json && grep -q '\"rebuild_without_own_epoch_md\", \"status\": \"PASS\"' evidence/D21R/reproduce.json && grep -q '\"rebuild_without_own_epoch_json\", \"status\": \"PASS\"' evidence/D21R/reproduce.json && echo 'defect reproduced with the committed builder'"
+        ],
+        "log": "evidence/D21R/logs/F3-reproduce.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "sh tests/manifest/rebuild-check.sh 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b D21-EXECUTION-MANIFEST D21 fdb9c32 design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json evidence/D21R/rebuild-check.json"
+        ],
+        "log": "evidence/D21R/logs/F3-rebuild-check.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D21R/reinspect-d21-result.json",
+    "evidence/D21R/reinspect-d21-run.log",
+    "evidence/D21R/reproduce.json",
+    "evidence/D21R/rebuild-check.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D21R-MANIFEST-REPAIR"
+}

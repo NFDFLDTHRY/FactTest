@@ -1,0 +1,29 @@
+{
+ "id": "CL-MF1",
+ "trace": "MF",
+ "authority": "AUTH-MANIFEST-INSTALLABLE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/manifest",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+  "sha256": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d",
+  "bytes": 159072
+ },
+ "locator": {
+  "text": "Any website is an <strong>installable web application</strong>.",
+  "line_start": 2615,
+  "line_end": 2622,
+  "derivation": "anchor text",
+  "enclosing_section": "#applying (line 1808)"
+ },
+ "window": 8,
+ "consequence": "installation is user-agent behaviour offered to the user, not something a manifest guarantees: the installed-Factory level L0 needs an installation OBSERVATION, never a manifest-only claim",
+ "excerpt": "        Any website is an <strong>installable web application</strong>.\n      </p>\n      <p>\n        A user agent can provide a way for the end-user to <dfn class=\"export\"\n        data-lt=\"installed|installing|installation\">install</dfn> a web\n        application on the end-user's device, allowing the user to instantiate\n        a new [=top-level traversable=] with the manifest's members\n        [=applied=].",
+ "excerpt_sha256": "8dfe66accd9f5fe431a6a125df5f566d3d83c27e1019412766dc7312ca1e2115",
+ "must_contain": {
+  "A user agent can provide a way": true
+ },
+ "status": "VERIFIED"
+}

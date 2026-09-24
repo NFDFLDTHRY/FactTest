@@ -1,0 +1,7 @@
+$ node tests/reprove/identity.mjs --graph design/environment-map/graph.json --out evidence/D21/identity
+(cwd .)
+default: HeadlessChrome/141.0.7390.37 js 14.1.146.11; secure true; coi false; SAB false; gpu true; adapter null; memory64 true
+gpu-flags: HeadlessChrome/141.0.7390.37 js 14.1.146.11; secure true; coi false; SAB false; gpu true; adapter {"vendor":"google","architecture":"swiftshader","device":"","description":"","isFallbackAdapter":true}; memory64 true
+identity -> evidence/D21/identity: 4 toolchains, 45 source tips (4 moved)
+
+[exit 0] expected 0

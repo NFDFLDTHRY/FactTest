@@ -1,0 +1,5 @@
+$ sh -c node -e 'const J=p=>JSON.parse(require("fs").readFileSync(p));const fs=require("fs");let n=0,facts=0;for(const f of fs.readdirSync("evidence/D26/results")){const r=J("evidence/D26/results/"+f);const bad=Object.entries(r.facts).filter(([k,v])=>v.verdict!=="PASS").map(([k])=>k);if(bad.length||r.commands.some(c=>c.exit!==0)){console.log(r.group,"FAIL",bad);process.exit(1)}n++;facts+=Object.keys(r.facts).length}const s=J("evidence/D26/selection.json");console.log("groups",n,"facts re-proved",facts,"selected",s.selected);if(n!==s.groups.length&&n!==Object.keys(s.groups).length)process.exit(1)'
+(cwd .)
+groups 11 facts re-proved 101 selected 101
+
+[exit 0] expected 0

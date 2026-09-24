@@ -1,0 +1,45 @@
+{
+ "crate": "factc-wasm-abi",
+ "set": "WASM64_KERNEL_SET",
+ "toolchain": "nightly-2026-09-24",
+ "target": "wasm64-unknown-unknown",
+ "path": "compiler/wasm-abi/Cargo.toml",
+ "dependencies": [
+  "factc-foundation",
+  "factc-kernel"
+ ],
+ "consumers": [
+  "browser (host/harness/kernel-build-probe.mjs)"
+ ],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +nightly-2026-09-24 build -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown",
+   "exit": 0,
+   "ms": 119,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.10s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +nightly-2026-09-24 build --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown",
+   "exit": 0,
+   "ms": 73,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.05s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "exit": null,
+   "note": "a cdylib for wasm64 has no host test harness (CROSS_SET, weight NONE); its tests are the Chromium executions"
+  },
+  {
+   "step": "consumer:browser",
+   "exit": 0,
+   "note": "Q-WASM-08-chromium-build-release: PASS - Chromium HeadlessChrome/141.0.7390.37: BUILD status 1 in 16 ms, OBSERVE status 1; 21/21 files identical to the native driver (22 exports, imports [])"
+  }
+ ],
+ "verdict": "PASS"
+}

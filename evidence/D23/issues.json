@@ -1,0 +1,486 @@
+{
+ "schema": "facttest-execution-manifest-issues/1",
+ "law": "design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md section 4; GAP CLASSIFICATION LAW of design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md",
+ "classes": {
+  "A": "INTERNAL REPO / IMPLEMENTATION DEFECT: existing machinery contradicts its current contract -> repair now (in the named task)",
+  "B": "TEST / PROOF GAP FOR IMPLEMENTED BEHAVIOR: qualification missing -> add test/probe; repair if it fails",
+  "C": "GENERICITY / SPECIAL-CASE DEFECT: production machinery depends on a commissioning specimen -> repair now (D24 proves before repairing)",
+  "D": "APPROVED BUT UNIMPLEMENTED CAPABILITY: keep [GAP] unless the current implemented pipeline needs it",
+  "E": "EXTERNAL / ENVIRONMENT LIMIT: keep the honest [GAP]/[ERR]/[UNK]",
+  "F": "HISTORICAL EVIDENCE LIMIT: preserve",
+  "G": "OWNER / SEMANTIC DECISION: stop -> ASCII / owner"
+ },
+ "rule": "every automated finding of tests/manifest/build-manifest.mjs is covered by exactly the issues below (gate); reviewed issues with an empty covers list are findings of the D21 survey that no automated check produces; repair begins only in the task each issue names",
+ "issues": [
+  {
+   "id": "I-01",
+   "class": "B",
+   "task": "D21",
+   "finding_text": "eleven live components have no governing claim in the environment graph and ten have no IMPLEMENTATION node (Factory CLI/model/tests, the line-import tool, the native driver factc, the workspace root, the language/commissioning/reconcile/manifest test machinery; the bootstrap runner has a node but no fact)",
+   "covers": [],
+   "surfaces": [
+    "tests/manifest/build-epoch.mjs"
+   ],
+   "repair": "D21 epoch: one IMPLEMENTATION node per uncovered live component and FACT-D21-LIVE-SURFACES-ENUMERATED resting on every live implementation; execution claims follow per task (D22 Factory, D23 factc/bootstrap/language, D24-D25 commissioning, D26 reconcile/manifest/root)",
+   "status": "REPAIRED (D21-EXECUTION-MANIFEST: epoch D21 added the ten implementation nodes and the enumeration fact; the findings are now empty)"
+  },
+  {
+   "id": "I-02",
+   "class": "F",
+   "task": "none",
+   "finding_text": "the three D0 station specs (S-BUILD, S-DOC, S-RUST) were never receipted: they are the bootstrap registry the first Factory build was judged by, before receipts existed",
+   "covers": [
+    {
+     "finding": "live_files_never_receipted",
+     "item": "factory/registry/stations/S-BUILD.json"
+    },
+    {
+     "finding": "live_files_never_receipted",
+     "item": "factory/registry/stations/S-DOC.json"
+    },
+    {
+     "finding": "live_files_never_receipted",
+     "item": "factory/registry/stations/S-RUST.json"
+    }
+   ],
+   "surfaces": [
+    "factory/registry/stations/S-BUILD.json",
+    "factory/registry/stations/S-DOC.json",
+    "factory/registry/stations/S-RUST.json"
+   ],
+   "repair": "none: bootstrap material (docs/HANDOFF.md section 4: a station spec present only in the workpiece is bootstrap registry material); tests/hygiene/registry-check.mjs guards their effective authority since D13"
+  },
+  {
+   "id": "I-03",
+   "class": "F",
+   "task": "none",
+   "finding_text": "two test tools are kept for history only: tests/toolchain/run-proof-matrix.sh (the D9 matrix on unpinned channels) and tests/envmap/bind-evidence.mjs (the D11 one-shot binder that rewrote the origin graph in place; it reads evidence/D11 by construction)",
+   "covers": [
+    {
+     "finding": "historical_tools",
+     "item": "*"
+    },
+    {
+     "finding": "live_tools_reading_evidence_packages",
+     "item": "tests/envmap/bind-evidence.mjs"
+    }
+   ],
+   "surfaces": [
+    "tests/toolchain/run-proof-matrix.sh",
+    "tests/envmap/bind-evidence.mjs"
+   ],
+   "repair": "none: declared historical (docs/HANDOFF.md section 7; the manifest marks them historical tools); deleting them is an owner decision (G); neither is reachable from a current fixture, claim or runbook"
+  },
+  {
+   "id": "I-04",
+   "class": "F",
+   "task": "none",
+   "finding_text": "tests/reference/ingress.mjs names evidence/D14/audit/{fragments,link-audit}.json inside the annotation text it writes (the imported line's law annotations cite their own evidence); it does not read those packages as input",
+   "covers": [
+    {
+     "finding": "live_tools_reading_evidence_packages",
+     "item": "tests/reference/ingress.mjs"
+    }
+   ],
+   "surfaces": [
+    "tests/reference/ingress.mjs"
+   ],
+   "markers": [
+    {
+     "file": "tests/reference/ingress.mjs",
+     "pattern": "D14 ANNOTATION \\(fragment"
+    }
+   ],
+   "repair": "none: the citation is the imported line's record (D20 R-58); a future annotation run would name its own epoch"
+  },
+  {
+   "id": "I-05",
+   "class": "B",
+   "task": "D25",
+   "finding_text": "tests/selfhost/primitives-probe.mjs defaults BUNDLE_DIR to evidence/D7/physical/compile/bundle: a live probe consumes a historical evidence bundle as its input unless the caller overrides it",
+   "covers": [
+    {
+     "finding": "live_tools_reading_evidence_packages",
+     "item": "tests/selfhost/primitives-probe.mjs"
+    }
+   ],
+   "surfaces": [
+    "tests/selfhost/primitives-probe.mjs"
+   ],
+   "markers": [
+    {
+     "file": "tests/selfhost/primitives-probe.mjs",
+     "pattern": "evidence/D7/physical/compile/bundle"
+    }
+   ],
+   "repair": "D25: the probe takes a freshly generated bundle (BUNDLE_DIR required, no historical default); the D25 run records the bundle hashes it probed"
+  },
+  {
+   "id": "I-06",
+   "class": "B",
+   "task": "D23",
+   "finding_text": "browser transport boundary (D12 B-06): the wasm64 export surface implements exactly the eight C14 bootstrap operations, while the kernel's public API also offers submit_contracts, submit_metrics, submit_evidence_tape, observe, read_artifact, artifact_count, bundle_file_count and bundle_file, which only the native driver transports; in the browser BUILD stops at CAPABILITY_IR because no registry can be submitted and no bundle can be read",
+   "covers": [],
+   "surfaces": [
+    "compiler/wasm-abi/src/lib.rs",
+    "compiler/kernel/src/abi.rs",
+    "host/factc/src/main.rs",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-ARCHITECTURE.md"
+   ],
+   "markers": [],
+   "repair": "D23 decides from the current contracts: the semantics exist and are natively transported, so extending the wasm transport is transport-only (B), not a new semantic (D); it needs an insertion-only contract annotation (C14: operations beyond the bootstrap eight) approved in ASCII before the exports are added and proved in Chromium; if the owner keeps the ABI at the bootstrap eight, the boundary stays [GAP] (D) with the browser BUILD scope stated exactly",
+   "status": "REPAIRED (transport; D23-COMPILER-ABI-EXECUTION): class B confirmed - the semantics exist and are natively transported; compiler/wasm-abi now exports every kernel operation (21 exports: submit_contracts, submit_metrics, submit_evidence_tape, observe, artifact_count, read_artifact, bundle_file_count, bundle_file_path, bundle_file_bytes added; observe framing is transport encoding, which C14 defers); BUILD and OBSERVE in Chromium are byte-identical to host/factc (Q-WASM-08). The C14 contract TEXT still lists eight operations: I-29 (owner)"
+  },
+  {
+   "id": "I-07",
+   "class": "C",
+   "task": "D24",
+   "finding_text": "compiler/codegen/templates/index.html (the generated shell) embeds the commissioning payload A bytes (0x00,0x01,0x7f,0x80,0xff,0x55,0xaa,0x10) and a 'destroy WEBGPU' interaction: specimen data and a fixed backend name inside a production template",
+   "covers": [],
+   "surfaces": [
+    "compiler/codegen/templates/index.html"
+   ],
+   "markers": [
+    {
+     "file": "compiler/codegen/templates/index.html",
+     "pattern": "0x00,0x01,0x7f,0x80,0xff,0x55,0xaa,0x10"
+    }
+   ],
+   "repair": "D24: the shell takes its demonstration payload and its loss interaction from the verified strategy data (backends of the guards) or from the user, never from a compiled-in specimen; proven by the non-relay specimens"
+  },
+  {
+   "id": "I-08",
+   "class": "B",
+   "task": "D24",
+   "finding_text": "tests/commissioning/run-anti-cheat.sh reports the templates clean because it greps the payload as spaced hex ('00 01 7f 80') and the shell writes it as '0x00,0x01,0x7f,0x80': the anti-cheat scan does not see the form the machinery uses",
+   "covers": [],
+   "surfaces": [
+    "tests/commissioning/run-anti-cheat.sh"
+   ],
+   "markers": [
+    {
+     "file": "tests/commissioning/run-anti-cheat.sh",
+     "pattern": "00 01 7f 80"
+    }
+   ],
+   "repair": "D24: scan for every byte form of the fixture payloads (spaced, 0x-comma, array literal) and for backend and relation names of the specimen; the scan must fail on the current shell before I-07 is repaired (reproduce first)"
+  },
+  {
+   "id": "I-09",
+   "class": "C",
+   "task": "D24",
+   "finding_text": "the generated runtime realizes exactly one operation: runtime.js relay(bytes) executes through the active plan's first guard backend and the selector data carries 'relation' = the FIRST data relation of the model (codegen strategy_data_json: 'adaptive relay targets have one; generic name otherwise'); the wasm library of codegen knows only relay functions (abi_version, copy_bytes, region_in/out/capacity) and the REGION layout is named 'relay module'; adapter templates are keyed by the recipe's adapter name and the library holds exactly wasm64_relay and webgpu_relay",
+   "covers": [],
+   "surfaces": [
+    "compiler/codegen/templates/runtime.js",
+    "compiler/codegen/src/lib.rs",
+    "compiler/codegen/templates/adapter-wasm64_relay.js",
+    "compiler/codegen/templates/adapter-webgpu_relay.js"
+   ],
+   "markers": [
+    {
+     "file": "compiler/codegen/src/lib.rs",
+     "pattern": "adaptive relay targets have one\\); generic name otherwise"
+    },
+    {
+     "file": "compiler/codegen/templates/runtime.js",
+     "pattern": "export async function relay\\(bytes\\)"
+    }
+   ],
+   "repair": "D24 proves the distinction with specimens whose data relations, names, payload shapes and backends differ from Byte Relay: what the language can express (transfer requirements per data relation, mode=copy) must be what the runtime executes; backend-specific adapters are allowed, a specimen-specific operation is not; if the language cannot express a second operation, the exact architectural GAP is recorded instead of a rename"
+  },
+  {
+   "id": "I-10",
+   "class": "A",
+   "task": "D23",
+   "finding_text": "compiler/kernel/src/lib.rs still documents the Pass-3 state ('until the language kernel exists, CHECK_OR_COMPILE reports LANGUAGE_KERNEL_NOT_IMPLEMENTED (B8)'); the kernel has run the full pipeline since D2",
+   "covers": [],
+   "surfaces": [
+    "compiler/kernel/src/lib.rs"
+   ],
+   "markers": [
+    {
+     "file": "compiler/kernel/src/lib.rs",
+     "pattern": "language kernel exists, CHECK_OR_COMPILE reports LANGUAGE_KERNEL_NOT_IMPLEMENTED"
+    }
+   ],
+   "repair": "D23 (S-RUST, when the kernel crate is under the station anyway): the crate header states the current phase set; no code change",
+   "status": "REPAIRED (D23-COMPILER-ABI-EXECUTION: the kernel header states the phase spine and the two transports)"
+  },
+  {
+   "id": "I-11",
+   "class": "B",
+   "task": "D25",
+   "finding_text": "the generated shell's interactions (init, relay payload, destroy WEBGPU buttons, service-worker registration from the shell) are never exercised: host/harness/bundle-probe.mjs drives window.factRuntime directly and tests/selfhost P01 launches the bundle offline without clicking",
+   "covers": [],
+   "surfaces": [
+    "compiler/codegen/templates/index.html",
+    "host/harness/bundle-probe.mjs"
+   ],
+   "repair": "D25: drive the shell through its buttons in the physical run (or record the shell as demonstration-only and outside the runtime claims)"
+  },
+  {
+   "id": "I-12",
+   "class": "G",
+   "task": "owner",
+   "finding_text": "STATION-REGISTRY.md opens with 'STATUS: PASS 5 INITIAL REGISTRY ... It does not implement them.' while the D13 annotation makes the JSON registry authoritative and eight stations have run 27 deltas: the header reads as stale law wording",
+   "covers": [],
+   "surfaces": [
+    "STATION-REGISTRY.md"
+   ],
+   "markers": [
+    {
+     "file": "STATION-REGISTRY.md",
+     "pattern": "It does not implement them\\."
+    }
+   ],
+   "repair": "owner law delta (the sentence is law text; S-ANNOTATE may only insert); the D13/D18 annotations already state the current authority, so nothing executable depends on the header"
+  },
+  {
+   "id": "I-13",
+   "class": "G",
+   "task": "owner",
+   "finding_text": "24 law and pass documents (FACTORY-CONTRACTS.md, BOOTSTRAP-*.md, the language and lowering law, REFERENCE-AUTHORITY.md, ...) carry their code fences as escaped backticks (\\`\\`\\`text), the owner's authoring form; Markdown renderers show them literally",
+   "covers": [],
+   "surfaces": [
+    "FACTORY-CONTRACTS.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "REFERENCE-AUTHORITY.md"
+   ],
+   "markers": [
+    {
+     "file": "FACTORY-CONTRACTS.md",
+     "pattern": "\\\\`\\\\`\\\\`text"
+    }
+   ],
+   "repair": "none here: presentation of owner-authored law; no station may rewrite existing law lines; an owner decision"
+  },
+  {
+   "id": "I-14",
+   "class": "B",
+   "task": "D22",
+   "finding_text": "the Factory's negative witnesses (factory/tests/factory_law.rs f01-f13) do not yet cover: forged receipt identity, stale verification after a workpiece change, malformed fixture, bad environment identity, unsafe cleanup candidate, unintegrated workpiece retirement, parallel-line import collision, attempted direct canonical mutation; the D18 stage audit and the D20 import collision check exist as tools without a Factory-level witness",
+   "covers": [],
+   "surfaces": [
+    "factory/tests/factory_law.rs",
+    "factory/src/ops.rs",
+    "factory/src/hygiene.rs",
+    "tests/sync/import-line.mjs"
+   ],
+   "repair": "D22: construct every negative witness the prompt lists; each must be refused for the named reason; repair every A/B defect found before D23",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION: f17-f28 added, every reason in tests/factory/witnesses.json refused for its named check; six accepted attacks found and repaired, I-21..I-26)"
+  },
+  {
+   "id": "I-15",
+   "class": "D",
+   "task": "none",
+   "finding_text": "open-boundary register rows of class C (capability): D12 B-01/B-02 (no Factory WebApp), B-05/B-17 (templates in the kernel, packfiles), WGSL (CON-GPU-003), streaming delivery, worker admission contract, the 27 non-materialized families of G, the chooser/activation families (CON-CAP-002)",
+   "covers": [],
+   "surfaces": [
+    "docs/HANDOFF.md",
+    "CAPABILITY-MATRIX.md"
+   ],
+   "repair": "keep [GAP]: approved but never promised implemented; none is needed by the current implemented pipeline (Byte Relay class transfers on CPU_WASM64 / WEBGPU)"
+  },
+  {
+   "id": "I-16",
+   "class": "E",
+   "task": "none",
+   "finding_text": "open-boundary register rows that are environment or authority limits: hardware GPU (only SwiftShader observed), B-11 persist() in the headless shell, B-04 RUST_BUILD host-only, B-19 githack and the public HTTPS route, published frontier (23 hosts refuse the proxy), non-Linux platforms, Dawn source unreachable, tool documentation pinned at branch commits, git tree-entry order undocumented, ERR-001 (rustc page vs Core 3.0), ERR-002/ERR-003 shared threads, git #_worktrees rendering",
+   "covers": [],
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "repair": "keep [GAP]/[ERR]/[UNK]; D25 re-tests the public HTTPS route and produces the deployable probe if it is still unreachable"
+  },
+  {
+   "id": "I-17",
+   "class": "F",
+   "task": "none",
+   "finding_text": "open-boundary register rows of class B (historical): D0-D12 identity limits, the imported line's relocated records, the reference corpus size, D3-D8 fixture wording, D1-D8 heuristic gates, scratch-only tooling, workpiece-root stage directories",
+   "covers": [],
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "repair": "preserve"
+  },
+  {
+   "id": "I-18",
+   "class": "G",
+   "task": "owner",
+   "finding_text": "open-boundary register rows that are owner decisions: D-1, D-2, D-3, D-5, D-6, D-8, D-9, D-10; the 7 drifted fragment citations (R-58); CON-EM-D14-001 adoption (R-60); D12 B-03 (stations are OS programs) and B-16",
+   "covers": [],
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "repair": "stop: owner"
+  },
+  {
+   "id": "I-19",
+   "class": "B",
+   "task": "D23",
+   "finding_text": "the compiler crates are qualified only through the kernel ladders and the proof matrix as a whole: no record executes each crate through its consumer in DAG order, and factc (the native driver) has no test of its own beyond the language and commissioning scripts",
+   "covers": [],
+   "surfaces": [
+    "compiler/kernel/tests",
+    "host/factc/src/main.rs",
+    "tests/toolchain/run-qualified-proof.sh"
+   ],
+   "repair": "D23: compile -> focused tests -> consumer test per crate, bottom-up, on the qualified proof sets; per-crate facts and evidence in the D23 epoch",
+   "status": "REPAIRED (D23-COMPILER-ABI-EXECUTION: tests/toolchain/run-crate-dag.mjs executes every crate compile -> focused tests -> consumer test in dependency order; host/factc/tests/driver.rs d01-d07)"
+  },
+  {
+   "id": "I-20",
+   "class": "D",
+   "task": "D24",
+   "finding_text": "the runtime claims (RUNTIME-ADMISSION-REPLAN.md) and the bundle roles are witnessed by one specimen; whether a second data relation, a different payload shape or a single-backend registry reaches a bundle is unknown until D24 executes them",
+   "covers": [],
+   "surfaces": [
+    "fixtures/commissioning",
+    "compiler/planning/src/lib.rs",
+    "compiler/verifier/src/lib.rs",
+    "compiler/codegen/src/lib.rs"
+   ],
+   "repair": "D24: at least three semantically distinct specimens through the whole transformation with the attack list; outcomes reclassify I-09 (C repaired, or an exact architectural GAP)"
+  },
+  {
+   "id": "I-21",
+   "class": "A",
+   "task": "D22",
+   "finding_text": "verify accepted a receipt edited by hand from FAIL to PASS: it read only the receipt file (status, station, base, verification_results), never the Factory-owned station run",
+   "covers": [],
+   "surfaces": [
+    "factory/src/ops.rs"
+   ],
+   "repair": "station close records the receipt path, close tree and sha256 of the receipt bytes in the workpiece state; verify refuses a receipt whose latest closed station run is not PASS or differs (receipt_matches_station_run); witness f17",
+   "found_by": "D22 negative witness (accepted before repair: evidence/D22/reproduce.log)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-22",
+   "class": "A",
+   "task": "D22",
+   "finding_text": "verify accepted a receipt no station wrote (hand-written PASS receipt with empty verification_results)",
+   "covers": [],
+   "surfaces": [
+    "factory/src/ops.rs"
+   ],
+   "repair": "same check: no closed station run recorded for the fixture is a refusal; witness f18",
+   "found_by": "D22 negative witness (accepted before repair: evidence/D22/reproduce.log)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-23",
+   "class": "A",
+   "task": "D22",
+   "finding_text": "station close accepted a receipt whose declared identity probe failed or could not be spawned (the environment was not identified, the receipt was PASS)",
+   "covers": [],
+   "surfaces": [
+    "factory/src/ops.rs",
+    "factory/src/identity.rs"
+   ],
+   "repair": "identity_probe_observed:<name> is a station-close check: exit 0 and no spawn error, else the receipt is FAIL; witness f22",
+   "found_by": "D22 negative witness (accepted before repair: evidence/D22/reproduce.log)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-24",
+   "class": "A",
+   "task": "D22",
+   "finding_text": "fixture check accepted a command whose cwd or log escapes the workpiece (\"../\", an absolute path): the command would run or log outside the tree the station is authorized on",
+   "covers": [],
+   "surfaces": [
+    "factory/src/ops.rs",
+    "factory/src/model.rs"
+   ],
+   "repair": "command_cwd_within_workpiece / command_log_within_workpiece at fixture check: \".\" or a literal relative path only; witness f23",
+   "found_by": "D22 negative witness (accepted before repair: evidence/D22/reproduce.log)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-25",
+   "class": "A",
+   "task": "D22",
+   "finding_text": "station close accepted a station whose command wrote into the canonical checkout; only integration noticed the litter (canonical_working_tree_clean), after the mutation had happened",
+   "covers": [],
+   "surfaces": [
+    "factory/src/ops.rs"
+   ],
+   "repair": "canonical_repository_untouched_by_station: the canonical branch head and working-tree status are snapshotted before and after the commands; a difference is a station-close FAIL; witness f24",
+   "found_by": "D22 negative witness (accepted before repair: evidence/D22/reproduce.log)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-26",
+   "class": "A",
+   "task": "D22",
+   "finding_text": "re-inspection reported MATCH after a re-inspection command left litter in the canonical checkout",
+   "covers": [],
+   "surfaces": [
+    "factory/src/ops.rs"
+   ],
+   "repair": "canonical_repository_untouched_by_reinspect: the same snapshot around the re-inspection commands; a difference is DIFFER; witness f26",
+   "found_by": "D22 negative witness (accepted before repair: evidence/D22/reproduce.log)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-27",
+   "class": "A",
+   "task": "D22",
+   "finding_text": "tests/manifest/build-epoch.mjs carried literal fallback paths naming the D21 evidence package (evidence/D21/{manifest,gate,issues}.json); rebuilt for D22 the manifest reported it as a live tool reading a historical package",
+   "covers": [],
+   "surfaces": [
+    "tests/manifest/build-epoch.mjs"
+   ],
+   "repair": "the evidence paths are the --manifest, --gate and --issues arguments (relative to the root); no package is named; the D21 epoch rebuilds byte-identically",
+   "found_by": "D22 manifest rebuild (live_tools_reading_evidence_packages)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-28",
+   "class": "B",
+   "task": "D22",
+   "finding_text": "tests/manifest/components.json listed the environment-map tools file by file, so the two live files D21R added (tests/envmap/build-fact-epoch.mjs, tests/envmap/facts/D21R.json) were unassigned when the manifest was rebuilt for D22 (D21R did not rebuild the manifest)",
+   "covers": [],
+   "surfaces": [
+    "tests/manifest/components.json"
+   ],
+   "repair": "TEST-ENVMAP covers tests/envmap/ as a directory (a historical file keeps its more specific component); the manifest is rebuilt by every task from D22 on",
+   "found_by": "D22 manifest rebuild (unassigned_paths)",
+   "status": "REPAIRED (D22-FACTORY-SELF-QUALIFICATION)"
+  },
+  {
+   "id": "I-29",
+   "class": "G",
+   "task": "owner",
+   "finding_text": "BOOTSTRAP-CONTRACTS.md C14 lists eight semantic operations (QUERY_ABI_VERSION .. RESET_WORKSPACE) and defers transport encoding; the kernel API and both transports (host/factc since D2, compiler/wasm-abi since D23) carry fourteen operations. No station is authorized to annotate BOOTSTRAP-CONTRACTS.md (S-ANNOTATE lists ten root documents without it; S-ANNOTATE-OWNER holds CAPABILITY-MATRIX.md and BOOTSTRAP-TESTS.md), so the contract text can only be amended by the owner",
+   "covers": [],
+   "surfaces": [
+    "BOOTSTRAP-CONTRACTS.md",
+    "compiler/kernel/src/abi.rs",
+    "compiler/wasm-abi/src/lib.rs"
+   ],
+   "markers": [
+    {
+     "file": "BOOTSTRAP-CONTRACTS.md",
+     "pattern": "Transport encoding and concrete function signatures are deferred"
+    },
+    {
+     "file": "BOOTSTRAP-CONTRACTS.md",
+     "pattern": "READ_ARTIFACT_METADATA\\nRESET_WORKSPACE"
+    }
+   ],
+   "repair": "OWNER: an insertion-only C14 annotation naming the fourteen operations as the ABI (or a StationSpec change granting a station that document); until then the implementation is the record: compiler/kernel/src/abi.rs documents every operation, D23 proves both transports",
+   "found_by": "D21 I-06 classification, decided by D23 from the current contracts",
+   "status": "OPEN (owner)"
+  }
+ ],
+ "boundary_register_classes": {
+  "C (capability)": "D",
+  "D (authority uncertainty)": "E",
+  "B (historical evidence limit)": "F",
+  "OWNER": "G",
+  "note": "docs/HANDOFF.md section 6 uses the D13 classes; the prompt's A..G classes map as shown; no register row is an internal chain defect (A), which the D21 survey confirms: every A/B/C finding above is new"
+ }
+}

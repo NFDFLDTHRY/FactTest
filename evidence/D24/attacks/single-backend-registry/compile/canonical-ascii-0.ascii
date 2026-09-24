@@ -1,0 +1,23 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system dual_stream "Dual Stream"}
+| TYPES
+| @{type Chunk}
+| COMPONENTS
+| @{component sink}
+| @{port sink.in in: Chunk public}
+| @{component source}
+| @{port source.out out: Chunk public}
+| @{component splitter}
+| @{port splitter.in in: Chunk public}
+| @{port splitter.out out: Chunk public}
+| RELATIONS
+| @{data drain splitter.out -> sink.in mode=copy}
+| @{data feed source.out -> splitter.in mode=copy}
+| INVARIANTS
+| @{invariant i_reach reachable(source, sink)}
+| OBJECTIVES
+| @{metric preference_rank ordinal "fixture policy rank; not a measurement"}
+| @{objective spread}
+| @{goal spread 1 maximize preference_rank}
++------------------------------------------------------------------------+

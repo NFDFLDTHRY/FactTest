@@ -1,0 +1,30 @@
+{
+ "id": "CL-CS2",
+ "trace": "STO",
+ "authority": "AUTH-SW-CACHE-OBJECTS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/ServiceWorker",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+  "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+  "bytes": 297377
+ },
+ "locator": {
+  "text": "interface CacheStorage {",
+  "after": "[SecureContext, Exposed=(Window,Worker)]",
+  "line_start": 2268,
+  "line_end": 2269,
+  "derivation": "anchor text after \"[SecureContext, Exposed=(Window,Worker)]\"",
+  "enclosing_section": "#cachestorage-interface (line 2264)"
+ },
+ "window": 2,
+ "consequence": "CacheStorage is [SecureContext, Exposed=(Window,Worker)] with match/has/open/delete/keys",
+ "excerpt": "      interface CacheStorage {\n        [NewObject] Promise&lt;(Response or undefined)&gt; match(RequestInfo request, optional MultiCacheQueryOptions options = {});",
+ "excerpt_sha256": "bd93f213266b3361297a1e25ea4c12b8de58a9881baebb6fcd420f939c81ad81",
+ "must_contain": {
+  "Promise&lt;(Response or undefined)&gt; match(RequestInfo request": true
+ },
+ "status": "VERIFIED"
+}

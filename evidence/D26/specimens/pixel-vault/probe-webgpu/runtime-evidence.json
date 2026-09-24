@@ -1,0 +1,310 @@
+{
+  "epochs": [
+    {
+      "epoch_id": "E0",
+      "reason": "initial observation",
+      "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secure_context": true,
+      "established": "2026-09-24T18:47:42.805Z"
+    },
+    {
+      "epoch_id": "E1",
+      "reason": "loss of WEBGPU (destroyed)",
+      "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secure_context": true,
+      "established": "2026-09-24T18:47:42.886Z"
+    }
+  ],
+  "admissions": {
+    "WEBGPU": {
+      "receipt_id": "ADM-E1-WEBGPU",
+      "epoch_id": "E1",
+      "implementation_id": "WEBGPU",
+      "decision": "REJECTED",
+      "evaluated_requirements": [
+        {
+          "step": "DISCOVER",
+          "result": "OK",
+          "detail": "navigator.gpu present"
+        },
+        {
+          "step": "REQUEST",
+          "result": "OK",
+          "detail": "device acquired; adapter {\"vendor\":\"google\",\"architecture\":\"swiftshader\",\"device\":\"\",\"description\":\"\"}; maxBufferSize 1073741824",
+          "info": {
+            "vendor": "google",
+            "architecture": "swiftshader",
+            "device": "",
+            "description": ""
+          }
+        },
+        {
+          "step": "PROBE",
+          "result": "OK",
+          "detail": "webgpu_known_answer buffer upload/copy/readback exact (256 bytes)",
+          "probe": "webgpu_known_answer"
+        }
+      ],
+      "rejection_reason": "destroyed",
+      "adapter_info": {
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "device": "",
+        "description": ""
+      },
+      "status": "REJECTED"
+    }
+  },
+  "activation": {
+    "epoch_id": "E1",
+    "strategy_id": 1,
+    "plan_id": null,
+    "admission_refs": [
+      "ADM-E1-WEBGPU"
+    ],
+    "metric_evidence_refs": [],
+    "guard_result": [
+      {
+        "plan_id": 0,
+        "guard": [
+          "WEBGPU"
+        ],
+        "satisfied": false
+      }
+    ],
+    "status": "NO_ACTIVE_PLAN"
+  },
+  "evidence": [
+    {
+      "evidence_id": "RE-1",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "ADMISSION",
+      "subject": "WEBGPU",
+      "observation": {
+        "receipt_id": "ADM-E0-WEBGPU",
+        "epoch_id": "E0",
+        "implementation_id": "WEBGPU",
+        "decision": "ADMITTED",
+        "evaluated_requirements": [
+          {
+            "step": "DISCOVER",
+            "result": "OK",
+            "detail": "navigator.gpu present"
+          },
+          {
+            "step": "REQUEST",
+            "result": "OK",
+            "detail": "device acquired; adapter {\"vendor\":\"google\",\"architecture\":\"swiftshader\",\"device\":\"\",\"description\":\"\"}; maxBufferSize 1073741824",
+            "info": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": ""
+            }
+          },
+          {
+            "step": "PROBE",
+            "result": "OK",
+            "detail": "webgpu_known_answer buffer upload/copy/readback exact (256 bytes)",
+            "probe": "webgpu_known_answer"
+          }
+        ],
+        "rejection_reason": null,
+        "adapter_info": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": ""
+        },
+        "status": "ADMITTED"
+      },
+      "expected": "ADMITTED",
+      "monotonic_marker": 139.6000000005588,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-2",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "ACTIVATION",
+      "subject": "selector",
+      "observation": {
+        "epoch_id": "E0",
+        "strategy_id": 1,
+        "plan_id": 0,
+        "admission_refs": [
+          "ADM-E0-WEBGPU"
+        ],
+        "metric_evidence_refs": [],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "WEBGPU"
+            ],
+            "satisfied": true
+          }
+        ],
+        "status": "PASS"
+      },
+      "expected": "PASS",
+      "monotonic_marker": 139.70000000018626,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-3",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "stash",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "WEBGPU",
+        "conversions": [
+          "tile_up",
+          "tile_down"
+        ],
+        "bytes": 3,
+        "input_sha256": "8e1336ab78ebe687fd8056a37f2d3b0c32f4cf8fa8b691b653800fa693d570b9",
+        "output_sha256": "8e1336ab78ebe687fd8056a37f2d3b0c32f4cf8fa8b691b653800fa693d570b9",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "8e1336ab78ebe687fd8056a37f2d3b0c32f4cf8fa8b691b653800fa693d570b9"
+      },
+      "monotonic_marker": 151.30000000074506,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-4",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "stash",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "WEBGPU",
+        "conversions": [
+          "tile_up",
+          "tile_down"
+        ],
+        "bytes": 17,
+        "input_sha256": "45e73ee93254114fd513dec79e8be44533f27689f1386a015f40e47ef8d34cc7",
+        "output_sha256": "45e73ee93254114fd513dec79e8be44533f27689f1386a015f40e47ef8d34cc7",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "45e73ee93254114fd513dec79e8be44533f27689f1386a015f40e47ef8d34cc7"
+      },
+      "monotonic_marker": 159.1000000005588,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-5",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "LOSS",
+      "subject": "WEBGPU",
+      "observation": {
+        "backend": "WEBGPU",
+        "reason": "destroyed",
+        "message": "Device was destroyed."
+      },
+      "expected": null,
+      "monotonic_marker": 164.70000000018626,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-6",
+      "epoch_id": "E1",
+      "plan_id": null,
+      "event_class": "ACTIVATION",
+      "subject": "selector",
+      "observation": {
+        "epoch_id": "E1",
+        "strategy_id": 1,
+        "plan_id": null,
+        "admission_refs": [
+          "ADM-E1-WEBGPU"
+        ],
+        "metric_evidence_refs": [],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "WEBGPU"
+            ],
+            "satisfied": false
+          }
+        ],
+        "status": "NO_ACTIVE_PLAN"
+      },
+      "expected": "PASS",
+      "monotonic_marker": 164.80000000074506,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-7",
+      "epoch_id": "E1",
+      "plan_id": null,
+      "event_class": "OBSERVATION_DELTA",
+      "subject": "runtime",
+      "observation": {
+        "from_epoch": "E0",
+        "to_epoch": "E1",
+        "changed_observations": [
+          {
+            "backend": "WEBGPU",
+            "from": "ADMITTED",
+            "to": "REJECTED",
+            "reason": "destroyed"
+          }
+        ],
+        "invalidated_admissions": [
+          "ADM-E0-WEBGPU"
+        ],
+        "stale_plans": [
+          0
+        ],
+        "replacement_plan": null,
+        "evidence_refs": [
+          "RE-4",
+          "RE-5",
+          "RE-6"
+        ]
+      },
+      "expected": null,
+      "monotonic_marker": 164.90000000037253,
+      "artifact_refs": []
+    }
+  ],
+  "observation_deltas": [
+    {
+      "from_epoch": "E0",
+      "to_epoch": "E1",
+      "changed_observations": [
+        {
+          "backend": "WEBGPU",
+          "from": "ADMITTED",
+          "to": "REJECTED",
+          "reason": "destroyed"
+        }
+      ],
+      "invalidated_admissions": [
+        "ADM-E0-WEBGPU"
+      ],
+      "stale_plans": [
+        0
+      ],
+      "replacement_plan": null,
+      "evidence_refs": [
+        "RE-4",
+        "RE-5",
+        "RE-6"
+      ]
+    }
+  ]
+}

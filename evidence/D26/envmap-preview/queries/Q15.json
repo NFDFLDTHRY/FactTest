@@ -1,0 +1,83 @@
+{
+  "query": "Q15",
+  "title": "Where does implementation documentation get mistaken for standards law?",
+  "answer": {
+    "implementation_only_external_constraints": [
+      {
+        "constraint": "CON-EM-004",
+        "authorities": [
+          "AUTH-RUSTC-WASM64-TARGET-SPEC",
+          "AUTH-RUSTC-WASM64-DOC"
+        ],
+        "note": "external constraint grounded only in implementation/tool documentation"
+      },
+      {
+        "constraint": "CON-EM-006",
+        "authorities": [
+          "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+          "AUTH-CHROMIUM-GPU-SWITCHES",
+          "AUTH-CHROMIUM-GL-SWITCHES",
+          "AUTH-CHROMIUM-CONTENT-SWITCHES"
+        ],
+        "note": "external constraint grounded only in implementation/tool documentation"
+      },
+      {
+        "constraint": "CON-RS-001",
+        "authorities": [
+          "AUTH-RUST-REF-NOSTD"
+        ],
+        "note": "external constraint grounded only in implementation/tool documentation"
+      },
+      {
+        "constraint": "CON-RS-002",
+        "authorities": [
+          "AUTH-CARGO-BUILD-STD"
+        ],
+        "note": "external constraint grounded only in implementation/tool documentation"
+      },
+      {
+        "constraint": "CON-RS-003",
+        "authorities": [
+          "AUTH-RUSTC-WASM64-DOC"
+        ],
+        "note": "external constraint grounded only in implementation/tool documentation"
+      },
+      {
+        "constraint": "CON-GIT-001",
+        "authorities": [
+          "AUTH-GIT-OBJECT-FORMAT",
+          "AUTH-GIT-UPDATE-REF-CAS",
+          "AUTH-GIT-MKTREE",
+          "AUTH-GIT-SHA256-TRANSITION"
+        ],
+        "note": "external constraint grounded only in implementation/tool documentation"
+      }
+    ],
+    "implementation_vs_standard_conflicts": [
+      {
+        "conflict_id": "OBS-D11-1",
+        "from": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+        "to": "AUTH-GPU-FALLBACK-ADAPTER",
+        "note": "implementation doc says SwiftShader is a WebGL/GL fallback 'not intended for untrusted content'; the specification defines fallback adapters abstractly; neither says the SwiftShader WebGPU path is a hardware adapter"
+      },
+      {
+        "conflict_id": "ERR-001",
+        "from": "AUTH-RUSTC-WASM64-DOC",
+        "to": "AUTH-WASM-CORE-CHANGES-64",
+        "note": "rustc prose 'not standardized' vs Core Release 3.0 64-bit address space; bounded by the authority split (CON-RS-003)"
+      },
+      {
+        "conflict_id": "ERR-001",
+        "from": "AUTH-RUSTC-WASM64-DOC-D18",
+        "to": "AUTH-WASM-CORE-CHANGES-64",
+        "note": "rustc prose 'not standardized' vs Core Release 3.0 64-bit address space; bounded by the authority split (CON-RS-003)"
+      },
+      {
+        "conflict_id": "OBS-D11-1",
+        "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+        "to": "AUTH-GPU-FALLBACK-ADAPTER",
+        "note": "implementation doc says SwiftShader is a WebGL/GL fallback 'not intended for untrusted content'; the specification defines fallback adapters abstractly; neither says the SwiftShader WebGPU path is a hardware adapter"
+      }
+    ]
+  }
+}

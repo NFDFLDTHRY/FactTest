@@ -2,6 +2,8 @@
 // STRATEGY is the VerifiedStrategy as data; select() evaluates activation guards over admissions in dispatch
 // order and can only ever name a plan_id that appears in STRATEGY.variants.  Nothing here generates code.
 export const STRATEGY = /*STRATEGY-BEGIN*/__STRATEGY_JSON__/*STRATEGY-END*/;
+// sha256 of the strategy data above, as the compiler rendered it: every evidence tape of this bundle names it
+export const STRATEGY_SHA256 = '__STRATEGY_SHA256__';
 export function select(admissions) {
   const guardResults = [];
   let chosen = null;

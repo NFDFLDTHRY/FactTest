@@ -1,0 +1,48 @@
+{
+  "fixture_id": "F2-web",
+  "station_id": "S-WEB",
+  "selected_inputs": [
+    "D25 section 1 (the shell-driven probe)"
+  ],
+  "narrowed_may_change": [
+    "host/harness/webapp-probe.mjs",
+    "factory/receipts/D25-PHYSICAL-RUNTIME/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check host/harness/webapp-probe.mjs && ! grep -nE 'WEBGPU|CPU_WASM64|byte[-_]relay|commissioning|relay\\(' host/harness/webapp-probe.mjs && grep -q 'Browser.getVersion' host/harness/webapp-probe.mjs && grep -q 'crossOriginIsolated' host/harness/webapp-probe.mjs && grep -q 'requestAdapter' host/harness/webapp-probe.mjs && grep -q \"'#controls button'\" host/harness/webapp-probe.mjs && grep -q -- '--url' host/harness/webapp-probe.mjs && echo 'syntax clean; generic (no backend, specimen or fixed operation name); identity, shell-driving and external-url paths present'"
+        ],
+        "log": "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-syntax-generic.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "76f44410fe4a57162b6c355c859c296b2a697be4",
+          "--",
+          "host",
+          "compiler",
+          ":!host/harness/webapp-probe.mjs"
+        ],
+        "log": "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-other-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "host/harness/webapp-probe.mjs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D25-PHYSICAL-RUNTIME"
+}

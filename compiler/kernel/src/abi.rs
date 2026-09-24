@@ -125,6 +125,7 @@ pub fn observe(
     system_name: &[u8],
     source_sha_after: Option<&[u8; 32]>,
     source_sha_lineage: Option<&[u8; 32]>,
+    strategy_data_sha_lineage: Option<&[u8; 32]>,
     evidence_class: &[u8],
 ) -> Status {
     ws.diagnostics.clear();
@@ -143,8 +144,18 @@ pub fn observe(
         system_name,
         source_sha_after,
         source_sha_lineage,
+        strategy_data_sha_lineage,
         evidence_class,
     };
+    if factc_observe::evidence_bound(&ws.observation, &cx) == Some(false) {
+        ws.diagnostics.push(factc_foundation::Diagnostic::new(
+            factc_foundation::DiagCode::EvidenceUnbound,
+            factc_foundation::Phase::Observe,
+            SourceId::new(0xE0E0),
+            None,
+            "evidence tape is not bound to the bundle manifest the host supplied",
+        ));
+    }
     let mut scratch = [0u8; 128 * 1024];
     let status = if ws.observation.ok {
         factc_foundation::ArtifactStatus::Ok

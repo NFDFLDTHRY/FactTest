@@ -1,0 +1,20 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system ledger_mirror "Ledger Mirror"}
+| TYPES
+| @{type Entry}
+| COMPONENTS
+| @{component archive}
+| @{port archive.store in: Entry public}
+| @{component clerk}
+| @{port clerk.entries out: Entry public}
+| @{component journal}
+| @{port journal.copy out: Entry public}
+| @{port journal.intake in: Entry public}
+| RELATIONS
+| @{data mirror journal.copy -> archive.store mode=copy}
+| @{data post clerk.entries -> journal.intake mode=copy}
+| INVARIANTS
+| @{invariant i_path reachable(clerk, archive)}
+| @{invariant i_type type_equal(clerk.entries, archive.store)}
++------------------------------------------------------------------------+

@@ -1,0 +1,50 @@
+{
+  "fixture_id": "F1-rust",
+  "station_id": "S-RUST",
+  "selected_inputs": [
+    "D22 section 1 (witnesses f17-f28)",
+    "factory/src as committed at the base"
+  ],
+  "narrowed_may_change": [
+    "factory/tests/",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "cargo",
+        "args": [
+          "+1.94.1",
+          "test",
+          "-p",
+          "factory"
+        ],
+        "env": {
+          "CARGO_TARGET_DIR": "/home/user/factory-target-w27"
+        },
+        "expect_exit": 101,
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "L=factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log; for t in f17 f18 f22 f23 f24 f26; do grep -q \"^test ${t}_.* FAILED$\" $L || { echo $t not failing; exit 1; }; done; [ $(grep -c '^test f.* FAILED$' $L) -eq 6 ] && [ $(grep -c '^test f.* ok$' $L) -eq 23 ] && grep -q 'test result: FAILED. 23 passed; 6 failed' $L && git diff --exit-code 88564a0eccd934d6a017faf65435bc871bcd2f94 -- factory/src compiler host Cargo.toml Cargo.lock factory/Cargo.toml && echo 'six accepted attacks reproduced with the Factory as committed'"
+        ],
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce-check.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "factory/tests/factory_law.rs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION"
+}

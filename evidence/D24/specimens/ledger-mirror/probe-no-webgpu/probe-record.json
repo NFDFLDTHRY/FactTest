@@ -1,0 +1,238 @@
+{
+  "harness": "host/harness/bundle-probe.mjs",
+  "started": "2026-09-24T14:54:36.846Z",
+  "url": "http://127.0.0.1:40137/index.html",
+  "launch": {
+    "headless": true,
+    "args": []
+  },
+  "no_webgpu": true,
+  "options": {
+    "noWebgpu": true,
+    "loss": "none",
+    "expect-e0": "CPU_WASM64"
+  },
+  "transfers": [
+    {
+      "relation": "post",
+      "type": "Entry",
+      "mode": "copy"
+    },
+    {
+      "relation": "mirror",
+      "type": "Entry",
+      "mode": "copy"
+    }
+  ],
+  "bundle_hashes_before": {
+    "bundle.json": "6474b8ffba4bd11da86caa7d931196d11bb9258d4be63a6f295850f7051397fc",
+    "index.html": "5335503cf62edffcadbf333654f08ce201f5d8452f1b128cc03e37255c7b5922",
+    "manifest.webmanifest": "a6a2dea5706a0e8cbf98c448fba22692d34739b06391b40ead180b264e7e6bed",
+    "membrane.js": "6bee6c8eff9f5c753b621a3c543796e753c627ed2ddd3dfcfff2759734912cac",
+    "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+    "selector.js": "6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94",
+    "sw.js": "8cfe246007671ff49ad8e40f4674bc5e5416e5ad392ad9d8f09847a8075c14da",
+    "wasm64_relay.wasm": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+  },
+  "steps": [
+    {
+      "step": "comparator-self-check",
+      "tampered_detected": true,
+      "identical_accepted": true
+    },
+    {
+      "step": "environment",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secureContext": true,
+      "gpuExposed": true
+    },
+    {
+      "step": "E0-init",
+      "activation": {
+        "epoch_id": "E0",
+        "strategy_id": 1,
+        "plan_id": 0,
+        "admission_refs": [
+          "ADM-E0-CPU_WASM64"
+        ],
+        "metric_evidence_refs": [],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "CPU_WASM64"
+            ],
+            "satisfied": true
+          }
+        ],
+        "status": "PASS"
+      },
+      "admissions": {
+        "CPU_WASM64": {
+          "receipt_id": "ADM-E0-CPU_WASM64",
+          "epoch_id": "E0",
+          "implementation_id": "CPU_WASM64",
+          "decision": "ADMITTED",
+          "evaluated_requirements": [
+            {
+              "step": "DISCOVER",
+              "result": "OK",
+              "detail": "WebAssembly + memory64 present"
+            },
+            {
+              "step": "REQUEST",
+              "result": "OK",
+              "detail": "instantiated; abi_version 1; module sha256 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+            },
+            {
+              "step": "PROBE",
+              "result": "OK",
+              "detail": "wasm64_known_answer roundtrip exact (256 bytes)",
+              "probe": "wasm64_known_answer"
+            }
+          ],
+          "rejection_reason": null,
+          "adapter_info": null,
+          "status": "ADMITTED"
+        }
+      },
+      "epochs": [
+        {
+          "epoch_id": "E0",
+          "reason": "initial observation",
+          "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+          "secure_context": true,
+          "established": "2026-09-24T14:54:36.850Z"
+        }
+      ]
+    },
+    {
+      "step": "E0-transfer",
+      "results": [
+        {
+          "relation": "post",
+          "payload": "entry-1",
+          "input_hex": "2a",
+          "output_hex": "2a",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "conversions": [
+            "entry_in",
+            "entry_out"
+          ],
+          "plan_id": 0,
+          "exact_runtime": true,
+          "exact_harness": true
+        },
+        {
+          "relation": "post",
+          "payload": "entry-empty",
+          "input_hex": "",
+          "output_hex": "",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "conversions": [
+            "entry_in",
+            "entry_out"
+          ],
+          "plan_id": 0,
+          "exact_runtime": true,
+          "exact_harness": true
+        },
+        {
+          "relation": "post",
+          "payload": "entry-1000",
+          "input_hex": "07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c",
+          "output_hex": "07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "conversions": [
+            "entry_in",
+            "entry_out"
+          ],
+          "plan_id": 0,
+          "exact_runtime": true,
+          "exact_harness": true
+        },
+        {
+          "relation": "mirror",
+          "payload": "entry-1",
+          "input_hex": "2a",
+          "output_hex": "2a",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "conversions": [
+            "entry_in",
+            "entry_out"
+          ],
+          "plan_id": 0,
+          "exact_runtime": true,
+          "exact_harness": true
+        },
+        {
+          "relation": "mirror",
+          "payload": "entry-empty",
+          "input_hex": "",
+          "output_hex": "",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "conversions": [
+            "entry_in",
+            "entry_out"
+          ],
+          "plan_id": 0,
+          "exact_runtime": true,
+          "exact_harness": true
+        },
+        {
+          "relation": "mirror",
+          "payload": "entry-1000",
+          "input_hex": "07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c",
+          "output_hex": "07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c bf 42 c5 48 cb 4e d1 54 d7 5a dd 60 e3 66 e9 6c ef 72 f5 78 fb 7e 01 84 07 8a 0d 90 13 96 19 9c 1f a2 25 a8 2b ae 31 b4 37 ba 3d c0 43 c6 49 cc 4f d2 55 d8 5b de 61 e4 67 ea 6d f0 73 f6 79 fc 7f 02 85 08 8b 0e 91 14 97 1a 9d 20 a3 26 a9 2c af 32 b5 38 bb 3e c1 44 c7 4a cd 50 d3 56 d9 5c df 62 e5 68 eb 6e f1 74 f7 7a fd 80 03 86 09 8c 0f 92 15 98 1b 9e 21 a4 27 aa 2d b0 33 b6 39 bc 3f c2 45 c8 4b ce 51 d4 57 da 5d e0 63 e6 69 ec 6f f2 75 f8 7b fe 81 04 87 0a 8d 10 93 16 99 1c 9f 22 a5 28 ab 2e b1 34 b7 3a bd 40 c3 46 c9 4c cf 52 d5 58 db 5e e1 64 e7 6a ed 70 f3 76 f9 7c ff 82 05 88 0b 8e 11 94 17 9a 1d a0 23 a6 29 ac 2f b2 35 b8 3b be 41 c4 47 ca 4d d0 53 d6 59 dc 5f e2 65 e8 6b ee 71 f4 77 fa 7d 00 83 06 89 0c 8f 12 95 18 9b 1e a1 24 a7 2a ad 30 b3 36 b9 3c",
+          "status": "EXECUTED",
+          "backend": "CPU_WASM64",
+          "conversions": [
+            "entry_in",
+            "entry_out"
+          ],
+          "plan_id": 0,
+          "exact_runtime": true,
+          "exact_harness": true
+        }
+      ]
+    }
+  ],
+  "bundle_hashes_after": {
+    "bundle.json": "6474b8ffba4bd11da86caa7d931196d11bb9258d4be63a6f295850f7051397fc",
+    "index.html": "5335503cf62edffcadbf333654f08ce201f5d8452f1b128cc03e37255c7b5922",
+    "manifest.webmanifest": "a6a2dea5706a0e8cbf98c448fba22692d34739b06391b40ead180b264e7e6bed",
+    "membrane.js": "6bee6c8eff9f5c753b621a3c543796e753c627ed2ddd3dfcfff2759734912cac",
+    "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+    "selector.js": "6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94",
+    "sw.js": "8cfe246007671ff49ad8e40f4674bc5e5416e5ad392ad9d8f09847a8075c14da",
+    "wasm64_relay.wasm": "204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+  },
+  "bundle_unchanged_during_session": true,
+  "console": [],
+  "finished": "2026-09-24T14:54:36.966Z",
+  "verdict": {
+    "transfers_executed": 2,
+    "payloads": 3,
+    "e0_all_exact": true,
+    "e0_backends": [
+      "CPU_WASM64"
+    ],
+    "e0_plan": 0,
+    "loss_attempted": null,
+    "loss_witnessed": null,
+    "e1_plan": null,
+    "e1_all_exact": null,
+    "e1_backends": null,
+    "epochs": [
+      "E0"
+    ],
+    "no_compiler_invoked": true,
+    "bundle_unchanged": true,
+    "expectations_met": true
+  }
+}

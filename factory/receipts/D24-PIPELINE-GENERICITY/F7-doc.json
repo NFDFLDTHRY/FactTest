@@ -1,0 +1,174 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D24-PIPELINE-GENERICITY-F7-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F7-doc",
+  "workpiece_id": "W29",
+  "delta_id": "D24-PIPELINE-GENERICITY",
+  "canonical_base": "6bcc86cd50f9787c0afd3b65a113812bea2de2d7",
+  "input_artifacts": [
+    "tests/manifest/components.json",
+    "the D23 graph",
+    "receipts",
+    "station registry"
+  ],
+  "open_tree": "ce46b0eb1c77ba1f169b828d8bb4a41bccb794cd",
+  "close_tree": "4f7f3abdcf88235e80157823b0587eec81286c3c",
+  "changed_paths": [
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+    "design/execution-manifest/manifest.json",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-build-manifest.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-deterministic.log"
+  ],
+  "output_artifacts": [
+    "design/execution-manifest/manifest.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D24-PIPELINE-GENERICITY"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-build-manifest.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-build-manifest.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-deterministic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-deterministic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 --delta D24-PIPELINE-GENERICITY --epoch D24 --out design/execution-manifest",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-build-manifest.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 6bcc86cd50f9787c0afd3b65a113812bea2de2d7 --delta D24-PIPELINE-GENERICITY --epoch D24 --out $T >/dev/null && cmp $T/manifest.json design/execution-manifest/manifest.json && cmp $T/CURRENT-EXECUTION-MANIFEST.md design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md && echo 'manifest deterministic (rebuilt byte-identically)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-deterministic.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/execution-manifest/manifest.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-build-manifest.log",
+    "factory/receipts/D24-PIPELINE-GENERICITY/logs/F7-deterministic.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T14:55:43Z",
+  "status": "PASS"
+}

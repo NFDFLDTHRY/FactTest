@@ -144,7 +144,13 @@ fn write_fixture(wp: &Path, rel: &str, v: &Value) -> Fixture {
 
 fn happy_path(s: &Scratch, id: &str) -> (StructuralDelta, Fixture) {
     let d = write_delta(s, &delta_value(s, id, &["factory/fixtures/fx.json"]));
-    let r = ops::workpiece_create(&d).unwrap();
+    let fx = open_happy(&d, id);
+    (d, fx)
+}
+
+/// Create the workpiece of `d`, open its one S-DOC fixture and write the approved ASCII (station still open).
+fn open_happy(d: &StructuralDelta, id: &str) -> Fixture {
+    let r = ops::workpiece_create(d).unwrap();
     assert!(r.pass(), "{:?}", r);
     let wp = d.workpiece_dir();
     let fx = write_fixture(
@@ -152,11 +158,11 @@ fn happy_path(s: &Scratch, id: &str) -> (StructuralDelta, Fixture) {
         "factory/fixtures/fx.json",
         &fixture_value("fx", "S-DOC", id, &["design/", "factory/fixtures/"], vec![]),
     );
-    let r = ops::station_open(&d, &fx).unwrap();
+    let r = ops::station_open(d, &fx).unwrap();
     assert!(r.pass(), "{:?}", r);
     std::fs::create_dir_all(wp.join("design")).unwrap();
     std::fs::write(wp.join("design/ASCII.md"), "approved ascii\n").unwrap();
-    (d, fx)
+    fx
 }
 
 #[test]
@@ -603,4 +609,416 @@ fn f16_heuristic_checkers_carry_proof_weight_none() {
     let s = scratch("f16");
     let dl = write_delta(&s, &delta_value(&s, "D-F16", &["factory/fixtures/fx.json"]));
     assert!(ops::delta_check(&dl).weight.is_none());
+}
+
+// ------------------------------------------------------------------------------------------------ D22 witnesses
+// Negative witnesses of the D21-D26 prompt (D22 FACTORY PROVES FACTORY): each attack must be REFUSED FOR THE NAMED
+// REASON (the check name asserted here); a failure for an unrelated reason is not a pass.
+
+/// A fixture command value.
+fn cmd(program: &str, args: &[&str], log: &str) -> Value {
+    Value::obj()
+        .with("program", Value::s(program))
+        .with(
+            "args",
+            Value::str_arr(&args.iter().map(|a| a.to_string()).collect::<Vec<_>>()),
+        )
+        .with("log", Value::s(log))
+}
+
+/// Happy path closed PASS and verified PASS: ready to integrate.
+fn verified(s: &Scratch, id: &str) -> (StructuralDelta, Fixture) {
+    let (d, fx) = happy_path(s, id);
+    let r = ops::station_close(&d, &fx).unwrap();
+    assert!(r.pass(), "{:?}", r);
+    let r = ops::verify(&d).unwrap();
+    assert!(r.pass(), "{:?}", r);
+    (d, fx)
+}
+
+fn item<'a>(items: &'a [hygiene::AuditItem], name: &str) -> &'a hygiene::AuditItem {
+    items
+        .iter()
+        .find(|i| i.object.ends_with(name))
+        .unwrap_or_else(|| panic!("no audit item {}", name))
+}
+
+#[test]
+fn f17_edited_receipt_rejected_by_verify() {
+    // forged receipt identity (1): a FAIL receipt edited by hand into PASS
+    let s = scratch("f17");
+    let d = write_delta(&s, &delta_value(&s, "D-F17", &["factory/fixtures/fx.json"]));
+    assert!(ops::workpiece_create(&d).unwrap().pass());
+    let wp = d.workpiece_dir();
+    let fx = write_fixture(
+        &wp,
+        "factory/fixtures/fx.json",
+        &fixture_value(
+            "fx",
+            "S-DOC",
+            "D-F17",
+            &["design/", "factory/fixtures/"],
+            vec![cmd("false", &[], "design/false.log")],
+        ),
+    );
+    assert!(ops::station_open(&d, &fx).unwrap().pass());
+    std::fs::create_dir_all(wp.join("design")).unwrap();
+    std::fs::write(wp.join("design/ASCII.md"), "approved ascii\n").unwrap();
+    assert!(!ops::station_close(&d, &fx).unwrap().pass());
+    let p = wp.join("factory/receipts/D-F17/fx.json");
+    let forged = std::fs::read_to_string(&p)
+        .unwrap()
+        .replace("\"FAIL\"", "\"PASS\"");
+    std::fs::write(&p, forged).unwrap();
+    let r = ops::verify(&d).unwrap();
+    assert!(!r.pass(), "an edited receipt must not verify: {:?}", r);
+    assert!(has_failed(&r, "receipt_matches_station_run:fx"), "{:?}", r);
+    assert!(!ops::integrate(&d).unwrap().pass());
+    assert_eq!(git::head_of_branch(&s.repo, "main").unwrap(), s.base);
+}
+
+#[test]
+fn f18_handwritten_receipt_rejected_by_verify() {
+    // forged receipt identity (2): a PASS receipt no station wrote
+    let s = scratch("f18");
+    let (d, _fx) = happy_path(&s, "D-F18");
+    let wp = d.workpiece_dir();
+    let receipt = Value::obj()
+        .with("receipt_format", Value::s("2"))
+        .with("receipt_id", Value::s("R-D-F18-fx"))
+        .with("station_id", Value::s("S-DOC"))
+        .with("station_version", Value::s("1"))
+        .with("fixture_id", Value::s("fx"))
+        .with("workpiece_id", Value::s(&d.workpiece_id))
+        .with("delta_id", Value::s("D-F18"))
+        .with("canonical_base", Value::s(&s.base))
+        .with(
+            "changed_paths",
+            Value::str_arr(&["design/ASCII.md".to_string()]),
+        )
+        .with("verification_results", Value::Arr(vec![]))
+        .with("status", Value::s("PASS"));
+    json::write_file(&wp.join("factory/receipts/D-F18/fx.json"), &receipt).unwrap();
+    let r = ops::verify(&d).unwrap();
+    assert!(
+        !r.pass(),
+        "a receipt no station wrote must not verify: {:?}",
+        r
+    );
+    assert!(has_failed(&r, "receipt_matches_station_run:fx"), "{:?}", r);
+    assert!(!ops::integrate(&d).unwrap().pass());
+}
+
+#[test]
+fn f19_stale_verification_rejected_by_integrate() {
+    // stale verification: a station ran again after the verification
+    let s = scratch("f19");
+    let (d, fx) = verified(&s, "D-F19");
+    assert!(ops::station_open(&d, &fx).unwrap().pass());
+    std::fs::write(d.workpiece_dir().join("design/more.md"), "more\n").unwrap();
+    assert!(ops::station_close(&d, &fx).unwrap().pass());
+    let r = ops::integrate(&d).unwrap();
+    assert!(!r.pass());
+    assert!(
+        has_failed(&r, "workpiece_unchanged_since_verification"),
+        "{:?}",
+        r
+    );
+    assert_eq!(git::head_of_branch(&s.repo, "main").unwrap(), s.base);
+}
+
+#[test]
+fn f20_workpiece_changed_after_verification_rejected() {
+    let s = scratch("f20");
+    let (d, _fx) = verified(&s, "D-F20");
+    std::fs::write(
+        d.workpiece_dir().join("design/ASCII.md"),
+        "changed after verification\n",
+    )
+    .unwrap();
+    let r = ops::integrate(&d).unwrap();
+    assert!(!r.pass());
+    assert!(
+        has_failed(&r, "workpiece_unchanged_since_verification"),
+        "{:?}",
+        r
+    );
+    assert_eq!(git::head_of_branch(&s.repo, "main").unwrap(), s.base);
+}
+
+#[test]
+fn f21_malformed_fixture_rejected() {
+    let s = scratch("f21");
+    let d = write_delta(&s, &delta_value(&s, "D-F21", &["factory/fixtures/fx.json"]));
+    assert!(ops::workpiece_create(&d).unwrap().pass());
+    let wp = d.workpiece_dir();
+    // a command without a log never loads; verification names the fixture
+    let bad = Value::obj()
+        .with("program", Value::s("true"))
+        .with("args", Value::Arr(vec![]));
+    json::write_file(
+        &wp.join("factory/fixtures/fx.json"),
+        &fixture_value("fx", "S-DOC", "D-F21", &["design/"], vec![bad]),
+    )
+    .unwrap();
+    let e = Fixture::load(&wp.join("factory/fixtures/fx.json")).unwrap_err();
+    assert!(e.contains("'log'"), "{}", e);
+    let r = ops::verify(&d).unwrap();
+    assert!(!r.pass());
+    assert!(
+        has_failed(&r, "fixture_loads:factory/fixtures/fx.json"),
+        "{:?}",
+        r
+    );
+    // a fixture of another delta
+    let fx = write_fixture(
+        &wp,
+        "factory/fixtures/fx.json",
+        &fixture_value("fx", "S-DOC", "D-OTHER", &["design/"], vec![]),
+    );
+    let r = ops::station_open(&d, &fx).unwrap();
+    assert!(!r.pass());
+    assert!(has_failed(&r, "fixture_delta_matches"), "{:?}", r);
+    // a fixture naming a station nobody registered
+    let fx = write_fixture(
+        &wp,
+        "factory/fixtures/fx.json",
+        &fixture_value("fx", "S-NOWHERE", "D-F21", &["design/"], vec![]),
+    );
+    let e = ops::station_open(&d, &fx).unwrap_err();
+    assert!(e.contains("not registered"), "{}", e);
+}
+
+#[test]
+fn f22_failed_identity_probe_rejected_at_close() {
+    // bad environment identity: a declared identity probe that fails or cannot run
+    let s = scratch("f22");
+    let d = write_delta(&s, &delta_value(&s, "D-F22", &["factory/fixtures/fx.json"]));
+    assert!(ops::workpiece_create(&d).unwrap().pass());
+    let wp = d.workpiece_dir();
+    let mut fv = fixture_value(
+        "fx",
+        "S-DOC",
+        "D-F22",
+        &["design/", "factory/fixtures/"],
+        vec![],
+    );
+    fv.set(
+        "job_parameters",
+        Value::obj().with("commands", Value::Arr(vec![])).with(
+            "identity_probes",
+            Value::Arr(vec![
+                Value::obj()
+                    .with("name", Value::s("toolchain"))
+                    .with("program", Value::s("false"))
+                    .with("args", Value::Arr(vec![])),
+                Value::obj()
+                    .with("name", Value::s("browser"))
+                    .with("program", Value::s("/nonexistent/browser"))
+                    .with("args", Value::Arr(vec![])),
+            ]),
+        ),
+    );
+    let fx = write_fixture(&wp, "factory/fixtures/fx.json", &fv);
+    assert!(ops::station_open(&d, &fx).unwrap().pass());
+    std::fs::create_dir_all(wp.join("design")).unwrap();
+    std::fs::write(wp.join("design/ASCII.md"), "approved ascii\n").unwrap();
+    let r = ops::station_close(&d, &fx).unwrap();
+    assert!(
+        !r.pass(),
+        "a receipt whose environment could not be identified is not PASS: {:?}",
+        r
+    );
+    assert!(
+        has_failed(&r, "identity_probe_observed:toolchain"),
+        "{:?}",
+        r
+    );
+    assert!(has_failed(&r, "identity_probe_observed:browser"), "{:?}", r);
+    let rc = json::read_file(&wp.join("factory/receipts/D-F22/fx.json")).unwrap();
+    assert_eq!(rc.get("status").unwrap().as_str(), Some("FAIL"));
+    assert!(!ops::verify(&d).unwrap().pass());
+}
+
+#[test]
+fn f23_command_escaping_the_workpiece_rejected_at_open() {
+    let s = scratch("f23");
+    let d = write_delta(&s, &delta_value(&s, "D-F23", &["factory/fixtures/fx.json"]));
+    assert!(ops::workpiece_create(&d).unwrap().pass());
+    let wp = d.workpiece_dir();
+    let repo = s.repo.to_string_lossy().to_string();
+    let up = cmd("true", &[], "design/up.log").with("cwd", Value::s("../"));
+    let abs = cmd("true", &[], "design/abs.log").with("cwd", Value::s(&repo));
+    let log = cmd("true", &[], "../escaped.log");
+    let fx = write_fixture(
+        &wp,
+        "factory/fixtures/fx.json",
+        &fixture_value(
+            "fx",
+            "S-DOC",
+            "D-F23",
+            &["design/", "factory/fixtures/"],
+            vec![up, abs, log],
+        ),
+    );
+    let r = ops::station_open(&d, &fx).unwrap();
+    assert!(!r.pass());
+    assert!(
+        has_failed(&r, "command_cwd_within_workpiece:../"),
+        "{:?}",
+        r
+    );
+    assert!(
+        has_failed(&r, &format!("command_cwd_within_workpiece:{}", repo)),
+        "{:?}",
+        r
+    );
+    assert!(
+        has_failed(&r, "command_log_within_workpiece:../escaped.log"),
+        "{:?}",
+        r
+    );
+}
+
+#[test]
+fn f24_station_command_writing_into_canonical_rejected_at_close() {
+    // attempted direct canonical mutation (1): a station command reaches the canonical checkout
+    let s = scratch("f24");
+    let d = write_delta(&s, &delta_value(&s, "D-F24", &["factory/fixtures/fx.json"]));
+    assert!(ops::workpiece_create(&d).unwrap().pass());
+    let wp = d.workpiece_dir();
+    let target = s.repo.join("direct.txt");
+    let write = cmd(
+        "sh",
+        &["-c", &format!("echo direct > {}", target.display())],
+        "design/direct.log",
+    );
+    let fx = write_fixture(
+        &wp,
+        "factory/fixtures/fx.json",
+        &fixture_value(
+            "fx",
+            "S-DOC",
+            "D-F24",
+            &["design/", "factory/fixtures/"],
+            vec![write],
+        ),
+    );
+    assert!(ops::station_open(&d, &fx).unwrap().pass());
+    std::fs::create_dir_all(wp.join("design")).unwrap();
+    std::fs::write(wp.join("design/ASCII.md"), "approved ascii\n").unwrap();
+    let r = ops::station_close(&d, &fx).unwrap();
+    assert!(
+        !r.pass(),
+        "a station that wrote into the canonical repository is not PASS: {:?}",
+        r
+    );
+    assert!(
+        has_failed(&r, "canonical_repository_untouched_by_station"),
+        "{:?}",
+        r
+    );
+    assert!(
+        target.exists(),
+        "the witness did write (the Factory names it)"
+    );
+    assert!(!ops::verify(&d).unwrap().pass());
+    assert!(!ops::integrate(&d).unwrap().pass());
+}
+
+#[test]
+fn f25_direct_canonical_edit_blocks_integration() {
+    // attempted direct canonical mutation (2): an uncommitted edit in the canonical checkout
+    let s = scratch("f25");
+    let (d, _fx) = verified(&s, "D-F25");
+    std::fs::write(
+        s.repo.join("src/lib.txt"),
+        "edited directly in the canonical checkout\n",
+    )
+    .unwrap();
+    let r = ops::integrate(&d).unwrap();
+    assert!(!r.pass());
+    assert!(has_failed(&r, "canonical_working_tree_clean"), "{:?}", r);
+    assert_eq!(git::head_of_branch(&s.repo, "main").unwrap(), s.base);
+}
+
+#[test]
+fn f26_reinspect_command_writing_into_canonical_is_differ() {
+    // attempted direct canonical mutation (3): the delta's own re-inspection probe leaves litter in the canonical
+    // checkout
+    let s = scratch("f26");
+    let mut dv = delta_value(&s, "D-F26", &["factory/fixtures/fx.json"]);
+    dv.set(
+        "reinspect_commands",
+        Value::Arr(vec![cmd(
+            "sh",
+            &["-c", "echo litter > reinspect-litter.txt"],
+            "litter.log",
+        )]),
+    );
+    let d = write_delta(&s, &dv);
+    let fx = open_happy(&d, "D-F26");
+    assert!(ops::station_close(&d, &fx).unwrap().pass());
+    assert!(ops::verify(&d).unwrap().pass());
+    assert!(ops::integrate(&d).unwrap().pass());
+    let r = ops::reinspect(&d).unwrap();
+    assert!(!r.pass(), "{:?}", r);
+    assert!(
+        has_failed(&r, "canonical_repository_untouched_by_reinspect"),
+        "{:?}",
+        r
+    );
+    let v = json::read_file(&s.wroot.join("W-D-F26.reinspect.json")).unwrap();
+    assert_eq!(v.get("status").unwrap().as_str(), Some("DIFFER"));
+}
+
+#[test]
+fn f27_unintegrated_workpiece_never_retired() {
+    let s = scratch("f27");
+    let (d, _fx) = verified(&s, "D-F27");
+    let items = hygiene::audit(&s.wroot, &s.repo, "main", "W-OTHER").unwrap();
+    let it = item(&items, "W-D-F27");
+    assert_eq!(it.decision, "KEEP");
+    assert!(
+        it.reasons.iter().any(|x| x == "integration MISSING"),
+        "{:?}",
+        it.reasons
+    );
+    let r = hygiene::retire(&s.wroot, &s.repo, "main", "W-OTHER", &s.root.join("r.json")).unwrap();
+    assert!(r.pass(), "{:?}", r);
+    assert!(
+        d.workpiece_dir().exists(),
+        "verified-not-integrated workpiece kept"
+    );
+}
+
+#[test]
+fn f28_differing_reinspection_keeps_the_workpiece() {
+    // unsafe cleanup candidate: integrated, but the re-inspection did not match
+    let s = scratch("f28");
+    let (d, _fx) = verified(&s, "D-F28");
+    assert!(ops::integrate(&d).unwrap().pass());
+    std::fs::write(s.repo.join("later.txt"), "later\n").unwrap();
+    git::commit_all(&s.repo, "the branch moved on before re-inspection").unwrap();
+    let r = ops::reinspect(&d).unwrap();
+    assert!(!r.pass());
+    assert!(
+        has_failed(&r, "canonical_head_is_integrated_commit"),
+        "{:?}",
+        r
+    );
+    let items = hygiene::audit(&s.wroot, &s.repo, "main", "W-OTHER").unwrap();
+    let it = item(&items, "W-D-F28");
+    assert_eq!(it.decision, "KEEP");
+    assert!(
+        it.reasons.iter().any(|x| x == "reinspect DIFFER"),
+        "{:?}",
+        it.reasons
+    );
+    let r = hygiene::retire(&s.wroot, &s.repo, "main", "W-OTHER", &s.root.join("r.json")).unwrap();
+    assert!(r.pass(), "{:?}", r);
+    assert!(
+        d.workpiece_dir().exists(),
+        "differing workpiece kept as evidence"
+    );
 }

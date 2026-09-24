@@ -1,0 +1,169 @@
+{
+ "schema": "facttest-fact-epoch-spec/1",
+ "environment": "ENV-D26-HOST",
+ "summary": "clean whole-repository commissioning: the complete implemented system manufactured, verified and executed from the canonical source on a clean workpiece with fresh builds; the STALE_IF-selected claims re-proved; the five consistency equalities and the 21 lines of the six-task final condition computed from evidence",
+ "implementations": [
+  {
+   "id": "IMPL-AUDIT",
+   "repo_path": "tests/audit/{consistency-audit.mjs,final-condition.mjs}",
+   "kind": "harness",
+   "note": "the final consistency audit (five equalities) and the six-task final condition (21 lines), each computed from the registers and the commissioning evidence (D26)"
+  }
+ ],
+ "probes": [
+  {
+   "id": "PROBE-CONSISTENCY-AUDIT",
+   "command_or_operation": "node tests/audit/consistency-audit.mjs --manifest --gate --graph --issues --stations --deltas --receipts --ledger --q22 --handoff --out: LIVE LAW = CURRENT IMPLEMENTATION CONTRACT (every law file held by the graph, a component owner or the handoff register; every live owner exists), CURRENT IMPLEMENTATION = EXECUTION MANIFEST (every path tiered, live components with files, gate PASS), EXECUTION MANIFEST = FACTORY ROUTES (every live file within its registered station's may_change), FACTORY ROUTES = RECEIPTS / VERIFICATION (every delta receipted per fixture and verified, every ledger integration commit exists and names its delta), CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY (Q22 claimable/invalidated, every GAP/ERR/UNK an explicit stop, every A/B/C issue REPAIRED, open issues D/E/F/G)",
+   "expected_observations": [
+    "every check PASS"
+   ],
+   "failure_meaning": [
+    "a register contradicts another: the system is not consistently described (a defect to repair, never to record over)"
+   ],
+   "implemented_by": "IMPL-AUDIT"
+  },
+  {
+   "id": "PROBE-FINAL-CONDITION",
+   "command_or_operation": "node tests/audit/final-condition.mjs --evidence evidence/D26 --audit --manifest --gate --graph --issues --selection --results --status --handoff-check --handoff --base --out: the 21 [PASS] lines of the six-task final condition, each from named evidence of this run (proof/summary.json, crates/summary.json, factory/witnesses.json, specimens, attacks, anti-cheat, physical, selection + results, the graph's epochs, the handoff check, git diff of every earlier evidence package against the base)",
+   "expected_observations": [
+    "21 lines PASS"
+   ],
+   "failure_meaning": [
+    "the series does not close: the failing line names what is missing"
+   ],
+   "implemented_by": "IMPL-AUDIT"
+  }
+ ],
+ "facts": [
+  {
+   "id": "FACT-D26-WHOLE-SYSTEM-COMMISSIONED",
+   "subject": "the current repository at the D26 base, on a clean Factory workpiece with fresh build directories",
+   "predicate": "from the canonical source alone: the execution manifest rebuilt deterministically; the Factory judged by its own witness register (every refusal reason witnessed, the import collision witnessed); the qualified toolchain proof (27 obligations, no FAIL, mutants refused); the compiler DAG per crate with focused and consumer tests; the ABI boundary (BUILD + OBSERVE in Chromium byte-identical to the native driver, Q-WASM-08); four specimens compiled, independently verified and integrity-checked, the attack list refused, the anti-cheat scan clean; every bundle driven physically through its shell with and without WebGPU and isolated, with loss, reselection and offline launch where implemented; the evidence indexed; the graph epoch D26 added; Q01-Q22 answered and the entitled-claim surface recorded; the observed ASCII written - no historical build output consumed as an input",
+   "status": "RUN",
+   "note": "the D21-D26 series' final commissioning run; the D25 public-HTTPS boundary and the owner stops remain as recorded",
+   "source_ref": "evidence/D26/physical/summary.json",
+   "required_environment": [
+    "the D26 host (ENV-D26-HOST): HOST_NATIVE_SET 1.94.1, WASM64_KERNEL_SET nightly-2026-09-24, node 22, Chromium headless shell 141 via Playwright"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-FINAL-CONDITION",
+   "evidence": [
+    {
+     "path": "evidence/D26/factory/witnesses.json",
+     "observed_result": "every refusal reason witnessed by the judge built from this tree into a fresh directory",
+     "probe": "PROBE-FACTORY-WITNESSES"
+    },
+    {
+     "path": "evidence/D26/factory/collision.json",
+     "observed_result": "the import collision witnessed",
+     "probe": "PROBE-FACTORY-WITNESSES"
+    },
+    {
+     "path": "evidence/D26/specimens/summary.json",
+     "observed_result": "4 specimens PASS",
+     "probe": "PROBE-GENERICITY-SPECIMENS"
+    },
+    {
+     "path": "evidence/D26/attacks/summary.json",
+     "observed_result": "13 attacks PASS",
+     "probe": "PROBE-GENERICITY-ATTACKS"
+    },
+    {
+     "path": "evidence/D26/anti-cheat/summary.log",
+     "observed_result": "compiler-src, codegen-templates, factory-src, host, backend-names: clean",
+     "probe": "PROBE-GENERICITY-ATTACKS"
+    },
+    {
+     "path": "evidence/D26/physical/summary.json",
+     "observed_result": "4 specimens x 3 configurations PASS; selfhost on the fresh bundle; public HTTPS UNREACHABLE",
+     "probe": "PROBE-PHYSICAL-WEBAPP"
+    },
+    {
+     "path": "evidence/D26/results/qualified-proof.json",
+     "observed_result": "the qualified proof + the crate DAG re-proved: every fact PASS",
+     "probe": "PROBE-QUALIFIED-PROOF"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-AUDIT",
+    "IMPL-FACTC",
+    "IMPL-KERNEL-CRATES",
+    "IMPL-WASM-ABI",
+    "IMPL-GENERICITY-RUNNER",
+    "IMPL-PHYSICAL-RUNNER",
+    "IMPL-WEBAPP-PROBE",
+    "IMPL-CRATE-DAG"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component"
+    },
+    {
+     "dimension": "toolchain.nightly.rustc_commit",
+     "relation": "a different nightly"
+    },
+    {
+     "dimension": "browser.version",
+     "relation": "a different Chromium"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D26-CONSISTENT",
+   "subject": "the registers of the repository at the D26 base: law, execution manifest, station registry, deltas and receipts, ledger, environment graph, issue inventory",
+   "predicate": "LIVE LAW = CURRENT IMPLEMENTATION CONTRACT, CURRENT IMPLEMENTATION = EXECUTION MANIFEST, EXECUTION MANIFEST = FACTORY ROUTES, FACTORY ROUTES = RECEIPTS / VERIFICATION and CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY hold as computed by tests/audit/consistency-audit.mjs (every check PASS); the one contradiction the audit found (KERNEL-LADDERS registered under S-FIXTURE while routed by S-RUST, I-37) was repaired in this delta before the audit passed",
+   "status": "RUN",
+   "note": "the audit is computed, not asserted; a later change of any register re-runs it",
+   "source_ref": "evidence/D26/audit/consistency.json",
+   "required_environment": [
+    "the D26 host (ENV-D26-HOST); git"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-CONSISTENCY-AUDIT",
+   "evidence": [
+    {
+     "path": "evidence/D26/audit/consistency.json",
+     "observed_result": "13 checks PASS across the five equalities"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-AUDIT"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a register or a live component"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D26-FINAL-CONDITION",
+   "subject": "the six-task final condition of design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md",
+   "predicate": "all 21 lines PASS from named evidence of this run: manifest coverage and connection, Factory-controlled surfaces, Factory witnesses, HOST_NATIVE_SET and WASM64_KERNEL_SET proof, dependency proof, mutant self-attack, per-crate consumer execution, the ABI surface proved or owner-classified, multi-specimen genericity, Byte Relay as data, independent bundle verification, fresh physical probes, repairs tested in sequence, stale claims selected and re-proved, epochs D21-D26 present, the handoff describing the observed system, historical evidence untouched, remaining stops as boundaries, no hidden internal defect",
+   "status": "RUN",
+   "note": "the series D21-D26 closes with this fact; the FINAL CLAIM of the prompt rests on it",
+   "source_ref": "evidence/D26/audit/final-condition.json",
+   "required_environment": [
+    "the D26 host (ENV-D26-HOST)"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-FINAL-CONDITION",
+   "evidence": [
+    {
+     "path": "evidence/D26/audit/final-condition.json",
+     "observed_result": "21 lines PASS (computed on the graph holding the D26 re-proof fragment; recomputed identically on the committed graph in evidence/D26/audit/final-condition-final.json and at re-inspection)"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-AUDIT"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of the repository"
+    }
+   ]
+  }
+ ]
+}

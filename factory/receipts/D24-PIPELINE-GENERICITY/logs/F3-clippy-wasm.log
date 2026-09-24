@@ -1,0 +1,17 @@
+$ cargo +nightly-2026-09-24 clippy -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown -- -D warnings
+(cwd .)
+    Checking factc-foundation v0.1.0 (/home/user/factory-workpieces/W29/compiler/foundation)
+    Checking factc-source v0.1.0 (/home/user/factory-workpieces/W29/compiler/source)
+    Checking factc-semantic v0.1.0 (/home/user/factory-workpieces/W29/compiler/semantic)
+    Checking factc-observe v0.1.0 (/home/user/factory-workpieces/W29/compiler/observe)
+    Checking factc-capability v0.1.0 (/home/user/factory-workpieces/W29/compiler/capability)
+    Checking factc-implementation v0.1.0 (/home/user/factory-workpieces/W29/compiler/implementation)
+    Checking factc-planning v0.1.0 (/home/user/factory-workpieces/W29/compiler/planning)
+    Checking factc-verifier v0.1.0 (/home/user/factory-workpieces/W29/compiler/verifier)
+    Checking factc-codegen v0.1.0 (/home/user/factory-workpieces/W29/compiler/codegen)
+    Checking factc-bundle v0.1.0 (/home/user/factory-workpieces/W29/compiler/bundle)
+    Checking factc-kernel v0.1.0 (/home/user/factory-workpieces/W29/compiler/kernel)
+    Checking factc-wasm-abi v0.1.0 (/home/user/factory-workpieces/W29/compiler/wasm-abi)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.19s
+
+[exit 0] expected 0

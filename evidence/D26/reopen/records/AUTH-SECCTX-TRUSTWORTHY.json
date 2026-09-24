@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-SECCTX-TRUSTWORTHY",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://w3c.github.io/webappsec-secure-contexts/",
+  "fragment": "#is-origin-trustworthy",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "Status: ED (TR: secure-contexts)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/w3c/webappsec-secure-contexts",
+  "branch": "main",
+  "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+  "path": "index.bs",
+  "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1",
+  "observed": "2026-09-24",
+  "locator": "algorithm 'Is origin potentially trustworthy?' (lines 518-575)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#is-origin-trustworthy",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 517,
+   "kind": "id attribute"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 517,
+   "kind": "id attribute"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   518,
+   575
+  ],
+  "window_sha256": "42e47e5cd924e65c75f450fa00adea4c30bab0af78e511241a216ea5225d9d4d",
+  "window_excerpt": "    Is |origin| potentially trustworthy?\n  </h3>\n\n  A <dfn export>potentially trustworthy origin</dfn> is one which a user agent\n  can generally trust as delivering data securely.\n\n  This algorithms considers certain hosts, scheme, and origins as potentially\n  trustworthy, even though they might not be authenticated and encrypted in the\n  traditional sense. In particular, the user agent SHOULD treat `file` URLs\n  as potentially trustworthy. In principle the user agent could treat local\n  files as untrustworthy, but, <em>given the information that is available to\n  the user agent at runtime</em>, the resources appear to have been transported\n  securely from disk to the user agent. Additionally, treating such resources as\n  potentially trustworthy is convenient for developers building an application\n  before deploying it to the public.\n\n  This developer-friendlyness is not without risk, however. User agents which\n  prioritize security over such niceties MAY choose to more strictly assign\n  trust in a way which excludes `file`.\n\n  On the other hand, the user agent MAY choose to extend this trust to other,\n  vendor-specific URL schemes like `app:` or `chrome-extension:` which it can\n  ",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   518,
+   575
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "ED",
+   "group": "webappsec",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "ED",
+   "group": "webappsec",
+   "level": "None"
+  },
+  "drift": "NONE"
+ }
+}

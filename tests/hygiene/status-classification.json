@@ -117,6 +117,16 @@
    "rationale": "closed delta records (M0, M9, COMMISSIONING-RECORD, D9-D12, LEDGER history); live items re-listed in docs/HANDOFF.md section 6"
   },
   {
+   "id": "Z-EXECUTION-MANIFEST",
+   "class": "R",
+   "match": {
+    "prefix": [
+     "design/execution-manifest/"
+    ]
+   },
+   "rationale": "the generated CURRENT EXECUTION MANIFEST (D21): each marker quotes a classified issue row (tests/manifest/issues.json) or a graph node"
+  },
+  {
    "id": "Z-ENVMAP-REGISTER",
    "class": "R",
    "match": {
@@ -262,7 +272,8 @@
     "prefix": [
      "compiler/",
      "host/",
-     "factory/src/"
+     "factory/src/",
+     "factory/tests/"
     ]
    },
    "rationale": "code vocabulary (service-worker cache 'stale')"

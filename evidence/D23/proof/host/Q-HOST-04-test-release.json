@@ -1,0 +1,451 @@
+{
+  "id": "Q-HOST-04-test-release",
+  "class": "T9-P2",
+  "invariant": "declared cargo invocation exits 0 over an explicitly recorded selection",
+  "proof_set": "HOST_NATIVE_SET",
+  "evaluated": "2026-09-24T13:55:02.508Z",
+  "target": "host",
+  "profile": "release",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "test",
+    "--release",
+    "--message-format=json"
+  ],
+  "cwd": "/home/user/factory-workpieces/W28",
+  "env": {},
+  "toolchain": {
+    "channel": "1.94.1",
+    "requested": "stable",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "rustc_release": "1.94.1",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "21.1.8",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "available": true,
+    "error": null
+  },
+  "exit": 0,
+  "spawn_error": null,
+  "selection": [
+    "factc-bundle:factc_bundle[lib]",
+    "factc-bundle:factc_bundle[lib]{test}",
+    "factc-capability:factc_capability[lib]",
+    "factc-capability:factc_capability[lib]{test}",
+    "factc-codegen:factc_codegen[lib]",
+    "factc-codegen:factc_codegen[lib]{test}",
+    "factc-foundation:factc_foundation[lib]",
+    "factc-foundation:factc_foundation[lib]{test}",
+    "factc-implementation:factc_implementation[lib]",
+    "factc-implementation:factc_implementation[lib]{test}",
+    "factc-kernel:bootstrap_ladder[test]{test}",
+    "factc-kernel:bundle_ladder[test]{test}",
+    "factc-kernel:commissioning_ladder[test]{test}",
+    "factc-kernel:factc_kernel[lib]",
+    "factc-kernel:factc_kernel[lib]{test}",
+    "factc-kernel:language_ladder[test]{test}",
+    "factc-kernel:lowering_ladder[test]{test}",
+    "factc-kernel:observe_ladder[test]{test}",
+    "factc-kernel:strategy_ladder[test]{test}",
+    "factc-observe:factc_observe[lib]",
+    "factc-observe:factc_observe[lib]{test}",
+    "factc-planning:factc_planning[lib]",
+    "factc-planning:factc_planning[lib]{test}",
+    "factc-semantic:factc_semantic[lib]",
+    "factc-semantic:factc_semantic[lib]{test}",
+    "factc-source:factc_source[lib]",
+    "factc-source:factc_source[lib]{test}",
+    "factc-verifier:factc_verifier[lib]",
+    "factc-verifier:factc_verifier[lib]{test}",
+    "factc:driver[test]{test}",
+    "factc:factc[bin]",
+    "factc:factc[bin]{test}",
+    "factory:factory[bin]",
+    "factory:factory[bin]{test}",
+    "factory:factory[lib]",
+    "factory:factory[lib]{test}",
+    "factory:factory_law[test]{test}"
+  ],
+  "packages": [
+    "factc",
+    "factc-bundle",
+    "factc-capability",
+    "factc-codegen",
+    "factc-foundation",
+    "factc-implementation",
+    "factc-kernel",
+    "factc-observe",
+    "factc-planning",
+    "factc-semantic",
+    "factc-source",
+    "factc-verifier",
+    "factory"
+  ],
+  "sysroot_artifacts": [],
+  "tests": {
+    "binaries": [
+      {
+        "target": "unittests src/main.rs",
+        "exe": "../../factory-target-w28/release/deps/factc-48b8229cafee6a16"
+      },
+      {
+        "target": "tests/driver.rs",
+        "exe": "../../factory-target-w28/release/deps/driver-12c4952c11439e94"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_bundle-f72ae57abb225e3e"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_capability-1893531d3481ede0"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_codegen-860742016ac3f2e6"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_foundation-1f31205f1434a454"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_implementation-9e083ce63262cd70"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_kernel-78171ec9c41579cf"
+      },
+      {
+        "target": "tests/bootstrap_ladder.rs",
+        "exe": "../../factory-target-w28/release/deps/bootstrap_ladder-e6431e1aae084f1c"
+      },
+      {
+        "target": "tests/bundle_ladder.rs",
+        "exe": "../../factory-target-w28/release/deps/bundle_ladder-7e45676c1df0075a"
+      },
+      {
+        "target": "tests/commissioning_ladder.rs",
+        "exe": "../../factory-target-w28/release/deps/commissioning_ladder-27a0663515e79883"
+      },
+      {
+        "target": "tests/language_ladder.rs",
+        "exe": "../../factory-target-w28/release/deps/language_ladder-7009319c1d7f50e2"
+      },
+      {
+        "target": "tests/lowering_ladder.rs",
+        "exe": "../../factory-target-w28/release/deps/lowering_ladder-c679dfb5d46e0467"
+      },
+      {
+        "target": "tests/observe_ladder.rs",
+        "exe": "../../factory-target-w28/release/deps/observe_ladder-cf71ce94ec97917c"
+      },
+      {
+        "target": "tests/strategy_ladder.rs",
+        "exe": "../../factory-target-w28/release/deps/strategy_ladder-70df80f9f6490583"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_observe-66c2b8ac787bedd7"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_planning-32ecad85756e77c6"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_semantic-af8dad50f4a5fe4e"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_source-9e9bc97997f73b88"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factc_verifier-905f5fe4aaba4a03"
+      },
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../../factory-target-w28/release/deps/factory-4b50fbb5ba227d96"
+      },
+      {
+        "target": "unittests src/main.rs",
+        "exe": "../../factory-target-w28/release/deps/factory-56159ead6590eff9"
+      },
+      {
+        "target": "tests/factory_law.rs",
+        "exe": "../../factory-target-w28/release/deps/factory_law-f45855cc3aa97c5a"
+      },
+      {
+        "target": "doc-tests factc_bundle",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_capability",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_codegen",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_foundation",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_implementation",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_kernel",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_observe",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_planning",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_semantic",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_source",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factc_verifier",
+        "exe": null
+      },
+      {
+        "target": "doc-tests factory",
+        "exe": null
+      }
+    ],
+    "results": [
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 7,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 9,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 4,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 9,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 4,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 30,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 10,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 6,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 13,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 29,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      }
+    ],
+    "passed": 122,
+    "failed": 0,
+    "failed_names": [],
+    "finished": "Finished `release` profile [optimized] target(s) in 6.46s"
+  },
+  "errors": [],
+  "finished": "Finished `release` profile [optimized] target(s) in 6.46s",
+  "verdict": "PASS",
+  "reason": "exit 0; 13 workspace packages [factc factc-bundle factc-capability factc-codegen factc-foundation factc-implementation factc-kernel factc-observe factc-planning factc-semantic factc-source factc-verifier factory]; tests 122 passed / 0 failed over 35 harness runs"
+}

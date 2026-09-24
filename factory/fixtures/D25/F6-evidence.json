@@ -1,0 +1,37 @@
+{
+  "fixture_id": "F6-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the manifest of F5",
+    "tests/manifest/issues.json"
+  ],
+  "narrowed_may_change": [
+    "evidence/D25/manifest.json",
+    "evidence/D25/issues.json",
+    "evidence/D25/gate.json",
+    "evidence/D25/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp design/execution-manifest/manifest.json evidence/D25/manifest.json && cp tests/manifest/issues.json evidence/D25/issues.json && node tests/manifest/gate.mjs --manifest evidence/D25/manifest.json --issues tests/manifest/issues.json --out evidence/D25/gate.json"
+        ],
+        "log": "evidence/D25/logs/F6-gate.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D25/gate.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D25-PHYSICAL-RUNTIME"
+}

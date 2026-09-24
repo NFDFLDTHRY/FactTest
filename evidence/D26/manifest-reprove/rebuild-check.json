@@ -1,0 +1,16 @@
+{
+ "tool": "tests/manifest/rebuild-check.sh",
+ "commit": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+ "rev": "76f44410fe4a57162b6c355c859c296b2a697be4",
+ "delta": "D25-PHYSICAL-RUNTIME",
+ "epoch": "D25",
+ "builder": "tests/manifest/build-manifest.mjs",
+ "committed_manifest_sha256": "d3e0ac10ff7c6aa04172fd65dcc38d8b537d5d90ce92c1d1002d488b9ea10fd3",
+ "status": "PASS",
+ "checks": [
+  {"check": "rebuild_from_committed_graph_md", "status": "PASS"},
+  {"check": "rebuild_from_committed_graph_json", "status": "PASS"},
+  {"check": "rebuild_without_own_epoch_md", "status": "PASS"},
+  {"check": "rebuild_without_own_epoch_json", "status": "PASS"}
+ ]
+}

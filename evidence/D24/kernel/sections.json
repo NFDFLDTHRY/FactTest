@@ -1,0 +1,249 @@
+{
+ "tool": "tests/implementation/wasm-sections.mjs",
+ "excluded_custom_sections": [
+  "name"
+ ],
+ "builds": [
+  {
+   "label": "INSTALL-PINNED",
+   "file": "/home/user/factory-builds/d24-kernels/A/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+   "bytes": 3384151,
+   "sha256": "2dbb740e8d671c3d87895d064cfc9e479ba71743da547f19d72b35dba9a2070b",
+   "identity_excluding_custom": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115",
+   "sections": [
+    {
+     "section": "id:1",
+     "bytes": 440,
+     "sha256": "f50a6e025efaadae8ccdb9bdf077fdf1329f13ab95a1ec70b8594189f40971a9"
+    },
+    {
+     "section": "id:3",
+     "bytes": 523,
+     "sha256": "f46a8388963316468aed3176a17483306f91db068836b6664c6283c3738f4fdf"
+    },
+    {
+     "section": "id:4",
+     "bytes": 5,
+     "sha256": "ecaacc6d6bdb7b7db7706bbf66fcf59520f1642f4175c1dce93ba4a0bb811979"
+    },
+    {
+     "section": "id:5",
+     "bytes": 4,
+     "sha256": "33a2900fee14c08be14d7fa493ad319231d77f4053b7b18aab48aab084b71929"
+    },
+    {
+     "section": "id:6",
+     "bytes": 9,
+     "sha256": "4e76c97db15b124bb9030ed2734c656f140c87296616f85db1ea2ad346a584f1"
+    },
+    {
+     "section": "id:7",
+     "bytes": 422,
+     "sha256": "5113ed3ea47b026a22b4ed5e9eccff37dbfd65caca094583305e26e39d67ea5a"
+    },
+    {
+     "section": "id:9",
+     "bytes": 10,
+     "sha256": "fba53ce9e0df4af84c39a274973daa8bf29b259fa56ab689600410850c9b0624"
+    },
+    {
+     "section": "id:10",
+     "bytes": 253420,
+     "sha256": "f537f6b9f03f29eb63315b0c137deb2bdc9057b7921405c1144b9af21d1d5b5b"
+    },
+    {
+     "section": "id:11",
+     "bytes": 3071857,
+     "sha256": "12737ffe614a1ed810015802d1ca4acc54da89cb53d5b402280fc3bccc8469de"
+    },
+    {
+     "section": "custom:name",
+     "bytes": 57190,
+     "sha256": "70dd576856c6e3d8ab7857fd2b7988a305e517c5228ef6d5ad91526c8cb37d48"
+    },
+    {
+     "section": "custom:producers",
+     "bytes": 70,
+     "sha256": "6738d9e094683cfda4903eb2d5302d12e21374ffd50414caa0f656c5b0607c00"
+    },
+    {
+     "section": "custom:target_features",
+     "bytes": 158,
+     "sha256": "e1ce7d4c22fbe7a09a411c3b94ad724bc26c66c28443c8718547e4cdf6b4e210"
+    }
+   ]
+  },
+  {
+   "label": "INSTALL-RENAMED",
+   "file": "/home/user/factory-builds/d24-kernels/B/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+   "bytes": 3384149,
+   "sha256": "e0b0aa8b81829fed653d615889c9e09b6a693b3234aed3f574b429992d1f5c83",
+   "identity_excluding_custom": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115",
+   "sections": [
+    {
+     "section": "id:1",
+     "bytes": 440,
+     "sha256": "f50a6e025efaadae8ccdb9bdf077fdf1329f13ab95a1ec70b8594189f40971a9"
+    },
+    {
+     "section": "id:3",
+     "bytes": 523,
+     "sha256": "f46a8388963316468aed3176a17483306f91db068836b6664c6283c3738f4fdf"
+    },
+    {
+     "section": "id:4",
+     "bytes": 5,
+     "sha256": "ecaacc6d6bdb7b7db7706bbf66fcf59520f1642f4175c1dce93ba4a0bb811979"
+    },
+    {
+     "section": "id:5",
+     "bytes": 4,
+     "sha256": "33a2900fee14c08be14d7fa493ad319231d77f4053b7b18aab48aab084b71929"
+    },
+    {
+     "section": "id:6",
+     "bytes": 9,
+     "sha256": "4e76c97db15b124bb9030ed2734c656f140c87296616f85db1ea2ad346a584f1"
+    },
+    {
+     "section": "id:7",
+     "bytes": 422,
+     "sha256": "5113ed3ea47b026a22b4ed5e9eccff37dbfd65caca094583305e26e39d67ea5a"
+    },
+    {
+     "section": "id:9",
+     "bytes": 10,
+     "sha256": "fba53ce9e0df4af84c39a274973daa8bf29b259fa56ab689600410850c9b0624"
+    },
+    {
+     "section": "id:10",
+     "bytes": 253420,
+     "sha256": "f537f6b9f03f29eb63315b0c137deb2bdc9057b7921405c1144b9af21d1d5b5b"
+    },
+    {
+     "section": "id:11",
+     "bytes": 3071857,
+     "sha256": "12737ffe614a1ed810015802d1ca4acc54da89cb53d5b402280fc3bccc8469de"
+    },
+    {
+     "section": "custom:name",
+     "bytes": 57188,
+     "sha256": "46ef6758b5649175b0b9890d133d34b3555a244c01e19427fb12db1bafe8d317"
+    },
+    {
+     "section": "custom:producers",
+     "bytes": 70,
+     "sha256": "6738d9e094683cfda4903eb2d5302d12e21374ffd50414caa0f656c5b0607c00"
+    },
+    {
+     "section": "custom:target_features",
+     "bytes": 158,
+     "sha256": "e1ce7d4c22fbe7a09a411c3b94ad724bc26c66c28443c8718547e4cdf6b4e210"
+    }
+   ]
+  }
+ ],
+ "comparison": [
+  {
+   "section": "id:1",
+   "bytes": [
+    440,
+    440
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:3",
+   "bytes": [
+    523,
+    523
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:4",
+   "bytes": [
+    5,
+    5
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:5",
+   "bytes": [
+    4,
+    4
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:6",
+   "bytes": [
+    9,
+    9
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:7",
+   "bytes": [
+    422,
+    422
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:9",
+   "bytes": [
+    10,
+    10
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:10",
+   "bytes": [
+    253420,
+    253420
+   ],
+   "identical": true
+  },
+  {
+   "section": "id:11",
+   "bytes": [
+    3071857,
+    3071857
+   ],
+   "identical": true
+  },
+  {
+   "section": "custom:name",
+   "bytes": [
+    57190,
+    57188
+   ],
+   "identical": false
+  },
+  {
+   "section": "custom:producers",
+   "bytes": [
+    70,
+    70
+   ],
+   "identical": true
+  },
+  {
+   "section": "custom:target_features",
+   "bytes": [
+    158,
+    158
+   ],
+   "identical": true
+  }
+ ],
+ "whole_file_identical": false,
+ "differing_sections": [
+  "custom:name"
+ ],
+ "identical_excluding_custom": true
+}

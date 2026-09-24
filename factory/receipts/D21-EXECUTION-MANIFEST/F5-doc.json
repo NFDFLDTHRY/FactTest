@@ -1,0 +1,183 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21-EXECUTION-MANIFEST-F5-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F5-doc",
+  "workpiece_id": "W25",
+  "delta_id": "D21-EXECUTION-MANIFEST",
+  "canonical_base": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+  "input_artifacts": [
+    "D21 section 5",
+    "Factory evidence of F2-F4"
+  ],
+  "open_tree": "0948d7f7d9381302b8e6ab7e1bb58c8a07601808",
+  "close_tree": "95bfccccd03475f166a3a6526fa5a5b247e47989",
+  "changed_paths": [
+    "README.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D21.json",
+    "design/environment-map/graph.json",
+    "docs/HANDOFF.md",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-build-epoch.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-checks.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-merge.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-render.log"
+  ],
+  "output_artifacts": [
+    "design/environment-map/epochs/D21.json",
+    "design/environment-map/graph.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21-EXECUTION-MANIFEST"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-build-epoch.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-merge.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/manifest/build-epoch.mjs --manifest evidence/D21/manifest.json --issues evidence/D21/issues.json --gate evidence/D21/gate.json --identity evidence/D21/identity --epoch D21 --delta D21-EXECUTION-MANIFEST --commit '4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out design/environment-map/epochs/D21.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-build-epoch.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json --out design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-merge.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render design/environment-map/graph.json --out design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-render.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 15. Execution manifest epochs (D21)' design/environment-map/SCHEMA.md && grep -q 'Execution-manifest epoch D21' design/environment-map/ENVIRONMENT-MAP.md && T=$(mktemp -d) && sh tests/hygiene/handoff-check.sh $T/h.json && grep -q 'last delta         D21-EXECUTION-MANIFEST' docs/HANDOFF.md && grep -q 'CURRENT-EXECUTION-MANIFEST' README.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-checks.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D21.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-build-epoch.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-merge.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-render.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T12:27:28Z",
+  "status": "PASS"
+}

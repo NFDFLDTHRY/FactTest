@@ -916,4 +916,252 @@ BEFORE
   open stops GAP 8 / ERR 5 / UNK 4.
 
 AFTER
+- RESULT: integrated as ca540647db00c72fa0570f7f4f59a20c299172b7 (ff-only from the sync merge c3159d5, whose tree equals
+  780aee1's); no refusal, no repair, no re-run.  One wording defect found in the dry run before routing (a successor's
+  note quoted the text its reconciliation retires) was corrected in the register before any station ran.
+- RECEIPTS: F0-F14 (15) PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection
+  MATCH (D20-SYNC and D20 epochs rebuilt byte-identically; re-proof gate and import check re-run PASS).  Pushed.
+- OBSERVED: D20-OBSERVED-MAIN-SYNC.md - P1-P7 MATCH; GATE: PASS; the branch merges into main without conflict.
+- LATER: the owner closed pull request #6 unmerged (it predated the sync) and merged pull request #7 (this branch at
+  ca54064) into main as b22bcbb6ed8cf49983c919beedd93541a761567c; the branch was fast-forwarded to b22bcbb (tree
+  bca6411, identical to ca54064's: the owner merge carries no content).  [OBS] no content sync was needed.
+  The owner then issued the six-task whole-repository execution series D21-D26.
+- (recorded by D21-PROMPT-INTAKE, the next delta.)
+
+---
+
+## D21-PROMPT-INTAKE  (FIRST ACTION of the six-task whole-repository execution + gap closure series)
+
+BEFORE
+- DELTA: D21-PROMPT-INTAKE (factory/deltas/D21-PROMPT-INTAKE.json), workpiece W24.
+- BASE: b22bcbb6ed8cf49983c919beedd93541a761567c (main after PR #7; branch fast-forwarded, merged history only).
+- STATION: S-DOC.  FIXTURE: F0-doc.  JUDGE: the factory binary built from b22bcbb.
+- CHANGE: design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md (verbatim), this ledger, the delta, its
+  fixture, receipts.  FORBIDDEN: everything else.
+- NEXT: D21-EXECUTION-MANIFEST, assembled in design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md.  Prompt intake
+  is not one of the six tasks.
+
+AFTER
+- RESULT: integrated as 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (ff-only from b22bcbb); no refusal.  RECEIPTS:
+  factory/receipts/D21-PROMPT-INTAKE/F0-doc.json PASS (format 2).  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE:
+  re-inspection MATCH.  Pushed.
+- (recorded by D21-EXECUTION-MANIFEST, the next delta.)
+
+---
+
+## D21-EXECUTION-MANIFEST  (task 1 of 6: what exactly is CURRENT executable FactTest, and is every live component connected?)
+
+BEFORE
+- DELTA: D21-EXECUTION-MANIFEST (factory/deltas/D21.json), workpiece W25, base 4b86df9.
+- ASCII: design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F3, F5, F7), S-FIXTURE (F1), S-BROWSER (F2), S-EVIDENCE (F4, F6).
+- CHANGE: tests/manifest/ (reviewed component register, deterministic manifest builder, issue inventory, gate, epoch
+  builder); design/execution-manifest/ (generated manifest); design/environment-map/ (epoch D21, graph, views, SCHEMA
+  15, ENVIRONMENT-MAP 14); evidence/D21/; docs/HANDOFF.md; README.md; this ledger; D21 records.  FORBIDDEN: every
+  implementation surface (compiler/, host/, factory/src|registry, templates, fixtures/, every existing test), law and
+  pass documents, earlier epochs, D0-D20 evidence: classification only, no repair.
+- PREDICTED: 2966 tracked files in 65 components (51 live), 0 unassigned, required coverage 41/41; findings: 3 D0
+  registry files never receipted, 10 live components without an implementation node and 11 without a claim, 2
+  historical tools, 3 live tools naming evidence packages, 0 dead fixtures; 20 issues (A 1, B 7, C 2, D 2, E 1, F 4,
+  G 3); epoch D21 about 17 nodes / 51 edges; merged about 1267 / 3241; validate 42; gate PASS; Q22 176 current facts
+  (the two D21 facts [OBS]); W24 RETIRABLE -> REMOVED.
+
+AFTER
+- RESULT: integrated as 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb (ff-only from 4b86df9); no refusal in the stations, no
+  repair, no re-run.
+- RECEIPTS: F0-doc F1-fixture F2-browser F3-doc F4-evidence F5-doc F6-evidence F7-doc PASS (format 2).  VERIFICATION:
+  PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection REFUSED (W25.reinspect.json DIFFER): validate, merge-check
+  and render-check PASS, then the manifest rebuilt at the integration commit differed from the committed one.  Not
+  pushed until D21R.
+- OBSERVED: D21-OBSERVED-EXECUTION-MANIFEST.md - P1-P6 MATCH against the station run (P1 notes a wording defect in the
+  prediction's live-component split); its "rebuilt byte-identically (F3, reinspect)" was written before the
+  re-inspection ran and is wrong for the re-inspection.
+- DEFECT FOUND BY THE RE-INSPECTION [ERR]: tests/manifest/build-manifest.mjs applied --epoch only to the evidence-reader
+  finding and read the merged graph whole, so after integration the D21 epoch's own implementation nodes and facts
+  changed two findings (10 and 11 -> 0) and the epoch list.  Class A (live test machinery).  Repaired by
+  D21R-MANIFEST-REPAIR before D22 (the D21 records, manifest, epoch and evidence stay as written).
+
+---
+
+## D21R-MANIFEST-REPAIR  (repair of the D21 re-inspection refusal before task 2)
+
+BEFORE
+- DELTA: D21R-MANIFEST-REPAIR (factory/deltas/D21R.json), workpiece W26, base 910fdbf.
+- ASCII: design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4, F6), S-FIXTURE (F1), S-BROWSER (F2), S-EVIDENCE (F3, F5).
+- CHANGE: tests/manifest/build-manifest.mjs (the delta's own epoch excluded before claims are read),
+  tests/manifest/rebuild-check.sh (focused test), tests/envmap/build-fact-epoch.mjs + tests/envmap/facts/D21R.json
+  (generic evidence binding), evidence/D21R/, design/environment-map/ (epoch D21R, graph, views, SCHEMA 15 rows,
+  ENVIRONMENT-MAP 14 row), docs/HANDOFF.md, README.md, D21R records, this ledger.  FORBIDDEN: every other surface,
+  including design/execution-manifest/, epochs/D21.json, evidence/D21/, the D21 receipts and records, compiler/, host/,
+  factory/src|registry, fixtures/, law and pass documents.
+- PREDICTED: reproduce FAIL/FAIL/PASS/PASS with the committed builder, four PASS with the repaired one; D21 gate and
+  epoch regression identical; epoch D21R 7 nodes / 9 edges; merged 1274 / 3250; validate 42; Q22 177 current facts
+  (RUN 110); W25 KEEP (its re-inspection record DIFFER), nothing retirable.
+
+AFTER
+- RESULT: integrated as 88564a0eccd934d6a017faf65435bc871bcd2f94 (ff-only from 910fdbf); no refusal, no repair, no re-run.
+- RECEIPTS: F0-doc F1-fixture F2-browser F3-evidence F4-doc F5-evidence F6-doc PASS (format 2).  VERIFICATION: PASS
+  (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (rebuild-check at 910fdbf PASS in the re-inspection
+  clone; epochs/D21R.json rebuilt byte-identically).  Pushed (910fdbf and 88564a0 together).
+- OBSERVED: D21R-OBSERVED-MANIFEST-REPAIR.md - P1-P6 MATCH.  W25 stays KEEP by the Factory's rule (reinspect DIFFER).
+
+---
+
+## D22-FACTORY-SELF-QUALIFICATION  (task 2 of 6: can the CURRENT Factory safely judge every repair that follows?)
+
+BEFORE
+- DELTA: D22-FACTORY-SELF-QUALIFICATION (factory/deltas/D22.json), workpiece W27, base 88564a0.
+- ASCII: design/materialization/D22-INTENDED-FACTORY-SELF-QUALIFICATION.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F6, F8, F11), S-RUST (F1, F2), S-FIXTURE (F3), S-BROWSER (F4), S-EVIDENCE (F5, F7, F10),
+  S-ANNOTATE (F9).
+- CHANGE: factory/tests/factory_law.rs (f17-f28), factory/src/ops.rs (five checks: receipt integrity, identity
+  probes, command confinement, canonical confinement at station close and re-inspection), tests/factory/ (witness
+  register + runner), tests/sync/collision-witness.sh, tests/envmap/build-fact-epoch.mjs, tests/envmap/facts/D22.json,
+  tests/manifest/{components,issues,build-epoch}.json|mjs (I-27, I-28 found by the manifest rebuild),
+  tests/hygiene/status-classification.json, design/execution-manifest/ (rebuilt), evidence/D22/, design/environment-map/
+  (epoch D22, graph, views, SCHEMA 15, ENVIRONMENT-MAP 14), FACTORY-CONTRACTS.md (D22 ANNOTATION, insertion-only),
+  docs/HANDOFF.md, README.md, D22 records, this ledger.  FORBIDDEN: every other Rust source, factory/registry, compiler/,
+  host/, fixtures/, every other law and pass document, earlier epochs, D0-D21R evidence and records.
+- PREDICTED: reproduce 23 passed / 6 failed (f17 f18 f22 f23 f24 f26) with ops.rs as committed; repaired 29 passed,
+  fmt + clippy clean; 16 of 16 reasons refused for the named reason, 5 of 5 positive paths; collision witness PASS;
+  manifest rebuilt at 88564a0 + additions (3168 files), gate PASS (28 issues); epoch D22 10 nodes / 34 edges; merged
+  1284 / 3284; validate 42; Q22 180 current facts (RUN 113); W26 RETIRABLE -> REMOVED.
+
+AFTER
+- RESULT: integrated as a43c0ce9496bb62f5dc8b8d68dc746ca9e453660 (ff-only from 88564a0); no refusal, no repair, no re-run.
+- RECEIPTS: F0-doc F1-rust F2-rust F3-fixture F4-browser F5-evidence F6-doc F7-evidence F8-doc F9-annotate F10-evidence
+  F11-doc PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (the
+  repaired judge built from the canonical tree re-ran the witness register: 29 ok, 16 of 16; epochs/D22.json rebuilt
+  byte-identically).  Pushed.
+- OBSERVED: D22-OBSERVED-FACTORY-SELF-QUALIFICATION.md - P1-P6 MATCH.
+
+---
+
+## D23-COMPILER-ABI-EXECUTION  (task 3 of 6: does the complete CURRENT compiler DAG execute according to its contracts, including the browser transport boundary?)
+
+BEFORE
+- DELTA: D23-COMPILER-ABI-EXECUTION (factory/deltas/D23.json), workpiece W28, base a43c0ce.
+- ASCII: design/materialization/D23-INTENDED-COMPILER-ABI-EXECUTION.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F6, F8, F10), S-RUST (F1), S-WEB (F2), S-FIXTURE (F3), S-BROWSER (F4), S-BUILD (F5),
+  S-EVIDENCE (F7, F9).
+- CHANGE: compiler/wasm-abi/src/lib.rs (the transport extension: nine exports, 512 KiB I/O buffers),
+  compiler/kernel/src/lib.rs (header, I-10), host/factc/tests/driver.rs (I-19), host/harness/kernel-build-probe.mjs
+  (BUILD + OBSERVE in Chromium compared byte-for-byte with the native driver), tests/toolchain/{run-crate-dag.mjs,
+  proof.mjs (browser-build), run-qualified-proof.sh (Q-WASM-08), proof-sets.json (kernel identity pin + history)},
+  tests/reconcile/d23-reconciliation.json (the kernel-identity fact superseded), tests/envmap/{build-fact-epoch.mjs,
+  facts/D23.json}, tests/manifest/{components,issues}.json, design/execution-manifest/ (rebuilt), evidence/D23/,
+  design/environment-map/ (epoch D23, graph, views, SCHEMA 15, ENVIRONMENT-MAP 14), docs/HANDOFF.md, README.md, D23
+  records, this ledger.  FORBIDDEN: every other compiler and host source (no semantic changes: transport only), law
+  and pass documents (C14 text is an owner item, I-29), factory/, fixtures/, earlier epochs, D0-D22 evidence.
+- PREDICTED: transport 22 exports, Q-WASM-08 PASS 21/21 identical; DAG 14 crates PASS, 931 tests; matrix 27 = PASS 22 /
+  OBS 3 / HEURISTIC 2; kernel identity fcaee2a6... under both install names; factc driver 7/7; manifest 3295 files,
+  gate PASS (29 issues); epoch D23 20 nodes / 67 edges; merged 1304 / 3351; validate 42; Q22 184 current facts
+  (RUN 116, GAP 11); W27 RETIRABLE -> REMOVED.
+
+AFTER
+- RESULT: integrated as 6bcc86c (ff-only from a43c0ce); no refusal, no repair, no re-run.
+- RECEIPTS: F0-doc F1-rust F2-web F3-fixture F4-browser F5-build F6-doc F7-evidence F8-doc F9-evidence F10-doc PASS
+  (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D23.json rebuilt
+  byte-identically; factc driver 7 passed from the canonical tree).  Pushed.
+- OBSERVED: D23-OBSERVED-COMPILER-ABI-EXECUTION.md - P1-P7 MATCH.
+
+---
+
+## D24-PIPELINE-GENERICITY  (task 4 of 6: is FactTest a compiler/foundry, or is part of the production machinery still secretly a Byte Relay demo?)
+
+BEFORE
+- DELTA: D24-PIPELINE-GENERICITY (factory/deltas/D24.json), workpiece W29, base 6bcc86c.
+- ASCII: design/materialization/D24-INTENDED-PIPELINE-GENERICITY.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F7, F9, F11), S-FIXTURE (F1, F4), S-WEB (F2), S-RUST (F3), S-BROWSER (F5), S-BUILD (F6),
+  S-EVIDENCE (F8, F10).
+- CHANGE: fixtures/genericity/ (three new specimens + the Byte Relay specimen by reference, each with specimen.json),
+  fixtures/commissioning/tape-sample.ascii (a physical tape carrying the bundle record), tests/genericity/
+  (run-specimens, run-attacks, check-bundle, reproduce-base), tests/commissioning/run-anti-cheat.sh (specimen-derived
+  patterns, every byte form, backend names outside adapters, optional tree), tests/commissioning/run-physical.sh
+  (expectations passed to the harness), tests/selfhost/primitives-probe.mjs (transfer), compiler/codegen/templates/
+  {runtime.js (transfer(relation, bytes) by requirement; the tape's bundle record), index.html (data-driven controls),
+  selector.js (STRATEGY_SHA256)}, host/harness/bundle-probe.mjs (generic: transfers x payloads, --loss, --expect-*),
+  host/harness/kernel-build-probe.mjs (observe flag bit 2), compiler/codegen/src/lib.rs (transfers + per-variant
+  requirements, strategy data identity, strategy_data_sha256), compiler/bundle/src/lib.rs (B-06 identity, B-08
+  strategy-data lineage, B-11 adapter family, passed()), compiler/observe/src/lib.rs (bundle record, evidence_lineage),
+  compiler/kernel/src/{abi.rs (strategy data identity, EvidenceUnbound), phases.rs (B-00 on codegen failure)},
+  compiler/foundation/src/diag.rs (EVIDENCE_UNBOUND), compiler/wasm-abi/src/lib.rs (flag bit 2),
+  compiler/kernel/tests/{genericity_ladder.rs (g01-g07), observe_ladder.rs (counts)}, host/factc/src/main.rs
+  (strategy_data_sha256 from the manifest), host/factc/tests/driver.rs (d07 bound, d08 unbound),
+  tests/toolchain/proof-sets.json (kernel identity ef5d886a..., D23 kept as history), tests/reconcile/d24-{reconciliation,
+  surfaces}.json (R-65, R-66), tests/envmap/facts/D24.json, tests/manifest/{components,issues}.json (TEST-GENERICITY,
+  FIXTURE-GENERICITY; I-07/08/09/20 REPAIRED, I-30..I-32 REPAIRED, I-33 D), design/execution-manifest/ (rebuilt),
+  evidence/D24/, design/environment-map/ (epoch D24, graph, views, SCHEMA, ENVIRONMENT-MAP), docs/HANDOFF.md, README.md,
+  D24 records, this ledger.  FORBIDDEN: compiler/{source,semantic,capability,implementation,planning,verifier} (no
+  language or planner semantic changes), adapter templates, membrane-core.js, sw.js, factory/, law and pass documents,
+  earlier epochs, D0-D23 evidence.
+- PREDICTED: reproduce-base REPRODUCED at 6bcc86c (five findings); workspace tests 130 (genericity ladder 7, driver 8);
+  22 exports; exec identity ef5d886a... under both install names; specimens 4 x 15 + 4 PASS, attacks 13 PASS,
+  anti-cheat clean, physical PASS, P01/P04 RUN, transport 18/18 + 3/3 identical; manifest 3553 files, 67
+  components, gate PASS (34 issues); epoch D24 28 nodes / 96 edges (39 inherited); merged 1332 / 3447; validate 42;
+  Q22 187 current facts (RUN 118, GAP 12); W28 RETIRABLE -> REMOVED.
+
+AFTER
+- RESULT: integrated as 76f4441 (ff-only from 6bcc86c); no refusal, no repair, no re-run.
+- RECEIPTS: F0-doc F1-fixture F2-web F3-rust F4-fixture F5-browser F6-build F7-doc F8-evidence F9-doc F10-evidence
+  F11-doc PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH
+  (epochs/D24.json rebuilt byte-identically; the genericity ladder 7 passed from the canonical tree).  Pushed.
+- OBSERVED: D24-OBSERVED-PIPELINE-GENERICITY.md - P1-P8 MATCH.
+
+---
+
+## D25-PHYSICAL-RUNTIME  (task 5 of 6: do the bundles generated by D24 actually behave correctly in physical browser environments?)
+
+BEFORE
+- DELTA: D25-PHYSICAL-RUNTIME (factory/deltas/D25.json), workpiece W31, base 76f4441 (a first route on W30 stopped at
+  F8: station close refused a path outside the fixture's may_change - evidence/D25/surfaces.json, written by the
+  reconciliation-surfaces re-check inherited from D23 - the fixture repaired, W30 kept as the record).
+- ASCII: design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F5, F7, F9), S-FIXTURE (F1), S-WEB (F2), S-BROWSER (F3), S-BUILD (F4), S-EVIDENCE (F6, F8).
+- CHANGE: host/harness/webapp-probe.mjs (the shell-driven physical probe with the exact environment identity;
+  loopback-served or a public URL), tests/physical/{run-webapp.mjs, public-https-probe.sh, PUBLIC-HTTPS-PROBE.md},
+  tests/selfhost/primitives-probe.mjs (BUNDLE_DIR required, bundle hashes recorded: I-05), tests/manifest/
+  {components,issues}.json (TEST-PHYSICAL, HARNESS-WEBAPP-PROBE; I-05/I-11 REPAIRED, I-33 -> owner, I-34 empty, I-35),
+  tests/envmap/facts/D25.json, design/execution-manifest/ (rebuilt), evidence/D25/, design/environment-map/ (epoch
+  D25, graph, views, SCHEMA, ENVIRONMENT-MAP), docs/HANDOFF.md, README.md, D25 records, this ledger.  FORBIDDEN:
+  compiler/ (no template or kernel change: the kernel identity stays ef5d886a...), factory/, fixtures/, law and pass
+  documents, earlier epochs, D0-D24 evidence.
+- PREDICTED: 4 specimens x 3 shell-driven configurations PASS; kernel identity == D24 pin; selfhost P01-P06/P08/P09/
+  P14-P16 RUN, P10 OBS, P07 GAP; public HTTPS UNREACHABLE (served bundle.json identical); manifest 4147 files, 69
+  components, gate PASS (35 issues); epoch D25 20 nodes / 36 edges; merged 1352 / 3483; validate 42; Q22 191
+  current facts (RUN 120, UNK 5); W29 RETIRABLE -> REMOVED.
+
+AFTER
+- RESULT: integrated as 2c0aeda (ff-only from 76f4441) on W31; the first route on W30 was refused at F8 (a path outside
+  the fixture's may_change), the fixture repaired and the delta re-routed from the base: no re-run of a failed command.
+- RECEIPTS: F0-doc F1-fixture F2-web F3-browser F4-build F5-doc F6-evidence F7-doc F8-evidence F9-doc PASS (format 2).
+  VERIFICATION: PASS (first run on W31).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D25.json rebuilt
+  byte-identically; the probe's syntax from the canonical tree).  Pushed.
+- OBSERVED: D25-OBSERVED-PHYSICAL-RUNTIME.md - P1-P7 MATCH.
+
+---
+
+## D26-CLEAN-COMMISSIONING  (task 6 of 6: can the CURRENT repository manufacture, verify and execute its complete implemented system from canonical source without relying on undocumented historical state?)
+
+BEFORE
+- DELTA: D26-CLEAN-COMMISSIONING (factory/deltas/D26.json), workpiece W32, base 2c0aeda.
+- ASCII: design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F6, F9, F11), S-FIXTURE (F1), S-BROWSER (F2), S-EVIDENCE (F3, F7, F8, F10), S-BUILD (F4, F5).
+- CHANGE: tests/reprove/{runbook.json (groups manifest and physical, the crate DAG in qualified-proof, build directories
+  from REPROVE_TARGET/REPROVE_KERNELS, entries for the 21 claims the selection could not map), obligations.json (R-65)},
+  tests/audit/{consistency-audit.mjs, final-condition.mjs}, tests/envmap/{concat-epochs.mjs, facts/D26.json},
+  tests/manifest/{components.json (TEST-AUDIT; KERNEL-LADDERS -> S-RUST, I-37), issues.json (I-35 empty, I-36, I-37)},
+  design/execution-manifest/ (rebuilt), evidence/D26/ (identity, selection, the re-proof groups, factory witnesses,
+  proof, crates, kernel, specimens, attacks, anti-cheat, physical, audit, envmap, index), design/environment-map/
+  (epoch D26 = re-proof fragment + facts fragment, graph, views, SCHEMA, ENVIRONMENT-MAP), docs/HANDOFF.md, README.md,
+  design/materialization/D26-STABLE-BASELINE.md, D26 records, this ledger.  FORBIDDEN: compiler/, host/, factory/,
+  fixtures/, law and pass documents, earlier epochs, D0-D25 evidence (historical evidence immutable).
+- PREDICTED: selection 169 / 101 (gaps 0); proof 27 (no FAIL), crates 14 / 1011 tests, witnesses PASS, specimens 4,
+  attacks 13, physical PASS, kernels == pin; 11 groups, 101 facts re-proved, 0 failed; manifest 4434 files, 70
+  components, gate PASS (37 issues); epoch D26 68 nodes / 340 edges; merged 1420 / 3823; validate 42; Q22 197 current
+  facts (RUN 126); audit 13 PASS; final condition 21 PASS (preview and committed graph identical); W31 RETIRABLE ->
+  REMOVED.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

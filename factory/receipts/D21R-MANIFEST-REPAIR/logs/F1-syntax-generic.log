@@ -1,0 +1,5 @@
+$ sh -c for f in tests/manifest/build-manifest.mjs tests/envmap/build-fact-epoch.mjs; do node --check $f || exit 1; done; sh -n tests/manifest/rebuild-check.sh && node -e 'JSON.parse(require("fs").readFileSync("tests/envmap/facts/D21R.json"))' && ! grep -nE "'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]" tests/manifest/build-manifest.mjs tests/envmap/build-fact-epoch.mjs && ! (grep -nE 'D21R|910fdbf' tests/manifest/rebuild-check.sh tests/envmap/build-fact-epoch.mjs | grep -vE '^[^:]+:[0-9]+:(#|//)') && echo 'syntax and generic-name scan clean'
+(cwd .)
+syntax and generic-name scan clean
+
+[exit 0] expected 0

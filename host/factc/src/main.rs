@@ -70,15 +70,17 @@ fn observe(args: &[String]) -> i32 {
     // manifest recorded at generation time (parsed textually; the kernel never reads files)
     let sha_after =
         source.map(|p| factc_foundation::sha256::digest(&std::fs::read(&p).expect("read source")));
-    let sha_lineage: Option<[u8; 32]> = manifest.and_then(|p| {
-        let text = std::fs::read_to_string(&p).ok()?;
-        let key = "\"source_sha256\":\"";
+    let manifest_text = manifest.and_then(|p| std::fs::read_to_string(&p).ok());
+    let manifest_hex = |key: &str| -> Option<[u8; 32]> {
+        let text = manifest_text.as_ref()?;
         let i = text.find(key)? + key.len();
-        let hex = &text[i..i + 64];
+        let hex = text.get(i..i + 64)?;
         let mut out = [0u8; 32];
         factc_foundation::hex::decode_into(hex.as_bytes(), &mut out)?;
         Some(out)
-    });
+    };
+    let sha_lineage = manifest_hex("\"source_sha256\":\"");
+    let sha_strategy = manifest_hex("\"strategy_data_sha256\":\"");
     std::fs::create_dir_all(&out_dir).expect("out dir");
     let mut ws = Workspace::new();
     if factc_kernel::submit_evidence_tape(&mut ws, &tape_bytes).is_err() {
@@ -90,6 +92,7 @@ fn observe(args: &[String]) -> i32 {
         system.as_bytes(),
         sha_after.as_ref(),
         sha_lineage.as_ref(),
+        sha_strategy.as_ref(),
         class.as_bytes(),
     );
     let mut out_bytes = vec![0u8; OUT_BYTES];

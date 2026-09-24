@@ -1,0 +1,435 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D25-PHYSICAL-RUNTIME-F4-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F4-build",
+  "workpiece_id": "W31",
+  "delta_id": "D25-PHYSICAL-RUNTIME",
+  "canonical_base": "76f44410fe4a57162b6c355c859c296b2a697be4",
+  "input_artifacts": [
+    "tests/physical/run-webapp.mjs",
+    "tests/physical/public-https-probe.sh",
+    "tests/selfhost/primitives-probe.mjs",
+    "host/harness/webapp-probe.mjs",
+    "tests/implementation/wasm-sections.mjs"
+  ],
+  "open_tree": "11d57f82791e34fc9da9a8115d359337d24eef0b",
+  "close_tree": "d285ce22681aa6ea8543250bbe66b4b6b830e10c",
+  "changed_paths": [
+    "evidence/D25/kernel/sections.json",
+    "evidence/D25/logs/F4-build.log",
+    "evidence/D25/logs/F4-checks.log",
+    "evidence/D25/logs/F4-kernel-identity.log",
+    "evidence/D25/logs/F4-run-webapp.log",
+    "evidence/D25/logs/F4-wasm-release.log",
+    "evidence/D25/physical/bundles/byte-relay/check-bundle.json",
+    "evidence/D25/physical/bundles/byte-relay/check-bundle.log",
+    "evidence/D25/physical/bundles/byte-relay/compile.log",
+    "evidence/D25/physical/bundles/byte-relay/compile/artifacts.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle-certificate.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/bundle.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/index.html",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/manifest.webmanifest",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/membrane.js",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/runtime.js",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/selector.js",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/sw.js",
+    "evidence/D25/physical/bundles/byte-relay/compile/bundle/wasm64_relay.wasm",
+    "evidence/D25/physical/bundles/byte-relay/compile/candidate-strategy.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/canonical-ascii-0.ascii",
+    "evidence/D25/physical/bundles/byte-relay/compile/capability-ir.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/diagnostics.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/implementation-hypergraph.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/source-lineage.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/typed-system-ir.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/verification-certificates.json",
+    "evidence/D25/physical/bundles/byte-relay/compile/verified-strategy.json",
+    "evidence/D25/physical/bundles/byte-relay/isolated.log",
+    "evidence/D25/physical/bundles/byte-relay/isolated/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/byte-relay/isolated/probe-record.json",
+    "evidence/D25/physical/bundles/byte-relay/isolated/runtime-evidence.json",
+    "evidence/D25/physical/bundles/byte-relay/no-webgpu.log",
+    "evidence/D25/physical/bundles/byte-relay/no-webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/byte-relay/no-webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/byte-relay/no-webgpu/runtime-evidence.json",
+    "evidence/D25/physical/bundles/byte-relay/observe.log",
+    "evidence/D25/physical/bundles/byte-relay/observed/diagnostics.json",
+    "evidence/D25/physical/bundles/byte-relay/observed/observation-delta.json",
+    "evidence/D25/physical/bundles/byte-relay/observed/observed.ascii",
+    "evidence/D25/physical/bundles/byte-relay/webgpu.log",
+    "evidence/D25/physical/bundles/byte-relay/webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/byte-relay/webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/byte-relay/webgpu/runtime-evidence.json",
+    "evidence/D25/physical/bundles/dual-stream/check-bundle.json",
+    "evidence/D25/physical/bundles/dual-stream/check-bundle.log",
+    "evidence/D25/physical/bundles/dual-stream/compile.log",
+    "evidence/D25/physical/bundles/dual-stream/compile/artifacts.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle-certificate.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/bundle.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/index.html",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/manifest.webmanifest",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/membrane.js",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/runtime.js",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/selector.js",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/sw.js",
+    "evidence/D25/physical/bundles/dual-stream/compile/bundle/wasm64_relay.wasm",
+    "evidence/D25/physical/bundles/dual-stream/compile/candidate-strategy.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/canonical-ascii-0.ascii",
+    "evidence/D25/physical/bundles/dual-stream/compile/capability-ir.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/diagnostics.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/implementation-hypergraph.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/source-lineage.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/typed-system-ir.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/verification-certificates.json",
+    "evidence/D25/physical/bundles/dual-stream/compile/verified-strategy.json",
+    "evidence/D25/physical/bundles/dual-stream/isolated.log",
+    "evidence/D25/physical/bundles/dual-stream/isolated/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/dual-stream/isolated/probe-record.json",
+    "evidence/D25/physical/bundles/dual-stream/isolated/runtime-evidence.json",
+    "evidence/D25/physical/bundles/dual-stream/no-webgpu.log",
+    "evidence/D25/physical/bundles/dual-stream/no-webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/dual-stream/no-webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/dual-stream/no-webgpu/runtime-evidence.json",
+    "evidence/D25/physical/bundles/dual-stream/observe.log",
+    "evidence/D25/physical/bundles/dual-stream/observed/diagnostics.json",
+    "evidence/D25/physical/bundles/dual-stream/observed/observation-delta.json",
+    "evidence/D25/physical/bundles/dual-stream/observed/observed.ascii",
+    "evidence/D25/physical/bundles/dual-stream/webgpu.log",
+    "evidence/D25/physical/bundles/dual-stream/webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/dual-stream/webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/dual-stream/webgpu/runtime-evidence.json",
+    "evidence/D25/physical/bundles/ledger-mirror/check-bundle.json",
+    "evidence/D25/physical/bundles/ledger-mirror/check-bundle.log",
+    "evidence/D25/physical/bundles/ledger-mirror/compile.log",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/artifacts.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle-certificate.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/bundle.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/index.html",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/manifest.webmanifest",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/membrane.js",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/runtime.js",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/selector.js",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/sw.js",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/bundle/wasm64_relay.wasm",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/candidate-strategy.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/canonical-ascii-0.ascii",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/capability-ir.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/diagnostics.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/implementation-hypergraph.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/source-lineage.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/typed-system-ir.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/verification-certificates.json",
+    "evidence/D25/physical/bundles/ledger-mirror/compile/verified-strategy.json",
+    "evidence/D25/physical/bundles/ledger-mirror/isolated.log",
+    "evidence/D25/physical/bundles/ledger-mirror/isolated/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/ledger-mirror/isolated/probe-record.json",
+    "evidence/D25/physical/bundles/ledger-mirror/isolated/runtime-evidence.json",
+    "evidence/D25/physical/bundles/ledger-mirror/no-webgpu.log",
+    "evidence/D25/physical/bundles/ledger-mirror/no-webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/ledger-mirror/no-webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/ledger-mirror/no-webgpu/runtime-evidence.json",
+    "evidence/D25/physical/bundles/ledger-mirror/observe.log",
+    "evidence/D25/physical/bundles/ledger-mirror/observed/diagnostics.json",
+    "evidence/D25/physical/bundles/ledger-mirror/observed/observation-delta.json",
+    "evidence/D25/physical/bundles/ledger-mirror/observed/observed.ascii",
+    "evidence/D25/physical/bundles/ledger-mirror/webgpu.log",
+    "evidence/D25/physical/bundles/ledger-mirror/webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/ledger-mirror/webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/ledger-mirror/webgpu/runtime-evidence.json",
+    "evidence/D25/physical/bundles/pixel-vault/check-bundle.json",
+    "evidence/D25/physical/bundles/pixel-vault/check-bundle.log",
+    "evidence/D25/physical/bundles/pixel-vault/compile.log",
+    "evidence/D25/physical/bundles/pixel-vault/compile/artifacts.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle-certificate.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle/bundle.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle/index.html",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle/manifest.webmanifest",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle/membrane.js",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle/runtime.js",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle/selector.js",
+    "evidence/D25/physical/bundles/pixel-vault/compile/bundle/sw.js",
+    "evidence/D25/physical/bundles/pixel-vault/compile/candidate-strategy.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/canonical-ascii-0.ascii",
+    "evidence/D25/physical/bundles/pixel-vault/compile/capability-ir.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/diagnostics.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/implementation-hypergraph.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/source-lineage.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/typed-system-ir.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/verification-certificates.json",
+    "evidence/D25/physical/bundles/pixel-vault/compile/verified-strategy.json",
+    "evidence/D25/physical/bundles/pixel-vault/isolated.log",
+    "evidence/D25/physical/bundles/pixel-vault/isolated/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/pixel-vault/isolated/probe-record.json",
+    "evidence/D25/physical/bundles/pixel-vault/isolated/runtime-evidence.json",
+    "evidence/D25/physical/bundles/pixel-vault/no-webgpu.log",
+    "evidence/D25/physical/bundles/pixel-vault/no-webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/pixel-vault/no-webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/pixel-vault/no-webgpu/runtime-evidence.json",
+    "evidence/D25/physical/bundles/pixel-vault/observe.log",
+    "evidence/D25/physical/bundles/pixel-vault/observed/diagnostics.json",
+    "evidence/D25/physical/bundles/pixel-vault/observed/observation-delta.json",
+    "evidence/D25/physical/bundles/pixel-vault/observed/observed.ascii",
+    "evidence/D25/physical/bundles/pixel-vault/webgpu.log",
+    "evidence/D25/physical/bundles/pixel-vault/webgpu/evidence-tape.ascii",
+    "evidence/D25/physical/bundles/pixel-vault/webgpu/probe-record.json",
+    "evidence/D25/physical/bundles/pixel-vault/webgpu/runtime-evidence.json",
+    "evidence/D25/physical/public-https.log",
+    "evidence/D25/physical/public-https/public-https.json",
+    "evidence/D25/physical/public-https/routes.jsonl",
+    "evidence/D25/physical/public-https/served-bundle.json",
+    "evidence/D25/physical/selfhost.log",
+    "evidence/D25/physical/selfhost/browser-identity.json",
+    "evidence/D25/physical/selfhost/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+    "evidence/D25/physical/selfhost/probes/P02-SW-CANNOT-SELF-UPDATE.json",
+    "evidence/D25/physical/selfhost/probes/P03-STORAGE-RESTART-ORIGIN.json",
+    "evidence/D25/physical/selfhost/probes/P04-OPFS-SERVED-APP.json",
+    "evidence/D25/physical/selfhost/probes/P05-SW-CROSS-ORIGIN-ISOLATION.json",
+    "evidence/D25/physical/selfhost/probes/P06-IDB-ATOMIC-POINTER.json",
+    "evidence/D25/physical/selfhost/probes/P07-STORAGE-PERSISTENCE.json",
+    "evidence/D25/physical/selfhost/probes/P08-CANDIDATE-CONFINEMENT.json",
+    "evidence/D25/physical/selfhost/probes/P09-GIT-OBJECTS-IN-BROWSER.json",
+    "evidence/D25/physical/selfhost/probes/P10-KERNEL-IN-WORKER.json",
+    "evidence/D25/physical/selfhost/probes/P14-BROKEN-SW-RECOVERY.json",
+    "evidence/D25/physical/selfhost/probes/P15-INTERRUPTED-SW-UPDATE.json",
+    "evidence/D25/physical/selfhost/probes/P16-CONFINED-GENERATION-LOAD.json",
+    "evidence/D25/physical/selfhost/summary.json",
+    "evidence/D25/physical/summary.json"
+  ],
+  "output_artifacts": [
+    "evidence/D25/physical/summary.json",
+    "evidence/D25/physical/selfhost/summary.json",
+    "evidence/D25/physical/public-https/public-https.json",
+    "evidence/D25/kernel/sections.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D25-PHYSICAL-RUNTIME"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D25/logs/F4-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D25/logs/F4-build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D25/logs/F4-wasm-release.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D25/logs/F4-wasm-release.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D25/logs/F4-kernel-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D25/logs/F4-kernel-identity.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D25/logs/F4-run-webapp.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D25/logs/F4-run-webapp.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D25/logs/F4-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D25/logs/F4-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo +1.94.1 build -p factc",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D25/logs/F4-build.log"
+    },
+    {
+      "check": "command:cargo +nightly-2026-09-24 build --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D25/logs/F4-wasm-release.log"
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D25/kernel && node tests/implementation/wasm-sections.mjs --label K=/home/user/factory-target-w30/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --exclude-custom name --out evidence/D25/kernel/sections.json >/dev/null && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D25/kernel/sections.json\")).builds[0].identity_excluding_custom;const p=JSON.parse(require(\"fs\").readFileSync(\"tests/toolchain/proof-sets.json\")).sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256;console.log(\"kernel\",s,\"pin\",p);if(s!==p)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D25/logs/F4-kernel-identity.log"
+    },
+    {
+      "check": "command:node tests/physical/run-webapp.mjs --factc /home/user/factory-target-w30/debug/factc --out evidence/D25/physical --kernel /home/user/factory-target-w30/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --pushed-bundle evidence/D24/physical/compile/bundle --pushed-branch claude/facttest-materialization-27amc7",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D25/logs/F4-run-webapp.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const s=J(\"evidence/D25/physical/summary.json\");if(s.status!==\"PASS\"||s.specimens.length!==4||s.specimens.some(x=>x.checks.length!==7||x.checks.some(c=>c.status!==\"PASS\")))process.exit(1);if(!s.selfhost||s.selfhost.checks.some(c=>c.status!==\"PASS\"))process.exit(1);const v=s.selfhost.verdicts;const want={P01:\"RUN\",P02:\"RUN\",P03:\"RUN\",P04:\"RUN\",P05:\"RUN\",P06:\"RUN\",P07:\"GAP\",P08:\"RUN\",P09:\"RUN\",P10:\"OBS\",P14:\"RUN\",P15:\"RUN\",P16:\"RUN\"};for(const [k,w] of Object.entries(want)){const got=Object.entries(v).find(([id])=>id.startsWith(k));if(!got||got[1]!==w){console.log(\"selfhost\",k,got&&got[1],\"expected\",w);process.exit(1)}}const p=s.public_https;if(!p||p.status!==\"UNREACHABLE\"||!p.served_bundle_json_at_pushed_path||!p.served_bundle_json_at_pushed_path.equals_fresh_build)process.exit(1);for(const x of s.specimens){const id=x.identity;if(!id||id.page.adapter.architecture!==\"swiftshader\"||id.page.adapter.is_fallback_adapter!==true||!id.browser.product.startsWith(\"HeadlessChrome/\")||!id.artifacts.every_fetched_file_as_recorded)process.exit(1);const w=x.verdicts.webgpu,n=x.verdicts[\"no-webgpu\"],i=x.verdicts.isolated;if(w.cross_origin_isolated!==false||i.cross_origin_isolated!==true||i.shared_array_buffer!==true||!w.no_runtime_codegen||!w.only_bundle_files_requested||!w.service_worker_registered||!w.cache_storage_populated||w.bundle_unchanged!==true||w.artifacts_as_recorded!==true)process.exit(1);if(x.specimen!==\"pixel-vault\"&&(!n.e0_all_exact||!w.e0_all_exact))process.exit(1);if(w.loss_attempted&&(!w.loss_witnessed||!w.stale_plan_invalidated))process.exit(1)}console.log(\"4 specimens x 7 PASS; selfhost verdicts as predicted; public HTTPS UNREACHABLE with the pushed bundle.json identical; identity and behaviours as predicted\")'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D25/logs/F4-checks.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D25/physical/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D25/physical/selfhost/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D25/physical/public-https/public-https.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D25/kernel/sections.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D25/logs/F4-build.log",
+    "evidence/D25/logs/F4-wasm-release.log",
+    "evidence/D25/logs/F4-kernel-identity.log",
+    "evidence/D25/logs/F4-run-webapp.log",
+    "evidence/D25/logs/F4-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T17:44:47Z",
+  "status": "PASS"
+}

@@ -1,0 +1,71 @@
+{
+  "fixture_id": "F5-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "evidence/D26/selection.json",
+    "tests/reprove/runbook.json (groups of kind source and repo)"
+  ],
+  "narrowed_may_change": [
+    "evidence/D26/results/",
+    "evidence/D26/clauses/",
+    "evidence/D26/reopen/",
+    "evidence/D26/ingress-reprove/",
+    "evidence/D26/lineage/",
+    "evidence/D26/paths/",
+    "evidence/D26/process/",
+    "evidence/D26/status-reprove/",
+    "evidence/D26/manifest-reprove/",
+    "evidence/D26/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D26/selection.json --runbook tests/reprove/runbook.json --kind source --out evidence/D26"
+        ],
+        "log": "evidence/D26/logs/F5-run-selected-source.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d26-commission-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d26-commission-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D26/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D26"
+        ],
+        "log": "evidence/D26/logs/F5-run-selected-repo.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d26-commission-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d26-commission-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const fs=require(\"fs\");let n=0,facts=0;for(const f of fs.readdirSync(\"evidence/D26/results\")){const r=J(\"evidence/D26/results/\"+f);const bad=Object.entries(r.facts).filter(([k,v])=>v.verdict!==\"PASS\").map(([k])=>k);if(bad.length||r.commands.some(c=>c.exit!==0)){console.log(r.group,\"FAIL\",bad);process.exit(1)}n++;facts+=Object.keys(r.facts).length}const s=J(\"evidence/D26/selection.json\");console.log(\"groups\",n,\"facts re-proved\",facts,\"selected\",s.selected);if(n!==s.groups.length&&n!==Object.keys(s.groups).length)process.exit(1)'"
+        ],
+        "log": "evidence/D26/logs/F5-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D26/results/manifest.json",
+    "evidence/D26/results/clauses.json",
+    "evidence/D26/manifest-reprove/rebuild-check.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

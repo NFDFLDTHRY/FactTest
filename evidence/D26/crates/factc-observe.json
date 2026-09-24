@@ -1,0 +1,54 @@
+{
+ "crate": "factc-observe",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "compiler/observe/Cargo.toml",
+ "dependencies": [
+  "factc-foundation",
+  "factc-source"
+ ],
+ "consumers": [
+  "factc-kernel"
+ ],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factc-observe",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factc-observe",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "exit": null,
+   "note": "no tests of its own: exercised by its consumers below"
+  },
+  {
+   "step": "consumer:factc-kernel",
+   "command": "cargo +1.94.1 test -p factc-kernel",
+   "exit": 0,
+   "ms": 773,
+   "tests": {
+    "passed": 83,
+    "failed": 0
+   },
+   "tail": [
+    "     Running tests/observe_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/observe_ladder-92877860eab04228)",
+    "     Running tests/strategy_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/strategy_ladder-619e49d88d66cb9c)",
+    "   Doc-tests factc_kernel"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

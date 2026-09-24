@@ -1,0 +1,6 @@
+$ sh -c for f in tests/manifest/build-manifest.mjs tests/manifest/gate.mjs tests/manifest/build-epoch.mjs; do node --check $f || exit 1; done; for j in tests/manifest/components.json tests/manifest/issues.json; do node -e 'JSON.parse(require("fs").readFileSync(process.argv[1]))' $j || exit 1; done; ! grep -nE "'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]" tests/manifest/build-manifest.mjs tests/manifest/gate.mjs tests/manifest/build-epoch.mjs && git diff --exit-code 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b -- tests ':!tests/manifest' ':!tests/hygiene/status-classification.json' && node -e 'JSON.parse(require("fs").readFileSync("tests/hygiene/status-classification.json"))' && node -e 'const c=JSON.parse(require("fs").readFileSync("tests/manifest/components.json"));const i=JSON.parse(require("fs").readFileSync("tests/manifest/issues.json"));const ids=new Set(c.components.map(x=>x.id));for(const [a,m] of Object.entries(c.required_coverage))for(const [k,v] of Object.entries(m))for(const id of v)if(!ids.has(id)){console.log("unknown",id);process.exit(1)}console.log(c.components.length+" components, "+i.issues.length+" issues")' && echo 'tools parse; generic; no other test changed'
+(cwd .)
+65 components, 20 issues
+tools parse; generic; no other test changed
+
+[exit 0] expected 0

@@ -1,0 +1,46 @@
+{
+ "crate": "factory",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "factory/Cargo.toml",
+ "dependencies": [
+  "factc-foundation"
+ ],
+ "consumers": [],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factory",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factory",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "command": "cargo +1.94.1 test -p factory",
+   "exit": 0,
+   "ms": 7534,
+   "tests": {
+    "passed": 29,
+    "failed": 0
+   },
+   "tail": [
+    "     Running unittests src/main.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factory-3be3f278e1e07394)",
+    "     Running tests/factory_law.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factory_law-d56c0c15998918b0)",
+    "   Doc-tests factory"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

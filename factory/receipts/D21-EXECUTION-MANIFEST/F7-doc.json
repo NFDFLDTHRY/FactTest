@@ -1,0 +1,133 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21-EXECUTION-MANIFEST-F7-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F7-doc",
+  "workpiece_id": "W25",
+  "delta_id": "D21-EXECUTION-MANIFEST",
+  "canonical_base": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+  "input_artifacts": [
+    "Factory evidence of F2-F6"
+  ],
+  "open_tree": "ac9ec368613f1fc198488bd6762e79f6f1782131",
+  "close_tree": "55ed9d2712aa8b7ae3ea36d9e1141bd44494d964",
+  "changed_paths": [
+    "design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F7-observed.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21-EXECUTION-MANIFEST"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21-EXECUTION-MANIFEST/logs/F7-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c O=design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md; for k in P1 P2 P3 P4 P5 P6 CURRENT-EXECUTION-MANIFEST 'I-06' 'I-09' 'D22' 'D26'; do grep -q -- \"$k\" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21-EXECUTION-MANIFEST/logs/F7-observed.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F7-observed.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T12:32:41Z",
+  "status": "PASS"
+}

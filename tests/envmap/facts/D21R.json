@@ -1,0 +1,60 @@
+{
+  "schema": "facttest-fact-epoch-spec/1",
+  "summary": "D21 re-inspection repair: the manifest builder excludes its own epoch; the committed D21 manifest rebuilds byte-identically at 910fdbf from both graphs (1 fact [RUN], 4 evidence records)",
+  "probes": [
+    {
+      "id": "PROBE-MANIFEST-REBUILD",
+      "command_or_operation": "[TOOL=builder] sh tests/manifest/rebuild-check.sh COMMIT REV DELTA EPOCH BASE_REV PRIOR_EPOCHS OUT: a clean clone at COMMIT, the working tree's tests/manifest/build-manifest.mjs (or TOOL) overlaid, the CURRENT EXECUTION MANIFEST rebuilt from the graph as committed there and from the graph merged without the delta's own epoch, each compared byte-for-byte (md and json) with the committed design/execution-manifest",
+      "expected_observations": [
+        "all four comparisons PASS",
+        "the committed CURRENT-EXECUTION-MANIFEST.md sha256 recorded"
+      ],
+      "failure_meaning": [
+        "the manifest depends on the delta's own outputs or on the working tree, so its enumeration is not reproducible from the repository at the integration commit (the D21 re-inspection refusal)"
+      ],
+      "implemented_by": "IMPL-TEST-MANIFEST"
+    }
+  ],
+  "facts": [
+    {
+      "id": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+      "subject": "tests/manifest/build-manifest.mjs and the CURRENT EXECUTION MANIFEST committed by D21-EXECUTION-MANIFEST (integration commit 910fdbf)",
+      "predicate": "in a clean clone at 910fdbf the committed manifest (design/execution-manifest/{manifest.json, CURRENT-EXECUTION-MANIFEST.md}) rebuilds byte-identically with the repaired builder from the graph as committed there (epoch D21 merged in) and from the graph merged from the epochs before D21; with the builder as committed at 910fdbf the rebuild from the committed graph differs (the D21 epoch's own implementation nodes and facts turned two findings from 10 and 11 to 0 and appended D21 to the epoch list) while the rebuild without the own epoch is identical: the defect was the builder's reading of its own epoch, not the enumeration",
+      "status": "RUN",
+      "note": "repairs the re-inspection refusal of D21-EXECUTION-MANIFEST (class A: live test machinery whose header promised the exclusion its code applied only to the evidence-reader finding); the D21 records, epoch and evidence stay as written",
+      "source_ref": "evidence/D21R/rebuild-check.json",
+      "required_environment": [
+        "the canonical repository at 910fdbf with node and cargo metadata available"
+      ],
+      "constraint_refs": [],
+      "probe": "PROBE-MANIFEST-REBUILD",
+      "evidence": [
+        {
+          "path": "evidence/D21R/reinspect-d21-result.json",
+          "observed_result": "the Factory's re-inspection record of D21-EXECUTION-MANIFEST at 910fdbf: canonical head and tree checks PASS, the re-inspection command FAIL (the rebuilt manifest differs from the committed one)"
+        },
+        {
+          "path": "evidence/D21R/reinspect-d21-run.log",
+          "observed_result": "the refused command's output as the Factory recorded it: validate, merge-check and render-check PASS, cmp of CURRENT-EXECUTION-MANIFEST.md differs at line 3"
+        },
+        {
+          "path": "evidence/D21R/reproduce.json",
+          "observed_result": "with the builder as committed at 910fdbf: rebuild from the committed graph FAIL (md and json), rebuild without the own epoch PASS (md and json)"
+        },
+        {
+          "path": "evidence/D21R/rebuild-check.json",
+          "observed_result": "with the repaired builder: all four rebuilds PASS, byte-identical to the committed manifest"
+        }
+      ],
+      "implemented_by": [
+        "IMPL-TEST-MANIFEST"
+      ],
+      "stale_if": [
+        {
+          "dimension": "repo.commit",
+          "relation": "tests/manifest/build-manifest.mjs, tests/manifest/components.json or design/execution-manifest/ changes"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "fixture_id": "F7-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the manifest of F6",
+    "tests/manifest/issues.json"
+  ],
+  "narrowed_may_change": [
+    "evidence/D26/manifest.json",
+    "evidence/D26/issues.json",
+    "evidence/D26/gate.json",
+    "evidence/D26/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp design/execution-manifest/manifest.json evidence/D26/manifest.json && cp tests/manifest/issues.json evidence/D26/issues.json && node tests/manifest/gate.mjs --manifest evidence/D26/manifest.json --issues tests/manifest/issues.json --out evidence/D26/gate.json"
+        ],
+        "log": "evidence/D26/logs/F7-gate.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D26/gate.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

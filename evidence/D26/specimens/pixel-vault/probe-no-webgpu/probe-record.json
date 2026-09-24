@@ -1,0 +1,162 @@
+{
+  "harness": "host/harness/bundle-probe.mjs",
+  "started": "2026-09-24T18:47:43.630Z",
+  "url": "http://127.0.0.1:40083/index.html",
+  "launch": {
+    "headless": true,
+    "args": []
+  },
+  "no_webgpu": true,
+  "options": {
+    "noWebgpu": true,
+    "loss": "none",
+    "expect-e0": "none"
+  },
+  "transfers": [
+    {
+      "relation": "stash",
+      "type": "Tile",
+      "mode": "copy"
+    }
+  ],
+  "bundle_hashes_before": {
+    "bundle.json": "969041bd341329bde2c384929e7b164b098e28a4ed4c1c62c8325a957f5876e8",
+    "index.html": "42fa56b668b2d93cbf492ba9e6e182a5595bd1455ca9a3d7b491745e3ed5111f",
+    "manifest.webmanifest": "fd8300f075e79d6027f40377248be80420f3c57fc4def53131cea7cba069f19d",
+    "membrane.js": "d795588028fef7a2167c80d6d41428aae98189f668eee6ff0fc8c6d6496c867f",
+    "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+    "selector.js": "1c5803370213a95ad238d909266d094eddefc6416e9279f12c9da02558814708",
+    "sw.js": "416139c8ef9b14cce4c1a45c03132c0743ed4b45a892f5a4f69b8dcd980d9b5f"
+  },
+  "steps": [
+    {
+      "step": "comparator-self-check",
+      "tampered_detected": true,
+      "identical_accepted": true
+    },
+    {
+      "step": "environment",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secureContext": true,
+      "gpuExposed": true
+    },
+    {
+      "step": "E0-init",
+      "activation": {
+        "epoch_id": "E0",
+        "strategy_id": 1,
+        "plan_id": null,
+        "admission_refs": [
+          "ADM-E0-WEBGPU"
+        ],
+        "metric_evidence_refs": [],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "WEBGPU"
+            ],
+            "satisfied": false
+          }
+        ],
+        "status": "NO_ACTIVE_PLAN"
+      },
+      "admissions": {
+        "WEBGPU": {
+          "receipt_id": "ADM-E0-WEBGPU",
+          "epoch_id": "E0",
+          "implementation_id": "WEBGPU",
+          "decision": "REJECTED",
+          "evaluated_requirements": [
+            {
+              "step": "DISCOVER",
+              "result": "OK",
+              "detail": "navigator.gpu present"
+            },
+            {
+              "step": "REQUEST",
+              "result": "UNAVAILABLE",
+              "detail": "requestAdapter returned null"
+            }
+          ],
+          "rejection_reason": "request_unavailable",
+          "adapter_info": null,
+          "status": "REJECTED"
+        }
+      },
+      "epochs": [
+        {
+          "epoch_id": "E0",
+          "reason": "initial observation",
+          "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+          "secure_context": true,
+          "established": "2026-09-24T18:47:43.636Z"
+        }
+      ]
+    },
+    {
+      "step": "E0-transfer",
+      "results": [
+        {
+          "relation": "stash",
+          "payload": "tile-3",
+          "input_hex": "10 20 30",
+          "output_hex": null,
+          "status": "NO_ACTIVE_PLAN",
+          "backend": null,
+          "conversions": null,
+          "plan_id": null,
+          "exact_runtime": null,
+          "exact_harness": false
+        },
+        {
+          "relation": "stash",
+          "payload": "tile-17",
+          "input_hex": "ff fe fd fc fb fa f9 f8 f7 f6 f5 f4 f3 f2 f1 f0 ef",
+          "output_hex": null,
+          "status": "NO_ACTIVE_PLAN",
+          "backend": null,
+          "conversions": null,
+          "plan_id": null,
+          "exact_runtime": null,
+          "exact_harness": false
+        }
+      ]
+    }
+  ],
+  "bundle_hashes_after": {
+    "bundle.json": "969041bd341329bde2c384929e7b164b098e28a4ed4c1c62c8325a957f5876e8",
+    "index.html": "42fa56b668b2d93cbf492ba9e6e182a5595bd1455ca9a3d7b491745e3ed5111f",
+    "manifest.webmanifest": "fd8300f075e79d6027f40377248be80420f3c57fc4def53131cea7cba069f19d",
+    "membrane.js": "d795588028fef7a2167c80d6d41428aae98189f668eee6ff0fc8c6d6496c867f",
+    "runtime.js": "9136916a89d49f92cc9f924438c6ebd6467fa5bea915248308a76508f36d534c",
+    "selector.js": "1c5803370213a95ad238d909266d094eddefc6416e9279f12c9da02558814708",
+    "sw.js": "416139c8ef9b14cce4c1a45c03132c0743ed4b45a892f5a4f69b8dcd980d9b5f"
+  },
+  "bundle_unchanged_during_session": true,
+  "console": [
+    "WebGPU is experimental on this platform. See https://github.com/gpuweb/gpuweb/wiki/Implementation-Status#implementation-status",
+    "Failed to create WebGPU Context Provider"
+  ],
+  "finished": "2026-09-24T18:47:43.678Z",
+  "verdict": {
+    "transfers_executed": 1,
+    "payloads": 2,
+    "e0_all_exact": false,
+    "e0_backends": [
+      null
+    ],
+    "e0_plan": null,
+    "loss_attempted": null,
+    "loss_witnessed": null,
+    "e1_plan": null,
+    "e1_all_exact": null,
+    "e1_backends": null,
+    "epochs": [
+      "E0"
+    ],
+    "no_compiler_invoked": true,
+    "bundle_unchanged": true,
+    "expectations_met": true
+  }
+}

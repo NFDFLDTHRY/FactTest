@@ -1,0 +1,6 @@
+$ sh -c sh tests/factory/run-witnesses.sh tests/factory/witnesses.json /home/user/factory-target-w27 evidence/D22/witnesses.json evidence/D22/logs/witnesses collision=evidence/D22/collision-witness.json && node -e 'const j=JSON.parse(require("fs").readFileSync("evidence/D22/witnesses.json"));if(j.status!=="PASS"||j.reasons.length!==16||j.reasons.some(r=>r.status!=="REFUSED_FOR_NAMED_REASON")||j.positive.some(p=>p.status!=="PASS")||j.tests.passed!==29||j.tests.failed!==0||!/^[0-9a-f]{64}$/.test(j.judge.sha256))process.exit(1);console.log("judge",j.judge.sha256)'
+(cwd .)
+PASS witnesses: 29 tests (29 ok, 0 failed); 16 of 16 reasons refused for the named reason; 5 of 5 positive paths; judge 9266f00f4be8
+judge 9266f00f4be893c00047cc58ca750e29fd112edec520550e12970c5f9e8f65fc
+
+[exit 0] expected 0

@@ -1,0 +1,26 @@
+{
+ "specimen": "byte-relay",
+ "system": "byte_relay",
+ "source": "fixtures/commissioning/byte-relay.ascii",
+ "contracts": "fixtures/commissioning/contracts.ascii",
+ "metrics": "fixtures/commissioning/metrics.ascii",
+ "payloads": "fixtures/commissioning/payloads.json",
+ "varies": [
+  "the original commissioning specimen: one relation (relay), type Bytes, two components, two backends (WEBGPU preferred by metric, CPU_WASM64 fallback), objective minimize"
+ ],
+ "expect": {
+  "transfers": [
+   "relay"
+  ],
+  "variants": 2,
+  "strength": "EXACT_OPTIMUM",
+  "webgpu": {
+   "e0": "WEBGPU",
+   "loss": "WEBGPU",
+   "e1": "CPU_WASM64"
+  },
+  "no_webgpu": {
+   "e0": "CPU_WASM64"
+  }
+ }
+}

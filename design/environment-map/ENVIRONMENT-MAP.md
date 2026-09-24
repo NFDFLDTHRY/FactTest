@@ -250,3 +250,47 @@ D20         D20-MAIN-SYNC                    second re-proof: the selection on t
                                              on its own inputs, D19's process facts by replay, the lineage with the sync
                                              merge, clauses and frontier at moved tips); Q22 on the joined model
 ```
+
+## 14. Execution-manifest epoch D21 (added by D21-EXECUTION-MANIFEST)
+
+```text
+D21    D21-EXECUTION-MANIFEST      the current executable FactTest enumerated from the joined repository: every tracked
+                                   path tiered, every live component connected to its owner, consumers, stations, tests,
+                                   probes and claims; ten implementation nodes added for components the graph had not
+                                   covered; the issue inventory (A..G) classified before any repair; epochs/D21.json.
+                                   D22-D26 execute the enumerated components and add their execution epochs.
+D21R   D21R-MANIFEST-REPAIR        the D21 re-inspection refused: the manifest builder read its own epoch after
+                                   integration (two findings and the epoch list changed).  Repaired (own-epoch
+                                   exclusion) and witnessed by tests/manifest/rebuild-check.sh at 910fdbf with the
+                                   committed and the repaired builder; epochs/D21R.json (one [RUN] fact, four records).
+D22    D22-FACTORY-SELF-QUALIFICATION  the Factory attacked with every refusal reason of the prompt (29 law witnesses +
+                                   the import collision witness): six accepted attacks reproduced with the committed
+                                   Factory and repaired in ops.rs (receipt integrity, identity probes, command and
+                                   canonical confinement); the judge built from the tree identified; epochs/D22.json
+                                   (three [RUN] facts, five records).  Judge of D23-D26.
+D23    D23-COMPILER-ABI-EXECUTION      the compiler DAG executed bottom-up on the qualified proof sets (per-crate compile,
+                                   focused tests, consumer tests; the 27-obligation matrix); the wasm transport completed
+                                   (D12 B-06 was A/B: nine exports added, BUILD + OBSERVE in Chromium byte-identical to
+                                   the native driver); the kernel identity superseded (R-64); epochs/D23.json.
+D24    D24-PIPELINE-GENERICITY         four semantically distinct specimens (Byte Relay, ledger-mirror, pixel-vault,
+                                   dual-stream) through one compiler, one generic browser harness, observe and integrity;
+                                   the specimen-specific runtime, shell, harness and scan repaired (I-07, I-08, I-09,
+                                   I-20) and three further accepted attacks (I-30 foreign evidence, I-31 adapter family,
+                                   I-32 empty certificate) repaired after reproduction on the base compiler; the attack
+                                   list refused; kernel identity superseded (R-65), the D7 relay facts superseded
+                                   (R-66); epochs/D24.json (five [RUN] facts, one [GAP] stop I-33).
+D25    D25-PHYSICAL-RUNTIME            the four fresh bundles driven as webapps through their own shells in Chromium
+                                   (with WebGPU, without, cross-origin isolated by server headers), every runtime
+                                   behaviour of the prompt with fresh evidence and the exact environment identity;
+                                   the selfhost primitives on the fresh bundle (I-05); the public-HTTPS route
+                                   unreachable from this environment: an exact [UNK] boundary with a deployable
+                                   probe (tests/physical/PUBLIC-HTTPS-PROBE.md); epochs/D25.json (two [RUN], one
+                                   [OBS], one [UNK]).
+D26    D26-CLEAN-COMMISSIONING         the complete implemented system manufactured, verified and executed from the
+                                   canonical source on a clean workpiece with fresh build directories; the STALE_IF
+                                   selection over the D25 graph re-proved through the runbook (every selected claim
+                                   mapped: groups manifest, physical, qualified-proof + crate DAG, kernel-sections,
+                                   identity, lineage, status, clauses, reopen, ingress); the consistency audit and the
+                                   six-task final condition computed from evidence; epochs/D26.json = re-proof fragment
+                                   + facts fragment (three [RUN] facts).  The series D21-D26 closes here.
+```

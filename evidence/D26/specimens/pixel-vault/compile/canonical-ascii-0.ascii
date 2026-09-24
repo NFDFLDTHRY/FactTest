@@ -1,0 +1,15 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system pixel_vault "Pixel Vault"}
+| TYPES
+| @{type Tile}
+| COMPONENTS
+| @{component camera}
+| @{port camera.tile out: Tile public}
+| @{component vault}
+| @{port vault.tile in: Tile public}
+| RELATIONS
+| @{data stash camera.tile -> vault.tile mode=copy}
+| INVARIANTS
+| @{invariant i_type type_equal(camera.tile, vault.tile)}
++------------------------------------------------------------------------+

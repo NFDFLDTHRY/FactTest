@@ -1,0 +1,103 @@
+{
+  "id": "M4-nostd-scanner-bypass",
+  "attacks": "T9-P5 no_std",
+  "description": "production std usage placed after the file's first #[cfg(test)] line (plus ::std spelling); native tests pass and the textual scanner reports no offender.",
+  "weak": {
+    "check": "nostd-scan",
+    "crates": [
+      "."
+    ],
+    "expect": "PASS",
+    "note": "factory nostd-check (factory/src/checks.rs) textual heuristic",
+    "observed": {
+      "command": [
+        "/home/user/factory-target-w28/debug/factory",
+        "nostd-check",
+        "."
+      ],
+      "exit": 0,
+      "output": [
+        "== nostd-check . : PASS [HEURISTIC: proof weight NONE]",
+        "  [PASS] no_std_attribute:.",
+        "  [PASS] no_std_use:."
+      ],
+      "verdict": "PASS",
+      "reason": "textual scan found no offender [HEURISTIC: cfg(test)/::std/grouped-use bypasses known; verdict weight none]"
+    }
+  },
+  "qualified": {
+    "check": "nostd-graph",
+    "package": "m4-nostd-scanner-bypass",
+    "profile": "dev",
+    "intended": [
+      "m4-nostd-scanner-bypass"
+    ],
+    "expect": "FAIL",
+    "reason_must_contain": "std",
+    "note": "T9-P5-02: core-only wasm64 build cannot find crate std",
+    "observed": {
+      "verdict": "FAIL",
+      "reason": "exit 101: m4-nostd-scanner-bypass E0463 can't find crate for `std`; intended crates absent from the core-only graph: m4-nostd-scanner-bypass",
+      "command": [
+        "cargo",
+        "+nightly-2026-09-24",
+        "build",
+        "-p",
+        "m4-nostd-scanner-bypass",
+        "-Z",
+        "build-std=core",
+        "--target",
+        "wasm64-unknown-unknown",
+        "--message-format=json"
+      ],
+      "env": {
+        "RUSTFLAGS": "-C link-arg=-zstack-size=16777216",
+        "CARGO_TARGET_DIR": "/home/user/factory-target-w28/d9-mutants/M4-nostd-scanner-bypass/target"
+      },
+      "exit": 101,
+      "compiled": [],
+      "sysroot": [
+        "compiler_builtins[custom-build]<sysroot-or-external-path>",
+        "compiler_builtins[lib]<sysroot-or-external-path>",
+        "core[lib]<sysroot-or-external-path>"
+      ],
+      "intended": [
+        "m4-nostd-scanner-bypass"
+      ],
+      "missing": [
+        "m4-nostd-scanner-bypass"
+      ],
+      "std_errors": [
+        {
+          "package": "m4-nostd-scanner-bypass",
+          "code": "E0463",
+          "message": "can't find crate for `std`",
+          "file": "src/lib.rs",
+          "line": 8
+        }
+      ],
+      "errors": [
+        {
+          "package": "m4-nostd-scanner-bypass",
+          "code": "E0463",
+          "message": "can't find crate for `std`",
+          "file": "src/lib.rs",
+          "line": 8
+        }
+      ],
+      "target": "wasm64-unknown-unknown",
+      "profile": "dev",
+      "artifact": null
+    }
+  },
+  "expected": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "observed": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "verdict": "RUN",
+  "reason": "weak check PASS (would accept the mutant); qualified check FAIL: exit 101: m4-nostd-scanner-bypass E0463 can't find crate for `std`; intended crates absent from the core-only graph: m4-nostd-scanner-bypass"
+}

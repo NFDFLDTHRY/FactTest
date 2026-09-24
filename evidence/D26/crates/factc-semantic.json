@@ -1,0 +1,100 @@
+{
+ "crate": "factc-semantic",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "compiler/semantic/Cargo.toml",
+ "dependencies": [
+  "factc-foundation",
+  "factc-source"
+ ],
+ "consumers": [
+  "factc-capability",
+  "factc-implementation",
+  "factc-planning",
+  "factc-verifier",
+  "factc-codegen",
+  "factc-bundle",
+  "factc-kernel"
+ ],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factc-semantic",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factc-semantic",
+   "exit": 0,
+   "ms": 41,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.02s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "exit": null,
+   "note": "no tests of its own: exercised by its consumers below"
+  },
+  {
+   "step": "consumer:factc-capability",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-implementation",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-planning",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-verifier",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-codegen",
+   "command": "cargo +1.94.1 test -p factc-codegen",
+   "exit": 0,
+   "ms": 73,
+   "tests": {
+    "passed": 1,
+    "failed": 0
+   },
+   "tail": [
+    "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s",
+    "     Running unittests src/lib.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factc_codegen-f2b9a4a95494026b)",
+    "   Doc-tests factc_codegen"
+   ]
+  },
+  {
+   "step": "consumer:factc-bundle",
+   "exit": null,
+   "note": "consumer has no tests of its own"
+  },
+  {
+   "step": "consumer:factc-kernel",
+   "command": "cargo +1.94.1 test -p factc-kernel",
+   "exit": 0,
+   "ms": 747,
+   "tests": {
+    "passed": 83,
+    "failed": 0
+   },
+   "tail": [
+    "     Running tests/observe_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/observe_ladder-92877860eab04228)",
+    "     Running tests/strategy_ladder.rs (/home/user/factory-builds/d26-commission-target/debug/deps/strategy_ladder-619e49d88d66cb9c)",
+    "   Doc-tests factc_kernel"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

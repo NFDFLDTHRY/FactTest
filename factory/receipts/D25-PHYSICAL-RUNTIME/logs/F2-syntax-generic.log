@@ -1,0 +1,5 @@
+$ sh -c node --check host/harness/webapp-probe.mjs && ! grep -nE 'WEBGPU|CPU_WASM64|byte[-_]relay|commissioning|relay\(' host/harness/webapp-probe.mjs && grep -q 'Browser.getVersion' host/harness/webapp-probe.mjs && grep -q 'crossOriginIsolated' host/harness/webapp-probe.mjs && grep -q 'requestAdapter' host/harness/webapp-probe.mjs && grep -q "'#controls button'" host/harness/webapp-probe.mjs && grep -q -- '--url' host/harness/webapp-probe.mjs && echo 'syntax clean; generic (no backend, specimen or fixed operation name); identity, shell-driving and external-url paths present'
+(cwd .)
+syntax clean; generic (no backend, specimen or fixed operation name); identity, shell-driving and external-url paths present
+
+[exit 0] expected 0

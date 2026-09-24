@@ -1,0 +1,85 @@
+{
+  "id": "M7-wasm32-masquerade",
+  "attacks": "T9-P8 wasm64 / no wasm32 fallback",
+  "description": "a wasm32-unknown-unknown cdylib presented as the wasm artifact.",
+  "weak": {
+    "check": "cargo",
+    "chan": "nightly",
+    "args": [
+      "build",
+      "--release",
+      "-Z",
+      "build-std=core",
+      "--target",
+      "wasm32-unknown-unknown"
+    ],
+    "expect": "PASS",
+    "note": "'a wasm build succeeded' rule",
+    "observed": {
+      "verdict": "PASS",
+      "command": [
+        "cargo",
+        "+nightly-2026-09-24",
+        "build",
+        "--release",
+        "-Z",
+        "build-std=core",
+        "--target",
+        "wasm32-unknown-unknown",
+        "--message-format=json"
+      ],
+      "exit": 0,
+      "packages": [
+        "m7-wasm32-masquerade"
+      ],
+      "selection": [
+        "m7-wasm32-masquerade:m7_wasm32_masquerade[cdylib]"
+      ],
+      "tests": {
+        "binaries": [],
+        "results": [],
+        "passed": 0,
+        "failed": 0,
+        "failed_names": [],
+        "finished": "Finished `release` profile [optimized] target(s) in 0.09s"
+      },
+      "reason": "exit 0; packages [m7-wasm32-masquerade]"
+    }
+  },
+  "qualified": {
+    "check": "wasm-inspect",
+    "module": "wasm32-unknown-unknown/release/m7_wasm32_masquerade.wasm",
+    "expect": "FAIL",
+    "reason_must_contain": "all_memories_i64_address_type",
+    "note": "T9-P8-02: factory wasm-inspect requires i64 memories (FT-003)",
+    "observed": {
+      "command": [
+        "/home/user/factory-target-w28/debug/factory",
+        "wasm-inspect",
+        "/home/user/factory-target-w28/d9-mutants/M7-wasm32-masquerade/target/wasm32-unknown-unknown/release/m7_wasm32_masquerade.wasm"
+      ],
+      "exit": 1,
+      "output": [
+        "== wasm-inspect /home/user/factory-target-w28/d9-mutants/M7-wasm32-masquerade/target/wasm32-unknown-unknown/release/m7_wasm32_masquerade.wasm : FAIL",
+        "  [PASS] module_structure - 8 sections",
+        "  [PASS] memory_declared - I32 min=17 max=None shared=false",
+        "  [FAIL] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003",
+        "  [PASS] imports_listed",
+        "  [PASS] exports_listed - memory:2, input_buffer_ptr:0, query_abi_version:0",
+        "  [PASS] artifact_identity - sha256 b4c07d1c1f2ac847468202c88b5ccee60e80fbbc3c35b9e74fc9135927bb04cf bytes 391"
+      ],
+      "verdict": "FAIL",
+      "reason": "  [FAIL] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003"
+    }
+  },
+  "expected": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "observed": {
+    "weak": "PASS",
+    "qualified": "FAIL"
+  },
+  "verdict": "RUN",
+  "reason": "weak check PASS (would accept the mutant); qualified check FAIL:   [FAIL] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003"
+}

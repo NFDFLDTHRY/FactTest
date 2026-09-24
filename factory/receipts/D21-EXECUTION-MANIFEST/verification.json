@@ -1,0 +1,393 @@
+{
+  "delta_id": "D21-EXECUTION-MANIFEST",
+  "workpiece_id": "W25",
+  "canonical_base": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+  "base_tree": "8b76731ed0729c8e9d8d976a718dec3425adde49",
+  "verified_tree": "d154e35b40ba164113e6513cb7916d14bf9e8e9f",
+  "changed_paths": [
+    "README.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D21.json",
+    "design/environment-map/graph.json",
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+    "design/execution-manifest/manifest.json",
+    "design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md",
+    "design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D21/envmap/merge-check.json",
+    "evidence/D21/envmap/queries/Q01.json",
+    "evidence/D21/envmap/queries/Q02.json",
+    "evidence/D21/envmap/queries/Q03.json",
+    "evidence/D21/envmap/queries/Q04.json",
+    "evidence/D21/envmap/queries/Q05.json",
+    "evidence/D21/envmap/queries/Q06.json",
+    "evidence/D21/envmap/queries/Q07.json",
+    "evidence/D21/envmap/queries/Q08.json",
+    "evidence/D21/envmap/queries/Q09.json",
+    "evidence/D21/envmap/queries/Q10.json",
+    "evidence/D21/envmap/queries/Q11.json",
+    "evidence/D21/envmap/queries/Q12.json",
+    "evidence/D21/envmap/queries/Q13.json",
+    "evidence/D21/envmap/queries/Q14.json",
+    "evidence/D21/envmap/queries/Q15.json",
+    "evidence/D21/envmap/queries/Q16.json",
+    "evidence/D21/envmap/queries/Q17.json",
+    "evidence/D21/envmap/queries/Q18.json",
+    "evidence/D21/envmap/queries/Q19.json",
+    "evidence/D21/envmap/queries/Q20.json",
+    "evidence/D21/envmap/queries/Q21.json",
+    "evidence/D21/envmap/queries/Q22.json",
+    "evidence/D21/envmap/render-check.json",
+    "evidence/D21/envmap/stale.json",
+    "evidence/D21/envmap/validate.json",
+    "evidence/D21/gate.json",
+    "evidence/D21/handoff-check.json",
+    "evidence/D21/identity/browser-default.json",
+    "evidence/D21/identity/browser-gpu-flags.json",
+    "evidence/D21/identity/host.json",
+    "evidence/D21/identity/repo.json",
+    "evidence/D21/identity/tips.json",
+    "evidence/D21/identity/toolchains.json",
+    "evidence/D21/index.json",
+    "evidence/D21/issues.json",
+    "evidence/D21/logs/F2-identity.log",
+    "evidence/D21/logs/F4-gate.log",
+    "evidence/D21/logs/F6-audit-after.log",
+    "evidence/D21/logs/F6-audit-before.log",
+    "evidence/D21/logs/F6-cleanup-gate.log",
+    "evidence/D21/logs/F6-earlier-gates.log",
+    "evidence/D21/logs/F6-handoff-check.log",
+    "evidence/D21/logs/F6-index.log",
+    "evidence/D21/logs/F6-merge-check.log",
+    "evidence/D21/logs/F6-q22.log",
+    "evidence/D21/logs/F6-queries.log",
+    "evidence/D21/logs/F6-reconciliation-gates.log",
+    "evidence/D21/logs/F6-render-check.log",
+    "evidence/D21/logs/F6-retire.log",
+    "evidence/D21/logs/F6-stale.log",
+    "evidence/D21/logs/F6-status-scan.log",
+    "evidence/D21/logs/F6-validate.log",
+    "evidence/D21/manifest.json",
+    "evidence/D21/regress/capability-gate.json",
+    "evidence/D21/regress/d18-gate.json",
+    "evidence/D21/regress/d18r-gate.json",
+    "evidence/D21/regress/d20-sync-gate.json",
+    "evidence/D21/regress/implementation-gate.json",
+    "evidence/D21/status/inventory.json",
+    "evidence/D21/status/summary.txt",
+    "evidence/D21/workpieces/audit-after.json",
+    "evidence/D21/workpieces/audit-before.json",
+    "evidence/D21/workpieces/retire.json",
+    "factory/deltas/D21.json",
+    "factory/fixtures/D21/F0-doc.json",
+    "factory/fixtures/D21/F1-fixture.json",
+    "factory/fixtures/D21/F2-browser.json",
+    "factory/fixtures/D21/F3-doc.json",
+    "factory/fixtures/D21/F4-evidence.json",
+    "factory/fixtures/D21/F5-doc.json",
+    "factory/fixtures/D21/F6-evidence.json",
+    "factory/fixtures/D21/F7-doc.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F0-doc.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F1-fixture.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F2-browser.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F3-doc.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F4-evidence.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F5-doc.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F6-evidence.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/F7-doc.json",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F0-ascii.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F0-scope.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F1-syntax-generic.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-build-manifest.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F3-deterministic.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-build-epoch.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-checks.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-merge.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F5-render.log",
+    "factory/receipts/D21-EXECUTION-MANIFEST/logs/F7-observed.log",
+    "tests/hygiene/status-classification.json",
+    "tests/manifest/build-epoch.mjs",
+    "tests/manifest/build-manifest.mjs",
+    "tests/manifest/components.json",
+    "tests/manifest/gate.mjs",
+    "tests/manifest/issues.json"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "8b76731ed0729c8e9d8d976a718dec3425adde49"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F1-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-browser",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F2-browser.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F3-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F4-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F5-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F6-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F7-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-EXECUTION-MANIFEST/F7-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F7-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F7-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F7-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BROWSER_PROBE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D21-INTENDED-EXECUTION-MANIFEST.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/manifest/build-manifest.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/manifest/components.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/manifest/issues.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/manifest/gate.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D21.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D21/gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D21/envmap/queries/Q22.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D21/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T12:32:41Z",
+  "status": "PASS"
+}

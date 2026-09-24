@@ -1,0 +1,30 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "cargo",
+    "+nightly-2026-09-24",
+    "build",
+    "--release",
+    "-Z",
+    "build-std=core",
+    "--target",
+    "wasm32-unknown-unknown",
+    "--message-format=json"
+  ],
+  "exit": 0,
+  "packages": [
+    "m7-wasm32-masquerade"
+  ],
+  "selection": [
+    "m7-wasm32-masquerade:m7_wasm32_masquerade[cdylib]"
+  ],
+  "tests": {
+    "binaries": [],
+    "results": [],
+    "passed": 0,
+    "failed": 0,
+    "failed_names": [],
+    "finished": "Finished `release` profile [optimized] target(s) in 15.54s"
+  },
+  "reason": "exit 0; packages [m7-wasm32-masquerade]"
+}

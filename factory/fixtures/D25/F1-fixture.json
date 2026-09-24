@@ -1,0 +1,59 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "D25 sections 1-3 (runner, public probe, selfhost input, registers)"
+  ],
+  "narrowed_may_change": [
+    "tests/physical/",
+    "tests/selfhost/primitives-probe.mjs",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "tests/envmap/facts/D25.json",
+    "factory/receipts/D25-PHYSICAL-RUNTIME/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check tests/physical/run-webapp.mjs && node --check tests/selfhost/primitives-probe.mjs && sh -n tests/physical/public-https-probe.sh && for j in tests/manifest/components.json tests/manifest/issues.json tests/envmap/facts/D25.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -q 'evidence/D7/physical/compile/bundle' tests/selfhost/primitives-probe.mjs && T=$(mktemp -d) && (env -u BUNDLE_DIR node tests/selfhost/primitives-probe.mjs $T; [ $? -eq 2 ]) && (BUNDLE_DIR=$T node tests/selfhost/primitives-probe.mjs $T; [ $? -eq 2 ]) && grep -q 'FACT-D25-PUBLIC-HTTPS' tests/physical/PUBLIC-HTTPS-PROBE.md && grep -q -- '--url https://' tests/physical/PUBLIC-HTTPS-PROBE.md && node -e 'const I=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/issues.json\")).issues;const by=Object.fromEntries(I.map(i=>[i.id,i]));if(!/^REPAIRED/.test(by[\"I-05\"].status)||!/^REPAIRED/.test(by[\"I-11\"].status)||by[\"I-33\"].task!==\"owner\"||by[\"I-34\"].covers.length!==0||I.length!==35)process.exit(1);const C=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/components.json\")).components;if(!C.some(c=>c.id===\"TEST-PHYSICAL\")||!C.some(c=>c.id===\"HARNESS-WEBAPP-PROBE\"))process.exit(1);console.log(\"issues\",I.length,\"components\",C.length)' && echo 'syntax, JSON; the selfhost probe refuses to run without a generated bundle (exit 2) and no historical default remains; the deployable public probe is documented'"
+        ],
+        "log": "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F1-syntax-registers.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "76f44410fe4a57162b6c355c859c296b2a697be4",
+          "--",
+          "tests",
+          "fixtures",
+          ":!tests/physical",
+          ":!tests/selfhost/primitives-probe.mjs",
+          ":!tests/manifest/components.json",
+          ":!tests/manifest/issues.json",
+          ":!tests/envmap/facts/D25.json"
+        ],
+        "log": "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F1-other-tests-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/physical/run-webapp.mjs",
+    "tests/physical/public-https-probe.sh",
+    "tests/physical/PUBLIC-HTTPS-PROBE.md",
+    "tests/envmap/facts/D25.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D25-PHYSICAL-RUNTIME"
+}

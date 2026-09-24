@@ -1,0 +1,196 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D22-FACTORY-SELF-QUALIFICATION-F3-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F3-fixture",
+  "workpiece_id": "W27",
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION",
+  "canonical_base": "88564a0eccd934d6a017faf65435bc871bcd2f94",
+  "input_artifacts": [
+    "D22 section 3 (register, runner, collision witness)",
+    "section 4 (spec)"
+  ],
+  "open_tree": "25c2c6ad1b2f3118373f23b654738d21a8a10f11",
+  "close_tree": "dc7010338bd2ce4423f5bc9b856b44536dde59bc",
+  "changed_paths": [
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-builder-regression.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-other-tests-untouched.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-syntax-generic.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-witnesses-trial.log",
+    "tests/envmap/build-fact-epoch.mjs",
+    "tests/envmap/facts/D22.json",
+    "tests/factory/run-witnesses.sh",
+    "tests/factory/witnesses.json",
+    "tests/hygiene/status-classification.json",
+    "tests/manifest/build-epoch.mjs",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "tests/sync/collision-witness.sh"
+  ],
+  "output_artifacts": [
+    "tests/factory/witnesses.json",
+    "tests/factory/run-witnesses.sh",
+    "tests/sync/collision-witness.sh",
+    "tests/envmap/facts/D22.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D22-FACTORY-SELF-QUALIFICATION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-witnesses-trial.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-builder-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c sh -n tests/factory/run-witnesses.sh && sh -n tests/sync/collision-witness.sh && node --check tests/envmap/build-fact-epoch.mjs && node --check tests/manifest/build-epoch.mjs && ! grep -n \"evidence/D[0-9]\" tests/manifest/build-epoch.mjs && for j in tests/factory/witnesses.json tests/envmap/facts/D22.json tests/manifest/components.json tests/manifest/issues.json tests/hygiene/status-classification.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! (grep -nE 'f[0-9][0-9]_|D22|88564a0' tests/factory/run-witnesses.sh tests/sync/collision-witness.sh tests/envmap/build-fact-epoch.mjs | grep -vE '^[^:]+:[0-9]+:(#|//)') && echo 'syntax and generic-name scan clean'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-syntax-generic.log"
+    },
+    {
+      "check": "command:git diff --exit-code 88564a0eccd934d6a017faf65435bc871bcd2f94 -- tests :!tests/factory :!tests/sync/collision-witness.sh :!tests/envmap/build-fact-epoch.mjs :!tests/envmap/facts :!tests/manifest/components.json :!tests/manifest/issues.json :!tests/manifest/build-epoch.mjs :!tests/hygiene/status-classification.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-other-tests-untouched.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && sh tests/sync/collision-witness.sh $T/collision.json && sh tests/factory/run-witnesses.sh tests/factory/witnesses.json /home/user/factory-target-w27 $T/witnesses.json $T/logs collision=$T/collision.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-witnesses-trial.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json --out $T/g21.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D21R.json --identity evidence/D21R/identity --epoch D21R --delta D21R-MANIFEST-REPAIR --commit '910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb (canonical base; integration commit in LEDGER AFTER)' --graph $T/g21.json --out $T/D21R.json >/dev/null && cmp $T/D21R.json design/environment-map/epochs/D21R.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json --out $T/g20.json >/dev/null && node tests/manifest/build-epoch.mjs --manifest evidence/D21/manifest.json --issues evidence/D21/issues.json --gate evidence/D21/gate.json --identity evidence/D21/identity --epoch D21 --delta D21-EXECUTION-MANIFEST --commit '4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (canonical base; integration commit in LEDGER AFTER)' --graph $T/g20.json --out $T/D21.json >/dev/null && cmp $T/D21.json design/environment-map/epochs/D21.json && echo 'D21 and D21R epochs rebuilt byte-identically by the changed builders'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-builder-regression.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/factory/witnesses.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/factory/run-witnesses.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/sync/collision-witness.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/facts/D22.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-syntax-generic.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-other-tests-untouched.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-witnesses-trial.log",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F3-builder-regression.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T13:14:01Z",
+  "status": "PASS"
+}

@@ -1,0 +1,18 @@
+$ cargo +1.94.1 test -p factc-kernel --test genericity_ladder
+(cwd .)
+
+running 7 tests
+test g04_missing_conversion_and_single_backend_registry ... ok
+test g03_renamed_and_reordered_relations_change_the_verified_strategy_identity ... ok
+test g05_undeclared_adapter_and_wrong_implementation_family_fail_verification ... ok
+test g01_every_specimen_builds_with_per_transfer_strategy_data ... ok
+test g02_no_specimen_bundle_carries_another_specimens_semantics ... ok
+test g07_evidence_of_one_bundle_is_not_evidence_of_another ... ok
+test g06_tampered_strategy_guard_and_certificate_fail_reverification ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running tests/genericity_ladder.rs (/home/user/factory-target-w29/debug/deps/genericity_ladder-fe18421abff9987d)
+
+[exit 0] expected 0

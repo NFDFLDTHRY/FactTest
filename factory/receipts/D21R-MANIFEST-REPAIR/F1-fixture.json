@@ -1,0 +1,204 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21R-MANIFEST-REPAIR-F1-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F1-fixture",
+  "workpiece_id": "W26",
+  "delta_id": "D21R-MANIFEST-REPAIR",
+  "canonical_base": "910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb",
+  "input_artifacts": [
+    "D21R section 1 (repair)",
+    "section 2 (focused test)",
+    "section 3 (binding tool + spec)"
+  ],
+  "open_tree": "3d057ad9cd9f55084277263b822d4b9eea360f05",
+  "close_tree": "f5c0415fb57e90ff23791e36704afee2dff5c1ed",
+  "changed_paths": [
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-d21-regression.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-other-tests-untouched.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-repaired.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-reproduce.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-syntax-generic.log",
+    "tests/envmap/build-fact-epoch.mjs",
+    "tests/envmap/facts/D21R.json",
+    "tests/manifest/build-manifest.mjs",
+    "tests/manifest/rebuild-check.sh"
+  ],
+  "output_artifacts": [
+    "tests/manifest/build-manifest.mjs",
+    "tests/manifest/rebuild-check.sh",
+    "tests/envmap/build-fact-epoch.mjs",
+    "tests/envmap/facts/D21R.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21R-MANIFEST-REPAIR"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-reproduce.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-repaired.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-d21-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in tests/manifest/build-manifest.mjs tests/envmap/build-fact-epoch.mjs; do node --check $f || exit 1; done; sh -n tests/manifest/rebuild-check.sh && node -e 'JSON.parse(require(\"fs\").readFileSync(\"tests/envmap/facts/D21R.json\"))' && ! grep -nE \"'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]\" tests/manifest/build-manifest.mjs tests/envmap/build-fact-epoch.mjs && ! (grep -nE 'D21R|910fdbf' tests/manifest/rebuild-check.sh tests/envmap/build-fact-epoch.mjs | grep -vE '^[^:]+:[0-9]+:(#|//)') && echo 'syntax and generic-name scan clean'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-syntax-generic.log"
+    },
+    {
+      "check": "command:git diff --exit-code 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb -- tests :!tests/manifest/build-manifest.mjs :!tests/manifest/rebuild-check.sh :!tests/envmap/build-fact-epoch.mjs :!tests/envmap/facts",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-other-tests-untouched.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && git show 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb:tests/manifest/build-manifest.mjs > $T/committed-builder.mjs && if TOOL=$T/committed-builder.mjs sh tests/manifest/rebuild-check.sh 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b D21-EXECUTION-MANIFEST D21 fdb9c32 design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json $T/reproduce.json; then echo 'defect not reproduced'; exit 1; fi && grep -q '\"rebuild_from_committed_graph_md\", \"status\": \"FAIL\"' $T/reproduce.json && grep -q '\"rebuild_from_committed_graph_json\", \"status\": \"FAIL\"' $T/reproduce.json && grep -q '\"rebuild_without_own_epoch_md\", \"status\": \"PASS\"' $T/reproduce.json && grep -q '\"rebuild_without_own_epoch_json\", \"status\": \"PASS\"' $T/reproduce.json && echo 'defect reproduced with the committed builder'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-reproduce.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && sh tests/manifest/rebuild-check.sh 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb 4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b D21-EXECUTION-MANIFEST D21 fdb9c32 design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json $T/rebuild-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-repaired.log"
+    },
+    {
+      "check": "command:sh -c node tests/manifest/gate.mjs --manifest design/execution-manifest/manifest.json --issues tests/manifest/issues.json && T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json --out $T/g20.json >/dev/null && node tests/manifest/build-epoch.mjs --manifest evidence/D21/manifest.json --issues evidence/D21/issues.json --gate evidence/D21/gate.json --identity evidence/D21/identity --epoch D21 --delta D21-EXECUTION-MANIFEST --commit '4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b (canonical base; integration commit in LEDGER AFTER)' --graph $T/g20.json --out $T/D21.json >/dev/null && cmp $T/D21.json design/environment-map/epochs/D21.json && echo 'D21 gate PASS; epoch D21 rebuilt byte-identically'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-d21-regression.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/manifest/build-manifest.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/manifest/rebuild-check.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/build-fact-epoch.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/facts/D21R.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-syntax-generic.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-other-tests-untouched.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-reproduce.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-repaired.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F1-d21-regression.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T12:47:46Z",
+  "status": "PASS"
+}

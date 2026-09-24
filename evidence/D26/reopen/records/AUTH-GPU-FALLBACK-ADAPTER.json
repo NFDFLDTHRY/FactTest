@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GPU-FALLBACK-ADAPTER",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://gpuweb.github.io/gpuweb/",
+  "fragment": "#fallback-adapter",
+  "fragment_status_recorded": "DERIVED_FROM_DFN_UNVERIFIED",
+  "maturity_recorded": "Status: w3c/ED (followed sublink: SwiftShader != hardware)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "path": "spec/index.bs",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "observed": "2026-09-24",
+  "locator": "<dfn>fallback adapter</dfn> (line 1315); GPUAdapterInfo.isFallbackAdapter (line 2064, 2111)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#fallback-adapter",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 1315,
+   "kind": "bikeshed dfn"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 1315,
+   "kind": "bikeshed dfn"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   1315,
+   1315
+  ],
+  "window_sha256": "6abc953c5299a765b3648c42c759a7c23f5f5cdaf31f333908c16167932c3743",
+  "window_excerpt": "An [=adapter=] may be considered a <dfn>fallback adapter</dfn> if it has significant performance",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   1315,
+   1315
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "drift": "NONE"
+ }
+}

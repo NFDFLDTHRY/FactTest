@@ -1,0 +1,96 @@
+{
+  "fixture_id": "F4-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "evidence/D26/selection.json",
+    "tests/reprove/runbook.json (groups of kind build and cite)",
+    "tests/factory/witnesses.json",
+    "tests/sync/collision-witness.sh"
+  ],
+  "narrowed_may_change": [
+    "evidence/D26/results/",
+    "evidence/D26/proof/",
+    "evidence/D26/crates/",
+    "evidence/D26/kernel/",
+    "evidence/D26/specimens/",
+    "evidence/D26/attacks/",
+    "evidence/D26/anti-cheat/",
+    "evidence/D26/physical/",
+    "evidence/D26/factory/",
+    "evidence/D26/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "rm -rf /home/user/factory-builds/d26-commission-target /home/user/factory-builds/d26-commission-kernels && mkdir -p /home/user/factory-builds/d26-commission-target /home/user/factory-builds/d26-commission-kernels && echo 'fresh build directories'"
+        ],
+        "log": "evidence/D26/logs/F4-fresh-dirs.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D26/selection.json --runbook tests/reprove/runbook.json --kind build --out evidence/D26"
+        ],
+        "log": "evidence/D26/logs/F4-run-selected-build.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d26-commission-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d26-commission-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D26/selection.json --runbook tests/reprove/runbook.json --kind cite --out evidence/D26"
+        ],
+        "log": "evidence/D26/logs/F4-run-selected-cite.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d26-commission-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d26-commission-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "rm -rf /home/user/factory-target-w32 && mkdir -p evidence/D26/factory && sh tests/sync/collision-witness.sh evidence/D26/factory/collision.json && sh tests/factory/run-witnesses.sh tests/factory/witnesses.json /home/user/factory-target-w32 evidence/D26/factory/witnesses.json evidence/D26/factory/logs collision=evidence/D26/factory/collision.json"
+        ],
+        "log": "evidence/D26/logs/F4-witnesses.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));for(const g of [\"qualified-proof\",\"kernel-sections\",\"physical\",\"identity\"]){const r=J(\"evidence/D26/results/\"+g+\".json\");const bad=Object.entries(r.facts).filter(([k,v])=>v.verdict!==\"PASS\").map(([k])=>k);if(bad.length||r.commands.some(c=>c.exit!==0)){console.log(g,\"FAIL\",bad);process.exit(1)}console.log(g,Object.keys(r.facts).length,\"facts PASS\")}const p=J(\"evidence/D26/proof/summary.json\");if(p.tally.FAIL||p.obligations.length!==27||p.mutants.verdict!==\"RUN\")process.exit(1);const c=J(\"evidence/D26/crates/summary.json\");if(c.status!==\"PASS\"||c.order.length!==14||c.tests_run.failed)process.exit(1);const w=J(\"evidence/D26/factory/witnesses.json\");if(w.status!==\"PASS\")process.exit(1);const s=J(\"evidence/D26/specimens/summary.json\"),a=J(\"evidence/D26/attacks/summary.json\"),ph=J(\"evidence/D26/physical/summary.json\");if(s.status!==\"PASS\"||s.specimens.length!==4||a.status!==\"PASS\"||a.attacks.length!==13||ph.status!==\"PASS\"||ph.specimens.length!==4)process.exit(1);const k=J(\"evidence/D26/kernel/sections.json\");const pin=J(\"tests/toolchain/proof-sets.json\").sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256;if(!k.builds.every(b=>b.identity_excluding_custom===pin))process.exit(1);console.log(\"proof\",JSON.stringify(p.tally),\"crates\",c.order.length,c.tests_run.passed,\"witnesses\",w.status,\"specimens\",s.specimens.length,\"attacks\",a.attacks.length,\"physical\",ph.status,\"kernel == pin\")' && grep -q ': clean' evidence/D26/anti-cheat/summary.log && ! grep -q 'in machinery' evidence/D26/anti-cheat/summary.log"
+        ],
+        "log": "evidence/D26/logs/F4-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D26/results/qualified-proof.json",
+    "evidence/D26/results/physical.json",
+    "evidence/D26/proof/summary.json",
+    "evidence/D26/crates/summary.json",
+    "evidence/D26/factory/witnesses.json",
+    "evidence/D26/specimens/summary.json",
+    "evidence/D26/physical/summary.json",
+    "evidence/D26/kernel/sections.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

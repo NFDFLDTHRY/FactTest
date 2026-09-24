@@ -1,0 +1,113 @@
+{
+ "tool": "tests/toolchain/run-crate-dag.mjs",
+ "order": [
+  "factc-foundation",
+  "factc-source",
+  "factc-semantic",
+  "factc-capability",
+  "factc-implementation",
+  "factc-planning",
+  "factc-verifier",
+  "factc-codegen",
+  "factc-bundle",
+  "factc-observe",
+  "factc-kernel",
+  "factc",
+  "factory",
+  "factc-wasm-abi"
+ ],
+ "host_toolchain": "1.94.1",
+ "wasm_toolchain": "nightly-2026-09-24",
+ "target_dir": "/home/user/factory-builds/d26-commission-target",
+ "crates": [
+  {
+   "crate": "factc-foundation",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 16
+  },
+  {
+   "crate": "factc-source",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 11
+  },
+  {
+   "crate": "factc-semantic",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 10
+  },
+  {
+   "crate": "factc-capability",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 8
+  },
+  {
+   "crate": "factc-implementation",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 8
+  },
+  {
+   "crate": "factc-planning",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 5
+  },
+  {
+   "crate": "factc-verifier",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 6
+  },
+  {
+   "crate": "factc-codegen",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 5
+  },
+  {
+   "crate": "factc-bundle",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 4
+  },
+  {
+   "crate": "factc-observe",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 4
+  },
+  {
+   "crate": "factc-kernel",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 5
+  },
+  {
+   "crate": "factc",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 3
+  },
+  {
+   "crate": "factory",
+   "set": "HOST_NATIVE_SET",
+   "verdict": "PASS",
+   "steps": 3
+  },
+  {
+   "crate": "factc-wasm-abi",
+   "set": "WASM64_KERNEL_SET",
+   "verdict": "PASS",
+   "steps": 4
+  }
+ ],
+ "tests_run": {
+  "passed": 1011,
+  "failed": 0
+ },
+ "status": "PASS"
+}

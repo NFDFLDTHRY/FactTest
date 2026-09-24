@@ -1,0 +1,34 @@
+{
+  "fixture_id": "F7-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "Factory evidence of F2-F6"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md",
+    "factory/receipts/D21-EXECUTION-MANIFEST/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "O=design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md; for k in P1 P2 P3 P4 P5 P6 CURRENT-EXECUTION-MANIFEST 'I-06' 'I-09' 'D22' 'D26'; do grep -q -- \"$k\" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O"
+        ],
+        "log": "factory/receipts/D21-EXECUTION-MANIFEST/logs/F7-observed.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D21-OBSERVED-EXECUTION-MANIFEST.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D21-EXECUTION-MANIFEST"
+}

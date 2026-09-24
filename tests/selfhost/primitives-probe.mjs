@@ -12,12 +12,14 @@ import { createHash } from 'node:crypto';
 
 const OUT = process.argv[2];
 const REPO = process.env.REPO || process.cwd();
-const BUNDLE = process.env.BUNDLE_DIR || join(REPO, 'evidence/D7/physical/compile/bundle');
+const sha256 = b => createHash('sha256').update(b).digest('hex');
+const BUNDLE = process.env.BUNDLE_DIR;   // a freshly generated bundle (D25): no historical default
+if (!BUNDLE || !existsSync(join(BUNDLE, 'bundle.json'))) { console.error('primitives-probe: BUNDLE_DIR must name a generated bundle directory (bundle.json present); historical evidence packages are not inputs'); process.exit(2); }
+const bundleHashes = Object.fromEntries(readdirSync(BUNDLE).sort().map(f => [f, sha256(readFileSync(join(BUNDLE, f)))]));
 const KERNEL = process.env.KERNEL_WASM;
 const PORT_A = 47311, PORT_B = 47312;
 const { chromium } = await import('/opt/node22/lib/node_modules/playwright/index.mjs');
 mkdirSync(join(OUT, 'probes'), { recursive: true });
-const sha256 = b => createHash('sha256').update(b).digest('hex');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const TYPES = { html: 'text/html', js: 'text/javascript', mjs: 'text/javascript', json: 'application/json', wasm: 'application/wasm', webmanifest: 'application/manifest+json', txt: 'text/plain' };
 const typeOf = p => TYPES[p.split('.').pop()] || 'application/octet-stream';
@@ -87,7 +89,7 @@ async function p01() {
   await A.stop();
   const offline1 = await tryGoto(page, A.origin + '/b/index.html');
   let relay1 = null;
-  if (offline1.ok) relay1 = await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r = await m.relay(new Uint8Array([0, 1, 127, 128, 255])); const s = m.snapshot(); return { relay: r.status, exact: r.exact === true, backend: r.backend, active: s.activation && s.activation.plan_id, admissions: Object.fromEntries(Object.entries(s.admissions).map(([k, v]) => [k, v.decision])) }; }).catch(e => ({ error: String(e) }));
+  if (offline1.ok) relay1 = await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r = await m.transfer((await import('./selector.js')).STRATEGY.transfers[0].relation, new Uint8Array([0, 1, 127, 128, 255])); const s = m.snapshot(); return { relay: r.status, exact: r.exact === true, backend: r.backend, active: s.activation && s.activation.plan_id, admissions: Object.fromEntries(Object.entries(s.admissions).map(([k, v]) => [k, v.decision])) }; }).catch(e => ({ error: String(e) }));
   await ctx.close();
   ctx = await launch('p01');
   page = await ctx.newPage();
@@ -177,14 +179,14 @@ await navigator.serviceWorker.register('/p4/sw.js',{scope:'/p4/'});await navigat
   const nav = await tryGoto(page, A.origin + '/p4/apps/relay/index.html');
   const run = nav.ok ? await page.evaluate(async () => {
     const hdr = (await fetch('./runtime.js')).headers.get('x-served-by');
-    const m = await import('./runtime.js'); await m.init(); const payload = new Uint8Array([0xde, 0xad, 0xbe, 0xef, 0x00, 0x13]); const r0 = await m.relay(payload); const r = { status: r0.status, exact: r0.exact, backend: r0.backend, plan_id: r0.plan_id, input_sha256: r0.input_sha256 }; const s = m.snapshot();
+    const m = await import('./runtime.js'); await m.init(); const payload = new Uint8Array([0xde, 0xad, 0xbe, 0xef, 0x00, 0x13]); const r0 = await m.transfer((await import('./selector.js')).STRATEGY.transfers[0].relation, payload); const r = { status: r0.status, exact: r0.exact, backend: r0.backend, plan_id: r0.plan_id, input_sha256: r0.input_sha256 }; const s = m.snapshot();
     const regs = (await navigator.serviceWorker.getRegistrations()).map(x => x.scope);
     return { served_by: hdr, relay: r, active_plan: s.activation && s.activation.plan_id, admissions: Object.fromEntries(Object.entries(s.admissions).map(([k, v]) => [k, v.decision])), registrations: regs };
   }).catch(e => ({ error: String(e) })) : null;
   await ctx.close();
   ctx = await launch('p04'); page = await ctx.newPage();
   const afterRestart = await tryGoto(page, A.origin + '/p4/apps/relay/index.html');
-  const run2 = afterRestart.ok ? await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r0 = await m.relay(new Uint8Array([1, 2, 3, 4])); return { status: r0.status, exact: r0.exact, backend: r0.backend }; }).catch(e => ({ error: String(e) })) : null;
+  const run2 = afterRestart.ok ? await page.evaluate(async () => { const m = await import('./runtime.js'); await m.init(); const r0 = await m.transfer((await import('./selector.js')).STRATEGY.transfers[0].relation, new Uint8Array([1, 2, 3, 4])); return { status: r0.status, exact: r0.exact, backend: r0.backend }; }).catch(e => ({ error: String(e) })) : null;
   await ctx.close();
   const exact = r => r && JSON.stringify(r).includes('"exact":true');
   const ok = nav.ok && run && run.served_by === 'opfs-sw' && exact(run.relay) && afterRestart.ok && exact(run2);
@@ -486,7 +488,7 @@ const all = [
 ];
 const only = (process.env.PROBES || '').split(',').filter(Boolean);
 for (const [id, q, n, fn] of all) { if (only.length && !only.some(o => id.startsWith(o))) continue; await probe(id, q, n, fn); for (const S of [A, B]) { S.routes.clear(); await S.stop().catch(() => {}); } }
-const summary = { tool: 'tests/selfhost/primitives-probe.mjs', observed: new Date().toISOString(), browser: identity, kernel: KERNEL ? { path: KERNEL, sha256: existsSync(KERNEL) ? sha256(readFileSync(KERNEL)) : null } : null, records };
+const summary = { tool: 'tests/selfhost/primitives-probe.mjs', observed: new Date().toISOString(), browser: identity, bundle: { dir: BUNDLE, sha256: bundleHashes }, kernel: KERNEL ? { path: KERNEL, sha256: existsSync(KERNEL) ? sha256(readFileSync(KERNEL)) : null } : null, records };
 writeFileSync(join(OUT, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
 rmSync(profiles, { recursive: true, force: true });
 console.log('probes:', records.map(r => `${r.id}=${r.verdict}`).join(' '));

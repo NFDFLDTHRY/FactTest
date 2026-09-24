@@ -1,0 +1,44 @@
+{
+  "id": "P01-GENERATED-BUNDLE-OFFLINE",
+  "question": "Does the generated WebApp (object B) launch offline from its own service worker, also after a browser restart?",
+  "needed_for": "L0",
+  "started": "2026-09-24T14:54:42.222Z",
+  "observed": {
+    "registered_and_controlling": true,
+    "caches": {
+      "facttest-0f4a1ec14b9e1159": [
+        "/b/wasm64_relay.wasm",
+        "/b/membrane.js",
+        "/b/selector.js",
+        "/b/runtime.js",
+        "/b/index.html",
+        "/b/manifest.webmanifest"
+      ]
+    },
+    "server_stopped": true,
+    "offline_reload": {
+      "ok": true,
+      "status": 200,
+      "title": "byte_relay"
+    },
+    "relay_offline": {
+      "relay": "EXECUTED",
+      "exact": true,
+      "backend": "CPU_WASM64",
+      "active": 0,
+      "admissions": {
+        "CPU_WASM64": "ADMITTED",
+        "WEBGPU": "REJECTED"
+      }
+    },
+    "after_browser_restart": {
+      "ok": true,
+      "status": 200,
+      "title": "byte_relay",
+      "controlled": true
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "the GENERATED bundle (object B) launches offline from its own versioned CacheStorage shell, before and after a browser restart, with the origin server stopped",
+  "finished": "2026-09-24T14:54:42.774Z"
+}

@@ -1,0 +1,387 @@
+{
+  "epochs": [
+    {
+      "epoch_id": "E0",
+      "reason": "initial observation",
+      "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secure_context": true,
+      "established": "2026-09-24T17:44:03.727Z"
+    },
+    {
+      "epoch_id": "E1",
+      "reason": "loss of CPU_WASM64 (released)",
+      "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secure_context": true,
+      "established": "2026-09-24T17:44:05.240Z"
+    }
+  ],
+  "admissions": {
+    "CPU_WASM64": {
+      "receipt_id": "ADM-E1-CPU_WASM64",
+      "epoch_id": "E1",
+      "implementation_id": "CPU_WASM64",
+      "decision": "REJECTED",
+      "evaluated_requirements": [
+        {
+          "step": "DISCOVER",
+          "result": "OK",
+          "detail": "WebAssembly + memory64 present"
+        },
+        {
+          "step": "REQUEST",
+          "result": "OK",
+          "detail": "instantiated; abi_version 1; module sha256 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+        },
+        {
+          "step": "PROBE",
+          "result": "OK",
+          "detail": "wasm64_known_answer roundtrip exact (256 bytes)",
+          "probe": "wasm64_known_answer"
+        }
+      ],
+      "rejection_reason": "released",
+      "adapter_info": null,
+      "status": "REJECTED"
+    }
+  },
+  "activation": {
+    "epoch_id": "E1",
+    "strategy_id": 1,
+    "plan_id": null,
+    "admission_refs": [
+      "ADM-E1-CPU_WASM64"
+    ],
+    "metric_evidence_refs": [],
+    "guard_result": [
+      {
+        "plan_id": 0,
+        "guard": [
+          "CPU_WASM64"
+        ],
+        "satisfied": false
+      }
+    ],
+    "status": "NO_ACTIVE_PLAN"
+  },
+  "evidence": [
+    {
+      "evidence_id": "RE-1",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "ADMISSION",
+      "subject": "CPU_WASM64",
+      "observation": {
+        "receipt_id": "ADM-E0-CPU_WASM64",
+        "epoch_id": "E0",
+        "implementation_id": "CPU_WASM64",
+        "decision": "ADMITTED",
+        "evaluated_requirements": [
+          {
+            "step": "DISCOVER",
+            "result": "OK",
+            "detail": "WebAssembly + memory64 present"
+          },
+          {
+            "step": "REQUEST",
+            "result": "OK",
+            "detail": "instantiated; abi_version 1; module sha256 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11"
+          },
+          {
+            "step": "PROBE",
+            "result": "OK",
+            "detail": "wasm64_known_answer roundtrip exact (256 bytes)",
+            "probe": "wasm64_known_answer"
+          }
+        ],
+        "rejection_reason": null,
+        "adapter_info": null,
+        "status": "ADMITTED"
+      },
+      "expected": "ADMITTED",
+      "monotonic_marker": 419.7600000000093,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-2",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "ACTIVATION",
+      "subject": "selector",
+      "observation": {
+        "epoch_id": "E0",
+        "strategy_id": 1,
+        "plan_id": 0,
+        "admission_refs": [
+          "ADM-E0-CPU_WASM64"
+        ],
+        "metric_evidence_refs": [],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "CPU_WASM64"
+            ],
+            "satisfied": true
+          }
+        ],
+        "status": "PASS"
+      },
+      "expected": "PASS",
+      "monotonic_marker": 419.91499999992084,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-3",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "post",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "entry_in",
+          "entry_out"
+        ],
+        "bytes": 1,
+        "input_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "output_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+      },
+      "monotonic_marker": 623.765000000014,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-4",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "post",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "entry_in",
+          "entry_out"
+        ],
+        "bytes": 0,
+        "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "monotonic_marker": 853.4149999999208,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-5",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "post",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "entry_in",
+          "entry_out"
+        ],
+        "bytes": 1000,
+        "input_sha256": "533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba",
+        "output_sha256": "533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba"
+      },
+      "monotonic_marker": 1058.890000000014,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-6",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "mirror",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "entry_in",
+          "entry_out"
+        ],
+        "bytes": 1,
+        "input_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "output_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+      },
+      "monotonic_marker": 1272.9249999999302,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-7",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "mirror",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "entry_in",
+          "entry_out"
+        ],
+        "bytes": 0,
+        "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "monotonic_marker": 1494.8199999999488,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-8",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "EXECUTE",
+      "subject": "mirror",
+      "observation": {
+        "status": "EXECUTED",
+        "plan_id": 0,
+        "backend": "CPU_WASM64",
+        "conversions": [
+          "entry_in",
+          "entry_out"
+        ],
+        "bytes": 1000,
+        "input_sha256": "533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba",
+        "output_sha256": "533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba",
+        "exact": true
+      },
+      "expected": {
+        "output_sha256": "533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba"
+      },
+      "monotonic_marker": 1729.5399999999208,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-9",
+      "epoch_id": "E0",
+      "plan_id": 0,
+      "event_class": "LOSS",
+      "subject": "CPU_WASM64",
+      "observation": {
+        "backend": "CPU_WASM64",
+        "reason": "released"
+      },
+      "expected": null,
+      "monotonic_marker": 1924.2849999999162,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-10",
+      "epoch_id": "E1",
+      "plan_id": null,
+      "event_class": "ACTIVATION",
+      "subject": "selector",
+      "observation": {
+        "epoch_id": "E1",
+        "strategy_id": 1,
+        "plan_id": null,
+        "admission_refs": [
+          "ADM-E1-CPU_WASM64"
+        ],
+        "metric_evidence_refs": [],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "CPU_WASM64"
+            ],
+            "satisfied": false
+          }
+        ],
+        "status": "NO_ACTIVE_PLAN"
+      },
+      "expected": "PASS",
+      "monotonic_marker": 1924.4349999999395,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-11",
+      "epoch_id": "E1",
+      "plan_id": null,
+      "event_class": "OBSERVATION_DELTA",
+      "subject": "runtime",
+      "observation": {
+        "from_epoch": "E0",
+        "to_epoch": "E1",
+        "changed_observations": [
+          {
+            "backend": "CPU_WASM64",
+            "from": "ADMITTED",
+            "to": "REJECTED",
+            "reason": "released"
+          }
+        ],
+        "invalidated_admissions": [
+          "ADM-E0-CPU_WASM64"
+        ],
+        "stale_plans": [
+          0
+        ],
+        "replacement_plan": null,
+        "evidence_refs": [
+          "RE-8",
+          "RE-9",
+          "RE-10"
+        ]
+      },
+      "expected": null,
+      "monotonic_marker": 1924.4649999999674,
+      "artifact_refs": []
+    }
+  ],
+  "observation_deltas": [
+    {
+      "from_epoch": "E0",
+      "to_epoch": "E1",
+      "changed_observations": [
+        {
+          "backend": "CPU_WASM64",
+          "from": "ADMITTED",
+          "to": "REJECTED",
+          "reason": "released"
+        }
+      ],
+      "invalidated_admissions": [
+        "ADM-E0-CPU_WASM64"
+      ],
+      "stale_plans": [
+        0
+      ],
+      "replacement_plan": null,
+      "evidence_refs": [
+        "RE-8",
+        "RE-9",
+        "RE-10"
+      ]
+    }
+  ]
+}

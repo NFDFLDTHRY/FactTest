@@ -1,0 +1,90 @@
+{
+  "delta_id": "D21-PROMPT-INTAKE",
+  "workpiece_id": "W24",
+  "canonical_base": "b22bcbb6ed8cf49983c919beedd93541a761567c",
+  "base_tree": "bca6411e4378f46a415de802d43b7e7a328c15e6",
+  "verified_tree": "644d76ffb3e0f216cc0fe03c5f81152b56e4a007",
+  "changed_paths": [
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D21-PROMPT-INTAKE.json",
+    "factory/fixtures/D21-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D21-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D21-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D21-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "bca6411e4378f46a415de802d43b7e7a328c15e6"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D21-PROMPT-INTAKE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T12:00:01Z",
+  "status": "PASS"
+}

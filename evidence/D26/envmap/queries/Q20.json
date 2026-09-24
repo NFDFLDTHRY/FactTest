@@ -1,0 +1,1115 @@
+{
+  "query": "Q20",
+  "title": "Which implementation behaviours does FactTest depend on, pinned where, standing how to standards law, and explaining which observed facts?",
+  "answer": {
+    "behaviors": 19,
+    "by_relation": {
+      "PLATFORM_DEFAULT": 3,
+      "FLAG_GATED": 2,
+      "CONFORMS": 1,
+      "HOST_CHOICE_PERMITTED": 2,
+      "EXPERIMENTAL_NOT_SHIPPED": 3,
+      "NOT_IMPLEMENTED": 1,
+      "SHIPPED": 1,
+      "TEST_HARNESS_CHOICE": 3,
+      "VERSION_SPECIFIC": 1,
+      "TOOLING": 2
+    },
+    "explained_facts": 39,
+    "census_absences": [
+      {
+        "family": "CAP-WASM-SHARED-THREADS",
+        "explained_by": [
+          "IB-SAB-CONSTRUCTOR-HOOK"
+        ]
+      },
+      {
+        "family": "CAP-WEBNN",
+        "explained_by": [
+          "IB-WEBNN-OFF-BY-DEFAULT"
+        ]
+      },
+      {
+        "family": "CAP-MAGNETOMETER",
+        "explained_by": [
+          "IB-SENSOR-EXTRA-CLASSES"
+        ]
+      },
+      {
+        "family": "CAP-PROXIMITY",
+        "explained_by": [
+          "IB-PROXIMITY-UNIMPLEMENTED"
+        ]
+      },
+      {
+        "family": "CAP-AMBIENT-LIGHT",
+        "explained_by": [
+          "IB-SENSOR-EXTRA-CLASSES"
+        ]
+      },
+      {
+        "family": "CAP-BLUETOOTH",
+        "explained_by": [
+          "IB-BLUETOOTH-PLATFORM-DEFAULT"
+        ]
+      }
+    ],
+    "rows": [
+      {
+        "behavior": "IB-GPU-LINUX-SERVICE-OFF",
+        "implementation": "Chromium GPU service",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "PLATFORM_DEFAULT",
+        "runtime_status": "OBS",
+        "statement": "on Linux the WebGPU service is disabled by default, so requestAdapter() answers null without switches",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-GPU1",
+            "authority": "AUTH-IMPL-GPU-FINCH-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 gpu/config/gpu_finch_features.cc:198"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-GPU3",
+            "class": "CLAUSE",
+            "relation": "conforms: a null adapter is lawful"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-WEBGPU-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+            "status": "RUN",
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT",
+              "ENV-D19-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-DEFAULT"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.flags",
+          "relation": "Chromium enables WebGPUService on Linux, or the launch switch set changes"
+        }
+      },
+      {
+        "behavior": "IB-GPU-UNSAFE-SWITCHES",
+        "implementation": "Chromium GPU switches + Vulkan feature",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "FLAG_GATED",
+        "runtime_status": "OBS",
+        "statement": "FactTest's WebGPU adapter exists only under --enable-unsafe-webgpu, --enable-features=Vulkan, --use-angle=swiftshader, --enable-unsafe-swiftshader and --ignore-gpu-blocklist; every WebGPU admission is bound to that switch set",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-GPU2",
+            "authority": "AUTH-IMPL-GPU-SWITCHES-141",
+            "source": "chromium/chromium@9f043f63b0e5 gpu/config/gpu_switches.cc:44"
+          },
+          {
+            "clause": "CL-IMP-GPU3",
+            "authority": "AUTH-IMPL-GPU-SWITCHES-141",
+            "source": "chromium/chromium@9f043f63b0e5 gpu/config/gpu_switches.cc:33"
+          },
+          {
+            "clause": "CL-IMP-GPU5",
+            "authority": "AUTH-IMPL-GL-SWITCHES-141",
+            "source": "chromium/chromium@9f043f63b0e5 ui/gl/gl_switches.cc:156"
+          },
+          {
+            "clause": "CL-IMP-GPU6",
+            "authority": "AUTH-IMPL-GL-SWITCHES-141",
+            "source": "chromium/chromium@9f043f63b0e5 ui/gl/gl_switches.cc:93"
+          },
+          {
+            "clause": "CL-IMP-GPU7",
+            "authority": "AUTH-IMPL-GPU-FINCH-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 gpu/config/gpu_finch_features.cc:178"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CON-GPU-001",
+            "class": "CONSTRAINT",
+            "relation": "the switches make the UA return an adapter the standard lets it withhold"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-D24-BYTE-RELAY-EXECUTED",
+            "status": "RUN",
+            "environments": [
+              "ENV-D24-HOST",
+              "ENV-D6-D7-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-ADAPTER-SWIFTSHADER",
+            "status": "RUN",
+            "environments": [
+              "ENV-D11-BROWSER-GPUFLAGS",
+              "ENV-D19-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-ADMITTED-E0",
+            "status": "RUN",
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          },
+          {
+            "fact": "FACT-GPU-KNOWN-ANSWER",
+            "status": "RUN",
+            "environments": [
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.flags",
+          "relation": "any switch of the set removed or renamed at another Chromium revision"
+        }
+      },
+      {
+        "behavior": "IB-GPU-SOFTWARE-FALLBACK",
+        "implementation": "Chromium GPU config + Blink WebGPU + SwiftShader",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194; SwiftShader 7cd1022; Dawn 9caf493 (source unreachable)",
+        "relation": "CONFORMS",
+        "runtime_status": "OBS",
+        "statement": "under SwiftShader the WebGPU status is Software and the adapter is a CPU adapter, which Blink reports as isFallbackAdapter: no hardware GPU is involved",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-DEPS2",
+            "authority": "AUTH-IMPL-CHROMIUM-DEPS",
+            "source": "chromium/chromium@9f043f63b0e5 DEPS:324"
+          },
+          {
+            "clause": "CL-IMP-DEPS3",
+            "authority": "AUTH-IMPL-CHROMIUM-DEPS",
+            "source": "chromium/chromium@9f043f63b0e5 DEPS:424"
+          },
+          {
+            "clause": "CL-IMP-GPU4",
+            "authority": "AUTH-IMPL-GPU-UTIL",
+            "source": "chromium/chromium@9f043f63b0e5 gpu/config/gpu_util.cc:194"
+          },
+          {
+            "clause": "CL-IMP-GPU8",
+            "authority": "AUTH-IMPL-BLINK-GPU-ADAPTER",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/modules/webgpu/gpu_adapter.cc:124"
+          },
+          {
+            "clause": "CL-IMP-GPU9",
+            "authority": "AUTH-IMPL-SWIFTSHADER-README",
+            "source": "google/swiftshader@7cd1022cdc50 README.md:8"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-GPU8",
+            "class": "CLAUSE",
+            "relation": "conforms: a fallback adapter as specified"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-GPU-ADAPTER-SWIFTSHADER",
+            "status": "RUN",
+            "environments": [
+              "ENV-D11-BROWSER-GPUFLAGS",
+              "ENV-D19-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          },
+          {
+            "fact": "FACT-HARDWARE-GPU-UNAVAILABLE",
+            "status": "UNK",
+            "environments": [
+              "ENV-D11-HOST"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "host.gpu_device_node",
+          "relation": "a hardware adapter appears (GPU device node) or the SwiftShader/Dawn revisions change"
+        }
+      },
+      {
+        "behavior": "IB-SAB-CONSTRUCTOR-HOOK",
+        "implementation": "Blink V8 initializer",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "HOST_CHOICE_PERMITTED",
+        "runtime_status": "OBS",
+        "statement": "the SharedArrayBuffer constructor is installed only where the context may transfer SharedArrayBuffers (cross-origin isolated)",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-SAB1",
+            "authority": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/bindings/core/v8/v8_initializer.cc:556"
+          },
+          {
+            "clause": "CL-IMP-SAB2",
+            "authority": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/bindings/core/v8/v8_initializer.cc:809"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-T6",
+            "class": "CLAUSE",
+            "relation": "host choice ECMA-262 permits ('if that property is present')"
+          },
+          {
+            "ref": "CL-T4",
+            "class": "CLAUSE",
+            "relation": "standard gate on serialization only"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-WASM-SHARED-THREADS-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-SAB-GLOBAL-HOST-DEFINED",
+            "status": "OBS",
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT",
+              "ENV-D19-BROWSER-DEFAULT"
+            ]
+          },
+          {
+            "fact": "FACT-SHARED-THREADS-UNADMITTED-D18",
+            "status": "ERR",
+            "environments": [
+              "ENV-D11-BROWSER-GPUFLAGS"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "origin_security.cross_origin_isolated",
+          "relation": "the page becomes cross-origin isolated or Chromium changes the hook"
+        }
+      },
+      {
+        "behavior": "IB-BLUETOOTH-PLATFORM-DEFAULT",
+        "implementation": "Blink runtime features",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "PLATFORM_DEFAULT",
+        "runtime_status": "OBS",
+        "statement": "WebBluetooth is stable on Android/ChromeOS/iOS/Mac/Win but experimental by default elsewhere: absent on Linux",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-BR1",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:5507"
+          },
+          {
+            "clause": "CL-IMP-IDL5",
+            "authority": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-BLUETOOTH",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/modules/bluetooth/navigator_bluetooth.idl:9"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-BT1",
+            "class": "CLAUSE",
+            "relation": "the standard defines the interface; the platform default hides it"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-BLUETOOTH-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.product",
+          "relation": "another platform or a flag enabling WebBluetooth"
+        }
+      },
+      {
+        "behavior": "IB-SENSOR-EXTRA-CLASSES",
+        "implementation": "Blink runtime features + sensor IDL",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "EXPERIMENTAL_NOT_SHIPPED",
+        "runtime_status": "OBS",
+        "statement": "Magnetometer and AmbientLightSensor are behind SensorExtraClasses (experimental)",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-BR2",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:4425"
+          },
+          {
+            "clause": "CL-IMP-IDL1",
+            "authority": "AUTH-IMPL-BLINK-IDL-MAGNETOMETER",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/modules/sensor/magnetometer.idl:9"
+          },
+          {
+            "clause": "CL-IMP-IDL2",
+            "authority": "AUTH-IMPL-BLINK-IDL-AMBIENT-LIGHT",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl:8"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-MAG0",
+            "class": "CLAUSE",
+            "relation": "consistent with 'not available by default in any engine'"
+          },
+          {
+            "ref": "CL-ALS0",
+            "class": "CLAUSE",
+            "relation": "consistent with 'not available by default in any engine'"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-AMBIENT-LIGHT-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-CAP-MAGNETOMETER-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-SENSOR-FAMILY-ADVISEMENT",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-HOST",
+              "ENV-D19-SOURCES"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.flags",
+          "relation": "SensorExtraClasses enabled (flag) or shipped"
+        }
+      },
+      {
+        "behavior": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+        "implementation": "Blink runtime features + DeviceOrientationEvent IDL",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "EXPERIMENTAL_NOT_SHIPPED",
+        "runtime_status": "OBS",
+        "statement": "DeviceOrientationEvent.requestPermission is behind an experimental feature: the specified (at-risk) permission integration is not shipped",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-BR3",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:1765"
+          },
+          {
+            "clause": "CL-IMP-IDL3",
+            "authority": "AUTH-IMPL-BLINK-IDL-DEVICE-ORIENTATION",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/modules/device_orientation/device_orientation_event.idl:36"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-DO2",
+            "class": "CLAUSE",
+            "relation": "deviates: the standard defines requestPermission"
+          },
+          {
+            "ref": "CL-DO4",
+            "class": "CLAUSE",
+            "relation": "consistent with the integration being at risk"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-DEVICE-ORIENTATION-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.flags",
+          "relation": "the feature ships or is enabled by flag"
+        }
+      },
+      {
+        "behavior": "IB-WEBNN-OFF-BY-DEFAULT",
+        "implementation": "WebNN service feature + Blink IDL",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "FLAG_GATED",
+        "runtime_status": "OBS",
+        "statement": "navigator.ml follows kWebMachineLearningNeuralNetwork, which is off by default",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-BR4",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:3026"
+          },
+          {
+            "clause": "CL-IMP-IDL4",
+            "authority": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-ML",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/modules/ml/navigator_ml.idl:11"
+          },
+          {
+            "clause": "CL-IMP-WN1",
+            "authority": "AUTH-IMPL-WEBNN-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 services/webnn/public/mojom/features.mojom:9"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-NN1",
+            "class": "CLAUSE",
+            "relation": "the standard defines navigator.ml; the implementation hides it by default"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-WEBNN-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.flags",
+          "relation": "the WebNN feature is enabled (flag) or defaults on"
+        }
+      },
+      {
+        "behavior": "IB-PROXIMITY-UNIMPLEMENTED",
+        "implementation": "Blink module IDL list",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "NOT_IMPLEMENTED",
+        "runtime_status": "OBS",
+        "statement": "Blink builds no ProximitySensor IDL",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-IDL6",
+            "authority": "AUTH-IMPL-BLINK-IDL-MODULES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/bindings/idl_in_modules.gni:712"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-PRX0",
+            "class": "CLAUSE",
+            "relation": "consistent with 'not implemented in any browser engine'"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-PROXIMITY-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.revision",
+          "relation": "a Chromium revision adds a proximity sensor IDL"
+        }
+      },
+      {
+        "behavior": "IB-DEVICE-APIS-SHIPPED",
+        "implementation": "Blink runtime features",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "SHIPPED",
+        "runtime_status": "OBS",
+        "statement": "WebHID, WebUSB, Web Serial and WebXR are stable: exposed without flags (devices and user activation still required)",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-BR5",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:5609"
+          },
+          {
+            "clause": "CL-IMP-BR6",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:4431"
+          },
+          {
+            "clause": "CL-IMP-BR7",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:5706"
+          },
+          {
+            "clause": "CL-IMP-BR8",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:5738"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-HID1",
+            "class": "CLAUSE",
+            "relation": "conforms"
+          },
+          {
+            "ref": "CL-USB1",
+            "class": "CLAUSE",
+            "relation": "conforms"
+          },
+          {
+            "ref": "CL-SER1",
+            "class": "CLAUSE",
+            "relation": "conforms"
+          },
+          {
+            "ref": "CL-XR1",
+            "class": "CLAUSE",
+            "relation": "conforms"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-HID-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-CAP-SERIAL-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-CAP-USB-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-CAP-XR-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.revision",
+          "relation": "a Chromium revision changes the status"
+        }
+      },
+      {
+        "behavior": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+        "implementation": "Playwright chromium launcher",
+        "version": "Playwright 1.56.1 (installed)",
+        "relation": "TEST_HARNESS_CHOICE",
+        "runtime_status": "OBS",
+        "statement": "every headless launch in FactTest runs chromium-headless-shell (HeadlessChrome) rev 1194, not the Chrome browser: installed-app, UI and chrome/-layer behaviour are never observed",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-PW1",
+            "authority": "AUTH-IMPL-PLAYWRIGHT-CHROMIUM",
+            "source": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js@installed pl /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js:315"
+          },
+          {
+            "clause": "CL-IMP-PW4",
+            "authority": "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+            "source": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json@installed pl /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json:11"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CON-FT-006",
+            "class": "CONSTRAINT",
+            "relation": "physical browser evidence is bound to the executable actually launched"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-GPU-EXPOSED",
+            "status": "RUN",
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT",
+              "ENV-D11-BROWSER-GPUFLAGS",
+              "ENV-D19-BROWSER-DEFAULT",
+              "ENV-D19-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          },
+          {
+            "fact": "FACT-LOOPBACK-SECURE-CONTEXT",
+            "status": "RUN",
+            "environments": [
+              "ENV-D11-BROWSER-DEFAULT",
+              "ENV-D11-BROWSER-GPUFLAGS",
+              "ENV-D19-BROWSER-DEFAULT",
+              "ENV-D19-BROWSER-GPUFLAGS",
+              "ENV-D26-BROWSER-DEFAULT",
+              "ENV-D26-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          },
+          {
+            "fact": "FACT-SH-GENERATED-OFFLINE",
+            "status": "RUN",
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT",
+              "ENV-D26-BROWSER-DEFAULT"
+            ]
+          },
+          {
+            "fact": "FACT-SH-OPFS-SERVED-APP",
+            "status": "RUN",
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT",
+              "ENV-D26-BROWSER-DEFAULT"
+            ]
+          },
+          {
+            "fact": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+            "status": "RUN",
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT",
+              "ENV-D26-BROWSER-DEFAULT"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.product",
+          "relation": "a headed or channel launch (full Chrome) replaces the headless shell"
+        }
+      },
+      {
+        "behavior": "IB-HEADLESS-PERMISSIONS-ASK",
+        "implementation": "Headless permission manager",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "TEST_HARNESS_CHOICE",
+        "runtime_status": "OBS",
+        "statement": "the headless shell answers ASK to every permission status and request: no permission (persistence included) can be granted there",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-HL1",
+            "authority": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+            "source": "chromium/chromium@9f043f63b0e5 headless/lib/browser/headless_permission_manager.cc:25"
+          },
+          {
+            "clause": "CL-IMP-HL2",
+            "authority": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+            "source": "chromium/chromium@9f043f63b0e5 headless/lib/browser/headless_permission_manager.cc:53"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-P1",
+            "class": "CLAUSE",
+            "relation": "a powerful feature needs express permission, which the headless shell never gives"
+          },
+          {
+            "ref": "CL-ST3",
+            "class": "CLAUSE",
+            "relation": "persist() cannot succeed under this permission manager"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-CAMERA-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-CAP-GEOLOCATION-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-CAP-PERMISSIONS-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-SH-STORAGE-DURABILITY-D18",
+            "status": "UNK",
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.product",
+          "relation": "full Chrome (chrome/ permission layer) or pre-granted permissions"
+        }
+      },
+      {
+        "behavior": "IB-CHROME-DURABLE-STORAGE",
+        "implementation": "Chrome durable storage permission context",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194 (chrome/ layer, absent from the headless shell)",
+        "relation": "HOST_CHOICE_PERMITTED",
+        "runtime_status": "UNK",
+        "statement": "full Chrome grants durable storage to installed or important registrable domains: an installed Factory's durability is decided by this policy, which FactTest has never observed",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-HL3",
+            "authority": "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+            "source": "chromium/chromium@9f043f63b0e5 chrome/browser/storage/durable_storage_permission_context.cc:103"
+          },
+          {
+            "clause": "CL-IMP-HL4",
+            "authority": "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+            "source": "chromium/chromium@9f043f63b0e5 chrome/browser/storage/durable_storage_permission_context.cc:115"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CON-ST-001",
+            "class": "CONSTRAINT",
+            "relation": "the user agent decides persistence; Chrome decides by installation/importance"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-SH-STORAGE-DURABILITY-D18",
+            "status": "UNK",
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.product",
+          "relation": "observation in an installed full-Chrome environment"
+        }
+      },
+      {
+        "behavior": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+        "implementation": "Playwright chromium switches",
+        "version": "Playwright 1.56.1 (installed)",
+        "relation": "TEST_HARNESS_CHOICE",
+        "runtime_status": "OBS",
+        "statement": "every Playwright launch disables field-trial configs (compiled feature defaults only) and third-party storage partitioning",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-PW2",
+            "authority": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+            "source": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js@installed pl /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js:52"
+          },
+          {
+            "clause": "CL-IMP-PW3",
+            "authority": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+            "source": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js@installed pl /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js:42"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CON-FT-006",
+            "class": "CONSTRAINT",
+            "relation": "probe results are bound to the harness switch set"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-PERMISSIONS-POLICY-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+            "status": "RUN",
+            "environments": [
+              "ENV-D12-BROWSER-PERSISTENT",
+              "ENV-D26-BROWSER-DEFAULT"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.flags",
+          "relation": "another Playwright version or launch without these switches"
+        }
+      },
+      {
+        "behavior": "IB-V8-MEMORY64-VERSIONED",
+        "implementation": "V8 Wasm feature flags",
+        "version": "V8 14.1.146.11 (Chromium 141) vs V8 12.4.254.21 (Node 22)",
+        "relation": "VERSION_SPECIFIC",
+        "runtime_status": "OBS",
+        "statement": "memory64 is shipped in V8 14.1 (no feature flag) and experimental/off in V8 12.4: 'V8 supports memory64' is true only per V8 version",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-DEPS1",
+            "authority": "AUTH-IMPL-CHROMIUM-DEPS",
+            "source": "chromium/chromium@9f043f63b0e5 DEPS:316"
+          },
+          {
+            "clause": "CL-IMP-V8A",
+            "authority": "AUTH-IMPL-V8-WASM-FLAGS-141",
+            "source": "v8/v8@ad8af0fc661d src/wasm/wasm-feature-flags.h:51"
+          },
+          {
+            "clause": "CL-IMP-V8B",
+            "authority": "AUTH-IMPL-V8-WASM-FLAGS-NODE",
+            "source": "v8/v8@8ab918368856 src/wasm/wasm-feature-flags.h:75"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-W4",
+            "class": "CLAUSE",
+            "relation": "the standard (Core 3.0) has memory64; engines adopt it per version"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CAP-CPU-WASM64-EXPOSURE",
+            "status": "OBS",
+            "environments": [
+              "ENV-D16-BROWSER"
+            ]
+          },
+          {
+            "fact": "FACT-MEMORY64-DISCOVERED",
+            "status": "RUN",
+            "environments": [
+              "ENV-D19-BROWSER-DEFAULT",
+              "ENV-D19-BROWSER-GPUFLAGS",
+              "ENV-D6-D7-BROWSER-DEFAULT",
+              "ENV-D6-D7-BROWSER-GPUFLAGS"
+            ]
+          },
+          {
+            "fact": "FACT-NODE-NO-MEMORY64",
+            "status": "OBS",
+            "environments": [
+              "ENV-D1-D3-HOST"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.js_engine",
+          "relation": "another V8 version (browser or Node)"
+        }
+      },
+      {
+        "behavior": "IB-V8-SET-EXPERIMENTAL",
+        "implementation": "V8 Wasm feature flags",
+        "version": "V8 14.1.146.11",
+        "relation": "EXPERIMENTAL_NOT_SHIPPED",
+        "runtime_status": "OBS",
+        "statement": "shared-everything threads is an experimental V8 flag, off by default",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-V8A",
+            "authority": "AUTH-IMPL-V8-WASM-FLAGS-141",
+            "source": "v8/v8@ad8af0fc661d src/wasm/wasm-feature-flags.h:51"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-T3",
+            "class": "CLAUSE",
+            "relation": "consistent with the proposal's Phase 1"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-WASM-SET-PHASE-1",
+            "status": "OBS",
+            "environments": [
+              "ENV-D14-HOST",
+              "ENV-D19-SOURCES",
+              "ENV-D20-SOURCES",
+              "ENV-D26-SOURCES"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "browser.js_engine",
+          "relation": "the flag ships"
+        }
+      },
+      {
+        "behavior": "IB-RUSTC-PIN-EQUALS-TIP",
+        "implementation": "rustc wasm64 target spec + platform doc",
+        "version": "rustc 1.100.0-nightly 6eeff9a52 (nightly-2026-09-24)",
+        "relation": "TOOLING",
+        "runtime_status": "OBS",
+        "statement": "the target spec and platform doc of the toolchain FactTest runs are byte-identical to the tips D15 read: D15's Rust clauses and ERR-001 hold for the toolchain actually used",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-RS1",
+            "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+            "source": "rust-lang/rust@6eeff9a52c3e compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs:38"
+          },
+          {
+            "clause": "CL-IMP-RS2",
+            "authority": "AUTH-RUSTC-WASM64-DOC",
+            "source": "rust-lang/rust@6eeff9a52c3e src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md:33"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CL-W4",
+            "class": "CLAUSE",
+            "relation": "ERR-001: the implementation doc still says memory64 is not standardized"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-CORE-ONLY-GRAPH",
+            "status": "RUN",
+            "environments": [
+              "ENV-D1-D3-HOST",
+              "ENV-D19-HOST",
+              "ENV-D26-HOST",
+              "ENV-D9-HOST"
+            ]
+          },
+          {
+            "fact": "FACT-WASM64-MODULE-I64",
+            "status": "RUN",
+            "environments": [
+              "ENV-D1-D3-HOST",
+              "ENV-D19-HOST",
+              "ENV-D26-HOST",
+              "ENV-D9-HOST"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "toolchain.nightly.rustc_commit",
+          "relation": "another pinned nightly"
+        }
+      },
+      {
+        "behavior": "IB-KERNEL-NAME-SECTION-HASH",
+        "implementation": "Cargo build-std + LLVM symbol promotion",
+        "version": "cargo 98a09e7e7 + rust LLVM 1b9c0d5 in nightly 6eeff9a52",
+        "relation": "TOOLING",
+        "runtime_status": "OBS",
+        "statement": "build-std compiles core from the install-named rust-src path and LLVM suffixes promoted locals with a module hash; physically only the custom 'name' section differs between install names (the path -> module-hash link is an inference from these two clauses and the section comparison)",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-RS3",
+            "authority": "AUTH-IMPL-CARGO-BUILD-STD",
+            "source": "rust-lang/cargo@98a09e7e7d62 src/compiler/standard_lib.rs:220"
+          },
+          {
+            "clause": "CL-IMP-RS4",
+            "authority": "AUTH-IMPL-LLVM-FUNCTION-IMPORT",
+            "source": "rust-lang/llvm-project@1b9c0d5ff9bb llvm/lib/Transforms/Utils/FunctionImportUtils.cpp:143"
+          },
+          {
+            "clause": "CL-IMP-RS5",
+            "authority": "AUTH-IMPL-LLVM-SUMMARY-INDEX",
+            "source": "rust-lang/llvm-project@1b9c0d5ff9bb llvm/include/llvm/IR/ModuleSummaryIndex.h:1966"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CON-EM-005",
+            "class": "CONSTRAINT",
+            "relation": "toolchain identity per evidence record"
+          }
+        ],
+        "runtime_layer": [
+          {
+            "fact": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+            "status": "RUN",
+            "environments": [
+              "ENV-D17-TOOLCHAIN",
+              "ENV-D19-HOST",
+              "ENV-D26-HOST"
+            ]
+          },
+          {
+            "fact": "FACT-KERNEL-IDENTITY-D24",
+            "status": "RUN",
+            "environments": [
+              "ENV-D13-HOST-PINNED",
+              "ENV-D17-TOOLCHAIN",
+              "ENV-D19-HOST",
+              "ENV-D23-HOST",
+              "ENV-D24-HOST",
+              "ENV-D26-HOST"
+            ]
+          }
+        ],
+        "stale_if": {
+          "dimension": "toolchain.nightly.components",
+          "relation": "another toolchain, another install path, or a profile that strips the name section"
+        }
+      },
+      {
+        "behavior": "IB-PLATFORM-SURFACES-UNOBSERVED",
+        "implementation": "Chromium platform defaults",
+        "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+        "relation": "PLATFORM_DEFAULT",
+        "runtime_status": "UNK",
+        "statement": "Android/ChromeOS/Mac/Windows defaults differ from Linux (WebGPUService and Vulkan on by default on Android, WebBluetooth stable there, WebHID not on Android): FactTest has observed Linux only",
+        "implementation_layer": [
+          {
+            "clause": "CL-IMP-BR1",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:5507"
+          },
+          {
+            "clause": "CL-IMP-BR5",
+            "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 third_party/blink/renderer/platform/runtime_enabled_features.json5:5609"
+          },
+          {
+            "clause": "CL-IMP-GPU1",
+            "authority": "AUTH-IMPL-GPU-FINCH-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 gpu/config/gpu_finch_features.cc:198"
+          },
+          {
+            "clause": "CL-IMP-GPU7",
+            "authority": "AUTH-IMPL-GPU-FINCH-FEATURES",
+            "source": "chromium/chromium@9f043f63b0e5 gpu/config/gpu_finch_features.cc:178"
+          }
+        ],
+        "standard_layer": [
+          {
+            "ref": "CON-FT-002",
+            "class": "CONSTRAINT",
+            "relation": "every family stays in G regardless of platform"
+          }
+        ],
+        "runtime_layer": [],
+        "stale_if": {
+          "dimension": "browser.product",
+          "relation": "an Android/ChromeOS/Mac/Windows environment is observed"
+        }
+      }
+    ]
+  }
+}

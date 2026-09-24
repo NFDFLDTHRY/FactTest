@@ -1,0 +1,11 @@
+PIXEL VAULT REGISTRY (only WEBGPU carries READY-CONTRACT; CPU_WASM64 present as GAP)
+@{registry pixel_vault_registry version=1}
+@{representation HOST_TILE type=Tile domain=ARRAY_BUFFER modes=copy lifetime=host_scope}
+@{representation GPU_TILE type=Tile domain=GPU_BUFFER modes=copy lifetime=device}
+@{boundary Tile HOST_TILE}
+@{conversion tile_up HOST_TILE -> GPU_TILE mode=copy preserves=value requires=WEBGPU}
+@{conversion tile_down GPU_TILE -> HOST_TILE mode=copy preserves=value requires=WEBGPU}
+@{backend WEBGPU status=READY-CONTRACT capabilities=GPU_COMPUTE accepts=GPU_TILE produces=GPU_TILE modes=copy effects=none probes=webgpu_adapter,webgpu_device,webgpu_known_answer recipe=R_TILE_STASH lifecycle=UNAVAILABLE,DISCOVERED,REQUESTING,READY,ACTIVE,LOST,CLOSED failures=NOT_ADMITTED,RESOURCE_LOST,PERMANENT_FOR_EPOCH}
+@{authority_link WEBGPU "https://gpuweb.github.io/gpuweb/#dom-gpu-requestadapter"}
+@{backend CPU_WASM64 status=GAP capabilities=COMPUTE accepts=none produces=none modes=none effects=none probes=none recipe=none lifecycle=none failures=none}
+@{recipe R_TILE_STASH backend=WEBGPU roles=host_adapter exports=none imports=none adapter=webgpu_relay}

@@ -7,6 +7,7 @@
 //! @{activation <EpochId> plan=<n|none> status=<PASS|NO_ACTIVE_PLAN>}
 //! @{executed <EpochId> plan=<n> relation=<RelationId> bytes=<n> input="<sha256>" output="<sha256>" exact=<true|false>}
 //! @{executed <EpochId> plan=<n> relation=<RelationId> status=<ResultClass>}
+//! @{bundle strategy_data="<sha256>" strategy=<n> certificate=<n>}   (the verified strategy data the tape executed under)
 //! @{loss <EpochId> <Backend> reason=<word>}
 //! @{transition <EpochId> -> <EpochId> stale_plan=<n|none> replacement=<n|none>}
 //! @{no_active_plan <EpochId>}
@@ -32,6 +33,7 @@ pub enum Kind {
     Loss,
     Transition,
     NoActivePlan,
+    Bundle,
 }
 
 #[derive(Copy, Clone, Debug)]
@@ -338,6 +340,15 @@ fn parse_one(p: &mut P<'_>, obs: &mut Observation) -> Result<Record, Diagnostic>
             r.epoch = intern(obs, e.slice(src));
             r
         }
+        b"bundle" => {
+            // strategy data identity in `output`, ids in plan/plan2
+            let mut r = Record::blank(Kind::Bundle, p.island);
+            let d = p.kv(b"strategy_data")?;
+            r.output = intern(obs, d.span.slice(src));
+            r.plan = p.plan_value(b"strategy")?;
+            r.plan2 = p.plan_value(b"certificate")?;
+            r
+        }
         _ => {
             return Err(Diagnostic::new(
                 DiagCode::ParseUnknownKeyword,
@@ -363,7 +374,19 @@ pub struct Context<'a> {
     pub source_sha_after: Option<&'a [u8; 32]>,
     /// sha256 the bundle manifest recorded when it was generated
     pub source_sha_lineage: Option<&'a [u8; 32]>,
+    /// sha256 of the strategy data the bundle manifest recorded (the tape's `bundle` record must name it)
+    pub strategy_data_sha_lineage: Option<&'a [u8; 32]>,
     pub evidence_class: &'a [u8],
+}
+
+/// Whether the tape's `bundle` record names the strategy data the host's manifest names.
+/// None when the host supplied no manifest identity to compare against.
+pub fn evidence_bound(obs: &Observation, cx: &Context<'_>) -> Option<bool> {
+    let want = cx.strategy_data_sha_lineage?;
+    let Some(b) = obs.records.iter().find(|r| r.kind == Kind::Bundle) else {
+        return Some(false);
+    };
+    Some(obs.name(b.output) == hexbuf(want))
 }
 
 fn hexbuf(d: &[u8; 32]) -> [u8; 64] {
@@ -559,6 +582,28 @@ pub fn render_observed_ascii(
             out.str("| @{issue source_of_record UNK \"host did not supply source identities\"}\n")?
         }
     }
+    // evidence lineage: the tape names the bundle it came from; compared with the manifest the host supplied
+    match evidence_bound(obs, cx) {
+        Some(true) => {
+            out.str("| @{issue evidence_lineage OBS \"evidence tape bound to this bundle: strategy data sha256 ")?;
+            out.bytes(&hexbuf(cx.strategy_data_sha_lineage.unwrap_or(&[0; 32])))?;
+            out.str("\"}\n")?;
+        }
+        Some(false) => {
+            out.str("| @{issue evidence_lineage ERR \"evidence tape is not bound to this bundle: ")?;
+            match obs.records.iter().find(|r| r.kind == Kind::Bundle) {
+                Some(b) => {
+                    out.str("tape strategy data ")?;
+                    out.bytes(obs.name(b.output))?;
+                    out.str(" vs manifest ")?;
+                    out.bytes(&hexbuf(cx.strategy_data_sha_lineage.unwrap_or(&[0; 32])))?;
+                }
+                None => out.str("the tape carries no bundle record")?,
+            }
+            out.str("\"}\n")?;
+        }
+        None => out.str("| @{issue evidence_lineage UNK \"host did not supply the bundle's strategy data identity\"}\n")?,
+    }
     rule(out)
 }
 
@@ -593,6 +638,7 @@ pub fn delta_json(
                 Kind::Loss => b"LOSS",
                 Kind::Transition => b"TRANSITION",
                 Kind::NoActivePlan => b"NO_ACTIVE_PLAN",
+                Kind::Bundle => b"BUNDLE",
             },
         )?;
         if !r.epoch.is_empty() {
@@ -659,5 +705,20 @@ pub fn delta_json(
         }
         _ => w.kv_null("source_unchanged")?,
     }
+    w.key("evidence_lineage")?;
+    w.obj()?;
+    match obs.records.iter().find(|r| r.kind == Kind::Bundle) {
+        Some(b) => w.kv_str("tape_strategy_data_sha256", obs.name(b.output))?,
+        None => w.kv_null("tape_strategy_data_sha256")?,
+    }
+    match cx.strategy_data_sha_lineage {
+        Some(l) => w.kv_hex("manifest_strategy_data_sha256", l)?,
+        None => w.kv_null("manifest_strategy_data_sha256")?,
+    }
+    match evidence_bound(obs, cx) {
+        Some(b) => w.kv_bool("bound", b)?,
+        None => w.kv_null("bound")?,
+    }
+    w.obj_end()?;
     w.obj_end()
 }

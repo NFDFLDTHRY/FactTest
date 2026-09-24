@@ -1,0 +1,32 @@
+{
+ "id": "CL-USB1",
+ "trace": "DEV",
+ "authority": "AUTH-WEBUSB",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WICG/webusb",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+  "sha256": "40159ca5bcf8014a076021d3eda6a3152ae918e1462d08b093b30b46b754261f",
+  "bytes": 125666
+ },
+ "locator": {
+  "text": "interface USB : EventTarget {",
+  "after": "[Exposed=(Worker,Window), SecureContext]",
+  "line_start": 460,
+  "line_end": 469,
+  "derivation": "anchor text after \"[Exposed=(Worker,Window), SecureContext]\"",
+  "enclosing_section": "#enumeration (line 442)"
+ },
+ "window": 10,
+ "consequence": "USB is [SecureContext]; navigator.usb in Window; disconnect event",
+ "excerpt": "  interface USB : EventTarget {\n    attribute EventHandler onconnect;\n    attribute EventHandler ondisconnect;\n    Promise<sequence<USBDevice>> getDevices();\n    [Exposed=Window] Promise<USBDevice> requestDevice(USBDeviceRequestOptions options);\n  };\n\n  [Exposed=Window, SecureContext]\n  partial interface Navigator {\n    [SameObject] readonly attribute USB usb;",
+ "excerpt_sha256": "f0ee202b2cac74de1bcfdd1e440446e5924e406e39ad9deca83ed6ccd7779589",
+ "must_contain": {
+  "attribute EventHandler ondisconnect;": true,
+  "[Exposed=Window, SecureContext]": true,
+  "readonly attribute USB usb;": true
+ },
+ "status": "VERIFIED"
+}

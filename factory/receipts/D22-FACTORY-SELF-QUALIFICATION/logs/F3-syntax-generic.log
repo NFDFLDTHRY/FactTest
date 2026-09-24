@@ -1,0 +1,5 @@
+$ sh -c sh -n tests/factory/run-witnesses.sh && sh -n tests/sync/collision-witness.sh && node --check tests/envmap/build-fact-epoch.mjs && node --check tests/manifest/build-epoch.mjs && ! grep -n "evidence/D[0-9]" tests/manifest/build-epoch.mjs && for j in tests/factory/witnesses.json tests/envmap/facts/D22.json tests/manifest/components.json tests/manifest/issues.json tests/hygiene/status-classification.json; do node -e 'JSON.parse(require("fs").readFileSync(process.argv[1]))' $j || exit 1; done && ! (grep -nE 'f[0-9][0-9]_|D22|88564a0' tests/factory/run-witnesses.sh tests/sync/collision-witness.sh tests/envmap/build-fact-epoch.mjs | grep -vE '^[^:]+:[0-9]+:(#|//)') && echo 'syntax and generic-name scan clean'
+(cwd .)
+syntax and generic-name scan clean
+
+[exit 0] expected 0

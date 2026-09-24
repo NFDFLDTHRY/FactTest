@@ -1,0 +1,153 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21-EXECUTION-MANIFEST-F4-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F4-evidence",
+  "workpiece_id": "W25",
+  "delta_id": "D21-EXECUTION-MANIFEST",
+  "canonical_base": "4b86df9c0cfedc49112a77c34e1cf7edcb4ef16b",
+  "input_artifacts": [
+    "the manifest of F3",
+    "tests/manifest/issues.json"
+  ],
+  "open_tree": "ae3b0d05de78513f6eb467b4b4af55143bf767ea",
+  "close_tree": "876cd6ee8a498ba43d4c2c1e0130771ade0a2860",
+  "changed_paths": [
+    "evidence/D21/gate.json",
+    "evidence/D21/issues.json",
+    "evidence/D21/logs/F4-gate.log",
+    "evidence/D21/manifest.json"
+  ],
+  "output_artifacts": [
+    "evidence/D21/manifest.json",
+    "evidence/D21/issues.json",
+    "evidence/D21/gate.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21-EXECUTION-MANIFEST"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D21/logs/F4-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c cp design/execution-manifest/manifest.json evidence/D21/manifest.json && cp tests/manifest/issues.json evidence/D21/issues.json && node tests/manifest/gate.mjs --manifest evidence/D21/manifest.json --issues tests/manifest/issues.json --out evidence/D21/gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D21/logs/F4-gate.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D21/manifest.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D21/issues.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D21/gate.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D21/logs/F4-gate.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T12:27:26Z",
+  "status": "PASS"
+}
