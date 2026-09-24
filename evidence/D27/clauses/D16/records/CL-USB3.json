@@ -1,0 +1,30 @@
+{
+ "id": "CL-USB3",
+ "trace": "DEV",
+ "authority": "AUTH-WEBUSB",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WICG/webusb",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+  "sha256": "40159ca5bcf8014a076021d3eda6a3152ae918e1462d08b093b30b46b754261f",
+  "bytes": 125666
+ },
+ "locator": {
+  "text": "This specification defines a <a>policy-controlled feature</a>, identified by the",
+  "line_start": 2560,
+  "line_end": 2565,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-policy (line 2558)"
+ },
+ "window": 6,
+ "consequence": "usb is policy-controlled with default [\"self\"]",
+ "excerpt": "This specification defines a <a>policy-controlled feature</a>, identified by the\ntoken <code>\"usb\"</code>, that controls whether the {{Navigator/usb}} attribute\nis exposed on the {{Navigator}} object.\n\nThe <a>default allowlist</a> for this feature is <code>[\"self\"]</code>.\n",
+ "excerpt_sha256": "525d9a811e2886670b13604a68fc93b64acf19f949338c27a68b551cac208723",
+ "must_contain": {
+  "<code>\"usb\"</code>": true,
+  "The <a>default allowlist</a> for this feature is <code>[\"self\"]</code>.": true
+ },
+ "status": "VERIFIED"
+}

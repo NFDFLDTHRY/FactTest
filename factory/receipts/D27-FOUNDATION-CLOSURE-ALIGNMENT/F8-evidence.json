@@ -1,0 +1,263 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F8-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F8-evidence",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "the manifest of F7",
+    "tests/manifest/issues.json",
+    "the registers and evidence/D27/ (identity, selection, results, language, stations, rust-build)",
+    "the D26 graph"
+  ],
+  "open_tree": "fc21943123d5a0eaf4eae3b4b9bc2540bc16e23a",
+  "close_tree": "310438fd74f028073bbd056f640b9286a87bf08a",
+  "changed_paths": [
+    "evidence/D27/audit/consistency.json",
+    "evidence/D27/closure/structural-check.json",
+    "evidence/D27/envmap-preview/queries/Q01.json",
+    "evidence/D27/envmap-preview/queries/Q02.json",
+    "evidence/D27/envmap-preview/queries/Q03.json",
+    "evidence/D27/envmap-preview/queries/Q04.json",
+    "evidence/D27/envmap-preview/queries/Q05.json",
+    "evidence/D27/envmap-preview/queries/Q06.json",
+    "evidence/D27/envmap-preview/queries/Q07.json",
+    "evidence/D27/envmap-preview/queries/Q08.json",
+    "evidence/D27/envmap-preview/queries/Q09.json",
+    "evidence/D27/envmap-preview/queries/Q10.json",
+    "evidence/D27/envmap-preview/queries/Q11.json",
+    "evidence/D27/envmap-preview/queries/Q12.json",
+    "evidence/D27/envmap-preview/queries/Q13.json",
+    "evidence/D27/envmap-preview/queries/Q14.json",
+    "evidence/D27/envmap-preview/queries/Q15.json",
+    "evidence/D27/envmap-preview/queries/Q16.json",
+    "evidence/D27/envmap-preview/queries/Q17.json",
+    "evidence/D27/envmap-preview/queries/Q18.json",
+    "evidence/D27/envmap-preview/queries/Q19.json",
+    "evidence/D27/envmap-preview/queries/Q20.json",
+    "evidence/D27/envmap-preview/queries/Q21.json",
+    "evidence/D27/envmap-preview/queries/Q22.json",
+    "evidence/D27/gate.json",
+    "evidence/D27/handoff-check-preview.json",
+    "evidence/D27/issues.json",
+    "evidence/D27/logs/F8-gate.log",
+    "evidence/D27/logs/F8-preview-audit.log",
+    "evidence/D27/logs/F8-preview-checks.log",
+    "evidence/D27/logs/F8-structural-check.log",
+    "evidence/D27/manifest.json",
+    "evidence/D27/status-preview/inventory.json",
+    "evidence/D27/status-preview/summary.txt"
+  ],
+  "output_artifacts": [
+    "evidence/D27/gate.json",
+    "evidence/D27/closure/structural-check.json",
+    "evidence/D27/audit/consistency.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F8-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F8-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F8-structural-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F8-structural-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F8-preview-audit.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F8-preview-audit.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F8-preview-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F8-preview-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c cp design/execution-manifest/manifest.json evidence/D27/manifest.json && cp tests/manifest/issues.json evidence/D27/issues.json && node tests/manifest/gate.mjs --manifest evidence/D27/manifest.json --issues tests/manifest/issues.json --out evidence/D27/gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F8-gate.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --evidence-required --render $T/registers.md --out evidence/D27/closure/structural-check.json && cmp $T/registers.md design/foundation-closure/CLOSURE-REGISTERS.md && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D27/closure/structural-check.json\"));const steps=s.stop_condition_answer;console.log(\"status\",s.status,\"acceptance steps\",steps.length,\"RUN without host\",steps.filter(x=>x.status===\"RUN\").length);if(s.status!==\"PASS\"||!s.evidence_required||steps.length!==16)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F8-structural-check.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/reprove/build-reprove.mjs --graph design/environment-map/graph.json --selection evidence/D27/selection.json --evidence evidence/D27 --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --dimensions tests/reprove/dimensions.json --epoch D27 --delta D27-FOUNDATION-CLOSURE-ALIGNMENT --commit '8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 (canonical base; integration commit in LEDGER AFTER)' --out $T/reprove.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json,$T/reprove.json --out $T/g.json >/dev/null && node tests/envmap/envmap.mjs query $T/g.json --all --out evidence/D27/envmap-preview/queries >/dev/null && node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D27/status-preview >/dev/null && sh tests/hygiene/handoff-check.sh evidence/D27/handoff-check-preview.json >/dev/null && mkdir -p evidence/D27/audit && node tests/audit/consistency-audit.mjs --current-delta D27-FOUNDATION-CLOSURE-ALIGNMENT --manifest evidence/D27/manifest.json --gate evidence/D27/gate.json --graph $T/g.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D27/envmap-preview/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D27/audit/consistency.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F8-preview-audit.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D27/audit/consistency.json\"));console.log(\"audit\",a.status,a.checks.length);if(a.status!==\"PASS\")process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F8-preview-checks.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/closure/structural-check.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/audit/consistency.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D27/logs/F8-gate.log",
+    "evidence/D27/logs/F8-structural-check.log",
+    "evidence/D27/logs/F8-preview-audit.log",
+    "evidence/D27/logs/F8-preview-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:27:25Z",
+  "status": "PASS"
+}

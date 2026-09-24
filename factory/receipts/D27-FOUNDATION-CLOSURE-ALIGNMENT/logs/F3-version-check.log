@@ -1,0 +1,5 @@
+$ sh -c T=$(mktemp -d) && node tests/closure/language-manifest.mjs --root . --out $T/manifest.json --check tests/closure/language-manifest-v1.json --grammar ASCII-GRAMMAR.md
+(cwd .)
+language version 1: 31 statement keywords, 12 predicates, 8 vocabulary tables, 33 diagnostic codes, 15 ABI operations, 21 wasm exports
+
+[exit 0] expected 0

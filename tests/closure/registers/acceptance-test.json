@@ -1,0 +1,235 @@
+{
+ "schema": "facttest-closure-acceptance/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 11",
+ "note": "the foundation-closure physical experiment: Factory N installed, network removed, the original Linux build environment unavailable.  Each step names the blockers it needs, the current evidence that its primitives work, what still needs the host today, and the sequence step that closes it.  SELF-HOSTING IS NOT CLOSED while any step needs the original server, host git, host rustc/cargo or an unmodeled manual intervention.",
+ "verdict_today": "NOT CLOSED: 0 of 16 steps execute without the host; every step has its mechanism named; step 4 is the RUST_BUILD boundary",
+ "steps": [
+  {
+   "step": 1,
+   "text": "open Factory N after a browser restart (network removed)",
+   "mechanisms": [
+    "FB-29",
+    "FB-01",
+    "FB-11"
+   ],
+   "current_evidence": [
+    "FACT-SH-GENERATED-OFFLINE",
+    "FACT-SH-ORIGIN-SCOPED-STORAGE"
+   ],
+   "host_dependency_today": "no Factory generation exists; the primitives (offline launch, restart survival) are proven on generated bundles served by a host harness",
+   "status": "GAP",
+   "closes_when": "FC-1 seed boot + FC-3 generation"
+  },
+  {
+   "step": 2,
+   "text": "inspect / edit the authoritative ASCII",
+   "mechanisms": [
+    "FB-01",
+    "FB-02"
+   ],
+   "current_evidence": [
+    "FACT-SH-GIT-IDENTITY"
+   ],
+   "host_dependency_today": "source lives in the host git checkout; editing is the agent writing files",
+   "status": "GAP",
+   "closes_when": "FC-2 objects + FC-3 UI"
+  },
+  {
+   "step": 3,
+   "text": "make a bounded change to the Rust implementation of the ASCII language",
+   "mechanisms": [
+    "FB-02",
+    "FB-04"
+   ],
+   "current_evidence": [
+    "FACT-SH-GIT-IDENTITY"
+   ],
+   "host_dependency_today": "the edit is an object write (FC-2); the build is step 4",
+   "status": "GAP",
+   "closes_when": "FC-2 (edit) - the build is step 4"
+  },
+  {
+   "step": 4,
+   "text": "build candidate Compiler / Factory N+1 locally",
+   "mechanisms": [
+    "FB-04"
+   ],
+   "current_evidence": [
+    "FACT-CORE-ONLY-GRAPH",
+    "FACT-KERNEL-IDENTITY-D24"
+   ],
+   "host_dependency_today": "rustc + LLVM + rust-src + cargo on the Linux host",
+   "status": "UNK",
+   "closes_when": "FC-7 by evidence (B1/B4/B5); under B3 the step stays host-bound and self-hosting is NOT closed"
+  },
+  {
+   "step": 5,
+   "text": "verify N+1 using trusted N",
+   "mechanisms": [
+    "FB-28",
+    "FB-25"
+   ],
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "host_dependency_today": "the host Factory binary and cargo tests",
+   "status": "GAP",
+   "closes_when": "FC-3 + FC-6"
+  },
+  {
+   "step": 6,
+   "text": "run the complete old-language compatibility corpus",
+   "mechanisms": [
+    "FB-03",
+    "FB-28"
+   ],
+   "current_evidence": [
+    "FACT-D24-PIPELINE-GENERIC"
+   ],
+   "host_dependency_today": "tests/closure/language-corpus.mjs on the host (node + native factc); the oracle table exists",
+   "status": "GAP",
+   "closes_when": "FC-4 (QUALIFY capability) + FC-6; the kernel in a worker already compiles (FACT-D23-WASM-TRANSPORT-COMPLETE)"
+  },
+  {
+   "step": 7,
+   "text": "run the new-language tests",
+   "mechanisms": [
+    "FB-24",
+    "FB-21",
+    "FB-22",
+    "FB-23"
+   ],
+   "current_evidence": [],
+   "host_dependency_today": "none exist (no LANGUAGE 2 proposal)",
+   "status": "GAP",
+   "closes_when": "FC-5"
+  },
+  {
+   "step": 8,
+   "text": "compile multiple known systems",
+   "mechanisms": [
+    "FB-03"
+   ],
+   "current_evidence": [
+    "FACT-D24-PIPELINE-GENERIC"
+   ],
+   "host_dependency_today": "tests/genericity/run-specimens.mjs (node) drives native factc",
+   "status": "GAP",
+   "closes_when": "FC-4 (the specimens as data are ready; the runner is node)"
+  },
+  {
+   "step": 9,
+   "text": "independently verify the generated bundles",
+   "mechanisms": [
+    "FB-03",
+    "FB-28"
+   ],
+   "current_evidence": [
+    "FACT-D23-WASM-TRANSPORT-COMPLETE",
+    "FACT-D24-ATTACKS-REFUSED"
+   ],
+   "host_dependency_today": "BundleVerifier runs inside the kernel (browser-capable); the integrity check against bundle.json is node",
+   "status": "GAP",
+   "closes_when": "FC-4 / FC-6"
+  },
+  {
+   "step": 10,
+   "text": "execute at least one generated WebApp",
+   "mechanisms": [
+    "FB-16"
+   ],
+   "current_evidence": [
+    "FACT-D25-RUNTIME-PHYSICAL",
+    "FACT-SH-OPFS-SERVED-APP"
+   ],
+   "host_dependency_today": "served by a host harness (Playwright + node server) or by the OPFS router of a host-installed probe",
+   "status": "GAP",
+   "closes_when": "FC-1 (served by the seed router) after D-2"
+  },
+  {
+   "step": 11,
+   "text": "activate N+1 atomically",
+   "mechanisms": [
+    "FB-29"
+   ],
+   "current_evidence": [
+    "FACT-SH-IDB-CAS"
+   ],
+   "host_dependency_today": "no generation, no pointer schema",
+   "status": "GAP",
+   "closes_when": "FC-1 (primitive proven)"
+  },
+  {
+   "step": 12,
+   "text": "restart the browser",
+   "mechanisms": [
+    "FB-29"
+   ],
+   "current_evidence": [
+    "FACT-SH-ORIGIN-SCOPED-STORAGE",
+    "FACT-SH-INTERRUPTED-UPDATE"
+   ],
+   "host_dependency_today": "Playwright persistent context restart (harness)",
+   "status": "GAP",
+   "closes_when": "FC-1 on the real seed"
+  },
+  {
+   "step": 13,
+   "text": "confirm N+1 remains active",
+   "mechanisms": [
+    "FB-29"
+   ],
+   "current_evidence": [
+    "FACT-SH-IDB-CAS"
+   ],
+   "host_dependency_today": "as 11",
+   "status": "GAP",
+   "closes_when": "FC-1 / FC-8"
+  },
+  {
+   "step": 14,
+   "text": "deliberately install a bad candidate",
+   "mechanisms": [
+    "FB-28",
+    "FB-29"
+   ],
+   "current_evidence": [
+    "FACT-SH-OPAQUE-CONFINEMENT"
+   ],
+   "host_dependency_today": "as 11",
+   "status": "GAP",
+   "closes_when": "FC-1 failure matrix; FC-8 real swap"
+  },
+  {
+   "step": 15,
+   "text": "prove rollback to the last known-good generation",
+   "mechanisms": [
+    "FB-29",
+    "FB-09",
+    "FB-10"
+   ],
+   "current_evidence": [
+    "FACT-SH-IDB-CAS",
+    "FACT-SH-BROKER-FED-GENERATION"
+   ],
+   "host_dependency_today": "as 11",
+   "status": "GAP",
+   "closes_when": "FC-1 / FC-8"
+  },
+  {
+   "step": 16,
+   "text": "feed runtime evidence back into observed ASCII",
+   "mechanisms": [
+    "FB-22",
+    "FB-03"
+   ],
+   "current_evidence": [
+    "FACT-D24-EVIDENCE-BOUND",
+    "FACT-D23-WASM-TRANSPORT-COMPLETE"
+   ],
+   "host_dependency_today": "factc observe (native) or the kernel observe export in the browser harness; the observed ASCII is written by the host",
+   "status": "GAP",
+   "closes_when": "FC-4 (OBSERVE as a capability) + FC-5 (evidence never becomes source)"
+  }
+ ]
+}

@@ -57,6 +57,12 @@ Every implementation commit on the materialization branch was produced by the Fa
 5. [design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md](design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md) -
    the current executable system enumerated (D21): every tracked path tiered, every live component connected; the issue
    inventory [tests/manifest/issues.json](tests/manifest/issues.json) classifies every finding before repair (D22-D26).
+6. [design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md](design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md) -
+   the current target (D27): an installed Factory WebApp that continues Factory work, manufactures and qualifies its own
+   successor and evolves the ASCII language; its registers (correspondence matrix, language hardening, evolution
+   contract, blockers, Rust-build boundary, seed/TCB, acceptance test, sequence) are rendered to
+   [CLOSURE-REGISTERS.md](design/foundation-closure/CLOSURE-REGISTERS.md) and gated by tests/closure/structural-check.mjs;
+   verdict today: self-hosting NOT CLOSED, every step with its mechanism.
 
 No session prompt is required: the entry is model-independent.  Proof sets and the toolchain pin are in
 [tests/toolchain/proof-sets.json](tests/toolchain/proof-sets.json) and [rust-toolchain.toml](rust-toolchain.toml).
@@ -82,4 +88,7 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
   driven through their own shells in Chromium with the exact environment identity, the public-HTTPS boundary recorded
   honestly; D26 clean whole-repository commissioning: the complete system from the canonical source on a clean
   workpiece, the stale claims re-proved, the consistency audit and the six-task final condition computed - the series
-  is closed and the baseline is design/materialization/D26-STABLE-BASELINE.md); see the ledger.
+  is closed and the baseline is design/materialization/D26-STABLE-BASELINE.md); D27 foundation-closure alignment (the
+  repository reconstructed as executable evidence of the installed Factory to come; the live target and its registers;
+  LANGUAGE VERSION 1 bound to the compiler by a derived manifest and a frozen corpus oracle; the language-law station
+  S-LANGUAGE-LAW forged, attacked and registered; the observed-ASCII and Rust-build boundaries recorded); see the ledger.

@@ -1,0 +1,13 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system dir}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{component a}
+| @{port a.i in: T public}
+| @{component b}
+| @{port b.o out: T public}
+| RELATIONS
+| @{data wrong a.i -> b.o mode=copy}
++------------------------------------------------------------------------+

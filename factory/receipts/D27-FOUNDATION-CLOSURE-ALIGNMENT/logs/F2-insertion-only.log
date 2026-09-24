@@ -1,0 +1,5 @@
+$ sh -c d=$(git diff --numstat 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- STATION-REGISTRY.md | cut -f2); [ "$d" = 0 ] || { echo "deleted $d lines"; exit 1; }; grep -q '^D27 ANNOTATION' STATION-REGISTRY.md && grep -q 'S-LANGUAGE-LAW' STATION-REGISTRY.md && echo 'insertion-only; S-LANGUAGE-LAW registered'
+(cwd .)
+insertion-only; S-LANGUAGE-LAW registered
+
+[exit 0] expected 0

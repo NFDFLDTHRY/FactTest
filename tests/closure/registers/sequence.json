@@ -1,0 +1,307 @@
+{
+ "schema": "facttest-closure-sequence/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 12",
+ "note": "bounded implementation sequence for the next work series (one StructuralDelta per step, each closed, verified, integrated and re-observed before the next; every step names the blockers it addresses and the acceptance steps it enables).  The series does not begin until this structure is integrated and the structural check passes (D27).",
+ "steps": [
+  {
+   "id": "FC-1",
+   "delta": "D28-SEED-BROKER-QUALIFICATION",
+   "goal": "the immutable minimal seed (tests/closure/registers/seed.json) with its failure matrix: boot, promote on startup_ok, rollback on no startup_ok / crash / corrupt object / interrupted pointer transaction, restart during PENDING, confinement, recovery view, everything with the origin server stopped; the generated-app origin decision (D-2) probed",
+   "blockers": [
+    "FB-29",
+    "FB-08",
+    "FB-09",
+    "FB-10",
+    "FB-11"
+   ],
+   "acceptance_steps": [
+    1,
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "stations": [
+    "S-WEB",
+    "S-FIXTURE",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC"
+   ],
+   "may_change": [
+    "host/seed/",
+    "tests/selfhost/",
+    "evidence/D28/",
+    "design/",
+    "docs/"
+   ],
+   "exit_evidence": "seed failure matrix all PASS on loopback; seed size and dependency census; P07 recorded again",
+   "depends_on": []
+  },
+  {
+   "id": "FC-2",
+   "delta": "D29-BROWSER-OBJECT-STORE",
+   "goal": "git-compatible objects, overlay workpieces, tree snapshot/diff, CAS refs and audit/retire as a browser library, compared with git on the repository's own tree",
+   "blockers": [
+    "FB-02",
+    "FB-17",
+    "FB-14"
+   ],
+   "acceptance_steps": [
+    2,
+    3
+   ],
+   "stations": [
+    "S-WEB",
+    "S-FIXTURE",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC"
+   ],
+   "may_change": [
+    "host/store/",
+    "tests/selfhost/",
+    "evidence/D29/",
+    "design/",
+    "docs/"
+   ],
+   "exit_evidence": "every tree id and diff equal to git on committed histories; two concurrent CAS integrations: one winner; retire never removes a referenced object",
+   "depends_on": [
+    "FC-1"
+   ]
+  },
+  {
+   "id": "FC-3",
+   "delta": "D30-FACTORY-CORE-PORT",
+   "goal": "the Factory law (model, paths, checks, the verify/integrate/reinspect state machine) as a no_std crate with a host membrane, compiled to wasm; verdict parity with the host judge on the f00-f28 scenarios; receipts name the verifier object id; a first generation manifest",
+   "blockers": [
+    "FB-01",
+    "FB-25",
+    "FB-13"
+   ],
+   "acceptance_steps": [
+    1,
+    2,
+    5
+   ],
+   "stations": [
+    "S-RUST",
+    "S-WEB",
+    "S-FIXTURE",
+    "S-BUILD",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC",
+    "S-ANNOTATE"
+   ],
+   "may_change": [
+    "factory/",
+    "host/",
+    "tests/",
+    "evidence/D30/",
+    "design/",
+    "docs/",
+    "FACTORY-CONTRACTS.md",
+    "STATION-REGISTRY.md"
+   ],
+   "exit_evidence": "the ported engine reproduces every witness verdict byte-for-byte; one delta routed inside a generation on loopback",
+   "depends_on": [
+    "FC-2"
+   ]
+  },
+  {
+   "id": "FC-4",
+   "delta": "D31-CAPABILITY-STATIONS",
+   "goal": "operation classes with Linux and browser adapters and receipt parity (schema 3: capability, adapter, adapter identity); the specimens, the corpus oracle, bundle verification and observe as capabilities the generation runs itself",
+   "blockers": [
+    "FB-03"
+   ],
+   "acceptance_steps": [
+    6,
+    8,
+    9,
+    16
+   ],
+   "stations": [
+    "S-RUST",
+    "S-WEB",
+    "S-FIXTURE",
+    "S-BUILD",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC",
+    "S-ANNOTATE"
+   ],
+   "may_change": [
+    "factory/",
+    "host/",
+    "tests/",
+    "evidence/D31/",
+    "design/",
+    "docs/",
+    "FACTORY-CONTRACTS.md",
+    "STATION-REGISTRY.md"
+   ],
+   "exit_evidence": "the same fixture yields the same verdict and receipt fields on both adapters; the four specimens compiled, verified and observed inside a generation",
+   "depends_on": [
+    "FC-3"
+   ]
+  },
+  {
+   "id": "FC-5",
+   "delta": "D32-LANGUAGE-2-PROPOSAL",
+   "goal": "the first run of the language-evolution contract: proposed in LANGUAGE 1 - a version statement, a source-role statement (evidence never becomes source), QUERY_LANGUAGE_MANIFEST (ABI 2), an expected-forms diagnostic parameter, generator-based presentation equivalence, separate compilation by public contract - built as Compiler 2 on the host under S-RUST + S-LANGUAGE-LAW (version-change mode), qualified against the LANGUAGE 1 corpus with migration records, the derived unknown-keyword attack set, L38-L43",
+   "blockers": [
+    "FB-21",
+    "FB-22",
+    "FB-23",
+    "FB-24",
+    "FB-27"
+   ],
+   "acceptance_steps": [
+    7
+   ],
+   "stations": [
+    "S-RUST",
+    "S-LANGUAGE-LAW",
+    "S-FIXTURE",
+    "S-BUILD",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC"
+   ],
+   "may_change": [
+    "compiler/",
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "SEMANTIC-MODEL.md",
+    "LANGUAGE-TESTS.md",
+    "tests/",
+    "fixtures/",
+    "evidence/D32/",
+    "design/",
+    "docs/"
+   ],
+   "exit_evidence": "corpus-v1 reproduced or migrated row by row; corpus-v2 frozen; manifest-v2 derived; every new keyword refused by Compiler 1; LANGUAGE VERSION 2 declared only in the delta that activates Compiler 2",
+   "depends_on": [
+    "FC-1"
+   ]
+  },
+  {
+   "id": "FC-6",
+   "delta": "D33-CANDIDATE-QUALIFICATION-RUNNER",
+   "goal": "N qualifies a confined candidate N+1 inside the browser (Q1-Q7: manifest completeness, source provenance, compiled-object receipts, law self-tests, specimens re-verified by N's verifier and BundleVerifier, the re-qualification set from the graph, non-mutation); templates as recipe data so a host/JS change swaps a generation without a kernel rebuild",
+   "blockers": [
+    "FB-28",
+    "FB-05"
+   ],
+   "acceptance_steps": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    14
+   ],
+   "stations": [
+    "S-RUST",
+    "S-WEB",
+    "S-FIXTURE",
+    "S-BUILD",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC"
+   ],
+   "may_change": [
+    "compiler/",
+    "host/",
+    "tests/",
+    "evidence/D33/",
+    "design/",
+    "docs/"
+   ],
+   "exit_evidence": "a synthetic bad candidate refused for each Q; a good candidate proposed as pending; the kernel identity unchanged across a template-only swap",
+   "depends_on": [
+    "FC-4",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "FC-7",
+   "delta": "D34-RUST-BUILD-SPIKE",
+   "goal": "decision D-3 by evidence: B3 implemented (RUST_BUILD receipts, identity == pin before import, two independent build epochs agreeing) and a measured feasibility probe of B1 / B4 / B5 with exit criteria (size, memory, time to compile the pinned workspace; identity or behavioural oracle); the boundary re-drawn from measurements",
+   "blockers": [
+    "FB-04"
+   ],
+   "acceptance_steps": [
+    3,
+    4
+   ],
+   "stations": [
+    "S-RUST",
+    "S-WEB",
+    "S-FIXTURE",
+    "S-BUILD",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC"
+   ],
+   "may_change": [
+    "host/",
+    "tests/",
+    "evidence/D34/",
+    "design/",
+    "docs/"
+   ],
+   "exit_evidence": "an imported kernel qualified by identity and execution inside a generation; a written measurement for each candidate or the reason it cannot be measured from this environment",
+   "depends_on": [
+    "FC-6"
+   ]
+  },
+  {
+   "id": "FC-8",
+   "delta": "D35-GENERATION-SWAP",
+   "goal": "the foundation-closure experiment run physically: N -> N+1 with non-compiled objects changed, a deliberately bad N+2 rolled back, restart survival, evidence fed back into observed ASCII; the remote-sync boundary (L4) drawn: divergence detection, fast-forward push through the chosen transport, credentials outside generations",
+   "blockers": [
+    "FB-16",
+    "FB-17",
+    "FB-18",
+    "FB-20"
+   ],
+   "acceptance_steps": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+   ],
+   "stations": [
+    "S-WEB",
+    "S-FIXTURE",
+    "S-BROWSER",
+    "S-EVIDENCE",
+    "S-DOC"
+   ],
+   "may_change": [
+    "host/",
+    "tests/",
+    "evidence/D35/",
+    "design/",
+    "docs/"
+   ],
+   "exit_evidence": "every acceptance step except 3-4 PASS with the host removed; steps 3-4 PASS or the RUST_BUILD boundary named with FC-7 measurements",
+   "depends_on": [
+    "FC-7"
+   ]
+  }
+ ]
+}

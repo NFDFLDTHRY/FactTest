@@ -1,0 +1,237 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F7-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F7-doc",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "tests/manifest/components.json",
+    "the D26 graph",
+    "receipts",
+    "station registry",
+    "the registers and the D27 evidence of F5/F6",
+    "the D27 record texts (handoff, readme, schema, environment map)"
+  ],
+  "open_tree": "5fd6ded7a604ed9373a3afc2539ea6e629b9741e",
+  "close_tree": "7f8d8bd9cc86ccdecbeee13cba3227797cff9020",
+  "changed_paths": [
+    "README.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md",
+    "design/execution-manifest/manifest.json",
+    "design/foundation-closure/CLOSURE-REGISTERS.md",
+    "docs/HANDOFF.md",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-build-manifest.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-deterministic.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-records.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-render-registers.log"
+  ],
+  "output_artifacts": [
+    "design/execution-manifest/manifest.json",
+    "design/foundation-closure/CLOSURE-REGISTERS.md",
+    "docs/HANDOFF.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-build-manifest.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-build-manifest.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-deterministic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-deterministic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-render-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-render-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-records.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-records.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 --delta D27-FOUNDATION-CLOSURE-ALIGNMENT --epoch D27 --out design/execution-manifest",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-build-manifest.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 --delta D27-FOUNDATION-CLOSURE-ALIGNMENT --epoch D27 --out $T >/dev/null && cmp $T/manifest.json design/execution-manifest/manifest.json && cmp $T/CURRENT-EXECUTION-MANIFEST.md design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md && echo 'manifest deterministic (rebuilt byte-identically)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-deterministic.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --evidence-required --render design/foundation-closure/CLOSURE-REGISTERS.md --out $T/structural-check.json && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --evidence-required --render $T/registers-2.md --out $T/structural-check-2.json >/dev/null && cmp $T/registers-2.md design/foundation-closure/CLOSURE-REGISTERS.md && grep -q '^STRUCTURAL CHECK: PASS' design/foundation-closure/CLOSURE-REGISTERS.md && echo 'registers rendered deterministically with every evidence path present'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-render-registers.log"
+    },
+    {
+      "check": "command:sh -c grep -q '^closure epoch' design/environment-map/SCHEMA.md && grep -q '^D27 ' design/environment-map/ENVIRONMENT-MAP.md && grep -q 'last delta         D27-FOUNDATION-CLOSURE-ALIGNMENT' docs/HANDOFF.md && grep -q '^current target     design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md' docs/HANDOFF.md && grep -q 'FC-1 D28-SEED-BROKER-QUALIFICATION' docs/HANDOFF.md && grep -q 'S-LANGUAGE-LAW' docs/HANDOFF.md && grep -q 'FOUNDATION-CLOSURE-TARGET' README.md && echo 'record texts delivered'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-records.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/execution-manifest/manifest.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/foundation-closure/CLOSURE-REGISTERS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:docs/HANDOFF.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-build-manifest.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-deterministic.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-render-registers.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F7-records.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:27:18Z",
+  "status": "PASS"
+}

@@ -1,0 +1,2910 @@
+{
+  "query": "Q11",
+  "title": "Which evidence lacks complete environment identity?",
+  "answer": {
+    "incomplete": [
+      {
+        "evidence": "EV-D1-B10-B11-CHROMIUM",
+        "environment": "ENV-D1-D3-BROWSER",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "origin",
+          "secure_context",
+          "flags (default launch, not recorded)",
+          "OS identity"
+        ]
+      },
+      {
+        "evidence": "EV-D1-B10-NODE",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D1-B9-BUILD",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D1-B9-INSPECT",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D1-TOOLCHAIN-NIGHTLY",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-BROWSER-IDENTITY",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-KERNEL",
+        "environment": "ENV-D12-HOST",
+        "missing": [
+          "CPU identity",
+          "kernel release",
+          "stable toolchain not recorded (unused)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-NETWORK",
+        "environment": "ENV-D12-HOST",
+        "missing": [
+          "CPU identity",
+          "kernel release",
+          "stable toolchain not recorded (unused)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P01",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P02",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P03",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P04",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P05",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P06",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P07",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P08",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P09",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P10",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P14",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P15",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D12-P16",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "missing": [
+          "OS/kernel identity of the browser host",
+          "public HTTPS origin (githack unreachable, B-19)"
+        ]
+      },
+      {
+        "evidence": "EV-D13-HANDOFF",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-KERNEL-IDENTITY",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-PATHS-PROBE",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-PINS",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-PROOF-SUMMARY",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-SETS",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-STATUS",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D13-WORKPIECES",
+        "environment": "ENV-D13-HOST-PINNED",
+        "missing": [
+          "CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D14-FRAGMENTS",
+        "environment": "ENV-D14-HOST-NETWORK",
+        "missing": [
+          "CPU identity",
+          "proxy egress identity beyond host allow/deny"
+        ]
+      },
+      {
+        "evidence": "EV-D14-HOSTS",
+        "environment": "ENV-D14-HOST-NETWORK",
+        "missing": [
+          "CPU identity",
+          "proxy egress identity beyond host allow/deny"
+        ]
+      },
+      {
+        "evidence": "EV-D14-LINK-AUDIT",
+        "environment": "ENV-D14-HOST-NETWORK",
+        "missing": [
+          "CPU identity",
+          "proxy egress identity beyond host allow/deny"
+        ]
+      },
+      {
+        "evidence": "EV-D14-PROPOSAL-PHASES",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REFETCH",
+        "environment": "ENV-D14-HOST-NETWORK",
+        "missing": [
+          "CPU identity",
+          "proxy egress identity beyond host allow/deny"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REGISTER",
+        "environment": "ENV-D14-HOST-NETWORK",
+        "missing": [
+          "CPU identity",
+          "proxy egress identity beyond host allow/deny"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-CARGO-BUILD-STD",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-CHROMIUM-CONTENT-SWITCHES",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-CHROMIUM-GL-SWITCHES",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-CHROMIUM-GPU-SWITCHES",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-CHROMIUM-SWIFTSHADER-DOC",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-COMPRESSION-ZLIB",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-FS-OPFS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-GLOSSARY-COMMIT",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-OBJECT-FORMAT",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-PACK-FORMAT",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-REPO-LAYOUT",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-REVISIONS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-SHA256-TRANSITION",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-UPDATE-REF-CAS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GIT-WORKTREE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-ADAPTER-EXPIRE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-ADAPTERINFO",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-DESTROY",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-FALLBACK-ADAPTER",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-LOSE-DEVICE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-LOST",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-NAVIGATOR-GPU",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-REQUESTADAPTER",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-GPU-REQUESTDEVICE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-HTML-COI",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-HTML-HWCONCURRENCY",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-HTML-SANDBOX-ORIGIN",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-HTML-WORKERS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-IDB-TRANSACTION",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-MANIFEST-INSTALLABLE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-PLAYWRIGHT-INSTALLED",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-RUST-REF-NOSTD",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-RUSTC-WASM64-DOC",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-RUSTC-WASM64-TARGET-SPEC",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-SECCTX-TRUSTWORTHY",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-STORAGE-BUCKET-MODE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-SW-INSTALL-FAILED",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-SW-REGISTER-TRUST",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-SW-SANDBOX-NO-CONTROLLER",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-SW-UPDATE-BYPASS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-SWIFTSHADER-README",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-V8-FLAGS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-CORE-BINARY-LIMITS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-CORE-CHANGES-64",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-CORE-TEXT-ADDRTYPE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-CORE-TEXT-MEMTYPE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-JSAPI-MEMORIES",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-JSAPI-STORAGE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-JSAPI-VALIDATE",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-SET",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-THREADS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WASM-WEBAPI-STREAMING",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WEB-LOCKS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WEBCRYPTO-DIGEST",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-AUTH-WGSL",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-LAW-EVIDENCE-OBLIGATIONS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-LAW-FACTORY-CONTRACTS",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-LAW-FACTORY-LAW",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-LAW-PASS1-FT003",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-LAW-PASS6-COMMISSIONING",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-LAW-PLANNER-COST-MODEL",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-LAW-RUNTIME-ADMISSION",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D14-REOPEN-SUMMARY",
+        "environment": "ENV-D14-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-F1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-F2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-F3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-F4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-F5",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-F6",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-G1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-G2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-G3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-G4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-G5",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-H1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-H2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-H3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-H4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-I1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-I2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-I3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-I4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-MF1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-P1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-P2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-P3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R5",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R6",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R7",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R8",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-R9",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-S1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-S2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-S3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-S4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-ST1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-ST2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-ST3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-ST4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-ST5",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-ST6",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-ST7",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T5",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T6",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T7",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-T8",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W1",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W2",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W3",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W4",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W5",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W6",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W7",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W8",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CL-W9",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D15-CLAUSES-SUMMARY",
+        "environment": "ENV-D15-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-ACCELEROMETER",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-AMBIENT-LIGHT",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-BLUETOOTH",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-CACHESTORAGE",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-CAMERA",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-CPU-WASM64",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-DEVICE-ORIENTATION",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-FETCH",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-GENERIC-SENSOR",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-GEOLOCATION",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-GYROSCOPE",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-HID",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-INDEXEDDB",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-MAGNETOMETER",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-MANIFEST",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-MICROPHONE",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-OPFS",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-ORIENTATION-SENSOR",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-PERMISSIONS",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-PERMISSIONS-POLICY",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-PROXIMITY",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-SECURE-CONTEXT",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-SERIAL",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-SERVICE-WORKER",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-STORAGE-QUOTA",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-USB",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-WASM-SHARED-THREADS",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-WEBCODECS",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-WEBGPU",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-WEBNN",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-WORKER-DEDICATED",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CENSUS-XR",
+        "environment": "ENV-D16-BROWSER",
+        "missing": [
+          "OS package set",
+          "GPU driver stack (none)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ACC0",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ACC1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ACC2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ALS0",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ALS1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ALS2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ALS3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-BT1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-BT2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-BT3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-BT4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-BT5",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-CS1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-CS2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-DO1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-DO2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-DO3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-DO4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GEO1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GEO2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GEO3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GEO4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GEO5",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU10",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU11",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU5",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU6",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU7",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU8",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GPU9",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GS0",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GS1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GS2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GS3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GS4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GYR0",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GYR1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-GYR2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-HID1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-HID2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-HID3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-HID4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-IDB1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MAG0",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MAG1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MAG2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MC1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MC2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MC3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MC4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MC5",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-MC6",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-NN1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-NN2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-NN3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-NN4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-OPFS1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ORI0",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ORI1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-ORI2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-PRX0",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-PRX1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-PRX2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-SER1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-SER2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-SER3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-SER4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-STQ1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-USB1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-USB2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-USB3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WC1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WC2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WC3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WC4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WJ1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WJ2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WK1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WK2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-WK3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-XR1",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-XR2",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-XR3",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-XR4",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-XR5",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CL-XR6",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D16-CLAUSES-SUMMARY",
+        "environment": "ENV-D16-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR3",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR4",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR5",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR6",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR7",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-BR8",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-DEPS1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-DEPS2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-DEPS3",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU3",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU4",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU5",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU6",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU7",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU8",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-GPU9",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-HL1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-HL2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-HL3",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-HL4",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-IDL1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-IDL2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-IDL3",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-IDL4",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-IDL5",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-IDL6",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-PW1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-PW2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-PW3",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-PW4",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-RS1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-RS2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-RS3",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-RS4",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-RS5",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-SAB1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-SAB2",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-V8A",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-V8B",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CL-IMP-WN1",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-CLAUSES-SUMMARY",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D17-LABEL-AUDIT",
+        "environment": "ENV-D17-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D18-CL-IMP-GPU0",
+        "environment": "ENV-D18-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D18-CL-IMP-SSDOC",
+        "environment": "ENV-D18-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D18-CLAUSES-SUMMARY",
+        "environment": "ENV-D18-HOST",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D19-CLAUSES-D15-SUMMARY",
+        "environment": "ENV-D19-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D19-CLAUSES-D16-SUMMARY",
+        "environment": "ENV-D19-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D19-IDENTITY-TIPS",
+        "environment": "ENV-D19-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D19-REOPEN-PROPOSAL-PHASES",
+        "environment": "ENV-D19-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D19-REOPEN-SUMMARY",
+        "environment": "ENV-D19-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-CLAUSES-D15-SUMMARY",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-CLAUSES-D16-SUMMARY",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-IDENTITY-TIPS",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-INGRESS-REPROVE-INGRESS-HOSTS",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-INGRESS-REPROVE-INGRESS-REFETCH",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-INGRESS-REPROVE-INGRESS-VERIFY",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-REOPEN-PROPOSAL-PHASES",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D20-REOPEN-SUMMARY",
+        "environment": "ENV-D20-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D26-CLAUSES-D15-SUMMARY",
+        "environment": "ENV-D26-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D26-CLAUSES-D16-SUMMARY",
+        "environment": "ENV-D26-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D26-IDENTITY-TIPS",
+        "environment": "ENV-D26-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D26-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+        "environment": "ENV-D26-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D26-REOPEN-PROPOSAL-PHASES",
+        "environment": "ENV-D26-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D26-REOPEN-SUMMARY",
+        "environment": "ENV-D26-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D27-CLAUSES-D15-SUMMARY",
+        "environment": "ENV-D27-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D27-CLAUSES-D16-SUMMARY",
+        "environment": "ENV-D27-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D27-IDENTITY-TIPS",
+        "environment": "ENV-D27-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D27-INGRESS-REPROVE-AUDIT-FRAGMENTS",
+        "environment": "ENV-D27-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D27-REOPEN-PROPOSAL-PHASES",
+        "environment": "ENV-D27-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D27-REOPEN-SUMMARY",
+        "environment": "ENV-D27-SOURCES",
+        "missing": [
+          "published renderings (policy)"
+        ]
+      },
+      {
+        "evidence": "EV-D3-B9-TOOLCHAIN",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D6-F5-RECEIPT",
+        "environment": "ENV-D1-D3-HOST",
+        "missing": [
+          "nightly cargo version",
+          "OS/kernel identity",
+          "CPU identity",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D6-PROBE-RECORD",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ADM-E0-WASM64",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ADM-E0-WEBGPU",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ADM-E1-WEBGPU",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-BUNDLE-UNCHANGED",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-CONTROLLED-LOSS",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-E0-RELAY",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-E1-RELAY",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-ENVIRONMENT-STEP",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D7-NOWEBGPU-ADM",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity"
+        ]
+      },
+      {
+        "evidence": "EV-D7-OBSERVED-ASCII",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "OS/CPU identity",
+          "isFallbackAdapter",
+          "crossOriginIsolated",
+          "adapter features list"
+        ]
+      },
+      {
+        "evidence": "EV-D9-MUTANTS",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P1-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P2-02",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P2-04",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P3-04",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P4",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P5-02",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P5-03",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P6-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P7-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P8-01",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P8-02",
+        "environment": "ENV-D9-HOST",
+        "missing": [
+          "OS/kernel identity",
+          "CPU identity",
+          "node exact version",
+          "Chromium revision",
+          "V8 version",
+          "browser launch flags (default)"
+        ]
+      },
+      {
+        "evidence": "EV-D9-T9-P8-03",
+        "environment": "ENV-D1-D3-BROWSER",
+        "missing": [
+          "Chromium revision",
+          "V8 version",
+          "origin",
+          "secure_context",
+          "flags (default launch, not recorded)",
+          "OS identity"
+        ]
+      }
+    ]
+  }
+}

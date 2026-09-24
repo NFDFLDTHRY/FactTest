@@ -1,0 +1,5 @@
+$ sh -c node tests/closure/evidence-feedback-probe.mjs --factc /home/user/factory-builds/d27-target/debug/factc --source fixtures/commissioning/byte-relay.ascii --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --out evidence/D27/language/feedback
+(cwd .)
+observed ASCII as source: analyze OK (14 islands), build DIAGNOSTICS ["BUILD_BLOCKED_BY_GOVERNANCE"]; canonical as source: analyze OK
+
+[exit 0] expected 0

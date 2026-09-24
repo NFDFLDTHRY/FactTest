@@ -1,0 +1,74 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "the target sections 3-13 (registers, tools, frozen tables)",
+    "the D26 component and issue registers, the runbook"
+  ],
+  "narrowed_may_change": [
+    "tests/closure/",
+    "tests/envmap/facts/D27.json",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "tests/reprove/runbook.json",
+    "tests/hygiene/status-classification.json",
+    "tests/manifest/gate.mjs",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in tests/closure/*.mjs tests/manifest/gate.mjs; do node --check $f || exit 1; done && sh -n tests/closure/rust-build-census.sh && for j in tests/closure/registers/*.json tests/closure/language-manifest-v1.json tests/closure/language-corpus-v1.json tests/envmap/facts/D27.json tests/manifest/components.json tests/manifest/issues.json tests/reprove/runbook.json tests/hygiene/status-classification.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -nE \"'(FACT|EV|ENV|IMPL|PROBE)-[A-Z0-9]\" tests/closure/*.mjs && node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const I=J(\"tests/manifest/issues.json\").issues;const by=Object.fromEntries(I.map(i=>[i.id,i]));if(I.length!==41||!by[\"I-38\"]||by[\"I-38\"].class!==\"B\"||!by[\"I-39\"]||by[\"I-39\"].class!==\"D\"||!by[\"I-40\"]||by[\"I-40\"].class!==\"A\"||!/^REPAIRED/.test(by[\"I-40\"].status))process.exit(1);const C=J(\"tests/manifest/components.json\").components;if(C.length!==72||!C.some(c=>c.id===\"TEST-CLOSURE\")||!C.some(c=>c.id===\"RECORD-FOUNDATION-CLOSURE\"))process.exit(1);const Rb=J(\"tests/reprove/runbook.json\");if(!Rb.groups.closure||Object.keys(Rb.facts).length!==123)process.exit(1);const F=J(\"tests/envmap/facts/D27.json\");if(F.facts.length!==8||F.probes.length!==6)process.exit(1);const M=J(\"tests/closure/language-manifest-v1.json\");if(M.language_version!==1||M.statement_keywords.length!==31)process.exit(1);const Cp=J(\"tests/closure/language-corpus-v1.json\");if(Cp.language_version!==1||Cp.rows.length!==53)process.exit(1);console.log(\"issues\",I.length,\"components\",C.length,\"runbook facts\",Object.keys(Rb.facts).length,\"facts\",F.facts.length,\"keywords\",M.statement_keywords.length,\"corpus rows\",Cp.rows.length)' && echo 'syntax, JSON, no fact/evidence/node name in the tools; registers as intended'"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-syntax-registers.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --render $T/registers.md --out $T/structural-check.json && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));console.log(JSON.stringify(s.counts));if(s.status!==\"PASS\"||s.counts.blockers!==30||s.counts.acceptance_steps!==16||s.counts.sequence!==8||s.counts.hardening!==16)process.exit(1)' $T/structural-check.json"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-structural-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+          "--",
+          "tests",
+          "fixtures",
+          ":!tests/closure",
+          ":!tests/envmap/facts/D27.json",
+          ":!tests/manifest/components.json",
+          ":!tests/manifest/issues.json",
+          ":!tests/reprove/runbook.json",
+          ":!tests/hygiene/status-classification.json",
+          ":!tests/manifest/gate.mjs"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-other-tests-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/closure/structural-check.mjs",
+    "tests/closure/registers/blockers.json",
+    "tests/closure/language-corpus-v1.json",
+    "tests/closure/language-manifest-v1.json",
+    "tests/envmap/facts/D27.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+}

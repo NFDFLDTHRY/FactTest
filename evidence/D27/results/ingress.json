@@ -1,0 +1,2016 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "ingress",
+ "kind": "source",
+ "started": "2026-09-24T23:24:55.987Z",
+ "commands": [
+  {
+   "command": "H=$(node -e 'process.stdout.write(JSON.parse(require(\"fs\").readFileSync(\"tests/sync/d20-line.json\")).line.head)') && T=$(mktemp -d) && git show $H:REFERENCE-AUTHORITY.md > $T/map.md && git show $H:design/environment-map/graph.json > $T/graph.json && O=evidence/D27/ingress-reprove && mkdir -p $O/ingress $O/audit && I='node tests/reference/ingress.mjs' && R=fixtures/reference/ROUTES.json && C=fixtures/reference && G=fixtures/reference/REGISTER.json && $I plan-check --routes $R --map $T/map.md --graph $T/graph.json && $I probe-hosts --routes $R --map $T/map.md --graph $T/graph.json --out $O/ingress/hosts.json && $I verify --routes $R --corpus $C --register $G --out $O/ingress/verify.json && $I verify --routes $R --corpus $C --register $G --refetch --out $O/ingress/refetch.json && $I audit --routes $R --corpus $C --register $G --map $T/map.md --graph $T/graph.json --out $O/audit",
+   "exit": 0,
+   "seconds": 30
+  }
+ ],
+ "facts": {
+  "FACT-D14-REOPEN-CARGO-BUILD-STD": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.0.authority",
+       "eq": "AUTH-CARGO-BUILD-STD",
+       "observed": "AUTH-CARGO-BUILD-STD",
+       "ok": true
+      },
+      {
+       "path": "records.0.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.0.fragment_status",
+       "eq": "PRESENT_IN_SOURCE",
+       "observed": "PRESENT_IN_SOURCE",
+       "ok": true
+      },
+      {
+       "path": "records.0.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.1.authority",
+       "eq": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+       "observed": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+       "ok": true
+      },
+      {
+       "path": "records.1.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.1.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.1.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.2.authority",
+       "eq": "AUTH-CHROMIUM-GL-SWITCHES",
+       "observed": "AUTH-CHROMIUM-GL-SWITCHES",
+       "ok": true
+      },
+      {
+       "path": "records.2.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.2.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.2.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.3.authority",
+       "eq": "AUTH-CHROMIUM-GPU-SWITCHES",
+       "observed": "AUTH-CHROMIUM-GPU-SWITCHES",
+       "ok": true
+      },
+      {
+       "path": "records.3.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.3.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.3.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.4.authority",
+       "eq": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+       "observed": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+       "ok": true
+      },
+      {
+       "path": "records.4.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.4.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.4.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-COMPRESSION-ZLIB": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.5.authority",
+       "eq": "AUTH-COMPRESSION-ZLIB",
+       "observed": "AUTH-COMPRESSION-ZLIB",
+       "ok": true
+      },
+      {
+       "path": "records.5.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.5.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.5.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-FS-OPFS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.6.authority",
+       "eq": "AUTH-FS-OPFS",
+       "observed": "AUTH-FS-OPFS",
+       "ok": true
+      },
+      {
+       "path": "records.6.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.6.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.6.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.7.authority",
+       "eq": "AUTH-GIT-GLOSSARY-COMMIT",
+       "observed": "AUTH-GIT-GLOSSARY-COMMIT",
+       "ok": true
+      },
+      {
+       "path": "records.7.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.7.fragment_status",
+       "eq": "PRESENT_IN_SOURCE",
+       "observed": "PRESENT_IN_SOURCE",
+       "ok": true
+      },
+      {
+       "path": "records.7.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-OBJECT-FORMAT": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.8.authority",
+       "eq": "AUTH-GIT-OBJECT-FORMAT",
+       "observed": "AUTH-GIT-OBJECT-FORMAT",
+       "ok": true
+      },
+      {
+       "path": "records.8.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.8.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.8.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-PACK-FORMAT": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.9.authority",
+       "eq": "AUTH-GIT-PACK-FORMAT",
+       "observed": "AUTH-GIT-PACK-FORMAT",
+       "ok": true
+      },
+      {
+       "path": "records.9.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.9.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.9.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-REPO-LAYOUT": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.10.authority",
+       "eq": "AUTH-GIT-REPO-LAYOUT",
+       "observed": "AUTH-GIT-REPO-LAYOUT",
+       "ok": true
+      },
+      {
+       "path": "records.10.fact_status",
+       "eq": "OBS",
+       "observed": "OBS",
+       "ok": true
+      },
+      {
+       "path": "records.10.fragment_status",
+       "eq": "DERIVED_FROM_HEADING_UNVERIFIED",
+       "observed": "DERIVED_FROM_HEADING_UNVERIFIED",
+       "ok": true
+      },
+      {
+       "path": "records.10.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-REVISIONS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.11.authority",
+       "eq": "AUTH-GIT-REVISIONS",
+       "observed": "AUTH-GIT-REVISIONS",
+       "ok": true
+      },
+      {
+       "path": "records.11.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.11.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.11.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-SHA256-TRANSITION": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.12.authority",
+       "eq": "AUTH-GIT-SHA256-TRANSITION",
+       "observed": "AUTH-GIT-SHA256-TRANSITION",
+       "ok": true
+      },
+      {
+       "path": "records.12.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.12.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.12.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.13.authority",
+       "eq": "AUTH-GIT-UPDATE-REF-CAS",
+       "observed": "AUTH-GIT-UPDATE-REF-CAS",
+       "ok": true
+      },
+      {
+       "path": "records.13.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.13.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.13.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GIT-WORKTREE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.14.authority",
+       "eq": "AUTH-GIT-WORKTREE",
+       "observed": "AUTH-GIT-WORKTREE",
+       "ok": true
+      },
+      {
+       "path": "records.14.fact_status",
+       "eq": "OBS",
+       "observed": "OBS",
+       "ok": true
+      },
+      {
+       "path": "records.14.fragment_status",
+       "eq": "DERIVED_FROM_HEADING_UNVERIFIED",
+       "observed": "DERIVED_FROM_HEADING_UNVERIFIED",
+       "ok": true
+      },
+      {
+       "path": "records.14.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.15.authority",
+       "eq": "AUTH-GPU-ADAPTER-EXPIRE",
+       "observed": "AUTH-GPU-ADAPTER-EXPIRE",
+       "ok": true
+      },
+      {
+       "path": "records.15.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.15.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.15.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-ADAPTERINFO": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.16.authority",
+       "eq": "AUTH-GPU-ADAPTERINFO",
+       "observed": "AUTH-GPU-ADAPTERINFO",
+       "ok": true
+      },
+      {
+       "path": "records.16.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.16.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.16.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-DESTROY": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.17.authority",
+       "eq": "AUTH-GPU-DESTROY",
+       "observed": "AUTH-GPU-DESTROY",
+       "ok": true
+      },
+      {
+       "path": "records.17.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.17.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.17.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.18.authority",
+       "eq": "AUTH-GPU-FALLBACK-ADAPTER",
+       "observed": "AUTH-GPU-FALLBACK-ADAPTER",
+       "ok": true
+      },
+      {
+       "path": "records.18.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.18.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.18.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.19.authority",
+       "eq": "AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+       "observed": "AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+       "ok": true
+      },
+      {
+       "path": "records.19.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.19.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.19.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-LOSE-DEVICE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.20.authority",
+       "eq": "AUTH-GPU-LOSE-DEVICE",
+       "observed": "AUTH-GPU-LOSE-DEVICE",
+       "ok": true
+      },
+      {
+       "path": "records.20.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.20.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.20.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-LOST": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.21.authority",
+       "eq": "AUTH-GPU-LOST",
+       "observed": "AUTH-GPU-LOST",
+       "ok": true
+      },
+      {
+       "path": "records.21.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.21.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.21.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.22.authority",
+       "eq": "AUTH-GPU-NAVIGATOR-GPU",
+       "observed": "AUTH-GPU-NAVIGATOR-GPU",
+       "ok": true
+      },
+      {
+       "path": "records.22.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.22.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.22.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-REQUESTADAPTER": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.23.authority",
+       "eq": "AUTH-GPU-REQUESTADAPTER",
+       "observed": "AUTH-GPU-REQUESTADAPTER",
+       "ok": true
+      },
+      {
+       "path": "records.23.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.23.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.23.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-GPU-REQUESTDEVICE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.24.authority",
+       "eq": "AUTH-GPU-REQUESTDEVICE",
+       "observed": "AUTH-GPU-REQUESTDEVICE",
+       "ok": true
+      },
+      {
+       "path": "records.24.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.24.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.24.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-HTML-COI": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.25.authority",
+       "eq": "AUTH-HTML-COI",
+       "observed": "AUTH-HTML-COI",
+       "ok": true
+      },
+      {
+       "path": "records.25.fact_status",
+       "eq": "OBS",
+       "observed": "OBS",
+       "ok": true
+      },
+      {
+       "path": "records.25.fragment_status",
+       "eq": "DERIVED_FROM_DFN_UNVERIFIED",
+       "observed": "DERIVED_FROM_DFN_UNVERIFIED",
+       "ok": true
+      },
+      {
+       "path": "records.25.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-HTML-HWCONCURRENCY": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.26.authority",
+       "eq": "AUTH-HTML-HWCONCURRENCY",
+       "observed": "AUTH-HTML-HWCONCURRENCY",
+       "ok": true
+      },
+      {
+       "path": "records.26.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.26.fragment_status",
+       "eq": "PRESENT_IN_SOURCE",
+       "observed": "PRESENT_IN_SOURCE",
+       "ok": true
+      },
+      {
+       "path": "records.26.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.27.authority",
+       "eq": "AUTH-HTML-SANDBOX-ORIGIN",
+       "observed": "AUTH-HTML-SANDBOX-ORIGIN",
+       "ok": true
+      },
+      {
+       "path": "records.27.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.27.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.27.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-HTML-WORKERS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.28.authority",
+       "eq": "AUTH-HTML-WORKERS",
+       "observed": "AUTH-HTML-WORKERS",
+       "ok": true
+      },
+      {
+       "path": "records.28.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.28.fragment_status",
+       "eq": "PRESENT_IN_SOURCE",
+       "observed": "PRESENT_IN_SOURCE",
+       "ok": true
+      },
+      {
+       "path": "records.28.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-IDB-TRANSACTION": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.29.authority",
+       "eq": "AUTH-IDB-TRANSACTION",
+       "observed": "AUTH-IDB-TRANSACTION",
+       "ok": true
+      },
+      {
+       "path": "records.29.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.29.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.29.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-MANIFEST-INSTALLABLE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.30.authority",
+       "eq": "AUTH-MANIFEST-INSTALLABLE",
+       "observed": "AUTH-MANIFEST-INSTALLABLE",
+       "ok": true
+      },
+      {
+       "path": "records.30.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.30.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.30.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-RUST-REF-NOSTD": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.32.authority",
+       "eq": "AUTH-RUST-REF-NOSTD",
+       "observed": "AUTH-RUST-REF-NOSTD",
+       "ok": true
+      },
+      {
+       "path": "records.32.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.32.fragment_status",
+       "eq": "PRESENT_IN_SOURCE",
+       "observed": "PRESENT_IN_SOURCE",
+       "ok": true
+      },
+      {
+       "path": "records.32.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-RUSTC-WASM64-DOC": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.33.authority",
+       "eq": "AUTH-RUSTC-WASM64-DOC",
+       "observed": "AUTH-RUSTC-WASM64-DOC",
+       "ok": true
+      },
+      {
+       "path": "records.33.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.33.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.33.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.34.authority",
+       "eq": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+       "observed": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+       "ok": true
+      },
+      {
+       "path": "records.34.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.34.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.34.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.35.authority",
+       "eq": "AUTH-SECCTX-TRUSTWORTHY",
+       "observed": "AUTH-SECCTX-TRUSTWORTHY",
+       "ok": true
+      },
+      {
+       "path": "records.35.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.35.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.35.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-STORAGE-BUCKET-MODE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.36.authority",
+       "eq": "AUTH-STORAGE-BUCKET-MODE",
+       "observed": "AUTH-STORAGE-BUCKET-MODE",
+       "ok": true
+      },
+      {
+       "path": "records.36.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.36.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.36.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-SW-INSTALL-FAILED": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.37.authority",
+       "eq": "AUTH-SW-INSTALL-FAILED",
+       "observed": "AUTH-SW-INSTALL-FAILED",
+       "ok": true
+      },
+      {
+       "path": "records.37.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.37.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.37.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-SW-REGISTER-TRUST": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.38.authority",
+       "eq": "AUTH-SW-REGISTER-TRUST",
+       "observed": "AUTH-SW-REGISTER-TRUST",
+       "ok": true
+      },
+      {
+       "path": "records.38.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.38.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.38.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.39.authority",
+       "eq": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+       "observed": "AUTH-SW-SANDBOX-NO-CONTROLLER",
+       "ok": true
+      },
+      {
+       "path": "records.39.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.39.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.39.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-SW-UPDATE-BYPASS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.40.authority",
+       "eq": "AUTH-SW-UPDATE-BYPASS",
+       "observed": "AUTH-SW-UPDATE-BYPASS",
+       "ok": true
+      },
+      {
+       "path": "records.40.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.40.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.40.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-SWIFTSHADER-README": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.41.authority",
+       "eq": "AUTH-SWIFTSHADER-README",
+       "observed": "AUTH-SWIFTSHADER-README",
+       "ok": true
+      },
+      {
+       "path": "records.41.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.41.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.41.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-V8-FLAGS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.42.authority",
+       "eq": "AUTH-V8-FLAGS",
+       "observed": "AUTH-V8-FLAGS",
+       "ok": true
+      },
+      {
+       "path": "records.42.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.42.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.42.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.43.authority",
+       "eq": "AUTH-WASM-CORE-BINARY-LIMITS",
+       "observed": "AUTH-WASM-CORE-BINARY-LIMITS",
+       "ok": true
+      },
+      {
+       "path": "records.43.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.43.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.43.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-CORE-CHANGES-64": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.44.authority",
+       "eq": "AUTH-WASM-CORE-CHANGES-64",
+       "observed": "AUTH-WASM-CORE-CHANGES-64",
+       "ok": true
+      },
+      {
+       "path": "records.44.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.44.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.44.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.45.authority",
+       "eq": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+       "observed": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+       "ok": true
+      },
+      {
+       "path": "records.45.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.45.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.45.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.46.authority",
+       "eq": "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+       "observed": "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+       "ok": true
+      },
+      {
+       "path": "records.46.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.46.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.46.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.47.authority",
+       "eq": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+       "observed": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+       "ok": true
+      },
+      {
+       "path": "records.47.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.47.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.47.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.48.authority",
+       "eq": "AUTH-WASM-JSAPI-MEMORIES",
+       "observed": "AUTH-WASM-JSAPI-MEMORIES",
+       "ok": true
+      },
+      {
+       "path": "records.48.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.48.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.48.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.50.authority",
+       "eq": "AUTH-WASM-JSAPI-VALIDATE",
+       "observed": "AUTH-WASM-JSAPI-VALIDATE",
+       "ok": true
+      },
+      {
+       "path": "records.50.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.50.fragment_status",
+       "eq": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "observed": "VERIFIED_IN_PUBLISHED_RENDERING",
+       "ok": true
+      },
+      {
+       "path": "records.50.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-SET": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.51.authority",
+       "eq": "AUTH-WASM-SET",
+       "observed": "AUTH-WASM-SET",
+       "ok": true
+      },
+      {
+       "path": "records.51.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.51.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.51.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WASM-THREADS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.52.authority",
+       "eq": "AUTH-WASM-THREADS",
+       "observed": "AUTH-WASM-THREADS",
+       "ok": true
+      },
+      {
+       "path": "records.52.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.52.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.52.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WEB-LOCKS": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.54.authority",
+       "eq": "AUTH-WEB-LOCKS",
+       "observed": "AUTH-WEB-LOCKS",
+       "ok": true
+      },
+      {
+       "path": "records.54.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.54.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.54.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WEBCRYPTO-DIGEST": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.55.authority",
+       "eq": "AUTH-WEBCRYPTO-DIGEST",
+       "observed": "AUTH-WEBCRYPTO-DIGEST",
+       "ok": true
+      },
+      {
+       "path": "records.55.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.55.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.55.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D14-REOPEN-WGSL": {
+   "probe": "PROBE-D14-REFERENCE-INGRESS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "ingress-reprove/audit/fragments.json",
+     "sha256": "ecd67c0d6713b964350c3990bc94918e198f1acf4bdc871c19545cb5136f37be",
+     "checks": [
+      {
+       "path": "records.56.authority",
+       "eq": "AUTH-WGSL",
+       "observed": "AUTH-WGSL",
+       "ok": true
+      },
+      {
+       "path": "records.56.fact_status",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      },
+      {
+       "path": "records.56.fragment_status",
+       "eq": "NO_FRAGMENT_CITED",
+       "observed": "NO_FRAGMENT_CITED",
+       "ok": true
+      },
+      {
+       "path": "records.56.pin_verdict",
+       "eq": "PIN_MATCH",
+       "observed": "PIN_MATCH",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T23:25:25.889Z",
+ "status": "PASS"
+}

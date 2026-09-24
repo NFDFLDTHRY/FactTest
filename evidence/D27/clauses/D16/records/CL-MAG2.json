@@ -1,0 +1,30 @@
+{
+ "id": "CL-MAG2",
+ "trace": "MS",
+ "authority": "AUTH-MAGNETOMETER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/magnetometer",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "40801a25e7ad6c0ea12b1777f1d913f21e680e87",
+  "sha256": "4fc6eaf877c8b09e6d72d4269011b9c7afdd0fd3eb02834e815a7b06710ec1e4",
+  "bytes": 25647
+ },
+ "locator": {
+  "text": "This specification utilizes the [=policy-controlled feature=] identified by the string",
+  "line_start": 184,
+  "line_end": 184,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-policy-integration (line 181)"
+ },
+ "window": 1,
+ "consequence": "the magnetometer feature/permission is defined by Device Orientation and Motion",
+ "excerpt": "This specification utilizes the [=policy-controlled feature=] identified by the string \"<code><a permission>magnetometer</a></code>\" defined in [[DEVICE-ORIENTATION]].",
+ "excerpt_sha256": "2ce8eea7e1409a7b02f6629057c548332dbf8a882d5b71023b03b388a5c0d6f1",
+ "must_contain": {
+  "magnetometer": true,
+  "[[DEVICE-ORIENTATION]]": true
+ },
+ "status": "VERIFIED"
+}

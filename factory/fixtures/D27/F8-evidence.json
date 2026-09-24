@@ -1,0 +1,73 @@
+{
+  "fixture_id": "F8-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the manifest of F7",
+    "tests/manifest/issues.json",
+    "the registers and evidence/D27/ (identity, selection, results, language, stations, rust-build)",
+    "the D26 graph"
+  ],
+  "narrowed_may_change": [
+    "evidence/D27/manifest.json",
+    "evidence/D27/issues.json",
+    "evidence/D27/gate.json",
+    "evidence/D27/closure/",
+    "evidence/D27/envmap-preview/",
+    "evidence/D27/status-preview/",
+    "evidence/D27/handoff-check-preview.json",
+    "evidence/D27/audit/",
+    "evidence/D27/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp design/execution-manifest/manifest.json evidence/D27/manifest.json && cp tests/manifest/issues.json evidence/D27/issues.json && node tests/manifest/gate.mjs --manifest evidence/D27/manifest.json --issues tests/manifest/issues.json --out evidence/D27/gate.json"
+        ],
+        "log": "evidence/D27/logs/F8-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --evidence-required --render $T/registers.md --out evidence/D27/closure/structural-check.json && cmp $T/registers.md design/foundation-closure/CLOSURE-REGISTERS.md && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D27/closure/structural-check.json\"));const steps=s.stop_condition_answer;console.log(\"status\",s.status,\"acceptance steps\",steps.length,\"RUN without host\",steps.filter(x=>x.status===\"RUN\").length);if(s.status!==\"PASS\"||!s.evidence_required||steps.length!==16)process.exit(1)'"
+        ],
+        "log": "evidence/D27/logs/F8-structural-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/reprove/build-reprove.mjs --graph design/environment-map/graph.json --selection evidence/D27/selection.json --evidence evidence/D27 --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --dimensions tests/reprove/dimensions.json --epoch D27 --delta D27-FOUNDATION-CLOSURE-ALIGNMENT --commit '8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 (canonical base; integration commit in LEDGER AFTER)' --out $T/reprove.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json,$T/reprove.json --out $T/g.json >/dev/null && node tests/envmap/envmap.mjs query $T/g.json --all --out evidence/D27/envmap-preview/queries >/dev/null && node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D27/status-preview >/dev/null && sh tests/hygiene/handoff-check.sh evidence/D27/handoff-check-preview.json >/dev/null && mkdir -p evidence/D27/audit && node tests/audit/consistency-audit.mjs --current-delta D27-FOUNDATION-CLOSURE-ALIGNMENT --manifest evidence/D27/manifest.json --gate evidence/D27/gate.json --graph $T/g.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D27/envmap-preview/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D27/audit/consistency.json"
+        ],
+        "log": "evidence/D27/logs/F8-preview-audit.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D27/audit/consistency.json\"));console.log(\"audit\",a.status,a.checks.length);if(a.status!==\"PASS\")process.exit(1)'"
+        ],
+        "log": "evidence/D27/logs/F8-preview-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D27/gate.json",
+    "evidence/D27/closure/structural-check.json",
+    "evidence/D27/audit/consistency.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+}

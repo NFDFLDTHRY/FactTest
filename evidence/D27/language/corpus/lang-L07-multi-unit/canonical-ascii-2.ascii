@@ -1,0 +1,13 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system consumer}
+| @{use impa}
+| @{use impb}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{component sink}
+| @{port sink.q in: T public}
+| RELATIONS
+| @{data d consumer -> consumer mode=copy}
++------------------------------------------------------------------------+

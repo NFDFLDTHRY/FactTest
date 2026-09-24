@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-GIT-WORKTREE",
+ "authority_class": "TOOL_DOC",
+ "cited": {
+  "url": "https://git-scm.com/docs/git-worktree",
+  "fragment": "#_description",
+  "fragment_status_recorded": "DERIVED_FROM_HEADING_UNVERIFIED",
+  "maturity_recorded": "manual page",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "path": "Documentation/git-worktree.adoc",
+  "sha256": "ee8a368564ace74a07e4a034e080b26fb1c3b35d17ef1fe41dcbfcc5595fe8dc",
+  "observed": "2026-09-24",
+  "locator": "DESCRIPTION (lines 22-32)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "ee8a368564ace74a07e4a034e080b26fb1c3b35d17ef1fe41dcbfcc5595fe8dc",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#_description",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 22,
+   "kind": "asciidoctor setext section"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 22,
+   "kind": "asciidoctor setext section"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   22,
+   32
+  ],
+  "window_sha256": "33f83ea09fcbbfa1b11c4c69a0f260135467e2acd2c018eae2cc0d6214754955",
+  "window_excerpt": "DESCRIPTION\n-----------\n\nManage multiple working trees attached to the same repository.\n\nA git repository can support multiple working trees, allowing you to check\nout more than one branch at a time.  With `git worktree add` a new working\ntree is associated with the repository, along with additional metadata\nthat differentiates that working tree from others in the same repository.\nThe working tree, along with this metadata, is called a \"worktree\".\n",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   22,
+   32
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

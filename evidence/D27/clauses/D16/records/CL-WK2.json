@@ -1,0 +1,30 @@
+{
+ "id": "CL-WK2",
+ "trace": "WK",
+ "authority": "AUTH-HTML-WORKERS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "1a249c2a40bd341f7c2c0c9954a9a264b1983b93",
+  "sha256": "2bddefe3791e9003d58e9d438c2dfa98b4a0c1967fc5a1e5327d73a6e3ac9a80",
+  "bytes": 7915793
+ },
+ "locator": {
+  "text": "<li><p>If <var>workerURL</var> is failure, then throw a <span>\"<code>SyntaxError</code>\"</span>",
+  "after": "constructor steps are:",
+  "line_start": 136511,
+  "line_end": 136511,
+  "derivation": "anchor text after \"constructor steps are:\"",
+  "enclosing_section": "#the-abstractworker-abstract-interface (line 136253)"
+ },
+ "window": 1,
+ "consequence": "an unparsable script URL throws SyntaxError",
+ "excerpt": "   <li><p>If <var>workerURL</var> is failure, then throw a <span>\"<code>SyntaxError</code>\"</span>",
+ "excerpt_sha256": "2f902ab8ad0467a0d1ca9433bc24253ba02193c462e37ffbcdb78538eb63d68f",
+ "must_contain": {
+  "SyntaxError": true
+ },
+ "status": "VERIFIED"
+}

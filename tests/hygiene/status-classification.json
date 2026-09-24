@@ -127,6 +127,17 @@
    "rationale": "the generated CURRENT EXECUTION MANIFEST (D21): each marker quotes a classified issue row (tests/manifest/issues.json) or a graph node"
   },
   {
+   "id": "Z-FOUNDATION-CLOSURE",
+   "class": "R",
+   "match": {
+    "prefix": [
+     "design/foundation-closure/",
+     "tests/closure/registers/"
+    ]
+   },
+   "rationale": "the live foundation-closure target and its registers (D27): every [GAP]/[ERR]/[UNK] is a classified row of tests/closure/registers/*.json (blockers, acceptance steps, hardening questions, correspondence) or a current graph fact, checked by tests/closure/structural-check.mjs; \"pending\"/\"stale\" name the seed pointer state and the STALE_IF traversal"
+  },
+  {
    "id": "Z-ENVMAP-REGISTER",
    "class": "R",
    "match": {

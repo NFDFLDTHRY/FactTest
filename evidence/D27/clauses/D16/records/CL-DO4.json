@@ -1,0 +1,29 @@
+{
+ "id": "CL-DO4",
+ "trace": "DO",
+ "authority": "AUTH-DEVICE-ORIENTATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/deviceorientation",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+  "sha256": "f07509380267b8f3f5d6e7ccd4e2eb64ba35d5c88e2f67573140163bb7e40520",
+  "bytes": 69351
+ },
+ "locator": {
+  "text": "This integration is [=at risk=] due to the low pass rate of the",
+  "line_start": 232,
+  "line_end": 232,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-integration (line 228)"
+ },
+ "window": 1,
+ "consequence": "maturity: the permission integration is at risk (low WPT pass rate)",
+ "excerpt": "This integration is [=at risk=] due to the low pass rate of the <a href=\"https://wpt.fyi/results/orientation-event/motion/requestPermission.https.window.html\"><code>DeviceMotionEvent.requestPermission()</code></a> and <a href=\"https://wpt.fyi/results/orientation-event/orientation/requestPermission.https.window.html\"><code>DeviceOrientationEvent.requestPermission()</code></a> tests.",
+ "excerpt_sha256": "d635232b8af93ffd46b37d2b5e2fe3ffc454178e6a5eadfd54d1db5372d9d511",
+ "must_contain": {
+  "This integration is [=at risk=]": true
+ },
+ "status": "VERIFIED"
+}

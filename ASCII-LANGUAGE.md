@@ -201,3 +201,19 @@ MAXIMUM ABSTRACTION  inside complete subsystem contracts
 
 ZERO GUESSING        at semantic boundaries
 \`\`\`
+
+D27 ANNOTATION (language law amendment, D27-FOUNDATION-CLOSURE-ALIGNMENT; inserted by station S-LANGUAGE-LAW; insertion-only):
+
+- Section 1 (interaction-first): the foundation-closure target (design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md) names the
+  parties of the future protocol - HUMAN (natural language, diagrams) <-> TINY LOCAL MODEL (translator and dialogue
+  partner, speaking this language; never semantic authority, compiler, verifier or Factory) <-> DETERMINISTIC COMPILER N
+  (defines LANGUAGE N).  The interface the model will use exists today as: the derived language manifest
+  (tests/closure/language-manifest-v1.json), the structured diagnostics (code, phase, spans, message class, parameters,
+  authority), the canonical teach-back (canonical rendering, L19/L20) and the LANGUAGE 1 corpus oracle.
+- Section 9 (no semantic backchannel) and section 10: the D27 evidence-feedback probe (tests/closure/evidence-feedback-probe.mjs,
+  FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE) shows that the observed ASCII the compiler derives from runtime evidence
+  is accepted by ANALYZE as an authored source unit: its `@{system <name>_observed}` and `@{issue}` islands are
+  LANGUAGE 1 statements and no statement marks a unit as authored, canonical or observed.  [GAP] LANGUAGE 2 candidate
+  (a source-role statement or a non-source evidence dialect; sequence FC-5).  Until then the boundary is held by Factory
+  law L-EV-5: no station accepts an observed.ascii as a source-unit input; observed ASCII returns to the human/AI
+  interaction layer as evidence only.

@@ -1,0 +1,170 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F2-annotate",
+  "station_id": "S-ANNOTATE",
+  "station_version": "1",
+  "fixture_id": "F2-annotate",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "the target section 4; the station spec S-LANGUAGE-LAW (F0)"
+  ],
+  "open_tree": "765c450dd581019904ec69906858a56cae092861",
+  "close_tree": "5bf37bd4e9a10eefbe45c0f59913c260a30cfe96",
+  "changed_paths": [
+    "STATION-REGISTRY.md",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-constitution-untouched.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-insertion-only.log"
+  ],
+  "output_artifacts": [
+    "STATION-REGISTRY.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-ANNOTATE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "LAW_ANNOTATION"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-insertion-only.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-insertion-only.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-constitution-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-constitution-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c d=$(git diff --numstat 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- STATION-REGISTRY.md | cut -f2); [ \"$d\" = 0 ] || { echo \"deleted $d lines\"; exit 1; }; grep -q '^D27 ANNOTATION' STATION-REGISTRY.md && grep -q 'S-LANGUAGE-LAW' STATION-REGISTRY.md && echo 'insertion-only; S-LANGUAGE-LAW registered'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-insertion-only.log"
+    },
+    {
+      "check": "command:git diff --exit-code 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- FACTORY-LAW.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-constitution-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:STATION-REGISTRY.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-insertion-only.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-constitution-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:22:44Z",
+  "status": "PASS"
+}

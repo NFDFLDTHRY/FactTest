@@ -1,0 +1,30 @@
+{
+ "id": "CL-MC6",
+ "trace": "MC",
+ "authority": "AUTH-MEDIACAPTURE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/mediacapture-main",
+  "branch": "main",
+  "path": "getusermedia.html",
+  "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+  "sha256": "2807a41827e9573e6eed4be0116217a8053902dc621dc915d5ccc0d1322c9774",
+  "bytes": 309541
+ },
+ "locator": {
+  "text": "id=\"event-mediastreamtrack-ended\">ended</dfn>",
+  "line_start": 2741,
+  "line_end": 2747,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 7,
+ "consequence": "a track ends when the user revokes permission or the device is ejected: revocation is a lifecycle event",
+ "excerpt": "          <th scope=row><dfn data-dfn-type=event id=\"event-mediastreamtrack-ended\">ended</dfn></td>\n          <td>{{Event}}</td>\n          <td>\n            <p>The {{MediaStreamTrack}} object's source will no\n            longer provide any data, either because the user revoked the\n            permissions, or because the source device has been ejected, or\n            because the remote peer permanently stopped sending data.</p>",
+ "excerpt_sha256": "833f5838c6da52f73b64aeea7518a3d8762a7e595339c732371e6b2908685a56",
+ "must_contain": {
+  "the user revoked the": true,
+  "source device has been ejected": true
+ },
+ "status": "VERIFIED"
+}

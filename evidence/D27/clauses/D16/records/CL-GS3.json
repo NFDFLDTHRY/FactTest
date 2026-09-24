@@ -1,0 +1,31 @@
+{
+ "id": "CL-GS3",
+ "trace": "GS",
+ "authority": "AUTH-GENERIC-SENSOR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/sensors",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+  "sha256": "584e6b7e5743d0c79f36696742a857f115128433d63112401b3f19b62dc5fdbf",
+  "bytes": 107462
+ },
+ "locator": {
+  "text": "The {{Sensor/start()}} method steps are:",
+  "line_start": 1121,
+  "line_end": 1140,
+  "derivation": "anchor text",
+  "enclosing_section": "#sensor-start (line 1117)"
+ },
+ "window": 20,
+ "consequence": "start() requests access (permission) and fails NotAllowedError on denial and NotReadableError when no sensor connects",
+ "excerpt": "    The {{Sensor/start()}} method steps are:\n\n    1.  If [=this=].{{[[state]]}} is either \"activating\" or \"activated\", then\n        return.\n    1.  Set [=this=].{{[[state]]}} to \"activating\".\n    1.  Run these sub-steps [=in parallel=]:\n        1.  Let |permissionState| be the result of invoking\n            [=request sensor access=] with [=this=] as argument.\n        1.  If |permissionState| is \"denied\", then:\n            1.  Let |e| be the result of [=exception/create|creating=]\n                a \"{{NotAllowedError!!exception}}\" {{DOMException}}.\n            1.  Queue a task to run [=notify error=] with [=this=] and |e| as arguments.\n            1.  Return.\n        1.  Let |connected| be the result of invoking [=connect to sensor=] with [=this=] and\n            [=this=]'s [=relevant global object=] as argument.\n        1.  If |connected| is false, then\n            1.  Let |e| be the result of [=exception/create|creating=] a\n                \"{{NotReadableError!!exception}}\" {{DOMException}}.\n                <!-- Note: user agents may decide to use a\n                \"{{NotAllowedError!!exception}}\" {{DOMException}},",
+ "excerpt_sha256": "be72e0a26c149add493d90ee9f8a91cc5401af84ed149ce22a8097ee7030e983",
+ "must_contain": {
+  "[=request sensor access=]": true,
+  "\"{{NotAllowedError!!exception}}\"": true,
+  "\"{{NotReadableError!!exception}}\"": true
+ },
+ "status": "VERIFIED"
+}

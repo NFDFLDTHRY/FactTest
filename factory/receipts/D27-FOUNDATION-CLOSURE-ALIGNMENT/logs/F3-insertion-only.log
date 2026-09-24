@@ -1,0 +1,5 @@
+$ sh -c for f in ASCII-GRAMMAR.md ASCII-LANGUAGE.md LANGUAGE-TESTS.md; do d=$(git diff --numstat 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- $f | cut -f2); [ "$d" = 0 ] || { echo "$f deleted $d lines"; exit 1; }; grep -q '^D27 ANNOTATION' $f || { echo "$f no annotation"; exit 1; }; done && grep -q 'LANGUAGE VERSION 1' ASCII-GRAMMAR.md && grep -q 'L43' LANGUAGE-TESTS.md && echo 'insertion-only annotations with markers'
+(cwd .)
+insertion-only annotations with markers
+
+[exit 0] expected 0

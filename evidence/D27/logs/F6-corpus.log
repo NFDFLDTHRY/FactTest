@@ -1,0 +1,5 @@
+$ sh -c CARGO_TARGET_DIR=/home/user/factory-builds/d27-target cargo +1.94.1 build -q -p factc && node tests/closure/language-corpus.mjs --factc /home/user/factory-builds/d27-target/debug/factc --corpus tests/closure/registers/language-corpus.json --out evidence/D27/language/corpus --check tests/closure/language-corpus-v1.json
+(cwd .)
+corpus LANGUAGE 1: 53 entries {"DIAGNOSTICS":20,"OK":33}; frozen table REPRODUCED
+
+[exit 0] expected 0

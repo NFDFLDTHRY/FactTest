@@ -1,0 +1,29 @@
+{
+ "id": "CL-ST1",
+ "trace": "ST",
+ "authority": "AUTH-STORAGE-BUCKET-MODE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/storage",
+  "branch": "main",
+  "path": "storage.bs",
+  "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+  "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+  "bytes": 30128
+ },
+ "locator": {
+  "fragment": "#bucket-mode",
+  "line_start": 363,
+  "line_end": 365,
+  "derivation": "PRESENT_EXPLICIT (id attribute)",
+  "enclosing_section": "#buckets (line 350)"
+ },
+ "window": 3,
+ "consequence": "local storage buckets start best-effort",
+ "excerpt": "<dfn for=\"local storage bucket\" id=bucket-mode oldids=box-mode>mode</dfn>, which is\n\"<code>best-effort</code>\" or \"<code>persistent</code>\". It is initially \"<code>best-effort</code>\".\n",
+ "excerpt_sha256": "4d543f404d21ce0078af47a6d672d8d8328a5ebf99a6615c89dca4fbc79a8dbb",
+ "must_contain": {
+  "\"<code>best-effort</code>\"": true
+ },
+ "status": "VERIFIED"
+}

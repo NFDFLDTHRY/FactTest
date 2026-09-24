@@ -1,0 +1,30 @@
+{
+ "id": "CL-WC4",
+ "trace": "WC",
+ "authority": "AUTH-WEBCODECS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/webcodecs",
+  "branch": "main",
+  "path": "index.src.html",
+  "commit": "8f7384fb4749a39fa2df6eea37685dd1ede297d1",
+  "sha256": "6ce711783ba8e084a286a40a4d71e4bd380002470922afa93b568a065a5bb324",
+  "bytes": 293911
+ },
+ "locator": {
+  "text": "A User Agent <em class=\"rfc2119\">MUST</em> only [=reclaim a codec=] that is",
+  "line_start": 6250,
+  "line_end": 6253,
+  "derivation": "anchor text",
+  "enclosing_section": "#resource-reclamation (line 6222)"
+ },
+ "window": 4,
+ "consequence": "only inactive or background codecs may be reclaimed",
+ "excerpt": "A User Agent <em class=\"rfc2119\">MUST</em> only [=reclaim a codec=] that is\neither an [=inactive codec=], a [=background codec=], or both. A User Agent\n<em class=\"rfc2119\">MUST NOT</em> reclaim a codec that is both [=active=] and in\nthe foreground, i.e. not a [=background codec=].",
+ "excerpt_sha256": "506648ddfae872704a6b20a62c32846cd01ffaaa11cc36bd5c0600e1c097edc3",
+ "must_contain": {
+  "[=inactive codec=], a [=background codec=], or both": true,
+  "MUST NOT</em> reclaim a codec that is both [=active=] and in": true
+ },
+ "status": "VERIFIED"
+}

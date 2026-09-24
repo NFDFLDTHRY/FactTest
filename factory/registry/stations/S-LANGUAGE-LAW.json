@@ -1,0 +1,53 @@
+{
+  "station_id": "S-LANGUAGE-LAW",
+  "version": "1",
+  "capability_tags": [
+    "LANGUAGE_LAW_FORGE"
+  ],
+  "input_kinds": [
+    "approved_ascii",
+    "language_evolution_record"
+  ],
+  "operation_class": "materialize_language_law_bound_to_the_compiler_that_implements_it",
+  "output_kinds": [
+    "language_law_documents"
+  ],
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "ASCII-LANGUAGE.md",
+    "ASCII-GRAMMAR.md",
+    "SEMANTIC-MODEL.md",
+    "LANGUAGE-TESTS.md",
+    "REFINEMENT-LAW.md",
+    "factory/receipts/"
+  ],
+  "must_not_change": [
+    "FACTORY-LAW.md",
+    "compiler/",
+    "host/",
+    "factory/src/",
+    "factory/registry/",
+    "evidence/",
+    "fixtures/",
+    "tests/"
+  ],
+  "preconditions": [
+    "the change is ordered by approved ASCII that names the language version it belongs to (design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 4: the language-evolution contract)",
+    "a change that is not insertion-only is a language version change: the same delta carries the compiler change (S-RUST) that implements it and the evolution qualification records (tests/closure/language-corpus.mjs --check against the frozen table of the previous version, tests/closure/language-manifest.mjs --check --grammar, the new-syntax tests, the unknown-keyword attacks); until that compiler is activated the new text is a PROPOSAL, never authority"
+  ],
+  "invariants": [
+    "LANGUAGE VERSION BOUND: after the station closes, the version ASCII-GRAMMAR.md declares (a line 'LANGUAGE VERSION <n>') equals the version the parser implements (tests/closure/language-manifest.mjs --grammar); a text that describes a language no activated compiler implements is refused",
+    "INSERTION-ONLY unless the delta is a language version change: every annotation block begins with a line starting '<delta> ANNOTATION' and no existing line is deleted or modified (git diff --numstat reports 0 deleted lines)",
+    "NEW SYNTAX NEVER AUTHORIZES ITSELF: a language N+1 statement is documented as a proposal until Compiler N+1 is activated by the Factory; the corpus of language N stays the compatibility oracle",
+    "FACTORY-LAW.md is never changed by this station"
+  ],
+  "verification": [
+    "per-file deleted-line count 0 against the canonical base (insertion-only mode) or the evolution qualification records present (version-change mode)",
+    "annotation marker present",
+    "tests/closure/language-manifest.mjs --grammar ASCII-GRAMMAR.md exits 0"
+  ],
+  "source_nonmutating": false,
+  "receipt_schema_version": "1"
+}

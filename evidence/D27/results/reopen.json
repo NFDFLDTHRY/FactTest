@@ -1,0 +1,125 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "reopen",
+ "kind": "source",
+ "started": "2026-09-24T23:25:25.889Z",
+ "commands": [
+  {
+   "command": "T=$(mktemp -d) && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json --out $T/g13.json >/dev/null && node tests/reference/reopen.mjs $T/g13.json evidence/D27/reopen",
+   "exit": 0,
+   "seconds": 72
+  }
+ ],
+ "facts": {
+  "FACT-D14-D11-PINS-RECHECKED-D20": {
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "reopen/summary.json",
+     "sha256": "d9c78c370e2317cf3911588e9c35a0778f7e2ff53ef697ce3f22f0a3a3927840",
+     "checks": [
+      {
+       "path": "pin_check.PIN_MATCH",
+       "eq": 63,
+       "observed": 63,
+       "ok": true
+      },
+      {
+       "path": "clause.CHANGED",
+       "absent": true,
+       "observed": "(absent)",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-FRONTIER-SOURCES-AT-PIN": {
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "reopen/summary.json",
+     "sha256": "d9c78c370e2317cf3911588e9c35a0778f7e2ff53ef697ce3f22f0a3a3927840",
+     "checks": [
+      {
+       "path": "clause.CHANGED",
+       "absent": true,
+       "observed": "(absent)",
+       "ok": true
+      },
+      {
+       "path": "clause.NOT_FOUND_AT_TIP",
+       "absent": true,
+       "observed": "(absent)",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-MEMORY64-FINISHED": {
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "reopen/proposal-phases.json",
+     "sha256": "42804a3eb685100ad3af07f0b58e7469f1d841fb877e9afd8fc53b0d48194c41",
+     "checks": [
+      {
+       "path": "finished",
+       "includes": "Memory64",
+       "observed": "20 entries",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-WASM-SET-PHASE-1": {
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "reopen/proposal-phases.json",
+     "sha256": "42804a3eb685100ad3af07f0b58e7469f1d841fb877e9afd8fc53b0d48194c41",
+     "checks": [
+      {
+       "path": "phases.Shared-Everything Threads",
+       "eq": 1,
+       "observed": 1,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-WASM-THREADS-PHASE-4": {
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "reopen/proposal-phases.json",
+     "sha256": "42804a3eb685100ad3af07f0b58e7469f1d841fb877e9afd8fc53b0d48194c41",
+     "checks": [
+      {
+       "path": "phases.Threads",
+       "eq": 4,
+       "observed": 4,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T23:26:37.942Z",
+ "status": "PASS"
+}

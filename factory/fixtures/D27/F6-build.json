@@ -1,0 +1,123 @@
+{
+  "fixture_id": "F6-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "evidence/D27/selection.json",
+    "tests/reprove/runbook.json (groups of kind source and cite)",
+    "tests/closure/ (corpus, manifest, feedback probe)",
+    "fixtures/commissioning (the physical tape)"
+  ],
+  "narrowed_may_change": [
+    "evidence/D27/results/",
+    "evidence/D27/clauses/",
+    "evidence/D27/reopen/",
+    "evidence/D27/ingress-reprove/",
+    "evidence/D27/process/",
+    "evidence/D27/manifest-reprove/",
+    "evidence/D27/status-reprove/",
+    "evidence/D27/lineage/",
+    "evidence/D27/paths/",
+    "evidence/D27/language/",
+    "evidence/D27/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "rm -rf /home/user/factory-builds/d27-target /home/user/factory-builds/d27-kernels && mkdir -p /home/user/factory-builds/d27-target /home/user/factory-builds/d27-kernels && echo 'fresh build directories'"
+        ],
+        "log": "evidence/D27/logs/F6-fresh-dirs.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D27/selection.json --runbook tests/reprove/runbook.json --kind source --out evidence/D27"
+        ],
+        "log": "evidence/D27/logs/F6-run-selected-source.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d27-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d27-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D27/selection.json --runbook tests/reprove/runbook.json --kind cite --out evidence/D27"
+        ],
+        "log": "evidence/D27/logs/F6-run-selected-cite.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d27-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d27-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D27/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D27"
+        ],
+        "log": "evidence/D27/logs/F6-run-selected-repo.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d27-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d27-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "CARGO_TARGET_DIR=/home/user/factory-builds/d27-target cargo +1.94.1 build -q -p factc && node tests/closure/language-corpus.mjs --factc /home/user/factory-builds/d27-target/debug/factc --corpus tests/closure/registers/language-corpus.json --out evidence/D27/language/corpus --check tests/closure/language-corpus-v1.json"
+        ],
+        "log": "evidence/D27/logs/F6-corpus.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/closure/language-manifest.mjs --root . --out evidence/D27/language/manifest.json --check tests/closure/language-manifest-v1.json --grammar ASCII-GRAMMAR.md"
+        ],
+        "log": "evidence/D27/logs/F6-manifest.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/closure/evidence-feedback-probe.mjs --factc /home/user/factory-builds/d27-target/debug/factc --source fixtures/commissioning/byte-relay.ascii --contracts fixtures/commissioning/contracts.ascii --metrics fixtures/commissioning/metrics.ascii --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --out evidence/D27/language/feedback"
+        ],
+        "log": "evidence/D27/logs/F6-feedback.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const fs=require(\"fs\");let n=0,facts=0;for(const f of fs.readdirSync(\"evidence/D27/results\")){const r=J(\"evidence/D27/results/\"+f);const bad=Object.entries(r.facts).filter(([k,v])=>v.verdict!==\"PASS\").map(([k])=>k);if(bad.length||r.commands.some(c=>c.exit!==0)){console.log(r.group,\"FAIL\",bad);process.exit(1)}n++;facts+=Object.keys(r.facts).length}const s=J(\"evidence/D27/selection.json\");console.log(\"groups\",n,\"facts re-proved\",facts,\"selected\",s.selected);if(facts!==s.selected)process.exit(1);const c=J(\"evidence/D27/language/corpus/corpus-record.json\");const m=J(\"evidence/D27/language/manifest.json\");const fb=J(\"evidence/D27/language/feedback/feedback.json\");console.log(\"corpus\",c.entries,\"manifest version\",m.language_version,\"grammar\",m.grammar_check.grammar_version,\"observed-as-source analyze\",fb.verdict.observed_accepted_as_source_in_analyze,\"build\",fb.verdict.observed_accepted_as_source_in_build);if(c.entries!==53||m.language_version!==1||m.grammar_check.grammar_version!==1||typeof fb.verdict.observed_accepted_as_source_in_analyze!==\"boolean\")process.exit(1)'"
+        ],
+        "log": "evidence/D27/logs/F6-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D27/language/corpus/corpus-record.json",
+    "evidence/D27/language/manifest.json",
+    "evidence/D27/language/feedback/feedback.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+}

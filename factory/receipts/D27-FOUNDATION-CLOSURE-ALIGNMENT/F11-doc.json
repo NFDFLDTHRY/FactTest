@@ -1,0 +1,148 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F11-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F11-doc",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "Factory evidence of F1-F10"
+  ],
+  "open_tree": "a2f2da02102a44c4e2efa640813a2d0723451be0",
+  "close_tree": "144254b64707aff64b52f5c0170c1938a0d2171c",
+  "changed_paths": [
+    "design/materialization/D27-OBSERVED-FOUNDATION-CLOSURE.md",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F11-observed.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D27-OBSERVED-FOUNDATION-CLOSURE.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F11-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F11-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c O=design/materialization/D27-OBSERVED-FOUNDATION-CLOSURE.md; for k in P1 P2 P3 P4 P5 P6 P7 FACT-D27-CLOSURE-STRUCTURE-CHECKED FACT-D27-SELF-HOSTING-NOT-CLOSED FACT-D27-RUST-BUILD-BOUNDARY S-LANGUAGE-LAW 'NOT CLOSED' FC-1; do grep -q -- \"$k\" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F11-observed.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D27-OBSERVED-FOUNDATION-CLOSURE.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F11-observed.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:28:38Z",
+  "status": "PASS"
+}

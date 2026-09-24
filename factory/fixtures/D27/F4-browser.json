@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F4-browser",
+  "station_id": "S-BROWSER",
+  "selected_inputs": [
+    "the D27 host identity"
+  ],
+  "narrowed_may_change": [
+    "evidence/D27/identity/",
+    "evidence/D27/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reprove/identity.mjs",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D27/identity"
+        ],
+        "log": "evidence/D27/logs/F4-identity.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D27/identity/host.json",
+    "evidence/D27/identity/browser-gpu-flags.json",
+    "evidence/D27/identity/tips.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+}

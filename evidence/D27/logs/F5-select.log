@@ -1,0 +1,6 @@
+$ sh -c node tests/reprove/select.mjs --graph design/environment-map/graph.json --identity evidence/D27/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D27 --out evidence/D27/selection.json && node -e 'const s=JSON.parse(require("fs").readFileSync("evidence/D27/selection.json"));console.log("evaluated",s.evaluated,"selected",s.selected,"gaps",s.gaps.length,"unmapped",s.unmapped_obligations.length);if(s.gaps.length||s.unmapped_obligations.length)process.exit(1)'
+(cwd .)
+evaluated 175 current RUN/OBS facts: selected 75 (environment 67, implementation 14, obligation 0); gaps 0; environment pairs {"SAME":162,"DRIFT":67,"UNK":14}; groups reopen, ingress, clauses, process, identity, manifest, status
+evaluated 175 selected 75 gaps 0 unmapped 0
+
+[exit 0] expected 0

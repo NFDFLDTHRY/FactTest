@@ -1,0 +1,29 @@
+{
+ "id": "CL-OPFS1",
+ "trace": "STO",
+ "authority": "AUTH-FS-OPFS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/fs",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+  "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+  "bytes": 85583
+ },
+ "locator": {
+  "text": "partial interface StorageManager {",
+  "line_start": 1696,
+  "line_end": 1697,
+  "derivation": "anchor text",
+  "enclosing_section": "#sandboxed-filesystem (line 1678)"
+ },
+ "window": 2,
+ "consequence": "the origin private file system root comes from navigator.storage.getDirectory() ([SecureContext])",
+ "excerpt": "partial interface StorageManager {\n  Promise<FileSystemDirectoryHandle> getDirectory();",
+ "excerpt_sha256": "9f876e319a4e894b293740d6cdb8c6bcb4bb0b562830d7c14463b6e17a464906",
+ "must_contain": {
+  "Promise<FileSystemDirectoryHandle> getDirectory();": true
+ },
+ "status": "VERIFIED"
+}

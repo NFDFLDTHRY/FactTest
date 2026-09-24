@@ -161,3 +161,17 @@ D13 ANNOTATION (registry amendment, D13-REPO-HYGIENE): the JSON registry factory
 D18 ANNOTATION: station S-ANNOTATE-OWNER (factory/registry/stations/S-ANNOTATE-OWNER.json, introduced by
 D18-REPO-RECONCILIATION as bootstrap registry material) inserts annotations into CAPABILITY-MATRIX.md and BOOTSTRAP-TESTS.md
 under the S-ANNOTATE invariants (insertion-only; every block begins with '<delta> ANNOTATION'; FACTORY-LAW.md never).
+
+D27 ANNOTATION (registry amendment, D27-FOUNDATION-CLOSURE-ALIGNMENT): station S-LANGUAGE-LAW
+(factory/registry/stations/S-LANGUAGE-LAW.json, LANGUAGE_LAW_FORGE; introduced as bootstrap registry material by the delta
+that first used it) materializes the five language-law documents - ASCII-LANGUAGE.md, ASCII-GRAMMAR.md, SEMANTIC-MODEL.md,
+LANGUAGE-TESTS.md, REFINEMENT-LAW.md - which before D27 no registered station could change (tests/closure/
+station-authority-census.mjs at the D27 base: zero authorizing stations; their last change, 4dcc28d, predates D0).
+Two modes: INSERTION-ONLY annotations ('<delta> ANNOTATION' blocks, git diff --numstat 0 deleted lines) ordered by approved
+ASCII; and a LANGUAGE VERSION CHANGE, allowed only in a delta that also carries the compiler change (S-RUST) implementing
+the new version and the evolution qualification of design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 4 (the
+corpus of the previous version reproduced or migrated, the manifest of the new version derived, new-syntax tests, the
+unknown-keyword attack set, canonical round trip).  Invariant LANGUAGE VERSION BOUND: after the station closes, the version
+ASCII-GRAMMAR.md declares equals the version the parser implements (tests/closure/language-manifest.mjs --grammar); NEW
+SYNTAX NEVER AUTHORIZES ITSELF; FACTORY-LAW.md is never changed by this station.  Its MUST NOT CHANGE covers compiler/,
+host/, factory/src/, factory/registry/, evidence/, fixtures/ and tests/: the station changes law text only.

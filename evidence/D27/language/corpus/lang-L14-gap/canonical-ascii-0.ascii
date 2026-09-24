@@ -1,0 +1,21 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system gaps}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{component gpu_backend}
+| @{port gpu_backend.i in: T public}
+| @{component src}
+| @{port src.o out: T public}
+| RELATIONS
+| @{data d src.o -> gpu_backend.i mode=copy}
+| GOVERNANCE
+| @{status gpu_backend GAP "implementation contract not selected"}
+| @{status src OBS "observed"}
+| @{status gpu_backend.i ERR "contradiction"}
+| @{status d RUN "witnessed"}
+| @{status T NEW "proposed"}
+| @{issue gap_allocator GAP "first-party allocator unresolved"}
+| @{issue unknown_thing UNK "not established"}
++------------------------------------------------------------------------+

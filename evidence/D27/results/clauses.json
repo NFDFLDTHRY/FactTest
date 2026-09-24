@@ -1,0 +1,61 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "clauses",
+ "kind": "source",
+ "started": "2026-09-24T23:23:31.170Z",
+ "commands": [
+  {
+   "command": "node tests/reference/clauses.mjs tests/reference/d15-clauses.json design/environment-map/graph.json evidence/D27/clauses/D15",
+   "exit": 0,
+   "seconds": 50
+  },
+  {
+   "command": "node tests/reference/clauses.mjs tests/reference/d16-clauses.json design/environment-map/graph.json evidence/D27/clauses/D16",
+   "exit": 0,
+   "seconds": 35
+  }
+ ],
+ "facts": {
+  "FACT-D15-CLAUSES-VERIFIED": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D15/summary.json",
+     "sha256": "9123d7e496491520178331e831490ee2f8ac2a19863cf4914902b51468393b77",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 60,
+       "observed": 60,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D16-CLAUSES-VERIFIED": {
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "clauses/D16/summary.json",
+     "sha256": "ee52ff37eb2a1f6b891e2311d301bb71d29e3104387238477859e608ad2d0b02",
+     "checks": [
+      {
+       "path": "status.VERIFIED",
+       "eq": 90,
+       "observed": 90,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T23:24:55.987Z",
+ "status": "PASS"
+}

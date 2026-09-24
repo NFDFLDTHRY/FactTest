@@ -366,4 +366,11 @@ commissioning epoch     epochs/D26.json (D26) = the re-proof fragment (tests/rep
                         now maps every current claim (groups manifest, physical, qualified-proof with the crate DAG)
 final audit             tests/audit/consistency-audit.mjs (the five equalities of the D26 prompt from the registers) and
                         tests/audit/final-condition.mjs (the 21 [PASS] lines from named evidence): computed, never asserted
+closure epoch           epochs/D27.json (D27) = the re-proof fragment (the facts the selector found stale by source-tip
+                        drift, re-proved through the runbook; ENV-D27-*) + the fact fragment (IMPL-CLOSURE, the closure
+                        probes, the foundation-closure facts: structure checked, LANGUAGE 1 corpus oracle and manifest,
+                        language-law station qualified [RUN]; evolution contract [OBS]; observed ASCII not distinguishable
+                        from source and self-hosting not closed [GAP]; the RUST_BUILD boundary [UNK]); the registers of
+                        tests/closure/registers/ cite current facts and evidence paths, checked by
+                        tests/closure/structural-check.mjs
 ```

@@ -340,3 +340,26 @@ only when the complete public contract is preserved.
 \`\`\`
 
 Together these permit strong human/AI abstraction without semantic guessing.
+
+D27 ANNOTATION (language-evolution test obligations, D27-FOUNDATION-CLOSURE-ALIGNMENT; inserted by station S-LANGUAGE-LAW;
+insertion-only; obligations for the language-evolution contract of design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 4 - L36 and
+L37 are implemented and witnessed by D27, L38-L43 are obligations, not current execution claims):
+
+- L36 corpus-oracle reproduction: every entry of tests/closure/registers/language-corpus.json run through the compiler
+  under test reproduces the frozen expected table of its language version (tests/closure/language-corpus.mjs --check).
+- L37 vocabulary manifest equality: the manifest derived from the compiler source equals the committed manifest and every
+  `@{keyword` form of ASCII-GRAMMAR.md is accepted by the parser and vice versa; the grammar's declared LANGUAGE VERSION
+  equals the parser's (tests/closure/language-manifest.mjs --check --grammar).
+- L38 version identification: a source unit written for LANGUAGE N+1 is recognized as such and refused by Compiler N with
+  an explicit version diagnostic (requires a version statement: LANGUAGE 2).
+- L39 evidence/source role separation: an observed ASCII unit is refused as authored source by ANALYZE and BUILD
+  (requires a source-role statement or a non-source evidence dialect: LANGUAGE 2).
+- L40 generator-based presentation equivalence: for a generated family of presentation-preserving transformations over the
+  corpus, canonical renderings are identical (the closure property of L30 by generation, not by fixed fixtures).
+- L41 derived unknown-keyword attack set: every keyword of manifest N+1 absent from manifest N, submitted to Compiler N in
+  a minimal island, is PARSE_UNKNOWN_KEYWORD; every ambiguity fixture of N stays ambiguous under N+1.
+- L42 migration record round trip: every corpus row whose expectation changes between N and N+1 has a migration record;
+  Compiler N+1 reproduces the recorded new expectation; no frozen row is edited.
+- L43 multi-workspace composition: a system exceeding one kernel workspace (compiler/foundation/src/limits.rs) is described
+  as subsystems compiled separately and imported by their public contracts, with the same resolved semantic graph as a
+  single-workspace equivalent where one fits.

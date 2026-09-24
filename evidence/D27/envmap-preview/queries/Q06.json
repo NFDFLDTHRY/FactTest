@@ -1,0 +1,547 @@
+{
+  "query": "Q06",
+  "title": "What becomes stale if rustc changes?",
+  "answer": {
+    "dimensions": {
+      "toolchain.nightly.components": [
+        {
+          "subject": "EV-D9-T9-P3-04",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "clippy absent (already the case on ENV-D11-HOST)"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "rust-src removed"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "rust-src removed"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "rust-src removed"
+        },
+        {
+          "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D17-TOOLCHAIN",
+          "relation": "implementation: another toolchain, another install path, or a profile that strips the name section (IB-KERNEL-NAME-SECTION-HASH)"
+        },
+        {
+          "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "implementation: another toolchain, another install path, or a profile that strips the name section (IB-KERNEL-NAME-SECTION-HASH)"
+        },
+        {
+          "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "implementation: another toolchain, another install path, or a profile that strips the name section (IB-KERNEL-NAME-SECTION-HASH)"
+        },
+        {
+          "subject": "FACT-NIGHTLY-CLIPPY-ABSENT-D11",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D11-HOST",
+          "relation": "changes"
+        }
+      ],
+      "toolchain.nightly.install_name": [
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D23",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes (build-std hashes the rust-src path)"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D23",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes (build-std hashes the rust-src path)"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes (build-std hashes the rust-src path)"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes (build-std hashes the rust-src path)"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes (build-std hashes the rust-src path)"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes (build-std hashes the rust-src path)"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes (build-std hashes the rust-src path)"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes (build-std hashes the rust-src path)"
+        }
+      ],
+      "toolchain.nightly.rustc_commit": [
+        {
+          "subject": "EV-D1-B9-BUILD",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D1-D3-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D1-B9-INSPECT",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D1-D3-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D12-KERNEL",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D12-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P5-02",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P5-03",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P8-01",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P8-02",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-D19-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D19-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D20-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D19-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D19-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D27-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D20-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D20-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D20-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D20-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D27-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D23-QUALIFIED-PROOF",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D23-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-D23-QUALIFIED-PROOF",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D23-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-D23-WASM-TRANSPORT-COMPLETE",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-D26-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D26-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D27-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-D26-WHOLE-SYSTEM-COMMISSIONED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "a different nightly"
+        },
+        {
+          "subject": "FACT-D27-ENVIRONMENT-IDENTITY",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D27-HOST",
+          "relation": "another pinned nightly"
+        },
+        {
+          "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D17-TOOLCHAIN",
+          "relation": "another nightly or codegen profile"
+        },
+        {
+          "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "another nightly or codegen profile"
+        },
+        {
+          "subject": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "another nightly or codegen profile"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D23",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D23",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D17-TOOLCHAIN",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D23",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D23",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D23",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D23-HOST",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D17-TOOLCHAIN",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D23-HOST",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D24-HOST",
+          "relation": "a different nightly"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "a different nightly"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-D24",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D17-TOOLCHAIN",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "another nightly or codegen profile changes the exec sections"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-QUALIFIED-JUDGE-RERUN",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-QUALIFIED-JUDGE-RERUN",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-QUALIFIED-JUDGE-RERUN",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-SH-KERNEL-TOOLCHAIN-DRIFT",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D12-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-WASM64-MODULE-I64",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D1-D3-HOST",
+          "relation": "implementation: another pinned nightly (IB-RUSTC-PIN-EQUALS-TIP)"
+        },
+        {
+          "subject": "FACT-WASM64-MODULE-I64",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-WASM64-MODULE-I64",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "implementation: another pinned nightly (IB-RUSTC-PIN-EQUALS-TIP)"
+        },
+        {
+          "subject": "FACT-WASM64-MODULE-I64",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-WASM64-MODULE-I64",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "implementation: another pinned nightly (IB-RUSTC-PIN-EQUALS-TIP)"
+        },
+        {
+          "subject": "FACT-WASM64-MODULE-I64",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        }
+      ],
+      "toolchain.stable.rustc_commit": [
+        {
+          "subject": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D22-HOST",
+          "relation": "the HOST_NATIVE_SET toolchain changes"
+        },
+        {
+          "subject": "FACT-D22-JUDGE-QUALIFIED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D22-HOST",
+          "relation": "the HOST_NATIVE_SET toolchain changes"
+        },
+        {
+          "subject": "FACT-D23-COMPILER-DAG-EXECUTED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D23-HOST",
+          "relation": "the HOST_NATIVE_SET toolchain changes"
+        },
+        {
+          "subject": "FACT-D23-COMPILER-DAG-EXECUTED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "the HOST_NATIVE_SET toolchain changes"
+        },
+        {
+          "subject": "FACT-D23-QUALIFIED-PROOF",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D23-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-D23-QUALIFIED-PROOF",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-TOOLCHAIN-PINNED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D13-HOST-PINNED",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-TOOLCHAIN-PINNED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-TOOLCHAIN-PINNED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        }
+      ],
+      "toolchain.stable.rustc_release": [
+        {
+          "subject": "EV-D9-T9-P2-04",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P4",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-COMPILE-FAIL-WITNESSED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D19-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-COMPILE-FAIL-WITNESSED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D26-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-COMPILE-FAIL-WITNESSED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-NATIVE-WORKSPACE-UNBUILDABLE",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "a future rustc may change the panic_handler requirement"
+        }
+      ]
+    },
+    "count": 88
+  }
+}

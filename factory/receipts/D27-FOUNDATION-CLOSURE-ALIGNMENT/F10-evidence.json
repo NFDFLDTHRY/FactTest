@@ -1,0 +1,537 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F10-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F10-evidence",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "the D27 graph",
+    "evidence/D27/"
+  ],
+  "open_tree": "2c07033838be66aff59fcdc0a3f0a3d501414051",
+  "close_tree": "7bf305ddf404a9857a4a3e6a6a0ed1217a92db0b",
+  "changed_paths": [
+    "evidence/D27/audit/consistency-final.json",
+    "evidence/D27/envmap/merge-check.json",
+    "evidence/D27/envmap/queries/Q01.json",
+    "evidence/D27/envmap/queries/Q02.json",
+    "evidence/D27/envmap/queries/Q03.json",
+    "evidence/D27/envmap/queries/Q04.json",
+    "evidence/D27/envmap/queries/Q05.json",
+    "evidence/D27/envmap/queries/Q06.json",
+    "evidence/D27/envmap/queries/Q07.json",
+    "evidence/D27/envmap/queries/Q08.json",
+    "evidence/D27/envmap/queries/Q09.json",
+    "evidence/D27/envmap/queries/Q10.json",
+    "evidence/D27/envmap/queries/Q11.json",
+    "evidence/D27/envmap/queries/Q12.json",
+    "evidence/D27/envmap/queries/Q13.json",
+    "evidence/D27/envmap/queries/Q14.json",
+    "evidence/D27/envmap/queries/Q15.json",
+    "evidence/D27/envmap/queries/Q16.json",
+    "evidence/D27/envmap/queries/Q17.json",
+    "evidence/D27/envmap/queries/Q18.json",
+    "evidence/D27/envmap/queries/Q19.json",
+    "evidence/D27/envmap/queries/Q20.json",
+    "evidence/D27/envmap/queries/Q21.json",
+    "evidence/D27/envmap/queries/Q22.json",
+    "evidence/D27/envmap/render-check.json",
+    "evidence/D27/envmap/stale.json",
+    "evidence/D27/envmap/validate.json",
+    "evidence/D27/handoff-check.json",
+    "evidence/D27/index.json",
+    "evidence/D27/logs/F10-audit-after.log",
+    "evidence/D27/logs/F10-audit-before.log",
+    "evidence/D27/logs/F10-cleanup-gate.log",
+    "evidence/D27/logs/F10-consistency-audit.log",
+    "evidence/D27/logs/F10-earlier-gates.log",
+    "evidence/D27/logs/F10-handoff-check.log",
+    "evidence/D27/logs/F10-index.log",
+    "evidence/D27/logs/F10-merge-check.log",
+    "evidence/D27/logs/F10-q22.log",
+    "evidence/D27/logs/F10-queries.log",
+    "evidence/D27/logs/F10-reconciliation-gates.log",
+    "evidence/D27/logs/F10-render-check.log",
+    "evidence/D27/logs/F10-retire.log",
+    "evidence/D27/logs/F10-stale.log",
+    "evidence/D27/logs/F10-status-scan.log",
+    "evidence/D27/logs/F10-validate.log",
+    "evidence/D27/regress/capability-gate.json",
+    "evidence/D27/regress/d18-gate.json",
+    "evidence/D27/regress/d18r-gate.json",
+    "evidence/D27/regress/d20-sync-gate.json",
+    "evidence/D27/regress/d23-gate.json",
+    "evidence/D27/regress/d24-gate.json",
+    "evidence/D27/regress/implementation-gate.json",
+    "evidence/D27/status/inventory.json",
+    "evidence/D27/status/summary.txt",
+    "evidence/D27/surfaces.json",
+    "evidence/D27/workpieces/audit-after.json",
+    "evidence/D27/workpieces/audit-before.json",
+    "evidence/D27/workpieces/retire.json"
+  ],
+  "output_artifacts": [
+    "evidence/D27/envmap/queries/Q22.json",
+    "evidence/D27/audit/consistency-final.json",
+    "evidence/D27/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-queries.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-queries.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-stale.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-stale.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-merge-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-merge-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-render-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-render-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-q22.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-q22.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-reconciliation-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-reconciliation-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-earlier-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-earlier-gates.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-status-scan.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-status-scan.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-handoff-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-handoff-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-consistency-audit.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-consistency-audit.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-audit-before.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-audit-before.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-retire.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-retire.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-audit-after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-audit-after.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-cleanup-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-cleanup-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F10-index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F10-index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D27/envmap/validate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-validate.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out evidence/D27/envmap/queries",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-queries.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs stale design/environment-map/graph.json --out evidence/D27/envmap/stale.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-stale.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json,design/environment-map/epochs/D27.json --out evidence/D27/envmap/merge-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-merge-check.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map --out evidence/D27/envmap/render-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-render-check.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D27/envmap/queries/Q22.json\")).answer;console.log(a.current_facts,JSON.stringify(a.by_status),JSON.stringify(a.run_claims),a.reproved_in_current_epoch.length);if(a.run_claims.total!==a.run_claims.claimable+a.run_claims.invalidated)process.exit(1);const d=a.rows.filter(r=>/^FACT-D27-/.test(r.fact));console.log(JSON.stringify(d.map(r=>[r.fact,r.status,r.newest_physical_evidence_epoch])));if(d.length!==11||d.filter(r=>r.status===\"RUN\").length!==7||d.some(r=>r.status===\"RUN\"&&r.newest_physical_evidence_epoch!==\"D27\"))process.exit(1);const rp=a.reproved_in_current_epoch||[];console.log(\"reproved in D27\",rp.length);if(a.current_facts!==208)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-q22.log"
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D27/regress && node tests/reconcile/gate.mjs --register tests/reconcile/d18-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D27/envmap/queries --surfaces evidence/D18/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D27/regress/d18-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d18r-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D27/envmap/queries --surfaces evidence/D18R/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D27/regress/d18r-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d20-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D27/envmap/queries --surfaces evidence/D20/sync/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D27/regress/d20-sync-gate.json && node tests/reconcile/surfaces.mjs tests/reconcile/d23-surfaces.json --out evidence/D27/surfaces.json && node tests/reconcile/gate.mjs --register tests/reconcile/d23-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D27/envmap/queries --surfaces evidence/D24/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D27/regress/d23-gate.json && node tests/reconcile/gate.mjs --register tests/reconcile/d24-reconciliation.json --graph design/environment-map/graph.json --queries evidence/D27/envmap/queries --surfaces evidence/D24/surfaces.json --label-audit tests/implementation/label-audit.json --out evidence/D27/regress/d24-gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-reconciliation-gates.log"
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D27/regress && node tests/capability/gate.mjs --universe tests/capability/universe.json --matrix CAPABILITY-MATRIX.md --census evidence/D16/census --graph design/environment-map/graph.json --out evidence/D27/regress/capability-gate.json && node tests/implementation/gate.mjs --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph design/environment-map/graph.json --out evidence/D27/regress/implementation-gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-earlier-gates.log"
+    },
+    {
+      "check": "command:node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D27/status",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-status-scan.log"
+    },
+    {
+      "check": "command:sh tests/hygiene/handoff-check.sh evidence/D27/handoff-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-handoff-check.log"
+    },
+    {
+      "check": "command:sh -c node tests/audit/consistency-audit.mjs --current-delta D27-FOUNDATION-CLOSURE-ALIGNMENT --manifest evidence/D27/manifest.json --gate evidence/D27/gate.json --graph design/environment-map/graph.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D27/envmap/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D27/audit/consistency-final.json && node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const c=J(\"evidence/D27/audit/consistency.json\"),d=J(\"evidence/D27/audit/consistency-final.json\");const w=x=>JSON.stringify(x.checks.map(l=>l.status));if(d.status!==\"PASS\"||w(c)!==w(d))process.exit(1);console.log(\"consistency audit identical on the committed graph:\",d.checks.length,\"PASS\")'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-consistency-audit.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W33 --out evidence/D27/workpieces/audit-before.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-audit-before.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece retire /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W33 --out evidence/D27/workpieces/retire.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-retire.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory workpiece audit /home/user/factory-workpieces /home/user/FactTest claude/facttest-materialization-27amc7 --current W33 --out evidence/D27/workpieces/audit-after.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-audit-after.log"
+    },
+    {
+      "check": "command:sh -c node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D27/workpieces/audit-after.json\"));console.log(JSON.stringify(a.totals));if(a.totals.RETIRABLE!==0)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-cleanup-gate.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory evidence index evidence/D27 evidence/D27/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F10-index.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/envmap/queries/Q22.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/audit/consistency-final.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D27/logs/F10-validate.log",
+    "evidence/D27/logs/F10-queries.log",
+    "evidence/D27/logs/F10-stale.log",
+    "evidence/D27/logs/F10-merge-check.log",
+    "evidence/D27/logs/F10-render-check.log",
+    "evidence/D27/logs/F10-q22.log",
+    "evidence/D27/logs/F10-reconciliation-gates.log",
+    "evidence/D27/logs/F10-earlier-gates.log",
+    "evidence/D27/logs/F10-status-scan.log",
+    "evidence/D27/logs/F10-handoff-check.log",
+    "evidence/D27/logs/F10-consistency-audit.log",
+    "evidence/D27/logs/F10-audit-before.log",
+    "evidence/D27/logs/F10-retire.log",
+    "evidence/D27/logs/F10-audit-after.log",
+    "evidence/D27/logs/F10-cleanup-gate.log",
+    "evidence/D27/logs/F10-index.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:27:55Z",
+  "status": "PASS"
+}

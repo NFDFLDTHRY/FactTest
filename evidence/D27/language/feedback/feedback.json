@@ -1,0 +1,51 @@
+{
+ "tool": "tests/closure/evidence-feedback-probe.mjs",
+ "question": "does the compiler accept its own observed ASCII (evidence) as authored source?",
+ "build_exit": 0,
+ "observe_exit": 0,
+ "observed_ascii_present": true,
+ "feeds": [
+  {
+   "label": "observed",
+   "file": "evidence/D27/language/feedback/observe/observed.ascii",
+   "islands": 14,
+   "system_island": "byte_relay_observed",
+   "analyze": {
+    "exit": 0,
+    "status": "OK",
+    "diagnostics": []
+   },
+   "build": {
+    "exit": 1,
+    "status": "DIAGNOSTICS",
+    "diagnostics": [
+     "BUILD_BLOCKED_BY_GOVERNANCE"
+    ]
+   }
+  },
+  {
+   "label": "canonical",
+   "file": "evidence/D27/language/feedback/build/canonical-ascii-0.ascii",
+   "islands": 18,
+   "system_island": "byte_relay",
+   "analyze": {
+    "exit": 0,
+    "status": "OK",
+    "diagnostics": []
+   },
+   "build": {
+    "exit": 0,
+    "status": "OK",
+    "diagnostics": []
+   }
+  }
+ ],
+ "verdict": {
+  "observed_accepted_as_source_in_analyze": true,
+  "observed_accepted_as_source_in_build": false,
+  "build_refusal_reason": [
+   "BUILD_BLOCKED_BY_GOVERNANCE"
+  ],
+  "meaning": "the observed ASCII parses as a valid source unit (its @{system} and @{issue} islands are Language 1 statements): nothing in the language marks it as evidence; only its content (ERR issues) may block BUILD"
+ }
+}

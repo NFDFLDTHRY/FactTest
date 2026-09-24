@@ -1,0 +1,27 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system relay_under_test "Relay Under Test"}
+| TYPES
+| @{type Bytes}
+| COMPONENTS
+| @{component dst}
+| @{port dst.bytes in: Bytes public}
+| @{component src}
+| @{port src.bytes out: Bytes public}
+| RELATIONS
+| @{data flow src.bytes -> dst.bytes mode=copy}
+| INVARIANTS
+| @{invariant k_cons has_consumer(src.bytes)}
+| @{invariant k_path reachable(src, dst)}
+| @{invariant k_prod exactly_one_producer(dst.bytes)}
+| @{invariant k_type type_equal(src.bytes, dst.bytes)}
+| TESTS / EVIDENCE
+| @{test t_rt runtime}
+| @{evidence e_rt runtime_probe}
+| @{tests t_rt -> k_type}
+| @{witnesses e_rt -> t_rt}
+| OBJECTIVES
+| @{metric preference_rank ordinal "commissioning preference only; not performance"}
+| @{objective commissioning}
+| @{goal commissioning 1 minimize preference_rank}
++------------------------------------------------------------------------+

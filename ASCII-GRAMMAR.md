@@ -491,3 +491,26 @@ Rules:
 If a preference can alter the generated implementation strategy, it is source-visible.
 
 Host-only hidden preferences are legal only when they provably cannot change semantic/generated machinery.
+
+D27 ANNOTATION (language law amendment, D27-FOUNDATION-CLOSURE-ALIGNMENT; inserted by station S-LANGUAGE-LAW under the
+language-evolution contract of design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 4; insertion-only: no earlier line of this
+grammar changed):
+
+- LANGUAGE VERSION 1 is the language this grammar (sections 1-24) describes and the compiler at the D27 base implements
+  (compiler/source: the 31 statement keywords, the 12 invariant predicates, the vocabulary tables, the fixed invariant
+  kernel).  Its machine-readable form is tests/closure/language-manifest-v1.json, DERIVED from the compiler source by
+  tests/closure/language-manifest.mjs and checked against this text on every run: a keyword this grammar writes that
+  the parser refuses, or the reverse, is a defect, never an extension.  A grammar text whose declared LANGUAGE VERSION no
+  activated compiler implements is refused by the station (invariant LANGUAGE VERSION BOUND).
+- A source unit carries no version statement in LANGUAGE VERSION 1; absence means version 1.  A version statement is
+  itself a new keyword and therefore a language version change.
+- The compatibility corpus of LANGUAGE VERSION 1 is tests/closure/registers/language-corpus.json with its frozen expected
+  table tests/closure/language-corpus-v1.json (tests/closure/language-corpus.mjs): status, diagnostic codes, canonical
+  rendering identity and, for BUILD entries, strategy-data identity and bundle certificate per entry.  A later compiler
+  that promises compatibility reproduces every row or names the row in a migration record; the frozen table is never
+  edited.
+- Section 22 (extensibility law) is realized by the contract: COMPILER N DEFINES LANGUAGE N; a proposal for LANGUAGE N+1
+  is written in LANGUAGE N plus non-semantic presentation and NEW SYNTAX MAY NOT AUTHORIZE ITSELF; only the activation of
+  Compiler N+1 by the Factory makes LANGUAGE N+1 authoritative (S-LANGUAGE-LAW version-change mode, coupled to S-RUST and
+  the evolution qualification: corpus of N reproduced, manifest of N+1 derived, new-syntax tests, unknown-keyword attacks
+  from manifest N+1 minus manifest N refused by Compiler N, migration records, canonical round trip).

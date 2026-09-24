@@ -294,7 +294,7 @@
    ],
    "task_regression": "D22",
    "runtime_probe": "PROBE-PATHS-LITERAL",
-   "note": "S-ANNOTATE-OWNER (D18) and S-ANNOTATE (D13) were introduced as bootstrap registry material by the delta that first used them"
+   "note": "S-ANNOTATE-OWNER (D18) and S-ANNOTATE (D13) were introduced as bootstrap registry material by the delta that first used them; S-LANGUAGE-LAW (D27) likewise: the language-law station (ASCII-LANGUAGE.md, ASCII-GRAMMAR.md, SEMANTIC-MODEL.md, LANGUAGE-TESTS.md, REFINEMENT-LAW.md), version-bound to the compiler that implements the language"
   },
   {
    "id": "FACTORY-OPS",
@@ -1466,6 +1466,42 @@
    "runtime_probe": "PROBE-CONSISTENCY-AUDIT"
   },
   {
+   "id": "TEST-CLOSURE",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/closure/"
+   ],
+   "owner": [
+    "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md",
+    "design/materialization/D27-INTENDED-FOUNDATION-CLOSURE.md"
+   ],
+   "input": "the closure registers (tests/closure/registers/), the component register, the environment graph, the compiler source, the language fixtures and specimens, the station registry, the toolchain",
+   "operation": "structural-check.mjs (every register row links CURRENT EVIDENCE -> REQUIRED SEMANTIC BEHAVIOUR -> BROWSER-NATIVE MECHANISM -> TEST -> EVIDENCE -> STATUS; renders the generated registers view); language-manifest.mjs (the machine-readable vocabulary of LANGUAGE N derived from the compiler source, checked against the grammar text and the committed manifest); language-corpus.mjs (the LANGUAGE N corpus oracle: freeze / reproduce the expected table); evidence-feedback-probe.mjs (can observed ASCII be handed back as source?); station-authority-census.mjs (which stations may change a path); rust-build-census.sh (the RUST_BUILD boundary census)",
+   "output": "evidence records (structural-check.json, manifest.json, corpus-record.json, feedback.json, census.json); the generated design/foundation-closure/CLOSURE-REGISTERS.md; the frozen tables tests/closure/language-corpus-v1.json and language-manifest-v1.json",
+   "dependencies": [
+    "TEST-MANIFEST",
+    "TEST-ENVMAP",
+    "FACTC",
+    "FACTORY-REGISTRY",
+    "CRATE-SOURCE",
+    "CRATE-FOUNDATION"
+   ],
+   "consumers": [
+    "D27 fixtures",
+    "the language-evolution contract (S-LANGUAGE-LAW verification)",
+    "docs/HANDOFF.md (section 1 and 6)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh / json",
+   "toolchain_target": "node v22.22.2; sh; native factc (HOST_NATIVE_SET 1.94.1) for the corpus and the feedback probe",
+   "focused_tests": [
+    "self (structural-check on its own registers; corpus --check against the frozen table; manifest --check against the committed manifest)"
+   ],
+   "task_regression": "D27",
+   "runtime_probe": "PROBE-CLOSURE-STRUCTURAL-CHECK, PROBE-LANGUAGE-CORPUS, PROBE-LANGUAGE-MANIFEST, PROBE-EVIDENCE-FEEDBACK, PROBE-STATION-AUTHORITY-CENSUS, PROBE-RUST-BUILD-CENSUS"
+  },
+  {
    "id": "TEST-TOOLCHAIN",
    "tier": "TEST",
    "area": "test",
@@ -2114,6 +2150,36 @@
    "runtime_probe": "none"
   },
   {
+   "id": "RECORD-FOUNDATION-CLOSURE",
+   "tier": "RECORD",
+   "area": "records",
+   "paths": [
+    "design/foundation-closure/"
+   ],
+   "owner": [
+    "FACTORY-LAW.md (ASCII working surface)",
+    "design/materialization/D27-INTENDED-FOUNDATION-CLOSURE.md"
+   ],
+   "input": "-",
+   "operation": "the live foundation-closure target (FOUNDATION-CLOSURE-TARGET.md: the intended ASCII of the installed Factory, the human / local-model / ASCII boundary, the language-evolution lifecycle, the generation lifecycle, the trusted computing base, the browser-native Factory mapping, the Rust-build boundary, rollback, remote sync) and the generated registers view (CLOSURE-REGISTERS.md, rendered by tests/closure/structural-check.mjs from tests/closure/registers/)",
+   "output": "documents",
+   "dependencies": [
+    "TEST-CLOSURE"
+   ],
+   "consumers": [
+    "docs/HANDOFF.md (current target)",
+    "the next work series (sequence FC-1..FC-8)"
+   ],
+   "station": "S-DOC",
+   "fixture_type": "doc",
+   "toolchain_target": "n/a",
+   "focused_tests": [
+    "tests/closure/structural-check.mjs --render (deterministic rebuild of CLOSURE-REGISTERS.md)"
+   ],
+   "task_regression": "D27",
+   "runtime_probe": "PROBE-CLOSURE-STRUCTURAL-CHECK"
+  },
+  {
    "id": "FACTORY-RECORDS",
    "tier": "RECORD",
    "area": "records",
@@ -2184,13 +2250,13 @@
     "docs/HANDOFF.md section 5 (LIVE LAW)"
    ],
    "input": "-",
-   "operation": "live law and owner contracts (annotated insertion-only by S-ANNOTATE / S-ANNOTATE-OWNER; FACTORY-LAW.md never)",
+   "operation": "live law and owner contracts (annotated insertion-only by S-ANNOTATE / S-ANNOTATE-OWNER; FACTORY-LAW.md never); the language-law documents by S-LANGUAGE-LAW since D27 (version-bound to the compiler)",
    "output": "documents",
    "dependencies": [],
    "consumers": [
     "every component (owner column)"
    ],
-   "station": "S-ANNOTATE / S-ANNOTATE-OWNER (insertion-only); FACTORY-LAW.md: none",
+   "station": "S-ANNOTATE / S-ANNOTATE-OWNER (insertion-only); S-LANGUAGE-LAW (the five language-law documents: insertion-only, or a language version change coupled to S-RUST; D27); FACTORY-LAW.md: none",
    "fixture_type": "doc",
    "toolchain_target": "n/a",
    "focused_tests": [

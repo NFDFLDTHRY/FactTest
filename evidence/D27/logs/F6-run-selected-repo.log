@@ -1,0 +1,22 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D27/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D27
+(cwd .)
+PASS manifest: H=$(git rev-parse HEAD) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json  (1 s)
+PASS manifest: M=design/execution-manifest/manifest.json && D=$(node -e 'const m=JSON.parse(require("fs").readFileSync(proces (5 s)
+PASS manifest FACT-D21-ISSUES-CLASSIFIED
+PASS manifest FACT-D21-LIVE-SURFACES-ENUMERATED
+PASS manifest FACT-D21R-MANIFEST-REBUILD-STABLE
+PASS process: O=$(pwd)/evidence/D27/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r  (4 s)
+PASS process: O=$(pwd)/evidence/D27/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r  (6 s)
+PASS process: O=$(pwd)/evidence/D27/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r  (10 s)
+PASS process FACT-D19-ENVIRONMENT-IDENTITY
+PASS process FACT-D19-MINIMUM-SET
+PASS process FACT-D20-ENVIRONMENT-IDENTITY
+PASS process FACT-D20-MINIMUM-SET
+PASS process FACT-D26-ENVIRONMENT-IDENTITY
+PASS process FACT-D26-MINIMUM-SET
+PASS status: node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D27/status- (3 s)
+PASS status: sh tests/hygiene/handoff-check.sh evidence/D27/status-reprove/handoff-check.json (0 s)
+PASS status FACT-HANDOFF-MODEL-INDEPENDENT
+PASS status FACT-STATUS-INVENTORIED
+
+[exit 0] expected 0

@@ -1,0 +1,19 @@
+$ sh -c node tests/audit/consistency-audit.mjs --current-delta D27-FOUNDATION-CLOSURE-ALIGNMENT --manifest evidence/D27/manifest.json --gate evidence/D27/gate.json --graph design/environment-map/graph.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D27/envmap/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D27/audit/consistency-final.json && node -e 'const J=p=>JSON.parse(require("fs").readFileSync(p));const c=J("evidence/D27/audit/consistency.json"),d=J("evidence/D27/audit/consistency-final.json");const w=x=>JSON.stringify(x.checks.map(l=>l.status));if(d.status!=="PASS"||w(c)!==w(d))process.exit(1);console.log("consistency audit identical on the committed graph:",d.checks.length,"PASS")'
+(cwd .)
+PASS [LIVE LAW = CURRENT IMPLEMENTATION CONTRACT] every_law_file_held: 32 law files each named by the graph, by a component's owner or by the handoff document register
+PASS [LIVE LAW = CURRENT IMPLEMENTATION CONTRACT] every_live_owner_exists: 56 live components; 47 owner files present
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] every_path_tiered: 5489 tracked files in 72 components
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] every_live_component_has_files: 56 live components with files
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] manifest_gate_pass: gate PASS: every_path_tiered, coverage_complete, live_components_connected, findings_classified, issues_well_formed, historical_not_executable
+PASS [EXECUTION MANIFEST = FACTORY ROUTES] every_live_file_within_its_station: 11 registered stations cover every file of every live component
+PASS [EXECUTION MANIFEST = FACTORY ROUTES] no_live_file_without_authorized_station: every live file has an authorized station
+PASS [FACTORY ROUTES = RECEIPTS / VERIFICATION] every_delta_receipted_and_verified: 34 integrated deltas, each with a PASS receipt per fixture and a PASS verification (D27-FOUNDATION-CLOSURE-ALIGNMENT is verified by the Factory after this audit)
+PASS [FACTORY ROUTES = RECEIPTS / VERIFICATION] every_ledger_integration_commit_exists: 35 ledger entries; every recorded integration commit exists and names its delta
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] every_run_claim_claimable_or_invalidated: 133 RUN claims = 132 claimable + 1 invalidated
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] every_non_run_fact_is_an_explicit_stop: 25 GAP/ERR/UNK current facts: 23 open stops, 2 closed by evidence
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] no_open_internal_defect: 28 A/B/C issues all REPAIRED
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] open_issues_are_boundaries: 12 open issues, every one class D/E/F/G (I-02:F, I-03:F, I-04:F, I-12:G, I-13:G, I-15:D, I-16:E, I-17:F, I-18:G, I-29:G, I-33:D, I-39:D)
+PASS
+consistency audit identical on the committed graph: 13 PASS
+
+[exit 0] expected 0

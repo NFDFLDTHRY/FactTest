@@ -1,0 +1,46 @@
+{
+  "fixture_id": "F2-annotate",
+  "station_id": "S-ANNOTATE",
+  "selected_inputs": [
+    "the target section 4; the station spec S-LANGUAGE-LAW (F0)"
+  ],
+  "narrowed_may_change": [
+    "STATION-REGISTRY.md",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "d=$(git diff --numstat 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- STATION-REGISTRY.md | cut -f2); [ \"$d\" = 0 ] || { echo \"deleted $d lines\"; exit 1; }; grep -q '^D27 ANNOTATION' STATION-REGISTRY.md && grep -q 'S-LANGUAGE-LAW' STATION-REGISTRY.md && echo 'insertion-only; S-LANGUAGE-LAW registered'"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-insertion-only.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+          "--",
+          "FACTORY-LAW.md"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F2-constitution-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "STATION-REGISTRY.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+}

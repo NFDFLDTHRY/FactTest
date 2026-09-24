@@ -1,0 +1,15 @@
+$ sh -c node tests/closure/station-authority-census.mjs --paths ASCII-LANGUAGE.md,ASCII-GRAMMAR.md,SEMANTIC-MODEL.md,LANGUAGE-TESTS.md,REFINEMENT-LAW.md --rev 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 --out evidence/D27/stations/census-before.json && node tests/closure/station-authority-census.mjs --paths ASCII-LANGUAGE.md,ASCII-GRAMMAR.md,SEMANTIC-MODEL.md,LANGUAGE-TESTS.md,REFINEMENT-LAW.md --out evidence/D27/stations/census-after.json && node -e 'const J=p=>JSON.parse(require("fs").readFileSync(p));const b=J("evidence/D27/stations/census-before.json"),a=J("evidence/D27/stations/census-after.json");console.log("before unauthorized",b.unauthorized_paths.length,"after unauthorized",a.unauthorized_paths.length);if(b.unauthorized_paths.length!==5||a.unauthorized_paths.length!==0||!a.stations.includes("S-LANGUAGE-LAW")||b.stations.includes("S-LANGUAGE-LAW"))process.exit(1)'
+(cwd .)
+NO STATION ASCII-LANGUAGE.md: may [] forbid []
+NO STATION ASCII-GRAMMAR.md: may [] forbid []
+NO STATION SEMANTIC-MODEL.md: may [] forbid []
+NO STATION LANGUAGE-TESTS.md: may [] forbid []
+NO STATION REFINEMENT-LAW.md: may [] forbid []
+AUTHORIZED ASCII-LANGUAGE.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED ASCII-GRAMMAR.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED SEMANTIC-MODEL.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED LANGUAGE-TESTS.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED REFINEMENT-LAW.md: may ["S-LANGUAGE-LAW"] forbid []
+before unauthorized 5 after unauthorized 0
+
+[exit 0] expected 0

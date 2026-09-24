@@ -1,0 +1,222 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F5-evidence",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "the D26 graph",
+    "evidence/D27/identity",
+    "the runbook",
+    "the station registry at the base and in the workpiece",
+    "the toolchain"
+  ],
+  "open_tree": "35da1cc78830f663ea174fc3ab26696e7de33bc8",
+  "close_tree": "1299e18b4b466b7f5cdaac2a6025d7ee4137184e",
+  "changed_paths": [
+    "evidence/D27/logs/F5-census.log",
+    "evidence/D27/logs/F5-rust-build-census.log",
+    "evidence/D27/logs/F5-select.log",
+    "evidence/D27/rust-build/census.json",
+    "evidence/D27/selection.json",
+    "evidence/D27/stations/census-after.json",
+    "evidence/D27/stations/census-before.json"
+  ],
+  "output_artifacts": [
+    "evidence/D27/selection.json",
+    "evidence/D27/stations/census-before.json",
+    "evidence/D27/stations/census-after.json",
+    "evidence/D27/rust-build/census.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F5-select.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F5-select.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F5-census.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F5-census.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D27/logs/F5-rust-build-census.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D27/logs/F5-rust-build-census.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node tests/reprove/select.mjs --graph design/environment-map/graph.json --identity evidence/D27/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D27 --out evidence/D27/selection.json && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D27/selection.json\"));console.log(\"evaluated\",s.evaluated,\"selected\",s.selected,\"gaps\",s.gaps.length,\"unmapped\",s.unmapped_obligations.length);if(s.gaps.length||s.unmapped_obligations.length)process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F5-select.log"
+    },
+    {
+      "check": "command:sh -c node tests/closure/station-authority-census.mjs --paths ASCII-LANGUAGE.md,ASCII-GRAMMAR.md,SEMANTIC-MODEL.md,LANGUAGE-TESTS.md,REFINEMENT-LAW.md --rev 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 --out evidence/D27/stations/census-before.json && node tests/closure/station-authority-census.mjs --paths ASCII-LANGUAGE.md,ASCII-GRAMMAR.md,SEMANTIC-MODEL.md,LANGUAGE-TESTS.md,REFINEMENT-LAW.md --out evidence/D27/stations/census-after.json && node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const b=J(\"evidence/D27/stations/census-before.json\"),a=J(\"evidence/D27/stations/census-after.json\");console.log(\"before unauthorized\",b.unauthorized_paths.length,\"after unauthorized\",a.unauthorized_paths.length);if(b.unauthorized_paths.length!==5||a.unauthorized_paths.length!==0||!a.stations.includes(\"S-LANGUAGE-LAW\")||b.stations.includes(\"S-LANGUAGE-LAW\"))process.exit(1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F5-census.log"
+    },
+    {
+      "check": "command:sh -c sh tests/closure/rust-build-census.sh evidence/D27/rust-build/census.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D27/logs/F5-rust-build-census.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/selection.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/stations/census-before.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/stations/census-after.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D27/rust-build/census.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D27/logs/F5-select.log",
+    "evidence/D27/logs/F5-census.log",
+    "evidence/D27/logs/F5-rust-build-census.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:23:30Z",
+  "status": "PASS"
+}

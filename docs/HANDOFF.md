@@ -9,10 +9,24 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D26-CLEAN-COMMISSIONING (task 6 of 6 of the whole-repository execution + gap closure series
-                   D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md: the final commissioning
-                   run; integration commits in design/materialization/LEDGER.md; the implementation baseline is
-                   design/materialization/D26-STABLE-BASELINE.md)
+last delta         D27-FOUNDATION-CLOSURE-ALIGNMENT (the foundation-closure / repo-alignment pass: the current
+                   repository reconstructed as executable evidence of what the installed Factory WebApp must preserve;
+                   the live target design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md assembled with its registers
+                   and structurally checked; integration commits in design/materialization/LEDGER.md; the
+                   implementation baseline stays design/materialization/D26-STABLE-BASELINE.md)
+current target     design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md: AN INSTALLED FACTORY WEBAPP THAT CONTINUES
+                   FACTORY WORK, MANUFACTURES AND QUALIFIES ITS OWN SUCCESSOR, AND EVOLVES THE ASCII LANGUAGE through
+                   which a human and a local model describe what the Factory should build.  Registers
+                   tests/closure/registers/ (correspondence matrix, component classification, language hardening,
+                   language-evolution contract, blockers, Rust-build boundary, seed/TCB, acceptance test, sequence),
+                   rendered to design/foundation-closure/CLOSURE-REGISTERS.md and gated by
+                   tests/closure/structural-check.mjs (evidence/D27/closure/structural-check.json).  Verdict today:
+                   SELF-HOSTING NOT CLOSED (0 of 16 acceptance steps run without the host; step 4 is the RUST_BUILD
+                   boundary); every step has its mechanism, evidence and sequence step
+language           LANGUAGE VERSION 1 = what compiler/source implements at the D27 base; machine-readable manifest
+                   tests/closure/language-manifest-v1.json (derived, checked against ASCII-GRAMMAR.md); compatibility
+                   oracle tests/closure/language-corpus-v1.json (53 entries); evolution contract: the target section 4
+                   + ASCII-GRAMMAR.md D27 annotation; station S-LANGUAGE-LAW (version-bound to the compiler)
 judge              the Factory built from this tree (tests/factory/run-witnesses.sh records its sha256): every refusal
                    reason of the prompt witnessed (tests/factory/witnesses.json, factory/tests/factory_law.rs f00-f28,
                    tests/sync/collision-witness.sh); six accepted attacks found by D22 and repaired before D23
@@ -59,15 +73,18 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    tests/audit/)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure CLOSED by D26 (six tasks; D21's
-                   re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
-                   verified, integrated and re-observed before the next; a repair is tested before the next repair
-                   (GLOBAL TEST-EVERY-ITERATION LAW)
-next               no task is open.  The entitled-claim surface is graph query Q22 of the D26 graph
-                   (evidence/D26/envmap/queries/Q22.json); the remaining stops are the boundary rows of section 6 and
-                   the open issues of tests/manifest/issues.json (every one class D/E/F/G); the public-HTTPS run
-                   (tests/physical/PUBLIC-HTTPS-PROBE.md) and the owner decisions (I-12, I-13, I-18, I-29, I-33)
-                   are the external inputs a later delta would carry
+series             D14-D19 CLOSED; D21-D26 CLOSED by D26; D27 = the alignment pass that opens the foundation-closure
+                   series FC-1..FC-8 (tests/closure/registers/sequence.json: D28-SEED-BROKER-QUALIFICATION,
+                   D29-BROWSER-OBJECT-STORE, D30-FACTORY-CORE-PORT, D31-CAPABILITY-STATIONS, D32-LANGUAGE-2-PROPOSAL,
+                   D33-CANDIDATE-QUALIFICATION-RUNNER, D34-RUST-BUILD-SPIKE, D35-GENERATION-SWAP): one StructuralDelta
+                   per step, each closed, verified, integrated and re-observed before the next
+next               FC-1 D28-SEED-BROKER-QUALIFICATION (the immutable minimal seed and its failure matrix) - not begun by
+                   D27.  The entitled-claim surface is graph query Q22 of the D27 graph
+                   (evidence/D27/envmap/queries/Q22.json); the remaining stops are the boundary rows of section 6, the
+                   blocker register tests/closure/registers/blockers.json and the open issues of
+                   tests/manifest/issues.json (every one class D/E/F/G); the owner decisions D-1 (home origin), D-2
+                   (generated-app origins), D-3 (RUST_BUILD strategy), D-5, I-12, I-13, I-18, I-29, I-33 and the
+                   public-HTTPS run (tests/physical/PUBLIC-HTTPS-PROBE.md) are the external inputs a later delta carries
 ```
 
 ## 2. Mutation law
@@ -137,7 +154,8 @@ bootstrap registry material, carried by that delta).  Widening any authority sur
 
 ```text
 LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACTORY-CONTRACTS.md, STATION-REGISTRY.md
-               + factory/registry/stations/*.json (the JSON is authoritative for surfaces), FINAL-HANDOFF-REQUIREMENTS.md
+               + factory/registry/stations/*.json (the JSON is authoritative for surfaces; S-LANGUAGE-LAW since D27 for
+               the five language-law documents, version-bound to the compiler), FINAL-HANDOFF-REQUIREMENTS.md
                (its requirements; the title is historical), REFERENCE-AUTHORITY.md, CONSTRAINT-LEDGER.md,
                CONFLICT-LEDGER.md, CAPABILITY-MATRIX.md, IMPLEMENTATION-CONTRACTS.md, EVIDENCE-OBLIGATIONS.md,
                ASCII-GRAMMAR.md, ASCII-LANGUAGE.md, SEMANTIC-MODEL.md, LOWERING-MODEL.md, REFINEMENT-LAW.md,
@@ -145,7 +163,13 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern"); LICENSE (the repository's
                license: the owner's terms, held with the law tier)
-LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
+LIVE RECORD    design/foundation-closure/ (FOUNDATION-CLOSURE-TARGET.md = the current target; CLOSURE-REGISTERS.md is
+               generated by tests/closure/structural-check.mjs from tests/closure/registers/*.json - the correspondence
+               matrix, component classification, language hardening register, language-evolution contract, blocker
+               register, Rust-build boundary, seed/TCB, acceptance test, implementation sequence, language corpus);
+               tests/closure/language-manifest-v1.json and tests/closure/language-corpus-v1.json (the LANGUAGE 1 manifest
+               and frozen corpus table: derived / frozen by the compiler, never edited);
+               design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
                epochs/D12.json .. epochs/D19.json, epochs/D14-RESCAN.json=D14-RESCAN, epochs/D20-SYNC.json,
                epochs/D20.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
                tests/reference/<epoch>-clauses.json (exact-clause manifests; the constraints they proposed are ledgered
@@ -200,11 +224,30 @@ integration, changing two findings): repaired and witnessed by D21R-MANIFEST-REP
 reason witnessed) and found six accepted attacks in the Factory itself (I-21..I-26, class A: edited and hand-written
 receipts verified, a failed identity probe closed PASS, escaping command cwd/log opened, a station writing into the
 canonical checkout closed PASS, a littering re-inspection matched): reproduced with the committed Factory, repaired in
-factory/src/ops.rs, witnessed (f17-f28) before D23.
+factory/src/ops.rs, witnessed (f17-f28) before D23.  D27 found two more class A defects: I-40 (no station had authority over the
+five language-law documents: repaired as machinery, station S-LANGUAGE-LAW, attacked by tests/closure/
+station-authority-census.mjs before and after) and I-41 (the D24-D26 evidence indexes list evidence/D21, inherited from
+the D21 fixture: the D27 index names its own package; the historical files stay as written); both REPAIRED in D27.
 
 ```text
 CLASS  ID / SOURCE                          BOUNDARY                                                          STATUS
-C      D12 B-01, B-02                       no Factory WebApp / browser state model; git subprocess state      [GAP]
+C      D12 B-01, B-02 -> FB-01, FB-02       no Factory WebApp / browser state model; git subprocess state      [GAP]
+                                            (blocker register tests/closure/registers/blockers.json; sequence FC-1..FC-3)
+D      FB-22 / I-39 (D27)                    observed ASCII is accepted by ANALYZE as authored source: no LANGUAGE 1  [GAP]
+                                            statement marks a unit as authored, canonical or observed
+                                            (FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE; LANGUAGE 2 candidate, FC-5;
+                                            Factory law L-EV-5 holds the boundary meanwhile)
+D      FB-21, FB-23, FB-24, FB-27 (D27)      no language version statement in source (LANGUAGE VERSION 1 bound by     [GAP]
+                                            annotation + derived manifest); no vocabulary query on the running
+                                            kernel; L30 witnessed by fixed transforms only; one-workspace capacity
+                                            (FC-5)
+C      FB-04 (D12 B-04, D27)                 RUST_BUILD boundary: no candidate (hosted rustc+LLVM, FactTest-native,     [UNK]
+                                            import-only, subset compiler, cranelift) is realized in a browser;
+                                            census and per-candidate INPUT/OPERATION/OUTPUT/TRUST/VERIFICATION/
+                                            BOOTSTRAP/REPRODUCIBILITY/RECOVERY in tests/closure/registers/rust-build.json
+                                            (FACT-D27-RUST-BUILD-BOUNDARY; decision D-3; FC-7)
+C      acceptance test (D27)                 foundation-closure experiment: 0 of 16 steps without the host            [GAP]
+                                            (FACT-D27-SELF-HOSTING-NOT-CLOSED; tests/closure/registers/acceptance-test.json)
 C      D12 B-06 (P10) -> D23                closed as transport-only (A/B): the wasm export surface is the whole    [RUN]
                                             kernel API (21 exports); BUILD + OBSERVE in Chromium byte-identical to
                                             host/factc (FACT-D23-WASM-TRANSPORT-COMPLETE, Q-WASM-08); the C14 contract
@@ -223,7 +266,7 @@ C      D12 B-11 (P07)                       persist() false in the Chromium 141 
                                             ASK); installed-Factory durability never observed - full Chrome grants
                                             durable storage to installed/important sites (FACT-SH-STORAGE-DURABILITY-D18)
 C      D12 B-03                             station commands are OS programs (portability)                     [ERR]
-C      D12 B-04                             RUST_BUILD only on a host                                          [UNK]
+C      D12 B-04                             RUST_BUILD only on a host (superseded in detail by the FB-04 row above)  [UNK]
 C      D12 B-13 remainder                   verifier source-commit provenance (binary sha256 is recorded)       [GAP]
 C      D11 WGSL / CON-GPU-003               WGSL never compiled or dispatched                                  [GAP]
 C      D11 hardware GPU                     only SwiftShader fallback adapters ever observed                   [UNK]

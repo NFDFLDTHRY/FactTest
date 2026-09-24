@@ -1,0 +1,328 @@
+{
+ "schema": "facttest-fact-epoch-spec/1",
+ "environment": "ENV-D27-HOST",
+ "summary": "foundation-closure / repo-alignment pass: the current repository reconstructed as executable evidence of what the installed Factory WebApp must preserve; the live target assembled with its registers (correspondence, classification, hardening, evolution contract, blockers, Rust-build boundary, seed/TCB, acceptance test, sequence) and structurally checked; the LANGUAGE 1 corpus oracle and manifest derived; the language-law station forged, attacked and registered; the observed-ASCII and Rust-build boundaries recorded honestly",
+ "implementations": [
+  {
+   "id": "IMPL-CLOSURE",
+   "repo_path": "tests/closure/{structural-check.mjs,language-manifest.mjs,language-corpus.mjs,evidence-feedback-probe.mjs,station-authority-census.mjs,rust-build-census.sh}",
+   "kind": "harness",
+   "note": "the foundation-closure structural check and rendering over tests/closure/registers/, the language manifest derivation, the corpus oracle, the evidence-feedback probe, the station authority census and the Rust-build census (D27)"
+  }
+ ],
+ "probes": [
+  {
+   "id": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "command_or_operation": "node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --evidence-required --render design/foundation-closure/CLOSURE-REGISTERS.md --out: every register row links CURRENT EVIDENCE -> REQUIRED SEMANTIC BEHAVIOUR -> BROWSER-NATIVE MECHANISM -> TEST -> EVIDENCE -> STATUS; every cited fact current, every evidence path present, every open blocker sequenced or a boundary, every acceptance step with a mechanism, every component classified once",
+   "expected_observations": [
+    "status PASS"
+   ],
+   "failure_meaning": [
+    "the closure structure is incomplete or contradicts the graph or the component register: a defect to repair, never to record over"
+   ],
+   "implemented_by": "IMPL-CLOSURE"
+  },
+  {
+   "id": "PROBE-LANGUAGE-CORPUS",
+   "command_or_operation": "node tests/closure/language-corpus.mjs --factc <fresh factc> --corpus tests/closure/registers/language-corpus.json --check tests/closure/language-corpus-v1.json --out: every corpus entry run through the compiler under test; the frozen expected table of LANGUAGE 1 reproduced row by row (status, diagnostic codes, canonical rendering identity, strategy-data identity, bundle certificate)",
+   "expected_observations": [
+    "frozen table REPRODUCED"
+   ],
+   "failure_meaning": [
+    "the compiler under test is not LANGUAGE 1 compatible on the named row (a migration record is required, or a defect)"
+   ],
+   "implemented_by": "IMPL-CLOSURE"
+  },
+  {
+   "id": "PROBE-LANGUAGE-MANIFEST",
+   "command_or_operation": "node tests/closure/language-manifest.mjs --root . --check tests/closure/language-manifest-v1.json --grammar ASCII-GRAMMAR.md --out: the vocabulary derived from the compiler source (keywords, predicates with arity, vocabulary tables, diagnostic codes, ABI operations, wasm exports, kernel limits) byte-identical to the committed manifest; every grammar keyword accepted by the parser and vice versa; the grammar-declared LANGUAGE VERSION equal to the parser version",
+   "expected_observations": [
+    "exit 0; grammar_check.grammar_version 1"
+   ],
+   "failure_meaning": [
+    "the grammar text and the compiler disagree (a defect), or the language changed without its manifest (a version change routed outside the contract)"
+   ],
+   "implemented_by": "IMPL-CLOSURE"
+  },
+  {
+   "id": "PROBE-EVIDENCE-FEEDBACK",
+   "command_or_operation": "node tests/closure/evidence-feedback-probe.mjs --factc <factc> --source fixtures/commissioning/byte-relay.ascii --contracts ... --metrics ... --tape fixtures/commissioning/tape-sample.ascii --system byte_relay --out: the observed ASCII derived from the physical tape handed back to the compiler as source in ANALYZE and BUILD",
+   "expected_observations": [
+    "a record of what the compiler said (observation only)"
+   ],
+   "failure_meaning": [
+    "harness failure (build or observe produced no artifact)"
+   ],
+   "implemented_by": "IMPL-CLOSURE"
+  },
+  {
+   "id": "PROBE-STATION-AUTHORITY-CENSUS",
+   "command_or_operation": "node tests/closure/station-authority-census.mjs --paths <language-law documents> [--rev <base>] --out: the stations whose MAY CHANGE covers each path and whose MUST NOT CHANGE does not (the literal cover rule of factory/src/paths.rs restated)",
+   "expected_observations": [
+    "before D27: unauthorized_paths = the five language-law documents; after: []"
+   ],
+   "failure_meaning": [
+    "a law surface with no authorizing station is a Factory machinery [GAP]"
+   ],
+   "implemented_by": "IMPL-CLOSURE"
+  },
+  {
+   "id": "PROBE-RUST-BUILD-CENSUS",
+   "command_or_operation": "sh tests/closure/rust-build-census.sh <out>: the pinned toolchains and their size, installed targets and codegen backends, the wasm targets rustc knows, the first-party source size and shape (crates, lines, no_std, forbid(unsafe_code)), the pinned kernel identity",
+   "expected_observations": [
+    "a census record (observation only)"
+   ],
+   "failure_meaning": [
+    "harness failure"
+   ],
+   "implemented_by": "IMPL-CLOSURE"
+  }
+ ],
+ "facts": [
+  {
+   "id": "FACT-D27-CLOSURE-STRUCTURE-CHECKED",
+   "subject": "the foundation-closure registers (tests/closure/registers/) against the D27 graph and component register",
+   "predicate": "every row of the correspondence matrix (12 Factory operations), the blocker register (30 rows), the acceptance test (16 steps), the hardening register (16 questions), the evolution contract (12 steps), the Rust-build boundary (5 candidates) and the seed/TCB definition links CURRENT EVIDENCE -> REQUIRED SEMANTIC BEHAVIOUR -> BROWSER-NATIVE MECHANISM -> TEST -> EVIDENCE -> STATUS; every cited fact is a current graph node, every cited evidence path exists, every open blocker is in the implementation sequence or an explicit boundary, every acceptance step names its mechanism, every component is classified once; the generated registers view rebuilds deterministically",
+   "status": "RUN",
+   "note": "the structure the stop condition requires; computed, never asserted",
+   "source_ref": "evidence/D27/closure/structural-check.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST): node 22, git"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "evidence": [
+    {
+     "path": "evidence/D27/closure/structural-check.json",
+     "observed_result": "status PASS with --evidence-required; 9 checks"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D27-LANGUAGE-1-CORPUS-ORACLE",
+   "subject": "the LANGUAGE 1 compatibility corpus (53 entries: the language ladder fixtures, the commissioning variants, the four specimens in BUILD mode)",
+   "predicate": "Compiler 1 (the D27 base, built fresh) reproduces the frozen expected table row by row: 33 OK / 20 DIAGNOSTICS entries with their diagnostic codes, canonical rendering identities and, for the BUILD entries, strategy-data identities and PASS bundle certificates; the table is the oracle a later compiler must reproduce or migrate",
+   "status": "RUN",
+   "note": "the mechanism of evolution-contract step 6 exists and is proven for N=1",
+   "source_ref": "evidence/D27/language/corpus/corpus-record.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST): HOST_NATIVE_SET 1.94.1, node 22"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-LANGUAGE-CORPUS",
+   "evidence": [
+    {
+     "path": "evidence/D27/language/corpus/corpus-record.json",
+     "observed_result": "53 entries; frozen table REPRODUCED"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE",
+    "IMPL-FACTC",
+    "IMPL-KERNEL-CRATES"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    },
+    {
+     "dimension": "toolchain.stable.rustc_commit",
+     "relation": "a different host toolchain builds factc"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D27-LANGUAGE-1-MANIFEST-DERIVED",
+   "subject": "the machine-readable vocabulary of LANGUAGE 1",
+   "predicate": "derived from the compiler source alone: 31 statement keywords, 12 invariant predicates with arity, 8 vocabulary tables, 3 combinators, 33 diagnostic codes, 15 kernel ABI operations, 21 wasm exports and the kernel limits; byte-identical to the committed tests/closure/language-manifest-v1.json; every @{keyword form of ASCII-GRAMMAR.md is a parser keyword and vice versa; the grammar declares LANGUAGE VERSION 1 (D27 annotation) and the parser implements version 1",
+   "status": "RUN",
+   "note": "the vocabulary a local model may use is discoverable offline; the running kernel cannot be asked for it (FB-23)",
+   "source_ref": "evidence/D27/language/manifest.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST): node 22"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-LANGUAGE-MANIFEST",
+   "evidence": [
+    {
+     "path": "evidence/D27/language/manifest.json",
+     "observed_result": "language_version 1; grammar_check grammar_version 1; 31 = 31 keywords"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE",
+    "IMPL-KERNEL-CRATES"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE",
+   "subject": "the observed ASCII the compiler derives from runtime evidence (compiler/observe render_observed_ascii)",
+   "predicate": "handed back to the compiler as a source unit, ANALYZE accepts it (status OK, 14 islands, system byte_relay_observed) and BUILD refuses it only for its content (BUILD_BLOCKED_BY_GOVERNANCE on the ERR issues): no LANGUAGE 1 statement marks a unit as authored, canonical or observed - evidence can silently become source",
+   "status": "GAP",
+   "note": "a LANGUAGE 2 candidate under the evolution contract (sequence FC-5); until then Factory law L-EV-5 holds the boundary",
+   "source_ref": "evidence/D27/language/feedback/feedback.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST)"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-EVIDENCE-FEEDBACK",
+   "evidence": [
+    {
+     "path": "evidence/D27/language/feedback/feedback.json",
+     "observed_result": "observed_accepted_as_source_in_analyze true; in_build false (BUILD_BLOCKED_BY_GOVERNANCE)"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE",
+    "IMPL-FACTC",
+    "IMPL-KERNEL-CRATES"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D27-LANGUAGE-LAW-STATION-QUALIFIED",
+   "subject": "authority over the language-law documents (ASCII-LANGUAGE.md, ASCII-GRAMMAR.md, SEMANTIC-MODEL.md, LANGUAGE-TESTS.md, REFINEMENT-LAW.md)",
+   "predicate": "at the D27 base no registered station may change any of the five (census: zero authorizing stations; their last change 4dcc28d predates D0); after D27 station S-LANGUAGE-LAW (insertion-only mode; version-change mode coupled to S-RUST and the evolution qualification; invariant LANGUAGE VERSION BOUND) authorizes all five and this delta used it for the LANGUAGE VERSION 1 annotations (receipt F3-language: 0 deleted lines, version check PASS); an authority expansion by a fixture beyond its station stays refused (f02)",
+   "status": "RUN",
+   "note": "the Factory machinery gap of the prompt closed as machinery, not bypassed",
+   "source_ref": "evidence/D27/stations/census-after.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST): git"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-STATION-AUTHORITY-CENSUS",
+   "evidence": [
+    {
+     "path": "evidence/D27/stations/census-before.json",
+     "observed_result": "unauthorized_paths: the five language-law documents"
+    },
+    {
+     "path": "evidence/D27/stations/census-after.json",
+     "observed_result": "unauthorized_paths []; S-LANGUAGE-LAW registered"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D27-RUST-BUILD-BOUNDARY",
+   "subject": "browser-native RUST_BUILD (compiling modified first-party Rust into the next compiler / Factory inside the browser)",
+   "predicate": "not realized by any candidate: B1 hosted rustc + LLVM (no wasm-host rustc ships; driver 158 MB + LLVM 199 MB native; memory unmeasured), B5 hosted rustc + cranelift (no backend installed), B4 first-party subset compiler (input bounded by the census: 15,373 first-party lines, 12 no_std crates, 176,305 lines of core source; unmeasured), B2 FactTest-native (architectural), B3 import-only (achievable: closes L3-A but not acceptance steps 3-4); the required capability, verification oracle (kernel identity vs a host build while a host exists; behavioural Q1-Q7 thereafter), bootstrap and recovery are stated per candidate",
+   "status": "UNK",
+   "note": "the deepest foundation boundary; decision D-3 by evidence in sequence FC-7; self-hosting is not claimed while RUST_BUILD calls the Linux host",
+   "source_ref": "evidence/D27/rust-build/census.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST): rustup toolchains 1.94.1 and nightly-2026-09-24"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-RUST-BUILD-CENSUS",
+   "evidence": [
+    {
+     "path": "evidence/D27/rust-build/census.json",
+     "observed_result": "toolchains, sizes, targets, backends none, first-party shape, kernel pin"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    },
+    {
+     "dimension": "toolchain.nightly.rustc_commit",
+     "relation": "a different pinned nightly (the census changes)"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D27-SELF-HOSTING-NOT-CLOSED",
+   "subject": "the foundation-closure acceptance test (16 steps: Factory N installed, network removed, the Linux build environment unavailable)",
+   "predicate": "0 of 16 steps execute without the host today; every step names the blockers it needs, the current primitive evidence, the host dependency and the sequence step that closes it; step 4 (build N+1 locally) is the RUST_BUILD boundary; under import-only (B3) 14 steps close and self-hosting stays NOT CLOSED honestly",
+   "status": "GAP",
+   "note": "the implementation sequence FC-1..FC-8 is the next series; nothing of it is begun by D27",
+   "source_ref": "evidence/D27/closure/structural-check.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST)"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "evidence": [
+    {
+     "path": "evidence/D27/closure/structural-check.json",
+     "observed_result": "stop_condition_answer: 16 steps, none RUN without the host"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D27-LANGUAGE-EVOLUTION-CONTRACT",
+   "subject": "the sequence by which LANGUAGE N+1 becomes authoritative (COMPILER N DEFINES LANGUAGE N; NEW SYNTAX MAY NOT AUTHORIZE ITSELF)",
+   "predicate": "bound into law: ASCII-GRAMMAR.md declares LANGUAGE VERSION 1 and cites the contract; station S-LANGUAGE-LAW refuses a grammar ahead of its compiler; 8 of the 12 contract steps have a running mechanism on this host (manifest derivation, proposal-as-governance, S-RUST, host qualification ladders, corpus oracle, canonical round trip, BUILD rows, Factory integration), 3 are gaps (new-syntax tests, derived attack set, migration records) and 1 is the RUST_BUILD boundary; no Compiler 2 exists",
+   "status": "OBS",
+   "note": "observed structure, not a claim that a language evolution ran",
+   "source_ref": "evidence/D27/language/manifest.json",
+   "required_environment": [
+    "the D27 host (ENV-D27-HOST)"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-LANGUAGE-MANIFEST",
+   "evidence": [
+    {
+     "path": "evidence/D27/language/manifest.json",
+     "observed_result": "grammar_version 1 bound"
+    },
+    {
+     "path": "evidence/D27/stations/census-after.json",
+     "observed_result": "S-LANGUAGE-LAW authorizes the language law"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a live component or a closure register"
+    }
+   ]
+  }
+ ]
+}

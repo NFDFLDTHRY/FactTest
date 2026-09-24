@@ -1,0 +1,240 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F1-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F1-fixture",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "the target sections 3-13 (registers, tools, frozen tables)",
+    "the D26 component and issue registers, the runbook"
+  ],
+  "open_tree": "b0f2d1ce1add2a4d3b0da3f83d971b52f934c2a6",
+  "close_tree": "40a77aed9429a421dc66f6601e99215103c02580",
+  "changed_paths": [
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-other-tests-untouched.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-structural-check.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-syntax-registers.log",
+    "tests/closure/evidence-feedback-probe.mjs",
+    "tests/closure/language-corpus-v1.json",
+    "tests/closure/language-corpus.mjs",
+    "tests/closure/language-manifest-v1.json",
+    "tests/closure/language-manifest.mjs",
+    "tests/closure/registers/acceptance-test.json",
+    "tests/closure/registers/blockers.json",
+    "tests/closure/registers/classification.json",
+    "tests/closure/registers/correspondence.json",
+    "tests/closure/registers/evolution-contract.json",
+    "tests/closure/registers/hardening.json",
+    "tests/closure/registers/language-corpus.json",
+    "tests/closure/registers/rust-build.json",
+    "tests/closure/registers/seed.json",
+    "tests/closure/registers/sequence.json",
+    "tests/closure/rust-build-census.sh",
+    "tests/closure/station-authority-census.mjs",
+    "tests/closure/structural-check.mjs",
+    "tests/envmap/facts/D27.json",
+    "tests/hygiene/status-classification.json",
+    "tests/manifest/components.json",
+    "tests/manifest/gate.mjs",
+    "tests/manifest/issues.json",
+    "tests/reprove/runbook.json"
+  ],
+  "output_artifacts": [
+    "tests/closure/structural-check.mjs",
+    "tests/closure/registers/blockers.json",
+    "tests/closure/language-corpus-v1.json",
+    "tests/closure/language-manifest-v1.json",
+    "tests/envmap/facts/D27.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-syntax-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-syntax-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-structural-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-structural-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in tests/closure/*.mjs tests/manifest/gate.mjs; do node --check $f || exit 1; done && sh -n tests/closure/rust-build-census.sh && for j in tests/closure/registers/*.json tests/closure/language-manifest-v1.json tests/closure/language-corpus-v1.json tests/envmap/facts/D27.json tests/manifest/components.json tests/manifest/issues.json tests/reprove/runbook.json tests/hygiene/status-classification.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -nE \"'(FACT|EV|ENV|IMPL|PROBE)-[A-Z0-9]\" tests/closure/*.mjs && node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const I=J(\"tests/manifest/issues.json\").issues;const by=Object.fromEntries(I.map(i=>[i.id,i]));if(I.length!==41||!by[\"I-38\"]||by[\"I-38\"].class!==\"B\"||!by[\"I-39\"]||by[\"I-39\"].class!==\"D\"||!by[\"I-40\"]||by[\"I-40\"].class!==\"A\"||!/^REPAIRED/.test(by[\"I-40\"].status))process.exit(1);const C=J(\"tests/manifest/components.json\").components;if(C.length!==72||!C.some(c=>c.id===\"TEST-CLOSURE\")||!C.some(c=>c.id===\"RECORD-FOUNDATION-CLOSURE\"))process.exit(1);const Rb=J(\"tests/reprove/runbook.json\");if(!Rb.groups.closure||Object.keys(Rb.facts).length!==123)process.exit(1);const F=J(\"tests/envmap/facts/D27.json\");if(F.facts.length!==8||F.probes.length!==6)process.exit(1);const M=J(\"tests/closure/language-manifest-v1.json\");if(M.language_version!==1||M.statement_keywords.length!==31)process.exit(1);const Cp=J(\"tests/closure/language-corpus-v1.json\");if(Cp.language_version!==1||Cp.rows.length!==53)process.exit(1);console.log(\"issues\",I.length,\"components\",C.length,\"runbook facts\",Object.keys(Rb.facts).length,\"facts\",F.facts.length,\"keywords\",M.statement_keywords.length,\"corpus rows\",Cp.rows.length)' && echo 'syntax, JSON, no fact/evidence/node name in the tools; registers as intended'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-syntax-registers.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --render $T/registers.md --out $T/structural-check.json && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));console.log(JSON.stringify(s.counts));if(s.status!==\"PASS\"||s.counts.blockers!==30||s.counts.acceptance_steps!==16||s.counts.sequence!==8||s.counts.hardening!==16)process.exit(1)' $T/structural-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-structural-check.log"
+    },
+    {
+      "check": "command:git diff --exit-code 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- tests fixtures :!tests/closure :!tests/envmap/facts/D27.json :!tests/manifest/components.json :!tests/manifest/issues.json :!tests/reprove/runbook.json :!tests/hygiene/status-classification.json :!tests/manifest/gate.mjs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-other-tests-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/closure/structural-check.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/closure/registers/blockers.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/closure/language-corpus-v1.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/closure/language-manifest-v1.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/facts/D27.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-syntax-registers.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-structural-check.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F1-other-tests-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:22:42Z",
+  "status": "PASS"
+}

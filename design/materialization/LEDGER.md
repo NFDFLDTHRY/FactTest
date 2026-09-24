@@ -1164,4 +1164,39 @@ BEFORE
   REMOVED.
 
 AFTER
+- RESULT: integrated as b8b09e1 (ff-only from 2c0aeda) on W32.
+- RECEIPTS: F0-doc F1-fixture F2-browser F3-evidence F4-build F5-build F6-doc F7-evidence F8-evidence F9-doc F10-evidence
+  F11-doc PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epoch
+  D26 rebuilt byte-identically; the final condition reproduced 21 PASS from the canonical tree).  Pushed.
+- OBSERVED: D26-OBSERVED-CLEAN-COMMISSIONING.md - P1-P8 MATCH.
+- MAIN: pull request #8 (D21-D26) merged into main by the owner as 8a23c08 (a merge commit whose tree equals b8b09e1);
+  the designated branch was fast-forwarded to 8a23c08 before D27 (the standing rule for a merged branch): [OBS], no
+  content sync, tree identical.
+
+---
+
+## D27-FOUNDATION-CLOSURE-ALIGNMENT  (foundation-closure / repo-alignment pass: what exact machine must exist for the installed Factory to evolve the language through which the human and local model tell it what to manufacture?)
+
+BEFORE
+- DELTA: D27-FOUNDATION-CLOSURE-ALIGNMENT (factory/deltas/D27.json), workpiece W33, base 8a23c08.
+- ASCII: design/materialization/D27-INTENDED-FOUNDATION-CLOSURE.md (STRUCTURAL CHECK: PASS) + the live target
+  design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md (sections 1-13).
+- STATIONS: S-DOC (F0, F7, F9, F11), S-FIXTURE (F1), S-ANNOTATE (F2), S-LANGUAGE-LAW (F3; forged by this delta as
+  bootstrap registry material), S-BROWSER (F4), S-EVIDENCE (F5, F8, F10), S-BUILD (F6).
+- CHANGE: design/foundation-closure/ (the target; the generated CLOSURE-REGISTERS.md), tests/closure/ (structural
+  check, language manifest derivation, corpus oracle, evidence-feedback probe, station authority census, rust-build
+  census; registers; the frozen LANGUAGE 1 manifest and corpus table), factory/registry/stations/S-LANGUAGE-LAW.json,
+  STATION-REGISTRY.md (D27 annotation), ASCII-GRAMMAR.md / ASCII-LANGUAGE.md / LANGUAGE-TESTS.md (D27 annotations:
+  LANGUAGE VERSION 1, the protocol parties, L36-L43), tests/manifest/{components (TEST-CLOSURE,
+  RECORD-FOUNDATION-CLOSURE), issues (I-38, I-39, I-40)}, tests/reprove/runbook.json (group closure; the D26 replay), tests/manifest/gate.mjs (task = any delta id),
+  tests/hygiene/status-classification.json (zone Z-FOUNDATION-CLOSURE), tests/envmap/facts/D27.json, design/execution-manifest/ (rebuilt), evidence/D27/, design/environment-map/ (epoch D27, graph, views,
+  SCHEMA, ENVIRONMENT-MAP), docs/HANDOFF.md, README.md, D27 records, this ledger.  FORBIDDEN: compiler/, host/,
+  factory/src/, factory/tests/, fixtures/, FACTORY-LAW.md and every other law document, earlier epochs, D0-D26 evidence.
+- PREDICTED: selection 175 / 75 (environment 67, implementation 14; gaps 0), 75 re-proved, 0 failed; census 5 -> 0
+  unauthorized; corpus 53 REPRODUCED; manifest 31 = 31, version 1 = 1; observed ASCII accepted by ANALYZE; manifest 5489
+  files, 72 components, gate PASS (41 issues); structural check 9 PASS (30 blockers, 16 acceptance steps 0 RUN without the
+  host); epoch D27 48 nodes / 248 edges; merged 1468 / 4071; validate 42; Q22 208 current facts (RUN 133, OBS 50, GAP 14,
+  ERR 5, UNK 6), 75 re-proved; audit 13 PASS; W32 RETIRABLE -> REMOVED; index 866.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

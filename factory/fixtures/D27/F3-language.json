@@ -1,0 +1,65 @@
+{
+  "fixture_id": "F3-language",
+  "station_id": "S-LANGUAGE-LAW",
+  "selected_inputs": [
+    "the target section 4 (LANGUAGE VERSION 1; the evolution contract); the hardening register H-01, H-14, H-16; tests/closure/language-manifest-v1.json"
+  ],
+  "narrowed_may_change": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "LANGUAGE-TESTS.md",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in ASCII-GRAMMAR.md ASCII-LANGUAGE.md LANGUAGE-TESTS.md; do d=$(git diff --numstat 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- $f | cut -f2); [ \"$d\" = 0 ] || { echo \"$f deleted $d lines\"; exit 1; }; grep -q '^D27 ANNOTATION' $f || { echo \"$f no annotation\"; exit 1; }; done && grep -q 'LANGUAGE VERSION 1' ASCII-GRAMMAR.md && grep -q 'L43' LANGUAGE-TESTS.md && echo 'insertion-only annotations with markers'"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-insertion-only.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/closure/language-manifest.mjs --root . --out $T/manifest.json --check tests/closure/language-manifest-v1.json --grammar ASCII-GRAMMAR.md"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-version-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "FACTORY-LAW.md",
+          "SEMANTIC-MODEL.md",
+          "REFINEMENT-LAW.md"
+        ],
+        "log": "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "LANGUAGE-TESTS.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+}

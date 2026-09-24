@@ -1,0 +1,55 @@
+{
+ "tool": "tests/closure/station-authority-census.mjs",
+ "tree": "working tree",
+ "stations": [
+  "S-ANNOTATE",
+  "S-ANNOTATE-OWNER",
+  "S-BROWSER",
+  "S-BUILD",
+  "S-BUNDLE",
+  "S-DOC",
+  "S-EVIDENCE",
+  "S-FIXTURE",
+  "S-LANGUAGE-LAW",
+  "S-RUST",
+  "S-WEB"
+ ],
+ "paths": {
+  "ASCII-LANGUAGE.md": {
+   "may_change_by": [
+    "S-LANGUAGE-LAW"
+   ],
+   "forbidden_by": [],
+   "authorized": true
+  },
+  "ASCII-GRAMMAR.md": {
+   "may_change_by": [
+    "S-LANGUAGE-LAW"
+   ],
+   "forbidden_by": [],
+   "authorized": true
+  },
+  "SEMANTIC-MODEL.md": {
+   "may_change_by": [
+    "S-LANGUAGE-LAW"
+   ],
+   "forbidden_by": [],
+   "authorized": true
+  },
+  "LANGUAGE-TESTS.md": {
+   "may_change_by": [
+    "S-LANGUAGE-LAW"
+   ],
+   "forbidden_by": [],
+   "authorized": true
+  },
+  "REFINEMENT-LAW.md": {
+   "may_change_by": [
+    "S-LANGUAGE-LAW"
+   ],
+   "forbidden_by": [],
+   "authorized": true
+  }
+ },
+ "unauthorized_paths": []
+}

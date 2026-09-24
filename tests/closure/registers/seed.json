@@ -1,0 +1,211 @@
+{
+ "schema": "facttest-closure-seed/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md sections 6 and 9",
+ "note": "minimal trusted seed definition and trusted computing base, derived from the D12 probes as re-proved on fresh bundles by D25/D26 (runbook group physical); every row cites current graph facts",
+ "seed": {
+  "definition": "one self-contained service-worker script (fetch router + pointer boot + hash-checked serving + inline broker page + recovery view), no imports, no wasm; pointer and manifest schemas frozen inside it (a schema change is a seed replacement = an origin event)",
+  "must": [
+   {
+    "rule": 1,
+    "must": "find the active generation: read {active, previous_good, pending} in one IDB readonly transaction",
+    "primitive": "FACT-SH-IDB-CAS"
+   },
+   {
+    "rule": 2,
+    "must": "verify object identity: sha256 of every object served against the generation manifest; the manifest id against the pointer",
+    "primitive": "FACT-D24-EVIDENCE-BOUND"
+   },
+   {
+    "rule": 3,
+    "must": "detect failed activation: pending.attempts incremented in a transaction BEFORE booting pending; promotion only on startup_ok(pending) before the deadline",
+    "primitive": "FACT-SH-IDB-CAS"
+   },
+   {
+    "rule": 4,
+    "must": "select previous known-good on exhaustion, hash mismatch or boot failure (transaction)",
+    "primitive": "FACT-SH-IDB-CAS"
+   },
+   {
+    "rule": 5,
+    "must": "launch the chosen generation confined: inline srcdoc bootstrap in an opaque sandboxed frame; code, wasm and data only via postMessage",
+    "primitive": "FACT-SH-BROKER-FED-GENERATION"
+   },
+   {
+    "rule": 6,
+    "must": "broker = the only storage path: get(id), put(bytes) -> id write-once, propose_pending(manifest id), cas_ref(name, old, new), startup_ok(id); never delete objects referenced by the last K generations; never write active/previous_good except by its own promotion/rollback rules",
+    "primitive": "FACT-SH-OPAQUE-CONFINEMENT"
+   },
+   {
+    "rule": 7,
+    "must": "recovery view reachable from the seed alone: list generations and states, force previous_good, clear pending, export objects",
+    "primitive": "FACT-SH-BROKEN-SEED-FATAL"
+   },
+   {
+    "rule": 8,
+    "must": "grant COOP/COEP on the broker page only if a generation requires cross-origin isolation; default off",
+    "primitive": "FACT-SH-SW-GRANTS-COI"
+   }
+  ],
+  "must_not": [
+   "compile",
+   "run stations",
+   "evaluate Factory law",
+   "parse ASCII",
+   "talk to GitHub",
+   "hold credentials reachable by generations",
+   "depend on any generation object to boot or to recover"
+  ],
+  "why_it_is_the_seed": "a service worker script cannot be replaced from local bytes (FACT-SH-SW-NO-SELF-UPDATE) and a broken one is fatal offline (FACT-SH-BROKEN-SEED-FATAL): the script IS the immutable seed and must be total, minimal and qualified before installation"
+ },
+ "tcb": [
+  {
+   "component": "browser engine (Chromium 141 in every observation)",
+   "role": "executes everything: SW, OPFS, IDB, WebCrypto, Compression, sandbox isolation, wasm64",
+   "trust": "assumed (unavoidable)",
+   "circularity": "none: cannot self-verify; STALE_IF browser.version on every generation claim",
+   "evidence": [
+    "FACT-D25-RUNTIME-PHYSICAL"
+   ]
+  },
+  {
+   "component": "storage substrate (profile on the OS filesystem)",
+   "role": "holds objects and pointers",
+   "trust": "assumed; durability not established",
+   "circularity": "none; eviction risk",
+   "evidence": [
+    "FACT-SH-STORAGE-DURABILITY-D18"
+   ]
+  },
+  {
+   "component": "home origin identity",
+   "role": "scheme+host+port = the installed Factory",
+   "trust": "whoever serves it can replace the seed",
+   "circularity": "a shared origin breaks confinement (D-1)",
+   "evidence": [
+    "FACT-SH-ORIGIN-SCOPED-STORAGE"
+   ]
+  },
+  {
+   "component": "origin server",
+   "role": "seed install / replacement only",
+   "trust": "trusted at seed events",
+   "circularity": "none",
+   "evidence": [
+    "FACT-SH-SW-NO-SELF-UPDATE"
+   ]
+  },
+  {
+   "component": "immutable minimal seed",
+   "role": "pointer boot, hash-checked serving, broker, recovery view",
+   "trust": "verified before install (defects are fatal offline)",
+   "circularity": "none if the seed never verifies itself at runtime",
+   "evidence": [
+    "FACT-SH-BROKEN-SEED-FATAL",
+    "FACT-SH-INTERRUPTED-UPDATE"
+   ]
+  },
+  {
+   "component": "hash implementations",
+   "role": "WebCrypto SHA-256 / SHA-1 and the first-party sha256 of the kernel (compiler/foundation)",
+   "trust": "browser + first-party",
+   "circularity": "two independent sha256 implementations cross-check generation roots",
+   "evidence": [
+    "FACT-SH-GIT-IDENTITY",
+    "FACT-D24-EVIDENCE-BOUND"
+   ]
+  },
+  {
+   "component": "persistent generation pointers / rollback state",
+   "role": "active, previous_good, pending in a seed-owned IDB database",
+   "trust": "seed-owned; written only in transactions",
+   "circularity": "none: generations cannot reach them (confined)",
+   "evidence": [
+    "FACT-SH-IDB-CAS",
+    "FACT-SH-OPAQUE-CONFINEMENT"
+   ]
+  },
+  {
+   "component": "active Factory N: law engine + verifier + BundleVerifier of N",
+   "role": "judges candidate N+1 and its outputs",
+   "trust": "trusted (qualified when N was activated)",
+   "circularity": "N verifies N+1: ACCEPTABLE.  N+1 as the only verifier of N+1: INSUFFICIENT",
+   "evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ]
+  },
+  {
+   "component": "compiler kernel N (LANGUAGE N)",
+   "role": "compiles the specimens and the corpus for N's qualification of N+1; defines LANGUAGE N",
+   "trust": "trusted as part of N",
+   "circularity": "Compiler N tests Compiler N+1 against promised compatibility: ACCEPTABLE.  New syntax as the sole authority proving the compiler that gives it meaning: INSUFFICIENT",
+   "evidence": [
+    "FACT-D23-WASM-TRANSPORT-COMPLETE",
+    "FACT-D24-PIPELINE-GENERIC"
+   ]
+  },
+  {
+   "component": "language manifest N + frozen corpus table N",
+   "role": "the vocabulary and the compatibility oracle (data derived from / frozen by N)",
+   "trust": "data; checked by N (derivation) and by N+1 (reproduction)",
+   "circularity": "none: never edited, only superseded by N+1 with migration records",
+   "evidence": [
+    "evidence/D27/language/manifest.json",
+    "tests/closure/language-corpus-v1.json"
+   ]
+  },
+  {
+   "component": "Rust compiler used by N (RUST_BUILD epoch)",
+   "role": "produced every compiled object of N (host today: rustc nightly-2026-09-24 + rust-src + cargo)",
+   "trust": "trusted, witnessed by build receipts; pinned",
+   "circularity": "a compiled object checking its own build: CIRCULAR; two independent epochs agreeing on bytes: the oracle (kernel identity pin)",
+   "evidence": [
+    "FACT-KERNEL-IDENTITY-D24"
+   ]
+  },
+  {
+   "component": "git object semantics",
+   "role": "identity of source, trees, commits",
+   "trust": "git format documents; reproduced in the browser",
+   "circularity": "none (the git binary leaves the TCB once the store exists; P09)",
+   "evidence": [
+    "FACT-SH-GIT-IDENTITY"
+   ]
+  },
+  {
+   "component": "authority graph + registers (data)",
+   "role": "law data: stale conditions, claims, evidence binding",
+   "trust": "data, bounded by source pins",
+   "circularity": "none",
+   "evidence": [
+    "FACT-D26-CONSISTENT"
+   ]
+  },
+  {
+   "component": "GitHub (L4 only)",
+   "role": "remote mirror of canonical history",
+   "trust": "optional; credentials in the broker",
+   "circularity": "none",
+   "evidence": [
+    "FACT-D25-PUBLIC-HTTPS"
+   ]
+  }
+ ],
+ "minimal_tcb_for_L3A": [
+  "browser engine",
+  "storage substrate",
+  "home origin (at seed events)",
+  "immutable seed",
+  "hash implementations",
+  "generation pointers",
+  "active generation N (law engine, kernel N, verifier N, manifest N, corpus table N)",
+  "the recorded RUST_BUILD epoch of every imported compiled object"
+ ],
+ "not_in_tcb_once_generation_0_exists": [
+  "the git executable",
+  "cargo / rustc (except as the RUST_BUILD epoch of imported objects)",
+  "node",
+  "sh",
+  "the Linux Factory binary",
+  "Playwright"
+ ]
+}

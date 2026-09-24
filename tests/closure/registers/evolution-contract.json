@@ -1,0 +1,157 @@
+{
+ "schema": "facttest-language-evolution-contract/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 4",
+ "note": "LANGUAGE EVOLUTION contract: the sequence by which LANGUAGE N+1 becomes authoritative, each step bound to the mechanism that realizes it and its status today (RUN = the mechanism exists and ran in D27 or an earlier delta on this host; GAP = to be built in FC-5/FC-6; UNK = the RUST_BUILD boundary).  Bound into law by the D27 annotations of ASCII-GRAMMAR.md (station S-LANGUAGE-LAW) and STATION-REGISTRY.md.",
+ "laws": [
+  {
+   "id": "L-EV-1",
+   "law": "COMPILER N DEFINES LANGUAGE N: the machine-readable language manifest is derived from the compiler source, never authored beside it; a grammar text that disagrees with the manifest is refused"
+  },
+  {
+   "id": "L-EV-2",
+   "law": "NEW SYNTAX MAY NOT AUTHORIZE ITSELF: a proposal for LANGUAGE N+1 is assembled in LANGUAGE N plus non-semantic presentation; N+1 text is a PROPOSAL until Compiler N+1 is activated by the Factory"
+  },
+  {
+   "id": "L-EV-3",
+   "law": "THE CORPUS OF N IS THE COMPATIBILITY ORACLE: Compiler N freezes the expected table of LANGUAGE N; Compiler N+1 reproduces every row or records a migration; the frozen table is never edited"
+  },
+  {
+   "id": "L-EV-4",
+   "law": "N QUALIFIES N+1: a candidate compiler is never trusted on its own outputs; its bundles are re-verified by the verifier of N and executed; its own test suite is necessary, never sufficient"
+  },
+  {
+   "id": "L-EV-5",
+   "law": "OBSERVED ASCII IS EVIDENCE: a runtime observation never becomes source without a human/AI reconciliation step; LANGUAGE 1 cannot enforce this (H-14) - until it can, the Factory enforces it by law (no station accepts an observed.ascii as a source unit input)"
+  },
+  {
+   "id": "L-EV-6",
+   "law": "PRESENTATION FREEDOM IS PRESERVED ACROSS VERSIONS: every presentation-preserving transformation of N stays presentation-preserving in N+1 (the corpus rows of presentation variants keep one canonical rendering)"
+  }
+ ],
+ "steps": [
+  {
+   "step": 1,
+   "text": "LANGUAGE N is exactly what Compiler N implements",
+   "mechanism": "the manifest derived from the compiler source; the grammar text checked against it",
+   "realized_by": "tests/closure/language-manifest.mjs --check --grammar",
+   "status": "RUN",
+   "refs": [
+    "H-09"
+   ]
+  },
+  {
+   "step": 2,
+   "text": "describe the proposed semantic extension in LANGUAGE N plus non-semantic prose/diagram",
+   "mechanism": "a proposal is governance (`@{issue ... NEW}`) and prose; the grammar text for N+1 is inserted as a PROPOSAL block, never as the current grammar",
+   "realized_by": "S-LANGUAGE-LAW precondition 1-2; STATION-REGISTRY.md D27 annotation",
+   "status": "RUN",
+   "refs": [
+    "H-05"
+   ]
+  },
+  {
+   "step": 3,
+   "text": "change the compiler source",
+   "mechanism": "S-RUST on compiler/ (the parser, AST, renderer, semantic checks); the language version constant moves with it",
+   "realized_by": "factory/registry/stations/S-RUST.json",
+   "status": "RUN",
+   "refs": []
+  },
+  {
+   "step": 4,
+   "text": "Factory N builds Compiler N+1",
+   "mechanism": "RUST_BUILD: on this host cargo + the pinned nightly; in the installed Factory the RUST_BUILD boundary",
+   "realized_by": "host: tests/toolchain/run-qualified-proof.sh, tests/implementation/build-kernels.sh; browser: none",
+   "status": "UNK",
+   "refs": [
+    "FB-04",
+    "FC-7"
+   ]
+  },
+  {
+   "step": 5,
+   "text": "Factory N / an independent verifier qualifies N+1",
+   "mechanism": "the language ladder, the genericity and observe ladders, the qualified proof and mutants on the host; in the browser a qualification runner where N feeds the specimens and re-verifies the outputs with its own verifier",
+   "realized_by": "host: compiler/kernel/tests/*, tests/toolchain/; browser: FB-28",
+   "status": "RUN",
+   "refs": [
+    "FB-28",
+    "FC-6"
+   ]
+  },
+  {
+   "step": 6,
+   "text": "the old language corpus is tested",
+   "mechanism": "the frozen expected table of LANGUAGE N reproduced by Compiler N+1 row by row",
+   "realized_by": "tests/closure/language-corpus.mjs --check tests/closure/language-corpus-v1.json",
+   "status": "RUN",
+   "refs": [
+    "H-04"
+   ]
+  },
+  {
+   "step": 7,
+   "text": "the canonical round trip is tested",
+   "mechanism": "parse(render(AST)) == AST and render idempotence on every corpus entry",
+   "realized_by": "compiler/kernel/tests/language_ladder.rs L19/L20; the corpus canonical sha256 per row",
+   "status": "RUN",
+   "refs": [
+    "H-06"
+   ]
+  },
+  {
+   "step": 8,
+   "text": "the new syntax tests are tested",
+   "mechanism": "fixtures added by the proposal, run by Compiler N+1 only (they are DIAGNOSTICS under N by construction)",
+   "realized_by": "per proposal (FC-5); none exists for LANGUAGE 2",
+   "status": "GAP",
+   "refs": [
+    "H-16",
+    "FC-5"
+   ]
+  },
+  {
+   "step": 9,
+   "text": "ambiguity / unknown-keyword attacks are tested",
+   "mechanism": "every keyword of manifest N+1 absent from manifest N, submitted to Compiler N, is PARSE_UNKNOWN_KEYWORD; the ambiguity fixtures of N stay ambiguous under N+1",
+   "realized_by": "L23 fixture today; the derived attack set is FC-5 (L41)",
+   "status": "GAP",
+   "refs": [
+    "H-16",
+    "FC-5"
+   ]
+  },
+  {
+   "step": 10,
+   "text": "known systems are compiled by both compilers where compatibility is promised",
+   "mechanism": "the BUILD rows of the corpus (strategy-data identity, bundle certificate) reproduced by N+1; a bundle built by N+1 verified by N's BundleVerifier",
+   "realized_by": "tests/closure/language-corpus.mjs BUILD rows; cross-verification is FC-6",
+   "status": "RUN",
+   "refs": [
+    "FB-28"
+   ]
+  },
+  {
+   "step": 11,
+   "text": "migration / version rules are checked",
+   "mechanism": "a version declared by the grammar equals the version the parser implements; every changed corpus row has a migration record",
+   "realized_by": "tests/closure/language-manifest.mjs --grammar (version); migration records: FC-5",
+   "status": "GAP",
+   "refs": [
+    "H-03",
+    "FB-21"
+   ]
+  },
+  {
+   "step": 12,
+   "text": "activate Compiler N+1; only now LANGUAGE N+1 becomes authoritative",
+   "mechanism": "host: Factory integration (ff-only) of the delta carrying compiler + grammar + qualification; installed: the generation swap (seed promotion after startup_ok); S-LANGUAGE-LAW refuses a grammar ahead of its compiler",
+   "realized_by": "host: factory integrate (RUN); installed: FC-8",
+   "status": "RUN",
+   "refs": [
+    "FB-26",
+    "FC-8"
+   ]
+  }
+ ]
+}

@@ -293,4 +293,12 @@ D26    D26-CLEAN-COMMISSIONING         the complete implemented system manufactu
                                    identity, lineage, status, clauses, reopen, ingress); the consistency audit and the
                                    six-task final condition computed from evidence; epochs/D26.json = re-proof fragment
                                    + facts fragment (three [RUN] facts).  The series D21-D26 closes here.
+D27    D27-FOUNDATION-CLOSURE-ALIGNMENT  the foundation-closure / repo-alignment pass: the STALE_IF selection over the D26
+                                   graph (source-tip drift: groups reopen, ingress, clauses) re-proved; the live target
+                                   design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md with its registers
+                                   structurally checked; the LANGUAGE 1 manifest derived and corpus oracle frozen; the
+                                   language-law station S-LANGUAGE-LAW forged, attacked and registered; the
+                                   observed-ASCII boundary [GAP] and the RUST_BUILD boundary [UNK] recorded;
+                                   epochs/D27.json = re-proof fragment + facts fragment (four [RUN], one [OBS], two
+                                   [GAP], one [UNK]).
 ```

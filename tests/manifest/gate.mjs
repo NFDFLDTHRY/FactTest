@@ -6,7 +6,7 @@
 //   live_components_connected  every live component has an owner, a consumer or terminal role and a declared station
 //   findings_classified        every automated finding item is covered by exactly the issue inventory (no finding
 //                              unclassified, no issue covering nothing)
-//   issues_well_formed         every issue has a class A..G, a task (D22..D26, owner or none), existing surfaces and,
+//   issues_well_formed         every issue has a class A..G, a task (a delta id D<n>, owner or none), existing surfaces and,
 //                              for stale-documentation issues, a marker still present in the file while the issue is open
 //                              and absent once its status starts with REPAIRED (D21 = this delta)
 //   historical_not_executable  no live tool reads a historical evidence package except where an issue records it
@@ -31,7 +31,7 @@ add('findings_classified', [...unclassified, ...idle.map(x => `issue covers noth
 const bad = [];
 for (const is of I.issues) {
   if (!/^[A-G]$/.test(is.class)) bad.push(`${is.id}: class ${is.class}`);
-  if (!/^(D2[1-6]|owner|none)$/.test(is.task)) bad.push(`${is.id}: task ${is.task}`);
+  if (!/^(D\d+[A-Z]*|owner|none)$/.test(is.task)) bad.push(`${is.id}: task ${is.task}`);   // D27: any delta id, not the D21-D26 series only
   for (const s of is.surfaces || []) if (!existsSync(join(o.root, s))) bad.push(`${is.id}: surface ${s} absent`);
   // an open issue's marker (the stale text) is still in the file; a REPAIRED issue's marker is gone (D23)
   const repaired = /^REPAIRED\b/.test(is.status || '');

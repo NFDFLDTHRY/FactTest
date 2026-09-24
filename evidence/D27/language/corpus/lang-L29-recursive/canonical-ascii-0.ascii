@@ -1,0 +1,23 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system rec}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{subsystem a1}
+| @{port a1.i in: T public}
+| @{subsystem a1x1}
+| @{port a1x1.i in: T public}
+| @{subsystem a1x_abs}
+| @{port a1x_abs.i in: T public}
+| @{subsystem a_abs}
+| @{port a_abs.i in: T public}
+| RELATIONS
+| @{contains a1 -> a1x1}
+| @{contains a1 -> a1x_abs}
+| @{refines a1 -> a_abs}
+| @{refines a1x1 -> a1x_abs}
+| INVARIANTS
+| @{invariant inv_inner refines(a1x1, a1x_abs)}
+| @{invariant inv_outer refines(a1, a_abs)}
++------------------------------------------------------------------------+

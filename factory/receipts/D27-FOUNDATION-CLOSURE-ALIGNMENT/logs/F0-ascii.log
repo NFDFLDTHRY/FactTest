@@ -1,0 +1,38 @@
+$ sh -c I=design/materialization/D27-INTENDED-FOUNDATION-CLOSURE.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && ! grep -q PREDICTIONS_PLACEHOLDER $I && for s in '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.' '## 11.' '## 12.' '## 13.'; do grep -qF "$s" design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md || { echo missing $s in target; exit 1; }; done && grep -q 'integrated as b8b09e1' design/materialization/LEDGER.md && grep -q 'merged into main by the owner as 8a23c08' design/materialization/LEDGER.md && grep -q '^## D27-FOUNDATION-CLOSURE-ALIGNMENT' design/materialization/LEDGER.md && ! grep -q PREDICTIONS_PLACEHOLDER design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && node -e 'const s=JSON.parse(require("fs").readFileSync("factory/registry/stations/S-LANGUAGE-LAW.json"));if(s.station_id!=="S-LANGUAGE-LAW"||!s.may_change.includes("ASCII-GRAMMAR.md")||!s.must_not_change.includes("compiler/")||!s.must_not_change.includes("FACTORY-LAW.md"))process.exit(1);console.log("station spec",s.station_id,s.version)' && T=$(mktemp -d) && node tests/hygiene/registry-check.mjs --base-rev 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 --out $T/registry.json && echo 'intended + target + ledger + station spec as intended; registry literal'
+(cwd .)
+station spec S-LANGUAGE-LAW 1
+PASS literal:S-ANNOTATE-OWNER all surfaces literal
+PASS effective_may_change_unchanged:S-ANNOTATE-OWNER 640 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 640 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-ANNOTATE-OWNER 4130 -> 4130 protected tracked files
+PASS literal:S-ANNOTATE all surfaces literal
+PASS effective_may_change_unchanged:S-ANNOTATE 648 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 648 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-ANNOTATE 4130 -> 4130 protected tracked files
+PASS literal:S-BROWSER all surfaces literal
+PASS effective_may_change_unchanged:S-BROWSER 4043 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 4043 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-BROWSER 474 -> 474 protected tracked files
+PASS literal:S-BUILD all surfaces literal
+PASS effective_may_change_unchanged:S-BUILD 4043 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 4043 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-BUILD 473 -> 473 protected tracked files
+PASS literal:S-BUNDLE all surfaces literal
+PASS effective_may_change_unchanged:S-BUNDLE 4043 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 4043 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-BUNDLE 474 -> 474 protected tracked files
+PASS literal:S-DOC all surfaces literal
+PASS effective_may_change_unchanged:S-DOC 1193 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 1193 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-DOC 4120 -> 4120 protected tracked files
+PASS literal:S-EVIDENCE all surfaces literal
+PASS effective_may_change_unchanged:S-EVIDENCE 4043 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 4043 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-EVIDENCE 473 -> 473 protected tracked files
+PASS literal:S-FIXTURE all surfaces literal
+PASS effective_may_change_unchanged:S-FIXTURE 1167 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 1167 now (v2 -> v2)
+PASS must_not_change_not_weakened:S-FIXTURE 4120 -> 4120 protected tracked files
+PASS literal:S-LANGUAGE-LAW all surfaces literal
+PASS new_station:S-LANGUAGE-LAW absent at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0; may_change ["ASCII-LANGUAGE.md","ASCII-GRAMMAR.md","SEMANTIC-MODEL.md","LANGUAGE-TESTS.md","REFINEMENT-LAW.md","factory/receipts/"]
+PASS literal:S-RUST all surfaces literal
+PASS effective_may_change_unchanged:S-RUST 1005 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 1005 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-RUST 4045 -> 4045 protected tracked files
+PASS literal:S-WEB all surfaces literal
+PASS effective_may_change_unchanged:S-WEB 653 tracked files at 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 vs 653 now (v1 -> v1)
+PASS must_not_change_not_weakened:S-WEB 4055 -> 4055 protected tracked files
+intended + target + ledger + station spec as intended; registry literal
+
+[exit 0] expected 0

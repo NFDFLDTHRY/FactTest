@@ -1,0 +1,202 @@
+{
+ "tool": "tests/reference/clauses.mjs",
+ "manifest": "tests/reference/d16-clauses.json",
+ "observed": "2026-09-24T23:24:55.960Z",
+ "clauses": 90,
+ "status": {
+  "VERIFIED": 90
+ },
+ "traces": [
+  "GPU",
+  "NN",
+  "WC",
+  "MC",
+  "GS",
+  "MS",
+  "ES",
+  "DO",
+  "GEO",
+  "XR",
+  "DEV",
+  "WK",
+  "STO",
+  "WJ"
+ ],
+ "sources": [
+  {
+   "key": "https://github.com/gpuweb/gpuweb#main:spec/index.bs",
+   "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+   "bytes": 848916,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/gpuweb/gpuweb#main:wgsl/index.bs",
+   "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+   "sha256": "11b1020a2fec581050599ae8e035a7138de551129c0856e055b41b4342d658fd",
+   "bytes": 928167,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/webmachinelearning/webnn#main:index.bs",
+   "commit": "59db71f24cc87fe31b764bd06ca24c215c1755a4",
+   "sha256": "f818eace15b8ba8fc9ae4696379c60bdc386f594946bf9618044e34ed4108cff",
+   "bytes": 605058,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/webcodecs#main:index.src.html",
+   "commit": "8f7384fb4749a39fa2df6eea37685dd1ede297d1",
+   "sha256": "6ce711783ba8e084a286a40a4d71e4bd380002470922afa93b568a065a5bb324",
+   "bytes": 293911,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/mediacapture-main#main:getusermedia.html",
+   "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+   "sha256": "2807a41827e9573e6eed4be0116217a8053902dc621dc915d5ccc0d1322c9774",
+   "bytes": 309541,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/sensors#main:index.bs",
+   "commit": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+   "sha256": "584e6b7e5743d0c79f36696742a857f115128433d63112401b3f19b62dc5fdbf",
+   "bytes": 107462,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/accelerometer#main:index.bs",
+   "commit": "9f0a66ddab67fbb3fffcf3118fd6a8e1d30e558e",
+   "sha256": "1dc9d36d73527675af6ba78b4f10e9e4d446c32ec21718e1a9e72516f5eca1c5",
+   "bytes": 22227,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/gyroscope#main:index.bs",
+   "commit": "335dc6ecc5f85289a2745810a086e7f1c7237cdb",
+   "sha256": "c5d5df52e192f78ed76fbb9c73905e671ec99909c36749683c087d8cffe4b01a",
+   "bytes": 11293,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/magnetometer#main:index.bs",
+   "commit": "40801a25e7ad6c0ea12b1777f1d913f21e680e87",
+   "sha256": "4fc6eaf877c8b09e6d72d4269011b9c7afdd0fd3eb02834e815a7b06710ec1e4",
+   "bytes": 25647,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/orientation-sensor#main:index.bs",
+   "commit": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824",
+   "sha256": "89dbebc2e2229ec4706af367f49995e71512fc86a9fce9ae9dc00c9a625b8a4e",
+   "bytes": 26529,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/proximity#main:index.bs",
+   "commit": "1d43739eea15981bb6cab10224929c53ae6f51ed",
+   "sha256": "07339c828ca4ed54e00ecf6deb983bbc1c8d160a94ccaecb005e40f5765961bc",
+   "bytes": 11758,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/ambient-light#main:index.bs",
+   "commit": "381d5dd21deb386282bbc72147201a8e6ff3b5ea",
+   "sha256": "5fd0659a12a245f6c6976131fee365c3d581a6e95bf2a38b7d4a670d8bad354a",
+   "bytes": 19409,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/deviceorientation#main:index.bs",
+   "commit": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+   "sha256": "f07509380267b8f3f5d6e7ccd4e2eb64ba35d5c88e2f67573140163bb7e40520",
+   "bytes": 69351,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/geolocation#main:index.html",
+   "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+   "sha256": "5bc468fd115c1e17e53496a6c5329e7c4efa90c822aaf41d491abfbd465093a1",
+   "bytes": 59983,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/immersive-web/webxr#main:index.bs",
+   "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+   "sha256": "2fe7451a82eff47ca0ddd10117f14d0b7f03443cc1cf989d135d88ba92c0cb49",
+   "bytes": 274788,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WICG/webhid#main:index.html",
+   "commit": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+   "sha256": "21ab95f9b4fe9a963b58e0806a7ded26d165d06e969add1cc01ef73499c8f764",
+   "bytes": 115963,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WICG/webusb#main:index.bs",
+   "commit": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+   "sha256": "40159ca5bcf8014a076021d3eda6a3152ae918e1462d08b093b30b46b754261f",
+   "bytes": 125666,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/serial#main:index.html",
+   "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+   "sha256": "48d0a5629c71f2b523108b817d9c0c8c2851959d442f37a3a1b3094b3313dcc3",
+   "bytes": 84878,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebBluetoothCG/web-bluetooth#main:index.bs",
+   "commit": "2e451c162f6a3f2277f86104223de4630710506e",
+   "sha256": "8228a08036cc1aaa119aba51fea7c32e5f4dc52b29066b09420058290d44bc7e",
+   "bytes": 307044,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/html#main:source",
+   "commit": "1a249c2a40bd341f7c2c0c9954a9a264b1983b93",
+   "sha256": "2bddefe3791e9003d58e9d438c2dfa98b4a0c1967fc5a1e5327d73a6e3ac9a80",
+   "bytes": 7915793,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/storage#main:storage.bs",
+   "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+   "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+   "bytes": 30128,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/fs#main:index.bs",
+   "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+   "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+   "bytes": 85583,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/ServiceWorker#main:index.bs",
+   "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+   "bytes": 297377,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/spec#main:document/js-api/index.bs",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+   "bytes": 114471,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/IndexedDB#main:index.bs",
+   "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+   "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8",
+   "bytes": 277352,
+   "ok": true
+  }
+ ]
+}

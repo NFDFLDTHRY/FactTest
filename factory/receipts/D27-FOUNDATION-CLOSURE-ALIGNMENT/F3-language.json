@@ -1,0 +1,206 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D27-FOUNDATION-CLOSURE-ALIGNMENT-F3-language",
+  "station_id": "S-LANGUAGE-LAW",
+  "station_version": "1",
+  "fixture_id": "F3-language",
+  "workpiece_id": "W33",
+  "delta_id": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+  "canonical_base": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+  "input_artifacts": [
+    "the target section 4 (LANGUAGE VERSION 1; the evolution contract); the hardening register H-01, H-14, H-16; tests/closure/language-manifest-v1.json"
+  ],
+  "open_tree": "1b54b566c460de578e94ba3acf38aad18ca872d7",
+  "close_tree": "1e27f653dcf568768baf04dd5b47c8ae738bd089",
+  "changed_paths": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "LANGUAGE-TESTS.md",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-insertion-only.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-untouched.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-version-check.log"
+  ],
+  "output_artifacts": [
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "LANGUAGE-TESTS.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-LANGUAGE-LAW v1 (workpiece-bootstrap)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D27-FOUNDATION-CLOSURE-ALIGNMENT"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "LANGUAGE_LAW_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-insertion-only.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-insertion-only.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-version-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-version-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in ASCII-GRAMMAR.md ASCII-LANGUAGE.md LANGUAGE-TESTS.md; do d=$(git diff --numstat 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- $f | cut -f2); [ \"$d\" = 0 ] || { echo \"$f deleted $d lines\"; exit 1; }; grep -q '^D27 ANNOTATION' $f || { echo \"$f no annotation\"; exit 1; }; done && grep -q 'LANGUAGE VERSION 1' ASCII-GRAMMAR.md && grep -q 'L43' LANGUAGE-TESTS.md && echo 'insertion-only annotations with markers'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-insertion-only.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/closure/language-manifest.mjs --root . --out $T/manifest.json --check tests/closure/language-manifest-v1.json --grammar ASCII-GRAMMAR.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-version-check.log"
+    },
+    {
+      "check": "command:git diff --exit-code 8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0 -- compiler host factory/src factory/registry FACTORY-LAW.md SEMANTIC-MODEL.md REFINEMENT-LAW.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:ASCII-GRAMMAR.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:ASCII-LANGUAGE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:LANGUAGE-TESTS.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-insertion-only.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-version-check.log",
+    "factory/receipts/D27-FOUNDATION-CLOSURE-ALIGNMENT/logs/F3-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T23:22:46Z",
+  "status": "PASS"
+}

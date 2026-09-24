@@ -1,0 +1,13 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system frame_relay "Frame Relay"}
+| TYPES
+| @{type Frame}
+| COMPONENTS
+| @{component egress}
+| @{port egress.f in: Frame public}
+| @{component ingress}
+| @{port ingress.f out: Frame public}
+| RELATIONS
+| @{data relay ingress.f -> egress.f mode=copy}
++------------------------------------------------------------------------+

@@ -1,0 +1,447 @@
+{
+ "schema": "facttest-language-corpus/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 4 (language-evolution contract: the corpus of LANGUAGE N is the compatibility oracle for Compiler N+1)",
+ "language_version": 1,
+ "note": "every entry is run by tests/closure/language-corpus.mjs through the compiler under test; the frozen expected table tests/closure/language-corpus-v1.json records what Compiler 1 (the D27 base) said.  Entries are the language ladder fixtures (LANGUAGE-TESTS.md L0-L35 as fixtures/language/), the Pass-6 commissioning variants and the four D24 specimens in BUILD mode with their registries.  An entry is added by a delta that adds a fixture; a row is changed only by a language version change that records the migration.",
+ "entries": [
+  {
+   "id": "lang-INV-fail",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/INV-fail.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L00-minimal",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L00-minimal.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L01-base",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L01-base.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L01-whitespace",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L01-whitespace.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L02-ascii-frames",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L02-ascii-frames.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L04-prose",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L04-prose.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L05-duplicate",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L05-duplicate.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L06-unresolved",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L06-unresolved.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L07-ambiguous",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L07-ambiguous.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L07-imp-a",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L07-imp-a.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L07-imp-b",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L07-imp-b.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L08-direction",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L08-direction.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L09-alias-ok",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L09-alias-ok.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L09-type",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L09-type.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L10-private-ref",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L10-private-ref.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L10-provider",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L10-provider.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L11-incomplete-abstract",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L11-incomplete-abstract.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L12-compatible",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L12-compatible.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L13-effect-escape",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L13-effect-escape.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L14-gap",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L14-gap.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L16-relation-kinds",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L16-relation-kinds.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L18-pin",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L18-pin.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L18-prose-only",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L18-prose-only.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L22-escape",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L22-escape.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L22-unclosed",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L22-unclosed.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L23-unknown",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L23-unknown.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L25-nosequence",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L25-nosequence.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L26-modes",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L26-modes.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L28-private-exposed",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L28-private-exposed.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L29-recursive",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L29-recursive.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L33-drawn-arrow",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L33-drawn-arrow.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L34-bad-arity",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L34-bad-arity.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L34-bad-invariant",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L34-bad-invariant.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-P6-dup-priority",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/P6-dup-priority.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-P6-objective",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/P6-objective.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-P6-undeclared-metric",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/P6-undeclared-metric.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-SYS-missing",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/SYS-missing.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-SYS-multiple",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/SYS-multiple.ascii"
+   ],
+   "witness": "LANGUAGE-TESTS.md ladder (single unit)"
+  },
+  {
+   "id": "lang-L07-multi-unit",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L07-imp-a.ascii",
+    "fixtures/language/L07-imp-b.ascii",
+    "fixtures/language/L07-ambiguous.ascii"
+   ],
+   "witness": "L7 ambiguity across imported units"
+  },
+  {
+   "id": "lang-L10-multi-unit",
+   "mode": "analyze",
+   "units": [
+    "fixtures/language/L10-provider.ascii",
+    "fixtures/language/L10-private-ref.ascii"
+   ],
+   "witness": "L10 private boundary across units"
+  },
+  {
+   "id": "commissioning-byte-relay-compact-analyze",
+   "mode": "analyze",
+   "units": [
+    "fixtures/commissioning/byte-relay-compact.ascii"
+   ],
+   "witness": "P6 commissioning variants (presentation / label / renamed / pinned / other-type / move)"
+  },
+  {
+   "id": "commissioning-byte-relay-labels-analyze",
+   "mode": "analyze",
+   "units": [
+    "fixtures/commissioning/byte-relay-labels.ascii"
+   ],
+   "witness": "P6 commissioning variants (presentation / label / renamed / pinned / other-type / move)"
+  },
+  {
+   "id": "commissioning-byte-relay-move-analyze",
+   "mode": "analyze",
+   "units": [
+    "fixtures/commissioning/byte-relay-move.ascii"
+   ],
+   "witness": "P6 commissioning variants (presentation / label / renamed / pinned / other-type / move)"
+  },
+  {
+   "id": "commissioning-byte-relay-other-type-analyze",
+   "mode": "analyze",
+   "units": [
+    "fixtures/commissioning/byte-relay-other-type.ascii"
+   ],
+   "witness": "P6 commissioning variants (presentation / label / renamed / pinned / other-type / move)"
+  },
+  {
+   "id": "commissioning-byte-relay-pinned-analyze",
+   "mode": "analyze",
+   "units": [
+    "fixtures/commissioning/byte-relay-pinned.ascii"
+   ],
+   "witness": "P6 commissioning variants (presentation / label / renamed / pinned / other-type / move)"
+  },
+  {
+   "id": "commissioning-byte-relay-renamed-analyze",
+   "mode": "analyze",
+   "units": [
+    "fixtures/commissioning/byte-relay-renamed.ascii"
+   ],
+   "witness": "P6 commissioning variants (presentation / label / renamed / pinned / other-type / move)"
+  },
+  {
+   "id": "commissioning-byte-relay-analyze",
+   "mode": "analyze",
+   "units": [
+    "fixtures/commissioning/byte-relay.ascii"
+   ],
+   "witness": "P6 commissioning variants (presentation / label / renamed / pinned / other-type / move)"
+  },
+  {
+   "id": "specimen-byte-relay-build-E0",
+   "mode": "build",
+   "units": [
+    "fixtures/commissioning/byte-relay.ascii"
+   ],
+   "contracts": "fixtures/commissioning/contracts.ascii",
+   "metrics": "fixtures/commissioning/metrics.ascii",
+   "machine": "fixtures/commissioning/epoch-model-0.ascii",
+   "witness": "the commissioning specimen at synthetic epoch 0"
+  },
+  {
+   "id": "specimen-byte-relay-build-E1",
+   "mode": "build",
+   "units": [
+    "fixtures/commissioning/byte-relay.ascii"
+   ],
+   "contracts": "fixtures/commissioning/contracts.ascii",
+   "metrics": "fixtures/commissioning/metrics.ascii",
+   "machine": "fixtures/commissioning/epoch-model-1.ascii",
+   "witness": "the commissioning specimen at synthetic epoch 1"
+  },
+  {
+   "id": "specimen-byte-relay-build",
+   "mode": "build",
+   "units": [
+    "fixtures/commissioning/byte-relay.ascii"
+   ],
+   "contracts": "fixtures/commissioning/contracts.ascii",
+   "witness": "D24 genericity specimen byte-relay",
+   "metrics": "fixtures/commissioning/metrics.ascii"
+  },
+  {
+   "id": "specimen-dual-stream-build",
+   "mode": "build",
+   "units": [
+    "fixtures/genericity/dual-stream/source.ascii"
+   ],
+   "contracts": "fixtures/genericity/dual-stream/contracts.ascii",
+   "witness": "D24 genericity specimen dual-stream",
+   "metrics": "fixtures/genericity/dual-stream/metrics.ascii"
+  },
+  {
+   "id": "specimen-ledger-mirror-build",
+   "mode": "build",
+   "units": [
+    "fixtures/genericity/ledger-mirror/source.ascii"
+   ],
+   "contracts": "fixtures/genericity/ledger-mirror/contracts.ascii",
+   "witness": "D24 genericity specimen ledger-mirror"
+  },
+  {
+   "id": "specimen-pixel-vault-build",
+   "mode": "build",
+   "units": [
+    "fixtures/genericity/pixel-vault/source.ascii"
+   ],
+   "contracts": "fixtures/genericity/pixel-vault/contracts.ascii",
+   "witness": "D24 genericity specimen pixel-vault"
+  }
+ ]
+}
