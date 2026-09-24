@@ -104,3 +104,54 @@ Browser installation, API admission, execution and loss/replan behavior remain r
 
 Manifest presence is not installation proof.
 Codegen success is not execution proof.
+
+
+# Pass 6 amendment - CodegenRecipe and VerifiedStrategy
+
+## CodegenRecipe
+
+```text
+CodegenRecipe
+  recipe_id
+  implementation_id
+  required_artifact_roles[]
+  required_imports[]
+  provided_exports[]
+  representation_bindings[]
+  host_adapter_requirements[]
+  generated_capability_declarations[]
+  evidence_hooks[]
+  bundle_verification_obligations[]
+```
+
+A recipe realizes one already-verified implementation contract.
+It contains no planner heuristic and cannot select another backend.
+
+## Adaptive codegen input
+
+```text
+TypedSystemIR
+VerifiedStrategy
+ImplementationContracts
+RepresentationContracts
+ConversionContracts
+CodegenRecipes
+```
+
+Neither CandidatePlan nor CandidateStrategy is legal codegen input.
+
+GeneratedBundle additionally records:
+- verified_strategy_id
+- variant_inventory
+- runtime_selector_artifact
+- variant certificate references
+- strategy certificate reference
+
+BundleVerifier proves:
+1. every emitted variant belongs to VerifiedStrategy;
+2. every strategy variant required for runtime selection was emitted;
+3. selector can activate only verified variants;
+4. each emitted implementation uses its declared CodegenRecipe;
+5. no hidden unverified fallback exists.
+
+Runtime switching does not require code generation inside the generated WebApp.

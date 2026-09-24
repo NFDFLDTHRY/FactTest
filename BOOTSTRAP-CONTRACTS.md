@@ -418,3 +418,34 @@ Pass 5 owns:
 
 Pass 6 owns:
 - complete end-to-end proof of one vertical slice
+
+
+## C19 - Identity-domain closure (Pass 6 amendment)
+
+Later passes introduced additional object classes that remain subject to the Pass-3 strong-ID law.
+
+Additional distinct identity domains:
+
+```text
+ObjectiveId
+MetricId
+RepresentationId
+ConversionId
+PlanId
+StrategyId
+EpochId
+ProbeId
+CodegenRecipeId
+CertificateId
+BundleId
+DeltaId
+WorkpieceId
+FixtureId
+StationId
+```
+
+Rules:
+- IDs from different domains are not interchangeable.
+- a display label or raw string is not typed identity.
+- runtime EpochId is not PlanId or StrategyId.
+- CertificateId identifies a certificate artifact but does not itself prove PASS status.

@@ -125,3 +125,94 @@ Verification failures must identify:
 - direct authority links when an external rule causes the failure
 
 No generic "verification failed" is sufficient when structured cause is known.
+
+
+# Pass 6 amendment - VerifiedStrategy
+
+The earlier singular, epoch-bound VerifiedPlan model cannot by itself guarantee that runtime fallback machinery was emitted.
+
+Adaptive targets use:
+
+```text
+CandidatePlan
+   |
+   v
+Verifier
+   |
+   v
+VerifiedPlanVariant
+
+CandidateStrategy
+   |
+   v
+StrategyVerifier
+   |
+   v
+VerifiedStrategy
+```
+
+## VerifiedPlanVariant
+
+```text
+VerifiedPlanVariant
+  plan_id
+  semantic/capability/representation plan
+  activation_guard
+  proof_certificate_id
+```
+
+Its proof is conditional:
+
+```text
+IF activation_guard is satisfied
+THEN this variant preserves the source obligations.
+```
+
+It is not bound to one concrete runtime epoch.
+
+## VerifiedStrategy
+
+```text
+VerifiedStrategy
+  strategy_id
+  source_artifact_id
+  verified_variants[]
+  dispatch_objective
+  tie_break
+  strategy_certificate_id
+```
+
+StrategyVerifier proves:
+1. every variant is independently verified;
+2. selector candidates are a subset of verified variants;
+3. selector predicates use declared admission/metric facts only;
+4. dispatch respects the authored Objective;
+5. tie-breaking is deterministic;
+6. no unverified variant can become active.
+
+Only verifier-owned APIs may construct VerifiedStrategy.
+
+## ActivationReceipt and ActivePlan
+
+```text
+ActivationReceipt
+  epoch_id
+  strategy_id
+  plan_id
+  admission_refs[]
+  metric_evidence_refs[]
+  guard_result
+  status
+```
+
+```text
+ActivePlan =
+  VerifiedPlanVariant
+  + PASS ActivationReceipt @ Epoch
+```
+
+Epoch binding belongs to activation, not to the static conditional plan proof.
+
+A single-plan target is a one-variant VerifiedStrategy.
+
+Correctness and optimality remain separate.

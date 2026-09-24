@@ -438,3 +438,56 @@ New semantic keywords/predicates require an explicit language/schema version cha
 Unknown semantic keywords are errors, not ignored extension points.
 
 This prevents older compilers from silently misinterpreting newer source.
+
+
+## 23. Metrics and optimization objectives (Pass 6 amendment)
+
+Optimization objectives that can change generated machinery are visible in the human/AI ASCII source.
+
+Metric declaration:
+
+```text
+@{metric <MetricId> <UnitId> ["Description"]}
+```
+
+Objective declaration:
+
+```text
+@{objective <ObjectiveId>}
+```
+
+Ordered goal:
+
+```text
+@{goal <ObjectiveRef> <PriorityInteger> <minimize|maximize> <MetricRef>}
+```
+
+Hard metric constraint:
+
+```text
+@{hard <ObjectiveRef> <MetricRef> <at_most|at_least|equal> <Number>}
+```
+
+Example:
+
+```text
+@{metric preference_rank ordinal "commissioning preference only; not performance"}
+@{objective commissioning}
+@{goal commissioning 1 minimize preference_rank}
+```
+
+Rules:
+- MetricId and ObjectiveId are separate namespaces.
+- goal priorities within one objective are unique positive integers.
+- lower priority integer is evaluated first.
+- an objective cannot reference an undeclared MetricId.
+- metric units/semantics must be explicit.
+- declaring an objective does not manufacture missing measurements.
+- unknown cost remains unknown.
+- canonical rendering includes metric/objective/goal/hard statements.
+
+## 24. Objective visibility law
+
+If a preference can alter the generated implementation strategy, it is source-visible.
+
+Host-only hidden preferences are legal only when they provably cannot change semantic/generated machinery.

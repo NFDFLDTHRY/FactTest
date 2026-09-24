@@ -284,3 +284,37 @@ Examples:
 - missing public type where required
 
 The compiler never chooses a visually plausible interpretation.
+
+
+## 17. Metrics and objectives (Pass 6 amendment)
+
+Additional semantic objects:
+
+```text
+Metric
+  MetricId
+  unit
+  description
+
+Objective
+  ObjectiveId
+  hard_constraints[]
+  ordered_goals[]
+```
+
+SystemAst additionally carries:
+
+```text
+metrics[]
+objectives[]
+```
+
+Typed semantic checks establish:
+- referenced MetricId exists;
+- goal priorities are unique;
+- metric/unit use is defined;
+- hard constraints are structurally valid.
+
+Metrics/objectives may change legal-strategy selection but do not change functional invariants.
+
+Measured values remain planning/runtime evidence unless source explicitly fixes a value.
