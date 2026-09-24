@@ -1,0 +1,11 @@
+$ sh tests/bootstrap/run-negative-fixtures.sh evidence/D4/negative
+(cwd .)
+std-in-kernel: rejected by rustc (expected)
+id-substitution: rejected by rustc (expected)
+forge-verified-strategy: rejected by rustc (expected)
+third-party-dep: rejected by depcheck (expected)
+tests/bootstrap/run-negative-fixtures.sh: 7: cannot create evidence/D4/negative/std-in-kernel.log: Directory nonexistent
+tests/bootstrap/run-negative-fixtures.sh: 7: cannot create evidence/D4/negative/id-substitution.log: Directory nonexistent
+tests/bootstrap/run-negative-fixtures.sh: 7: cannot create evidence/D4/negative/forge-verified-strategy.log: Directory nonexistent
+
+[exit 0] expected 0

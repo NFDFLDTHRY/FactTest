@@ -1,10 +1,10 @@
 [package]
-name = "factc-kernel"
+name = "factc-verifier"
 version = "0.1.0"
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
-description = "FactTest no_std compiler kernel: phase facade and bootstrap ABI (C14)."
+description = "FactTest independent verifier: finite deterministic rule classes over TypedSystemIR, obligations, contracts and a CandidateStrategy; sole owner of VerifiedStrategy (VERIFICATION-CERTIFICATES.md). Consumes planner output as data, never planner heuristics."
 
 [lib]
 path = "src/lib.rs"
@@ -16,4 +16,3 @@ factc-semantic = { path = "../semantic" }
 factc-capability = { path = "../capability" }
 factc-implementation = { path = "../implementation" }
 factc-planning = { path = "../planning" }
-factc-verifier = { path = "../verifier" }

@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D4-PLANNER-VERIFIER",
+  "selected_inputs": ["PLANNER-COST-MODEL.md", "VERIFICATION-CERTIFICATES.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/LEDGER.md", "factory/deltas/", "factory/fixtures/", "Cargo.toml", "factory/receipts/D4-PLANNER-VERIFIER/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "grep", "args": ["-q", "D4-PLANNER-VERIFIER", "design/materialization/LEDGER.md"], "log": "factory/receipts/D4-PLANNER-VERIFIER/logs/F0-ledger.log"}
+  ]},
+  "expected_outputs": ["design/materialization/LEDGER.md"],
+  "tests": ["ledger names this delta"], "evidence_requirements": ["receipt"]
+}

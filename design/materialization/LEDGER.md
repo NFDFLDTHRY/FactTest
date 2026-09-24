@@ -158,5 +158,55 @@ BEFORE
   [OBS] MAX_TOKENS_PER_ISLAND raised 48 -> 96 (a backend record with lifecycle lists exceeds 48 tokens).
 
 AFTER
+- RESULT: integrated as a39ea02ce0170f9bc3f763d106f5cde3f932188a (ff-only from 4571d14).
+- RECEIPTS: factory/receipts/D3-LOWERING-CONTRACTS/{F0-doc,F1-rust,F2-fixture,F3-build,F4-evidence}.json PASS.
+- VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- EVIDENCE: evidence/D3/build/test.log (10 lowering witnesses + all prior suites), evidence/D3/byte-relay/
+  E_model_{0,1}/implementation-hypergraph.json (H_G: edge 0 host_to_wasm/wasm_to_host guard CPU_WASM64, edge 1
+  host_to_gpu/gpu_to_host guard WEBGPU; 33 registry backends; no rejected/unsatisfied), capability-ir.json
+  (4 PASS invariants, transfer/test/evidence OPEN), evidence/D3/bootstrap/* (wasm64 kernel rerun in Chromium).
+- OBSERVED ASCII: compiler/capability and compiler/implementation exist as drawn; contract instances are data
+  under fixtures/commissioning/.
+- MATCH/DIFFER: MATCH.
+
+---
+
+## D4-PLANNER-VERIFIER  (M5)
+
+BEFORE
+- DELTA: D4-PLANNER-VERIFIER (factory/deltas/D4.json)
+- BASE: a39ea02ce0170f9bc3f763d106f5cde3f932188a
+- STATION: S-DOC, S-RUST, S-FIXTURE, S-BUILD, S-EVIDENCE
+- FIXTURE: F0-doc, F1-rust, F2-fixture, F3-build, F4-evidence
+- READ: everything.  CHANGE: compiler/ (new crates planning, verifier; kernel/factc wiring), the
+  forge-verified-strategy compile-fail fixture, tests/, ledger, evidence/D4/.  FORBIDDEN: law/design/pass docs,
+  D0-D3 receipts/evidence, factory/src, factory/registry, host/harness, fixtures/language, fixtures/commissioning,
+  the earlier negative fixtures, M0 ASCII.
+- INVARIANTS: planner crate cannot name VerifiedStrategy's constructor (crate DAG: planning does not depend on
+  verifier; sealed private field); verifier re-derives every fact from model/obligations/registry and consumes the
+  CandidateStrategy as data only; an invalid variant fails the whole strategy (preference cannot rescue it);
+  UNKNOWN metric != 0 and forbids EXACT_OPTIMUM; activation takes a VerifiedStrategy and yields NO_ACTIVE_PLAN
+  when no guard passes; synthetic epochs are labelled SYNTHETIC_MODEL in every receipt.
+- TESTS: strategy ladder (13): two conditionally verified variants dispatched G before W; P6-M01 (E_model_0 -> G);
+  P6-M02 (E_model_1 -> W, identical VerifiedStrategy); P6-M03 (unknown metric not zero, no optimum claim);
+  P6-M04/G06 (selector only over verified variants; NO_ACTIVE_PLAN); P6-V01 (type mismatch never reaches
+  planning); P6-V02/V04 (missing/undeclared conversion -> V-LOW / no G variant); P6-V03/P5-L06 (move-only
+  conversions cannot serve copy); P6-V05 (bad guard + best preference -> V-ADM/V-STRAT FAIL); P5-V03/V04
+  (FEASIBLE without objective, canonical tie-break); P5-V06 (E0 activation not reused at E1); P5-V07 (hard
+  constraint excludes before ranking); P6-G04/G05 (no VerifiedStrategy without verifier PASS; compile-fail
+  fixture forge-verified-strategy).
+- EXPECTED EVIDENCE: evidence/D4/{build,byte-relay/E_model_0,byte-relay/E_model_1,negative}/*, index.json.
+- COMPILER-PLANE DECISIONS RECORDED:
+  [NEW] Variant enumeration = cartesian product of legal H_G edges per requirement (bounded by MAX_VARIANTS=16;
+        exceeding it marks enumeration incomplete => never EXACT_OPTIMUM).
+  [NEW] Goal aggregation = SUM of metric_value over the variant's guard backends; UNKNOWN if any is missing;
+        ranking places known values before unknown ones (an unknown never ranks as free).
+  [NEW] Result strength: NO_PLAN | FEASIBLE (no objective) | EXACT_OPTIMUM (complete enumeration, all goal
+        metrics known) | HEURISTIC otherwise.  BOUNDED_OPTIMUM is defined but no bounded search exists yet.
+  [NEW] Verifier rule ids V-SEM, V-REF, V-LOW, V-REP, V-OWN, V-CAP, V-ADM, V-PLAN, V-EFF, V-STRAT; ProofCertificate
+        per variant (conditional on its guard), StrategyCertificate id 1000.
+  [GAP] Sequence obligations are acknowledged (endpoints resolved) but no plan-level ordering model exists in v1.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

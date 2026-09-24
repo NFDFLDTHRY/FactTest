@@ -3,14 +3,6 @@
 version = 4
 
 [[package]]
-name = "factc"
-version = "0.1.0"
-dependencies = [
- "factc-foundation",
- "factc-kernel",
-]
-
-[[package]]
 name = "factc-capability"
 version = "0.1.0"
 dependencies = [
@@ -31,19 +23,6 @@ dependencies = [
  "factc-foundation",
  "factc-semantic",
  "factc-source",
-]
-
-[[package]]
-name = "factc-kernel"
-version = "0.1.0"
-dependencies = [
- "factc-capability",
- "factc-foundation",
- "factc-implementation",
- "factc-planning",
- "factc-semantic",
- "factc-source",
- "factc-verifier",
 ]
 
 [[package]]
@@ -85,16 +64,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "factc-wasm-abi"
-version = "0.1.0"
+name = "neg-forge-verified-strategy"
+version = "0.0.0"
 dependencies = [
  "factc-foundation",
- "factc-kernel",
-]
-
-[[package]]
-name = "factory"
-version = "0.1.0"
-dependencies = [
- "factc-foundation",
+ "factc-planning",
+ "factc-verifier",
 ]

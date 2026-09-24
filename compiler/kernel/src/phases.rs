@@ -141,6 +141,68 @@ pub fn contracts(ws: &mut Workspace) -> bool {
     ok && ws.registry.ok
 }
 
+/// Planning + independent verification + activation model.  Runs only when the source is well typed, the
+/// registry is coherent and every requirement has a legal edge.
+pub fn plan_and_verify(ws: &mut Workspace) -> bool {
+    ws.strategy.clear();
+    ws.verification.clear();
+    ws.activation = None;
+    if ws.contracts_len == 0 || !ws.registry.ok || !ws.hypergraph.unsatisfied.is_empty() {
+        return false;
+    }
+    {
+        let (model, ir, reg, hg, strat) = (
+            &ws.model,
+            &ws.capability_ir,
+            &ws.registry,
+            &ws.hypergraph,
+            &mut ws.strategy,
+        );
+        factc_planning::plan(model, ir, reg, hg, strat);
+    }
+    if ws.strategy.strength == factc_planning::Strength::NoPlan {
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::NoLegalPlan,
+            Phase::Planning,
+            SourceId::default(),
+            None,
+            ws.strategy.explanation,
+        ));
+        return false;
+    }
+    {
+        let (model, ir, reg, hg, strat, ver) = (
+            &ws.model,
+            &ws.capability_ir,
+            &ws.registry,
+            &ws.hypergraph,
+            &ws.strategy,
+            &mut ws.verification,
+        );
+        factc_verifier::verify_strategy(model, ir, reg, hg, strat, ver);
+    }
+    if ws.verification.verified.is_none() {
+        let (rule, detail) = factc_verifier::first_failure(&ws.verification).unwrap_or((
+            factc_verifier::Rule::Strategy,
+            "strategy verification failed",
+        ));
+        let _ = rule;
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::ProofFailed,
+            Phase::Verification,
+            SourceId::default(),
+            None,
+            detail,
+        ));
+        return false;
+    }
+    if ws.registry.epoch.is_some() {
+        let vs = ws.verification.verified.as_ref().unwrap();
+        ws.activation = Some(factc_verifier::activation::activate(vs, &ws.registry));
+    }
+    true
+}
+
 /// Emit artifacts: canonical ASCII per system, TypedSystemIR JSON.
 pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace::ArenaExhausted> {
     let mut scratch = [0u8; SCRATCH];
@@ -238,7 +300,7 @@ pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace
         } else {
             ArtifactStatus::Partial
         };
-        ws.store_artifact(
+        let hg_id = ws.store_artifact(
             ArtifactKind::ImplementationHypergraph,
             "factc-implementation/enumerate",
             hstatus,
@@ -246,6 +308,98 @@ pub fn emit(ws: &mut Workspace, well_typed: bool) -> Result<(), crate::workspace
             &[cap],
             None,
         )?;
+        if ws.strategy.strength != factc_planning::Strength::NoPlan
+            || !ws.strategy.variants.is_empty()
+        {
+            let mut o = OutBuf::new(&mut scratch);
+            if factc_planning::strategy_json(
+                &ws.model,
+                &ws.capability_ir,
+                &ws.registry,
+                &ws.hypergraph,
+                &ws.strategy,
+                &mut o,
+            )
+            .is_err()
+            {
+                return Err(crate::workspace::ArenaExhausted);
+            }
+            let n = o.len();
+            let cs = ws.store_artifact(
+                ArtifactKind::CandidateStrategy,
+                "factc-planning/plan",
+                ArtifactStatus::Ok,
+                &scratch[..n],
+                &[hg_id],
+                None,
+            )?;
+            let mut o = OutBuf::new(&mut scratch);
+            if factc_verifier::certificates_json(&ws.verification, &mut o).is_err() {
+                return Err(crate::workspace::ArenaExhausted);
+            }
+            let n = o.len();
+            let vstatus = if ws.verification.verified.is_some() {
+                ArtifactStatus::Ok
+            } else {
+                ArtifactStatus::Failed
+            };
+            let certs = ws.store_artifact(
+                ArtifactKind::VerificationCertificates,
+                "factc-verifier/verify",
+                vstatus,
+                &scratch[..n],
+                &[cs],
+                None,
+            )?;
+            let verified = ws.verification.verified.clone();
+            if let Some(vs) = verified.as_ref() {
+                let mut o = OutBuf::new(&mut scratch);
+                if factc_verifier::verified_strategy_json(
+                    &ws.model,
+                    &ws.registry,
+                    &ws.hypergraph,
+                    vs,
+                    &mut o,
+                )
+                .is_err()
+                {
+                    return Err(crate::workspace::ArenaExhausted);
+                }
+                let n = o.len();
+                let vsid = ws.store_artifact(
+                    ArtifactKind::VerifiedStrategy,
+                    "factc-verifier/verify",
+                    ArtifactStatus::Ok,
+                    &scratch[..n],
+                    &[certs],
+                    None,
+                )?;
+                let activation = ws.activation;
+                if let Some(act) = activation.as_ref() {
+                    let mut o = OutBuf::new(&mut scratch);
+                    if factc_verifier::activation::receipt_json(vs, &ws.registry, act, &mut o)
+                        .is_err()
+                    {
+                        return Err(crate::workspace::ArenaExhausted);
+                    }
+                    let n = o.len();
+                    let astatus =
+                        if act.status == factc_verifier::activation::ActivationStatus::Pass {
+                            ArtifactStatus::Ok
+                        } else {
+                            ArtifactStatus::Failed
+                        };
+                    ws.store_artifact(
+                        ArtifactKind::RuntimeEvidence,
+                        "factc-verifier/activation-model",
+                        astatus,
+                        &scratch[..n],
+                        &[vsid],
+                        None,
+                    )?;
+                }
+            }
+        }
     }
     Ok(())
 }
@@ -281,6 +435,9 @@ pub fn run(ws: &mut Workspace, mode: Mode) -> Status {
             None,
             "a requirement has no statically legal implementation edge in H_G",
         ));
+    }
+    if well_typed && contracts_ok {
+        let _ = plan_and_verify(ws);
     }
     if mode == Mode::Build {
         if let Some((obj, st)) = factc_semantic::render::build_blocker(&ws.model) {

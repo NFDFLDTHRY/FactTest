@@ -1,0 +1,289 @@
+{
+  "delta_id": "D4-PLANNER-VERIFIER",
+  "workpiece_id": "W4",
+  "canonical_base": "a39ea02ce0170f9bc3f763d106f5cde3f932188a",
+  "base_tree": "6bd0192cdda7e2facaae0ec2aa228e7d80055c2a",
+  "verified_tree": "d2a36fb7531c476b35f0f178fb48f74cc3b7fd10",
+  "changed_paths": [
+    "Cargo.lock",
+    "Cargo.toml",
+    "compiler/foundation/src/bvec.rs",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/phases.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/strategy_ladder.rs",
+    "compiler/planning/Cargo.toml",
+    "compiler/planning/src/lib.rs",
+    "compiler/verifier/Cargo.toml",
+    "compiler/verifier/src/activation.rs",
+    "compiler/verifier/src/lib.rs",
+    "design/materialization/LEDGER.md",
+    "evidence/D4/build/test.log",
+    "evidence/D4/byte-relay/E_model_0/activation-receipt-model.json",
+    "evidence/D4/byte-relay/E_model_0/artifacts.json",
+    "evidence/D4/byte-relay/E_model_0/candidate-strategy.json",
+    "evidence/D4/byte-relay/E_model_0/canonical-ascii-0.ascii",
+    "evidence/D4/byte-relay/E_model_0/capability-ir.json",
+    "evidence/D4/byte-relay/E_model_0/diagnostics.json",
+    "evidence/D4/byte-relay/E_model_0/factc.log",
+    "evidence/D4/byte-relay/E_model_0/implementation-hypergraph.json",
+    "evidence/D4/byte-relay/E_model_0/source-lineage.json",
+    "evidence/D4/byte-relay/E_model_0/typed-system-ir.json",
+    "evidence/D4/byte-relay/E_model_0/verification-certificates.json",
+    "evidence/D4/byte-relay/E_model_0/verified-strategy.json",
+    "evidence/D4/byte-relay/E_model_1/activation-receipt-model.json",
+    "evidence/D4/byte-relay/E_model_1/artifacts.json",
+    "evidence/D4/byte-relay/E_model_1/candidate-strategy.json",
+    "evidence/D4/byte-relay/E_model_1/canonical-ascii-0.ascii",
+    "evidence/D4/byte-relay/E_model_1/capability-ir.json",
+    "evidence/D4/byte-relay/E_model_1/diagnostics.json",
+    "evidence/D4/byte-relay/E_model_1/factc.log",
+    "evidence/D4/byte-relay/E_model_1/implementation-hypergraph.json",
+    "evidence/D4/byte-relay/E_model_1/source-lineage.json",
+    "evidence/D4/byte-relay/E_model_1/typed-system-ir.json",
+    "evidence/D4/byte-relay/E_model_1/verification-certificates.json",
+    "evidence/D4/byte-relay/E_model_1/verified-strategy.json",
+    "evidence/D4/byte-relay/artifacts.json",
+    "evidence/D4/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D4/byte-relay/capability-ir.json",
+    "evidence/D4/byte-relay/diagnostics.json",
+    "evidence/D4/byte-relay/factc.log",
+    "evidence/D4/byte-relay/run.log",
+    "evidence/D4/byte-relay/source-lineage.json",
+    "evidence/D4/byte-relay/typed-system-ir.json",
+    "evidence/D4/index.json",
+    "evidence/D4/index.log",
+    "evidence/D4/negative/run.log",
+    "evidence/D4/negative/summary.log",
+    "evidence/D4/negative/third-party-dep.log",
+    "factory/deltas/D4.json",
+    "factory/fixtures/D4/F0-doc.json",
+    "factory/fixtures/D4/F1-rust.json",
+    "factory/fixtures/D4/F2-fixture.json",
+    "factory/fixtures/D4/F3-build.json",
+    "factory/fixtures/D4/F4-evidence.json",
+    "factory/receipts/D4-PLANNER-VERIFIER/F0-doc.json",
+    "factory/receipts/D4-PLANNER-VERIFIER/F1-rust.json",
+    "factory/receipts/D4-PLANNER-VERIFIER/F2-fixture.json",
+    "factory/receipts/D4-PLANNER-VERIFIER/F3-build.json",
+    "factory/receipts/D4-PLANNER-VERIFIER/F4-evidence.json",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F0-ledger.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-build.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-clippy.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-depcheck.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-fmt.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-nostd.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F1-planner-does-not-depend-on-verifier.log",
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F2-negative-registered.log",
+    "fixtures/compiler/negative/forge-verified-strategy/Cargo.lock",
+    "fixtures/compiler/negative/forge-verified-strategy/Cargo.toml",
+    "fixtures/compiler/negative/forge-verified-strategy/src/lib.rs",
+    "host/factc/src/main.rs",
+    "tests/bootstrap/run-negative-fixtures.sh",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "6bd0192cdda7e2facaae0ec2aa228e7d80055c2a"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D4-PLANNER-VERIFIER/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D4-PLANNER-VERIFIER/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D4-PLANNER-VERIFIER/F2-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D4-PLANNER-VERIFIER/F3-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D4-PLANNER-VERIFIER/F4-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/planning/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/verifier/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/verifier/src/activation.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/kernel/tests/strategy_ladder.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/compiler/negative/forge-verified-strategy/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D4/byte-relay/E_model_0/verified-strategy.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D4/byte-relay/E_model_0/activation-receipt-model.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D4/byte-relay/E_model_1/activation-receipt-model.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D4/negative/summary.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D4/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T02:30:30Z",
+  "status": "PASS"
+}

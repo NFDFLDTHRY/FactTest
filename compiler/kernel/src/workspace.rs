@@ -77,6 +77,9 @@ pub struct Workspace {
     pub capability_ir: factc_capability::CapabilityIr,
     pub registry: factc_implementation::Registry,
     pub hypergraph: factc_implementation::Hypergraph,
+    pub strategy: factc_planning::CandidateStrategy,
+    pub verification: factc_verifier::Verification,
+    pub activation: Option<factc_verifier::activation::ActivationReceipt>,
     pub artifact_bytes: [u8; ARTIFACT_BYTES],
     pub artifact_used: usize,
     pub artifacts: BVec<ArtifactSlot, MAX_ARTIFACTS>,
@@ -112,6 +115,9 @@ impl Workspace {
             capability_ir: factc_capability::CapabilityIr::new(),
             registry: factc_implementation::Registry::new(),
             hypergraph: factc_implementation::Hypergraph::new(),
+            strategy: factc_planning::CandidateStrategy::new(),
+            verification: factc_verifier::Verification::new(),
+            activation: None,
             artifact_bytes: [0; ARTIFACT_BYTES],
             artifact_used: 0,
             artifacts: BVec::new(),
@@ -133,6 +139,9 @@ impl Workspace {
         self.capability_ir.clear();
         self.registry.clear();
         self.hypergraph.clear();
+        self.strategy.clear();
+        self.verification.clear();
+        self.activation = None;
         self.artifact_used = 0;
         self.artifacts.clear();
         self.last_status = Status::Idle;

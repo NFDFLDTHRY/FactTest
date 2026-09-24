@@ -163,18 +163,15 @@ fn check(args: &[String]) -> i32 {
             factc_foundation::ArtifactKind::GeneratedBundle => "bin",
             _ => "json",
         };
+        let kind_name = match slot.kind {
+            factc_foundation::ArtifactKind::RuntimeEvidence => {
+                "activation-receipt-model".to_string()
+            }
+            k => k.name().to_lowercase().replace('_', "-"),
+        };
         let name = match slot.system {
-            Some(s) => format!(
-                "{}-{}.{}",
-                slot.kind.name().to_lowercase().replace('_', "-"),
-                s,
-                ext
-            ),
-            None => format!(
-                "{}.{}",
-                slot.kind.name().to_lowercase().replace('_', "-"),
-                ext
-            ),
+            Some(s) => format!("{}-{}.{}", kind_name, s, ext),
+            None => format!("{}.{}", kind_name, ext),
         };
         std::fs::write(out_dir.join(&name), &out_bytes[..n]).expect("write artifact");
     }

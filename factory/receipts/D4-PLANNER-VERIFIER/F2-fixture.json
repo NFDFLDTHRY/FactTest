@@ -1,0 +1,105 @@
+{
+  "receipt_id": "R-D4-PLANNER-VERIFIER-F2-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "1",
+  "fixture_id": "F2-fixture",
+  "workpiece_id": "W4",
+  "delta_id": "D4-PLANNER-VERIFIER",
+  "canonical_base": "a39ea02ce0170f9bc3f763d106f5cde3f932188a",
+  "input_artifacts": [
+    "PASS5-TESTS.md",
+    "PASS6-TESTS.md",
+    "COMMISSIONING-PROOF.md"
+  ],
+  "open_tree": "487240592a7d9c5f7440da788f5ea6f662a8cf65",
+  "close_tree": "c119936031d6b66b81952e47a3b7f77cbd900f4b",
+  "changed_paths": [
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F2-negative-registered.log",
+    "fixtures/compiler/negative/forge-verified-strategy/Cargo.lock",
+    "fixtures/compiler/negative/forge-verified-strategy/Cargo.toml",
+    "fixtures/compiler/negative/forge-verified-strategy/src/lib.rs",
+    "tests/bootstrap/run-negative-fixtures.sh",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "output_artifacts": [
+    "fixtures/compiler/negative/forge-verified-strategy/src/lib.rs",
+    "tests/language/run-byte-relay.sh"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D4-PLANNER-VERIFIER"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D4-PLANNER-VERIFIER/logs/F2-negative-registered.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:grep -q forge-verified-strategy tests/bootstrap/run-negative-fixtures.sh",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D4-PLANNER-VERIFIER/logs/F2-negative-registered.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/compiler/negative/forge-verified-strategy/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/language/run-byte-relay.sh",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D4-PLANNER-VERIFIER/logs/F2-negative-registered.log"
+  ],
+  "closed": "2026-09-24T02:30:27Z",
+  "status": "PASS"
+}

@@ -1,0 +1,175 @@
+{
+  "receipt_id": "R-D4-PLANNER-VERIFIER-F3-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F3-build",
+  "workpiece_id": "W4",
+  "delta_id": "D4-PLANNER-VERIFIER",
+  "canonical_base": "a39ea02ce0170f9bc3f763d106f5cde3f932188a",
+  "input_artifacts": [
+    "compiler/",
+    "host/",
+    "fixtures/",
+    "tests/"
+  ],
+  "open_tree": "fe651186af80acd87f64a57aef19cf9210ad1b14",
+  "close_tree": "086f69f34cae30039fd92749973b3a03d26fa559",
+  "changed_paths": [
+    "evidence/D4/build/test.log",
+    "evidence/D4/byte-relay/E_model_0/activation-receipt-model.json",
+    "evidence/D4/byte-relay/E_model_0/artifacts.json",
+    "evidence/D4/byte-relay/E_model_0/candidate-strategy.json",
+    "evidence/D4/byte-relay/E_model_0/canonical-ascii-0.ascii",
+    "evidence/D4/byte-relay/E_model_0/capability-ir.json",
+    "evidence/D4/byte-relay/E_model_0/diagnostics.json",
+    "evidence/D4/byte-relay/E_model_0/factc.log",
+    "evidence/D4/byte-relay/E_model_0/implementation-hypergraph.json",
+    "evidence/D4/byte-relay/E_model_0/source-lineage.json",
+    "evidence/D4/byte-relay/E_model_0/typed-system-ir.json",
+    "evidence/D4/byte-relay/E_model_0/verification-certificates.json",
+    "evidence/D4/byte-relay/E_model_0/verified-strategy.json",
+    "evidence/D4/byte-relay/E_model_1/activation-receipt-model.json",
+    "evidence/D4/byte-relay/E_model_1/artifacts.json",
+    "evidence/D4/byte-relay/E_model_1/candidate-strategy.json",
+    "evidence/D4/byte-relay/E_model_1/canonical-ascii-0.ascii",
+    "evidence/D4/byte-relay/E_model_1/capability-ir.json",
+    "evidence/D4/byte-relay/E_model_1/diagnostics.json",
+    "evidence/D4/byte-relay/E_model_1/factc.log",
+    "evidence/D4/byte-relay/E_model_1/implementation-hypergraph.json",
+    "evidence/D4/byte-relay/E_model_1/source-lineage.json",
+    "evidence/D4/byte-relay/E_model_1/typed-system-ir.json",
+    "evidence/D4/byte-relay/E_model_1/verification-certificates.json",
+    "evidence/D4/byte-relay/E_model_1/verified-strategy.json",
+    "evidence/D4/byte-relay/artifacts.json",
+    "evidence/D4/byte-relay/canonical-ascii-0.ascii",
+    "evidence/D4/byte-relay/capability-ir.json",
+    "evidence/D4/byte-relay/diagnostics.json",
+    "evidence/D4/byte-relay/factc.log",
+    "evidence/D4/byte-relay/run.log",
+    "evidence/D4/byte-relay/source-lineage.json",
+    "evidence/D4/byte-relay/typed-system-ir.json",
+    "evidence/D4/negative/run.log",
+    "evidence/D4/negative/summary.log",
+    "evidence/D4/negative/third-party-dep.log"
+  ],
+  "output_artifacts": [
+    "evidence/D4/build/test.log",
+    "evidence/D4/byte-relay/E_model_0/verified-strategy.json",
+    "evidence/D4/byte-relay/E_model_1/activation-receipt-model.json",
+    "evidence/D4/negative/summary.log"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D4-PLANNER-VERIFIER"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D4/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D4/byte-relay/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D4/negative/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:cargo test",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D4/build/test.log"
+    },
+    {
+      "check": "command:sh tests/language/run-byte-relay.sh evidence/D4/byte-relay",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D4/byte-relay/run.log"
+    },
+    {
+      "check": "command:sh tests/bootstrap/run-negative-fixtures.sh evidence/D4/negative",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D4/negative/run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D4/build/test.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D4/byte-relay/E_model_0/verified-strategy.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D4/byte-relay/E_model_1/activation-receipt-model.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D4/negative/summary.log",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D4/build/test.log",
+    "evidence/D4/byte-relay/run.log",
+    "evidence/D4/negative/run.log"
+  ],
+  "closed": "2026-09-24T02:30:30Z",
+  "status": "PASS"
+}

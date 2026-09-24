@@ -9,6 +9,8 @@ pub struct BVec<T: Copy, const N: usize> {
     len: usize,
 }
 
+impl<T: Copy, const N: usize> Copy for BVec<T, N> {}
+
 impl<T: Copy, const N: usize> Default for BVec<T, N> {
     fn default() -> Self {
         Self::new()

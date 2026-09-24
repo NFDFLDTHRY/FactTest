@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F2-fixture", "station_id": "S-FIXTURE", "delta_id": "D4-PLANNER-VERIFIER",
+  "selected_inputs": ["PASS5-TESTS.md", "PASS6-TESTS.md", "COMMISSIONING-PROOF.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["fixtures/compiler/negative/forge-verified-strategy/", "tests/", "factory/receipts/D4-PLANNER-VERIFIER/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "grep", "args": ["-q", "forge-verified-strategy", "tests/bootstrap/run-negative-fixtures.sh"], "log": "factory/receipts/D4-PLANNER-VERIFIER/logs/F2-negative-registered.log"}
+  ]},
+  "expected_outputs": ["fixtures/compiler/negative/forge-verified-strategy/src/lib.rs", "tests/language/run-byte-relay.sh"],
+  "tests": ["compile-fail fixture registered"], "evidence_requirements": ["receipt"]
+}
