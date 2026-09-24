@@ -174,3 +174,59 @@ execute
 \`\`\`
 
 This is the runtime closure of Factory Law's re-observation principle.
+
+
+# Pass 6 amendment - strategy activation instead of runtime code generation
+
+Adaptive generated applications contain a preverified VerifiedStrategy.
+
+```text
+VerifiedStrategy
+     |
+     +-- Variant A + guard(A)
+     +-- Variant B + guard(B)
+             |
+             v
+MachineEpoch E
+  admissions + metrics
+             |
+             v
+evaluate guards
+             |
+             v
+runtime selector
+             |
+             v
+ActivePlan @ E
+```
+
+## ActivationReceipt
+
+```text
+ActivationReceipt
+  epoch_id
+  strategy_id
+  plan_id
+  admission_refs[]
+  metric_evidence_refs[]
+  guard_result
+  status
+```
+
+Only a PASS ActivationReceipt may activate a VerifiedPlanVariant.
+
+## Epoch change
+
+When E0 -> E1:
+1. stale affected admission receipts;
+2. invalidate ActivePlan if its guard no longer passes;
+3. reevaluate the existing VerifiedStrategy against E1;
+4. select another verified variant if eligible;
+5. emit ActivationReceipt and RuntimeEvidence;
+6. if none is eligible, enter NO_ACTIVE_PLAN.
+
+No implementation may be invented at runtime.
+
+A compiler-known implementation not emitted in VerifiedStrategy requires a new compile/codegen/materialization cycle before it can become active.
+
+For the current architecture, runtime "replan" means reselection inside the finite VerifiedStrategy.

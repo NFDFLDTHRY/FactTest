@@ -160,3 +160,37 @@ Every CandidatePlan must support a human/AI-readable explanation artifact contai
 
 The explanation is not proof.
 The verifier certificate provides proof of legality.
+
+
+## 10. Custom project metrics (Pass 6 amendment)
+
+Source may declare a MetricId when unit and semantics are explicit.
+
+Custom metrics may not masquerade as physical performance.
+
+Commissioning defines:
+
+```text
+MetricId: preference_rank
+Unit: ordinal
+Meaning: lower is explicitly preferred by the commissioning fixture
+```
+
+It does not mean lower latency, higher throughput, lower energy, or general backend superiority.
+
+## 11. CandidateStrategy
+
+Adaptive targets are planned as a finite CandidateStrategy:
+
+```text
+CandidateStrategy
+  strategy_id
+  variants[]
+  dispatch_objective
+  deterministic_tie_break
+```
+
+Each variant is a CandidatePlan plus a finite activation guard over admission facts.
+
+Planner may propose CandidateStrategy.
+Only the verifier may construct VerifiedStrategy.

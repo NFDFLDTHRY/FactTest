@@ -341,3 +341,27 @@ For every backend-loss fixture:
 - emit observed ASCII describing the changed machine/plan
 
 A silent strategy change with no evidence/re-observation fails.
+
+
+## E-025 - Byte Relay commissioning strategy
+
+Project authority:
+[PASS6.md](PASS6.md)
+
+External authority:
+- Wasm address types: https://webassembly.github.io/spec/core/text/types.html#text-addrtype
+- controlled WebGPU device loss: https://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy
+
+Required future physical evidence after materialization:
+1. commissioning ASCII parses/canonical-renders without semantic drift;
+2. Wasm64 representation path is built, validated and executed;
+3. WebGPU representation path is admitted and executes when available;
+4. exact input bytes emerge unchanged through selected path;
+5. GPUDevice.destroy() produces actual loss evidence;
+6. new epoch invalidates GPU activation;
+7. selector activates already-verified Wasm64 variant without runtime codegen;
+8. exact bytes again emerge unchanged;
+9. ObservationDelta and observed ASCII record transition;
+10. authored ASCII remains unchanged.
+
+If the physical browser cannot admit either backend, record [GAP]. Model/synthetic evidence cannot substitute for physical evidence.

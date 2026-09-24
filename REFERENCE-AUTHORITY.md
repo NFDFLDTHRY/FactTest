@@ -393,3 +393,11 @@ When a future agent relies on an external technical claim:
 5. keep implementation pins separate;
 6. derive a test/evidence obligation;
 7. never keep an obsolete statement merely because it already exists in this repository.
+
+
+## Pass 6 commissioning authority
+
+Controlled WebGPU device-loss fixture:
+https://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy
+
+The current WebGPU specification defines GPUDevice.destroy() as destroying the device and causing device loss with reason "destroyed". Commissioning uses this as an explicit test fixture for loss/reselection behavior.

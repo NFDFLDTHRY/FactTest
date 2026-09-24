@@ -169,3 +169,35 @@ Each lowering transformation eventually emits a CompilerReceipt identifying:
 - source-lineage references
 
 Lowering receipts are compiler artifacts, not Factory receipts.
+
+
+## 9. Objective pass-through (Pass 6 amendment)
+
+Metrics/Objectives are not lowered into capability requirements.
+
+They pass from TypedSystemIR into planning as explicit source-owned planning constraints.
+
+```text
+TypedSystemIR
+   |                 \
+   |                  +-- Objective/Metric semantics ----+
+   v                                                   |
+CapabilityIR -> H_G -> H_A ----------------------------+-> Planner
+```
+
+Capability lowering may not rewrite or invent an Objective.
+
+## 10. DATA transfer requirements
+
+Every Pass-4 DATA relation creates a transfer requirement independent of any named SemanticCapability.
+
+For example:
+
+```text
+DATA mode=copy
+TypeId=Bytes
+```
+
+requires a legal representation/conversion path that preserves the semantic value and copy mode.
+
+This allows different storage-domain implementations without hidden source-level backend semantics.

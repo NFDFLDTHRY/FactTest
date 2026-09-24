@@ -568,3 +568,24 @@ They do not substitute for one another.
 [RUN] no compiler/backend/station implementation materialized.
 
 Next: Pass 6 - prove one complete vertical slice.
+
+
+## Pass 6 amendment - adaptive strategy correction
+
+Vertical tracing found that an epoch-bound singular VerifiedPlan cannot support fallback to implementation machinery that codegen never emitted.
+
+Adaptive targets now use:
+
+```text
+CandidateStrategy
+ -> independent verification
+ -> VerifiedStrategy
+ -> codegen all verified variants + selector
+ -> ActivationReceipt @ epoch
+ -> ActivePlan
+```
+
+A singular plan is the one-variant degenerate case.
+
+Runtime adaptation selects only among preverified/pre-emitted variants.
+It does not run codegen or invent implementation machinery.
