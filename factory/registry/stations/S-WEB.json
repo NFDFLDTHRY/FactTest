@@ -1,0 +1,46 @@
+{
+  "station_id": "S-WEB",
+  "version": "1",
+  "capability_tags": [
+    "WEB_HOST_FORGE"
+  ],
+  "input_kinds": [
+    "verified_strategy",
+    "codegen_contract",
+    "host_fixture"
+  ],
+  "operation_class": "materialize_host_machinery",
+  "output_kinds": [
+    "javascript",
+    "html",
+    "manifest",
+    "service_worker"
+  ],
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "host/",
+    "compiler/codegen/templates/",
+    "factory/receipts/"
+  ],
+  "must_not_change": [
+    "FACTORY-LAW.md",
+    "COMMISSIONING-ASCII.md",
+    "compiler/semantic/",
+    "compiler/verifier/",
+    "evidence/"
+  ],
+  "preconditions": [
+    "codegen contract or explicitly authorized host fixture"
+  ],
+  "invariants": [
+    "adapters subset of verified plan"
+  ],
+  "verification": [
+    "authority-linked browser contract tests",
+    "import/export/adapter checks"
+  ],
+  "source_nonmutating": false,
+  "receipt_schema_version": "1"
+}

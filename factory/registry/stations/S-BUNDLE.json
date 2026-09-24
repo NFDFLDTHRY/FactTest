@@ -1,0 +1,16 @@
+{
+  "station_id": "S-BUNDLE",
+  "version": "1",
+  "capability_tags": ["BUNDLE_ASSEMBLER"],
+  "input_kinds": ["bundle_parts", "verified_strategy", "bundle_manifest"],
+  "operation_class": "assemble_generated_bundle",
+  "output_kinds": ["generated_bundle"],
+  "may_read": ["*"],
+  "may_change": ["evidence/"],
+  "must_not_change": ["FACTORY-LAW.md", "compiler/", "host/", "factory/src/", "factory/registry/", "design/", "fixtures/", "tests/", "COMMISSIONING-ASCII.md"],
+  "preconditions": ["verified compiler/codegen outputs"],
+  "invariants": ["no new implementation selected", "source semantics unchanged"],
+  "verification": ["bundle manifest/lineage", "BundleVerifier obligations"],
+  "source_nonmutating": true,
+  "receipt_schema_version": "1"
+}

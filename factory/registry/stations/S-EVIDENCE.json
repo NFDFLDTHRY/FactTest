@@ -1,0 +1,16 @@
+{
+  "station_id": "S-EVIDENCE",
+  "version": "1",
+  "capability_tags": ["EVIDENCE_ASSEMBLER"],
+  "input_kinds": ["raw_station_outputs", "build_outputs", "probe_outputs"],
+  "operation_class": "normalize_evidence",
+  "output_kinds": ["evidence_artifacts", "evidence_indices"],
+  "may_read": ["*"],
+  "may_change": ["evidence/"],
+  "must_not_change": ["FACTORY-LAW.md", "compiler/", "host/", "factory/src/", "factory/registry/", "design/", "fixtures/", "tests/"],
+  "preconditions": ["raw evidence exists"],
+  "invariants": ["never rewrite failed evidence into PASS", "never invent observations"],
+  "verification": ["schema conformance"],
+  "source_nonmutating": true,
+  "receipt_schema_version": "1"
+}

@@ -1,0 +1,16 @@
+{
+  "station_id": "S-BUILD",
+  "version": "1",
+  "capability_tags": ["BUILD_VERIFY"],
+  "input_kinds": ["workpiece", "toolchain", "fixture_configuration"],
+  "operation_class": "build_check_test",
+  "output_kinds": ["build_evidence", "test_evidence"],
+  "may_read": ["*"],
+  "may_change": ["evidence/"],
+  "must_not_change": ["FACTORY-LAW.md", "compiler/", "host/", "factory/src/", "factory/registry/", "design/", "fixtures/", "tests/"],
+  "preconditions": ["forge receipts exist"],
+  "invariants": ["source and authoritative design untouched"],
+  "verification": ["exit codes", "structured evidence"],
+  "source_nonmutating": true,
+  "receipt_schema_version": "1"
+}

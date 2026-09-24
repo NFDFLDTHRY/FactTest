@@ -1,0 +1,39 @@
+$ cargo test -p factory
+(cwd .)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 9 tests
+test f02_fixture_authority_expansion_rejected_at_open ... ok
+test f03_missing_receipt_blocks_verification ... ok
+test f01_unauthorized_mutation_fails_verification ... ok
+test f00_happy_path_integrates_and_reinspects ... ok
+test f04_failed_station_check_cannot_be_pass ... ok
+test f06_read_only_station_mutating_source_fails ... ok
+test f08_delta_with_overlapping_authority_fails_structural_check ... ok
+test f05_moved_base_blocks_integration_without_force ... ok
+test f07_unreceipted_change_fails_verification ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling factory v0.1.0 (/home/user/factory-workpieces/W0/factory)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running unittests src/lib.rs (/home/user/factory-target/debug/deps/factory-181e8643312ec504)
+     Running unittests src/main.rs (/home/user/factory-target/debug/deps/factory-d22a8f6545cd8f68)
+     Running tests/factory_law.rs (/home/user/factory-target/debug/deps/factory_law-d5d679b26c7498aa)
+   Doc-tests factory
+
+[exit 0] expected 0

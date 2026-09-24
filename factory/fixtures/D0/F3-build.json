@@ -1,0 +1,18 @@
+{
+  "fixture_id": "F3-build",
+  "station_id": "S-BUILD",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "selected_inputs": ["factory/", "Cargo.toml"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D0/"],
+  "job_parameters": {
+    "commands": [
+      {"cwd": ".", "program": "cargo", "args": ["test", "-p", "factory"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D0/build/test.log"},
+      {"cwd": ".", "program": "cargo", "args": ["tree", "-p", "factory", "--edges", "normal,build"], "env": {"CARGO_TARGET_DIR": "/home/user/factory-target"}, "log": "evidence/D0/build/cargo-tree.log"},
+      {"cwd": ".", "program": "rustc", "args": ["--version", "--verbose"], "log": "evidence/D0/build/toolchain.log"}
+    ]
+  },
+  "expected_outputs": ["evidence/D0/build/test.log", "evidence/D0/build/cargo-tree.log", "evidence/D0/build/toolchain.log"],
+  "tests": ["cargo test -p factory"],
+  "evidence_requirements": ["build/test evidence", "dependency graph", "toolchain identity"]
+}

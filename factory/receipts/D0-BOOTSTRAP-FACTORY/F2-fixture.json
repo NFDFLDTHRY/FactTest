@@ -1,0 +1,94 @@
+{
+  "receipt_id": "R-D0-BOOTSTRAP-FACTORY-F2-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "1",
+  "fixture_id": "F2-fixture",
+  "workpiece_id": "W0",
+  "delta_id": "D0-BOOTSTRAP-FACTORY",
+  "canonical_base": "32b7e65f8653427e7fc2d05ef3bad6c06f2f022c",
+  "input_artifacts": [
+    "PASS5-TESTS.md",
+    "PASS6-TESTS.md"
+  ],
+  "open_tree": "641ceb4a66facbb1c2f82641963e7844bcdc6da3",
+  "close_tree": "163eb09d5936b435a5813787ba8540fc351387b5",
+  "changed_paths": [
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F2-witness-count.log",
+    "factory/tests/factory_law.rs"
+  ],
+  "output_artifacts": [
+    "factory/tests/factory_law.rs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v1 (workpiece-bootstrap)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D0-BOOTSTRAP-FACTORY"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F2-witness-count.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:grep -c ^fn f0[0-9]_ factory/tests/factory_law.rs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F2-witness-count.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:factory/tests/factory_law.rs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/logs/F2-witness-count.log"
+  ],
+  "closed": "2026-09-24T01:35:59Z",
+  "status": "PASS"
+}
