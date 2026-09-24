@@ -578,4 +578,26 @@ BEFORE
   unchanged.
 
 AFTER
+- RESULT: integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca (ff-only from 205d337); merged into main by the owner
+  through pull request #4 as 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (PR closed, history fast-forwarded).
+- RECEIPTS: factory/receipts/D13-REPO-HYGIENE/{F0-doc,F1-rust,F2-fixture,F3-doc,F4-annotate,F5-build,F6-evidence,
+  F7-doc,F8-evidence,F9-doc}.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- OBSERVED: design/materialization/D13-OBSERVED-REPO-HYGIENE.md; PRE-RESCAN-BASELINE: ESTABLISHED.
+- (recorded by D14-PROMPT-INTAKE, the next delta.)
+
+---
+
+## D14-PROMPT-INTAKE  (FIRST ACTION of the technical reference rescan)
+
+BEFORE
+- DELTA: D14-PROMPT-INTAKE (factory/deltas/D14-PROMPT-INTAKE.json), workpiece W15.
+- BASE: 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (main after PR #4; development branch
+  claude/d9-rust-cargo-proof-4nys6s restarted on it: it carried only merged history).
+- STATION: S-DOC.  FIXTURE: F0-doc.
+- CHANGE: design/materialization/D14-REFERENCE-RESCAN-PROMPT.md (verbatim owner prompt + the reading adopted for
+  assembly), this ledger (D13 AFTER, this entry), the delta, its fixture, receipts.  FORBIDDEN: everything else.
+- NEXT: the rescan itself is D14-TECHNICAL-REFERENCE-RESCAN, assembled in
+  design/materialization/D14-INTENDED-REFERENCE-RESCAN.md from design/materialization/D13-PRE-RESCAN-BASELINE.md.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
