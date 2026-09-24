@@ -8,6 +8,7 @@ pub const ARTIFACT_BYTES: usize = 512 * 1024;
 pub const MACHINE_STATE_BYTES: usize = 16 * 1024;
 pub const CONTRACT_BYTES: usize = 32 * 1024;
 pub const METRIC_BYTES: usize = 8 * 1024;
+pub const TAPE_BYTES: usize = 64 * 1024;
 
 #[derive(Copy, Clone, Debug)]
 pub struct SourceUnit {
@@ -82,6 +83,9 @@ pub struct Workspace {
     pub activation: Option<factc_verifier::activation::ActivationReceipt>,
     pub bundle: factc_codegen::bundle::BundleStore,
     pub bundle_certificate: factc_bundle::BundleCertificate,
+    pub tape: [u8; TAPE_BYTES],
+    pub tape_len: usize,
+    pub observation: factc_observe::Observation,
     pub artifact_bytes: [u8; ARTIFACT_BYTES],
     pub artifact_used: usize,
     pub artifacts: BVec<ArtifactSlot, MAX_ARTIFACTS>,
@@ -122,6 +126,9 @@ impl Workspace {
             activation: None,
             bundle: factc_codegen::bundle::BundleStore::new(),
             bundle_certificate: factc_bundle::BundleCertificate::new(),
+            tape: [0; TAPE_BYTES],
+            tape_len: 0,
+            observation: factc_observe::Observation::new(),
             artifact_bytes: [0; ARTIFACT_BYTES],
             artifact_used: 0,
             artifacts: BVec::new(),
@@ -148,6 +155,8 @@ impl Workspace {
         self.activation = None;
         self.bundle.clear();
         self.bundle_certificate = factc_bundle::BundleCertificate::new();
+        self.tape_len = 0;
+        self.observation.clear();
         self.artifact_used = 0;
         self.artifacts.clear();
         self.last_status = Status::Idle;

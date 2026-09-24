@@ -8,7 +8,7 @@ use std::path::PathBuf;
 const OUT_BYTES: usize = 1 << 20;
 
 fn usage() -> ! {
-    eprintln!("usage:\n  factc abi-version\n  factc required-workspace\n  factc check <analyze|build> --out <dir> [--contracts <file>] [--metrics <file>] [--machine <file>] <source files...>");
+    eprintln!("usage:\n  factc abi-version\n  factc required-workspace\n  factc check <analyze|build> --out <dir> [--contracts <file>] [--metrics <file>] [--machine <file>] <source files...>\n  factc observe --out <dir> --tape <file> --system <name> [--source <file>] [--bundle-manifest <file>] [--evidence-class <class>]");
     std::process::exit(2)
 }
 
@@ -34,7 +34,88 @@ fn real_main() -> i32 {
             0
         }
         Some("check") => check(&args[1..]),
+        Some("observe") => observe(&args[1..]),
         _ => usage(),
+    }
+}
+
+fn observe(args: &[String]) -> i32 {
+    let mut out_dir: Option<PathBuf> = None;
+    let mut tape: Option<PathBuf> = None;
+    let mut system = String::from("system");
+    let mut source: Option<PathBuf> = None;
+    let mut manifest: Option<PathBuf> = None;
+    let mut class = String::from("UNSPECIFIED");
+    let mut i = 0;
+    while i < args.len() {
+        match args[i].as_str() {
+            "--out" => out_dir = args.get(i + 1).map(PathBuf::from),
+            "--tape" => tape = args.get(i + 1).map(PathBuf::from),
+            "--system" => system = args.get(i + 1).cloned().unwrap_or_default(),
+            "--source" => source = args.get(i + 1).map(PathBuf::from),
+            "--bundle-manifest" => manifest = args.get(i + 1).map(PathBuf::from),
+            "--evidence-class" => class = args.get(i + 1).cloned().unwrap_or_default(),
+            _ => usage(),
+        }
+        i += 2;
+    }
+    let (Some(out_dir), Some(tape)) = (out_dir, tape) else {
+        usage()
+    };
+    let tape_bytes = std::fs::read(&tape).unwrap_or_else(|e| {
+        eprintln!("factc: {}: {}", tape.display(), e);
+        std::process::exit(3)
+    });
+    // source identities measured by the host: sha256 of the authored source now, and the sha256 the bundle
+    // manifest recorded at generation time (parsed textually; the kernel never reads files)
+    let sha_after =
+        source.map(|p| factc_foundation::sha256::digest(&std::fs::read(&p).expect("read source")));
+    let sha_lineage: Option<[u8; 32]> = manifest.and_then(|p| {
+        let text = std::fs::read_to_string(&p).ok()?;
+        let key = "\"source_sha256\":\"";
+        let i = text.find(key)? + key.len();
+        let hex = &text[i..i + 64];
+        let mut out = [0u8; 32];
+        factc_foundation::hex::decode_into(hex.as_bytes(), &mut out)?;
+        Some(out)
+    });
+    std::fs::create_dir_all(&out_dir).expect("out dir");
+    let mut ws = Workspace::new();
+    if factc_kernel::submit_evidence_tape(&mut ws, &tape_bytes).is_err() {
+        eprintln!("factc: tape too large");
+        return 3;
+    }
+    let status = factc_kernel::observe(
+        &mut ws,
+        system.as_bytes(),
+        sha_after.as_ref(),
+        sha_lineage.as_ref(),
+        class.as_bytes(),
+    );
+    let mut out_bytes = vec![0u8; OUT_BYTES];
+    let mut buf = OutBuf::new(&mut out_bytes);
+    factc_kernel::read_diagnostics(&ws, &mut buf).expect("diagnostics");
+    let n = buf.len();
+    std::fs::write(out_dir.join("diagnostics.json"), &out_bytes[..n]).expect("write");
+    for i in 0..factc_kernel::artifact_count(&ws) {
+        let slot = *ws.artifacts.get(i).unwrap();
+        let mut buf = OutBuf::new(&mut out_bytes);
+        factc_kernel::read_artifact(&ws, i, &mut buf).expect("artifact");
+        let n = buf.len();
+        let name = match slot.kind {
+            factc_foundation::ArtifactKind::ObservedAscii => "observed.ascii",
+            _ => "observation-delta.json",
+        };
+        std::fs::write(out_dir.join(name), &out_bytes[..n]).expect("write artifact");
+    }
+    println!(
+        "factc: observe status {}",
+        factc_kernel::status_name(status)
+    );
+    if status == factc_kernel::Status::Ok {
+        0
+    } else {
+        1
     }
 }
 

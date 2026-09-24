@@ -1,0 +1,348 @@
+{
+  "delta_id": "D6-RUNTIME-EVIDENCE",
+  "workpiece_id": "W6",
+  "canonical_base": "e72fbe7e8ea16522bab9619ee7bafa8dd3104a45",
+  "base_tree": "6ddef63cbe7f18704d15e8518fb8f3ef4c83a7c7",
+  "verified_tree": "b7f29eca4bd6db576d1dab619cbcff7fbcd91138",
+  "changed_paths": [
+    "Cargo.lock",
+    "Cargo.toml",
+    "compiler/kernel/Cargo.toml",
+    "compiler/kernel/src/abi.rs",
+    "compiler/kernel/src/workspace.rs",
+    "compiler/kernel/tests/observe_ladder.rs",
+    "compiler/observe/Cargo.toml",
+    "compiler/observe/src/lib.rs",
+    "design/materialization/LEDGER.md",
+    "evidence/D6/build/test.log",
+    "evidence/D6/index.json",
+    "evidence/D6/index.log",
+    "evidence/D6/physical/authored-source-before.ascii",
+    "evidence/D6/physical/compile.log",
+    "evidence/D6/physical/compile/artifacts.json",
+    "evidence/D6/physical/compile/bundle-certificate.json",
+    "evidence/D6/physical/compile/bundle/bundle.json",
+    "evidence/D6/physical/compile/bundle/index.html",
+    "evidence/D6/physical/compile/bundle/manifest.webmanifest",
+    "evidence/D6/physical/compile/bundle/membrane.js",
+    "evidence/D6/physical/compile/bundle/runtime.js",
+    "evidence/D6/physical/compile/bundle/selector.js",
+    "evidence/D6/physical/compile/bundle/sw.js",
+    "evidence/D6/physical/compile/bundle/wasm64_relay.wasm",
+    "evidence/D6/physical/compile/candidate-strategy.json",
+    "evidence/D6/physical/compile/canonical-ascii-0.ascii",
+    "evidence/D6/physical/compile/capability-ir.json",
+    "evidence/D6/physical/compile/diagnostics.json",
+    "evidence/D6/physical/compile/implementation-hypergraph.json",
+    "evidence/D6/physical/compile/source-lineage.json",
+    "evidence/D6/physical/compile/typed-system-ir.json",
+    "evidence/D6/physical/compile/verification-certificates.json",
+    "evidence/D6/physical/compile/verified-strategy.json",
+    "evidence/D6/physical/observe-no-webgpu.log",
+    "evidence/D6/physical/observe.log",
+    "evidence/D6/physical/observed-no-webgpu/diagnostics.json",
+    "evidence/D6/physical/observed-no-webgpu/observation-delta.json",
+    "evidence/D6/physical/observed-no-webgpu/observed.ascii",
+    "evidence/D6/physical/observed/diagnostics.json",
+    "evidence/D6/physical/observed/observation-delta.json",
+    "evidence/D6/physical/observed/observed.ascii",
+    "evidence/D6/physical/probe-no-webgpu.log",
+    "evidence/D6/physical/probe-no-webgpu/evidence-tape.ascii",
+    "evidence/D6/physical/probe-no-webgpu/probe-record.json",
+    "evidence/D6/physical/probe-no-webgpu/runtime-evidence.json",
+    "evidence/D6/physical/probe-webgpu.log",
+    "evidence/D6/physical/probe-webgpu/evidence-tape.ascii",
+    "evidence/D6/physical/probe-webgpu/probe-record.json",
+    "evidence/D6/physical/probe-webgpu/runtime-evidence.json",
+    "evidence/D6/physical/run.log",
+    "factory/deltas/D6.json",
+    "factory/fixtures/D6/F0-doc.json",
+    "factory/fixtures/D6/F1-rust.json",
+    "factory/fixtures/D6/F2-web.json",
+    "factory/fixtures/D6/F3-fixture.json",
+    "factory/fixtures/D6/F4-build.json",
+    "factory/fixtures/D6/F5-browser.json",
+    "factory/fixtures/D6/F6-evidence.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/F0-doc.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/F1-rust.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/F2-web.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/F3-fixture.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/F4-build.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/F5-browser.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/F6-evidence.json",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F0-ledger.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-build.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-clippy.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-depcheck.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-fmt.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F1-nostd.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F2-harness-never-compiles.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F2-syntax.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-payloads-match-authority.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-script-syntax.log",
+    "fixtures/commissioning/payloads.json",
+    "fixtures/commissioning/tape-sample.ascii",
+    "host/factc/src/main.rs",
+    "host/harness/bundle-probe.mjs",
+    "tests/commissioning/run-physical.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "6ddef63cbe7f18704d15e8518fb8f3ef4c83a7c7"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D6-RUNTIME-EVIDENCE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-rust",
+      "status": "PASS",
+      "detail": "factory/receipts/D6-RUNTIME-EVIDENCE/F1-rust.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-rust",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-web",
+      "status": "PASS",
+      "detail": "factory/receipts/D6-RUNTIME-EVIDENCE/F2-web.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-web",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D6-RUNTIME-EVIDENCE/F3-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D6-RUNTIME-EVIDENCE/F4-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-browser",
+      "status": "PASS",
+      "detail": "factory/receipts/D6-RUNTIME-EVIDENCE/F5-browser.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D6-RUNTIME-EVIDENCE/F6-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:RUST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:WEB_HOST_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BROWSER_PROBE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/observe/src/lib.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:host/harness/bundle-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/commissioning/run-physical.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:compiler/kernel/tests/observe_ladder.rs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:fixtures/commissioning/payloads.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D6/physical/probe-webgpu/probe-record.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D6/physical/probe-webgpu/evidence-tape.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D6/physical/probe-no-webgpu/probe-record.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D6/physical/observed/observed.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D6/physical/observed/observation-delta.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D6/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T02:50:33Z",
+  "status": "PASS"
+}

@@ -1,0 +1,12 @@
+{
+  "fixture_id": "F3-fixture", "station_id": "S-FIXTURE", "delta_id": "D6-RUNTIME-EVIDENCE",
+  "selected_inputs": ["COMMISSIONING-FIXTURE.md", "COMMISSIONING-PROOF.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["fixtures/commissioning/payloads.json", "fixtures/commissioning/tape-sample.ascii", "tests/", "factory/receipts/D6-RUNTIME-EVIDENCE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["-c", "grep -q '00 01 7F 80 FF 55 AA 10' fixtures/commissioning/payloads.json && grep -q 'DE AD BE EF 00 13 37 C0 FF EE' fixtures/commissioning/payloads.json"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-payloads-match-authority.log"},
+    {"cwd": ".", "program": "sh", "args": ["-n", "tests/commissioning/run-physical.sh"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-script-syntax.log"}
+  ]},
+  "expected_outputs": ["fixtures/commissioning/payloads.json", "fixtures/commissioning/tape-sample.ascii", "tests/commissioning/run-physical.sh"],
+  "tests": ["payloads A/B match COMMISSIONING-FIXTURE.md"], "evidence_requirements": ["receipt"]
+}

@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F0-doc", "station_id": "S-DOC", "delta_id": "D6-RUNTIME-EVIDENCE",
+  "selected_inputs": ["RUNTIME-ADMISSION-REPLAN.md", "COMMISSIONING-RUNTIME.md"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["design/materialization/LEDGER.md", "factory/deltas/", "factory/fixtures/", "Cargo.toml", "factory/receipts/D6-RUNTIME-EVIDENCE/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "grep", "args": ["-q", "D6-RUNTIME-EVIDENCE", "design/materialization/LEDGER.md"], "log": "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F0-ledger.log"}
+  ]},
+  "expected_outputs": ["design/materialization/LEDGER.md"],
+  "tests": ["ledger names this delta"], "evidence_requirements": ["receipt"]
+}

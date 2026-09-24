@@ -1,0 +1,120 @@
+{
+  "receipt_id": "R-D6-RUNTIME-EVIDENCE-F3-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "1",
+  "fixture_id": "F3-fixture",
+  "workpiece_id": "W6",
+  "delta_id": "D6-RUNTIME-EVIDENCE",
+  "canonical_base": "e72fbe7e8ea16522bab9619ee7bafa8dd3104a45",
+  "input_artifacts": [
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md"
+  ],
+  "open_tree": "1ae8e08055704c95462835b6599cd68f73a380b8",
+  "close_tree": "b820b8c6ff18dc87530eb96f5b8d6ab156924927",
+  "changed_paths": [
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-payloads-match-authority.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-script-syntax.log",
+    "fixtures/commissioning/payloads.json",
+    "fixtures/commissioning/tape-sample.ascii",
+    "tests/commissioning/run-physical.sh"
+  ],
+  "output_artifacts": [
+    "fixtures/commissioning/payloads.json",
+    "fixtures/commissioning/tape-sample.ascii",
+    "tests/commissioning/run-physical.sh"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D6-RUNTIME-EVIDENCE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-payloads-match-authority.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-script-syntax.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c grep -q '00 01 7F 80 FF 55 AA 10' fixtures/commissioning/payloads.json && grep -q 'DE AD BE EF 00 13 37 C0 FF EE' fixtures/commissioning/payloads.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-payloads-match-authority.log"
+    },
+    {
+      "check": "command:sh -n tests/commissioning/run-physical.sh",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-script-syntax.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/commissioning/payloads.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:fixtures/commissioning/tape-sample.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/commissioning/run-physical.sh",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-payloads-match-authority.log",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/logs/F3-script-syntax.log"
+  ],
+  "closed": "2026-09-24T02:50:27Z",
+  "status": "PASS"
+}

@@ -1,0 +1,8 @@
+{
+  "source": "COMMISSIONING-FIXTURE.md",
+  "payloads": [
+    {"name": "A", "hex": "00 01 7F 80 FF 55 AA 10"},
+    {"name": "B", "hex": "DE AD BE EF 00 13 37 C0 FF EE"}
+  ],
+  "anti_hardcode_note": "Payload B exists so that a first-payload hardcode fails (P6-X02 / negative witness 12)."
+}

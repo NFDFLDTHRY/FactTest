@@ -266,5 +266,50 @@ BEFORE
         Both refusals moved no ref and left no trace in the canonical repository.
 
 AFTER
+- RESULT: integrated as e72fbe7e8ea16522bab9619ee7bafa8dd3104a45 (ff-only from 77fb459) on the third routing
+  attempt (the two refusals are recorded above; neither moved a ref).
+- RECEIPTS: factory/receipts/D5-CODEGEN-BUNDLE/{F0-doc,F2-web,F1-rust,F3-fixture,F4-build,F5-evidence}.json PASS.
+- VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- EVIDENCE: evidence/D5/build/test.log (9 bundle witnesses + all prior), evidence/D5/byte-relay/E_model_0/bundle/*
+  (wasm64_relay.wasm 162 bytes, memory I64 min=32, exports memory/abi_version/copy_bytes/region_*; membrane.js with
+  exactly the two verified adapters; selector.js with dispatch order [1,0]; bundle.json lineage),
+  bundle-certificate.json (23 checks PASS), bundle-wasm-inspect.json.
+- OBSERVED ASCII: compiler/codegen and compiler/bundle exist as drawn; the generated WebApp (object B) is emitted
+  under evidence/, never into the repository's source surfaces.
+- MATCH/DIFFER: MATCH.
+
+---
+
+## D6-RUNTIME-EVIDENCE  (M7, first physical commissioning evidence)
+
+BEFORE
+- DELTA: D6-RUNTIME-EVIDENCE (factory/deltas/D6.json)
+- BASE: e72fbe7e8ea16522bab9619ee7bafa8dd3104a45
+- STATION: S-DOC, S-RUST, S-WEB, S-FIXTURE, S-BUILD, S-BROWSER, S-EVIDENCE
+- FIXTURE: F0-doc, F1-rust, F2-web, F3-fixture, F4-build, F5-browser, F6-evidence
+- READ: everything.  CHANGE: compiler/observe, kernel/factc wiring, host/harness/bundle-probe.mjs,
+  fixtures/commissioning/{payloads.json,tape-sample.ascii}, tests/, ledger, evidence/D6/.  FORBIDDEN: law/design/
+  pass docs, D0-D5 receipts/evidence, factory/src, factory/registry, the authoritative commissioning source and
+  registry, codegen templates, M0 ASCII.
+- INVARIANTS: observed ASCII is a derived unit (`<system>_observed`) of governance issues only; the harness never
+  invokes the compiler and records bundle hashes before/after; exact comparison is harness-side; SwiftShader
+  WebGPU is recorded as such (adapter info vendor=google architecture=swiftshader); synthetic epochs never appear.
+- TESTS: observe ladder (6): tape parse, P6-R07 rendering, observed ASCII parses under ANALYZE, negative 10/11;
+  tests/commissioning/run-physical.sh: compile (BUILD, PASS certificate) -> Chromium probe with WebGPU
+  (E0 both payloads exact via WEBGPU, GPUDevice.destroy() -> lost "destroyed" -> E1 both payloads exact via
+  CPU_WASM64, bundle unchanged) -> Chromium probe without WebGPU (E0 via CPU_WASM64, no GPU evidence) ->
+  factc observe on both tapes (source unchanged, transition E0->E1 rendered).
+- EXPECTED EVIDENCE: evidence/D6/physical/{compile,probe-webgpu,probe-no-webgpu,observed,observed-no-webgpu}/*.
+- COMPILER-PLANE DECISIONS RECORDED:
+  [NEW] Observed ASCII object naming: issues admission_<E>_<backend>, activation_<E>, executed_<E>_<relation>_<n>,
+        loss_<E>_<backend>, no_active_plan_<E>, transition_<E>_<E'>, source_of_record.  Status words derive from
+        evidence: RUN for admitted/exact/active, ERR for rejected/lost/mismatch/no plan, OBS for transitions and an
+        unchanged source, UNK when the host supplied no source identities.
+  [NEW] Kernel OBSERVE op inputs: evidence tape bytes + host-measured identities (sha256 of the authored source
+        after the session, sha256 recorded in bundle.json).  The kernel compares; it never reads files.
+  [OBS] Without WebGPU flags, Chromium 141 still exposes navigator.gpu but requestAdapter() returns null: the
+        runtime records `admission WEBGPU REJECTED evidence=request reason=request_unavailable`.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

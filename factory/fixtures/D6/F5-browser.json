@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F5-browser", "station_id": "S-BROWSER", "delta_id": "D6-RUNTIME-EVIDENCE",
+  "selected_inputs": ["fixtures/commissioning/byte-relay.ascii", "fixtures/commissioning/contracts.ascii", "fixtures/commissioning/metrics.ascii", "fixtures/commissioning/payloads.json"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D6/physical/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "sh", "args": ["tests/commissioning/run-physical.sh", "evidence/D6/physical"], "env": {"FACTC_BIN": "/home/user/factory-target/debug/factc", "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers"}, "log": "evidence/D6/physical/run.log"}
+  ]},
+  "expected_outputs": ["evidence/D6/physical/compile/bundle-certificate.json", "evidence/D6/physical/probe-webgpu/probe-record.json", "evidence/D6/physical/probe-webgpu/evidence-tape.ascii", "evidence/D6/physical/probe-no-webgpu/probe-record.json", "evidence/D6/physical/observed/observed.ascii", "evidence/D6/physical/observed/observation-delta.json"],
+  "tests": ["P6-R01..R08 physical", "negative witness 5 (GPU absent -> W)", "negative witness 9 (comparator detects corruption)"], "evidence_requirements": ["RuntimeEvidence", "ObservationDelta", "observed ASCII"]
+}

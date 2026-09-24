@@ -65,10 +65,19 @@ dependencies = [
  "factc-codegen",
  "factc-foundation",
  "factc-implementation",
+ "factc-observe",
  "factc-planning",
  "factc-semantic",
  "factc-source",
  "factc-verifier",
+]
+
+[[package]]
+name = "factc-observe"
+version = "0.1.0"
+dependencies = [
+ "factc-foundation",
+ "factc-source",
 ]
 
 [[package]]

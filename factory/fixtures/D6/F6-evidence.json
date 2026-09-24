@@ -1,0 +1,11 @@
+{
+  "fixture_id": "F6-evidence", "station_id": "S-EVIDENCE", "delta_id": "D6-RUNTIME-EVIDENCE",
+  "selected_inputs": ["evidence/D6/"],
+  "narrowed_may_read": ["*"],
+  "narrowed_may_change": ["evidence/D6/"],
+  "job_parameters": {"commands": [
+    {"cwd": ".", "program": "/home/user/factory-target/debug/factory", "args": ["evidence", "index", "evidence/D6", "evidence/D6/index.json"], "log": "evidence/D6/index.log"}
+  ]},
+  "expected_outputs": ["evidence/D6/index.json"],
+  "tests": ["evidence indexed"], "evidence_requirements": ["index"]
+}

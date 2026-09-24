@@ -1,0 +1,167 @@
+{
+  "receipt_id": "R-D6-RUNTIME-EVIDENCE-F5-browser",
+  "station_id": "S-BROWSER",
+  "station_version": "1",
+  "fixture_id": "F5-browser",
+  "workpiece_id": "W6",
+  "delta_id": "D6-RUNTIME-EVIDENCE",
+  "canonical_base": "e72fbe7e8ea16522bab9619ee7bafa8dd3104a45",
+  "input_artifacts": [
+    "fixtures/commissioning/byte-relay.ascii",
+    "fixtures/commissioning/contracts.ascii",
+    "fixtures/commissioning/metrics.ascii",
+    "fixtures/commissioning/payloads.json"
+  ],
+  "open_tree": "9a4f4cb6f6c9fd9ceeb09ecf7f26c0e8d4575005",
+  "close_tree": "91f558de04571c924f41eda798bab7738b5d6cb7",
+  "changed_paths": [
+    "evidence/D6/physical/authored-source-before.ascii",
+    "evidence/D6/physical/compile.log",
+    "evidence/D6/physical/compile/artifacts.json",
+    "evidence/D6/physical/compile/bundle-certificate.json",
+    "evidence/D6/physical/compile/bundle/bundle.json",
+    "evidence/D6/physical/compile/bundle/index.html",
+    "evidence/D6/physical/compile/bundle/manifest.webmanifest",
+    "evidence/D6/physical/compile/bundle/membrane.js",
+    "evidence/D6/physical/compile/bundle/runtime.js",
+    "evidence/D6/physical/compile/bundle/selector.js",
+    "evidence/D6/physical/compile/bundle/sw.js",
+    "evidence/D6/physical/compile/bundle/wasm64_relay.wasm",
+    "evidence/D6/physical/compile/candidate-strategy.json",
+    "evidence/D6/physical/compile/canonical-ascii-0.ascii",
+    "evidence/D6/physical/compile/capability-ir.json",
+    "evidence/D6/physical/compile/diagnostics.json",
+    "evidence/D6/physical/compile/implementation-hypergraph.json",
+    "evidence/D6/physical/compile/source-lineage.json",
+    "evidence/D6/physical/compile/typed-system-ir.json",
+    "evidence/D6/physical/compile/verification-certificates.json",
+    "evidence/D6/physical/compile/verified-strategy.json",
+    "evidence/D6/physical/observe-no-webgpu.log",
+    "evidence/D6/physical/observe.log",
+    "evidence/D6/physical/observed-no-webgpu/diagnostics.json",
+    "evidence/D6/physical/observed-no-webgpu/observation-delta.json",
+    "evidence/D6/physical/observed-no-webgpu/observed.ascii",
+    "evidence/D6/physical/observed/diagnostics.json",
+    "evidence/D6/physical/observed/observation-delta.json",
+    "evidence/D6/physical/observed/observed.ascii",
+    "evidence/D6/physical/probe-no-webgpu.log",
+    "evidence/D6/physical/probe-no-webgpu/evidence-tape.ascii",
+    "evidence/D6/physical/probe-no-webgpu/probe-record.json",
+    "evidence/D6/physical/probe-no-webgpu/runtime-evidence.json",
+    "evidence/D6/physical/probe-webgpu.log",
+    "evidence/D6/physical/probe-webgpu/evidence-tape.ascii",
+    "evidence/D6/physical/probe-webgpu/probe-record.json",
+    "evidence/D6/physical/probe-webgpu/runtime-evidence.json",
+    "evidence/D6/physical/run.log"
+  ],
+  "output_artifacts": [
+    "evidence/D6/physical/compile/bundle-certificate.json",
+    "evidence/D6/physical/probe-webgpu/probe-record.json",
+    "evidence/D6/physical/probe-webgpu/evidence-tape.ascii",
+    "evidence/D6/physical/probe-no-webgpu/probe-record.json",
+    "evidence/D6/physical/observed/observed.ascii",
+    "evidence/D6/physical/observed/observation-delta.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BROWSER v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D6-RUNTIME-EVIDENCE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BROWSER_PROBE"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D6/physical/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh tests/commissioning/run-physical.sh evidence/D6/physical",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D6/physical/run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D6/physical/compile/bundle-certificate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D6/physical/probe-webgpu/probe-record.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D6/physical/probe-webgpu/evidence-tape.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D6/physical/probe-no-webgpu/probe-record.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D6/physical/observed/observed.ascii",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D6/physical/observed/observation-delta.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D6/physical/run.log"
+  ],
+  "closed": "2026-09-24T02:50:33Z",
+  "status": "PASS"
+}

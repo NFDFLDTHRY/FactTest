@@ -100,6 +100,106 @@ pub fn submit_metrics(ws: &mut Workspace, bytes: &[u8]) -> Result<(), Status> {
     Ok(())
 }
 
+/// SUBMIT_EVIDENCE_TAPE: runtime evidence tape bytes (observe dialect).
+pub fn submit_evidence_tape(ws: &mut Workspace, bytes: &[u8]) -> Result<(), Status> {
+    if bytes.len() > ws.tape.len() {
+        ws.diagnostics.push(Diagnostic::new(
+            DiagCode::WorkspaceExhausted,
+            Phase::Bootstrap,
+            SourceId::default(),
+            None,
+            "evidence tape arena exhausted",
+        ));
+        ws.last_status = Status::Exhausted;
+        return Err(Status::Exhausted);
+    }
+    ws.tape[..bytes.len()].copy_from_slice(bytes);
+    ws.tape_len = bytes.len();
+    Ok(())
+}
+
+/// OBSERVE: evidence tape -> ObservationDelta + observed ASCII artifacts.  Independent of CHECK_OR_COMPILE; the
+/// host supplies the system name and the source identities it measured (the kernel never reads files).
+pub fn observe(
+    ws: &mut Workspace,
+    system_name: &[u8],
+    source_sha_after: Option<&[u8; 32]>,
+    source_sha_lineage: Option<&[u8; 32]>,
+    evidence_class: &[u8],
+) -> Status {
+    ws.diagnostics.clear();
+    ws.artifacts.clear();
+    ws.artifact_used = 0;
+    {
+        let (tape, len, obs, diags) = (
+            &ws.tape,
+            ws.tape_len,
+            &mut ws.observation,
+            &mut ws.diagnostics,
+        );
+        factc_observe::parse(&tape[..len], SourceId::new(0xE0E0), obs, diags);
+    }
+    let cx = factc_observe::Context {
+        system_name,
+        source_sha_after,
+        source_sha_lineage,
+        evidence_class,
+    };
+    let mut scratch = [0u8; 128 * 1024];
+    let status = if ws.observation.ok {
+        factc_foundation::ArtifactStatus::Ok
+    } else {
+        factc_foundation::ArtifactStatus::Partial
+    };
+    let mut o = OutBuf::new(&mut scratch);
+    if factc_observe::delta_json(&ws.observation, &cx, &mut o).is_err() {
+        ws.last_status = Status::Exhausted;
+        return ws.last_status;
+    }
+    let n = o.len();
+    if ws
+        .store_artifact(
+            factc_foundation::ArtifactKind::ObservationDelta,
+            "factc-observe/delta",
+            status,
+            &scratch[..n],
+            &[],
+            None,
+        )
+        .is_err()
+    {
+        ws.last_status = Status::Exhausted;
+        return ws.last_status;
+    }
+    let mut o = OutBuf::new(&mut scratch);
+    if factc_observe::render_observed_ascii(&ws.observation, &cx, &mut o).is_err() {
+        ws.last_status = Status::Exhausted;
+        return ws.last_status;
+    }
+    let n = o.len();
+    if ws
+        .store_artifact(
+            factc_foundation::ArtifactKind::ObservedAscii,
+            "factc-observe/render",
+            status,
+            &scratch[..n],
+            &[0],
+            None,
+        )
+        .is_err()
+    {
+        ws.last_status = Status::Exhausted;
+        return ws.last_status;
+    }
+    ws.diagnostics.sort();
+    ws.last_status = if ws.diagnostics.has_errors() {
+        Status::Diagnostics
+    } else {
+        Status::Ok
+    };
+    ws.last_status
+}
+
 /// CHECK_OR_COMPILE: run the phase spine (front end -> semantic -> emit).
 pub fn check_or_compile(ws: &mut Workspace, mode: Mode) -> Status {
     crate::phases::run(ws, mode)
