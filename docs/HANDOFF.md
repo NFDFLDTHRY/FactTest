@@ -9,10 +9,10 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D24-PIPELINE-GENERICITY (task 4 of the six-task whole-repository execution + gap closure series
+last delta         D25-PHYSICAL-RUNTIME (task 5 of the six-task whole-repository execution + gap closure series
                    D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; after D21 execution
-                   manifest, D21R manifest repair, D22 Factory self-qualification and D23 compiler + ABI execution;
-                   integration commits in design/materialization/LEDGER.md)
+                   manifest, D21R manifest repair, D22 Factory self-qualification, D23 compiler + ABI execution and
+                   D24 pipeline genericity; integration commits in design/materialization/LEDGER.md)
 judge              the Factory built from this tree (tests/factory/run-witnesses.sh records its sha256): every refusal
                    reason of the prompt witnessed (tests/factory/witnesses.json, factory/tests/factory_law.rs f00-f28,
                    tests/sync/collision-witness.sh); six accepted attacks found by D22 and repaired before D23
@@ -47,18 +47,23 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    distinct specimens - Byte Relay, ledger-mirror, pixel-vault, dual-stream - through one compiler, one
                    generic browser harness, observe and integrity; the runtime executes transfer(relation, bytes) by
                    the verified requirement of each authored relation, the shell is data-driven, every tape is bound
-                   to its bundle's strategy data identity, the adapter family is verified; the attack list refused)
+                   to its bundle's strategy data identity, the adapter family is verified; the attack list refused),
+                   D25 physical runtime (the four fresh bundles driven through their own shells in Chromium with and
+                   without WebGPU and under isolation headers, every runtime behaviour of the prompt with fresh
+                   evidence and the exact environment identity; the selfhost primitives on the fresh bundle; the
+                   public-HTTPS route unreachable from this environment - recorded as an exact boundary with a
+                   deployable probe, never substituted by localhost)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-4 of 6 closed; D21's
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-5 of 6 closed; D21's
                    re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
                    verified, integrated and re-observed before the next; a repair is tested before the next repair
                    (GLOBAL TEST-EVERY-ITERATION LAW)
-next               D25-PHYSICAL-RUNTIME: the generated webapp exercised as a physical runtime (I-05 the selfhost probe's
-                   historical bundle default, I-11 the shell's own controls never clicked, I-33 runtime self-integrity
-                   decision) at a public HTTPS boundary - no localhost substituted as proof.  Then D26 clean
-                   whole-repository commissioning (STALE_IF-selected re-proof, consistency audit, baseline and
-                   boundary register)
+next               D26-CLEAN-COMMISSIONING: the complete implemented system manufactured, verified and executed from
+                   the canonical source on a clean workpiece (manifest, Factory self-check, qualified proof, compiler
+                   DAG, ABI boundary, multi-specimen compilation, verification, bundles, physical execution, evidence
+                   index, epoch, Q01..Q22, claim surface, observed ASCII); STALE_IF-selected re-proof of what D21-D25
+                   invalidated; the final consistency audit, baseline and boundary register
 ```
 
 ## 2. Mutation law
@@ -199,9 +204,15 @@ C      D12 B-06 (P10) -> D23                closed as transport-only (A/B): the 
                                             kernel API (21 exports); BUILD + OBSERVE in Chromium byte-identical to
                                             host/factc (FACT-D23-WASM-TRANSPORT-COMPLETE, Q-WASM-08); the C14 contract
                                             TEXT still names eight operations - an owner annotation (I-29), below
-C      I-33 (D24) -> D25                    runtime self-integrity: post-build tamper detection rests on bundle.json  [GAP]
+OWNER  I-33 (D24) -> D25 decided           runtime self-integrity: post-build tamper detection rests on bundle.json  [GAP]
                                             (check-bundle.mjs, run-attacks tampered-*); the generated runtime does not
-                                            verify its own files at load (FACT-D24-RUNTIME-SELF-INTEGRITY); D25 decides
+                                            verify its own files at load (FACT-D24-RUNTIME-SELF-INTEGRITY); D25 kept it
+                                            unclaimed: CODEGEN-BUNDLE-CONTRACT.md does not require it (owner decision)
+D      FACT-D25-PUBLIC-HTTPS                 public-HTTPS execution of a generated bundle: the githack and GitHub    [UNK]
+                                            Pages hosts are refused at CONNECT by this environment's egress policy;
+                                            raw.githubusercontent serves text/plain + nosniff + sandbox CSP (no module
+                                            WebApp); the deployable probe and its evidence schema are in
+                                            tests/physical/PUBLIC-HTTPS-PROBE.md; localhost is not substituted
 C      D12 B-05, B-17                       templates compiled into the kernel; packfile import/export         [GAP]
 C      D12 B-11 (P07)                       persist() false in the Chromium 141 headless shell (every permission     [UNK]
                                             ASK); installed-Factory durability never observed - full Chrome grants
@@ -361,6 +372,11 @@ tests/toolchain/proof-sets.json
 run                          sh tests/toolchain/run-qualified-proof.sh <evidence dir>   (every cargo call names +<pin>;
                              27 obligations incl. Q-WASM-08 BUILD + OBSERVE in Chromium == native)
 per crate (D23)              node tests/toolchain/run-crate-dag.mjs --out <dir> [--browser-probe <Q-WASM-08 record>]
+physical runtime (D25)       node tests/physical/run-webapp.mjs --factc <bin> --out <dir> [--kernel <wasm>] [--pushed-bundle
+                             <path>] (every specimen freshly built, driven through its shell by host/harness/webapp-probe.mjs
+                             with WebGPU / without / isolated, observed; selfhost primitives on the fresh bundle with
+                             BUNDLE_DIR; the public-HTTPS routes probed); node host/harness/webapp-probe.mjs --url https://...
+                             for an external public run (tests/physical/PUBLIC-HTTPS-PROBE.md)
 genericity (D24)             node tests/genericity/run-specimens.mjs --factc <bin> --out <dir> (every fixtures/genericity
                              specimen: build, strategy data, Chromium with/without WebGPU through the generic
                              host/harness/bundle-probe.mjs, observe bound, integrity); node tests/genericity/run-attacks.mjs

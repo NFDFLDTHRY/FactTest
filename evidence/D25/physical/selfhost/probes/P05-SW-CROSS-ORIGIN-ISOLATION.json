@@ -1,0 +1,25 @@
+{
+  "id": "P05-SW-CROSS-ORIGIN-ISOLATION",
+  "question": "Can the service worker grant cross-origin isolation without a server?",
+  "needed_for": "threads precondition",
+  "started": "2026-09-24T17:44:16.582Z",
+  "observed": {
+    "page_without_headers": {
+      "coi": false,
+      "sab": "undefined"
+    },
+    "offline_navigation": {
+      "ok": true,
+      "status": 200,
+      "title": "p5app"
+    },
+    "sw_synthesized_page_with_coop_coep": {
+      "coi": true,
+      "sab": "function",
+      "shared_memory": true
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "the service-worker router can grant cross-origin isolation (COOP same-origin + COEP require-corp on synthesized navigations) with no server; SharedArrayBuffer and a shared WebAssembly.Memory become available. This removes one PRECONDITION of threaded Wasm; it does not admit threads (ERR-002/ERR-003 stay)",
+  "finished": "2026-09-24T17:44:16.884Z"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "P04-OPFS-SERVED-APP",
+  "question": "Can a service worker serve a generated WebApp (incl. wasm64) entirely from OPFS objects, offline, after restart?",
+  "needed_for": "L1",
+  "started": "2026-09-24T17:44:15.957Z",
+  "observed": {
+    "offline_navigation": {
+      "ok": true,
+      "status": 200,
+      "title": "byte_relay"
+    },
+    "offline_run": {
+      "served_by": "opfs-sw",
+      "relay": {
+        "status": "EXECUTED",
+        "exact": true,
+        "backend": "CPU_WASM64",
+        "plan_id": 0,
+        "input_sha256": "c8e388a5c9cacb10d51a9e62bc7cc5f4267ed78c0d0d1945f1415131d08900ba"
+      },
+      "active_plan": 0,
+      "admissions": {
+        "CPU_WASM64": "ADMITTED",
+        "WEBGPU": "REJECTED"
+      },
+      "registrations": [
+        "http://127.0.0.1:47311/p4/"
+      ]
+    },
+    "after_restart": {
+      "ok": true,
+      "status": 200,
+      "title": "byte_relay"
+    },
+    "after_restart_relay": {
+      "status": "EXECUTED",
+      "exact": true,
+      "backend": "CPU_WASM64"
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "a generated WebApp (HTML, JS modules and its wasm64 module) is served entirely from persisted OPFS objects by a service-worker router and executes the relay exactly with no origin server, before and after a browser restart (L1 primitive)",
+  "finished": "2026-09-24T17:44:16.581Z"
+}

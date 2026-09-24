@@ -1,0 +1,5 @@
+$ sh -c node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D25.json --identity evidence/D25/identity --epoch D25 --delta D25-PHYSICAL-RUNTIME --commit '76f44410fe4a57162b6c355c859c296b2a697be4 (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out design/environment-map/epochs/D25.json
+(cwd .)
+D25: 20 nodes, 36 edges -> design/environment-map/epochs/D25.json; facts FACT-D25-RUNTIME-PHYSICAL [RUN], FACT-D25-SELFHOST-PRIMITIVES-FRESH [RUN], FACT-D25-ISOLATION-ORIGIN [OBS], FACT-D25-PUBLIC-HTTPS [UNK]
+
+[exit 0] expected 0

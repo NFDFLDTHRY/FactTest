@@ -1,0 +1,80 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "the D21-D26 prompt (D25)",
+    "issues I-05, I-11, I-33",
+    "the scratch physical trial (section 0)"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D25.json",
+    "factory/fixtures/D25/",
+    "factory/receipts/D25-PHYSICAL-RUNTIME/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && ! grep -q PREDICTIONS_PLACEHOLDER $I && grep -q 'integrated as 76f4441' design/materialization/LEDGER.md && grep -q '^## D25-PHYSICAL-RUNTIME' design/materialization/LEDGER.md && ! grep -q PREDICTIONS_PLACEHOLDER design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]"
+        ],
+        "log": "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F0-ascii.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "76f44410fe4a57162b6c355c859c296b2a697be4",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/tests",
+          "factory/registry",
+          "tests",
+          "evidence",
+          "fixtures",
+          "design/environment-map",
+          "design/execution-manifest",
+          "docs",
+          "README.md",
+          "rust-toolchain.toml",
+          "Cargo.toml",
+          "Cargo.lock",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "STATION-REGISTRY.md",
+          "CAPABILITY-MATRIX.md",
+          "BOOTSTRAP-TESTS.md",
+          "BOOTSTRAP-CONTRACTS.md",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "CODEGEN-BUNDLE-CONTRACT.md",
+          "RUNTIME-ADMISSION-REPLAN.md",
+          "COMMISSIONING-RUNTIME.md",
+          "COMMISSIONING-FIXTURE.md"
+        ],
+        "log": "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F0-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D25-PHYSICAL-RUNTIME"
+}

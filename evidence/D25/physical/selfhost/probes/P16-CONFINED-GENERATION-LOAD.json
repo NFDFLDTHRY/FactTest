@@ -1,0 +1,35 @@
+{
+  "id": "P16-CONFINED-GENERATION-LOAD",
+  "question": "Can a generation run confined (opaque origin) with code and wasm64 bytes supplied only by a broker, offline?",
+  "needed_for": "L3 confinement / broker",
+  "started": "2026-09-24T17:44:35.580Z",
+  "observed": {
+    "confined_frame_by_url_offline": "NOT LOADED within 6 s (offline)",
+    "confined_frame_srcdoc_offline": {
+      "origin": "null",
+      "isSecureContext": true,
+      "module": {
+        "abi": 1,
+        "out": [
+          222,
+          173,
+          190,
+          239,
+          0,
+          19,
+          55,
+          192
+        ],
+        "exact": true
+      },
+      "controller": "SecurityError",
+      "origin_fetch": "TypeError",
+      "parent_dom": "SecurityError",
+      "opfs": "SecurityError"
+    },
+    "server_stopped": true
+  },
+  "verdict": "RUN",
+  "meaning": "with the origin server stopped, a confined frame bootstrapped inline by the broker page (opaque origin, no storage, no parent DOM, no origin fetch) received its module source and wasm64 bytes only from the broker by postMessage, imported the module from a blob URL, and ran the wasm64 relay exactly. The same frame loaded by URL is not served by the SW offline (opaque-origin frames have no active service worker), so the broker must inline the bootstrap: a Factory generation can execute confined, fed exclusively by a seed-owned broker",
+  "finished": "2026-09-24T17:44:41.916Z"
+}

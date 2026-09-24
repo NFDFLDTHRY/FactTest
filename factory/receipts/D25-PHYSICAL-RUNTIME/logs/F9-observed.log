@@ -1,0 +1,4 @@
+$ sh -c O=design/materialization/D25-OBSERVED-PHYSICAL-RUNTIME.md; for k in P1 P2 P3 P4 P5 P6 P7 FACT-D25-RUNTIME-PHYSICAL FACT-D25-PUBLIC-HTTPS UNREACHABLE I-05 I-11 I-33 D26; do grep -q -- "$k" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O
+(cwd .)
+
+[exit 0] expected 0

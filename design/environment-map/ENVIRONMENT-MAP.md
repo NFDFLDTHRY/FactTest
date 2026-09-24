@@ -279,4 +279,11 @@ D24    D24-PIPELINE-GENERICITY         four semantically distinct specimens (Byt
                                    I-32 empty certificate) repaired after reproduction on the base compiler; the attack
                                    list refused; kernel identity superseded (R-65), the D7 relay facts superseded
                                    (R-66); epochs/D24.json (five [RUN] facts, one [GAP] stop I-33).
+D25    D25-PHYSICAL-RUNTIME            the four fresh bundles driven as webapps through their own shells in Chromium
+                                   (with WebGPU, without, cross-origin isolated by server headers), every runtime
+                                   behaviour of the prompt with fresh evidence and the exact environment identity;
+                                   the selfhost primitives on the fresh bundle (I-05); the public-HTTPS route
+                                   unreachable from this environment: an exact [UNK] boundary with a deployable
+                                   probe (tests/physical/PUBLIC-HTTPS-PROBE.md); epochs/D25.json (two [RUN], one
+                                   [OBS], one [UNK]).
 ```

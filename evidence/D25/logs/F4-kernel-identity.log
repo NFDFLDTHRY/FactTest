@@ -1,0 +1,5 @@
+$ sh -c mkdir -p evidence/D25/kernel && node tests/implementation/wasm-sections.mjs --label K=/home/user/factory-target-w30/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --exclude-custom name --out evidence/D25/kernel/sections.json >/dev/null && node -e 'const s=JSON.parse(require("fs").readFileSync("evidence/D25/kernel/sections.json")).builds[0].identity_excluding_custom;const p=JSON.parse(require("fs").readFileSync("tests/toolchain/proof-sets.json")).sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256;console.log("kernel",s,"pin",p);if(s!==p)process.exit(1)'
+(cwd .)
+kernel ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115 pin ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115
+
+[exit 0] expected 0

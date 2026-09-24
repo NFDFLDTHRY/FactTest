@@ -34543,6 +34543,445 @@
    "new_probe_obligation": "D25: the physical webapp run exercises the generated shell's controls (I-11) and the public HTTPS boundary with the same specimen",
    "owner": "tests/reconcile/d24-reconciliation.json (reviewed; D24)",
    "introduced_in": "D24"
+  },
+  {
+   "id": "ENV-D25-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D25-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "none (records compared; cargo metadata only)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "76f44410fe4a57162b6c355c859c296b2a697be4",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": []
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D25/identity/{host,toolchains,repo}.json",
+   "note": "D25 environment identity (host of the run this epoch binds)",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "IMPL-WEBAPP-PROBE",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-WEBAPP-PROBE",
+   "repo_path": "host/harness/webapp-probe.mjs",
+   "commit": "introduced by D25-PHYSICAL-RUNTIME (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "the generated shell driven through its own controls in Chromium, the environment identity recorded beside every observation; loopback-served (optionally COOP/COEP) or a public https:// URL (D25)",
+   "owner": "host/harness/webapp-probe.mjs",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "IMPL-PHYSICAL-RUNNER",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-PHYSICAL-RUNNER",
+   "repo_path": "tests/physical/{run-webapp.mjs,public-https-probe.sh}",
+   "commit": "introduced by D25-PHYSICAL-RUNTIME (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "every specimen freshly built and driven in three browser configurations, observed; the selfhost primitives on the fresh bundle; the public-HTTPS boundary probe (D25)",
+   "owner": "tests/physical/{run-webapp.mjs,public-https-probe.sh}",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "PROBE-PHYSICAL-WEBAPP",
+   "class": "PROBE",
+   "probe_id": "PROBE-PHYSICAL-WEBAPP",
+   "proves_fact": [
+    "FACT-D25-RUNTIME-PHYSICAL",
+    "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+    "FACT-D25-ISOLATION-ORIGIN"
+   ],
+   "command_or_operation": "node tests/physical/run-webapp.mjs --factc BIN --out DIR --kernel WASM --pushed-bundle PATH: for every fixtures/genericity specimen factc check build (certificate PASS), tests/genericity/check-bundle.mjs, then host/harness/webapp-probe.mjs three times (WebGPU with the specimen's loss/E1 expectations; --no-webgpu; --isolate with COOP/COEP): click init, fill the hex input and click transfer per authored relation and payload, click release for the loss backend, transfer again at E1; identity from Browser.getVersion, chromium.executablePath, launch options, os, location, isSecureContext, crossOriginIsolated, SharedArrayBuffer, navigator.gpu.requestAdapter (info, isFallbackAdapter, features, limits), every fetched file's sha256 vs bundle.json, the proof-set pins; factc observe of the shell's tape with the bundle manifest; then tests/selfhost/primitives-probe.mjs with BUNDLE_DIR = the fresh Byte Relay bundle and KERNEL_WASM = the fresh kernel",
+   "expected_observations": [
+    "every specimen: certificate PASS, three shell-driven runs PASS with the specimen's expectations, observe bound",
+    "crossOriginIsolated false from the bundle alone and true with server headers",
+    "selfhost P01, P04 RUN on the fresh bundle"
+   ],
+   "failure_meaning": [
+    "a fresh bundle does not behave in the physical browser as the runtime contract claims, or the shell's own controls do not drive it"
+   ],
+   "implemented_by": "IMPL-WEBAPP-PROBE",
+   "owner": "IMPL-WEBAPP-PROBE",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "PROBE-PUBLIC-HTTPS",
+   "class": "PROBE",
+   "probe_id": "PROBE-PUBLIC-HTTPS",
+   "proves_fact": [
+    "FACT-D25-PUBLIC-HTTPS"
+   ],
+   "command_or_operation": "sh tests/physical/public-https-probe.sh OUT BUNDLE PUSHED: curl -D - of the candidate public routes (githack dev and CDN hosts, the GitHub Pages origin, raw.githubusercontent for index.html and a module script) recording CONNECT refusals, status, content-type, x-content-type-options and content-security-policy; hosts_module_webapp per route; the served bundle.json at the pushed path compared with the fresh build's bundle_id; the deployable probe for an external run is tests/physical/PUBLIC-HTTPS-PROBE.md (node host/harness/webapp-probe.mjs --url https://... with the specimen's expectations)",
+   "expected_observations": [
+    "REACHABLE with a usable origin, then an external webapp-probe run recorded separately; or UNREACHABLE with the exact refusal or header per route and the [UNK] preserved"
+   ],
+   "failure_meaning": [
+    "never a runtime failure: the record describes the execution environment's public-HTTPS boundary"
+   ],
+   "implemented_by": "IMPL-PHYSICAL-RUNNER",
+   "owner": "IMPL-PHYSICAL-RUNNER",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-SUMMARY",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/summary.json",
+    "sha256": "ba028e40f54ca9dad5346684fa076baf8fc8ce5e03695709b9d823ee93b6e9e9",
+    "bytes": 58214,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "4 specimens x 7 checks PASS; behaviours -> evidence map",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-BUNDLES-BYTE-RELAY-WEBGPU-PROBE-RECORD",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-BUNDLES-BYTE-RELAY-WEBGPU-PROBE-RECORD",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/bundles/byte-relay/webgpu/probe-record.json",
+    "sha256": "4be86e34d5a124e07a9513750cdc3e82b341b39ae22e438c471e99c7eb15db47",
+    "bytes": 15355,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "E0 WEBGPU plan 1 A,B exact; release WEBGPU -> E1 CPU_WASM64 plan 0 A,B exact; stale plan 1 invalidated; identity recorded",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-BUNDLES-DUAL-STREAM-WEBGPU-PROBE-RECORD",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-BUNDLES-DUAL-STREAM-WEBGPU-PROBE-RECORD",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/bundles/dual-stream/webgpu/probe-record.json",
+    "sha256": "873a777ea2355f1f3412154b20b5d9afa484b3b2babad930d78a8e467b8a7dbe",
+    "bytes": 18368,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "E0 CPU_WASM64 plan 0 feed + drain exact; release CPU_WASM64 -> E1 WEBGPU plan 3 feed + drain exact",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-BUNDLES-PIXEL-VAULT-NO-WEBGPU-PROBE-RECORD",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-BUNDLES-PIXEL-VAULT-NO-WEBGPU-PROBE-RECORD",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/bundles/pixel-vault/no-webgpu/probe-record.json",
+    "sha256": "576846ea5a2aeab7c19b10e2920a5b9fc580afc849a4810a275dbef9083b96db",
+    "bytes": 8681,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "no WebGPU: WEBGPU rejected at discover, no active plan, every stash NO_ACTIVE_PLAN",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-BUNDLES-LEDGER-MIRROR-WEBGPU-RUNTIME-EVIDENCE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-BUNDLES-LEDGER-MIRROR-WEBGPU-RUNTIME-EVIDENCE",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/bundles/ledger-mirror/webgpu/runtime-evidence.json",
+    "sha256": "4f1b3d30216607e763d467649d1a93ed93e249e1938c26ed45f9a598874e6e34",
+    "bytes": 10493,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "admission receipts (DISCOVER/REQUEST/PROBE known answer), activation, EXECUTE records, the E0 -> E1 ObservationDelta",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "FACT-D25-RUNTIME-PHYSICAL",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D25-RUNTIME-PHYSICAL",
+   "subject": "the four bundles generated by the D24 compiler (Byte Relay, ledger-mirror, pixel-vault, dual-stream), driven as webapps in Chromium 141 headless shell through their own shells",
+   "predicate": "with WebGPU (SwiftShader: vendor google, architecture swiftshader, isFallbackAdapter true; features and limits recorded) and without it, every authored transfer of every payload driven through the shell's hex input and transfer button emerges exact (harness sha256 of the input equals the runtime's output sha256) under the plan the specimen expects; the release button for the guarded backend rejects its admission, opens E1 with one ObservationDelta naming the stale plan, and the specimen's expected reselection follows (Byte Relay WEBGPU -> CPU_WASM64, dual-stream CPU_WASM64 -> WEBGPU, ledger-mirror and pixel-vault -> no plan, nothing invented); pixel-vault without WebGPU activates no plan; only the bundle's own files are requested, no code is generated at runtime, the bundle files on disk are unchanged across reselection and every fetched file matches bundle.json; the shell registers the service worker and CacheStorage holds the shell; the tape is bound to the bundle (factc observe evidence_lineage OBS, source_of_record OBS)",
+   "required_environment": [
+    "Chromium headless shell 141 (Playwright 1.56.1) with --enable-unsafe-webgpu --enable-features=Vulkan --use-angle=swiftshader --enable-unsafe-swiftshader --ignore-gpu-blocklist, and without them",
+    "loopback origin http://127.0.0.1 (a secure context)",
+    "HOST_NATIVE_SET factc built at the D25 tree"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "I-11 closed: the shell's own controls are exercised; the environment identity (browser product/revision/V8, executable, launch flags, host, origin, secure context, isolation, adapter, artifact hashes, toolchain, epochs) is in every probe-record.json; hardware GPU absent (fallback adapter only) - a hardware-adapter run is a different environment, not claimed",
+   "source_ref": "evidence/D25/physical/summary.json",
+   "owner": "D25 (derived from the evidence named by its edges)",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-SELFHOST-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-SELFHOST-SUMMARY",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/selfhost/summary.json",
+    "sha256": "558f3a4dc2b5c0a0a86d2286733cd30e91494005425797f017b1c4bd5946f8c3",
+    "bytes": 6805,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "bundle sha256 per file; 13 probes with their verdicts",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-SELFHOST-PROBES-P01-GENERATED-BUNDLE-OFFLINE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-SELFHOST-PROBES-P01-GENERATED-BUNDLE-OFFLINE",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/selfhost/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+    "sha256": "10de9d2b5c045d0defbc9f387328f002e55bdded4005329e2406faf9f35f6db4",
+    "bytes": 1245,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "RUN: transfer exact offline before and after restart",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-SELFHOST-PROBES-P04-OPFS-SERVED-APP",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-SELFHOST-PROBES-P04-OPFS-SERVED-APP",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/selfhost/probes/P04-OPFS-SERVED-APP.json",
+    "sha256": "2333bc25d5fb86bbc8157bcc7ef35e0296bfd9fe0c6a561d1718cdd61e96c13e",
+    "bytes": 1348,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "RUN: served by opfs-sw, transfer exact, after restart exact",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-SELFHOST-PROBES-P10-KERNEL-IN-WORKER",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-SELFHOST-PROBES-P10-KERNEL-IN-WORKER",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/selfhost/probes/P10-KERNEL-IN-WORKER.json",
+    "sha256": "4a60f4eacf15fed7c304393e35849ab1ddb085cf05618522b3e9163c57564774",
+    "bytes": 2057,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "OBS: the fresh wasm64 kernel in a dedicated worker",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "subject": "the self-hosting primitive probes P01-P16 against the freshly generated Byte Relay bundle and the freshly built wasm64 kernel",
+   "predicate": "P01 offline launch from the bundle's versioned CacheStorage before and after a browser restart, P02 SW cannot self-update, P03 storage survives restart per origin, P04 the bundle served entirely from OPFS by a service-worker router offline and after restart, P05 SW cannot grant isolation, P06 IndexedDB atomic pointer / compare-and-swap, P08 candidate confinement, P14 broken-SW recovery, P15 interrupted SW update, P16 confined generation load: RUN; P10 the kernel in a dedicated worker (ANALYZE 1, BUILD 1): OBS; P07 persistent storage: GAP (persist() false in the headless, non-installed shell); P09 git objects in the browser: RUN; the probe takes the bundle from BUNDLE_DIR (required) and records its file hashes",
+   "required_environment": [
+    "Chromium headless shell 141 (Playwright persistent contexts), loopback origins 47311/47312"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "I-05 closed: no historical bundle is an input; the D7 evidence bundle stays history",
+   "source_ref": "evidence/D25/physical/selfhost/summary.json",
+   "owner": "D25 (derived from the evidence named by its edges)",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-BUNDLES-BYTE-RELAY-ISOLATED-PROBE-RECORD",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-BUNDLES-BYTE-RELAY-ISOLATED-PROBE-RECORD",
+   "probe_ref": "PROBE-PHYSICAL-WEBAPP",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/bundles/byte-relay/isolated/probe-record.json",
+    "sha256": "ad6fd886ce965e08c814ebb2ec85510ca519de47059e84c308e8531a51e18669",
+    "bytes": 15479,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "cross_origin_isolated true, shared_array_buffer true, transfers exact, loss and reselection as without isolation",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "FACT-D25-ISOLATION-ORIGIN",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D25-ISOLATION-ORIGIN",
+   "subject": "cross-origin isolation of the generated webapp",
+   "predicate": "loaded from the bundle alone the page is not cross-origin isolated and SharedArrayBuffer is absent (the generated bundle emits no COOP/COEP; a service worker cannot grant them, P05); with Cross-Origin-Opener-Policy: same-origin and Cross-Origin-Embedder-Policy: require-corp from the origin server the same bundle is cross-origin isolated with SharedArrayBuffer present and every transfer still exact - isolation is a property the deploying origin supplies, not the bundle",
+   "required_environment": [
+    "loopback origin with and without COOP/COEP headers"
+   ],
+   "constraint_refs": [],
+   "status": "OBS",
+   "note": "observed on all four specimens; threads/shared memory are not claimed by any bundle (no runtime path uses SharedArrayBuffer)",
+   "source_ref": "evidence/D25/physical/bundles/byte-relay/isolated/probe-record.json",
+   "owner": "D25 (derived from the evidence named by its edges)",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "EV-D25-PHYSICAL-PUBLIC-HTTPS-PUBLIC-HTTPS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D25-PHYSICAL-PUBLIC-HTTPS-PUBLIC-HTTPS",
+   "probe_ref": "PROBE-PUBLIC-HTTPS",
+   "environment_ref": "ENV-D25-HOST",
+   "artifact_identity": {
+    "path": "evidence/D25/physical/public-https/public-https.json",
+    "sha256": "f938a1356a4ef63e5fe403e46ae3e0bb2eb8e55b8a22274912a796e6d47d0cad",
+    "bytes": 4168,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "UNREACHABLE: 3 CONNECT refusals, 2 text/plain + nosniff + sandbox CSP; served bundle.json equals the fresh build",
+   "epoch": "D25",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D25-PHYSICAL-RUNTIME",
+   "introduced_in": "D25"
+  },
+  {
+   "id": "FACT-D25-PUBLIC-HTTPS",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D25-PUBLIC-HTTPS",
+   "subject": "execution of a generated bundle from a public HTTPS origin",
+   "predicate": "not observed: from this execution environment the githack dev and CDN hosts and the GitHub Pages origin are refused at CONNECT by the egress policy, and raw.githubusercontent.com (reachable) serves every file as text/plain with x-content-type-options: nosniff and a sandboxing Content-Security-Policy, which refuses module scripts - no reachable public origin can host the module WebApp; the bundle.json served there for the pushed copy names the same bundle_id as the fresh build, so the deployable artifact is publicly identified; the deployable probe (host/harness/webapp-probe.mjs --url https://... with the specimen's expectations), its expected evidence schema and the user-run instructions are in tests/physical/PUBLIC-HTTPS-PROBE.md",
+   "required_environment": [
+    "a public HTTPS static origin serving the bundle with correct content types and without a blocking CSP"
+   ],
+   "constraint_refs": [],
+   "status": "UNK",
+   "note": "explicit stop: an environmental boundary (class E), not a runtime failure; localhost is not substituted; the claim moves to [RUN] only with an external run's evidence committed through the Factory",
+   "source_ref": "evidence/D25/physical/public-https/public-https.json",
+   "owner": "D25 (derived from the evidence named by its edges)",
+   "introduced_in": "D25"
   }
  ],
  "edges": [
@@ -53821,6 +54260,210 @@
    "type": "WITNESSED_BY",
    "from": "CAP-CPU-WASM64",
    "to": "FACT-D24-BYTE-RELAY-EXECUTED"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-PHYSICAL-WEBAPP",
+   "to": "IMPL-WEBAPP-PROBE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-PUBLIC-HTTPS",
+   "to": "IMPL-PHYSICAL-RUNNER"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "PROBE-PHYSICAL-WEBAPP"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "EV-D25-PHYSICAL-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "EV-D25-PHYSICAL-BUNDLES-BYTE-RELAY-WEBGPU-PROBE-RECORD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "EV-D25-PHYSICAL-BUNDLES-DUAL-STREAM-WEBGPU-PROBE-RECORD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "EV-D25-PHYSICAL-BUNDLES-PIXEL-VAULT-NO-WEBGPU-PROBE-RECORD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "EV-D25-PHYSICAL-BUNDLES-LEDGER-MIRROR-WEBGPU-RUNTIME-EVIDENCE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "ENV-D25-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "IMPL-WEBAPP-PROBE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "IMPL-PHYSICAL-RUNNER"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "IMPL-FACTC"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "ENV-D25-HOST",
+   "condition": {
+    "dimension": "browser.version",
+    "relation": "a different Chromium, WebGPU implementation or adapter"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D25-RUNTIME-PHYSICAL",
+   "to": "ENV-D25-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of compiler/codegen/templates, host/harness/webapp-probe.mjs or fixtures/genericity/"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "PROBE-PHYSICAL-WEBAPP"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "EV-D25-PHYSICAL-SELFHOST-SUMMARY"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "EV-D25-PHYSICAL-SELFHOST-PROBES-P01-GENERATED-BUNDLE-OFFLINE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "EV-D25-PHYSICAL-SELFHOST-PROBES-P04-OPFS-SERVED-APP"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "EV-D25-PHYSICAL-SELFHOST-PROBES-P10-KERNEL-IN-WORKER"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "ENV-D25-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "IMPL-SELFHOST-PROBES"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "IMPL-PHYSICAL-RUNNER"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "ENV-D25-HOST",
+   "condition": {
+    "dimension": "browser.version",
+    "relation": "a different Chromium"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D25-SELFHOST-PRIMITIVES-FRESH",
+   "to": "ENV-D25-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "any change of compiler/codegen/templates or tests/selfhost/"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D25-ISOLATION-ORIGIN",
+   "to": "PROBE-PHYSICAL-WEBAPP"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-ISOLATION-ORIGIN",
+   "to": "EV-D25-PHYSICAL-BUNDLES-BYTE-RELAY-ISOLATED-PROBE-RECORD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-ISOLATION-ORIGIN",
+   "to": "EV-D25-PHYSICAL-BUNDLES-BYTE-RELAY-WEBGPU-PROBE-RECORD"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D25-ISOLATION-ORIGIN",
+   "to": "ENV-D25-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-ISOLATION-ORIGIN",
+   "to": "IMPL-WEBAPP-PROBE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D25-ISOLATION-ORIGIN",
+   "to": "ENV-D25-HOST",
+   "condition": {
+    "dimension": "browser.version",
+    "relation": "a different Chromium"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D25-PUBLIC-HTTPS",
+   "to": "PROBE-PUBLIC-HTTPS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D25-PUBLIC-HTTPS",
+   "to": "EV-D25-PHYSICAL-PUBLIC-HTTPS-PUBLIC-HTTPS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D25-PUBLIC-HTTPS",
+   "to": "ENV-D25-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-PUBLIC-HTTPS",
+   "to": "IMPL-PHYSICAL-RUNNER"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D25-PUBLIC-HTTPS",
+   "to": "IMPL-WEBAPP-PROBE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D25-PUBLIC-HTTPS",
+   "to": "ENV-D25-HOST",
+   "condition": {
+    "dimension": "network_egress.policy",
+    "relation": "a reachable public origin able to host module scripts"
+   }
   }
  ],
  "epochs": [
@@ -54000,7 +54643,15 @@
    "summary": "2 reconciliations (SUPERSEDED 2); 3 supersessions (39 inherited edges); 0 constraints ledgered; 0 clauses",
    "nodes_added": 28,
    "edges_added": 96
+  },
+  {
+   "epoch": "D25",
+   "delta": "D25-PHYSICAL-RUNTIME",
+   "commit": "76f44410fe4a57162b6c355c859c296b2a697be4 (canonical base; integration commit in LEDGER AFTER)",
+   "summary": "physical webapp / runtime execution: the four fresh D24 bundles driven through their own shells in Chromium (with WebGPU on the SwiftShader fallback adapter, without WebGPU, cross-origin isolated by server headers) with the exact environment identity; every runtime behaviour of the D25 prompt with fresh evidence; the selfhost primitives on the fresh bundle; the public-HTTPS route an exact [UNK] boundary with a deployable probe",
+   "nodes_added": 20,
+   "edges_added": 36
   }
  ],
- "current_epoch": "D24"
+ "current_epoch": "D25"
 }

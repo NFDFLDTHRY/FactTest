@@ -1,0 +1,170 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D25-PHYSICAL-RUNTIME-F2-web",
+  "station_id": "S-WEB",
+  "station_version": "1",
+  "fixture_id": "F2-web",
+  "workpiece_id": "W31",
+  "delta_id": "D25-PHYSICAL-RUNTIME",
+  "canonical_base": "76f44410fe4a57162b6c355c859c296b2a697be4",
+  "input_artifacts": [
+    "D25 section 1 (the shell-driven probe)"
+  ],
+  "open_tree": "c27995663abac7996986a9aaf348d6526b7fa4e8",
+  "close_tree": "9b17b50ea96cc09f689962fd79a1834a92396161",
+  "changed_paths": [
+    "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-other-untouched.log",
+    "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-syntax-generic.log",
+    "host/harness/webapp-probe.mjs"
+  ],
+  "output_artifacts": [
+    "host/harness/webapp-probe.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-WEB v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D25-PHYSICAL-RUNTIME"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "WEB_HOST_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-other-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-other-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node --check host/harness/webapp-probe.mjs && ! grep -nE 'WEBGPU|CPU_WASM64|byte[-_]relay|commissioning|relay\\(' host/harness/webapp-probe.mjs && grep -q 'Browser.getVersion' host/harness/webapp-probe.mjs && grep -q 'crossOriginIsolated' host/harness/webapp-probe.mjs && grep -q 'requestAdapter' host/harness/webapp-probe.mjs && grep -q \"'#controls button'\" host/harness/webapp-probe.mjs && grep -q -- '--url' host/harness/webapp-probe.mjs && echo 'syntax clean; generic (no backend, specimen or fixed operation name); identity, shell-driving and external-url paths present'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-syntax-generic.log"
+    },
+    {
+      "check": "command:git diff --exit-code 76f44410fe4a57162b6c355c859c296b2a697be4 -- host compiler :!host/harness/webapp-probe.mjs",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-other-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:host/harness/webapp-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-syntax-generic.log",
+    "factory/receipts/D25-PHYSICAL-RUNTIME/logs/F2-other-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T17:41:57Z",
+  "status": "PASS"
+}

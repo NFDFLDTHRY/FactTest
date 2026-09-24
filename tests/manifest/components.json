@@ -94,7 +94,8 @@
    ],
    "browser harnesses": [
     "HARNESS-KERNEL-HOST",
-    "HARNESS-BUNDLE-PROBE"
+    "HARNESS-BUNDLE-PROBE",
+    "HARNESS-WEBAPP-PROBE"
    ]
   },
   "WEB OUTPUT": {
@@ -156,6 +157,9 @@
    ],
    "genericity": [
     "TEST-GENERICITY"
+   ],
+   "physical runtime": [
+    "TEST-PHYSICAL"
    ]
   }
  },
@@ -1003,6 +1007,37 @@
    "runtime_probe": "PROBE-RELAY-EXACT, PROBE-CONTROLLED-LOSS, PROBE-BUNDLE-UNCHANGED, PROBE-SECURE-CONTEXT"
   },
   {
+   "id": "HARNESS-WEBAPP-PROBE",
+   "tier": "TEST",
+   "area": "host",
+   "paths": [
+    "host/harness/webapp-probe.mjs"
+   ],
+   "owner": [
+    "design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md",
+    "COMMISSIONING-RUNTIME.md"
+   ],
+   "input": "generated bundle dir (served on 127.0.0.1, optionally with COOP/COEP) or a public https:// URL of a deployed copy; payloads.json; the caller's expectations",
+   "operation": "drive the generated shell through its own controls in Chromium (init, hex input + transfer button per authored relation, release button per guarded backend); record the exact environment identity (browser product/revision/JS engine/executable/launch flags, host, origin, secure context, crossOriginIsolated, SharedArrayBuffer, WebGPU adapter identity/isFallbackAdapter/features/limits, artifact hashes fetched vs bundle.json, toolchain pins, machine epochs); verdict: every transfer exact (harness sha256 vs runtime), loss witnessed, stale plan invalidated, only bundle files requested, no runtime codegen, service worker + CacheStorage, expectations met",
+   "output": "probe-record.json, runtime-evidence.json, evidence-tape.ascii",
+   "dependencies": [
+    "TEMPLATE-SHELL",
+    "TEMPLATE-RUNTIME"
+   ],
+   "consumers": [
+    "tests/physical/run-webapp.mjs",
+    "the public-HTTPS user-run (tests/physical/PUBLIC-HTTPS-PROBE.md)"
+   ],
+   "station": "S-WEB",
+   "fixture_type": "node esm (Playwright)",
+   "toolchain_target": "node v22.22.2; Chromium 141 headless shell",
+   "focused_tests": [
+    "tests/physical/run-webapp.mjs"
+   ],
+   "task_regression": "D25, D26",
+   "runtime_probe": "PROBE-PHYSICAL-WEBAPP"
+  },
+  {
    "id": "TEMPLATE-MEMBRANE",
    "tier": "PRODUCTION",
    "area": "web",
@@ -1169,7 +1204,7 @@
     "TEMPLATE-RUNTIME"
    ],
    "consumers": [
-    "browser user; HARNESS-BUNDLE-PROBE serves it (drives window.factRuntime, not the buttons)"
+    "browser user; HARNESS-WEBAPP-PROBE drives its controls (D25); HARNESS-BUNDLE-PROBE serves it and drives window.factRuntime directly"
    ],
    "station": "S-WEB",
    "fixture_type": "html template",
@@ -1360,6 +1395,41 @@
    "runtime_probe": "PROBE-GENERICITY-SPECIMENS, PROBE-GENERICITY-ATTACKS"
   },
   {
+   "id": "TEST-PHYSICAL",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/physical/"
+   ],
+   "owner": [
+    "design/materialization/D25-INTENDED-PHYSICAL-RUNTIME.md",
+    "COMMISSIONING-RUNTIME.md"
+   ],
+   "input": "fixtures/genericity/*/specimen.json, a factc binary, the wasm64 kernel (for the worker probe)",
+   "operation": "run-webapp.mjs (every specimen freshly built and verified, driven through its shell with WebGPU, without WebGPU and cross-origin isolated by server headers, observed bound; the selfhost primitives on the fresh Byte Relay bundle; the behaviour -> evidence map of the D25 prompt); public-https-probe.sh (the public-HTTPS routes reachable from this environment, headers that decide module hosting, the served bundle.json identity at the pushed path); PUBLIC-HTTPS-PROBE.md (the deployable probe: exact user-run command, expected evidence schema)",
+   "output": "evidence records (summary.json, public-https.json)",
+   "dependencies": [
+    "FACTC",
+    "HARNESS-WEBAPP-PROBE",
+    "TEST-SELFHOST",
+    "TEST-GENERICITY",
+    "FIXTURE-GENERICITY"
+   ],
+   "consumers": [
+    "D25 fixtures",
+    "D26 whole-repo commissioning",
+    "an external public-HTTPS run"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm / sh",
+   "toolchain_target": "node v22.22.2; Chromium 141 (Playwright); sh; curl",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D25, D26",
+   "runtime_probe": "PROBE-PHYSICAL-WEBAPP, PROBE-PUBLIC-HTTPS"
+  },
+  {
    "id": "TEST-TOOLCHAIN",
    "tier": "TEST",
    "area": "test",
@@ -1502,7 +1572,7 @@
     "design/materialization/D12-INTENDED-SELF-HOSTING.md"
    ],
    "input": "kernel module, generated bundle, git repository",
-   "operation": "self-hosting primitive probes P01-P16 (observation only) and host network observations",
+   "operation": "self-hosting primitive probes P01-P16 (observation only) on a GENERATED bundle named by BUNDLE_DIR (required since D25; no historical default) and host network observations; the summary records the probed bundle's file hashes",
    "output": "probe records",
    "dependencies": [
     "CRATE-WASM-ABI",
@@ -1518,7 +1588,7 @@
    "focused_tests": [
     "self"
    ],
-   "task_regression": "D25 (SW/offline/OPFS/IDB/Worker rows where implemented)",
+   "task_regression": "D25 (SW/offline/OPFS/IDB/Worker rows on the fresh bundle)",
    "runtime_probe": "PROBE-SH-P01..P16, PROBE-SH-NETWORK"
   },
   {

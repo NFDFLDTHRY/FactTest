@@ -353,4 +353,10 @@ evidence binding        the generated runtime opens every evidence tape with @{b
                         the sha256 of the verified strategy data (STRATEGY_SHA256 in selector.js, strategy_data_sha256 in
                         bundle.json, BundleVerifier B-06/B-08); factc observe compares it with the manifest it is given
                         (evidence_lineage OBS/ERR, EVIDENCE_UNBOUND) - evidence of one bundle is not evidence of another
+physical webapp probe   host/harness/webapp-probe.mjs (D25): the generated shell driven through its own controls with the
+                        exact environment identity (browser, host, origin, secure context, isolation, WebGPU adapter,
+                        artifact hashes vs bundle.json, toolchain, epochs) beside every observation; loopback-served
+                        (optionally COOP/COEP) or a public https:// URL; tests/physical/run-webapp.mjs maps every runtime
+                        behaviour of the D25 prompt to its evidence; tests/physical/public-https-probe.sh records the
+                        public-HTTPS boundary of the execution environment (no localhost substituted)
 ```

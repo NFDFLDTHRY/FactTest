@@ -12,12 +12,14 @@ import { createHash } from 'node:crypto';
 
 const OUT = process.argv[2];
 const REPO = process.env.REPO || process.cwd();
-const BUNDLE = process.env.BUNDLE_DIR || join(REPO, 'evidence/D7/physical/compile/bundle');
+const sha256 = b => createHash('sha256').update(b).digest('hex');
+const BUNDLE = process.env.BUNDLE_DIR;   // a freshly generated bundle (D25): no historical default
+if (!BUNDLE || !existsSync(join(BUNDLE, 'bundle.json'))) { console.error('primitives-probe: BUNDLE_DIR must name a generated bundle directory (bundle.json present); historical evidence packages are not inputs'); process.exit(2); }
+const bundleHashes = Object.fromEntries(readdirSync(BUNDLE).sort().map(f => [f, sha256(readFileSync(join(BUNDLE, f)))]));
 const KERNEL = process.env.KERNEL_WASM;
 const PORT_A = 47311, PORT_B = 47312;
 const { chromium } = await import('/opt/node22/lib/node_modules/playwright/index.mjs');
 mkdirSync(join(OUT, 'probes'), { recursive: true });
-const sha256 = b => createHash('sha256').update(b).digest('hex');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const TYPES = { html: 'text/html', js: 'text/javascript', mjs: 'text/javascript', json: 'application/json', wasm: 'application/wasm', webmanifest: 'application/manifest+json', txt: 'text/plain' };
 const typeOf = p => TYPES[p.split('.').pop()] || 'application/octet-stream';
@@ -486,7 +488,7 @@ const all = [
 ];
 const only = (process.env.PROBES || '').split(',').filter(Boolean);
 for (const [id, q, n, fn] of all) { if (only.length && !only.some(o => id.startsWith(o))) continue; await probe(id, q, n, fn); for (const S of [A, B]) { S.routes.clear(); await S.stop().catch(() => {}); } }
-const summary = { tool: 'tests/selfhost/primitives-probe.mjs', observed: new Date().toISOString(), browser: identity, kernel: KERNEL ? { path: KERNEL, sha256: existsSync(KERNEL) ? sha256(readFileSync(KERNEL)) : null } : null, records };
+const summary = { tool: 'tests/selfhost/primitives-probe.mjs', observed: new Date().toISOString(), browser: identity, bundle: { dir: BUNDLE, sha256: bundleHashes }, kernel: KERNEL ? { path: KERNEL, sha256: existsSync(KERNEL) ? sha256(readFileSync(KERNEL)) : null } : null, records };
 writeFileSync(join(OUT, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
 rmSync(profiles, { recursive: true, force: true });
 console.log('probes:', records.map(r => `${r.id}=${r.verdict}`).join(' '));

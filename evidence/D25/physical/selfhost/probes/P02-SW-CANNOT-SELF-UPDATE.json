@@ -1,0 +1,28 @@
+{
+  "id": "P02-SW-CANNOT-SELF-UPDATE",
+  "question": "Can a service worker replace its own script from locally held bytes when the origin server is gone?",
+  "needed_for": "L3 seed / activation",
+  "started": "2026-09-24T17:44:12.338Z",
+  "observed": {
+    "active_version_initial": {
+      "version": "v1-from-origin",
+      "locks": "object",
+      "opfs_in_sw": true,
+      "idb_in_sw": "object"
+    },
+    "page_fetch_of_sw_script_goes_through_sw": "/*intercepted*/const VERSION=\"v2-served-",
+    "update_with_origin_up": {
+      "rejected": false,
+      "installing": false,
+      "waiting": false
+    },
+    "version_after_update_origin_up": "v1-from-origin",
+    "update_with_origin_down": {
+      "rejected": "TypeError: Failed to update a ServiceWorker for scope ('http://127.0.0.1:47311/p2/') with script ('http://127.0.0.1:47311/p2/sw.js'): An unknown error occurred "
+    },
+    "version_after_update_origin_down": "v1-from-origin"
+  },
+  "verdict": "RUN",
+  "meaning": "a service worker cannot replace its own script from local objects: the update fetch bypasses the worker (served v1 from the origin although the worker would answer v2) and fails when the origin is gone; the active script stays. The worker script is therefore an immutable seed for as long as the origin server is absent",
+  "finished": "2026-09-24T17:44:14.840Z"
+}
