@@ -1,0 +1,55 @@
+{
+  "fixture_id": "F0-fixture",
+  "station_id": "S-FIXTURE",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "selected_inputs": [
+    "design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md",
+    "host/harness/bundle-probe.mjs",
+    "tests/toolchain/proof.mjs",
+    "factory/src/paths.rs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "tests/envmap/",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check tests/envmap/envmap.mjs && node --check tests/envmap/authority-fetch.mjs && node --check tests/envmap/browser-probe.mjs && node --check tests/envmap/bind-evidence.mjs && sh -n tests/envmap/host-identity.sh && sh -n tests/envmap/run-envmap.sh"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F0-syntax.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "! grep -lE 'byte_relay|FACT-|AUTH-|CON-' tests/envmap/envmap.mjs"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F0-machinery-generic.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/envmap/envmap.mjs",
+    "tests/envmap/authority-fetch.mjs",
+    "tests/envmap/host-identity.sh",
+    "tests/envmap/browser-probe.mjs",
+    "tests/envmap/bind-evidence.mjs",
+    "tests/envmap/run-envmap.sh"
+  ],
+  "tests": [
+    "scripts parse",
+    "the traversal tool names no FactTest node id (generic over the graph)"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

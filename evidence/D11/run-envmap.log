@@ -1,0 +1,60 @@
+$ sh tests/envmap/run-envmap.sh evidence/D11
+(cwd .)
+PASS 23 checks
+PASS AUTHORITY-REGISTER.md: 47277 bytes identical; TRACEABILITY.md: 45523 bytes identical
+15 queries -> evidence/D11/queries
+stale relations: 52 over 14 dimensions
+OBS: dead wildcard surfaces: S-FIXTURE may_change compiler/*/tests/; S-FIXTURE must_not_change compiler/*/src/
+host identity -> evidence/D11/host/identity.json nightly rustc 1.100.0-nightly (6bb1652a0 2026-09-22) clippy ABSENT
+AUTH-CARGO-BUILD-STD: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-CHROMIUM-CONTENT-SWITCHES: published DENIED; pin PIN_MATCH; tip moved since assembly (record only)
+AUTH-CHROMIUM-GL-SWITCHES: published DENIED; pin PIN_MATCH; tip moved since assembly (record only)
+AUTH-CHROMIUM-GPU-SWITCHES: published DENIED; pin PIN_MATCH; tip moved since assembly (record only)
+AUTH-CHROMIUM-SWIFTSHADER-DOC: published DENIED; pin PIN_MATCH; tip moved since assembly (record only)
+AUTH-GIT-GLOSSARY-COMMIT: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GIT-REPO-LAYOUT: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GIT-REVISIONS: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GIT-WORKTREE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-ADAPTER-EXPIRE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-ADAPTERINFO: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-DESTROY: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-FALLBACK-ADAPTER: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-LIMITS-MAXBUFFERSIZE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-LOSE-DEVICE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-LOST: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-NAVIGATOR-GPU: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-REQUESTADAPTER: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-GPU-REQUESTDEVICE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-HTML-COI: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-HTML-HWCONCURRENCY: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-HTML-WORKERS: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-PLAYWRIGHT-INSTALLED: published NOT_A_NETWORK_URL; pin NO_GITHUB_PIN
+AUTH-RUST-REF-NOSTD: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-RUSTC-WASM64-DOC: published DENIED; pin PIN_MATCH
+AUTH-RUSTC-WASM64-TARGET-SPEC: published HTTP 403; pin PIN_MATCH
+AUTH-SECCTX-TRUSTWORTHY: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-SWIFTSHADER-README: published HTTP 403; pin PIN_MATCH; tip == pin
+AUTH-V8-FLAGS: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-CORE-BINARY-LIMITS: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-CORE-CHANGES-64: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-CORE-SYNTAX-ADDRTYPE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-CORE-TEXT-ADDRTYPE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-CORE-TEXT-MEMTYPE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-JSAPI-MEMORIES: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-JSAPI-STORAGE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-JSAPI-VALIDATE: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-SET: published HTTP 200; pin PIN_MATCH; tip == pin
+AUTH-WASM-THREADS: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WASM-WEBAPI-STREAMING: published DENIED; pin PIN_MATCH; tip == pin
+AUTH-WGSL: published DENIED; pin PIN_MATCH; tip == pin
+LAW-EVIDENCE-OBLIGATIONS: published NOT_A_NETWORK_URL; pin PIN_MATCH; tip == pin
+LAW-FACTORY-CONTRACTS: published NOT_A_NETWORK_URL; pin PIN_MATCH; tip == pin
+LAW-FACTORY-LAW: published NOT_A_NETWORK_URL; pin PIN_MATCH; tip == pin
+LAW-PASS1-FT003: published NOT_A_NETWORK_URL; pin PIN_MATCH; tip == pin
+LAW-PASS6-COMMISSIONING: published NOT_A_NETWORK_URL; pin PIN_MATCH; tip == pin
+LAW-PLANNER-COST-MODEL: published NOT_A_NETWORK_URL; pin PIN_MATCH; tip == pin
+LAW-RUNTIME-ADMISSION: published NOT_A_NETWORK_URL; pin PIN_MATCH; tip == pin
+published: {"HTTP":3,"DENIED":37,"UNREACHABLE":0,"NOT_A_NETWORK_URL":8}; pins: {"PIN_MATCH":47,"PIN_MISMATCH [ERR]":0,"PIN_HAS_NO_SHA (recorded now)":0,"PIN_UNFETCHED":0,"NO_GITHUB_PIN":1}; tips moved: 4
+envmap run complete -> evidence/D11
+
+[exit 0] expected 0

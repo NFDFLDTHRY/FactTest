@@ -1,0 +1,150 @@
+{
+  "receipt_id": "R-D11-COMPUTATIONAL-ENVIRONMENT-MAP-F4-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F4-doc",
+  "workpiece_id": "W11",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "canonical_base": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+  "input_artifacts": [
+    "design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md",
+    "evidence/D11/"
+  ],
+  "open_tree": "241bc86bf261532cfbf9f3c1c3bf7f30875f1e3e",
+  "close_tree": "b907e5da4eeabe41a8313acdb77f69524d5debf5",
+  "changed_paths": [
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/graph.json",
+    "design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-bind-evidence.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-observed-contract.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-render.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-validate.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md",
+    "design/environment-map/graph.json",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D11-COMPUTATIONAL-ENVIRONMENT-MAP"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-bind-evidence.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-validate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-observed-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/envmap/bind-evidence.mjs design/environment-map/graph.json .",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-bind-evidence.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render design/environment-map/graph.json --out design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-render.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs validate design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-validate.log"
+    },
+    {
+      "check": "command:sh -c O=design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md; for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15; do grep -q \"$q\" $O || { echo missing $q; exit 1; }; done; for t in '[RUN]' '[ERR]' '[GAP]' '[UNK]'; do grep -qF \"$t\" $O || { echo missing $t; exit 1; }; done; grep -q 'MATCH' $O && grep -q 'NO PRODUCTION REPAIR' $O && ! node -e 'const g=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/graph.json\"));process.exit(g.nodes.some(n=>n.class===\"EVIDENCE\"&&n.status===\"PENDING\")?0:1)'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-observed-contract.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/AUTHORITY-REGISTER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/TRACEABILITY.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-bind-evidence.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-render.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-validate.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-observed-contract.log"
+  ],
+  "closed": "2026-09-24T05:21:28Z",
+  "status": "PASS"
+}

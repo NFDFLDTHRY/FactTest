@@ -1,0 +1,50 @@
+{
+  "fixture_id": "F2-build",
+  "station_id": "S-BUILD",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "selected_inputs": [
+    "design/environment-map/graph.json",
+    "tests/envmap/",
+    "factory/registry/stations/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D11/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "tests/envmap/run-envmap.sh",
+          "evidence/D11"
+        ],
+        "log": "evidence/D11/run-envmap.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D11/validate.json",
+    "evidence/D11/render-check.json",
+    "evidence/D11/queries/Q01.json",
+    "evidence/D11/queries/Q15.json",
+    "evidence/D11/stale.json",
+    "evidence/D11/paths-probe.json",
+    "evidence/D11/host/identity.json",
+    "evidence/D11/authority/fetch-records.json"
+  ],
+  "tests": [
+    "graph validate + render-check (exit 0 = well-formed and rendered files current)",
+    "Q01..Q15 answered",
+    "stale closure",
+    "paths probe",
+    "host identity",
+    "authority pins fetched by commit; denied hosts recorded"
+  ],
+  "evidence_requirements": [
+    "records"
+  ]
+}

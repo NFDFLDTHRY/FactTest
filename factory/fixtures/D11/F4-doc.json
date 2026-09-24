@@ -1,0 +1,77 @@
+{
+  "fixture_id": "F4-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "selected_inputs": [
+    "design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md",
+    "evidence/D11/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md",
+    "design/materialization/LEDGER.md",
+    "design/environment-map/",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/bind-evidence.mjs",
+          "design/environment-map/graph.json",
+          "."
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-bind-evidence.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-render.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-validate.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "O=design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md; for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15; do grep -q \"$q\" $O || { echo missing $q; exit 1; }; done; for t in '[RUN]' '[ERR]' '[GAP]' '[UNK]'; do grep -qF \"$t\" $O || { echo missing $t; exit 1; }; done; grep -q 'MATCH' $O && grep -q 'NO PRODUCTION REPAIR' $O && ! node -e 'const g=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/graph.json\"));process.exit(g.nodes.some(n=>n.class===\"EVIDENCE\"&&n.status===\"PENDING\")?0:1)'"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-observed-contract.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md",
+    "design/environment-map/graph.json",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md"
+  ],
+  "tests": [
+    "D11 evidence bound into the graph (no PENDING left)",
+    "register/traceability re-rendered",
+    "observed ASCII names every query and every status class, MATCH/DIFFER stated, no production repair"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "query": "Q09",
+  "title": "Which claims have authority but no probe?",
+  "answer": {
+    "unprobed_authorities": [
+      {
+        "authority": "AUTH-HTML-HWCONCURRENCY",
+        "authority_class": "LIVING_STANDARD",
+        "authorizes": [
+          "CON-WB-002",
+          "FACT-WORKERS-UNPROBED"
+        ],
+        "status": "GAP: no probe reachable"
+      },
+      {
+        "authority": "AUTH-HTML-WORKERS",
+        "authority_class": "LIVING_STANDARD",
+        "authorizes": [
+          "CON-IC-WORKER_DEDICATED",
+          "CON-WB-001",
+          "FACT-WORKERS-UNPROBED"
+        ],
+        "status": "GAP: no probe reachable"
+      },
+      {
+        "authority": "AUTH-WASM-SET",
+        "authority_class": "PROPOSAL",
+        "authorizes": [
+          "CON-THREAD-002"
+        ],
+        "status": "GAP: no probe reachable"
+      },
+      {
+        "authority": "AUTH-WASM-WEBAPI-STREAMING",
+        "authority_class": "EDITOR_DRAFT",
+        "authorizes": [
+          "CON-WA-004",
+          "FACT-STREAMING-UNPROBED"
+        ],
+        "status": "GAP: no probe reachable"
+      },
+      {
+        "authority": "LAW-PLANNER-COST-MODEL",
+        "authority_class": "PROJECT_LAW",
+        "authorizes": [],
+        "status": "GAP: authorizes nothing"
+      }
+    ]
+  }
+}

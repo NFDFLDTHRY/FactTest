@@ -453,5 +453,39 @@ BEFORE
   routed as D11-COMPUTATIONAL-ENVIRONMENT-MAP only after its own structural check.
 
 AFTER
+- RESULT: integrated as 4a151c9ae58f9968c70b9b85cef82a02fba12b85 (ff-only from e10d279); one refusal before the workpiece
+  existed (the delta JSON carried an invalid backslash escape; regenerated with a serializer; no ref moved).
+- RECEIPTS: factory/receipts/D10-PROMPT-INTAKE/F0-doc.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
+- OBSERVED: the prompt file is tracked verbatim (392 lines, sha256 9a3d0f75...).  MATCH.
+
+---
+
+## D11-COMPUTATIONAL-ENVIRONMENT-MAP  (mapping pass)
+
+BEFORE
+- DELTA: D11-COMPUTATIONAL-ENVIRONMENT-MAP (factory/deltas/D11.json)
+- BASE: 4a151c9ae58f9968c70b9b85cef82a02fba12b85
+- STATION: S-FIXTURE, S-DOC, S-BUILD, S-BROWSER, S-DOC, S-BUILD, S-EVIDENCE (existing registry; no station forged)
+- FIXTURE: F0-fixture, F1-doc, F2-build, F3-browser, F4-doc, F5-build, F6-evidence
+- READ: everything, plus authority SOURCE files pinned by commit (published hosts denied by the network policy: recorded).
+  CHANGE: design/environment-map/{graph.json, SCHEMA.md, ENVIRONMENT-MAP.md, AUTHORITY-REGISTER.md, TRACEABILITY.md},
+  design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md, D11-OBSERVED-ENVIRONMENT-MAP.md, this ledger, tests/envmap/,
+  factory/deltas/D11.json, factory/fixtures/D11/, receipts, evidence/D11/.  FORBIDDEN: every law/pass/design document,
+  compiler/, host/, factory/src/, factory/registry/, fixtures/, tests/{bootstrap,commissioning,language,toolchain}/,
+  Cargo.toml, Cargo.lock, rust-toolchain.toml (stays absent), D0-D10 deltas/fixtures/receipts/evidence, M0, M9,
+  COMMISSIONING-RECORD.md, D9 documents, the D10 prompt file.
+- INVARIANTS: I1-I11 of the delta (production untouched; no third-party dependency; authority != implementation;
+  current authority != pin; presence != admission; synthetic != physical; recorded != pinned toolchain; evidence
+  without environment fails validation; every D9 finding is a node; generic machinery; probes only observe).
+- TESTS: validate / render-check / query Q01..Q15 / stale / paths-probe; authority-fetch; host-identity;
+  browser-probe (GPU flags | default); bind-evidence then final validate/render-check; syntax checks.
+- EXPECTED EVIDENCE: evidence/D11/{validate,render-check,stale,paths-probe}.json, queries/Q01..Q15.json,
+  authority/fetch-records.json, host/identity.json, browser/{gpu-flags,default}.json, final/*, index.json.
+- PREDICTED (design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md section 2): validate PASS; render-check PASS;
+  published hosts DENIED; 40 external pins PIN_MATCH; host nightly 6bb1652a0 without clippy; browser product
+  HeadlessChrome/141.0.7390.37 with SwiftShader fallback adapter under the flag set and null adapter by default;
+  Q09/Q11/Q12/Q13 non-empty as listed; Q10 and Q14 empty; Q15 = ERR-001 plus the SwiftShader documentation gap.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

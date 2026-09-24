@@ -1,0 +1,123 @@
+{
+  "fixture_id": "F1-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "selected_inputs": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "CAPABILITY-MATRIX.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+    "design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+    "evidence/D9/summary.json",
+    "evidence/D9/mutants/summary.json",
+    "evidence/D1/",
+    "evidence/D3/",
+    "evidence/D6/",
+    "evidence/D7/",
+    "authority source files pinned by commit (see graph.json reproducibility_pin)"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/",
+    "design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D11.json",
+    "factory/fixtures/D11/",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q '^STRUCTURAL CHECK: PASS' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && grep -q 'TRACE 1  RUST -> WASM64' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && grep -q 'TRACE 2  WEBGPU' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && grep -q 'TRACE 3  FACTORY EXECUTION ENVIRONMENT' design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md && for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15; do grep -q \"^$q \" design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md || { echo missing $q; exit 1; }; done && grep -q 'D11-COMPUTATIONAL-ENVIRONMENT-MAP' design/materialization/LEDGER.md && grep -q 'D10-PROMPT-INTAKE' design/materialization/LEDGER.md"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-ascii-contract.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-graph-validate.log"
+      },
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render-check",
+          "design/environment-map/graph.json",
+          "--dir",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-render-check.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "for t in ERR-001 ERR-002 ERR-003 T9-P7 'compiler/*/tests/' 6eeff9a52 6bb1652a0; do grep -qF \"$t\" design/environment-map/graph.json || { echo \"D9 finding $t not visible in graph\"; exit 1; }; done; node -e 'const g=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/graph.json\"));const s=g.nodes.filter(n=>n.class===\"COMPUTATIONAL_FACT\").map(n=>n.status);for(const st of [\"ERR\",\"GAP\",\"UNK\"]) if(!s.includes(st)) process.exit(1); const d=g.nodes.filter(n=>n.class===\"AUTHORITY\"&&n.reopen_status===\"DENIED\"&&n.observed_date!==\"2026-09-23\"); if(d.length) process.exit(2)'"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-d9-findings-visible.log"
+      },
+      {
+        "cwd": ".",
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+          "--",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "fixtures",
+          "Cargo.toml",
+          "Cargo.lock",
+          "design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+          "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md"
+        ],
+        "log": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-authority-untouched.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/graph.json",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md",
+    "factory/deltas/D11.json"
+  ],
+  "tests": [
+    "intended ASCII carries STRUCTURAL CHECK: PASS, three traces, Q01..Q15",
+    "graph validates",
+    "rendered register/traceability match the graph",
+    "D9 findings visible with ERR/GAP/UNK statuses; DENIED reopen keeps the Pass 2 date",
+    "law and production untouched"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

@@ -1,0 +1,1694 @@
+{
+  "query": "Q04",
+  "title": "Which toolchain/browser/target state was required?",
+  "answers": [
+    {
+      "fact": "FACT-AUTHORITY-REOPEN-DENIED",
+      "required_environment": [
+        "network policy of the session container"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D11-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6bb1652a0 2026-09-22)",
+              "rustc_commit": "6bb1652a020e80cef79332741d89e996d71933c9",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (495c385d0 2026-09-16)",
+              "components": [
+                "cargo",
+                "rust-src",
+                "rust-std-x86_64-unknown-linux-gnu",
+                "rustc"
+              ],
+              "clippy": "ABSENT"
+            }
+          },
+          "host_runtime": "node v22.22.2 / Chromium 141.0.7390.37 rev 1194 (Playwright 1.56.1) / git 2.43.0",
+          "versions": {
+            "node": "v22.22.2",
+            "v8_node": "12.4.254.21-node.39",
+            "playwright": "1.56.1",
+            "chromium": "141.0.7390.37 (revision 1194)",
+            "os": "Ubuntu 24.04.4 LTS",
+            "kernel": "Linux 6.18.44-fc-v37 x86_64",
+            "git": "2.43.0"
+          },
+          "flags": {
+            "network_egress": "policy proxy; DENIED: doc.rust-lang.org, webassembly.github.io, gpuweb.github.io, w3c.github.io, html.spec.whatwg.org, git-scm.com, chromium.googlesource.com, v8.dev, api.github.com; ALLOWED: github.com, raw.githubusercontent.com"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "4 logical CPUs (Intel Xeon 2.80GHz), 16 GB, no /dev/dri",
+          "identity_completeness": {
+            "missing": [],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "components",
+              "node + V8",
+              "playwright + chromium revision",
+              "OS/kernel",
+              "CPU/memory",
+              "gpu device node",
+              "network policy"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-COMPILE-FAIL-WITNESSED",
+      "required_environment": [
+        "toolchain.stable.rustc_release == 1.94.1"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D9-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6eeff9a52 2026-09-23)",
+              "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (98a09e7e7 2026-09-21)",
+              "components": [
+                "rust-src",
+                "clippy"
+              ]
+            }
+          },
+          "host_runtime": "cargo / node 22 / Chromium 141 (Playwright)",
+          "versions": {
+            "chromium": "HeadlessChrome/141.0.7390.37 (UA)",
+            "node": "22 (major only recorded)"
+          },
+          "flags": {
+            "rustflags": "-C link-arg=-zstack-size=16777216 (P8)",
+            "cargo": "-Z build-std=core; dev and release"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "CPU only",
+          "identity_completeness": {
+            "missing": [
+              "OS/kernel identity",
+              "CPU identity",
+              "node exact version",
+              "Chromium revision",
+              "V8 version",
+              "browser launch flags (default)"
+            ],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "nightly components",
+              "rust-toolchain absence",
+              "userAgent"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-CORE-ONLY-GRAPH",
+      "required_environment": [
+        "toolchain.nightly.rustc_commit",
+        "toolchain.nightly.components includes rust-src",
+        "cargo -Z build-std=core",
+        "target wasm64-unknown-unknown"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D9-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6eeff9a52 2026-09-23)",
+              "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (98a09e7e7 2026-09-21)",
+              "components": [
+                "rust-src",
+                "clippy"
+              ]
+            }
+          },
+          "host_runtime": "cargo / node 22 / Chromium 141 (Playwright)",
+          "versions": {
+            "chromium": "HeadlessChrome/141.0.7390.37 (UA)",
+            "node": "22 (major only recorded)"
+          },
+          "flags": {
+            "rustflags": "-C link-arg=-zstack-size=16777216 (P8)",
+            "cargo": "-Z build-std=core; dev and release"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "CPU only",
+          "identity_completeness": {
+            "missing": [
+              "OS/kernel identity",
+              "CPU identity",
+              "node exact version",
+              "Chromium revision",
+              "V8 version",
+              "browser launch flags (default)"
+            ],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "nightly components",
+              "rust-toolchain absence",
+              "userAgent"
+            ]
+          }
+        }
+      ],
+      "built_with": [
+        "ENV-D9-HOST"
+      ]
+    },
+    {
+      "fact": "FACT-D9-HISTORY-OVERSTATED",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-DEFAULT-MEMBERS-13",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-FF-ONLY-INTEGRATION",
+      "required_environment": [
+        "host git 2.43.0"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D11-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6bb1652a0 2026-09-22)",
+              "rustc_commit": "6bb1652a020e80cef79332741d89e996d71933c9",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (495c385d0 2026-09-16)",
+              "components": [
+                "cargo",
+                "rust-src",
+                "rust-std-x86_64-unknown-linux-gnu",
+                "rustc"
+              ],
+              "clippy": "ABSENT"
+            }
+          },
+          "host_runtime": "node v22.22.2 / Chromium 141.0.7390.37 rev 1194 (Playwright 1.56.1) / git 2.43.0",
+          "versions": {
+            "node": "v22.22.2",
+            "v8_node": "12.4.254.21-node.39",
+            "playwright": "1.56.1",
+            "chromium": "141.0.7390.37 (revision 1194)",
+            "os": "Ubuntu 24.04.4 LTS",
+            "kernel": "Linux 6.18.44-fc-v37 x86_64",
+            "git": "2.43.0"
+          },
+          "flags": {
+            "network_egress": "policy proxy; DENIED: doc.rust-lang.org, webassembly.github.io, gpuweb.github.io, w3c.github.io, html.spec.whatwg.org, git-scm.com, chromium.googlesource.com, v8.dev, api.github.com; ALLOWED: github.com, raw.githubusercontent.com"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "4 logical CPUs (Intel Xeon 2.80GHz), 16 GB, no /dev/dri",
+          "identity_completeness": {
+            "missing": [],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "components",
+              "node + V8",
+              "playwright + chromium revision",
+              "OS/kernel",
+              "CPU/memory",
+              "gpu device node",
+              "network policy"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-FIRST-PARTY-GRAPH",
+      "required_environment": [
+        "toolchain.stable.rustc_release"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D9-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6eeff9a52 2026-09-23)",
+              "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (98a09e7e7 2026-09-21)",
+              "components": [
+                "rust-src",
+                "clippy"
+              ]
+            }
+          },
+          "host_runtime": "cargo / node 22 / Chromium 141 (Playwright)",
+          "versions": {
+            "chromium": "HeadlessChrome/141.0.7390.37 (UA)",
+            "node": "22 (major only recorded)"
+          },
+          "flags": {
+            "rustflags": "-C link-arg=-zstack-size=16777216 (P8)",
+            "cargo": "-Z build-std=core; dev and release"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "CPU only",
+          "identity_completeness": {
+            "missing": [
+              "OS/kernel identity",
+              "CPU identity",
+              "node exact version",
+              "Chromium revision",
+              "V8 version",
+              "browser launch flags (default)"
+            ],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "nightly components",
+              "rust-toolchain absence",
+              "userAgent"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+      "required_environment": [
+        "browser.flags == []"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-DEFAULT",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true}) (--no-webgpu run)",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36"
+          },
+          "flags": {
+            "launch_args": []
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true
+          },
+          "implementation_hardware_class": "no usable adapter (requestAdapter returned null); navigator.gpu still present",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags (none)",
+              "origin",
+              "secure_context",
+              "gpuExposed"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-ADAPTER-SWIFTSHADER",
+      "required_environment": [
+        "browser.flags == D6/D7 GPU flag set",
+        "host has no GPU device node"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-ADMITTED-E0",
+      "required_environment": [
+        "browser.flags == GPU flag set",
+        "origin_security.secure_context=true"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-EPOCH-INVALIDATION",
+      "required_environment": [
+        "browser.product"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-EXPOSED",
+      "required_environment": [
+        "origin_security.secure_context=true",
+        "browser.product"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-DEFAULT",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true}) (--no-webgpu run)",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36"
+          },
+          "flags": {
+            "launch_args": []
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true
+          },
+          "implementation_hardware_class": "no usable adapter (requestAdapter returned null); navigator.gpu still present",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags (none)",
+              "origin",
+              "secure_context",
+              "gpuExposed"
+            ]
+          }
+        },
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-KNOWN-ANSWER",
+      "required_environment": [
+        "browser.flags == GPU flag set"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-LOSS-DESTROYED",
+      "required_environment": [
+        "browser.product"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-MAXBUFFERSIZE-OBSERVED",
+      "required_environment": [
+        "browser.flags == GPU flag set"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-GPU-RELAY-EXACT-E0",
+      "required_environment": [
+        "browser.flags == GPU flag set"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-HARDWARE-GPU-UNAVAILABLE",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-HEURISTIC-CHECKS-REMAIN",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-LITERAL-PATH-MATCH",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-LOOPBACK-SECURE-CONTEXT",
+      "required_environment": [
+        "origin scheme http, host 127.0.0.1"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-DEFAULT",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true}) (--no-webgpu run)",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36"
+          },
+          "flags": {
+            "launch_args": []
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true
+          },
+          "implementation_hardware_class": "no usable adapter (requestAdapter returned null); navigator.gpu still present",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags (none)",
+              "origin",
+              "secure_context",
+              "gpuExposed"
+            ]
+          }
+        },
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-MEMORY64-DISCOVERED",
+      "required_environment": [
+        "browser.js_engine"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D1-D3-BROWSER",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36"
+          },
+          "flags": {
+            "launch_args": []
+          },
+          "origin_security": {
+            "origin": "[UNK] kernel-host.mjs page origin not recorded",
+            "secure_context": "[UNK]"
+          },
+          "implementation_hardware_class": "SwiftShader/CPU host; GPU not used",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "origin",
+              "secure_context",
+              "flags (default launch, not recorded)",
+              "OS identity"
+            ],
+            "present": [
+              "userAgent",
+              "abi_version",
+              "imports/exports",
+              "memory_pages"
+            ]
+          }
+        },
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-DEFAULT",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true}) (--no-webgpu run)",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36"
+          },
+          "flags": {
+            "launch_args": []
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true
+          },
+          "implementation_hardware_class": "no usable adapter (requestAdapter returned null); navigator.gpu still present",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags (none)",
+              "origin",
+              "secure_context",
+              "gpuExposed"
+            ]
+          }
+        },
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-NATIVE-WORKSPACE-UNBUILDABLE",
+      "required_environment": [
+        "toolchain.stable.rustc_release"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D9-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6eeff9a52 2026-09-23)",
+              "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (98a09e7e7 2026-09-21)",
+              "components": [
+                "rust-src",
+                "clippy"
+              ]
+            }
+          },
+          "host_runtime": "cargo / node 22 / Chromium 141 (Playwright)",
+          "versions": {
+            "chromium": "HeadlessChrome/141.0.7390.37 (UA)",
+            "node": "22 (major only recorded)"
+          },
+          "flags": {
+            "rustflags": "-C link-arg=-zstack-size=16777216 (P8)",
+            "cargo": "-Z build-std=core; dev and release"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "CPU only",
+          "identity_completeness": {
+            "missing": [
+              "OS/kernel identity",
+              "CPU identity",
+              "node exact version",
+              "Chromium revision",
+              "V8 version",
+              "browser launch flags (default)"
+            ],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "nightly components",
+              "rust-toolchain absence",
+              "userAgent"
+            ]
+          }
+        }
+      ],
+      "built_with": [
+        "ENV-D1-D3-HOST"
+      ]
+    },
+    {
+      "fact": "FACT-NIGHTLY-CLIPPY-ABSENT-D11",
+      "required_environment": [
+        "toolchain.nightly.components"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D11-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6bb1652a0 2026-09-22)",
+              "rustc_commit": "6bb1652a020e80cef79332741d89e996d71933c9",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (495c385d0 2026-09-16)",
+              "components": [
+                "cargo",
+                "rust-src",
+                "rust-std-x86_64-unknown-linux-gnu",
+                "rustc"
+              ],
+              "clippy": "ABSENT"
+            }
+          },
+          "host_runtime": "node v22.22.2 / Chromium 141.0.7390.37 rev 1194 (Playwright 1.56.1) / git 2.43.0",
+          "versions": {
+            "node": "v22.22.2",
+            "v8_node": "12.4.254.21-node.39",
+            "playwright": "1.56.1",
+            "chromium": "141.0.7390.37 (revision 1194)",
+            "os": "Ubuntu 24.04.4 LTS",
+            "kernel": "Linux 6.18.44-fc-v37 x86_64",
+            "git": "2.43.0"
+          },
+          "flags": {
+            "network_egress": "policy proxy; DENIED: doc.rust-lang.org, webassembly.github.io, gpuweb.github.io, w3c.github.io, html.spec.whatwg.org, git-scm.com, chromium.googlesource.com, v8.dev, api.github.com; ALLOWED: github.com, raw.githubusercontent.com"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "4 logical CPUs (Intel Xeon 2.80GHz), 16 GB, no /dev/dri",
+          "identity_completeness": {
+            "missing": [],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "components",
+              "node + V8",
+              "playwright + chromium revision",
+              "OS/kernel",
+              "CPU/memory",
+              "gpu device node",
+              "network policy"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-NODE-NO-MEMORY64",
+      "required_environment": [
+        "host_runtime == node v22.22.2"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D1-D3-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6bb1652a0 2026-09-22)",
+              "rustc_commit": "6bb1652a020e80cef79332741d89e996d71933c9",
+              "llvm": "23.1.1",
+              "cargo": null,
+              "components": [
+                "rust-src (present: build-std succeeded)"
+              ]
+            }
+          },
+          "host_runtime": "cargo / node v22 / Chromium via Playwright",
+          "versions": {
+            "node": "v22.22.2 (inferred from D1 b10-node.json 'Node.js v22.22.2')",
+            "chromium": "HeadlessChrome/141.0.7390.37 (UA)"
+          },
+          "flags": {
+            "rustflags": "-C link-arg=-zstack-size=16777216",
+            "cargo": "-Z build-std=core --release"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "CPU only (no GPU device node; not probed then)",
+          "identity_completeness": {
+            "missing": [
+              "nightly cargo version",
+              "OS/kernel identity",
+              "CPU identity",
+              "Chromium revision",
+              "V8 version",
+              "browser launch flags (default)"
+            ],
+            "present": [
+              "stable rustc -vV",
+              "nightly rustc -vV",
+              "node version",
+              "userAgent"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-RESELECTION-NO-CODEGEN",
+      "required_environment": [
+        "browser.product"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-SHARED-THREADS-UNADMITTED",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-STATION-ENV-UNRECORDED",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-STREAMING-UNPROBED",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-TOOLCHAIN-DRIFT",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-WASM64-ABI-EXEC",
+      "required_environment": [
+        "browser.product == HeadlessChrome/141.0.7390.37",
+        "browser.js_engine supports memory64 (unversioned [UNK])"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D1-D3-BROWSER",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36"
+          },
+          "flags": {
+            "launch_args": []
+          },
+          "origin_security": {
+            "origin": "[UNK] kernel-host.mjs page origin not recorded",
+            "secure_context": "[UNK]"
+          },
+          "implementation_hardware_class": "SwiftShader/CPU host; GPU not used",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "origin",
+              "secure_context",
+              "flags (default launch, not recorded)",
+              "OS identity"
+            ],
+            "present": [
+              "userAgent",
+              "abi_version",
+              "imports/exports",
+              "memory_pages"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-WASM64-ADMITTED-E0",
+      "required_environment": [
+        "browser.product",
+        "origin_security.secure_context=true (bundle origin)"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-WASM64-ADMITTED-E1",
+      "required_environment": [
+        "browser.product"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D6-D7-BROWSER-GPUFLAGS",
+          "class": "PHYSICAL_BROWSER",
+          "toolchain": null,
+          "host_runtime": "Chromium HeadlessChrome/141.0.7390.37 via Playwright chromium.launch({headless:true, ignoreDefaultArgs:['--disable-gpu'], args:[...]})",
+          "versions": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+            "playwright": "1.56.1 (inferred: same container family)"
+          },
+          "flags": {
+            "launch_args": [
+              "--enable-unsafe-webgpu",
+              "--enable-features=Vulkan",
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader",
+              "--ignore-gpu-blocklist"
+            ],
+            "ignoreDefaultArgs": [
+              "--disable-gpu"
+            ]
+          },
+          "origin_security": {
+            "origin": "http://127.0.0.1:<ephemeral port>",
+            "secure_context": true,
+            "cross_origin_isolated": "[UNK] not recorded"
+          },
+          "implementation_hardware_class": "software GPU: adapter vendor google, architecture swiftshader (fallback bit not recorded [UNK])",
+          "identity_completeness": {
+            "missing": [
+              "Chromium revision",
+              "V8 version",
+              "OS/CPU identity",
+              "isFallbackAdapter",
+              "crossOriginIsolated",
+              "adapter features list"
+            ],
+            "present": [
+              "userAgent",
+              "launch flags",
+              "origin scheme/host",
+              "secure_context",
+              "adapter vendor/architecture",
+              "maxBufferSize",
+              "bundle hashes"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-WASM64-MODULE-I64",
+      "required_environment": [
+        "toolchain.nightly.rustc_commit",
+        "RUSTFLAGS -C link-arg=-zstack-size=16777216"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D1-D3-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6bb1652a0 2026-09-22)",
+              "rustc_commit": "6bb1652a020e80cef79332741d89e996d71933c9",
+              "llvm": "23.1.1",
+              "cargo": null,
+              "components": [
+                "rust-src (present: build-std succeeded)"
+              ]
+            }
+          },
+          "host_runtime": "cargo / node v22 / Chromium via Playwright",
+          "versions": {
+            "node": "v22.22.2 (inferred from D1 b10-node.json 'Node.js v22.22.2')",
+            "chromium": "HeadlessChrome/141.0.7390.37 (UA)"
+          },
+          "flags": {
+            "rustflags": "-C link-arg=-zstack-size=16777216",
+            "cargo": "-Z build-std=core --release"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "CPU only (no GPU device node; not probed then)",
+          "identity_completeness": {
+            "missing": [
+              "nightly cargo version",
+              "OS/kernel identity",
+              "CPU identity",
+              "Chromium revision",
+              "V8 version",
+              "browser launch flags (default)"
+            ],
+            "present": [
+              "stable rustc -vV",
+              "nightly rustc -vV",
+              "node version",
+              "userAgent"
+            ]
+          }
+        },
+        {
+          "environment_id": "ENV-D9-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6eeff9a52 2026-09-23)",
+              "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (98a09e7e7 2026-09-21)",
+              "components": [
+                "rust-src",
+                "clippy"
+              ]
+            }
+          },
+          "host_runtime": "cargo / node 22 / Chromium 141 (Playwright)",
+          "versions": {
+            "chromium": "HeadlessChrome/141.0.7390.37 (UA)",
+            "node": "22 (major only recorded)"
+          },
+          "flags": {
+            "rustflags": "-C link-arg=-zstack-size=16777216 (P8)",
+            "cargo": "-Z build-std=core; dev and release"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "CPU only",
+          "identity_completeness": {
+            "missing": [
+              "OS/kernel identity",
+              "CPU identity",
+              "node exact version",
+              "Chromium revision",
+              "V8 version",
+              "browser launch flags (default)"
+            ],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "nightly components",
+              "rust-toolchain absence",
+              "userAgent"
+            ]
+          }
+        }
+      ],
+      "built_with": [
+        "ENV-D1-D3-HOST"
+      ]
+    },
+    {
+      "fact": "FACT-WGSL-UNEXERCISED",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-WILDCARD-SURFACES-DEAD",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-WORKERS-UNPROBED",
+      "required_environment": [],
+      "environments": [],
+      "built_with": []
+    },
+    {
+      "fact": "FACT-WORKPIECE-ISOLATION",
+      "required_environment": [
+        "host git 2.43.0"
+      ],
+      "environments": [
+        {
+          "environment_id": "ENV-D11-HOST",
+          "class": "PHYSICAL_HOST",
+          "toolchain": {
+            "stable": {
+              "channel": "stable",
+              "rustc": "1.94.1 (e408947bf 2026-03-25)",
+              "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+              "llvm": "21.1.8",
+              "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+            },
+            "nightly": {
+              "channel": "nightly",
+              "rustc": "1.100.0-nightly (6bb1652a0 2026-09-22)",
+              "rustc_commit": "6bb1652a020e80cef79332741d89e996d71933c9",
+              "llvm": "23.1.1",
+              "cargo": "1.100.0-nightly (495c385d0 2026-09-16)",
+              "components": [
+                "cargo",
+                "rust-src",
+                "rust-std-x86_64-unknown-linux-gnu",
+                "rustc"
+              ],
+              "clippy": "ABSENT"
+            }
+          },
+          "host_runtime": "node v22.22.2 / Chromium 141.0.7390.37 rev 1194 (Playwright 1.56.1) / git 2.43.0",
+          "versions": {
+            "node": "v22.22.2",
+            "v8_node": "12.4.254.21-node.39",
+            "playwright": "1.56.1",
+            "chromium": "141.0.7390.37 (revision 1194)",
+            "os": "Ubuntu 24.04.4 LTS",
+            "kernel": "Linux 6.18.44-fc-v37 x86_64",
+            "git": "2.43.0"
+          },
+          "flags": {
+            "network_egress": "policy proxy; DENIED: doc.rust-lang.org, webassembly.github.io, gpuweb.github.io, w3c.github.io, html.spec.whatwg.org, git-scm.com, chromium.googlesource.com, v8.dev, api.github.com; ALLOWED: github.com, raw.githubusercontent.com"
+          },
+          "origin_security": null,
+          "implementation_hardware_class": "4 logical CPUs (Intel Xeon 2.80GHz), 16 GB, no /dev/dri",
+          "identity_completeness": {
+            "missing": [],
+            "present": [
+              "stable + nightly rustc/cargo -vV",
+              "components",
+              "node + V8",
+              "playwright + chromium revision",
+              "OS/kernel",
+              "CPU/memory",
+              "gpu device node",
+              "network policy"
+            ]
+          }
+        }
+      ],
+      "built_with": []
+    }
+  ]
+}

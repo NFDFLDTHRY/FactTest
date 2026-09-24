@@ -1,0 +1,1453 @@
+{
+  "tool": "tests/envmap/authority-fetch.mjs",
+  "observed": "2026-09-24T05:18:45.484Z",
+  "graph": "design/environment-map/graph.json",
+  "published": {
+    "HTTP": 3,
+    "DENIED": 37,
+    "UNREACHABLE": 0,
+    "NOT_A_NETWORK_URL": 8
+  },
+  "pins": {
+    "PIN_MATCH": 47,
+    "PIN_MISMATCH [ERR]": 0,
+    "PIN_HAS_NO_SHA (recorded now)": 0,
+    "PIN_UNFETCHED": 0,
+    "NO_GITHUB_PIN": 1
+  },
+  "tips_moved": [
+    "AUTH-CHROMIUM-CONTENT-SWITCHES",
+    "AUTH-CHROMIUM-GL-SWITCHES",
+    "AUTH-CHROMIUM-GPU-SWITCHES",
+    "AUTH-CHROMIUM-SWIFTSHADER-DOC"
+  ],
+  "denied_hosts": [
+    "chromium.googlesource.com",
+    "doc.rust-lang.org",
+    "git-scm.com",
+    "gpuweb.github.io",
+    "html.spec.whatwg.org",
+    "source.chromium.org",
+    "w3c.github.io",
+    "webassembly.github.io"
+  ],
+  "records": [
+    {
+      "authority": "AUTH-CARGO-BUILD-STD",
+      "exact_url": "https://doc.rust-lang.org/nightly/cargo/reference/unstable.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/rust-lang/cargo",
+        "branch": "master",
+        "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+        "path": "doc/book/src/reference/unstable.md",
+        "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd",
+        "observed": "2026-09-24",
+        "locator": "section '## build-std' and '### Requirements'"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/master",
+        "head": "694054f34bcb04025b16d0eaf075038c0e58a15d"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/rust-lang/cargo/694054f34bcb04025b16d0eaf075038c0e58a15d/doc/book/src/reference/unstable.md",
+        "bytes": 98671,
+        "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+      "exact_url": "https://source.chromium.org/chromium/chromium/src/+/main:content/public/common/content_switches.cc",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/chromium/chromium",
+        "branch": "main",
+        "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+        "path": "content/public/common/content_switches.cc",
+        "sha256": "0262144447bae97b511b1f4e3cfcda4dcd58c5775c890b0b2ff517a3d1b4764e",
+        "observed": "2026-09-24",
+        "locator": "line 134"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "876345490af1a0c1cd82df5906f98b01f868c969"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/chromium/chromium/75d6f0c05bd0871db3f3bc97fccf6605115250c4/content/public/common/content_switches.cc",
+        "bytes": 45378,
+        "sha256": "0262144447bae97b511b1f4e3cfcda4dcd58c5775c890b0b2ff517a3d1b4764e"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip moved since assembly (record only)"
+    },
+    {
+      "authority": "AUTH-CHROMIUM-GL-SWITCHES",
+      "exact_url": "https://source.chromium.org/chromium/chromium/src/+/main:ui/gl/gl_switches.cc",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/chromium/chromium",
+        "branch": "main",
+        "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+        "path": "ui/gl/gl_switches.cc",
+        "sha256": "8762d5ed6fd4e565e0632d33dad588cf29d6df8089cdc4deab5f3e8e218ffd5e",
+        "observed": "2026-09-24",
+        "locator": "lines 43-47, 93, 158-159"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "876345490af1a0c1cd82df5906f98b01f868c969"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/chromium/chromium/75d6f0c05bd0871db3f3bc97fccf6605115250c4/ui/gl/gl_switches.cc",
+        "bytes": 19072,
+        "sha256": "8762d5ed6fd4e565e0632d33dad588cf29d6df8089cdc4deab5f3e8e218ffd5e"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip moved since assembly (record only)"
+    },
+    {
+      "authority": "AUTH-CHROMIUM-GPU-SWITCHES",
+      "exact_url": "https://source.chromium.org/chromium/chromium/src/+/main:gpu/config/gpu_switches.cc",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/chromium/chromium",
+        "branch": "main",
+        "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+        "path": "gpu/config/gpu_switches.cc",
+        "sha256": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640",
+        "observed": "2026-09-24",
+        "locator": "lines 35-36, 55"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "876345490af1a0c1cd82df5906f98b01f868c969"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/chromium/chromium/75d6f0c05bd0871db3f3bc97fccf6605115250c4/gpu/config/gpu_switches.cc",
+        "bytes": 7842,
+        "sha256": "390783633c8d4e8773daebb4b7b163936e65d6a333ee188825de31429f283640"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip moved since assembly (record only)"
+    },
+    {
+      "authority": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+      "exact_url": "https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/chromium/chromium",
+        "branch": "main",
+        "commit": "75d6f0c05bd0871db3f3bc97fccf6605115250c4",
+        "path": "docs/gpu/swiftshader.md",
+        "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0",
+        "observed": "2026-09-24",
+        "locator": "whole document"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "876345490af1a0c1cd82df5906f98b01f868c969"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/chromium/chromium/75d6f0c05bd0871db3f3bc97fccf6605115250c4/docs/gpu/swiftshader.md",
+        "bytes": 2763,
+        "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip moved since assembly (record only)"
+    },
+    {
+      "authority": "AUTH-GIT-GLOSSARY-COMMIT",
+      "exact_url": "https://git-scm.com/docs/gitglossary",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/git/git",
+        "branch": "master",
+        "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+        "path": "Documentation/glossary-content.adoc",
+        "sha256": "0635310817aac48a1b2087e957f60be0d95d05834670460143dbde85c8a7be7e",
+        "observed": "2026-09-24",
+        "locator": "anchors [[def_commit]] (line 65), [[def_object_name]] (305), [[def_tree-ish]] (726), [[def_worktree]] (771)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/master",
+        "head": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/glossary-content.adoc",
+        "bytes": 33357,
+        "sha256": "0635310817aac48a1b2087e957f60be0d95d05834670460143dbde85c8a7be7e"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GIT-REPO-LAYOUT",
+      "exact_url": "https://git-scm.com/docs/gitrepository-layout",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/git/git",
+        "branch": "master",
+        "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+        "path": "Documentation/gitrepository-layout.adoc",
+        "sha256": "39ce8d137a30e1fd80eeae146b1c424e56f688f4ddd001259eb98543d3209439",
+        "observed": "2026-09-24",
+        "locator": "entries worktrees:: and worktrees/<id>/gitdir:: (lines 278-291)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/master",
+        "head": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/gitrepository-layout.adoc",
+        "bytes": 11890,
+        "sha256": "39ce8d137a30e1fd80eeae146b1c424e56f688f4ddd001259eb98543d3209439"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GIT-REVISIONS",
+      "exact_url": "https://git-scm.com/docs/gitrevisions",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/git/git",
+        "branch": "master",
+        "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+        "path": "Documentation/gitrevisions.adoc",
+        "sha256": "afe4cab8520820d9bf583ec5688beea000d50cce6fdd3c841eb9df94763feadd",
+        "observed": "2026-09-24",
+        "locator": "DESCRIPTION"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/master",
+        "head": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/gitrevisions.adoc",
+        "bytes": 824,
+        "sha256": "afe4cab8520820d9bf583ec5688beea000d50cce6fdd3c841eb9df94763feadd"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GIT-WORKTREE",
+      "exact_url": "https://git-scm.com/docs/git-worktree",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/git/git",
+        "branch": "master",
+        "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+        "path": "Documentation/git-worktree.adoc",
+        "sha256": "ee8a368564ace74a07e4a034e080b26fb1c3b35d17ef1fe41dcbfcc5595fe8dc",
+        "observed": "2026-09-24",
+        "locator": "DESCRIPTION (lines 22-32)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/master",
+        "head": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/git/git/0f8e75abebff0877cae681a3d5ff31ac47f54220/Documentation/git-worktree.adoc",
+        "bytes": 22021,
+        "sha256": "ee8a368564ace74a07e4a034e080b26fb1c3b35d17ef1fe41dcbfcc5595fe8dc"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-ADAPTER-EXPIRE",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "adapter [[state]] valid/consumed/expired (lines 1349-1372); 'Adapters may expire at any time' (lines 2611-2623)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-ADAPTERINFO",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "interface GPUAdapterInfo (lines 2057-2066) and attribute definitions (2068-2120)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-DESTROY",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "<dfn>destroy()</dfn> under dfn-for=GPUDevice (lines 3190-3216)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-FALLBACK-ADAPTER",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "<dfn>fallback adapter</dfn> (line 1315); GPUAdapterInfo.isFallbackAdapter (line 2064, 2111)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-LIMITS-MAXBUFFERSIZE",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "limits table row maxBufferSize (line 1847)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-LOSE-DEVICE",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "<dfn dfn>lose the device</dfn> (lines 1458-1476); revocation sentence (lines 1442-1444)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-LOST",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "<dfn>lost</dfn> under dfn-for=GPUDevice (line 15656); enum GPUDeviceLostReason (line 15637)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-NAVIGATOR-GPU",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "interface mixin NavigatorGPU (lines 2461-2465)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-REQUESTADAPTER",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "<dfn>requestAdapter(options)</dfn> under dfn-for=GPU (lines 2492-2560)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-GPU-REQUESTDEVICE",
+      "exact_url": "https://gpuweb.github.io/gpuweb/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "spec/index.bs",
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+        "observed": "2026-09-24",
+        "locator": "<dfn>requestDevice(descriptor)</dfn> under dfn-for=GPUAdapter (lines 2896-2990)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/spec/index.bs",
+        "bytes": 848916,
+        "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-HTML-COI",
+      "exact_url": "https://html.spec.whatwg.org/multipage/nav-history-apis.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/whatwg/html",
+        "branch": "main",
+        "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+        "path": "source",
+        "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+        "observed": "2026-09-24",
+        "locator": "dfn crossOriginIsolated getter (lines 125305-125309); StructuredSerialize SharedArrayBuffer step (lines 10512-10520)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/whatwg/html/cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d/source",
+        "bytes": 7915656,
+        "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-HTML-HWCONCURRENCY",
+      "exact_url": "https://html.spec.whatwg.org/multipage/workers.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/whatwg/html",
+        "branch": "main",
+        "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+        "path": "source",
+        "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+        "observed": "2026-09-24",
+        "locator": "<h4 id=\"navigator.hardwareconcurrency\"> (line 136821); dfn attribute (lines 136838-136841)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/whatwg/html/cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d/source",
+        "bytes": 7915656,
+        "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-HTML-WORKERS",
+      "exact_url": "https://html.spec.whatwg.org/multipage/workers.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/whatwg/html",
+        "branch": "main",
+        "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+        "path": "source",
+        "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+        "observed": "2026-09-24",
+        "locator": "<h2 id=\"workers\"> (line 134905); Worker() constructor prose (line 134951)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/whatwg/html/cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d/source",
+        "bytes": 7915656,
+        "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-PLAYWRIGHT-INSTALLED",
+      "exact_url": "file:///opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "installed package /opt/node22/lib/node_modules/playwright",
+        "commit": "1.56.1 (package.json version)",
+        "path": "node_modules/playwright-core/browsers.json",
+        "sha256": null,
+        "observed": "2026-09-24",
+        "locator": "browsers[].name==chromium"
+      },
+      "source_tip": null,
+      "pinned_fetch": null,
+      "pin_verdict": "NO_GITHUB_PIN"
+    },
+    {
+      "authority": "AUTH-RUST-REF-NOSTD",
+      "exact_url": "https://doc.rust-lang.org/reference/names/preludes.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/rust-lang/reference",
+        "branch": "master",
+        "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+        "path": "src/names/preludes.md",
+        "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+        "observed": "2026-09-24",
+        "locator": "rule ids names.preludes.extern.no_std / .no_std.intro / .std"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/master",
+        "head": "52ffdc09065e0043e877546da923c01bf875d41d"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/rust-lang/reference/52ffdc09065e0043e877546da923c01bf875d41d/src/names/preludes.md",
+        "bytes": 10212,
+        "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-RUSTC-WASM64-DOC",
+      "exact_url": "https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/rust-lang/rust",
+        "branch": "master",
+        "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+        "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+        "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+        "observed": "2026-09-24",
+        "locator": "sections Requirements / Building Rust programs"
+      },
+      "source_tip": {
+        "status": "REF_ABSENT",
+        "ref": "refs/heads/master"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/3670d2532bdf51abbe0b8fea22284d7ca340ffe3/src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+        "bytes": 4126,
+        "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013"
+      },
+      "pin_verdict": "PIN_MATCH"
+    },
+    {
+      "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+      "exact_url": "https://github.com/rust-lang/rust/blob/master/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+      "published": {
+        "status": "HTTP",
+        "http_code": 403
+      },
+      "pin": {
+        "repo": "https://github.com/rust-lang/rust",
+        "branch": "master",
+        "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+        "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+        "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb",
+        "observed": "2026-09-24",
+        "locator": "fn target()"
+      },
+      "source_tip": {
+        "status": "REF_ABSENT",
+        "ref": "refs/heads/master"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/3670d2532bdf51abbe0b8fea22284d7ca340ffe3/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+        "bytes": 1985,
+        "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb"
+      },
+      "pin_verdict": "PIN_MATCH"
+    },
+    {
+      "authority": "AUTH-SECCTX-TRUSTWORTHY",
+      "exact_url": "https://w3c.github.io/webappsec-secure-contexts/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/w3c/webappsec-secure-contexts",
+        "branch": "main",
+        "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+        "path": "index.bs",
+        "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1",
+        "observed": "2026-09-24",
+        "locator": "algorithm 'Is origin potentially trustworthy?' (lines 518-575)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "68191bb08a685c1e2d2270e72d2b14b36ba96f42"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/w3c/webappsec-secure-contexts/68191bb08a685c1e2d2270e72d2b14b36ba96f42/index.bs",
+        "bytes": 39524,
+        "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-SWIFTSHADER-README",
+      "exact_url": "https://github.com/google/swiftshader/blob/master/README.md",
+      "published": {
+        "status": "HTTP",
+        "http_code": 403
+      },
+      "pin": {
+        "repo": "https://github.com/google/swiftshader",
+        "branch": "master",
+        "commit": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16",
+        "path": "README.md",
+        "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb",
+        "observed": "2026-09-24",
+        "locator": "Introduction"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/master",
+        "head": "1e80438d2b93ef36a7c05f8d2b81233bac0e3d16"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/google/swiftshader/1e80438d2b93ef36a7c05f8d2b81233bac0e3d16/README.md",
+        "bytes": 7927,
+        "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-V8-FLAGS",
+      "exact_url": "https://source.chromium.org/chromium/chromium/src/+/main:v8/src/flags/flag-definitions.h",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/v8/v8",
+        "branch": "main",
+        "commit": "36de2a2334c9129db7f6fe0db76fd7d5fa64df78",
+        "path": "src/flags/flag-definitions.h",
+        "sha256": "1940dff6a404265f61f0fd763ca36a3ceba47ab5a3a9d2a7b44c79dbd6cc780d",
+        "observed": "2026-09-24",
+        "locator": "lines 2289-2295"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "36de2a2334c9129db7f6fe0db76fd7d5fa64df78"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/v8/v8/36de2a2334c9129db7f6fe0db76fd7d5fa64df78/src/flags/flag-definitions.h",
+        "bytes": 215847,
+        "sha256": "1940dff6a404265f61f0fd763ca36a3ceba47ab5a3a9d2a7b44c79dbd6cc780d"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-CORE-BINARY-LIMITS",
+      "exact_url": "https://webassembly.github.io/spec/core/binary/types.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/core/binary/types.rst",
+        "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022",
+        "observed": "2026-09-24",
+        "locator": "labels _binary-limits (line 138) and _binary-memtype (line 179)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/binary/types.rst",
+        "bytes": 5846,
+        "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-CORE-CHANGES-64",
+      "exact_url": "https://webassembly.github.io/spec/core/appendix/changes.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/core/appendix/changes.rst",
+        "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9",
+        "observed": "2026-09-24",
+        "locator": "section '64-bit Address Space' under 'Release 3.0' (lines 331, 432-443)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/appendix/changes.rst",
+        "bytes": 21444,
+        "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-CORE-SYNTAX-ADDRTYPE",
+      "exact_url": "https://webassembly.github.io/spec/core/syntax/types.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/core/syntax/types.rst",
+        "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d",
+        "observed": "2026-09-24",
+        "locator": "headings 'Address Types' (line 332) and 'Memory Types' (line 404)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/syntax/types.rst",
+        "bytes": 17872,
+        "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-CORE-TEXT-ADDRTYPE",
+      "exact_url": "https://webassembly.github.io/spec/core/text/types.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/core/text/types.rst",
+        "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d",
+        "observed": "2026-09-24",
+        "locator": "label _text-addrtype (line 144) and _text-memtype (line 192)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/text/types.rst",
+        "bytes": 6506,
+        "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+      "exact_url": "https://webassembly.github.io/spec/core/text/types.html",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/core/text/types.rst",
+        "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d",
+        "observed": "2026-09-24",
+        "locator": "label _text-memtype"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/core/text/types.rst",
+        "bytes": 6506,
+        "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-JSAPI-MEMORIES",
+      "exact_url": "https://webassembly.github.io/spec/js-api/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/js-api/index.bs",
+        "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+        "observed": "2026-09-24",
+        "locator": "<h3 id=\"memories\"> (line 800); enum AddressType (line 682)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/js-api/index.bs",
+        "bytes": 114471,
+        "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-JSAPI-STORAGE",
+      "exact_url": "https://webassembly.github.io/spec/js-api/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/js-api/index.bs",
+        "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+        "observed": "2026-09-24",
+        "locator": "<h2 id=\"webassembly-storage\">Internal storage</h2> (line 328), <h3 id=\"store\"> note (line 336)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/js-api/index.bs",
+        "bytes": 114471,
+        "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-JSAPI-VALIDATE",
+      "exact_url": "https://webassembly.github.io/spec/js-api/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/js-api/index.bs",
+        "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+        "observed": "2026-09-24",
+        "locator": "dfn method for=\"WebAssembly\" validate (line 417)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/js-api/index.bs",
+        "bytes": 114471,
+        "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-SET",
+      "exact_url": "https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/main/proposals/shared-everything-threads/Overview.md",
+      "published": {
+        "status": "HTTP",
+        "http_code": 200
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/shared-everything-threads",
+        "branch": "main",
+        "commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+        "path": "proposals/shared-everything-threads/Overview.md",
+        "sha256": "5eea594af9ec935cdbcfdefd62131905aded7a2c8f85e4b033e03800ed713e7d",
+        "observed": "2026-09-24",
+        "locator": "header WARNING and 'Motivation'"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "065aa53822e17eea69bfc049df67a16cbd03d9ce"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/065aa53822e17eea69bfc049df67a16cbd03d9ce/proposals/shared-everything-threads/Overview.md",
+        "bytes": 54750,
+        "sha256": "5eea594af9ec935cdbcfdefd62131905aded7a2c8f85e4b033e03800ed713e7d"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-THREADS",
+      "exact_url": "https://webassembly.github.io/threads/core/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/threads",
+        "branch": "main",
+        "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+        "path": "proposals/threads/Overview.md",
+        "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73",
+        "observed": "2026-09-24",
+        "locator": "Overview: 'shared linear memory type' (line 6), JS example (line 96), validation rules (lines 148-152)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/threads/cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0/proposals/threads/Overview.md",
+        "bytes": 33766,
+        "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WASM-WEBAPI-STREAMING",
+      "exact_url": "https://webassembly.github.io/spec/web-api/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/WebAssembly/spec",
+        "branch": "main",
+        "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+        "path": "document/web-api/index.bs",
+        "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+        "observed": "2026-09-24",
+        "locator": "dfn 'compile a potential WebAssembly response' (line 109) and its note (lines 111-115)"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "608711107b7f1edb13efd57b7d79b49477462d36"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/WebAssembly/spec/608711107b7f1edb13efd57b7d79b49477462d36/document/web-api/index.bs",
+        "bytes": 17819,
+        "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "AUTH-WGSL",
+      "exact_url": "https://gpuweb.github.io/gpuweb/wgsl/",
+      "published": {
+        "status": "DENIED",
+        "detail": "curl: (56) CONNECT tunnel failed, response 403"
+      },
+      "pin": {
+        "repo": "https://github.com/gpuweb/gpuweb",
+        "branch": "main",
+        "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+        "path": "wgsl/index.bs",
+        "sha256": "11b1020a2fec581050599ae8e035a7138de551129c0856e055b41b4342d658fd",
+        "observed": "2026-09-24",
+        "locator": "metadata block"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/main",
+        "head": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/gpuweb/gpuweb/454d33cfdf6b8c8a1efafe490623cf0905e6c245/wgsl/index.bs",
+        "bytes": 928167,
+        "sha256": "11b1020a2fec581050599ae8e035a7138de551129c0856e055b41b4342d658fd"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "LAW-EVIDENCE-OBLIGATIONS",
+      "exact_url": "EVIDENCE-OBLIGATIONS.md",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "https://github.com/NFDFLDTHRY/FactTest",
+        "branch": "claude/facttest-materialization-27amc7",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "path": "EVIDENCE-OBLIGATIONS.md",
+        "sha256": "500e3f716eba1a1b51b9296baf3dd7295b867eace660f2b19f6d322feef91354",
+        "observed": "2026-09-24",
+        "locator": "## E-025 - Byte Relay commissioning strategy"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/claude/facttest-materialization-27amc7",
+        "head": "4a151c9ae58f9968c70b9b85cef82a02fba12b85"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/4a151c9ae58f9968c70b9b85cef82a02fba12b85/EVIDENCE-OBLIGATIONS.md",
+        "bytes": 10259,
+        "sha256": "500e3f716eba1a1b51b9296baf3dd7295b867eace660f2b19f6d322feef91354"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "LAW-FACTORY-CONTRACTS",
+      "exact_url": "FACTORY-CONTRACTS.md",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "https://github.com/NFDFLDTHRY/FactTest",
+        "branch": "claude/facttest-materialization-27amc7",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "path": "FACTORY-CONTRACTS.md",
+        "sha256": "08d6fa97b3c8a7037ab7634349d1a7e40f45731fded1858a62fbbb73f248b5aa",
+        "observed": "2026-09-24",
+        "locator": "## 4. StationSpec"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/claude/facttest-materialization-27amc7",
+        "head": "4a151c9ae58f9968c70b9b85cef82a02fba12b85"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/4a151c9ae58f9968c70b9b85cef82a02fba12b85/FACTORY-CONTRACTS.md",
+        "bytes": 3786,
+        "sha256": "08d6fa97b3c8a7037ab7634349d1a7e40f45731fded1858a62fbbb73f248b5aa"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "LAW-FACTORY-LAW",
+      "exact_url": "FACTORY-LAW.md",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "https://github.com/NFDFLDTHRY/FactTest",
+        "branch": "claude/facttest-materialization-27amc7",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "path": "FACTORY-LAW.md",
+        "sha256": "8c8d42e7c2c1f91fae13f69f9a157b9a4ecb3d2433585c9fc706d2320ff68660",
+        "observed": "2026-09-24",
+        "locator": "## Canonical mutation law"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/claude/facttest-materialization-27amc7",
+        "head": "4a151c9ae58f9968c70b9b85cef82a02fba12b85"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/4a151c9ae58f9968c70b9b85cef82a02fba12b85/FACTORY-LAW.md",
+        "bytes": 3104,
+        "sha256": "8c8d42e7c2c1f91fae13f69f9a157b9a4ecb3d2433585c9fc706d2320ff68660"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "LAW-PASS1-FT003",
+      "exact_url": "PASS1.md",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "https://github.com/NFDFLDTHRY/FactTest",
+        "branch": "claude/facttest-materialization-27amc7",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "path": "PASS1.md",
+        "sha256": "bbce034344581a64509ea98be0fab0ce4fc9408a05d0b6faed349d9f1f9bc8b1",
+        "observed": "2026-09-24",
+        "locator": null
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/claude/facttest-materialization-27amc7",
+        "head": "4a151c9ae58f9968c70b9b85cef82a02fba12b85"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/4a151c9ae58f9968c70b9b85cef82a02fba12b85/PASS1.md",
+        "bytes": 10033,
+        "sha256": "bbce034344581a64509ea98be0fab0ce4fc9408a05d0b6faed349d9f1f9bc8b1"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "LAW-PASS6-COMMISSIONING",
+      "exact_url": "PASS6.md",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "https://github.com/NFDFLDTHRY/FactTest",
+        "branch": "claude/facttest-materialization-27amc7",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "path": "PASS6.md",
+        "sha256": "3a02497309dc0c31a7f28006f105a6b4b76b4d265dc262a67685fced2662c250",
+        "observed": "2026-09-24",
+        "locator": "## Required future physical runtime sequence"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/claude/facttest-materialization-27amc7",
+        "head": "4a151c9ae58f9968c70b9b85cef82a02fba12b85"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/4a151c9ae58f9968c70b9b85cef82a02fba12b85/PASS6.md",
+        "bytes": 4126,
+        "sha256": "3a02497309dc0c31a7f28006f105a6b4b76b4d265dc262a67685fced2662c250"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "LAW-PLANNER-COST-MODEL",
+      "exact_url": "PLANNER-COST-MODEL.md",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "https://github.com/NFDFLDTHRY/FactTest",
+        "branch": "claude/facttest-materialization-27amc7",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "path": "PLANNER-COST-MODEL.md",
+        "sha256": "f30f4a888122f8c7e9264bd6489a80f1d5d069593a0d0769077d309f0d7830d6",
+        "observed": "2026-09-24",
+        "locator": null
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/claude/facttest-materialization-27amc7",
+        "head": "4a151c9ae58f9968c70b9b85cef82a02fba12b85"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/4a151c9ae58f9968c70b9b85cef82a02fba12b85/PLANNER-COST-MODEL.md",
+        "bytes": 4228,
+        "sha256": "f30f4a888122f8c7e9264bd6489a80f1d5d069593a0d0769077d309f0d7830d6"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    },
+    {
+      "authority": "LAW-RUNTIME-ADMISSION",
+      "exact_url": "RUNTIME-ADMISSION-REPLAN.md",
+      "published": {
+        "status": "NOT_A_NETWORK_URL"
+      },
+      "pin": {
+        "repo": "https://github.com/NFDFLDTHRY/FactTest",
+        "branch": "claude/facttest-materialization-27amc7",
+        "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+        "path": "RUNTIME-ADMISSION-REPLAN.md",
+        "sha256": "f8906f40f607db5b0b1a4b7f041066a6cde9a11b68586072639718a8923d111a",
+        "observed": "2026-09-24",
+        "locator": "## 1. MachineEpoch"
+      },
+      "source_tip": {
+        "status": "OK",
+        "ref": "refs/heads/claude/facttest-materialization-27amc7",
+        "head": "4a151c9ae58f9968c70b9b85cef82a02fba12b85"
+      },
+      "pinned_fetch": {
+        "status": "OK",
+        "url": "https://raw.githubusercontent.com/NFDFLDTHRY/FactTest/4a151c9ae58f9968c70b9b85cef82a02fba12b85/RUNTIME-ADMISSION-REPLAN.md",
+        "bytes": 4549,
+        "sha256": "f8906f40f607db5b0b1a4b7f041066a6cde9a11b68586072639718a8923d111a"
+      },
+      "pin_verdict": "PIN_MATCH",
+      "tip_vs_pin": "tip == pin"
+    }
+  ]
+}

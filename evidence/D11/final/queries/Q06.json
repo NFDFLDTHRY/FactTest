@@ -1,0 +1,105 @@
+{
+  "query": "Q06",
+  "title": "What becomes stale if rustc changes?",
+  "answer": {
+    "dimensions": {
+      "toolchain.nightly.components": [
+        {
+          "subject": "EV-D9-T9-P3-04",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "clippy absent (already the case on ENV-D11-HOST)"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "rust-src removed"
+        },
+        {
+          "subject": "FACT-NIGHTLY-CLIPPY-ABSENT-D11",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D11-HOST",
+          "relation": "changes"
+        }
+      ],
+      "toolchain.nightly.rustc_commit": [
+        {
+          "subject": "EV-D1-B9-BUILD",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D1-D3-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D1-B9-INSPECT",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D1-D3-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P5-02",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P5-03",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P8-01",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P8-02",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-CORE-ONLY-GRAPH",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-WASM64-MODULE-I64",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        }
+      ],
+      "toolchain.stable.rustc_release": [
+        {
+          "subject": "EV-D9-T9-P2-04",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "EV-D9-T9-P4",
+          "subject_class": "EVIDENCE",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-COMPILE-FAIL-WITNESSED",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "changes"
+        },
+        {
+          "subject": "FACT-NATIVE-WORKSPACE-UNBUILDABLE",
+          "subject_class": "COMPUTATIONAL_FACT",
+          "environment": "ENV-D9-HOST",
+          "relation": "a future rustc may change the panic_handler requirement"
+        }
+      ]
+    },
+    "count": 15
+  }
+}

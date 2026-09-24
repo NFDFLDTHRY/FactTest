@@ -1,0 +1,402 @@
+{
+  "delta_id": "D11-COMPUTATIONAL-ENVIRONMENT-MAP",
+  "workpiece_id": "W11",
+  "canonical_base": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+  "base_tree": "de05af438b87e5a7aad403c8b3368b590be27c10",
+  "verified_tree": "5e46e2cbfd036b073e761bcd5b637f62edbf5b94",
+  "changed_paths": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/graph.json",
+    "design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md",
+    "design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md",
+    "design/materialization/LEDGER.md",
+    "evidence/D11/authority/fetch-records.json",
+    "evidence/D11/browser/default.json",
+    "evidence/D11/browser/default.log",
+    "evidence/D11/browser/gpu-flags.json",
+    "evidence/D11/browser/gpu-flags.log",
+    "evidence/D11/final/queries.log",
+    "evidence/D11/final/queries/Q01.json",
+    "evidence/D11/final/queries/Q02.json",
+    "evidence/D11/final/queries/Q03.json",
+    "evidence/D11/final/queries/Q04.json",
+    "evidence/D11/final/queries/Q05.json",
+    "evidence/D11/final/queries/Q06.json",
+    "evidence/D11/final/queries/Q07.json",
+    "evidence/D11/final/queries/Q08.json",
+    "evidence/D11/final/queries/Q09.json",
+    "evidence/D11/final/queries/Q10.json",
+    "evidence/D11/final/queries/Q11.json",
+    "evidence/D11/final/queries/Q12.json",
+    "evidence/D11/final/queries/Q13.json",
+    "evidence/D11/final/queries/Q14.json",
+    "evidence/D11/final/queries/Q15.json",
+    "evidence/D11/final/render-check.json",
+    "evidence/D11/final/render-check.log",
+    "evidence/D11/final/validate.json",
+    "evidence/D11/final/validate.log",
+    "evidence/D11/host/identity.json",
+    "evidence/D11/index.json",
+    "evidence/D11/index.log",
+    "evidence/D11/paths-probe.json",
+    "evidence/D11/queries/Q01.json",
+    "evidence/D11/queries/Q02.json",
+    "evidence/D11/queries/Q03.json",
+    "evidence/D11/queries/Q04.json",
+    "evidence/D11/queries/Q05.json",
+    "evidence/D11/queries/Q06.json",
+    "evidence/D11/queries/Q07.json",
+    "evidence/D11/queries/Q08.json",
+    "evidence/D11/queries/Q09.json",
+    "evidence/D11/queries/Q10.json",
+    "evidence/D11/queries/Q11.json",
+    "evidence/D11/queries/Q12.json",
+    "evidence/D11/queries/Q13.json",
+    "evidence/D11/queries/Q14.json",
+    "evidence/D11/queries/Q15.json",
+    "evidence/D11/render-check.json",
+    "evidence/D11/run-envmap.log",
+    "evidence/D11/stale.json",
+    "evidence/D11/validate.json",
+    "factory/deltas/D11.json",
+    "factory/fixtures/D11/F0-fixture.json",
+    "factory/fixtures/D11/F1-doc.json",
+    "factory/fixtures/D11/F2-build.json",
+    "factory/fixtures/D11/F3-browser.json",
+    "factory/fixtures/D11/F4-doc.json",
+    "factory/fixtures/D11/F5-build.json",
+    "factory/fixtures/D11/F6-evidence.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F0-fixture.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F1-doc.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F2-build.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F3-browser.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F4-doc.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F5-build.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F6-evidence.json",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F0-machinery-generic.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F0-syntax.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-ascii-contract.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-authority-untouched.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-d9-findings-visible.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-graph-validate.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F1-render-check.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-bind-evidence.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-observed-contract.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-render.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/logs/F4-validate.log",
+    "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/verification.json",
+    "tests/envmap/authority-fetch.mjs",
+    "tests/envmap/bind-evidence.mjs",
+    "tests/envmap/browser-probe.mjs",
+    "tests/envmap/envmap.mjs",
+    "tests/envmap/host-identity.sh",
+    "tests/envmap/run-envmap.sh"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "de05af438b87e5a7aad403c8b3368b590be27c10"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F0-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F1-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F2-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-browser",
+      "status": "PASS",
+      "detail": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F3-browser.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F4-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F5-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/F6-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BROWSER_PROBE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/SCHEMA.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/AUTHORITY-REGISTER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/TRACEABILITY.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/envmap.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/authority-fetch.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/host-identity.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/browser-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/bind-evidence.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/envmap/run-envmap.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/validate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/queries/Q15.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/authority/fetch-records.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/host/identity.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/browser/gpu-flags.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/browser/default.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/final/validate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D11/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:rust-toolchain.toml",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T05:21:52Z",
+  "status": "PASS"
+}

@@ -1,0 +1,124 @@
+{
+  "tool": "tests/envmap/envmap.mjs validate",
+  "graph_schema": "facttest-environment-map/1",
+  "nodes": 211,
+  "edges": 475,
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "node_ids_unique",
+      "status": "PASS",
+      "detail": "211 nodes"
+    },
+    {
+      "check": "every_node_class_declared",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_fields_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "every_node_has_owner",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "every_edge_type_has_semantics",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_dangling_edges",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "edge_endpoints_match_semantics",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "conditional_edges_carry_condition",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "authority_pin_separate_from_current",
+      "status": "PASS",
+      "detail": "DENIED reopen never inherits the pin date"
+    },
+    {
+      "check": "authority_has_exact_url",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "authority_not_implementation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "probe_proves_resolvable_facts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "probe_states_failure_meaning",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "evidence_has_environment",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "evidence_has_probe",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "evidence_artifact_identity",
+      "status": "PASS",
+      "detail": "every non-PENDING evidence carries sha256"
+    },
+    {
+      "check": "evidence_pending_listed",
+      "status": "PASS",
+      "detail": "PENDING (identity filled after this delta's stations run): EV-D11-AUTHORITY-FETCH EV-D11-BROWSER-DEFAULT EV-D11-BROWSER-GPUFLAGS EV-D11-HOST-IDENTITY EV-D11-PATHS-PROBE EV-D11-VALIDATE"
+    },
+    {
+      "check": "synthetic_never_counts_as_run",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "run_facts_have_evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fact_status_vocabulary",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "constraint_authority_refs_resolve",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fact_constraint_refs_resolve",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "prompt_invariants_carried",
+      "status": "PASS",
+      "detail": "11 invariants"
+    }
+  ]
+}

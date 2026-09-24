@@ -1,0 +1,153 @@
+# FactTest Computational Environment Map
+
+STATUS: D11 - human-readable global map.  Machine form: graph.json (traversed by tests/envmap/envmap.mjs).
+Generated companions: AUTHORITY-REGISTER.md (every authority node), TRACEABILITY.md (authority -> constraint -> fact ->
+probe -> evidence per fact, stale relations, conflicts).  Schema: SCHEMA.md.  Evidence of the map machinery itself:
+evidence/D11/.  Nothing here repairs production, adds a capability, pins a toolchain or rewrites earlier evidence.
+
+Reading rule: a box is claimable only down to the deepest rung that has PHYSICAL evidence in a named environment.
+Status marks: [RUN] executed and observed, [OBS] observed (not an execution claim), [ERR] contradiction, [GAP] missing
+mechanism/probe/evidence, [UNK] not established.
+
+## 1. Global map
+
+```text
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  EXTERNAL AUTHORITY (48 nodes)                                                                        ║
+║   STANDARD_RELEASE  WebAssembly Core Release 3.0: addrtype, memtype, binary limits, changes "64-bit"  ║
+║   EDITOR_DRAFT      Wasm JS API L2 (memories, validate, internal storage), Wasm Web API L2 (streaming)║
+║                     WebGPU (navigator.gpu [SecureContext], requestAdapter, fallback adapter, adapter   ║
+║                     expiry, requestDevice, lost, lose the device, destroy, maxBufferSize), WGSL,        ║
+║                     Secure Contexts (is-origin-trustworthy)                                            ║
+║   LIVING_STANDARD   HTML (workers, hardwareConcurrency, crossOriginIsolated/SharedArrayBuffer)         ║
+║   PROPOSAL          Wasm Threads, Shared-Everything Threads                                            ║
+║   RUST_REFERENCE / TOOL_DOC / TARGET_DOC   no_std, Cargo build-std (unstable), rustc wasm64 (Tier 3)   ║
+║   IMPLEMENTATION_DOC / _SOURCE  rustc target spec, SwiftShader README, Chromium swiftshader.md and     ║
+║                     gpu/gl/content switches, V8 flags, installed Playwright 1.56.1                      ║
+║   PROJECT_LAW       FACTORY-LAW, FACTORY-CONTRACTS, PASS1 FT-003, PASS6, RUNTIME-ADMISSION-REPLAN,    ║
+║                     EVIDENCE-OBLIGATIONS, PLANNER-COST-MODEL                                          ║
+║   identity per node: exact_url + fragment (CURRENT; reopen DENIED for 37/48 in D11: egress policy)     ║
+║                      + reproducibility_pin repo@commit path sha256 (SOURCE opened 2026-09-24)          ║
+║   fragment drift found: js-api "#internal-storage" is not an id in the source [ERR]                    ║
+╚══════════════════════════════╤═══════════════════════════════════════════════════════════════════════╝
+                               │ AUTHORIZES / DEPENDS_ON / CONFLICTS_WITH (ERR-001, ERR-002, ERR-003, OBS-D11-1)
+                               ▼
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  PROJECT CONSTRAINT (37 nodes)                                                                        ║
+║   LEDGER: FT-001..003, RS-001..003, WA-001..005, WB-001/002, GPU-001..003, SEC-001, THREAD-001/002    ║
+║   PROPOSED by traversal (returned to ASCII): EM-001 navigator.gpu needs secure context; EM-002 fallback║
+║   adapter != hardware; EM-003 adapter single-use/expiry; EM-004 wasm64 assumes 4 merged proposals;     ║
+║   EM-005 toolchain recorded never pinned; EM-006 GPU flags are implementation switches; FT-004 git     ║
+║   commit/worktree/ff-only; FT-005 literal surfaces; FT-006 physical E0->E1 class                        ║
+║   CONTRACT families (kind=contract): CPU_WASM64, WEBGPU (READY-CONTRACT); WORKER_DEDICATED (GAP);      ║
+║   WASM_SHARED_THREADS (ERR); 5 sensor families citing document roots (coarse, Q12)                     ║
+╚══════════════════════════════╤═══════════════════════════════════════════════════════════════════════╝
+                               │ REQUIRES / GOVERNS
+                               ▼
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  COMPUTATIONAL FACT (37 nodes)   what FactTest is entitled to claim, and where                         ║
+║                                                                                                       ║
+║  TRACE 1  RUST -> WASM64                                                                              ║
+║   [RUN] 12-crate graph compiles with core only (wasm64, dev+release)      ENV-D9-HOST only            ║
+║   [RUN] kernel module declares I64 memory, no imports                     ENV-D9-HOST, ENV-D1-D3-HOST ║
+║   [RUN] Chromium 141 instantiates it, abi_version 1                       ENV-D1-D3-BROWSER (default) ║
+║   [RUN] memory64 module validates in the browser                          ENV-D6-D7-BROWSER-*         ║
+║   [RUN] CPU_WASM64 admitted at E0 and E1, payloads exact                  ENV-D6-D7-BROWSER-GPUFLAGS  ║
+║   [OBS] Node 22 / V8 12.4 cannot compile the module                       ENV-D1-D3-HOST             ║
+║   [ERR] workspace not natively buildable as a whole (wasm-abi)            D9 T9-P2-02 / P3-02        ║
+║   [ERR] default-members 13/14: "full suite" was overstated                 D9 T9-P1-01               ║
+║   [GAP] toolchain never pinned; nightly seen in 3 states (6bb1652a0 D1-D3+D11, 6eeff9a52 D9)          ║
+║   [OBS] nightly clippy absent on ENV-D11-HOST -> D9 T9-P3-04 valid for ENV-D9 only                     ║
+║   [GAP] streaming/MIME delivery (WA-004) never probed                                                  ║
+║                                                                                                       ║
+║  TRACE 2  WEBGPU                                                                                      ║
+║   [RUN] http://127.0.0.1:<port> is a secure context (loopback trustworthy)                              ║
+║   [RUN] navigator.gpu exposed with and without GPU flags (presence only)                               ║
+║   [RUN] default launch: requestAdapter null -> WEBGPU REJECTED (no fake evidence)                       ║
+║   [RUN] GPU flag set: adapter vendor google / architecture swiftshader; isFallbackAdapter true (D11)    ║
+║   [RUN] known-answer buffer roundtrip; relay payloads A,B exact at E0 via plan 1                        ║
+║   [RUN] destroy() -> lost "destroyed" -> E1: WEBGPU REJECTED, plan 1 stale                              ║
+║   [RUN] reselection to plan 0 (CPU_WASM64) with no codegen, bundle unchanged  ─ FALLS_BACK_TO ─┐        ║
+║   [OBS] maxBufferSize 1 GiB (spec default 256 MiB)                                            │        ║
+║   [GAP] WGSL never compiled/dispatched (relay = buffer copies)                                  │        ║
+║   [UNK] hardware GPU: no host exposed a non-fallback adapter (SwiftShader != hardware)          │        ║
+║   [ERR] shared/threaded Wasm not admitted (agent-local JS embedding; crossOriginIsolated false) │        ║
+║   [GAP] workers / hardwareConcurrency never probed                                             │        ║
+║                                                                                              ◄┘        ║
+║  TRACE 3  FACTORY EXECUTION ENVIRONMENT                                                               ║
+║   [RUN] every delta D0..D10 mutated only a detached worktree at canonical_base; ff-only integration     ║
+║   [OBS] surfaces are literal ('*' | 'dir/' | file); [GAP] S-FIXTURE "compiler/*/tests/" and            ║
+║         "compiler/*/src/" match nothing (D9 GAP, re-witnessed by the D11 paths probe)                  ║
+║   [GAP] station commands inherit the container toolchain; receipts D0-D8 carry no toolchain identity   ║
+║   [GAP] heuristic nostd-check/depcheck remain (weight none)                                             ║
+║   [ERR] D9 historical-claim audit preserved (overstated wording)                                       ║
+║   [UNK] published authorities not re-opened (egress denied); source pins verified instead              ║
+╚══════════════════════════════╤═══════════════════════════════════════════════════════════════════════╝
+                               │ REQUIRES / EXPOSED_BY / BUILT_WITH / STALE_IF(dimension)
+                               ▼
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  ENVIRONMENT (10 nodes)                                                                               ║
+║   PHYSICAL_HOST     ENV-D1-D3-HOST  nightly 6bb1652a0 (D1-D3)     identity partial (no OS/CPU/cargo)   ║
+║                     ENV-D9-HOST     nightly 6eeff9a52 + clippy    identity partial (no OS/CPU)        ║
+║                     ENV-D11-HOST    nightly 6bb1652a0, no clippy; node 22.22.2/V8 12.4; Playwright      ║
+║                                     1.56.1 -> Chromium 141.0.7390.37 rev 1194; Ubuntu 24.04.4; 4 vCPU; ║
+║                                     no /dev/dri; egress policy (denied hosts recorded)   complete       ║
+║   PHYSICAL_BROWSER  ENV-D1-D3-BROWSER (default launch, UA only)                                        ║
+║                     ENV-D6-D7-BROWSER-GPUFLAGS (flags recorded; no revision/V8/isFallbackAdapter)      ║
+║                     ENV-D6-D7-BROWSER-DEFAULT                                                         ║
+║                     ENV-D11-BROWSER-GPUFLAGS / -DEFAULT (CDP product/revision/jsVersion 14.1.146.11,  ║
+║                                     isSecureContext, crossOriginIsolated, SAB, adapter incl. fallback) ║
+║   SYNTHETIC_MODEL   ENV-MODEL-E0 / ENV-MODEL-E1 (fixture epochs; never execution)                     ║
+╚══════════════════════════════╤═══════════════════════════════════════════════════════════════════════╝
+                               │ PROBED_BY / EVIDENCED_BY / ADMITTED_BY / INVALIDATED_BY
+                               ▼
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  PROBE (23) -> EVIDENCE (38)                                                                          ║
+║   static:  nostd-graph, wasm-inspect, compile-fail-diag, deps-audit, selection-audit, toolchain-id    ║
+║   runtime: wasm64 discover/request/known-answer, secure-context, webgpu discover/request/known-answer,║
+║            relay-exact, controlled-loss, bundle-unchanged, kernel-host-browser, node-instantiate       ║
+║   factory: workpiece-verify, paths-literal                                                            ║
+║   map:     authority-fetch, host-identity, browser-identity                                           ║
+║   evidence carries: probe_ref, environment_ref, artifact sha256 (from evidence/<delta>/index.json),   ║
+║            epoch, status, evidence_class (PHYSICAL_* vs SYNTHETIC_MODEL never mixed)                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+## 2. Stale relations (what a change makes unclaimable)
+
+```text
+toolchain.nightly.rustc_commit   core-only graph, kernel module identity, D9 T9-P5/P8 records, D1 B9 records
+toolchain.nightly.components     core-only graph (rust-src), D9 T9-P3-04 (clippy)  <- already stale on ENV-D11-HOST
+toolchain.stable.rustc_release   compile-fail witnesses (message wording), native matrix, the wasm-abi native [ERR]
+dependency_graph_identity        first-party graph verdict
+browser.product / revision       every browser [RUN] (D1 B10-B11, D6/D7 physical, D9 T9-P8-03)
+browser.flags                    SwiftShader adapter, E0 WEBGPU admission/known-answer/relay, maxBufferSize
+browser.js_engine                memory64 discovery, ABI execution
+host.gpu_device_node             a hardware adapter would make the SwiftShader facts different facts
+origin_security.*                navigator.gpu exposure; loopback secure context
+network_egress.policy            authority reopen status
+repo.commit                      every IMPLEMENTATION node; the literal path rule and the dead surfaces
+authority.source_commit          every extracted consequence (re-extract when a pin moves)
+```
+
+## 3. Answers the graph must give (queries Q01..Q15; evidence/D11/queries/)
+
+Q01 why believe X / Q02 which authority / Q03 which subclauses / Q04 which environment / Q05 which evidence executed it
+(per fact) - Q06 stale if rustc changes - Q07 stale if Chromium changes - Q08 secure-context claims - Q09 authority
+without probe - Q10 probe without constraint - Q11 evidence with incomplete environment identity - Q12 coarse contract
+citations - Q13 single-epoch [RUN]s - Q14 proposal mistaken for baseline - Q15 implementation documentation mistaken
+for standards law.  The observed answers and their comparison with the predictions are in
+design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md.
+
+## 4. What FactTest is entitled to claim (summary derived from the graph, not a new claim)
+
+- The Byte Relay compiles to a wasm64 module with an i64 memory and executes in Chromium 141.0.7390.37 headless on a
+  loopback secure context; with the recorded GPU flag set it executes on a SwiftShader fallback adapter, survives a
+  controlled device loss and reselects the pre-emitted Wasm variant without codegen.  Each of these is a [RUN] for the
+  named environment only (Q13) and stale under the dimensions above.
+- The compiler graph is no_std by compiler enforcement (core-only wasm64 build) for nightly 6eeff9a52 (D9); the same
+  proof for nightly 6bb1652a0 exists only for the D1-D3 six-crate graph.  No toolchain is pinned [GAP].
+- Nothing in FactTest has executed on hardware GPU [UNK], a WGSL shader [GAP], a streamed application/wasm response
+  [GAP], a Worker [GAP], or shared Wasm memory [ERR].
+- The authorities cited are hyperlink-connected to pinned sources (40 pins verified by sha256), but the published
+  renderings were not re-opened in D11 [UNK]; one cited fragment does not exist in the current source [ERR].
