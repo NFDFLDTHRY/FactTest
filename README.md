@@ -1,6 +1,6 @@
 # FactTest
 
-STATUS: PASS 4 EXECUTED - 2026-09-23
+STATUS: PASS 5 EXECUTED - 2026-09-23
 
 FactTest is a governance-first foundry project whose compiler is a \`#![no_std]\`, no-third-party-crate Rust compiler.
 
@@ -33,7 +33,20 @@ The compiler itself is manufactured into this repository under the ASCII Systems
 17. [SEMANTIC-MODEL.md](SEMANTIC-MODEL.md)
 18. [REFINEMENT-LAW.md](REFINEMENT-LAW.md)
 19. [LANGUAGE-TESTS.md](LANGUAGE-TESTS.md)
+20. [PASS5.md](PASS5.md)
+21. [FACTORY-CONTRACTS.md](FACTORY-CONTRACTS.md)
+22. [STATION-REGISTRY.md](STATION-REGISTRY.md)
+23. [LOWERING-MODEL.md](LOWERING-MODEL.md)
+24. [IMPLEMENTATION-CONTRACTS.md](IMPLEMENTATION-CONTRACTS.md)
+25. [REPRESENTATION-TRANSFER.md](REPRESENTATION-TRANSFER.md)
+26. [PLANNER-COST-MODEL.md](PLANNER-COST-MODEL.md)
+27. [VERIFICATION-CERTIFICATES.md](VERIFICATION-CERTIFICATES.md)
+28. [CODEGEN-BUNDLE-CONTRACT.md](CODEGEN-BUNDLE-CONTRACT.md)
+29. [RUNTIME-ADMISSION-REPLAN.md](RUNTIME-ADMISSION-REPLAN.md)
+30. [PASS5-TESTS.md](PASS5-TESTS.md)
 
 No compiler implementation exists yet. That remains intentional.
 
-Pass 4 defines the ASCII language kernel without materializing parser/compiler source. Pass 5 owns concrete factory/lowering/backend/planner/proof/codegen contracts. Pass 6 owns one complete vertical proof.
+Pass 5 defines how semantic ASCII may become legal implementation alternatives, admitted plans, independently verified plans, generated bundles, runtime evidence, and observed ASCII, while separately defining the Factory stations that manufacture FactTest.git itself.
+
+Pass 6 owns one complete end-to-end vertical proof.

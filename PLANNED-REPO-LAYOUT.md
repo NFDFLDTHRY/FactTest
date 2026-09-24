@@ -1,182 +1,107 @@
 # FactTest Planned Repository Layout
 
-STATUS: PASS 3  
+STATUS: PASS 5  
 DATE: 2026-09-23
 
-This is an ownership/dependency plan for Fable 5.1.
-It is not permission to create these paths before the final manufacturing prompt.
+This is the repository ownership/dependency plan for the eventual Fable 5.1 materialization.
+It is not permission to create implementation paths before the final manufacturing prompt.
 
-No implementation directories exist in the repository at Pass 3.
-
-## 1. Ownership zones
-
-Conceptual future repository:
+## 1. Planned top-level ownership zones
 
 \`\`\`text
 FactTest.git
 |
-+-- project law / design passes
++-- law/
+|     Factory/project constitutional surfaces
 |
-+-- compiler foundation
-|     foundational IDs
-|     spans/source identities
-|     artifact envelopes
-|     diagnostic structures
++-- design/
+|     pass outputs and architecture/authority contracts
 |
-+-- source/front-end
-|     ASCII lexer/parser
-|     source-unit handling
++-- compiler/
+|   +-- foundation/
+|   +-- source/
+|   +-- semantic/
+|   +-- capability/
+|   +-- implementation/
+|   +-- planning/
+|   +-- verifier/
+|   '-- codegen/
 |
-+-- semantic kernel
-|     System AST
-|     resolution
-|     typed System IR
-|     effects/ownership
-|     proof obligations
++-- host/
+|     generated/runtime host templates and browser adapter machinery
 |
-+-- capability model
-|     semantic capabilities
-|     implementation capabilities
-|     machine observations
-|     admissions
++-- factory/
+|   +-- registry/
+|   +-- router/
+|   +-- stations/
+|   '-- receipts/
 |
-+-- implementation contracts
-|     backend/precondition/layout/failure contracts
-|
-+-- planning
-|     objective
-|     candidate-plan generation/search
-|
-+-- verifier
-|     independent candidate verification
-|
-+-- codegen
-|     Rust/Wasm emission
-|     JS host membrane generation
-|     WebApp shell generation
-|
-+-- factory machinery
-|     station registry
-|     fixtures
-|     workpiece routing
-|     receipts
-|     integration/re-inspection
-|
-+-- tests / fixtures
-|
-'-- evidence
-      schemas
-      deterministic test outputs
-      runtime observations
++-- fixtures/
++-- tests/
+'-- evidence/
 \`\`\`
 
-Concrete crate/directory names are deferred.
+Exact crate/module filenames remain an implementation decision constrained by these ownership zones.
 
-## 2. Dependency direction
-
-Preferred dependency law:
+## 2. Compiler dependency DAG
 
 \`\`\`text
-FOUNDATION
+foundation
     ^
-DIAGNOSTICS / ARTIFACT CONTRACTS
+source
     ^
-SOURCE
+semantic
     ^
-SEMANTICS
+capability
     ^
-CAPABILITIES
+implementation
     ^
-IMPLEMENTATION CONTRACTS
-    ^
-PLANNING --------+
-                 |
-OBLIGATIONS -----+--> VERIFIER
-                 |
-                 v
-              CODEGEN
+planning -----------+
+                    |
+semantic obligations+--> verifier
+implementation -----+
+admission contracts-+
+                    |
+                    v
+                 codegen
 \`\`\`
 
-Factory machinery is a separate ownership plane:
+Codegen accepts VerifiedPlan, not CandidatePlan.
 
-\`\`\`text
-FACTORY LAW
-    |
-    v
-FACTORY ROUTER / STATIONS / WORKPIECES
-    |
-    v
-mutates FactTest.git under receipts and verification
-\`\`\`
+## 3. Forbidden dependencies
 
-Compiler backends do not become Factory stations merely because both are "implementation machinery".
+- codegen -> mutate source semantics
+- planner -> mutate source
+- planner -> verifier internals
+- verifier -> planner heuristics
+- host adapter -> semantic authority
+- runtime evidence -> silent source rewrite
+- generated WebApp -> authoritative repo mutation
+- compiler backend -> Factory-station identity
+- FactoryReceipt -> compiler proof substitution
+- CompilerReceipt -> Factory integration substitution
+- RuntimeEvidence -> source-semantics substitution
 
-## 3. First-party crate/module law
+## 4. Factory plane
 
-Project decision:
+Factory machinery depends on project law/contracts and workpiece representations.
 
-- no third-party crates
-- first-party crates/modules may be used where they enforce architectural boundaries
+It is not imported by compiler semantic code merely to perform normal compilation.
 
-A future split is justified when it makes forbidden dependencies structurally impossible.
+Compiler artifacts may be inputs to Factory stations, but the planes remain distinct.
 
-A split is not justified merely for aesthetics.
+## 5. No third-party crates
 
-## 4. Forbidden dependencies
+All compiler/factory Rust crates are first-party unless the human explicitly changes project law.
 
-The future repository must make these paths illegal or visibly exceptional:
+Rust core/optional alloc/toolchain builtins are governed separately by the toolchain/bootstrap contracts.
 
-\`\`\`text
-codegen -> source-language ownership
-planner -> source mutation
-planner -> verifier internals
-verifier -> planner heuristics
-host adapter -> semantic authority
-runtime evidence -> silent source rewrite
-generated WebApp -> authoritative repository mutation
-compiler backend -> Factory-station identity
-Factory receipt -> compiler-proof substitution
-compiler receipt -> Factory-integration substitution
-\`\`\`
+A crate split should enforce dependency law or ownership boundaries, not aesthetics.
 
-## 5. Host boundary
+## 6. Current-state invariant
 
-Host/process/browser I/O remains outside the no_std semantic kernel.
+At Pass 5 completion the canonical repository still contains design/control surfaces only.
 
-Future host responsibilities include:
+No implementation directory in this document is materialized yet.
 
-- reading source/project state
-- Git interaction
-- allocating compiler workspace
-- persisting artifacts
-- invoking browser/runtime probes
-- collecting evidence
-
-The kernel consumes explicit data structures/bytes representing those inputs.
-
-## 6. Generated WebApp ownership zones
-
-Conceptual generated bundle:
-
-\`\`\`text
-object B
-|
-+-- Wasm semantic/runtime artifacts
-+-- JavaScript host membrane
-+-- browser capability adapters
-+-- application HTML/shell
-+-- manifest
-+-- service worker/cache lifecycle
-+-- runtime evidence output
-'-- lineage/plan/verification metadata
-\`\`\`
-
-These are generated-object zones, not FactTest compiler-source ownership zones.
-
-## 7. Pass-3 repository invariant
-
-At the end of Pass 3 the current repository must still contain no implementation tree.
-
-Expected current state is documentation/control surfaces only.
-
-Pass 4 and Pass 5 continue architectural definition before the final Fable manufacturing prompt authorizes implementation.
+Pass 6 will prove one vertical slice in the architecture/design surface before the final Fable manufacturing prompt authorizes repository implementation.
