@@ -1,377 +1,395 @@
 # FactTest Current Reference Authority Map
 
-STATUS: PASS 1 LIVE AUTHORITY MAP
+STATUS: PASS 2 LIVE AUTHORITY MAP  
 OBSERVED: 2026-09-23
 
-This file is intentionally hyperlink-first.
+This file is hyperlink-first.
 
-The current authoritative document is preferred for current design semantics.
-A reproducibility fixture may separately pin a commit/release.
-Those are different axes.
+The current authoritative document governs current design semantics.
+A reproducibility fixture may separately pin a release/commit/toolchain.
+Runtime evidence separately records what actually worked.
 
-## Citation rule
+## Citation law
 
-A technical constraint must link directly to the clause that establishes it whenever the authority exposes a stable fragment.
+For every technical constraint:
 
-Do not cite:
+\`\`\`text
+claim
+  -> current authoritative document
+  -> exact section / definition / algorithm fragment where available
+  -> authority maturity/status
+  -> observed date
+  -> optional reproducibility pin
+  -> test/evidence obligation
+\`\`\`
 
-- a search result
-- a standards history page
-- a repository homepage instead of the actual spec
-- a stale PDF when a newer living/editor document governs the claim
-- a document title alone when a direct clause link exists
+Do not cite a search result, history page, repository homepage instead of the actual spec, stale PDF instead of a newer living/editor document, or only a document title when a stable deep clause exists.
 
-## Rust / toolchain
+## Rust / Cargo
 
-### `#![no_std]`
-
-Claim: the `no_std` attribute removes `std` from the standard prelude and changes the standard-library linkage/prelude relationship.
-
-Direct clause:
+no_std:
 https://doc.rust-lang.org/reference/names/preludes.html#the-no_std-attribute
 
-### Cargo `build-std`
-
-Claim: Cargo can build standard-library crates from source with `-Z build-std`; current machinery is unstable and requires the standard-library source.
-
-Direct clause:
+Cargo build-std:
 https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#build-std
 
-### Rust wasm64 target
-
-Claim: Rust's `wasm64-unknown-unknown` target is the Rust implementation target relevant to FactTest's 64-bit Wasm direction.
-
-Direct target document:
+Rust wasm64 target:
 https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html
 
-Important: Rust target documentation governs Rust target behavior. It does not override newer WebAssembly standard status.
+Authority split:
+Rust docs/source govern Rust target/toolchain behavior.
+They do not override newer WebAssembly standard semantics/status.
 
-## WebAssembly
+## WebAssembly current baseline
 
-### Current core specification
-
-Current authority:
+Core Release 3.0, 21 September 2026:
 https://webassembly.github.io/spec/core/
 
-### 64-bit address types
-
-Claim: current WebAssembly admits both `i32` and `i64` address types.
-
-Direct clause:
+Address types:
 https://webassembly.github.io/spec/core/text/types.html#text-addrtype
 
-### Memory types carry an address type
-
-Direct clause:
+Memory types:
 https://webassembly.github.io/spec/core/text/types.html#text-memtype
 
-### JavaScript `WebAssembly.Memory`
+64-bit address-space change:
+https://webassembly.github.io/spec/core/appendix/changes.html
 
-Claim: the current JavaScript embedding exposes an address type in `MemoryDescriptor`.
+JS Interface, Editor's Draft 21 September 2026:
+https://webassembly.github.io/spec/js-api/
 
-Direct clause:
+Internal storage / agent-local current model:
+https://webassembly.github.io/spec/js-api/#internal-storage
+
+Memories:
 https://webassembly.github.io/spec/js-api/#memories
 
-### Streaming Wasm delivery
+Web API:
+https://webassembly.github.io/spec/web-api/
 
-Claim: streaming compilation/instantiation has response/CORS/status/MIME requirements, including `application/wasm`.
-
-Direct algorithm:
+Streaming compilation/instantiation:
 https://webassembly.github.io/spec/web-api/#streaming-module-compilation-and-instantiation
 
-## JavaScript / browser foundations
+## WebAssembly threading proposals
 
-### ECMAScript
+Threads actual spec:
+https://webassembly.github.io/threads/core/
 
-Current living authority:
+Threads memory types:
+https://webassembly.github.io/threads/core/syntax/types.html#memory-types
+
+Threads JS Interface:
+https://webassembly.github.io/threads/js-api/
+
+Threads Web API:
+https://webassembly.github.io/threads/web-api/
+
+Shared-Everything Threads actual proposal document:
+https://raw.githubusercontent.com/WebAssembly/shared-everything-threads/main/proposals/shared-everything-threads/Overview.md
+
+These are proposal/future-authority surfaces and must not be mislabeled as unconditional current Core 3.0 browser semantics.
+
+## ECMAScript / web foundations
+
+Current ECMAScript living draft:
 https://tc39.es/ecma262/
 
-The specification itself states that this living URL is the most accurate and up-to-date ECMAScript specification. Yearly PDFs are snapshots, not the live authority.
-
-### Web IDL
-
-Current living authority:
+Web IDL Living Standard:
 https://webidl.spec.whatwg.org/
 
-### HTML workers
+HTML Living Standard:
+https://html.spec.whatwg.org/multipage/
 
-Claim: workers provide background script execution.
-
-Direct section:
+Workers:
 https://html.spec.whatwg.org/multipage/workers.html#workers
 
-Claim: `hardwareConcurrency` reports logical processors potentially available to the user agent; it is not ownership of physical execution cycles.
-
-Direct clause:
+hardwareConcurrency:
 https://html.spec.whatwg.org/multipage/workers.html#navigator.hardwareconcurrency
 
-### Fetch
-
-Current living authority:
-https://fetch.spec.whatwg.org/
-
-### Streams
-
-Current living authority:
-https://streams.spec.whatwg.org/
-
-### DOM
-
-Current living authority:
+DOM Living Standard:
 https://dom.spec.whatwg.org/
 
-### Infra
-
-Current living authority:
+Infra Living Standard:
 https://infra.spec.whatwg.org/
 
-## Accelerated compute
+Fetch Living Standard:
+https://fetch.spec.whatwg.org/
 
-### WebGPU adapter admission
+Streams Living Standard:
+https://streams.spec.whatwg.org/
 
-Claim: adapter selection is a runtime request and may produce no adapter; returned adapters expose capabilities/limits and can expire.
+## WebGPU / WGSL
 
-Direct clause:
+WebGPU current editor document:
+https://gpuweb.github.io/gpuweb/
+
+requestAdapter:
 https://gpuweb.github.io/gpuweb/#dom-gpu-requestadapter
 
-### WebGPU device loss
+requestDevice:
+https://gpuweb.github.io/gpuweb/#dom-gpuadapter-requestdevice
 
-Claim: GPU devices can be lost and applications need recovery logic.
-
-Direct clause:
+device lost:
 https://gpuweb.github.io/gpuweb/#dom-gpudevice-lost
 
-### WGSL
+WGSL current document:
+https://gpuweb.github.io/gpuweb/wgsl/
 
-Claim: WGSL is the shader language used by WebGPU.
-
-Direct introduction:
+WGSL introduction:
 https://gpuweb.github.io/gpuweb/wgsl/#intro
 
-### WebNN
-
-Claim: WebNN is the browser neural-network inference acceleration surface that FactTest may represent as a backend family.
-
-Direct API section:
-https://webmachinelearning.github.io/webnn/#api
-
-## Codecs / media
-
-### WebCodecs support probing
-
-Claim: codec configurations are not assumed; support is queried.
-
-Direct clause:
-https://w3c.github.io/webcodecs/#dom-videodecoder-isconfigsupported
-
-### WebCodecs hardware acceleration
-
-Claim: hardware/software acceleration preferences are hints; the user agent may ignore them.
-
-Direct clause:
-https://w3c.github.io/webcodecs/#hardware-acceleration
-
-### Camera / microphone
-
-Claim: local media acquisition is requested through `MediaDevices.getUserMedia()`.
-
-Direct clause:
-https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia
-
-## Security / permissions
-
-### Secure Contexts
-
-Claim: powerful capabilities can depend on whether the origin/environment is potentially trustworthy.
-
-Direct algorithm:
-https://w3c.github.io/webappsec-secure-contexts/#is-origin-trustworthy
-
-### Permissions
-
-Claim: permission state is explicit state rather than equivalent to API presence.
-
-Direct definition:
-https://w3c.github.io/permissions/#permission-state
-
-### Permissions Policy
-
-Claim: a policy-controlled feature can be disabled independently of API implementation.
-
-Direct definition:
-https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature
-
-## Storage / persistence / lifecycle
-
-### Storage persistence
-
-Claim: persistence is requested and can fail; it is not assumed.
-
-Direct clause:
-https://storage.spec.whatwg.org/#dom-storagemanager-persist
-
-### Storage estimate
-
-Claim: quota/usage information is runtime state.
-
-Direct clause:
-https://storage.spec.whatwg.org/#dom-storagemanager-estimate
-
-### Origin private file system
-
-Claim: the origin-private file-system root is obtained through `StorageManager.getDirectory()`.
-
-Direct clause:
-https://fs.spec.whatwg.org/#dom-storagemanager-getdirectory
-
-### Service Worker fetch interception
-
-Direct event definition:
-https://w3c.github.io/ServiceWorker/#fetch-event
-
-### Service Worker cache objects
-
-Direct section:
-https://w3c.github.io/ServiceWorker/#cache-objects
-
-### Web Application Manifest
+## WebNN
 
 Current document:
-https://w3c.github.io/manifest/
+https://webmachinelearning.github.io/webnn/
 
-Manifest metadata is part of generated-WebApp packaging; installation itself remains a runtime/browser observation rather than something FactTest may infer merely from the presence of a manifest.
+API:
+https://webmachinelearning.github.io/webnn/#api
 
-### IndexedDB
+FactTest must treat context creation and graph execution as runtime admission, not assume WebNN from interface name alone.
+
+## WebCodecs
 
 Current editor document:
+https://w3c.github.io/webcodecs/
+
+Current 21 September 2026 WD:
+https://www.w3.org/TR/2026/WD-webcodecs-20260921/
+
+VideoDecoder isConfigSupported:
+https://w3c.github.io/webcodecs/#dom-videodecoder-isconfigsupported
+
+Hardware acceleration:
+https://w3c.github.io/webcodecs/#hardware-acceleration
+
+Resource reclamation:
+https://w3c.github.io/webcodecs/#resource-reclamation
+
+## Media Capture
+
+Current document:
+https://w3c.github.io/mediacapture-main/
+
+getUserMedia:
+https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia
+
+enumerateDevices:
+https://w3c.github.io/mediacapture-main/#dom-mediadevices-enumeratedevices
+
+## Secure contexts / permissions / policy
+
+Secure Contexts actual editor document:
+https://w3c.github.io/webappsec-secure-contexts/
+
+Potentially trustworthy origin algorithm:
+https://w3c.github.io/webappsec-secure-contexts/#is-origin-trustworthy
+
+Permissions actual editor document:
+https://w3c.github.io/permissions/
+
+Permissions model:
+https://w3c.github.io/permissions/#permissions
+
+Reading permission state:
+https://w3c.github.io/permissions/#reading-current-states
+
+Revocation:
+https://w3c.github.io/permissions/#reacting-to-revocation
+
+Permissions Policy actual editor document:
+https://w3c.github.io/webappsec-permissions-policy/
+
+Policy-controlled feature:
+https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature
+
+## Storage / files / structured data
+
+Storage Living Standard:
+https://storage.spec.whatwg.org/
+
+persist:
+https://storage.spec.whatwg.org/#dom-storagemanager-persist
+
+estimate:
+https://storage.spec.whatwg.org/#dom-storagemanager-estimate
+
+File System Living Standard:
+https://fs.spec.whatwg.org/
+
+OPFS root:
+https://fs.spec.whatwg.org/#dom-storagemanager-getdirectory
+
+IndexedDB current editor document:
 https://w3c.github.io/IndexedDB/
 
-Database model:
+Database concept:
 https://w3c.github.io/IndexedDB/#database-concept
 
-## Sensors / physical world
+## Service Worker / PWA
 
-### Generic Sensor API
+Service Workers Nightly, Editor's Draft 17 September 2026:
+https://w3c.github.io/ServiceWorker/
 
-Current editor document:
+fetch event:
+https://w3c.github.io/ServiceWorker/#fetch-event
+
+cache objects:
+https://w3c.github.io/ServiceWorker/#cache-objects
+
+Web Application Manifest:
+https://w3c.github.io/manifest/
+
+Manifest definition:
+https://w3c.github.io/manifest/#web-application-manifest
+
+## Generic Sensor family
+
+Generic Sensor:
 https://w3c.github.io/sensors/
 
-FactTest keeps concrete sensor APIs as alternative implementation edges over semantic sensor requirements; current runtime support and permissions determine admission, not whether the target node exists.
+Sensor start:
+https://w3c.github.io/sensors/#dom-sensor-start
 
-### Accelerometer
+Permission integration:
+https://w3c.github.io/sensors/#extending-the-permission-api
 
-Current editor document:
+Permissions Policy integration:
+https://w3c.github.io/sensors/#extending-the-permissions-policy-api
+
+Accelerometer:
 https://w3c.github.io/accelerometer/
 
-### Gyroscope
-
-Current editor document:
+Gyroscope:
 https://w3c.github.io/gyroscope/
 
-### Magnetometer
-
-Current editor document:
+Magnetometer:
 https://w3c.github.io/magnetometer/
 
-### Orientation Sensor
-
-Current editor document:
+Orientation Sensor:
 https://w3c.github.io/orientation-sensor/
 
-### Device Orientation and Motion
-
-Current editor document:
+Device Orientation and Motion:
 https://w3c.github.io/deviceorientation/
 
-### Proximity Sensor
+Permissions:
+https://w3c.github.io/deviceorientation/#permissions
 
-Current editor document:
+Proximity:
 https://w3c.github.io/proximity/
 
-### Ambient Light Sensor
-
-Current editor document:
+Ambient Light:
 https://w3c.github.io/ambient-light/
 
-### Geolocation
+AmbientLightSensor interface:
+https://w3c.github.io/ambient-light/#ambientlightsensor-interface
+
+## Geolocation
 
 Current editor document:
 https://w3c.github.io/geolocation/
 
-Direct API:
+getCurrentPosition:
 https://w3c.github.io/geolocation/#dom-geolocation-getcurrentposition
 
-## XR
+watchPosition:
+https://w3c.github.io/geolocation/#dom-geolocation-watchposition
 
-### WebXR Device API
+## WebXR
 
-Current editor document:
+Current WebXR Device API:
 https://immersive-web.github.io/webxr/
 
-Runtime entry point:
+navigator.xr:
 https://immersive-web.github.io/webxr/#navigator-xr
 
-## Peripherals
+isSessionSupported:
+https://immersive-web.github.io/webxr/#dom-xrsystem-issessionsupported
 
-### WebHID
+requestSession:
+https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession
 
-Device-selection boundary:
+Permissions Policy:
+https://immersive-web.github.io/webxr/#permissions-policy
+
+## HID
+
+Actual current spec:
+https://wicg.github.io/webhid/
+
+requestDevice:
 https://wicg.github.io/webhid/#dom-hid-requestdevice
 
-### WebUSB
+HIDDevice open:
+https://wicg.github.io/webhid/#dom-hiddevice-open
 
-Device-selection boundary:
+Status: Draft Community Group Report; not W3C Standards Track.
+
+## USB
+
+Actual current spec:
+https://wicg.github.io/webusb/
+
+requestDevice:
 https://wicg.github.io/webusb/#dom-usb-requestdevice
 
-### Web Serial
+USBDevice open:
+https://wicg.github.io/webusb/#dom-usbdevice-open
 
-Port-selection boundary:
+Community/incubation authority; runtime evidence remains mandatory.
+
+## Serial
+
+Actual living document:
+https://serial.spec.whatwg.org/
+
+requestPort:
 https://serial.spec.whatwg.org/#dom-serial-requestport
 
-### Web Bluetooth
+SerialPort open:
+https://serial.spec.whatwg.org/#dom-serialport-open
 
-Device-selection boundary:
+Current document identifies itself as a Draft Community Group Report / living document.
+
+## Bluetooth
+
+Actual current spec:
+https://webbluetoothcg.github.io/web-bluetooth/
+
+requestDevice:
 https://webbluetoothcg.github.io/web-bluetooth/#dom-bluetooth-requestdevice
+
+GATT connect:
+https://webbluetoothcg.github.io/web-bluetooth/#dom-bluetoothremotegattserver-connect
+
+Community-group authority; runtime evidence remains mandatory.
 
 ## Git
 
-### Commit object semantics
-
-Direct glossary definition:
+Commit object:
 https://git-scm.com/docs/gitglossary#def_commit
 
-### Revision syntax
-
-Current manual:
+Revision syntax:
 https://git-scm.com/docs/gitrevisions
 
-### Repository layout
-
-Current manual:
+Repository layout:
 https://git-scm.com/docs/gitrepository-layout
 
-## Known live-authority conflict
+## Known conflicts
 
-Rust's wasm64 target page has historically described Memory64 as not standardized.
+See [CONFLICT-LEDGER.md](CONFLICT-LEDGER.md).
 
-Current WebAssembly 3.0 directly defines `i64` address types:
-https://webassembly.github.io/spec/core/text/types.html#text-addrtype
+Most important:
+- Rust wasm64 standards-status prose vs current WebAssembly 3.0.
+- current WebAssembly JS embedding vs separate Threads proposal.
+- proposal/future Shared-Everything Threads vs current baseline.
 
-Therefore:
+## Rule for future updates
 
-- use rustc documentation/source for Rust target behavior
-- use current WebAssembly Core for current WebAssembly semantics/status
-- preserve any disagreement explicitly as `[ERR]`
-- never copy an obsolete standards-status sentence into FactTest architecture law
+When a future agent relies on an external technical claim:
 
-## Reproducibility pins
-
-When later passes require reproducible builds, add explicit pins separately:
-
-```text
-CURRENT AUTHORITY       tells us what the system means now
-PINNED IMPLEMENTATION   tells us exactly what was built/tested
-RUNTIME EVIDENCE        tells us what actually happened
-```
-
-No one of those substitutes for the others.
+1. open the current actual specification;
+2. locate the exact clause;
+3. update this map if the existing link has moved or become stale;
+4. preserve maturity/status;
+5. keep implementation pins separate;
+6. derive a test/evidence obligation;
+7. never keep an obsolete statement merely because it already exists in this repository.
