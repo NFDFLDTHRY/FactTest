@@ -8,15 +8,20 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D13-REPO-HYGIENE (see design/materialization/LEDGER.md for its integration commit)
+last delta         D14-FRONTIER-REOPEN (pass 1 of the D14-D19 technical reference review series; integration
+                   commit in design/materialization/LEDGER.md)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64), D9 qualified
                    Rust/Cargo proof harness, D11 computational environment map, D12 self-hosting architecture (ASCII +
-                   primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces)
+                   primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces),
+                   D14 authority frontier epoch (64 AUTHORITY_REVISION nodes, Q17 staleness traversal)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm, broad capability families (section 6)
-next               D14 TECHNICAL REFERENCE RESCAN, starting from design/materialization/D13-PRE-RESCAN-BASELINE.md.
-                   The owner PAUSED the D12-predicted D13-SEED-BROKER-QUALIFICATION; it is renumbered after D14.
+series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): one StructuralDelta
+                   per pass, each closed, verified, integrated and re-observed before the next
+next               D15-FOUNDATIONAL-SEMANTICS (what do the foundational computational authorities currently require?),
+                   starting from design/materialization/D14-OBSERVED-FRONTIER-REOPEN.md and graph query Q17.
+                   The owner PAUSED the D12-predicted seed/broker qualification; it is renumbered after D19.
 ```
 
 ## 2. Mutation law
@@ -52,7 +57,8 @@ HEAD, tree, status, ancestry to main) before drawing anything.
 4  route     F=<dir>/debug/factory
              $F workpiece create <stage>/factory/deltas/<D>.json      # detached worktree at canonical_base
              copy the delta and fixtures into the workpiece; then for each fixture in order:
-               $F station open  <delta> factory/fixtures/<D>/<fx>.json
+               $F station open  <delta> factory/fixtures/<D>/<fx>.json   (check its exit status: copy NOTHING if
+                                                                             the open is refused; D14 lesson)
                copy exactly the files that station produces into the workpiece
                $F station close <delta> factory/fixtures/<D>/<fx>.json    # runs the fixture commands, writes a receipt
              $F verify <delta>        # changed paths, must_not_change, receipts, required/forbidden paths
@@ -122,6 +128,14 @@ C      D11 Q09                              streaming/MIME, workers, hardwareCon
                                             registry families not yet authority nodes
 C      CAPABILITY-MATRIX / CONSTRAINT-      capability rows marked [GAP]/[ERR]/[UNK] in the law ledgers        as marked
        LEDGER rows
+D      web-api #streaming-module-compilation-  D14: the cited id never existed at the pin (explicit id           [ERR]
+       and-instantiation                    streaming-modules); D11's PRESENT_IN_SOURCE was false; source-level
+                                            locator #streaming-modules (D14 revision); law correction D18
+D      git #_worktrees (repository-layout)  D14: a definition-list term with no asciidoctor id; published     [UNK]
+                                            rendering unknown
+D      rust-lang/rust pins                  D14: branch master removed; pinned commit is main (pin field D18)   [OBS]
+D      published frontier (D14)             53 renderings refused + 2 github.com 403: no current published      [UNK]
+                                            authority verified in D14 (FACT-PUBLISHED-FRONTIER-UNVERIFIED)
 D      js-api #internal-storage             cited in 5 law files and fixtures/commissioning/contracts.ascii;   [ERR]/[UNK]
                                             not an id in pinned WebAssembly/spec@608711107b; published page
                                             not opened (annotated in place by D13; resolution D14)
@@ -134,7 +148,8 @@ B      D0-D12 receipts/evidence             incomplete environment identity (rec
 B      D3-D8 fixture wording                "all ladders" / "full suite" overstated the selection               kept
 B      D1-D8 heuristic gates                nostd-check/depcheck used as gates (proof weight now NONE)          kept
 B      scratch-only tooling                 D0-D13 route scripts, D11 graph generator (procedure: section 4)    kept
-B      workpiece root                       W11-stage (2 pre-binding drafts), factory-bootstrap-bin (unmanaged) [GAP] kept
+B      workpiece root                       W11-stage and W14-stage (pre-binding graph drafts), factory-         [GAP] kept
+                                            bootstrap-bin (unmanaged)
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
        (B-07); D-6 object hash; D-8 seed replacement; D-9 history horizon; deleting the fully merged remote branches
        claude/d9-rust-cargo-proof-4nys6s, factory/reference-corpus-wasm64, work/pass2-5-reference-ingress-1

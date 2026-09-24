@@ -1,0 +1,4 @@
+$ sh -c for f in tests/reference/reopen.mjs tests/reference/build-revisions.mjs tests/reference/gate.mjs tests/envmap/envmap.mjs; do node --check $f || exit 1; done; node -e 'JSON.parse(require("fs").readFileSync("tests/reference/d14-review.json"))' && ! grep -nE "'(AUTH|FACT|CON|LAW)-[A-Z]" tests/reference/reopen.mjs tests/reference/build-revisions.mjs tests/reference/gate.mjs tests/envmap/envmap.mjs
+(cwd .)
+
+[exit 0] expected 0

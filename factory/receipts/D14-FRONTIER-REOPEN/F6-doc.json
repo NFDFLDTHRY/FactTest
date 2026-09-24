@@ -1,0 +1,140 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D14-FRONTIER-REOPEN-F6-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F6-doc",
+  "workpiece_id": "W16",
+  "delta_id": "D14-FRONTIER-REOPEN",
+  "canonical_base": "5e57467bd7c984529dc466201629b37e0ee44c4b",
+  "input_artifacts": [
+    "D14 epoch schema (section 4 of the intended ASCII)"
+  ],
+  "open_tree": "d2eaa203f58df80acf9f6cd82f96f80d311b5086",
+  "close_tree": "fcd1fe3473713698ba6bc8fff0d87f9762dd42f1",
+  "changed_paths": [
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F6-schema-sections.log"
+  ],
+  "output_artifacts": [
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D14-FRONTIER-REOPEN"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-FRONTIER-REOPEN/logs/F6-schema-sections.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c grep -q '## 7. Authority revisions' design/environment-map/SCHEMA.md && grep -q 'Authority frontier epoch D14' design/environment-map/ENVIRONMENT-MAP.md && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-FRONTIER-REOPEN/logs/F6-schema-sections.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/SCHEMA.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F6-schema-sections.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T07:49:19Z",
+  "status": "PASS"
+}

@@ -1,0 +1,5 @@
+$ sh -c grep -q '## 7. Authority revisions' design/environment-map/SCHEMA.md && grep -q 'Authority frontier epoch D14' design/environment-map/ENVIRONMENT-MAP.md && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map
+(cwd .)
+PASS AUTHORITY-REGISTER.md: 73732 bytes identical; TRACEABILITY.md: 82947 bytes identical
+
+[exit 0] expected 0

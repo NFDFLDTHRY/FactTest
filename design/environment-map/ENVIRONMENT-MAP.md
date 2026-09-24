@@ -169,3 +169,12 @@ D13    D13-REPO-HYGIENE                   ENV-D13-HOST-PINNED, pinned proof sets
 
 Section 4's sentence "No toolchain is pinned [GAP]" is true of the D11 epoch and is superseded by D13
 (FACT-TOOLCHAIN-PINNED; FACT-TOOLCHAIN-DRIFT INVALIDATED_BY EV-D13-PINS).  Query Q16 lists every epoch's additions.
+
+## 6. Authority frontier epoch D14 (added by D14-FRONTIER-REOPEN)
+
+```text
+D14    D14-FRONTIER-REOPEN     64 AUTHORITY_REVISION nodes (published rendering + source tip vs pin + fragment +
+                               clause + maturity), AUTH-WASM-PROPOSALS-REGISTRY, ENV-D14-HOST, 5 frontier facts;
+                               epochs/D14.json.  Q17 lists what moved and which claims may now be stale.
+```
+

@@ -1,0 +1,85 @@
+{
+ "authority": "AUTH-IDB-TRANSACTION",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://w3c.github.io/IndexedDB/",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "editor's draft source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/w3c/IndexedDB",
+  "branch": "main",
+  "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+  "path": "index.bs",
+  "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8",
+  "observed": "2026-09-24",
+  "locator": "line 882 (atomic and durable), lines 928, 2491 (durability strict|relaxed|default)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   882,
+   882
+  ],
+  "window_sha256": "a5863c24b50ddc18c83a7567865d6702f5108fa43bf24b8fe7c48fbcc8e902c4",
+  "window_excerpt": "[=/transaction=] represents an atomic and durable set of data access",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   882,
+   882
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "ED",
+   "group": "webapps",
+   "level": "3"
+  },
+  "declared_at_tip": {
+   "status": "ED",
+   "group": "webapps",
+   "level": "3"
+  },
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 882,
+  "candidates": {
+   "section": {
+    "id": "#transaction-construct",
+    "line": 870,
+    "kind": "bikeshed heading id"
+   },
+   "definition": {
+    "id": "#transaction-concept",
+    "line": 873,
+    "kind": "id attribute"
+   }
+  }
+ }
+}

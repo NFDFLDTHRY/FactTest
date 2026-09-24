@@ -1,0 +1,186 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D14-FRONTIER-REOPEN-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W16",
+  "delta_id": "D14-FRONTIER-REOPEN",
+  "canonical_base": "5e57467bd7c984529dc466201629b37e0ee44c4b",
+  "input_artifacts": [
+    "D14-D19 prompt",
+    "D13-PRE-RESCAN-BASELINE",
+    "graph AUTHORITY nodes",
+    "assembly reopen run (section 0)"
+  ],
+  "open_tree": "b195a40c82a89f05c215e75bf8eb75f31e5d743b",
+  "close_tree": "0fb6531dc3069a8a5ec2ef38e57d4b9a2b351d90",
+  "changed_paths": [
+    "design/materialization/D14-INTENDED-FRONTIER-REOPEN.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F0-ascii.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D14-INTENDED-FRONTIER-REOPEN.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D14-FRONTIER-REOPEN"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-FRONTIER-REOPEN/logs/F0-ascii.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-FRONTIER-REOPEN/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D14-INTENDED-FRONTIER-REOPEN.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 5e57467bd7c984529dc466201629b37e0ee44c4b' design/materialization/LEDGER.md && grep -q '^## D14-FRONTIER-REOPEN' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-FRONTIER-REOPEN/logs/F0-ascii.log"
+    },
+    {
+      "check": "command:git diff --exit-code 5e57467bd7c984529dc466201629b37e0ee44c4b -- compiler host factory/src factory/registry tests evidence fixtures design/environment-map docs rust-toolchain.toml FACTORY-LAW.md FACTORY-CONTRACTS.md REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md CAPABILITY-MATRIX.md IMPLEMENTATION-CONTRACTS.md EVIDENCE-OBLIGATIONS.md RUNTIME-ADMISSION-REPLAN.md PLANNER-COST-MODEL.md README.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-FRONTIER-REOPEN/logs/F0-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D14-INTENDED-FRONTIER-REOPEN.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F0-ascii.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F0-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": [
+      {
+        "name": "node",
+        "command": [
+          "node",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "v22.22.2"
+        ]
+      },
+      {
+        "name": "curl",
+        "command": [
+          "curl",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10",
+          "Release-Date: 2023-12-06, security patched: 8.5.0-2ubuntu10.8",
+          "Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp",
+          "Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd"
+        ]
+      },
+      {
+        "name": "git",
+        "command": [
+          "git",
+          "--version"
+        ],
+        "exit": 0,
+        "output": [
+          "git version 2.43.0"
+        ]
+      }
+    ]
+  },
+  "closed": "2026-09-24T07:45:55Z",
+  "status": "PASS"
+}

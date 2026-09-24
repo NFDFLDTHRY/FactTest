@@ -1,0 +1,93 @@
+{
+  "fixture_id": "F3-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "evidence/D14/reopen/",
+    "tests/reference/d14-review.json"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/graph.json",
+    "design/environment-map/epochs/D14.json",
+    "factory/receipts/D14-FRONTIER-REOPEN/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reference/build-revisions.mjs",
+          "--reopen",
+          "evidence/D14/reopen",
+          "--review",
+          "tests/reference/d14-review.json",
+          "--epoch",
+          "D14",
+          "--delta",
+          "D14-FRONTIER-REOPEN",
+          "--commit",
+          "5e57467bd7c984529dc466201629b37e0ee44c4b (canonical base; integration commit in LEDGER AFTER)",
+          "--out",
+          "design/environment-map/epochs/D14.json"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-build-epoch.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json",
+          "--out",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-merge.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-render.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 7. Authority revisions' design/environment-map/SCHEMA.md && grep -q 'Authority frontier epoch D14' design/environment-map/ENVIRONMENT-MAP.md"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/epochs/D14.json",
+    "design/environment-map/graph.json"
+  ],
+  "tests": [
+    "epoch built from Factory evidence",
+    "D11-D13 preserved",
+    "views rendered"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D14-FRONTIER-REOPEN"
+}

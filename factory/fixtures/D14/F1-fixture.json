@@ -1,0 +1,76 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "tests/envmap/envmap.mjs",
+    "graph schema",
+    "assembly findings (section 0 harness defects)"
+  ],
+  "narrowed_may_change": [
+    "tests/reference/",
+    "tests/envmap/envmap.mjs",
+    "factory/receipts/D14-FRONTIER-REOPEN/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in tests/reference/reopen.mjs tests/reference/build-revisions.mjs tests/reference/gate.mjs tests/envmap/envmap.mjs; do node --check $f || exit 1; done; node -e 'JSON.parse(require(\"fs\").readFileSync(\"tests/reference/d14-review.json\"))' && ! grep -nE \"'(AUTH|FACT|CON|LAW)-[A-Z]\" tests/reference/reopen.mjs tests/reference/build-revisions.mjs tests/reference/gate.mjs tests/envmap/envmap.mjs"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F1-syntax-generic.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F1-regression.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/reference/reopen.mjs",
+    "tests/reference/build-revisions.mjs",
+    "tests/reference/gate.mjs",
+    "tests/reference/d14-review.json"
+  ],
+  "tests": [
+    "tools parse and name no authority",
+    "the D13 graph still validates, renders and merges identically"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D14-FRONTIER-REOPEN"
+}

@@ -1,0 +1,179 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D14-FRONTIER-REOPEN-F3-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F3-doc",
+  "workpiece_id": "W16",
+  "delta_id": "D14-FRONTIER-REOPEN",
+  "canonical_base": "5e57467bd7c984529dc466201629b37e0ee44c4b",
+  "input_artifacts": [
+    "evidence/D14/reopen/",
+    "tests/reference/d14-review.json"
+  ],
+  "open_tree": "ff66cfe5069de425d9912f61ba30b12bd97440e5",
+  "close_tree": "0c62bfbdff23520249a1f376566ae6bb05cfd874",
+  "changed_paths": [
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D14.json",
+    "design/environment-map/graph.json",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-build-epoch.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-checks.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-merge.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-render.log"
+  ],
+  "output_artifacts": [
+    "design/environment-map/epochs/D14.json",
+    "design/environment-map/graph.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D14-FRONTIER-REOPEN"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-FRONTIER-REOPEN/logs/F3-build-epoch.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-FRONTIER-REOPEN/logs/F3-merge.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-FRONTIER-REOPEN/logs/F3-render.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D14-FRONTIER-REOPEN/logs/F3-checks.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/reference/build-revisions.mjs --reopen evidence/D14/reopen --review tests/reference/d14-review.json --epoch D14 --delta D14-FRONTIER-REOPEN --commit 5e57467bd7c984529dc466201629b37e0ee44c4b (canonical base; integration commit in LEDGER AFTER) --out design/environment-map/epochs/D14.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-FRONTIER-REOPEN/logs/F3-build-epoch.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json --out design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-FRONTIER-REOPEN/logs/F3-merge.log"
+    },
+    {
+      "check": "command:node tests/envmap/envmap.mjs render design/environment-map/graph.json --out design/environment-map",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-FRONTIER-REOPEN/logs/F3-render.log"
+    },
+    {
+      "check": "command:sh -c node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && grep -q '## 7. Authority revisions' design/environment-map/SCHEMA.md && grep -q 'Authority frontier epoch D14' design/environment-map/ENVIRONMENT-MAP.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D14-FRONTIER-REOPEN/logs/F3-checks.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/epochs/D14.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/environment-map/graph.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-build-epoch.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-merge.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-render.log",
+    "factory/receipts/D14-FRONTIER-REOPEN/logs/F3-checks.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T07:47:12Z",
+  "status": "PASS"
+}

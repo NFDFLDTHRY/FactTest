@@ -13,6 +13,9 @@
 //                                        + epoch files; nodes/edges are only ADDED, never changed; envelope gains epochs
 //   merge-check <graph> --base-rev REV --epochs ...  [--out FILE]  re-merge and byte-compare; every base node/edge kept
 //   bind <epoch.json> [--root DIR]       fill sha256/bytes of PENDING evidence nodes from their committed files
+// D14 (authority frontier): an epoch file may DECLARE new node_classes / edge_semantics (add-only; an existing name
+//   is an error).  Q17 answers "what moved in the authority frontier, and which claims may now be stale?" from the
+//   AUTHORITY_REVISION nodes (latest revision per authority in epoch order).
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -102,6 +105,16 @@ function validate(g) {
   add('constraint_authority_refs_resolve', consBadRef.length ? 'FAIL' : 'PASS', consBadRef.map(c => c.id).join(' '));
   const factBadRef = facts.filter(f => f.constraint_refs.some(c => !ids.has(c) || ids.get(c).class !== 'CONSTRAINT'));
   add('fact_constraint_refs_resolve', factBadRef.length ? 'FAIL' : 'PASS', factBadRef.map(f => f.id).join(' '));
+  const revs = g.nodes.filter(n => n.class === 'AUTHORITY_REVISION');
+  if (revs.length) {
+    const MOV = ['UNCHANGED', 'MOVED', 'EDITORIAL', 'SEMANTIC', 'MATURITY', 'REMOVED', 'SPLIT/MERGED', 'UNREACHABLE', 'AMBIGUOUS'];
+    const badRef = revs.filter(r => !ids.has(r.authority_ref) || ids.get(r.authority_ref).class !== 'AUTHORITY' || !out(g, r.id, 'REVISES').some(e => e.to === r.authority_ref));
+    add('revision_revises_its_authority', badRef.length ? 'FAIL' : 'PASS', badRef.map(r => r.id).join(' ') || `${revs.length} revisions`);
+    const badMov = revs.filter(r => !Array.isArray(r.movement) || !r.movement.length || r.movement.some(m => !MOV.includes(m)));
+    add('revision_movement_vocabulary', badMov.length ? 'FAIL' : 'PASS', badMov.map(r => r.id).join(' ') || MOV.join(' '));
+    const noEv = revs.filter(r => !out(g, r.id, 'OBSERVED_IN').length);
+    add('revision_has_reopen_evidence', noEv.length ? 'FAIL' : 'PASS', noEv.map(r => r.id).join(' '));
+  }
   if (g.epochs) {
     const names = g.epochs.map(e => e.epoch);
     const badEpoch = g.nodes.filter(n => n.introduced_in && !names.includes(n.introduced_in)).map(n => n.id);
@@ -149,6 +162,29 @@ const Q = {
   Q13: { title: 'Which [RUN] is valid only for one machine epoch?', fn: (g, ids) => ({ single_epoch_runs: g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT' && n.status === 'RUN').map(f => { const envs = new Set(out(g, f.id, 'REQUIRES').map(e => e.to).filter(id => ids.get(id).class === 'ENVIRONMENT')); for (const e of out(g, f.id, 'EVIDENCED_BY')) envs.add(ids.get(e.to).environment_ref); return { fact: f.id, environments: sortIds([...envs]) }; }).filter(x => x.environments.length === 1).sort((a, b) => a.fact.localeCompare(b.fact)) }) },
   Q14: { title: 'Where does a proposal get mistaken for baseline semantics?', fn: (g, ids) => ({ proposal_authorizing_run_fact: g.edges.filter(e => e.type === 'AUTHORIZES' && ids.get(e.from).authority_class === 'PROPOSAL' && ids.get(e.to).class === 'COMPUTATIONAL_FACT' && ids.get(e.to).status === 'RUN').map(e => `${e.from} -> ${e.to}`), ready_contract_on_proposal: g.nodes.filter(n => n.class === 'CONSTRAINT' && n.kind === 'contract' && n.contract_status === 'READY-CONTRACT' && n.authority_refs.some(a => ids.get(a).authority_class === 'PROPOSAL')).map(n => n.id), proposals_correctly_bounded: g.nodes.filter(n => n.class === 'AUTHORITY' && n.authority_class === 'PROPOSAL').map(n => ({ authority: n.id, authorizes: sortIds(out(g, n.id, 'AUTHORIZES').map(e => e.to)), conflicts: sortIds(out(g, n.id, 'CONFLICTS_WITH').map(e => e.conflict_id)) })) }) },
   Q15: { title: 'Where does implementation documentation get mistaken for standards law?', fn: (g, ids) => { const implClasses = ['IMPLEMENTATION_DOC', 'IMPLEMENTATION_SOURCE', 'TARGET_DOC', 'TOOL_DOC', 'RUST_REFERENCE']; const stdClasses = ['STANDARD_RELEASE', 'LIVING_STANDARD', 'EDITOR_DRAFT']; const res = []; for (const c of g.nodes.filter(n => n.class === 'CONSTRAINT' && n.kind === 'external')) { const cls = c.authority_refs.map(a => ids.get(a).authority_class); if (cls.some(x => implClasses.includes(x)) && !cls.some(x => stdClasses.includes(x))) res.push({ constraint: c.id, authorities: c.authority_refs, note: 'external constraint grounded only in implementation/tool documentation' }); } const conflicts = g.edges.filter(e => e.type === 'CONFLICTS_WITH' && (implClasses.includes(ids.get(e.from).authority_class) || implClasses.includes(ids.get(e.to).authority_class))).map(e => ({ conflict_id: e.conflict_id, from: e.from, to: e.to, note: e.note })); return { implementation_only_external_constraints: res, implementation_vs_standard_conflicts: conflicts }; } },
+  Q17: { title: 'What moved in the authority frontier, and which claims may now be stale?', fn: (g, ids) => {
+    const order = (g.epochs || []).map(e => e.epoch);
+    const latest = new Map();
+    for (const r of g.nodes.filter(n => n.class === 'AUTHORITY_REVISION')) { const cur = latest.get(r.authority_ref); if (!cur || order.indexOf(r.epoch) > order.indexOf(cur.epoch)) latest.set(r.authority_ref, r); }
+    const CONSEQ = { SEMANTIC: 'dependent claims must be re-derived (D18)', REMOVED: 'dependent claims lose their authority (D18)', 'SPLIT/MERGED': 'citations must be re-pointed and claims re-checked',
+      MATURITY: 'maturity-sensitive claims (proposal vs standard) must be re-checked', MOVED: 'citation locator stale; clause text unchanged', EDITORIAL: 'no claim change',
+      AMBIGUOUS: 'unresolved: the claim keeps the older certainty only as [UNK]', UNREACHABLE: 'current (published) authority unverified in this epoch', UNCHANGED: 'none' };
+    const downstream = a => {
+      const direct = out(g, a, 'AUTHORIZES').map(e => e.to);
+      const cons = direct.filter(x => ids.get(x).class === 'CONSTRAINT');
+      const facts = sortIds([...direct.filter(x => ids.get(x).class === 'COMPUTATIONAL_FACT'), ...cons.flatMap(c => out(g, c, 'REQUIRES').map(e => e.to).filter(x => ids.get(x).class === 'COMPUTATIONAL_FACT'))]);
+      return { dependent_authorities: sortIds(inc(g, a, 'DEPENDS_ON').map(e => e.from)), constraints: sortIds(cons), facts,
+        probes: sortIds([...facts.flatMap(f => out(g, f, 'PROBED_BY').map(e => e.to)), ...cons.flatMap(c => out(g, c, 'GOVERNS').map(e => e.to))]),
+        evidence: sortIds(facts.flatMap(f => out(g, f, 'EVIDENCED_BY').map(e => e.to))) };
+    };
+    const byMovement = {}; const noRevision = [];
+    for (const a of g.nodes.filter(n => n.class === 'AUTHORITY').sort((x, y) => x.id.localeCompare(y.id))) {
+      const r = latest.get(a.id); if (!r) { noRevision.push(a.id); continue; }
+      for (const m of r.movement) { if (m === 'UNCHANGED') continue; (byMovement[m] = byMovement[m] || []).push({ authority: a.id, revision: r.id, epoch: r.epoch, locator: r.locator || null, consequence: CONSEQ[m], downstream: downstream(a.id) }); }
+    }
+    const staleFacts = sortIds(Object.entries(byMovement).filter(([m]) => !['EDITORIAL', 'UNREACHABLE'].includes(m)).flatMap(([, xs]) => xs.flatMap(x => x.downstream.facts)));
+    return { revisions: latest.size, authorities_without_revision: noRevision, movement_counts: Object.fromEntries(Object.entries(byMovement).map(([k, v]) => [k, v.length])), by_movement: byMovement, facts_to_recheck: staleFacts };
+  } },
   Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
     const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;
     const ep = n => n.introduced_in || first;
@@ -197,6 +233,8 @@ function renderRegister(g) {
       const p = a.reproducibility_pin;
       L.push(p ? `- pin: ${p.repo} @ ${p.commit} ${p.path}${p.sha256 ? ' sha256 ' + p.sha256 : ''} (observed ${p.observed}${p.locator ? '; ' + p.locator : ''})` : '- pin: none');
       L.push(`- consequence: ${a.extracted_consequence}`);
+      const revs = g.nodes.filter(n => n.class === 'AUTHORITY_REVISION' && n.authority_ref === a.id).sort((x, y) => (g.epochs || []).findIndex(e => e.epoch === x.epoch) - (g.epochs || []).findIndex(e => e.epoch === y.epoch));
+      for (const r of revs) L.push(`- ${r.epoch} reopen: movement ${r.movement.join('+')}; published ${r.current_authority.status}; source ${r.source.relation_to_pin}${r.source.commit ? ' @ ' + String(r.source.commit).slice(0, 10) : ''}; fragment ${r.fragment.at_tip}${r.locator ? `; locator ${r.locator.old || '(none)'} -> ${r.locator.new}` : ''}${r.maturity && r.maturity.observed ? '; maturity ' + r.maturity.observed : ''}`);
       const authorizes = sortIds(out(g, a.id, 'AUTHORIZES').map(e => e.to)), deps = sortIds(out(g, a.id, 'DEPENDS_ON').map(e => e.to)), conf = out(g, a.id, 'CONFLICTS_WITH').map(e => `${e.conflict_id}:${e.to}`).sort();
       L.push(`- AUTHORIZES: ${authorizes.join(', ') || '(none)'}`, `- DEPENDS_ON: ${deps.join(', ') || '(none)'}`, `- CONFLICTS_WITH: ${conf.join(', ') || '(none)'}`, '');
     }
@@ -287,6 +325,8 @@ function merge(base, epochFiles) {
     const ep = load(f);
     if (ep.schema !== 'facttest-environment-map-epoch/1') throw new Error(`${f}: schema ${ep.schema}`);
     if (g.epochs.some(e => e.epoch === ep.epoch)) throw new Error(`${f}: epoch ${ep.epoch} already merged`);
+    for (const [k, v] of Object.entries(ep.node_classes || {})) { if (g.node_classes[k]) throw new Error(`${f}: node class ${k} already declared`); g.node_classes[k] = { ...v, declared_in: ep.epoch }; }
+    for (const [k, v] of Object.entries(ep.edge_semantics || {})) { if (g.edge_semantics[k]) throw new Error(`${f}: edge type ${k} already declared`); g.edge_semantics[k] = { ...v, declared_in: ep.epoch }; }
     for (const n of ep.nodes) {
       if (ids.has(n.id)) throw new Error(`${f}: node ${n.id} already exists (epochs only add nodes)`);
       ids.add(n.id); g.nodes.push({ ...n, introduced_in: ep.epoch });
@@ -296,7 +336,7 @@ function merge(base, epochFiles) {
       if (edgeKeys.has(k)) throw new Error(`${f}: duplicate edge ${k}`);
       edgeKeys.add(k); g.edges.push(e);
     }
-    g.epochs.push({ epoch: ep.epoch, delta: ep.delta, commit: ep.commit, summary: ep.summary, nodes_added: ep.nodes.length, edges_added: ep.edges.length });
+    g.epochs.push({ epoch: ep.epoch, delta: ep.delta, commit: ep.commit, summary: ep.summary, nodes_added: ep.nodes.length, edges_added: ep.edges.length, ...(ep.node_classes || ep.edge_semantics ? { declares: [...Object.keys(ep.node_classes || {}), ...Object.keys(ep.edge_semantics || {})] } : {}) });
   }
   g.current_epoch = g.epochs[g.epochs.length - 1].epoch;
   return g;

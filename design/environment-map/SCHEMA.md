@@ -140,3 +140,24 @@ validate    + epochs_consistent (every introduced_in names an epoch; node counts
 Q16         what each epoch added (nodes by class, facts -> probes -> evidence -> environments, authorities) and its
             cross-epoch edges.
 ```
+
+## 7. Authority revisions (D14)
+
+```text
+epoch-declared schema   an epoch file may declare node_classes / edge_semantics (add-only; redeclaring a name is an
+                        error); merge records them in the envelope with declared_in = <epoch>
+AUTHORITY_REVISION      a later observation of one AUTHORITY: current_authority {url, status, fragment_published},
+                        source {repo, branch, ref_status, commit, path, sha256, pin_check, relation_to_pin},
+                        fragment {cited, recorded, at_pin, at_tip}, clause {method, status, pin_lines, tip_lines},
+                        maturity {recorded, declared_at_pin, declared_at_tip, observed, drift}, movement[] (UNCHANGED
+                        MOVED EDITORIAL SEMANTIC MATURITY REMOVED SPLIT/MERGED UNREACHABLE AMBIGUOUS), locator
+                        {old, new, kind, verified} | null, rationale.  The AUTHORITY node is never edited.
+REVISES                 AUTHORITY_REVISION -> AUTHORITY
+OBSERVED_IN             AUTHORITY_REVISION -> EVIDENCE (the reopen record)
+validate                + revision_revises_its_authority, revision_movement_vocabulary, revision_has_reopen_evidence
+Q17                     latest revision per authority (epoch order) -> movement -> downstream constraints, facts,
+                        probes, evidence, with the consequence of each class; facts_to_recheck excludes EDITORIAL and
+                        UNREACHABLE (which alone change no claim)
+builder                 tests/reference/build-revisions.mjs (reopen evidence + tests/reference/<epoch>-review.json)
+```
+

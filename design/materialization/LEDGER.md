@@ -604,4 +604,29 @@ BEFORE
 - NEXT: D14-FRONTIER-REOPEN, assembled in design/materialization/D14-INTENDED-FRONTIER-REOPEN.md.
 
 AFTER
+- RESULT: integrated as 5e57467bd7c984529dc466201629b37e0ee44c4b (ff-only from 4d8a4c0); no refusal.
+- RECEIPTS: factory/receipts/D14-D19-PROMPT-INTAKE/F0-doc.json PASS - the first receipt_format 2 receipt
+  (environment_identity: judge sha256 bb1475ba..., host linux x86_64 6.18.44, git 2.43.0, rustc 1.94.1 probe).
+  VERIFICATION: PASS (verifier_identity recorded).  INTEGRATION: PASS.  PROBE: re-inspection MATCH.  Pushed.
+- (recorded by D14-FRONTIER-REOPEN, the next delta.)
+
+---
+
+## D14-FRONTIER-REOPEN  (pass 1 of 6: what moved in the authority frontier?)
+
+BEFORE
+- DELTA: D14-FRONTIER-REOPEN (factory/deltas/D14.json), workpiece W16, base 5e57467.
+- ASCII: design/materialization/D14-INTENDED-FRONTIER-REOPEN.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F3, F5), S-FIXTURE (F1), S-BUILD (F2 reopen probe), S-EVIDENCE (F4).
+- CHANGE: tests/reference/ (reopen probe, revision builder, D14 review), tests/envmap/envmap.mjs (epoch-declared
+  classes, Q17, revision rendering), evidence/D14/, design/environment-map/ (epoch D14, merged graph, views,
+  SCHEMA/ENVIRONMENT-MAP epoch sections), docs/HANDOFF.md, D14 records, this ledger.  FORBIDDEN: every law and pass
+  document (reconciliation is D18), compiler/, host/, factory/ machinery, fixtures/, earlier epochs and evidence.
+- NETWORK: published authority hosts refused by the environment policy (reported to the owner); source frontier
+  reopened through raw.githubusercontent.com and git ls-remote.
+- PREDICTED: 64 revisions; UNREACHABLE 55, MOVED 4, AMBIGUOUS 2, MATURITY 2, EDITORIAL 2; new fragment drift
+  AUTH-WASM-WEBAPI-STREAMING; rust-lang/rust master -> main; Threads Phase 4, SET Phase 1, Memory64 finished;
+  graph 441 nodes / 795 edges.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

@@ -1,0 +1,334 @@
+{
+ "schema": "facttest-reference-review/1",
+ "epoch": "D14",
+ "law": "design/materialization/D14-INTENDED-FRONTIER-REOPEN.md section 3 (every decision below is an ASCII decision over the reopen evidence; the probe classifies nothing as SEMANTIC or EDITORIAL by itself)",
+ "default": {
+  "movement_source": "UNCHANGED",
+  "rationale": "pinned source bytes at the branch tip identical to the pin (or clause window identical)"
+ },
+ "decisions": {
+  "AUTH-WASM-JSAPI-STORAGE": {
+   "movement_source": "MOVED",
+   "locator": {
+    "old": "#internal-storage",
+    "new": "#webassembly-storage",
+    "kind": "explicit h2 id (pin line 328); #store (h3) for the agent-local note",
+    "verified": "source only (published rendering UNREACHABLE)"
+   },
+   "rationale": "the cited id never existed at the pin (D11 FRAGMENT_DRIFT, D13 annotation); the clause itself (Internal storage / Interaction of the WebAssembly Store with JavaScript) is unchanged. Citation stale, semantics unchanged."
+  },
+  "AUTH-WASM-WEBAPI-STREAMING": {
+   "movement_source": "MOVED",
+   "locator": {
+    "old": "#streaming-module-compilation-and-instantiation",
+    "new": "#streaming-modules (section) / #compile-a-potential-webassembly-response (definition)",
+    "kind": "explicit h2 id (pin line 86); Bikeshed dfn (pin line 109)",
+    "verified": "source only"
+   },
+   "rationale": "NEW D14 finding: D11 recorded fragment_status PRESENT_IN_SOURCE, but the cited id does not occur at the pin: the h2 carries the explicit id streaming-modules, so Bikeshed emits no heading-text id. False certainty corrected; clause text unchanged."
+  },
+  "AUTH-GIT-REPO-LAYOUT": {
+   "movement_source": "AMBIGUOUS",
+   "locator": {
+    "old": "#_worktrees",
+    "new": "#_description + definition-list entry 'worktrees::' (pin line 278)",
+    "kind": "asciidoctor: a dlist term carries no id unless [[anchor]] is given",
+    "verified": "source rule only; the git-scm.com rendering may differ (UNREACHABLE)"
+   },
+   "rationale": "D11 derived #_worktrees from the entry text (DERIVED_FROM_HEADING_UNVERIFIED); the source gives it no id. Whether git-scm.com emits one is unknown."
+  },
+  "AUTH-RUSTC-WASM64-DOC": {
+   "movement_source": "MOVED",
+   "locator": {
+    "old": "branch master",
+    "new": "branch main (same commit 3670d2532b)",
+    "kind": "reproducibility pin ref",
+    "verified": "git ls-remote --symref"
+   },
+   "rationale": "rust-lang/rust no longer has refs/heads/master; the pinned commit is the tip of main. Pin branch field stale; bytes identical."
+  },
+  "AUTH-RUSTC-WASM64-TARGET-SPEC": {
+   "movement_source": "MOVED",
+   "locator": {
+    "old": "branch master",
+    "new": "branch main (same commit 3670d2532b)",
+    "kind": "reproducibility pin ref",
+    "verified": "git ls-remote --symref"
+   },
+   "rationale": "as AUTH-RUSTC-WASM64-DOC; the published URL (github.com/rust-lang/rust/blob/master/...) answers 403 through the proxy and names the absent branch."
+  },
+  "AUTH-WASM-THREADS": {
+   "movement_source": "UNCHANGED",
+   "maturity": {
+    "observed": "Phase 4 (Standardize the Feature, WG) in WebAssembly/proposals README @ f0db14a",
+    "recorded": "proposal document (no phase recorded)",
+    "drift": "newly observed; no earlier phase observation exists to compare [UNK]"
+   },
+   "extra_movement": [
+    "MATURITY"
+   ],
+   "rationale": "maturity boundary made explicit: Phase 4 is still not Phase 5 (standardized); Threads remains outside the WebAssembly standard (ERR-002 unchanged)."
+  },
+  "AUTH-WASM-SET": {
+   "movement_source": "UNCHANGED",
+   "maturity": {
+    "observed": "Phase 1 (Feature Proposal, CG) in WebAssembly/proposals README @ f0db14a",
+    "recorded": "under active development",
+    "drift": "newly observed phase [UNK drift]"
+   },
+   "extra_movement": [
+    "MATURITY"
+   ],
+   "rationale": "Phase 1 proposal: may never be standardized as written; ERR-003 unchanged."
+  },
+  "AUTH-WASM-CORE-CHANGES-64": {
+   "movement_source": "UNCHANGED",
+   "maturity": {
+    "observed": "Memory64 listed in finished-proposals.md @ f0db14a (Phase 5, standardized)",
+    "recorded": "Release 3.0",
+    "drift": "corroborated"
+   },
+   "locator": {
+    "old": "(document root) appendix/changes",
+    "new": "candidate #bit-address-space (docutils id rule strips the leading digits of '64-bit Address Space') under 'Release 3.0'",
+    "kind": "docutils-derived, unverified",
+    "verified": "source rule only"
+   },
+   "rationale": "coarse citation narrowed to a candidate; published anchor unverifiable."
+  },
+  "LAW-EVIDENCE-OBLIGATIONS": {
+   "movement_source": "EDITORIAL",
+   "locator": {
+    "old": "pin line of '## E-025'",
+    "new": "same heading, lines shifted by the D13 insertion-only annotation",
+    "kind": "heading line",
+    "verified": "canonical HEAD"
+   },
+   "rationale": "D13 S-ANNOTATE inserted one annotation line; no clause changed."
+  },
+  "LAW-FACTORY-CONTRACTS": {
+   "movement_source": "EDITORIAL",
+   "rationale": "D13 appended the insertion-only contract amendment (literal surfaces, receipt format 2, workpiece hygiene, proof weight); the cited section 4 is unchanged. The amendment is a D13 project-law change, not an external authority movement."
+  },
+  "AUTH-PLAYWRIGHT-INSTALLED": {
+   "movement_source": "AMBIGUOUS",
+   "rationale": "the pin records no sha256, so the local file cannot be compared with the D11 observation; D14 records the current sha256 as the new reproducibility identity (installed Playwright 1.56.1 per the path)."
+  }
+ },
+ "locator_candidates_reviewed": {
+  "AUTH-SW-UPDATE-BYPASS": {
+   "new": "#update-algorithm",
+   "kind": "explicit h3 id (pin line 2780) enclosing the cited step (2821)"
+  },
+  "AUTH-SW-INSTALL-FAILED": {
+   "new": "#installation-algorithm",
+   "kind": "explicit h3 id (2954) enclosing the installFailed steps (2994-2998)"
+  },
+  "AUTH-SW-REGISTER-TRUST": {
+   "new": "#register-algorithm",
+   "kind": "explicit h3 id (2752) enclosing the trustworthiness steps (2759-2765)"
+  },
+  "AUTH-SW-SANDBOX-NO-CONTROLLER": {
+   "new": "#control-and-use-window-client",
+   "kind": "explicit h4 id (336) enclosing the sandboxed-iframe note (353)"
+  },
+  "AUTH-FS-OPFS": {
+   "new": "#api-filesystemfilehandle",
+   "kind": "Bikeshed heading id (422) of the interface block cited (429-434)"
+  },
+  "AUTH-STORAGE-BUCKET-MODE": {
+   "new": "#bucket-mode",
+   "kind": "explicit dfn id (363)"
+  },
+  "AUTH-IDB-TRANSACTION": {
+   "new": "#transaction-concept",
+   "kind": "explicit dfn id (873); section #transaction-construct"
+  },
+  "AUTH-WEB-LOCKS": {
+   "new": "#api-lock-manager",
+   "kind": "Bikeshed heading id (353)"
+  },
+  "AUTH-COMPRESSION-ZLIB": {
+   "new": "#supported-formats",
+   "kind": "Bikeshed heading id (31)"
+  },
+  "AUTH-WEBCRYPTO-DIGEST": {
+   "new": "#SubtleCrypto-method-digest",
+   "kind": "explicit section id (1830); dfn #dfn-SubtleCrypto-method-digest"
+  },
+  "AUTH-MANIFEST-INSTALLABLE": {
+   "new": "#installable-web-applications (candidate)",
+   "kind": "ReSpec-derived id of the h2 'Installable web applications' (2611-2613); unverified"
+  },
+  "AUTH-HTML-SANDBOX-ORIGIN": {
+   "new": "#sandboxed-origin-browsing-context-flag",
+   "kind": "Wattsi dfn id from the text (96158)"
+  },
+  "AUTH-GIT-OBJECT-FORMAT": {
+   "new": "#object-details",
+   "kind": "explicit asciidoc anchor (4082)"
+  },
+  "AUTH-GIT-UPDATE-REF-CAS": {
+   "new": "#_description",
+   "kind": "asciidoctor setext section (15) containing the old-value rule (23-27)"
+  }
+ },
+ "coarse_unresolved": {
+  "AUTH-WGSL": "whole WGSL document cited; the dependent claim (WGSL never compiled or dispatched) needs no clause yet -> D16",
+  "AUTH-RUSTC-WASM64-DOC": "whole target page; rustc doc has no stable fragments -> D15 (clause by quotation)",
+  "AUTH-RUSTC-WASM64-TARGET-SPEC": "implementation source file -> D17",
+  "AUTH-GIT-PACK-FORMAT": "whole document -> D15",
+  "AUTH-GIT-REVISIONS": "whole document -> D15",
+  "AUTH-GIT-SHA256-TRANSITION": "whole document -> D15",
+  "AUTH-WASM-SET": "proposal overview -> D15",
+  "AUTH-SWIFTSHADER-README": "implementation README -> D17",
+  "AUTH-CHROMIUM-SWIFTSHADER-DOC": "implementation doc -> D17",
+  "AUTH-PLAYWRIGHT-INSTALLED": "installed implementation -> D17",
+  "LAW-PASS1-FT003": "project law, whole file -> D18",
+  "LAW-PLANNER-COST-MODEL": "project law, whole file -> D18"
+ },
+ "summary": "authority frontier reopened: 64 revisions (published rendering + source tip vs pin + fragment + clause + maturity), the WebAssembly proposal-phase registry as a maturity authority, frontier facts; no AUTHORITY node edited",
+ "declare_classes": true,
+ "extra_nodes": [
+  {
+   "id": "AUTH-WASM-PROPOSALS-REGISTRY",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-WASM-PROPOSALS-REGISTRY",
+   "title": "WebAssembly proposals - phase registry (README.md, finished-proposals.md)",
+   "exact_url": "https://github.com/WebAssembly/proposals",
+   "exact_fragment": null,
+   "authority_owner": "WebAssembly Community Group / Working Group",
+   "authority_class": "PROCESS_REGISTRY",
+   "maturity": "process registry (phases 0-5 per WebAssembly/meetings process/phases.md)",
+   "observed_date": "never (github.com page answers 403 through the proxy)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/WebAssembly/proposals",
+    "branch": "main",
+    "commit": "${phases.commit}",
+    "path": "README.md",
+    "sha256": "${phases.readme_sha256}",
+    "observed": "2026-09-24",
+    "locator": "### Phase N tables; finished-proposals.md sha256 ${phases.finished_sha256}"
+   },
+   "extracted_consequence": "Threads is Phase 4 and Shared-Everything Threads Phase 1 (neither standardized); Memory64 is finished (standardized in Core 3.0). A proposal's phase, not its prose, decides whether FactTest may treat it as baseline.",
+   "fragment_status": "NOT_CITED (registry tables)",
+   "owner": "WebAssembly/proposals"
+  }
+ ],
+ "extra_edges": [
+  {
+   "type": "DEPENDS_ON",
+   "from": "AUTH-WASM-THREADS",
+   "to": "AUTH-WASM-PROPOSALS-REGISTRY"
+  },
+  {
+   "type": "DEPENDS_ON",
+   "from": "AUTH-WASM-SET",
+   "to": "AUTH-WASM-PROPOSALS-REGISTRY"
+  },
+  {
+   "type": "DEPENDS_ON",
+   "from": "AUTH-WASM-CORE-CHANGES-64",
+   "to": "AUTH-WASM-PROPOSALS-REGISTRY"
+  }
+ ],
+ "facts": [
+  {
+   "id": "FACT-FRONTIER-SOURCES-AT-PIN",
+   "subject": "authority source frontier (D11/D12 pins)",
+   "predicate": "every GitHub-pinned authority source is byte-identical at its branch tip or clause-identical; no cited clause changed text since the D11/D12 pins (chromium/chromium and v8/v8 tips moved with the cited files identical; rust-lang/rust renamed master to main at the pinned commit)",
+   "status": "RUN",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "evidence": [
+    "SUMMARY"
+   ],
+   "source_ref": "evidence/D14/reopen/summary.json",
+   "stale_if": [
+    {
+     "dimension": "authority.source_commit",
+     "relation": "any pinned repository tip moves with the cited file changed"
+    }
+   ]
+  },
+  {
+   "id": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+   "subject": "published (current) authority renderings",
+   "predicate": "53 published renderings are refused by the network policy and 2 github.com blob URLs answer 403 through the proxy; no current published authority, fragment or TR maturity could be verified in D14 - every external claim rests on its source pin",
+   "status": "UNK",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "evidence": [
+    "SUMMARY"
+   ],
+   "source_ref": "evidence/D14/reopen/summary.json",
+   "stale_if": [
+    {
+     "dimension": "network_egress.policy",
+     "relation": "published hosts admitted"
+    }
+   ],
+   "note": "D-R2/D-R5 of the D13 baseline unchanged"
+  },
+  {
+   "id": "FACT-WASM-THREADS-PHASE-4",
+   "subject": "WebAssembly Threads proposal",
+   "predicate": "Phase 4 (Standardize the Feature) in the proposal registry: not yet part of the WebAssembly standard",
+   "status": "OBS",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "evidence": [
+    "PHASES"
+   ],
+   "authorized_by": [
+    "AUTH-WASM-PROPOSALS-REGISTRY"
+   ],
+   "source_ref": "evidence/D14/reopen/proposal-phases.json",
+   "stale_if": [
+    {
+     "dimension": "authority.source_commit",
+     "relation": "registry tip moves"
+    }
+   ]
+  },
+  {
+   "id": "FACT-WASM-SET-PHASE-1",
+   "subject": "Shared-Everything Threads proposal",
+   "predicate": "Phase 1 (Feature Proposal) in the proposal registry",
+   "status": "OBS",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "evidence": [
+    "PHASES"
+   ],
+   "authorized_by": [
+    "AUTH-WASM-PROPOSALS-REGISTRY"
+   ],
+   "source_ref": "evidence/D14/reopen/proposal-phases.json",
+   "stale_if": [
+    {
+     "dimension": "authority.source_commit",
+     "relation": "registry tip moves"
+    }
+   ]
+  },
+  {
+   "id": "FACT-MEMORY64-FINISHED",
+   "subject": "WebAssembly Memory64 proposal",
+   "predicate": "listed in finished-proposals.md (standardized; consistent with Core Release 3.0 64-bit address space)",
+   "status": "OBS",
+   "probe": "PROBE-AUTHORITY-REOPEN",
+   "evidence": [
+    "PHASES"
+   ],
+   "authorized_by": [
+    "AUTH-WASM-PROPOSALS-REGISTRY",
+    "AUTH-WASM-CORE-CHANGES-64"
+   ],
+   "source_ref": "evidence/D14/reopen/proposal-phases.json",
+   "stale_if": [
+    {
+     "dimension": "authority.source_commit",
+     "relation": "registry tip moves"
+    }
+   ]
+  }
+ ]
+}

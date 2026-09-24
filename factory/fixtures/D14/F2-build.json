@@ -1,0 +1,81 @@
+{
+  "fixture_id": "F2-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "design/environment-map/graph.json",
+    "network (session proxy)",
+    "raw.githubusercontent.com",
+    "git ls-remote"
+  ],
+  "narrowed_may_change": [
+    "evidence/D14/reopen/",
+    "evidence/D14/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reference/reopen.mjs",
+          "design/environment-map/graph.json",
+          "evidence/D14/reopen",
+          "--repo-root",
+          "."
+        ],
+        "log": "evidence/D14/logs/F2-reopen.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/reference/gate.mjs",
+          "evidence/D14/reopen",
+          "tests/reference/d14-review.json",
+          "--expect",
+          "64"
+        ],
+        "log": "evidence/D14/logs/F2-gate.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D14/reopen/summary.json",
+    "evidence/D14/reopen/proposal-phases.json"
+  ],
+  "tests": [
+    "64 reopen records",
+    "every movement classified by the review",
+    "every pin verified"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D14-FRONTIER-REOPEN"
+}

@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F6-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D14-FRONTIER-REOPEN",
+  "selected_inputs": [
+    "D14 epoch schema (section 4 of the intended ASCII)"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "factory/receipts/D14-FRONTIER-REOPEN/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q '## 7. Authority revisions' design/environment-map/SCHEMA.md && grep -q 'Authority frontier epoch D14' design/environment-map/ENVIRONMENT-MAP.md && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map"
+        ],
+        "log": "factory/receipts/D14-FRONTIER-REOPEN/logs/F6-schema-sections.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md"
+  ],
+  "tests": [
+    "epoch-schema and epoch-map sections written inside a station run (repair of the unreceipted write caught by verify)"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}
