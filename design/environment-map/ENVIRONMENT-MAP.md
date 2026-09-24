@@ -207,3 +207,13 @@ D17    D17-IMPLEMENTATION-REALITY  19 IMPLEMENTATION_BEHAVIOR nodes on 44 clause
                                    (6 MISLABEL [ERR] facts for D18); epochs/D17.json.  Q20 separates and connects
                                    standards law, implementation behaviour and observed runtime.
 ```
+
+## 10. Reconciliation epoch D18 (added by D18-REPO-RECONCILIATION)
+
+```text
+D18    D18-REPO-RECONCILIATION     36 RECONCILIATION nodes re-examine every Q17 fact, moved authority and D17 carried
+                                   item; 15 supersessions (11 authorities re-pinned or re-located, 4 facts restated) with
+                                   their inherited edges; 19 constraints ledgered (LEDGERED_IN LAW-CONSTRAINT-LEDGER);
+                                   6 label findings and the implementation-pin [ERR] resolved; kernel identity defined as
+                                   the exec identity; 2 implementation clauses; epochs/D18.json.  Q21 is the current model.
+```

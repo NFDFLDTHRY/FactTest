@@ -1,0 +1,10 @@
+$ sh -c for f in REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md STATION-REGISTRY.md; do n=$(git diff --numstat 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f); a=$(echo "$n" | cut -f1); d=$(echo "$n" | cut -f2); [ -n "$a" ] && [ "$a" -gt 0 ] && [ "$d" = 0 ] || { echo "$f: numstat '$n'"; exit 1; }; git diff -U0 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f | awk -v f=$f '/^@@/{h=1;next} /^\+\+\+/{next} /^\+/{if(h){l=substr($0,2); if(l ~ /[^ ]/){ if(index(l,"D18 ANNOTATION")!=1){print f": hunk begins " l; bad=1} h=0 }}} END{exit bad}' || exit 1; echo "$f +$a -0"; done; git diff --exit-code 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- FACTORY-LAW.md
+(cwd .)
+REFERENCE-AUTHORITY.md +20 -0
+CONSTRAINT-LEDGER.md +107 -0
+CONFLICT-LEDGER.md +17 -0
+EVIDENCE-OBLIGATIONS.md +16 -0
+IMPLEMENTATION-CONTRACTS.md +12 -0
+STATION-REGISTRY.md +4 -0
+
+[exit 0] expected 0

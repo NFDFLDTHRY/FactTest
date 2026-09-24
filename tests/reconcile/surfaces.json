@@ -1,0 +1,225 @@
+{
+ "schema": "facttest-reconcile-surfaces/1",
+ "epoch": "D18",
+ "base": "715ac92d327f5f2677fd7c0b067fa843da6323c4",
+ "annotated": {
+  "marker": "D18 ANNOTATION",
+  "files": [
+   "REFERENCE-AUTHORITY.md",
+   "CONSTRAINT-LEDGER.md",
+   "CONFLICT-LEDGER.md",
+   "EVIDENCE-OBLIGATIONS.md",
+   "IMPLEMENTATION-CONTRACTS.md",
+   "STATION-REGISTRY.md",
+   "CAPABILITY-MATRIX.md",
+   "BOOTSTRAP-TESTS.md"
+  ]
+ },
+ "surfaces": [
+  {
+   "file": "REFERENCE-AUTHORITY.md",
+   "reconciliation": "R-10",
+   "must_contain": [
+    "https://webassembly.github.io/spec/js-api/#internal-storage",
+    "AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE)"
+   ]
+  },
+  {
+   "file": "CONSTRAINT-LEDGER.md",
+   "reconciliation": "R-10",
+   "must_contain": [
+    "AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE)"
+   ]
+  },
+  {
+   "file": "CONFLICT-LEDGER.md",
+   "reconciliation": "R-10",
+   "must_contain": [
+    "AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE)"
+   ]
+  },
+  {
+   "file": "EVIDENCE-OBLIGATIONS.md",
+   "reconciliation": "R-10",
+   "must_contain": [
+    "AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE)"
+   ]
+  },
+  {
+   "file": "IMPLEMENTATION-CONTRACTS.md",
+   "reconciliation": "R-10",
+   "must_contain": [
+    "AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE)"
+   ]
+  },
+  {
+   "file": "REFERENCE-AUTHORITY.md",
+   "reconciliation": "R-11",
+   "must_contain": [
+    "AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING)"
+   ]
+  },
+  {
+   "file": "CONSTRAINT-LEDGER.md",
+   "reconciliation": "R-11",
+   "must_contain": [
+    "AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING)"
+   ]
+  },
+  {
+   "file": "EVIDENCE-OBLIGATIONS.md",
+   "reconciliation": "R-11",
+   "must_contain": [
+    "AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING)"
+   ]
+  },
+  {
+   "file": "BOOTSTRAP-TESTS.md",
+   "reconciliation": "R-11",
+   "must_contain": [
+    "AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING)"
+   ]
+  },
+  {
+   "file": "CONFLICT-LEDGER.md",
+   "reconciliation": "R-15",
+   "must_contain": [
+    "D18 ANNOTATION (ERR-003 maturity)"
+   ]
+  },
+  {
+   "file": "CONFLICT-LEDGER.md",
+   "reconciliation": "R-20",
+   "must_contain": [
+    "D18 ANNOTATION (ERR-001 current)"
+   ]
+  },
+  {
+   "file": "CONFLICT-LEDGER.md",
+   "reconciliation": "R-24",
+   "must_contain": [
+    "D18 ANNOTATION (ERR-002 precision)"
+   ]
+  },
+  {
+   "file": "CONFLICT-LEDGER.md",
+   "reconciliation": "R-31",
+   "must_contain": [
+    "D18 ANNOTATION (OBS-004 extended by D16)"
+   ]
+  },
+  {
+   "file": "CONSTRAINT-LEDGER.md",
+   "reconciliation": "R-21",
+   "must_contain": [
+    "D18 ANNOTATION (constraints ledgered)"
+   ]
+  },
+  {
+   "file": "CAPABILITY-MATRIX.md",
+   "reconciliation": "R-30",
+   "must_contain": [
+    "D18 ANNOTATION (current classification)",
+    "query Q19"
+   ]
+  },
+  {
+   "file": "REFERENCE-AUTHORITY.md",
+   "reconciliation": "R-51",
+   "must_contain": [
+    "D18 ANNOTATION (current authority model"
+   ]
+  },
+  {
+   "file": "EVIDENCE-OBLIGATIONS.md",
+   "reconciliation": "R-51",
+   "must_contain": [
+    "D18 ANNOTATION (evidence identity after D17"
+   ]
+  },
+  {
+   "file": "IMPLEMENTATION-CONTRACTS.md",
+   "reconciliation": "R-51",
+   "must_contain": [
+    "D18 ANNOTATION (implementation reality relevant to these contracts"
+   ]
+  },
+  {
+   "file": "STATION-REGISTRY.md",
+   "reconciliation": "R-51",
+   "must_contain": [
+    "S-ANNOTATE-OWNER"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-41",
+   "must_contain": [
+    "Byte Relay physically commissioned in the Chromium 141 headless shell"
+   ],
+   "must_not_contain": [
+    "Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64)"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-44",
+   "must_contain": [
+    "FACT-SH-STORAGE-DURABILITY-D18"
+   ],
+   "must_not_contain": [
+    "storage best-effort, persist() false"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-31",
+   "must_contain": [
+    "D-10 sensor routing"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-49",
+   "must_contain": [
+    "exec identity"
+   ],
+   "must_not_contain": [
+    "kernel identity declared\n                             per rust-src install name"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-21",
+   "must_not_contain": [
+    "constraints there are PROPOSED until D18"
+   ]
+  },
+  {
+   "file": "README.md",
+   "reconciliation": "R-42",
+   "must_contain": [
+    "(SwiftShader WebGPU + wasm64 in Chromium 141)",
+    "D18 correction (label audit LBL-07)"
+   ]
+  },
+  {
+   "file": "tests/toolchain/proof-sets.json",
+   "reconciliation": "R-49",
+   "must_contain": [
+    "\"exec_identity\"",
+    "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2"
+   ],
+   "must_not_contain": [
+    "[GAP: not install-path independent]"
+   ]
+  },
+  {
+   "file": "fixtures/commissioning/contracts.ascii",
+   "reconciliation": "R-10",
+   "must_contain": [
+    "https://webassembly.github.io/spec/js-api/#internal-storage"
+   ]
+  }
+ ]
+}

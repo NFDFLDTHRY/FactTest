@@ -157,3 +157,7 @@ Station identity does not imply permanent filesystem ownership; fixture scope su
 Read-only verification/probe stations must remain source-nonmutating.
 
 D13 ANNOTATION (registry amendment, D13-REPO-HYGIENE): the JSON registry factory/registry/stations/*.json is authoritative for surfaces.  Surfaces are LITERAL ("*", "dir/" or an exact file); the Factory rejects wildcard-looking, absolute and dot-segment entries in station specs, deltas and fixtures.  S-FIXTURE version 2: the dead entries "compiler/*/tests/" (may change) and "compiler/*/src/" (must not change) are replaced by nothing and by the literal "compiler/" respectively; its effective authority is unchanged (a future grant to compiler/<crate>/tests/ is an explicit literal entry approved in ASCII).  New station S-ANNOTATE (LAW_ANNOTATION): insertion-only annotations of an explicit list of root documents, never FACTORY-LAW.md.  The legacy scanners `factory nostd-check` and `factory depcheck` are HEURISTIC diagnostics with proof weight NONE and may not be used as gates.
+
+D18 ANNOTATION: station S-ANNOTATE-OWNER (factory/registry/stations/S-ANNOTATE-OWNER.json, introduced by
+D18-REPO-RECONCILIATION as bootstrap registry material) inserts annotations into CAPABILITY-MATRIX.md and BOOTSTRAP-TESTS.md
+under the S-ANNOTATE invariants (insertion-only; every block begins with '<delta> ANNOTATION'; FACTORY-LAW.md never).

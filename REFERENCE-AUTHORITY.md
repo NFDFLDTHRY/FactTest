@@ -60,6 +60,9 @@ https://webassembly.github.io/spec/js-api/
 Internal storage / agent-local current model:
 https://webassembly.github.io/spec/js-api/#internal-storage
 D13 ANNOTATION (fragment #internal-storage): the citation above is preserved exactly as historically written.  It is NOT asserted to be a currently valid fragment: the pinned source WebAssembly/spec@608711107b has no id "internal-storage" (it has #webassembly-storage and #store) - FRAGMENT_DRIFT [ERR]; whether the published rendering still carries an alias is [UNK] (host denied).  Semantic resolution is deferred to the D14 technical reference rescan (design/environment-map/AUTHORITY-REGISTER.md AUTH-WASM-JSAPI-STORAGE; docs/HANDOFF.md section 6).
+D18 ANNOTATION (fragment #internal-storage, resolved): D14 found the cited clause at #webassembly-storage in the pinned and
+current source (locator move, clause text unchanged); D15 cites the agent-local clause at #store (CL-T1).  Current authority
+node: AUTH-WASM-JSAPI-STORAGE-D18 (supersedes AUTH-WASM-JSAPI-STORAGE).  The URL above is kept as historically written.
 
 Memories:
 https://webassembly.github.io/spec/js-api/#memories
@@ -69,6 +72,9 @@ https://webassembly.github.io/spec/web-api/
 
 Streaming compilation/instantiation:
 https://webassembly.github.io/spec/web-api/#streaming-module-compilation-and-instantiation
+D18 ANNOTATION (fragment #streaming-module-compilation-and-instantiation): no such id exists in the pinned or current source
+(D14 [ERR]); the clause is at #streaming-modules (D14 revision; D15 clauses CL-S1..CL-S4).  Current authority node:
+AUTH-WASM-WEBAPI-STREAMING-D18 (supersedes AUTH-WASM-WEBAPI-STREAMING).  The URL above is kept as historically written.
 
 ## WebAssembly threading proposals
 
@@ -402,3 +408,17 @@ Controlled WebGPU device-loss fixture:
 https://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy
 
 The current WebGPU specification defines GPUDevice.destroy() as destroying the device and causing device loss with reason "destroyed". Commissioning uses this as an explicit test fixture for loss/reselection behavior.
+
+D18 ANNOTATION (current authority model after the D14-D17 technical reference review; design/materialization/
+D18-INTENDED-REPO-RECONCILIATION.md).  The URLs above are the published CURRENT AUTHORITY; they are not REPRODUCIBILITY PINS.
+- Published renderings remain unverified from this environment (network policy, [UNK]); every authority used by the model
+  carries a source pin (repository commit + sha256) and, from D15 on, exact CLAUSE nodes in design/environment-map/graph.json.
+- Implementation authorities are pinned to the VERSION FactTest RAN (Chromium 141.0.7390.37 = 9f043f63, V8 14.1.146.11,
+  SwiftShader 7cd1022, rust nightly 6eeff9a52 with cargo 98a09e7e7 and rust LLVM 1b9c0d5, Playwright 1.56.1).  D11's
+  main-branch pins of the Chromium switch files, the SwiftShader doc and V8's flags are superseded in the graph (D18).
+- Maturity at the D14 reopen: WebAssembly Threads Phase 4 (not yet standard), shared-everything threads Phase 1, Memory64
+  finished (Core 3.0).  D16: every Generic Sensor family draft carries an advisement (Proximity implemented by no engine;
+  Magnetometer and Ambient Light not available by default in any engine; Accelerometer, Gyroscope and Orientation Sensor
+  maintained for existing deployments); the Device Orientation permission integration is at risk.
+- Web Serial is now a WHATWG document (serial.spec.whatwg.org, repository whatwg/serial; WICG/serial answers the same tip).
+- ERR-001 is current: the rustc wasm64 page at the toolchain FactTest runs still calls memory64 "not standardized".

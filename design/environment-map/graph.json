@@ -197,6 +197,35 @@
     "UNK"
    ],
    "declared_in": "D17"
+  },
+  "RECONCILIATION": {
+   "owner_rule": "the reviewed reconciliation register (tests/reconcile/<epoch>-reconciliation.json)",
+   "required": [
+    "reconciliation_id",
+    "subject",
+    "traversal",
+    "outcome",
+    "note"
+   ],
+   "outcome_vocabulary": [
+    "HOLDS",
+    "SUPERSEDED",
+    "RESOLVED",
+    "CORRECTED",
+    "LEDGERED",
+    "ANNOTATED",
+    "OPEN"
+   ],
+   "traversal_steps": [
+    "AUTHORITY_CHANGED",
+    "CONSTRAINT",
+    "FACT",
+    "IMPLEMENTATION_CONTRACT",
+    "ENVIRONMENT",
+    "OLD_PROBE_SUFFICIENT",
+    "OLD_EVIDENCE_APPLICABLE"
+   ],
+   "declared_in": "D18"
   }
  },
  "edge_semantics": {
@@ -460,6 +489,86 @@
    ],
    "meaning": "the observed runtime fact this implementation behaviour accounts for",
    "declared_in": "D17"
+  },
+  "RECONCILES": {
+   "from": [
+    "RECONCILIATION"
+   ],
+   "to": [
+    "AUTHORITY",
+    "AUTHORITY_REVISION",
+    "CAPABILITY_FAMILY",
+    "CLAUSE",
+    "COMPUTATIONAL_FACT",
+    "CONSTRAINT",
+    "ENVIRONMENT",
+    "EVIDENCE",
+    "IMPLEMENTATION",
+    "IMPLEMENTATION_BEHAVIOR",
+    "PROBE"
+   ],
+   "meaning": "the reconciliation re-examined that node against the later epochs (traversal and outcome on the RECONCILIATION node)",
+   "declared_in": "D18"
+  },
+  "SUPERSEDES": {
+   "from": [
+    "AUTHORITY",
+    "COMPUTATIONAL_FACT"
+   ],
+   "to": [
+    "AUTHORITY",
+    "COMPUTATIONAL_FACT"
+   ],
+   "requires": [
+    "reconciliation"
+   ],
+   "inherits": {
+    "AUTHORITY": {
+     "out": [
+      "AUTHORIZES",
+      "DEPENDS_ON",
+      "CONFLICTS_WITH"
+     ],
+     "in": [
+      "DEPENDS_ON",
+      "CONFLICTS_WITH"
+     ]
+    },
+    "COMPUTATIONAL_FACT": {
+     "out": [
+      "PROBED_BY",
+      "EVIDENCED_BY",
+      "ADMITTED_BY",
+      "REQUIRES",
+      "EXPOSED_BY",
+      "STALE_IF",
+      "IMPLEMENTED_BY"
+     ],
+     "in": [
+      "AUTHORIZES",
+      "GROUNDS",
+      "EXPLAINS",
+      "WITNESSED_BY",
+      "REQUIRES"
+     ]
+    }
+   },
+   "meaning": "the successor is the CURRENT statement; the superseded node stays as history (never edited); same class; the successor carries every inheritable edge of the superseded node, mapped through supersession",
+   "declared_in": "D18"
+  },
+  "LEDGERED_IN": {
+   "from": [
+    "CONSTRAINT"
+   ],
+   "to": [
+    "AUTHORITY"
+   ],
+   "requires": [
+    "locator",
+    "reconciliation"
+   ],
+   "meaning": "the PROPOSED constraint is recorded in that project-law ledger (current status LEDGER; the node keeps PROPOSED as history)",
+   "declared_in": "D18"
   }
  },
  "nodes": [
@@ -27330,6 +27439,1254 @@
    "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
    "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
    "introduced_in": "D17"
+  },
+  {
+   "id": "ENV-D18-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D18-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": null,
+   "target": "authority sources (no build)",
+   "host_runtime": "node + curl + git through the session proxy (sources only)",
+   "versions": null,
+   "flags": {
+    "channels": "raw.githubusercontent.com bytes at each source tip; git ls-remote tips"
+   },
+   "build_profile": null,
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "none (source extraction)",
+   "dependency_graph_identity": null,
+   "other_state": {
+    "network_egress": "published renderings denied (unchanged since D14)"
+   },
+   "identity_completeness": {
+    "missing": [
+     "published renderings (policy)"
+    ],
+    "present": [
+     "source commit + sha256 per clause"
+    ]
+   },
+   "owner": "evidence/D18/clauses/summary.json",
+   "note": "D18 clause extraction; observed 2026-09-24T09:55:34.049Z",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "EV-D18-CLAUSES-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D18-CLAUSES-SUMMARY",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D18-HOST",
+   "artifact_identity": {
+    "path": "evidence/D18/clauses/summary.json",
+    "sha256": "84900bbefb1ac6a0f11810d4f681cdcdc1709209d223ba5ae336f427562ebfda",
+    "locator": "status, sources",
+    "identity_source": "sha256 of the committed file"
+   },
+   "observed_result": "2 clauses {\"VERIFIED\":2} over 2 sources",
+   "epoch": "D18",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D18-REPO-RECONCILIATION",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "FACT-D18-CLAUSES-VERIFIED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D18-CLAUSES-VERIFIED",
+   "subject": "D18 clause manifest",
+   "predicate": "every one of 2 manifest clauses is present at its source tip with each quoted phrase (the consequences stated on the CLAUSE nodes rest on text the authorities contain)",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "source level only: published renderings unverified (network policy)",
+   "source_ref": "evidence/D18/clauses/summary.json",
+   "owner": "D18 (derived from the evidence named by its edges)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "title": "Content switches (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:content/public/common/content_switches.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "content/public/common/content_switches.cc",
+    "sha256": "e8321b499ab2f425cd6fcdf8bddff07988bef70c4c2784c46e99ef56f585e8cf",
+    "observed": "2026-09-24",
+    "locator": "clauses of D18 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "kDisableGpu = \"disable-gpu\" at the running revision",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "title": "Using Chromium with SwiftShader (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:docs/gpu/swiftshader.md",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_DOC",
+   "maturity": "implementation documentation at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "docs/gpu/swiftshader.md",
+    "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0",
+    "observed": "2026-09-24",
+    "locator": "clauses of D18 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "SwiftShader runs purely on the CPU; Chromium uses it as the GL driver or the WebGL fallback",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "EV-D18-CL-IMP-GPU0",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D18-CL-IMP-GPU0",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D18-HOST",
+   "artifact_identity": {
+    "path": "evidence/D18/clauses/records/CL-IMP-GPU0.json",
+    "sha256": "d3b991311412a61af652c2e12fee09d2e178bd39dee72b7d25291bf65b2f8bad",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 content/public/common/content_switches.cc:138-138",
+   "epoch": "D18",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D18-REPO-RECONCILIATION",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "CL-IMP-GPU0",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU0",
+   "authority_ref": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "trace": "GPU",
+   "epoch": "D18",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "content/public/common/content_switches.cc",
+    "sha256": "e8321b499ab2f425cd6fcdf8bddff07988bef70c4c2784c46e99ef56f585e8cf"
+   },
+   "locator": {
+    "requested": {
+     "text": "const char kDisableGpu[]"
+    },
+    "line_start": 138,
+    "line_end": 138,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "63460de85cffb2c9494ab7db8806b2b73b7afd9912ee278597341e4484b7a77f",
+   "quoted": [
+    "\"disable-gpu\""
+   ],
+   "consequence": "--disable-gpu is defined at the running revision (the switch Playwright may add and the harness removes)",
+   "owner": "tests/reference/d18-clauses.json (clause), evidence/D18/clauses/records/CL-IMP-GPU0.json (extraction)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "EV-D18-CL-IMP-SSDOC",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D18-CL-IMP-SSDOC",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D18-HOST",
+   "artifact_identity": {
+    "path": "evidence/D18/clauses/records/CL-IMP-SSDOC.json",
+    "sha256": "9bb1b9cef87fdf62422f8df1df8b68216f3ccabe0b95a2fab878659e39c70043",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 docs/gpu/swiftshader.md:3-3",
+   "epoch": "D18",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D18-REPO-RECONCILIATION",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "CL-IMP-SSDOC",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-SSDOC",
+   "authority_ref": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "trace": "GPU",
+   "epoch": "D18",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "docs/gpu/swiftshader.md",
+    "sha256": "d3bb301152f9c39aad32e3344470cb1a54da4da435fcbcb31f76c605b10887a0"
+   },
+   "locator": {
+    "requested": {
+     "text": "SwiftShader is an open-source high-performance implementation"
+    },
+    "line_start": 3,
+    "line_end": 3,
+    "derivation": "anchor text",
+    "enclosing_section": "#using-chromium-with-swiftshader (line 1)"
+   },
+   "excerpt_sha256": "e0dbb55304c1735493842fcfa93b772043c2f5c90f59ba1341b8a1cdf144c804",
+   "quoted": [
+    "which runs purely on the CPU"
+   ],
+   "consequence": "SwiftShader in Chromium 141 is CPU-only: no GPU is involved",
+   "owner": "tests/reference/d18-clauses.json (clause), evidence/D18/clauses/records/CL-IMP-SSDOC.json (extraction)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "title": "WebAssembly JavaScript Interface - Internal storage (current locator)",
+   "exact_url": "https://webassembly.github.io/spec/js-api/",
+   "exact_fragment": "#webassembly-storage",
+   "authority_owner": "WebAssembly CG/WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "Status: ED, Level 2 (declared at pin and tip; D14)",
+   "observed_date": "never (published rendering not opened: host DENIED in D11 and UNREACHABLE in D14)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "branch": "main",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/js-api/index.bs",
+    "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+    "observed": "2026-09-24",
+    "locator": "<h2 id=\"webassembly-storage\">Internal storage</h2> (line 328); the agent-local note under <h3 id=\"store\"> (line 336; D15 CL-T1)"
+   },
+   "extracted_consequence": "Note under 'Interaction of the WebAssembly Store with JavaScript': in this specification no WebAssembly-related objects, memory or addresses can be shared among agents in an agent cluster; a future version may change this. The current JS embedding is agent-local.",
+   "fragment_status": "PRESENT_IN_SOURCE (D14: explicit h2 id at the pin; tip == pin)",
+   "owner": "WebAssembly CG/WG",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "AUTH-WASM-WEBAPI-STREAMING-D18",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-WASM-WEBAPI-STREAMING-D18",
+   "title": "WebAssembly Web API - streaming modules (current locator)",
+   "exact_url": "https://webassembly.github.io/spec/web-api/",
+   "exact_fragment": "#streaming-modules",
+   "authority_owner": "WebAssembly CG/WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "Status: ED, Level 2 (TR: wasm-web-api-2)",
+   "observed_date": "never (published rendering not opened: host DENIED in D11 and UNREACHABLE in D14)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/WebAssembly/spec",
+    "branch": "main",
+    "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+    "path": "document/web-api/index.bs",
+    "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+    "observed": "2026-09-24",
+    "locator": "<h2 id=\"streaming-modules\"> (line 86); dfn 'compile a potential WebAssembly response' (line 109; D15 CL-S1/CL-S2)"
+   },
+   "extracted_consequence": "compileStreaming/instantiateStreaming compile a potential WebAssembly response: the Response must be CORS-same-origin, have an ok status and match the application/wasm MIME type, otherwise the promise rejects with TypeError. FactTest's generated adapter uses fetch()+arrayBuffer()+WebAssembly.compile(bytes), so the MIME/streaming contract is never exercised.",
+   "fragment_status": "PRESENT_IN_SOURCE (D14: explicit h2 id at the pin; the D11 id #streaming-module-compilation-and-instantiation never existed there)",
+   "owner": "WebAssembly CG/WG",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "AUTH-RUSTC-WASM64-DOC-D18",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-RUSTC-WASM64-DOC-D18",
+   "title": "rustc Platform Support - wasm64-unknown-unknown (at the toolchain FactTest runs)",
+   "exact_url": "https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html",
+   "exact_fragment": null,
+   "authority_owner": "The Rust Project (rust-lang/rust@6eeff9a52, nightly-2026-09-24)",
+   "authority_class": "TARGET_DOC",
+   "maturity": "Tier 3 target documentation",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+    "observed": "2026-09-24",
+    "locator": "sections Requirements / Building Rust programs (D15 CL-R4..R7 at the tip, D17 CL-IMP-RS2 at 6eeff9a52)"
+   },
+   "extracted_consequence": "Tier 3; 64-bit memories; usize and pointers are 8 bytes; Rust ships no pre-compiled std for it so build-std (or a custom build) is required; the page calls memory64 not standardized (ERR-001, current at the toolchain run)",
+   "fragment_status": "NO_FRAGMENT_CITED",
+   "owner": "The Rust Project (rust-lang/rust@6eeff9a52, nightly-2026-09-24)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+   "title": "rustc target specification source: wasm64_unknown_unknown.rs (at the toolchain FactTest runs)",
+   "exact_url": "https://github.com/rust-lang/rust/blob/6eeff9a52c3e35c4c4cbf5651f342dcd2191866f/compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "exact_fragment": null,
+   "authority_owner": "The Rust Project (rust-lang/rust@6eeff9a52, nightly-2026-09-24)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "compiler source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+    "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb",
+    "observed": "2026-09-24",
+    "locator": "fn target() (D15 CL-R8/R9 at the tip, D17 CL-IMP-RS1 at 6eeff9a52)"
+   },
+   "extracted_consequence": "options.features = +bulk-memory,+mutable-globals,+sign-ext,+nontrapping-fptoint; linker pre-args --no-entry -mwasm64 (wasm-ld); pointer_width 64; arch Wasm64; tier 3, host_tools false (same as the tip D15 read)",
+   "fragment_status": "NO_FRAGMENT_CITED",
+   "owner": "The Rust Project (rust-lang/rust@6eeff9a52, nightly-2026-09-24)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "LAW-CONSTRAINT-LEDGER",
+   "class": "AUTHORITY",
+   "authority_id": "LAW-CONSTRAINT-LEDGER",
+   "title": "CONSTRAINT-LEDGER.md - project constraint ledger (with the D18 ledgered constraints)",
+   "exact_url": "CONSTRAINT-LEDGER.md",
+   "exact_fragment": "D18 ANNOTATION (constraints ledgered)",
+   "authority_owner": "FactTest (CONSTRAINT-LEDGER.md)",
+   "authority_class": "PROJECT_LAW",
+   "maturity": "project law as integrated by D18-REPO-RECONCILIATION",
+   "observed_date": "2026-09-24",
+   "reopen_status": "OPENED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/NFDFLDTHRY/FactTest",
+    "branch": "claude/facttest-materialization-27amc7",
+    "commit": "D18-REPO-RECONCILIATION integration commit (LEDGER AFTER): canonical base 715ac92d327f5f2677fd7c0b067fa843da6323c4 plus the D18 annotations",
+    "path": "CONSTRAINT-LEDGER.md",
+    "sha256": "abe47eb6c0102273dd89d627429c6232c7271f03a4c74e530ea8041d17367b7c",
+    "observed": "2026-09-24",
+    "locator": "D18 ANNOTATION (constraints ledgered) at the end of the file"
+   },
+   "extracted_consequence": "the 19 constraints proposed by D11, D13, D15 and D16 are ledgered with their statements and current authorities; each is project law from D18 on (the graph node keeps ledger_status PROPOSED as history; LEDGERED_IN is the current status)",
+   "fragment_status": "PRESENT (D18 annotation block)",
+   "owner": "FactTest (CONSTRAINT-LEDGER.md)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "subject": "WASM_SHARED_THREADS family",
+   "predicate": "not admitted: the JS API embedding is agent-local (no WebAssembly objects, memory or addresses are shared among agents; D15 CL-T1); SharedArrayBuffer serialization requires the cross-origin isolated capability (HTML, standard; D15 CL-T4) while the presence of the SharedArrayBuffer global is host-defined (ECMA-262; D15 CL-T6) and Chromium 141 installs the constructor only where SharedArrayBuffers may be transferred (implementation; D17 CL-IMP-SAB1); cross-origin isolation is reachable (FACT-SH-SW-GRANTS-COI); Threads is Phase 4 and shared-everything threads Phase 1 (D14); no fixture executes shared memory",
+   "required_environment": [],
+   "constraint_refs": [
+    "CON-WA-005",
+    "CON-THREAD-001",
+    "CON-THREAD-002"
+   ],
+   "status": "ERR",
+   "note": "ERR-002/ERR-003 preserved (CONFLICT-LEDGER, with D18 annotations); supersedes FACT-SHARED-THREADS-UNADMITTED, whose wording stated Chromium's constructor hook as a standard requirement (FACT-LBL-01)",
+   "source_ref": "CONFLICT-LEDGER ERR-002, ERR-003; tests/reconcile/d18-reconciliation.json R-06",
+   "owner": "D18 reconciliation (derived from the evidence named by its edges)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "FACT-WORKERS-D18",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-WORKERS-D18",
+   "subject": "WORKER_DEDICATED family and hardwareConcurrency",
+   "predicate": "a dedicated Worker was constructed and messaged by the D12 kernel-in-worker probe (FACT-SH-KERNEL-WORKER-PARTIAL, EV-D12-P10); navigator.hardwareConcurrency was never read and no FactTest admission contract for workers exists",
+   "required_environment": [
+    "chromium-headless-shell 141 (rev 1194) persistent profile via Playwright launchPersistentContext({headless:true})"
+   ],
+   "constraint_refs": [
+    "CON-WB-001",
+    "CON-WB-002"
+   ],
+   "status": "GAP",
+   "note": "supersedes FACT-WORKERS-UNPROBED (D11), invalidated by the D12 worker evidence (stale since D12; flagged by D16)",
+   "source_ref": "evidence/D12/probes/P10-KERNEL-IN-WORKER.json; tests/reconcile/d18-reconciliation.json R-32",
+   "owner": "D18 reconciliation (derived from the evidence named by its edges)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "FACT-SH-STORAGE-DURABILITY-D18",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-SH-STORAGE-DURABILITY-D18",
+   "subject": "self-hosting primitive P07-STORAGE-PERSISTENCE",
+   "predicate": "navigator.storage.persist() returned false in chromium-headless-shell 141 (rev 1194), whose permission manager answers ASK to every permission (IB-HEADLESS-PERMISSIONS-ASK); full Chrome grants durable storage to installed or important sites (IB-CHROME-DURABLE-STORAGE); the durability of an installed Factory has never been observed",
+   "required_environment": [
+    "chromium-headless-shell 141 (rev 1194) persistent profile via Playwright launchPersistentContext({headless:true})",
+    "origin http://127.0.0.1:47311 (secure context by loopback)"
+   ],
+   "constraint_refs": [],
+   "status": "UNK",
+   "note": "supersedes FACT-SH-STORAGE-BEST-EFFORT (D12 B-11), whose wording did not name the headless shell (FACT-LBL-10, FACT-LBL-11)",
+   "source_ref": "D12-OBSERVED section 2; evidence/D12/probes/P07-STORAGE-PERSISTENCE.json; D17 IB-HEADLESS-PERMISSIONS-ASK, IB-CHROME-DURABLE-STORAGE",
+   "owner": "D18 reconciliation (derived from the evidence named by its edges)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "subject": "WASM64_KERNEL_SET release kernel identity (D13 H-12)",
+   "predicate": "the kernel identity is the exec identity e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2 (sha256 over every section except the custom \"name\" section; tests/toolchain/proof-sets.json exec_identity, checked by tests/toolchain/proof.mjs kernel-identity), equal for the builds under both rustup install names; the whole-file sha256 stays recorded per install name (6f25ce43... pinned name, 309589947e... D9 name)",
+   "required_environment": [
+    "pinned toolchain WASM64_KERNEL_SET nightly-2026-09-24 (rustc 6eeff9a52)"
+   ],
+   "constraint_refs": [
+    "CON-EM-007",
+    "CON-EM-005"
+   ],
+   "status": "RUN",
+   "note": "supersedes FACT-KERNEL-IDENTITY-INSTALL-PATH (D13 [GAP]): the definition changed, the builds did not; D19 re-runs the qualified proof with this check",
+   "source_ref": "tests/toolchain/proof-sets.json; evidence/D17/kernel/sections.json; evidence/D18/kernel/",
+   "owner": "D18 reconciliation (derived from the evidence named by its edges)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "EV-D18-KERNEL-IDENTITY-A",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D18-KERNEL-IDENTITY-A",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D17-TOOLCHAIN",
+   "artifact_identity": {
+    "path": "evidence/D18/kernel/KRN-D18-A.json",
+    "sha256": "88095f60598a1b4dbf93aee15659abd59b0c8dd12929d26f2437cb2eaf3bdbfe",
+    "locator": "verdict, exec_identity, whole_file",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "PASS: exec identity e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2 == declared (install nightly-2026-09-24-x86_64-unknown-linux-gnu); whole file == recorded for install nightly-2026-09-24-x86_64-unknown-linux-gnu (informational)",
+   "epoch": "D18",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D18-REPO-RECONCILIATION",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "EV-D18-KERNEL-IDENTITY-B",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D18-KERNEL-IDENTITY-B",
+   "probe_ref": "PROBE-QUALIFIED-PROOF",
+   "environment_ref": "ENV-D17-TOOLCHAIN",
+   "artifact_identity": {
+    "path": "evidence/D18/kernel/KRN-D18-B.json",
+    "sha256": "fc4248a06fee9805803e366273658924db85e5b2ff6d963903754fb8e966f845",
+    "locator": "verdict, exec_identity, whole_file",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "PASS: exec identity e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2 == declared (install nightly-2026-09-24-x86_64-unknown-linux-gnu); whole file == recorded for install nightly-x86_64-unknown-linux-gnu (informational)",
+   "epoch": "D18",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D18-REPO-RECONCILIATION",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-01",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-01",
+   "subject": "FF-only integration (Q17 recheck)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "no semantic movement: git glossary/revisions/worktree renderings UNREACHABLE with sources unchanged (D14); #_worktrees AMBIGUOUS (R-13); FACTORY-CONTRACTS lines shifted editorially (R-16)",
+    "CONSTRAINT": "CON-FT-004 (ledgered, R-21)",
+    "FACT": "holds: every delta D14-D17 was integrated fast-forward only by factory integrate",
+    "IMPLEMENTATION_CONTRACT": "IMPL-FACTORY-OPS unchanged since D13",
+    "ENVIRONMENT": "host git in the build container",
+    "OLD_PROBE_SUFFICIENT": "yes: factory integrate re-witnesses it on every delta (D18's own integration included)",
+    "OLD_EVIDENCE_APPLICABLE": "yes: EV-GIT-LINEAGE-D0-D10 and every later receipt"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "stale condition declared (host git version / integrate rule), so the Q18 traversal no longer stops at STALE CONDITIONS",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-02",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-02",
+   "subject": "workpiece isolation (Q17 recheck)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "no semantic movement (git renderings UNREACHABLE, sources unchanged; #_worktrees AMBIGUOUS, R-13)",
+    "CONSTRAINT": "CON-FT-004 (ledgered, R-21)",
+    "FACT": "holds: every D14-D17 workpiece was a detached linked worktree at its canonical_base",
+    "IMPLEMENTATION_CONTRACT": "IMPL-FACTORY-GIT unchanged",
+    "ENVIRONMENT": "host git in the build container",
+    "OLD_PROBE_SUFFICIENT": "yes: factory workpiece create/verify re-witness it per delta",
+    "OLD_EVIDENCE_APPLICABLE": "yes"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "no change needed",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-03",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-03",
+   "subject": "SwiftShader fallback adapter (Q17 recheck)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "Chromium switch and SwiftShader-doc authorities re-pinned to the running revision (R-48); the installed Playwright authority is now pinned by sha256 (R-14); WebGPU editor's-draft renderings UNREACHABLE with sources unchanged",
+    "CONSTRAINT": "CON-GPU-001, CON-EM-002, CON-EM-006 (ledgered, R-21)",
+    "FACT": "holds: the only adapter ever observed is SwiftShader's CPU fallback adapter under the unsafe WebGPU switch set in chromium-headless-shell 141 (D17 IB-GPU-UNSAFE-SWITCHES, IB-GPU-SOFTWARE-FALLBACK, IB-GPU-LINUX-SERVICE-OFF)",
+    "IMPLEMENTATION_CONTRACT": "IMPL-ADAPTER-WEBGPU unchanged",
+    "ENVIRONMENT": "ENV-D6-D7/D11-BROWSER-GPUFLAGS: chromium-headless-shell 141.0.7390.37 (rev 1194) with the D6/D7 switch set",
+    "OLD_PROBE_SUFFICIENT": "yes",
+    "OLD_EVIDENCE_APPLICABLE": "yes while the installed browser is the same build (D19 re-reads the browser identity)"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "the claim's authority set is now fully pinned (Q18 no longer stops at REPRODUCIBILITY PIN)",
+   "new_probe_obligation": "D19: environment identity - the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set",
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-04",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-04",
+   "subject": "wasm64 execution and module claims (Q17 recheck)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "rustc wasm64 doc/spec pins: reference branch renamed master -> main, same commit (D14); now pinned at the toolchain FactTest runs (R-12); Core 3.0 memory64 authorities UNREACHABLE with sources unchanged",
+    "CONSTRAINT": "CON-EM-004 (ledgered), CON-WA-001..003, CON-FT-003, CON-FT-006 (ledgered)",
+    "FACT": "holds",
+    "IMPLEMENTATION_CONTRACT": "IMPL-WASM-ABI, IMPL-KERNEL-HOST, IMPL-ADAPTER-WASM64, IMPL-CODEGEN-EMITTER unchanged",
+    "ENVIRONMENT": "WASM64_KERNEL_SET nightly-2026-09-24 (rustc 6eeff9a52); Chromium 141 headless shell",
+    "OLD_PROBE_SUFFICIENT": "yes",
+    "OLD_EVIDENCE_APPLICABLE": "yes (same toolchain commit and browser build); the kernel identity definition changed (R-49)"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "no claim change",
+   "new_probe_obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check",
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-05",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-05",
+   "subject": "streaming delivery (Q17 recheck)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "MOVED: the cited id never existed; the clause is at #streaming-modules (D14); current authority AUTH-WASM-WEBAPI-STREAMING-D18 (R-11)",
+    "CONSTRAINT": "CON-WA-004 (LEDGER; WA-004 annotated)",
+    "FACT": "[GAP] holds: the generated adapter compiles from fetched bytes; no fixture checks MIME/ok/CORS rejection",
+    "IMPLEMENTATION_CONTRACT": "IMPL-ADAPTER-WASM64 unchanged",
+    "ENVIRONMENT": "none bound",
+    "OLD_PROBE_SUFFICIENT": "no probe exists",
+    "OLD_EVIDENCE_APPLICABLE": "none exists"
+   },
+   "outcome": "OPEN",
+   "surfaces": [],
+   "note": "the citation is corrected; the capability gap remains",
+   "new_probe_obligation": "capability work (not D19 re-proof): a compileStreaming/instantiateStreaming probe with application/wasm, and MIME/ok/CORS rejection",
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-06",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-06",
+   "subject": "shared/threaded Wasm claim wording (Q17 recheck, LBL-01)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "MATURITY: Threads Phase 4, shared-everything threads Phase 1 (D14); js-api locator MOVED (R-10); D15 CL-T4/CL-T6 and D17 CL-IMP-SAB1 separate standard (serialization gated on the COI capability, global host-defined) from Chromium's constructor hook",
+    "CONSTRAINT": "CON-WA-005, CON-THREAD-001, CON-THREAD-002 (unchanged)",
+    "FACT": "[ERR] holds (ERR-002/ERR-003) but the D11 wording stated Chromium behaviour as standard: superseded by FACT-SHARED-THREADS-UNADMITTED-D18",
+    "IMPLEMENTATION_CONTRACT": "none (unadmitted)",
+    "ENVIRONMENT": "ENV-D11-BROWSER-GPUFLAGS",
+    "OLD_PROBE_SUFFICIENT": "yes for presence; no fixture executes shared memory",
+    "OLD_EVIDENCE_APPLICABLE": "yes (presence only)"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [],
+   "note": "successor states the three layers apart",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-10",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-10",
+   "subject": "js-api #internal-storage citation",
+   "traversal": {
+    "AUTHORITY_CHANGED": "MOVED: #internal-storage is not an id at the pin or tip; the clause is at #webassembly-storage (h2) with the agent-local note under #store (D14; D15 CL-T1)",
+    "CONSTRAINT": "CON-WA-005 and CON-IC-WASM_SHARED_THREADS keep their authority through the successor",
+    "FACT": "FACT-SHARED-THREADS-UNADMITTED-D18 (R-06)",
+    "IMPLEMENTATION_CONTRACT": "fixtures/commissioning/contracts.ascii:39 keeps the historical URL as compiler input: its bytes are part of the commissioned Byte Relay input (M8); changing it belongs to a delta that re-commissions",
+    "ENVIRONMENT": "n/a (document)",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "IMPLEMENTATION-CONTRACTS.md"
+   ],
+   "note": "law citations kept as historically written with D13 + D18 annotations in REFERENCE-AUTHORITY, CONSTRAINT-LEDGER, CONFLICT-LEDGER, EVIDENCE-OBLIGATIONS, IMPLEMENTATION-CONTRACTS",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-11",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-11",
+   "subject": "web-api #streaming-module-compilation-and-instantiation citation",
+   "traversal": {
+    "AUTHORITY_CHANGED": "MOVED: the cited id never existed at the pin (D11's PRESENT_IN_SOURCE was false); section #streaming-modules, definition #compile-a-potential-webassembly-response (D14)",
+    "CONSTRAINT": "CON-WA-004 keeps its authority through the successor",
+    "FACT": "FACT-STREAMING-UNPROBED unchanged (R-05)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "BOOTSTRAP-TESTS.md"
+   ],
+   "note": "law citations kept as historically written with D18 annotations in REFERENCE-AUTHORITY, CONSTRAINT-LEDGER, EVIDENCE-OBLIGATIONS, BOOTSTRAP-TESTS",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-12",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-12",
+   "subject": "rustc wasm64 pins (branch master removed)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "MOVED (pin reference only): branch master removed, pinned commit 3670d2532b on main (D14); D17 read both files at the toolchain FactTest runs (6eeff9a52: CL-IMP-RS1 target spec identical in features, CL-IMP-RS2 platform doc, ERR-001 current)",
+    "CONSTRAINT": "CON-EM-004, CON-RS-* keep their authority through the successors",
+    "FACT": "FACT-WASM64-* hold (R-04)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "WASM64_KERNEL_SET nightly-2026-09-24",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [],
+   "note": "successors pinned at rust-lang/rust@6eeff9a52 (the version run), per the D17 rule that implementation and tool sources are pinned to the version FactTest ran",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-13",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-13",
+   "subject": "git repository-layout #_worktrees",
+   "traversal": {
+    "AUTHORITY_CHANGED": "AMBIGUOUS: a definition-list term carries no asciidoctor id; the published rendering is UNREACHABLE (D14)",
+    "CONSTRAINT": "CON-FT-004",
+    "FACT": "FACT-FF-ONLY-INTEGRATION, FACT-WORKPIECE-ISOLATION hold (R-01, R-02)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "OPEN",
+   "surfaces": [],
+   "note": "[UNK] kept: resolvable only by opening the published git-scm.com page",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-14",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-14",
+   "subject": "installed Playwright authority",
+   "traversal": {
+    "AUTHORITY_CHANGED": "AMBIGUOUS in D14 (local file, no pinned sha256); D17 pinned the same installed browsers.json by sha256 (AUTH-IMPL-PLAYWRIGHT-BROWSERS, 1387ec66...) and chromiumSwitches.js separately (AUTH-IMPL-PLAYWRIGHT-SWITCHES)",
+    "CONSTRAINT": "n/a",
+    "FACT": "FACT-GPU-ADAPTER-SWIFTSHADER holds (R-03)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "Playwright 1.56.1 installed under /opt/node22",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [],
+   "note": "the switch half of the old authority is carried by an added AUTHORIZES edge from AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-15",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-15",
+   "subject": "maturity movement (Threads Phase 4, shared-everything threads Phase 1)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "MATURITY: Threads Phase 4 (not yet standard), shared-everything threads Phase 1 (D14 proposal registry); V8 14.1 keeps shared-everything threads experimental (D17 CL-IMP-V8A)",
+    "CONSTRAINT": "CON-THREAD-001/002 unchanged",
+    "FACT": "FACT-SHARED-THREADS-UNADMITTED-D18 (R-06)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "ANNOTATED",
+   "surfaces": [
+    "CONFLICT-LEDGER.md",
+    "REFERENCE-AUTHORITY.md"
+   ],
+   "note": "CONFLICT-LEDGER ERR-003 and REFERENCE-AUTHORITY carry the current maturity (D18 annotation)",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-16",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-16",
+   "subject": "project-law pins moved editorially",
+   "traversal": {
+    "AUTHORITY_CHANGED": "EDITORIAL: headings shifted by insertion-only annotations (D14)",
+    "CONSTRAINT": "n/a",
+    "FACT": "FACT-TOOLCHAIN-DRIFT, FACT-FF-ONLY-INTEGRATION, FACT-LITERAL-PATH-MATCH, FACT-WORKPIECE-ISOLATION unaffected",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "no claim change; annotations are insertion-only",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-17",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-17",
+   "subject": "locator refinements of document-root citations",
+   "traversal": {
+    "AUTHORITY_CHANGED": "UNREACHABLE published renderings; D14 found candidate exact ids in unchanged sources (reviewed candidates)",
+    "CONSTRAINT": "n/a",
+    "FACT": "dependent facts unaffected (sources unchanged)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "document-root citations are coarse, not stale; the candidate ids stay on the D14 revisions until a published rendering can be verified",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-18",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-18",
+   "subject": "published frontier unverified",
+   "traversal": {
+    "AUTHORITY_CHANGED": "UNREACHABLE: 53 renderings refused, 2 github.com 403 (D14); every clause since D15 verified at source level",
+    "CONSTRAINT": "n/a",
+    "FACT": "[UNK] holds",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "network policy of the build container",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "OPEN",
+   "surfaces": [],
+   "note": "[UNK] kept: needs a network policy that permits the published hosts",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-19",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-19",
+   "subject": "tool documentation still pinned at branch tips",
+   "traversal": {
+    "AUTHORITY_CHANGED": "no semantic movement at the tips (D14/D15); the cargo book (694054f34b), git documentation (0f8e75a) and Rust Reference (52ffdc0) are pinned at branch commits, not at the tool versions FactTest runs (cargo 98a09e7e7; the host git)",
+    "CONSTRAINT": "CON-FT-004, CON-GIT-001, CON-EM-005, CON-EM-007, CON-RS-* unchanged",
+    "FACT": "dependent facts hold (R-01, R-02, R-22)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "host git and cargo of the build container",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "OPEN",
+   "surfaces": [],
+   "note": "[GAP] kept: D17's version-run rule covers implementation sources; these are tool and language documents cited for semantics the tips did not change.  Re-pinning them needs the documents read at the running tool versions (extraction work)",
+   "new_probe_obligation": "extraction work (not D19): cargo book at 98a09e7e7 and git documentation at the host git version",
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-20",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-20",
+   "subject": "ERR-001 is current",
+   "traversal": {
+    "AUTHORITY_CHANGED": "SEMANTIC at the rust tip (D15 CL-R7) and at the toolchain run (D17 CL-IMP-RS2): the rustc page still calls memory64 not standardized; Core 3.0 standardizes 64-bit address types (D15 CL-W4)",
+    "CONSTRAINT": "CON-RS-003 (the Core governs)",
+    "FACT": "n/a",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "ANNOTATED",
+   "surfaces": [
+    "CONFLICT-LEDGER.md",
+    "REFERENCE-AUTHORITY.md"
+   ],
+   "note": "CONFLICT-LEDGER ERR-001 and REFERENCE-AUTHORITY state it is current (D18 annotation)",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-21",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-21",
+   "subject": "PROPOSED constraints entered into the ledger",
+   "traversal": {
+    "AUTHORITY_CHANGED": "authorities as current after R-10..R-14, R-48",
+    "CONSTRAINT": "19 constraints proposed by D11 (CON-EM-001..006, CON-FT-004..006), D13 (CON-EM-007, CON-FT-007), D15 (CON-WA-006, CON-SEC-002, CON-PP-001, CON-SW-001, CON-ST-001, CON-GIT-001), D16 (CON-CAP-001, CON-CAP-002)",
+    "FACT": "their facts unchanged",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "LEDGERED",
+   "surfaces": [
+    "CONSTRAINT-LEDGER.md"
+   ],
+   "note": "CONSTRAINT-LEDGER.md D18 section lists each id, statement and current authorities; LEDGERED_IN edges to LAW-CONSTRAINT-LEDGER",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-22",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-22",
+   "subject": "git tree-entry order",
+   "traversal": {
+    "AUTHORITY_CHANGED": "no movement: git documents mktree normalization without an ordering rule (D15 CL-G3); D17 did not trace git sources",
+    "CONSTRAINT": "CON-GIT-001 (ledgered)",
+    "FACT": "[GAP] holds",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "P09 observed equality on one repository only",
+    "OLD_EVIDENCE_APPLICABLE": "yes"
+   },
+   "outcome": "OPEN",
+   "surfaces": [],
+   "note": "[GAP] kept: needs git's tree-entry ordering source pinned at the git version used",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-23",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-23",
+   "subject": "Q18 stops of project facts",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-EM-007 and CON-FT-007 named authorities (authority_refs) without AUTHORIZES edges (D13 epoch): the three edges are added",
+    "FACT": "the facts hold",
+    "IMPLEMENTATION_CONTRACT": "the proof sets and the toolchain pin are realized by IMPL-QUALIFIED-PROOF (tests/toolchain/proof-sets.json declares them; proof.mjs sets-check and pins verify them): IMPLEMENTED_BY added",
+    "ENVIRONMENT": "ENV-D13-HOST-PINNED; the proof-set partition goes stale when the workspace member set changes: STALE_IF added",
+    "OLD_PROBE_SUFFICIENT": "yes",
+    "OLD_EVIDENCE_APPLICABLE": "yes"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "the proof-set and toolchain facts reach their authorities and their implementation; the clause-verification and frontier facts have no project-law authority (process facts) and four project facts are grounded in project law cited at locator level - those Q18 stops remain as reported",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-24",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-24",
+   "subject": "SharedArrayBuffer global (ERR-002 precision)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none: D15 CL-T4/CL-T6 (standard) and D17 CL-IMP-SAB1 (Chromium 141) settle the layers",
+    "CONSTRAINT": "CON-WA-005, CON-THREAD-001",
+    "FACT": "[OBS] holds",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "ANNOTATED",
+   "surfaces": [
+    "CONFLICT-LEDGER.md"
+   ],
+   "note": "CONFLICT-LEDGER ERR-002 states the three layers (D18 annotation)",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-30",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-30",
+   "subject": "capability matrix points at the current classification",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "every family stays in G; classification and trace live in Q19 (D16)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "ANNOTATED",
+   "surfaces": [
+    "CAPABILITY-MATRIX.md"
+   ],
+   "note": "CAPABILITY-MATRIX.md carries no status by design; the D18 annotation points at Q19",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-31",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-31",
+   "subject": "Generic Sensor advisements and routing",
+   "traversal": {
+    "AUTHORITY_CHANGED": "D16: every Generic Sensor draft carries an advisement (FACT-SENSOR-FAMILY-ADVISEMENT)",
+    "CONSTRAINT": "n/a",
+    "FACT": "families stay in G with their D16 classifications",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "ANNOTATED",
+   "surfaces": [
+    "CONFLICT-LEDGER.md",
+    "docs/HANDOFF.md"
+   ],
+   "note": "CONFLICT-LEDGER OBS-004 extended (D18 annotation); choosing one routing (Generic Sensor vs Device Orientation and Motion) is an OWNER decision (docs/HANDOFF.md D-10)",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-32",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-32",
+   "subject": "stale worker claim",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-WB-001, CON-WB-002 unchanged",
+    "FACT": "'no fixture constructs a Worker' is false since D12 (P10 ran the kernel in a dedicated worker)",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D12-BROWSER-PERSISTENT",
+    "OLD_PROBE_SUFFICIENT": "the old claim had no probe; P10 is sufficient for construction, not for hardwareConcurrency",
+    "OLD_EVIDENCE_APPLICABLE": "EV-D12-P10 invalidates the old claim"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [],
+   "note": "INVALIDATED_BY EV-D12-P10; successor FACT-WORKERS-D18 [GAP] (hardwareConcurrency unread, no worker admission contract)",
+   "new_probe_obligation": "capability work (not D19): a worker admission contract and a hardwareConcurrency observation",
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-40",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-40",
+   "subject": "label LBL-01 (Chromium hook stated as standard)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "the mislabelled predicate belongs to FACT-SHARED-THREADS-UNADMITTED, now superseded (R-06)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [],
+   "note": "TRACEABILITY renders the old fact as [SUPERSEDED]; the current fact states standard and implementation apart",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-41",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-41",
+   "subject": "label LBL-06 (WebGPU switch set omitted, live handoff)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "docs/HANDOFF.md section 1 now names the headless shell, the unsafe WebGPU switches and SwiftShader's CPU fallback",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "text replaced in the live handoff",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-42",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-42",
+   "subject": "label LBL-07 (README historical status line)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "the README line is a historical quotation and stays verbatim; a D18 correction line follows it",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [
+    "README.md"
+   ],
+   "note": "correction note under the historical quotation",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-43",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-43",
+   "subject": "storage durability claim (D12 B-11)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-ST-001 (ledgered)",
+    "FACT": "persist() false is a property of the headless shell's permission manager (D17), not evidence about an installed Factory",
+    "IMPLEMENTATION_CONTRACT": "none",
+    "ENVIRONMENT": "ENV-D12-BROWSER-PERSISTENT = chromium-headless-shell 141 persistent profile",
+    "OLD_PROBE_SUFFICIENT": "sufficient for the headless shell; installed Chrome never observed",
+    "OLD_EVIDENCE_APPLICABLE": "applicable to the headless shell only"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [],
+   "note": "successor FACT-SH-STORAGE-DURABILITY-D18 [UNK]",
+   "new_probe_obligation": "needs an installed Chrome (not available here): [UNK] kept",
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-44",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-44",
+   "subject": "label LBL-10 (headless qualifier dropped, live boundary row)",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "the docs/HANDOFF.md B-11 row names the headless shell and the installed-Chrome [UNK]",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [
+    "docs/HANDOFF.md"
+   ],
+   "note": "text replaced in the live handoff",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-45",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-45",
+   "subject": "D12 facts name 'Chromium 141 persistent profile'",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "the facts hold; their required_environment wording omits the headless shell",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "ENV-D12-BROWSER-PERSISTENT already records HeadlessChrome/141.0.7390.37 and executable /opt/pw-browsers/chromium-1194",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "CORRECTED",
+   "surfaces": [],
+   "note": "read 'Chromium 141 persistent profile' as: chromium-headless-shell 141 (rev 1194) persistent profile via Playwright launchPersistentContext({headless:true})",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-46",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-46",
+   "subject": "label LBL-11",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "corrected reading attached to the 13 current facts (R-45); the fourteenth is superseded (R-43)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [],
+   "note": "TRACEABILITY shows the correction on each fact",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-47",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-47",
+   "subject": "labels LBL-12 and implementation pins not the version run",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "the D11 main-branch implementation authorities are superseded by authorities pinned to Chromium 141.0.7390.37 / V8 14.1.146.11 / SwiftShader 7cd1022 (R-48)",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "n/a",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "RESOLVED",
+   "surfaces": [],
+   "note": "AUTHORITY-REGISTER renders the old pins as SUPERSEDED",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-48",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-48",
+   "subject": "implementation authorities re-pinned to the versions run",
+   "traversal": {
+    "AUTHORITY_CHANGED": "D11 pinned chromium main 75d6f0c, v8 main 36de2a2, swiftshader master 1e80438; FactTest ran Chromium 141.0.7390.37 (9f043f63), V8 14.1.146.11 (ad8af0fc), SwiftShader 7cd1022 (D17)",
+    "CONSTRAINT": "CON-EM-002, CON-EM-006 keep their authority through the successors",
+    "FACT": "FACT-GPU-ADAPTER-SWIFTSHADER, FACT-HARDWARE-GPU-UNAVAILABLE, FACT-MEMORY64-DISCOVERED hold",
+    "IMPLEMENTATION_CONTRACT": "n/a",
+    "ENVIRONMENT": "Chromium 141 headless shell",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [],
+   "note": "successors: AUTH-IMPL-GPU-SWITCHES-141, AUTH-IMPL-GL-SWITCHES-141, AUTH-IMPL-CONTENT-SWITCHES-141 (D18 clause CL-IMP-GPU0), AUTH-IMPL-V8-WASM-FLAGS-141 (the memory64 flag lives in wasm-feature-flags.h at 14.1), AUTH-IMPL-SWIFTSHADER-README, AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141 (D18 clause CL-IMP-SSDOC)",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-49",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-49",
+   "subject": "kernel identity defined",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none",
+    "CONSTRAINT": "CON-EM-005, CON-EM-007 (ledgered)",
+    "FACT": "H-12: identity was declared per install name; D17 proved only the custom name section differs",
+    "IMPLEMENTATION_CONTRACT": "tests/toolchain/proof-sets.json exec_identity; tests/toolchain/proof.mjs kernel-identity checks the exec identity (whole-file sha256 informational)",
+    "ENVIRONMENT": "ENV-D17-TOOLCHAIN (rustc 6eeff9a52, both install names)",
+    "OLD_PROBE_SUFFICIENT": "yes: the D17 builds re-checked with the new rule (evidence/D18/kernel)",
+    "OLD_EVIDENCE_APPLICABLE": "yes"
+   },
+   "outcome": "SUPERSEDED",
+   "surfaces": [
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/proof.mjs"
+   ],
+   "note": "successor FACT-KERNEL-IDENTITY-DEFINED-D18 [RUN]; FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT gains its implementation contract",
+   "new_probe_obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity",
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-50",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-50",
+   "subject": "admission, planning and commissioning law",
+   "traversal": {
+    "AUTHORITY_CHANGED": "none (project law, no D14-D17 movement)",
+    "CONSTRAINT": "CON-FT-006 (ledgered)",
+    "FACT": "FACT-RESELECTION-NO-CODEGEN, FACT-WASM64-ADMITTED-E0, FACT-GPU-ADMITTED-E0 hold",
+    "IMPLEMENTATION_CONTRACT": "unchanged",
+    "ENVIRONMENT": "unchanged",
+    "OLD_PROBE_SUFFICIENT": "yes",
+    "OLD_EVIDENCE_APPLICABLE": "yes"
+   },
+   "outcome": "HOLDS",
+   "surfaces": [],
+   "note": "reviewed: no statement in RUNTIME-ADMISSION-REPLAN.md, PLANNER-COST-MODEL.md or the commissioning contracts conflicts with D14-D17",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
+  },
+  {
+   "id": "R-51",
+   "class": "RECONCILIATION",
+   "reconciliation_id": "R-51",
+   "subject": "evidence identity and implementation reality in the obligations and contracts",
+   "traversal": {
+    "AUTHORITY_CHANGED": "n/a",
+    "CONSTRAINT": "n/a",
+    "FACT": "n/a",
+    "IMPLEMENTATION_CONTRACT": "IMPLEMENTATION-CONTRACTS.md: WebGPU on Linux is implementation-gated, persist() cannot succeed in the headless shell, kernel identity is install-name independent",
+    "ENVIRONMENT": "every browser fact came from chromium-headless-shell",
+    "OLD_PROBE_SUFFICIENT": "n/a",
+    "OLD_EVIDENCE_APPLICABLE": "n/a"
+   },
+   "outcome": "ANNOTATED",
+   "surfaces": [
+    "EVIDENCE-OBLIGATIONS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "REFERENCE-AUTHORITY.md",
+    "STATION-REGISTRY.md"
+   ],
+   "note": "EVIDENCE-OBLIGATIONS and IMPLEMENTATION-CONTRACTS carry D18 annotations (D18 annotation); REFERENCE-AUTHORITY states the current authority model",
+   "new_probe_obligation": null,
+   "owner": "tests/reconcile/d18-reconciliation.json (reviewed; D18)",
+   "introduced_in": "D18"
   }
  ],
  "edges": [
@@ -38761,6 +40118,1564 @@
    "from": "IB-PLATFORM-SURFACES-UNOBSERVED",
    "to": "CON-FT-002",
    "relation": "every family stays in G regardless of platform"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-CLAUSE-EXTRACT",
+   "to": "EV-D18-CLAUSES-SUMMARY"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D18-CLAUSES-VERIFIED",
+   "to": "PROBE-CLAUSE-EXTRACT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D18-CLAUSES-VERIFIED",
+   "to": "EV-D18-CLAUSES-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D18-CLAUSES-VERIFIED",
+   "to": "ENV-D18-HOST"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D18-CLAUSES-VERIFIED",
+   "to": "ENV-D18-HOST",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any clause source tip moves with the clause window changed"
+   }
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU0",
+   "to": "AUTH-IMPL-CONTENT-SWITCHES-141"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU0",
+   "to": "EV-D18-CL-IMP-GPU0"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-IMP-GPU0",
+   "to": "CON-EM-006"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-SSDOC",
+   "to": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-SSDOC",
+   "to": "EV-D18-CL-IMP-SSDOC"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-IMP-SSDOC",
+   "to": "CON-EM-006"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-IMP-SSDOC",
+   "to": "CON-EM-002"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-01",
+   "to": "FACT-FF-ONLY-INTEGRATION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-02",
+   "to": "FACT-WORKPIECE-ISOLATION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-03",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-04",
+   "to": "FACT-WASM64-ABI-EXEC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-04",
+   "to": "FACT-WASM64-ADMITTED-E0"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-04",
+   "to": "FACT-WASM64-MODULE-I64"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-05",
+   "to": "FACT-STREAMING-UNPROBED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-06",
+   "to": "FACT-SHARED-THREADS-UNADMITTED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-10",
+   "to": "AUTH-WASM-JSAPI-STORAGE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-11",
+   "to": "AUTH-WASM-WEBAPI-STREAMING"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-12",
+   "to": "AUTH-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-12",
+   "to": "AUTH-RUSTC-WASM64-TARGET-SPEC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-13",
+   "to": "AUTH-GIT-REPO-LAYOUT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-14",
+   "to": "AUTH-PLAYWRIGHT-INSTALLED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-15",
+   "to": "AUTH-WASM-THREADS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-15",
+   "to": "AUTH-WASM-SET"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-16",
+   "to": "LAW-EVIDENCE-OBLIGATIONS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-16",
+   "to": "LAW-FACTORY-CONTRACTS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-COMPRESSION-ZLIB"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-FS-OPFS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-GIT-OBJECT-FORMAT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-GIT-UPDATE-REF-CAS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-HTML-SANDBOX-ORIGIN"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-IDB-TRANSACTION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-MANIFEST-INSTALLABLE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-STORAGE-BUCKET-MODE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-SW-INSTALL-FAILED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-SW-REGISTER-TRUST"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-SW-SANDBOX-NO-CONTROLLER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-SW-UPDATE-BYPASS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-WEB-LOCKS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-WEBCRYPTO-DIGEST"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-17",
+   "to": "AUTH-WASM-CORE-CHANGES-64"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-18",
+   "to": "FACT-PUBLISHED-FRONTIER-UNVERIFIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-18",
+   "to": "FACT-AUTHORITY-REOPEN-DENIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-CARGO-BUILD-STD"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-GLOSSARY-COMMIT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-REPO-LAYOUT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-REVISIONS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-WORKTREE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-OBJECT-FORMAT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-UPDATE-REF-CAS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-PACK-FORMAT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-SHA256-TRANSITION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-GIT-MKTREE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-19",
+   "to": "AUTH-RUST-REF-NOSTD"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-20",
+   "to": "AUTH-RUSTC-WASM64-DOC-D18"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-20",
+   "to": "AUTH-WASM-CORE-CHANGES-64"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-EM-001"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-EM-002"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-EM-003"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-EM-004"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-EM-005"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-EM-006"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-EM-007"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-FT-004"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-FT-005"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-FT-006"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-FT-007"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-WA-006"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-SEC-002"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-PP-001"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-SW-001"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-ST-001"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-GIT-001"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-CAP-001"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-21",
+   "to": "CON-CAP-002"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-22",
+   "to": "FACT-GIT-TREE-ORDER-UNDOCUMENTED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-PROOF-SETS-DECLARED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-TOOLCHAIN-PINNED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-D15-CLAUSES-VERIFIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-D16-CLAUSES-VERIFIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-D17-CLAUSES-VERIFIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-FRONTIER-SOURCES-AT-PIN"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-HANDOFF-MODEL-INDEPENDENT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-RESELECTION-NO-CODEGEN"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-STATUS-INVENTORIED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-23",
+   "to": "FACT-SURFACES-LITERAL-ENFORCED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-24",
+   "to": "FACT-SAB-GLOBAL-HOST-DEFINED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-CPU-WASM64"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-WORKER-DEDICATED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-WASM-SHARED-THREADS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-WEBGPU"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-WEBNN"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-WEBCODECS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-CAMERA"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-MICROPHONE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-GENERIC-SENSOR"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-ACCELEROMETER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-GYROSCOPE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-MAGNETOMETER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-ORIENTATION-SENSOR"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-DEVICE-ORIENTATION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-PROXIMITY"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-AMBIENT-LIGHT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-GEOLOCATION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-XR"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-FETCH"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-STORAGE-QUOTA"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-OPFS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-INDEXEDDB"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-CACHESTORAGE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-SERVICE-WORKER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-MANIFEST"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-SECURE-CONTEXT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-PERMISSIONS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-PERMISSIONS-POLICY"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-HID"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-USB"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-SERIAL"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-BLUETOOTH"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-30",
+   "to": "CAP-FUTURE-EXPLICIT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-GENERIC-SENSOR"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-ACCELEROMETER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-GYROSCOPE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-MAGNETOMETER"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-ORIENTATION-SENSOR"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-PROXIMITY"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-AMBIENT-LIGHT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "CAP-DEVICE-ORIENTATION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-31",
+   "to": "FACT-SENSOR-FAMILY-ADVISEMENT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-32",
+   "to": "FACT-WORKERS-UNPROBED"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-40",
+   "to": "FACT-LBL-01"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-41",
+   "to": "FACT-LBL-06"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-42",
+   "to": "FACT-LBL-07"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-43",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-44",
+   "to": "FACT-LBL-10"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-GENERATED-OFFLINE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-SW-NO-SELF-UPDATE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-ORIGIN-SCOPED-STORAGE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-OPFS-SERVED-APP"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-SW-GRANTS-COI"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-IDB-CAS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-OPAQUE-CONFINEMENT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-GIT-IDENTITY"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-KERNEL-WORKER-PARTIAL"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-BROKEN-SEED-FATAL"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-INTERRUPTED-UPDATE"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-SH-BROKER-FED-GENERATION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-45",
+   "to": "FACT-OPAQUE-FRAME-SECURE-CONTEXT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-46",
+   "to": "FACT-LBL-11"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-47",
+   "to": "FACT-LBL-12"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-47",
+   "to": "FACT-IMPL-PINS-NOT-RUNNING-VERSION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-48",
+   "to": "AUTH-CHROMIUM-GPU-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-48",
+   "to": "AUTH-CHROMIUM-GL-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-48",
+   "to": "AUTH-CHROMIUM-CONTENT-SWITCHES"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-48",
+   "to": "AUTH-V8-FLAGS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-48",
+   "to": "AUTH-SWIFTSHADER-README"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-48",
+   "to": "AUTH-CHROMIUM-SWIFTSHADER-DOC"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-49",
+   "to": "FACT-KERNEL-IDENTITY-INSTALL-PATH"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-49",
+   "to": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-50",
+   "to": "LAW-RUNTIME-ADMISSION"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-50",
+   "to": "LAW-PLANNER-COST-MODEL"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-50",
+   "to": "LAW-PASS6-COMMISSIONING"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-51",
+   "to": "LAW-EVIDENCE-OBLIGATIONS"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-51",
+   "to": "IB-PLAYWRIGHT-HEADLESS-SHELL"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-51",
+   "to": "IB-GPU-LINUX-SERVICE-OFF"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-51",
+   "to": "IB-HEADLESS-PERMISSIONS-ASK"
+  },
+  {
+   "type": "RECONCILES",
+   "from": "R-51",
+   "to": "IB-KERNEL-NAME-SECTION-HASH"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "to": "AUTH-WASM-JSAPI-STORAGE",
+   "reconciliation": "R-10"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-WASM-WEBAPI-STREAMING-D18",
+   "to": "AUTH-WASM-WEBAPI-STREAMING",
+   "reconciliation": "R-11"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "AUTH-RUSTC-WASM64-DOC",
+   "reconciliation": "R-12"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+   "to": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "reconciliation": "R-12"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+   "to": "AUTH-PLAYWRIGHT-INSTALLED",
+   "reconciliation": "R-14"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-IMPL-GPU-SWITCHES-141",
+   "to": "AUTH-CHROMIUM-GPU-SWITCHES",
+   "reconciliation": "R-48"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-IMPL-GL-SWITCHES-141",
+   "to": "AUTH-CHROMIUM-GL-SWITCHES",
+   "reconciliation": "R-48"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "to": "AUTH-CHROMIUM-CONTENT-SWITCHES",
+   "reconciliation": "R-48"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-IMPL-V8-WASM-FLAGS-141",
+   "to": "AUTH-V8-FLAGS",
+   "reconciliation": "R-48"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-IMPL-SWIFTSHADER-README",
+   "to": "AUTH-SWIFTSHADER-README",
+   "reconciliation": "R-48"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "to": "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+   "reconciliation": "R-48"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "to": "FACT-SHARED-THREADS-UNADMITTED",
+   "reconciliation": "R-06"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-WORKERS-D18",
+   "to": "FACT-WORKERS-UNPROBED",
+   "reconciliation": "R-32"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-SH-STORAGE-DURABILITY-D18",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT",
+   "reconciliation": "R-43"
+  },
+  {
+   "type": "SUPERSEDES",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-FF-ONLY-INTEGRATION",
+   "to": "ENV-D11-HOST",
+   "condition": {
+    "dimension": "host_runtime.git_version",
+    "relation": "changes (commit-object and ref compare-and-set semantics), or IMPL-FACTORY-OPS changes the integrate rule"
+   },
+   "reconciliation": "R-01"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T4",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "reconciliation": "R-06"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T6",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "reconciliation": "R-06"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER",
+   "reconciliation": "R-14"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CARGO-BUILD-STD",
+   "to": "CON-EM-007",
+   "reconciliation": "R-23"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "LAW-EVIDENCE-OBLIGATIONS",
+   "to": "CON-EM-007",
+   "reconciliation": "R-23"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "LAW-FACTORY-CONTRACTS",
+   "to": "CON-FT-007",
+   "reconciliation": "R-23"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-PROOF-SETS-DECLARED",
+   "to": "IMPL-QUALIFIED-PROOF",
+   "reconciliation": "R-23"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-TOOLCHAIN-PINNED",
+   "to": "IMPL-QUALIFIED-PROOF",
+   "reconciliation": "R-23"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-PROOF-SETS-DECLARED",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "repository.workspace_members",
+    "relation": "a workspace member or default-members changes"
+   },
+   "reconciliation": "R-23"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-WORKERS-D18",
+   "to": "PROBE-SH-P10",
+   "reconciliation": "R-32"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-WORKERS-D18",
+   "to": "EV-D12-P10",
+   "reconciliation": "R-32"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-WORKERS-D18",
+   "to": "ENV-D12-BROWSER-PERSISTENT",
+   "reconciliation": "R-32"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WORKERS-D18",
+   "to": "ENV-D12-BROWSER-PERSISTENT",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "changes"
+   },
+   "reconciliation": "R-32"
+  },
+  {
+   "type": "INVALIDATED_BY",
+   "from": "FACT-WORKERS-UNPROBED",
+   "to": "EV-D12-P10",
+   "reconciliation": "R-32"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "EV-D17-KERNEL-SECTIONS",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "EV-D18-KERNEL-IDENTITY-A",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "EV-D18-KERNEL-IDENTITY-B",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "ENV-D17-TOOLCHAIN",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "ENV-D17-TOOLCHAIN",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile changes the exec sections"
+   },
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "IMPL-QUALIFIED-PROOF",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "IMPL-QUALIFIED-PROOF",
+   "reconciliation": "R-49"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "to": "CON-IC-WASM_SHARED_THREADS"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "to": "CON-WA-005"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "CONFLICTS_WITH",
+   "from": "AUTH-WASM-JSAPI-STORAGE-D18",
+   "to": "AUTH-WASM-THREADS",
+   "conflict_id": "ERR-002",
+   "note": "agent-local JS embedding vs proposal shared memory"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-WEBAPI-STREAMING-D18",
+   "to": "CON-WA-004"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-WEBAPI-STREAMING-D18",
+   "to": "FACT-STREAMING-UNPROBED"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "CON-EM-004"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "CON-IC-CPU_WASM64"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "CON-RS-003"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "FACT-WASM64-MODULE-I64"
+  },
+  {
+   "type": "CONFLICTS_WITH",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "AUTH-WASM-CORE-CHANGES-64",
+   "conflict_id": "ERR-001",
+   "note": "rustc prose 'not standardized' vs Core Release 3.0 64-bit address space; bounded by the authority split (CON-RS-003)"
+  },
+  {
+   "type": "DEPENDS_ON",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "AUTH-CARGO-BUILD-STD"
+  },
+  {
+   "type": "DEPENDS_ON",
+   "from": "AUTH-RUSTC-WASM64-DOC-D18",
+   "to": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+   "to": "CON-EM-004"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-RUSTC-WASM64-TARGET-SPEC-D18",
+   "to": "FACT-WASM64-ABI-EXEC"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-GPU-SWITCHES-141",
+   "to": "CON-EM-006"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-GPU-SWITCHES-141",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-GL-SWITCHES-141",
+   "to": "CON-EM-006"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-GL-SWITCHES-141",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "DEPENDS_ON",
+   "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "to": "AUTH-IMPL-GL-SWITCHES-141"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "to": "CON-EM-006"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-V8-WASM-FLAGS-141",
+   "to": "FACT-MEMORY64-DISCOVERED"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-SWIFTSHADER-README",
+   "to": "CON-EM-002"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-SWIFTSHADER-README",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "DEPENDS_ON",
+   "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "to": "AUTH-IMPL-SWIFTSHADER-README"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "to": "CON-EM-006"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "CONFLICTS_WITH",
+   "from": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "to": "AUTH-GPU-FALLBACK-ADAPTER",
+   "conflict_id": "OBS-D11-1",
+   "note": "implementation doc says SwiftShader is a WebGL/GL fallback 'not intended for untrusted content'; the specification defines fallback adapters abstractly; neither says the SwiftShader WebGPU path is a hardware adapter"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-COI",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-WASM-THREADS",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "to": "EV-D11-BROWSER-GPUFLAGS",
+   "note": "presence of SharedArrayBuffer/crossOriginIsolated only"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "to": "PROBE-BROWSER-IDENTITY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-IC-WASM_SHARED_THREADS",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-WA-005",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-T1",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "WITNESSED_BY",
+   "from": "CAP-WASM-SHARED-THREADS",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "FACT-SHARED-THREADS-UNADMITTED-D18"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-HWCONCURRENCY",
+   "to": "FACT-WORKERS-D18"
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-HTML-WORKERS",
+   "to": "FACT-WORKERS-D18"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-IC-WORKER_DEDICATED",
+   "to": "FACT-WORKERS-D18"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-WB-001",
+   "to": "FACT-WORKERS-D18"
+  },
+  {
+   "type": "WITNESSED_BY",
+   "from": "CAP-WORKER-DEDICATED",
+   "to": "FACT-WORKERS-D18"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-SH-STORAGE-DURABILITY-D18",
+   "to": "PROBE-SH-P07"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-SH-STORAGE-DURABILITY-D18",
+   "to": "EV-D12-P07"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-SH-STORAGE-DURABILITY-D18",
+   "to": "ENV-D12-BROWSER-PERSISTENT",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-SH-STORAGE-DURABILITY-D18",
+   "to": "ENV-D12-BROWSER-PERSISTENT",
+   "condition": {
+    "dimension": "browser.revision",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-STORAGE-BUCKET-MODE",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST1",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST2",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "GROUNDS",
+   "from": "CL-ST3",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "CON-ST-001",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "WITNESSED_BY",
+   "from": "CAP-STORAGE-QUOTA",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-CHROME-DURABLE-STORAGE",
+   "to": "FACT-SH-STORAGE-DURABILITY-D18"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "PROBE-QUALIFIED-PROOF"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "EV-D13-KERNEL-IDENTITY"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "to": "ENV-D13-HOST-PINNED",
+   "condition": {
+    "dimension": "toolchain.nightly.install_name",
+    "relation": "changes (build-std hashes the rust-src path)"
+   }
+  },
+  {
+   "type": "AUTHORIZES",
+   "from": "AUTH-CARGO-BUILD-STD",
+   "to": "FACT-KERNEL-IDENTITY-DEFINED-D18"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "FACT-KERNEL-IDENTITY-DEFINED-D18"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-EM-001",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-001",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-EM-002",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-002",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-EM-003",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-003",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-EM-004",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-004",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-EM-005",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-005",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-EM-006",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-006",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-EM-007",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-EM-007",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-FT-004",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-004",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-FT-005",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-005",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-FT-006",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-006",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-FT-007",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-FT-007",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-WA-006",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-WA-006",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-SEC-002",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-SEC-002",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-PP-001",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-PP-001",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-SW-001",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-SW-001",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-ST-001",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-ST-001",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-GIT-001",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-GIT-001",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-CAP-001",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-CAP-001",
+   "reconciliation": "R-21"
+  },
+  {
+   "type": "LEDGERED_IN",
+   "from": "CON-CAP-002",
+   "to": "LAW-CONSTRAINT-LEDGER",
+   "locator": "CONSTRAINT-LEDGER.md D18 ANNOTATION (constraints ledgered): CON-CAP-002",
+   "reconciliation": "R-21"
   }
  ],
  "epochs": [
@@ -38842,7 +41757,21 @@
     "RELATES_TO_STANDARD",
     "EXPLAINS"
    ]
+  },
+  {
+   "epoch": "D18",
+   "delta": "D18-REPO-RECONCILIATION",
+   "commit": "715ac92d327f5f2677fd7c0b067fa843da6323c4 (canonical base; integration commit in LEDGER AFTER)",
+   "summary": "36 reconciliations (HOLDS 8, OPEN 5, SUPERSEDED 9, ANNOTATED 6, LEDGERED 1, RESOLVED 6, CORRECTED 1); 15 supersessions (61 inherited edges); 19 constraints ledgered; 2 clauses",
+   "nodes_added": 56,
+   "edges_added": 288,
+   "declares": [
+    "RECONCILIATION",
+    "RECONCILES",
+    "SUPERSEDES",
+    "LEDGERED_IN"
+   ]
   }
  ],
- "current_epoch": "D17"
+ "current_epoch": "D18"
 }

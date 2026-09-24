@@ -1,0 +1,35 @@
+{
+  "fixture_id": "F8-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "Factory evidence of F2-F7"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md",
+    "docs/HANDOFF.md",
+    "factory/receipts/D18-REPO-RECONCILIATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "O=design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md; for k in P1 P2 P3 P4 P5 P6 P7 Q21 R-49 FACT-KERNEL-IDENTITY-DEFINED-D18 LEDGERED_IN D19-REPROVE-REOBSERVE; do grep -q \"$k\" $O || { echo missing $k; exit 1; }; done; grep -q '^GATE: PASS' $O && grep -q 'D18-REPO-RECONCILIATION' docs/HANDOFF.md"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F8-observed.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18-REPO-RECONCILIATION"
+}

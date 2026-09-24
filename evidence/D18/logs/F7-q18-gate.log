@@ -1,0 +1,5 @@
+$ sh -c node -e 'const a=JSON.parse(require("fs").readFileSync("evidence/D18/envmap/queries/Q18.json")).answers;const c={};let bad=0;for(const x of a){const t=x.terminal||"";const k=t.startsWith("[SUPERSEDED]")?"SUPERSEDED":t.startsWith("[RESOLVED]")?"RESOLVED":x.status==="RUN"?(t==="COMPLETE"?"RUN COMPLETE":t.startsWith("stops at ")?"RUN "+t.split(":")[0]:"BAD"):(t.startsWith("["+x.status+"]")?"TERMINAL "+x.status:"BAD");if(k==="BAD"){bad++;console.log("BAD",x.fact)}c[k]=(c[k]||0)+1}console.log(a.length+" claims",JSON.stringify(c));if(bad||!c["RUN COMPLETE"])process.exit(1)'
+(cwd .)
+120 claims {"TERMINAL UNK":5,"TERMINAL OBS":43,"RUN stops at IMPLEMENTATION CONTRACT":17,"RUN COMPLETE":20,"RUN stops at CURRENT AUTHORITY":5,"TERMINAL ERR":4,"TERMINAL GAP":10,"RUN stops at EXACT CLAUSE":4,"RESOLVED":7,"SUPERSEDED":4,"RUN stops at PROJECT CONSTRAINT":1}
+
+[exit 0] expected 0

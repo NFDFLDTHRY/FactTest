@@ -1,0 +1,36 @@
+{
+  "fixture_id": "F5-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "D18 section 4"
+  ],
+  "narrowed_may_change": [
+    "README.md",
+    "docs/HANDOFF.md",
+    "factory/receipts/D18-REPO-RECONCILIATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && sh tests/hygiene/handoff-check.sh $T/handoff.json && grep -q 'last delta         D18-REPO-RECONCILIATION' docs/HANDOFF.md && grep -q 'D19-REPROVE-REOBSERVE' docs/HANDOFF.md && grep -q 'Resolved by D18-REPO-RECONCILIATION' docs/HANDOFF.md && grep -q 'D18 correction (label audit LBL-07)' README.md && grep -qF '(SwiftShader WebGPU + wasm64 in Chromium 141)' README.md"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F5-handoff.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "README.md",
+    "docs/HANDOFF.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18-REPO-RECONCILIATION"
+}

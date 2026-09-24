@@ -227,3 +227,29 @@ Q20                     per behaviour: implementation layer, standard layer, run
 tools                   tests/implementation/{reality.json, label-audit.json, label-audit.mjs, build-kernels.sh,
                         wasm-sections.mjs, build-reality.mjs, gate.mjs}
 ```
+
+## 11. Reconciliation and the current model (D18)
+
+```text
+RECONCILIATION          one re-examination: reconciliation_id, subject, traversal {AUTHORITY_CHANGED, CONSTRAINT, FACT,
+                        IMPLEMENTATION_CONTRACT, ENVIRONMENT, OLD_PROBE_SUFFICIENT, OLD_EVIDENCE_APPLICABLE}, outcome
+                        (HOLDS | SUPERSEDED | RESOLVED | CORRECTED | LEDGERED | ANNOTATED | OPEN), surfaces, note,
+                        new_probe_obligation.  The class declaration carries both vocabularies.  Declared by epoch D18.
+RECONCILES              RECONCILIATION -> any node it re-examined
+SUPERSEDES              successor -> superseded (AUTHORITY or COMPUTATIONAL_FACT, same class) + reconciliation; the
+                        superseded node stays as history; the declaration lists the inheritable edge types per class and
+                        direction, and the successor carries each such edge with both endpoints mapped to current nodes
+LEDGERED_IN             CONSTRAINT (ledger_status PROPOSED on the node) -> project-law AUTHORITY + locator, reconciliation
+current                 a node is current unless superseded; RESOLVED closes a non-RUN fact record; CORRECTED attaches
+                        the current reading of a wording
+validate                + reconciliation_vocabulary, reconciliation_has_subject, resolved_only_non_run_facts,
+                        supersession_well_formed, successor_carries_inherited_edges, ledgered_constraints_well_formed,
+                        stale_facts_reconciled
+Q17                     a claim introduced at or after a revision's epoch is not made stale by it; with reconciliations:
+                        reconciled_by / current_authority per movement, facts_reconciled, facts_open
+Q18                     authority steps use current authorities; terminal [SUPERSEDED] by X / [RESOLVED]; reconciled_by
+Q19, Q20                current witnesses / explained facts only; Q02, Q09 mark superseded_by
+Q21                     reconciliation traversal, current model, new probe obligations
+tools                   tests/reconcile/{d18-reconciliation.json, surfaces.json, build-reconciliation.mjs, surfaces.mjs,
+                        gate.mjs, stage-audit.mjs}
+```

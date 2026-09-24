@@ -1,0 +1,11 @@
+$ node tests/reconcile/stage-audit.mjs /home/user/factory-workpieces --repo /home/user/FactTest --rev 715ac92d327f5f2677fd7c0b067fa843da6323c4 --current W20-stage --out evidence/D18/workpieces/stages.json
+(cwd .)
+KEEP       W11-stage 813 files, 2 not in history
+KEEP       W14-stage 962 files, 3 not in history
+SUPERSEDED W16-stage 1132 files, 0 not in history
+SUPERSEDED W17-stage 1269 files, 0 not in history
+SUPERSEDED W18-stage 1467 files, 0 not in history
+SUPERSEDED W19-stage 1674 files, 0 not in history
+CURRENT    W20-stage
+
+[exit 0] expected 0

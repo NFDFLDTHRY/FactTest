@@ -1,0 +1,140 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D18-REPO-RECONCILIATION-F4-annotate-owner",
+  "station_id": "S-ANNOTATE-OWNER",
+  "station_version": "1",
+  "fixture_id": "F4-annotate-owner",
+  "workpiece_id": "W20",
+  "delta_id": "D18-REPO-RECONCILIATION",
+  "canonical_base": "715ac92d327f5f2677fd7c0b067fa843da6323c4",
+  "input_artifacts": [
+    "D18 section 3"
+  ],
+  "open_tree": "6704a947babc93c303db64759f61d7447c839094",
+  "close_tree": "5bef39bdcf2760ea2fbf00cffa0c30e508ef6a5d",
+  "changed_paths": [
+    "BOOTSTRAP-TESTS.md",
+    "CAPABILITY-MATRIX.md",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F4-annotate-owner.log"
+  ],
+  "output_artifacts": [
+    "CAPABILITY-MATRIX.md",
+    "BOOTSTRAP-TESTS.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-ANNOTATE-OWNER v1 (workpiece-bootstrap)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D18-REPO-RECONCILIATION"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "LAW_ANNOTATION"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D18-REPO-RECONCILIATION/logs/F4-annotate-owner.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md; do n=$(git diff --numstat 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f); a=$(echo \"$n\" | cut -f1); d=$(echo \"$n\" | cut -f2); [ -n \"$a\" ] && [ \"$a\" -gt 0 ] && [ \"$d\" = 0 ] || { echo \"$f: numstat '$n'\"; exit 1; }; git diff -U0 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f | awk -v f=$f '/^@@/{h=1;next} /^\\+\\+\\+/{next} /^\\+/{if(h){l=substr($0,2); if(l ~ /[^ ]/){ if(index(l,\"D18 ANNOTATION\")!=1){print f\": hunk begins \" l; bad=1} h=0 }}} END{exit bad}' || exit 1; echo \"$f +$a -0\"; done; git diff --exit-code 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- FACTORY-LAW.md && [ $(git show 715ac92d327f5f2677fd7c0b067fa843da6323c4:CAPABILITY-MATRIX.md | grep -c '^|') -eq $(grep -c '^|' CAPABILITY-MATRIX.md) ] && echo 'G rows unchanged'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D18-REPO-RECONCILIATION/logs/F4-annotate-owner.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:CAPABILITY-MATRIX.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:BOOTSTRAP-TESTS.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F4-annotate-owner.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T09:55:36Z",
+  "status": "PASS"
+}

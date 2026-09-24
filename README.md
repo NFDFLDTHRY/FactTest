@@ -58,8 +58,12 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
 
 - Former status line (M9, historical): "MATERIALIZED THROUGH THE FACTORY - BYTE RELAY PHYSICALLY COMMISSIONED
   (SwiftShader WebGPU + wasm64 in Chromium 141)".
+  D18 correction (label audit LBL-07): the WebGPU in that line is SwiftShader's CPU fallback adapter under the unsafe
+  WebGPU switch set in the Chromium 141 headless shell (chromium-headless-shell rev 1194), plus wasm64; no hardware GPU
+  and no installed Chrome was ever observed.
 - The original materialization session (historical) was bootstrapped by
   [FABLE-ASCII-SYSTEM-PROMPT.md](FABLE-ASCII-SYSTEM-PROMPT.md), the Fable 5.1 session bootloader (historical; kept
   unchanged apart from its D13 HISTORICAL banner).  It is not the entry for new work.
 - Later deltas: D9 Rust/Cargo proof harness, D10-D11 computational environment map, D12 self-hosting architecture,
-  D13 repository hygiene (see the ledger).
+  D13 repository hygiene, D14-D19 technical reference review series (D14 authority frontier, D15 foundational clauses,
+  D16 capability universe, D17 implementation reality, D18 repository reconciliation; see the ledger).

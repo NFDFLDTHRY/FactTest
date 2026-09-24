@@ -715,4 +715,37 @@ BEFORE
   absences explained); Q18 14 COMPLETE of 45 RUN claims; Q20 19 behaviours.
 
 AFTER
+- RESULT: integrated as 715ac92d327f5f2677fd7c0b067fa843da6323c4 (ff-only from e4e2103) after two repairs.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-build F4-doc F5-evidence F7-fixture F8-build F9-doc PASS (format 2); F3's first
+  close FAILED (label-audit.mjs wrote into a missing directory; tool fixed, F1 and F3 re-run); the first verify FAILED
+  no_unreceipted_change on 14 paths (re-run receipts cover only their last run) and was repaired with new fixtures
+  F7/F8/F9 after restoring the paths to base; F7's first run FAILED on a copied regression command (restored, corrected).
+  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree b6590cd7; epochs/D17.json rebuilt
+  byte-identically from the committed clause, kernel and label evidence; implementation gate re-run PASS).  Pushed.
+- OBSERVED: D17-OBSERVED-IMPLEMENTATION-REALITY.md - P1-P7 MATCH; drawing counted 29 source documents for 28 [ERR,
+  editorial]; ROUTE DIFFER (repairs).  Procedure rule: repair with a new fixture, never re-run one (docs/HANDOFF.md).
+- (recorded by D18-REPO-RECONCILIATION, the next delta.)
+
+---
+
+## D18-REPO-RECONCILIATION  (pass 5 of 6: given D14-D17, what must change inside the current FactTest model?)
+
+BEFORE
+- DELTA: D18-REPO-RECONCILIATION (factory/deltas/D18.json), workpiece W20, base 715ac92.
+- ASCII: design/materialization/D18-INTENDED-REPO-RECONCILIATION.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F5, F6, F8), S-FIXTURE (F1), S-BUILD (F2 clauses + kernel identity + stage audit), S-ANNOTATE
+  (F3), S-ANNOTATE-OWNER (F4; bootstrap registry material of this delta), S-EVIDENCE (F7).
+- CHANGE: tests/reconcile/ (register, surfaces, epoch builder, surface check, gate, stage audit), tests/envmap/envmap.mjs
+  (current model, reconciliation checks, Q21), tests/toolchain/{proof.mjs, proof-sets.json} (exec identity),
+  tests/reference/d18-clauses.json, insertion-only D18 annotations in REFERENCE-AUTHORITY, CONSTRAINT-LEDGER (incl. the
+  19 ledgered constraints), CONFLICT-LEDGER, EVIDENCE-OBLIGATIONS, IMPLEMENTATION-CONTRACTS, STATION-REGISTRY,
+  CAPABILITY-MATRIX, BOOTSTRAP-TESTS; README.md (correction line), docs/HANDOFF.md; evidence/D18/; design/environment-map/
+  (epoch D18, merged graph, views, SCHEMA section 11, ENVIRONMENT-MAP section 10); D18 records, this ledger.
+  FORBIDDEN: FACTORY-LAW.md, compiler/, host/, factory/src, fixtures/, earlier epochs and D0-D17 evidence, every other
+  law and pass document.
+- PREDICTED: 2/2 clauses VERIFIED; exec identity PASS on both D17 builds; 36 reconciliations, 15 supersessions (61
+  inherited edges), 19 constraints ledgered; epoch 56 nodes / 288 edges; merged 1098 / 2394; validate 42 PASS; surfaces
+  35 PASS; gate PASS; Q18 20 COMPLETE of 47 current RUN claims; Q21 109 current facts.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

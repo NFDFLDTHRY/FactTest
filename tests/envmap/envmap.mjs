@@ -27,6 +27,14 @@
 // D17 (implementation reality): IMPLEMENTATION_BEHAVIOR nodes keep three layers apart and connected - SOURCED_BY only
 //   implementation-class clauses, RELATES_TO_STANDARD only standard clauses or constraints, EXPLAINS observed facts; the
 //   vocabularies come from the class declaration in the graph.  Q20 lists every behaviour with its three layers.
+// D18 (reconciliation): the CURRENT model.  A node is current unless a SUPERSEDES edge (successor -> superseded, same
+//   class, naming its RECONCILIATION) points at it; the superseded node stays as history and the successor carries
+//   every inheritable edge (declared on SUPERSEDES) mapped through supersession.  RECONCILIATION nodes record what was
+//   re-examined (RECONCILES) along AUTHORITY CHANGED -> CONSTRAINT -> FACT -> IMPLEMENTATION CONTRACT -> ENVIRONMENT ->
+//   OLD PROBE SUFFICIENT? -> OLD EVIDENCE APPLICABLE? and the outcome (vocabulary declared on the class); LEDGERED_IN
+//   records a PROPOSED constraint entered into a project-law ledger.  Queries and renders show the current view
+//   (superseded authorities leave the Q18 authority steps; superseded or RESOLVED facts terminate as such); Q21 answers
+//   the reconciliation.  Graphs without these edges and nodes answer, validate and render exactly as before.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -48,6 +56,12 @@ function byId(g) { const m = new Map(); for (const n of g.nodes) m.set(n.id, n);
 function out(g, id, type) { return g.edges.filter(e => e.from === id && (!type || e.type === type)); }
 function inc(g, id, type) { return g.edges.filter(e => e.to === id && (!type || e.type === type)); }
 const sortIds = a => [...new Set(a)].sort();
+const SUP = new WeakMap();
+function supMap(g) { if (!SUP.has(g)) { const m = new Map(); for (const e of g.edges) if (e.type === 'SUPERSEDES') m.set(e.to, { by: e.from, reconciliation: e.reconciliation }); SUP.set(g, m); } return SUP.get(g); }
+const supersededBy = (g, id) => supMap(g).get(id) || null;
+const isCurrent = (g, id) => !supMap(g).has(id);
+function currentOf(g, id) { let x = id; const seen = new Set(); while (supMap(g).has(x) && !seen.has(x)) { seen.add(x); x = supMap(g).get(x).by; } return x; }
+function reconciliationsOf(g, ids, id) { return inc(g, id, 'RECONCILES').map(e => ids.get(e.from)).filter(Boolean).sort((a, b) => a.id.localeCompare(b.id)); }
 
 // ------------------------------------------------------------------------------------------------ validate
 function validate(g) {
@@ -154,6 +168,41 @@ function validate(g) {
     const badStd = behs.filter(b => out(g, b.id, 'RELATES_TO_STANDARD').some(e => ids.get(e.to).class === 'CLAUSE' && implClasses.includes(clsOf(e.to))));
     add('behavior_standard_is_not_implementation', badStd.length ? 'FAIL' : 'PASS', badStd.map(b => b.id).join(' ') || 'no behaviour cites an implementation source as standards law');
   }
+  const recs = g.nodes.filter(n => n.class === 'RECONCILIATION');
+  if (recs.length) {
+    const decl = (g.node_classes || {}).RECONCILIATION || {};
+    const steps = decl.traversal_steps || [];
+    const badR = recs.filter(r => !(decl.outcome_vocabulary || []).includes(r.outcome) || !r.traversal || steps.some(x => !(x in r.traversal)));
+    add('reconciliation_vocabulary', badR.length ? 'FAIL' : 'PASS', badR.map(r => r.id).join(' ') || `${recs.length} reconciliations; every traversal step answered`);
+    const noSubj = recs.filter(r => !out(g, r.id, 'RECONCILES').length);
+    add('reconciliation_has_subject', noSubj.length ? 'FAIL' : 'PASS', noSubj.map(r => r.id).join(' ') || 'every reconciliation re-examines at least one node');
+    const resolvedRun = recs.filter(r => r.outcome === 'RESOLVED').flatMap(r => out(g, r.id, 'RECONCILES').filter(e => ids.get(e.to).class !== 'COMPUTATIONAL_FACT' || ids.get(e.to).status === 'RUN').map(e => `${r.id} -> ${e.to}`));
+    add('resolved_only_non_run_facts', resolvedRun.length ? 'FAIL' : 'PASS', resolvedRun.join('; ') || 'RESOLVED closes only [ERR]/[GAP]/[UNK]/[OBS] fact records');
+    const sup = g.edges.filter(e => e.type === 'SUPERSEDES');
+    const badSup = sup.filter(e => { const a = ids.get(e.from), b = ids.get(e.to), r = ids.get(e.reconciliation); return !a || !b || a.class !== b.class || !r || r.class !== 'RECONCILIATION' || r.outcome !== 'SUPERSEDED' || !out(g, r.id, 'RECONCILES').some(x => x.to === e.to); }).map(e => `${e.from} -> ${e.to}`);
+    const twice = sortIds(sup.map(e => e.to).filter((x, i, arr) => arr.indexOf(x) !== i)).map(x => `${x} superseded twice`);
+    const cyc = sup.filter(e => { let x = e.from; const seen = new Set([e.to]); for (;;) { if (seen.has(x)) return true; seen.add(x); const s = supMap(g).get(x); if (!s) return false; x = s.by; } }).map(e => `cycle at ${e.to}`);
+    const allBad = [...badSup, ...twice, ...cyc];
+    add('supersession_well_formed', allBad.length ? 'FAIL' : 'PASS', allBad.join('; ') || `${sup.length} supersessions: same class, one successor each, acyclic, each named by a SUPERSEDED reconciliation that re-examined the superseded node`);
+    const inh = (sem.SUPERSEDES || {}).inherits || {};
+    const have = new Set(g.edges.map(e => JSON.stringify(e)));
+    const lack = [];
+    for (const e of sup) {
+      const rule = inh[(ids.get(e.to) || {}).class] || { out: [], in: [] };
+      for (const x of g.edges) {
+        if (!((x.from === e.to && rule.out.includes(x.type)) || (x.to === e.to && rule.in.includes(x.type)))) continue;
+        const want = { ...x, from: currentOf(g, x.from), to: currentOf(g, x.to) };
+        if (!have.has(JSON.stringify(want))) lack.push(`${e.from} lacks ${x.type} ${want.from} -> ${want.to}`);
+      }
+    }
+    add('successor_carries_inherited_edges', lack.length ? 'FAIL' : 'PASS', lack.slice(0, 20).join('; ') || 'every inheritable edge of a superseded node is carried by its current successor');
+    const led = g.edges.filter(e => e.type === 'LEDGERED_IN');
+    const badL = led.filter(e => ids.get(e.from).ledger_status !== 'PROPOSED' || ids.get(e.to).authority_class !== 'PROJECT_LAW' || !ids.get(e.reconciliation) || ids.get(e.reconciliation).outcome !== 'LEDGERED').map(e => `${e.from} -> ${e.to}`);
+    const stillProposed = g.nodes.filter(n => n.class === 'CONSTRAINT' && n.ledger_status === 'PROPOSED' && !led.some(e => e.from === n.id)).map(n => n.id);
+    add('ledgered_constraints_well_formed', badL.length ? 'FAIL' : 'PASS', badL.join('; ') || `${led.length} PROPOSED constraints ledgered in project law; still PROPOSED: ${stillProposed.join(' ') || 'none'}`);
+    const q17 = Q.Q17.fn(g, ids); const unrec = q17.facts_to_recheck.filter(f => !inc(g, f, 'RECONCILES').length);
+    add('stale_facts_reconciled', unrec.length ? 'FAIL' : 'PASS', unrec.join(' ') || `${q17.facts_to_recheck.length} Q17 facts to recheck, each re-examined by a reconciliation`);
+  }
   if (g.epochs) {
     const names = g.epochs.map(e => e.epoch);
     const badEpoch = g.nodes.filter(n => n.introduced_in && !names.includes(n.introduced_in)).map(n => n.id);
@@ -187,14 +236,14 @@ function evidenceOf(g, ids, factId) {
 }
 const Q = {
   Q01: { title: 'Why do we believe this capability works?', perFact: true, fn: (g, ids, f) => ({ fact: f.id, status: f.status, predicate: f.predicate, probes: sortIds(out(g, f.id, 'PROBED_BY').map(e => e.to)), evidence: evidenceOf(g, ids, f.id), admitted_by: sortIds(out(g, f.id, 'ADMITTED_BY').map(e => e.to)), entitled_claim: f.status === 'RUN' ? `claimable for environments ${sortIds(out(g, f.id, 'REQUIRES').map(e => e.to)).join(', ')} only` : `not an execution claim (status ${f.status})` }) },
-  Q02: { title: 'Which exact authority permits/requires this behavior?', perFact: true, fn: (g, ids, f) => { const a = authoritiesOf(g, ids, f.id); const all = sortIds([...a.direct, ...a.via_constraints]); return { fact: f.id, constraints: f.constraint_refs, authorities: all.map(id => { const n = ids.get(id); return { id, exact_url: n.exact_url, exact_fragment: n.exact_fragment, authority_class: n.authority_class, reopen_status: n.reopen_status, pin: n.reproducibility_pin ? `${n.reproducibility_pin.repo}@${n.reproducibility_pin.commit} ${n.reproducibility_pin.path}` : null }; }) }; } },
+  Q02: { title: 'Which exact authority permits/requires this behavior?', perFact: true, fn: (g, ids, f) => { const a = authoritiesOf(g, ids, f.id); const all = sortIds([...a.direct, ...a.via_constraints]); return { fact: f.id, constraints: f.constraint_refs, authorities: all.map(id => { const n = ids.get(id); const sb = supersededBy(g, id); return { id, exact_url: n.exact_url, exact_fragment: n.exact_fragment, authority_class: n.authority_class, reopen_status: n.reopen_status, pin: n.reproducibility_pin ? `${n.reproducibility_pin.repo}@${n.reproducibility_pin.commit} ${n.reproducibility_pin.path}` : null, ...(sb ? { superseded_by: sb.by } : {}) }; }) }; } },
   Q03: { title: 'Which subclauses does that claim depend on?', perFact: true, fn: (g, ids, f) => { const a = authoritiesOf(g, ids, f.id); const start = [...a.direct, ...a.via_constraints]; return { fact: f.id, authorities: sortIds(start), depends_on_closure: closure(g, start, 'DEPENDS_ON'), constraint_dependencies: closure(g, f.constraint_refs, 'DEPENDS_ON') }; } },
   Q04: { title: 'Which toolchain/browser/target state was required?', perFact: true, fn: (g, ids, f) => { const envs = sortIds([...out(g, f.id, 'REQUIRES').map(e => e.to), ...out(g, f.id, 'EXPOSED_BY').map(e => e.to)].filter(id => ids.get(id).class === 'ENVIRONMENT')); const built = sortIds(out(g, f.id, 'IMPLEMENTED_BY').flatMap(e => out(g, e.to, 'BUILT_WITH').map(x => x.to))); return { fact: f.id, required_environment: f.required_environment, environments: envs.map(id => envIdentity(ids, id)), built_with: built }; } },
   Q05: { title: 'What evidence actually executed it?', perFact: true, fn: (g, ids, f) => ({ fact: f.id, executed: evidenceOf(g, ids, f.id).filter(e => e.status === 'RUN' && String(e.evidence_class).startsWith('PHYSICAL')), synthetic_excluded: evidenceOf(g, ids, f.id).filter(e => !String(e.evidence_class).startsWith('PHYSICAL')).map(e => e.evidence_id) }) },
   Q06: { title: 'What becomes stale if rustc changes?', fn: (g, ids) => staleBy(g, ids, d => d.startsWith('toolchain.')) },
   Q07: { title: 'What becomes stale if Chromium changes?', fn: (g, ids) => staleBy(g, ids, d => d.startsWith('browser.')) },
   Q08: { title: 'Which claims require secure context?', fn: (g, ids) => ({ facts: g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT' && (n.required_environment || []).some(r => /secure_context/.test(r))).map(n => n.id).sort(), constraints: g.nodes.filter(n => n.class === 'CONSTRAINT' && /secure context/i.test(n.statement)).map(n => n.id).sort(), authorities: g.nodes.filter(n => n.class === 'AUTHORITY' && n.secure_context_required).map(n => n.id).sort() }) },
-  Q09: { title: 'Which claims have authority but no probe?', fn: (g, ids) => { const res = []; for (const a of g.nodes.filter(n => n.class === 'AUTHORITY')) { const targets = out(g, a.id, 'AUTHORIZES').map(e => e.to); let probed = false; for (const t of targets) { const n = ids.get(t); if (n.class === 'COMPUTATIONAL_FACT' && out(g, t, 'PROBED_BY').length) probed = true; if (n.class === 'CONSTRAINT') { if (out(g, t, 'GOVERNS').length) probed = true; for (const e of out(g, t, 'REQUIRES')) if (out(g, e.to, 'PROBED_BY').length) probed = true; } } if (!probed) res.push({ authority: a.id, authority_class: a.authority_class, authorizes: sortIds(targets), status: targets.length ? 'GAP: no probe reachable' : 'GAP: authorizes nothing' }); } return { unprobed_authorities: res.sort((x, y) => x.authority.localeCompare(y.authority)) }; } },
+  Q09: { title: 'Which claims have authority but no probe?', fn: (g, ids) => { const res = []; for (const a of g.nodes.filter(n => n.class === 'AUTHORITY')) { const targets = out(g, a.id, 'AUTHORIZES').map(e => e.to); let probed = false; for (const t of targets) { const n = ids.get(t); if (n.class === 'COMPUTATIONAL_FACT' && out(g, t, 'PROBED_BY').length) probed = true; if (n.class === 'CONSTRAINT') { if (out(g, t, 'GOVERNS').length) probed = true; for (const e of out(g, t, 'REQUIRES')) if (out(g, e.to, 'PROBED_BY').length) probed = true; } } if (!probed) { const sb = supersededBy(g, a.id); res.push({ authority: a.id, authority_class: a.authority_class, authorizes: sortIds(targets), status: targets.length ? 'GAP: no probe reachable' : 'GAP: authorizes nothing', ...(sb ? { superseded_by: sb.by } : {}) }); } } return { unprobed_authorities: res.sort((x, y) => x.authority.localeCompare(y.authority)) }; } },
   Q10: { title: 'Which probes have no governing constraint?', fn: (g, ids) => ({ ungoverned_probes: g.nodes.filter(n => n.class === 'PROBE' && !inc(g, n.id, 'GOVERNS').length && !n.proves_fact.some(f => (ids.get(f).constraint_refs || []).length)).map(n => n.id).sort() }) },
   Q11: { title: 'Which evidence lacks complete environment identity?', fn: (g, ids) => ({ incomplete: g.nodes.filter(n => n.class === 'EVIDENCE').map(e => { const env = ids.get(e.environment_ref); const miss = (env && env.identity_completeness && env.identity_completeness.missing) || []; return { evidence: e.id, environment: e.environment_ref, missing: miss }; }).filter(x => x.missing.length).sort((a, b) => a.evidence.localeCompare(b.evidence)) }) },
   Q12: { title: 'Which implementation contract cites authority too coarsely?', fn: (g, ids) => ({ coarse: g.nodes.filter(n => n.class === 'CONSTRAINT' && n.kind === 'contract').map(c => { const reasons = []; for (const a of c.authority_refs) { const n = ids.get(a); if (!n.exact_fragment) reasons.push(`${a}: no fragment (document root)`); if (String(n.fragment_status).startsWith('FRAGMENT_DRIFT')) reasons.push(`${a}: ${n.fragment_status}`); } for (const u of c.external_refs_unmapped || []) reasons.push(`${u}: unmapped document root`); return { contract: c.id, contract_status: c.contract_status, reasons }; }).filter(x => x.reasons.length).sort((a, b) => a.contract.localeCompare(b.contract)) }) },
@@ -216,19 +265,22 @@ const Q = {
         probes: sortIds([...facts.flatMap(f => out(g, f, 'PROBED_BY').map(e => e.to)), ...cons.flatMap(c => out(g, c, 'GOVERNS').map(e => e.to))]),
         evidence: sortIds(facts.flatMap(f => out(g, f, 'EVIDENCED_BY').map(e => e.to))) };
     };
-    const byMovement = {}; const noRevision = [];
+    const byMovement = {}; const noRevision = []; const rec = g.nodes.some(n => n.class === 'RECONCILIATION');
     for (const a of g.nodes.filter(n => n.class === 'AUTHORITY').sort((x, y) => x.id.localeCompare(y.id))) {
       const r = latest.get(a.id); if (!r) { noRevision.push(a.id); continue; }
-      for (const m of r.movement) { if (m === 'UNCHANGED') continue; (byMovement[m] = byMovement[m] || []).push({ authority: a.id, revision: r.id, epoch: r.epoch, locator: r.locator || null, consequence: CONSEQ[m], downstream: downstream(a.id) }); }
+      for (const m of r.movement) { if (m === 'UNCHANGED') continue; (byMovement[m] = byMovement[m] || []).push({ authority: a.id, revision: r.id, epoch: r.epoch, locator: r.locator || null, consequence: CONSEQ[m], downstream: downstream(a.id), ...(rec ? { reconciled_by: sortIds(inc(g, a.id, 'RECONCILES').map(e => e.from)), current_authority: currentOf(g, a.id) } : {}) }); }
     }
-    const staleFacts = sortIds(Object.entries(byMovement).filter(([m]) => !['EDITORIAL', 'UNREACHABLE'].includes(m)).flatMap(([, xs]) => xs.flatMap(x => x.downstream.facts)));
-    return { revisions: latest.size, authorities_without_revision: noRevision, movement_counts: Object.fromEntries(Object.entries(byMovement).map(([k, v]) => [k, v.length])), by_movement: byMovement, facts_to_recheck: staleFacts };
+    // a claim introduced at or after the revision's epoch was derived knowing that revision: it is not made stale by it
+    const before = (f, ep) => order.indexOf(ids.get(f).introduced_in || order[0]) < order.indexOf(ep);
+    const staleFacts = sortIds(Object.entries(byMovement).filter(([m]) => !['EDITORIAL', 'UNREACHABLE'].includes(m)).flatMap(([, xs]) => xs.flatMap(x => x.downstream.facts.filter(f => before(f, x.epoch)))));
+    return { revisions: latest.size, authorities_without_revision: noRevision, movement_counts: Object.fromEntries(Object.entries(byMovement).map(([k, v]) => [k, v.length])), by_movement: byMovement, facts_to_recheck: staleFacts,
+      ...(rec ? { facts_reconciled: Object.fromEntries(staleFacts.map(f => [f, { reconciled_by: sortIds(inc(g, f, 'RECONCILES').map(e => e.from)), current: currentOf(g, f) }])), facts_open: staleFacts.filter(f => !inc(g, f, 'RECONCILES').length) } : {}) };
   } },
   Q18: { title: 'Can each current claim be traversed CLAIM -> AUTHORITY -> CLAUSE -> MATURITY -> PIN -> CONSTRAINT -> CONTRACT -> ENVIRONMENT -> PROBE -> EVIDENCE -> STALE, and where does it stop?', perFact: true, fn: (g, ids, f) => {
     const order = (g.epochs || []).map(e => e.epoch);
     const rev = a => g.nodes.filter(n => n.class === 'AUTHORITY_REVISION' && n.authority_ref === a).sort((x, y) => order.indexOf(y.epoch) - order.indexOf(x.epoch))[0] || null;
     const consOf = sortIds([...(f.constraint_refs || []), ...inc(g, f.id, 'REQUIRES').map(e => e.from).filter(x => ids.get(x).class === 'CONSTRAINT')]);
-    const auths = sortIds([...inc(g, f.id, 'AUTHORIZES').map(e => e.from), ...consOf.flatMap(c => inc(g, c, 'AUTHORIZES').map(e => e.from))]);
+    const auths = sortIds([...inc(g, f.id, 'AUTHORIZES').map(e => e.from), ...consOf.flatMap(c => inc(g, c, 'AUTHORIZES').map(e => e.from))]).filter(a => isCurrent(g, a));
     const clauses = sortIds([...inc(g, f.id, 'GROUNDS').map(e => e.from), ...consOf.flatMap(c => inc(g, c, 'GROUNDS').map(e => e.from))]);
     // D17: an implementation-dependent claim may rest on pinned implementation source clauses (via a behaviour that EXPLAINS it)
     const implClauses = sortIds(inc(g, f.id, 'EXPLAINS').flatMap(e => out(g, e.from, 'SOURCED_BY').map(x => `${x.to} (implementation, ${e.from})`)));
@@ -251,14 +303,16 @@ const Q = {
       ['PHYSICAL EVIDENCE', evidence.some(e => e.status === 'RUN' && String(e.evidence_class).startsWith('PHYSICAL')), evidence.length ? evidence.map(e => `${e.evidence_id}[${e.status}/${e.evidence_class}]`).join(', ') : '[GAP] no evidence'],
       ['STALE CONDITIONS', stale.length > 0, stale.length ? stale.join('; ') : '[GAP] no stale condition declared'] ];
     const firstBreak = steps.find(s => !s[1]);
-    const terminal = f.status !== 'RUN' ? `[${f.status}] the claim itself is not a run claim: ${f.note || f.predicate}` : firstBreak ? `stops at ${firstBreak[0]}: ${firstBreak[2]}` : 'COMPLETE';
-    return { fact: f.id, status: f.status, traversal: steps.map(([step, ok, detail]) => ({ step, ok, detail })), maturity, terminal };
+    const sb = supersededBy(g, f.id); const recs = reconciliationsOf(g, ids, f.id); const resolved = recs.find(r => r.outcome === 'RESOLVED');
+    const terminal = sb ? `[SUPERSEDED] by ${sb.by} (${sb.reconciliation}): kept as history, not a current claim` : resolved ? `[RESOLVED] the [${f.status}] record stands as history; resolved by ${resolved.id} (${resolved.subject})`
+      : f.status !== 'RUN' ? `[${f.status}] the claim itself is not a run claim: ${f.note || f.predicate}` : firstBreak ? `stops at ${firstBreak[0]}: ${firstBreak[2]}` : 'COMPLETE';
+    return { fact: f.id, status: f.status, traversal: steps.map(([step, ok, detail]) => ({ step, ok, detail })), maturity, terminal, ...(recs.length ? { reconciled_by: recs.map(r => `${r.id} ${r.outcome}`) } : {}) };
   } },
   Q19: { title: 'For every approved capability family in G: API -> SECURE_CONTEXT -> PERMISSION_POLICY -> REQUEST -> FEATURES_LIMITS -> LIFECYCLE -> LOSS -> RUNTIME ADMISSION -> PROBE OBLIGATION -> EVIDENCE, and what is it?', fn: (g, ids) => {
     const fams = g.nodes.filter(n => n.class === 'CAPABILITY_FAMILY');
     if (!fams.length) return { families: 0, note: 'no CAPABILITY_FAMILY nodes in this graph' };
     const rows = fams.map(f => {
-      const wit = sortIds(out(g, f.id, 'WITNESSED_BY').map(e => e.to));
+      const wit = sortIds(out(g, f.id, 'WITNESSED_BY').map(e => e.to).filter(x => isCurrent(g, x)));
       const probes = sortIds(wit.flatMap(w => out(g, w, 'PROBED_BY').map(e => e.to)));
       const evidence = sortIds(wit.flatMap(w => evidenceOf(g, ids, w)).filter(e => e.status === 'RUN').map(e => e.evidence_id));
       const trace = Object.entries(f.steps).map(([step, x]) => ({ step, status: x.status, detail: x.status === 'GAP' ? `[GAP] ${x.reason}` : x.clauses.join(', ') }));
@@ -278,12 +332,36 @@ const Q = {
     const rows = behs.map(b => ({ behavior: b.id, implementation: b.implementation, version: b.version, relation: b.relation_to_standard, runtime_status: b.runtime_status, statement: b.statement,
       implementation_layer: sortIds(out(g, b.id, 'SOURCED_BY').map(e => e.to)).map(c => { const n = ids.get(c); return { clause: c, authority: n.authority_ref, source: `${String(n.source.repo).replace('https://github.com/', '')}@${String(n.source.commit).slice(0, 12)} ${n.source.path}:${n.locator.line_start}` }; }),
       standard_layer: out(g, b.id, 'RELATES_TO_STANDARD').map(e => ({ ref: e.to, class: ids.get(e.to).class, relation: e.relation })),
-      runtime_layer: sortIds(out(g, b.id, 'EXPLAINS').map(e => e.to)).map(f => ({ fact: f, status: ids.get(f).status, environments: sortIds([...out(g, f, 'REQUIRES').map(e => e.to).filter(x => ids.get(x).class === 'ENVIRONMENT'), ...evidenceOf(g, ids, f).map(e => e.environment_ref)]) })),
+      runtime_layer: sortIds(out(g, b.id, 'EXPLAINS').map(e => e.to).filter(x => isCurrent(g, x))).map(f => ({ fact: f, status: ids.get(f).status, environments: sortIds([...out(g, f, 'REQUIRES').map(e => e.to).filter(x => ids.get(x).class === 'ENVIRONMENT'), ...evidenceOf(g, ids, f).map(e => e.environment_ref)]) })),
       stale_if: { dimension: b.environment_dimension, relation: b.stale_if } }));
     const by = {}; for (const r of rows) by[r.relation] = (by[r.relation] || 0) + 1;
     const explained = new Set(rows.flatMap(r => r.runtime_layer.map(x => x.fact)));
     const absent = g.nodes.filter(n => n.class === 'CAPABILITY_FAMILY' && n.census && n.census.state === 'ABSENT').map(n => ({ family: n.id, exposure_facts: out(g, n.id, 'WITNESSED_BY').map(e => e.to).filter(f => ids.get(f).subject && / exposure in /.test(ids.get(f).subject)) }));
     return { behaviors: rows.length, by_relation: by, explained_facts: explained.size, census_absences: absent.map(x => ({ family: x.family, explained_by: rows.filter(r => r.runtime_layer.some(y => x.exposure_facts.includes(y.fact))).map(r => r.behavior) })), rows };
+  } },
+  Q21: { title: 'What did the reconciliation re-examine (AUTHORITY CHANGED -> CONSTRAINT -> FACT -> IMPLEMENTATION CONTRACT -> ENVIRONMENT -> OLD PROBE SUFFICIENT? -> OLD EVIDENCE APPLICABLE?), what is current now, and which new probe obligations follow?', fn: (g, ids) => {
+    const recs = g.nodes.filter(n => n.class === 'RECONCILIATION').sort((a, b) => a.id.localeCompare(b.id));
+    if (!recs.length) return { reconciliations: 0, note: 'no RECONCILIATION nodes in this graph' };
+    const steps = ((g.node_classes || {}).RECONCILIATION || {}).traversal_steps || [];
+    const rows = recs.map(r => ({ reconciliation: r.id, subject: r.subject, outcome: r.outcome, reconciles: sortIds(out(g, r.id, 'RECONCILES').map(e => e.to)),
+      traversal: steps.map(s => ({ step: s, answer: r.traversal[s] })), surfaces: r.surfaces, new_probe_obligation: r.new_probe_obligation, note: r.note,
+      supersessions: g.edges.filter(e => e.type === 'SUPERSEDES' && e.reconciliation === r.id).map(e => ({ superseded: e.to, current: e.from })),
+      ledgered: g.edges.filter(e => e.type === 'LEDGERED_IN' && e.reconciliation === r.id).map(e => ({ constraint: e.from, ledger: e.to, locator: e.locator })),
+      invalidated: g.edges.filter(e => e.type === 'INVALIDATED_BY' && e.reconciliation === r.id).map(e => ({ subject: e.from, by: e.to })) }));
+    const by = {}; for (const r of rows) by[r.outcome] = (by[r.outcome] || 0) + 1;
+    const facts = g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT');
+    const resolved = new Set(recs.filter(r => r.outcome === 'RESOLVED').flatMap(r => out(g, r.id, 'RECONCILES').map(e => e.to)));
+    const current = facts.filter(f => isCurrent(g, f.id) && !resolved.has(f.id));
+    const st = {}; for (const f of current) st[f.status] = (st[f.status] || 0) + 1;
+    const q17 = Q.Q17.fn(g, ids);
+    const cons = g.nodes.filter(n => n.class === 'CONSTRAINT'); const led = new Set(g.edges.filter(e => e.type === 'LEDGERED_IN').map(e => e.from));
+    return { reconciliations: rows.length, by_outcome: by,
+      stale_facts: { to_recheck: q17.facts_to_recheck.length, reconciled: q17.facts_to_recheck.filter(f => inc(g, f, 'RECONCILES').length).length },
+      current_model: { supersessions: g.edges.filter(e => e.type === 'SUPERSEDES').map(e => `${e.to} -> ${e.from}`).sort(),
+        facts: { total: facts.length, current: current.length, superseded: facts.filter(f => !isCurrent(g, f.id)).length, resolved: resolved.size, current_by_status: st },
+        constraints: { total: cons.length, ledger: cons.filter(c => c.ledger_status !== 'PROPOSED' || led.has(c.id)).length, proposed: cons.filter(c => c.ledger_status === 'PROPOSED' && !led.has(c.id)).map(c => c.id) },
+        authorities: { total: g.nodes.filter(n => n.class === 'AUTHORITY').length, superseded: g.nodes.filter(n => n.class === 'AUTHORITY' && !isCurrent(g, n.id)).length } },
+      new_probe_obligations: rows.filter(r => r.new_probe_obligation).map(r => ({ reconciliation: r.reconciliation, obligation: r.new_probe_obligation })), rows };
   } },
   Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
     const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;
@@ -333,6 +411,9 @@ function renderRegister(g) {
       const p = a.reproducibility_pin;
       L.push(p ? `- pin: ${p.repo} @ ${p.commit} ${p.path}${p.sha256 ? ' sha256 ' + p.sha256 : ''} (observed ${p.observed}${p.locator ? '; ' + p.locator : ''})` : '- pin: none');
       L.push(`- consequence: ${a.extracted_consequence}`);
+      const sb = supersededBy(g, a.id); if (sb) L.push(`- SUPERSEDED by ${sb.by} (${sb.reconciliation}): kept as history; not the current authority`);
+      const sups = g.edges.filter(e => e.type === 'SUPERSEDES' && e.from === a.id); if (sups.length) L.push(`- supersedes: ${sups.map(e => `${e.to} (${e.reconciliation})`).join(', ')}`);
+      const ledg = sortIds(inc(g, a.id, 'LEDGERED_IN').map(e => e.from)); if (ledg.length) L.push(`- ledgers: ${ledg.join(', ')}`);
       const revs = g.nodes.filter(n => n.class === 'AUTHORITY_REVISION' && n.authority_ref === a.id).sort((x, y) => (g.epochs || []).findIndex(e => e.epoch === x.epoch) - (g.epochs || []).findIndex(e => e.epoch === y.epoch));
       for (const r of revs) L.push(`- ${r.epoch} reopen: movement ${r.movement.join('+')}; published ${r.current_authority.status}; source ${r.source.relation_to_pin}${r.source.commit ? ' @ ' + String(r.source.commit).slice(0, 10) : ''}; fragment ${r.fragment.at_tip}${r.locator ? `; locator ${r.locator.old || '(none)'} -> ${r.locator.new}` : ''}${r.maturity && r.maturity.observed ? '; maturity ' + r.maturity.observed : ''}`);
       const authorizes = sortIds(out(g, a.id, 'AUTHORIZES').map(e => e.to)), deps = sortIds(out(g, a.id, 'DEPENDS_ON').map(e => e.to)), conf = out(g, a.id, 'CONFLICTS_WITH').map(e => `${e.conflict_id}:${e.to}`).sort();
@@ -347,10 +428,13 @@ function renderTrace(g) {
   const facts = g.nodes.filter(n => n.class === 'COMPUTATIONAL_FACT').sort((a, b) => a.id.localeCompare(b.id));
   for (const f of facts) {
     const a = authoritiesOf(g, ids, f.id);
-    L.push(`## ${f.id} [${f.status}]`, `- subject: ${f.subject}`, `- predicate: ${f.predicate}`);
+    const sbf = supersededBy(g, f.id); const recf = reconciliationsOf(g, ids, f.id); const resf = recf.find(r => r.outcome === 'RESOLVED');
+    L.push(`## ${f.id} [${f.status}]${sbf ? ` [SUPERSEDED by ${sbf.by}]` : resf ? ` [RESOLVED by ${resf.id}]` : ''}`, `- subject: ${f.subject}`, `- predicate: ${f.predicate}`);
     if (f.note) L.push(`- note: ${f.note}`);
     if (f.source_ref) L.push(`- source: ${f.source_ref}`);
-    L.push(`- authorities (direct): ${a.direct.join(', ') || '(none)'}`, `- authorities (via constraints): ${a.via_constraints.join(', ') || '(none)'}`, `- constraints: ${(f.constraint_refs || []).join(', ') || '(none)'}`);
+    const mark = x => isCurrent(g, x) ? x : `${x} (superseded by ${supersededBy(g, x).by})`;
+    L.push(`- authorities (direct): ${a.direct.map(mark).join(', ') || '(none)'}`, `- authorities (via constraints): ${a.via_constraints.map(mark).join(', ') || '(none)'}`, `- constraints: ${(f.constraint_refs || []).join(', ') || '(none)'}`);
+    for (const r of recf) L.push(`- reconciled: ${r.id} ${r.outcome} - ${r.note}`);
     L.push(`- required environment: ${(f.required_environment || []).join('; ') || '(none stated)'}`);
     L.push(`- environments: ${sortIds(out(g, f.id, 'REQUIRES').map(e => e.to).filter(id => ids.get(id).class === 'ENVIRONMENT')).join(', ') || '(none)'}`);
     const cl = sortIds([...inc(g, f.id, 'GROUNDS').map(e => e.from), ...(f.constraint_refs || []).flatMap(c => inc(g, c, 'GROUNDS').map(e => e.from))]);
@@ -370,16 +454,25 @@ function renderTrace(g) {
   const st = staleBy(g, ids, () => true);
   for (const d of Object.keys(st.dimensions)) { L.push(`- ${d}:`); for (const s of st.dimensions[d]) L.push(`  - ${s.subject} @ ${s.environment} (${s.relation})`); }
   L.push('', '## Conflicts preserved', '');
-  for (const e of g.edges.filter(x => x.type === 'CONFLICTS_WITH').sort((a, b) => String(a.conflict_id).localeCompare(String(b.conflict_id)))) L.push(`- ${e.conflict_id}: ${e.from} <-> ${e.to}${e.note ? ' - ' + e.note : ''}`);
+  for (const e of g.edges.filter(x => x.type === 'CONFLICTS_WITH' && isCurrent(g, x.from) && isCurrent(g, x.to)).sort((a, b) => String(a.conflict_id).localeCompare(String(b.conflict_id)))) L.push(`- ${e.conflict_id}: ${e.from} <-> ${e.to}${e.note ? ' - ' + e.note : ''}`);
   const fams = g.nodes.filter(x => x.class === 'CAPABILITY_FAMILY');
   if (fams.length) {
     L.push('', '## Capability universe (G = CAPABILITY-MATRIX.md; Q19 has the full trace)', '');
-    for (const f of fams) L.push(`- ${f.id} [${f.classification}] ${f.matrix_row}: census ${f.census ? f.census.state : 'none'}; steps ${Object.entries(f.steps).map(([s, x]) => `${s}=${x.status}`).join(' ')}; witnesses ${sortIds(out(g, f.id, 'WITNESSED_BY').map(e => e.to)).join(', ') || '(none)'}`);
+    for (const f of fams) L.push(`- ${f.id} [${f.classification}] ${f.matrix_row}: census ${f.census ? f.census.state : 'none'}; steps ${Object.entries(f.steps).map(([s, x]) => `${s}=${x.status}`).join(' ')}; witnesses ${sortIds(out(g, f.id, 'WITNESSED_BY').map(e => e.to).filter(x => isCurrent(g, x))).join(', ') || '(none)'}`);
   }
   const behs = g.nodes.filter(x => x.class === 'IMPLEMENTATION_BEHAVIOR');
   if (behs.length) {
     L.push('', '## Implementation behaviour (implementation truth, never standards law; Q20 has the three layers)', '');
-    for (const b of behs) L.push(`- ${b.id} [${b.relation_to_standard}; runtime ${b.runtime_status}] ${b.implementation} (${b.version}): ${b.statement}; sources ${sortIds(out(g, b.id, 'SOURCED_BY').map(e => e.to)).join(', ')}; explains ${sortIds(out(g, b.id, 'EXPLAINS').map(e => e.to)).join(', ') || '(none)'}; stale if ${b.environment_dimension}: ${b.stale_if}`);
+    for (const b of behs) L.push(`- ${b.id} [${b.relation_to_standard}; runtime ${b.runtime_status}] ${b.implementation} (${b.version}): ${b.statement}; sources ${sortIds(out(g, b.id, 'SOURCED_BY').map(e => e.to)).join(', ')}; explains ${sortIds(out(g, b.id, 'EXPLAINS').map(e => e.to).filter(x => isCurrent(g, x))).join(', ') || '(none)'}; stale if ${b.environment_dimension}: ${b.stale_if}`);
+  }
+  const rcs = g.nodes.filter(x => x.class === 'RECONCILIATION').sort((a, b) => a.id.localeCompare(b.id));
+  if (rcs.length) {
+    L.push('', '## Reconciliation (the current model; Q21 has the traversal)', '');
+    for (const r of rcs) L.push(`- ${r.id} [${r.outcome}] ${r.subject}: re-examines ${sortIds(out(g, r.id, 'RECONCILES').map(e => e.to)).join(', ')}${r.new_probe_obligation ? `; obligation: ${r.new_probe_obligation}` : ''}`);
+    L.push('', 'Superseded (history) -> current:', '');
+    for (const e of g.edges.filter(x => x.type === 'SUPERSEDES').sort((a, b) => a.to.localeCompare(b.to))) L.push(`- ${e.to} -> ${e.from} (${e.reconciliation})`);
+    const led = g.edges.filter(x => x.type === 'LEDGERED_IN').sort((a, b) => a.from.localeCompare(b.from));
+    if (led.length) { L.push('', 'Ledgered constraints (PROPOSED on the node, now project law):', ''); for (const e of led) L.push(`- ${e.from} -> ${e.to} (${e.locator})`); }
   }
   L.push('', '## Environments', '');
   for (const n of g.nodes.filter(x => x.class === 'ENVIRONMENT').sort((a, b) => a.id.localeCompare(b.id))) L.push(`- ${n.id} [${n.environment_class}] ${n.host_runtime || ''}${n.toolchain && n.toolchain.nightly ? '; nightly ' + n.toolchain.nightly.rustc : ''}; missing identity: ${(n.identity_completeness.missing || []).join(', ') || 'none'}`);

@@ -8,26 +8,27 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D17-IMPLEMENTATION-REALITY (pass 4 of the D14-D19 technical reference review series; integration
+last delta         D18-REPO-RECONCILIATION (pass 5 of the D14-D19 technical reference review series; integration
                    commit in design/materialization/LEDGER.md)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
-                   Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64), D9 qualified
-                   Rust/Cargo proof harness, D11 computational environment map, D12 self-hosting architecture (ASCII +
-                   primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces),
-                   D14 authority frontier epoch (64 AUTHORITY_REVISION nodes, Q17 staleness traversal), D15 foundational
-                   clause epoch (60 exact clauses VERIFIED at source tips, 6 PROPOSED constraints, Q18 claim traversal),
-                   D16 capability universe (33 families of G traced at 90 more clauses, exposure census, Q19),
-                   D17 implementation reality (19 behaviours on 44 clauses pinned to the versions run, kernel section
-                   identity, label audit, Q20)
+                   Byte Relay physically commissioned in the Chromium 141 headless shell (SwiftShader CPU fallback
+                   WebGPU under the unsafe WebGPU switches, plus wasm64), D9 qualified Rust/Cargo proof harness, D11
+                   computational environment map, D12 self-hosting architecture (ASCII + primitive probes only), D13
+                   chain hygiene (this page, proof sets, toolchain pin, literal surfaces), D14 authority frontier epoch
+                   (64 AUTHORITY_REVISION nodes, Q17 staleness traversal), D15 foundational clause epoch (60 exact
+                   clauses VERIFIED at source tips, Q18 claim traversal), D16 capability universe (33 families of G
+                   traced at 90 more clauses, exposure census, Q19), D17 implementation reality (19 behaviours on 44
+                   clauses pinned to the versions run, kernel section identity, label audit, Q20), D18 reconciliation
+                   (one current model: 36 reconciliations, 15 supersessions, 19 constraints ledgered, 6 label findings
+                   resolved, kernel identity defined; law annotated insertion-only; Q21)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
 series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): one StructuralDelta
                    per pass, each closed, verified, integrated and re-observed before the next
-next               D18-REPO-RECONCILIATION (given D14-D17, what must change inside the current FactTest model?),
-                   starting from design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md: the 6 MISLABEL
-                   corrections (FACT-LBL-*), implementation re-pins (FACT-IMPL-PINS-NOT-RUNNING-VERSION), PROPOSED
-                   constraints (D15/D16), kernel identity definition, stale claims (Q17, FACT-WORKERS-UNPROBED), sensor
-                   routing.  Historical evidence is never mutated.  The owner PAUSED the D12-predicted seed/broker
+next               D19-REPROVE-REOBSERVE (select the minimum affected physical test set from graph staleness and execute
+                   it), starting from design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md and graph query Q21
+                   (probe obligations: the qualified proof with the exec-identity kernel check; environment identity).
+                   Historical evidence is never mutated.  The owner PAUSED the D12-predicted seed/broker
                    qualification; it is renumbered after D19.
 ```
 
@@ -96,8 +97,10 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
-               epochs/D12.json .. epochs/D17.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
-               tests/reference/<epoch>-clauses.json (exact-clause manifests; constraints there are PROPOSED until D18);
+               epochs/D12.json .. epochs/D18.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
+               tests/reference/<epoch>-clauses.json (exact-clause manifests; the constraints they proposed are ledgered
+               in CONSTRAINT-LEDGER.md since D18); tests/reconcile/d18-reconciliation.json (the reviewed D18 register:
+               supersessions, ledgering, resolutions; graph query Q21 is the current model);
                tests/capability/universe.json (the G trace + reviewed classification; G itself is CAPABILITY-MATRIX.md);
                tests/implementation/{reality.json, label-audit.json} (implementation behaviours; reviewed label findings);
                this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml
@@ -128,70 +131,53 @@ C      D12 B-01, B-02                       no Factory WebApp / browser state mo
 C      D12 B-06 (P10)                       six wasm ABI exports absent; BUILD in the browser stops at          [GAP]
                                             CAPABILITY_IR
 C      D12 B-05, B-17                       templates compiled into the kernel; packfile import/export         [GAP]
-C      D12 B-11 (P07)                       storage best-effort, persist() false                               [GAP]
+C      D12 B-11 (P07)                       persist() false in the Chromium 141 headless shell (every permission     [UNK]
+                                            ASK); installed-Factory durability never observed - full Chrome grants
+                                            durable storage to installed/important sites (FACT-SH-STORAGE-DURABILITY-D18)
 C      D12 B-03                             station commands are OS programs (portability)                     [ERR]
 C      D12 B-04                             RUST_BUILD only on a host                                          [UNK]
 C      D12 B-13 remainder                   verifier source-commit provenance (binary sha256 is recorded)       [GAP]
-C      D13 H-12 (FACT-KERNEL-IDENTITY-      kernel bytes depend on the rust-src install name; D17 narrows it: only  [GAP] narrowed
-       INSTALL-PATH)                        the custom "name" section differs (LLVM promoted-symbol hash;
-                                            FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT [RUN]); identity
-                                            definition D18, re-proof D19
 C      D11 WGSL / CON-GPU-003               WGSL never compiled or dispatched                                  [GAP]
 C      D11 hardware GPU                     only SwiftShader fallback adapters ever observed                   [UNK]
-C      ERR-002 / ERR-003                    shared/threaded Wasm unadmitted (presence only)                    [ERR]
+C      ERR-002 / ERR-003                    shared/threaded Wasm unadmitted (presence only); standard, host and       [ERR]
+                                            Chromium layers stated apart (FACT-SHARED-THREADS-UNADMITTED-D18)
 C      D11 Q09 -> D16 Q19                   the capability map is no longer hidden: 33 families traced (174 clause  [GAP] mapped
                                             steps, 6 verified absences, 51 explicit GAP steps); RUN 6, OBS 16,
                                             GAP 10, ERR 1 (evidence/D16/envmap/queries/Q19.json)
 C      D16 chooser/activation families      HID, USB, Serial, Bluetooth, immersive XR, device-orientation          [OBS]/[GAP]
                                             permission need a user gesture or virtual device path to be admitted
-                                            (CON-CAP-002 PROPOSED)
+                                            (CON-CAP-002, ledgered D18)
+C      D18 workers (FACT-WORKERS-D18)       a dedicated worker was constructed (D12 P10) but no worker admission     [GAP]
+                                            contract exists and hardwareConcurrency was never read
+C      D11 streaming (FACT-STREAMING-       compileStreaming / application/wasm delivery never exercised (citation     [GAP]
+       UNPROBED)                            corrected D18: #streaming-modules)
 D      D16 Generic Sensor advisements       whole family flagged at its tips (Proximity: no engine; Magnetometer,  [OBS]
                                             Ambient Light: not default anywhere; motion sensors: new projects ->
-                                            Device Orientation and Motion); all kept in G; routing decision D18
-D      D16 stale claim                      FACT-WORKERS-UNPROBED (D11) contradicted by D12 worker evidence (D18)   [ERR]
-D      D17 label audit                      6 MISLABEL findings (FACT-LBL-01/06/07/10/11/12): Chromium hook stated  [ERR]
-                                            as standard, WebGPU switch set omitted, headless shell presented as
-                                            Chromium/installed, implementation pins not the version run;
-                                            corrections D18 (tests/implementation/label-audit.json)
-D      D17 implementation pins              D11 Chromium switch / V8 flag authorities pinned to later main commits   [ERR]
-                                            (FACT-IMPL-PINS-NOT-RUNNING-VERSION); running-version clauses exist
-D      D17 installed-Chrome durability      full Chrome grants durable storage to installed/important sites; the   [UNK]
-                                            headless shell answers ASK to every permission: installed Factory
-                                            durability never observed (IB-CHROME-DURABLE-STORAGE)
+                                            Device Orientation and Motion); all kept in G; OBS-004 extended (D18);
+                                            choosing a routing is OWNER D-10
 D      D17 Dawn 9caf493                      Dawn source unreachable through the mirror (fallback = CPU adapter     [GAP]
                                             pinned on the Blink and SwiftShader side only)
 D      D17 non-Linux platforms              Android/ChromeOS/Mac/Win defaults differ (WebGPU, Vulkan, Bluetooth);  [UNK]
                                             only Linux observed
+D      D18 tool documentation pins          cargo book, git documentation and Rust Reference pinned at branch       [GAP]
+                                            commits, not at the running tool versions (reconciliation R-19)
 C      CAPABILITY-MATRIX / CONSTRAINT-      capability rows marked [GAP]/[ERR]/[UNK] in the law ledgers        as marked
        LEDGER rows
-D      web-api #streaming-module-compilation-  D14: the cited id never existed at the pin (explicit id           [ERR]
-       and-instantiation                    streaming-modules); D11's PRESENT_IN_SOURCE was false; source-level
-                                            locator #streaming-modules (D14 revision); law correction D18
 D      git #_worktrees (repository-layout)  D14: a definition-list term with no asciidoctor id; published     [UNK]
                                             rendering unknown
-D      rust-lang/rust pins                  D14: branch master removed; pinned commit is main (pin field D18)   [OBS]
-D      ERR-001 (D15 CL-R7)                  current, not historical: the rustc wasm64 page at the rust-lang/rust  [ERR]
-                                            main tip still calls memory64 "not standardized"; Core 3.0 (CL-W4)
-                                            standardizes it.  The Core governs (CON-RS-003); law wording D18
+D      ERR-001 (D15 CL-R7, D17 CL-IMP-RS2)  current, not historical: the rustc wasm64 page at the rust tip and at  [ERR]
+                                            the toolchain run (6eeff9a52) still calls memory64 "not standardized";
+                                            Core 3.0 (CL-W4) standardizes it.  The Core governs (CON-RS-003);
+                                            CONFLICT-LEDGER annotated D18
 D      git tree-entry order (D15 CL-G3)     "normalized by mktree" with no documented rule; browser tree ids     [GAP]
-                                            are correct only where equality with git was observed (P09); the
-                                            ordering rule's implementation source -> D17
-D      SharedArrayBuffer global (D15 CL-T6) absence without COI is host behaviour (FACT-SAB-GLOBAL-HOST-      [OBS]
-                                            DEFINED); only serialization is standard-gated (CL-T4); Chromium
-                                            source -> D17
-D      D15 proposed constraints             CON-WA-006, CON-SEC-002, CON-PP-001, CON-SW-001, CON-ST-001,          [GAP]
-                                            CON-GIT-001 exist only as PROPOSED graph nodes; CONSTRAINT-LEDGER D18
-D      Q18 claim traversal (D15)            RUN claims that stop before COMPLETE: EXACT CLAUSE (GPU/WebGPU ->     [GAP]
-                                            D16; process facts), IMPLEMENTATION CONTRACT, CURRENT AUTHORITY
-                                            (project facts -> D18); evidence/D15/envmap/queries/Q18.json
+                                            are correct only where equality with git was observed (P09); git's
+                                            ordering source not traced (D17 traced browser and toolchain sources)
+D      Q18 claim traversal                  current RUN claims that stop before COMPLETE: IMPLEMENTATION CONTRACT,  [GAP]
+                                            CURRENT AUTHORITY (process facts), EXACT CLAUSE (project facts cited at
+                                            locator level), PROJECT CONSTRAINT (evidence/D18/envmap/queries/Q18.json)
 D      published frontier (D14)             53 renderings refused + 2 github.com 403: no current published      [UNK]
                                             authority verified in D14 (FACT-PUBLISHED-FRONTIER-UNVERIFIED); D15
                                             clauses are likewise verified at source tips only
-D      js-api #internal-storage             cited in 5 law files and fixtures/commissioning/contracts.ascii;   [ERR]/[UNK]
-                                            not an id in pinned WebAssembly/spec@608711107b; published page
-                                            not opened (annotated in place by D13); D14: MOVED to
-                                            #webassembly-storage; D15 cites the clause at #store (CL-T1); law
-                                            correction D18
 D      D11 FACT-AUTHORITY-REOPEN-DENIED     37 of 48 D11 authorities and all 16 D12 authorities read from       [UNK]
                                             pinned sources only; published hosts DENIED
 D      D12 B-19                             githack public-origin path unreachable (proxy 403)                  [UNK]
@@ -201,13 +187,35 @@ B      D0-D12 receipts/evidence             incomplete environment identity (rec
 B      D3-D8 fixture wording                "all ladders" / "full suite" overstated the selection               kept
 B      D1-D8 heuristic gates                nostd-check/depcheck used as gates (proof weight now NONE)          kept
 B      scratch-only tooling                 D0-D13 route scripts, D11 graph generator (procedure: section 4)    kept
-B      workpiece root                       W11-stage, W14-stage, W16-stage, W17-stage (base-era graph views       [GAP] kept
-                                            the audit cannot prove superseded; comparing stage blobs with
-                                            canonical_base is a D18 item), factory-bootstrap-bin (unmanaged)
+B      workpiece root                       W11-stage, W14-stage hold base-era graph views that are not in the      [GAP] kept
+                                            canonical history; W16-W19-stage are proven superseded (every file blob
+                                            is in the canonical history: evidence/D18/workpieces/stages.json) but
+                                            factory workpiece retire handles worktrees only; factory-bootstrap-bin
+                                            (unmanaged)
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
-       (B-07); D-6 object hash; D-8 seed replacement; D-9 history horizon; deleting the fully merged remote branches
+       (B-07); D-6 object hash; D-8 seed replacement; D-9 history horizon; D-10 sensor routing (Generic Sensor
+       families vs Device Orientation and Motion; CONFLICT-LEDGER OBS-004); deleting the fully merged remote branches
        claude/d9-rust-cargo-proof-4nys6s, factory/reference-corpus-wasm64, work/pass2-5-reference-ingress-1
 DECIDED D-4 toolchain pin (D13, by evidence); D-7 literal path authority (owner prompt D13 target 1)
+```
+
+Resolved by D18-REPO-RECONCILIATION (tests/reconcile/d18-reconciliation.json; graph query Q21; history in
+design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md):
+
+```text
+D13 H-12 kernel identity            exec identity, install-name independent (tests/toolchain/proof-sets.json exec_identity;
+                                    FACT-KERNEL-IDENTITY-DEFINED-D18); re-proof in D19
+D16 stale claim                     FACT-WORKERS-UNPROBED superseded by FACT-WORKERS-D18, invalidated by EV-D12-P10
+D17 label audit                     6 MISLABEL findings resolved: live handoff text replaced, README correction line,
+                                    graph facts superseded or corrected (R-40..R-47)
+D17 implementation pins             D11 Chromium/V8/SwiftShader authorities superseded by pins at the versions run (R-48)
+rust-lang/rust pins                 superseded by pins at the toolchain run, rust-lang/rust@6eeff9a52 (R-12)
+web-api / js-api fragment citations current authorities AUTH-WASM-WEBAPI-STREAMING-D18 (#streaming-modules) and
+                                    AUTH-WASM-JSAPI-STORAGE-D18 (#webassembly-storage); law citations kept and annotated;
+                                    fixtures/commissioning/contracts.ascii keeps the historical URL as commissioned
+                                    compiler input (R-10, R-11)
+SharedArrayBuffer global            standard / host / Chromium layers stated in CONFLICT-LEDGER ERR-002 (R-24)
+proposed constraints                19 PROPOSED constraints (D11, D13, D15, D16) ledgered in CONSTRAINT-LEDGER.md (R-21)
 ```
 
 ## 7. Proof sets and toolchain
@@ -217,8 +225,9 @@ rust-toolchain.toml          1.94.1 (rustc e408947bf) + clippy, rustfmt     -> b
 tests/toolchain/proof-sets.json
   HOST_NATIVE_SET            1.94.1, host, dev + release, default-members (13 roots) == bare cargo
   WASM64_KERNEL_SET          nightly-2026-09-24 (rustc 6eeff9a52) + rust-src, clippy; wasm64-unknown-unknown,
-                             -Z build-std=core, -p factc-wasm-abi (12-crate core-only graph); kernel identity declared
-                             per rust-src install name
+                             -Z build-std=core, -p factc-wasm-abi (12-crate core-only graph); kernel identity =
+                             exec identity (every section except the custom "name" section; install-name independent,
+                             D18); whole-file sha256 recorded per rust-src install name (informational)
   ALL_SOURCES / ALL_MEMBERS_GRAPH   rustfmt over every member / cargo metadata over every member + physical manifests
   CROSS_SET                  --workspace on the host: diagnostic only (factc-wasm-abi is target-specific), weight NONE
   HEURISTIC                  factory nostd-check / depcheck: weight NONE; never a gate
