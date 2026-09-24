@@ -263,4 +263,9 @@ D21R   D21R-MANIFEST-REPAIR        the D21 re-inspection refused: the manifest b
                                    integration (two findings and the epoch list changed).  Repaired (own-epoch
                                    exclusion) and witnessed by tests/manifest/rebuild-check.sh at 910fdbf with the
                                    committed and the repaired builder; epochs/D21R.json (one [RUN] fact, four records).
+D22    D22-FACTORY-SELF-QUALIFICATION  the Factory attacked with every refusal reason of the prompt (29 law witnesses +
+                                   the import collision witness): six accepted attacks reproduced with the committed
+                                   Factory and repaired in ops.rs (receipt integrity, identity probes, command and
+                                   canonical confinement); the judge built from the tree identified; epochs/D22.json
+                                   (three [RUN] facts, five records).  Judge of D23-D26.
 ```

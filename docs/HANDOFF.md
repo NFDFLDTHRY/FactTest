@@ -9,11 +9,12 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D21R-MANIFEST-REPAIR (the D21 re-inspection refused: the manifest builder read its own epoch after
-                   integration; repaired and witnessed at 910fdbf) after D21-EXECUTION-MANIFEST (task 1 of the six-task
-                   whole-repository execution + gap closure series D21-D26,
-                   design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; integration commits in
-                   design/materialization/LEDGER.md)
+last delta         D22-FACTORY-SELF-QUALIFICATION (task 2 of the six-task whole-repository execution + gap closure
+                   series D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; after D21 execution
+                   manifest and D21R manifest repair; integration commits in design/materialization/LEDGER.md)
+judge              the Factory built from this tree (tests/factory/run-witnesses.sh records its sha256): every refusal
+                   reason of the prompt witnessed (tests/factory/witnesses.json, factory/tests/factory_law.rs f00-f28,
+                   tests/sync/collision-witness.sh); six accepted attacks found by D22 and repaired before D23
 manifest           design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md (generated): every tracked path tiered, every
                    live component with owner, consumers, stations, tests, probes, claims, evidence and stale dimensions;
                    tests/manifest/issues.json: every finding classified A..G with the task that repairs it
@@ -36,17 +37,20 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    re-proved physically; current evidence epoch; entitled-claim surface Q22), main's parallel D14 line
                    (pull request #5: a Pages-branch retrieval route under the egress policy, fixtures/reference/ corpus of
                    83 reproducibility copies, D11 pins re-checked) joined by D20 with a second re-proof, D21 execution
-                   manifest (the current executable system enumerated and every problem classified before repair)
+                   manifest (the current executable system enumerated and every problem classified before repair), D22
+                   Factory self-qualification (the judge attacked with every refusal reason of the prompt; receipt
+                   integrity, identity probes, command and canonical confinement repaired)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (task 1 of 6 closed; its
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-2 of 6 closed; D21's
                    re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
                    verified, integrated and re-observed before the next; a repair is tested before the next repair
                    (GLOBAL TEST-EVERY-ITERATION LAW)
-next               D22-FACTORY-SELF-QUALIFICATION: the Factory through itself, positive path and the negative witnesses
-                   of tests/manifest/issues.json I-14, refused for the named reason; every A/B Factory defect repaired
-                   before D23.  Then D23 compiler + ABI (I-06, I-10, I-19), D24 genericity (I-07, I-08, I-09, I-20),
-                   D25 physical runtime (I-05, I-11), D26 whole-repo commissioning.  Owner decisions stay in section 6.
+next               D23-COMPILER-ABI-EXECUTION: every compiler crate bottom-up under HOST_NATIVE_SET and WASM64_KERNEL_SET
+                   (deps, manifests, fmt, mutants), the public kernel API against the factc and wasm-abi transports,
+                   D12 B-06 decided as A/B or D/G (I-06, I-10, I-19).  Then D24 genericity (I-07, I-08, I-09, I-20), D25
+                   physical runtime (I-05, I-11), D26 clean whole-repository commissioning (STALE_IF-selected re-proof,
+                   consistency audit, baseline and boundary register)
 ```
 
 ## 2. Mutation law
@@ -170,7 +174,11 @@ historical bundle (D25), graph claims for eleven live components (D21, done); C 
 the generated shell and the single-relation runtime (D24 proves, then repairs or records the exact architectural GAP);
 G (3) law-text presentation and wording (owner).  Until each task closes, these are open internal findings, not
 boundaries.  The D21 re-inspection found one more class A defect (the manifest builder read its own epoch after
-integration, changing two findings): repaired and witnessed by D21R-MANIFEST-REPAIR before D22.
+integration, changing two findings): repaired and witnessed by D21R-MANIFEST-REPAIR before D22.  D22 closed I-14 (every
+reason witnessed) and found six accepted attacks in the Factory itself (I-21..I-26, class A: edited and hand-written
+receipts verified, a failed identity probe closed PASS, escaping command cwd/log opened, a station writing into the
+canonical checkout closed PASS, a littering re-inspection matched): reproduced with the committed Factory, repaired in
+factory/src/ops.rs, witnessed (f17-f28) before D23.
 
 ```text
 CLASS  ID / SOURCE                          BOUNDARY                                                          STATUS

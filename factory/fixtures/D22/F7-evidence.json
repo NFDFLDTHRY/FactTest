@@ -1,0 +1,39 @@
+{
+  "fixture_id": "F7-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the manifest of F6",
+    "tests/manifest/issues.json"
+  ],
+  "narrowed_may_change": [
+    "evidence/D22/manifest.json",
+    "evidence/D22/issues.json",
+    "evidence/D22/gate.json",
+    "evidence/D22/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp design/execution-manifest/manifest.json evidence/D22/manifest.json && cp tests/manifest/issues.json evidence/D22/issues.json && node tests/manifest/gate.mjs --manifest evidence/D22/manifest.json --issues tests/manifest/issues.json --out evidence/D22/gate.json"
+        ],
+        "log": "evidence/D22/logs/F7-gate.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D22/manifest.json",
+    "evidence/D22/issues.json",
+    "evidence/D22/gate.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION"
+}

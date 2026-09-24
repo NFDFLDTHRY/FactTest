@@ -76,4 +76,5 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
   D16 capability universe, D17 implementation reality, D18 repository reconciliation, D18R chain repair, D19 re-proof
   and stable baseline), a parallel D14 technical reference rescan on main (pull request #5: reference corpus in
   fixtures/reference/), joined by D20 main sync with a second re-proof; D21-D26 whole-repository execution + gap closure
-  (D21 execution manifest, D21R repair of its builder found by the D21 re-inspection); see the ledger.
+  (D21 execution manifest, D21R repair of its builder found by the D21 re-inspection, D22 Factory self-qualification);
+  see the ledger.

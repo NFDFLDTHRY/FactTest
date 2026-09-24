@@ -1,0 +1,18 @@
+{
+ "tool": "tests/sync/collision-witness.sh",
+ "import_tool": "tests/sync/import-line.mjs",
+ "scene": "line adds shared.txt and line-only.txt; ours adds shared.txt with other bytes; sync merge -s ours",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "collision_refused_naming_the_path",
+   "status": "PASS",
+   "detail": "shared.txt: destination shared.txt already holds other content in 2b6e871ec3dcad730cdcba33e3c97487acc74ba4 (relocate it) - line-only.txt -> line-only.txt: MISSING_OR_DIFFERENT"
+  },
+  {
+   "check": "relocated_import_byte_identical_and_collision_untouched",
+   "status": "PASS",
+   "detail": "check: 2 line changes {\"added\":1,\"relocated\":1}; 0 written, 2 checked; PASS"
+  }
+ ]
+}

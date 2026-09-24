@@ -1,0 +1,31 @@
+{
+  "schema": "facttest-factory-witnesses/1",
+  "law": "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md (D22 FACTORY PROVES FACTORY): every attack is REFUSED FOR THE NAMED REASON; a failure for an unrelated reason is not a pass",
+  "suite": "factory/tests/factory_law.rs (cargo test -p factory)",
+  "refusal_sources": ["factory/src/ops.rs", "factory/src/hygiene.rs", "factory/src/json.rs", "factory/src/paths.rs", "tests/sync/import-line.mjs"],
+  "reasons": [
+    {"reason": "unauthorized changed path", "witnesses": ["f01_unauthorized_mutation_fails_verification", "f06_read_only_station_mutating_source_fails"], "refusal": ["changed_paths_within_fixture_may_change", "must_not_change_tree_identical", "read_only_station_source_nonmutating"], "stage": "station close / verify"},
+    {"reason": "unsupported wildcard-looking surface", "witnesses": ["f09_wildcard_station_surface_rejected_at_open", "f10_wildcard_delta_surface_rejected_at_check", "f11_literal_surface_forms", "f12_fixture_wildcard_rejected_at_open"], "refusal": ["_surfaces_literal", "has no meaning under literal path authority"], "stage": "delta check / station open"},
+    {"reason": "fixture wider than station", "witnesses": ["f02_fixture_authority_expansion_rejected_at_open"], "refusal": ["fixture_may_change_subset_of_station"], "stage": "station open"},
+    {"reason": "MAY CHANGE / MUST NOT CHANGE overlap", "witnesses": ["f08_delta_with_overlapping_authority_fails_structural_check"], "refusal": ["may_change_disjoint_from_must_not_change"], "stage": "delta check"},
+    {"reason": "missing receipt", "witnesses": ["f03_missing_receipt_blocks_verification"], "refusal": ["receipt_exists"], "stage": "verify"},
+    {"reason": "forged receipt identity", "witnesses": ["f17_edited_receipt_rejected_by_verify", "f18_handwritten_receipt_rejected_by_verify"], "refusal": ["receipt_matches_station_run", "receipt bytes differ from those the Factory wrote", "no closed station run recorded for this fixture"], "stage": "verify", "repaired_by": "D22-FACTORY-SELF-QUALIFICATION"},
+    {"reason": "stale verification", "witnesses": ["f19_stale_verification_rejected_by_integrate"], "refusal": ["workpiece_unchanged_since_verification"], "stage": "integrate"},
+    {"reason": "workpiece changed after verification", "witnesses": ["f20_workpiece_changed_after_verification_rejected"], "refusal": ["workpiece_unchanged_since_verification"], "stage": "integrate"},
+    {"reason": "canonical base movement", "witnesses": ["f05_moved_base_blocks_integration_without_force"], "refusal": ["canonical_base_unmoved", "base moved to"], "stage": "integrate"},
+    {"reason": "unreceipted mutation", "witnesses": ["f07_unreceipted_change_fails_verification"], "refusal": ["no_unreceipted_change"], "stage": "verify"},
+    {"reason": "malformed fixture", "witnesses": ["f21_malformed_fixture_rejected"], "refusal": ["fixture_loads", "fixture_delta_matches", "not registered in canonical base or workpiece", "missing string field"], "stage": "station open / verify"},
+    {"reason": "bad environment identity", "witnesses": ["f22_failed_identity_probe_rejected_at_close", "f13_receipt_and_verification_carry_environment_identity"], "refusal": ["identity_probe_observed"], "stage": "station close", "repaired_by": "D22-FACTORY-SELF-QUALIFICATION"},
+    {"reason": "unsafe cleanup candidate", "witnesses": ["f14_audit_classifies_only_proven_objects_retirable", "f28_differing_reinspection_keeps_the_workpiece"], "refusal": ["worktree has modified, untracked or ignored entries", "reinspect {}", "no Factory record describes this object", "is never retirable"], "stage": "audit / retire"},
+    {"reason": "unintegrated workpiece retirement", "witnesses": ["f15_retire_removes_exactly_the_proven_objects", "f27_unintegrated_workpiece_never_retired"], "refusal": ["integration {}", "current workpiece of the running delta", "retire requires the current workpiece id"], "stage": "audit / retire"},
+    {"reason": "parallel-line import collision", "witnesses": [], "report": "collision", "refusal": ["already holds other content"], "stage": "line import (tests/sync/import-line.mjs --check / --write)"},
+    {"reason": "attempted direct canonical mutation", "witnesses": ["f24_station_command_writing_into_canonical_rejected_at_close", "f25_direct_canonical_edit_blocks_integration", "f26_reinspect_command_writing_into_canonical_is_differ", "f23_command_escaping_the_workpiece_rejected_at_open"], "refusal": ["canonical_repository_untouched_by_station", "canonical_working_tree_clean", "canonical_repository_untouched_by_reinspect", "command_cwd_within_workpiece", "command_log_within_workpiece"], "stage": "station open / station close / integrate / reinspect", "repaired_by": "D22-FACTORY-SELF-QUALIFICATION"}
+  ],
+  "positive": [
+    {"path": "delta intake, path authorization, station lookup, fixture binding, workpiece creation, station open, station close, receipt production, independent verify, base-unmoved gate, integration, reinspection", "witnesses": ["f00_happy_path_integrates_and_reinspects"]},
+    {"path": "environment identity (receipt format 2, verifier identity)", "witnesses": ["f13_receipt_and_verification_carry_environment_identity"]},
+    {"path": "audit, retire", "witnesses": ["f14_audit_classifies_only_proven_objects_retirable", "f15_retire_removes_exactly_the_proven_objects"]},
+    {"path": "heuristic checkers carry no proof weight", "witnesses": ["f16_heuristic_checkers_carry_proof_weight_none"]},
+    {"path": "parallel-line handling: relocated import byte-identical, the colliding path untouched", "witnesses": [], "report": "collision"}
+  ]
+}

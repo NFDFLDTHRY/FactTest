@@ -1,0 +1,340 @@
+{
+ "tool": "tests/factory/run-witnesses.sh",
+ "register": "tests/factory/witnesses.json",
+ "suite": "factory/tests/factory_law.rs (cargo test -p factory)",
+ "toolchain": "1.94.1",
+ "judge": {
+  "built_from": "this tree",
+  "sha256": "9266f00f4be893c00047cc58ca750e29fd112edec520550e12970c5f9e8f65fc",
+  "bytes": 7377352
+ },
+ "tests": {
+  "total": 29,
+  "passed": 29,
+  "failed": 0,
+  "ignored": 0
+ },
+ "reasons": [
+  {
+   "reason": "unauthorized changed path",
+   "stage": "station close / verify",
+   "witnesses": {
+    "f01_unauthorized_mutation_fails_verification": "ok",
+    "f06_read_only_station_mutating_source_fails": "ok"
+   },
+   "refusal": {
+    "changed_paths_within_fixture_may_change": [
+     "factory/src/ops.rs"
+    ],
+    "must_not_change_tree_identical": [
+     "factory/src/ops.rs"
+    ],
+    "read_only_station_source_nonmutating": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "unsupported wildcard-looking surface",
+   "stage": "delta check / station open",
+   "witnesses": {
+    "f09_wildcard_station_surface_rejected_at_open": "ok",
+    "f10_wildcard_delta_surface_rejected_at_check": "ok",
+    "f11_literal_surface_forms": "ok",
+    "f12_fixture_wildcard_rejected_at_open": "ok"
+   },
+   "refusal": {
+    "_surfaces_literal": [
+     "factory/src/ops.rs"
+    ],
+    "has no meaning under literal path authority": [
+     "factory/src/paths.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "fixture wider than station",
+   "stage": "station open",
+   "witnesses": {
+    "f02_fixture_authority_expansion_rejected_at_open": "ok"
+   },
+   "refusal": {
+    "fixture_may_change_subset_of_station": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "MAY CHANGE / MUST NOT CHANGE overlap",
+   "stage": "delta check",
+   "witnesses": {
+    "f08_delta_with_overlapping_authority_fails_structural_check": "ok"
+   },
+   "refusal": {
+    "may_change_disjoint_from_must_not_change": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "missing receipt",
+   "stage": "verify",
+   "witnesses": {
+    "f03_missing_receipt_blocks_verification": "ok"
+   },
+   "refusal": {
+    "receipt_exists": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "forged receipt identity",
+   "stage": "verify",
+   "witnesses": {
+    "f17_edited_receipt_rejected_by_verify": "ok",
+    "f18_handwritten_receipt_rejected_by_verify": "ok"
+   },
+   "refusal": {
+    "receipt_matches_station_run": [
+     "factory/src/ops.rs"
+    ],
+    "receipt bytes differ from those the Factory wrote": [
+     "factory/src/ops.rs"
+    ],
+    "no closed station run recorded for this fixture": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "repaired_by": "D22-FACTORY-SELF-QUALIFICATION",
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "stale verification",
+   "stage": "integrate",
+   "witnesses": {
+    "f19_stale_verification_rejected_by_integrate": "ok"
+   },
+   "refusal": {
+    "workpiece_unchanged_since_verification": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "workpiece changed after verification",
+   "stage": "integrate",
+   "witnesses": {
+    "f20_workpiece_changed_after_verification_rejected": "ok"
+   },
+   "refusal": {
+    "workpiece_unchanged_since_verification": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "canonical base movement",
+   "stage": "integrate",
+   "witnesses": {
+    "f05_moved_base_blocks_integration_without_force": "ok"
+   },
+   "refusal": {
+    "canonical_base_unmoved": [
+     "factory/src/ops.rs"
+    ],
+    "base moved to": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "unreceipted mutation",
+   "stage": "verify",
+   "witnesses": {
+    "f07_unreceipted_change_fails_verification": "ok"
+   },
+   "refusal": {
+    "no_unreceipted_change": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "malformed fixture",
+   "stage": "station open / verify",
+   "witnesses": {
+    "f21_malformed_fixture_rejected": "ok"
+   },
+   "refusal": {
+    "fixture_loads": [
+     "factory/src/ops.rs"
+    ],
+    "fixture_delta_matches": [
+     "factory/src/ops.rs"
+    ],
+    "not registered in canonical base or workpiece": [
+     "factory/src/ops.rs"
+    ],
+    "missing string field": [
+     "factory/src/json.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "bad environment identity",
+   "stage": "station close",
+   "witnesses": {
+    "f22_failed_identity_probe_rejected_at_close": "ok",
+    "f13_receipt_and_verification_carry_environment_identity": "ok"
+   },
+   "refusal": {
+    "identity_probe_observed": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "repaired_by": "D22-FACTORY-SELF-QUALIFICATION",
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "unsafe cleanup candidate",
+   "stage": "audit / retire",
+   "witnesses": {
+    "f14_audit_classifies_only_proven_objects_retirable": "ok",
+    "f28_differing_reinspection_keeps_the_workpiece": "ok"
+   },
+   "refusal": {
+    "worktree has modified, untracked or ignored entries": [
+     "factory/src/hygiene.rs"
+    ],
+    "reinspect {}": [
+     "factory/src/hygiene.rs"
+    ],
+    "no Factory record describes this object": [
+     "factory/src/hygiene.rs"
+    ],
+    "is never retirable": [
+     "factory/src/hygiene.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "unintegrated workpiece retirement",
+   "stage": "audit / retire",
+   "witnesses": {
+    "f15_retire_removes_exactly_the_proven_objects": "ok",
+    "f27_unintegrated_workpiece_never_retired": "ok"
+   },
+   "refusal": {
+    "integration {}": [
+     "factory/src/hygiene.rs"
+    ],
+    "current workpiece of the running delta": [
+     "factory/src/hygiene.rs"
+    ],
+    "retire requires the current workpiece id": [
+     "factory/src/hygiene.rs"
+    ]
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "parallel-line import collision",
+   "stage": "line import (tests/sync/import-line.mjs --check / --write)",
+   "witnesses": {},
+   "refusal": {
+    "already holds other content": [
+     "tests/sync/import-line.mjs"
+    ]
+   },
+   "report": {
+    "collision": "PASS"
+   },
+   "status": "REFUSED_FOR_NAMED_REASON"
+  },
+  {
+   "reason": "attempted direct canonical mutation",
+   "stage": "station open / station close / integrate / reinspect",
+   "witnesses": {
+    "f24_station_command_writing_into_canonical_rejected_at_close": "ok",
+    "f25_direct_canonical_edit_blocks_integration": "ok",
+    "f26_reinspect_command_writing_into_canonical_is_differ": "ok",
+    "f23_command_escaping_the_workpiece_rejected_at_open": "ok"
+   },
+   "refusal": {
+    "canonical_repository_untouched_by_station": [
+     "factory/src/ops.rs"
+    ],
+    "canonical_working_tree_clean": [
+     "factory/src/ops.rs"
+    ],
+    "canonical_repository_untouched_by_reinspect": [
+     "factory/src/ops.rs"
+    ],
+    "command_cwd_within_workpiece": [
+     "factory/src/ops.rs"
+    ],
+    "command_log_within_workpiece": [
+     "factory/src/ops.rs"
+    ]
+   },
+   "repaired_by": "D22-FACTORY-SELF-QUALIFICATION",
+   "status": "REFUSED_FOR_NAMED_REASON"
+  }
+ ],
+ "positive": [
+  {
+   "path": "delta intake, path authorization, station lookup, fixture binding, workpiece creation, station open, station close, receipt production, independent verify, base-unmoved gate, integration, reinspection",
+   "witnesses": {
+    "f00_happy_path_integrates_and_reinspects": "ok"
+   },
+   "status": "PASS"
+  },
+  {
+   "path": "environment identity (receipt format 2, verifier identity)",
+   "witnesses": {
+    "f13_receipt_and_verification_carry_environment_identity": "ok"
+   },
+   "status": "PASS"
+  },
+  {
+   "path": "audit, retire",
+   "witnesses": {
+    "f14_audit_classifies_only_proven_objects_retirable": "ok",
+    "f15_retire_removes_exactly_the_proven_objects": "ok"
+   },
+   "status": "PASS"
+  },
+  {
+   "path": "heuristic checkers carry no proof weight",
+   "witnesses": {
+    "f16_heuristic_checkers_carry_proof_weight_none": "ok"
+   },
+   "status": "PASS"
+  },
+  {
+   "path": "parallel-line handling: relocated import byte-identical, the colliding path untouched",
+   "witnesses": {},
+   "report": {
+    "collision": "PASS"
+   },
+   "status": "PASS"
+  }
+ ],
+ "reports": {
+  "collision": "evidence/D22/collision-witness.json"
+ },
+ "problems": [],
+ "status": "PASS"
+}

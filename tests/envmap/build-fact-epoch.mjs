@@ -5,7 +5,8 @@
 //   ENV-<E>-HOST     when --identity DIR (a tests/reprove/identity.mjs capture) is given; otherwise spec.environment must
 //                    name an existing ENVIRONMENT node
 //   PROBE-*          each spec probe the graph does not yet hold (implemented_by an existing IMPLEMENTATION node)
-//   EV-<E>-<FILE>    one sha256-bound EVIDENCE node per evidence file of each fact (paths relative to --root)
+//   EV-<E>-<FILE>    one sha256-bound EVIDENCE node per evidence file (paths relative to --root; a file several facts
+//                    cite is one node; an evidence entry may name its own probe)
 //   FACT-*           each spec fact with its PROBED_BY, EVIDENCED_BY, REQUIRES, IMPLEMENTED_BY and STALE_IF edges
 // Generic: names no fact, probe, file or component of its own; the spec is its data.
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -46,11 +47,14 @@ for (const p of S.probes || []) {
   edge('IMPLEMENTED_BY', p.id, p.implemented_by);
 }
 const own = `Factory receipt of ${o.delta}`;
+const evByPath = new Map(); // a record cited by several facts is one EVIDENCE node
 for (const f of S.facts) {
   need(f.probe);
   const evs = (f.evidence || []).map(ev => {
+    if (evByPath.has(ev.path)) return evByPath.get(ev.path);
     const id = `EV-${E}-` + ev.path.split('/').pop().replace(/\.[A-Za-z0-9]+$/, '').replace(/[^A-Za-z0-9]+/g, '-').toUpperCase(); const p = join(o.root, ev.path);
-    return N({ id, class: 'EVIDENCE', evidence_id: id, probe_ref: f.probe, environment_ref: HOST, artifact_identity: { path: ev.path, sha256: sha(p), bytes: readFileSync(p).length, locator: 'record', identity_source: 'sha256 of the committed record' }, observed_result: ev.observed_result, epoch: E, status: ev.status || 'RUN', evidence_class: ev.evidence_class || 'PHYSICAL_HOST', owner: own });
+    N({ id, class: 'EVIDENCE', evidence_id: id, probe_ref: need(ev.probe || f.probe), environment_ref: HOST, artifact_identity: { path: ev.path, sha256: sha(p), bytes: readFileSync(p).length, locator: 'record', identity_source: 'sha256 of the committed record' }, observed_result: ev.observed_result, epoch: E, status: ev.status || 'RUN', evidence_class: ev.evidence_class || 'PHYSICAL_HOST', owner: own });
+    evByPath.set(ev.path, id); return id;
   });
   N({ id: f.id, class: 'COMPUTATIONAL_FACT', fact_id: f.id, subject: f.subject, predicate: f.predicate, required_environment: f.required_environment || [], constraint_refs: f.constraint_refs || [], status: f.status, note: f.note, source_ref: f.source_ref, owner: `${E} (derived from the evidence named by its edges)` });
   edge('PROBED_BY', f.id, f.probe); for (const e of evs) edge('EVIDENCED_BY', f.id, e); edge('REQUIRES', f.id, HOST);

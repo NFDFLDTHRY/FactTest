@@ -1000,4 +1000,33 @@ BEFORE
   (RUN 110); W25 KEEP (its re-inspection record DIFFER), nothing retirable.
 
 AFTER
+- RESULT: integrated as 88564a0eccd934d6a017faf65435bc871bcd2f94 (ff-only from 910fdbf); no refusal, no repair, no re-run.
+- RECEIPTS: F0-doc F1-fixture F2-browser F3-evidence F4-doc F5-evidence F6-doc PASS (format 2).  VERIFICATION: PASS
+  (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (rebuild-check at 910fdbf PASS in the re-inspection
+  clone; epochs/D21R.json rebuilt byte-identically).  Pushed (910fdbf and 88564a0 together).
+- OBSERVED: D21R-OBSERVED-MANIFEST-REPAIR.md - P1-P6 MATCH.  W25 stays KEEP by the Factory's rule (reinspect DIFFER).
+
+---
+
+## D22-FACTORY-SELF-QUALIFICATION  (task 2 of 6: can the CURRENT Factory safely judge every repair that follows?)
+
+BEFORE
+- DELTA: D22-FACTORY-SELF-QUALIFICATION (factory/deltas/D22.json), workpiece W27, base 88564a0.
+- ASCII: design/materialization/D22-INTENDED-FACTORY-SELF-QUALIFICATION.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F6, F8, F11), S-RUST (F1, F2), S-FIXTURE (F3), S-BROWSER (F4), S-EVIDENCE (F5, F7, F10),
+  S-ANNOTATE (F9).
+- CHANGE: factory/tests/factory_law.rs (f17-f28), factory/src/ops.rs (five checks: receipt integrity, identity
+  probes, command confinement, canonical confinement at station close and re-inspection), tests/factory/ (witness
+  register + runner), tests/sync/collision-witness.sh, tests/envmap/build-fact-epoch.mjs, tests/envmap/facts/D22.json,
+  tests/manifest/{components,issues,build-epoch}.json|mjs (I-27, I-28 found by the manifest rebuild),
+  tests/hygiene/status-classification.json, design/execution-manifest/ (rebuilt), evidence/D22/, design/environment-map/
+  (epoch D22, graph, views, SCHEMA 15, ENVIRONMENT-MAP 14), FACTORY-CONTRACTS.md (D22 ANNOTATION, insertion-only),
+  docs/HANDOFF.md, README.md, D22 records, this ledger.  FORBIDDEN: every other Rust source, factory/registry, compiler/,
+  host/, fixtures/, every other law and pass document, earlier epochs, D0-D21R evidence and records.
+- PREDICTED: reproduce 23 passed / 6 failed (f17 f18 f22 f23 f24 f26) with ops.rs as committed; repaired 29 passed,
+  fmt + clippy clean; 16 of 16 reasons refused for the named reason, 5 of 5 positive paths; collision witness PASS;
+  manifest rebuilt at 88564a0 + additions (3168 files), gate PASS (28 issues); epoch D22 10 nodes / 34 edges; merged
+  1284 / 3284; validate 42; Q22 180 current facts (RUN 113); W26 RETIRABLE -> REMOVED.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

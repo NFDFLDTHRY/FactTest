@@ -1,0 +1,80 @@
+{
+  "fixture_id": "F8-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "evidence/D22/",
+    "tests/envmap/facts/D22.json",
+    "the D21R graph"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/epochs/D22.json",
+    "design/environment-map/graph.json",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "docs/HANDOFF.md",
+    "README.md",
+    "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D22.json --identity evidence/D22/identity --epoch D22 --delta D22-FACTORY-SELF-QUALIFICATION --commit '88564a0eccd934d6a017faf65435bc871bcd2f94 (canonical base; integration commit in LEDGER AFTER)' --graph design/environment-map/graph.json --out design/environment-map/epochs/D22.json"
+        ],
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-build-epoch.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json",
+          "--out",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-merge.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-render.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node -e 'const e=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/epochs/D22.json\"));console.log(e.nodes.length,e.edges.length);if(e.nodes.filter(n=>n.class===\"COMPUTATIONAL_FACT\").length!==3)process.exit(1)' && grep -q '^witness register' design/environment-map/SCHEMA.md && grep -q '^D22 ' design/environment-map/ENVIRONMENT-MAP.md && grep -q 'D22-FACTORY-SELF-QUALIFICATION' docs/HANDOFF.md && grep -q '^judge ' docs/HANDOFF.md && grep -q 'D22' README.md"
+        ],
+        "log": "factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F8-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/epochs/D22.json",
+    "design/environment-map/graph.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D22-FACTORY-SELF-QUALIFICATION"
+}

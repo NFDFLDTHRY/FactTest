@@ -333,4 +333,9 @@ rebuild check           tests/manifest/rebuild-check.sh (D21R): the committed ma
 fact epochs             tests/envmap/build-fact-epoch.mjs (D21R): one add-only epoch per repair delta binding its physical
                         results - sha256 EVIDENCE records, a PROBE, ENV-<E>-HOST from the identity capture - to a [RUN]
                         fact IMPLEMENTED_BY the repaired component, from a delta-owned spec (tests/envmap/facts/<E>.json)
+witness register        tests/factory/witnesses.json (D22): every refusal reason of the D21-D26 prompt -> the Factory law
+                        witnesses (factory/tests/factory_law.rs) that assert the refusing check, the refusal texts, the
+                        stage; tests/factory/run-witnesses.sh builds the judge from the tree, runs the suite, checks the
+                        register and records the judge's sha256; tests/sync/collision-witness.sh witnesses the import
+                        collision in a scratch repository.  A witness that fails for an unrelated reason is not a pass.
 ```

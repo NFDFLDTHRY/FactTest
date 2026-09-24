@@ -1,0 +1,5 @@
+$ sh -c L=factory/receipts/D22-FACTORY-SELF-QUALIFICATION/logs/F1-reproduce.log; for t in f17 f18 f22 f23 f24 f26; do grep -q "^test ${t}_.* FAILED$" $L || { echo $t not failing; exit 1; }; done; [ $(grep -c '^test f.* FAILED$' $L) -eq 6 ] && [ $(grep -c '^test f.* ok$' $L) -eq 23 ] && grep -q 'test result: FAILED. 23 passed; 6 failed' $L && git diff --exit-code 88564a0eccd934d6a017faf65435bc871bcd2f94 -- factory/src compiler host Cargo.toml Cargo.lock factory/Cargo.toml && echo 'six accepted attacks reproduced with the Factory as committed'
+(cwd .)
+six accepted attacks reproduced with the Factory as committed
+
+[exit 0] expected 0

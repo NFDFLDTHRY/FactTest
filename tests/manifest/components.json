@@ -314,7 +314,7 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
    "focused_tests": [
-    "factory/tests/factory_law.rs (f00-f13)"
+    "factory/tests/factory_law.rs (f00-f28)"
    ],
    "task_regression": "D22 (positive path + negative witnesses)",
    "runtime_probe": "PROBE-WORKPIECE-VERIFY"
@@ -368,7 +368,7 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
    "focused_tests": [
-    "factory/tests/factory_law.rs (f13)"
+    "factory/tests/factory_law.rs (f13, f22)"
    ],
    "task_regression": "D22",
    "runtime_probe": "none"
@@ -430,7 +430,7 @@
    "fixture_type": "rust",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
    "focused_tests": [
-    "factory/tests/factory_law.rs (f14, f15)"
+    "factory/tests/factory_law.rs (f14, f15, f27, f28)"
    ],
    "task_regression": "D22 (unsafe cleanup candidate, unintegrated retirement witnesses)",
    "runtime_probe": "PROBE-WORKPIECE-AUDIT"
@@ -440,7 +440,8 @@
    "tier": "TEST",
    "area": "factory",
    "paths": [
-    "factory/tests/factory_law.rs"
+    "factory/tests/factory_law.rs",
+    "tests/factory/"
    ],
    "owner": [
     "FACTORY-LAW.md",
@@ -461,7 +462,8 @@
    "fixture_type": "rust test",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
    "focused_tests": [
-    "self"
+    "self",
+    "tests/factory/run-witnesses.sh (witness register f00-f28 against the run)"
    ],
    "task_regression": "D22",
    "runtime_probe": "none"
@@ -491,7 +493,8 @@
    "fixture_type": "node esm",
    "toolchain_target": "node v22.22.2; git 2.43.0",
    "focused_tests": [
-    "evidence/D20/sync/import.json (177 checked)"
+    "evidence/D20/sync/import.json (177 checked)",
+    "tests/sync/collision-witness.sh (collision refused, relocation byte-identical)"
    ],
    "task_regression": "D22 (parallel-line import collision witness)",
    "runtime_probe": "none"
@@ -1374,7 +1377,8 @@
     "tests/envmap/host-identity.sh",
     "tests/envmap/browser-probe.mjs",
     "tests/envmap/authority-fetch.mjs",
-    "tests/envmap/run-envmap.sh"
+    "tests/envmap/run-envmap.sh",
+    "tests/envmap/"
    ],
    "owner": [
     "design/environment-map/SCHEMA.md"
@@ -1398,7 +1402,8 @@
     "tests/reprove regression (D19/D20: Q01-Q22 byte-identical)"
    ],
    "task_regression": "D26 (graph epoch, Q01..current)",
-   "runtime_probe": "PROBE-PATHS-LITERAL, PROBE-HOST-IDENTITY, PROBE-BROWSER-IDENTITY, PROBE-AUTHORITY-FETCH"
+   "runtime_probe": "PROBE-PATHS-LITERAL, PROBE-HOST-IDENTITY, PROBE-BROWSER-IDENTITY, PROBE-AUTHORITY-FETCH",
+   "note": "D22: the directory entry covers later additions (a historical file keeps its own, more specific, component)."
   },
   {
    "id": "TEST-ENVMAP-BIND-D11",

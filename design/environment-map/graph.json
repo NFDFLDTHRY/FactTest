@@ -33240,6 +33240,267 @@
    "source_ref": "evidence/D21R/rebuild-check.json",
    "owner": "D21R (derived from the evidence named by its edges)",
    "introduced_in": "D21R"
+  },
+  {
+   "id": "ENV-D22-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D22-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "none (records compared; cargo metadata only)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "88564a0eccd934d6a017faf65435bc871bcd2f94",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": []
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D22/identity/{host,toolchains,repo}.json",
+   "note": "D22 environment identity (host of the run this epoch binds)",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "PROBE-FACTORY-WITNESSES",
+   "class": "PROBE",
+   "probe_id": "PROBE-FACTORY-WITNESSES",
+   "proves_fact": [
+    "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+    "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "command_or_operation": "sh tests/factory/run-witnesses.sh tests/factory/witnesses.json TARGET_DIR OUT LOG_DIR collision=REPORT (builds the Factory from the tree, runs cargo test -p factory, checks the witness register: every named witness ok, every refusal text present in a refusal source, every external report PASS; records the judge's sha256); sh tests/sync/collision-witness.sh REPORT (scratch repository: the parallel-line import collision refused, the relocated import byte-identical)",
+   "expected_observations": [
+    "every reason of the register REFUSED_FOR_NAMED_REASON",
+    "every positive path PASS",
+    "the judge's sha256 recorded"
+   ],
+   "failure_meaning": [
+    "an attack the prompt names is accepted, or refused for an unrelated reason: the Factory is not qualified to judge the repairs that follow"
+   ],
+   "implemented_by": "IMPL-FACTORY-TESTS",
+   "owner": "IMPL-FACTORY-TESTS",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "EV-D22-WITNESSES",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D22-WITNESSES",
+   "probe_ref": "PROBE-FACTORY-WITNESSES",
+   "environment_ref": "ENV-D22-HOST",
+   "artifact_identity": {
+    "path": "evidence/D22/witnesses.json",
+    "sha256": "00d003c6a478af9466875037f60fdaaafe8e3ef03df72015c25bc791d0e1ed56",
+    "bytes": 8612,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "29 tests ok, 0 failed; 16 of 16 reasons REFUSED_FOR_NAMED_REASON; 5 of 5 positive paths PASS; judge sha256 recorded",
+   "epoch": "D22",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D22-FACTORY-SELF-QUALIFICATION",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "EV-D22-COLLISION-WITNESS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D22-COLLISION-WITNESS",
+   "probe_ref": "PROBE-FACTORY-WITNESSES",
+   "environment_ref": "ENV-D22-HOST",
+   "artifact_identity": {
+    "path": "evidence/D22/collision-witness.json",
+    "sha256": "439601bb40a8919491ad8db64c713bbd4a13a25330156fc47b73dddd0674b51c",
+    "bytes": 705,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "collision refused naming the path; relocated import byte-identical and the colliding path untouched",
+   "epoch": "D22",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D22-FACTORY-SELF-QUALIFICATION",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "subject": "the Factory (factory/src, factory/tests/factory_law.rs f00-f28, tests/sync/import-line.mjs) at the D22 tree",
+   "predicate": "each of the 16 refusal reasons of the D21-D26 prompt (unauthorized changed path, wildcard-looking surface, fixture wider than station, MAY/MUST overlap, missing receipt, forged receipt identity, stale verification, workpiece changed after verification, canonical base movement, unreceipted mutation, malformed fixture, bad environment identity, unsafe cleanup candidate, unintegrated workpiece retirement, parallel-line import collision, attempted direct canonical mutation) is refused for its named check by a passing witness; the positive path (intake to re-inspection, identity, audit, retire, relocation import) passes",
+   "required_environment": [
+    "the HOST_NATIVE_SET toolchain, node and git on the host"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "tests/factory/witnesses.json is the register; a witness asserts the refusing check name, so a failure for an unrelated reason cannot pass",
+   "source_ref": "evidence/D22/witnesses.json",
+   "owner": "D22 (derived from the evidence named by its edges)",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "EV-D22-REPRODUCE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D22-REPRODUCE",
+   "probe_ref": "PROBE-FACTORY-WITNESSES",
+   "environment_ref": "ENV-D22-HOST",
+   "artifact_identity": {
+    "path": "evidence/D22/reproduce.log",
+    "sha256": "b2d677dd18494f304d39bc598c4fcf946e0b3b5f0240465f1a82e0a4df729176",
+    "bytes": 14638,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "cargo test -p factory with the witnesses added and ops.rs as committed at 88564a0: 23 passed, 6 failed (f17, f18, f22, f23, f24, f26)",
+   "epoch": "D22",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D22-FACTORY-SELF-QUALIFICATION",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "subject": "factory/src/ops.rs as committed at 88564a0 versus the D22 tree",
+   "predicate": "with the Factory as committed at 88564a0 six attacks were accepted (an edited FAIL receipt verified, a hand-written receipt verified, a failed identity probe closed PASS, a command with an escaping cwd or log opened, a station that wrote into the canonical checkout closed PASS, a re-inspection that littered the canonical checkout reported MATCH: 23 witnesses passed, 6 failed); after the repair of ops.rs (receipt_matches_station_run, identity_probe_observed, command_cwd_within_workpiece, command_log_within_workpiece, canonical_repository_untouched_by_station, canonical_repository_untouched_by_reinspect) all 29 witnesses pass",
+   "required_environment": [
+    "the HOST_NATIVE_SET toolchain on the host"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "class A defects of live Factory machinery (I-21..I-26), reproduced before repair, repaired before D23; no station authority widened",
+   "source_ref": "evidence/D22/reproduce.log",
+   "owner": "D22 (derived from the evidence named by its edges)",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "EV-D22-MANIFEST",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D22-MANIFEST",
+   "probe_ref": "PROBE-EXECUTION-MANIFEST",
+   "environment_ref": "ENV-D22-HOST",
+   "artifact_identity": {
+    "path": "evidence/D22/manifest.json",
+    "sha256": "d015eb11e3941291c0a8529219930d1e44478fa0e4dfce8c47c7b2bad39b7057",
+    "bytes": 331017,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "the manifest at 88564a0 plus the live files D22 adds: every tracked path tiered, required coverage complete",
+   "epoch": "D22",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D22-FACTORY-SELF-QUALIFICATION",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "EV-D22-GATE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D22-GATE",
+   "probe_ref": "PROBE-EXECUTION-MANIFEST",
+   "environment_ref": "ENV-D22-HOST",
+   "artifact_identity": {
+    "path": "evidence/D22/gate.json",
+    "sha256": "b79f47a49b71a4c067db6a6212733ec5c2b1a0e11aa863148519b9a71b0f3f5f",
+    "bytes": 1086,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "manifest gate PASS with the D22 issue inventory (I-01 and I-14 repaired, I-21..I-26 added)",
+   "epoch": "D22",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D22-FACTORY-SELF-QUALIFICATION",
+   "introduced_in": "D22"
+  },
+  {
+   "id": "FACT-D22-JUDGE-QUALIFIED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D22-JUDGE-QUALIFIED",
+   "subject": "the Factory built from the D22 tree (judge sha256 in evidence/D22/witnesses.json)",
+   "predicate": "the judge refuses every attack the prompt names for its named reason, passes its positive path, and its live surfaces remain fully enumerated (CURRENT EXECUTION MANIFEST rebuilt at 88564a0 plus the D22 additions, gate PASS): it is qualified to judge D23-D26",
+   "required_environment": [
+    "the HOST_NATIVE_SET toolchain, node, cargo metadata and git on the host"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "D22 itself was judged by the Factory as committed at 88564a0 (the D13 precedent: a Factory repair is judged by its predecessor); the repaired judge is built by every route from D23 on and by the D22 re-inspection",
+   "source_ref": "evidence/D22/witnesses.json",
+   "owner": "D22 (derived from the evidence named by its edges)",
+   "introduced_in": "D22"
   }
  ],
  "edges": [
@@ -51356,6 +51617,196 @@
     "dimension": "repo.commit",
     "relation": "tests/manifest/build-manifest.mjs, tests/manifest/components.json or design/execution-manifest/ changes"
    }
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-FACTORY-WITNESSES",
+   "to": "IMPL-FACTORY-TESTS"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "PROBE-FACTORY-WITNESSES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "EV-D22-WITNESSES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "EV-D22-COLLISION-WITNESS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "ENV-D22-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "IMPL-FACTORY-OPS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "IMPL-FACTORY-HYGIENE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "IMPL-FACTORY-PATHS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "IMPL-FACTORY-MODEL"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "IMPL-FACTORY-TESTS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "IMPL-SYNC-IMPORT"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "ENV-D22-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "factory/src, factory/tests, tests/factory or tests/sync changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D22-FACTORY-NEGATIVE-WITNESSES",
+   "to": "ENV-D22-HOST",
+   "condition": {
+    "dimension": "toolchain.stable.rustc_commit",
+    "relation": "the HOST_NATIVE_SET toolchain changes"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "to": "PROBE-FACTORY-WITNESSES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "to": "EV-D22-REPRODUCE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "to": "EV-D22-WITNESSES"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "to": "ENV-D22-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "to": "IMPL-FACTORY-OPS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D22-FACTORY-DEFECTS-REPAIRED",
+   "to": "ENV-D22-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "factory/src/ops.rs or factory/tests/factory_law.rs changes"
+   }
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "PROBE-FACTORY-WITNESSES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "EV-D22-WITNESSES"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "EV-D22-MANIFEST"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "EV-D22-GATE"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "ENV-D22-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-CLI"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-OPS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-MODEL"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-HYGIENE"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-PATHS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-GIT"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-CHECKS"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "IMPL-FACTORY-TESTS"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "ENV-D22-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "factory/ or tests/factory changes"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D22-JUDGE-QUALIFIED",
+   "to": "ENV-D22-HOST",
+   "condition": {
+    "dimension": "toolchain.stable.rustc_commit",
+    "relation": "the HOST_NATIVE_SET toolchain changes"
+   }
   }
  ],
  "epochs": [
@@ -51511,7 +51962,15 @@
    "summary": "D21 re-inspection repair: the manifest builder excludes its own epoch; the committed D21 manifest rebuilds byte-identically at 910fdbf from both graphs (1 fact [RUN], 4 evidence records)",
    "nodes_added": 7,
    "edges_added": 9
+  },
+  {
+   "epoch": "D22",
+   "delta": "D22-FACTORY-SELF-QUALIFICATION",
+   "commit": "88564a0eccd934d6a017faf65435bc871bcd2f94 (canonical base; integration commit in LEDGER AFTER)",
+   "summary": "Factory self-qualification: 16 refusal reasons witnessed (29 law tests + collision witness), 6 accepted attacks reproduced and repaired, the judge built from this tree identified and qualified for D23-D26 (3 facts [RUN], 5 evidence records)",
+   "nodes_added": 10,
+   "edges_added": 34
   }
  ],
- "current_epoch": "D21R"
+ "current_epoch": "D22"
 }

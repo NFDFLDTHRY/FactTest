@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && sh tests/sync/collision-witness.sh $T/collision.json && sh tests/factory/run-witnesses.sh tests/factory/witnesses.json /home/user/factory-target-w27 $T/witnesses.json $T/logs collision=$T/collision.json
+(cwd .)
+PASS collision witness: refused PASS, relocated PASS
+PASS witnesses: 29 tests (29 ok, 0 failed); 16 of 16 reasons refused for the named reason; 5 of 5 positive paths; judge 9266f00f4be8
+
+[exit 0] expected 0
