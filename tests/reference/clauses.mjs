@@ -7,9 +7,9 @@
 // means the manifest claims something the authority does not say: the clause is TEXT_MISSING and the run exits 1
 // (return to ASCII).  Output: evidence/<epoch>/clauses/{records/<id>.json, summary.json}.
 // Usage: node tests/reference/clauses.mjs <manifest.json> <graph.json> <out dir>
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { sha, norm, tip, fetchBlob, fragmentStatus, locatorCandidates } from './lib.mjs';
+import { sha, norm, tip, fetchBlob, fragmentStatus, locatorCandidates, sourceKey } from './lib.mjs';
 
 const [manifestPath, graphPath, outDir] = process.argv.slice(2);
 const M = JSON.parse(readFileSync(manifestPath, 'utf8'));
@@ -19,10 +19,13 @@ for (const a of M.new_authorities || []) authById.set(a.id, { id: a.id, reproduc
 const stripTags = s => s.replace(/<[^>]+>/g, ' ');
 const srcCache = new Map();
 function source(src) {
-  const key = `${src.repo}#${src.branch}:${src.path}`;
+  const key = sourceKey(src);
   if (srcCache.has(key)) return srcCache.get(key);
-  const t = tip(src.repo, src.branch || 'main');
   let res;
+  // D17: an installed local file (package version on this host) or a pinned commit (the implementation version run)
+  if (src.local) { if (!existsSync(src.local)) res = { ok: false, detail: 'local file missing ' + src.local }; else { const body = readFileSync(src.local); res = { ok: true, commit: `installed ${src.version}`, ref: 'installed file', text: body.toString('utf8'), sha256: sha(body), bytes: body.length }; } srcCache.set(key, res); return res; }
+  if (src.commit) { const b = fetchBlob({ repo: src.repo, path: src.path }, src.commit); res = b.ok ? { ok: true, commit: src.commit, ref: 'pinned commit', text: b.body.toString('utf8'), sha256: sha(b.body), bytes: b.body.length } : { ok: false, detail: 'fetch ' + b.code }; srcCache.set(key, res); return res; }
+  const t = tip(src.repo, src.branch || 'main');
   if (!t.commit) res = { ok: false, detail: 'tip unresolved: ' + (t.detail || t.status) };
   else { const b = fetchBlob({ repo: src.repo, path: src.path }, t.commit); res = b.ok ? { ok: true, commit: t.commit, ref: t.ref || t.default_ref, text: b.body.toString('utf8'), sha256: sha(b.body), bytes: b.body.length } : { ok: false, detail: 'fetch ' + b.code }; }
   srcCache.set(key, res); return res;
@@ -32,9 +35,11 @@ const records = [];
 for (const c of M.clauses) {
   const a = authById.get(c.authority);
   const pin = c.source || (a && a.reproducibility_pin) || {};
-  const src = { repo: pin.repo, branch: pin.branch || 'main', path: pin.path };
-  const rec = { id: c.id, trace: c.trace, authority: c.authority, authority_known: !!a, source: { repo: src.repo, branch: src.branch, path: src.path }, locator: { ...c.locator }, window: c.window, consequence: c.consequence };
-  const s = src.repo ? source(src) : { ok: false, detail: 'no source for authority ' + c.authority };
+  // tip by default (D15/D16); a pinned commit only when the clause or a manifest-declared authority names one (D17)
+  const pinnedCommit = (c.source && c.source.commit) || (a && a.new && pin.commit) || null;
+  const src = pin.local ? { local: pin.local, version: pin.version } : { repo: pin.repo, branch: pin.branch || 'main', path: pin.path, ...(pinnedCommit ? { commit: pinnedCommit } : {}) };
+  const rec = { id: c.id, trace: c.trace, authority: c.authority, authority_known: !!a, source: src.local ? { repo: `installed file ${src.local}`, path: src.local, local: true } : { repo: src.repo, branch: src.branch, path: src.path, ...(src.commit ? { pinned: true } : {}) }, locator: { ...c.locator }, window: c.window, consequence: c.consequence };
+  const s = src.repo || src.local ? source(src) : { ok: false, detail: 'no source for authority ' + c.authority };
   if (!a) rec.status = 'AUTHORITY_UNKNOWN';
   else if (!s.ok) { rec.status = 'SOURCE_UNFETCHED'; rec.detail = s.detail; }
   else {

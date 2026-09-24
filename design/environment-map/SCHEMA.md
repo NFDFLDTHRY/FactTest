@@ -204,3 +204,26 @@ census facts            FACT-CAP-<family>-EXPOSURE [OBS]: exposure / non-prompti
                         answer in one browser environment; never admission (CON-CAP-001)
 tools                   tests/capability/{census.mjs, universe.json, build-universe.mjs, gate.mjs}
 ```
+
+## 10. Implementation behaviour (D17)
+
+```text
+IMPLEMENTATION_BEHAVIOR what a named implementation version does: behavior_id, implementation, version,
+                        relation_to_standard (CONFORMS | HOST_CHOICE_PERMITTED | PLATFORM_DEFAULT | FLAG_GATED |
+                        EXPERIMENTAL_NOT_SHIPPED | NOT_IMPLEMENTED | SHIPPED | VERSION_SPECIFIC | TEST_HARNESS_CHOICE |
+                        TOOLING), statement, environment_dimension, stale_if, runtime_status (OBS | UNK), label.  The class
+                        declaration carries the vocabularies and the implementation authority classes (IMPLEMENTATION_SOURCE,
+                        IMPLEMENTATION_DOC, TARGET_DOC, TOOL_DOC).  Declared by epoch D17.
+SOURCED_BY              IMPLEMENTATION_BEHAVIOR -> CLAUSE of an implementation-class authority, pinned to the version run
+RELATES_TO_STANDARD     IMPLEMENTATION_BEHAVIOR -> CLAUSE (standard class) | CONSTRAINT  + relation
+EXPLAINS                IMPLEMENTATION_BEHAVIOR -> COMPUTATIONAL_FACT (observed runtime); the builder adds STALE_IF on the
+                        explained fact for the behaviour's environment dimension
+clause sources          a branch tip (D15/D16), a pinned commit, or an installed local file (tests/reference/lib.mjs sourceKey)
+validate                + behavior_vocabulary, behavior_sourced_by_implementation, behavior_standard_is_not_implementation;
+                        clause_connected counts SOURCED_BY
+Q18                     EXACT CLAUSE also accepts implementation clauses reached through a behaviour that EXPLAINS the claim
+                        (labelled "implementation")
+Q20                     per behaviour: implementation layer, standard layer, runtime layer, stale condition
+tools                   tests/implementation/{reality.json, label-audit.json, label-audit.mjs, build-kernels.sh,
+                        wasm-sections.mjs, build-reality.mjs, gate.mjs}
+```

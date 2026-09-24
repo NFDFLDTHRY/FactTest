@@ -1,0 +1,64 @@
+{
+  "fixture_id": "F2-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "tests/reference/d17-clauses.json",
+    "raw.githubusercontent.com",
+    "installed Playwright package"
+  ],
+  "narrowed_may_change": [
+    "evidence/D17/clauses/",
+    "evidence/D17/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/reference/clauses.mjs",
+          "tests/reference/d17-clauses.json",
+          "design/environment-map/graph.json",
+          "evidence/D17/clauses"
+        ],
+        "log": "evidence/D17/logs/F2-clauses.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D17/clauses/summary.json"
+  ],
+  "tests": [
+    "every implementation clause VERIFIED at its pinned version"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D17-IMPLEMENTATION-REALITY"
+}

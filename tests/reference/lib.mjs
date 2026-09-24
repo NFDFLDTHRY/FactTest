@@ -150,4 +150,12 @@ function lineRange(locator) {
   return m ? [Number(m[1]), Number(m[2] || m[1])] : null;
 }
 
-export { sha, norm, curlHead, curlGet, tip, fetchBlob, ids, fragmentStatus, locatorCandidates, declaredStatus, lineRange, SPEC_FORMAT };
+// D17: the identity of a clause source.  A branch tip (D15/D16 form, unchanged), a pinned commit (the implementation
+// version FactTest actually ran), or an installed local file (a package version on this host).
+function sourceKey(src) {
+  if (src.local) return `local:${src.local}`;
+  if (src.commit) return `${src.repo}@${src.commit}:${src.path}`;
+  return `${src.repo}#${src.branch}:${src.path}`;
+}
+
+export { sha, norm, curlHead, curlGet, tip, fetchBlob, ids, fragmentStatus, locatorCandidates, declaredStatus, lineRange, sourceKey, SPEC_FORMAT };

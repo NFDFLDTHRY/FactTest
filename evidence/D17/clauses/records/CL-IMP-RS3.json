@@ -1,0 +1,31 @@
+{
+ "id": "CL-IMP-RS3",
+ "trace": "RS",
+ "authority": "AUTH-IMPL-CARGO-BUILD-STD",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/cargo",
+  "branch": "main",
+  "path": "src/compiler/standard_lib.rs",
+  "pinned": true,
+  "commit": "98a09e7e7d62850f14e5b6132101fc1edd19a16f",
+  "sha256": "260e01d0a4973ee9f7cd524e75e4bd7b46a4a63052f7491839818015455240fe",
+  "bytes": 8759
+ },
+ "locator": {
+  "text": "fn detect_sysroot_src_path(target_data: &RustcTargetData<'_>) -> CargoResult<PathBuf> {",
+  "line_start": 220,
+  "line_end": 233,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 14,
+ "consequence": "build-std compiles core from <sysroot>/lib/rustlib/src/rust/library: the rustup install name is part of every std source path",
+ "excerpt": "fn detect_sysroot_src_path(target_data: &RustcTargetData<'_>) -> CargoResult<PathBuf> {\n    if let Some(s) = target_data.gctx.get_env_os(\"__CARGO_TESTS_ONLY_SRC_ROOT\") {\n        return Ok(s.into());\n    }\n\n    // NOTE: This is temporary until we figure out how to acquire the source.\n    let src_path = target_data\n        .info(CompileKind::Host)\n        .sysroot\n        .join(\"lib\")\n        .join(\"rustlib\")\n        .join(\"src\")\n        .join(\"rust\")\n        .join(\"library\");",
+ "excerpt_sha256": "0b4126b66fc390fa13c790c5768d49c26de71c279c1a63876803fd0a945fbdb5",
+ "must_contain": {
+  ".join(\"rustlib\")": true,
+  ".join(\"library\");": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,31 @@
+{
+ "id": "CL-IMP-GPU7",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-GPU-FINCH-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "gpu/config/gpu_finch_features.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "9a51f47dffd2dd4efd94384a0bc82aa381df59bb648d2b98a52433ce758064e7",
+  "bytes": 34491
+ },
+ "locator": {
+  "text": "BASE_FEATURE(Vulkan,",
+  "line_start": 178,
+  "line_end": 181,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 4,
+ "consequence": "the Vulkan feature is enabled by default only on Android (FactTest passes --enable-features=Vulkan)",
+ "excerpt": "BASE_FEATURE(Vulkan,\n#if BUILDFLAG(IS_ANDROID)\n             base::FEATURE_ENABLED_BY_DEFAULT\n#else",
+ "excerpt_sha256": "0cb0f8b58605e11b2e7589fd05af3c2ab12819c05c79318e6dcb387cfb4a299e",
+ "must_contain": {
+  "#if BUILDFLAG(IS_ANDROID)": true,
+  "base::FEATURE_ENABLED_BY_DEFAULT": true
+ },
+ "status": "VERIFIED"
+}

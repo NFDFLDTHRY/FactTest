@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-PW4",
+ "trace": "PW",
+ "authority": "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+ "authority_known": true,
+ "source": {
+  "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+  "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+  "local": true,
+  "commit": "installed playwright-core 1.56.1",
+  "sha256": "1387ec667390e31e49040aa2c81d27720b38d32c7892d1a50c7f85b187e926c1",
+  "bytes": 1860
+ },
+ "locator": {
+  "text": "\"name\": \"chromium-headless-shell\",",
+  "line_start": 11,
+  "line_end": 14,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 4,
+ "consequence": "the installed headless shell is revision 1194 = Chromium 141.0.7390.37",
+ "excerpt": "      \"name\": \"chromium-headless-shell\",\n      \"revision\": \"1194\",\n      \"installByDefault\": true,\n      \"browserVersion\": \"141.0.7390.37\"",
+ "excerpt_sha256": "25cb9274cf790433c6e4aeea1d3c4240cdc5884d77a1695762ba8b05d2bc358e",
+ "must_contain": {
+  "\"revision\": \"1194\"": true,
+  "\"browserVersion\": \"141.0.7390.37\"": true
+ },
+ "status": "VERIFIED"
+}

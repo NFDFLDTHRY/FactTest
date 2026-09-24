@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-BR4",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+  "bytes": 176139
+ },
+ "locator": {
+  "text": "name: \"MachineLearningNeuralNetwork\",",
+  "line_start": 3026,
+  "line_end": 3027,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 2,
+ "consequence": "navigator.ml follows the WebNN service feature",
+ "excerpt": "      name: \"MachineLearningNeuralNetwork\",\n      // Enabled by webnn::mojom::features::kWebMachineLearningNeuralNetwork.",
+ "excerpt_sha256": "d476eb6ca0d83d3ac49a69b5605d900bd2120d824d555430a9435efe49ebc74d",
+ "must_contain": {
+  "Enabled by webnn::mojom::features::kWebMachineLearningNeuralNetwork": true
+ },
+ "status": "VERIFIED"
+}

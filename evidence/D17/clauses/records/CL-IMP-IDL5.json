@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-IDL5",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-BLUETOOTH",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/modules/bluetooth/navigator_bluetooth.idl",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "9e8cec9a91d2db2006a560d44817a87cc49fc2db2f65e8e0e6506e330f03b5a7",
+  "bytes": 391
+ },
+ "locator": {
+  "text": "RuntimeEnabled=WebBluetooth,",
+  "line_start": 9,
+  "line_end": 12,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 4,
+ "consequence": "navigator.bluetooth exists only when WebBluetooth is enabled",
+ "excerpt": "    RuntimeEnabled=WebBluetooth,\n    SecureContext\n] partial interface Navigator {\n    [SameObject] readonly attribute Bluetooth bluetooth;",
+ "excerpt_sha256": "7dba529cbd2f17ebea0cd9d910b55ed567362d4b463f55e7478bae75a32bee1b",
+ "must_contain": {
+  "readonly attribute Bluetooth bluetooth;": true
+ },
+ "status": "VERIFIED"
+}

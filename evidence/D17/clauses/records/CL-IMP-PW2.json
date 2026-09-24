@@ -1,0 +1,29 @@
+{
+ "id": "CL-IMP-PW2",
+ "trace": "PW",
+ "authority": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+ "authority_known": true,
+ "source": {
+  "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+  "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+  "local": true,
+  "commit": "installed playwright-core 1.56.1",
+  "sha256": "665ed0a2c12e6f130226637b4c978db725da2fdf5dd2391a2cabf3e59052cf26",
+  "bytes": 4052
+ },
+ "locator": {
+  "text": "\"--disable-field-trial-config\",",
+  "line_start": 52,
+  "line_end": 52,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "Playwright disables field-trial configs: every feature runs at its compiled default (no Finch rollout)",
+ "excerpt": "  \"--disable-field-trial-config\",",
+ "excerpt_sha256": "5ebb97676af04f0ae17d99a81bc2d2e4ae459424012fa65d9e89081f11c15d29",
+ "must_contain": {
+  "--disable-field-trial-config": true
+ },
+ "status": "VERIFIED"
+}

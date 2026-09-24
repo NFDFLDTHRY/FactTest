@@ -1,0 +1,87 @@
+{
+  "fixture_id": "F7-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "stage copies of the F1 tools (restored to base after the F1 re-run lost their receipt coverage)",
+    "tests/reference",
+    "tests/capability",
+    "tests/envmap/envmap.mjs",
+    "evidence/D15",
+    "evidence/D16"
+  ],
+  "narrowed_may_change": [
+    "tests/reference/lib.mjs",
+    "tests/reference/clauses.mjs",
+    "tests/reference/build-clauses.mjs",
+    "tests/reference/d17-clauses.json",
+    "tests/envmap/envmap.mjs",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/",
+    "tests/implementation/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in tests/reference/lib.mjs tests/reference/clauses.mjs tests/reference/build-clauses.mjs tests/implementation/label-audit.mjs tests/implementation/wasm-sections.mjs tests/implementation/build-reality.mjs tests/implementation/gate.mjs tests/envmap/envmap.mjs; do node --check $f || exit 1; done; sh -n tests/implementation/build-kernels.sh && node -e 'const fs=require(\"fs\");const m=JSON.parse(fs.readFileSync(\"tests/reference/d17-clauses.json\"));const r=JSON.parse(fs.readFileSync(\"tests/implementation/reality.json\"));const l=JSON.parse(fs.readFileSync(\"tests/implementation/label-audit.json\"));console.log(m.clauses.length+\" clauses, \"+r.behaviors.length+\" behaviours, \"+l.findings.length+\" findings\")' && ! grep -nE \"'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL)-[A-Z0-9]\" tests/reference/lib.mjs tests/reference/clauses.mjs tests/reference/build-clauses.mjs tests/implementation/label-audit.mjs tests/implementation/wasm-sections.mjs tests/implementation/build-reality.mjs tests/implementation/gate.mjs tests/implementation/build-kernels.sh tests/envmap/envmap.mjs && git diff --exit-code e4e210304591d99f73873dc719b79f187c4d19a1 -- tests/reference/gate.mjs tests/reference/build-revisions.mjs tests/reference/reopen.mjs tests/reference/regress-reopen.mjs tests/capability README.md"
+        ],
+        "log": "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F7-syntax-generic.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/reference/build-clauses.mjs --clauses evidence/D15/clauses --manifest tests/reference/d15-clauses.json --epoch D15 --delta D15-FOUNDATIONAL-SEMANTICS --commit '46cc28be1486798635eac42a6955dedaba36673f (canonical base; integration commit in LEDGER AFTER)' --declare --out $T/D15.json && cmp $T/D15.json design/environment-map/epochs/D15.json && node tests/reference/build-clauses.mjs --clauses evidence/D16/clauses --manifest tests/reference/d16-clauses.json --epoch D16 --delta D16-CAPABILITY-UNIVERSE --commit '3748fa7bd15d74e560951f31338b8c94820c2830 (canonical base; integration commit in LEDGER AFTER)' --harness-in design/environment-map/graph.json --out $T/c16.json && node tests/capability/build-universe.mjs --clause-epoch $T/c16.json --universe tests/capability/universe.json --census evidence/D16/census --matrix CAPABILITY-MATRIX.md --epoch D16 --delta D16-CAPABILITY-UNIVERSE --commit '3748fa7bd15d74e560951f31338b8c94820c2830 (canonical base; integration commit in LEDGER AFTER)' --declare --out $T/D16.json && cmp $T/D16.json design/environment-map/epochs/D16.json && node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json"
+        ],
+        "log": "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F7-regression.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/reference/d17-clauses.json",
+    "tests/implementation/reality.json",
+    "tests/implementation/label-audit.json",
+    "tests/implementation/label-audit.mjs",
+    "tests/implementation/wasm-sections.mjs",
+    "tests/implementation/build-reality.mjs",
+    "tests/implementation/gate.mjs"
+  ],
+  "tests": [
+    "repair: re-applies the F1 tools inside a station run",
+    "D15 and D16 epochs rebuild byte-identically",
+    "the current (D17) graph validates, renders and merges identically"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D17-IMPLEMENTATION-REALITY"
+}

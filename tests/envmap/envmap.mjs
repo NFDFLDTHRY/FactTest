@@ -24,6 +24,9 @@
 //   vocabulary and step/edge agreement; a clause traced by a family (TRACE_STEP) is connected; Q19 walks every family
 //   API -> SECURE_CONTEXT -> PERMISSION_POLICY -> REQUEST -> FEATURES_LIMITS -> LIFECYCLE -> LOSS -> RUNTIME ADMISSION ->
 //   PROBE OBLIGATION -> EVIDENCE; TRACEABILITY lists the universe.  Graphs without families render and validate as before.
+// D17 (implementation reality): IMPLEMENTATION_BEHAVIOR nodes keep three layers apart and connected - SOURCED_BY only
+//   implementation-class clauses, RELATES_TO_STANDARD only standard clauses or constraints, EXPLAINS observed facts; the
+//   vocabularies come from the class declaration in the graph.  Q20 lists every behaviour with its three layers.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -129,7 +132,7 @@ function validate(g) {
     add('clause_of_its_authority', badC.length ? 'FAIL' : 'PASS', badC.map(c => c.id).join(' ') || `${clauses.length} clauses`);
     const noX = clauses.filter(c => !c.excerpt_sha256 || !c.source || !c.source.commit || !out(g, c.id, 'EXTRACTED_IN').length);
     add('clause_has_extraction_identity', noX.length ? 'FAIL' : 'PASS', noX.map(c => c.id).join(' '));
-    const orphan = clauses.filter(c => !out(g, c.id, 'GROUNDS').length && !out(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'TRACE_STEP').length);
+    const orphan = clauses.filter(c => !out(g, c.id, 'GROUNDS').length && !out(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'LEADS_TO').length && !inc(g, c.id, 'TRACE_STEP').length && !inc(g, c.id, 'SOURCED_BY').length);
     add('clause_connected', orphan.length ? 'FAIL' : 'PASS', orphan.map(c => c.id).join(' ') || 'every clause grounds something or is on a sublink chain');
   }
   const fams = g.nodes.filter(n => n.class === 'CAPABILITY_FAMILY');
@@ -138,6 +141,18 @@ function validate(g) {
     add('family_classification_vocabulary', badCls.length ? 'FAIL' : 'PASS', badCls.map(f => f.id).join(' ') || `${fams.length} families`);
     const mism = fams.filter(f => Object.entries(f.steps).some(([s, x]) => x.status !== 'GAP' && x.clauses.some(c => !out(g, f.id, 'TRACE_STEP').some(e => e.to === c && e.step === s))) || out(g, f.id, 'TRACE_STEP').some(e => !(f.steps[e.step] && f.steps[e.step].clauses.includes(e.to))));
     add('family_steps_match_edges', mism.length ? 'FAIL' : 'PASS', mism.map(f => f.id).join(' ') || 'every traced step has its TRACE_STEP edges and nothing else');
+  }
+  const behs = g.nodes.filter(n => n.class === 'IMPLEMENTATION_BEHAVIOR');
+  if (behs.length) {
+    const decl = (g.node_classes || {}).IMPLEMENTATION_BEHAVIOR || {};
+    const implClasses = decl.implementation_authority_classes || [];
+    const clsOf = c => { const n = ids.get(c); return n && n.class === 'CLAUSE' && ids.get(n.authority_ref) ? ids.get(n.authority_ref).authority_class : null; };
+    const badRel = behs.filter(b => !(decl.relation_vocabulary || []).includes(b.relation_to_standard) || !(decl.runtime_vocabulary || []).includes(b.runtime_status));
+    add('behavior_vocabulary', badRel.length ? 'FAIL' : 'PASS', badRel.map(b => b.id).join(' ') || `${behs.length} behaviours`);
+    const badSrc = behs.filter(b => { const s = out(g, b.id, 'SOURCED_BY'); return !s.length || s.some(e => !implClasses.includes(clsOf(e.to))); });
+    add('behavior_sourced_by_implementation', badSrc.length ? 'FAIL' : 'PASS', badSrc.map(b => b.id).join(' ') || 'every behaviour rests on implementation-class clauses only');
+    const badStd = behs.filter(b => out(g, b.id, 'RELATES_TO_STANDARD').some(e => ids.get(e.to).class === 'CLAUSE' && implClasses.includes(clsOf(e.to))));
+    add('behavior_standard_is_not_implementation', badStd.length ? 'FAIL' : 'PASS', badStd.map(b => b.id).join(' ') || 'no behaviour cites an implementation source as standards law');
   }
   if (g.epochs) {
     const names = g.epochs.map(e => e.epoch);
@@ -215,6 +230,8 @@ const Q = {
     const consOf = sortIds([...(f.constraint_refs || []), ...inc(g, f.id, 'REQUIRES').map(e => e.from).filter(x => ids.get(x).class === 'CONSTRAINT')]);
     const auths = sortIds([...inc(g, f.id, 'AUTHORIZES').map(e => e.from), ...consOf.flatMap(c => inc(g, c, 'AUTHORIZES').map(e => e.from))]);
     const clauses = sortIds([...inc(g, f.id, 'GROUNDS').map(e => e.from), ...consOf.flatMap(c => inc(g, c, 'GROUNDS').map(e => e.from))]);
+    // D17: an implementation-dependent claim may rest on pinned implementation source clauses (via a behaviour that EXPLAINS it)
+    const implClauses = sortIds(inc(g, f.id, 'EXPLAINS').flatMap(e => out(g, e.from, 'SOURCED_BY').map(x => `${x.to} (implementation, ${e.from})`)));
     const contracts = sortIds([...consOf.filter(c => ids.get(c).kind === 'contract'), ...[f.id, ...consOf].flatMap(x => out(g, x, 'IMPLEMENTED_BY').map(e => e.to))]);
     const probes = sortIds(out(g, f.id, 'PROBED_BY').map(e => e.to));
     const evidence = evidenceOf(g, ids, f.id);
@@ -224,7 +241,7 @@ const Q = {
     const maturity = auths.map(a => { const r = rev(a); return { authority: a, class: ids.get(a).authority_class, maturity: ids.get(a).maturity, latest_revision: r ? r.id : null, movement: r ? r.movement : null, published: r ? r.current_authority.status : 'never reopened' }; });
     const steps = [
       ['CURRENT AUTHORITY', auths.length > 0, auths.length ? auths.join(', ') : '[GAP] no authority authorizes the claim or its constraints'],
-      ['EXACT CLAUSE', clauses.length > 0, clauses.length ? clauses.join(', ') : '[GAP] authority cited at document/locator level only; no extracted clause grounds this claim'],
+      ['EXACT CLAUSE', clauses.length + implClauses.length > 0, clauses.length + implClauses.length ? [...clauses, ...implClauses].join(', ') : '[GAP] authority cited at document/locator level only; no extracted clause grounds this claim'],
       ['AUTHORITY MATURITY', maturity.every(m => m.maturity), maturity.every(m => m.maturity) ? maturity.map(m => `${m.authority}:${m.class}${m.latest_revision ? '' : ' (first observed, no reopen yet)'}`).join(', ') + (maturity.some(m => /^UNREACHABLE|^HTTP_4|never reopened/.test(m.published)) ? ' - published rendering unverified [UNK] (source-declared maturity)' : '') : '[GAP] maturity not recorded: ' + maturity.filter(m => !m.maturity).map(m => m.authority).join(', ')],
       ['REPRODUCIBILITY PIN', pins.length === auths.length && auths.length > 0, pins.length === auths.length ? `${pins.length} pinned by commit + sha256` : '[GAP] unpinned authority: ' + auths.filter(a => !pins.includes(a)).join(', ')],
       ['PROJECT CONSTRAINT', consOf.length > 0, consOf.length ? consOf.join(', ') : '[GAP] no project constraint names this claim'],
@@ -254,6 +271,19 @@ const Q = {
     const by = {}; for (const r of rows) (by[r.classification] = by[r.classification] || []).push(r.family);
     const stepStatus = {}; for (const r of rows) for (const t of r.trace.slice(0, 7)) stepStatus[t.status] = (stepStatus[t.status] || 0) + 1;
     return { families: rows.length, in_G: rows.filter(r => r.in_G).length, by_classification: Object.fromEntries(Object.entries(by).map(([k, v]) => [k, v.length])), families_by_classification: by, authority_step_status: stepStatus, rows };
+  } },
+  Q20: { title: 'Which implementation behaviours does FactTest depend on, pinned where, standing how to standards law, and explaining which observed facts?', fn: (g, ids) => {
+    const behs = g.nodes.filter(n => n.class === 'IMPLEMENTATION_BEHAVIOR');
+    if (!behs.length) return { behaviors: 0, note: 'no IMPLEMENTATION_BEHAVIOR nodes in this graph' };
+    const rows = behs.map(b => ({ behavior: b.id, implementation: b.implementation, version: b.version, relation: b.relation_to_standard, runtime_status: b.runtime_status, statement: b.statement,
+      implementation_layer: sortIds(out(g, b.id, 'SOURCED_BY').map(e => e.to)).map(c => { const n = ids.get(c); return { clause: c, authority: n.authority_ref, source: `${String(n.source.repo).replace('https://github.com/', '')}@${String(n.source.commit).slice(0, 12)} ${n.source.path}:${n.locator.line_start}` }; }),
+      standard_layer: out(g, b.id, 'RELATES_TO_STANDARD').map(e => ({ ref: e.to, class: ids.get(e.to).class, relation: e.relation })),
+      runtime_layer: sortIds(out(g, b.id, 'EXPLAINS').map(e => e.to)).map(f => ({ fact: f, status: ids.get(f).status, environments: sortIds([...out(g, f, 'REQUIRES').map(e => e.to).filter(x => ids.get(x).class === 'ENVIRONMENT'), ...evidenceOf(g, ids, f).map(e => e.environment_ref)]) })),
+      stale_if: { dimension: b.environment_dimension, relation: b.stale_if } }));
+    const by = {}; for (const r of rows) by[r.relation] = (by[r.relation] || 0) + 1;
+    const explained = new Set(rows.flatMap(r => r.runtime_layer.map(x => x.fact)));
+    const absent = g.nodes.filter(n => n.class === 'CAPABILITY_FAMILY' && n.census && n.census.state === 'ABSENT').map(n => ({ family: n.id, exposure_facts: out(g, n.id, 'WITNESSED_BY').map(e => e.to).filter(f => ids.get(f).subject && / exposure in /.test(ids.get(f).subject)) }));
+    return { behaviors: rows.length, by_relation: by, explained_facts: explained.size, census_absences: absent.map(x => ({ family: x.family, explained_by: rows.filter(r => r.runtime_layer.some(y => x.exposure_facts.includes(y.fact))).map(r => r.behavior) })), rows };
   } },
   Q16: { title: 'What did each evidence epoch add, and how is it connected to the earlier graph?', fn: (g, ids) => {
     const epochs = g.epochs || [{ epoch: 'D11' }]; const first = epochs[0].epoch;
@@ -345,6 +375,11 @@ function renderTrace(g) {
   if (fams.length) {
     L.push('', '## Capability universe (G = CAPABILITY-MATRIX.md; Q19 has the full trace)', '');
     for (const f of fams) L.push(`- ${f.id} [${f.classification}] ${f.matrix_row}: census ${f.census ? f.census.state : 'none'}; steps ${Object.entries(f.steps).map(([s, x]) => `${s}=${x.status}`).join(' ')}; witnesses ${sortIds(out(g, f.id, 'WITNESSED_BY').map(e => e.to)).join(', ') || '(none)'}`);
+  }
+  const behs = g.nodes.filter(x => x.class === 'IMPLEMENTATION_BEHAVIOR');
+  if (behs.length) {
+    L.push('', '## Implementation behaviour (implementation truth, never standards law; Q20 has the three layers)', '');
+    for (const b of behs) L.push(`- ${b.id} [${b.relation_to_standard}; runtime ${b.runtime_status}] ${b.implementation} (${b.version}): ${b.statement}; sources ${sortIds(out(g, b.id, 'SOURCED_BY').map(e => e.to)).join(', ')}; explains ${sortIds(out(g, b.id, 'EXPLAINS').map(e => e.to)).join(', ') || '(none)'}; stale if ${b.environment_dimension}: ${b.stale_if}`);
   }
   L.push('', '## Environments', '');
   for (const n of g.nodes.filter(x => x.class === 'ENVIRONMENT').sort((a, b) => a.id.localeCompare(b.id))) L.push(`- ${n.id} [${n.environment_class}] ${n.host_runtime || ''}${n.toolchain && n.toolchain.nightly ? '; nightly ' + n.toolchain.nightly.rustc : ''}; missing identity: ${(n.identity_completeness.missing || []).join(', ') || 'none'}`);

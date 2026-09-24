@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-RS5",
+ "trace": "RS",
+ "authority": "AUTH-IMPL-LLVM-SUMMARY-INDEX",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/llvm-project",
+  "branch": "main",
+  "path": "llvm/include/llvm/IR/ModuleSummaryIndex.h",
+  "pinned": true,
+  "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+  "sha256": "d628dbe4d221876a0e726f1819f95099cb1151c0c63bcdf4886697bffdd794e2",
+  "bytes": 83903
+ },
+ "locator": {
+  "text": "static std::string getGlobalNameForLocal(StringRef Name, StringRef Suffix) {",
+  "line_start": 1966,
+  "line_end": 1970,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 5,
+ "consequence": "promoted name = name + '.llvm.' + module-hash suffix: the only place the install path reaches the kernel bytes (debug name section)",
+ "excerpt": "  static std::string getGlobalNameForLocal(StringRef Name, StringRef Suffix) {\n    SmallString<256> NewName(Name);\n    NewName += \".llvm.\";\n    NewName += Suffix;\n    return std::string(NewName);",
+ "excerpt_sha256": "f3f72e57c394a02cbaf031a07cc8fb21d3af237dc85ddba51403f96b5694d513",
+ "must_contain": {
+  "NewName += \".llvm.\";": true
+ },
+ "status": "VERIFIED"
+}

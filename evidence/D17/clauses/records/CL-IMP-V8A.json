@@ -1,0 +1,33 @@
+{
+ "id": "CL-IMP-V8A",
+ "trace": "V8",
+ "authority": "AUTH-IMPL-V8-WASM-FLAGS-141",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/v8/v8",
+  "branch": "main",
+  "path": "src/wasm/wasm-feature-flags.h",
+  "pinned": true,
+  "commit": "ad8af0fc661d278e87627fcaa3a7cf795ee80dd8",
+  "sha256": "d2f03a15341a347403f1856b5e42df2b81cae4b9e149a48c326ccd6a7c76dc66",
+  "bytes": 11455
+ },
+ "locator": {
+  "text": "/* Shared-Everything Threads proposal. */",
+  "line_start": 51,
+  "line_end": 54,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 4,
+ "consequence": "V8 14.1 (Chromium 141): shared-everything threads is an experimental flag (off); memory64 is no longer a feature flag at all (verified absent)",
+ "excerpt": "  /* Shared-Everything Threads proposal. */                                    \\\n  /* https://github.com/WebAssembly/shared-everything-threads */               \\\n  /* V8 side owner: manoskouk */                                               \\\n  V(shared, \"shared-everything threads\", false)                                \\",
+ "excerpt_sha256": "e2578dda2da9c4e0708591580ef3d68ac6989ca8ef2dcfb133cee373e4200a03",
+ "must_contain": {
+  "V(shared, \"shared-everything threads\", false)": true
+ },
+ "status": "VERIFIED",
+ "absent_in_document": {
+  "V(memory64": true
+ }
+}

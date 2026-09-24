@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-RS4",
+ "trace": "RS",
+ "authority": "AUTH-IMPL-LLVM-FUNCTION-IMPORT",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/llvm-project",
+  "branch": "main",
+  "path": "llvm/lib/Transforms/Utils/FunctionImportUtils.cpp",
+  "pinned": true,
+  "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+  "sha256": "25b02a0a5b784cb479da30b12c5212e14ad81701d9729eedca2212f230868a07",
+  "bytes": 16814
+ },
+ "locator": {
+  "text": "FunctionImportGlobalProcessing::getPromotedName(const GlobalValue *SGV) {",
+  "line_start": 143,
+  "line_end": 161,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 19,
+ "consequence": "LLVM renames a promoted local with the hash of its module",
+ "excerpt": "FunctionImportGlobalProcessing::getPromotedName(const GlobalValue *SGV) {\n  assert(SGV->hasLocalLinkage());\n\n  // For locals that must be promoted to global scope, ensure that\n  // the promoted name uniquely identifies the copy in the original module,\n  // using the ID assigned during combined index creation.\n  if (UseSourceFilenameForPromotedLocals &&\n      !SGV->getParent()->getSourceFileName().empty()) {\n    SmallString<256> Suffix(SGV->getParent()->getSourceFileName());\n    std::replace_if(std::begin(Suffix), std::end(Suffix),\n                    [&](char ch) { return !isAlnum(ch); }, '_');\n    return ModuleSummaryIndex::getGlobalNameForLocal(\n        SGV->getName(), Suffix);\n  }\n\n  return ModuleSummaryIndex::getGlobalNameForLocal(\n      SGV->getName(),\n      ImportIndex.getModuleHash(SGV->getParent()->getModuleIdentifier()));\n}",
+ "excerpt_sha256": "16f5e040e484c19d84c60099ed6409e96cdb18b83be828b38aefb7a326d15a18",
+ "must_contain": {
+  "ImportIndex.getModuleHash(SGV->getParent()->getModuleIdentifier())": true
+ },
+ "status": "VERIFIED"
+}

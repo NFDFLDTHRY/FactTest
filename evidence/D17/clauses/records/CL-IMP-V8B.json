@@ -1,0 +1,31 @@
+{
+ "id": "CL-IMP-V8B",
+ "trace": "V8",
+ "authority": "AUTH-IMPL-V8-WASM-FLAGS-NODE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/v8/v8",
+  "branch": "main",
+  "path": "src/wasm/wasm-feature-flags.h",
+  "pinned": true,
+  "commit": "8ab91836885699b9ef686c3a30df4778501ef7d1",
+  "sha256": "a07efeb035a84f6ce114181ca8b48014eb1fe811ea1345710c31d0095f152f9a",
+  "bytes": 9440
+ },
+ "locator": {
+  "text": "/* Memory64 proposal. */",
+  "after": "#define FOREACH_WASM_EXPERIMENTAL_FEATURE_FLAG(V)",
+  "line_start": 75,
+  "line_end": 78,
+  "derivation": "anchor text after \"#define FOREACH_WASM_EXPERIMENTAL_FEATUR\"",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 4,
+ "consequence": "V8 12.4 (Node 22's base): memory64 is an experimental flag, off by default: Node without the flag cannot compile a memory64 module",
+ "excerpt": "  /* Memory64 proposal. */                                                     \\\n  /* https://github.com/WebAssembly/memory64 */                                \\\n  /* V8 side owner: clemensb */                                                \\\n  V(memory64, \"memory64\", false)                                               \\",
+ "excerpt_sha256": "093f23f4e63ef9056488f9c5ad54d2ea3577f16129e49e2434696ebbe8d05d3b",
+ "must_contain": {
+  "V(memory64, \"memory64\", false)": true
+ },
+ "status": "VERIFIED"
+}

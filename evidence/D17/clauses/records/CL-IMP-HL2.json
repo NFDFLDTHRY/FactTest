@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-HL2",
+ "trace": "HL",
+ "authority": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "headless/lib/browser/headless_permission_manager.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "a499a80610abaed0a63db6733fb240f4ab3caed4b917bf9539c6659b9a1647a6",
+  "bytes": 3880
+ },
+ "locator": {
+  "text": "blink::mojom::PermissionStatus HeadlessPermissionManager::GetPermissionStatus(",
+  "line_start": 53,
+  "line_end": 57,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 5,
+ "consequence": "every permission status query in the headless shell answers ASK ('prompt')",
+ "excerpt": "blink::mojom::PermissionStatus HeadlessPermissionManager::GetPermissionStatus(\n    const blink::mojom::PermissionDescriptorPtr& permission_descriptor,\n    const GURL& requesting_origin,\n    const GURL& embedding_origin) {\n  return blink::mojom::PermissionStatus::ASK;",
+ "excerpt_sha256": "bf7b5cdcaadd9d0b2cfde0fc4ce5025d012b27ffc84cb493d110c16198280ef6",
+ "must_contain": {
+  "return blink::mojom::PermissionStatus::ASK;": true
+ },
+ "status": "VERIFIED"
+}

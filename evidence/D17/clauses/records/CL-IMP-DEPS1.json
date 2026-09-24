@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-DEPS1",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-CHROMIUM-DEPS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "DEPS",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3",
+  "bytes": 185857
+ },
+ "locator": {
+  "text": "'v8_revision': 'ad8af0fc661d278e87627fcaa3a7cf795ee80dd8',",
+  "line_start": 316,
+  "line_end": 316,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "Chromium 141.0.7390.37 builds V8 ad8af0fc (tag 14.1.146.11)",
+ "excerpt": "  'v8_revision': 'ad8af0fc661d278e87627fcaa3a7cf795ee80dd8',",
+ "excerpt_sha256": "81a3a8cf570f65e5a4384965c52be2db9fbdb8bce23eea0ecc7dcfa588d651e1",
+ "must_contain": {
+  "ad8af0fc661d278e87627fcaa3a7cf795ee80dd8": true
+ },
+ "status": "VERIFIED"
+}

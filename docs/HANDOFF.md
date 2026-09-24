@@ -8,7 +8,7 @@ the project; everything below points at repository files.
 
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests)
-last delta         D16-CAPABILITY-UNIVERSE (pass 3 of the D14-D19 technical reference review series; integration
+last delta         D17-IMPLEMENTATION-REALITY (pass 4 of the D14-D19 technical reference review series; integration
                    commit in design/materialization/LEDGER.md)
 materialized       Factory plane (factory/), no_std compiler kernel (compiler/), host driver + browser harnesses (host/),
                    Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64), D9 qualified
@@ -16,17 +16,19 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    primitive probes only), D13 chain hygiene (this page, proof sets, toolchain pin, literal surfaces),
                    D14 authority frontier epoch (64 AUTHORITY_REVISION nodes, Q17 staleness traversal), D15 foundational
                    clause epoch (60 exact clauses VERIFIED at source tips, 6 PROPOSED constraints, Q18 claim traversal),
-                   D16 capability universe (33 families of G traced at 90 more clauses, exposure census, Q19)
+                   D16 capability universe (33 families of G traced at 90 more clauses, exposure census, Q19),
+                   D17 implementation reality (19 behaviours on 44 clauses pinned to the versions run, kernel section
+                   identity, label audit, Q20)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
 series             D14-D19 (design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md): one StructuralDelta
                    per pass, each closed, verified, integrated and re-observed before the next
-next               D17-IMPLEMENTATION-REALITY (what do rustc, Cargo, Chromium/Blink/V8/Dawn/SwiftShader, headless mode,
-                   flags, storage/SW implementations and Playwright actually do?), starting from
-                   design/materialization/D16-OBSERVED-CAPABILITY-UNIVERSE.md: the census implementation signals, the
-                   SAB-global and git tree-order questions carried from D15.  Implementation documentation is labelled
-                   implementation, never standards law.  The owner PAUSED the D12-predicted seed/broker qualification; it
-                   is renumbered after D19.
+next               D18-REPO-RECONCILIATION (given D14-D17, what must change inside the current FactTest model?),
+                   starting from design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md: the 6 MISLABEL
+                   corrections (FACT-LBL-*), implementation re-pins (FACT-IMPL-PINS-NOT-RUNNING-VERSION), PROPOSED
+                   constraints (D15/D16), kernel identity definition, stale claims (Q17, FACT-WORKERS-UNPROBED), sensor
+                   routing.  Historical evidence is never mutated.  The owner PAUSED the D12-predicted seed/broker
+                   qualification; it is renumbered after D19.
 ```
 
 ## 2. Mutation law
@@ -65,6 +67,9 @@ HEAD, tree, status, ancestry to main) before drawing anything.
                $F station open  <delta> factory/fixtures/<D>/<fx>.json   (check its exit status: copy NOTHING if
                                                                              the open is refused; D14 lesson)
                copy exactly the files that station produces into the workpiece
+               (repair: never re-run a fixture to repair - its receipt then covers only that run's changes and the
+               earlier ones become unreceipted; restore every path the fixture changed to base first, then run a NEW
+               (or corrected) fixture that re-makes all of them; D17 lesson)
                $F station close <delta> factory/fixtures/<D>/<fx>.json    # runs the fixture commands, writes a receipt
              $F verify <delta>        # changed paths, must_not_change, receipts, required/forbidden paths
              $F integrate <delta>     # ff-only; stops if the base moved
@@ -91,9 +96,10 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
                BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
-               epochs/D12.json .. epochs/D16.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
+               epochs/D12.json .. epochs/D17.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
                tests/reference/<epoch>-clauses.json (exact-clause manifests; constraints there are PROPOSED until D18);
                tests/capability/universe.json (the G trace + reviewed classification; G itself is CAPABILITY-MATRIX.md);
+               tests/implementation/{reality.json, label-audit.json} (implementation behaviours; reviewed label findings);
                this page; the newest D<n> intended/observed pair; tests/toolchain/proof-sets.json; rust-toolchain.toml
 HISTORICAL     FABLE-ASCII-SYSTEM-PROMPT.md (bootloader of the original Fable 5.1 materialization session; carries a
                HISTORICAL banner), PASS1.md-PASS6.md, PASS5-TESTS.md, PASS6-TESTS.md, PASS6-GAP-REPAIRS.md,
@@ -126,8 +132,10 @@ C      D12 B-11 (P07)                       storage best-effort, persist() false
 C      D12 B-03                             station commands are OS programs (portability)                     [ERR]
 C      D12 B-04                             RUST_BUILD only on a host                                          [UNK]
 C      D12 B-13 remainder                   verifier source-commit provenance (binary sha256 is recorded)       [GAP]
-C      D13 H-12 (FACT-KERNEL-IDENTITY-      kernel bytes depend on the rust-src install name                   [GAP]
-       INSTALL-PATH)
+C      D13 H-12 (FACT-KERNEL-IDENTITY-      kernel bytes depend on the rust-src install name; D17 narrows it: only  [GAP] narrowed
+       INSTALL-PATH)                        the custom "name" section differs (LLVM promoted-symbol hash;
+                                            FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT [RUN]); identity
+                                            definition D18, re-proof D19
 C      D11 WGSL / CON-GPU-003               WGSL never compiled or dispatched                                  [GAP]
 C      D11 hardware GPU                     only SwiftShader fallback adapters ever observed                   [UNK]
 C      ERR-002 / ERR-003                    shared/threaded Wasm unadmitted (presence only)                    [ERR]
@@ -141,6 +149,19 @@ D      D16 Generic Sensor advisements       whole family flagged at its tips (Pr
                                             Ambient Light: not default anywhere; motion sensors: new projects ->
                                             Device Orientation and Motion); all kept in G; routing decision D18
 D      D16 stale claim                      FACT-WORKERS-UNPROBED (D11) contradicted by D12 worker evidence (D18)   [ERR]
+D      D17 label audit                      6 MISLABEL findings (FACT-LBL-01/06/07/10/11/12): Chromium hook stated  [ERR]
+                                            as standard, WebGPU switch set omitted, headless shell presented as
+                                            Chromium/installed, implementation pins not the version run;
+                                            corrections D18 (tests/implementation/label-audit.json)
+D      D17 implementation pins              D11 Chromium switch / V8 flag authorities pinned to later main commits   [ERR]
+                                            (FACT-IMPL-PINS-NOT-RUNNING-VERSION); running-version clauses exist
+D      D17 installed-Chrome durability      full Chrome grants durable storage to installed/important sites; the   [UNK]
+                                            headless shell answers ASK to every permission: installed Factory
+                                            durability never observed (IB-CHROME-DURABLE-STORAGE)
+D      D17 Dawn 9caf493                      Dawn source unreachable through the mirror (fallback = CPU adapter     [GAP]
+                                            pinned on the Blink and SwiftShader side only)
+D      D17 non-Linux platforms              Android/ChromeOS/Mac/Win defaults differ (WebGPU, Vulkan, Bluetooth);  [UNK]
+                                            only Linux observed
 C      CAPABILITY-MATRIX / CONSTRAINT-      capability rows marked [GAP]/[ERR]/[UNK] in the law ledgers        as marked
        LEDGER rows
 D      web-api #streaming-module-compilation-  D14: the cited id never existed at the pin (explicit id           [ERR]

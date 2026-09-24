@@ -13,6 +13,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
+import { sourceKey } from './lib.mjs';
 
 const a = process.argv.slice(2); const o = {};
 for (let i = 0; i < a.length; i++) { const k = a[i].replace(/^--/, ''); if (a[i + 1] === undefined || a[i + 1].startsWith('--')) o[k] = true; else o[k] = a[++i]; }
@@ -52,10 +53,10 @@ edge('STALE_IF', FV, ENV, { condition: { dimension: 'authority.source_commit', r
 // new authorities: pin = the source the extraction actually read
 const srcOf = new Map(summary.sources.map(s => [s.key, s]));
 for (const na of M.new_authorities || []) {
-  const s = srcOf.get(`${na.source.repo}#${na.source.branch}:${na.source.path}`);
+  const s = srcOf.get(sourceKey(na.source));
   N({ id: na.id, class: 'AUTHORITY', authority_id: na.id, title: na.title, exact_url: na.exact_url, exact_fragment: na.exact_fragment, authority_owner: na.authority_owner, authority_class: na.authority_class,
-    maturity: na.maturity, observed_date: 'never (published rendering not opened: host DENIED)', reopen_status: 'DENIED',
-    reproducibility_pin: { repo: na.source.repo, branch: na.source.branch, commit: s ? s.commit : null, path: na.source.path, sha256: s ? s.sha256 : null, observed: summary.observed.slice(0, 10), locator: `clauses of ${E} (see CLAUSE nodes)` },
+    maturity: na.maturity, observed_date: na.observed_date || 'never (published rendering not opened: host DENIED)', reopen_status: na.reopen_status || 'DENIED',
+    reproducibility_pin: { repo: na.source.local ? `installed file ${na.source.local}` : na.source.repo, branch: na.source.branch, commit: s ? s.commit : null, path: na.source.local || na.source.path, sha256: s ? s.sha256 : null, observed: summary.observed.slice(0, 10), locator: `clauses of ${E} (see CLAUSE nodes)` },
     extracted_consequence: na.extracted_consequence, fragment_status: na.exact_fragment ? 'CLAUSE-LEVEL (fragments live on the CLAUSE nodes)' : 'NOT_CITED (document level; clauses carry locators)', owner: na.authority_owner });
 }
 for (const { path, r } of recs) {

@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-GPU5",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-GL-SWITCHES-141",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "ui/gl/gl_switches.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "abd64d5d91406ea8e721d6e94880573122c0feeeae554b123e54c332163ec2dd",
+  "bytes": 18925
+ },
+ "locator": {
+  "text": "// Allow usage of SwiftShader for WebGL",
+  "line_start": 156,
+  "line_end": 157,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 2,
+ "consequence": "--enable-unsafe-swiftshader is documented for WebGL; its WebGPU effect is not what the switch documents",
+ "excerpt": "// Allow usage of SwiftShader for WebGL\nconst char kEnableUnsafeSwiftShader[] = \"enable-unsafe-swiftshader\";",
+ "excerpt_sha256": "5ec12afa596d250eaacef6d571b3cc912b632b35ba54978aa5c4e28693e05895",
+ "must_contain": {
+  "const char kEnableUnsafeSwiftShader[] = \"enable-unsafe-swiftshader\";": true
+ },
+ "status": "VERIFIED"
+}

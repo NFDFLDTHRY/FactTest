@@ -197,3 +197,13 @@ D16    D16-CAPABILITY-UNIVERSE     33 CAPABILITY_FAMILY nodes (G = CAPABILITY-MA
                                    ENV-D16-BROWSER (HeadlessChrome 141), 2 PROPOSED constraints; epochs/D16.json.
                                    Q19 walks every family API -> ... -> EVIDENCE and names its first gap.
 ```
+
+## 9. Implementation reality epoch D17 (added by D17-IMPLEMENTATION-REALITY)
+
+```text
+D17    D17-IMPLEMENTATION-REALITY  19 IMPLEMENTATION_BEHAVIOR nodes on 44 clauses pinned to the versions run (Chromium
+                                   141.0.7390.37, V8 14.1.146.11 / 12.4, SwiftShader, rust nightly 6eeff9a52 + cargo +
+                                   LLVM, Playwright 1.56.1); kernel section identity under two install names; label audit
+                                   (6 MISLABEL [ERR] facts for D18); epochs/D17.json.  Q20 separates and connects
+                                   standards law, implementation behaviour and observed runtime.
+```

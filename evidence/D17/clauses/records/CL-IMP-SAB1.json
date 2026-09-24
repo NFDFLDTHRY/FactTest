@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-SAB1",
+ "trace": "SAB",
+ "authority": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/bindings/core/v8/v8_initializer.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "2d0b9ac39c48a2946c9c13dcb393e2a56a91ca70d9d31b770d1b1366edb8dded",
+  "bytes": 42767
+ },
+ "locator": {
+  "text": "bool SharedArrayBufferConstructorEnabledCallback(",
+  "line_start": 556,
+  "line_end": 562,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 7,
+ "consequence": "Chromium exposes the SharedArrayBuffer constructor only in contexts that may transfer SharedArrayBuffers (cross-origin isolated): the host choice ECMA-262 permits",
+ "excerpt": "bool SharedArrayBufferConstructorEnabledCallback(\n    v8::Local<v8::Context> context) {\n  ExecutionContext* execution_context = ToExecutionContext(context);\n  if (!execution_context)\n    return false;\n  return execution_context->SharedArrayBufferTransferAllowed();\n}",
+ "excerpt_sha256": "bfc38aa52821a1b583e6b667db8f172fa7da4807084c9d61297fb45cd040656d",
+ "must_contain": {
+  "return execution_context->SharedArrayBufferTransferAllowed();": true
+ },
+ "status": "VERIFIED"
+}

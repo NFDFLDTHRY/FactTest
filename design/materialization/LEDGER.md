@@ -688,4 +688,31 @@ BEFORE
   COMPLETE of 43 RUN claims; Q19 33 families.
 
 AFTER
+- RESULT: integrated as e4e210304591d99f73873dc719b79f187c4d19a1 (ff-only from 3748fa7); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-browser F4-doc F5-evidence F6-doc PASS (format 2).  VERIFICATION: PASS (first
+  run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree 7fbdd25e; epochs/D16.json rebuilt byte-identically from the
+  committed clause and census evidence; capability gate re-run PASS).  Pushed.
+- OBSERVED: D16-OBSERVED-CAPABILITY-UNIVERSE.md - P1-P7 MATCH; census states identical to assembly.
+- (recorded by D17-IMPLEMENTATION-REALITY, the next delta.)
+
+---
+
+## D17-IMPLEMENTATION-REALITY  (pass 4 of 6: what do our implementations actually do?)
+
+BEFORE
+- DELTA: D17-IMPLEMENTATION-REALITY (factory/deltas/D17.json), workpiece W19, base e4e2103.
+- ASCII: design/materialization/D17-INTENDED-IMPLEMENTATION-REALITY.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4, F6), S-FIXTURE (F1), S-BUILD (F2 clause extraction, F3 kernel builds + label audit),
+  S-EVIDENCE (F5).
+- CHANGE: tests/reference/ (pinned-commit and installed-file sources, D17 clause manifest), tests/implementation/
+  (behaviour manifest, label audit, kernel builds, section comparison, epoch builder, gate), tests/envmap/envmap.mjs
+  (behaviour checks, Q20, Q18 implementation clauses), evidence/D17/, design/environment-map/ (epoch D17, merged graph,
+  views, SCHEMA section 10, ENVIRONMENT-MAP section 9), docs/HANDOFF.md, D17 records, this ledger.  FORBIDDEN: every law
+  and pass document and README.md (the MISLABEL corrections are D18's), compiler/, host/, factory/ machinery, fixtures/,
+  earlier epochs and D0-D16 evidence.
+- PREDICTED: 44/44 implementation clauses VERIFIED at the versions run; kernel builds differ only in the custom name
+  section; label audit 12 findings / 6 MISLABEL; epoch 151 nodes / 261 edges; merged 1042 / 2106; gate PASS (6/6 census
+  absences explained); Q18 14 COMPLETE of 45 RUN claims; Q20 19 behaviours.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

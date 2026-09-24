@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-BR2",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+  "bytes": 176139
+ },
+ "locator": {
+  "text": "name: \"SensorExtraClasses\",",
+  "line_start": 4425,
+  "line_end": 4427,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 3,
+ "consequence": "SensorExtraClasses (Magnetometer, AmbientLightSensor) is experimental: not shipped",
+ "excerpt": "      name: \"SensorExtraClasses\",\n      public: true,\n      status: \"experimental\",",
+ "excerpt_sha256": "534d6383e12099dde959f5c3652a4d734ee4fbc29ce58f198fbc44cedb0cfe54",
+ "must_contain": {
+  "status: \"experimental\"": true
+ },
+ "status": "VERIFIED"
+}

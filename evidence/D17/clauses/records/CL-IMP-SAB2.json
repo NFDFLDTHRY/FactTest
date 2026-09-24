@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-SAB2",
+ "trace": "SAB",
+ "authority": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/bindings/core/v8/v8_initializer.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "2d0b9ac39c48a2946c9c13dcb393e2a56a91ca70d9d31b770d1b1366edb8dded",
+  "bytes": 42767
+ },
+ "locator": {
+  "text": "isolate->SetSharedArrayBufferConstructorEnabledCallback(",
+  "line_start": 809,
+  "line_end": 810,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 2,
+ "consequence": "the callback is registered on every V8 isolate Blink creates",
+ "excerpt": "  isolate->SetSharedArrayBufferConstructorEnabledCallback(\n      SharedArrayBufferConstructorEnabledCallback);",
+ "excerpt_sha256": "b74b781d3deb01e605fd1c4f37b0863cc5f3ec75cf26005cb8c8e012a24cdcd1",
+ "must_contain": {
+  "SharedArrayBufferConstructorEnabledCallback);": true
+ },
+ "status": "VERIFIED"
+}

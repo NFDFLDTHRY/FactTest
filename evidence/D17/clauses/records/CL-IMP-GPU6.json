@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-GPU6",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-GL-SWITCHES-141",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "ui/gl/gl_switches.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "abd64d5d91406ea8e721d6e94880573122c0feeeae554b123e54c332163ec2dd",
+  "bytes": 18925
+ },
+ "locator": {
+  "text": "const char kUseANGLE[]",
+  "line_start": 93,
+  "line_end": 93,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "--use-angle is a Chromium 141 switch",
+ "excerpt": "const char kUseANGLE[]                      = \"use-angle\";",
+ "excerpt_sha256": "489798e5a1715a49f5faf36ab06825b44e5bee27cd1b06f3a62831b4f6b62306",
+ "must_contain": {
+  "\"use-angle\"": true
+ },
+ "status": "VERIFIED"
+}

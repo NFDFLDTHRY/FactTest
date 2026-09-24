@@ -160,6 +160,43 @@
     "rationale"
    ],
    "declared_in": "D16"
+  },
+  "IMPLEMENTATION_BEHAVIOR": {
+   "owner_rule": "tests/implementation/reality.json (reviewed) and the implementation clauses it is SOURCED_BY",
+   "required": [
+    "behavior_id",
+    "implementation",
+    "version",
+    "relation_to_standard",
+    "statement",
+    "environment_dimension",
+    "stale_if",
+    "runtime_status",
+    "label"
+   ],
+   "relation_vocabulary": [
+    "CONFORMS",
+    "HOST_CHOICE_PERMITTED",
+    "PLATFORM_DEFAULT",
+    "FLAG_GATED",
+    "EXPERIMENTAL_NOT_SHIPPED",
+    "NOT_IMPLEMENTED",
+    "SHIPPED",
+    "VERSION_SPECIFIC",
+    "TEST_HARNESS_CHOICE",
+    "TOOLING"
+   ],
+   "implementation_authority_classes": [
+    "IMPLEMENTATION_SOURCE",
+    "IMPLEMENTATION_DOC",
+    "TARGET_DOC",
+    "TOOL_DOC"
+   ],
+   "runtime_vocabulary": [
+    "OBS",
+    "UNK"
+   ],
+   "declared_in": "D17"
   }
  },
  "edge_semantics": {
@@ -389,6 +426,40 @@
    ],
    "meaning": "runtime/evidence facts on which the family classification rests",
    "declared_in": "D16"
+  },
+  "SOURCED_BY": {
+   "from": [
+    "IMPLEMENTATION_BEHAVIOR"
+   ],
+   "to": [
+    "CLAUSE"
+   ],
+   "meaning": "the implementation source clause (pinned to the version run) that establishes the behaviour",
+   "declared_in": "D17"
+  },
+  "RELATES_TO_STANDARD": {
+   "from": [
+    "IMPLEMENTATION_BEHAVIOR"
+   ],
+   "to": [
+    "CLAUSE",
+    "CONSTRAINT"
+   ],
+   "requires": [
+    "relation"
+   ],
+   "meaning": "how the behaviour stands to standards law (conforms, host choice permitted, deviates, ...)",
+   "declared_in": "D17"
+  },
+  "EXPLAINS": {
+   "from": [
+    "IMPLEMENTATION_BEHAVIOR"
+   ],
+   "to": [
+    "COMPUTATIONAL_FACT"
+   ],
+   "meaning": "the observed runtime fact this implementation behaviour accounts for",
+   "declared_in": "D17"
   }
  },
  "nodes": [
@@ -23818,6 +23889,3447 @@
    "maturity": null,
    "owner": "CAPABILITY-MATRIX.md (approved universe; only an ASCII decision removes a row), tests/capability/universe.json (trace + reviewed classification)",
    "introduced_in": "D16"
+  },
+  {
+   "id": "ENV-D17-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D17-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": null,
+   "target": "authority sources (no build)",
+   "host_runtime": "node + curl + git through the session proxy (sources only)",
+   "versions": null,
+   "flags": {
+    "channels": "raw.githubusercontent.com bytes at each source tip; git ls-remote tips"
+   },
+   "build_profile": null,
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "none (source extraction)",
+   "dependency_graph_identity": null,
+   "other_state": {
+    "network_egress": "published renderings denied (unchanged since D14)"
+   },
+   "identity_completeness": {
+    "missing": [
+     "published renderings (policy)"
+    ],
+    "present": [
+     "source commit + sha256 per clause"
+    ]
+   },
+   "owner": "evidence/D17/clauses/summary.json",
+   "note": "D17 clause extraction; observed 2026-09-24T09:08:22.287Z",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CLAUSES-SUMMARY",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CLAUSES-SUMMARY",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/summary.json",
+    "sha256": "3785cbf35fcde199e5019e9a50081c09fd625fd5450f1deec6be54a17efe5315",
+    "locator": "status, sources",
+    "identity_source": "sha256 of the committed file"
+   },
+   "observed_result": "44 clauses {\"VERIFIED\":44} over 28 sources",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-D17-CLAUSES-VERIFIED",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D17-CLAUSES-VERIFIED",
+   "subject": "D17 clause manifest",
+   "predicate": "every one of 44 manifest clauses is present at its source tip with each quoted phrase (the consequences stated on the CLAUSE nodes rest on text the authorities contain)",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "source level only: published renderings unverified (network policy)",
+   "source_ref": "evidence/D17/clauses/summary.json",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "title": "Blink runtime-enabled features (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/platform/runtime_enabled_features.json5",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "per-feature default status: WebBluetooth experimental by default (stable only on Android/ChromeOS/iOS/Mac/Win), SensorExtraClasses and DeviceOrientationRequestPermission experimental, HID/USB/Serial/XR stable",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-IDL-MAGNETOMETER",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-IDL-MAGNETOMETER",
+   "title": "Blink Magnetometer IDL",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/modules/sensor/magnetometer.idl",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/sensor/magnetometer.idl",
+    "sha256": "003675f222b8c526217a2e64866017399b4bc8d6538f18d1ecaf2599afb4b2f0",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "Magnetometer is [RuntimeEnabled=SensorExtraClasses]",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-IDL-AMBIENT-LIGHT",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-IDL-AMBIENT-LIGHT",
+   "title": "Blink AmbientLightSensor IDL",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl",
+    "sha256": "9d2e3ec02670b872648e925fbfde51ffe28736e4876a6d6718ecc685e209d6ff",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "AmbientLightSensor is [RuntimeEnabled=SensorExtraClasses]",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-IDL-DEVICE-ORIENTATION",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-IDL-DEVICE-ORIENTATION",
+   "title": "Blink DeviceOrientationEvent IDL",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/modules/device_orientation/device_orientation_event.idl",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/device_orientation/device_orientation_event.idl",
+    "sha256": "c22c110e45b849ae546dfdd5fc466b2c590c40a59f8bfff060a9432cb6b00635",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "requestPermission() is [RuntimeEnabled=DeviceOrientationRequestPermission]",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-ML",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-ML",
+   "title": "Blink Navigator.ml IDL",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/modules/ml/navigator_ml.idl",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/ml/navigator_ml.idl",
+    "sha256": "4dd166d9277014f8a609f584a8aaa981a1772dcaff470ed27ef09a982bfeb0bc",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "navigator.ml is RuntimeEnabled=MachineLearningNeuralNetwork",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-BLUETOOTH",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-BLUETOOTH",
+   "title": "Blink Navigator.bluetooth IDL",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/modules/bluetooth/navigator_bluetooth.idl",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/bluetooth/navigator_bluetooth.idl",
+    "sha256": "9e8cec9a91d2db2006a560d44817a87cc49fc2db2f65e8e0e6506e330f03b5a7",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "navigator.bluetooth is RuntimeEnabled=WebBluetooth",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-IDL-MODULES",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-IDL-MODULES",
+   "title": "Blink module IDL list",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/bindings/idl_in_modules.gni",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/bindings/idl_in_modules.gni",
+    "sha256": "76830067f948b708a438422fc660643457db8b472acae4241a8f52f3272b5d6e",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "sensor IDLs built into Blink; no proximity sensor IDL",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-WEBNN-FEATURES",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-WEBNN-FEATURES",
+   "title": "WebNN service feature flags (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:services/webnn/public/mojom/features.mojom",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "services/webnn/public/mojom/features.mojom",
+    "sha256": "b7904bb2577b5564e0a1218a3ad78ac1c629389bbf7d1221508d19d58d17b0b2",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "kWebMachineLearningNeuralNetwork default_state = false",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+   "title": "Blink V8 initializer (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/bindings/core/v8/v8_initializer.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/bindings/core/v8/v8_initializer.cc",
+    "sha256": "2d0b9ac39c48a2946c9c13dcb393e2a56a91ca70d9d31b770d1b1366edb8dded",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "SharedArrayBuffer constructor installed only when the context may transfer SharedArrayBuffers",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-GPU-FINCH-FEATURES",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-GPU-FINCH-FEATURES",
+   "title": "GPU feature defaults (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:gpu/config/gpu_finch_features.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_finch_features.cc",
+    "sha256": "9a51f47dffd2dd4efd94384a0bc82aa381df59bb648d2b98a52433ce758064e7",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "WebGPUService disabled by default except Apple/Win/ChromeOS/Android; Vulkan feature",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-GPU-SWITCHES-141",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-GPU-SWITCHES-141",
+   "title": "GPU switches (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:gpu/config/gpu_switches.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_switches.cc",
+    "sha256": "4a4002457507c3457d5095b7450d7db1de1bfb632a862ca5d497b3342a2610cb",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "enable-unsafe-webgpu, ignore-gpu-blocklist",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-GPU-UTIL",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-GPU-UTIL",
+   "title": "GPU feature status (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:gpu/config/gpu_util.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_util.cc",
+    "sha256": "91701bdd395fba5c8514ce5f0faca88b82b063811d9b6d9dba291cac65d7d2aa",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "WebGPU feature status is Software under SwiftShader",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-GL-SWITCHES-141",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-GL-SWITCHES-141",
+   "title": "GL switches (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:ui/gl/gl_switches.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "ui/gl/gl_switches.cc",
+    "sha256": "abd64d5d91406ea8e721d6e94880573122c0feeeae554b123e54c332163ec2dd",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "enable-unsafe-swiftshader (documented for WebGL), use-angle",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-BLINK-GPU-ADAPTER",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-BLINK-GPU-ADAPTER",
+   "title": "Blink GPUAdapter (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:third_party/blink/renderer/modules/webgpu/gpu_adapter.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/webgpu/gpu_adapter.cc",
+    "sha256": "21a1e76781e8084159e761c193ab72df2adc4abc763bc7e0a628244852dce030",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "isFallbackAdapter = adapter type CPU",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-CHROMIUM-DEPS",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-CHROMIUM-DEPS",
+   "title": "Chromium DEPS (141.0.7390.37)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:DEPS",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "DEPS",
+    "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "v8, dawn and swiftshader revisions of the build FactTest ran",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+   "title": "Headless permission manager (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:headless/lib/browser/headless_permission_manager.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "headless/lib/browser/headless_permission_manager.cc",
+    "sha256": "a499a80610abaed0a63db6733fb240f4ab3caed4b917bf9539c6659b9a1647a6",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "headless shell answers ASK to every permission status and request",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+   "title": "Chrome durable storage permission (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:chrome/browser/storage/durable_storage_permission_context.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "chrome/browser/storage/durable_storage_permission_context.cc",
+    "sha256": "35b65ba1056599b845133889dc76481956ae94cdcdc0cd723653b04dac6ff832",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "full Chrome grants durable storage to installed or important registrable domains",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-V8-WASM-FLAGS-141",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-V8-WASM-FLAGS-141",
+   "title": "V8 Wasm feature flags (V8 14.1.146.11, Chromium 141)",
+   "exact_url": "https://chromium.googlesource.com/v8/v8/+/refs/tags/14.1.146.11/src/wasm/wasm-feature-flags.h",
+   "exact_fragment": null,
+   "authority_owner": "V8 project",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/v8/v8",
+    "commit": "ad8af0fc661d278e87627fcaa3a7cf795ee80dd8",
+    "path": "src/wasm/wasm-feature-flags.h",
+    "sha256": "d2f03a15341a347403f1856b5e42df2b81cae4b9e149a48c326ccd6a7c76dc66",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "no memory64 feature flag (shipped); shared-everything threads experimental",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "V8 project",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-V8-WASM-FLAGS-NODE",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-V8-WASM-FLAGS-NODE",
+   "title": "V8 Wasm feature flags (V8 12.4.254.21, Node 22 base)",
+   "exact_url": "https://chromium.googlesource.com/v8/v8/+/refs/tags/12.4.254.21/src/wasm/wasm-feature-flags.h",
+   "exact_fragment": null,
+   "authority_owner": "V8 project",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/v8/v8",
+    "commit": "8ab91836885699b9ef686c3a30df4778501ef7d1",
+    "path": "src/wasm/wasm-feature-flags.h",
+    "sha256": "a07efeb035a84f6ce114181ca8b48014eb1fe811ea1345710c31d0095f152f9a",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "memory64 experimental, default false",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "V8 project",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-SWIFTSHADER-README",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-SWIFTSHADER-README",
+   "title": "SwiftShader README (Chromium 141 DEPS revision)",
+   "exact_url": "https://swiftshader.googlesource.com/SwiftShader/+/7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f/README.md",
+   "exact_fragment": null,
+   "authority_owner": "Google SwiftShader",
+   "authority_class": "IMPLEMENTATION_DOC",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/google/swiftshader",
+    "commit": "7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f",
+    "path": "README.md",
+    "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "CPU-based Vulkan implementation",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "Google SwiftShader",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-CARGO-BUILD-STD",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-CARGO-BUILD-STD",
+   "title": "Cargo build-std (cargo 98a09e7e7 in nightly 6eeff9a52)",
+   "exact_url": "https://github.com/rust-lang/cargo/blob/98a09e7e7d62850f14e5b6132101fc1edd19a16f/src/compiler/standard_lib.rs",
+   "exact_fragment": null,
+   "authority_owner": "The Cargo team",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/rust-lang/cargo",
+    "commit": "98a09e7e7d62850f14e5b6132101fc1edd19a16f",
+    "path": "src/compiler/standard_lib.rs",
+    "sha256": "260e01d0a4973ee9f7cd524e75e4bd7b46a4a63052f7491839818015455240fe",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "build-std compiles the standard library from <sysroot>/lib/rustlib/src/rust/library",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "The Cargo team",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-LLVM-FUNCTION-IMPORT",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-LLVM-FUNCTION-IMPORT",
+   "title": "LLVM FunctionImportUtils (rust-lang/llvm-project in nightly 6eeff9a52)",
+   "exact_url": "https://github.com/rust-lang/llvm-project/blob/1b9c0d5ff9bbe7634aead059efe6b11a7eeba145/llvm/lib/Transforms/Utils/FunctionImportUtils.cpp",
+   "exact_fragment": null,
+   "authority_owner": "LLVM project (Rust fork)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/rust-lang/llvm-project",
+    "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+    "path": "llvm/lib/Transforms/Utils/FunctionImportUtils.cpp",
+    "sha256": "25b02a0a5b784cb479da30b12c5212e14ad81701d9729eedca2212f230868a07",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "promoted locals are renamed with the module hash",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "LLVM project (Rust fork)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-LLVM-SUMMARY-INDEX",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-LLVM-SUMMARY-INDEX",
+   "title": "LLVM ModuleSummaryIndex (rust-lang/llvm-project in nightly 6eeff9a52)",
+   "exact_url": "https://github.com/rust-lang/llvm-project/blob/1b9c0d5ff9bbe7634aead059efe6b11a7eeba145/llvm/include/llvm/IR/ModuleSummaryIndex.h",
+   "exact_fragment": null,
+   "authority_owner": "LLVM project (Rust fork)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "never (published rendering not opened: host DENIED)",
+   "reopen_status": "DENIED",
+   "reproducibility_pin": {
+    "repo": "https://github.com/rust-lang/llvm-project",
+    "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+    "path": "llvm/include/llvm/IR/ModuleSummaryIndex.h",
+    "sha256": "d628dbe4d221876a0e726f1819f95099cb1151c0c63bcdf4886697bffdd794e2",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "promoted name = name + .llvm. + suffix",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "LLVM project (Rust fork)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-PLAYWRIGHT-CHROMIUM",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-PLAYWRIGHT-CHROMIUM",
+   "title": "Playwright chromium launcher (installed 1.56.1)",
+   "exact_url": "https://github.com/microsoft/playwright/tree/v1.56.1",
+   "exact_fragment": null,
+   "authority_owner": "Microsoft Playwright",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "read from the installed package on this host",
+   "reopen_status": "LOCAL (installed package)",
+   "reproducibility_pin": {
+    "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js",
+    "commit": "installed playwright-core 1.56.1",
+    "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js",
+    "sha256": "2b4bcee4cf38013a4d44c6ea16adaf219716096d4b7e45944abb09f3e3c1117f",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "headless launches the chromium-headless-shell executable",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "Microsoft Playwright",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+   "title": "Playwright chromium switches (installed 1.56.1)",
+   "exact_url": "https://github.com/microsoft/playwright/tree/v1.56.1",
+   "exact_fragment": null,
+   "authority_owner": "Microsoft Playwright",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "read from the installed package on this host",
+   "reopen_status": "LOCAL (installed package)",
+   "reproducibility_pin": {
+    "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+    "commit": "installed playwright-core 1.56.1",
+    "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+    "sha256": "665ed0a2c12e6f130226637b4c978db725da2fdf5dd2391a2cabf3e59052cf26",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "default launch switches and disabled features",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "Microsoft Playwright",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+   "class": "AUTHORITY",
+   "authority_id": "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+   "title": "Playwright browsers.json (installed 1.56.1)",
+   "exact_url": "https://github.com/microsoft/playwright/tree/v1.56.1",
+   "exact_fragment": null,
+   "authority_owner": "Microsoft Playwright",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "observed_date": "read from the installed package on this host",
+   "reopen_status": "LOCAL (installed package)",
+   "reproducibility_pin": {
+    "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+    "commit": "installed playwright-core 1.56.1",
+    "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+    "sha256": "1387ec667390e31e49040aa2c81d27720b38d32c7892d1a50c7f85b187e926c1",
+    "observed": "2026-09-24",
+    "locator": "clauses of D17 (see CLAUSE nodes)"
+   },
+   "extracted_consequence": "chromium-headless-shell revision 1194 = 141.0.7390.37",
+   "fragment_status": "NOT_CITED (document level; clauses carry locators)",
+   "owner": "Microsoft Playwright",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR1.json",
+    "sha256": "3aa14fc71a3eb539cf29aa7fe301433d98265e8de2fb6e31dd077cc5831b4f4c",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:5507-5516",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR1",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"WebBluetooth\","
+    },
+    "line_start": 5507,
+    "line_end": 5516,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "857c37279d661ea5a8d09727eaf677a7031dbe4134a1ed7265ef4134f4e90e9f",
+   "quoted": [
+    "\"Win\": \"stable\"",
+    "\"default\": \"experimental\""
+   ],
+   "consequence": "WebBluetooth is stable on Android, ChromeOS, iOS, Mac and Win but experimental by default elsewhere (Linux): absent from navigator on this host by platform default",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR2.json",
+    "sha256": "e1e4157a42eefef351fe2589c9666efa3ec34662e84c11cbce50b0f665e283f3",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:4425-4427",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR2",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"SensorExtraClasses\","
+    },
+    "line_start": 4425,
+    "line_end": 4427,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "534d6383e12099dde959f5c3652a4d734ee4fbc29ce58f198fbc44cedb0cfe54",
+   "quoted": [
+    "status: \"experimental\""
+   ],
+   "consequence": "SensorExtraClasses (Magnetometer, AmbientLightSensor) is experimental: not shipped",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR3.json",
+    "sha256": "0351de74bc7e15f0b0ec4dfa0ad98f888712331f6af6ee6d20877e70e87fe120",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:1765-1766",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR3",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR3",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"DeviceOrientationRequestPermission\","
+    },
+    "line_start": 1765,
+    "line_end": 1766,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "c720d5ded39cf49a386857daa001ebdf4601409c2889e3c433a63611f3074bf6",
+   "quoted": [
+    "status: \"experimental\""
+   ],
+   "consequence": "DeviceOrientationEvent.requestPermission is experimental: not shipped",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR3.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR4.json",
+    "sha256": "e2b6e9e16902dd8a2931f403dc2a6d3a9228e8146fb990e1fe38b98c8bfadc26",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:3026-3027",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR4",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR4",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"MachineLearningNeuralNetwork\","
+    },
+    "line_start": 3026,
+    "line_end": 3027,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "d476eb6ca0d83d3ac49a69b5605d900bd2120d824d555430a9435efe49ebc74d",
+   "quoted": [
+    "Enabled by webnn::mojom::features::kWebMachineLearningNeuralNetwork"
+   ],
+   "consequence": "navigator.ml follows the WebNN service feature",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR4.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR5.json",
+    "sha256": "ca72291f0d2bcd36f560f232fa86d678ce2a10146d9fd486503a8189d0748965",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:5609-5610",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR5",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR5",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"WebHID\","
+    },
+    "line_start": 5609,
+    "line_end": 5610,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "f96e360b43f70807657761fdba117b8ee02e0decbbdf0d660855d9d0ccaf8fed",
+   "quoted": [
+    "status: {\"Android\": \"\", \"default\": \"stable\"}"
+   ],
+   "consequence": "WebHID is stable (not on Android)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR5.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR6.json",
+    "sha256": "318493021ab236980a59a1ada362b4f4475b1f049b328bc1116336115aa7c894",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:4431-4432",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR6",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR6",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"Serial\","
+    },
+    "line_start": 4431,
+    "line_end": 4432,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "388c588fd91c661baeb0721dc418faa37e5a031f3fb7db18a7d54e35b71c2e5f",
+   "quoted": [
+    "status: \"stable\""
+   ],
+   "consequence": "Web Serial is stable",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR6.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR7",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR7",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR7.json",
+    "sha256": "ffd121670d7f78d03386443938d805e9a00643d57126f59b8dfe1055fe370fb0",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:5706-5708",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR7",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR7",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"WebUSB\","
+    },
+    "line_start": 5706,
+    "line_end": 5708,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "9e15fcfb3b6800937c9d3e44d21ebcac284a5da78a5477ef4ea3b7e6baa3f5da",
+   "quoted": [
+    "status: \"stable\""
+   ],
+   "consequence": "WebUSB is stable",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR7.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-BR8",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-BR8",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-BR8.json",
+    "sha256": "137a359b7e727a1fbff494557f8c760e9b7b7e9bd1d9821d921914940362025f",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/platform/runtime_enabled_features.json5:5738-5740",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-BR8",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-BR8",
+   "authority_ref": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+    "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7"
+   },
+   "locator": {
+    "requested": {
+     "text": "name: \"WebXR\","
+    },
+    "line_start": 5738,
+    "line_end": 5740,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "d9cfb2600087764bc62b6adf86c5d62865aa772de8ddfe83b059e8d457515393",
+   "quoted": [
+    "status: \"stable\""
+   ],
+   "consequence": "WebXR is stable",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-BR8.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-DEPS1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-DEPS1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-DEPS1.json",
+    "sha256": "4f903009162938cc08ee59975b2a01e0d382be1fa106c81181b26c8d7b936dcf",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 DEPS:316-316",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-DEPS1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-DEPS1",
+   "authority_ref": "AUTH-IMPL-CHROMIUM-DEPS",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "DEPS",
+    "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3"
+   },
+   "locator": {
+    "requested": {
+     "text": "'v8_revision': 'ad8af0fc661d278e87627fcaa3a7cf795ee80dd8',"
+    },
+    "line_start": 316,
+    "line_end": 316,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "81a3a8cf570f65e5a4384965c52be2db9fbdb8bce23eea0ecc7dcfa588d651e1",
+   "quoted": [
+    "ad8af0fc661d278e87627fcaa3a7cf795ee80dd8"
+   ],
+   "consequence": "Chromium 141.0.7390.37 builds V8 ad8af0fc (tag 14.1.146.11)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-DEPS1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-DEPS2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-DEPS2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-DEPS2.json",
+    "sha256": "f9419afb1dac279247aece1960672508b7c7a7dbfa40acbdb6e8d3ec2d546c74",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 DEPS:324-324",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-DEPS2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-DEPS2",
+   "authority_ref": "AUTH-IMPL-CHROMIUM-DEPS",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "DEPS",
+    "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3"
+   },
+   "locator": {
+    "requested": {
+     "text": "'swiftshader_revision': '7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f',"
+    },
+    "line_start": 324,
+    "line_end": 324,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "15ad6f90be7a342bdf329241e0b99eeb7a151139f02fb520c55bc9719496c55b",
+   "quoted": [
+    "7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f"
+   ],
+   "consequence": "Chromium 141.0.7390.37 builds SwiftShader 7cd1022",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-DEPS2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-DEPS3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-DEPS3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-DEPS3.json",
+    "sha256": "e37b0325c348d10c48ba0b23485c0242e85a3d1445c5181d090d7c8f2f7dafec",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 DEPS:424-424",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-DEPS3",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-DEPS3",
+   "authority_ref": "AUTH-IMPL-CHROMIUM-DEPS",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "DEPS",
+    "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3"
+   },
+   "locator": {
+    "requested": {
+     "text": "'dawn_revision': '9caf49389e5e0564d18e0504c6cfa45c88b4e4fd',"
+    },
+    "line_start": 424,
+    "line_end": 424,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "d722e4b416d7a9a4ad7134d2fd62524a05b25ae131d08ca7f37ebb68fb4b3fed",
+   "quoted": [
+    "9caf49389e5e0564d18e0504c6cfa45c88b4e4fd"
+   ],
+   "consequence": "Chromium 141.0.7390.37 builds Dawn 9caf493 (its source is not reachable through the GitHub mirror: [GAP])",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-DEPS3.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU1.json",
+    "sha256": "fd2e360ab1222b9b8fbe698960300ab6da78d81090da11dd8bbefb0827373cbd",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 gpu/config/gpu_finch_features.cc:198-206",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU1",
+   "authority_ref": "AUTH-IMPL-GPU-FINCH-FEATURES",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_finch_features.cc",
+    "sha256": "9a51f47dffd2dd4efd94384a0bc82aa381df59bb648d2b98a52433ce758064e7"
+   },
+   "locator": {
+    "requested": {
+     "text": "// Enable WebGPU on gpu service side only."
+    },
+    "line_start": 198,
+    "line_end": 206,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "8f650b5fed88c787a46a2c04a6093abc70b1d29929ad2e6f7e58bdc2e902ea0b",
+   "quoted": [
+    "BUILDFLAG(IS_APPLE) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_CHROMEOS)",
+    "#define WEBGPU_ENABLED base::FEATURE_DISABLED_BY_DEFAULT",
+    "BASE_FEATURE(WebGPUService, WEBGPU_ENABLED);"
+   ],
+   "consequence": "WebGPUService is enabled by default only on Apple, Windows, ChromeOS and Android: on Linux WebGPU returns no adapter unless enabled",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU2.json",
+    "sha256": "2daef13ab81003df027ec5bee9d5a37d02c2f5a5c46f1a7b20c3442efda2c8da",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 gpu/config/gpu_switches.cc:44-44",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU2",
+   "authority_ref": "AUTH-IMPL-GPU-SWITCHES-141",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_switches.cc",
+    "sha256": "4a4002457507c3457d5095b7450d7db1de1bfb632a862ca5d497b3342a2610cb"
+   },
+   "locator": {
+    "requested": {
+     "text": "const char kEnableUnsafeWebGPU[] = \"enable-unsafe-webgpu\";"
+    },
+    "line_start": 44,
+    "line_end": 44,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "36f439170240d93db2986729de410e2f16d66e5e7cef2793f45d052d157bf1d0",
+   "quoted": [
+    "enable-unsafe-webgpu"
+   ],
+   "consequence": "--enable-unsafe-webgpu is a Chromium 141 switch (the running revision)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU3.json",
+    "sha256": "39bceed46fb8f6e553bcec5dc38052ec80a67ebbec9f6e0c131bfe25da373d81",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 gpu/config/gpu_switches.cc:33-33",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU3",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU3",
+   "authority_ref": "AUTH-IMPL-GPU-SWITCHES-141",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_switches.cc",
+    "sha256": "4a4002457507c3457d5095b7450d7db1de1bfb632a862ca5d497b3342a2610cb"
+   },
+   "locator": {
+    "requested": {
+     "text": "const char kIgnoreGpuBlocklist[] = \"ignore-gpu-blocklist\";"
+    },
+    "line_start": 33,
+    "line_end": 33,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "f647ba595e17cabccaafc45dd913271743f2c00f1f983d48d26dcc8698755ee7",
+   "quoted": [
+    "ignore-gpu-blocklist"
+   ],
+   "consequence": "--ignore-gpu-blocklist is a Chromium 141 switch",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU3.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU4.json",
+    "sha256": "0eebbd96c78ca8b859efedbf85bd6ec6de85f420d87437cbe5e8dcbc01f49c2d",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 gpu/config/gpu_util.cc:194-201",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU4",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU4",
+   "authority_ref": "AUTH-IMPL-GPU-UTIL",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_util.cc",
+    "sha256": "91701bdd395fba5c8514ce5f0faca88b82b063811d9b6d9dba291cac65d7d2aa"
+   },
+   "locator": {
+    "requested": {
+     "text": "GpuFeatureStatus GetWebGPUFeatureStatus("
+    },
+    "line_start": 194,
+    "line_end": 201,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "d30fe910b31bd5b0a931bd7bacaed05fc54ae9e2de04e3453b0a1cd8d17cccc5",
+   "quoted": [
+    "if (use_swift_shader)",
+    "return kGpuFeatureStatusSoftware;"
+   ],
+   "consequence": "under SwiftShader Chromium reports the WebGPU feature status as Software",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU4.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU5.json",
+    "sha256": "53b2ae3e1007571af9acab672e4a2e78789f7bc09aab3eb00eee2752ec8f0516",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 ui/gl/gl_switches.cc:156-157",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU5",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU5",
+   "authority_ref": "AUTH-IMPL-GL-SWITCHES-141",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "ui/gl/gl_switches.cc",
+    "sha256": "abd64d5d91406ea8e721d6e94880573122c0feeeae554b123e54c332163ec2dd"
+   },
+   "locator": {
+    "requested": {
+     "text": "// Allow usage of SwiftShader for WebGL"
+    },
+    "line_start": 156,
+    "line_end": 157,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "5ec12afa596d250eaacef6d571b3cc912b632b35ba54978aa5c4e28693e05895",
+   "quoted": [
+    "const char kEnableUnsafeSwiftShader[] = \"enable-unsafe-swiftshader\";"
+   ],
+   "consequence": "--enable-unsafe-swiftshader is documented for WebGL; its WebGPU effect is not what the switch documents",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU5.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU6.json",
+    "sha256": "fa7b74124503683940f9661d59806632872b1fee63b9c3a3d655afcbf009b74e",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 ui/gl/gl_switches.cc:93-93",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU6",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU6",
+   "authority_ref": "AUTH-IMPL-GL-SWITCHES-141",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "ui/gl/gl_switches.cc",
+    "sha256": "abd64d5d91406ea8e721d6e94880573122c0feeeae554b123e54c332163ec2dd"
+   },
+   "locator": {
+    "requested": {
+     "text": "const char kUseANGLE[]"
+    },
+    "line_start": 93,
+    "line_end": 93,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "489798e5a1715a49f5faf36ab06825b44e5bee27cd1b06f3a62831b4f6b62306",
+   "quoted": [
+    "\"use-angle\""
+   ],
+   "consequence": "--use-angle is a Chromium 141 switch",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU6.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU7",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU7",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU7.json",
+    "sha256": "6f48b8b39d3ae032c86ece526f31556d382c5352dd93230b7474d116ab811035",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 gpu/config/gpu_finch_features.cc:178-181",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU7",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU7",
+   "authority_ref": "AUTH-IMPL-GPU-FINCH-FEATURES",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "gpu/config/gpu_finch_features.cc",
+    "sha256": "9a51f47dffd2dd4efd94384a0bc82aa381df59bb648d2b98a52433ce758064e7"
+   },
+   "locator": {
+    "requested": {
+     "text": "BASE_FEATURE(Vulkan,"
+    },
+    "line_start": 178,
+    "line_end": 181,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "0cb0f8b58605e11b2e7589fd05af3c2ab12819c05c79318e6dcb387cfb4a299e",
+   "quoted": [
+    "#if BUILDFLAG(IS_ANDROID)",
+    "base::FEATURE_ENABLED_BY_DEFAULT"
+   ],
+   "consequence": "the Vulkan feature is enabled by default only on Android (FactTest passes --enable-features=Vulkan)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU7.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU8",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU8",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU8.json",
+    "sha256": "96053a98be78bb4e5301efe1ce2912e0cd768a68fb97f4ee3baf65bce7cd7acd",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/modules/webgpu/gpu_adapter.cc:124-124",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU8",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU8",
+   "authority_ref": "AUTH-IMPL-BLINK-GPU-ADAPTER",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/webgpu/gpu_adapter.cc",
+    "sha256": "21a1e76781e8084159e761c193ab72df2adc4abc763bc7e0a628244852dce030"
+   },
+   "locator": {
+    "requested": {
+     "text": "bool is_fallback_adapter = adapter_type_ == wgpu::AdapterType::CPU;"
+    },
+    "line_start": 124,
+    "line_end": 124,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "416b65a33f4075082cc7b67a8972a81aa7487689ae240340773ee2de62e38a68",
+   "quoted": [
+    "wgpu::AdapterType::CPU"
+   ],
+   "consequence": "Blink reports isFallbackAdapter exactly when Dawn reports a CPU adapter",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU8.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-GPU9",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-GPU9",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-GPU9.json",
+    "sha256": "277f78d3c080919d8f9166bd7195f0b74dcf4af388731fa65d19f821bf6e66e0",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at google/swiftshader@7cd1022cdc README.md:8-8",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-GPU9",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-GPU9",
+   "authority_ref": "AUTH-IMPL-SWIFTSHADER-README",
+   "trace": "GPU",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/google/swiftshader",
+    "commit": "7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f",
+    "path": "README.md",
+    "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb"
+   },
+   "locator": {
+    "requested": {
+     "text": "SwiftShader[^1] is a high-performance CPU-based implementation"
+    },
+    "line_start": 8,
+    "line_end": 8,
+    "derivation": "anchor text",
+    "enclosing_section": "#swiftshader (line 1)"
+   },
+   "excerpt_sha256": "089ce7f6d8ebce2faa374d39f8331cff2c139bed9e6e5d4c5b7671f26b7109f3",
+   "quoted": [
+    "CPU-based implementation[^2] of the Vulkan[^3] 1.3 graphics API"
+   ],
+   "consequence": "SwiftShader is a CPU Vulkan implementation: WebGPU over it is software, never hardware GPU evidence",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-GPU9.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-HL1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-HL1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-HL1.json",
+    "sha256": "9fb44e46c26a839c801ebd1264ab91f87627738a86ee5acd6cc4a221718e9b41",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 headless/lib/browser/headless_permission_manager.cc:25-30",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-HL1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-HL1",
+   "authority_ref": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+   "trace": "HL",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "headless/lib/browser/headless_permission_manager.cc",
+    "sha256": "a499a80610abaed0a63db6733fb240f4ab3caed4b917bf9539c6659b9a1647a6"
+   },
+   "locator": {
+    "requested": {
+     "text": "// In headless mode we just pretend the user \"closes\" any permission prompt,"
+    },
+    "line_start": 25,
+    "line_end": 30,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "395f87584c165ce3e02da996d41673f765998f2687fd89cfd9ada50a8723fc07",
+   "quoted": [
+    "without accepting or denying.",
+    "blink::mojom::PermissionStatus::ASK"
+   ],
+   "consequence": "the headless shell resolves every permission request as ASK (prompt closed): no permission, persistence included, can ever be granted there",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-HL1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-HL2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-HL2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-HL2.json",
+    "sha256": "717e47a85dd622abe4d1e82cd9aba04faf68402ee6bd58d4322c0901041900e0",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 headless/lib/browser/headless_permission_manager.cc:53-57",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-HL2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-HL2",
+   "authority_ref": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+   "trace": "HL",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "headless/lib/browser/headless_permission_manager.cc",
+    "sha256": "a499a80610abaed0a63db6733fb240f4ab3caed4b917bf9539c6659b9a1647a6"
+   },
+   "locator": {
+    "requested": {
+     "text": "blink::mojom::PermissionStatus HeadlessPermissionManager::GetPermissionStatus("
+    },
+    "line_start": 53,
+    "line_end": 57,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "bf7b5cdcaadd9d0b2cfde0fc4ce5025d012b27ffc84cb493d110c16198280ef6",
+   "quoted": [
+    "return blink::mojom::PermissionStatus::ASK;"
+   ],
+   "consequence": "every permission status query in the headless shell answers ASK ('prompt')",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-HL2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-HL3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-HL3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-HL3.json",
+    "sha256": "cf5593cf6fb7bc19afde795b364123cb03fc09ca99fcd185ca92c840cf6ab648",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 chrome/browser/storage/durable_storage_permission_context.cc:103-109",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-HL3",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-HL3",
+   "authority_ref": "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+   "trace": "HL",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "chrome/browser/storage/durable_storage_permission_context.cc",
+    "sha256": "35b65ba1056599b845133889dc76481956ae94cdcdc0cd723653b04dac6ff832"
+   },
+   "locator": {
+    "requested": {
+     "text": "site_engagement::ImportantSitesUtil::GetInstalledRegisterableDomains("
+    },
+    "line_start": 103,
+    "line_end": 109,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "ad6662c3bff4cc4c0c6a27bdcc30899a001aeba7e762c00152ad3553a8fd1f85",
+   "quoted": [
+    "if (base::Contains(installed_registerable_domains, registerable_domain)) {",
+    "/*persist=*/true, PermissionDecision::kAllow"
+   ],
+   "consequence": "full Chrome grants durable storage to installed registrable domains: an installed Factory could be persistent where the headless shell cannot",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-HL3.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-HL4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-HL4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-HL4.json",
+    "sha256": "5388948fa242fdffb8521bcf5c46955a9d01a8d7e7239160f88e2eb209331640",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 chrome/browser/storage/durable_storage_permission_context.cc:115-122",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-HL4",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-HL4",
+   "authority_ref": "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+   "trace": "HL",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "chrome/browser/storage/durable_storage_permission_context.cc",
+    "sha256": "35b65ba1056599b845133889dc76481956ae94cdcdc0cd723653b04dac6ff832"
+   },
+   "locator": {
+    "requested": {
+     "text": "site_engagement::ImportantSitesUtil::GetImportantRegisterableDomains("
+    },
+    "line_start": 115,
+    "line_end": 122,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "d237971990a34d1200503114570acea7f81a2265d601a2fac579a47c221521db",
+   "quoted": [
+    "important_site.registerable_domain == registerable_domain"
+   ],
+   "consequence": "full Chrome also grants durable storage to 'important' (engaged) sites",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-HL4.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-IDL1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-IDL1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-IDL1.json",
+    "sha256": "96fcbfb379f436a0da549f3078900ef24f241cc84f6acb9f726bc23e1441fd64",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/modules/sensor/magnetometer.idl:9-11",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-IDL1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-IDL1",
+   "authority_ref": "AUTH-IMPL-BLINK-IDL-MAGNETOMETER",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/sensor/magnetometer.idl",
+    "sha256": "003675f222b8c526217a2e64866017399b4bc8d6538f18d1ecaf2599afb4b2f0"
+   },
+   "locator": {
+    "requested": {
+     "text": "RuntimeEnabled=SensorExtraClasses,"
+    },
+    "line_start": 9,
+    "line_end": 11,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "910b48df13a9cb22239c9a1ffbbef84be3ff6c46be22569b71ffdbf5e164a33c",
+   "quoted": [
+    "interface Magnetometer : Sensor"
+   ],
+   "consequence": "Magnetometer exists only when SensorExtraClasses is enabled",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-IDL1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-IDL2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-IDL2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-IDL2.json",
+    "sha256": "51a79def06d27895638600d0c8c67011b57fe4fc9cf0e7b264e9b7d34f02a545",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl:8-11",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-IDL2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-IDL2",
+   "authority_ref": "AUTH-IMPL-BLINK-IDL-AMBIENT-LIGHT",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl",
+    "sha256": "9d2e3ec02670b872648e925fbfde51ffe28736e4876a6d6718ecc685e209d6ff"
+   },
+   "locator": {
+    "requested": {
+     "text": "RuntimeEnabled=SensorExtraClasses,"
+    },
+    "line_start": 8,
+    "line_end": 11,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "cb1920936cb7cc34045b1bfbe8f2a753c055f64371116c501f2a9e83165508a8",
+   "quoted": [
+    "interface AmbientLightSensor : Sensor"
+   ],
+   "consequence": "AmbientLightSensor exists only when SensorExtraClasses is enabled",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-IDL2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-IDL3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-IDL3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-IDL3.json",
+    "sha256": "d0b3b54b650b19e21a45c5fe8ce93ad3479eff129ba6d9075974f3abadda574f",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/modules/device_orientation/device_orientation_event.idl:36-36",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-IDL3",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-IDL3",
+   "authority_ref": "AUTH-IMPL-BLINK-IDL-DEVICE-ORIENTATION",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/device_orientation/device_orientation_event.idl",
+    "sha256": "c22c110e45b849ae546dfdd5fc466b2c590c40a59f8bfff060a9432cb6b00635"
+   },
+   "locator": {
+    "requested": {
+     "text": "[RuntimeEnabled=DeviceOrientationRequestPermission"
+    },
+    "line_start": 36,
+    "line_end": 36,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "fb41184fec570612d4c027af4d2a6d75e83c3d8024d7ed1470fc577374d13d9e",
+   "quoted": [
+    "static Promise<PermissionState> requestPermission();"
+   ],
+   "consequence": "requestPermission exists only when DeviceOrientationRequestPermission is enabled",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-IDL3.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-IDL4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-IDL4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-IDL4.json",
+    "sha256": "d81a3e43a862962bf0a292522211ce2d7c8cbcd911914cac2e3ebb392da1c46d",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/modules/ml/navigator_ml.idl:11-13",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-IDL4",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-IDL4",
+   "authority_ref": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-ML",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/ml/navigator_ml.idl",
+    "sha256": "4dd166d9277014f8a609f584a8aaa981a1772dcaff470ed27ef09a982bfeb0bc"
+   },
+   "locator": {
+    "requested": {
+     "text": "RuntimeEnabled=MachineLearningNeuralNetwork"
+    },
+    "line_start": 11,
+    "line_end": 13,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "451eb4b30868fcf5d89eec8fed976bb5620ff53892b8a3221e11835b6b9c9813",
+   "quoted": [
+    "readonly attribute ML ml;"
+   ],
+   "consequence": "navigator.ml exists only when MachineLearningNeuralNetwork is enabled",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-IDL4.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-IDL5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-IDL5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-IDL5.json",
+    "sha256": "1b64b4f23de84fc37a8445c1f712525c773bd66a6c73da38cf90ae4402a6e038",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/modules/bluetooth/navigator_bluetooth.idl:9-12",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-IDL5",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-IDL5",
+   "authority_ref": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-BLUETOOTH",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/modules/bluetooth/navigator_bluetooth.idl",
+    "sha256": "9e8cec9a91d2db2006a560d44817a87cc49fc2db2f65e8e0e6506e330f03b5a7"
+   },
+   "locator": {
+    "requested": {
+     "text": "RuntimeEnabled=WebBluetooth,"
+    },
+    "line_start": 9,
+    "line_end": 12,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "7dba529cbd2f17ebea0cd9d910b55ed567362d4b463f55e7478bae75a32bee1b",
+   "quoted": [
+    "readonly attribute Bluetooth bluetooth;"
+   ],
+   "consequence": "navigator.bluetooth exists only when WebBluetooth is enabled",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-IDL5.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-IDL6",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-IDL6",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-IDL6.json",
+    "sha256": "fd841407b8e3c16fc2b354baf17ee8f95dbc78646de335ed63ee0cb92efeb7f4",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/bindings/idl_in_modules.gni:712-725",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-IDL6",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-IDL6",
+   "authority_ref": "AUTH-IMPL-BLINK-IDL-MODULES",
+   "trace": "BR",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/bindings/idl_in_modules.gni",
+    "sha256": "76830067f948b708a438422fc660643457db8b472acae4241a8f52f3272b5d6e"
+   },
+   "locator": {
+    "requested": {
+     "text": "\"//third_party/blink/renderer/modules/sensor/absolute_orientation_sensor.idl\","
+    },
+    "line_start": 712,
+    "line_end": 725,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "e41f2c7ee358482a924d1818fdc934496914f10882b64ea159c0f653d59efbf1",
+   "quoted": [
+    "modules/sensor/magnetometer.idl",
+    "modules/sensor/ambient_light_sensor.idl",
+    "modules/sensor/accelerometer.idl"
+   ],
+   "absent_in_document": [
+    "proximity"
+   ],
+   "consequence": "Blink builds accelerometer, gyroscope, magnetometer, ambient light and orientation sensor IDLs, and NO proximity sensor IDL (verified absent from the module list)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-IDL6.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-PW1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-PW1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-PW1.json",
+    "sha256": "5f5d1a22db8e6026889795416d07c4a14fab95fc06b6e7f7fb7e8bff1446ec40",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js@installed  /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js:315-318",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-PW1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-PW1",
+   "authority_ref": "AUTH-IMPL-PLAYWRIGHT-CHROMIUM",
+   "trace": "PW",
+   "epoch": "D17",
+   "source": {
+    "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js",
+    "commit": "installed playwright-core 1.56.1",
+    "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js",
+    "sha256": "2b4bcee4cf38013a4d44c6ea16adaf219716096d4b7e45944abb09f3e3c1117f"
+   },
+   "locator": {
+    "requested": {
+     "text": "getExecutableName(options) {"
+    },
+    "line_start": 315,
+    "line_end": 318,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "fc8f7ed822113df1db1ed6f322350a20f1171dc1af264c6c45e1a66a7dea65de",
+   "quoted": [
+    "return options.headless ? \"chromium-headless-shell\" : \"chromium\";"
+   ],
+   "consequence": "every headless Playwright launch in FactTest runs the chromium-headless-shell executable (HeadlessChrome), not the Chrome browser",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-PW1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-PW2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-PW2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-PW2.json",
+    "sha256": "6d357cdadd17a3d655a10d8701336608a302bb87e379fba3909fc2df38358d36",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js@installed  /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js:52-52",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-PW2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-PW2",
+   "authority_ref": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+   "trace": "PW",
+   "epoch": "D17",
+   "source": {
+    "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+    "commit": "installed playwright-core 1.56.1",
+    "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+    "sha256": "665ed0a2c12e6f130226637b4c978db725da2fdf5dd2391a2cabf3e59052cf26"
+   },
+   "locator": {
+    "requested": {
+     "text": "\"--disable-field-trial-config\","
+    },
+    "line_start": 52,
+    "line_end": 52,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "5ebb97676af04f0ae17d99a81bc2d2e4ae459424012fa65d9e89081f11c15d29",
+   "quoted": [
+    "--disable-field-trial-config"
+   ],
+   "consequence": "Playwright disables field-trial configs: every feature runs at its compiled default (no Finch rollout)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-PW2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-PW3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-PW3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-PW3.json",
+    "sha256": "aaec961209646c293ce063c0d44885a7a9d3d039f075861abbc74a1b3ac0ea0b",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js@installed  /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js:42-42",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-PW3",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-PW3",
+   "authority_ref": "AUTH-IMPL-PLAYWRIGHT-SWITCHES",
+   "trace": "PW",
+   "epoch": "D17",
+   "source": {
+    "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+    "commit": "installed playwright-core 1.56.1",
+    "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+    "sha256": "665ed0a2c12e6f130226637b4c978db725da2fdf5dd2391a2cabf3e59052cf26"
+   },
+   "locator": {
+    "requested": {
+     "text": "\"ThirdPartyStoragePartitioning\",",
+     "after": "const disabledFeatures"
+    },
+    "line_start": 42,
+    "line_end": 42,
+    "derivation": "anchor text after \"const disabledFeatures\"",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "c55c8ffdf925e3856b9bf66c2a32b4afe3d0868fff837882e46a4fd6d74da0b1",
+   "quoted": [
+    "ThirdPartyStoragePartitioning"
+   ],
+   "consequence": "Playwright disables third-party storage partitioning in every launch",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-PW3.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-PW4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-PW4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-PW4.json",
+    "sha256": "141415ae6873ce1cd9a81af73dcd116be1019e470556b2a6dc4a78f07485bd2c",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json@installed  /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json:11-14",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-PW4",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-PW4",
+   "authority_ref": "AUTH-IMPL-PLAYWRIGHT-BROWSERS",
+   "trace": "PW",
+   "epoch": "D17",
+   "source": {
+    "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+    "commit": "installed playwright-core 1.56.1",
+    "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+    "sha256": "1387ec667390e31e49040aa2c81d27720b38d32c7892d1a50c7f85b187e926c1"
+   },
+   "locator": {
+    "requested": {
+     "text": "\"name\": \"chromium-headless-shell\","
+    },
+    "line_start": 11,
+    "line_end": 14,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "25cb9274cf790433c6e4aeea1d3c4240cdc5884d77a1695762ba8b05d2bc358e",
+   "quoted": [
+    "\"revision\": \"1194\"",
+    "\"browserVersion\": \"141.0.7390.37\""
+   ],
+   "consequence": "the installed headless shell is revision 1194 = Chromium 141.0.7390.37",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-PW4.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-RS1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-RS1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-RS1.json",
+    "sha256": "57650bbbde2083451702a9957151fba627a45c812c4065dbd2b55962131890f8",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@6eeff9a52c compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs:38-38",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-RS1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-RS1",
+   "authority_ref": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+   "trace": "RS",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+    "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb"
+   },
+   "locator": {
+    "requested": {
+     "text": "options.features ="
+    },
+    "line_start": 38,
+    "line_end": 38,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "0c6bf9c42dd49f1eb71b5f8a214eae3f2f5c15d7d8117f0fb7b96b874e9cfd68",
+   "quoted": [
+    "+bulk-memory,+mutable-globals,+sign-ext,+nontrapping-fptoint"
+   ],
+   "consequence": "the wasm64 target spec of the toolchain FactTest runs (6eeff9a52) carries the same features as the tip D15 read",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-RS1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-RS2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-RS2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-RS2.json",
+    "sha256": "ce0b531e4f164cbd3d036a8a6dcb7b53626ab020cbba892254400b892772987c",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/rust@6eeff9a52c src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md:33-35",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-RS2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-RS2",
+   "authority_ref": "AUTH-RUSTC-WASM64-DOC",
+   "trace": "RS",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/rust-lang/rust",
+    "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+    "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013"
+   },
+   "locator": {
+    "requested": {
+     "text": "This target is not a stable target."
+    },
+    "line_start": 33,
+    "line_end": 35,
+    "derivation": "anchor text",
+    "enclosing_section": "#requirements (line 14)"
+   },
+   "excerpt_sha256": "00611bb0dc6179cf15163f7d830196f2f9184d75cff8a152e3c9926d5a5b9e65",
+   "quoted": [
+    "still",
+    "in-progress and not standardized"
+   ],
+   "consequence": "ERR-001 holds for the toolchain FactTest runs (6eeff9a52), not only for the tip",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-RS2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-RS3",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-RS3",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-RS3.json",
+    "sha256": "8b862adacc1721cff712daed2f427bbc80d1cf03448032ecc06ab05fd7acfb71",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/cargo@98a09e7e7d src/compiler/standard_lib.rs:220-233",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-RS3",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-RS3",
+   "authority_ref": "AUTH-IMPL-CARGO-BUILD-STD",
+   "trace": "RS",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/rust-lang/cargo",
+    "commit": "98a09e7e7d62850f14e5b6132101fc1edd19a16f",
+    "path": "src/compiler/standard_lib.rs",
+    "sha256": "260e01d0a4973ee9f7cd524e75e4bd7b46a4a63052f7491839818015455240fe"
+   },
+   "locator": {
+    "requested": {
+     "text": "fn detect_sysroot_src_path(target_data: &RustcTargetData<'_>) -> CargoResult<PathBuf> {"
+    },
+    "line_start": 220,
+    "line_end": 233,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "0b4126b66fc390fa13c790c5768d49c26de71c279c1a63876803fd0a945fbdb5",
+   "quoted": [
+    ".join(\"rustlib\")",
+    ".join(\"library\");"
+   ],
+   "consequence": "build-std compiles core from <sysroot>/lib/rustlib/src/rust/library: the rustup install name is part of every std source path",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-RS3.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-RS4",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-RS4",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-RS4.json",
+    "sha256": "bddb2b85f5325edf6e16c8b61d4c469902c69be28a4c7ca670f131310f36b771",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/llvm-project@1b9c0d5ff9 llvm/lib/Transforms/Utils/FunctionImportUtils.cpp:143-161",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-RS4",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-RS4",
+   "authority_ref": "AUTH-IMPL-LLVM-FUNCTION-IMPORT",
+   "trace": "RS",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/rust-lang/llvm-project",
+    "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+    "path": "llvm/lib/Transforms/Utils/FunctionImportUtils.cpp",
+    "sha256": "25b02a0a5b784cb479da30b12c5212e14ad81701d9729eedca2212f230868a07"
+   },
+   "locator": {
+    "requested": {
+     "text": "FunctionImportGlobalProcessing::getPromotedName(const GlobalValue *SGV) {"
+    },
+    "line_start": 143,
+    "line_end": 161,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "16f5e040e484c19d84c60099ed6409e96cdb18b83be828b38aefb7a326d15a18",
+   "quoted": [
+    "ImportIndex.getModuleHash(SGV->getParent()->getModuleIdentifier())"
+   ],
+   "consequence": "LLVM renames a promoted local with the hash of its module",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-RS4.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-RS5",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-RS5",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-RS5.json",
+    "sha256": "cb21fbf379383347cf32293e22966ebe9f40f73c47e2eb2a370762ca203c8a3c",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at rust-lang/llvm-project@1b9c0d5ff9 llvm/include/llvm/IR/ModuleSummaryIndex.h:1966-1970",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-RS5",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-RS5",
+   "authority_ref": "AUTH-IMPL-LLVM-SUMMARY-INDEX",
+   "trace": "RS",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/rust-lang/llvm-project",
+    "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+    "path": "llvm/include/llvm/IR/ModuleSummaryIndex.h",
+    "sha256": "d628dbe4d221876a0e726f1819f95099cb1151c0c63bcdf4886697bffdd794e2"
+   },
+   "locator": {
+    "requested": {
+     "text": "static std::string getGlobalNameForLocal(StringRef Name, StringRef Suffix) {"
+    },
+    "line_start": 1966,
+    "line_end": 1970,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "f3f72e57c394a02cbaf031a07cc8fb21d3af237dc85ddba51403f96b5694d513",
+   "quoted": [
+    "NewName += \".llvm.\";"
+   ],
+   "consequence": "promoted name = name + '.llvm.' + module-hash suffix: the only place the install path reaches the kernel bytes (debug name section)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-RS5.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-SAB1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-SAB1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-SAB1.json",
+    "sha256": "27b93a2da37d0b343fbd751d7881bf07ae0e251b34aed0fe9489f15e17260110",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/bindings/core/v8/v8_initializer.cc:556-562",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-SAB1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-SAB1",
+   "authority_ref": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+   "trace": "SAB",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/bindings/core/v8/v8_initializer.cc",
+    "sha256": "2d0b9ac39c48a2946c9c13dcb393e2a56a91ca70d9d31b770d1b1366edb8dded"
+   },
+   "locator": {
+    "requested": {
+     "text": "bool SharedArrayBufferConstructorEnabledCallback("
+    },
+    "line_start": 556,
+    "line_end": 562,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "bfc38aa52821a1b583e6b667db8f172fa7da4807084c9d61297fb45cd040656d",
+   "quoted": [
+    "return execution_context->SharedArrayBufferTransferAllowed();"
+   ],
+   "consequence": "Chromium exposes the SharedArrayBuffer constructor only in contexts that may transfer SharedArrayBuffers (cross-origin isolated): the host choice ECMA-262 permits",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-SAB1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-SAB2",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-SAB2",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-SAB2.json",
+    "sha256": "47193429bcc933a5d4c51cd33b24346208477a5237d7cefd5bbb5ed34fc3b056",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 third_party/blink/renderer/bindings/core/v8/v8_initializer.cc:809-810",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-SAB2",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-SAB2",
+   "authority_ref": "AUTH-IMPL-BLINK-V8-INITIALIZER",
+   "trace": "SAB",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "third_party/blink/renderer/bindings/core/v8/v8_initializer.cc",
+    "sha256": "2d0b9ac39c48a2946c9c13dcb393e2a56a91ca70d9d31b770d1b1366edb8dded"
+   },
+   "locator": {
+    "requested": {
+     "text": "isolate->SetSharedArrayBufferConstructorEnabledCallback("
+    },
+    "line_start": 809,
+    "line_end": 810,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "b74b781d3deb01e605fd1c4f37b0863cc5f3ec75cf26005cb8c8e012a24cdcd1",
+   "quoted": [
+    "SharedArrayBufferConstructorEnabledCallback);"
+   ],
+   "consequence": "the callback is registered on every V8 isolate Blink creates",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-SAB2.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-V8A",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-V8A",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-V8A.json",
+    "sha256": "2a8c9e7f04ff6de6f8d588e4afe686ac6073d804a3f81a8899780fb157d1f0b9",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at v8/v8@ad8af0fc66 src/wasm/wasm-feature-flags.h:51-54",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-V8A",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-V8A",
+   "authority_ref": "AUTH-IMPL-V8-WASM-FLAGS-141",
+   "trace": "V8",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/v8/v8",
+    "commit": "ad8af0fc661d278e87627fcaa3a7cf795ee80dd8",
+    "path": "src/wasm/wasm-feature-flags.h",
+    "sha256": "d2f03a15341a347403f1856b5e42df2b81cae4b9e149a48c326ccd6a7c76dc66"
+   },
+   "locator": {
+    "requested": {
+     "text": "/* Shared-Everything Threads proposal. */"
+    },
+    "line_start": 51,
+    "line_end": 54,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "e2578dda2da9c4e0708591580ef3d68ac6989ca8ef2dcfb133cee373e4200a03",
+   "quoted": [
+    "V(shared, \"shared-everything threads\", false)"
+   ],
+   "absent_in_document": [
+    "V(memory64"
+   ],
+   "consequence": "V8 14.1 (Chromium 141): shared-everything threads is an experimental flag (off); memory64 is no longer a feature flag at all (verified absent)",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-V8A.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-V8B",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-V8B",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-V8B.json",
+    "sha256": "4cd56cd8f96cc91f6d6802125772c1fa4356763c1ae64b445ea77d64705fcac0",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at v8/v8@8ab9183688 src/wasm/wasm-feature-flags.h:75-78",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-V8B",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-V8B",
+   "authority_ref": "AUTH-IMPL-V8-WASM-FLAGS-NODE",
+   "trace": "V8",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/v8/v8",
+    "commit": "8ab91836885699b9ef686c3a30df4778501ef7d1",
+    "path": "src/wasm/wasm-feature-flags.h",
+    "sha256": "a07efeb035a84f6ce114181ca8b48014eb1fe811ea1345710c31d0095f152f9a"
+   },
+   "locator": {
+    "requested": {
+     "text": "/* Memory64 proposal. */",
+     "after": "#define FOREACH_WASM_EXPERIMENTAL_FEATURE_FLAG(V)"
+    },
+    "line_start": 75,
+    "line_end": 78,
+    "derivation": "anchor text after \"#define FOREACH_WASM_EXPERIMENTAL_FEATUR\"",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "093f23f4e63ef9056488f9c5ad54d2ea3577f16129e49e2434696ebbe8d05d3b",
+   "quoted": [
+    "V(memory64, \"memory64\", false)"
+   ],
+   "consequence": "V8 12.4 (Node 22's base): memory64 is an experimental flag, off by default: Node without the flag cannot compile a memory64 module",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-V8B.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-CL-IMP-WN1",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-CL-IMP-WN1",
+   "probe_ref": "PROBE-CLAUSE-EXTRACT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/clauses/records/CL-IMP-WN1.json",
+    "sha256": "0b4a155f687102c463203fbfc7f53cf3cd20dcd1029debf20ebfab9961736746",
+    "locator": "excerpt",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "VERIFIED at chromium/chromium@9f043f63b0 services/webnn/public/mojom/features.mojom:9-11",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "CL-IMP-WN1",
+   "class": "CLAUSE",
+   "clause_id": "CL-IMP-WN1",
+   "authority_ref": "AUTH-IMPL-WEBNN-FEATURES",
+   "trace": "WN",
+   "epoch": "D17",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "services/webnn/public/mojom/features.mojom",
+    "sha256": "b7904bb2577b5564e0a1218a3ad78ac1c629389bbf7d1221508d19d58d17b0b2"
+   },
+   "locator": {
+    "requested": {
+     "text": "feature kWebMachineLearningNeuralNetwork {"
+    },
+    "line_start": 9,
+    "line_end": 11,
+    "derivation": "anchor text",
+    "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+   },
+   "excerpt_sha256": "f6db57203bb9db1907896cdd18a98f7466b96624157c1acfc942e6a47e63b9d9",
+   "quoted": [
+    "const bool default_state = false;"
+   ],
+   "consequence": "the WebNN service feature is off by default in Chromium 141: navigator.ml is absent without a flag",
+   "owner": "tests/reference/d17-clauses.json (clause), evidence/D17/clauses/records/CL-IMP-WN1.json (extraction)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-IMPL-PINS-NOT-RUNNING-VERSION",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-IMPL-PINS-NOT-RUNNING-VERSION",
+   "subject": "D11 implementation authority pins",
+   "predicate": "AUTH-CHROMIUM-CONTENT-SWITCHES, AUTH-CHROMIUM-GL-SWITCHES, AUTH-CHROMIUM-GPU-SWITCHES (chromium main 75d6f0c) and AUTH-V8-FLAGS (v8 main 36de2a2) are pinned to later main commits whose files differ from the Chromium 141.0.7390.37 / V8 14.1.146.11 sources FactTest ran; D17 re-establishes the switch definitions at the running revision (CL-IMP-GPU2/3/5/6)",
+   "required_environment": [],
+   "constraint_refs": [
+    "CON-EM-006"
+   ],
+   "status": "ERR",
+   "note": "re-pin in D18: an implementation authority is pinned to the version run, not to a branch tip",
+   "source_ref": "tests/reference/d17-clauses.json",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "ENV-D17-TOOLCHAIN",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D17-TOOLCHAIN",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "nightly": {
+     "rustc": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "cargo": "cargo 1.100.0-nightly (98a09e7e7 2026-09-21)",
+     "llvm": "23.1.1"
+    }
+   },
+   "target": "wasm64-unknown-unknown (release, -Z build-std=core)",
+   "host_runtime": "Linux 6.18.44-fc-v37 x86_64",
+   "versions": {
+    "rustc": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+    "cargo": "cargo 1.100.0-nightly (98a09e7e7 2026-09-21)",
+    "llvm": "23.1.1"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "release",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "x86_64 container",
+   "dependency_graph_identity": "factc-wasm-abi core-only graph (WASM64_KERNEL_SET)",
+   "other_state": {
+    "install_names": [
+     "INSTALL-PINNED: /root/.rustup/toolchains/nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "INSTALL-RENAMED: /root/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu (bind mount of nightly-2026-09-24 in a private namespace)"
+    ]
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "rustc/cargo/LLVM identity",
+     "install paths",
+     "RUSTFLAGS"
+    ]
+   },
+   "owner": "evidence/D17/kernel/builds.json",
+   "note": "D17 kernel builds under two install names of one toolchain",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IMPL-KERNEL-SECTIONS",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-KERNEL-SECTIONS",
+   "repo_path": "tests/implementation/wasm-sections.mjs",
+   "commit": "introduced by D17-IMPLEMENTATION-REALITY (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "section-level identity of wasm builds",
+   "owner": "FactTest repository path tests/implementation/",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "PROBE-KERNEL-SECTIONS",
+   "class": "PROBE",
+   "probe_id": "PROBE-KERNEL-SECTIONS",
+   "proves_fact": [
+    "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT"
+   ],
+   "command_or_operation": "build the release kernel twice with the pinned nightly (its own install name, and bind-mounted under another name in a private mount namespace); compare sections with tests/implementation/wasm-sections.mjs",
+   "expected_observations": [
+    "only custom sections differ; identity over the other sections equal"
+   ],
+   "failure_meaning": [
+    "a code/data/type section depends on the install path: the kernel identity [GAP] stands unnarrowed"
+   ],
+   "implemented_by": "IMPL-KERNEL-SECTIONS",
+   "owner": "IMPL-KERNEL-SECTIONS",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-KERNEL-SECTIONS",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-KERNEL-SECTIONS",
+   "probe_ref": "PROBE-KERNEL-SECTIONS",
+   "environment_ref": "ENV-D17-TOOLCHAIN",
+   "artifact_identity": {
+    "path": "evidence/D17/kernel/sections.json",
+    "sha256": "8f64e732c07fc61e6820f522f4aa70ec053fd8f593ccfaf96eb55d0751f16ce5",
+    "locator": "comparison, differing_sections, identical_excluding_custom",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "whole files differ; differing sections [\"custom:name\"]; identical excluding [\"name\"]: true",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "subject": "release kernel built with the pinned nightly under two rustup install names",
+   "predicate": "only the custom [\"custom:name\"] section differs; every other section is byte-identical (identity excluding it e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2); whole-file sha256 6f25ce43cfad5a6e vs 309589947e161954",
+   "required_environment": [
+    "toolchain.nightly.rustc_commit",
+    "toolchain.nightly.components"
+   ],
+   "constraint_refs": [
+    "CON-EM-005"
+   ],
+   "status": "RUN",
+   "note": "narrows FACT-KERNEL-IDENTITY-INSTALL-PATH: the install path reaches debug names only",
+   "source_ref": "evidence/D17/kernel/sections.json",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IMPL-LABEL-AUDIT",
+   "class": "IMPLEMENTATION",
+   "impl_id": "IMPL-LABEL-AUDIT",
+   "repo_path": "tests/implementation/label-audit.mjs",
+   "commit": "introduced by D17-IMPLEMENTATION-REALITY (integration commit in LEDGER AFTER)",
+   "kind": "harness",
+   "note": "proves label-audit locations and evidence",
+   "owner": "FactTest repository path tests/implementation/",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "PROBE-LABEL-AUDIT",
+   "class": "PROBE",
+   "probe_id": "PROBE-LABEL-AUDIT",
+   "proves_fact": [
+    "FACT-LBL-01",
+    "FACT-LBL-06",
+    "FACT-LBL-07",
+    "FACT-LBL-10",
+    "FACT-LBL-11",
+    "FACT-LBL-12"
+   ],
+   "command_or_operation": "node tests/implementation/label-audit.mjs tests/implementation/label-audit.json --graph <graph> --clauses <clause evidence> --out evidence/<epoch>/labels/audit.json",
+   "expected_observations": [
+    "every finding location found verbatim; every evidence clause resolved"
+   ],
+   "failure_meaning": [
+    "a cited phrase moved or disappeared: the finding returns to review"
+   ],
+   "implemented_by": "IMPL-LABEL-AUDIT",
+   "owner": "IMPL-LABEL-AUDIT",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "EV-D17-LABEL-AUDIT",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D17-LABEL-AUDIT",
+   "probe_ref": "PROBE-LABEL-AUDIT",
+   "environment_ref": "ENV-D17-HOST",
+   "artifact_identity": {
+    "path": "evidence/D17/labels/audit.json",
+    "sha256": "1332e41d0796daffc73723d99e984320788f3d2e223d359339e816cb2b46b3bc",
+    "locator": "results",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "12 findings, 6 MISLABEL, 0 unresolved",
+   "epoch": "D17",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D17-IMPLEMENTATION-REALITY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-LBL-01",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-LBL-01",
+   "subject": "CHROMIUM_AS_STANDARD: design/environment-map/TRACEABILITY.md:1458",
+   "predicate": "\"SharedArrayBuffer needs cross-origin isolation\" FACT-SHARED-THREADS-UNADMITTED (D11) states Chromium's constructor hook as a general requirement",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "ERR",
+   "note": "correction for D18: SharedArrayBuffer serialization needs the cross-origin isolated capability (standard, CL-T4); Chromium additionally hides the constructor outside isolation (implementation, CL-IMP-SAB1)",
+   "source_ref": "tests/implementation/label-audit.json (LBL-01)",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-LBL-06",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-LBL-06",
+   "subject": "FLAG_AS_ADMISSION: docs/HANDOFF.md:14",
+   "predicate": "\"Byte Relay physically commissioned in Chromium 141 (SwiftShader WebGPU + wasm64)\" the live handoff omits that the WebGPU half needs the unsafe switch set on Linux (WebGPUService is off by default there)",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "ERR",
+   "note": "correction for D18: ... (SwiftShader WebGPU under --enable-unsafe-webgpu + Vulkan switches in the Linux headless shell; wasm64 ungated)",
+   "source_ref": "tests/implementation/label-audit.json (LBL-06)",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-LBL-07",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-LBL-07",
+   "subject": "FLAG_AS_ADMISSION: README.md:60",
+   "predicate": "\"(SwiftShader WebGPU + wasm64 in Chromium 141)\" same omission in the README",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "ERR",
+   "note": "correction for D18: (SwiftShader WebGPU under unsafe WebGPU switches in the Chromium 141 headless shell, plus wasm64)",
+   "source_ref": "tests/implementation/label-audit.json (LBL-07)",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-LBL-10",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-LBL-10",
+   "subject": "HEADLESS_AS_INSTALLED: docs/HANDOFF.md:125",
+   "predicate": "\"storage best-effort, persist() false\" the live boundary row drops the qualifier: the headless shell answers ASK to every permission, so persist() cannot succeed there, while full Chrome grants durable storage to installed domains",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "ERR",
+   "note": "correction for D18: D12 B-11: persist() cannot succeed in the headless shell (every permission ASK); durability of an installed Factory in full Chrome is [UNK] (Chrome grants installed domains)",
+   "source_ref": "tests/implementation/label-audit.json (LBL-10)",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-LBL-11",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-LBL-11",
+   "subject": "HEADLESS_AS_INSTALLED: design/environment-map/TRACEABILITY.md:1083,1203,1219,1235,1251,1284,1300,1335,1366,1382,1398,1415,1431,1447",
+   "predicate": "\"Chromium 141 persistent profile\" the D12 self-hosting facts name their environment 'Chromium 141 persistent profile' while the executable was chromium-headless-shell (HeadlessChrome) under launchPersistentContext({headless:true})",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "ERR",
+   "note": "correction for D18: chromium-headless-shell 141 (rev 1194) persistent profile via Playwright launchPersistentContext({headless:true})",
+   "source_ref": "tests/implementation/label-audit.json (LBL-11)",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "FACT-LBL-12",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-LBL-12",
+   "subject": "IMPLEMENTATION_PIN_NOT_RUN_VERSION: design/environment-map/AUTHORITY-REGISTER.md:538,564,576,588",
+   "predicate": "\"75d6f0c05bd0871db3f3bc97fccf6605115250c4\" D11 pinned Chromium switch sources (and V8 flags) at later main commits whose files differ from the running 141 / 14.1 sources (FACT-IMPL-PINS-NOT-RUNNING-VERSION)",
+   "required_environment": [],
+   "constraint_refs": [],
+   "status": "ERR",
+   "note": "correction for D18: re-pin AUTH-CHROMIUM-*-SWITCHES to 9f043f63 and AUTH-V8-FLAGS to ad8af0fc (the running versions)",
+   "source_ref": "tests/implementation/label-audit.json (LBL-12)",
+   "owner": "D17 (derived from the evidence named by its edges)",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-GPU-LINUX-SERVICE-OFF",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-GPU-LINUX-SERVICE-OFF",
+   "implementation": "Chromium GPU service",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "PLATFORM_DEFAULT",
+   "statement": "on Linux the WebGPU service is disabled by default, so requestAdapter() answers null without switches",
+   "environment_dimension": "browser.flags",
+   "stale_if": "Chromium enables WebGPUService on Linux, or the launch switch set changes",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-GPU-UNSAFE-SWITCHES",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-GPU-UNSAFE-SWITCHES",
+   "implementation": "Chromium GPU switches + Vulkan feature",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "FLAG_GATED",
+   "statement": "FactTest's WebGPU adapter exists only under --enable-unsafe-webgpu, --enable-features=Vulkan, --use-angle=swiftshader, --enable-unsafe-swiftshader and --ignore-gpu-blocklist; every WebGPU admission is bound to that switch set",
+   "environment_dimension": "browser.flags",
+   "stale_if": "any switch of the set removed or renamed at another Chromium revision",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-GPU-SOFTWARE-FALLBACK",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-GPU-SOFTWARE-FALLBACK",
+   "implementation": "Chromium GPU config + Blink WebGPU + SwiftShader",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194; SwiftShader 7cd1022; Dawn 9caf493 (source unreachable)",
+   "relation_to_standard": "CONFORMS",
+   "statement": "under SwiftShader the WebGPU status is Software and the adapter is a CPU adapter, which Blink reports as isFallbackAdapter: no hardware GPU is involved",
+   "environment_dimension": "host.gpu_device_node",
+   "stale_if": "a hardware adapter appears (GPU device node) or the SwiftShader/Dawn revisions change",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-SAB-CONSTRUCTOR-HOOK",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-SAB-CONSTRUCTOR-HOOK",
+   "implementation": "Blink V8 initializer",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "HOST_CHOICE_PERMITTED",
+   "statement": "the SharedArrayBuffer constructor is installed only where the context may transfer SharedArrayBuffers (cross-origin isolated)",
+   "environment_dimension": "origin_security.cross_origin_isolated",
+   "stale_if": "the page becomes cross-origin isolated or Chromium changes the hook",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-BLUETOOTH-PLATFORM-DEFAULT",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-BLUETOOTH-PLATFORM-DEFAULT",
+   "implementation": "Blink runtime features",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "PLATFORM_DEFAULT",
+   "statement": "WebBluetooth is stable on Android/ChromeOS/iOS/Mac/Win but experimental by default elsewhere: absent on Linux",
+   "environment_dimension": "browser.product",
+   "stale_if": "another platform or a flag enabling WebBluetooth",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-SENSOR-EXTRA-CLASSES",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-SENSOR-EXTRA-CLASSES",
+   "implementation": "Blink runtime features + sensor IDL",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "EXPERIMENTAL_NOT_SHIPPED",
+   "statement": "Magnetometer and AmbientLightSensor are behind SensorExtraClasses (experimental)",
+   "environment_dimension": "browser.flags",
+   "stale_if": "SensorExtraClasses enabled (flag) or shipped",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+   "implementation": "Blink runtime features + DeviceOrientationEvent IDL",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "EXPERIMENTAL_NOT_SHIPPED",
+   "statement": "DeviceOrientationEvent.requestPermission is behind an experimental feature: the specified (at-risk) permission integration is not shipped",
+   "environment_dimension": "browser.flags",
+   "stale_if": "the feature ships or is enabled by flag",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-WEBNN-OFF-BY-DEFAULT",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-WEBNN-OFF-BY-DEFAULT",
+   "implementation": "WebNN service feature + Blink IDL",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "FLAG_GATED",
+   "statement": "navigator.ml follows kWebMachineLearningNeuralNetwork, which is off by default",
+   "environment_dimension": "browser.flags",
+   "stale_if": "the WebNN feature is enabled (flag) or defaults on",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-PROXIMITY-UNIMPLEMENTED",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-PROXIMITY-UNIMPLEMENTED",
+   "implementation": "Blink module IDL list",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "NOT_IMPLEMENTED",
+   "statement": "Blink builds no ProximitySensor IDL",
+   "environment_dimension": "browser.revision",
+   "stale_if": "a Chromium revision adds a proximity sensor IDL",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-DEVICE-APIS-SHIPPED",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-DEVICE-APIS-SHIPPED",
+   "implementation": "Blink runtime features",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "SHIPPED",
+   "statement": "WebHID, WebUSB, Web Serial and WebXR are stable: exposed without flags (devices and user activation still required)",
+   "environment_dimension": "browser.revision",
+   "stale_if": "a Chromium revision changes the status",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "implementation": "Playwright chromium launcher",
+   "version": "Playwright 1.56.1 (installed)",
+   "relation_to_standard": "TEST_HARNESS_CHOICE",
+   "statement": "every headless launch in FactTest runs chromium-headless-shell (HeadlessChrome) rev 1194, not the Chrome browser: installed-app, UI and chrome/-layer behaviour are never observed",
+   "environment_dimension": "browser.product",
+   "stale_if": "a headed or channel launch (full Chrome) replaces the headless shell",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-HEADLESS-PERMISSIONS-ASK",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-HEADLESS-PERMISSIONS-ASK",
+   "implementation": "Headless permission manager",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "TEST_HARNESS_CHOICE",
+   "statement": "the headless shell answers ASK to every permission status and request: no permission (persistence included) can be granted there",
+   "environment_dimension": "browser.product",
+   "stale_if": "full Chrome (chrome/ permission layer) or pre-granted permissions",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-CHROME-DURABLE-STORAGE",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-CHROME-DURABLE-STORAGE",
+   "implementation": "Chrome durable storage permission context",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194 (chrome/ layer, absent from the headless shell)",
+   "relation_to_standard": "HOST_CHOICE_PERMITTED",
+   "statement": "full Chrome grants durable storage to installed or important registrable domains: an installed Factory's durability is decided by this policy, which FactTest has never observed",
+   "environment_dimension": "browser.product",
+   "stale_if": "observation in an installed full-Chrome environment",
+   "runtime_status": "UNK",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+   "implementation": "Playwright chromium switches",
+   "version": "Playwright 1.56.1 (installed)",
+   "relation_to_standard": "TEST_HARNESS_CHOICE",
+   "statement": "every Playwright launch disables field-trial configs (compiled feature defaults only) and third-party storage partitioning",
+   "environment_dimension": "browser.flags",
+   "stale_if": "another Playwright version or launch without these switches",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-V8-MEMORY64-VERSIONED",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-V8-MEMORY64-VERSIONED",
+   "implementation": "V8 Wasm feature flags",
+   "version": "V8 14.1.146.11 (Chromium 141) vs V8 12.4.254.21 (Node 22)",
+   "relation_to_standard": "VERSION_SPECIFIC",
+   "statement": "memory64 is shipped in V8 14.1 (no feature flag) and experimental/off in V8 12.4: 'V8 supports memory64' is true only per V8 version",
+   "environment_dimension": "browser.js_engine",
+   "stale_if": "another V8 version (browser or Node)",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-V8-SET-EXPERIMENTAL",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-V8-SET-EXPERIMENTAL",
+   "implementation": "V8 Wasm feature flags",
+   "version": "V8 14.1.146.11",
+   "relation_to_standard": "EXPERIMENTAL_NOT_SHIPPED",
+   "statement": "shared-everything threads is an experimental V8 flag, off by default",
+   "environment_dimension": "browser.js_engine",
+   "stale_if": "the flag ships",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-RUSTC-PIN-EQUALS-TIP",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-RUSTC-PIN-EQUALS-TIP",
+   "implementation": "rustc wasm64 target spec + platform doc",
+   "version": "rustc 1.100.0-nightly 6eeff9a52 (nightly-2026-09-24)",
+   "relation_to_standard": "TOOLING",
+   "statement": "the target spec and platform doc of the toolchain FactTest runs are byte-identical to the tips D15 read: D15's Rust clauses and ERR-001 hold for the toolchain actually used",
+   "environment_dimension": "toolchain.nightly.rustc_commit",
+   "stale_if": "another pinned nightly",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-KERNEL-NAME-SECTION-HASH",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-KERNEL-NAME-SECTION-HASH",
+   "implementation": "Cargo build-std + LLVM symbol promotion",
+   "version": "cargo 98a09e7e7 + rust LLVM 1b9c0d5 in nightly 6eeff9a52",
+   "relation_to_standard": "TOOLING",
+   "statement": "build-std compiles core from the install-named rust-src path and LLVM suffixes promoted locals with a module hash; physically only the custom 'name' section differs between install names (the path -> module-hash link is an inference from these two clauses and the section comparison)",
+   "environment_dimension": "toolchain.nightly.components",
+   "stale_if": "another toolchain, another install path, or a profile that strips the name section",
+   "runtime_status": "OBS",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
+  },
+  {
+   "id": "IB-PLATFORM-SURFACES-UNOBSERVED",
+   "class": "IMPLEMENTATION_BEHAVIOR",
+   "behavior_id": "IB-PLATFORM-SURFACES-UNOBSERVED",
+   "implementation": "Chromium platform defaults",
+   "version": "Chromium 141.0.7390.37 (9f043f63), headless shell rev 1194",
+   "relation_to_standard": "PLATFORM_DEFAULT",
+   "statement": "Android/ChromeOS/Mac/Windows defaults differ from Linux (WebGPUService and Vulkan on by default on Android, WebBluetooth stable there, WebHID not on Android): FactTest has observed Linux only",
+   "environment_dimension": "browser.product",
+   "stale_if": "an Android/ChromeOS/Mac/Windows environment is observed",
+   "runtime_status": "UNK",
+   "label": "IMPLEMENTATION BEHAVIOUR: true of the named implementation version, never standards law",
+   "owner": "tests/implementation/reality.json (reviewed), sources named by SOURCED_BY",
+   "introduced_in": "D17"
   }
  ],
  "edges": [
@@ -33826,6 +37338,1429 @@
    "type": "WITNESSED_BY",
    "from": "CAP-BLUETOOTH",
    "to": "FACT-CAP-BLUETOOTH-EXPOSURE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "PROBE-CLAUSE-EXTRACT",
+   "to": "EV-D17-CLAUSES-SUMMARY"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D17-CLAUSES-VERIFIED",
+   "to": "PROBE-CLAUSE-EXTRACT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D17-CLAUSES-VERIFIED",
+   "to": "EV-D17-CLAUSES-SUMMARY"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D17-CLAUSES-VERIFIED",
+   "to": "ENV-D17-HOST"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D17-CLAUSES-VERIFIED",
+   "to": "ENV-D17-HOST",
+   "condition": {
+    "dimension": "authority.source_commit",
+    "relation": "any clause source tip moves with the clause window changed"
+   }
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR1",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR1",
+   "to": "EV-D17-CL-IMP-BR1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR2",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR2",
+   "to": "EV-D17-CL-IMP-BR2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR3",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR3",
+   "to": "EV-D17-CL-IMP-BR3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR4",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR4",
+   "to": "EV-D17-CL-IMP-BR4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR5",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR5",
+   "to": "EV-D17-CL-IMP-BR5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR6",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR6",
+   "to": "EV-D17-CL-IMP-BR6"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR7",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR7",
+   "to": "EV-D17-CL-IMP-BR7"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-BR8",
+   "to": "AUTH-IMPL-BLINK-RUNTIME-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-BR8",
+   "to": "EV-D17-CL-IMP-BR8"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-DEPS1",
+   "to": "AUTH-IMPL-CHROMIUM-DEPS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-DEPS1",
+   "to": "EV-D17-CL-IMP-DEPS1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-DEPS2",
+   "to": "AUTH-IMPL-CHROMIUM-DEPS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-DEPS2",
+   "to": "EV-D17-CL-IMP-DEPS2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-DEPS3",
+   "to": "AUTH-IMPL-CHROMIUM-DEPS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-DEPS3",
+   "to": "EV-D17-CL-IMP-DEPS3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU1",
+   "to": "AUTH-IMPL-GPU-FINCH-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU1",
+   "to": "EV-D17-CL-IMP-GPU1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU2",
+   "to": "AUTH-IMPL-GPU-SWITCHES-141"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU2",
+   "to": "EV-D17-CL-IMP-GPU2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU3",
+   "to": "AUTH-IMPL-GPU-SWITCHES-141"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU3",
+   "to": "EV-D17-CL-IMP-GPU3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU4",
+   "to": "AUTH-IMPL-GPU-UTIL"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU4",
+   "to": "EV-D17-CL-IMP-GPU4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU5",
+   "to": "AUTH-IMPL-GL-SWITCHES-141"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU5",
+   "to": "EV-D17-CL-IMP-GPU5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU6",
+   "to": "AUTH-IMPL-GL-SWITCHES-141"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU6",
+   "to": "EV-D17-CL-IMP-GPU6"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU7",
+   "to": "AUTH-IMPL-GPU-FINCH-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU7",
+   "to": "EV-D17-CL-IMP-GPU7"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU8",
+   "to": "AUTH-IMPL-BLINK-GPU-ADAPTER"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU8",
+   "to": "EV-D17-CL-IMP-GPU8"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-GPU9",
+   "to": "AUTH-IMPL-SWIFTSHADER-README"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-GPU9",
+   "to": "EV-D17-CL-IMP-GPU9"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-HL1",
+   "to": "AUTH-IMPL-HEADLESS-PERMISSIONS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-HL1",
+   "to": "EV-D17-CL-IMP-HL1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-HL2",
+   "to": "AUTH-IMPL-HEADLESS-PERMISSIONS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-HL2",
+   "to": "EV-D17-CL-IMP-HL2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-HL3",
+   "to": "AUTH-IMPL-CHROME-DURABLE-STORAGE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-HL3",
+   "to": "EV-D17-CL-IMP-HL3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-HL4",
+   "to": "AUTH-IMPL-CHROME-DURABLE-STORAGE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-HL4",
+   "to": "EV-D17-CL-IMP-HL4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-IDL1",
+   "to": "AUTH-IMPL-BLINK-IDL-MAGNETOMETER"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-IDL1",
+   "to": "EV-D17-CL-IMP-IDL1"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-IDL1",
+   "to": "CL-IMP-BR2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-IDL2",
+   "to": "AUTH-IMPL-BLINK-IDL-AMBIENT-LIGHT"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-IDL2",
+   "to": "EV-D17-CL-IMP-IDL2"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-IDL2",
+   "to": "CL-IMP-BR2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-IDL3",
+   "to": "AUTH-IMPL-BLINK-IDL-DEVICE-ORIENTATION"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-IDL3",
+   "to": "EV-D17-CL-IMP-IDL3"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-IDL3",
+   "to": "CL-IMP-BR3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-IDL4",
+   "to": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-ML"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-IDL4",
+   "to": "EV-D17-CL-IMP-IDL4"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-IDL4",
+   "to": "CL-IMP-BR4"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-IDL4",
+   "to": "CL-IMP-WN1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-IDL5",
+   "to": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-BLUETOOTH"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-IDL5",
+   "to": "EV-D17-CL-IMP-IDL5"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-IDL5",
+   "to": "CL-IMP-BR1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-IDL6",
+   "to": "AUTH-IMPL-BLINK-IDL-MODULES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-IDL6",
+   "to": "EV-D17-CL-IMP-IDL6"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-PW1",
+   "to": "AUTH-IMPL-PLAYWRIGHT-CHROMIUM"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-PW1",
+   "to": "EV-D17-CL-IMP-PW1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-PW2",
+   "to": "AUTH-IMPL-PLAYWRIGHT-SWITCHES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-PW2",
+   "to": "EV-D17-CL-IMP-PW2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-PW3",
+   "to": "AUTH-IMPL-PLAYWRIGHT-SWITCHES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-PW3",
+   "to": "EV-D17-CL-IMP-PW3"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-PW4",
+   "to": "AUTH-IMPL-PLAYWRIGHT-BROWSERS"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-PW4",
+   "to": "EV-D17-CL-IMP-PW4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-RS1",
+   "to": "AUTH-RUSTC-WASM64-TARGET-SPEC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-RS1",
+   "to": "EV-D17-CL-IMP-RS1"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-RS2",
+   "to": "AUTH-RUSTC-WASM64-DOC"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-RS2",
+   "to": "EV-D17-CL-IMP-RS2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-RS3",
+   "to": "AUTH-IMPL-CARGO-BUILD-STD"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-RS3",
+   "to": "EV-D17-CL-IMP-RS3"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-RS3",
+   "to": "CL-IMP-RS4"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-RS4",
+   "to": "AUTH-IMPL-LLVM-FUNCTION-IMPORT"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-RS4",
+   "to": "EV-D17-CL-IMP-RS4"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-RS4",
+   "to": "CL-IMP-RS5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-RS5",
+   "to": "AUTH-IMPL-LLVM-SUMMARY-INDEX"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-RS5",
+   "to": "EV-D17-CL-IMP-RS5"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-SAB1",
+   "to": "AUTH-IMPL-BLINK-V8-INITIALIZER"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-SAB1",
+   "to": "EV-D17-CL-IMP-SAB1"
+  },
+  {
+   "type": "LEADS_TO",
+   "from": "CL-IMP-SAB1",
+   "to": "CL-IMP-SAB2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-SAB2",
+   "to": "AUTH-IMPL-BLINK-V8-INITIALIZER"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-SAB2",
+   "to": "EV-D17-CL-IMP-SAB2"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-V8A",
+   "to": "AUTH-IMPL-V8-WASM-FLAGS-141"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-V8A",
+   "to": "EV-D17-CL-IMP-V8A"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-V8B",
+   "to": "AUTH-IMPL-V8-WASM-FLAGS-NODE"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-V8B",
+   "to": "EV-D17-CL-IMP-V8B"
+  },
+  {
+   "type": "CLAUSE_OF",
+   "from": "CL-IMP-WN1",
+   "to": "AUTH-IMPL-WEBNN-FEATURES"
+  },
+  {
+   "type": "EXTRACTED_IN",
+   "from": "CL-IMP-WN1",
+   "to": "EV-D17-CL-IMP-WN1"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-IMPL-PINS-NOT-RUNNING-VERSION",
+   "to": "PROBE-CLAUSE-EXTRACT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-IMPL-PINS-NOT-RUNNING-VERSION",
+   "to": "EV-D17-CL-IMP-GPU2"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-IMPL-PINS-NOT-RUNNING-VERSION",
+   "to": "EV-D17-CL-IMP-GPU5"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-KERNEL-SECTIONS",
+   "to": "IMPL-KERNEL-SECTIONS"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "PROBE-KERNEL-SECTIONS"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "EV-D17-KERNEL-SECTIONS"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "ENV-D17-TOOLCHAIN"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "ENV-D17-TOOLCHAIN",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "another nightly or codegen profile"
+   }
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-LABEL-AUDIT",
+   "to": "IMPL-LABEL-AUDIT"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-LBL-01",
+   "to": "PROBE-LABEL-AUDIT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LBL-01",
+   "to": "EV-D17-LABEL-AUDIT"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-LBL-06",
+   "to": "PROBE-LABEL-AUDIT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LBL-06",
+   "to": "EV-D17-LABEL-AUDIT"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-LBL-07",
+   "to": "PROBE-LABEL-AUDIT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LBL-07",
+   "to": "EV-D17-LABEL-AUDIT"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-LBL-10",
+   "to": "PROBE-LABEL-AUDIT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LBL-10",
+   "to": "EV-D17-LABEL-AUDIT"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-LBL-11",
+   "to": "PROBE-LABEL-AUDIT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LBL-11",
+   "to": "EV-D17-LABEL-AUDIT"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-LBL-12",
+   "to": "PROBE-LABEL-AUDIT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-LBL-12",
+   "to": "EV-D17-LABEL-AUDIT"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-LINUX-SERVICE-OFF",
+   "to": "CL-IMP-GPU1"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-GPU-LINUX-SERVICE-OFF",
+   "to": "CL-GPU3",
+   "relation": "conforms: a null adapter is lawful"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-LINUX-SERVICE-OFF",
+   "to": "FACT-GPU-ADAPTER-NULL-DEFAULT"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+   "to": "ENV-D6-D7-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: Chromium enables WebGPUService on Linux, or the launch switch set changes (IB-GPU-LINUX-SERVICE-OFF)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-LINUX-SERVICE-OFF",
+   "to": "FACT-CAP-WEBGPU-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-WEBGPU-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: Chromium enables WebGPUService on Linux, or the launch switch set changes (IB-GPU-LINUX-SERVICE-OFF)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "CL-IMP-GPU2"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "CL-IMP-GPU3"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "CL-IMP-GPU5"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "CL-IMP-GPU6"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "CL-IMP-GPU7"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "CON-GPU-001",
+   "relation": "the switches make the UA return an adapter the standard lets it withhold"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "FACT-GPU-ADMITTED-E0"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "FACT-GPU-KNOWN-ANSWER"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-UNSAFE-SWITCHES",
+   "to": "FACT-GPU-RELAY-EXACT-E0"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "CL-IMP-GPU4"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "CL-IMP-GPU8"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "CL-IMP-GPU9"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "CL-IMP-DEPS2"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "CL-IMP-DEPS3"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "CL-GPU8",
+   "relation": "conforms: a fallback adapter as specified"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "FACT-GPU-ADAPTER-SWIFTSHADER"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-GPU-SOFTWARE-FALLBACK",
+   "to": "FACT-HARDWARE-GPU-UNAVAILABLE"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "CL-IMP-SAB1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "CL-IMP-SAB2"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "CL-T6",
+   "relation": "host choice ECMA-262 permits ('if that property is present')"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "CL-T4",
+   "relation": "standard gate on serialization only"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "FACT-SAB-GLOBAL-HOST-DEFINED"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "FACT-CAP-WASM-SHARED-THREADS-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-WASM-SHARED-THREADS-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "origin_security.cross_origin_isolated",
+    "relation": "implementation: the page becomes cross-origin isolated or Chromium changes the hook (IB-SAB-CONSTRUCTOR-HOOK)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-SAB-CONSTRUCTOR-HOOK",
+   "to": "FACT-SHARED-THREADS-UNADMITTED"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-BLUETOOTH-PLATFORM-DEFAULT",
+   "to": "CL-IMP-BR1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-BLUETOOTH-PLATFORM-DEFAULT",
+   "to": "CL-IMP-IDL5"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-BLUETOOTH-PLATFORM-DEFAULT",
+   "to": "CL-BT1",
+   "relation": "the standard defines the interface; the platform default hides it"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-BLUETOOTH-PLATFORM-DEFAULT",
+   "to": "FACT-CAP-BLUETOOTH-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-BLUETOOTH-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: another platform or a flag enabling WebBluetooth (IB-BLUETOOTH-PLATFORM-DEFAULT)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "CL-IMP-BR2"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "CL-IMP-IDL1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "CL-IMP-IDL2"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "CL-MAG0",
+   "relation": "consistent with 'not available by default in any engine'"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "CL-ALS0",
+   "relation": "consistent with 'not available by default in any engine'"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "FACT-CAP-MAGNETOMETER-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-MAGNETOMETER-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: SensorExtraClasses enabled (flag) or shipped (IB-SENSOR-EXTRA-CLASSES)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "FACT-CAP-AMBIENT-LIGHT-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-AMBIENT-LIGHT-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: SensorExtraClasses enabled (flag) or shipped (IB-SENSOR-EXTRA-CLASSES)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-SENSOR-EXTRA-CLASSES",
+   "to": "FACT-SENSOR-FAMILY-ADVISEMENT"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+   "to": "CL-IMP-BR3"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+   "to": "CL-IMP-IDL3"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+   "to": "CL-DO2",
+   "relation": "deviates: the standard defines requestPermission"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+   "to": "CL-DO4",
+   "relation": "consistent with the integration being at risk"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-DO-REQUESTPERMISSION-UNSHIPPED",
+   "to": "FACT-CAP-DEVICE-ORIENTATION-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-DEVICE-ORIENTATION-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: the feature ships or is enabled by flag (IB-DO-REQUESTPERMISSION-UNSHIPPED)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-WEBNN-OFF-BY-DEFAULT",
+   "to": "CL-IMP-BR4"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-WEBNN-OFF-BY-DEFAULT",
+   "to": "CL-IMP-IDL4"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-WEBNN-OFF-BY-DEFAULT",
+   "to": "CL-IMP-WN1"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-WEBNN-OFF-BY-DEFAULT",
+   "to": "CL-NN1",
+   "relation": "the standard defines navigator.ml; the implementation hides it by default"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-WEBNN-OFF-BY-DEFAULT",
+   "to": "FACT-CAP-WEBNN-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-WEBNN-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: the WebNN feature is enabled (flag) or defaults on (IB-WEBNN-OFF-BY-DEFAULT)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PROXIMITY-UNIMPLEMENTED",
+   "to": "CL-IMP-IDL6"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-PROXIMITY-UNIMPLEMENTED",
+   "to": "CL-PRX0",
+   "relation": "consistent with 'not implemented in any browser engine'"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PROXIMITY-UNIMPLEMENTED",
+   "to": "FACT-CAP-PROXIMITY-EXPOSURE"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-IMP-BR5"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-IMP-BR6"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-IMP-BR7"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-IMP-BR8"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-HID1",
+   "relation": "conforms"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-USB1",
+   "relation": "conforms"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-SER1",
+   "relation": "conforms"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "CL-XR1",
+   "relation": "conforms"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "FACT-CAP-HID-EXPOSURE"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "FACT-CAP-USB-EXPOSURE"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "FACT-CAP-SERIAL-EXPOSURE"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-DEVICE-APIS-SHIPPED",
+   "to": "FACT-CAP-XR-EXPOSURE"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "CL-IMP-PW1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "CL-IMP-PW4"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "CON-FT-006",
+   "relation": "physical browser evidence is bound to the executable actually launched"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "FACT-GPU-EXPOSED"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-GPU-EXPOSED",
+   "to": "ENV-D6-D7-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "FACT-LOOPBACK-SECURE-CONTEXT"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-LOOPBACK-SECURE-CONTEXT",
+   "to": "ENV-D6-D7-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+   }
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-LOOPBACK-SECURE-CONTEXT",
+   "to": "ENV-D6-D7-BROWSER-GPUFLAGS",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: a headed or channel launch (full Chrome) replaces the headless shell (IB-PLAYWRIGHT-HEADLESS-SHELL)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "FACT-SH-ORIGIN-SCOPED-STORAGE"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "FACT-SH-GENERATED-OFFLINE"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PLAYWRIGHT-HEADLESS-SHELL",
+   "to": "FACT-SH-OPFS-SERVED-APP"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "CL-IMP-HL1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "CL-IMP-HL2"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "CL-P1",
+   "relation": "a powerful feature needs express permission, which the headless shell never gives"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "CL-ST3",
+   "relation": "persist() cannot succeed under this permission manager"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "FACT-CAP-PERMISSIONS-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-PERMISSIONS-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: full Chrome (chrome/ permission layer) or pre-granted permissions (IB-HEADLESS-PERMISSIONS-ASK)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "FACT-CAP-CAMERA-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-CAMERA-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: full Chrome (chrome/ permission layer) or pre-granted permissions (IB-HEADLESS-PERMISSIONS-ASK)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-HEADLESS-PERMISSIONS-ASK",
+   "to": "FACT-CAP-GEOLOCATION-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-GEOLOCATION-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.product",
+    "relation": "implementation: full Chrome (chrome/ permission layer) or pre-granted permissions (IB-HEADLESS-PERMISSIONS-ASK)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-CHROME-DURABLE-STORAGE",
+   "to": "CL-IMP-HL3"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-CHROME-DURABLE-STORAGE",
+   "to": "CL-IMP-HL4"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-CHROME-DURABLE-STORAGE",
+   "to": "CON-ST-001",
+   "relation": "the user agent decides persistence; Chrome decides by installation/importance"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-CHROME-DURABLE-STORAGE",
+   "to": "FACT-SH-STORAGE-BEST-EFFORT"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+   "to": "CL-IMP-PW2"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+   "to": "CL-IMP-PW3"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+   "to": "CON-FT-006",
+   "relation": "probe results are bound to the harness switch set"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+   "to": "FACT-SH-ORIGIN-SCOPED-STORAGE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+   "to": "ENV-D12-BROWSER-PERSISTENT",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: another Playwright version or launch without these switches (IB-PLAYWRIGHT-DEFAULT-SWITCHES)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-PLAYWRIGHT-DEFAULT-SWITCHES",
+   "to": "FACT-CAP-PERMISSIONS-POLICY-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-PERMISSIONS-POLICY-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.flags",
+    "relation": "implementation: another Playwright version or launch without these switches (IB-PLAYWRIGHT-DEFAULT-SWITCHES)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-V8-MEMORY64-VERSIONED",
+   "to": "CL-IMP-V8A"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-V8-MEMORY64-VERSIONED",
+   "to": "CL-IMP-V8B"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-V8-MEMORY64-VERSIONED",
+   "to": "CL-IMP-DEPS1"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-V8-MEMORY64-VERSIONED",
+   "to": "CL-W4",
+   "relation": "the standard (Core 3.0) has memory64; engines adopt it per version"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-V8-MEMORY64-VERSIONED",
+   "to": "FACT-MEMORY64-DISCOVERED"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-MEMORY64-DISCOVERED",
+   "to": "ENV-D6-D7-BROWSER-DEFAULT",
+   "condition": {
+    "dimension": "browser.js_engine",
+    "relation": "implementation: another V8 version (browser or Node) (IB-V8-MEMORY64-VERSIONED)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-V8-MEMORY64-VERSIONED",
+   "to": "FACT-NODE-NO-MEMORY64"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-NODE-NO-MEMORY64",
+   "to": "ENV-D1-D3-HOST",
+   "condition": {
+    "dimension": "browser.js_engine",
+    "relation": "implementation: another V8 version (browser or Node) (IB-V8-MEMORY64-VERSIONED)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-V8-MEMORY64-VERSIONED",
+   "to": "FACT-CAP-CPU-WASM64-EXPOSURE"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-CAP-CPU-WASM64-EXPOSURE",
+   "to": "ENV-D16-BROWSER",
+   "condition": {
+    "dimension": "browser.js_engine",
+    "relation": "implementation: another V8 version (browser or Node) (IB-V8-MEMORY64-VERSIONED)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-V8-SET-EXPERIMENTAL",
+   "to": "CL-IMP-V8A"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-V8-SET-EXPERIMENTAL",
+   "to": "CL-T3",
+   "relation": "consistent with the proposal's Phase 1"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-V8-SET-EXPERIMENTAL",
+   "to": "FACT-WASM-SET-PHASE-1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-RUSTC-PIN-EQUALS-TIP",
+   "to": "CL-IMP-RS1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-RUSTC-PIN-EQUALS-TIP",
+   "to": "CL-IMP-RS2"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-RUSTC-PIN-EQUALS-TIP",
+   "to": "CL-W4",
+   "relation": "ERR-001: the implementation doc still says memory64 is not standardized"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-RUSTC-PIN-EQUALS-TIP",
+   "to": "FACT-WASM64-MODULE-I64"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-WASM64-MODULE-I64",
+   "to": "ENV-D1-D3-HOST",
+   "condition": {
+    "dimension": "toolchain.nightly.rustc_commit",
+    "relation": "implementation: another pinned nightly (IB-RUSTC-PIN-EQUALS-TIP)"
+   }
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-RUSTC-PIN-EQUALS-TIP",
+   "to": "FACT-CORE-ONLY-GRAPH"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "CL-IMP-RS3"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "CL-IMP-RS4"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "CL-IMP-RS5"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "CON-EM-005",
+   "relation": "toolchain identity per evidence record"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "FACT-KERNEL-IDENTITY-INSTALL-PATH"
+  },
+  {
+   "type": "EXPLAINS",
+   "from": "IB-KERNEL-NAME-SECTION-HASH",
+   "to": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "to": "ENV-D17-TOOLCHAIN",
+   "condition": {
+    "dimension": "toolchain.nightly.components",
+    "relation": "implementation: another toolchain, another install path, or a profile that strips the name section (IB-KERNEL-NAME-SECTION-HASH)"
+   }
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLATFORM-SURFACES-UNOBSERVED",
+   "to": "CL-IMP-GPU1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLATFORM-SURFACES-UNOBSERVED",
+   "to": "CL-IMP-GPU7"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLATFORM-SURFACES-UNOBSERVED",
+   "to": "CL-IMP-BR1"
+  },
+  {
+   "type": "SOURCED_BY",
+   "from": "IB-PLATFORM-SURFACES-UNOBSERVED",
+   "to": "CL-IMP-BR5"
+  },
+  {
+   "type": "RELATES_TO_STANDARD",
+   "from": "IB-PLATFORM-SURFACES-UNOBSERVED",
+   "to": "CON-FT-002",
+   "relation": "every family stays in G regardless of platform"
   }
  ],
  "epochs": [
@@ -33893,7 +38828,21 @@
     "TRACE_STEP",
     "WITNESSED_BY"
    ]
+  },
+  {
+   "epoch": "D17",
+   "delta": "D17-IMPLEMENTATION-REALITY",
+   "commit": "e4e210304591d99f73873dc719b79f187c4d19a1 (canonical base; integration commit in LEDGER AFTER)",
+   "summary": "19 implementation behaviours (PLATFORM_DEFAULT 3, FLAG_GATED 2, CONFORMS 1, HOST_CHOICE_PERMITTED 2, EXPERIMENTAL_NOT_SHIPPED 3, NOT_IMPLEMENTED 1, SHIPPED 1, TEST_HARNESS_CHOICE 3, VERSION_SPECIFIC 1, TOOLING 2); 44 implementation clauses pinned to the versions run; kernel section identity; 6 MISLABEL findings",
+   "nodes_added": 151,
+   "edges_added": 261,
+   "declares": [
+    "IMPLEMENTATION_BEHAVIOR",
+    "SOURCED_BY",
+    "RELATES_TO_STANDARD",
+    "EXPLAINS"
+   ]
   }
  ],
- "current_epoch": "D16"
+ "current_epoch": "D17"
 }
