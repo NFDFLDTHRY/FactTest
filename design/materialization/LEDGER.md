@@ -427,3 +427,31 @@ AFTER
   "rejected by rustc (expected)", "nostd-check PASS", "depcheck PASS" were overstated; wasm64 compiler build evidence
   was valid for D3's 6-crate graph only and is re-proved in D9 for 12 crates.
 - NO PRODUCTION COMPILER REPAIR: the [ERR] above is returned to ASCII for a D10 design against the qualified judge.
+
+---
+
+## D10-PROMPT-INTAKE  (computational environment mapping - prompt routed as the FIRST ACTION)
+
+BEFORE
+- DELTA: D10-PROMPT-INTAKE (factory/deltas/D10.json)
+- BASE: e10d2799002682ee8c047de42050f7e9d5ddf5ad (D9 head on branch claude/d9-rust-cargo-proof-4nys6s, Factory-authored,
+  descending from main f4395df).  [OBS] git state at intake: PR #1 merged to main; D9 lives on an unmerged branch; the
+  prompt requires the D9 documents and evidence, which exist only there, so the designated development branch
+  claude/facttest-materialization-27amc7 was fast-forwarded to e10d279 (no history discarded) and is the canonical
+  branch for D10/D11.  If D9 is merged to main independently, this lineage still descends from it.
+- STATION: S-DOC.  FIXTURE: F0-doc.
+- READ: everything.  CHANGE: design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md (the exact prompt),
+  this ledger, factory/deltas/D10.json, factory/fixtures/D10/, factory/receipts/D10-PROMPT-INTAKE/.
+  FORBIDDEN: everything else, including every law/pass/design document, compiler/, host/, factory/src/, factory/registry/,
+  tests/, fixtures/, evidence/D0..D9, receipts D0..D9, Cargo.toml, Cargo.lock, rust-toolchain.toml (stays absent).
+- INVARIANTS: the prompt file is the prompt verbatim (no routing header, no edits); no production change; no pin; no
+  capability implementation; D9 [RUN]/[ERR]/[GAP]/[UNK] untouched.
+- TESTS: F0 checks the prompt file carries its title box, the FIRST ACTION path, the three vertical traces and the
+  FINAL comparison; ledger names D10; authority/production surfaces byte-identical to the base.
+- EXPECTED EVIDENCE: FactoryReceipt F0-doc, verification.json.  (No build/probe: intake only.)
+- NEXT: the mapping pass itself is assembled in ASCII as design/materialization/D11-INTENDED-ENVIRONMENT-MAP.md and
+  routed as D11-COMPUTATIONAL-ENVIRONMENT-MAP only after its own structural check.
+
+AFTER
+- recorded by the next delta (a delta cannot carry its own integration result).
+

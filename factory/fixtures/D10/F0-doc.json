@@ -1,0 +1,71 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D10-PROMPT-INTAKE",
+  "selected_inputs": [
+    "the user-issued mapping prompt (session input)",
+    "FACTORY-LAW.md",
+    "design/materialization/LEDGER.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D10.json",
+    "factory/fixtures/D10/",
+    "factory/receipts/D10-PROMPT-INTAKE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "P=design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md; grep -q 'FACTTEST · COMPUTATIONAL ENVIRONMENT MAPPING' $P && grep -q '^FIRST ACTION' $P && grep -q '^design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md' $P && grep -q '^1. RUST → WASM64' $P && grep -q '^2. WEBGPU' $P && grep -q '^3. FACTORY EXECUTION ENVIRONMENT' $P && grep -q '^WHAT FACTTEST IS ACTUALLY ENTITLED TO CLAIM.' $P && [ $(grep -cF '[INV]' $P) -eq 11 ] && grep -q 'D10-PROMPT-INTAKE' design/materialization/LEDGER.md"
+        ],
+        "log": "factory/receipts/D10-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+      },
+      {
+        "cwd": ".",
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+          "--",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+          "design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "tests",
+          "fixtures",
+          "evidence",
+          "Cargo.toml",
+          "Cargo.lock"
+        ],
+        "log": "factory/receipts/D10-PROMPT-INTAKE/logs/F0-authority-untouched.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md"
+  ],
+  "tests": [
+    "prompt file structure",
+    "ledger BEFORE entry",
+    "authority and production surfaces untouched"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

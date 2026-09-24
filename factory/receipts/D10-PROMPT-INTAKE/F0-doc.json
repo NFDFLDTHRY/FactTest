@@ -1,0 +1,108 @@
+{
+  "receipt_id": "R-D10-PROMPT-INTAKE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W10",
+  "delta_id": "D10-PROMPT-INTAKE",
+  "canonical_base": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+  "input_artifacts": [
+    "the user-issued mapping prompt (session input)",
+    "FACTORY-LAW.md",
+    "design/materialization/LEDGER.md"
+  ],
+  "open_tree": "e9777c448bd8c8a0f108ad6341fc9af5f72d8d41",
+  "close_tree": "65286ef266448c33c3b356eee9c9f13eadc7fcde",
+  "changed_paths": [
+    "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D10-PROMPT-INTAKE/logs/F0-authority-untouched.log",
+    "factory/receipts/D10-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D10-PROMPT-INTAKE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D10-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D10-PROMPT-INTAKE/logs/F0-authority-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c P=design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md; grep -q 'FACTTEST · COMPUTATIONAL ENVIRONMENT MAPPING' $P && grep -q '^FIRST ACTION' $P && grep -q '^design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md' $P && grep -q '^1. RUST → WASM64' $P && grep -q '^2. WEBGPU' $P && grep -q '^3. FACTORY EXECUTION ENVIRONMENT' $P && grep -q '^WHAT FACTTEST IS ACTUALLY ENTITLED TO CLAIM.' $P && [ $(grep -cF '[INV]' $P) -eq 11 ] && grep -q 'D10-PROMPT-INTAKE' design/materialization/LEDGER.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D10-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code e10d2799002682ee8c047de42050f7e9d5ddf5ad -- FACTORY-LAW.md FACTORY-CONTRACTS.md REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md design/materialization/D9-INTENDED-PROOF-HARNESS.md design/materialization/D9-OBSERVED-PROOF-HARNESS.md compiler host factory/src factory/registry tests fixtures evidence Cargo.toml Cargo.lock",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D10-PROMPT-INTAKE/logs/F0-authority-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D10-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D10-PROMPT-INTAKE/logs/F0-authority-untouched.log"
+  ],
+  "closed": "2026-09-24T04:35:40Z",
+  "status": "PASS"
+}

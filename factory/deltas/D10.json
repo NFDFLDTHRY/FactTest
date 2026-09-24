@@ -1,0 +1,161 @@
+{
+  "delta_id": "D10-PROMPT-INTAKE",
+  "canonical_repo": "/home/user/FactTest",
+  "canonical_branch": "claude/facttest-materialization-27amc7",
+  "canonical_base": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+  "workpiece_root": "/home/user/factory-workpieces",
+  "workpiece_id": "W10",
+  "approved_ascii_refs": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md (the prompt's own FIRST ACTION clause)"
+  ],
+  "intent": "FIRST ACTION of the computational environment mapping pass: track the exact mapping prompt as design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md through the Factory before any assembly; no production change, no pin, no capability implementation",
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D10.json",
+    "factory/fixtures/D10/",
+    "factory/receipts/D10-PROMPT-INTAKE/"
+  ],
+  "must_not_change": [
+    ".gitignore",
+    "ASCII-GRAMMAR.md",
+    "ASCII-LANGUAGE.md",
+    "BOOTSTRAP-ARCHITECTURE.md",
+    "BOOTSTRAP-CONTRACTS.md",
+    "BOOTSTRAP-TESTS.md",
+    "CAPABILITY-MATRIX.md",
+    "CODEGEN-BUNDLE-CONTRACT.md",
+    "COMMISSIONING-ASCII.md",
+    "COMMISSIONING-FACTORY.md",
+    "COMMISSIONING-FIXTURE.md",
+    "COMMISSIONING-PROOF.md",
+    "COMMISSIONING-RUNTIME.md",
+    "COMMISSIONING-SLICE.md",
+    "COMMISSIONING-TRACE.md",
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "Cargo.lock",
+    "Cargo.toml",
+    "EVIDENCE-OBLIGATIONS.md",
+    "FABLE-ASCII-SYSTEM-PROMPT.md",
+    "FACTORY-CONTRACTS.md",
+    "FACTORY-LAW.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "LANGUAGE-TESTS.md",
+    "LICENSE",
+    "LOWERING-MODEL.md",
+    "PASS1.md",
+    "PASS2.md",
+    "PASS3.md",
+    "PASS4.md",
+    "PASS5-TESTS.md",
+    "PASS5.md",
+    "PASS6-GAP-REPAIRS.md",
+    "PASS6-TESTS.md",
+    "PASS6.md",
+    "PLANNED-REPO-LAYOUT.md",
+    "PLANNER-COST-MODEL.md",
+    "README.md",
+    "REFERENCE-AUTHORITY.md",
+    "REFINEMENT-LAW.md",
+    "REPRESENTATION-TRANSFER.md",
+    "RUNTIME-ADMISSION-REPLAN.md",
+    "SEMANTIC-MODEL.md",
+    "STATION-REGISTRY.md",
+    "VERIFICATION-CERTIFICATES.md",
+    "compiler/",
+    "evidence/",
+    "fixtures/",
+    "host/",
+    "tests/",
+    "design/materialization/M0-INTENDED-SYSTEM.md",
+    "design/materialization/M9-OBSERVED-SYSTEM.md",
+    "design/materialization/COMMISSIONING-RECORD.md",
+    "design/materialization/D9-INTENDED-PROOF-HARNESS.md",
+    "design/materialization/D9-OBSERVED-PROOF-HARNESS.md",
+    "factory/src/",
+    "factory/registry/",
+    "factory/tests/",
+    "factory/Cargo.toml",
+    "factory/deltas/D0.json",
+    "factory/deltas/D1.json",
+    "factory/deltas/D2.json",
+    "factory/deltas/D3.json",
+    "factory/deltas/D4.json",
+    "factory/deltas/D5.json",
+    "factory/deltas/D6.json",
+    "factory/deltas/D7.json",
+    "factory/deltas/D8.json",
+    "factory/deltas/D9.json",
+    "factory/fixtures/D0/",
+    "factory/fixtures/D1/",
+    "factory/fixtures/D2/",
+    "factory/fixtures/D3/",
+    "factory/fixtures/D4/",
+    "factory/fixtures/D5/",
+    "factory/fixtures/D6/",
+    "factory/fixtures/D7/",
+    "factory/fixtures/D8/",
+    "factory/fixtures/D9/",
+    "factory/receipts/D0-BOOTSTRAP-FACTORY/",
+    "factory/receipts/D1-COMPILER-FOUNDATION/",
+    "factory/receipts/D2-LANGUAGE-KERNEL/",
+    "factory/receipts/D3-LOWERING-CONTRACTS/",
+    "factory/receipts/D4-PLANNER-VERIFIER/",
+    "factory/receipts/D5-CODEGEN-BUNDLE/",
+    "factory/receipts/D6-RUNTIME-EVIDENCE/",
+    "factory/receipts/D7-COMMISSIONING-GATE/",
+    "factory/receipts/D8-REOBSERVE/",
+    "factory/receipts/D9-RUST-CARGO-PROOF/"
+  ],
+  "required_station_capabilities": [
+    "DOC_CONTRACT_FORGE"
+  ],
+  "invariants": [
+    "prompt file is the prompt verbatim",
+    "no production change",
+    "no toolchain pin",
+    "no capability implementation",
+    "D9 findings untouched"
+  ],
+  "tests": [
+    "F0: prompt file structure, ledger entry, authority surfaces byte-identical"
+  ],
+  "evidence_requirements": [
+    "FactoryReceipt F0-doc",
+    "verification.json"
+  ],
+  "expected_output_contract": {
+    "required_paths": [
+      "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md"
+    ],
+    "forbidden_paths": [
+      "target",
+      "rust-toolchain.toml"
+    ]
+  },
+  "fixtures": [
+    "factory/fixtures/D10/F0-doc.json"
+  ],
+  "reinspect_commands": [
+    {
+      "cwd": ".",
+      "program": "sh",
+      "args": [
+        "-c",
+        "grep -q 'FACTTEST · COMPUTATIONAL ENVIRONMENT MAPPING' design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md && grep -cF '[INV]' design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md"
+      ],
+      "log": "reinspect-prompt.log"
+    }
+  ],
+  "commit_trailers": [
+    "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+    "Claude-Session: https://claude.ai/code/session_01JtYoVXXkVX6YQG2ZUUpYEW"
+  ]
+}

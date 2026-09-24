@@ -1,0 +1,80 @@
+{
+  "delta_id": "D10-PROMPT-INTAKE",
+  "workpiece_id": "W10",
+  "canonical_base": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+  "base_tree": "ff274ba26b1b0b3d716d5f4e4c2d7cac826d9e77",
+  "verified_tree": "7f50514804ca1670171c61405a122c5e7f7cf9c8",
+  "changed_paths": [
+    "design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D10.json",
+    "factory/fixtures/D10/F0-doc.json",
+    "factory/receipts/D10-PROMPT-INTAKE/F0-doc.json",
+    "factory/receipts/D10-PROMPT-INTAKE/logs/F0-authority-untouched.log",
+    "factory/receipts/D10-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "ff274ba26b1b0b3d716d5f4e4c2d7cac826d9e77"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D10-PROMPT-INTAKE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D10-COMPUTATIONAL-ENVIRONMENT-MAP-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:rust-toolchain.toml",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T04:35:40Z",
+  "status": "PASS"
+}
