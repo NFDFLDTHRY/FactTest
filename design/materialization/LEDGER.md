@@ -967,4 +967,37 @@ BEFORE
   (the two D21 facts [OBS]); W24 RETIRABLE -> REMOVED.
 
 AFTER
+- RESULT: integrated as 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb (ff-only from 4b86df9); no refusal in the stations, no
+  repair, no re-run.
+- RECEIPTS: F0-doc F1-fixture F2-browser F3-doc F4-evidence F5-doc F6-evidence F7-doc PASS (format 2).  VERIFICATION:
+  PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection REFUSED (W25.reinspect.json DIFFER): validate, merge-check
+  and render-check PASS, then the manifest rebuilt at the integration commit differed from the committed one.  Not
+  pushed until D21R.
+- OBSERVED: D21-OBSERVED-EXECUTION-MANIFEST.md - P1-P6 MATCH against the station run (P1 notes a wording defect in the
+  prediction's live-component split); its "rebuilt byte-identically (F3, reinspect)" was written before the
+  re-inspection ran and is wrong for the re-inspection.
+- DEFECT FOUND BY THE RE-INSPECTION [ERR]: tests/manifest/build-manifest.mjs applied --epoch only to the evidence-reader
+  finding and read the merged graph whole, so after integration the D21 epoch's own implementation nodes and facts
+  changed two findings (10 and 11 -> 0) and the epoch list.  Class A (live test machinery).  Repaired by
+  D21R-MANIFEST-REPAIR before D22 (the D21 records, manifest, epoch and evidence stay as written).
+
+---
+
+## D21R-MANIFEST-REPAIR  (repair of the D21 re-inspection refusal before task 2)
+
+BEFORE
+- DELTA: D21R-MANIFEST-REPAIR (factory/deltas/D21R.json), workpiece W26, base 910fdbf.
+- ASCII: design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4, F6), S-FIXTURE (F1), S-BROWSER (F2), S-EVIDENCE (F3, F5).
+- CHANGE: tests/manifest/build-manifest.mjs (the delta's own epoch excluded before claims are read),
+  tests/manifest/rebuild-check.sh (focused test), tests/envmap/build-fact-epoch.mjs + tests/envmap/facts/D21R.json
+  (generic evidence binding), evidence/D21R/, design/environment-map/ (epoch D21R, graph, views, SCHEMA 15 rows,
+  ENVIRONMENT-MAP 14 row), docs/HANDOFF.md, README.md, D21R records, this ledger.  FORBIDDEN: every other surface,
+  including design/execution-manifest/, epochs/D21.json, evidence/D21/, the D21 receipts and records, compiler/, host/,
+  factory/src|registry, fixtures/, law and pass documents.
+- PREDICTED: reproduce FAIL/FAIL/PASS/PASS with the committed builder, four PASS with the repaired one; D21 gate and
+  epoch regression identical; epoch D21R 7 nodes / 9 edges; merged 1274 / 3250; validate 42; Q22 177 current facts
+  (RUN 110); W25 KEEP (its re-inspection record DIFFER), nothing retirable.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

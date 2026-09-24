@@ -259,4 +259,8 @@ D21    D21-EXECUTION-MANIFEST      the current executable FactTest enumerated fr
                                    probes and claims; ten implementation nodes added for components the graph had not
                                    covered; the issue inventory (A..G) classified before any repair; epochs/D21.json.
                                    D22-D26 execute the enumerated components and add their execution epochs.
+D21R   D21R-MANIFEST-REPAIR        the D21 re-inspection refused: the manifest builder read its own epoch after
+                                   integration (two findings and the epoch list changed).  Repaired (own-epoch
+                                   exclusion) and witnessed by tests/manifest/rebuild-check.sh at 910fdbf with the
+                                   committed and the repaired builder; epochs/D21R.json (one [RUN] fact, four records).
 ```

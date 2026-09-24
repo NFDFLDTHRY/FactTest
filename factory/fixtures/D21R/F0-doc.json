@@ -1,0 +1,71 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "the D21 re-inspection refusal (W25.reinspect.json)",
+    "the D21-D26 prompt (GAP CLASSIFICATION LAW A, TEST-EVERY-ITERATION LAW)"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D21R.json",
+    "factory/fixtures/D21R/",
+    "factory/receipts/D21R-MANIFEST-REPAIR/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb' design/materialization/LEDGER.md && grep -q 'DEFECT FOUND BY THE RE-INSPECTION' design/materialization/LEDGER.md && grep -q '^## D21R-MANIFEST-REPAIR' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]"
+        ],
+        "log": "factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-ascii.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "tests",
+          "evidence",
+          "fixtures",
+          "design/environment-map",
+          "design/execution-manifest",
+          "docs",
+          "README.md",
+          "rust-toolchain.toml",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "STATION-REGISTRY.md",
+          "CAPABILITY-MATRIX.md",
+          "BOOTSTRAP-TESTS.md",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md"
+        ],
+        "log": "factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D21R-MANIFEST-REPAIR"
+}

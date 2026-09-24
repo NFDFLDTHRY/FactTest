@@ -1,0 +1,259 @@
+{
+ "schema": "facttest-environment-map-epoch/1",
+ "epoch": "D21R",
+ "delta": "D21R-MANIFEST-REPAIR",
+ "commit": "910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb (canonical base; integration commit in LEDGER AFTER)",
+ "summary": "D21 re-inspection repair: the manifest builder excludes its own epoch; the committed D21 manifest rebuilds byte-identically at 910fdbf from both graphs (1 fact [RUN], 4 evidence records)",
+ "nodes": [
+  {
+   "id": "ENV-D21R-HOST",
+   "class": "ENVIRONMENT",
+   "environment_id": "ENV-D21R-HOST",
+   "environment_class": "PHYSICAL_HOST",
+   "toolchain": {
+    "stable": {
+     "channel": "1.94.1",
+     "install_name": "1.94.1",
+     "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+     "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+     "release": "1.94.1",
+     "llvm": "21.1.8",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    },
+    "nightly": {
+     "channel": "nightly-2026-09-24",
+     "install_name": "nightly-2026-09-24",
+     "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+     "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+     "release": "1.100.0-nightly",
+     "llvm": "23.1.1",
+     "components": [
+      "cargo",
+      "clippy",
+      "rust-src",
+      "rust-std",
+      "rustc",
+      "rustfmt"
+     ]
+    }
+   },
+   "target": "host (HOST_NATIVE_SET) and wasm64-unknown-unknown (WASM64_KERNEL_SET)",
+   "host_runtime": "node 22.22.2 / git version 2.43.0 / Playwright 1.56.1",
+   "versions": {
+    "node": "v22.22.2",
+    "v8_node": "12.4.254.21-node.39",
+    "git": "2.43.0",
+    "playwright": "1.56.1",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\" VERSION_ID=\"24.04\"",
+    "kernel": "Linux 6.18.44-fc-v37 x86_64 GNU/Linux",
+    "rustup_stable": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustup_nightly": "rustc 1.100.0-nightly (6bb1652a0 2026-09-22)"
+   },
+   "flags": {
+    "rustflags": "-C link-arg=-zstack-size=16777216"
+   },
+   "build_profile": "none (records compared; cargo metadata only)",
+   "origin_security": null,
+   "permissions_policy": null,
+   "implementation_hardware_class": "Intel(R) Xeon(R) Processor @ 2.80GHz; 4 logical CPUs; GPU device node ABSENT (no /dev/dri)",
+   "hardware": {
+    "gpu_device_node": "ABSENT (no /dev/dri)"
+   },
+   "dependency_graph_identity": "workspace members factc,factc-bundle,factc-capability,factc-codegen,factc-foundation,factc-implementation,factc-kernel,factc-observe,factc-planning,factc-semantic,factc-source,factc-verifier,factc-wasm-abi,factory",
+   "other_state": {
+    "repository_head": "910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb",
+    "installed_toolchains": [
+     "stable-x86_64-unknown-linux-gnu (default)",
+     "nightly-x86_64-unknown-linux-gnu",
+     "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "1.94.1-x86_64-unknown-linux-gnu (active)"
+    ],
+    "network_egress": {
+     "enabled": true,
+     "denied_hosts": []
+    }
+   },
+   "identity_completeness": {
+    "missing": [],
+    "present": [
+     "pinned toolchains (commit, components)",
+     "rustup names",
+     "node/V8",
+     "git",
+     "Playwright",
+     "OS/kernel",
+     "GPU device node",
+     "repository head and members"
+    ]
+   },
+   "owner": "evidence/D21R/identity/{host,toolchains,repo}.json",
+   "note": "D21R environment identity (host of the run this epoch binds)"
+  },
+  {
+   "id": "PROBE-MANIFEST-REBUILD",
+   "class": "PROBE",
+   "probe_id": "PROBE-MANIFEST-REBUILD",
+   "proves_fact": [
+    "FACT-D21R-MANIFEST-REBUILD-STABLE"
+   ],
+   "command_or_operation": "[TOOL=builder] sh tests/manifest/rebuild-check.sh COMMIT REV DELTA EPOCH BASE_REV PRIOR_EPOCHS OUT: a clean clone at COMMIT, the working tree's tests/manifest/build-manifest.mjs (or TOOL) overlaid, the CURRENT EXECUTION MANIFEST rebuilt from the graph as committed there and from the graph merged without the delta's own epoch, each compared byte-for-byte (md and json) with the committed design/execution-manifest",
+   "expected_observations": [
+    "all four comparisons PASS",
+    "the committed CURRENT-EXECUTION-MANIFEST.md sha256 recorded"
+   ],
+   "failure_meaning": [
+    "the manifest depends on the delta's own outputs or on the working tree, so its enumeration is not reproducible from the repository at the integration commit (the D21 re-inspection refusal)"
+   ],
+   "implemented_by": "IMPL-TEST-MANIFEST",
+   "owner": "IMPL-TEST-MANIFEST"
+  },
+  {
+   "id": "EV-D21R-REINSPECT-D21-RESULT",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D21R-REINSPECT-D21-RESULT",
+   "probe_ref": "PROBE-MANIFEST-REBUILD",
+   "environment_ref": "ENV-D21R-HOST",
+   "artifact_identity": {
+    "path": "evidence/D21R/reinspect-d21-result.json",
+    "sha256": "cb878fe02adc405af33f29b652f345ad13f51426e80146a138d3fc7845c9e457",
+    "bytes": 3311,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "the Factory's re-inspection record of D21-EXECUTION-MANIFEST at 910fdbf: canonical head and tree checks PASS, the re-inspection command FAIL (the rebuilt manifest differs from the committed one)",
+   "epoch": "D21R",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D21R-MANIFEST-REPAIR"
+  },
+  {
+   "id": "EV-D21R-REINSPECT-D21-RUN",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D21R-REINSPECT-D21-RUN",
+   "probe_ref": "PROBE-MANIFEST-REBUILD",
+   "environment_ref": "ENV-D21R-HOST",
+   "artifact_identity": {
+    "path": "evidence/D21R/reinspect-d21-run.log",
+    "sha256": "7a943074702fe051c775abd973eb51b2908d856f648de1f49d07f7c42ac0ac39",
+    "bytes": 2912,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "the refused command's output as the Factory recorded it: validate, merge-check and render-check PASS, cmp of CURRENT-EXECUTION-MANIFEST.md differs at line 3",
+   "epoch": "D21R",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D21R-MANIFEST-REPAIR"
+  },
+  {
+   "id": "EV-D21R-REPRODUCE",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D21R-REPRODUCE",
+   "probe_ref": "PROBE-MANIFEST-REBUILD",
+   "environment_ref": "ENV-D21R-HOST",
+   "artifact_identity": {
+    "path": "evidence/D21R/reproduce.json",
+    "sha256": "785577c5c5034c0614d81c8af0d5f544f91ffe064655f04934ad1a1946605a7a",
+    "bytes": 659,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "with the builder as committed at 910fdbf: rebuild from the committed graph FAIL (md and json), rebuild without the own epoch PASS (md and json)",
+   "epoch": "D21R",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D21R-MANIFEST-REPAIR"
+  },
+  {
+   "id": "EV-D21R-REBUILD-CHECK",
+   "class": "EVIDENCE",
+   "evidence_id": "EV-D21R-REBUILD-CHECK",
+   "probe_ref": "PROBE-MANIFEST-REBUILD",
+   "environment_ref": "ENV-D21R-HOST",
+   "artifact_identity": {
+    "path": "evidence/D21R/rebuild-check.json",
+    "sha256": "cb5fc18dbb1e2c38473aaa95d4a35686a7c3babf4fdba6bea813d9855e029197",
+    "bytes": 651,
+    "locator": "record",
+    "identity_source": "sha256 of the committed record"
+   },
+   "observed_result": "with the repaired builder: all four rebuilds PASS, byte-identical to the committed manifest",
+   "epoch": "D21R",
+   "status": "RUN",
+   "evidence_class": "PHYSICAL_HOST",
+   "owner": "Factory receipt of D21R-MANIFEST-REPAIR"
+  },
+  {
+   "id": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "class": "COMPUTATIONAL_FACT",
+   "fact_id": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "subject": "tests/manifest/build-manifest.mjs and the CURRENT EXECUTION MANIFEST committed by D21-EXECUTION-MANIFEST (integration commit 910fdbf)",
+   "predicate": "in a clean clone at 910fdbf the committed manifest (design/execution-manifest/{manifest.json, CURRENT-EXECUTION-MANIFEST.md}) rebuilds byte-identically with the repaired builder from the graph as committed there (epoch D21 merged in) and from the graph merged from the epochs before D21; with the builder as committed at 910fdbf the rebuild from the committed graph differs (the D21 epoch's own implementation nodes and facts turned two findings from 10 and 11 to 0 and appended D21 to the epoch list) while the rebuild without the own epoch is identical: the defect was the builder's reading of its own epoch, not the enumeration",
+   "required_environment": [
+    "the canonical repository at 910fdbf with node and cargo metadata available"
+   ],
+   "constraint_refs": [],
+   "status": "RUN",
+   "note": "repairs the re-inspection refusal of D21-EXECUTION-MANIFEST (class A: live test machinery whose header promised the exclusion its code applied only to the evidence-reader finding); the D21 records, epoch and evidence stay as written",
+   "source_ref": "evidence/D21R/rebuild-check.json",
+   "owner": "D21R (derived from the evidence named by its edges)"
+  }
+ ],
+ "edges": [
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "PROBE-MANIFEST-REBUILD",
+   "to": "IMPL-TEST-MANIFEST"
+  },
+  {
+   "type": "PROBED_BY",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "PROBE-MANIFEST-REBUILD"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "EV-D21R-REINSPECT-D21-RESULT"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "EV-D21R-REINSPECT-D21-RUN"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "EV-D21R-REPRODUCE"
+  },
+  {
+   "type": "EVIDENCED_BY",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "EV-D21R-REBUILD-CHECK"
+  },
+  {
+   "type": "REQUIRES",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "ENV-D21R-HOST"
+  },
+  {
+   "type": "IMPLEMENTED_BY",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "IMPL-TEST-MANIFEST"
+  },
+  {
+   "type": "STALE_IF",
+   "from": "FACT-D21R-MANIFEST-REBUILD-STABLE",
+   "to": "ENV-D21R-HOST",
+   "condition": {
+    "dimension": "repo.commit",
+    "relation": "tests/manifest/build-manifest.mjs, tests/manifest/components.json or design/execution-manifest/ changes"
+   }
+  }
+ ]
+}

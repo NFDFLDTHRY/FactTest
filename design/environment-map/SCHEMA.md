@@ -326,4 +326,11 @@ manifest epoch          tests/manifest/build-epoch.mjs: ENV-<E>-HOST (identity c
                         implementation node and STALE_IF repo.commit, FACT-<E>-ISSUES-CLASSIFIED [OBS]
 enumeration vs claim    an enumeration fact is [OBS]: it states what exists and is connected, never that it executes;
                         execution claims of the enumerated components are added by the tasks that run them
+rebuild check           tests/manifest/rebuild-check.sh (D21R): the committed manifest rebuilds byte-identically in a clean
+                        clone at its integration commit, from the graph as committed there (the delta's own epoch merged
+                        in) and from the graph merged without it; the builder removes its own epoch (the merge's
+                        introduced_in tag: nodes, touching edges, epochs entry) before any claim is read
+fact epochs             tests/envmap/build-fact-epoch.mjs (D21R): one add-only epoch per repair delta binding its physical
+                        results - sha256 EVIDENCE records, a PROBE, ENV-<E>-HOST from the identity capture - to a [RUN]
+                        fact IMPLEMENTED_BY the repaired component, from a delta-owned spec (tests/envmap/facts/<E>.json)
 ```

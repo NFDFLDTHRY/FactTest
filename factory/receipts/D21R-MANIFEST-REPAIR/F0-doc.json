@@ -1,0 +1,147 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D21R-MANIFEST-REPAIR-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W26",
+  "delta_id": "D21R-MANIFEST-REPAIR",
+  "canonical_base": "910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb",
+  "input_artifacts": [
+    "the D21 re-inspection refusal (W25.reinspect.json)",
+    "the D21-D26 prompt (GAP CLASSIFICATION LAW A, TEST-EVERY-ITERATION LAW)"
+  ],
+  "open_tree": "ae8a4bdd586b968560d077043fe1da38523ed16e",
+  "close_tree": "92d9d10d986f735da2703c1abdafc0ef8ce49c27",
+  "changed_paths": [
+    "design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-ascii.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D21R-MANIFEST-REPAIR"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-ascii.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb' design/materialization/LEDGER.md && grep -q 'DEFECT FOUND BY THE RE-INSPECTION' design/materialization/LEDGER.md && grep -q '^## D21R-MANIFEST-REPAIR' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-ascii.log"
+    },
+    {
+      "check": "command:git diff --exit-code 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb -- compiler host factory/src factory/registry tests evidence fixtures design/environment-map design/execution-manifest docs README.md rust-toolchain.toml REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md STATION-REGISTRY.md CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md FACTORY-LAW.md FACTORY-CONTRACTS.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-untouched.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-ascii.log",
+    "factory/receipts/D21R-MANIFEST-REPAIR/logs/F0-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T12:47:37Z",
+  "status": "PASS"
+}

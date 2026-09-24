@@ -9,8 +9,10 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D21-EXECUTION-MANIFEST (task 1 of the six-task whole-repository execution + gap closure series
-                   D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; integration commits in
+last delta         D21R-MANIFEST-REPAIR (the D21 re-inspection refused: the manifest builder read its own epoch after
+                   integration; repaired and witnessed at 910fdbf) after D21-EXECUTION-MANIFEST (task 1 of the six-task
+                   whole-repository execution + gap closure series D21-D26,
+                   design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; integration commits in
                    design/materialization/LEDGER.md)
 manifest           design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md (generated): every tracked path tiered, every
                    live component with owner, consumers, stations, tests, probes, claims, evidence and stale dimensions;
@@ -37,9 +39,10 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    manifest (the current executable system enumerated and every problem classified before repair)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (task 1 of 6 closed): one
-                   StructuralDelta per task, each closed, verified, integrated and re-observed before the next; a repair
-                   is tested before the next repair (GLOBAL TEST-EVERY-ITERATION LAW)
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (task 1 of 6 closed; its
+                   re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
+                   verified, integrated and re-observed before the next; a repair is tested before the next repair
+                   (GLOBAL TEST-EVERY-ITERATION LAW)
 next               D22-FACTORY-SELF-QUALIFICATION: the Factory through itself, positive path and the negative witnesses
                    of tests/manifest/issues.json I-14, refused for the named reason; every A/B Factory defect repaired
                    before D23.  Then D23 compiler + ABI (I-06, I-10, I-19), D24 genericity (I-07, I-08, I-09, I-20),
@@ -74,6 +77,9 @@ HEAD, tree, status, ancestry to main) before drawing anything.
              EVIDENCE observed_result - before asserting "never observed" / "no fixture"; D18R lesson)
              (closed statements: a [GAP]/[ERR]/[UNK] fact INVALIDATED_BY later evidence is history, not an open
              stop - read Q22 explicit_stops, never a bare status count; D19 lesson)
+             (re-inspection: a refused re-inspection of an integrated delta is an internal defect of that delta; a repair
+             delta reproduces the refusal at the integration commit, preserves it as evidence and witnesses the repair
+             there before the next task starts; D21R lesson)
              (parallel lines: a line merged into main from another branch is joined by a content-neutral sync merge -
              git merge -s ours, tree equal to the first parent - and a Factory delta that imports its files from git
              objects with tests/sync/import-line.mjs, relocating what collides; D20 lesson)
@@ -163,7 +169,8 @@ consumer execution (D23), the anti-cheat scan's byte form (D24), the shell never
 historical bundle (D25), graph claims for eleven live components (D21, done); C (2) the specimen payload compiled into
 the generated shell and the single-relation runtime (D24 proves, then repairs or records the exact architectural GAP);
 G (3) law-text presentation and wording (owner).  Until each task closes, these are open internal findings, not
-boundaries.
+boundaries.  The D21 re-inspection found one more class A defect (the manifest builder read its own epoch after
+integration, changing two findings): repaired and witnessed by D21R-MANIFEST-REPAIR before D22.
 
 ```text
 CLASS  ID / SOURCE                          BOUNDARY                                                          STATUS

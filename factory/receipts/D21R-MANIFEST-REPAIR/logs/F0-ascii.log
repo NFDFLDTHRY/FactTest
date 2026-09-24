@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D21R-INTENDED-MANIFEST-REPAIR.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 910fdbf29a1c2dc5f10a27b814ed67a5f391bfeb' design/materialization/LEDGER.md && grep -q 'DEFECT FOUND BY THE RE-INSPECTION' design/materialization/LEDGER.md && grep -q '^## D21R-MANIFEST-REPAIR' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]
+(cwd .)
+
+[exit 0] expected 0

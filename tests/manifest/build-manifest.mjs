@@ -3,9 +3,10 @@
 //        [--epoch D21] --out DIR
 // Enumeration rule: the tree at REV (default HEAD) plus the LIVE-tier files the working tree adds beyond it (the machinery
 // the current delta introduces); the current delta's own records - its receipts (--delta), its evidence package and
-// epoch (--epoch), its observed record - are outputs of the delta and are never enumerated by its own manifest, so the
-// manifest rebuilds byte-identically before and after integration.  A live tool reading the --epoch package is not
-// reading history.
+// epoch (--epoch: its nodes are removed from the graph before claims are read), its observed record - are outputs of
+// the delta and are never enumerated by its own manifest, so the manifest rebuilds byte-identically before and after
+// integration (tests/manifest/rebuild-check.sh witnesses this at the integration commit).  A live tool reading the
+// --epoch package is not reading history.
 // Reconstructs, from the repository alone, what the current executable FactTest is:
 //   files        every tracked path (git ls-files) is assigned to exactly one component of the reviewed register
 //                (tests/manifest/components.json) by its most specific path entry; the rest is a finding
@@ -30,7 +31,12 @@ const a = process.argv.slice(2); const o = { root: '.' };
 for (let i = 0; i < a.length; i++) o[a[i].replace(/^--/, '')] = a[++i];
 const J = p => JSON.parse(readFileSync(p, 'utf8'));
 const git = args => { const r = spawnSync('git', ['-C', o.root, ...args], { encoding: 'utf8', maxBuffer: 1 << 28 }); if (r.status !== 0) throw new Error(`git ${args.join(' ')}: ${r.stderr}`); return r.stdout; };
-const C = J(o.components); const g = J(o.graph);
+const C = J(o.components);
+// The current delta's own epoch (--epoch) is one of its outputs: the nodes the merge tagged introduced_in that epoch, the
+// edges touching them and its epochs entry are removed before any claim is read (D21R: without this the delta's own
+// implementation nodes and facts changed two findings after integration).
+const gAll = J(o.graph); const ownEpoch = new Set(o.epoch ? gAll.nodes.filter(n => n.introduced_in === o.epoch).map(n => n.id) : []);
+const g = { ...gAll, nodes: gAll.nodes.filter(n => !ownEpoch.has(n.id)), edges: gAll.edges.filter(e => !ownEpoch.has(e.from) && !ownEpoch.has(e.to)), epochs: (gAll.epochs || []).filter(e => e.epoch !== o.epoch) };
 const rev = git(['rev-parse', o.rev || 'HEAD']).trim();
 const treeFiles = git(['ls-tree', '-r', '--name-only', rev]).split('\n').filter(Boolean);
 const untracked = git(['ls-files', '--others', '--exclude-standard']).split('\n').filter(Boolean);
