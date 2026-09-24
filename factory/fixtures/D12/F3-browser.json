@@ -1,0 +1,49 @@
+{
+  "fixture_id": "F3-browser",
+  "station_id": "S-BROWSER",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "selected_inputs": [
+    "tests/selfhost/primitives-probe.mjs",
+    "evidence/D7/physical/compile/bundle/",
+    "/home/user/selfhost-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D12/probes/",
+    "evidence/D12/browser-identity.json",
+    "evidence/D12/summary.json",
+    "evidence/D12/probes-run.log"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/selfhost/primitives-probe.mjs",
+          "evidence/D12"
+        ],
+        "env": {
+          "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers",
+          "KERNEL_WASM": "/home/user/selfhost-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+          "REPO": "."
+        },
+        "log": "evidence/D12/probes-run.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D12/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+    "evidence/D12/probes/P16-CONFINED-GENERATION-LOAD.json",
+    "evidence/D12/summary.json",
+    "evidence/D12/browser-identity.json"
+  ],
+  "tests": [
+    "P01-P16 re-run under the Factory; exit 0 = the harness ran"
+  ],
+  "evidence_requirements": [
+    "probe records"
+  ]
+}

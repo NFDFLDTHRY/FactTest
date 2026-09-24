@@ -1,0 +1,286 @@
+{
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "workpiece_id": "W12",
+  "canonical_base": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+  "base_tree": "ed738d61900175002b16bb62f57d921fe74889e7",
+  "verified_tree": "32f4293c2086e1dfd51e3a002957b655b74be748",
+  "changed_paths": [
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md",
+    "design/materialization/D12-OBSERVED-SELF-HOSTING.md",
+    "design/materialization/D12-SELF-HOSTING-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "evidence/D12/browser-identity.json",
+    "evidence/D12/index.json",
+    "evidence/D12/index.log",
+    "evidence/D12/kernel/build.log",
+    "evidence/D12/kernel/inspect.json",
+    "evidence/D12/kernel/inspect.log",
+    "evidence/D12/kernel/toolchain.txt",
+    "evidence/D12/network/observations.txt",
+    "evidence/D12/network/run.log",
+    "evidence/D12/probes-run.log",
+    "evidence/D12/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+    "evidence/D12/probes/P02-SW-CANNOT-SELF-UPDATE.json",
+    "evidence/D12/probes/P03-STORAGE-RESTART-ORIGIN.json",
+    "evidence/D12/probes/P04-OPFS-SERVED-APP.json",
+    "evidence/D12/probes/P05-SW-CROSS-ORIGIN-ISOLATION.json",
+    "evidence/D12/probes/P06-IDB-ATOMIC-POINTER.json",
+    "evidence/D12/probes/P07-STORAGE-PERSISTENCE.json",
+    "evidence/D12/probes/P08-CANDIDATE-CONFINEMENT.json",
+    "evidence/D12/probes/P09-GIT-OBJECTS-IN-BROWSER.json",
+    "evidence/D12/probes/P10-KERNEL-IN-WORKER.json",
+    "evidence/D12/probes/P14-BROKEN-SW-RECOVERY.json",
+    "evidence/D12/probes/P15-INTERRUPTED-SW-UPDATE.json",
+    "evidence/D12/probes/P16-CONFINED-GENERATION-LOAD.json",
+    "evidence/D12/summary.json",
+    "factory/deltas/D12.json",
+    "factory/fixtures/D12/F0-doc.json",
+    "factory/fixtures/D12/F1-fixture.json",
+    "factory/fixtures/D12/F2-build.json",
+    "factory/fixtures/D12/F3-browser.json",
+    "factory/fixtures/D12/F4-doc.json",
+    "factory/fixtures/D12/F5-evidence.json",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F0-doc.json",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F1-fixture.json",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F2-build.json",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F3-browser.json",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F4-doc.json",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F5-evidence.json",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-ascii-contract.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-no-toolchain-pin.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-production-untouched.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F1-harness.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F4-observed-contract.log",
+    "tests/selfhost/network-observe.sh",
+    "tests/selfhost/primitives-probe.mjs"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "ed738d61900175002b16bb62f57d921fe74889e7"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F1-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F2-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-browser",
+      "status": "PASS",
+      "detail": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F3-browser.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-browser",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F4-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/F5-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BROWSER_PROBE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D12-SELF-HOSTING-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D12-INTENDED-SELF-HOSTING.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D12-OBSERVED-SELF-HOSTING.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/selfhost/primitives-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/selfhost/network-observe.sh",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D12/kernel/inspect.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D12/network/observations.txt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D12/probes/P16-CONFINED-GENERATION-LOAD.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D12/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D12/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:rust-toolchain.toml",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verified": "2026-09-24T06:16:25Z",
+  "status": "PASS"
+}

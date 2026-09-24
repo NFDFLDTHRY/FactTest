@@ -1,0 +1,4 @@
+$ sh -c O=design/materialization/D12-OBSERVED-SELF-HOSTING.md; for id in $(node -e 'const s=JSON.parse(require("fs").readFileSync("evidence/D12/summary.json"));console.log(s.records.map(r=>r.id).join(" "))'); do grep -q "$id" $O || { echo "observed ASCII does not name $id"; exit 1; }; done; for t in '[RUN]' '[GAP]' '[OBS]' '[UNK]' '[ERR]'; do grep -qF "$t" $O || { echo missing $t; exit 1; }; done; grep -q 'MATCH' $O && grep -q 'NO PRODUCTION REPAIR' $O
+(cwd .)
+
+[exit 0] expected 0

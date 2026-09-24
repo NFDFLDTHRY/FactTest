@@ -487,5 +487,41 @@ BEFORE
   Q09/Q11/Q12/Q13 non-empty as listed; Q10 and Q14 empty; Q15 = ERR-001 plus the SwiftShader documentation gap.
 
 AFTER
+- RESULT: integrated as fdb9c32d1346408f184ccf0cc4880112282f164e (ff-only from 4a151c9).  F4-doc closed FAIL once (the
+  observed document did not name Q01-Q05 individually); the workpiece was rolled back to the F4 open tree, the document
+  corrected on the ASCII surface, and F4-F6 re-run; identical re-generated evidence needed one more F5/F6 pass so that it
+  carried a PASS receipt.  No ref moved before verification.
+- RECEIPTS: factory/receipts/D11-COMPUTATIONAL-ENVIRONMENT-MAP/{F0-fixture,F1-doc,F2-build,F3-browser,F4-doc,F5-build,
+  F6-evidence}.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH (validate + render-check).
+- EVIDENCE: evidence/D11/ (46 files indexed); graph 211 nodes / 475 edges, 0 PENDING evidence after binding.
+- OBSERVED ASCII: design/materialization/D11-OBSERVED-ENVIRONMENT-MAP.md.  MATCH except Q09 (narrower), kept as [GAP].
+- LATER: PR #2 merged D9-D11 into main as f71c59b (owner action on GitHub, outside Factory law).
+
+---
+
+## D12-SELF-HOSTING-ARCHITECTURE  (architecture pass: ASCII assembly + observation probes; no production change)
+
+BEFORE
+- DELTA: D12-SELF-HOSTING-ARCHITECTURE (factory/deltas/D12.json)
+- BASE: f71c59b5ec6e0095294549c660884ddbd1a26dd7 (main after PR #2; branch fast-forwarded, merged history only)
+- STATION: S-DOC, S-FIXTURE, S-BUILD, S-BROWSER, S-DOC, S-EVIDENCE (existing registry; no station forged)
+- FIXTURE: F0-doc, F1-fixture, F2-build, F3-browser, F4-doc, F5-evidence
+- READ: everything; authority sources pinned by commit (published hosts denied; raw.githack.com denied).
+  CHANGE: design/materialization/{D12-SELF-HOSTING-PROMPT.md, D12-INTENDED-SELF-HOSTING.md,
+  D12-OBSERVED-SELF-HOSTING.md, LEDGER.md}, tests/selfhost/, evidence/D12/, factory/deltas/D12.json,
+  factory/fixtures/D12/, receipts.  FORBIDDEN: compiler/, host/, factory/src/, factory/registry/, all law and pass
+  documents, design/environment-map/ (graph additions are proposed in ASCII only), fixtures/, other tests/, Cargo.toml,
+  Cargo.lock, rust-toolchain.toml (stays absent), D0-D11 deltas/fixtures/receipts/evidence.
+- INVARIANTS: no production repair; no implementation of self-hosting; no toolchain pin; every D9/D11 status preserved;
+  probes observe only (a denied host, a false persist(), an unreachable ABI are evidence).
+- TESTS: intended ASCII carries the 13 required outputs and STRUCTURAL CHECK: PASS; probe harness syntax; kernel module
+  rebuilt with the host nightly and inspected; P01-P16 re-run under S-BROWSER; network observations; observed ASCII
+  compares the Factory run with the assembly-time run.
+- EXPECTED EVIDENCE: evidence/D12/{kernel/*, network/observations.txt, probes/*.json, browser-identity.json,
+  summary.json, index.json}; 6 FactoryReceipts; verification.json.
+- PREDICTED: P01-P06, P08, P09, P14, P15, P16 RUN; P07 GAP; P10 OBS (6 ABI exports absent; BUILD emits 3 artifacts);
+  githack DENIED; kernel sha256 a1bb6f86... with nightly 6bb1652a0 (differs from D9's 30958994...).
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
 

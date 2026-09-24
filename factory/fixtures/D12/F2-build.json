@@ -1,0 +1,62 @@
+{
+  "fixture_id": "F2-build",
+  "station_id": "S-BUILD",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "selected_inputs": [
+    "compiler/",
+    "Cargo.toml",
+    "Cargo.lock"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D12/kernel/",
+    "evidence/D12/network/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D12/kernel && { rustc +nightly -vV; cargo +nightly -vV; rustup component list --installed --toolchain nightly; } > evidence/D12/kernel/toolchain.txt 2>&1 && RUSTFLAGS='-C link-arg=-zstack-size=16777216' CARGO_TARGET_DIR=/home/user/selfhost-target cargo +nightly build --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown"
+        ],
+        "log": "evidence/D12/kernel/build.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "wasm-inspect",
+          "/home/user/selfhost-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+          "--out",
+          "evidence/D12/kernel/inspect.json"
+        ],
+        "log": "evidence/D12/kernel/inspect.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "tests/selfhost/network-observe.sh",
+          "evidence/D12/network/observations.txt"
+        ],
+        "log": "evidence/D12/network/run.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D12/kernel/toolchain.txt",
+    "evidence/D12/kernel/inspect.json",
+    "evidence/D12/network/observations.txt"
+  ],
+  "tests": [
+    "kernel module rebuilt from the base tree with the host nightly and inspected (i64 memory, identity)",
+    "network observations recorded (denials are evidence)"
+  ],
+  "evidence_requirements": [
+    "logs"
+  ]
+}

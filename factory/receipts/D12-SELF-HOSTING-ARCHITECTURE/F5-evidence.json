@@ -1,0 +1,98 @@
+{
+  "receipt_id": "R-D12-SELF-HOSTING-ARCHITECTURE-F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F5-evidence",
+  "workpiece_id": "W12",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "canonical_base": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+  "input_artifacts": [
+    "evidence/D12/"
+  ],
+  "open_tree": "e45c5f210ce0e416b254f524f50ba3451c084274",
+  "close_tree": "033402100161f80320f4339ef6e12724002270ed",
+  "changed_paths": [
+    "evidence/D12/index.json",
+    "evidence/D12/index.log"
+  ],
+  "output_artifacts": [
+    "evidence/D12/index.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D12-SELF-HOSTING-ARCHITECTURE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D12/index.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:/home/user/factory-target/debug/factory evidence index evidence/D12 evidence/D12/index.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D12/index.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/index.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D12/index.log"
+  ],
+  "closed": "2026-09-24T06:16:25Z",
+  "status": "PASS"
+}

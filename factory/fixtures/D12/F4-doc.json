@@ -1,0 +1,38 @@
+{
+  "fixture_id": "F4-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "selected_inputs": [
+    "evidence/D12/",
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D12-OBSERVED-SELF-HOSTING.md",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "O=design/materialization/D12-OBSERVED-SELF-HOSTING.md; for id in $(node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D12/summary.json\"));console.log(s.records.map(r=>r.id).join(\" \"))'); do grep -q \"$id\" $O || { echo \"observed ASCII does not name $id\"; exit 1; }; done; for t in '[RUN]' '[GAP]' '[OBS]' '[UNK]' '[ERR]'; do grep -qF \"$t\" $O || { echo missing $t; exit 1; }; done; grep -q 'MATCH' $O && grep -q 'NO PRODUCTION REPAIR' $O"
+        ],
+        "log": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F4-observed-contract.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D12-OBSERVED-SELF-HOSTING.md"
+  ],
+  "tests": [
+    "observed ASCII names every Factory-run probe, carries every status class, states MATCH/DIFFER and no production repair"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

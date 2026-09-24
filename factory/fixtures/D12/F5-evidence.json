@@ -1,0 +1,38 @@
+{
+  "fixture_id": "F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "selected_inputs": [
+    "evidence/D12/"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D12/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D12",
+          "evidence/D12/index.json"
+        ],
+        "log": "evidence/D12/index.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D12/index.json"
+  ],
+  "tests": [
+    "evidence indexed"
+  ],
+  "evidence_requirements": [
+    "index"
+  ]
+}

@@ -1,0 +1,31 @@
+$ sh tests/selfhost/network-observe.sh evidence/D12/network/observations.txt
+(cwd .)
+--- githack dev host (secure-context HTTPS test path requested by the owner)
+curl: (56) CONNECT tunnel failed, response 403
+000
+[exit 56]
+--- githack CDN host
+curl: (56) CONNECT tunnel failed, response 403
+000
+[exit 56]
+--- GitHub REST API CORS (GET ref)
+HTTP/1.1 200 Connection Established
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+[exit 0]
+--- GitHub smart-HTTP CORS (info/refs)
+HTTP/1.1 200 Connection Established
+HTTP/1.1 200 OK
+Content-Type: application/x-git-upload-pack-advertisement
+X-Content-Type-Options: nosniff
+[exit 0]
+--- GitHub REST preflight PATCH (through the intercepting egress proxy)
+HTTP/1.1 200 Connection Established
+HTTP/1.1 405 Method Not Allowed
+[exit 0]
+--- published authority host (D11 reopen)
+curl: (56) CONNECT tunnel failed, response 403
+000
+[exit 56]
+
+[exit 0] expected 0

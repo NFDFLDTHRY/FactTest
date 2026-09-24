@@ -1,0 +1,94 @@
+{
+  "receipt_id": "R-D12-SELF-HOSTING-ARCHITECTURE-F4-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F4-doc",
+  "workpiece_id": "W12",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "canonical_base": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+  "input_artifacts": [
+    "evidence/D12/",
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md"
+  ],
+  "open_tree": "61264c779123d39c1e290098d7ddd625e032157a",
+  "close_tree": "573ec268bcbe307f6feb903fe53e378859155131",
+  "changed_paths": [
+    "design/materialization/D12-OBSERVED-SELF-HOSTING.md",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F4-observed-contract.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D12-OBSERVED-SELF-HOSTING.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D12-SELF-HOSTING-ARCHITECTURE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F4-observed-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c O=design/materialization/D12-OBSERVED-SELF-HOSTING.md; for id in $(node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D12/summary.json\"));console.log(s.records.map(r=>r.id).join(\" \"))'); do grep -q \"$id\" $O || { echo \"observed ASCII does not name $id\"; exit 1; }; done; for t in '[RUN]' '[GAP]' '[OBS]' '[UNK]' '[ERR]'; do grep -qF \"$t\" $O || { echo missing $t; exit 1; }; done; grep -q 'MATCH' $O && grep -q 'NO PRODUCTION REPAIR' $O",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F4-observed-contract.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D12-OBSERVED-SELF-HOSTING.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F4-observed-contract.log"
+  ],
+  "closed": "2026-09-24T06:16:25Z",
+  "status": "PASS"
+}

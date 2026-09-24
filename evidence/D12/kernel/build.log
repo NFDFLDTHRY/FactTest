@@ -1,0 +1,17 @@
+$ sh -c mkdir -p evidence/D12/kernel && { rustc +nightly -vV; cargo +nightly -vV; rustup component list --installed --toolchain nightly; } > evidence/D12/kernel/toolchain.txt 2>&1 && RUSTFLAGS='-C link-arg=-zstack-size=16777216' CARGO_TARGET_DIR=/home/user/selfhost-target cargo +nightly build --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown
+(cwd .)
+   Compiling factc-foundation v0.1.0 (/home/user/factory-workpieces/W12/compiler/foundation)
+   Compiling factc-source v0.1.0 (/home/user/factory-workpieces/W12/compiler/source)
+   Compiling factc-semantic v0.1.0 (/home/user/factory-workpieces/W12/compiler/semantic)
+   Compiling factc-observe v0.1.0 (/home/user/factory-workpieces/W12/compiler/observe)
+   Compiling factc-capability v0.1.0 (/home/user/factory-workpieces/W12/compiler/capability)
+   Compiling factc-implementation v0.1.0 (/home/user/factory-workpieces/W12/compiler/implementation)
+   Compiling factc-planning v0.1.0 (/home/user/factory-workpieces/W12/compiler/planning)
+   Compiling factc-verifier v0.1.0 (/home/user/factory-workpieces/W12/compiler/verifier)
+   Compiling factc-codegen v0.1.0 (/home/user/factory-workpieces/W12/compiler/codegen)
+   Compiling factc-bundle v0.1.0 (/home/user/factory-workpieces/W12/compiler/bundle)
+   Compiling factc-kernel v0.1.0 (/home/user/factory-workpieces/W12/compiler/kernel)
+   Compiling factc-wasm-abi v0.1.0 (/home/user/factory-workpieces/W12/compiler/wasm-abi)
+    Finished `release` profile [optimized] target(s) in 3.00s
+
+[exit 0] expected 0

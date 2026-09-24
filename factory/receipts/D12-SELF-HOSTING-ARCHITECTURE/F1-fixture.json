@@ -1,0 +1,102 @@
+{
+  "receipt_id": "R-D12-SELF-HOSTING-ARCHITECTURE-F1-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "1",
+  "fixture_id": "F1-fixture",
+  "workpiece_id": "W12",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "canonical_base": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+  "input_artifacts": [
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md",
+    "evidence/D7/physical/compile/bundle/",
+    "fixtures/commissioning/byte-relay.ascii"
+  ],
+  "open_tree": "5b16ba8d98a5819c14c835ee97f8889b507a02e0",
+  "close_tree": "5e3515c1b01c616be1cebe09f70f30062fb0ebb1",
+  "changed_paths": [
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F1-harness.log",
+    "tests/selfhost/network-observe.sh",
+    "tests/selfhost/primitives-probe.mjs"
+  ],
+  "output_artifacts": [
+    "tests/selfhost/primitives-probe.mjs",
+    "tests/selfhost/network-observe.sh"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D12-SELF-HOSTING-ARCHITECTURE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F1-harness.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node --check tests/selfhost/primitives-probe.mjs && sh -n tests/selfhost/network-observe.sh && for p in P01 P02 P03 P04 P05 P06 P07 P08 P09 P10 P14 P15 P16; do grep -q \"'$p-\" tests/selfhost/primitives-probe.mjs || { echo missing probe $p; exit 1; }; done",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F1-harness.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/selfhost/primitives-probe.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/selfhost/network-observe.sh",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F1-harness.log"
+  ],
+  "closed": "2026-09-24T06:15:11Z",
+  "status": "PASS"
+}
