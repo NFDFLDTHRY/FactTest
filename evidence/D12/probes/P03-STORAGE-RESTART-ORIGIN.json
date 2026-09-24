@@ -1,0 +1,42 @@
+{
+  "id": "P03-STORAGE-RESTART-ORIGIN",
+  "question": "Do OPFS / IndexedDB / CacheStorage / localStorage survive restart, and what identity scopes them?",
+  "needed_for": "L1-L3 persistence",
+  "started": "2026-09-24T06:15:19.183Z",
+  "observed": {
+    "token": "tok-1790230519183",
+    "after_restart_same_origin": {
+      "opfs": "tok-1790230519183",
+      "idb": "tok-1790230519183",
+      "cache": "tok-1790230519183",
+      "local": "tok-1790230519183",
+      "persisted": false,
+      "estimate": {
+        "quota": 162331904409,
+        "usage": 2697,
+        "usageDetails": {
+          "caches": 512,
+          "fileSystem": 181,
+          "indexedDB": 2004
+        }
+      }
+    },
+    "other_port_same_profile": {
+      "opfs": "ABSENT:NotFoundError",
+      "idb": "ABSENT",
+      "cache": "ABSENT",
+      "local": "ABSENT",
+      "persisted": false,
+      "estimate": {
+        "quota": 162331904409,
+        "usage": 1269,
+        "usageDetails": {
+          "indexedDB": 1269
+        }
+      }
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "OPFS, IndexedDB, CacheStorage and localStorage survive a browser restart on the same origin; a different port on the same host sees none of it: installed-Factory identity is the exact origin (scheme+host+port), and a moved port is a different Factory with empty storage. persisted() = false",
+  "finished": "2026-09-24T06:15:19.655Z"
+}

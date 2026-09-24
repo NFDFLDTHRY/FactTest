@@ -1,0 +1,95 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "selected_inputs": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "design/materialization/D9-*",
+    "design/materialization/D10-*",
+    "design/materialization/D11-*",
+    "design/environment-map/",
+    "factory/src/",
+    "factory/registry/",
+    "compiler/wasm-abi/",
+    "compiler/kernel/src/abi.rs",
+    "compiler/codegen/",
+    "the session request (tracked verbatim)",
+    "authority sources pinned by commit (0.2)",
+    "assembly-time probe runs (0.3)"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D12-SELF-HOSTING-PROMPT.md",
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D12.json",
+    "factory/fixtures/D12/",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D12-INTENDED-SELF-HOSTING.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.' '## 11.' '## 12.' '## 13.' '## 14.' '## 15.' '## 16.' '## 17.' '## 18.' '## 19.' '## 20.' '## 21.'; do grep -qF \"$s\" $I || { echo missing section $s; exit 1; }; done; for k in 'Trusted computing base' 'Immutable bootstrap boundary' 'Generation / update / rollback' 'Local repository / object-store model' 'Station execution abstraction' 'Compiler / bootstrap dependency' 'L0-L4 status' 'Blockers classified' 'Tests and evidence required' 'Browser-native replacement matrix' 'Current Factory dependency decomposition' 'Intended self-hosting system'; do grep -qF \"$k\" $I || { echo missing output $k; exit 1; }; done; for d in D-1 D-2 D-3 D-4 D-5 D-6 D-7 D-8 D-9; do grep -q \"^$d \" $I || { echo missing decision $d; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'D13-SEED-BROKER-QUALIFICATION' $I && grep -q 'D12-SELF-HOSTING-ARCHITECTURE' design/materialization/LEDGER.md && grep -q 'Use Githack, remember?' design/materialization/D12-SELF-HOSTING-PROMPT.md"
+        ],
+        "log": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-ascii-contract.log"
+      },
+      {
+        "cwd": ".",
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+          "--",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "FINAL-HANDOFF-REQUIREMENTS.md",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "fixtures",
+          "design/environment-map",
+          "tests/envmap",
+          "tests/toolchain",
+          "Cargo.toml",
+          "Cargo.lock"
+        ],
+        "log": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-production-untouched.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "test ! -e rust-toolchain.toml"
+        ],
+        "log": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-no-toolchain-pin.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D12-SELF-HOSTING-PROMPT.md",
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md"
+  ],
+  "tests": [
+    "intended ASCII carries sections 0-21, the 13 required outputs, D-1..D-9, STRUCTURAL CHECK: PASS and the next bounded delta",
+    "request tracked verbatim with the owner follow-up",
+    "ledger D11 AFTER + D12 BEFORE",
+    "production and law untouched; no pin"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

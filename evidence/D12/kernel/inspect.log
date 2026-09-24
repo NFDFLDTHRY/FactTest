@@ -1,0 +1,11 @@
+$ /home/user/factory-target-canon/debug/factory wasm-inspect /home/user/selfhost-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --out evidence/D12/kernel/inspect.json
+(cwd .)
+== wasm-inspect /home/user/selfhost-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --out evidence/D12/kernel/inspect.json : PASS
+  [PASS] module_structure - 12 sections
+  [PASS] memory_declared - I64 min=311 max=None shared=false
+  [PASS] all_memories_i64_address_type - wasm32 (i32 address) memories are forbidden by project law FT-003
+  [PASS] imports_listed
+  [PASS] exports_listed - memory:2, check_or_compile:0, input_buffer_len:0, input_buffer_ptr:0, output_buffer_ptr:0, query_abi_version:0, query_required_workspace:0, read_artifact_metadata:0, read_diagnostics:0, reset_workspace:0, submit_machine_state:0, submit_source_bytes:0, output_buffer_len:0
+  [PASS] artifact_identity - sha256 a1bb6f866d41f7bbaeb74093f5cb99d1b4775223db0c258906f54f28f8610895 bytes 3350085
+
+[exit 0] expected 0

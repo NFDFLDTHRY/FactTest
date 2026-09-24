@@ -1,0 +1,138 @@
+{
+  "receipt_id": "R-D12-SELF-HOSTING-ARCHITECTURE-F2-build",
+  "station_id": "S-BUILD",
+  "station_version": "1",
+  "fixture_id": "F2-build",
+  "workpiece_id": "W12",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "canonical_base": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+  "input_artifacts": [
+    "compiler/",
+    "Cargo.toml",
+    "Cargo.lock"
+  ],
+  "open_tree": "52919d74c18b49ab35dea5ca00c2adf226f0b666",
+  "close_tree": "8186eabf373dfef2d9fa3b6758afebf3494c315b",
+  "changed_paths": [
+    "evidence/D12/kernel/build.log",
+    "evidence/D12/kernel/inspect.json",
+    "evidence/D12/kernel/inspect.log",
+    "evidence/D12/kernel/toolchain.txt",
+    "evidence/D12/network/observations.txt",
+    "evidence/D12/network/run.log"
+  ],
+  "output_artifacts": [
+    "evidence/D12/kernel/toolchain.txt",
+    "evidence/D12/kernel/inspect.json",
+    "evidence/D12/network/observations.txt"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BUILD v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D12-SELF-HOSTING-ARCHITECTURE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BUILD_VERIFY"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D12/kernel/build.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D12/kernel/inspect.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D12/network/run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c mkdir -p evidence/D12/kernel && { rustc +nightly -vV; cargo +nightly -vV; rustup component list --installed --toolchain nightly; } > evidence/D12/kernel/toolchain.txt 2>&1 && RUSTFLAGS='-C link-arg=-zstack-size=16777216' CARGO_TARGET_DIR=/home/user/selfhost-target cargo +nightly build --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D12/kernel/build.log"
+    },
+    {
+      "check": "command:/home/user/factory-target-canon/debug/factory wasm-inspect /home/user/selfhost-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --out evidence/D12/kernel/inspect.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D12/kernel/inspect.log"
+    },
+    {
+      "check": "command:sh tests/selfhost/network-observe.sh evidence/D12/network/observations.txt",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D12/network/run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/kernel/toolchain.txt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/kernel/inspect.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/network/observations.txt",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D12/kernel/build.log",
+    "evidence/D12/kernel/inspect.log",
+    "evidence/D12/network/run.log"
+  ],
+  "closed": "2026-09-24T06:15:16Z",
+  "status": "PASS"
+}

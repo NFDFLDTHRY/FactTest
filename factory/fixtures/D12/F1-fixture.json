@@ -1,0 +1,40 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "selected_inputs": [
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md",
+    "evidence/D7/physical/compile/bundle/",
+    "fixtures/commissioning/byte-relay.ascii"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "tests/selfhost/",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check tests/selfhost/primitives-probe.mjs && sh -n tests/selfhost/network-observe.sh && for p in P01 P02 P03 P04 P05 P06 P07 P08 P09 P10 P14 P15 P16; do grep -q \"'$p-\" tests/selfhost/primitives-probe.mjs || { echo missing probe $p; exit 1; }; done"
+        ],
+        "log": "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F1-harness.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/selfhost/primitives-probe.mjs",
+    "tests/selfhost/network-observe.sh"
+  ],
+  "tests": [
+    "harness parses and declares P01-P16"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

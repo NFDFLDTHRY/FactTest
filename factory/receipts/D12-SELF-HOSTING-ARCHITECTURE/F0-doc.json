@@ -1,0 +1,139 @@
+{
+  "receipt_id": "R-D12-SELF-HOSTING-ARCHITECTURE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W12",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "canonical_base": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+  "input_artifacts": [
+    "FACTORY-LAW.md",
+    "FACTORY-CONTRACTS.md",
+    "FINAL-HANDOFF-REQUIREMENTS.md",
+    "design/materialization/D9-*",
+    "design/materialization/D10-*",
+    "design/materialization/D11-*",
+    "design/environment-map/",
+    "factory/src/",
+    "factory/registry/",
+    "compiler/wasm-abi/",
+    "compiler/kernel/src/abi.rs",
+    "compiler/codegen/",
+    "the session request (tracked verbatim)",
+    "authority sources pinned by commit (0.2)",
+    "assembly-time probe runs (0.3)"
+  ],
+  "open_tree": "a073d077f2379047afe3e37b57e259da63ed5e91",
+  "close_tree": "b4152eab7b5fbe01846604c2af5f529cae1abcde",
+  "changed_paths": [
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md",
+    "design/materialization/D12-SELF-HOSTING-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-ascii-contract.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-no-toolchain-pin.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-production-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D12-SELF-HOSTING-PROMPT.md",
+    "design/materialization/D12-INTENDED-SELF-HOSTING.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D12-SELF-HOSTING-ARCHITECTURE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-ascii-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-production-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-no-toolchain-pin.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D12-INTENDED-SELF-HOSTING.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.' '## 11.' '## 12.' '## 13.' '## 14.' '## 15.' '## 16.' '## 17.' '## 18.' '## 19.' '## 20.' '## 21.'; do grep -qF \"$s\" $I || { echo missing section $s; exit 1; }; done; for k in 'Trusted computing base' 'Immutable bootstrap boundary' 'Generation / update / rollback' 'Local repository / object-store model' 'Station execution abstraction' 'Compiler / bootstrap dependency' 'L0-L4 status' 'Blockers classified' 'Tests and evidence required' 'Browser-native replacement matrix' 'Current Factory dependency decomposition' 'Intended self-hosting system'; do grep -qF \"$k\" $I || { echo missing output $k; exit 1; }; done; for d in D-1 D-2 D-3 D-4 D-5 D-6 D-7 D-8 D-9; do grep -q \"^$d \" $I || { echo missing decision $d; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'D13-SEED-BROKER-QUALIFICATION' $I && grep -q 'D12-SELF-HOSTING-ARCHITECTURE' design/materialization/LEDGER.md && grep -q 'Use Githack, remember?' design/materialization/D12-SELF-HOSTING-PROMPT.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-ascii-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code f71c59b5ec6e0095294549c660884ddbd1a26dd7 -- FACTORY-LAW.md FACTORY-CONTRACTS.md FINAL-HANDOFF-REQUIREMENTS.md REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md compiler host factory/src factory/registry fixtures design/environment-map tests/envmap tests/toolchain Cargo.toml Cargo.lock",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-production-untouched.log"
+    },
+    {
+      "check": "command:sh -c test ! -e rust-toolchain.toml",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-no-toolchain-pin.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D12-SELF-HOSTING-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D12-INTENDED-SELF-HOSTING.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-ascii-contract.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-production-untouched.log",
+    "factory/receipts/D12-SELF-HOSTING-ARCHITECTURE/logs/F0-no-toolchain-pin.log"
+  ],
+  "closed": "2026-09-24T06:15:11Z",
+  "status": "PASS"
+}

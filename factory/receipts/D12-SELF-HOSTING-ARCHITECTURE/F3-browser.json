@@ -1,0 +1,132 @@
+{
+  "receipt_id": "R-D12-SELF-HOSTING-ARCHITECTURE-F3-browser",
+  "station_id": "S-BROWSER",
+  "station_version": "1",
+  "fixture_id": "F3-browser",
+  "workpiece_id": "W12",
+  "delta_id": "D12-SELF-HOSTING-ARCHITECTURE",
+  "canonical_base": "f71c59b5ec6e0095294549c660884ddbd1a26dd7",
+  "input_artifacts": [
+    "tests/selfhost/primitives-probe.mjs",
+    "evidence/D7/physical/compile/bundle/",
+    "/home/user/selfhost-target/wasm64-unknown-unknown/release/factc_wasm_abi.wasm"
+  ],
+  "open_tree": "fc91463e133e0e56e6875bf6efa485ef36e72fd5",
+  "close_tree": "daec2e6579b36234bdef7f4e7604e911037b6610",
+  "changed_paths": [
+    "evidence/D12/browser-identity.json",
+    "evidence/D12/probes-run.log",
+    "evidence/D12/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+    "evidence/D12/probes/P02-SW-CANNOT-SELF-UPDATE.json",
+    "evidence/D12/probes/P03-STORAGE-RESTART-ORIGIN.json",
+    "evidence/D12/probes/P04-OPFS-SERVED-APP.json",
+    "evidence/D12/probes/P05-SW-CROSS-ORIGIN-ISOLATION.json",
+    "evidence/D12/probes/P06-IDB-ATOMIC-POINTER.json",
+    "evidence/D12/probes/P07-STORAGE-PERSISTENCE.json",
+    "evidence/D12/probes/P08-CANDIDATE-CONFINEMENT.json",
+    "evidence/D12/probes/P09-GIT-OBJECTS-IN-BROWSER.json",
+    "evidence/D12/probes/P10-KERNEL-IN-WORKER.json",
+    "evidence/D12/probes/P14-BROKEN-SW-RECOVERY.json",
+    "evidence/D12/probes/P15-INTERRUPTED-SW-UPDATE.json",
+    "evidence/D12/probes/P16-CONFINED-GENERATION-LOAD.json",
+    "evidence/D12/summary.json"
+  ],
+  "output_artifacts": [
+    "evidence/D12/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+    "evidence/D12/probes/P16-CONFINED-GENERATION-LOAD.json",
+    "evidence/D12/summary.json",
+    "evidence/D12/browser-identity.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-BROWSER v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D12-SELF-HOSTING-ARCHITECTURE"
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "BROWSER_PROBE"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D12/probes-run.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:node tests/selfhost/primitives-probe.mjs evidence/D12",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D12/probes-run.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/probes/P16-CONFINED-GENERATION-LOAD.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D12/browser-identity.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D12/probes-run.log"
+  ],
+  "closed": "2026-09-24T06:15:33Z",
+  "status": "PASS"
+}
