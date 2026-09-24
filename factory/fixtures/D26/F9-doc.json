@@ -1,0 +1,76 @@
+{
+  "fixture_id": "F9-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "evidence/D26/",
+    "tests/envmap/facts/D26.json",
+    "the D25 graph"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/epochs/D26.json",
+    "design/environment-map/graph.json",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "factory/receipts/D26-CLEAN-COMMISSIONING/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/reprove/build-reprove.mjs --graph design/environment-map/graph.json --selection evidence/D26/selection.json --evidence evidence/D26 --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --dimensions tests/reprove/dimensions.json --epoch D26 --delta D26-CLEAN-COMMISSIONING --commit '2c0aeda18d0b42eb97fa060f5603b65e986851cb (canonical base; integration commit in LEDGER AFTER)' --out $T/reprove.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,$T/reprove.json --out $T/g26.json >/dev/null && node tests/envmap/build-fact-epoch.mjs --spec tests/envmap/facts/D26.json --epoch D26 --delta D26-CLEAN-COMMISSIONING --commit '2c0aeda18d0b42eb97fa060f5603b65e986851cb (canonical base; integration commit in LEDGER AFTER)' --graph $T/g26.json --out $T/facts.json && node tests/envmap/concat-epochs.mjs $T/reprove.json $T/facts.json --out design/environment-map/epochs/D26.json"
+        ],
+        "log": "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F9-build-epoch.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json",
+          "--out",
+          "design/environment-map/graph.json"
+        ],
+        "log": "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F9-merge.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render",
+          "design/environment-map/graph.json",
+          "--out",
+          "design/environment-map"
+        ],
+        "log": "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F9-render.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node -e 'const e=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/epochs/D26.json\"));const by={};for(const n of e.nodes)by[n.class]=(by[n.class]||0)+1;console.log(e.nodes.length,e.edges.length,JSON.stringify(by));if(!e.nodes.some(n=>n.id===\"ENV-D26-HOST\")||by.IMPLEMENTATION!==1||by.PROBE!==2||!e.nodes.some(n=>n.id===\"FACT-D26-FINAL-CONDITION\"))process.exit(1)' && grep -q '^commissioning epoch' design/environment-map/SCHEMA.md && grep -q '^D26 ' design/environment-map/ENVIRONMENT-MAP.md && grep -q 'last delta         D26-CLEAN-COMMISSIONING' docs/HANDOFF.md && grep -q 'D26-STABLE-BASELINE' README.md && grep -q '^STABLE-BASELINE: ESTABLISHED' design/materialization/D26-STABLE-BASELINE.md"
+        ],
+        "log": "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F9-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/epochs/D26.json",
+    "design/environment-map/graph.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

@@ -1,0 +1,173 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D26-CLEAN-COMMISSIONING-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W32",
+  "delta_id": "D26-CLEAN-COMMISSIONING",
+  "canonical_base": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+  "input_artifacts": [
+    "the D21-D26 prompt (D26)",
+    "the D25 graph and issue inventory",
+    "the scratch selection and re-proof trial (section 0)"
+  ],
+  "open_tree": "1ff45d95be1f062f6a1fa978b926065dc505369c",
+  "close_tree": "ecd590048cc951933e179ff6051d56f53b2693b5",
+  "changed_paths": [
+    "design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-ascii.log",
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D26-CLEAN-COMMISSIONING"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-ascii.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-ascii.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && ! grep -q PREDICTIONS_PLACEHOLDER $I && grep -q 'integrated as 2c0aeda' design/materialization/LEDGER.md && grep -q '^## D26-CLEAN-COMMISSIONING' design/materialization/LEDGER.md && ! grep -q PREDICTIONS_PLACEHOLDER design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-ascii.log"
+    },
+    {
+      "check": "command:git diff --exit-code 2c0aeda18d0b42eb97fa060f5603b65e986851cb -- compiler host factory/src factory/tests factory/registry tests evidence fixtures design/environment-map design/execution-manifest docs README.md rust-toolchain.toml Cargo.toml Cargo.lock REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md STATION-REGISTRY.md CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md BOOTSTRAP-CONTRACTS.md FACTORY-LAW.md FACTORY-CONTRACTS.md CODEGEN-BUNDLE-CONTRACT.md RUNTIME-ADMISSION-REPLAN.md COMMISSIONING-RUNTIME.md COMMISSIONING-FIXTURE.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-ascii.log",
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F0-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T18:46:01Z",
+  "status": "PASS"
+}

@@ -1133,4 +1133,35 @@ BEFORE
   current facts (RUN 120, UNK 5); W29 RETIRABLE -> REMOVED.
 
 AFTER
+- RESULT: integrated as 2c0aeda (ff-only from 76f4441) on W31; the first route on W30 was refused at F8 (a path outside
+  the fixture's may_change), the fixture repaired and the delta re-routed from the base: no re-run of a failed command.
+- RECEIPTS: F0-doc F1-fixture F2-web F3-browser F4-build F5-doc F6-evidence F7-doc F8-evidence F9-doc PASS (format 2).
+  VERIFICATION: PASS (first run on W31).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D25.json rebuilt
+  byte-identically; the probe's syntax from the canonical tree).  Pushed.
+- OBSERVED: D25-OBSERVED-PHYSICAL-RUNTIME.md - P1-P7 MATCH.
+
+---
+
+## D26-CLEAN-COMMISSIONING  (task 6 of 6: can the CURRENT repository manufacture, verify and execute its complete implemented system from canonical source without relying on undocumented historical state?)
+
+BEFORE
+- DELTA: D26-CLEAN-COMMISSIONING (factory/deltas/D26.json), workpiece W32, base 2c0aeda.
+- ASCII: design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F6, F9, F11), S-FIXTURE (F1), S-BROWSER (F2), S-EVIDENCE (F3, F7, F8, F10), S-BUILD (F4, F5).
+- CHANGE: tests/reprove/{runbook.json (groups manifest and physical, the crate DAG in qualified-proof, build directories
+  from REPROVE_TARGET/REPROVE_KERNELS, entries for the 21 claims the selection could not map), obligations.json (R-65)},
+  tests/audit/{consistency-audit.mjs, final-condition.mjs}, tests/envmap/{concat-epochs.mjs, facts/D26.json},
+  tests/manifest/{components.json (TEST-AUDIT; KERNEL-LADDERS -> S-RUST, I-37), issues.json (I-35 empty, I-36, I-37)},
+  design/execution-manifest/ (rebuilt), evidence/D26/ (identity, selection, the re-proof groups, factory witnesses,
+  proof, crates, kernel, specimens, attacks, anti-cheat, physical, audit, envmap, index), design/environment-map/
+  (epoch D26 = re-proof fragment + facts fragment, graph, views, SCHEMA, ENVIRONMENT-MAP), docs/HANDOFF.md, README.md,
+  design/materialization/D26-STABLE-BASELINE.md, D26 records, this ledger.  FORBIDDEN: compiler/, host/, factory/,
+  fixtures/, law and pass documents, earlier epochs, D0-D25 evidence (historical evidence immutable).
+- PREDICTED: selection 169 / 101 (gaps 0); proof 27 (no FAIL), crates 14 / 1011 tests, witnesses PASS, specimens 4,
+  attacks 13, physical PASS, kernels == pin; 11 groups, 101 facts re-proved, 0 failed; manifest 4434 files, 70
+  components, gate PASS (37 issues); epoch D26 68 nodes / 340 edges; merged 1420 / 3823; validate 42; Q22 197 current
+  facts (RUN 126); audit 13 PASS; final condition 21 PASS (preview and committed graph identical); W31 RETIRABLE ->
+  REMOVED.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

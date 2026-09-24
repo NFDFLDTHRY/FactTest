@@ -1,0 +1,26 @@
+{
+ "tool": "tests/genericity/check-bundle.mjs",
+ "bundle": "/home/user/factory-workpieces/W32/evidence/D26/specimens/byte-relay/compile/bundle",
+ "integrity": {
+  "bundle_id": "0f4a1ec14b9e1159e4b6c19f058467cf15cc441e04d0b7cfe17a0f184761cdf1",
+  "files": 7,
+  "recorded": 7,
+  "problems": [],
+  "status": "PASS"
+ },
+ "tamper": {
+  "file": "selector.js",
+  "byte_index": 951,
+  "detected": true,
+  "verdict": {
+   "bundle_id": "0f4a1ec14b9e1159e4b6c19f058467cf15cc441e04d0b7cfe17a0f184761cdf1",
+   "files": 7,
+   "recorded": 7,
+   "problems": [
+    "selector.js: sha256 8ac1173f30545d03fc0b3329f6289516015ea7b70f474655c259941443e95a84 != recorded e37b56a2d932682dff4cd1f79cdef838a0056230f34169fdfc348788dbc6cb9f"
+   ],
+   "status": "FAIL"
+  }
+ },
+ "status": "PASS"
+}

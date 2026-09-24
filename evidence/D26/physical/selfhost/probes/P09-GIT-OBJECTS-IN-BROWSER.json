@@ -1,0 +1,24 @@
+{
+  "id": "P09-GIT-OBJECTS-IN-BROWSER",
+  "question": "Can git object/tree/commit identity be reproduced and written without the git executable?",
+  "needed_for": "canonical state",
+  "started": "2026-09-24T18:48:17.709Z",
+  "observed": {
+    "files": 4430,
+    "blob_ids_matching_git": 4430,
+    "browser_root_tree": "c27403935acd2f3277e6a0d4e3aacafc223605dd",
+    "git_head_tree": "c27403935acd2f3277e6a0d4e3aacafc223605dd",
+    "browser_head_commit": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+    "git_head": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+    "loose_objects_inflated_and_verified": "6/6",
+    "browser_new_commit": "1424ead9d8abcb1f7b615c83f0ac11c8dafd3b61",
+    "git_hash_object_of_same_bytes": "1424ead9d8abcb1f7b615c83f0ac11c8dafd3b61",
+    "git_commit_tree_same_inputs": "1424ead9d8abcb1f7b615c83f0ac11c8dafd3b61",
+    "browser_written_loose_blob_read_by_git": "written by the browser for git to read",
+    "elapsed_ms": 15893,
+    "hash": "WebCrypto SHA-1 (plain; git uses SHA-1DC collision detection)"
+  },
+  "verdict": "RUN",
+  "meaning": "git object semantics are reproducible without the git executable: the browser recomputed every blob id and the exact HEAD tree and commit ids, inflated and verified real loose objects, built a commit byte-identical to git commit-tree, and wrote a loose object git reads",
+  "finished": "2026-09-24T18:48:35.278Z"
+}

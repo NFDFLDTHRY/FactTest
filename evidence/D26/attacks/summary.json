@@ -1,0 +1,110 @@
+{
+ "tool": "tests/genericity/run-attacks.mjs",
+ "status": "PASS",
+ "attacks": [
+  {
+   "attack": "renamed-relation",
+   "specimen": "ledger-mirror",
+   "mutation": "relation post -> posted in the source",
+   "expectation": "builds; transfers renamed in source order; strategy identity changes; the earlier tape no longer binds",
+   "observed": "exit 0; transfers [\"posted\",\"mirror\"]; identity changed; old tape observe exit 1 EVIDENCE_UNBOUND",
+   "status": "PASS"
+  },
+  {
+   "attack": "changed-order",
+   "specimen": "ledger-mirror",
+   "mutation": "the two data relations swapped in the source",
+   "expectation": "builds; requirement slots follow the new source order; strategy identity changes",
+   "observed": "exit 0; transfers [\"mirror\",\"post\"]; identity changed",
+   "status": "PASS"
+  },
+  {
+   "attack": "different-legal-recipe",
+   "specimen": "ledger-mirror",
+   "mutation": "recipe R_ENTRY_COPY renamed R_ENTRY_MIRROR (same adapter, same exports)",
+   "expectation": "builds; bundle metadata names the new recipe; the executable strategy data is identical (a recipe name is registry data, not a semantic)",
+   "observed": "exit 0; recipes [\"R_ENTRY_MIRROR\"]; strategy identity identical",
+   "status": "PASS"
+  },
+  {
+   "attack": "single-backend-registry",
+   "specimen": "dual-stream",
+   "mutation": "WEBGPU backend, its conversions and recipe removed from the dual-stream registry",
+   "expectation": "builds with exactly one variant (CPU_WASM64 for both relations); no objective-driven GPU preference survives",
+   "observed": "exit 0; 1 variant(s): CPU_WASM64",
+   "status": "PASS"
+  },
+  {
+   "attack": "missing-conversion",
+   "specimen": "ledger-mirror",
+   "mutation": "conversion entry_out removed from the registry",
+   "expectation": "no legal plan: build fails with NO_LEGAL_PLAN and emits no bundle",
+   "observed": "exit 1; NO_LEGAL_PLAN; bundle absent",
+   "status": "PASS"
+  },
+  {
+   "attack": "undeclared-adapter",
+   "specimen": "ledger-mirror",
+   "mutation": "recipe names adapter=opfs_relay, an adapter the compiler does not carry",
+   "expectation": "build fails: no adapter template, no bundle certificate PASS",
+   "observed": "exit 1; BUNDLE_CHECK_FAILED; certificate FAIL with 1 checks",
+   "status": "PASS"
+  },
+  {
+   "attack": "unexpected-implementation-family",
+   "specimen": "pixel-vault",
+   "mutation": "backend WEBGPU realized by recipe adapter=wasm64_relay (a CPU_WASM64 adapter)",
+   "expectation": "BundleVerifier B-11 fails: the adapter block does not declare the guarded backend",
+   "observed": "exit 1; failing B-11-adapter-realizes-backend",
+   "status": "PASS"
+  },
+  {
+   "attack": "tampered-strategy",
+   "specimen": "ledger-mirror",
+   "mutation": "a byte of the embedded strategy data edited after the build",
+   "expectation": "post-build integrity check fails against bundle.json identities",
+   "observed": "check exit 1; selector.js: sha256 96642880908fba5ea1a7818badf0c852315e04900ca68d25c3aacfb0d5551666 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94",
+   "status": "PASS"
+  },
+  {
+   "attack": "tampered-bundle",
+   "specimen": "ledger-mirror",
+   "mutation": "a byte of the wasm module edited after the build",
+   "expectation": "post-build integrity check fails against bundle.json identities",
+   "observed": "check exit 1; wasm64_relay.wasm: sha256 e9327087659add1a5081c2a63b5b9d7eec442776ddc7bfe707afb690e7fc014f != recorded 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11",
+   "status": "PASS"
+  },
+  {
+   "attack": "invalid-guard",
+   "specimen": "ledger-mirror",
+   "mutation": "the guard of variant 0 replaced by a backend no registry declares edited after the build",
+   "expectation": "post-build integrity check fails against bundle.json identities",
+   "observed": "check exit 1; selector.js: sha256 252f76be72ff2b1674f61f2ad2a8e02aafcdf915d3e2d5c5b7ea1fbb8661f786 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94; selector.js: 1766 bytes != recorded 1767",
+   "status": "PASS"
+  },
+  {
+   "attack": "wrong-certificate",
+   "specimen": "ledger-mirror",
+   "mutation": "strategy_certificate_id changed edited after the build",
+   "expectation": "post-build integrity check fails against bundle.json identities",
+   "observed": "check exit 1; selector.js: sha256 3666dbfa635831efd1fbe4a32d549389f1c7685ba96a75f09eb23994b2c9945b != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94",
+   "status": "PASS"
+  },
+  {
+   "attack": "stale-evidence",
+   "specimen": "byte-relay -> ledger-mirror",
+   "mutation": "the Byte Relay tape observed against the ledger_mirror bundle manifest",
+   "expectation": "observe rejects it: EVIDENCE_UNBOUND, evidence_lineage ERR",
+   "observed": "exit 1; EVIDENCE_UNBOUND",
+   "status": "PASS"
+  },
+  {
+   "attack": "genuine-evidence",
+   "specimen": "ledger-mirror",
+   "mutation": "the ledger_mirror tape observed against its own bundle manifest (control)",
+   "expectation": "observe accepts it: evidence_lineage OBS",
+   "observed": "exit 0",
+   "status": "PASS"
+  }
+ ]
+}

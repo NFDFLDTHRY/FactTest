@@ -1,0 +1,41 @@
+$ sh -c T=$(mktemp -d) && node tests/reprove/build-reprove.mjs --graph design/environment-map/graph.json --selection evidence/D26/selection.json --evidence evidence/D26 --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --dimensions tests/reprove/dimensions.json --epoch D26 --delta D26-CLEAN-COMMISSIONING --commit '2c0aeda18d0b42eb97fa060f5603b65e986851cb (canonical base; integration commit in LEDGER AFTER)' --out $T/reprove.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,$T/reprove.json --out $T/g.json >/dev/null && node tests/envmap/envmap.mjs query $T/g.json --all --out evidence/D26/envmap-preview/queries >/dev/null && node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D26/status-preview >/dev/null && sh tests/hygiene/handoff-check.sh evidence/D26/handoff-check-preview.json >/dev/null && mkdir -p evidence/D26/audit && node tests/audit/consistency-audit.mjs --current-delta D26-CLEAN-COMMISSIONING --manifest evidence/D26/manifest.json --gate evidence/D26/gate.json --graph $T/g.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D26/envmap-preview/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D26/audit/consistency.json && node tests/audit/final-condition.mjs --evidence evidence/D26 --audit evidence/D26/audit/consistency.json --manifest evidence/D26/manifest.json --gate evidence/D26/gate.json --graph $T/g.json --issues tests/manifest/issues.json --selection evidence/D26/selection.json --results evidence/D26/results --status evidence/D26/status-preview/inventory.json --handoff-check evidence/D26/handoff-check-preview.json --handoff docs/HANDOFF.md --base 2c0aeda18d0b42eb97fa060f5603b65e986851cb --out evidence/D26/audit/final-condition.json
+(cwd .)
+D26: 53 nodes, 308 edges -> /tmp/tmp.xmvAlv5RoH/reprove.json; re-proved 101, failed 0; fulfilled R-65
+PASS [LIVE LAW = CURRENT IMPLEMENTATION CONTRACT] every_law_file_held: 32 law files each named by the graph, by a component's owner or by the handoff document register
+PASS [LIVE LAW = CURRENT IMPLEMENTATION CONTRACT] every_live_owner_exists: 55 live components; 45 owner files present
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] every_path_tiered: 4434 tracked files in 70 components
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] every_live_component_has_files: 55 live components with files
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] manifest_gate_pass: gate PASS: every_path_tiered, coverage_complete, live_components_connected, findings_classified, issues_well_formed, historical_not_executable
+PASS [EXECUTION MANIFEST = FACTORY ROUTES] every_live_file_within_its_station: 10 registered stations cover every file of every live component
+PASS [EXECUTION MANIFEST = FACTORY ROUTES] no_live_file_without_authorized_station: every live file has an authorized station
+PASS [FACTORY ROUTES = RECEIPTS / VERIFICATION] every_delta_receipted_and_verified: 33 integrated deltas, each with a PASS receipt per fixture and a PASS verification (D26-CLEAN-COMMISSIONING is verified by the Factory after this audit)
+PASS [FACTORY ROUTES = RECEIPTS / VERIFICATION] every_ledger_integration_commit_exists: 34 ledger entries; every recorded integration commit exists and names its delta
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] every_run_claim_claimable_or_invalidated: 123 RUN claims = 122 claimable + 1 invalidated
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] every_non_run_fact_is_an_explicit_stop: 22 GAP/ERR/UNK current facts: 20 open stops, 2 closed by evidence
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] no_open_internal_defect: 25 A/B/C issues all REPAIRED
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] open_issues_are_boundaries: 11 open issues, every one class D/E/F/G (I-02:F, I-03:F, I-04:F, I-12:G, I-13:G, I-15:D, I-16:E, I-17:F, I-18:G, I-29:G, I-33:D)
+PASS
+[PASS] every live production component is in the execution manifest - 22 production components; 4434 tracked files; unassigned 0; coverage missing 0
+[PASS] every live component has an owner and consumer/terminal role - 55 live components with owner, consumer and station
+[PASS] every production mutation surface is Factory-controlled - 10 registered stations cover every file of every live component
+[PASS] Factory positive and adversarial tests pass - PASS: {"total":29,"passed":29,"failed":0,"ignored":0}
+[PASS] qualified HOST_NATIVE_SET passes - 8 HOST obligations: PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+[PASS] qualified WASM64_KERNEL_SET passes - 8 WASM64 obligations: PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+[PASS] dependency / manifest proof passes - 5 ALL/pin obligations; tally {"PASS":22,"OBS":3,"HEURISTIC":2}
+[PASS] mutant judge self-attack passes - mutants RUN: /
+[PASS] every implemented compiler stage executes through its consumer - 14 crates in dependency order; tests {"passed":1011,"failed":0}
+[PASS] every promised ABI surface is implemented/proved or explicitly classified as future scope - Q-WASM-08 PASS; owner stops on the contract text: I-29
+[PASS] genericity is demonstrated with multiple specimens - 4 specimens PASS; 13 attacks PASS
+[PASS] Byte Relay is DATA, not hidden compiler architecture - anti-cheat: compiler-src: clean; codegen-templates: clean; factory-src: clean; host: clean; backend-names: clean; commissioning specimen in FIXTURE tier (FIXTURE-COMMISSIONING)
+[PASS] generated bundles independently verify - 4 fresh bundles: certificate PASS and integrity PASS
+[PASS] fresh physical runtime probes support current runtime claims - physical PASS; re-proved runtime facts 14
+[PASS] every repair was tested before another repair - D21R, D22, D23, D24, D25: each integrated (verified receipts) before the next began; every delta receipted and verified
+[PASS] stale affected claims were selected and re-proved - 101 selected of 169 (gaps 0); 11 groups ran, 101 facts re-proved
+[PASS] current environment graph contains D21-D26 execution epochs - epochs: D11 D12 D13 D14 D15 D16 D17 D18 D18R D19 D14-RESCAN D20-SYNC D20 D21 D21R D22 D23 D24 D25 D26
+[PASS] current handoff describes the observed system - handoff check PASS; last delta D26 named: true
+[PASS] historical evidence is untouched - no change to any earlier evidence package
+[PASS] remaining GAP/ERR/UNK are capability, external, historical, conflict, environmental or owner-decision boundaries - 11 open issues, every one class D/E/F/G (I-02:F, I-03:F, I-04:F, I-12:G, I-13:G, I-15:D, I-16:E, I-17:F, I-18:G, I-29:G, I-33:D)
+[PASS] no known internal repo/implementation defect remains hidden behind a historical status marker - status scan PASS, unclassified 0; 25 A/B/C issues all REPAIRED
+PASS
+
+[exit 0] expected 0

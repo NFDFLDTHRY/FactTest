@@ -9,10 +9,10 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D25-PHYSICAL-RUNTIME (task 5 of the six-task whole-repository execution + gap closure series
-                   D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md; after D21 execution
-                   manifest, D21R manifest repair, D22 Factory self-qualification, D23 compiler + ABI execution and
-                   D24 pipeline genericity; integration commits in design/materialization/LEDGER.md)
+last delta         D26-CLEAN-COMMISSIONING (task 6 of 6 of the whole-repository execution + gap closure series
+                   D21-D26, design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md: the final commissioning
+                   run; integration commits in design/materialization/LEDGER.md; the implementation baseline is
+                   design/materialization/D26-STABLE-BASELINE.md)
 judge              the Factory built from this tree (tests/factory/run-witnesses.sh records its sha256): every refusal
                    reason of the prompt witnessed (tests/factory/witnesses.json, factory/tests/factory_law.rs f00-f28,
                    tests/sync/collision-witness.sh); six accepted attacks found by D22 and repaired before D23
@@ -52,18 +52,22 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    without WebGPU and under isolation headers, every runtime behaviour of the prompt with fresh
                    evidence and the exact environment identity; the selfhost primitives on the fresh bundle; the
                    public-HTTPS route unreachable from this environment - recorded as an exact boundary with a
-                   deployable probe, never substituted by localhost)
+                   deployable probe, never substituted by localhost), D26 clean commissioning (the complete implemented
+                   system manufactured, verified and executed from the canonical source on a clean workpiece with
+                   fresh build directories; the STALE_IF-selected claims re-proved through the runbook; the five
+                   consistency equalities and the 21 lines of the six-task final condition computed from evidence:
+                   tests/audit/)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure OPEN (tasks 1-5 of 6 closed; D21's
+series             D14-D19 CLOSED; D21-D26 whole-repository execution + gap closure CLOSED by D26 (six tasks; D21's
                    re-inspection defect repaired by D21R before task 2): one StructuralDelta per task, each closed,
                    verified, integrated and re-observed before the next; a repair is tested before the next repair
                    (GLOBAL TEST-EVERY-ITERATION LAW)
-next               D26-CLEAN-COMMISSIONING: the complete implemented system manufactured, verified and executed from
-                   the canonical source on a clean workpiece (manifest, Factory self-check, qualified proof, compiler
-                   DAG, ABI boundary, multi-specimen compilation, verification, bundles, physical execution, evidence
-                   index, epoch, Q01..Q22, claim surface, observed ASCII); STALE_IF-selected re-proof of what D21-D25
-                   invalidated; the final consistency audit, baseline and boundary register
+next               no task is open.  The entitled-claim surface is graph query Q22 of the D26 graph
+                   (evidence/D26/envmap/queries/Q22.json); the remaining stops are the boundary rows of section 6 and
+                   the open issues of tests/manifest/issues.json (every one class D/E/F/G); the public-HTTPS run
+                   (tests/physical/PUBLIC-HTTPS-PROBE.md) and the owner decisions (I-12, I-13, I-18, I-29, I-33)
+                   are the external inputs a later delta would carry
 ```
 
 ## 2. Mutation law
@@ -139,7 +143,8 @@ LIVE LAW       FACTORY-LAW.md (constitution; never annotated by a station), FACT
                ASCII-GRAMMAR.md, ASCII-LANGUAGE.md, SEMANTIC-MODEL.md, LOWERING-MODEL.md, REFINEMENT-LAW.md,
                REPRESENTATION-TRANSFER.md, VERIFICATION-CERTIFICATES.md, PLANNER-COST-MODEL.md,
                RUNTIME-ADMISSION-REPLAN.md, CODEGEN-BUNDLE-CONTRACT.md, LANGUAGE-TESTS.md, COMMISSIONING-*.md,
-               BOOTSTRAP-*.md (owner contracts; "current owner contracts govern")
+               BOOTSTRAP-*.md (owner contracts; "current owner contracts govern"); LICENSE (the repository's
+               license: the owner's terms, held with the law tier)
 LIVE RECORD    design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
                epochs/D12.json .. epochs/D19.json, epochs/D14-RESCAN.json=D14-RESCAN, epochs/D20-SYNC.json,
                epochs/D20.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
@@ -377,6 +382,11 @@ physical runtime (D25)       node tests/physical/run-webapp.mjs --factc <bin> --
                              with WebGPU / without / isolated, observed; selfhost primitives on the fresh bundle with
                              BUNDLE_DIR; the public-HTTPS routes probed); node host/harness/webapp-probe.mjs --url https://...
                              for an external public run (tests/physical/PUBLIC-HTTPS-PROBE.md)
+commissioning (D26)          node tests/reprove/select.mjs ... --pass D26 (the STALE_IF selection over the current graph);
+                             REPROVE_TARGET=<fresh dir> REPROVE_KERNELS=<fresh dir> node tests/reprove/run-selected.mjs
+                             --kind build|cite|repo|source (the runbook groups incl. qualified-proof + crate DAG,
+                             kernel-sections, physical, manifest); node tests/audit/consistency-audit.mjs (the five
+                             equalities); node tests/audit/final-condition.mjs (the 21 lines)
 genericity (D24)             node tests/genericity/run-specimens.mjs --factc <bin> --out <dir> (every fixtures/genericity
                              specimen: build, strategy data, Chromium with/without WebGPU through the generic
                              host/harness/bundle-probe.mjs, observe bound, integrity); node tests/genericity/run-attacks.mjs

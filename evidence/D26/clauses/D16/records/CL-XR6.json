@@ -1,0 +1,29 @@
+{
+ "id": "CL-XR6",
+ "trace": "XR",
+ "authority": "AUTH-WEBXR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/immersive-web/webxr",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+  "sha256": "2fe7451a82eff47ca0ddd10117f14d0b7f03443cc1cf989d135d88ba92c0cb49",
+  "bytes": 274788
+ },
+ "locator": {
+  "text": "The <dfn attribute for=\"XRSession\">onend</dfn> attribute",
+  "line_start": 988,
+  "line_end": 988,
+  "derivation": "anchor text",
+  "enclosing_section": "#xrsession-interface (line 617)"
+ },
+ "window": 1,
+ "consequence": "sessions end (end event): lifecycle",
+ "excerpt": "The <dfn attribute for=\"XRSession\">onend</dfn> attribute is an [=Event handler IDL attribute=] for the {{end}} event type.",
+ "excerpt_sha256": "0b220a63fdc6e9f664867d04273e30cd82560d431bfb82d92bfe97a8796979d0",
+ "must_contain": {
+  "{{end}} event type": true
+ },
+ "status": "VERIFIED"
+}

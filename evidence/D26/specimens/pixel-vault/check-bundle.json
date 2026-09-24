@@ -1,0 +1,26 @@
+{
+ "tool": "tests/genericity/check-bundle.mjs",
+ "bundle": "/home/user/factory-workpieces/W32/evidence/D26/specimens/pixel-vault/compile/bundle",
+ "integrity": {
+  "bundle_id": "216b2f740a2a72d6262a72ead04dd95f3dada165dc7abeeccb135c2cd063ae4b",
+  "files": 6,
+  "recorded": 6,
+  "problems": [],
+  "status": "PASS"
+ },
+ "tamper": {
+  "file": "selector.js",
+  "byte_index": 784,
+  "detected": true,
+  "verdict": {
+   "bundle_id": "216b2f740a2a72d6262a72ead04dd95f3dada165dc7abeeccb135c2cd063ae4b",
+   "files": 6,
+   "recorded": 6,
+   "problems": [
+    "selector.js: sha256 84e092e7e41dc7891992eb91271269a6bfab4712cb8f100ae17da16b0cb89e66 != recorded 1c5803370213a95ad238d909266d094eddefc6416e9279f12c9da02558814708"
+   ],
+   "status": "FAIL"
+  }
+ },
+ "status": "PASS"
+}

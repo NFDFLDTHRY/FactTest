@@ -1,0 +1,36 @@
+{
+  "fixture_id": "F3-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the D25 graph",
+    "evidence/D26/identity",
+    "the runbook"
+  ],
+  "narrowed_may_change": [
+    "evidence/D26/selection.json",
+    "evidence/D26/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/select.mjs --graph design/environment-map/graph.json --identity evidence/D26/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D26 --out evidence/D26/selection.json && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D26/selection.json\"));console.log(\"evaluated\",s.evaluated,\"selected\",s.selected,\"gaps\",s.gaps.length,\"unmapped\",s.unmapped_obligations.length);if(s.gaps.length||s.unmapped_obligations.length)process.exit(1)'"
+        ],
+        "log": "evidence/D26/logs/F3-select.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D26/selection.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

@@ -80,4 +80,6 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
   D23 compiler + ABI execution with the wasm transport completed, D24 pipeline genericity: four specimens through one
   compiler, generic runtime, harness and observe, the attack list refused; D25 physical runtime: the fresh bundles
   driven through their own shells in Chromium with the exact environment identity, the public-HTTPS boundary recorded
-  honestly); see the ledger.
+  honestly; D26 clean whole-repository commissioning: the complete system from the canonical source on a clean
+  workpiece, the stale claims re-proved, the consistency audit and the six-task final condition computed - the series
+  is closed and the baseline is design/materialization/D26-STABLE-BASELINE.md); see the ledger.

@@ -1,0 +1,33 @@
+{
+  "id": "P06-IDB-ATOMIC-POINTER",
+  "question": "Can IndexedDB hold an atomic generation pointer and a compare-and-swap canonical ref?",
+  "needed_for": "L3 activation / canonical ref",
+  "started": "2026-09-24T18:48:16.936Z",
+  "observed": {
+    "init": {
+      "active": "g1",
+      "durability": "strict"
+    },
+    "after_abort": {
+      "active": "g1",
+      "previous": "g0"
+    },
+    "cas": [
+      {
+        "me": "A",
+        "won": true
+      },
+      {
+        "me": "B",
+        "won": false
+      }
+    ],
+    "final": {
+      "active": "g2-A",
+      "previous": "g1"
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "an aborted multi-key IndexedDB transaction leaves the generation pointer untouched, and two concurrent compare-and-swap transactions from base g1 produce exactly one winner: IndexedDB can hold an atomic active/previous generation pointer and a base-unmoved ref update (the browser analogue of git update-ref <new> <old>)",
+  "finished": "2026-09-24T18:48:17.241Z"
+}

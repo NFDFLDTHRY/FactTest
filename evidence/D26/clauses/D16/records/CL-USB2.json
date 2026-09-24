@@ -1,0 +1,29 @@
+{
+ "id": "CL-USB2",
+ "trace": "DEV",
+ "authority": "AUTH-WEBUSB",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WICG/webusb",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "3dcc3c2d53ac8c8f807c448066d6cb58583a86db",
+  "sha256": "40159ca5bcf8014a076021d3eda6a3152ae918e1462d08b093b30b46b754261f",
+  "bytes": 125666
+ },
+ "locator": {
+  "text": "1. Check that the algorithm was triggered while |global| has a [=transient",
+  "line_start": 693,
+  "line_end": 695,
+  "derivation": "anchor text",
+  "enclosing_section": "#enumeration (line 442)"
+ },
+ "window": 3,
+ "consequence": "requestDevice needs transient activation (SecurityError otherwise)",
+ "excerpt": "1. Check that the algorithm was triggered while |global| has a [=transient\n    activation=]. Otherwise, return [=a promise rejected with=] a\n    \"{{SecurityError}}\" {{DOMException}}.",
+ "excerpt_sha256": "f1eaeed75cbae5cde68e5263972138f5ac0ac0ed16a49275b565f2c66c6230b9",
+ "must_contain": {
+  "\"{{SecurityError}}\"": true
+ },
+ "status": "VERIFIED"
+}

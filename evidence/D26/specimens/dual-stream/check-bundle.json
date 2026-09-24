@@ -1,0 +1,26 @@
+{
+ "tool": "tests/genericity/check-bundle.mjs",
+ "bundle": "/home/user/factory-workpieces/W32/evidence/D26/specimens/dual-stream/compile/bundle",
+ "integrity": {
+  "bundle_id": "c003ddd539ab67748ed8ab1a36533e88375daf66f42ddfac629bbe28986cd5ae",
+  "files": 7,
+  "recorded": 7,
+  "problems": [],
+  "status": "PASS"
+ },
+ "tamper": {
+  "file": "selector.js",
+  "byte_index": 1590,
+  "detected": true,
+  "verdict": {
+   "bundle_id": "c003ddd539ab67748ed8ab1a36533e88375daf66f42ddfac629bbe28986cd5ae",
+   "files": 7,
+   "recorded": 7,
+   "problems": [
+    "selector.js: sha256 fcbdd1f5cbba0a50c4e09a09cb731fd927a727d646027d05b60e0e477ef44ee8 != recorded 199ada10c7d4bd6e229fefb5712a43b56494a0e2b7253e5e094dff604881424a"
+   ],
+   "status": "FAIL"
+  }
+ },
+ "status": "PASS"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "P08-CANDIDATE-CONFINEMENT",
+  "question": "Can candidate code be confined away from the Factory's storage?",
+  "needed_for": "L3 non-circular verification",
+  "started": "2026-09-24T18:48:17.449Z",
+  "observed": {
+    "opaque": {
+      "origin": "null",
+      "isSecureContext": true,
+      "gpu": true,
+      "wasm": "object",
+      "memory64": true,
+      "idb": "SecurityError",
+      "opfs": "SecurityError",
+      "cache": "SecurityError",
+      "sw": "SecurityError",
+      "local": "SecurityError",
+      "worker": "ok:object",
+      "same_origin_fetch": "TypeError"
+    },
+    "same_origin": {
+      "origin": "http://127.0.0.1:47311",
+      "isSecureContext": true,
+      "gpu": true,
+      "wasm": "object",
+      "memory64": true,
+      "idb": "opened",
+      "opfs": "opened",
+      "cache": "opened",
+      "sw": "TypeError",
+      "local": "opened",
+      "worker": "ok:object",
+      "same_origin_fetch": "read:secret-canonical-bytes"
+    }
+  },
+  "verdict": "RUN",
+  "meaning": "an opaque-origin sandboxed iframe CANNOT reach OPFS / IndexedDB / CacheStorage / same-origin bytes (candidate code can be confined and fed only by messages); isSecureContext=true, navigator.gpu=true, memory64=true, worker=ok:object. A same-origin iframe reaches everything (opfs=opened): same-origin candidate code is NOT confined",
+  "finished": "2026-09-24T18:48:17.708Z"
+}

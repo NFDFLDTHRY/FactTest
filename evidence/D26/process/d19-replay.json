@@ -1,0 +1,3688 @@
+{
+ "tool": "tests/reprove/select.mjs",
+ "graph_epoch": "D18R",
+ "head": "b509fb00920443930aa75b10dae05b9683d2fe1b",
+ "working_tree_changes": [
+  " M design/materialization/LEDGER.md",
+  " M tests/envmap/browser-probe.mjs",
+  " M tests/envmap/envmap.mjs",
+  " M tests/hygiene/status-scan.mjs",
+  "?? design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md",
+  "?? evidence/D19/",
+  "?? factory/deltas/D19.json",
+  "?? factory/fixtures/D19/",
+  "?? factory/receipts/D19-REPROVE-REOBSERVE/",
+  "?? tests/reprove/"
+ ],
+ "evaluated": 90,
+ "boundary_records": 19,
+ "selected": 29,
+ "selected_by": {
+  "environment": 6,
+  "implementation": 27,
+  "obligation": 4
+ },
+ "gaps": [],
+ "environment_pairs": {
+  "SAME": 114,
+  "DRIFT": 7,
+  "UNK": 9
+ },
+ "drift": [
+  {
+   "environment": "ENV-D9-HOST",
+   "dimension": "toolchain.nightly.components",
+   "recorded": [
+    "rust-src",
+    "clippy"
+   ],
+   "current": "nightly: cargo, rust-src, rust-std, rustc",
+   "note": "missing under nightly: clippy"
+  },
+  {
+   "environment": "ENV-D9-HOST",
+   "dimension": "toolchain.nightly.rustc_commit",
+   "recorded": "6eeff9a52",
+   "current": "nightly: 6bb1652a0",
+   "note": "the rustup name nightly now resolves to 6bb1652a0; 6eeff9a52 is installed as nightly-2026-09-24"
+  },
+  {
+   "environment": "ENV-D14-HOST",
+   "dimension": "authority.source_commit",
+   "recorded": "63 tip-read sources",
+   "current": [
+    "https://github.com/chromium/chromium#main 19edc42ce -> 6411417c0",
+    "https://github.com/v8/v8#main 43d44dae1 -> 010a4b88b",
+    "https://github.com/NFDFLDTHRY/FactTest#claude/facttest-materialization-27amc7 5e57467bd -> b509fb009"
+   ]
+  }
+ ],
+ "unk": [
+  "ENV-D1-D3-BROWSER browser.js_engine: nothing recorded at versions.js_engine | versions.v8",
+  "ENV-D1-D3-HOST browser.js_engine: nothing recorded at versions.js_engine | versions.v8",
+  "ENV-D11-HOST repo.commit: evidence commit not determinable",
+  "ENV-D12-BROWSER-PERSISTENT browser.flags: launch recorded as prose",
+  "ENV-D17-TOOLCHAIN toolchain.nightly.components: no component list recorded",
+  "ENV-D6-D7-BROWSER-DEFAULT browser.js_engine: nothing recorded at versions.js_engine | versions.v8",
+  "ENV-D6-D7-BROWSER-DEFAULT host.gpu_device_node: nothing recorded at hardware.gpu_device_node | other_state.gpu_device_node",
+  "ENV-D6-D7-BROWSER-GPUFLAGS browser.js_engine: nothing recorded at versions.js_engine | versions.v8",
+  "ENV-D6-D7-BROWSER-GPUFLAGS host.gpu_device_node: nothing recorded at hardware.gpu_device_node | other_state.gpu_device_node"
+ ],
+ "obligations": [
+  {
+   "reconciliation": "R-03",
+   "obligation": "D19: environment identity - the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set",
+   "subjects": [
+    "FACT-GPU-ADAPTER-SWIFTSHADER"
+   ],
+   "mapped": {
+    "groups": [
+     "identity"
+    ],
+    "reading": "environment identity: the installed browser is still chromium-headless-shell 141.0.7390.37 rev 1194 with the same launch switch set"
+   }
+  },
+  {
+   "reconciliation": "R-04",
+   "obligation": "D19: qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the D18 exec-identity check",
+   "subjects": [
+    "FACT-WASM64-ABI-EXEC",
+    "FACT-WASM64-ADMITTED-E0",
+    "FACT-WASM64-MODULE-I64"
+   ],
+   "mapped": {
+    "groups": [
+     "qualified-proof"
+    ],
+    "reading": "qualified proof on WASM64_KERNEL_SET (core-only build, wasm inspection, Chromium ABI) with the exec-identity check"
+   }
+  },
+  {
+   "reconciliation": "R-49",
+   "obligation": "D19: the qualified proof (tests/toolchain/run-qualified-proof.sh) rebuilds the kernel and applies T13-KRN exec identity",
+   "subjects": [
+    "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+    "FACT-KERNEL-IDENTITY-DEFINED-D18"
+   ],
+   "mapped": {
+    "groups": [
+     "qualified-proof"
+    ],
+    "reading": "the qualified proof rebuilds the kernel and applies T13-KRN exec identity"
+   }
+  },
+  {
+   "reconciliation": "R-53",
+   "obligation": "D19: record the executable actually launched (the browser process image) with the browser identity",
+   "subjects": [
+    "ENV-D12-BROWSER-PERSISTENT"
+   ],
+   "mapped": {
+    "groups": [
+     "identity"
+    ],
+    "reading": "record the executable actually launched"
+   }
+  }
+ ],
+ "unmapped_obligations": [],
+ "obligation_subjects_not_reproved": [
+  {
+   "reconciliation": "R-04",
+   "fact": "FACT-WASM64-ADMITTED-E0",
+   "note": "not re-proved by qualified-proof"
+  },
+  {
+   "reconciliation": "R-49",
+   "fact": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "note": "not re-proved by qualified-proof"
+  }
+ ],
+ "groups": {
+  "clauses": {
+   "kind": "source",
+   "facts": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION",
+    "FACT-D15-CLAUSES-VERIFIED",
+    "FACT-D16-CLAUSES-VERIFIED",
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "obligations": []
+  },
+  "qualified-proof": {
+   "kind": "build",
+   "facts": [
+    "FACT-COMPILE-FAIL-WITNESSED",
+    "FACT-CORE-ONLY-GRAPH",
+    "FACT-FIRST-PARTY-GRAPH",
+    "FACT-KERNEL-IDENTITY-DEFINED-D18",
+    "FACT-PROOF-SETS-DECLARED",
+    "FACT-QUALIFIED-JUDGE-RERUN",
+    "FACT-TOOLCHAIN-PINNED",
+    "FACT-WASM64-ABI-EXEC",
+    "FACT-WASM64-MODULE-I64"
+   ],
+   "obligations": [
+    "R-04",
+    "R-49"
+   ]
+  },
+  "lineage": {
+   "kind": "repo",
+   "facts": [
+    "FACT-FF-ONLY-INTEGRATION",
+    "FACT-WORKPIECE-ISOLATION"
+   ],
+   "obligations": []
+  },
+  "reopen": {
+   "kind": "source",
+   "facts": [
+    "FACT-FRONTIER-SOURCES-AT-PIN",
+    "FACT-MEMORY64-FINISHED",
+    "FACT-WASM-SET-PHASE-1",
+    "FACT-WASM-THREADS-PHASE-4"
+   ],
+   "obligations": []
+  },
+  "identity": {
+   "kind": "cite",
+   "facts": [
+    "FACT-GPU-ADAPTER-NULL-DEFAULT",
+    "FACT-GPU-ADAPTER-SWIFTSHADER",
+    "FACT-GPU-EXPOSED",
+    "FACT-LOOPBACK-SECURE-CONTEXT",
+    "FACT-MEMORY64-DISCOVERED",
+    "FACT-SAB-GLOBAL-HOST-DEFINED"
+   ],
+   "obligations": [
+    "R-03",
+    "R-53"
+   ]
+  },
+  "status": {
+   "kind": "repo",
+   "facts": [
+    "FACT-HANDOFF-MODEL-INDEPENDENT",
+    "FACT-STATUS-INVENTORIED"
+   ],
+   "obligations": []
+  },
+  "kernel-sections": {
+   "kind": "build",
+   "facts": [
+    "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT"
+   ],
+   "obligations": []
+  },
+  "paths": {
+   "kind": "repo",
+   "facts": [
+    "FACT-SURFACES-LITERAL-ENFORCED"
+   ],
+   "obligations": []
+  }
+ },
+ "facts": [
+  {
+   "fact": "FACT-AUTHORITY-REOPEN-DENIED",
+   "status": "UNK",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-CAP-ACCELEROMETER-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-ACCELEROMETER",
+    "physical_evidence": [
+     "EV-D16-CENSUS-ACCELEROMETER"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-AMBIENT-LIGHT-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": {
+      "headless": true
+     },
+     "current": {
+      "headless": true
+     }
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-AMBIENT-LIGHT",
+    "physical_evidence": [
+     "EV-D16-CENSUS-AMBIENT-LIGHT"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-BLUETOOTH-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-BLUETOOTH",
+    "physical_evidence": [
+     "EV-D16-CENSUS-BLUETOOTH"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-CACHESTORAGE-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-CACHESTORAGE",
+    "physical_evidence": [
+     "EV-D16-CENSUS-CACHESTORAGE"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-CAMERA-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-CAMERA",
+    "physical_evidence": [
+     "EV-D16-CENSUS-CAMERA"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-CPU-WASM64-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.js_engine",
+     "verdict": "SAME",
+     "recorded": "14.1.146.11",
+     "current": "14.1.146.11"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-CPU-WASM64",
+    "physical_evidence": [
+     "EV-D16-CENSUS-CPU-WASM64"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-DEVICE-ORIENTATION-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": {
+      "headless": true
+     },
+     "current": {
+      "headless": true
+     }
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-DEVICE-ORIENTATION",
+    "physical_evidence": [
+     "EV-D16-CENSUS-DEVICE-ORIENTATION"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-FETCH-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-FETCH",
+    "physical_evidence": [
+     "EV-D16-CENSUS-FETCH"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-GENERIC-SENSOR-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-GENERIC-SENSOR",
+    "physical_evidence": [
+     "EV-D16-CENSUS-GENERIC-SENSOR"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-GEOLOCATION-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-GEOLOCATION",
+    "physical_evidence": [
+     "EV-D16-CENSUS-GEOLOCATION"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-GYROSCOPE-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-GYROSCOPE",
+    "physical_evidence": [
+     "EV-D16-CENSUS-GYROSCOPE"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-HID-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-HID",
+    "physical_evidence": [
+     "EV-D16-CENSUS-HID"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-INDEXEDDB-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-INDEXEDDB",
+    "physical_evidence": [
+     "EV-D16-CENSUS-INDEXEDDB"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-MAGNETOMETER-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": {
+      "headless": true
+     },
+     "current": {
+      "headless": true
+     }
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-MAGNETOMETER",
+    "physical_evidence": [
+     "EV-D16-CENSUS-MAGNETOMETER"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-MANIFEST-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-MANIFEST",
+    "physical_evidence": [
+     "EV-D16-CENSUS-MANIFEST"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-MICROPHONE-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-MICROPHONE",
+    "physical_evidence": [
+     "EV-D16-CENSUS-MICROPHONE"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-OPFS-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-OPFS",
+    "physical_evidence": [
+     "EV-D16-CENSUS-OPFS"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-ORIENTATION-SENSOR-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-ORIENTATION-SENSOR",
+    "physical_evidence": [
+     "EV-D16-CENSUS-ORIENTATION-SENSOR"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-PERMISSIONS-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-PERMISSIONS",
+    "physical_evidence": [
+     "EV-D16-CENSUS-PERMISSIONS"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-PERMISSIONS-POLICY-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": {
+      "headless": true
+     },
+     "current": {
+      "headless": true
+     }
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-PERMISSIONS-POLICY",
+    "physical_evidence": [
+     "EV-D16-CENSUS-PERMISSIONS-POLICY"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-PROXIMITY-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-PROXIMITY",
+    "physical_evidence": [
+     "EV-D16-CENSUS-PROXIMITY"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-SECURE-CONTEXT-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-SECURE-CONTEXT",
+    "physical_evidence": [
+     "EV-D16-CENSUS-SECURE-CONTEXT"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-SERIAL-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-SERIAL",
+    "physical_evidence": [
+     "EV-D16-CENSUS-SERIAL"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-SERVICE-WORKER-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-SERVICE-WORKER",
+    "physical_evidence": [
+     "EV-D16-CENSUS-SERVICE-WORKER"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-STORAGE-QUOTA-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-STORAGE-QUOTA",
+    "physical_evidence": [
+     "EV-D16-CENSUS-STORAGE-QUOTA"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-USB-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-USB",
+    "physical_evidence": [
+     "EV-D16-CENSUS-USB"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-WASM-SHARED-THREADS-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "origin_security.cross_origin_isolated",
+     "verdict": "SAME",
+     "recorded": "false",
+     "current": "false"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-WASM-SHARED-THREADS",
+    "physical_evidence": [
+     "EV-D16-CENSUS-WASM-SHARED-THREADS"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-WEBCODECS-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-WEBCODECS",
+    "physical_evidence": [
+     "EV-D16-CENSUS-WEBCODECS"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-WEBGPU-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": {
+      "headless": true
+     },
+     "current": {
+      "headless": true
+     }
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-WEBGPU",
+    "physical_evidence": [
+     "EV-D16-CENSUS-WEBGPU"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-WEBNN-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": {
+      "headless": true
+     },
+     "current": {
+      "headless": true
+     }
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-WEBNN",
+    "physical_evidence": [
+     "EV-D16-CENSUS-WEBNN"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-WORKER-DEDICATED-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-WORKER-DEDICATED",
+    "physical_evidence": [
+     "EV-D16-CENSUS-WORKER-DEDICATED"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CAP-XR-EXPOSURE",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D16-BROWSER",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CENSUS-XR",
+    "physical_evidence": [
+     "EV-D16-CENSUS-XR"
+    ],
+    "paths": [
+     "tests/capability/census.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION",
+   "status": "OBS",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "clauses",
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CL-HID2",
+    "physical_evidence": [
+     "EV-D16-CL-HID2",
+     "EV-D16-CL-USB2",
+     "EV-D16-CL-SER2",
+     "EV-D16-CL-BT2",
+     "EV-D16-CL-XR4",
+     "EV-D16-CL-DO2"
+    ],
+    "paths": [
+     "tests/reference/build-clauses.mjs",
+     "tests/reference/clauses.mjs",
+     "tests/reference/lib.mjs"
+    ],
+    "changed_commits": [
+     "715ac92"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-COMPILE-FAIL-WITNESSED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D9-HOST",
+     "dimension": "toolchain.stable.rustc_release",
+     "verdict": "SAME",
+     "recorded": "1.94.1",
+     "current": "1.94.1: 1.94.1"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+    "newest_evidence": "EV-D9-T9-P4",
+    "physical_evidence": [
+     "EV-D9-T9-P4"
+    ],
+    "paths": [
+     "tests/toolchain/proof.mjs"
+    ],
+    "changed_commits": [
+     "1b81dc0",
+     "8265623"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-CORE-ONLY-GRAPH",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "ENVIRONMENT",
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D9-HOST",
+     "dimension": "toolchain.nightly.components",
+     "verdict": "DRIFT",
+     "recorded": [
+      "rust-src",
+      "clippy"
+     ],
+     "current": "nightly: cargo, rust-src, rust-std, rustc",
+     "note": "missing under nightly: clippy"
+    },
+    {
+     "environment": "ENV-D9-HOST",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "DRIFT",
+     "recorded": "6eeff9a52",
+     "current": "nightly: 6bb1652a0",
+     "note": "the rustup name nightly now resolves to 6bb1652a0; 6eeff9a52 is installed as nightly-2026-09-24"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+    "newest_evidence": "EV-D9-T9-P5-02",
+    "physical_evidence": [
+     "EV-D1-B9-BUILD",
+     "EV-D9-T9-P5-02",
+     "EV-D9-T9-P5-03"
+    ],
+    "paths": [
+     "compiler/bundle",
+     "compiler/capability",
+     "compiler/codegen",
+     "compiler/foundation",
+     "compiler/implementation",
+     "compiler/kernel",
+     "compiler/observe",
+     "compiler/planning",
+     "compiler/semantic",
+     "compiler/source",
+     "compiler/verifier",
+     "tests/toolchain/proof.mjs"
+    ],
+    "changed_commits": [
+     "1b81dc0",
+     "8265623"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-D15-CLAUSES-VERIFIED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "clauses",
+   "environment": [
+    {
+     "environment": "ENV-D15-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "SAME",
+     "recorded": "31 tip-read sources",
+     "current": "every tip unchanged"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "3748fa7bd15d74e560951f31338b8c94820c2830",
+    "newest_evidence": "EV-D15-CLAUSES-SUMMARY",
+    "physical_evidence": [
+     "EV-D15-CLAUSES-SUMMARY"
+    ],
+    "paths": [
+     "tests/reference/build-clauses.mjs",
+     "tests/reference/clauses.mjs",
+     "tests/reference/lib.mjs"
+    ],
+    "changed_commits": [
+     "715ac92",
+     "e4e2103"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-D16-CLAUSES-VERIFIED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "clauses",
+   "environment": [
+    {
+     "environment": "ENV-D16-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "SAME",
+     "recorded": "25 tip-read sources",
+     "current": "every tip unchanged"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CLAUSES-SUMMARY",
+    "physical_evidence": [
+     "EV-D16-CLAUSES-SUMMARY"
+    ],
+    "paths": [
+     "tests/reference/build-clauses.mjs",
+     "tests/reference/clauses.mjs",
+     "tests/reference/lib.mjs"
+    ],
+    "changed_commits": [
+     "715ac92"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-D17-CLAUSES-VERIFIED",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D17-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "SAME",
+     "note": "every source of this epoch is pinned to a commit or an installed file"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "715ac92d327f5f2677fd7c0b067fa843da6323c4",
+    "newest_evidence": "EV-D17-CLAUSES-SUMMARY",
+    "physical_evidence": [
+     "EV-D17-CLAUSES-SUMMARY"
+    ],
+    "paths": [
+     "tests/reference/build-clauses.mjs",
+     "tests/reference/clauses.mjs",
+     "tests/reference/lib.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-D18-CLAUSES-VERIFIED",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D18-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "SAME",
+     "note": "every source of this epoch is pinned to a commit or an installed file"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c",
+    "newest_evidence": "EV-D18-CLAUSES-SUMMARY",
+    "physical_evidence": [
+     "EV-D18-CLAUSES-SUMMARY"
+    ],
+    "paths": [
+     "tests/reference/build-clauses.mjs",
+     "tests/reference/clauses.mjs",
+     "tests/reference/lib.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-D9-HISTORY-OVERSTATED",
+   "status": "ERR",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-DEFAULT-MEMBERS-13",
+   "status": "ERR",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-FF-ONLY-INTEGRATION",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "lineage",
+   "environment": [
+    {
+     "environment": "ENV-D11-HOST",
+     "dimension": "host_runtime.git_version",
+     "verdict": "SAME",
+     "recorded": "2.43.0",
+     "current": "2.43.0"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "newest_evidence": "EV-GIT-LINEAGE-D0-D10",
+    "physical_evidence": [
+     "EV-GIT-LINEAGE-D0-D10"
+    ],
+    "paths": [
+     "factory/src/ops.rs"
+    ],
+    "changed_commits": [
+     "8265623"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-FIRST-PARTY-GRAPH",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D9-HOST",
+     "dimension": "dependency_graph_identity",
+     "verdict": "SAME",
+     "recorded": "paths at e10d27990",
+     "current": "unchanged"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+    "newest_evidence": "EV-D9-T9-P6-01",
+    "physical_evidence": [
+     "EV-D9-T9-P6-01"
+    ],
+    "paths": [
+     "tests/toolchain/proof.mjs"
+    ],
+    "changed_commits": [
+     "1b81dc0",
+     "8265623"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-FRONTIER-SOURCES-AT-PIN",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "ENVIRONMENT",
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "reopen",
+   "environment": [
+    {
+     "environment": "ENV-D14-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "DRIFT",
+     "recorded": "63 tip-read sources",
+     "current": [
+      "https://github.com/chromium/chromium#main 19edc42ce -> 6411417c0",
+      "https://github.com/v8/v8#main 43d44dae1 -> 010a4b88b",
+      "https://github.com/NFDFLDTHRY/FactTest#claude/facttest-materialization-27amc7 5e57467bd -> b509fb009"
+     ]
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "46cc28be1486798635eac42a6955dedaba36673f",
+    "newest_evidence": "EV-D14-REOPEN-SUMMARY",
+    "physical_evidence": [
+     "EV-D14-REOPEN-SUMMARY"
+    ],
+    "paths": [
+     "tests/reference/build-revisions.mjs",
+     "tests/reference/reopen.mjs"
+    ],
+    "changed_commits": [
+     "3748fa7"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GIT-TREE-ORDER-UNDOCUMENTED",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "identity",
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+     "dimension": "host.gpu_device_node",
+     "verdict": "UNK",
+     "note": "nothing recorded at hardware.gpu_device_node | other_state.gpu_device_node",
+     "current": "ABSENT (no /dev/dri)"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": [],
+     "current": []
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "fdb9c32d1346408f184ccf0cc4880112282f164e",
+    "newest_evidence": "EV-D11-BROWSER-DEFAULT",
+    "physical_evidence": [
+     "EV-D11-BROWSER-DEFAULT",
+     "EV-D7-NOWEBGPU-ADM"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js",
+     "tests/envmap/authority-fetch.mjs",
+     "tests/envmap/browser-probe.mjs",
+     "tests/envmap/host-identity.sh"
+    ],
+    "changed_commits": [
+     "780aee1"
+    ],
+    "changed_working_tree": [
+     "tests/envmap/browser-probe.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-ADAPTER-SWIFTSHADER",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION",
+    "OBLIGATION"
+   ],
+   "obligations": [
+    "R-03"
+   ],
+   "runbook": "identity",
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ],
+     "current": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ]
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "host.gpu_device_node",
+     "verdict": "UNK",
+     "note": "nothing recorded at hardware.gpu_device_node | other_state.gpu_device_node",
+     "current": "ABSENT (no /dev/dri)"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "fdb9c32d1346408f184ccf0cc4880112282f164e",
+    "newest_evidence": "EV-D11-BROWSER-GPUFLAGS",
+    "physical_evidence": [
+     "EV-D11-BROWSER-GPUFLAGS",
+     "EV-D7-ADM-E0-WEBGPU"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js",
+     "tests/envmap/authority-fetch.mjs",
+     "tests/envmap/browser-probe.mjs",
+     "tests/envmap/host-identity.sh"
+    ],
+    "changed_commits": [
+     "780aee1"
+    ],
+    "changed_working_tree": [
+     "tests/envmap/browser-probe.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-ADMITTED-E0",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ],
+     "current": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ]
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-ADM-E0-WEBGPU",
+    "physical_evidence": [
+     "EV-D7-ADM-E0-WEBGPU",
+     "EV-D7-ADM-E0-WEBGPU"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-EPOCH-INVALIDATION",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-ADM-E1-WEBGPU",
+    "physical_evidence": [
+     "EV-D7-ADM-E1-WEBGPU",
+     "EV-D7-OBSERVED-ASCII"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js",
+     "compiler/codegen/templates/runtime.js"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-EXPOSED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "identity",
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "origin_security.secure_context",
+     "verdict": "SAME",
+     "recorded": "true",
+     "current": "true"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "fdb9c32d1346408f184ccf0cc4880112282f164e",
+    "newest_evidence": "EV-D11-BROWSER-DEFAULT",
+    "physical_evidence": [
+     "EV-D11-BROWSER-DEFAULT",
+     "EV-D11-BROWSER-GPUFLAGS",
+     "EV-D7-ADM-E0-WEBGPU",
+     "EV-D7-NOWEBGPU-ADM"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js",
+     "tests/envmap/authority-fetch.mjs",
+     "tests/envmap/browser-probe.mjs",
+     "tests/envmap/host-identity.sh"
+    ],
+    "changed_commits": [
+     "780aee1"
+    ],
+    "changed_working_tree": [
+     "tests/envmap/browser-probe.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-KNOWN-ANSWER",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ],
+     "current": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ]
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-ADM-E0-WEBGPU",
+    "physical_evidence": [
+     "EV-D7-ADM-E0-WEBGPU"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-LOSS-DESTROYED",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-CONTROLLED-LOSS",
+    "physical_evidence": [
+     "EV-D7-CONTROLLED-LOSS"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-MAXBUFFERSIZE-OBSERVED",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ],
+     "current": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ]
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-ADM-E0-WEBGPU",
+    "physical_evidence": [
+     "EV-D7-ADM-E0-WEBGPU"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-webgpu_relay.js"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-GPU-RELAY-EXACT-E0",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.flags",
+     "verdict": "SAME",
+     "recorded": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ],
+     "current": [
+      "--enable-features=Vulkan",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--ignore-gpu-blocklist",
+      "--use-angle=swiftshader"
+     ]
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-E0-RELAY",
+    "physical_evidence": [
+     "EV-D6-PROBE-RECORD",
+     "EV-D7-E0-RELAY"
+    ],
+    "paths": [
+     "host/harness/bundle-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-HANDOFF-MODEL-INDEPENDENT",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "status",
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-HANDOFF",
+    "physical_evidence": [
+     "EV-D13-HANDOFF"
+    ],
+    "paths": [
+     "tests/hygiene/handoff-check.sh",
+     "tests/hygiene/status-classification.json",
+     "tests/hygiene/status-scan.mjs"
+    ],
+    "changed_commits": [
+     "780aee1"
+    ],
+    "changed_working_tree": [
+     "tests/hygiene/status-scan.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-HARDWARE-GPU-UNAVAILABLE",
+   "status": "UNK",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-HEURISTIC-CHECKS-REMAIN",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-JS-I64-BIGINT-MEMBRANE",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D13-HOST-PINNED",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-PROOF-SUMMARY",
+    "physical_evidence": [
+     "EV-D9-T9-P8-03",
+     "EV-D13-PROOF-SUMMARY"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-wasm64_relay.js",
+     "host/harness/kernel-host.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "kernel-sections",
+   "environment": [
+    {
+     "environment": "ENV-D17-TOOLCHAIN",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "SAME",
+     "recorded": "6eeff9a52",
+     "current": "nightly-2026-09-24: 6eeff9a52"
+    },
+    {
+     "environment": "ENV-D17-TOOLCHAIN",
+     "dimension": "toolchain.nightly.components",
+     "verdict": "UNK",
+     "note": "no component list recorded"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "715ac92d327f5f2677fd7c0b067fa843da6323c4",
+    "newest_evidence": "EV-D17-KERNEL-SECTIONS",
+    "physical_evidence": [
+     "EV-D17-KERNEL-SECTIONS"
+    ],
+    "paths": [
+     "tests/implementation/wasm-sections.mjs",
+     "tests/toolchain/proof-sets.json",
+     "tests/toolchain/proof.mjs",
+     "tests/toolchain/run-qualified-proof.sh"
+    ],
+    "changed_commits": [
+     "1b81dc0"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-KERNEL-IDENTITY-DEFINED-D18",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "OBLIGATION"
+   ],
+   "obligations": [
+    "R-49"
+   ],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D17-TOOLCHAIN",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "SAME",
+     "recorded": "6eeff9a52",
+     "current": "nightly-2026-09-24: 6eeff9a52"
+    },
+    {
+     "environment": "ENV-D13-HOST-PINNED",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "SAME",
+     "recorded": "6eeff9a52",
+     "current": "nightly-2026-09-24: 6eeff9a52"
+    },
+    {
+     "environment": "ENV-D13-HOST-PINNED",
+     "dimension": "toolchain.nightly.install_name",
+     "verdict": "SAME",
+     "recorded": "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+     "current": [
+      "stable-x86_64-unknown-linux-gnu (default)",
+      "nightly-x86_64-unknown-linux-gnu",
+      "nightly-2026-09-24-x86_64-unknown-linux-gnu",
+      "1.94.1-x86_64-unknown-linux-gnu (active)"
+     ]
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c",
+    "newest_evidence": "EV-D18-KERNEL-IDENTITY-A",
+    "physical_evidence": [
+     "EV-D17-KERNEL-SECTIONS",
+     "EV-D18-KERNEL-IDENTITY-A",
+     "EV-D18-KERNEL-IDENTITY-B",
+     "EV-D13-KERNEL-IDENTITY"
+    ],
+    "paths": [
+     "tests/toolchain/proof-sets.json",
+     "tests/toolchain/proof.mjs",
+     "tests/toolchain/run-qualified-proof.sh"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-LITERAL-PATH-MATCH",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D11-HOST",
+     "dimension": "repo.commit",
+     "verdict": "UNK",
+     "note": "evidence commit not determinable"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": null,
+    "newest_evidence": null,
+    "physical_evidence": [],
+    "paths": [
+     "factory/src/paths.rs",
+     "tests/envmap/envmap.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [
+     "tests/envmap/envmap.mjs"
+    ],
+    "verdict": "NO_PHYSICAL_EVIDENCE"
+   }
+  },
+  {
+   "fact": "FACT-LOOPBACK-SECURE-CONTEXT",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "identity",
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "origin_security.origin",
+     "verdict": "SAME",
+     "recorded": "http://127.0.0.1",
+     "current": "http://127.0.0.1"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "fdb9c32d1346408f184ccf0cc4880112282f164e",
+    "newest_evidence": "EV-D11-BROWSER-DEFAULT",
+    "physical_evidence": [
+     "EV-D11-BROWSER-DEFAULT",
+     "EV-D11-BROWSER-GPUFLAGS",
+     "EV-D7-ENVIRONMENT-STEP"
+    ],
+    "paths": [
+     "host/harness/bundle-probe.mjs",
+     "tests/envmap/authority-fetch.mjs",
+     "tests/envmap/browser-probe.mjs",
+     "tests/envmap/host-identity.sh"
+    ],
+    "changed_commits": [
+     "780aee1"
+    ],
+    "changed_working_tree": [
+     "tests/envmap/browser-probe.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-MEMORY64-DISCOVERED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "identity",
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.js_engine",
+     "verdict": "UNK",
+     "note": "nothing recorded at versions.js_engine | versions.v8",
+     "current": "14.1.146.11"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+     "dimension": "browser.js_engine",
+     "verdict": "UNK",
+     "note": "nothing recorded at versions.js_engine | versions.v8",
+     "current": "14.1.146.11"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-ADM-E0-WASM64",
+    "physical_evidence": [
+     "EV-D7-ADM-E0-WASM64",
+     "EV-D7-NOWEBGPU-ADM"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-wasm64_relay.js",
+     "tests/envmap/authority-fetch.mjs",
+     "tests/envmap/browser-probe.mjs",
+     "tests/envmap/host-identity.sh"
+    ],
+    "changed_commits": [
+     "780aee1",
+     "fdb9c32"
+    ],
+    "changed_working_tree": [
+     "tests/envmap/browser-probe.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-MEMORY64-FINISHED",
+   "status": "OBS",
+   "selected": true,
+   "reasons": [
+    "ENVIRONMENT",
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "reopen",
+   "environment": [
+    {
+     "environment": "ENV-D14-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "DRIFT",
+     "recorded": "63 tip-read sources",
+     "current": [
+      "https://github.com/chromium/chromium#main 19edc42ce -> 6411417c0",
+      "https://github.com/v8/v8#main 43d44dae1 -> 010a4b88b",
+      "https://github.com/NFDFLDTHRY/FactTest#claude/facttest-materialization-27amc7 5e57467bd -> b509fb009"
+     ]
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "46cc28be1486798635eac42a6955dedaba36673f",
+    "newest_evidence": "EV-D14-PROPOSAL-PHASES",
+    "physical_evidence": [
+     "EV-D14-PROPOSAL-PHASES"
+    ],
+    "paths": [
+     "tests/reference/build-revisions.mjs",
+     "tests/reference/reopen.mjs"
+    ],
+    "changed_commits": [
+     "3748fa7"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-NATIVE-WORKSPACE-UNBUILDABLE",
+   "status": "ERR",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-NIGHTLY-CLIPPY-ABSENT-D11",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D11-HOST",
+     "dimension": "toolchain.nightly.components",
+     "verdict": "SAME",
+     "recorded": [
+      "cargo",
+      "rust-src",
+      "rust-std-x86_64-unknown-linux-gnu",
+      "rustc"
+     ],
+     "current": "nightly: cargo, rust-src, rust-std, rustc"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": null,
+    "newest_evidence": null,
+    "physical_evidence": [],
+    "paths": [
+     "tests/envmap/authority-fetch.mjs",
+     "tests/envmap/browser-probe.mjs",
+     "tests/envmap/host-identity.sh",
+     "tests/toolchain/proof.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [
+     "tests/envmap/browser-probe.mjs"
+    ],
+    "verdict": "NO_PHYSICAL_EVIDENCE"
+   }
+  },
+  {
+   "fact": "FACT-NODE-NO-MEMORY64",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D1-D3-HOST",
+     "dimension": "host_runtime.node_version",
+     "verdict": "SAME",
+     "recorded": "22.22.2",
+     "current": "22.22.2"
+    },
+    {
+     "environment": "ENV-D1-D3-HOST",
+     "dimension": "browser.js_engine",
+     "verdict": "UNK",
+     "note": "nothing recorded at versions.js_engine | versions.v8",
+     "current": "14.1.146.11"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": null,
+    "newest_evidence": null,
+    "physical_evidence": [],
+    "paths": [
+     "host/harness/kernel-host.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "NO_PHYSICAL_EVIDENCE"
+   }
+  },
+  {
+   "fact": "FACT-OPAQUE-FRAME-SECURE-CONTEXT",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P08",
+    "physical_evidence": [
+     "EV-D12-P08",
+     "EV-D12-P16"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-PROOF-SETS-DECLARED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D13-HOST-PINNED",
+     "dimension": "repository.workspace_members",
+     "verdict": "SAME",
+     "recorded": "paths at 8265623ed",
+     "current": "unchanged"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-SETS",
+    "physical_evidence": [
+     "EV-D13-SETS"
+    ],
+    "paths": [
+     "tests/toolchain/proof-sets.json",
+     "tests/toolchain/proof.mjs",
+     "tests/toolchain/run-qualified-proof.sh"
+    ],
+    "changed_commits": [
+     "1b81dc0"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+   "status": "UNK",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-QUALIFIED-JUDGE-RERUN",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D13-HOST-PINNED",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "SAME",
+     "recorded": "6eeff9a52",
+     "current": "nightly-2026-09-24: 6eeff9a52"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-PROOF-SUMMARY",
+    "physical_evidence": [
+     "EV-D13-PROOF-SUMMARY"
+    ],
+    "paths": [
+     "tests/toolchain/proof-sets.json",
+     "tests/toolchain/proof.mjs",
+     "tests/toolchain/run-qualified-proof.sh"
+    ],
+    "changed_commits": [
+     "1b81dc0"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-RESELECTION-NO-CODEGEN",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-BUNDLE-UNCHANGED",
+    "physical_evidence": [
+     "EV-D7-BUNDLE-UNCHANGED",
+     "EV-D7-E1-RELAY"
+    ],
+    "paths": [
+     "compiler/codegen/templates/runtime.js",
+     "host/harness/bundle-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SAB-GLOBAL-HOST-DEFINED",
+   "status": "OBS",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "identity",
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "fdb9c32d1346408f184ccf0cc4880112282f164e",
+    "newest_evidence": "EV-D11-BROWSER-DEFAULT",
+    "physical_evidence": [
+     "EV-D11-BROWSER-DEFAULT"
+    ],
+    "paths": [
+     "tests/envmap/authority-fetch.mjs",
+     "tests/envmap/browser-probe.mjs",
+     "tests/envmap/host-identity.sh"
+    ],
+    "changed_commits": [
+     "780aee1"
+    ],
+    "changed_working_tree": [
+     "tests/envmap/browser-probe.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SENSOR-FAMILY-ADVISEMENT",
+   "status": "OBS",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "clauses",
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "e4e210304591d99f73873dc719b79f187c4d19a1",
+    "newest_evidence": "EV-D16-CL-GS0",
+    "physical_evidence": [
+     "EV-D16-CL-GS0",
+     "EV-D16-CL-ACC0",
+     "EV-D16-CL-GYR0",
+     "EV-D16-CL-MAG0",
+     "EV-D16-CL-ORI0",
+     "EV-D16-CL-PRX0",
+     "EV-D16-CL-ALS0"
+    ],
+    "paths": [
+     "tests/reference/build-clauses.mjs",
+     "tests/reference/clauses.mjs",
+     "tests/reference/lib.mjs"
+    ],
+    "changed_commits": [
+     "715ac92"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-BROKEN-SEED-FATAL",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P14",
+    "physical_evidence": [
+     "EV-D12-P14"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-BROKER-FED-GENERATION",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "origin_security.origin",
+     "verdict": "SAME",
+     "recorded": "http://127.0.0.1",
+     "current": "http://127.0.0.1"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P16",
+    "physical_evidence": [
+     "EV-D12-P16"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-GENERATED-OFFLINE",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "origin_security.origin",
+     "verdict": "SAME",
+     "recorded": "http://127.0.0.1",
+     "current": "http://127.0.0.1"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P01",
+    "physical_evidence": [
+     "EV-D12-P01"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-GIT-IDENTITY",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P09",
+    "physical_evidence": [
+     "EV-D12-P09"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-GITHACK-UNREACHABLE",
+   "status": "UNK",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-SH-IDB-CAS",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P06",
+    "physical_evidence": [
+     "EV-D12-P06"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-INTERRUPTED-UPDATE",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P15",
+    "physical_evidence": [
+     "EV-D12-P15"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-KERNEL-TOOLCHAIN-DRIFT",
+   "status": "OBS",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-HOST",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "SAME",
+     "recorded": "6bb1652a0",
+     "current": "nightly: 6bb1652a0"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-KERNEL-IDENTITY",
+    "physical_evidence": [
+     "EV-D12-KERNEL",
+     "EV-D13-KERNEL-IDENTITY"
+    ],
+    "paths": [
+     "factory/src/checks.rs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-KERNEL-WORKER-PARTIAL",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-SH-NO-FACTORY-WEBAPP",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-SH-OPAQUE-CONFINEMENT",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "origin_security.origin",
+     "verdict": "SAME",
+     "recorded": "http://127.0.0.1",
+     "current": "http://127.0.0.1"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P08",
+    "physical_evidence": [
+     "EV-D12-P08"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-OPFS-SERVED-APP",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "origin_security.origin",
+     "verdict": "SAME",
+     "recorded": "http://127.0.0.1",
+     "current": "http://127.0.0.1"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P04",
+    "physical_evidence": [
+     "EV-D12-P04"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "origin_security.origin",
+     "verdict": "SAME",
+     "recorded": "http://127.0.0.1",
+     "current": "http://127.0.0.1"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.flags",
+     "verdict": "UNK",
+     "note": "launch recorded as prose"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P03",
+    "physical_evidence": [
+     "EV-D12-P03"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-STORAGE-DURABILITY-D18",
+   "status": "UNK",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-SH-SW-GRANTS-COI",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P05",
+    "physical_evidence": [
+     "EV-D12-P05"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SH-SW-NO-SELF-UPDATE",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    },
+    {
+     "environment": "ENV-D12-BROWSER-PERSISTENT",
+     "dimension": "browser.revision",
+     "verdict": "SAME",
+     "recorded": "9f043f63b",
+     "current": "9f043f63b"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "52d7d1425028dac6ef9f77b4a4cb178b96217864",
+    "newest_evidence": "EV-D12-P02",
+    "physical_evidence": [
+     "EV-D12-P02"
+    ],
+    "paths": [
+     "tests/selfhost/primitives-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-SHARED-THREADS-UNADMITTED-D18",
+   "status": "ERR",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-STATION-ENV-UNRECORDED",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-STATUS-INVENTORIED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "status",
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-STATUS",
+    "physical_evidence": [
+     "EV-D13-STATUS"
+    ],
+    "paths": [
+     "tests/hygiene/handoff-check.sh",
+     "tests/hygiene/status-classification.json",
+     "tests/hygiene/status-scan.mjs"
+    ],
+    "changed_commits": [
+     "780aee1"
+    ],
+    "changed_working_tree": [
+     "tests/hygiene/status-scan.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-STREAMING-UNPROBED",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-SURFACES-LITERAL-ENFORCED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "paths",
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-PATHS-PROBE",
+    "physical_evidence": [
+     "EV-D13-PATHS-PROBE"
+    ],
+    "paths": [
+     "tests/envmap/envmap.mjs"
+    ],
+    "changed_commits": [
+     "780aee1",
+     "b509fb0",
+     "1b81dc0",
+     "715ac92",
+     "e4e2103",
+     "3748fa7",
+     "46cc28b"
+    ],
+    "changed_working_tree": [
+     "tests/envmap/envmap.mjs"
+    ],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-TOOLCHAIN-DRIFT",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-TOOLCHAIN-PINNED",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D13-HOST-PINNED",
+     "dimension": "toolchain.stable.rustc_commit",
+     "verdict": "SAME",
+     "recorded": "e408947bf",
+     "current": "1.94.1: e408947bf"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-PINS",
+    "physical_evidence": [
+     "EV-D13-PINS"
+    ],
+    "paths": [
+     "tests/toolchain/proof-sets.json",
+     "tests/toolchain/proof.mjs",
+     "tests/toolchain/run-qualified-proof.sh"
+    ],
+    "changed_commits": [
+     "1b81dc0"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WASM-SET-PHASE-1",
+   "status": "OBS",
+   "selected": true,
+   "reasons": [
+    "ENVIRONMENT",
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "reopen",
+   "environment": [
+    {
+     "environment": "ENV-D14-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "DRIFT",
+     "recorded": "63 tip-read sources",
+     "current": [
+      "https://github.com/chromium/chromium#main 19edc42ce -> 6411417c0",
+      "https://github.com/v8/v8#main 43d44dae1 -> 010a4b88b",
+      "https://github.com/NFDFLDTHRY/FactTest#claude/facttest-materialization-27amc7 5e57467bd -> b509fb009"
+     ]
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "46cc28be1486798635eac42a6955dedaba36673f",
+    "newest_evidence": "EV-D14-PROPOSAL-PHASES",
+    "physical_evidence": [
+     "EV-D14-PROPOSAL-PHASES"
+    ],
+    "paths": [
+     "tests/reference/build-revisions.mjs",
+     "tests/reference/reopen.mjs"
+    ],
+    "changed_commits": [
+     "3748fa7"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WASM-THREADS-PHASE-4",
+   "status": "OBS",
+   "selected": true,
+   "reasons": [
+    "ENVIRONMENT",
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "reopen",
+   "environment": [
+    {
+     "environment": "ENV-D14-HOST",
+     "dimension": "authority.source_commit",
+     "verdict": "DRIFT",
+     "recorded": "63 tip-read sources",
+     "current": [
+      "https://github.com/chromium/chromium#main 19edc42ce -> 6411417c0",
+      "https://github.com/v8/v8#main 43d44dae1 -> 010a4b88b",
+      "https://github.com/NFDFLDTHRY/FactTest#claude/facttest-materialization-27amc7 5e57467bd -> b509fb009"
+     ]
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "46cc28be1486798635eac42a6955dedaba36673f",
+    "newest_evidence": "EV-D14-PROPOSAL-PHASES",
+    "physical_evidence": [
+     "EV-D14-PROPOSAL-PHASES"
+    ],
+    "paths": [
+     "tests/reference/build-revisions.mjs",
+     "tests/reference/reopen.mjs"
+    ],
+    "changed_commits": [
+     "3748fa7"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WASM64-ABI-EXEC",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "OBLIGATION"
+   ],
+   "obligations": [
+    "R-04"
+   ],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D1-D3-BROWSER",
+     "dimension": "browser.js_engine",
+     "verdict": "UNK",
+     "note": "nothing recorded at versions.js_engine | versions.v8",
+     "current": "14.1.146.11"
+    },
+    {
+     "environment": "ENV-D1-D3-BROWSER",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+    "newest_evidence": "EV-D9-T9-P8-03",
+    "physical_evidence": [
+     "EV-D1-B10-B11-CHROMIUM",
+     "EV-D9-T9-P8-03"
+    ],
+    "paths": [
+     "host/harness/kernel-host.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WASM64-ADMITTED-E0",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-ADM-E0-WASM64",
+    "physical_evidence": [
+     "EV-D7-ADM-E0-WASM64",
+     "EV-D7-ADM-E0-WASM64"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-wasm64_relay.js"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WASM64-ADMITTED-E1",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [
+    {
+     "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+     "dimension": "browser.product",
+     "verdict": "SAME",
+     "recorded": "141.0.7390.37",
+     "current": "141.0.7390.37"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "976718a608c58e0f22eb26802eb4c125ba72ee80",
+    "newest_evidence": "EV-D7-E1-RELAY",
+    "physical_evidence": [
+     "EV-D7-E1-RELAY",
+     "EV-D7-NOWEBGPU-ADM"
+    ],
+    "paths": [
+     "compiler/codegen/templates/adapter-wasm64_relay.js",
+     "host/harness/bundle-probe.mjs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WASM64-MODULE-I64",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "ENVIRONMENT",
+    "IMPLEMENTATION",
+    "OBLIGATION"
+   ],
+   "obligations": [
+    "R-04"
+   ],
+   "runbook": "qualified-proof",
+   "environment": [
+    {
+     "environment": "ENV-D9-HOST",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "DRIFT",
+     "recorded": "6eeff9a52",
+     "current": "nightly: 6bb1652a0",
+     "note": "the rustup name nightly now resolves to 6bb1652a0; 6eeff9a52 is installed as nightly-2026-09-24"
+    },
+    {
+     "environment": "ENV-D1-D3-HOST",
+     "dimension": "toolchain.nightly.rustc_commit",
+     "verdict": "SAME",
+     "recorded": "6bb1652a0",
+     "current": "nightly: 6bb1652a0"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "e10d2799002682ee8c047de42050f7e9d5ddf5ad",
+    "newest_evidence": "EV-D9-T9-P8-01",
+    "physical_evidence": [
+     "EV-D1-B9-INSPECT",
+     "EV-D9-T9-P8-01",
+     "EV-D9-T9-P8-02"
+    ],
+    "paths": [
+     "compiler/codegen/src/lib.rs",
+     "compiler/wasm-abi/src/lib.rs",
+     "factory/src/checks.rs"
+    ],
+    "changed_commits": [
+     "8265623"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WGSL-UNEXERCISED",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-WILDCARD-SURFACES-DEAD",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-WORKERS-D18R",
+   "status": "GAP",
+   "selected": false,
+   "reason": "boundary record (not an execution or observation claim)"
+  },
+  {
+   "fact": "FACT-WORKPIECE-ISOLATION",
+   "status": "RUN",
+   "selected": true,
+   "reasons": [
+    "IMPLEMENTATION"
+   ],
+   "obligations": [],
+   "runbook": "lineage",
+   "environment": [
+    {
+     "environment": "ENV-D11-HOST",
+     "dimension": "host_runtime.git_version",
+     "verdict": "SAME",
+     "recorded": "2.43.0",
+     "current": "2.43.0"
+    }
+   ],
+   "implementation": {
+    "evidence_commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+    "newest_evidence": "EV-GIT-LINEAGE-D0-D10",
+    "physical_evidence": [
+     "EV-GIT-LINEAGE-D0-D10"
+    ],
+    "paths": [
+     "factory/src/git.rs",
+     "factory/src/ops.rs"
+    ],
+    "changed_commits": [
+     "8265623"
+    ],
+    "changed_working_tree": [],
+    "verdict": "CHANGED"
+   }
+  },
+  {
+   "fact": "FACT-WORKPIECES-AUDITED",
+   "status": "RUN",
+   "selected": false,
+   "reasons": [],
+   "obligations": [],
+   "runbook": null,
+   "environment": [],
+   "implementation": {
+    "evidence_commit": "8265623ed785fbc4cd2328cbf0bb27d8984906ca",
+    "newest_evidence": "EV-D13-WORKPIECES",
+    "physical_evidence": [
+     "EV-D13-WORKPIECES"
+    ],
+    "paths": [
+     "factory/src/hygiene.rs",
+     "factory/src/identity.rs",
+     "factory/src/paths.rs"
+    ],
+    "changed_commits": [],
+    "changed_working_tree": [],
+    "verdict": "UNCHANGED"
+   }
+  }
+ ]
+}

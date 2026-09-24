@@ -1,0 +1,8 @@
+$ node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D26/status
+(cwd .)
+STATUS INVENTORY PASS: 23062 occurrences in 5387 files; unclassified 0
+
+by class: {"B":21210,"C":2,"N":919,"R":931}
+by marker: {"FIXME":48,"PENDING":1449,"TODO":260,"[ERR]":2637,"[GAP]":9410,"[UNK]":3399,"overclaim":115,"stale":5697,"unfinished":47}
+
+[exit 0] expected 0

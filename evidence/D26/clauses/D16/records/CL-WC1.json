@@ -1,0 +1,35 @@
+{
+ "id": "CL-WC1",
+ "trace": "WC",
+ "authority": "AUTH-WEBCODECS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/webcodecs",
+  "branch": "main",
+  "path": "index.src.html",
+  "commit": "8f7384fb4749a39fa2df6eea37685dd1ede297d1",
+  "sha256": "6ce711783ba8e084a286a40a4d71e4bd380002470922afa93b568a065a5bb324",
+  "bytes": 293911
+ },
+ "locator": {
+  "text": "interface VideoEncoder : EventTarget {",
+  "after": "[Exposed=(Window,DedicatedWorker), SecureContext]",
+  "line_start": 1378,
+  "line_end": 1378,
+  "derivation": "anchor text after \"[Exposed=(Window,DedicatedWorker), Secur\"",
+  "enclosing_section": "#videoencoder-interface (line 1373)"
+ },
+ "window": 1,
+ "consequence": "codec interfaces are [SecureContext] in Window and DedicatedWorker; WebCodecs defines no permission and no policy-controlled feature (verified absent)",
+ "excerpt": "interface VideoEncoder : EventTarget {",
+ "excerpt_sha256": "a34ab5ed0dd4793643c214cf73ad7cd915e39ce88a653ace0a1f78fbde4474ca",
+ "must_contain": {
+  "interface VideoEncoder": true
+ },
+ "status": "VERIFIED",
+ "absent_in_document": {
+  "policy-controlled feature": true,
+  "powerful feature": true,
+  "Permissions Policy": true
+ }
+}

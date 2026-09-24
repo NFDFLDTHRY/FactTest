@@ -1,0 +1,5 @@
+$ sh -c T=$(mktemp -d) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 2c0aeda18d0b42eb97fa060f5603b65e986851cb --delta D26-CLEAN-COMMISSIONING --epoch D26 --out $T >/dev/null && cmp $T/manifest.json design/execution-manifest/manifest.json && cmp $T/CURRENT-EXECUTION-MANIFEST.md design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md && grep -q '^commissioning epoch' design/environment-map/SCHEMA.md && grep -q '^D26 ' design/environment-map/ENVIRONMENT-MAP.md && grep -q 'last delta         D26-CLEAN-COMMISSIONING' docs/HANDOFF.md && grep -q 'LICENSE' docs/HANDOFF.md && grep -q 'D26-STABLE-BASELINE' README.md && grep -q '^STABLE-BASELINE: ESTABLISHED' design/materialization/D26-STABLE-BASELINE.md && ! grep -q PLACEHOLDER design/materialization/D26-STABLE-BASELINE.md && echo 'manifest deterministic (rebuilt byte-identically); record texts delivered'
+(cwd .)
+manifest deterministic (rebuilt byte-identically); record texts delivered
+
+[exit 0] expected 0

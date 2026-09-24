@@ -1,0 +1,30 @@
+{
+ "id": "CL-R4",
+ "trace": "R",
+ "authority": "AUTH-RUSTC-WASM64-DOC",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/rust",
+  "branch": "master",
+  "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+  "commit": "f340ff6a39bd17c6d8e17c90c6f8a60438bf0644",
+  "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+  "bytes": 4126
+ },
+ "locator": {
+  "text": "## Building Rust programs",
+  "line_start": 77,
+  "line_end": 84,
+  "derivation": "anchor text",
+  "enclosing_section": "#building-rust-programs (line 77)"
+ },
+ "window": 8,
+ "consequence": "no prebuilt core/std exists for wasm64-unknown-unknown: build-std is the only way FactTest obtains core for the kernel",
+ "excerpt": "## Building Rust programs\n\nRust does not yet ship pre-compiled artifacts for this target. To compile for\nthis target, you will either need to build Rust with the target enabled (see\n\"Building the target\" above), or build your own copy of `std` by using\n`build-std` or similar.\n\nNote that the following `cfg` directives are set for `wasm64-unknown-unknown`:",
+ "excerpt_sha256": "49f36bf5a8a0a88bd6dddd011feedced765faa8e621f181d1cdaa878ee3c7230",
+ "must_contain": {
+  "does not yet ship pre-compiled artifacts for this target": true,
+  "`build-std`": true
+ },
+ "status": "VERIFIED"
+}

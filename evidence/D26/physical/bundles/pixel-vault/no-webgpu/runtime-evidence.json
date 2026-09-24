@@ -1,0 +1,142 @@
+{
+  "epochs": [
+    {
+      "epoch_id": "E0",
+      "reason": "initial observation",
+      "environment": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "secure_context": true,
+      "established": "2026-09-24T18:48:10.342Z"
+    }
+  ],
+  "admissions": {
+    "WEBGPU": {
+      "receipt_id": "ADM-E0-WEBGPU",
+      "epoch_id": "E0",
+      "implementation_id": "WEBGPU",
+      "decision": "REJECTED",
+      "evaluated_requirements": [
+        {
+          "step": "DISCOVER",
+          "result": "OK",
+          "detail": "navigator.gpu present"
+        },
+        {
+          "step": "REQUEST",
+          "result": "UNAVAILABLE",
+          "detail": "requestAdapter returned null"
+        }
+      ],
+      "rejection_reason": "request_unavailable",
+      "adapter_info": null,
+      "status": "REJECTED"
+    }
+  },
+  "activation": {
+    "epoch_id": "E0",
+    "strategy_id": 1,
+    "plan_id": null,
+    "admission_refs": [
+      "ADM-E0-WEBGPU"
+    ],
+    "metric_evidence_refs": [],
+    "guard_result": [
+      {
+        "plan_id": 0,
+        "guard": [
+          "WEBGPU"
+        ],
+        "satisfied": false
+      }
+    ],
+    "status": "NO_ACTIVE_PLAN"
+  },
+  "evidence": [
+    {
+      "evidence_id": "RE-1",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "ADMISSION",
+      "subject": "WEBGPU",
+      "observation": {
+        "receipt_id": "ADM-E0-WEBGPU",
+        "epoch_id": "E0",
+        "implementation_id": "WEBGPU",
+        "decision": "REJECTED",
+        "evaluated_requirements": [
+          {
+            "step": "DISCOVER",
+            "result": "OK",
+            "detail": "navigator.gpu present"
+          },
+          {
+            "step": "REQUEST",
+            "result": "UNAVAILABLE",
+            "detail": "requestAdapter returned null"
+          }
+        ],
+        "rejection_reason": "request_unavailable",
+        "adapter_info": null,
+        "status": "REJECTED"
+      },
+      "expected": "ADMITTED",
+      "monotonic_marker": 315.5,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-2",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "ACTIVATION",
+      "subject": "selector",
+      "observation": {
+        "epoch_id": "E0",
+        "strategy_id": 1,
+        "plan_id": null,
+        "admission_refs": [
+          "ADM-E0-WEBGPU"
+        ],
+        "metric_evidence_refs": [],
+        "guard_result": [
+          {
+            "plan_id": 0,
+            "guard": [
+              "WEBGPU"
+            ],
+            "satisfied": false
+          }
+        ],
+        "status": "NO_ACTIVE_PLAN"
+      },
+      "expected": "PASS",
+      "monotonic_marker": 315.59999999962747,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-3",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "EXECUTE",
+      "subject": "stash",
+      "observation": {
+        "status": "NO_ACTIVE_PLAN"
+      },
+      "expected": null,
+      "monotonic_marker": 541.9000000003725,
+      "artifact_refs": []
+    },
+    {
+      "evidence_id": "RE-4",
+      "epoch_id": "E0",
+      "plan_id": null,
+      "event_class": "EXECUTE",
+      "subject": "stash",
+      "observation": {
+        "status": "NO_ACTIVE_PLAN"
+      },
+      "expected": null,
+      "monotonic_marker": 757.5,
+      "artifact_refs": []
+    }
+  ],
+  "observation_deltas": []
+}

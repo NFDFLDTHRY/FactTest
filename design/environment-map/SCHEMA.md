@@ -359,4 +359,11 @@ physical webapp probe   host/harness/webapp-probe.mjs (D25): the generated shell
                         (optionally COOP/COEP) or a public https:// URL; tests/physical/run-webapp.mjs maps every runtime
                         behaviour of the D25 prompt to its evidence; tests/physical/public-https-probe.sh records the
                         public-HTTPS boundary of the execution environment (no localhost substituted)
+commissioning epoch     epochs/D26.json (D26) = the re-proof fragment (tests/reprove/build-reprove.mjs: ENV-D26-*, the
+                        selection and group records as evidence, the re-proved facts' edges, the process facts) + the fact
+                        fragment (tests/envmap/build-fact-epoch.mjs on the graph holding the first: the whole-system,
+                        consistency and final-condition facts), concatenated by tests/envmap/concat-epochs.mjs; the runbook
+                        now maps every current claim (groups manifest, physical, qualified-proof with the crate DAG)
+final audit             tests/audit/consistency-audit.mjs (the five equalities of the D26 prompt from the registers) and
+                        tests/audit/final-condition.mjs (the 21 [PASS] lines from named evidence): computed, never asserted
 ```

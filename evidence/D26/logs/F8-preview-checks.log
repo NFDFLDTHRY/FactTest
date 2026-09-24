@@ -1,0 +1,5 @@
+$ sh -c node -e 'const J=p=>JSON.parse(require("fs").readFileSync(p));const a=J("evidence/D26/audit/consistency.json"),f=J("evidence/D26/audit/final-condition.json");console.log("audit",a.status,a.checks.length,"final",f.status,f.lines.filter(l=>l.status==="PASS").length+"/"+f.lines.length);if(a.status!=="PASS"||f.status!=="PASS"||f.lines.length!==21)process.exit(1)'
+(cwd .)
+audit PASS 13 final PASS 21/21
+
+[exit 0] expected 0

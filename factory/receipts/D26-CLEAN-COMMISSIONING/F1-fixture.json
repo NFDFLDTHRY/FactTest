@@ -1,0 +1,195 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D26-CLEAN-COMMISSIONING-F1-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F1-fixture",
+  "workpiece_id": "W32",
+  "delta_id": "D26-CLEAN-COMMISSIONING",
+  "canonical_base": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+  "input_artifacts": [
+    "D26 sections 1-3 (runbook, audit tools, registers)"
+  ],
+  "open_tree": "5d736dc43a042f294237ff0c1730bfdf33e49973",
+  "close_tree": "39a45521c4401cc09d3f1af038d83b71e6e724b4",
+  "changed_paths": [
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-other-tests-untouched.log",
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-syntax-registers.log",
+    "tests/audit/consistency-audit.mjs",
+    "tests/audit/final-condition.mjs",
+    "tests/envmap/concat-epochs.mjs",
+    "tests/envmap/facts/D26.json",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "tests/reprove/obligations.json",
+    "tests/reprove/runbook.json"
+  ],
+  "output_artifacts": [
+    "tests/audit/consistency-audit.mjs",
+    "tests/audit/final-condition.mjs",
+    "tests/envmap/facts/D26.json",
+    "tests/reprove/runbook.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D26-CLEAN-COMMISSIONING"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-syntax-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-syntax-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node --check tests/audit/consistency-audit.mjs && node --check tests/audit/final-condition.mjs && node --check tests/envmap/concat-epochs.mjs && for j in tests/reprove/runbook.json tests/reprove/obligations.json tests/envmap/facts/D26.json tests/manifest/components.json tests/manifest/issues.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -nE \"'(FACT|EV|ENV|IMPL|PROBE)-[A-Z0-9]\" tests/audit/consistency-audit.mjs tests/audit/final-condition.mjs tests/envmap/concat-epochs.mjs && node -e 'const I=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/issues.json\")).issues;const by=Object.fromEntries(I.map(i=>[i.id,i]));if(by[\"I-35\"].covers.length!==0||!by[\"I-36\"]||!by[\"I-37\"]||by[\"I-37\"].class!==\"A\"||!/^REPAIRED/.test(by[\"I-37\"].status)||I.length!==37)process.exit(1);const C=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/components.json\")).components;const k=C.find(c=>c.id===\"KERNEL-LADDERS\");if(!k||k.station!==\"S-RUST\"||!C.some(c=>c.id===\"TEST-AUDIT\"))process.exit(1);const R=JSON.parse(require(\"fs\").readFileSync(\"tests/reprove/runbook.json\"));for(const g of [\"manifest\",\"physical\",\"qualified-proof\",\"kernel-sections\"])if(!R.groups[g])process.exit(1);const O=JSON.parse(require(\"fs\").readFileSync(\"tests/reprove/obligations.json\"));if(!O.obligations[\"R-65\"])process.exit(1);console.log(\"issues\",I.length,\"components\",C.length,\"runbook facts\",Object.keys(R.facts).length)' && echo 'syntax, JSON, no fact/evidence/node name in the audit tools; registers as intended'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-syntax-registers.log"
+    },
+    {
+      "check": "command:git diff --exit-code 2c0aeda18d0b42eb97fa060f5603b65e986851cb -- tests fixtures :!tests/reprove/runbook.json :!tests/reprove/obligations.json :!tests/audit :!tests/envmap/concat-epochs.mjs :!tests/envmap/facts/D26.json :!tests/manifest/components.json :!tests/manifest/issues.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-other-tests-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/audit/consistency-audit.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/audit/final-condition.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/facts/D26.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/reprove/runbook.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-syntax-registers.log",
+    "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-other-tests-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T18:46:03Z",
+  "status": "PASS"
+}

@@ -1,0 +1,30 @@
+{
+ "id": "CL-ACC2",
+ "trace": "MS",
+ "authority": "AUTH-ACCELEROMETER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/accelerometer",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "9f0a66ddab67fbb3fffcf3118fd6a8e1d30e558e",
+  "sha256": "1dc9d36d73527675af6ba78b4f10e9e4d446c32ec21718e1a9e72516f5eca1c5",
+  "bytes": 22227
+ },
+ "locator": {
+  "text": "This specification utilizes the [=policy-controlled feature=] identified by the string",
+  "line_start": 191,
+  "line_end": 191,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-policy-integration (line 188)"
+ },
+ "window": 1,
+ "consequence": "the accelerometer feature/permission is defined by Device Orientation and Motion",
+ "excerpt": "This specification utilizes the [=policy-controlled feature=] identified by the string \"<code><a permission>accelerometer</a></code>\" defined in [[DEVICE-ORIENTATION]].",
+ "excerpt_sha256": "bddf014bbf42cd8436e4682fc2b7156ccce65e60679c305fba60f91bb4e678d4",
+ "must_contain": {
+  "accelerometer": true,
+  "[[DEVICE-ORIENTATION]]": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,29 @@
+{
+ "id": "CL-W4",
+ "trace": "W",
+ "authority": "AUTH-WASM-CORE-CHANGES-64",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/core/appendix/changes.rst",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9",
+  "bytes": 21444
+ },
+ "locator": {
+  "text": "64-bit Address Space",
+  "line_start": 432,
+  "line_end": 437,
+  "derivation": "anchor text",
+  "enclosing_section": "#changes (line 2)"
+ },
+ "window": 6,
+ "consequence": "Release 3.0 lists 64-bit address space as a change: memory64 is standard semantics (registry: Memory64 finished)",
+ "excerpt": "64-bit Address Space\n....................\n\nAdded the ability to declare an :math:`\\I64` :ref:`address type <syntax-addrtype>` for :ref:`tables <syntax-tabletype>` and :ref:`memories <syntax-memtype>`. [#proposal-addr64]_\n\n* :ref:`Address types <syntax-addrtype>` denote a subset of the integral :ref:`number types <syntax-numtype>`",
+ "excerpt_sha256": "ba7cffbbe04d76606b377515dca8f7fa5882d89e9f84b6d6f8faeb3c1117056b",
+ "must_contain": {
+  "64-bit Address Space": true
+ },
+ "status": "VERIFIED"
+}

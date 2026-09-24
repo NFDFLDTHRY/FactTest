@@ -1,0 +1,47 @@
+$ CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -q -p factc
+[exit 0]
+$ CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} RUSTFLAGS='-C link-arg=-zstack-size=16777216' cargo +nightly-2026-09-24 build -q --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown
+[exit 0]
+$ node tests/genericity/run-specimens.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --out evidence/D26/specimens
+byte-relay: ok build_ok, ok bundle_certificate_pass, ok strategy_strength, ok transfers_listed_in_source_order, ok variant_count, ok every_variant_realizes_every_transfer, ok guard_is_union_of_requirement_backends, ok strategy_identity_constant, ok manifest_names_strategy_identity, ok browser_webgpu_run, ok browser_no_webgpu_run, ok tape_executes_every_transfer, ok observe_ok_and_bound, ok observe_transition_E0_E1, ok bundle_integrity_and_tamper_detected
+dual-stream: ok build_ok, ok bundle_certificate_pass, ok strategy_strength, ok transfers_listed_in_source_order, ok variant_count, ok every_variant_realizes_every_transfer, ok guard_is_union_of_requirement_backends, ok strategy_identity_constant, ok manifest_names_strategy_identity, ok browser_webgpu_run, ok browser_no_webgpu_run, ok tape_executes_every_transfer, ok observe_ok_and_bound, ok observe_transition_E0_E1, ok bundle_integrity_and_tamper_detected
+ledger-mirror: ok build_ok, ok bundle_certificate_pass, ok strategy_strength, ok transfers_listed_in_source_order, ok variant_count, ok every_variant_realizes_every_transfer, ok guard_is_union_of_requirement_backends, ok strategy_identity_constant, ok manifest_names_strategy_identity, ok browser_webgpu_run, ok browser_no_webgpu_run, ok tape_executes_every_transfer, ok observe_ok_and_bound, ok observe_no_active_plan_E1, ok bundle_integrity_and_tamper_detected
+pixel-vault: ok build_ok, ok bundle_certificate_pass, ok strategy_strength, ok transfers_listed_in_source_order, ok variant_count, ok every_variant_realizes_every_transfer, ok guard_is_union_of_requirement_backends, ok strategy_identity_constant, ok manifest_names_strategy_identity, ok browser_webgpu_run, ok browser_no_webgpu_run, ok tape_executes_every_transfer, ok observe_ok_and_bound, ok observe_no_active_plan_E1, ok bundle_integrity_and_tamper_detected
+PASS no_foreign_semantics_in_byte-relay: clean
+PASS no_foreign_semantics_in_dual-stream: clean
+PASS no_foreign_semantics_in_ledger-mirror: clean
+PASS no_foreign_semantics_in_pixel-vault: clean
+PASS
+[exit 0]
+$ node tests/genericity/run-attacks.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --specimens evidence/D26/specimens --out evidence/D26/attacks
+PASS renamed-relation [ledger-mirror]: exit 0; transfers ["posted","mirror"]; identity changed; old tape observe exit 1 EVIDENCE_UNBOUND
+PASS changed-order [ledger-mirror]: exit 0; transfers ["mirror","post"]; identity changed
+PASS different-legal-recipe [ledger-mirror]: exit 0; recipes ["R_ENTRY_MIRROR"]; strategy identity identical
+PASS single-backend-registry [dual-stream]: exit 0; 1 variant(s): CPU_WASM64
+PASS missing-conversion [ledger-mirror]: exit 1; NO_LEGAL_PLAN; bundle absent
+PASS undeclared-adapter [ledger-mirror]: exit 1; BUNDLE_CHECK_FAILED; certificate FAIL with 1 checks
+PASS unexpected-implementation-family [pixel-vault]: exit 1; failing B-11-adapter-realizes-backend
+PASS tampered-strategy [ledger-mirror]: check exit 1; selector.js: sha256 96642880908fba5ea1a7818badf0c852315e04900ca68d25c3aacfb0d5551666 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94
+PASS tampered-bundle [ledger-mirror]: check exit 1; wasm64_relay.wasm: sha256 e9327087659add1a5081c2a63b5b9d7eec442776ddc7bfe707afb690e7fc014f != recorded 204d1ba6879a555a36e155f7cf22f061f51188802c0a7bba94c11c7072befc11
+PASS invalid-guard [ledger-mirror]: check exit 1; selector.js: sha256 252f76be72ff2b1674f61f2ad2a8e02aafcdf915d3e2d5c5b7ea1fbb8661f786 != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94; selector.js: 1766 bytes != recorded 1767
+PASS wrong-certificate [ledger-mirror]: check exit 1; selector.js: sha256 3666dbfa635831efd1fbe4a32d549389f1c7685ba96a75f09eb23994b2c9945b != recorded 6a029b9adce739c1de83dd5e758bb03b3c988b24a67132aef971a52566707b94
+PASS stale-evidence [byte-relay -> ledger-mirror]: exit 1; EVIDENCE_UNBOUND
+PASS genuine-evidence [ledger-mirror]: exit 0
+PASS
+[exit 0]
+$ sh tests/commissioning/run-anti-cheat.sh evidence/D26/anti-cheat
+compiler-src: clean
+codegen-templates: clean
+factory-src: clean
+host: clean
+backend-names: clean
+[exit 0]
+$ node tests/physical/run-webapp.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --out evidence/D26/physical --kernel ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --pushed-bundle evidence/D25/physical/bundles/byte-relay/compile/bundle --pushed-branch claude/facttest-materialization-27amc7
+byte-relay: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+dual-stream: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+ledger-mirror: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+pixel-vault: ok fresh_build_verified, ok bundle_integrity, ok shell_driven_webgpu, ok shell_driven_no-webgpu, ok shell_driven_isolated, ok isolation_by_server_headers_only, ok observe_bound
+selfhost: ok selfhost_P01_run, ok selfhost_P04_run, ok selfhost_bundle_is_the_fresh_one; {"P01-GENERATED-BUNDLE-OFFLINE":"RUN","P02-SW-CANNOT-SELF-UPDATE":"RUN","P03-STORAGE-RESTART-ORIGIN":"RUN","P04-OPFS-SERVED-APP":"RUN","P05-SW-CROSS-ORIGIN-ISOLATION":"RUN","P06-IDB-ATOMIC-POINTER":"RUN","P07-STORAGE-PERSISTENCE":"GAP","P08-CANDIDATE-CONFINEMENT":"RUN","P09-GIT-OBJECTS-IN-BROWSER":"RUN","P10-KERNEL-IN-WORKER":"OBS","P14-BROKEN-SW-RECOVERY":"RUN","P16-CONFINED-GENERATION-LOAD":"RUN","P15-INTERRUPTED-SW-UPDATE":"RUN"}
+public https: UNREACHABLE
+PASS
+[exit 0]

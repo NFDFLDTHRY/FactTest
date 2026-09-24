@@ -160,6 +160,9 @@
    ],
    "physical runtime": [
     "TEST-PHYSICAL"
+   ],
+   "final audit": [
+    "TEST-AUDIT"
    ]
   }
  },
@@ -900,7 +903,7 @@
    "consumers": [
     "terminal: qualification of the compiler DAG (D23, D24)"
    ],
-   "station": "S-FIXTURE",
+   "station": "S-RUST",
    "fixture_type": "rust test",
    "toolchain_target": "HOST_NATIVE_SET 1.94.1 (host)",
    "focused_tests": [
@@ -1428,6 +1431,39 @@
    ],
    "task_regression": "D25, D26",
    "runtime_probe": "PROBE-PHYSICAL-WEBAPP, PROBE-PUBLIC-HTTPS"
+  },
+  {
+   "id": "TEST-AUDIT",
+   "tier": "TEST",
+   "area": "test",
+   "paths": [
+    "tests/audit/"
+   ],
+   "owner": [
+    "design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md",
+    "design/materialization/D21-D26-WHOLE-REPO-EXECUTION-PROMPT.md (final consistency audit, six-task final condition)"
+   ],
+   "input": "the execution manifest, the environment graph, the issue inventory, the station registry, the deltas and receipts, the ledger, the Q22 answer, the D26 evidence directory",
+   "operation": "consistency-audit.mjs (the five equalities of the prompt: live law = current implementation contract, current implementation = execution manifest, execution manifest = factory routes, factory routes = receipts / verification, current claim = current evidence or explicit boundary); final-condition.mjs (the 21 [PASS] lines of the six-task final condition, each computed from named evidence)",
+   "output": "evidence records (consistency.json, final-condition.json)",
+   "dependencies": [
+    "TEST-MANIFEST",
+    "TEST-ENVMAP",
+    "TEST-RECONCILE",
+    "FACTORY-REGISTRY"
+   ],
+   "consumers": [
+    "D26 fixtures",
+    "the handoff (section 1 and 6)"
+   ],
+   "station": "S-FIXTURE",
+   "fixture_type": "node esm",
+   "toolchain_target": "node v22.22.2; git",
+   "focused_tests": [
+    "self"
+   ],
+   "task_regression": "D26",
+   "runtime_probe": "PROBE-CONSISTENCY-AUDIT"
   },
   {
    "id": "TEST-TOOLCHAIN",

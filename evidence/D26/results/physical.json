@@ -1,0 +1,358 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "physical",
+ "kind": "build",
+ "started": "2026-09-24T18:47:16.873Z",
+ "commands": [
+  {
+   "command": "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -q -p factc",
+   "exit": 0,
+   "seconds": 3
+  },
+  {
+   "command": "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} RUSTFLAGS='-C link-arg=-zstack-size=16777216' cargo +nightly-2026-09-24 build -q --release -p factc-wasm-abi -Z build-std=core --target wasm64-unknown-unknown",
+   "exit": 0,
+   "seconds": 17
+  },
+  {
+   "command": "node tests/genericity/run-specimens.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --out evidence/D26/specimens",
+   "exit": 0,
+   "seconds": 7
+  },
+  {
+   "command": "node tests/genericity/run-attacks.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --specimens evidence/D26/specimens --out evidence/D26/attacks",
+   "exit": 0,
+   "seconds": 0
+  },
+  {
+   "command": "sh tests/commissioning/run-anti-cheat.sh evidence/D26/anti-cheat",
+   "exit": 0,
+   "seconds": 0
+  },
+  {
+   "command": "node tests/physical/run-webapp.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --out evidence/D26/physical --kernel ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/wasm64-unknown-unknown/release/factc_wasm_abi.wasm --pushed-bundle evidence/D25/physical/bundles/byte-relay/compile/bundle --pushed-branch claude/facttest-materialization-27amc7",
+   "exit": 0,
+   "seconds": 63
+  }
+ ],
+ "facts": {
+  "FACT-GPU-EPOCH-INVALIDATION": {
+   "probe": "PROBE-PHYSICAL-WEBAPP",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/bundles/byte-relay/webgpu/probe-record.json",
+     "sha256": "d45072495ce7411f190177255ffa3d30e37f4cb39ba8944723dfaa7f6b13b445",
+     "checks": [
+      {
+       "path": "verdict.loss_witnessed",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "verdict.stale_plan_invalidated",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "verdict.epochs",
+       "eq": [
+        "E0",
+        "E1"
+       ],
+       "observed": [
+        "E0",
+        "E1"
+       ],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-OPAQUE-FRAME-SECURE-CONTEXT": {
+   "probe": "PROBE-SH-P08",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P08-CANDIDATE-CONFINEMENT.json",
+     "sha256": "95a232026076e38b89a24fd6fa617de8916ab12fc83edc42b087257b02d268ec",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "physical/selfhost/probes/P16-CONFINED-GENERATION-LOAD.json",
+     "sha256": "49e0eb718618b021cd411fdb4b670665f85168731a71bb9b17546051ca8891e5",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-RESELECTION-NO-CODEGEN": {
+   "probe": "PROBE-PHYSICAL-WEBAPP",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/bundles/byte-relay/webgpu/probe-record.json",
+     "sha256": "d45072495ce7411f190177255ffa3d30e37f4cb39ba8944723dfaa7f6b13b445",
+     "checks": [
+      {
+       "path": "verdict.e1_all_exact",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "verdict.no_runtime_codegen",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "verdict.bundle_unchanged",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "verdict.only_bundle_files_requested",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-BROKEN-SEED-FATAL": {
+   "probe": "PROBE-SH-P14",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P14-BROKEN-SW-RECOVERY.json",
+     "sha256": "6b9dd9ad4744fd985b7e81123a6f762512a74e23a53f9daec0868177a95cf1c9",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-BROKER-FED-GENERATION": {
+   "probe": "PROBE-SH-P16",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P16-CONFINED-GENERATION-LOAD.json",
+     "sha256": "49e0eb718618b021cd411fdb4b670665f85168731a71bb9b17546051ca8891e5",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-GENERATED-OFFLINE": {
+   "probe": "PROBE-SH-P01",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P01-GENERATED-BUNDLE-OFFLINE.json",
+     "sha256": "2635814a96ac0c97bdd6f1cc05809ed92edad913710bea451ce25e78e4e86be6",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-GIT-IDENTITY": {
+   "probe": "PROBE-SH-P09",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P09-GIT-OBJECTS-IN-BROWSER.json",
+     "sha256": "ecac5ab81d29a757c9dcec435415aa5ef9ee091827b0b88e4733e835079d4922",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-IDB-CAS": {
+   "probe": "PROBE-SH-P06",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P06-IDB-ATOMIC-POINTER.json",
+     "sha256": "92b06e710542a08b5e62401138fd8d96bd220a29ce24fff096ec3bea8eac3f26",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-INTERRUPTED-UPDATE": {
+   "probe": "PROBE-SH-P15",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P15-INTERRUPTED-SW-UPDATE.json",
+     "sha256": "c6a2177cfbe9a339ceb88dd0d6e7ffa3da9e6ac5a565c577900de01999107b98",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-OPAQUE-CONFINEMENT": {
+   "probe": "PROBE-SH-P08",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P08-CANDIDATE-CONFINEMENT.json",
+     "sha256": "95a232026076e38b89a24fd6fa617de8916ab12fc83edc42b087257b02d268ec",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-OPFS-SERVED-APP": {
+   "probe": "PROBE-SH-P04",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P04-OPFS-SERVED-APP.json",
+     "sha256": "55a93049f849f87b8e69bc8c0bbc6fab561fbb0186ffce4c671f4c1009069da9",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-ORIGIN-SCOPED-STORAGE": {
+   "probe": "PROBE-SH-P03",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P03-STORAGE-RESTART-ORIGIN.json",
+     "sha256": "c8d1e6fc9d9b95c06b6427ec64520a1c6de9b9253142f27da4d14155ba4b4d6d",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-SW-GRANTS-COI": {
+   "probe": "PROBE-SH-P05",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P05-SW-CROSS-ORIGIN-ISOLATION.json",
+     "sha256": "b5ac6ad8fd690378c025f3691bd63f91f1de537c2b782f9b1d5dd25302948db4",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SH-SW-NO-SELF-UPDATE": {
+   "probe": "PROBE-SH-P02",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "physical/selfhost/probes/P02-SW-CANNOT-SELF-UPDATE.json",
+     "sha256": "101437d39dacb552738d9b315a9ddb3c9b095c992e1889422583e841141e9f0b",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T18:48:47.176Z",
+ "status": "PASS"
+}

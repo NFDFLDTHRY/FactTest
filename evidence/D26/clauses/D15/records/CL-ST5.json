@@ -1,0 +1,29 @@
+{
+ "id": "CL-ST5",
+ "trace": "ST",
+ "authority": "AUTH-FS-OPFS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/fs",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+  "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+  "bytes": 85583
+ },
+ "locator": {
+  "text": "[Exposed=DedicatedWorker]",
+  "line_start": 433,
+  "line_end": 434,
+  "derivation": "anchor text",
+  "enclosing_section": "#api-filesystemfilehandle (line 422)"
+ },
+ "window": 2,
+ "consequence": "synchronous access handles exist only in dedicated workers: a synchronous object store must run in a worker",
+ "excerpt": "  [Exposed=DedicatedWorker]\n  Promise<FileSystemSyncAccessHandle> createSyncAccessHandle();",
+ "excerpt_sha256": "8fb3af2f0f50fc0fd6d179afdef2a01f79eaae4b8b351a39d165fbd2f99bc033",
+ "must_contain": {
+  "createSyncAccessHandle": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "T13-PIN-01-toolchain-pins",
+  "class": "T13-PIN",
+  "invariant": "each proof set runs on its pinned toolchain; rust-toolchain.toml pins HOST_NATIVE_SET; bare rustc in the repository resolves to the pin",
+  "proof_set": null,
+  "evaluated": "2026-09-24T18:48:49.151Z",
+  "rust_toolchain_toml": "1.94.1",
+  "bare_rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+  "sets": [
+    {
+      "set": "HOST_NATIVE_SET",
+      "toolchain": "1.94.1",
+      "identity": {
+        "channel": "1.94.1",
+        "requested": "1.94.1",
+        "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+        "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+        "rustc_release": "1.94.1",
+        "rustc_host": "x86_64-unknown-linux-gnu",
+        "llvm": "21.1.8",
+        "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+        "available": true,
+        "error": null
+      },
+      "components_installed": [
+        "cargo-x86_64-unknown-linux-gnu",
+        "clippy-x86_64-unknown-linux-gnu",
+        "rust-std-x86_64-unknown-linux-gnu",
+        "rustc-x86_64-unknown-linux-gnu",
+        "rustfmt-x86_64-unknown-linux-gnu"
+      ],
+      "components_missing": [],
+      "sysroot": "/root/.rustup/toolchains/1.94.1-x86_64-unknown-linux-gnu"
+    },
+    {
+      "set": "WASM64_KERNEL_SET",
+      "toolchain": "nightly-2026-09-24",
+      "identity": {
+        "channel": "nightly-2026-09-24",
+        "requested": "nightly-2026-09-24",
+        "rustc": "rustc 1.100.0-nightly (6eeff9a52 2026-09-23)",
+        "rustc_commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+        "rustc_release": "1.100.0-nightly",
+        "rustc_host": "x86_64-unknown-linux-gnu",
+        "llvm": "23.1.1",
+        "cargo": "cargo 1.100.0-nightly (98a09e7e7 2026-09-21)",
+        "available": true,
+        "error": null
+      },
+      "components_installed": [
+        "cargo-x86_64-unknown-linux-gnu",
+        "clippy-x86_64-unknown-linux-gnu",
+        "rust-src",
+        "rust-std-x86_64-unknown-linux-gnu",
+        "rustc-x86_64-unknown-linux-gnu",
+        "rustfmt-x86_64-unknown-linux-gnu"
+      ],
+      "components_missing": [],
+      "sysroot": "/root/.rustup/toolchains/nightly-2026-09-24-x86_64-unknown-linux-gnu"
+    }
+  ],
+  "verdict": "PASS",
+  "reason": "HOST_NATIVE_SET 1.94.1 (e408947bf) via rust-toolchain.toml; WASM64_KERNEL_SET nightly-2026-09-24 (6eeff9a52) via proof-sets.json; components present"
+}

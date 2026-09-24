@@ -1,0 +1,9 @@
+LEDGER MIRROR REGISTRY (single READY backend; a recipe name of its own; the adapter is the CPU_WASM64 transfer realization)
+@{registry ledger_mirror_registry version=1}
+@{representation HOST_ENTRY type=Entry domain=ARRAY_BUFFER modes=copy,move lifetime=host_scope}
+@{representation WASM_ENTRY type=Entry domain=WASM_LINEAR modes=copy lifetime=instance}
+@{boundary Entry HOST_ENTRY}
+@{conversion entry_in HOST_ENTRY -> WASM_ENTRY mode=copy preserves=value requires=CPU_WASM64}
+@{backend CPU_WASM64 status=READY-CONTRACT capabilities=COMPUTE accepts=WASM_ENTRY produces=WASM_ENTRY modes=copy effects=none probes=wasm64_instantiate,wasm64_known_answer recipe=R_ENTRY_COPY lifecycle=READY,ACTIVE,CLOSED failures=TRANSIENT_OPERATION_FAILURE,PERMANENT_FOR_EPOCH}
+@{authority_link CPU_WASM64 "https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html"}
+@{recipe R_ENTRY_COPY backend=CPU_WASM64 roles=wasm_module,host_adapter exports=memory,abi_version,copy_bytes,region_in,region_out,region_capacity imports=none adapter=wasm64_relay}

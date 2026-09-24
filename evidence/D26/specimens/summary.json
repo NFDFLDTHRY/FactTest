@@ -1,0 +1,391 @@
+{
+ "tool": "tests/genericity/run-specimens.mjs",
+ "factc": "/home/user/factory-builds/d26-commission-target/debug/factc",
+ "specimens": [
+  {
+   "specimen": "byte-relay",
+   "system": "byte_relay",
+   "varies": [
+    "the original commissioning specimen: one relation (relay), type Bytes, two components, two backends (WEBGPU preferred by metric, CPU_WASM64 fallback), objective minimize"
+   ],
+   "checks": [
+    {
+     "check": "build_ok",
+     "status": "PASS",
+     "detail": "factc exit 0; diagnostics OK"
+    },
+    {
+     "check": "bundle_certificate_pass",
+     "status": "PASS",
+     "detail": "26/26 checks"
+    },
+    {
+     "check": "strategy_strength",
+     "status": "PASS",
+     "detail": "strength EXACT_OPTIMUM (expected EXACT_OPTIMUM)"
+    },
+    {
+     "check": "transfers_listed_in_source_order",
+     "status": "PASS",
+     "detail": "[{\"relation\":\"relay\",\"type\":\"Bytes\",\"mode\":\"copy\"}]"
+    },
+    {
+     "check": "variant_count",
+     "status": "PASS",
+     "detail": "2 variants (expected 2)"
+    },
+    {
+     "check": "every_variant_realizes_every_transfer",
+     "status": "PASS",
+     "detail": "0:relay<-CPU_WASM64 | 1:relay<-WEBGPU"
+    },
+    {
+     "check": "guard_is_union_of_requirement_backends",
+     "status": "PASS",
+     "detail": ""
+    },
+    {
+     "check": "strategy_identity_constant",
+     "status": "PASS",
+     "detail": "STRATEGY_SHA256 46a712089c3077d5924ec725affb2d6293a24a9c034b4704a224b2fd705a0b38"
+    },
+    {
+     "check": "manifest_names_strategy_identity",
+     "status": "PASS",
+     "detail": "46a712089c3077d5924ec725affb2d6293a24a9c034b4704a224b2fd705a0b38"
+    },
+    {
+     "check": "browser_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":1,\"payloads\":2,\"e0_all_exact\":true,\"e0_backends\":[\"WEBGPU\"],\"e0_plan\":1,\"loss_attempted\":\"WEBGPU\",\"loss_witnessed\":true,\"e1_plan\":0,\"e1_all_exact\":true,\"e1_backends\":[\"CPU_WASM64\"],\"epochs\":[\"E0\",\"E1\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "browser_no_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":1,\"payloads\":2,\"e0_all_exact\":true,\"e0_backends\":[\"CPU_WASM64\"],\"e0_plan\":0,\"loss_attempted\":null,\"loss_witnessed\":null,\"e1_plan\":null,\"e1_all_exact\":null,\"e1_backends\":null,\"epochs\":[\"E0\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "tape_executes_every_transfer",
+     "status": "PASS",
+     "detail": "executed [\"relay\"]"
+    },
+    {
+     "check": "observe_ok_and_bound",
+     "status": "PASS",
+     "detail": "observe exit 0"
+    },
+    {
+     "check": "observe_transition_E0_E1",
+     "status": "PASS",
+     "detail": ""
+    },
+    {
+     "check": "bundle_integrity_and_tamper_detected",
+     "status": "PASS",
+     "detail": "PASS integrity PASS (7 files, 0 problems); tamper of selector.js DETECTED"
+    }
+   ],
+   "strategy_sha256": "46a712089c3077d5924ec725affb2d6293a24a9c034b4704a224b2fd705a0b38",
+   "bundle_id": "0f4a1ec14b9e1159e4b6c19f058467cf15cc441e04d0b7cfe17a0f184761cdf1"
+  },
+  {
+   "specimen": "dual-stream",
+   "system": "dual_stream",
+   "varies": [
+    "system name dual_stream",
+    "three components (source, splitter, sink)",
+    "TWO relations (feed, drain) of type Chunk",
+    "two backends both READY with recipes R_CHUNK_WASM / R_CHUNK_GPU",
+    "objective MAXIMIZE preference_rank (CPU_WASM64 ranks first: the opposite preference of Byte Relay)",
+    "four verified variants (the product over two slots)",
+    "payloads of 4 and 513 bytes",
+    "controlled loss of CPU_WASM64 reselects the all-WEBGPU variant at E1"
+   ],
+   "checks": [
+    {
+     "check": "build_ok",
+     "status": "PASS",
+     "detail": "factc exit 0; diagnostics OK"
+    },
+    {
+     "check": "bundle_certificate_pass",
+     "status": "PASS",
+     "detail": "26/26 checks"
+    },
+    {
+     "check": "strategy_strength",
+     "status": "PASS",
+     "detail": "strength EXACT_OPTIMUM (expected EXACT_OPTIMUM)"
+    },
+    {
+     "check": "transfers_listed_in_source_order",
+     "status": "PASS",
+     "detail": "[{\"relation\":\"feed\",\"type\":\"Chunk\",\"mode\":\"copy\"},{\"relation\":\"drain\",\"type\":\"Chunk\",\"mode\":\"copy\"}]"
+    },
+    {
+     "check": "variant_count",
+     "status": "PASS",
+     "detail": "4 variants (expected 4)"
+    },
+    {
+     "check": "every_variant_realizes_every_transfer",
+     "status": "PASS",
+     "detail": "0:feed<-CPU_WASM64,drain<-CPU_WASM64 | 1:feed<-WEBGPU,drain<-CPU_WASM64 | 2:feed<-CPU_WASM64,drain<-WEBGPU | 3:feed<-WEBGPU,drain<-WEBGPU"
+    },
+    {
+     "check": "guard_is_union_of_requirement_backends",
+     "status": "PASS",
+     "detail": ""
+    },
+    {
+     "check": "strategy_identity_constant",
+     "status": "PASS",
+     "detail": "STRATEGY_SHA256 2292e2eef2dca72ccfd02bc2dc49c6dcf0dfee45f18de517bb63a6c18cdf2790"
+    },
+    {
+     "check": "manifest_names_strategy_identity",
+     "status": "PASS",
+     "detail": "2292e2eef2dca72ccfd02bc2dc49c6dcf0dfee45f18de517bb63a6c18cdf2790"
+    },
+    {
+     "check": "browser_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":2,\"payloads\":2,\"e0_all_exact\":true,\"e0_backends\":[\"CPU_WASM64\"],\"e0_plan\":0,\"loss_attempted\":\"CPU_WASM64\",\"loss_witnessed\":true,\"e1_plan\":3,\"e1_all_exact\":true,\"e1_backends\":[\"WEBGPU\"],\"epochs\":[\"E0\",\"E1\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "browser_no_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":2,\"payloads\":2,\"e0_all_exact\":true,\"e0_backends\":[\"CPU_WASM64\"],\"e0_plan\":0,\"loss_attempted\":null,\"loss_witnessed\":null,\"e1_plan\":null,\"e1_all_exact\":null,\"e1_backends\":null,\"epochs\":[\"E0\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "tape_executes_every_transfer",
+     "status": "PASS",
+     "detail": "executed [\"drain\",\"feed\"]"
+    },
+    {
+     "check": "observe_ok_and_bound",
+     "status": "PASS",
+     "detail": "observe exit 0"
+    },
+    {
+     "check": "observe_transition_E0_E1",
+     "status": "PASS",
+     "detail": ""
+    },
+    {
+     "check": "bundle_integrity_and_tamper_detected",
+     "status": "PASS",
+     "detail": "PASS integrity PASS (7 files, 0 problems); tamper of selector.js DETECTED"
+    }
+   ],
+   "strategy_sha256": "2292e2eef2dca72ccfd02bc2dc49c6dcf0dfee45f18de517bb63a6c18cdf2790",
+   "bundle_id": "c003ddd539ab67748ed8ab1a36533e88375daf66f42ddfac629bbe28986cd5ae"
+  },
+  {
+   "specimen": "ledger-mirror",
+   "system": "ledger_mirror",
+   "varies": [
+    "system name ledger_mirror",
+    "three components (clerk, journal, archive)",
+    "TWO relations (post, mirror) of type Entry",
+    "payloads of 1, 0 and 1000 bytes",
+    "single backend registry (CPU_WASM64 only; recipe R_ENTRY_COPY of its own name)",
+    "no objective (FEASIBLE strategy)",
+    "controlled loss of the only backend leaves E1 with no active plan"
+   ],
+   "checks": [
+    {
+     "check": "build_ok",
+     "status": "PASS",
+     "detail": "factc exit 0; diagnostics OK"
+    },
+    {
+     "check": "bundle_certificate_pass",
+     "status": "PASS",
+     "detail": "26/26 checks"
+    },
+    {
+     "check": "strategy_strength",
+     "status": "PASS",
+     "detail": "strength FEASIBLE (expected FEASIBLE)"
+    },
+    {
+     "check": "transfers_listed_in_source_order",
+     "status": "PASS",
+     "detail": "[{\"relation\":\"post\",\"type\":\"Entry\",\"mode\":\"copy\"},{\"relation\":\"mirror\",\"type\":\"Entry\",\"mode\":\"copy\"}]"
+    },
+    {
+     "check": "variant_count",
+     "status": "PASS",
+     "detail": "1 variants (expected 1)"
+    },
+    {
+     "check": "every_variant_realizes_every_transfer",
+     "status": "PASS",
+     "detail": "0:post<-CPU_WASM64,mirror<-CPU_WASM64"
+    },
+    {
+     "check": "guard_is_union_of_requirement_backends",
+     "status": "PASS",
+     "detail": ""
+    },
+    {
+     "check": "strategy_identity_constant",
+     "status": "PASS",
+     "detail": "STRATEGY_SHA256 b24987f2fb65946daf9605143dcb0d92d02214722ae3e6b5ffdb264c5445d142"
+    },
+    {
+     "check": "manifest_names_strategy_identity",
+     "status": "PASS",
+     "detail": "b24987f2fb65946daf9605143dcb0d92d02214722ae3e6b5ffdb264c5445d142"
+    },
+    {
+     "check": "browser_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":2,\"payloads\":3,\"e0_all_exact\":true,\"e0_backends\":[\"CPU_WASM64\"],\"e0_plan\":0,\"loss_attempted\":\"CPU_WASM64\",\"loss_witnessed\":true,\"e1_plan\":null,\"e1_all_exact\":null,\"e1_backends\":null,\"epochs\":[\"E0\",\"E1\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "browser_no_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":2,\"payloads\":3,\"e0_all_exact\":true,\"e0_backends\":[\"CPU_WASM64\"],\"e0_plan\":0,\"loss_attempted\":null,\"loss_witnessed\":null,\"e1_plan\":null,\"e1_all_exact\":null,\"e1_backends\":null,\"epochs\":[\"E0\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "tape_executes_every_transfer",
+     "status": "PASS",
+     "detail": "executed [\"mirror\",\"post\"]"
+    },
+    {
+     "check": "observe_ok_and_bound",
+     "status": "PASS",
+     "detail": "observe exit 0"
+    },
+    {
+     "check": "observe_no_active_plan_E1",
+     "status": "PASS",
+     "detail": "E1 activated no plan; transition derived, no fallback invented"
+    },
+    {
+     "check": "bundle_integrity_and_tamper_detected",
+     "status": "PASS",
+     "detail": "PASS integrity PASS (7 files, 0 problems); tamper of selector.js DETECTED"
+    }
+   ],
+   "strategy_sha256": "b24987f2fb65946daf9605143dcb0d92d02214722ae3e6b5ffdb264c5445d142",
+   "bundle_id": "8f6a79646e3e46607116556c17454278b7cf33392d7e8817182736f98ad0cd33"
+  },
+  {
+   "specimen": "pixel-vault",
+   "system": "pixel_vault",
+   "varies": [
+    "system name pixel_vault",
+    "relation stash of type Tile",
+    "GPU-only registry (WEBGPU READY, CPU_WASM64 status=GAP)",
+    "conversion path tile_up/tile_down",
+    "odd payload sizes 3 and 17",
+    "without WebGPU no plan activates at E0 (NO_ACTIVE_PLAN), and no fake CPU fallback appears"
+   ],
+   "checks": [
+    {
+     "check": "build_ok",
+     "status": "PASS",
+     "detail": "factc exit 0; diagnostics OK"
+    },
+    {
+     "check": "bundle_certificate_pass",
+     "status": "PASS",
+     "detail": "22/22 checks"
+    },
+    {
+     "check": "strategy_strength",
+     "status": "PASS",
+     "detail": "strength FEASIBLE (expected FEASIBLE)"
+    },
+    {
+     "check": "transfers_listed_in_source_order",
+     "status": "PASS",
+     "detail": "[{\"relation\":\"stash\",\"type\":\"Tile\",\"mode\":\"copy\"}]"
+    },
+    {
+     "check": "variant_count",
+     "status": "PASS",
+     "detail": "1 variants (expected 1)"
+    },
+    {
+     "check": "every_variant_realizes_every_transfer",
+     "status": "PASS",
+     "detail": "0:stash<-WEBGPU"
+    },
+    {
+     "check": "guard_is_union_of_requirement_backends",
+     "status": "PASS",
+     "detail": ""
+    },
+    {
+     "check": "strategy_identity_constant",
+     "status": "PASS",
+     "detail": "STRATEGY_SHA256 dfdceb5aab517ceb2954c015157a272e8a0bf023a7b8dea328dc1149d7e9207b"
+    },
+    {
+     "check": "manifest_names_strategy_identity",
+     "status": "PASS",
+     "detail": "dfdceb5aab517ceb2954c015157a272e8a0bf023a7b8dea328dc1149d7e9207b"
+    },
+    {
+     "check": "browser_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":1,\"payloads\":2,\"e0_all_exact\":true,\"e0_backends\":[\"WEBGPU\"],\"e0_plan\":0,\"loss_attempted\":\"WEBGPU\",\"loss_witnessed\":true,\"e1_plan\":null,\"e1_all_exact\":null,\"e1_backends\":null,\"epochs\":[\"E0\",\"E1\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "browser_no_webgpu_run",
+     "status": "PASS",
+     "detail": "{\"transfers_executed\":1,\"payloads\":2,\"e0_all_exact\":false,\"e0_backends\":[null],\"e0_plan\":null,\"loss_attempted\":null,\"loss_witnessed\":null,\"e1_plan\":null,\"e1_all_exact\":null,\"e1_backends\":null,\"epochs\":[\"E0\"],\"no_compiler_invoked\":true,\"bundle_unchanged\":true,\"expectations_met\":true}"
+    },
+    {
+     "check": "tape_executes_every_transfer",
+     "status": "PASS",
+     "detail": "executed [\"stash\"]"
+    },
+    {
+     "check": "observe_ok_and_bound",
+     "status": "PASS",
+     "detail": "observe exit 0"
+    },
+    {
+     "check": "observe_no_active_plan_E1",
+     "status": "PASS",
+     "detail": "E1 activated no plan; transition derived, no fallback invented"
+    },
+    {
+     "check": "bundle_integrity_and_tamper_detected",
+     "status": "PASS",
+     "detail": "PASS integrity PASS (6 files, 0 problems); tamper of selector.js DETECTED"
+    }
+   ],
+   "strategy_sha256": "dfdceb5aab517ceb2954c015157a272e8a0bf023a7b8dea328dc1149d7e9207b",
+   "bundle_id": "216b2f740a2a72d6262a72ead04dd95f3dada165dc7abeeccb135c2cd063ae4b"
+  }
+ ],
+ "cross_specimen": [
+  {
+   "check": "no_foreign_semantics_in_byte-relay",
+   "status": "PASS",
+   "detail": "clean"
+  },
+  {
+   "check": "no_foreign_semantics_in_dual-stream",
+   "status": "PASS",
+   "detail": "clean"
+  },
+  {
+   "check": "no_foreign_semantics_in_ledger-mirror",
+   "status": "PASS",
+   "detail": "clean"
+  },
+  {
+   "check": "no_foreign_semantics_in_pixel-vault",
+   "status": "PASS",
+   "detail": "clean"
+  }
+ ],
+ "status": "PASS"
+}

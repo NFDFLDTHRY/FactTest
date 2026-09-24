@@ -1,0 +1,48 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "test",
+    "--message-format=json"
+  ],
+  "exit": 0,
+  "packages": [
+    "m6-native-pass-wasm64-fail"
+  ],
+  "selection": [
+    "m6-native-pass-wasm64-fail:m6_native_pass_wasm64_fail[lib]",
+    "m6-native-pass-wasm64-fail:m6_native_pass_wasm64_fail[lib]{test}"
+  ],
+  "tests": {
+    "binaries": [
+      {
+        "target": "unittests src/lib.rs",
+        "exe": "../target/debug/deps/m6_native_pass_wasm64_fail-5c13017d73a5acc0"
+      },
+      {
+        "target": "doc-tests m6_native_pass_wasm64_fail",
+        "exe": null
+      }
+    ],
+    "results": [
+      {
+        "status": "ok",
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "status": "ok",
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      }
+    ],
+    "passed": 1,
+    "failed": 0,
+    "failed_names": [],
+    "finished": "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.20s"
+  },
+  "reason": "exit 0; packages [m6-native-pass-wasm64-fail]; 1 passed / 0 failed"
+}

@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-WASM-JSAPI-MEMORIES",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://webassembly.github.io/spec/js-api/",
+  "fragment": "#memories",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "Status: ED, Level 2 (TR: wasm-js-api-2)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "path": "document/js-api/index.bs",
+  "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+  "observed": "2026-09-24",
+  "locator": "<h3 id=\"memories\"> (line 800); enum AddressType (line 682)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#memories",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 800,
+   "kind": "id attribute"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 800,
+   "kind": "id attribute"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   800,
+   800
+  ],
+  "window_sha256": "cdd79a1febe00939f57682f5d8d8a11e36080dab5a8f6b15f46d253aeeff22ac",
+  "window_excerpt": "<h3 id=\"memories\">Memories</h3>",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   800,
+   800
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "ED",
+   "group": "wasm",
+   "level": "2"
+  },
+  "declared_at_tip": {
+   "status": "ED",
+   "group": "wasm",
+   "level": "2"
+  },
+  "drift": "NONE"
+ }
+}

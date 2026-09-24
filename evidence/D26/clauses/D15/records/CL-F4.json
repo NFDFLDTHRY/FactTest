@@ -1,0 +1,29 @@
+{
+ "id": "CL-F4",
+ "trace": "F",
+ "authority": "AUTH-SW-REGISTER-TRUST",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/ServiceWorker",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+  "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+  "bytes": 297377
+ },
+ "locator": {
+  "text": "<a>potentially trustworthy origin</a> with the",
+  "line_start": 2759,
+  "line_end": 2761,
+  "derivation": "anchor text",
+  "enclosing_section": "#register-algorithm (line 2752)"
+ },
+ "window": 3,
+ "consequence": "registration requires a potentially trustworthy script origin: the seed's home origin must be HTTPS or loopback (D-1)",
+ "excerpt": "      1. If the result of running <a>potentially trustworthy origin</a> with the [=environment settings object/origin=] of |job|'s [=job/script url=] as the argument is <code>Not Trusted</code>, then:\n          1. Invoke [=Reject Job Promise=] with |job| and \"{{SecurityError}}\" {{DOMException}}.\n          1. Invoke <a>Finish Job</a> with |job| and abort these steps.",
+ "excerpt_sha256": "328bbf8f3e553f6f0c339bae7b9e73588c3917ca0c03887d7c327ff1951f70a1",
+ "must_contain": {
+  "Not Trusted": true
+ },
+ "status": "VERIFIED"
+}

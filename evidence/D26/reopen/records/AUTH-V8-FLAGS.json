@@ -1,0 +1,69 @@
+{
+ "authority": "AUTH-V8-FLAGS",
+ "authority_class": "IMPLEMENTATION_SOURCE",
+ "cited": {
+  "url": "https://source.chromium.org/chromium/chromium/src/+/main:v8/src/flags/flag-definitions.h",
+  "fragment": null,
+  "fragment_status_recorded": "NO_FRAGMENT_CITED",
+  "maturity_recorded": "source at the pinned commit (V8 main, newer than the V8 inside Chromium 141)",
+  "observed_recorded": "2026-09-24",
+  "reopen_recorded": "OPENED"
+ },
+ "pin": {
+  "repo": "https://github.com/v8/v8",
+  "branch": "main",
+  "commit": "36de2a2334c9129db7f6fe0db76fd7d5fa64df78",
+  "path": "src/flags/flag-definitions.h",
+  "sha256": "1940dff6a404265f61f0fd763ca36a3ceba47ab5a3a9d2a7b44c79dbd6cc780d",
+  "observed": "2026-09-24",
+  "locator": "lines 2289-2295"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "361d00046cdd30d7c70a2cd313baa3ca95186524"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "1940dff6a404265f61f0fd763ca36a3ceba47ab5a3a9d2a7b44c79dbd6cc780d",
+ "tip_relation": "TIP MOVED, FILE CHANGED",
+ "tip_sha256": "dc3d9a60f424540ec1658ef823dc095456e006dfb64ce56ff41fbb2945cf01c4",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   2289,
+   2295
+  ],
+  "window_sha256": "be5553149ee2e6dfb97dcd1db148ee4ad14ebd2d28f2d881f838bd9af46f162c",
+  "window_excerpt": "    V8_TARGET_ARCH_LOONG64\nDEFINE_BOOL(wasm_memory64_trap_handling, true,\n            \"Use trap handling for Wasm memory64 bounds checks\")\n#else\nDEFINE_BOOL_READONLY(wasm_memory64_trap_handling, false,\n                     \"Use trap handling for Wasm memory64 bounds checks (not \"\n                     \"supported for this architecture)\")",
+  "tip_lines": [
+   2289,
+   2295
+  ],
+  "status": "UNCHANGED (clause identical, same lines)"
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 2289,
+  "candidates": {
+   "note": "implementation source: line-anchored, no published fragment semantics"
+  }
+ }
+}

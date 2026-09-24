@@ -1,0 +1,4 @@
+$ sh -c I=design/materialization/D26-INTENDED-CLEAN-COMMISSIONING.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && ! grep -q PREDICTIONS_PLACEHOLDER $I && grep -q 'integrated as 2c0aeda' design/materialization/LEDGER.md && grep -q '^## D26-CLEAN-COMMISSIONING' design/materialization/LEDGER.md && ! grep -q PREDICTIONS_PLACEHOLDER design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]
+(cwd .)
+
+[exit 0] expected 0

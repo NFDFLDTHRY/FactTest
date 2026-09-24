@@ -286,4 +286,11 @@ D25    D25-PHYSICAL-RUNTIME            the four fresh bundles driven as webapps 
                                    unreachable from this environment: an exact [UNK] boundary with a deployable
                                    probe (tests/physical/PUBLIC-HTTPS-PROBE.md); epochs/D25.json (two [RUN], one
                                    [OBS], one [UNK]).
+D26    D26-CLEAN-COMMISSIONING         the complete implemented system manufactured, verified and executed from the
+                                   canonical source on a clean workpiece with fresh build directories; the STALE_IF
+                                   selection over the D25 graph re-proved through the runbook (every selected claim
+                                   mapped: groups manifest, physical, qualified-proof + crate DAG, kernel-sections,
+                                   identity, lineage, status, clauses, reopen, ingress); the consistency audit and the
+                                   six-task final condition computed from evidence; epochs/D26.json = re-proof fragment
+                                   + facts fragment (three [RUN] facts).  The series D21-D26 closes here.
 ```

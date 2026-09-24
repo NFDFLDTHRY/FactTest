@@ -1,0 +1,108 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "identity",
+ "kind": "cite",
+ "started": "2026-09-24T18:51:16.123Z",
+ "commands": [],
+ "facts": {
+  "FACT-D19-LAUNCHED-EXECUTABLE": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "f1a6fa3fb44103ab793621dfca867f40dfe2cf2f51fefe8032ce84d0a3da11c6",
+     "checks": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "observed": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "e09a10cbe0c416d9edec8a43cb190737da26d2b0ca45b555e819252114787755",
+     "checks": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "observed": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D20-LAUNCHED-EXECUTABLE": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "f1a6fa3fb44103ab793621dfca867f40dfe2cf2f51fefe8032ce84d0a3da11c6",
+     "checks": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "observed": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "e09a10cbe0c416d9edec8a43cb190737da26d2b0ca45b555e819252114787755",
+     "checks": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "observed": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-LOOPBACK-SECURE-CONTEXT": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "f1a6fa3fb44103ab793621dfca867f40dfe2cf2f51fefe8032ce84d0a3da11c6",
+     "checks": [
+      {
+       "path": "page.isSecureContext",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "e09a10cbe0c416d9edec8a43cb190737da26d2b0ca45b555e819252114787755",
+     "checks": [
+      {
+       "path": "page.isSecureContext",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T18:51:16.126Z",
+ "status": "PASS"
+}

@@ -1,0 +1,47 @@
+{
+ "crate": "factc",
+ "set": "HOST_NATIVE_SET",
+ "toolchain": "1.94.1",
+ "path": "host/factc/Cargo.toml",
+ "dependencies": [
+  "factc-foundation",
+  "factc-kernel"
+ ],
+ "consumers": [],
+ "steps": [
+  {
+   "step": "build-dev",
+   "command": "cargo +1.94.1 build -p factc",
+   "exit": 0,
+   "ms": 28,
+   "tail": [
+    "Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "build-release",
+   "command": "cargo +1.94.1 build --release -p factc",
+   "exit": 0,
+   "ms": 29,
+   "tail": [
+    "Finished `release` profile [optimized] target(s) in 0.01s"
+   ]
+  },
+  {
+   "step": "focused-tests",
+   "command": "cargo +1.94.1 test -p factc",
+   "exit": 0,
+   "ms": 113,
+   "tests": {
+    "passed": 8,
+    "failed": 0
+   },
+   "tail": [
+    "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s",
+    "     Running unittests src/main.rs (/home/user/factory-builds/d26-commission-target/debug/deps/factc-3bce99a9ab01d2dd)",
+    "     Running tests/driver.rs (/home/user/factory-builds/d26-commission-target/debug/deps/driver-e3cf271627571e89)"
+   ]
+  }
+ ],
+ "verdict": "PASS"
+}

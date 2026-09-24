@@ -1,0 +1,31 @@
+{
+ "id": "CL-DO2",
+ "trace": "DO",
+ "authority": "AUTH-DEVICE-ORIENTATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/deviceorientation",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+  "sha256": "f07509380267b8f3f5d6e7ccd4e2eb64ba35d5c88e2f67573140163bb7e40520",
+  "bytes": 69351
+ },
+ "locator": {
+  "text": "The <dfn method for=\"DeviceOrientationEvent\">requestPermission(|absolute|)</dfn> method steps are:",
+  "line_start": 294,
+  "line_end": 306,
+  "derivation": "anchor text",
+  "enclosing_section": "#deviceorientation (line 257)"
+ },
+ "window": 13,
+ "consequence": "requestPermission rejects NotAllowedError when a permission is still prompt and there is no transient activation: automation needs a granted state or a user gesture",
+ "excerpt": "The <dfn method for=\"DeviceOrientationEvent\">requestPermission(|absolute|)</dfn> method steps are:\n\n 1. Let |global| be the [=current global object=].\n 1. Let |hasTransientActivation| be true if [=this=]'s [=relevant global object=] has [=transient activation=], and false otherwise.\n 1. Let |promise| be [=a new promise=] in [=this=]'s [=relevant Realm=].\n 1. Let |permissions| be « <a permission>\"accelerometer\"</a>, <a permission>\"gyroscope\"</a> ».\n 1. If |absolute| is true, [=set/append=] <a permission>\"magnetometer\"</a> » to |permissions|.\n 1. Run these steps <a>in parallel</a>:\n     1. [=list/For each=] |name| of |permissions|:\n         1. If |name|'s [=permission state=] is \"{{PermissionState/prompt}}\" and |hasTransientActivation| is false:\n             1. [=Queue a global task=] on the [=device motion and orientation task source=] given |global| to [=reject=] |promise| with a \"{{NotAllowedError}}\" {{DOMException}}.\n             1. Return.\n     1. Let |permissionState| be \"{{PermissionState/granted}}\".",
+ "excerpt_sha256": "93130a1e9fa551fbd8ef5f8f93e9adf3ab43df3d9c4ef9ea12865171bdf95eee",
+ "must_contain": {
+  "[=transient activation=]": true,
+  "is \"{{PermissionState/prompt}}\" and |hasTransientActivation| is false": true,
+  "\"{{NotAllowedError}}\"": true
+ },
+ "status": "VERIFIED"
+}

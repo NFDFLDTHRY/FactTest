@@ -1,0 +1,295 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "qualified-proof",
+ "kind": "build",
+ "started": "2026-09-24T18:48:47.176Z",
+ "commands": [
+  {
+   "command": "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -p factory",
+   "exit": 0,
+   "seconds": 2
+  },
+  {
+   "command": "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} sh tests/toolchain/run-qualified-proof.sh evidence/D26/proof",
+   "exit": 0,
+   "seconds": 120
+  },
+  {
+   "command": "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} node tests/toolchain/run-crate-dag.mjs --out evidence/D26/crates --target ${REPROVE_TARGET:-/home/user/factory-builds/d19-target} --browser-probe evidence/D26/proof/wasm64/Q-WASM-08-chromium-build-release.json",
+   "exit": 0,
+   "seconds": 27
+  }
+ ],
+ "facts": {
+  "FACT-COMPILE-FAIL-WITNESSED": {
+   "probe": "PROBE-COMPILE-FAIL-DIAG",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/host/Q-HOST-06-std-in-kernel.json",
+     "sha256": "58d31d4408f9f5ea42ad6ab93fb18ccfb16010f4ded89ef40b86b6f0e2672640",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/host/Q-HOST-07-id-substitution.json",
+     "sha256": "0d37ad2a4c5a3b4c629d182857adb7af6296d75b6bd2e37b4cdb310c47d3cb55",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/host/Q-HOST-08-forge-verified-strategy.json",
+     "sha256": "b54a2beecee65563712c7d174c8b44e0736f4e0f0919fb1504cc1b711c47395e",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-CORE-ONLY-GRAPH": {
+   "probe": "PROBE-NOSTD-GRAPH",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-02-core-only-graph-dev.json",
+     "sha256": "0ff0d5423e30986166edef986856e912a12c2a205e93a90410167fd3dbab480f",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/wasm64/Q-WASM-03-core-only-graph-release.json",
+     "sha256": "9f043018384d431f30ed895598b6455733e77bfda5c505a5928a5126f0c3c336",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D23-COMPILER-DAG-EXECUTED": {
+   "probe": "PROBE-CRATE-DAG",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "crates/summary.json",
+     "sha256": "18fd4d2c48487c1d8ab3da6243e98404e059cba37f0f0b485fa7ebb5ca2b1fbe",
+     "checks": [
+      {
+       "path": "status",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      },
+      {
+       "path": "tests_run.failed",
+       "eq": 0,
+       "observed": 0,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D23-QUALIFIED-PROOF": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/summary.json",
+     "sha256": "5af3ea340c66580393a5e354208b3e84e94f11388075509fd6d9744078d71351",
+     "checks": [
+      {
+       "path": "tally.FAIL",
+       "absent": true,
+       "observed": "(absent)",
+       "ok": true
+      },
+      {
+       "path": "mutants.verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D23-WASM-TRANSPORT-COMPLETE": {
+   "probe": "PROBE-BROWSER-BUILD",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-08-chromium-build-release.json",
+     "sha256": "66b9b36f3242b6a9691312539173b1b575e31b942b8b6a49a020ecf51db3c5b5",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-FIRST-PARTY-GRAPH": {
+   "probe": "PROBE-DEPS-AUDIT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/all/Q-ALL-02-resolved-graph-first-party.json",
+     "sha256": "691cd8304f59ef9a809dfe1915e21b0ae87f985879d8da25f1034cd0dfe4fa74",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/all/Q-ALL-03-third-party-dep-fixture-rejected.json",
+     "sha256": "a32e17b2a8a83f154a94ef8f3f2ca36876e93cba2a9979121650e88b37e9ba26",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-PROOF-SETS-DECLARED": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/sets/T13-SETS-01-roots-partition.json",
+     "sha256": "73f1bb15ea414df3d3d38b51e77e8510627c139635396923ece0bf7381cb6c08",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-QUALIFIED-JUDGE-RERUN": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/summary.json",
+     "sha256": "5af3ea340c66580393a5e354208b3e84e94f11388075509fd6d9744078d71351",
+     "checks": [
+      {
+       "path": "mutants.verdict",
+       "eq": "RUN",
+       "observed": "RUN",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-TOOLCHAIN-PINNED": {
+   "probe": "PROBE-QUALIFIED-PROOF",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/pins/T13-PIN-01-toolchain-pins.json",
+     "sha256": "7410aed91ddab051447e54f3d08f91349acc3c119575040e1caa252f59981d83",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-WASM64-MODULE-I64": {
+   "probe": "PROBE-WASM-INSPECT",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "proof/wasm64/Q-WASM-04-inspect-release.json",
+     "sha256": "e180cb990a6672926ee1e7d32061c6685f6edf7017a3fb0da76c8d5e490fabf2",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "proof/wasm64/Q-WASM-05-inspect-dev.json",
+     "sha256": "07f958e7978c283881eb3fb93014645737486203ea8725e0b22b5bb9c1cad93b",
+     "checks": [
+      {
+       "path": "verdict",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T18:51:16.045Z",
+ "status": "PASS"
+}

@@ -1,0 +1,58 @@
+{
+  "host": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "abi_version": 1,
+  "required_workspace": "2865440",
+  "input_buffer_len": "524288",
+  "memory_pages": 319,
+  "imports": [],
+  "exports": [
+    "memory:memory",
+    "artifact_count:function",
+    "bundle_file_bytes:function",
+    "bundle_file_count:function",
+    "bundle_file_path:function",
+    "check_or_compile:function",
+    "input_buffer_len:function",
+    "input_buffer_ptr:function",
+    "observe:function",
+    "output_buffer_ptr:function",
+    "query_abi_version:function",
+    "query_required_workspace:function",
+    "read_artifact:function",
+    "read_artifact_metadata:function",
+    "read_diagnostics:function",
+    "reset_workspace:function",
+    "submit_contracts:function",
+    "submit_evidence_tape:function",
+    "submit_machine_state:function",
+    "submit_metrics:function",
+    "submit_source_bytes:function",
+    "output_buffer_len:function"
+  ],
+  "source_id_plus_one": 1,
+  "status": 2,
+  "diagnostics": {
+    "abi_version": 1,
+    "kernel_version": 1,
+    "status": "DIAGNOSTICS",
+    "overflowed": false,
+    "diagnostics": [
+      {
+        "code": "PARSE_MISSING_SYSTEM",
+        "code_id": 105,
+        "severity": "ERROR",
+        "phase": "PARSE",
+        "source": 0,
+        "primary": null,
+        "related": [],
+        "message_class": "source unit declares no @{system}",
+        "params": [
+          0,
+          0,
+          0
+        ],
+        "authority": null
+      }
+    ]
+  }
+}

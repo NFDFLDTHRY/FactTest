@@ -1,0 +1,18 @@
+$ sh -c node tests/audit/consistency-audit.mjs --current-delta D26-CLEAN-COMMISSIONING --manifest evidence/D26/manifest.json --gate evidence/D26/gate.json --graph design/environment-map/graph.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D26/envmap/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D26/audit/consistency-final.json
+(cwd .)
+PASS [LIVE LAW = CURRENT IMPLEMENTATION CONTRACT] every_law_file_held: 32 law files each named by the graph, by a component's owner or by the handoff document register
+PASS [LIVE LAW = CURRENT IMPLEMENTATION CONTRACT] every_live_owner_exists: 55 live components; 45 owner files present
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] every_path_tiered: 4434 tracked files in 70 components
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] every_live_component_has_files: 55 live components with files
+PASS [CURRENT IMPLEMENTATION = EXECUTION MANIFEST] manifest_gate_pass: gate PASS: every_path_tiered, coverage_complete, live_components_connected, findings_classified, issues_well_formed, historical_not_executable
+PASS [EXECUTION MANIFEST = FACTORY ROUTES] every_live_file_within_its_station: 10 registered stations cover every file of every live component
+PASS [EXECUTION MANIFEST = FACTORY ROUTES] no_live_file_without_authorized_station: every live file has an authorized station
+PASS [FACTORY ROUTES = RECEIPTS / VERIFICATION] every_delta_receipted_and_verified: 33 integrated deltas, each with a PASS receipt per fixture and a PASS verification (D26-CLEAN-COMMISSIONING is verified by the Factory after this audit)
+PASS [FACTORY ROUTES = RECEIPTS / VERIFICATION] every_ledger_integration_commit_exists: 34 ledger entries; every recorded integration commit exists and names its delta
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] every_run_claim_claimable_or_invalidated: 126 RUN claims = 125 claimable + 1 invalidated
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] every_non_run_fact_is_an_explicit_stop: 22 GAP/ERR/UNK current facts: 20 open stops, 2 closed by evidence
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] no_open_internal_defect: 25 A/B/C issues all REPAIRED
+PASS [CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY] open_issues_are_boundaries: 11 open issues, every one class D/E/F/G (I-02:F, I-03:F, I-04:F, I-12:G, I-13:G, I-15:D, I-16:E, I-17:F, I-18:G, I-29:G, I-33:D)
+PASS
+
+[exit 0] expected 0

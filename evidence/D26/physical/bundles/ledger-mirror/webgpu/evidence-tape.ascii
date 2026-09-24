@@ -1,0 +1,15 @@
+@{bundle strategy_data="b24987f2fb65946daf9605143dcb0d92d02214722ae3e6b5ffdb264c5445d142" strategy=1 certificate=1000}
+@{epoch E0}
+@{admission CPU_WASM64 ADMITTED evidence=wasm64_known_answer}
+@{activation E0 plan=0 status=PASS}
+@{executed E0 plan=0 relation=post bytes=1 input="684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1" output="684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1" exact=true}
+@{executed E0 plan=0 relation=post bytes=0 input="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" output="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" exact=true}
+@{executed E0 plan=0 relation=post bytes=1000 input="533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba" output="533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba" exact=true}
+@{executed E0 plan=0 relation=mirror bytes=1 input="684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1" output="684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1" exact=true}
+@{executed E0 plan=0 relation=mirror bytes=0 input="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" output="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" exact=true}
+@{executed E0 plan=0 relation=mirror bytes=1000 input="533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba" output="533b698850849b7908b20a22658f639c0b2a476f1791f85f50188287c31a9aba" exact=true}
+@{loss E0 CPU_WASM64 reason=released}
+@{epoch E1}
+@{admission CPU_WASM64 REJECTED evidence=device_lost reason=released}
+@{activation E1 plan=none status=NO_ACTIVE_PLAN}
+@{transition E0 -> E1 stale_plan=0 replacement=none}

@@ -1,0 +1,156 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D26-CLEAN-COMMISSIONING-F7-evidence",
+  "station_id": "S-EVIDENCE",
+  "station_version": "1",
+  "fixture_id": "F7-evidence",
+  "workpiece_id": "W32",
+  "delta_id": "D26-CLEAN-COMMISSIONING",
+  "canonical_base": "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+  "input_artifacts": [
+    "the manifest of F6",
+    "tests/manifest/issues.json"
+  ],
+  "open_tree": "1ba55a0c209b8c27df3cb0d7e3e19bbee81f0e7a",
+  "close_tree": "e8eb533f48aee6d3ebb81b6d4dd7254b59a4a7dd",
+  "changed_paths": [
+    "evidence/D26/gate.json",
+    "evidence/D26/issues.json",
+    "evidence/D26/logs/F7-gate.log",
+    "evidence/D26/manifest.json"
+  ],
+  "output_artifacts": [
+    "evidence/D26/gate.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-EVIDENCE v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D26-CLEAN-COMMISSIONING"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "EVIDENCE_ASSEMBLER"
+    },
+    {
+      "check": "command_log_within_may_change:evidence/D26/logs/F7-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:evidence/D26/logs/F7-gate.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c cp design/execution-manifest/manifest.json evidence/D26/manifest.json && cp tests/manifest/issues.json evidence/D26/issues.json && node tests/manifest/gate.mjs --manifest evidence/D26/manifest.json --issues tests/manifest/issues.json --out evidence/D26/gate.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log evidence/D26/logs/F7-gate.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "read_only_station_source_nonmutating",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:evidence/D26/gate.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "evidence/D26/logs/F7-gate.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T18:54:52Z",
+  "status": "PASS"
+}

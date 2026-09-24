@@ -1,0 +1,30 @@
+{
+ "id": "CL-MC3",
+ "trace": "MC",
+ "authority": "AUTH-MEDIACAPTURE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/mediacapture-main",
+  "branch": "main",
+  "path": "getusermedia.html",
+  "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+  "sha256": "2807a41827e9573e6eed4be0116217a8053902dc621dc915d5ccc0d1322c9774",
+  "bytes": 309541
+ },
+ "locator": {
+  "text": "This specification defines two [=policy-controlled features=]",
+  "line_start": 5794,
+  "line_end": 5797,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-policy-integration (line 5793)"
+ },
+ "window": 4,
+ "consequence": "camera and microphone are policy-controlled features with default allowlist 'self'",
+ "excerpt": "    <p>This specification defines two [=policy-controlled features=]\n    identified by the strings <a>\"camera\"</a> and <a>\"microphone\"</a>.\n    Both have a [=policy-controlled feature/default allowlist=] of\n    <code class=permissionspolicy>\"self\"</code>.",
+ "excerpt_sha256": "8448f414bb2b6394024daac5b37f122d2c01343f861a7c6174fac27ca7415539",
+ "must_contain": {
+  "default allowlist=] of": true,
+  "\"self\"": true
+ },
+ "status": "VERIFIED"
+}

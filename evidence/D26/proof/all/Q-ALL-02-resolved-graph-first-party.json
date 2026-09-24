@@ -1,0 +1,705 @@
+{
+  "id": "Q-ALL-02-resolved-graph-first-party",
+  "class": "T9-P6",
+  "invariant": "first-party only: every package and dependency Cargo resolves is a path inside the repository",
+  "proof_set": "ALL_MEMBERS_GRAPH",
+  "evaluated": "2026-09-24T18:49:24.054Z",
+  "target": "none (cargo metadata)",
+  "profile": null,
+  "cwd": "/home/user/factory-workpieces/W32",
+  "toolchain": {
+    "channel": "1.94.1",
+    "requested": "stable",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "rustc_commit": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "rustc_release": "1.94.1",
+    "rustc_host": "x86_64-unknown-linux-gnu",
+    "llvm": "21.1.8",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "available": true,
+    "error": null
+  },
+  "verdict": "PASS",
+  "reason": "14 packages, all path sources inside root; 49 declared dependency edges all path-inside-root; resolve graph 14 nodes; physical manifests not in the product graph: fixtures/compiler/negative/forge-verified-strategy/Cargo.toml(excluded), fixtures/compiler/negative/id-substitution/Cargo.toml(excluded), fixtures/compiler/negative/std-in-kernel/Cargo.toml(excluded), fixtures/compiler/negative/third-party-dep/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/Cargo.toml(excluded), fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/Cargo.toml(excluded), fixtures/toolchain/mutants/M3-compile-fail-stale-forge/Cargo.toml(excluded), fixtures/toolchain/mutants/M4-nostd-scanner-bypass/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/Cargo.toml(excluded), fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml(excluded), fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/Cargo.toml(excluded), fixtures/toolchain/mutants/M7-wasm32-masquerade/Cargo.toml(excluded), fixtures/toolchain/mutants/M8-debug-pass-release-fail/Cargo.toml(excluded)",
+  "command": [
+    "cargo",
+    "+1.94.1",
+    "metadata",
+    "--format-version",
+    "1",
+    "--locked"
+  ],
+  "packages": [
+    {
+      "name": "factc",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "host/factc/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-bundle",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/bundle/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-capability",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/capability/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-codegen",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/codegen/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-foundation",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/foundation/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-implementation",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/implementation/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-kernel",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/kernel/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-observe",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/observe/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-planning",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/planning/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-semantic",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/semantic/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-source",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/source/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-verifier",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/verifier/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factc-wasm-abi",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "compiler/wasm-abi/Cargo.toml",
+      "inside_root": true
+    },
+    {
+      "name": "factory",
+      "version": "0.1.0",
+      "source": null,
+      "manifest": "factory/Cargo.toml",
+      "inside_root": true
+    }
+  ],
+  "dependencies": [
+    {
+      "from": "factc",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc",
+      "name": "factc-kernel",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/kernel",
+      "req": "*"
+    },
+    {
+      "from": "factc-bundle",
+      "name": "factc-codegen",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/codegen",
+      "req": "*"
+    },
+    {
+      "from": "factc-bundle",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-bundle",
+      "name": "factc-implementation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/implementation",
+      "req": "*"
+    },
+    {
+      "from": "factc-bundle",
+      "name": "factc-semantic",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/semantic",
+      "req": "*"
+    },
+    {
+      "from": "factc-bundle",
+      "name": "factc-verifier",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/verifier",
+      "req": "*"
+    },
+    {
+      "from": "factc-capability",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-capability",
+      "name": "factc-semantic",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/semantic",
+      "req": "*"
+    },
+    {
+      "from": "factc-capability",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-codegen",
+      "name": "factc-capability",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/capability",
+      "req": "*"
+    },
+    {
+      "from": "factc-codegen",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-codegen",
+      "name": "factc-implementation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/implementation",
+      "req": "*"
+    },
+    {
+      "from": "factc-codegen",
+      "name": "factc-semantic",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/semantic",
+      "req": "*"
+    },
+    {
+      "from": "factc-codegen",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-codegen",
+      "name": "factc-verifier",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/verifier",
+      "req": "*"
+    },
+    {
+      "from": "factc-implementation",
+      "name": "factc-capability",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/capability",
+      "req": "*"
+    },
+    {
+      "from": "factc-implementation",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-implementation",
+      "name": "factc-semantic",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/semantic",
+      "req": "*"
+    },
+    {
+      "from": "factc-implementation",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-bundle",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/bundle",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-capability",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/capability",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-codegen",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/codegen",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-implementation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/implementation",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-observe",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/observe",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-planning",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/planning",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-semantic",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/semantic",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-kernel",
+      "name": "factc-verifier",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/verifier",
+      "req": "*"
+    },
+    {
+      "from": "factc-observe",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-observe",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-planning",
+      "name": "factc-capability",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/capability",
+      "req": "*"
+    },
+    {
+      "from": "factc-planning",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-planning",
+      "name": "factc-implementation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/implementation",
+      "req": "*"
+    },
+    {
+      "from": "factc-planning",
+      "name": "factc-semantic",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/semantic",
+      "req": "*"
+    },
+    {
+      "from": "factc-planning",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-semantic",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-semantic",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-source",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-verifier",
+      "name": "factc-capability",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/capability",
+      "req": "*"
+    },
+    {
+      "from": "factc-verifier",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-verifier",
+      "name": "factc-implementation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/implementation",
+      "req": "*"
+    },
+    {
+      "from": "factc-verifier",
+      "name": "factc-planning",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/planning",
+      "req": "*"
+    },
+    {
+      "from": "factc-verifier",
+      "name": "factc-semantic",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/semantic",
+      "req": "*"
+    },
+    {
+      "from": "factc-verifier",
+      "name": "factc-source",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/source",
+      "req": "*"
+    },
+    {
+      "from": "factc-wasm-abi",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    },
+    {
+      "from": "factc-wasm-abi",
+      "name": "factc-kernel",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/kernel",
+      "req": "*"
+    },
+    {
+      "from": "factory",
+      "name": "factc-foundation",
+      "kind": "normal",
+      "target": null,
+      "source": null,
+      "path": "compiler/foundation",
+      "req": "*"
+    }
+  ],
+  "resolved_nodes": 14,
+  "physical_manifests": [
+    {
+      "manifest": "Cargo.toml",
+      "class": "root"
+    },
+    {
+      "manifest": "compiler/bundle/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/capability/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/codegen/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/foundation/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/implementation/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/kernel/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/observe/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/planning/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/semantic/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/source/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/verifier/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "compiler/wasm-abi/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "factory/Cargo.toml",
+      "class": "member"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/forge-verified-strategy/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/id-substitution/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/std-in-kernel/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/compiler/negative/third-party-dep/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M1-omitted-workspace-member/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M1-omitted-workspace-member/alpha/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M1-omitted-workspace-member/beta/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M2-compile-fail-wrong-reason/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M3-compile-fail-stale-forge/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M4-nostd-scanner-bypass/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M5-uninspected-manifest/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M5-uninspected-manifest/alpha/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M5-uninspected-manifest/gamma/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M6-native-pass-wasm64-fail/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M7-wasm32-masquerade/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "fixtures/toolchain/mutants/M8-debug-pass-release-fail/Cargo.toml",
+      "class": "excluded"
+    },
+    {
+      "manifest": "host/factc/Cargo.toml",
+      "class": "member"
+    }
+  ],
+  "unaccounted": [],
+  "offenders": [],
+  "note": "vendored third-party code inside root is indistinguishable from first-party by path rules alone [UNK]"
+}

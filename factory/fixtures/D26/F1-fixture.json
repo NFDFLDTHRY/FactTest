@@ -1,0 +1,63 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "D26 sections 1-3 (runbook, audit tools, registers)"
+  ],
+  "narrowed_may_change": [
+    "tests/reprove/runbook.json",
+    "tests/reprove/obligations.json",
+    "tests/audit/",
+    "tests/envmap/concat-epochs.mjs",
+    "tests/envmap/facts/D26.json",
+    "tests/manifest/components.json",
+    "tests/manifest/issues.json",
+    "factory/receipts/D26-CLEAN-COMMISSIONING/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node --check tests/audit/consistency-audit.mjs && node --check tests/audit/final-condition.mjs && node --check tests/envmap/concat-epochs.mjs && for j in tests/reprove/runbook.json tests/reprove/obligations.json tests/envmap/facts/D26.json tests/manifest/components.json tests/manifest/issues.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -nE \"'(FACT|EV|ENV|IMPL|PROBE)-[A-Z0-9]\" tests/audit/consistency-audit.mjs tests/audit/final-condition.mjs tests/envmap/concat-epochs.mjs && node -e 'const I=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/issues.json\")).issues;const by=Object.fromEntries(I.map(i=>[i.id,i]));if(by[\"I-35\"].covers.length!==0||!by[\"I-36\"]||!by[\"I-37\"]||by[\"I-37\"].class!==\"A\"||!/^REPAIRED/.test(by[\"I-37\"].status)||I.length!==37)process.exit(1);const C=JSON.parse(require(\"fs\").readFileSync(\"tests/manifest/components.json\")).components;const k=C.find(c=>c.id===\"KERNEL-LADDERS\");if(!k||k.station!==\"S-RUST\"||!C.some(c=>c.id===\"TEST-AUDIT\"))process.exit(1);const R=JSON.parse(require(\"fs\").readFileSync(\"tests/reprove/runbook.json\"));for(const g of [\"manifest\",\"physical\",\"qualified-proof\",\"kernel-sections\"])if(!R.groups[g])process.exit(1);const O=JSON.parse(require(\"fs\").readFileSync(\"tests/reprove/obligations.json\"));if(!O.obligations[\"R-65\"])process.exit(1);console.log(\"issues\",I.length,\"components\",C.length,\"runbook facts\",Object.keys(R.facts).length)' && echo 'syntax, JSON, no fact/evidence/node name in the audit tools; registers as intended'"
+        ],
+        "log": "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-syntax-registers.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "2c0aeda18d0b42eb97fa060f5603b65e986851cb",
+          "--",
+          "tests",
+          "fixtures",
+          ":!tests/reprove/runbook.json",
+          ":!tests/reprove/obligations.json",
+          ":!tests/audit",
+          ":!tests/envmap/concat-epochs.mjs",
+          ":!tests/envmap/facts/D26.json",
+          ":!tests/manifest/components.json",
+          ":!tests/manifest/issues.json"
+        ],
+        "log": "factory/receipts/D26-CLEAN-COMMISSIONING/logs/F1-other-tests-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/audit/consistency-audit.mjs",
+    "tests/audit/final-condition.mjs",
+    "tests/envmap/facts/D26.json",
+    "tests/reprove/runbook.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D26-CLEAN-COMMISSIONING"
+}

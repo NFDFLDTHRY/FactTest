@@ -1,0 +1,80 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "kernel-sections",
+ "kind": "build",
+ "started": "2026-09-24T18:46:43.913Z",
+ "commands": [
+  {
+   "command": "sh tests/implementation/build-kernels.sh evidence/D26/kernel ${REPROVE_KERNELS:-/home/user/factory-builds/d19-kernels}",
+   "exit": 0,
+   "seconds": 33
+  }
+ ],
+ "facts": {
+  "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT": {
+   "probe": "PROBE-KERNEL-SECTIONS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "kernel/sections.json",
+     "sha256": "ba390c6744b93e95e3265246bf125534255e1760d22197232e309eaaf26e175a",
+     "checks": [
+      {
+       "path": "identical_excluding_custom",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "differing_sections",
+       "eq": [
+        "custom:name"
+       ],
+       "observed": [
+        "custom:name"
+       ],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-KERNEL-IDENTITY-D24": {
+   "probe": "PROBE-KERNEL-SECTIONS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "kernel/sections.json",
+     "sha256": "ba390c6744b93e95e3265246bf125534255e1760d22197232e309eaaf26e175a",
+     "checks": [
+      {
+       "path": "identical_excluding_custom",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "builds.0.identity_excluding_custom",
+       "eq": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115",
+       "observed": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115",
+       "ok": true
+      },
+      {
+       "path": "builds.1.identity_excluding_custom",
+       "eq": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115",
+       "observed": "ef5d886aaf209752973ec9a80c341f73434b7821132dee52894972f085d44115",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [
+  "R-65"
+ ],
+ "finished": "2026-09-24T18:47:16.873Z",
+ "status": "PASS"
+}
