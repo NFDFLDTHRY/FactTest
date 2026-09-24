@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-HTML-WORKERS",
+ "authority_class": "LIVING_STANDARD",
+ "cited": {
+  "url": "https://html.spec.whatwg.org/multipage/workers.html",
+  "fragment": "#workers",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "Living Standard",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+  "path": "source",
+  "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+  "observed": "2026-09-24",
+  "locator": "<h2 id=\"workers\"> (line 134905); Worker() constructor prose (line 134951)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#workers",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 134905,
+   "kind": "id attribute"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 134905,
+   "kind": "id attribute"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   134905,
+   134905
+  ],
+  "window_sha256": "487e6231dd997769e19404017fba1e7c082ce7b913cf11f48e2141709daf8b10",
+  "window_excerpt": "  <h2 split-filename=\"workers\" id=\"workers\" dfn data-lt=\"web worker\" export>Web workers</h2>",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   134905,
+   134905
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-BR3",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-RUNTIME-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/platform/runtime_enabled_features.json5",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+  "bytes": 176139
+ },
+ "locator": {
+  "text": "name: \"DeviceOrientationRequestPermission\",",
+  "line_start": 1765,
+  "line_end": 1766,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 2,
+ "consequence": "DeviceOrientationEvent.requestPermission is experimental: not shipped",
+ "excerpt": "      name: \"DeviceOrientationRequestPermission\",\n      status: \"experimental\",",
+ "excerpt_sha256": "c720d5ded39cf49a386857daa001ebdf4601409c2889e3c433a63611f3074bf6",
+ "must_contain": {
+  "status: \"experimental\"": true
+ },
+ "status": "VERIFIED"
+}

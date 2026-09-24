@@ -1,0 +1,5 @@
+$ sh -c node -e 'const q=JSON.parse(require("fs").readFileSync("evidence/D17/envmap/queries/Q20.json")).answer;console.log(q.behaviors,JSON.stringify(q.by_relation),q.explained_facts,JSON.stringify(q.census_absences));if(!q.behaviors||q.census_absences.some(x=>!x.explained_by.length)||q.rows.some(r=>!r.implementation_layer.length))process.exit(1)'
+(cwd .)
+19 {"PLATFORM_DEFAULT":3,"FLAG_GATED":2,"CONFORMS":1,"HOST_CHOICE_PERMITTED":2,"EXPERIMENTAL_NOT_SHIPPED":3,"NOT_IMPLEMENTED":1,"SHIPPED":1,"TEST_HARNESS_CHOICE":3,"VERSION_SPECIFIC":1,"TOOLING":2} 39 [{"family":"CAP-WASM-SHARED-THREADS","explained_by":["IB-SAB-CONSTRUCTOR-HOOK"]},{"family":"CAP-WEBNN","explained_by":["IB-WEBNN-OFF-BY-DEFAULT"]},{"family":"CAP-MAGNETOMETER","explained_by":["IB-SENSOR-EXTRA-CLASSES"]},{"family":"CAP-PROXIMITY","explained_by":["IB-PROXIMITY-UNIMPLEMENTED"]},{"family":"CAP-AMBIENT-LIGHT","explained_by":["IB-SENSOR-EXTRA-CLASSES"]},{"family":"CAP-BLUETOOTH","explained_by":["IB-BLUETOOTH-PLATFORM-DEFAULT"]}]
+
+[exit 0] expected 0

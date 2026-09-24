@@ -1,0 +1,157 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D19-REPROVE-REOBSERVE-F11-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F11-fixture",
+  "workpiece_id": "W22",
+  "delta_id": "D19-REPROVE-REOBSERVE",
+  "canonical_base": "b509fb00920443930aa75b10dae05b9683d2fe1b",
+  "input_artifacts": [
+    "route finding before F8: Q22 presented [GAP] statements that later evidence INVALIDATED (closed history) as open stops"
+  ],
+  "open_tree": "010bf6a62d28a43f57d0d2e6f408329127522118",
+  "close_tree": "41345dde6c03240c60462613ea4c099ed30acd1c",
+  "changed_paths": [
+    "factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-q22-stops.log",
+    "factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-regression.log",
+    "factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-syntax-generic.log",
+    "tests/envmap/envmap.mjs"
+  ],
+  "output_artifacts": [
+    "tests/envmap/envmap.mjs"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D19-REPROVE-REOBSERVE"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-syntax-generic.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-regression.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-q22-stops.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c for f in tests/reprove/identity.mjs tests/reprove/select.mjs tests/reprove/run-selected.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs tests/reprove/gate.mjs tests/envmap/envmap.mjs tests/envmap/browser-probe.mjs tests/hygiene/status-scan.mjs; do node --check $f || exit 1; done; for j in dimensions runbook obligations; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' tests/reprove/$j.json || exit 1; done; ! grep -nE \"'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]\" tests/reprove/identity.mjs tests/reprove/select.mjs tests/reprove/run-selected.mjs tests/reprove/lineage.mjs tests/reprove/build-reprove.mjs tests/reprove/gate.mjs tests/envmap/envmap.mjs tests/envmap/browser-probe.mjs tests/hygiene/status-scan.mjs && git diff --exit-code b509fb00920443930aa75b10dae05b9683d2fe1b -- tests ':!tests/reprove' ':!tests/envmap/envmap.mjs' ':!tests/envmap/browser-probe.mjs' ':!tests/hygiene/status-scan.mjs' && echo 'tools parse; generic; no other test changed'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-syntax-generic.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 42 checks' && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q >/dev/null && for q in $(ls evidence/D18R/envmap/queries); do cmp evidence/D18R/envmap/queries/$q $T/q/$q || exit 1; done && node -e 'const a=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).answer;console.log(\"Q22\",a.current_facts,JSON.stringify(a.run_claims));if(a.current_facts!==109)process.exit(1)' $T/q/Q22.json && echo 'D18R graph: validate 42, render/merge identical, Q01-Q21 byte-identical to evidence/D18R'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-regression.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q >/dev/null && node -e 'const a=JSON.parse(require(\"fs\").readFileSync(process.argv[1])).answer;console.log(a.current_facts,JSON.stringify(a.by_status),JSON.stringify(a.run_claims),a.reproved_in_current_epoch.length);if(a.run_claims.total!==a.run_claims.claimable+a.run_claims.invalidated)process.exit(1);const st=a.rows.filter(r=>[\"GAP\",\"ERR\",\"UNK\"].includes(r.status));const n=Object.values(a.explicit_stops.open).reduce((x,y)=>x+y,0);console.log(\"stops open\",JSON.stringify(a.explicit_stops.open),\"closed\",a.explicit_stops.closed_by_evidence.join(\" \"));if(n+a.explicit_stops.closed_by_evidence.length!==st.length||st.some(r=>r.invalidated_by.length?!/closed: invalidated by/.test(r.entitled_claim):r.entitled_claim!==\"no claim [\"+r.status+\"]\"))process.exit(1)' $T/q/Q22.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-q22-stops.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/envmap.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-syntax-generic.log",
+    "factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-regression.log",
+    "factory/receipts/D19-REPROVE-REOBSERVE/logs/F11-q22-stops.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T10:48:57Z",
+  "status": "PASS"
+}

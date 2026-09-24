@@ -1,0 +1,29 @@
+{
+ "id": "CL-T7",
+ "trace": "T",
+ "authority": "AUTH-ECMA-262",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/tc39/ecma262",
+  "branch": "main",
+  "path": "spec.html",
+  "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+  "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af",
+  "bytes": 3087902
+ },
+ "locator": {
+  "text": "<h1>AgentCanSuspend ( ): a Boolean</h1>",
+  "line_start": 12771,
+  "line_end": 12777,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 7,
+ "consequence": "whether an agent may block (Atomics.wait) is its [[CanBlock]] field",
+ "excerpt": "      <h1>AgentCanSuspend ( ): a Boolean</h1>\n      <dl class=\"header\">\n      </dl>\n      <emu-alg>\n        1. Let _agentRecord_ be the Agent Record of the surrounding agent.\n        1. Return _agentRecord_.[[CanBlock]].\n      </emu-alg>",
+ "excerpt_sha256": "cb7142950fcd23ac21c44e7e46e14a6bef9556a4158f72b747936becf40ca252",
+ "must_contain": {
+  "[[CanBlock]]": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-HL4",
+ "trace": "HL",
+ "authority": "AUTH-IMPL-CHROME-DURABLE-STORAGE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "chrome/browser/storage/durable_storage_permission_context.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "35b65ba1056599b845133889dc76481956ae94cdcdc0cd723653b04dac6ff832",
+  "bytes": 6944
+ },
+ "locator": {
+  "text": "site_engagement::ImportantSitesUtil::GetImportantRegisterableDomains(",
+  "line_start": 115,
+  "line_end": 122,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 8,
+ "consequence": "full Chrome also grants durable storage to 'important' (engaged) sites",
+ "excerpt": "          site_engagement::ImportantSitesUtil::GetImportantRegisterableDomains(\n              Profile::FromBrowserContext(browser_context()),\n              kMaxImportantResults);\n\n  for (const auto& important_site : important_sites) {\n    if (important_site.registerable_domain == registerable_domain) {\n      NotifyPermissionSet(*request_data, std::move(callback),\n                          /*persist=*/true, PermissionDecision::kAllow,",
+ "excerpt_sha256": "d237971990a34d1200503114570acea7f81a2265d601a2fac579a47c221521db",
+ "must_contain": {
+  "important_site.registerable_domain == registerable_domain": true
+ },
+ "status": "VERIFIED"
+}

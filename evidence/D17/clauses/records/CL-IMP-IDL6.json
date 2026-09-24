@@ -1,0 +1,35 @@
+{
+ "id": "CL-IMP-IDL6",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-IDL-MODULES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/bindings/idl_in_modules.gni",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "76830067f948b708a438422fc660643457db8b472acae4241a8f52f3272b5d6e",
+  "bytes": 108028
+ },
+ "locator": {
+  "text": "\"//third_party/blink/renderer/modules/sensor/absolute_orientation_sensor.idl\",",
+  "line_start": 712,
+  "line_end": 725,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 14,
+ "consequence": "Blink builds accelerometer, gyroscope, magnetometer, ambient light and orientation sensor IDLs, and NO proximity sensor IDL (verified absent from the module list)",
+ "excerpt": "  \"//third_party/blink/renderer/modules/sensor/absolute_orientation_sensor.idl\",\n  \"//third_party/blink/renderer/modules/sensor/accelerometer.idl\",\n  \"//third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl\",\n  \"//third_party/blink/renderer/modules/sensor/gravity_sensor.idl\",\n  \"//third_party/blink/renderer/modules/sensor/gyroscope.idl\",\n  \"//third_party/blink/renderer/modules/sensor/linear_acceleration_sensor.idl\",\n  \"//third_party/blink/renderer/modules/sensor/magnetometer.idl\",\n  \"//third_party/blink/renderer/modules/sensor/orientation_sensor.idl\",\n  \"//third_party/blink/renderer/modules/sensor/relative_orientation_sensor.idl\",\n  \"//third_party/blink/renderer/modules/sensor/sensor.idl\",\n  \"//third_party/blink/renderer/modules/sensor/sensor_error_event.idl\",\n  \"//third_party/blink/renderer/modules/sensor/sensor_error_event_init.idl\",\n  \"//third_party/blink/renderer/modules/sensor/sensor_options.idl\",\n  \"//third_party/blink/renderer/modules/sensor/spatial_sensor_options.idl\",",
+ "excerpt_sha256": "e41f2c7ee358482a924d1818fdc934496914f10882b64ea159c0f653d59efbf1",
+ "must_contain": {
+  "modules/sensor/magnetometer.idl": true,
+  "modules/sensor/ambient_light_sensor.idl": true,
+  "modules/sensor/accelerometer.idl": true
+ },
+ "status": "VERIFIED",
+ "absent_in_document": {
+  "proximity": true
+ }
+}

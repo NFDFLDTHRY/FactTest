@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-GPU0",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-CONTENT-SWITCHES-141",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "content/public/common/content_switches.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "e8321b499ab2f425cd6fcdf8bddff07988bef70c4c2784c46e99ef56f585e8cf",
+  "bytes": 45626
+ },
+ "locator": {
+  "text": "const char kDisableGpu[]",
+  "line_start": 138,
+  "line_end": 138,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "--disable-gpu is defined at the running revision (the switch Playwright may add and the harness removes)",
+ "excerpt": "const char kDisableGpu[]                    = \"disable-gpu\";",
+ "excerpt_sha256": "63460de85cffb2c9494ab7db8806b2b73b7afd9912ee278597341e4484b7a77f",
+ "must_contain": {
+  "\"disable-gpu\"": true
+ },
+ "status": "VERIFIED"
+}

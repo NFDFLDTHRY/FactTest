@@ -1,0 +1,141 @@
+{
+ "tool": "tests/reference/reopen.mjs",
+ "observed": "2026-09-24T08:15:37.415Z",
+ "graph": "/tmp/tmp.4Gwg9WBceD/graph.json",
+ "environment": {
+  "curl": "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10",
+  "git": "git version 2.43.0",
+  "node": "v22.22.2",
+  "kernel_release": "6.18.44-fc-v37",
+  "https_proxy_configured": true,
+  "channels": {
+   "published_hosts": "curl -I through the session proxy",
+   "source_tips": "git ls-remote --symref",
+   "source_bytes": "raw.githubusercontent.com / local git objects"
+  }
+ },
+ "extra_hosts": [
+  {
+   "url": "https://raw.githack.com/",
+   "status": "UNREACHABLE (DENIED by network policy)",
+   "detail": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+   "url": "https://rawcdn.githack.com/",
+   "status": "UNREACHABLE (DENIED by network policy)",
+   "detail": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+   "url": "https://www.w3.org/TR/",
+   "status": "UNREACHABLE (DENIED by network policy)",
+   "detail": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+   "url": "https://api.w3.org/specifications",
+   "status": "UNREACHABLE (DENIED by network policy)",
+   "detail": "curl: (56) CONNECT tunnel failed, response 403"
+  },
+  {
+   "url": "https://github.com/WebAssembly/proposals",
+   "status": "HTTP_403",
+   "http_code": 403
+  },
+  {
+   "url": "https://raw.githubusercontent.com/WebAssembly/proposals/main/README.md",
+   "status": "OPENED",
+   "http_code": 200
+  }
+ ],
+ "authorities": 64,
+ "published": {
+  "UNREACHABLE (DENIED by network policy)": 53,
+  "LOCAL_PRESENT": 1,
+  "HTTP_403": 2,
+  "OPENED": 1,
+  "REPOSITORY_LAW (read at canonical HEAD)": 7
+ },
+ "tip_relation": {
+  "TIP == PIN": 51,
+  "TIP MOVED, FILE IDENTICAL": 10,
+  "LOCAL FILE (no pinned sha)": 1,
+  "TIP MOVED, FILE CHANGED": 2
+ },
+ "pin_check": {
+  "PIN_MATCH": 63,
+  "PIN_NOT_REPRODUCIBLE_LOCALLY": 1
+ },
+ "fragment_at_tip": {
+  "PRESENT_DERIVED": 13,
+  "NOT_CITED": 32,
+  "PRESENT_EXPLICIT": 16,
+  "ABSENT": 3
+ },
+ "clause": {
+  "UNCHANGED": 62,
+  "NO_CLAUSE_KEY": 1,
+  "MOVED": 1
+ },
+ "maturity_drift": [],
+ "branch_absent": [
+  "AUTH-RUSTC-WASM64-DOC",
+  "AUTH-RUSTC-WASM64-TARGET-SPEC"
+ ],
+ "review_candidates": [
+  "AUTH-PLAYWRIGHT-INSTALLED"
+ ],
+ "fragment_absent": [
+  "AUTH-GIT-REPO-LAYOUT",
+  "AUTH-WASM-JSAPI-STORAGE",
+  "AUTH-WASM-WEBAPI-STREAMING"
+ ],
+ "coarse": [
+  "AUTH-CHROMIUM-CONTENT-SWITCHES",
+  "AUTH-CHROMIUM-GL-SWITCHES",
+  "AUTH-CHROMIUM-GPU-SWITCHES",
+  "AUTH-CHROMIUM-SWIFTSHADER-DOC",
+  "AUTH-COMPRESSION-ZLIB",
+  "AUTH-FS-OPFS",
+  "AUTH-GIT-OBJECT-FORMAT",
+  "AUTH-GIT-PACK-FORMAT",
+  "AUTH-GIT-REPO-LAYOUT",
+  "AUTH-GIT-REVISIONS",
+  "AUTH-GIT-SHA256-TRANSITION",
+  "AUTH-GIT-UPDATE-REF-CAS",
+  "AUTH-HTML-SANDBOX-ORIGIN",
+  "AUTH-IDB-TRANSACTION",
+  "AUTH-MANIFEST-INSTALLABLE",
+  "AUTH-PLAYWRIGHT-INSTALLED",
+  "AUTH-RUSTC-WASM64-DOC",
+  "AUTH-RUSTC-WASM64-TARGET-SPEC",
+  "AUTH-STORAGE-BUCKET-MODE",
+  "AUTH-SW-INSTALL-FAILED",
+  "AUTH-SW-REGISTER-TRUST",
+  "AUTH-SW-SANDBOX-NO-CONTROLLER",
+  "AUTH-SW-UPDATE-BYPASS",
+  "AUTH-SWIFTSHADER-README",
+  "AUTH-V8-FLAGS",
+  "AUTH-WASM-CORE-CHANGES-64",
+  "AUTH-WASM-JSAPI-STORAGE",
+  "AUTH-WASM-SET",
+  "AUTH-WASM-THREADS",
+  "AUTH-WASM-WEBAPI-STREAMING",
+  "AUTH-WEB-LOCKS",
+  "AUTH-WEBCRYPTO-DIGEST",
+  "AUTH-WGSL",
+  "LAW-PASS1-FT003",
+  "LAW-PLANNER-COST-MODEL"
+ ],
+ "denied_hosts": [
+  "chromium.googlesource.com",
+  "compression.spec.whatwg.org",
+  "doc.rust-lang.org",
+  "fs.spec.whatwg.org",
+  "git-scm.com",
+  "gpuweb.github.io",
+  "html.spec.whatwg.org",
+  "source.chromium.org",
+  "storage.spec.whatwg.org",
+  "w3c.github.io",
+  "webassembly.github.io"
+ ]
+}

@@ -1,0 +1,148 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D18R-CHAIN-REPAIR-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W21",
+  "delta_id": "D18R-CHAIN-REPAIR",
+  "canonical_base": "1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c",
+  "input_artifacts": [
+    "pass-to-pass gate",
+    "D18 integrated records",
+    "committed evidence of both defects"
+  ],
+  "open_tree": "8e2f9fb515b5aa5aabe94622bb6261d28f99d4a8",
+  "close_tree": "b073e1357c5a286a4c45104f9b91ba908d39b3b2",
+  "changed_paths": [
+    "design/materialization/D18R-INTENDED-CHAIN-REPAIR.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F0-ascii.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F0-scope.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D18R-INTENDED-CHAIN-REPAIR.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D18R-CHAIN-REPAIR"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D18R-CHAIN-REPAIR/logs/F0-ascii.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D18R-CHAIN-REPAIR/logs/F0-scope.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D18R-INTENDED-CHAIN-REPAIR.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c' design/materialization/LEDGER.md && grep -q '^## D18R-CHAIN-REPAIR' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && grep -q '\"hardwareConcurrency\": 4' evidence/D11/browser/default.json && grep -q '\"hardwareConcurrency\": 4' evidence/D11/browser/gpu-flags.json && grep -q '\"hardwareConcurrency\": 4' evidence/D16/census/records/CAP-WORKER-DEDICATED.json && grep -q 'executable: chromium.executablePath()' tests/selfhost/primitives-probe.mjs && echo 'both defects present in committed evidence/code'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D18R-CHAIN-REPAIR/logs/F0-ascii.log"
+    },
+    {
+      "check": "command:git diff --exit-code 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c -- compiler host factory/src factory/registry tests evidence fixtures design/environment-map docs rust-toolchain.toml REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md STATION-REGISTRY.md CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md FACTORY-LAW.md FACTORY-CONTRACTS.md README.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D18R-CHAIN-REPAIR/logs/F0-scope.log"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D18R-INTENDED-CHAIN-REPAIR.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F0-ascii.log",
+    "factory/receipts/D18R-CHAIN-REPAIR/logs/F0-scope.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+      "bytes": 7332720
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-24T10:04:32Z",
+  "status": "PASS"
+}

@@ -1,0 +1,1946 @@
+{
+ "schema": "facttest-clause-manifest/1",
+ "epoch": "D16",
+ "law": "design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md",
+ "new_authorities": [
+  {
+   "id": "AUTH-WEBNN",
+   "title": "Web Neural Network API (editor's draft)",
+   "exact_url": "https://webmachinelearning.github.io/webnn/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Web Machine Learning WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "CR draft (source Status w3c/ED; CR snapshot 2026-01-22 per status text)",
+   "source": {
+    "repo": "https://github.com/webmachinelearning/webnn",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "navigator.ml [SecureContext]; policy-controlled feature webnn ('self'); createContext SecurityError/NotSupportedError; context lost"
+  },
+  {
+   "id": "AUTH-WEBCODECS",
+   "title": "WebCodecs (editor's draft)",
+   "exact_url": "https://w3c.github.io/webcodecs/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Media WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "editor's draft (source Status ED)",
+   "source": {
+    "repo": "https://github.com/w3c/webcodecs",
+    "branch": "main",
+    "path": "index.src.html"
+   },
+   "extracted_consequence": "codecs [SecureContext] in Window/DedicatedWorker; no policy/permission; isConfigSupported; codec reclamation"
+  },
+  {
+   "id": "AUTH-MEDIACAPTURE",
+   "title": "Media Capture and Streams (editor's draft)",
+   "exact_url": "https://w3c.github.io/mediacapture-main/",
+   "exact_fragment": null,
+   "authority_owner": "W3C WebRTC WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "editor's draft (ReSpec)",
+   "source": {
+    "repo": "https://github.com/w3c/mediacapture-main",
+    "branch": "main",
+    "path": "getusermedia.html"
+   },
+   "extracted_consequence": "mediaDevices [SecureContext]; powerful features + policy features camera/microphone ('self'); getUserMedia Permission Failure NotAllowedError; track ended on revoke/eject"
+  },
+  {
+   "id": "AUTH-GENERIC-SENSOR",
+   "title": "Generic Sensor API (editor's draft)",
+   "exact_url": "https://w3c.github.io/sensors/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED with advisement: not expected to advance without cross-engine interest",
+   "source": {
+    "repo": "https://github.com/w3c/sensors",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "Sensor [SecureContext]; readings only when secure, visible, focused; start() NotAllowedError/NotReadableError; feature check"
+  },
+  {
+   "id": "AUTH-ACCELEROMETER",
+   "title": "Accelerometer (editor's draft)",
+   "exact_url": "https://w3c.github.io/accelerometer/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED maintained for existing deployments; new projects -> Device Orientation and Motion",
+   "source": {
+    "repo": "https://github.com/w3c/accelerometer",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "Accelerometer [SecureContext, Exposed=Window]; feature accelerometer from DEVICE-ORIENTATION"
+  },
+  {
+   "id": "AUTH-GYROSCOPE",
+   "title": "Gyroscope (editor's draft)",
+   "exact_url": "https://w3c.github.io/gyroscope/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED maintained for existing deployments; new projects -> Device Orientation and Motion",
+   "source": {
+    "repo": "https://github.com/w3c/gyroscope",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "Gyroscope [SecureContext, Exposed=Window]; feature gyroscope from DEVICE-ORIENTATION"
+  },
+  {
+   "id": "AUTH-MAGNETOMETER",
+   "title": "Magnetometer (editor's draft)",
+   "exact_url": "https://w3c.github.io/magnetometer/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED: not available by default in any browser engine",
+   "source": {
+    "repo": "https://github.com/w3c/magnetometer",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "Magnetometer [SecureContext, Exposed=Window]; feature magnetometer"
+  },
+  {
+   "id": "AUTH-ORIENTATION-SENSOR",
+   "title": "Orientation Sensor (editor's draft)",
+   "exact_url": "https://w3c.github.io/orientation-sensor/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED maintained for existing deployments; new projects -> Device Orientation and Motion",
+   "source": {
+    "repo": "https://github.com/w3c/orientation-sensor",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "absolute/relative orientation require the low-level sensors' features and access"
+  },
+  {
+   "id": "AUTH-PROXIMITY",
+   "title": "Proximity Sensor (editor's draft)",
+   "exact_url": "https://w3c.github.io/proximity/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED: not implemented in any browser engine",
+   "source": {
+    "repo": "https://github.com/w3c/proximity",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "ProximitySensor [SecureContext]; feature proximity-sensor ('self')"
+  },
+  {
+   "id": "AUTH-AMBIENT-LIGHT",
+   "title": "Ambient Light Sensor (editor's draft)",
+   "exact_url": "https://w3c.github.io/ambient-light/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED: not available by default in any browser engine",
+   "source": {
+    "repo": "https://github.com/w3c/ambient-light",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "AmbientLightSensor [SecureContext]; feature ambient-light-sensor ('self'); 50 lux rounding"
+  },
+  {
+   "id": "AUTH-DEVICE-ORIENTATION",
+   "title": "Device Orientation and Motion (editor's draft)",
+   "exact_url": "https://w3c.github.io/deviceorientation/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "ED (CR 2016 + changes; permission integration at risk)",
+   "source": {
+    "repo": "https://github.com/w3c/deviceorientation",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "events [SecureContext]; permissions/policy accelerometer, gyroscope, magnetometer ('self'); requestPermission needs transient activation when state is prompt"
+  },
+  {
+   "id": "AUTH-GEOLOCATION",
+   "title": "Geolocation (editor's draft)",
+   "exact_url": "https://w3c.github.io/geolocation/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Devices and Sensors WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "editor's draft (ReSpec ED)",
+   "source": {
+    "repo": "https://github.com/w3c/geolocation",
+    "branch": "main",
+    "path": "index.html"
+   },
+   "extracted_consequence": "Geolocation exposed without [SecureContext]; non-secure context and disallowed policy -> PERMISSION_DENIED; default powerful feature geolocation; waits while hidden"
+  },
+  {
+   "id": "AUTH-WEBXR",
+   "title": "WebXR Device API",
+   "exact_url": "https://immersive-web.github.io/webxr/",
+   "exact_fragment": null,
+   "authority_owner": "W3C Immersive Web WG",
+   "authority_class": "CANDIDATE_RECOMMENDATION",
+   "maturity": "CR (source Status CR)",
+   "source": {
+    "repo": "https://github.com/immersive-web/webxr",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "navigator.xr [SecureContext]; immersive needs xr-spatial-tracking + transient activation; isSessionSupported non-prompting; session end"
+  },
+  {
+   "id": "AUTH-WEBHID",
+   "title": "WebHID API (community group draft)",
+   "exact_url": "https://wicg.github.io/webhid/",
+   "exact_fragment": null,
+   "authority_owner": "WICG",
+   "authority_class": "COMMUNITY_DRAFT",
+   "maturity": "Draft Community Group Report; not W3C Standards Track",
+   "source": {
+    "repo": "https://github.com/WICG/webhid",
+    "branch": "main",
+    "path": "index.html"
+   },
+   "extracted_consequence": "navigator.hid [SecureContext]; feature hid ('self'); requestDevice needs Window + transient activation; disconnect, forget"
+  },
+  {
+   "id": "AUTH-WEBUSB",
+   "title": "WebUSB API (community group draft)",
+   "exact_url": "https://wicg.github.io/webusb/",
+   "exact_fragment": null,
+   "authority_owner": "WICG",
+   "authority_class": "COMMUNITY_DRAFT",
+   "maturity": "CG draft (source Status w3c/CG-DRAFT)",
+   "source": {
+    "repo": "https://github.com/WICG/webusb",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "USB [SecureContext]; feature usb ([\"self\"]); requestDevice needs transient activation; disconnect, forget"
+  },
+  {
+   "id": "AUTH-SERIAL",
+   "title": "Web Serial API",
+   "exact_url": "https://serial.spec.whatwg.org/",
+   "exact_fragment": null,
+   "authority_owner": "WHATWG (moved from WICG/serial; same repository tip)",
+   "authority_class": "LIVING_DOCUMENT",
+   "maturity": "living document (whatwg/serial; WICG/serial redirects to the same tip)",
+   "source": {
+    "repo": "https://github.com/whatwg/serial",
+    "branch": "main",
+    "path": "index.html"
+   },
+   "extracted_consequence": "navigator.serial [SecureContext]; feature serial ('self'); requestPort needs transient activation; disconnect, forget"
+  },
+  {
+   "id": "AUTH-WEB-BLUETOOTH",
+   "title": "Web Bluetooth (community group draft)",
+   "exact_url": "https://webbluetoothcg.github.io/web-bluetooth/",
+   "exact_fragment": null,
+   "authority_owner": "Web Bluetooth CG",
+   "authority_class": "COMMUNITY_DRAFT",
+   "maturity": "CG draft (source Status CG-DRAFT)",
+   "source": {
+    "repo": "https://github.com/WebBluetoothCG/web-bluetooth",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "navigator.bluetooth [SecureContext]; powerful feature + policy feature bluetooth ([\"self\"]); requestDevice needs transient activation; gattserverdisconnected"
+  },
+  {
+   "id": "AUTH-SW-CACHE-OBJECTS",
+   "title": "Service Workers: cache objects (CacheStorage)",
+   "exact_url": "https://w3c.github.io/ServiceWorker/#cache-objects",
+   "exact_fragment": null,
+   "authority_owner": "W3C Service Workers WG",
+   "authority_class": "EDITOR_DRAFT",
+   "maturity": "Service Workers Nightly (editor's draft)",
+   "source": {
+    "repo": "https://github.com/w3c/ServiceWorker",
+    "branch": "main",
+    "path": "index.bs"
+   },
+   "extracted_consequence": "caches [SecureContext, SameObject]; CacheStorage [SecureContext, Exposed=(Window,Worker)]"
+  }
+ ],
+ "traces": {
+  "GPU": "WebGPU + WGSL: exposure -> adapter -> device (features/limits) -> readback -> shader -> expiry/loss",
+  "NN": "WebNN: exposure -> policy -> createContext -> context lost",
+  "WC": "WebCodecs: exposure -> config support -> reclamation",
+  "MC": "Media Capture: exposure -> permissions + policy -> getUserMedia failure -> track ended",
+  "GS": "Generic Sensor: maturity -> exposure -> reading conditions -> start/permission -> policy check",
+  "MS": "motion sensors (accelerometer, gyroscope, magnetometer, orientation): maturity -> exposure -> feature/permission",
+  "ES": "environment sensors (proximity, ambient light): maturity -> exposure -> policy -> quantization",
+  "DO": "Device Orientation and Motion: permissions/policy -> requestPermission activation -> exposure -> at-risk integration",
+  "GEO": "Geolocation: exposure without SecureContext -> non-secure denial -> policy -> permission -> visibility",
+  "XR": "WebXR: exposure -> policy -> non-prompting support query -> activation -> device -> session end",
+  "DEV": "device choosers (HID, USB, Serial, Bluetooth): exposure -> policy + activation -> default allowlist -> disconnect/forget",
+  "WK": "Dedicated workers: exposure (no gate) -> construction -> terminate",
+  "STO": "storage surfaces: StorageManager, OPFS root, CacheStorage exposure",
+  "WJ": "WebAssembly JS API: validate/instantiate, ungated by context, permission or policy"
+ },
+ "clauses": [
+  {
+   "id": "CL-GPU1",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-NAVIGATOR-GPU",
+   "locator": {
+    "text": "interface mixin NavigatorGPU {"
+   },
+   "window": 5,
+   "must_contain": [
+    "[SameObject, SecureContext] readonly attribute GPU gpu;",
+    "WorkerNavigator includes NavigatorGPU;"
+   ],
+   "consequence": "navigator.gpu exists only in secure contexts, in Window and Worker; WebGPU defines NO permission and NO policy-controlled feature (verified absent from the whole document): exposure is gated by secure context alone",
+   "grounds": [
+    "CON-EM-001",
+    "FACT-GPU-EXPOSED"
+   ],
+   "leads_to": [
+    "CL-GPU2"
+   ],
+   "absent_in_document": [
+    "policy-controlled feature",
+    "powerful feature",
+    "Permissions Policy"
+   ]
+  },
+  {
+   "id": "CL-GPU2",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-REQUESTADAPTER",
+   "locator": {
+    "text": "Requests an [=adapter=] from the user agent."
+   },
+   "window": 3,
+   "must_contain": [
+    "The user agent chooses whether to return an adapter"
+   ],
+   "consequence": "requestAdapter is a user-agent choice, not a permission request: no prompt, no chooser",
+   "grounds": [
+    "CON-GPU-001"
+   ],
+   "leads_to": [
+    "CL-GPU3"
+   ]
+  },
+  {
+   "id": "CL-GPU3",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-REQUESTADAPTER",
+   "locator": {
+    "text": "`null`, if the user agent is unable to return an adapter, or makes an"
+   },
+   "window": 2,
+   "must_contain": [
+    "[=implementation-defined=] choice not to return an adapter"
+   ],
+   "consequence": "a null adapter is a lawful answer (unavailability, not an error): admission must treat it as REJECTED request_unavailable",
+   "grounds": [
+    "CON-GPU-001",
+    "FACT-GPU-ADAPTER-NULL-DEFAULT"
+   ],
+   "leads_to": [
+    "CL-GPU4"
+   ]
+  },
+  {
+   "id": "CL-GPU4",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-REQUESTDEVICE",
+   "locator": {
+    "text": "- The set of values in |descriptor|.{{GPUDeviceDescriptor/requiredFeatures}}"
+   },
+   "window": 12,
+   "must_contain": [
+    "must be a subset of those in",
+    "[=Reject=] |promise| with a {{TypeError}}"
+   ],
+   "consequence": "requested features must be a subset of the adapter's features, else requestDevice rejects with TypeError",
+   "grounds": [
+    "CON-IC-WEBGPU",
+    "FACT-GPU-ADMITTED-E0"
+   ],
+   "leads_to": [
+    "CL-GPU5"
+   ]
+  },
+  {
+   "id": "CL-GPU5",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-REQUESTDEVICE",
+   "locator": {
+    "text": "must not be {{adapter/[[state]]/\"consumed\"}}."
+   },
+   "window": 21,
+   "must_contain": [
+    "no [=limit/better=] than",
+    "[=Reject=] |promise| with an {{OperationError}}"
+   ],
+   "consequence": "a consumed adapter or a required limit better than the adapter's rejects with OperationError: limits are part of admission",
+   "grounds": [
+    "CON-EM-003",
+    "CON-IC-WEBGPU",
+    "FACT-GPU-ADMITTED-E0",
+    "FACT-GPU-MAXBUFFERSIZE-OBSERVED"
+   ],
+   "leads_to": [
+    "CL-GPU6"
+   ]
+  },
+  {
+   "id": "CL-GPU6",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-ADAPTER-EXPIRE",
+   "locator": {
+    "text": "If |adapter|.{{adapter/[[state]]}} is {{adapter/[[state]]/\"expired\"}}"
+   },
+   "window": 5,
+   "must_contain": [
+    "or the user agent otherwise cannot fulfill the request",
+    "[=Lose the device=](|device|, {{GPUDeviceLostReason/\"unknown\"}})"
+   ],
+   "consequence": "an expired adapter still returns a device, already lost: recovery restarts at requestAdapter",
+   "grounds": [
+    "CON-EM-003",
+    "FACT-GPU-EPOCH-INVALIDATION"
+   ],
+   "leads_to": [
+    "CL-GPU7"
+   ]
+  },
+  {
+   "id": "CL-GPU7",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-LOSE-DEVICE",
+   "locator": {
+    "text": "To <dfn dfn>lose the device</dfn>(|device|, |reason|)"
+   },
+   "window": 8,
+   "must_contain": [
+    "[$Invalidate$] |device|",
+    "Resolve |device|.{{GPUDevice/lost}}"
+   ],
+   "consequence": "device loss invalidates the device and resolves device.lost with a reason: loss is lifecycle, observed through the promise",
+   "grounds": [
+    "CON-GPU-002",
+    "FACT-GPU-LOSS-DESTROYED",
+    "FACT-GPU-EPOCH-INVALIDATION"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GPU8",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-FALLBACK-ADAPTER",
+   "locator": {
+    "text": "An [=adapter=] may be considered a <dfn>fallback adapter</dfn>"
+   },
+   "window": 3,
+   "must_contain": [
+    "significant performance"
+   ],
+   "consequence": "a fallback adapter (e.g. software) is a lawful adapter with significant performance caveats; it is not hardware GPU evidence",
+   "grounds": [
+    "CON-EM-002",
+    "FACT-GPU-ADAPTER-SWIFTSHADER",
+    "FACT-HARDWARE-GPU-UNAVAILABLE"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GPU9",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-REQUESTDEVICE",
+   "locator": {
+    "text": "    : <dfn>mapAsync(mode, offset, size)</dfn>"
+   },
+   "window": 6,
+   "must_contain": [
+    "Maps the given range of the {{GPUBuffer}}",
+    "**only** indicates that the buffer has been mapped"
+   ],
+   "consequence": "readback is mapAsync + getMappedRange; the promise only signals mapping, so known-answer checks read the mapped range after it resolves",
+   "grounds": [
+    "FACT-GPU-KNOWN-ANSWER",
+    "FACT-GPU-RELAY-EXACT-E0"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GPU10",
+   "trace": "GPU",
+   "authority": "AUTH-GPU-REQUESTDEVICE",
+   "locator": {
+    "text": "    : <dfn>createShaderModule(descriptor)</dfn>"
+   },
+   "window": 3,
+   "must_contain": [
+    "Creates a {{GPUShaderModule}}."
+   ],
+   "consequence": "shader modules are created from WGSL source by createShaderModule: the WGSL step of the WebGPU admission contract",
+   "grounds": [
+    "CON-GPU-003",
+    "FACT-WGSL-UNEXERCISED"
+   ],
+   "leads_to": [
+    "CL-GPU11"
+   ]
+  },
+  {
+   "id": "CL-GPU11",
+   "trace": "GPU",
+   "authority": "AUTH-WGSL",
+   "locator": {
+    "text": "A <dfn noexport>shader</dfn> is the portion of a WGSL program that executes a [=shader stage=] in a pipeline."
+   },
+   "window": 1,
+   "must_contain": [
+    "executes a [=shader stage=] in a pipeline"
+   ],
+   "consequence": "WGSL governs the shader stage separately from the host API (CON-GPU-003); FactTest has never compiled or dispatched one",
+   "grounds": [
+    "CON-GPU-003",
+    "FACT-WGSL-UNEXERCISED"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-NN1",
+   "trace": "NN",
+   "authority": "AUTH-WEBNN",
+   "locator": {
+    "text": "interface mixin NavigatorML {"
+   },
+   "window": 2,
+   "must_contain": [
+    "[SecureContext, SameObject] readonly attribute ML ml;"
+   ],
+   "consequence": "navigator.ml exists only in secure contexts",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-NN2",
+   "trace": "NN",
+   "authority": "AUTH-WEBNN",
+   "locator": {
+    "text": "This specification defines a [=policy-controlled feature=] identified by the"
+   },
+   "window": 3,
+   "must_contain": [
+    "webnn",
+    "default allowlist=] is <code>'self'</code>"
+   ],
+   "consequence": "WebNN is policy-controlled (webnn, default 'self') and defines no permission prompt",
+   "grounds": [],
+   "leads_to": [
+    "CL-NN3"
+   ]
+  },
+  {
+   "id": "CL-NN3",
+   "trace": "NN",
+   "authority": "AUTH-WEBNN",
+   "locator": {
+    "text": "The <dfn method for=ML>createContext(|options|)</dfn> steps are:"
+   },
+   "window": 8,
+   "must_contain": [
+    "is not [=allowed to use=] the [=webnn-feature|webnn=] feature",
+    "\"{{SecurityError}}\"",
+    "\"{{NotSupportedError}}\""
+   ],
+   "consequence": "createContext rejects SecurityError when the policy disallows webnn and NotSupportedError when no context can be created: interface presence is not admission",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-NN4",
+   "trace": "NN",
+   "authority": "AUTH-WEBNN",
+   "locator": {
+    "text": "When a user agent determines that an {{MLContext}} is no longer available to fulfill requests"
+   },
+   "window": 1,
+   "must_contain": [
+    "it must run the [=context lost=] steps for it"
+   ],
+   "consequence": "an MLContext can be lost; loss is part of the lifecycle",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-WC1",
+   "trace": "WC",
+   "authority": "AUTH-WEBCODECS",
+   "locator": {
+    "text": "interface VideoEncoder : EventTarget {",
+    "after": "[Exposed=(Window,DedicatedWorker), SecureContext]"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface VideoEncoder"
+   ],
+   "consequence": "codec interfaces are [SecureContext] in Window and DedicatedWorker; WebCodecs defines no permission and no policy-controlled feature (verified absent)",
+   "grounds": [],
+   "leads_to": [],
+   "absent_in_document": [
+    "policy-controlled feature",
+    "powerful feature",
+    "Permissions Policy"
+   ]
+  },
+  {
+   "id": "CL-WC2",
+   "trace": "WC",
+   "authority": "AUTH-WEBCODECS",
+   "locator": {
+    "text": "<dt><dfn method for=VideoEncoder>isConfigSupported(config)</dfn></dt>"
+   },
+   "window": 14,
+   "must_contain": [
+    "Returns a promise indicating whether the provided |config| is supported",
+    "[=a promise rejected with=] {{TypeError}}"
+   ],
+   "consequence": "configuration support is queried without side effects (isConfigSupported); an invalid config rejects TypeError",
+   "grounds": [],
+   "leads_to": [
+    "CL-WC3"
+   ]
+  },
+  {
+   "id": "CL-WC3",
+   "trace": "WC",
+   "authority": "AUTH-WEBCODECS",
+   "locator": {
+    "text": "To <dfn>reclaim a codec</dfn>, a User Agent <em class=\"rfc2119\">MUST</em> run"
+   },
+   "window": 4,
+   "must_contain": [
+    "{{QuotaExceededError}}"
+   ],
+   "consequence": "the user agent may reclaim codecs, closing them with QuotaExceededError: resource reclamation is a loss mode",
+   "grounds": [],
+   "leads_to": [
+    "CL-WC4"
+   ]
+  },
+  {
+   "id": "CL-WC4",
+   "trace": "WC",
+   "authority": "AUTH-WEBCODECS",
+   "locator": {
+    "text": "A User Agent <em class=\"rfc2119\">MUST</em> only [=reclaim a codec=] that is"
+   },
+   "window": 4,
+   "must_contain": [
+    "[=inactive codec=], a [=background codec=], or both",
+    "MUST NOT</em> reclaim a codec that is both [=active=] and in"
+   ],
+   "consequence": "only inactive or background codecs may be reclaimed",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MC1",
+   "trace": "MC",
+   "authority": "AUTH-MEDIACAPTURE",
+   "locator": {
+    "text": "[SameObject, SecureContext] readonly attribute MediaDevices mediaDevices;"
+   },
+   "window": 1,
+   "must_contain": [
+    "SecureContext"
+   ],
+   "consequence": "navigator.mediaDevices exists only in secure contexts",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MC2",
+   "trace": "MC",
+   "authority": "AUTH-MEDIACAPTURE",
+   "locator": {
+    "text": "This specification defines two [=powerful features=] identified by the"
+   },
+   "window": 2,
+   "must_contain": [
+    "\"camera\"",
+    "\"microphone\""
+   ],
+   "consequence": "camera and microphone are powerful features (express permission)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MC3",
+   "trace": "MC",
+   "authority": "AUTH-MEDIACAPTURE",
+   "locator": {
+    "text": "This specification defines two [=policy-controlled features=]"
+   },
+   "window": 4,
+   "must_contain": [
+    "default allowlist=] of",
+    "\"self\""
+   ],
+   "consequence": "camera and microphone are policy-controlled features with default allowlist 'self'",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MC4",
+   "trace": "MC",
+   "authority": "AUTH-MEDIACAPTURE",
+   "locator": {
+    "text": "<var>document</var> is not [=allowed to use=] the",
+    "after": "<p>If <var>requestedMediaTypes</var> contains \"video\" and"
+   },
+   "window": 3,
+   "must_contain": [
+    "feature identified by the \"camera\" permission name",
+    "Permission Failure"
+   ],
+   "consequence": "getUserMedia fails to Permission Failure when the policy disallows camera (and likewise microphone)",
+   "grounds": [],
+   "leads_to": [
+    "CL-MC5"
+   ]
+  },
+  {
+   "id": "CL-MC5",
+   "trace": "MC",
+   "authority": "AUTH-MEDIACAPTURE",
+   "locator": {
+    "text": "<p><em>Permission Failure</em>: [= Reject =]"
+   },
+   "window": 4,
+   "must_contain": [
+    "\"NotAllowedError\""
+   ],
+   "consequence": "Permission Failure rejects with NotAllowedError",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MC6",
+   "trace": "MC",
+   "authority": "AUTH-MEDIACAPTURE",
+   "locator": {
+    "text": "id=\"event-mediastreamtrack-ended\">ended</dfn>"
+   },
+   "window": 7,
+   "must_contain": [
+    "the user revoked the",
+    "source device has been ejected"
+   ],
+   "consequence": "a track ends when the user revokes permission or the device is ejected: revocation is a lifecycle event",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GS0",
+   "trace": "GS",
+   "authority": "AUTH-GENERIC-SENSOR",
+   "locator": {
+    "text": "Multiple browser engines have expressed concerns about this specification. It is implemented in Chromium-based browsers"
+   },
+   "window": 1,
+   "must_contain": [
+    "is not expected to advance to W3C Recommendation in its current form"
+   ],
+   "consequence": "maturity: the Generic Sensor API is Chromium-only and not expected to advance without cross-engine interest",
+   "grounds": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GS1",
+   "trace": "GS",
+   "authority": "AUTH-GENERIC-SENSOR",
+   "locator": {
+    "text": "interface Sensor : EventTarget {",
+    "after": "[SecureContext, Exposed=(DedicatedWorker, Window)]"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface Sensor : EventTarget"
+   ],
+   "consequence": "Sensor is [SecureContext] in Window and DedicatedWorker",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GS2",
+   "trace": "GS",
+   "authority": "AUTH-GENERIC-SENSOR",
+   "locator": {
+    "text": "The user agent <dfn>can expose sensor readings</dfn> to a {{Document}}"
+   },
+   "window": 5,
+   "must_contain": [
+    "is a [=secure context=]",
+    "[=visibility state=] is \"visible\"",
+    "[=focus and origin check=]"
+   ],
+   "consequence": "readings flow only to a secure, visible, focused document: a headless or background page never receives readings",
+   "grounds": [
+    "CON-IC-ACCELEROMETER",
+    "CON-IC-GYROSCOPE",
+    "CON-IC-MAGNETOMETER",
+    "CON-IC-ORIENTATION_SENSOR",
+    "CON-IC-PROXIMITY_SENSOR"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GS3",
+   "trace": "GS",
+   "authority": "AUTH-GENERIC-SENSOR",
+   "locator": {
+    "text": "The {{Sensor/start()}} method steps are:"
+   },
+   "window": 20,
+   "must_contain": [
+    "[=request sensor access=]",
+    "\"{{NotAllowedError!!exception}}\"",
+    "\"{{NotReadableError!!exception}}\""
+   ],
+   "consequence": "start() requests access (permission) and fails NotAllowedError on denial and NotReadableError when no sensor connects",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GS4",
+   "trace": "GS",
+   "authority": "AUTH-GENERIC-SENSOR",
+   "locator": {
+    "text": "<h3 dfn export>Check sensor policy-controlled features</h3>"
+   },
+   "window": 15,
+   "must_contain": [
+    "is not [=allowed to use=] the",
+    "[=policy-controlled feature=] named |feature_name|"
+   ],
+   "consequence": "every sensor feature name must be allowed by policy",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ACC0",
+   "trace": "MS",
+   "authority": "AUTH-ACCELEROMETER",
+   "locator": {
+    "text": "This specification is maintained for existing deployments."
+   },
+   "window": 1,
+   "must_contain": [
+    "For new projects, developers should use"
+   ],
+   "consequence": "maturity: maintained for existing deployments; new projects are directed to Device Orientation and Motion",
+   "grounds": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ACC1",
+   "trace": "MS",
+   "authority": "AUTH-ACCELEROMETER",
+   "locator": {
+    "text": "interface Accelerometer : Sensor {",
+    "after": "[SecureContext"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface Accelerometer : Sensor {"
+   ],
+   "consequence": "Accelerometer is [SecureContext, Exposed=Window]",
+   "grounds": [
+    "CON-IC-ACCELEROMETER"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ACC2",
+   "trace": "MS",
+   "authority": "AUTH-ACCELEROMETER",
+   "locator": {
+    "text": "This specification utilizes the [=policy-controlled feature=] identified by the string"
+   },
+   "window": 1,
+   "must_contain": [
+    "accelerometer",
+    "[[DEVICE-ORIENTATION]]"
+   ],
+   "consequence": "the accelerometer feature/permission is defined by Device Orientation and Motion",
+   "grounds": [
+    "CON-IC-ACCELEROMETER"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GYR0",
+   "trace": "MS",
+   "authority": "AUTH-GYROSCOPE",
+   "locator": {
+    "text": "This specification is maintained for existing deployments."
+   },
+   "window": 1,
+   "must_contain": [
+    "For new projects, developers should use"
+   ],
+   "consequence": "maturity: maintained for existing deployments; new projects are directed to Device Orientation and Motion",
+   "grounds": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GYR1",
+   "trace": "MS",
+   "authority": "AUTH-GYROSCOPE",
+   "locator": {
+    "text": "interface Gyroscope : Sensor {",
+    "after": "[SecureContext"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface Gyroscope : Sensor {"
+   ],
+   "consequence": "Gyroscope is [SecureContext, Exposed=Window]",
+   "grounds": [
+    "CON-IC-GYROSCOPE"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GYR2",
+   "trace": "MS",
+   "authority": "AUTH-GYROSCOPE",
+   "locator": {
+    "text": "This specification utilizes the [=policy-controlled feature=] identified by the string"
+   },
+   "window": 1,
+   "must_contain": [
+    "gyroscope",
+    "[[DEVICE-ORIENTATION]]"
+   ],
+   "consequence": "the gyroscope feature/permission is defined by Device Orientation and Motion",
+   "grounds": [
+    "CON-IC-GYROSCOPE"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MAG0",
+   "trace": "MS",
+   "authority": "AUTH-MAGNETOMETER",
+   "locator": {
+    "text": "Multiple browser engines have expressed concerns about this specification. It is not available by default in any browser engine."
+   },
+   "window": 1,
+   "must_contain": [
+    "It is not available by default in any browser engine."
+   ],
+   "consequence": "maturity: Magnetometer is not available by default in any engine",
+   "grounds": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MAG1",
+   "trace": "MS",
+   "authority": "AUTH-MAGNETOMETER",
+   "locator": {
+    "text": "interface Magnetometer : Sensor {",
+    "after": "[SecureContext,"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface Magnetometer : Sensor"
+   ],
+   "consequence": "Magnetometer is [SecureContext, Exposed=Window]",
+   "grounds": [
+    "CON-IC-MAGNETOMETER"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-MAG2",
+   "trace": "MS",
+   "authority": "AUTH-MAGNETOMETER",
+   "locator": {
+    "text": "This specification utilizes the [=policy-controlled feature=] identified by the string"
+   },
+   "window": 1,
+   "must_contain": [
+    "magnetometer",
+    "[[DEVICE-ORIENTATION]]"
+   ],
+   "consequence": "the magnetometer feature/permission is defined by Device Orientation and Motion",
+   "grounds": [
+    "CON-IC-MAGNETOMETER"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ORI0",
+   "trace": "MS",
+   "authority": "AUTH-ORIENTATION-SENSOR",
+   "locator": {
+    "text": "This specification is maintained for existing deployments."
+   },
+   "window": 1,
+   "must_contain": [
+    "For new projects, developers should use"
+   ],
+   "consequence": "maturity: maintained for existing deployments; new projects are directed to Device Orientation and Motion",
+   "grounds": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ORI1",
+   "trace": "MS",
+   "authority": "AUTH-ORIENTATION-SENSOR",
+   "locator": {
+    "text": "The {{AbsoluteOrientationSensor}} is a [=policy-controlled feature=] identified by strings"
+   },
+   "window": 3,
+   "must_contain": [
+    "\"accelerometer\", \"gyroscope\" and \"magnetometer\"",
+    "The {{RelativeOrientationSensor}} is a [=policy-controlled feature=] identified by strings \"accelerometer\" and \"gyroscope\""
+   ],
+   "consequence": "orientation sensors compose the low-level sensors' policy features: absolute needs accelerometer+gyroscope+magnetometer",
+   "grounds": [
+    "CON-IC-ORIENTATION_SENSOR"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ORI2",
+   "trace": "MS",
+   "authority": "AUTH-ORIENTATION-SENSOR",
+   "locator": {
+    "text": "To access the <dfn>Orientation Sensor</dfn> <a>sensor type</a>'s [=latest reading=]"
+   },
+   "window": 1,
+   "must_contain": [
+    "must invoke [=request sensor access=] abstract operation for each of the [=low-level=] sensors"
+   ],
+   "consequence": "reading orientation requests access for each underlying sensor",
+   "grounds": [
+    "CON-IC-ORIENTATION_SENSOR"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-PRX0",
+   "trace": "ES",
+   "authority": "AUTH-PROXIMITY",
+   "locator": {
+    "text": "This specification is not implemented in any browser engine."
+   },
+   "window": 1,
+   "must_contain": [
+    "This specification is not implemented in any browser engine."
+   ],
+   "consequence": "maturity: Proximity is implemented by no browser engine",
+   "grounds": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-PRX1",
+   "trace": "ES",
+   "authority": "AUTH-PROXIMITY",
+   "locator": {
+    "text": "interface ProximitySensor : Sensor {",
+    "after": "[SecureContext, Exposed=Window]"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface ProximitySensor : Sensor"
+   ],
+   "consequence": "ProximitySensor is [SecureContext, Exposed=Window]",
+   "grounds": [
+    "CON-IC-PROXIMITY_SENSOR"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-PRX2",
+   "trace": "ES",
+   "authority": "AUTH-PROXIMITY",
+   "locator": {
+    "text": "This specification defines a [=policy-controlled feature=] identified by the string"
+   },
+   "window": 1,
+   "must_contain": [
+    "proximity-sensor",
+    "[=default allowlist=] is \"`self`\""
+   ],
+   "consequence": "proximity-sensor is policy-controlled with default 'self'",
+   "grounds": [
+    "CON-IC-PROXIMITY_SENSOR"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ALS0",
+   "trace": "ES",
+   "authority": "AUTH-AMBIENT-LIGHT",
+   "locator": {
+    "text": "This specification is not available by default in any browser engine."
+   },
+   "window": 2,
+   "must_contain": [
+    "It is not expected to advance to W3C Recommendation in its current form."
+   ],
+   "consequence": "maturity: Ambient Light is not available by default in any engine",
+   "grounds": [
+    "FACT-SENSOR-FAMILY-ADVISEMENT"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ALS1",
+   "trace": "ES",
+   "authority": "AUTH-AMBIENT-LIGHT",
+   "locator": {
+    "text": "The <a>Ambient Light Sensor</a> is a [=policy-controlled feature=] identified by the string"
+   },
+   "window": 1,
+   "must_contain": [
+    "\"ambient-light-sensor\"",
+    "'self'"
+   ],
+   "consequence": "ambient-light-sensor is policy-controlled with default 'self' (and is its permission name)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ALS2",
+   "trace": "ES",
+   "authority": "AUTH-AMBIENT-LIGHT",
+   "locator": {
+    "text": "  - The [=illuminance rounding multiple=] must be at least 50 lux."
+   },
+   "window": 1,
+   "must_contain": [
+    "at least 50 lux"
+   ],
+   "consequence": "readings are quantized (rounding multiple >= 50 lux): a known-answer probe must compare quantized values",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-ALS3",
+   "trace": "ES",
+   "authority": "AUTH-AMBIENT-LIGHT",
+   "locator": {
+    "text": "interface AmbientLightSensor : Sensor {",
+    "after": "[SecureContext, Exposed=Window]"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface AmbientLightSensor : Sensor"
+   ],
+   "consequence": "AmbientLightSensor is [SecureContext, Exposed=Window]",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-DO1",
+   "trace": "DO",
+   "authority": "AUTH-DEVICE-ORIENTATION",
+   "locator": {
+    "text": "This specification is a [=powerful feature=] and, as such, it defines the following [=permissions=]"
+   },
+   "window": 5,
+   "must_contain": [
+    "\"accelerometer\"</dfn>, whose [=default allowlist=] is [=default allowlist/'self'=]",
+    "\"gyroscope\"",
+    "\"magnetometer\""
+   ],
+   "consequence": "Device Orientation and Motion owns the accelerometer, gyroscope and magnetometer permissions/policy features (default 'self') used by the sensor specs",
+   "grounds": [
+    "CON-IC-ACCELEROMETER",
+    "CON-IC-GYROSCOPE",
+    "CON-IC-MAGNETOMETER"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-DO2",
+   "trace": "DO",
+   "authority": "AUTH-DEVICE-ORIENTATION",
+   "locator": {
+    "text": "The <dfn method for=\"DeviceOrientationEvent\">requestPermission(|absolute|)</dfn> method steps are:"
+   },
+   "window": 13,
+   "must_contain": [
+    "[=transient activation=]",
+    "is \"{{PermissionState/prompt}}\" and |hasTransientActivation| is false",
+    "\"{{NotAllowedError}}\""
+   ],
+   "consequence": "requestPermission rejects NotAllowedError when a permission is still prompt and there is no transient activation: automation needs a granted state or a user gesture",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-DO3",
+   "trace": "DO",
+   "authority": "AUTH-DEVICE-ORIENTATION",
+   "locator": {
+    "text": "interface DeviceOrientationEvent : Event {",
+    "after": "[Exposed=Window, SecureContext]"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface DeviceOrientationEvent : Event"
+   ],
+   "consequence": "orientation/motion events are [SecureContext, Exposed=Window]",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-DO4",
+   "trace": "DO",
+   "authority": "AUTH-DEVICE-ORIENTATION",
+   "locator": {
+    "text": "This integration is [=at risk=] due to the low pass rate of the"
+   },
+   "window": 1,
+   "must_contain": [
+    "This integration is [=at risk=]"
+   ],
+   "consequence": "maturity: the permission integration is at risk (low WPT pass rate)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GEO1",
+   "trace": "GEO",
+   "authority": "AUTH-GEOLOCATION",
+   "locator": {
+    "text": "interface Geolocation {",
+    "after": "[Exposed=Window]"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface Geolocation {"
+   ],
+   "consequence": "Geolocation is exposed in Window WITHOUT [SecureContext]: presence proves nothing about usability",
+   "grounds": [],
+   "leads_to": [
+    "CL-GEO2"
+   ]
+  },
+  {
+   "id": "CL-GEO2",
+   "trace": "GEO",
+   "authority": "AUTH-GEOLOCATION",
+   "locator": {
+    "text": "If |geolocation|'s [=environment settings object=] is a"
+   },
+   "window": 9,
+   "must_contain": [
+    "[=non-secure context=]",
+    "{{GeolocationPositionError/PERMISSION_DENIED}}"
+   ],
+   "consequence": "in a non-secure context every request calls back PERMISSION_DENIED: the secure-context gate lives in the algorithm, not the IDL",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GEO3",
+   "trace": "GEO",
+   "authority": "AUTH-GEOLOCATION",
+   "locator": {
+    "text": "<li data-tests=\"\">If |document| is not [=allowed to use=] the"
+   },
+   "window": 8,
+   "must_contain": [
+    "\"geolocation\" feature",
+    "{{GeolocationPositionError/PERMISSION_DENIED}}"
+   ],
+   "consequence": "a policy-disallowed document gets PERMISSION_DENIED",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GEO4",
+   "trace": "GEO",
+   "authority": "AUTH-GEOLOCATION",
+   "locator": {
+    "text": "<cite>Geolocation</cite> is a [=default powerful feature=] identified"
+   },
+   "window": 3,
+   "must_contain": [
+    "\"geolocation\""
+   ],
+   "consequence": "geolocation is a default powerful feature (express permission)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-GEO5",
+   "trace": "GEO",
+   "authority": "AUTH-GEOLOCATION",
+   "locator": {
+    "text": "If |document:Document|'s [=Document/visibility state=] is"
+   },
+   "window": 2,
+   "must_contain": [
+    "\"hidden\", wait for the following"
+   ],
+   "consequence": "a hidden document waits until visible before acquiring a position",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-XR1",
+   "trace": "XR",
+   "authority": "AUTH-WEBXR",
+   "locator": {
+    "text": "[SecureContext, SameObject] readonly attribute XRSystem xr;"
+   },
+   "window": 1,
+   "must_contain": [
+    "SecureContext"
+   ],
+   "consequence": "navigator.xr exists only in secure contexts",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-XR2",
+   "trace": "XR",
+   "authority": "AUTH-WEBXR",
+   "locator": {
+    "text": "1. If |mode| is an [=immersive session=] mode and the requesting document's [=origin=] is not allowed to use the \"xr-spatial-tracking\""
+   },
+   "window": 1,
+   "must_contain": [
+    "[=reject=] |promise| with a \"{{SecurityError}}\""
+   ],
+   "consequence": "immersive support queries and sessions need the xr-spatial-tracking policy",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-XR3",
+   "trace": "XR",
+   "authority": "AUTH-WEBXR",
+   "locator": {
+    "text": "Calling {{XRSystem/isSessionSupported()}} MUST NOT trigger device-selection UI"
+   },
+   "window": 1,
+   "must_contain": [
+    "MUST NOT trigger device-selection UI"
+   ],
+   "consequence": "isSessionSupported is a non-prompting discovery call (the census may call it)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-XR4",
+   "trace": "XR",
+   "authority": "AUTH-WEBXR",
+   "locator": {
+    "text": "To determine if an <dfn>immersive session request is allowed</dfn>"
+   },
+   "window": 3,
+   "must_contain": [
+    "[=transient activation=]",
+    "return `false`"
+   ],
+   "consequence": "an immersive session needs transient activation (or app launch) and user intent",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-XR5",
+   "trace": "XR",
+   "authority": "AUTH-WEBXR",
+   "locator": {
+    "text": "1. If |device| is `null` or |device|'s [=list of supported modes=] does not [=list/contain=] |mode|, run the following steps:"
+   },
+   "window": 2,
+   "must_contain": [
+    "\"{{NotSupportedError}}\""
+   ],
+   "consequence": "no device supporting the mode rejects NotSupportedError",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-XR6",
+   "trace": "XR",
+   "authority": "AUTH-WEBXR",
+   "locator": {
+    "text": "The <dfn attribute for=\"XRSession\">onend</dfn> attribute"
+   },
+   "window": 1,
+   "must_contain": [
+    "{{end}} event type"
+   ],
+   "consequence": "sessions end (end event): lifecycle",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-HID1",
+   "trace": "DEV",
+   "authority": "AUTH-WEBHID",
+   "locator": {
+    "text": "[SecureContext] partial interface Navigator {"
+   },
+   "window": 2,
+   "must_contain": [
+    "readonly attribute HID hid;"
+   ],
+   "consequence": "navigator.hid exists only in secure contexts",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-HID2",
+   "trace": "DEV",
+   "authority": "AUTH-WEBHID",
+   "locator": {
+    "text": "Document=] is not [=allowed to use=] the [=policy-controlled",
+    "after": "requestDevice"
+   },
+   "window": 12,
+   "must_contain": [
+    "feature=] named `\"hid\"`",
+    "{{Window/window}}",
+    "[=transient activation=]"
+   ],
+   "consequence": "requestDevice needs the hid policy, a Window, and transient activation (SecurityError / NotSupportedError otherwise): a user gesture is part of admission",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-HID3",
+   "trace": "DEV",
+   "authority": "AUTH-WEBHID",
+   "locator": {
+    "text": "The feature name for this feature is `\"hid\"`."
+   },
+   "window": 5,
+   "must_contain": [
+    "default allowlist=] for this feature",
+    "is `'self'`."
+   ],
+   "consequence": "hid is policy-controlled with default 'self'",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-HID4",
+   "trace": "DEV",
+   "authority": "AUTH-WEBHID",
+   "locator": {
+    "text": "{{HID/ondisconnect}} is an [=event handler IDL attribute=] for the"
+   },
+   "window": 2,
+   "must_contain": [
+    "<dfn>disconnect</dfn> event type"
+   ],
+   "consequence": "devices disconnect (disconnect event); forget() revokes access",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-USB1",
+   "trace": "DEV",
+   "authority": "AUTH-WEBUSB",
+   "locator": {
+    "text": "interface USB : EventTarget {",
+    "after": "[Exposed=(Worker,Window), SecureContext]"
+   },
+   "window": 10,
+   "must_contain": [
+    "attribute EventHandler ondisconnect;",
+    "[Exposed=Window, SecureContext]",
+    "readonly attribute USB usb;"
+   ],
+   "consequence": "USB is [SecureContext]; navigator.usb in Window; disconnect event",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-USB2",
+   "trace": "DEV",
+   "authority": "AUTH-WEBUSB",
+   "locator": {
+    "text": "1. Check that the algorithm was triggered while |global| has a [=transient"
+   },
+   "window": 3,
+   "must_contain": [
+    "\"{{SecurityError}}\""
+   ],
+   "consequence": "requestDevice needs transient activation (SecurityError otherwise)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-USB3",
+   "trace": "DEV",
+   "authority": "AUTH-WEBUSB",
+   "locator": {
+    "text": "This specification defines a <a>policy-controlled feature</a>, identified by the"
+   },
+   "window": 6,
+   "must_contain": [
+    "<code>\"usb\"</code>",
+    "The <a>default allowlist</a> for this feature is <code>[\"self\"]</code>."
+   ],
+   "consequence": "usb is policy-controlled with default [\"self\"]",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-SER1",
+   "trace": "DEV",
+   "authority": "AUTH-SERIAL",
+   "locator": {
+    "text": "readonly attribute Serial serial;",
+    "after": "[Exposed=Window, SecureContext]"
+   },
+   "window": 1,
+   "must_contain": [
+    "readonly attribute Serial serial;"
+   ],
+   "consequence": "navigator.serial exists only in secure contexts (Window)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-SER2",
+   "trace": "DEV",
+   "authority": "AUTH-SERIAL",
+   "locator": {
+    "text": "feature=] named \"[=policy-controlled feature/serial=]\", [=reject=]"
+   },
+   "window": 7,
+   "must_contain": [
+    "\"{{SecurityError}}\"",
+    "[=transient activation=]"
+   ],
+   "consequence": "requestPort needs the serial policy and transient activation (SecurityError otherwise)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-SER3",
+   "trace": "DEV",
+   "authority": "AUTH-SERIAL",
+   "locator": {
+    "text": "The [=policy-controlled feature/default allowlist=] for this feature",
+    "after": "\"policy-controlled feature\"><code>serial</code></dfn>"
+   },
+   "window": 2,
+   "must_contain": [
+    "is `'self'`."
+   ],
+   "consequence": "serial is policy-controlled with default 'self'",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-SER4",
+   "trace": "DEV",
+   "authority": "AUTH-SERIAL",
+   "locator": {
+    "text": "</h3>{{SerialPort/ondisconnect}} is an [=event handler IDL attribute=]"
+   },
+   "window": 2,
+   "must_contain": [
+    "{{disconnect}} event type"
+   ],
+   "consequence": "ports disconnect; forget() revokes access",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-BT1",
+   "trace": "DEV",
+   "authority": "AUTH-WEB-BLUETOOTH",
+   "locator": {
+    "text": "interface Bluetooth : EventTarget {",
+    "after": "[Exposed=Window, SecureContext]"
+   },
+   "window": 2,
+   "must_contain": [
+    "Promise<boolean> getAvailability();"
+   ],
+   "consequence": "Bluetooth is [SecureContext, Exposed=Window]; getAvailability is a non-prompting discovery call",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-BT2",
+   "trace": "DEV",
+   "authority": "AUTH-WEB-BLUETOOTH",
+   "locator": {
+    "text": "1. If |document| is not [=allowed to use=] the [=policy-controlled feature=]"
+   },
+   "window": 9,
+   "must_contain": [
+    "named \"[=policy-controlled feature/bluetooth=]\", throw a {{SecurityError}}",
+    "transient",
+    "activation</a>, otherwise throw a {{SecurityError}}"
+   ],
+   "consequence": "requestDevice needs the bluetooth policy and transient activation (SecurityError otherwise)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-BT3",
+   "trace": "DEV",
+   "authority": "AUTH-WEB-BLUETOOTH",
+   "locator": {
+    "text": "The Web Bluetooth API is a [=powerful feature=] that is identified by the"
+   },
+   "window": 2,
+   "must_contain": [
+    "\"bluetooth\""
+   ],
+   "consequence": "bluetooth is a powerful feature (permission)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-BT4",
+   "trace": "DEV",
+   "authority": "AUTH-WEB-BLUETOOTH",
+   "locator": {
+    "text": "The <a>default allowlist</a> for this feature is <code>[\"self\"]</code>.",
+    "after": "## Permissions Policy ## {#permissions-policy}"
+   },
+   "window": 1,
+   "must_contain": [
+    "[\"self\"]"
+   ],
+   "consequence": "bluetooth is policy-controlled with default [\"self\"]",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-BT5",
+   "trace": "DEV",
+   "authority": "AUTH-WEB-BLUETOOTH",
+   "locator": {
+    "text": "Note: This fires a {{gattserverdisconnected}} event at"
+   },
+   "window": 1,
+   "must_contain": [
+    "{{gattserverdisconnected}}"
+   ],
+   "consequence": "losing access disconnects GATT (gattserverdisconnected): revocation/loss lifecycle",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-WK1",
+   "trace": "WK",
+   "authority": "AUTH-HTML-WORKERS",
+   "locator": {
+    "text": "interface <dfn interface>Worker</dfn> : <span>EventTarget</span> {",
+    "after": "[Exposed=(Window,DedicatedWorker,SharedWorker)]"
+   },
+   "window": 4,
+   "must_contain": [
+    "constructor</span>((<code data-x=\"tt-trustedscripturl\">TrustedScriptURL</code> or USVString) scriptURL",
+    "terminate</span>();"
+   ],
+   "consequence": "Worker is exposed to Window, DedicatedWorker and SharedWorker without [SecureContext]; no permission or policy gate",
+   "grounds": [
+    "CON-WB-001",
+    "CON-IC-WORKER_DEDICATED"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-WK2",
+   "trace": "WK",
+   "authority": "AUTH-HTML-WORKERS",
+   "locator": {
+    "text": "<li><p>If <var>workerURL</var> is failure, then throw a <span>\"<code>SyntaxError</code>\"</span>",
+    "after": "constructor steps are:"
+   },
+   "window": 1,
+   "must_contain": [
+    "SyntaxError"
+   ],
+   "consequence": "an unparsable script URL throws SyntaxError",
+   "grounds": [
+    "CON-IC-WORKER_DEDICATED"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-WK3",
+   "trace": "WK",
+   "authority": "AUTH-HTML-WORKERS",
+   "locator": {
+    "text": "<p>The <dfn method for=\"Worker\"><code data-x=\"dom-Worker-terminate\">terminate()</code></dfn>"
+   },
+   "window": 2,
+   "must_contain": [
+    "terminate()"
+   ],
+   "consequence": "terminate() ends a worker: lifecycle",
+   "grounds": [
+    "CON-WB-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-STQ1",
+   "trace": "STO",
+   "authority": "AUTH-STORAGE-BUCKET-MODE",
+   "locator": {
+    "text": "interface StorageManager {"
+   },
+   "window": 5,
+   "must_contain": [
+    "Promise&lt;boolean> persisted();",
+    "[Exposed=Window] Promise&lt;boolean> persist();",
+    "Promise&lt;StorageEstimate> estimate();"
+   ],
+   "consequence": "StorageManager ([SecureContext]) offers persisted/persist (persist is Window-only) and estimate",
+   "grounds": [
+    "CON-ST-001"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-OPFS1",
+   "trace": "STO",
+   "authority": "AUTH-FS-OPFS",
+   "locator": {
+    "text": "partial interface StorageManager {"
+   },
+   "window": 2,
+   "must_contain": [
+    "Promise<FileSystemDirectoryHandle> getDirectory();"
+   ],
+   "consequence": "the origin private file system root comes from navigator.storage.getDirectory() ([SecureContext])",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-CS1",
+   "trace": "STO",
+   "authority": "AUTH-SW-CACHE-OBJECTS",
+   "locator": {
+    "text": "[SecureContext, SameObject] readonly attribute CacheStorage caches;"
+   },
+   "window": 1,
+   "must_contain": [
+    "SecureContext"
+   ],
+   "consequence": "self.caches exists only in secure contexts (Window and Worker)",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-CS2",
+   "trace": "STO",
+   "authority": "AUTH-SW-CACHE-OBJECTS",
+   "locator": {
+    "text": "interface CacheStorage {",
+    "after": "[SecureContext, Exposed=(Window,Worker)]"
+   },
+   "window": 2,
+   "must_contain": [
+    "Promise&lt;(Response or undefined)&gt; match(RequestInfo request"
+   ],
+   "consequence": "CacheStorage is [SecureContext, Exposed=(Window,Worker)] with match/has/open/delete/keys",
+   "grounds": [],
+   "leads_to": []
+  },
+  {
+   "id": "CL-WJ1",
+   "trace": "WJ",
+   "authority": "AUTH-WASM-JSAPI-VALIDATE",
+   "locator": {
+    "text": "The <dfn method for=\"WebAssembly\">validate(|bytes|, |options|)</dfn> method"
+   },
+   "window": 3,
+   "must_contain": [
+    "[=Compile a WebAssembly module|Compile=] |stableBytes| as a WebAssembly module"
+   ],
+   "consequence": "WebAssembly.validate compiles a copy of the bytes; the JS API defines no [SecureContext], no powerful feature and no policy-controlled feature (verified absent): Wasm execution is ungated by context, permission or policy",
+   "grounds": [
+    "CON-IC-CPU_WASM64",
+    "FACT-MEMORY64-DISCOVERED"
+   ],
+   "leads_to": [
+    "CL-WJ2"
+   ],
+   "absent_in_document": [
+    "SecureContext",
+    "policy-controlled feature",
+    "powerful feature"
+   ]
+  },
+  {
+   "id": "CL-WJ2",
+   "trace": "WJ",
+   "authority": "AUTH-WASM-JSAPI-VALIDATE",
+   "locator": {
+    "text": "The <dfn method for=\"WebAssembly\">instantiate(|bytes|, |importObject|, |options|)</dfn> method"
+   },
+   "window": 4,
+   "must_contain": [
+    "[=Asynchronously compile a WebAssembly module=]",
+    "[=Instantiate a promise of a module|Instantiate=] |promiseOfModule| with imports |importObject|"
+   ],
+   "consequence": "instantiate(bytes) compiles asynchronously and instantiates with the import object: the request step of CPU/Wasm64 admission (FactTest instantiates from fetched bytes with zero imports)",
+   "grounds": [
+    "CON-IC-CPU_WASM64",
+    "FACT-WASM64-ABI-EXEC"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-IDB1",
+   "trace": "STO",
+   "authority": "AUTH-IDB-TRANSACTION",
+   "locator": {
+    "text": "interface IDBFactory {",
+    "after": "partial interface mixin WindowOrWorkerGlobalScope {"
+   },
+   "window": 1,
+   "must_contain": [
+    "interface IDBFactory"
+   ],
+   "consequence": "IDBFactory is exposed to Window and Worker; IndexedDB defines no [SecureContext], no powerful feature and no policy-controlled feature (verified absent)",
+   "grounds": [],
+   "leads_to": [],
+   "absent_in_document": [
+    "SecureContext",
+    "policy-controlled feature",
+    "powerful feature"
+   ]
+  }
+ ],
+ "constraints": [
+  {
+   "id": "CON-CAP-001",
+   "statement": "Interface exposure never admits a capability: admission requires the family's secure-context, policy, permission/chooser and request gates to pass and a known-answer to execute (e.g. Geolocation is exposed without [SecureContext] yet denies every request in a non-secure context; WebNN createContext can reject after navigator.ml is present)",
+   "authority_refs": [
+    "AUTH-GEOLOCATION",
+    "AUTH-WEBNN",
+    "AUTH-GPU-REQUESTADAPTER"
+   ],
+   "scope": "every capability family in CAPABILITY-MATRIX.md",
+   "kind": "admission",
+   "grounded_by": [
+    "CL-GEO1",
+    "CL-GEO2",
+    "CL-NN3",
+    "CL-GPU3"
+   ],
+   "requires": [],
+   "implemented_by": []
+  },
+  {
+   "id": "CON-CAP-002",
+   "statement": "Families whose request algorithm requires transient activation or a chooser (HID, USB, Serial, Bluetooth, immersive XR, device-orientation permission) carry a probe obligation that names its automation path (user gesture, granted permission state, or virtual device); without one they stay [OBS]/[GAP], never [RUN]",
+   "authority_refs": [
+    "AUTH-WEBHID",
+    "AUTH-WEBUSB",
+    "AUTH-SERIAL",
+    "AUTH-WEB-BLUETOOTH",
+    "AUTH-WEBXR",
+    "AUTH-DEVICE-ORIENTATION"
+   ],
+   "scope": "chooser/activation-gated families",
+   "kind": "probe_obligation",
+   "grounded_by": [
+    "CL-HID2",
+    "CL-USB2",
+    "CL-SER2",
+    "CL-BT2",
+    "CL-XR4",
+    "CL-DO2"
+   ],
+   "requires": [
+    "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION"
+   ],
+   "implemented_by": []
+  }
+ ],
+ "facts": [
+  {
+   "id": "FACT-SENSOR-FAMILY-ADVISEMENT",
+   "subject": "Generic Sensor family maturity (sensors, accelerometer, gyroscope, magnetometer, orientation, proximity, ambient light)",
+   "predicate": "every Generic Sensor family editor's draft carries an advisement at its tip: Generic Sensor is Chromium-only and not expected to advance; Accelerometer, Gyroscope and Orientation Sensor are maintained for existing deployments and direct new projects to Device Orientation and Motion; Magnetometer and Ambient Light are not available by default in any engine; Proximity is implemented by no engine",
+   "status": "OBS",
+   "constraint_refs": [
+    "CON-IC-ACCELEROMETER",
+    "CON-IC-GYROSCOPE",
+    "CON-IC-MAGNETOMETER",
+    "CON-IC-ORIENTATION_SENSOR",
+    "CON-IC-PROXIMITY_SENSOR"
+   ],
+   "evidence": [
+    "EV-D16-CL-GS0",
+    "EV-D16-CL-ACC0",
+    "EV-D16-CL-GYR0",
+    "EV-D16-CL-MAG0",
+    "EV-D16-CL-ORI0",
+    "EV-D16-CL-PRX0",
+    "EV-D16-CL-ALS0"
+   ],
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "required_environment": [],
+   "note": "maturity only: no family leaves G (CON-FT-002); whether FactTest's motion-capability contracts should route through Device Orientation and Motion is a D18 decision"
+  },
+  {
+   "id": "FACT-CHOOSER-FAMILIES-NEED-ACTIVATION",
+   "subject": "HID, USB, Serial, Bluetooth, immersive XR, device orientation permission",
+   "predicate": "each request algorithm rejects without transient activation (and, for HID/USB/Serial/Bluetooth, shows a chooser): headless automation cannot reach admission without a user gesture, a pre-granted state or a virtual device path",
+   "status": "OBS",
+   "constraint_refs": [
+    "CON-FT-002"
+   ],
+   "evidence": [
+    "EV-D16-CL-HID2",
+    "EV-D16-CL-USB2",
+    "EV-D16-CL-SER2",
+    "EV-D16-CL-BT2",
+    "EV-D16-CL-XR4",
+    "EV-D16-CL-DO2"
+   ],
+   "probe": "PROBE-CLAUSE-EXTRACT",
+   "required_environment": [],
+   "note": "probe obligation for these families needs automation (virtual devices / permission overrides): implementation side is D17"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "id": "CL-XR4",
+ "trace": "XR",
+ "authority": "AUTH-WEBXR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/immersive-web/webxr",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+  "sha256": "2fe7451a82eff47ca0ddd10117f14d0b7f03443cc1cf989d135d88ba92c0cb49",
+  "bytes": 274788
+ },
+ "locator": {
+  "text": "To determine if an <dfn>immersive session request is allowed</dfn>",
+  "line_start": 2768,
+  "line_end": 2770,
+  "derivation": "anchor text",
+  "enclosing_section": "#protect-immersiveness (line 2763)"
+ },
+ "window": 3,
+ "consequence": "an immersive session needs transient activation (or app launch) and user intent",
+ "excerpt": "To determine if an <dfn>immersive session request is allowed</dfn> for a given |global object| the user agent MUST run the following steps:\n\n  1. If the request was not made while the |global object| has [=transient activation=] or when [=launching a web application=], return `false`",
+ "excerpt_sha256": "d2cc29cbbb2dd5edfe6aec720ff34506bab1193c11b57ca796fa9055ecd2b67a",
+ "must_contain": {
+  "[=transient activation=]": true,
+  "return `false`": true
+ },
+ "status": "VERIFIED"
+}

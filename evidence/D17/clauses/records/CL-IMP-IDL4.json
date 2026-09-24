@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-IDL4",
+ "trace": "BR",
+ "authority": "AUTH-IMPL-BLINK-IDL-NAVIGATOR-ML",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "third_party/blink/renderer/modules/ml/navigator_ml.idl",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "4dd166d9277014f8a609f584a8aaa981a1772dcaff470ed27ef09a982bfeb0bc",
+  "bytes": 372
+ },
+ "locator": {
+  "text": "RuntimeEnabled=MachineLearningNeuralNetwork",
+  "line_start": 11,
+  "line_end": 13,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 3,
+ "consequence": "navigator.ml exists only when MachineLearningNeuralNetwork is enabled",
+ "excerpt": "  RuntimeEnabled=MachineLearningNeuralNetwork\n] partial interface Navigator {\n  [SameObject] readonly attribute ML ml;",
+ "excerpt_sha256": "451eb4b30868fcf5d89eec8fed976bb5620ff53892b8a3221e11835b6b9c9813",
+ "must_contain": {
+  "readonly attribute ML ml;": true
+ },
+ "status": "VERIFIED"
+}

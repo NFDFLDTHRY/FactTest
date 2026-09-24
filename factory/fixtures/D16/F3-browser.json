@@ -1,0 +1,68 @@
+{
+  "fixture_id": "F3-browser",
+  "station_id": "S-BROWSER",
+  "selected_inputs": [
+    "tests/capability/universe.json",
+    "tests/capability/census.mjs",
+    "installed Playwright Chromium"
+  ],
+  "narrowed_may_change": [
+    "evidence/D16/census/",
+    "evidence/D16/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/capability/census.mjs",
+          "tests/capability/universe.json",
+          "evidence/D16/census"
+        ],
+        "log": "evidence/D16/logs/F3-census.log",
+        "env": {
+          "PLAYWRIGHT_BROWSERS_PATH": "/opt/pw-browsers"
+        },
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D16/census/summary.json",
+    "evidence/D16/census/identity.json"
+  ],
+  "tests": [
+    "one census record per family with a census block",
+    "nothing requested, nothing admitted"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D16-CAPABILITY-UNIVERSE"
+}

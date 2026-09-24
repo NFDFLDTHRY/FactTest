@@ -1,0 +1,29 @@
+{
+ "id": "CL-XR1",
+ "trace": "XR",
+ "authority": "AUTH-WEBXR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/immersive-web/webxr",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+  "sha256": "2fe7451a82eff47ca0ddd10117f14d0b7f03443cc1cf989d135d88ba92c0cb49",
+  "bytes": 274788
+ },
+ "locator": {
+  "text": "[SecureContext, SameObject] readonly attribute XRSystem xr;",
+  "line_start": 270,
+  "line_end": 270,
+  "derivation": "anchor text",
+  "enclosing_section": "#navigator-xr-attribute (line 265)"
+ },
+ "window": 1,
+ "consequence": "navigator.xr exists only in secure contexts",
+ "excerpt": "  [SecureContext, SameObject] readonly attribute XRSystem xr;",
+ "excerpt_sha256": "0350ee740ad3dab0a672dd6419298c3e14efdf039621c24ab46713beacea0328",
+ "must_contain": {
+  "SecureContext": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,217 @@
+{
+ "tool": "tests/reference/clauses.mjs",
+ "manifest": "tests/reference/d17-clauses.json",
+ "observed": "2026-09-24T09:08:22.287Z",
+ "clauses": 44,
+ "status": {
+  "VERIFIED": 44
+ },
+ "traces": [
+  "BR",
+  "WN",
+  "SAB",
+  "GPU",
+  "HL",
+  "V8",
+  "RS",
+  "PW"
+ ],
+ "sources": [
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/platform/runtime_enabled_features.json5",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "645f5b7eaba4486fdc7d00887dff87e1deb6df46d42b37725add5c8f0b6107c7",
+   "bytes": 176139,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/modules/sensor/magnetometer.idl",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "003675f222b8c526217a2e64866017399b4bc8d6538f18d1ecaf2599afb4b2f0",
+   "bytes": 613,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/modules/sensor/ambient_light_sensor.idl",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "9d2e3ec02670b872648e925fbfde51ffe28736e4876a6d6718ecc685e209d6ff",
+   "bytes": 543,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/modules/device_orientation/device_orientation_event.idl",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "c22c110e45b849ae546dfdd5fc466b2c590c40a59f8bfff060a9432cb6b00635",
+   "bytes": 1946,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/modules/ml/navigator_ml.idl",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "4dd166d9277014f8a609f584a8aaa981a1772dcaff470ed27ef09a982bfeb0bc",
+   "bytes": 372,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/modules/bluetooth/navigator_bluetooth.idl",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "9e8cec9a91d2db2006a560d44817a87cc49fc2db2f65e8e0e6506e330f03b5a7",
+   "bytes": 391,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/bindings/idl_in_modules.gni",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "76830067f948b708a438422fc660643457db8b472acae4241a8f52f3272b5d6e",
+   "bytes": 108028,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:services/webnn/public/mojom/features.mojom",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "b7904bb2577b5564e0a1218a3ad78ac1c629389bbf7d1221508d19d58d17b0b2",
+   "bytes": 1851,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/bindings/core/v8/v8_initializer.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "2d0b9ac39c48a2946c9c13dcb393e2a56a91ca70d9d31b770d1b1366edb8dded",
+   "bytes": 42767,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:gpu/config/gpu_finch_features.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "9a51f47dffd2dd4efd94384a0bc82aa381df59bb648d2b98a52433ce758064e7",
+   "bytes": 34491,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:gpu/config/gpu_switches.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "4a4002457507c3457d5095b7450d7db1de1bfb632a862ca5d497b3342a2610cb",
+   "bytes": 7659,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:gpu/config/gpu_util.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "91701bdd395fba5c8514ce5f0faca88b82b063811d9b6d9dba291cac65d7d2aa",
+   "bytes": 42623,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:ui/gl/gl_switches.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "abd64d5d91406ea8e721d6e94880573122c0feeeae554b123e54c332163ec2dd",
+   "bytes": 18925,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:third_party/blink/renderer/modules/webgpu/gpu_adapter.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "21a1e76781e8084159e761c193ab72df2adc4abc763bc7e0a628244852dce030",
+   "bytes": 13192,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/google/swiftshader@7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f:README.md",
+   "commit": "7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f",
+   "sha256": "c3c94f5326754464bd242970f1f629898d31c032d4e183ea49c4b3645a905fdb",
+   "bytes": 7927,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:DEPS",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3",
+   "bytes": 185857,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:headless/lib/browser/headless_permission_manager.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "a499a80610abaed0a63db6733fb240f4ab3caed4b917bf9539c6659b9a1647a6",
+   "bytes": 3880,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/chromium/chromium@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e:chrome/browser/storage/durable_storage_permission_context.cc",
+   "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+   "sha256": "35b65ba1056599b845133889dc76481956ae94cdcdc0cd723653b04dac6ff832",
+   "bytes": 6944,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/v8/v8@ad8af0fc661d278e87627fcaa3a7cf795ee80dd8:src/wasm/wasm-feature-flags.h",
+   "commit": "ad8af0fc661d278e87627fcaa3a7cf795ee80dd8",
+   "sha256": "d2f03a15341a347403f1856b5e42df2b81cae4b9e149a48c326ccd6a7c76dc66",
+   "bytes": 11455,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/v8/v8@8ab91836885699b9ef686c3a30df4778501ef7d1:src/wasm/wasm-feature-flags.h",
+   "commit": "8ab91836885699b9ef686c3a30df4778501ef7d1",
+   "sha256": "a07efeb035a84f6ce114181ca8b48014eb1fe811ea1345710c31d0095f152f9a",
+   "bytes": 9440,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/rust@6eeff9a52c3e35c4c4cbf5651f342dcd2191866f:compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+   "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb",
+   "bytes": 1985,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/rust@6eeff9a52c3e35c4c4cbf5651f342dcd2191866f:src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+   "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+   "bytes": 4126,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/cargo@98a09e7e7d62850f14e5b6132101fc1edd19a16f:src/compiler/standard_lib.rs",
+   "commit": "98a09e7e7d62850f14e5b6132101fc1edd19a16f",
+   "sha256": "260e01d0a4973ee9f7cd524e75e4bd7b46a4a63052f7491839818015455240fe",
+   "bytes": 8759,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/llvm-project@1b9c0d5ff9bbe7634aead059efe6b11a7eeba145:llvm/lib/Transforms/Utils/FunctionImportUtils.cpp",
+   "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+   "sha256": "25b02a0a5b784cb479da30b12c5212e14ad81701d9729eedca2212f230868a07",
+   "bytes": 16814,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/llvm-project@1b9c0d5ff9bbe7634aead059efe6b11a7eeba145:llvm/include/llvm/IR/ModuleSummaryIndex.h",
+   "commit": "1b9c0d5ff9bbe7634aead059efe6b11a7eeba145",
+   "sha256": "d628dbe4d221876a0e726f1819f95099cb1151c0c63bcdf4886697bffdd794e2",
+   "bytes": 83903,
+   "ok": true
+  },
+  {
+   "key": "local:/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js",
+   "commit": "installed playwright-core 1.56.1",
+   "sha256": "2b4bcee4cf38013a4d44c6ea16adaf219716096d4b7e45944abb09f3e3c1117f",
+   "bytes": 17714,
+   "ok": true
+  },
+  {
+   "key": "local:/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromiumSwitches.js",
+   "commit": "installed playwright-core 1.56.1",
+   "sha256": "665ed0a2c12e6f130226637b4c978db725da2fdf5dd2391a2cabf3e59052cf26",
+   "bytes": 4052,
+   "ok": true
+  },
+  {
+   "key": "local:/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/browsers.json",
+   "commit": "installed playwright-core 1.56.1",
+   "sha256": "1387ec667390e31e49040aa2c81d27720b38d32c7892d1a50c7f85b187e926c1",
+   "bytes": 1860,
+   "ok": true
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "family": "CAP-CACHESTORAGE",
+ "matrix_row": "CacheStorage",
+ "observed": "2026-09-24T08:42:27.917Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "typeof caches === 'object'",
+ "discovery_expr": "caches.keys().then(k => ({keys: k.length}))",
+ "exposed": true,
+ "discovery": {
+  "keys": 0
+ },
+ "permissions": {},
+ "policy": {}
+}

@@ -1,0 +1,10 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind cite --out evidence/D19
+(cwd .)
+PASS identity FACT-GPU-ADAPTER-NULL-DEFAULT
+PASS identity FACT-GPU-ADAPTER-SWIFTSHADER
+PASS identity FACT-GPU-EXPOSED
+PASS identity FACT-LOOPBACK-SECURE-CONTEXT
+PASS identity FACT-MEMORY64-DISCOVERED
+PASS identity FACT-SAB-GLOBAL-HOST-DEFINED
+
+[exit 0] expected 0

@@ -1,6 +1,7 @@
 # D14 - Owner prompt for the technical reference rescan (tracked verbatim)
 
 STATUS: OWNER PROMPT RECORD (routed through the Factory as D14-PROMPT-INTAKE before any assembly)
+MERGE ANNOTATION (PR #5 x PR #6): the paths factory/deltas/D14.json, factory/fixtures/D14/, evidence/D14/ and design/environment-map/epochs/D14.json named below were relocated under D14-TECHNICAL-REFERENCE-RESCAN / D14-RESCAN by design/materialization/D14-MERGE-RECONCILIATION.md; the text is preserved as written.
 DATE: 2026-09-24
 RECEIVED IN: the session that had integrated D9 (development branch claude/d9-rust-cargo-proof-4nys6s, restarted on
 main 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 = merge of PR #4 = D13-REPO-HYGIENE)

@@ -1,0 +1,110 @@
+{
+  "fixture_id": "F4-doc",
+  "station_id": "S-DOC",
+  "delta_id": "D14-TECHNICAL-REFERENCE-RESCAN",
+  "selected_inputs": [
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/",
+    "design/environment-map/graph.json",
+    "design/environment-map/epochs/",
+    "design/materialization/D14-INTENDED-REFERENCE-RESCAN.md",
+    "docs/HANDOFF.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "design/environment-map/epochs/D14-RESCAN.json",
+    "design/environment-map/graph.json",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md",
+    "docs/HANDOFF.md",
+    "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/"
+  ],
+  "job_parameters": {
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "! grep -q '\"PENDING\"' design/environment-map/epochs/D14-RESCAN.json && node tests/envmap/envmap.mjs validate design/environment-map/graph.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14-RESCAN.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && git diff --exit-code 6778133c35a96d5e356df283aa1676ee428766bb -- design/environment-map/epochs/D12.json design/environment-map/epochs/D13.json design/environment-map/SCHEMA.md"
+        ],
+        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-graph.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "O=design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md; for t in T14-R1 T14-R2 T14-R3 T14-R4 T14-R5 T14-R6 T14-R7 T14-R8; do grep -q \"$t\" $O || { echo missing $t; exit 1; }; done; for k in '[RUN]' '[ERR]' '[UNK]' 'HISTORICAL CLAIM' 'NO LAW TEXT EDITED'; do grep -qF \"$k\" $O || { echo missing $k; exit 1; }; done; for id in $(node -e 'const e=JSON.parse(require(\"fs\").readFileSync(\"design/environment-map/epochs/D14-RESCAN.json\"));console.log(e.nodes.filter(n=>n.class===\"COMPUTATIONAL_FACT\"&&!/REOPEN-/.test(n.id)).map(n=>n.id).join(\" \"))'); do grep -q \"$id\" $O || { echo \"observed does not mention $id\"; exit 1; }; done; for u in $(node -e 'const l=JSON.parse(require(\"fs\").readFileSync(\"evidence/D14-TECHNICAL-REFERENCE-RESCAN/audit/link-audit.json\"));console.log(l.records.filter(r=>/ERR/.test(r.fragment_status)).map(r=>r.url).join(\" \"))'); do grep -qF \"$u\" $O || { echo \"observed does not list $u\"; exit 1; }; done; grep -q 'D14-TECHNICAL-REFERENCE-RESCAN' docs/HANDOFF.md && grep -q 'fixtures/reference' docs/HANDOFF.md"
+        ],
+        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-observed-and-handoff.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && sh tests/hygiene/handoff-check.sh $T/h.json && node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out $T/s | head -3"
+        ],
+        "log": "factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/logs/F4-hygiene.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/environment-map/epochs/D14-RESCAN.json",
+    "design/environment-map/graph.json",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md",
+    "docs/HANDOFF.md"
+  ],
+  "tests": [
+    "epoch bound (no PENDING), validate, merge-check, render-check; D12/D13 epochs untouched",
+    "observed ASCII names every summary fact and every drifted link",
+    "HANDOFF updated; handoff-check + status-scan PASS"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

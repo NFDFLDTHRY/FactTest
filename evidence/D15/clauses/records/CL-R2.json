@@ -1,0 +1,30 @@
+{
+ "id": "CL-R2",
+ "trace": "R",
+ "authority": "AUTH-RUST-REF-NOSTD",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/reference",
+  "branch": "master",
+  "path": "src/names/preludes.md",
+  "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+  "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+  "bytes": 10212
+ },
+ "locator": {
+  "text": "r[names.preludes.std.module]",
+  "line_start": 24,
+  "line_end": 32,
+  "derivation": "anchor text",
+  "enclosing_section": "#standard-library-prelude (line 19)"
+ },
+ "window": 9,
+ "consequence": "under no_std the standard-library prelude is core's; FactTest's 2021-edition crates see core::prelude::rust_2021",
+ "excerpt": "r[names.preludes.std.module]\nThe module used depends on the crate's edition, and on whether the [`no_std` attribute] is applied to the crate:\n\nEdition | `no_std` not applied        | `no_std` applied\n--------| --------------------------- | ----------------------------\n2015    | [`std::prelude::rust_2015`] | [`core::prelude::rust_2015`]\n2018    | [`std::prelude::rust_2018`] | [`core::prelude::rust_2018`]\n2021    | [`std::prelude::rust_2021`] | [`core::prelude::rust_2021`]\n2024    | [`std::prelude::rust_2024`] | [`core::prelude::rust_2024`]",
+ "excerpt_sha256": "8753848077d537b3b301b3889f19f865bae2ccc3e91657b827f5e7c0b27e8ff2",
+ "must_contain": {
+  "`no_std` applied": true,
+  "core::prelude::rust_2021": true
+ },
+ "status": "VERIFIED"
+}

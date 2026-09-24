@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-WASM-CORE-TEXT-MEMTYPE",
+ "authority_class": "STANDARD_RELEASE",
+ "cited": {
+  "url": "https://webassembly.github.io/spec/core/text/types.html",
+  "fragment": "#text-memtype",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "Release 3.0",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "path": "document/core/text/types.rst",
+  "sha256": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d",
+  "observed": "2026-09-24",
+  "locator": "label _text-memtype"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "ba302f969f9ad9244e7382ef12a62593950a1e98e60deacaecab465ba8834e9d",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#text-memtype",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 192,
+   "kind": "rst label"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 192,
+   "kind": "rst label"
+  }
+ },
+ "clause": {
+  "method": "fragment line + 24",
+  "pin_lines": [
+   192,
+   216
+  ],
+  "window_sha256": "ce24780bb16742a317b0b9e67fcd921136fca09bf55fc9768a07a7809ea4dca5",
+  "window_excerpt": ".. _text-memtype:\n\nMemory Types\n~~~~~~~~~~~~\n\n$${grammar: Tmemtype_}\n\n\n.. index:: table type, reference type, limits\n   pair: text format; table type\n.. _text-tabletype:\n\nTable Types\n~~~~~~~~~~~\n\n$${grammar: Ttabletype_}\n\n\n.. index:: external type, tag type, global type, memory type, table type, function type\n   pair: text format; external type\n.. _text-externtype:\n\nExternal Types\n~~~~~~~~~~~~~~\n",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   192,
+   216
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

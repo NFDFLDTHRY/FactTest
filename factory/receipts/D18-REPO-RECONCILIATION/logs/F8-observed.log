@@ -1,0 +1,4 @@
+$ sh -c O=design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md; for k in P1 P2 P3 P4 P5 P6 P7 Q21 R-49 FACT-KERNEL-IDENTITY-DEFINED-D18 LEDGERED_IN D19-REPROVE-REOBSERVE; do grep -q "$k" $O || { echo missing $k; exit 1; }; done; grep -q '^GATE: PASS' $O && grep -q 'D18-REPO-RECONCILIATION' docs/HANDOFF.md
+(cwd .)
+
+[exit 0] expected 0

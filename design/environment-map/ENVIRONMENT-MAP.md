@@ -169,3 +169,69 @@ D13    D13-REPO-HYGIENE                   ENV-D13-HOST-PINNED, pinned proof sets
 
 Section 4's sentence "No toolchain is pinned [GAP]" is true of the D11 epoch and is superseded by D13
 (FACT-TOOLCHAIN-PINNED; FACT-TOOLCHAIN-DRIFT INVALIDATED_BY EV-D13-PINS).  Query Q16 lists every epoch's additions.
+
+## 6. Authority frontier epoch D14 (added by D14-FRONTIER-REOPEN)
+
+```text
+D14    D14-FRONTIER-REOPEN     64 AUTHORITY_REVISION nodes (published rendering + source tip vs pin + fragment +
+                               clause + maturity), AUTH-WASM-PROPOSALS-REGISTRY, ENV-D14-HOST, 5 frontier facts;
+                               epochs/D14.json.  Q17 lists what moved and which claims may now be stale.
+```
+
+
+## 7. Foundational clause epoch D15 (added by D15-FOUNDATIONAL-SEMANTICS)
+
+```text
+D15    D15-FOUNDATIONAL-SEMANTICS  60 CLAUSE nodes over 11 traces (Rust no_std/build-std/wasm64, Wasm memory64 + JS
+                               API BigInt membrane, streaming, threads/COI/canBlock, Web IDL, secure context vs opaque
+                               origin, SW lifecycle, Permissions Policy, storage/OPFS/IDB/locks, manifest, git), 10
+                               document-level AUTHORITY nodes, 6 PROPOSED constraints, 5 facts; epochs/D15.json.
+                               Q18 walks every claim to COMPLETE or its first broken step.
+```
+
+## 8. Capability universe epoch D16 (added by D16-CAPABILITY-UNIVERSE)
+
+```text
+D16    D16-CAPABILITY-UNIVERSE     33 CAPABILITY_FAMILY nodes (G = CAPABILITY-MATRIX.md, every row kept), 90 CLAUSE
+                                   nodes over 18 new capability authorities, an exposure census of 32 families in
+                                   ENV-D16-BROWSER (HeadlessChrome 141), 2 PROPOSED constraints; epochs/D16.json.
+                                   Q19 walks every family API -> ... -> EVIDENCE and names its first gap.
+```
+
+## 9. Implementation reality epoch D17 (added by D17-IMPLEMENTATION-REALITY)
+
+```text
+D17    D17-IMPLEMENTATION-REALITY  19 IMPLEMENTATION_BEHAVIOR nodes on 44 clauses pinned to the versions run (Chromium
+                                   141.0.7390.37, V8 14.1.146.11 / 12.4, SwiftShader, rust nightly 6eeff9a52 + cargo +
+                                   LLVM, Playwright 1.56.1); kernel section identity under two install names; label audit
+                                   (6 MISLABEL [ERR] facts for D18); epochs/D17.json.  Q20 separates and connects
+                                   standards law, implementation behaviour and observed runtime.
+```
+
+## 10. Reconciliation epoch D18 (added by D18-REPO-RECONCILIATION)
+
+```text
+D18    D18-REPO-RECONCILIATION     36 RECONCILIATION nodes re-examine every Q17 fact, moved authority and D17 carried
+                                   item; 15 supersessions (11 authorities re-pinned or re-located, 4 facts restated) with
+                                   their inherited edges; 19 constraints ledgered (LEDGERED_IN LAW-CONSTRAINT-LEDGER);
+                                   6 label findings and the implementation-pin [ERR] resolved; kernel identity defined as
+                                   the exec identity; 2 implementation clauses; epochs/D18.json.  Q21 is the current model.
+```
+
+## 11. Repair epoch D18R (added by D18R-CHAIN-REPAIR)
+
+```text
+D18R   D18R-CHAIN-REPAIR           R-52 supersedes FACT-WORKERS-D18 (its "hardwareConcurrency was never read" contradicted
+                                   D11/D16 evidence) by FACT-WORKERS-D18R; R-53 corrects the reading of the D12
+                                   executable field (default path, not the launched binary); epochs/D18R.json.
+```
+
+## 12. Re-proof epoch D19 (added by D19-REPROVE-REOBSERVE)
+
+```text
+D19    D19-REPROVE-REOBSERVE       the current environment identity (ENV-D19-HOST, ENV-D19-BROWSER-DEFAULT,
+                                   ENV-D19-BROWSER-GPUFLAGS, ENV-D19-SOURCES) compared with every stale condition of the
+                                   current claims; the minimum affected set re-proved physically (qualified proof, kernel
+                                   sections, browser identity, clause re-verification, frontier reopen, lineage, paths);
+                                   D18 obligations fulfilled; epochs/D19.json.  Q22 is the entitled-claim surface.
+```

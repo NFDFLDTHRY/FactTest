@@ -1,0 +1,14 @@
+{
+ "family": "CAP-WEBNN",
+ "matrix_row": "WebNN",
+ "observed": "2026-09-24T08:42:27.818Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "ABSENT",
+ "exposure_expr": "'ml' in navigator",
+ "discovery_expr": "navigator.ml.createContext().then(c => ({context: true}))",
+ "exposed": false,
+ "permissions": {},
+ "policy": {
+  "webnn": false
+ }
+}

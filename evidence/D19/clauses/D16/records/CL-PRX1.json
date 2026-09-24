@@ -1,0 +1,30 @@
+{
+ "id": "CL-PRX1",
+ "trace": "ES",
+ "authority": "AUTH-PROXIMITY",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/proximity",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "1d43739eea15981bb6cab10224929c53ae6f51ed",
+  "sha256": "07339c828ca4ed54e00ecf6deb983bbc1c8d160a94ccaecb005e40f5765961bc",
+  "bytes": 11758
+ },
+ "locator": {
+  "text": "interface ProximitySensor : Sensor {",
+  "after": "[SecureContext, Exposed=Window]",
+  "line_start": 152,
+  "line_end": 152,
+  "derivation": "anchor text after \"[SecureContext, Exposed=Window]\"",
+  "enclosing_section": "#proximity-sensor-interface (line 147)"
+ },
+ "window": 1,
+ "consequence": "ProximitySensor is [SecureContext, Exposed=Window]",
+ "excerpt": "  interface ProximitySensor : Sensor {",
+ "excerpt_sha256": "efca896e5ec482a0c5256046d71eedbe51f45b6ba1fc43bd016d0a110c239357",
+ "must_contain": {
+  "interface ProximitySensor : Sensor": true
+ },
+ "status": "VERIFIED"
+}

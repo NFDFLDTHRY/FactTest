@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GPU-LOSE-DEVICE",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://gpuweb.github.io/gpuweb/",
+  "fragment": "#lose-the-device",
+  "fragment_status_recorded": "DERIVED_FROM_DFN_UNVERIFIED",
+  "maturity_recorded": "Status: w3c/ED (followed sublink: what loss means)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "path": "spec/index.bs",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "observed": "2026-09-24",
+  "locator": "<dfn dfn>lose the device</dfn> (lines 1458-1476); revocation sentence (lines 1442-1444)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#lose-the-device",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 1459,
+   "kind": "bikeshed dfn"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 1459,
+   "kind": "bikeshed dfn"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   1458,
+   1476
+  ],
+  "window_sha256": "d3bcf9246198193004d1985009549c112dceb421c1a651297257ae56d8474825",
+  "window_excerpt": "<div algorithm=\"lose the device\" data-timeline=device>\n    To <dfn dfn>lose the device</dfn>(|device|, |reason|) run the following [=device timeline=] steps:\n\n    1. [$Invalidate$] |device|.\n    1. Issue the following steps on the [=content timeline=] of |device|.{{device/[[content device]]}}:\n        <div data-timeline=content>\n            1. Resolve |device|.{{GPUDevice/lost}} with a new {{GPUDeviceLostInfo}} with\n                {{GPUDeviceLostInfo/reason}} set to |reason| and\n                {{GPUDeviceLostInfo/message}} set to an [=implementation-defined=] value.\n\n                Note: {{GPUDeviceLostInfo/message}} should not disclose unnecessary user/system\n                information and should never be parsed by applications.\n        </div>\n\n    1. Complete any outstanding steps that are waiting until |device| <dfn dfn>becomes lost</dfn>.\n\n    Note: No errors are generated from a device which is lost.\n    See [[#errors-and-debugging]].\n</div>",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   1458,
+   1476
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "drift": "NONE"
+ }
+}

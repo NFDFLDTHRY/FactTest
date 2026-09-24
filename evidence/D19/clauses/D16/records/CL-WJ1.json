@@ -1,0 +1,34 @@
+{
+ "id": "CL-WJ1",
+ "trace": "WJ",
+ "authority": "AUTH-WASM-JSAPI-VALIDATE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/js-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+  "bytes": 114471
+ },
+ "locator": {
+  "text": "The <dfn method for=\"WebAssembly\">validate(|bytes|, |options|)</dfn> method",
+  "line_start": 417,
+  "line_end": 419,
+  "derivation": "anchor text",
+  "enclosing_section": "#webassembly-namespace (line 356)"
+ },
+ "window": 3,
+ "consequence": "WebAssembly.validate compiles a copy of the bytes; the JS API defines no [SecureContext], no powerful feature and no policy-controlled feature (verified absent): Wasm execution is ungated by context, permission or policy",
+ "excerpt": "  The <dfn method for=\"WebAssembly\">validate(|bytes|, |options|)</dfn> method, when invoked, performs the following steps:\n    1. Let |stableBytes| be a [=get a copy of the buffer source|copy of the bytes held by the buffer=] |bytes|.\n    1. [=Compile a WebAssembly module|Compile=] |stableBytes| as a WebAssembly module and store the results as |module|.",
+ "excerpt_sha256": "fe69a59303235d2bbed42e79b2333daac24a2535c97b72808a6395a8c5f050a2",
+ "must_contain": {
+  "[=Compile a WebAssembly module|Compile=] |stableBytes| as a WebAssembly module": true
+ },
+ "status": "VERIFIED",
+ "absent_in_document": {
+  "SecureContext": true,
+  "policy-controlled feature": true,
+  "powerful feature": true
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-DEPS2",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-CHROMIUM-DEPS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "DEPS",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3",
+  "bytes": 185857
+ },
+ "locator": {
+  "text": "'swiftshader_revision': '7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f',",
+  "line_start": 324,
+  "line_end": 324,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "Chromium 141.0.7390.37 builds SwiftShader 7cd1022",
+ "excerpt": "  'swiftshader_revision': '7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f',",
+ "excerpt_sha256": "15ad6f90be7a342bdf329241e0b99eeb7a151139f02fb520c55bc9719496c55b",
+ "must_contain": {
+  "7cd1022cdc50fa3ac4f0ca5d0cdd64ce20af3c4f": true
+ },
+ "status": "VERIFIED"
+}

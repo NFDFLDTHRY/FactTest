@@ -1,0 +1,15 @@
+{
+ "family": "CAP-CPU-WASM64",
+ "matrix_row": "CPU / Wasm64",
+ "observed": "2026-09-24T08:42:27.799Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "typeof WebAssembly === 'object'",
+ "discovery_expr": "({memory64_validates: WebAssembly.validate(new Uint8Array([0,0x61,0x73,0x6d,1,0,0,0,5,3,1,0x04,1]))})",
+ "exposed": true,
+ "discovery": {
+  "memory64_validates": true
+ },
+ "permissions": {},
+ "policy": {}
+}

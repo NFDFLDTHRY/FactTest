@@ -1,0 +1,31 @@
+{
+ "id": "CL-DO1",
+ "trace": "DO",
+ "authority": "AUTH-DEVICE-ORIENTATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/deviceorientation",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "70d42d5484db7fd1646e48cc17caa5ff1c9d92cb",
+  "sha256": "f07509380267b8f3f5d6e7ccd4e2eb64ba35d5c88e2f67573140163bb7e40520",
+  "bytes": 69351
+ },
+ "locator": {
+  "text": "This specification is a [=powerful feature=] and, as such, it defines the following [=permissions=]",
+  "line_start": 235,
+  "line_end": 239,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-integration (line 228)"
+ },
+ "window": 5,
+ "consequence": "Device Orientation and Motion owns the accelerometer, gyroscope and magnetometer permissions/policy features (default 'self') used by the sensor specs",
+ "excerpt": "This specification is a [=powerful feature=] and, as such, it defines the following [=permissions=] which are [=policy-controlled features=] with the given [=default allowlists=]:\n\n  - <dfn permission export>\"accelerometer\"</dfn>, whose [=default allowlist=] is [=default allowlist/'self'=].\n  - <dfn permission export>\"gyroscope\"</dfn>, whose [=default allowlist=] is [=default allowlist/'self'=].\n  - <dfn permission export>\"magnetometer\"</dfn>, whose [=default allowlist=] is [=default allowlist/'self'=].",
+ "excerpt_sha256": "dc2ddb97da603c27bc29c95f5c7bc9fde76297bbb273793cdbc8226919b1d487",
+ "must_contain": {
+  "\"accelerometer\"</dfn>, whose [=default allowlist=] is [=default allowlist/'self'=]": true,
+  "\"gyroscope\"": true,
+  "\"magnetometer\"": true
+ },
+ "status": "VERIFIED"
+}

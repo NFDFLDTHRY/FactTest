@@ -1,0 +1,37 @@
+{
+  "fixture_id": "F5-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "selection of F3"
+  ],
+  "narrowed_may_change": [
+    "evidence/D19/proof/",
+    "evidence/D19/kernel/",
+    "evidence/D19/results/",
+    "evidence/D19/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D19/selection.json --runbook tests/reprove/runbook.json --kind build --out evidence/D19"
+        ],
+        "log": "evidence/D19/logs/F5-build.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D19/results/qualified-proof.json",
+    "evidence/D19/results/kernel-sections.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

@@ -1,0 +1,260 @@
+{
+  "fixture_id": "F7-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "D18 graph",
+    "surfaces",
+    "register"
+  ],
+  "narrowed_may_change": [
+    "evidence/D18/envmap/",
+    "evidence/D18/workpieces/",
+    "evidence/D18/logs/",
+    "evidence/D18/status/",
+    "evidence/D18/regress/",
+    "evidence/D18/surfaces.json",
+    "evidence/D18/gate.json",
+    "evidence/D18/handoff-check.json",
+    "evidence/D18/index.json"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D18/envmap/validate.json"
+        ],
+        "log": "evidence/D18/logs/F7-validate.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "query",
+          "design/environment-map/graph.json",
+          "--all",
+          "--out",
+          "evidence/D18/envmap/queries"
+        ],
+        "log": "evidence/D18/logs/F7-queries.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "stale",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D18/envmap/stale.json"
+        ],
+        "log": "evidence/D18/logs/F7-stale.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge-check",
+          "design/environment-map/graph.json",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json",
+          "--out",
+          "evidence/D18/envmap/merge-check.json"
+        ],
+        "log": "evidence/D18/logs/F7-merge-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render-check",
+          "design/environment-map/graph.json",
+          "--dir",
+          "design/environment-map",
+          "--out",
+          "evidence/D18/envmap/render-check.json"
+        ],
+        "log": "evidence/D18/logs/F7-render-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/reconcile/surfaces.mjs",
+          "tests/reconcile/surfaces.json",
+          "--out",
+          "evidence/D18/surfaces.json"
+        ],
+        "log": "evidence/D18/logs/F7-surfaces.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/reconcile/gate.mjs",
+          "--register",
+          "tests/reconcile/d18-reconciliation.json",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--queries",
+          "evidence/D18/envmap/queries",
+          "--surfaces",
+          "evidence/D18/surfaces.json",
+          "--label-audit",
+          "tests/implementation/label-audit.json",
+          "--out",
+          "evidence/D18/gate.json"
+        ],
+        "log": "evidence/D18/logs/F7-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D18/envmap/queries/Q18.json\")).answers;const c={};let bad=0;for(const x of a){const t=x.terminal||\"\";const k=t.startsWith(\"[SUPERSEDED]\")?\"SUPERSEDED\":t.startsWith(\"[RESOLVED]\")?\"RESOLVED\":x.status===\"RUN\"?(t===\"COMPLETE\"?\"RUN COMPLETE\":t.startsWith(\"stops at \")?\"RUN \"+t.split(\":\")[0]:\"BAD\"):(t.startsWith(\"[\"+x.status+\"]\")?\"TERMINAL \"+x.status:\"BAD\");if(k===\"BAD\"){bad++;console.log(\"BAD\",x.fact)}c[k]=(c[k]||0)+1}console.log(a.length+\" claims\",JSON.stringify(c));if(bad||!c[\"RUN COMPLETE\"])process.exit(1)'"
+        ],
+        "log": "evidence/D18/logs/F7-q18-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const q=JSON.parse(require(\"fs\").readFileSync(\"evidence/D18/envmap/queries/Q21.json\")).answer;console.log(q.reconciliations,JSON.stringify(q.by_outcome),JSON.stringify(q.stale_facts),JSON.stringify(q.current_model.facts),q.new_probe_obligations.length);if(!q.reconciliations||q.stale_facts.reconciled!==q.stale_facts.to_recheck||q.current_model.constraints.proposed.length||!q.new_probe_obligations.length||q.rows.some(r=>!r.reconciles.length))process.exit(1)'"
+        ],
+        "log": "evidence/D18/logs/F7-q21-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D18/regress && node tests/capability/gate.mjs --universe tests/capability/universe.json --matrix CAPABILITY-MATRIX.md --census evidence/D16/census --graph design/environment-map/graph.json --out evidence/D18/regress/capability-gate.json"
+        ],
+        "log": "evidence/D18/logs/F7-capability-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D18/regress && node tests/implementation/gate.mjs --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph design/environment-map/graph.json --out evidence/D18/regress/implementation-gate.json"
+        ],
+        "log": "evidence/D18/logs/F7-implementation-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/hygiene/status-scan.mjs",
+          "--rules",
+          "tests/hygiene/status-classification.json",
+          "--out",
+          "evidence/D18/status"
+        ],
+        "log": "evidence/D18/logs/F7-status-scan.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "tests/hygiene/handoff-check.sh",
+          "evidence/D18/handoff-check.json"
+        ],
+        "log": "evidence/D18/logs/F7-handoff-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W20",
+          "--out",
+          "evidence/D18/workpieces/audit-before.json"
+        ],
+        "log": "evidence/D18/logs/F7-audit-before.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "retire",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W20",
+          "--out",
+          "evidence/D18/workpieces/retire.json"
+        ],
+        "log": "evidence/D18/logs/F7-retire.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W20",
+          "--out",
+          "evidence/D18/workpieces/audit-after.json"
+        ],
+        "log": "evidence/D18/logs/F7-audit-after.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D18/workpieces/audit-after.json\"));console.log(JSON.stringify(a.totals));if(a.totals.RETIRABLE!==0)process.exit(1)'"
+        ],
+        "log": "evidence/D18/logs/F7-cleanup-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D18",
+          "evidence/D18/index.json"
+        ],
+        "log": "evidence/D18/logs/F7-index.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D18/envmap/queries/Q21.json",
+    "evidence/D18/gate.json",
+    "evidence/D18/surfaces.json",
+    "evidence/D18/index.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18-REPO-RECONCILIATION"
+}

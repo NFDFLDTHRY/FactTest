@@ -1,0 +1,29 @@
+{
+ "id": "CL-GPU8",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-FALLBACK-ADAPTER",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "An [=adapter=] may be considered a <dfn>fallback adapter</dfn>",
+  "line_start": 1315,
+  "line_end": 1317,
+  "derivation": "anchor text",
+  "enclosing_section": "#adapters (line 1291)"
+ },
+ "window": 3,
+ "consequence": "a fallback adapter (e.g. software) is a lawful adapter with significant performance caveats; it is not hardware GPU evidence",
+ "excerpt": "An [=adapter=] may be considered a <dfn>fallback adapter</dfn> if it has significant performance\ncaveats in exchange for some combination of wider compatibility, more predictable behavior, or\nimproved privacy. It is not required that a [=fallback adapter=] is available on every system.",
+ "excerpt_sha256": "2e496e2a0b3cd42ce1ca8dcbfaa470aa999baa363065487e06398199563a54eb",
+ "must_contain": {
+  "significant performance": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,6 @@
+$ sh -c node -e 'const a=JSON.parse(require("fs").readFileSync("evidence/D19/envmap/queries/Q22.json")).answer;console.log(a.current_facts,JSON.stringify(a.by_status),JSON.stringify(a.run_claims),a.reproved_in_current_epoch.length);if(a.run_claims.total!==a.run_claims.claimable+a.run_claims.invalidated)process.exit(1);const st=a.rows.filter(r=>["GAP","ERR","UNK"].includes(r.status));const n=Object.values(a.explicit_stops.open).reduce((x,y)=>x+y,0);console.log("stops open",JSON.stringify(a.explicit_stops.open),"closed",a.explicit_stops.closed_by_evidence.join(" "));if(n+a.explicit_stops.closed_by_evidence.length!==st.length||st.some(r=>r.invalidated_by.length?!/closed: invalidated by/.test(r.entitled_claim):r.entitled_claim!=="no claim ["+r.status+"]"))process.exit(1)'
+(cwd .)
+112 {"UNK":5,"OBS":43,"RUN":50,"ERR":4,"GAP":10} {"total":50,"claimable":49,"invalidated":1,"traversal":{"stops at IMPLEMENTATION CONTRACT":17,"COMPLETE":20,"stops at CURRENT AUTHORITY":6,"stops at EXACT CLAUSE":5,"stops at PROJECT CONSTRAINT":2}} 29
+stops open {"UNK":5,"ERR":4,"GAP":8} closed FACT-TOOLCHAIN-DRIFT FACT-WILDCARD-SURFACES-DEAD
+
+[exit 0] expected 0

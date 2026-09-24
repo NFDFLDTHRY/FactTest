@@ -1,0 +1,107 @@
+{
+  "fixture_id": "F2-build",
+  "station_id": "S-BUILD",
+  "delta_id": "D14-TECHNICAL-REFERENCE-RESCAN",
+  "selected_inputs": [
+    "fixtures/reference/",
+    "tests/reference/",
+    "REFERENCE-AUTHORITY.md",
+    "design/environment-map/graph.json",
+    "session egress policy (probed)"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/"
+  ],
+  "job_parameters": {
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "tests/reference/run-ingress-checks.sh",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/run.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q '\"verdict\": \"PASS\"' evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/verify.json && grep -q '\"verdict\": \"PASS\"' evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/refetch.json && grep -q 'PUBLISHED_HOSTS_DENIED; ROUTE AVAILABLE\\|PUBLISHED_HOSTS_REACHABLE' evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/hosts.json && test -s evidence/D14-TECHNICAL-REFERENCE-RESCAN/audit/fragments.json && test -s evidence/D14-TECHNICAL-REFERENCE-RESCAN/audit/link-audit.json"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/verdicts.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "mkdir -p evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap && node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/validate-before.json"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/validate-before.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/hosts.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/register.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/verify.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/ingress/refetch.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/audit/link-audit.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/audit/fragments.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/audit/audit.txt",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/validate-before.json"
+  ],
+  "tests": [
+    "T14-R1 hosts + refetch",
+    "T14-R3 verify",
+    "T14-R5 audit",
+    "pre-merge graph valid"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

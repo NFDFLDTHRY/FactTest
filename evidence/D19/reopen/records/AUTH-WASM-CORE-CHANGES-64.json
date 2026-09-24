@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-WASM-CORE-CHANGES-64",
+ "authority_class": "STANDARD_RELEASE",
+ "cited": {
+  "url": "https://webassembly.github.io/spec/core/appendix/changes.html",
+  "fragment": null,
+  "fragment_status_recorded": "NO_FRAGMENT_CITED",
+  "maturity_recorded": "Release 3.0",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "path": "document/core/appendix/changes.rst",
+  "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9",
+  "observed": "2026-09-24",
+  "locator": "section '64-bit Address Space' under 'Release 3.0' (lines 331, 432-443)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   331,
+   331
+  ],
+  "window_sha256": "ebfd99d25d28063838c663f768eb9ceaf81e3c375cacad4546afac56473ef7bc",
+  "window_excerpt": "Release 3.0",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   331,
+   331
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 331,
+  "candidates": {
+   "section": {
+    "id": "#changes",
+    "line": 2,
+    "kind": "rst label"
+   },
+   "definition": null
+  }
+ }
+}

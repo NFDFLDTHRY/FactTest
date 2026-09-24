@@ -1,0 +1,29 @@
+{
+ "id": "CL-IMP-PW1",
+ "trace": "PW",
+ "authority": "AUTH-IMPL-PLAYWRIGHT-CHROMIUM",
+ "authority_known": true,
+ "source": {
+  "repo": "installed file /opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js",
+  "path": "/opt/node22/lib/node_modules/playwright/node_modules/playwright-core/lib/server/chromium/chromium.js",
+  "local": true,
+  "commit": "installed playwright-core 1.56.1",
+  "sha256": "2b4bcee4cf38013a4d44c6ea16adaf219716096d4b7e45944abb09f3e3c1117f",
+  "bytes": 17714
+ },
+ "locator": {
+  "text": "getExecutableName(options) {",
+  "line_start": 315,
+  "line_end": 318,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 4,
+ "consequence": "every headless Playwright launch in FactTest runs the chromium-headless-shell executable (HeadlessChrome), not the Chrome browser",
+ "excerpt": "  getExecutableName(options) {\n    if (options.channel)\n      return options.channel;\n    return options.headless ? \"chromium-headless-shell\" : \"chromium\";",
+ "excerpt_sha256": "fc8f7ed822113df1db1ed6f322350a20f1171dc1af264c6c45e1a66a7dea65de",
+ "must_contain": {
+  "return options.headless ? \"chromium-headless-shell\" : \"chromium\";": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,29 @@
+{
+ "id": "CL-I4",
+ "trace": "I",
+ "authority": "AUTH-ECMA-262",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/tc39/ecma262",
+  "branch": "main",
+  "path": "spec.html",
+  "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+  "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af",
+  "bytes": 3087902
+ },
+ "locator": {
+  "fragment": "#sec-tobigint64",
+  "line_start": 5672,
+  "line_end": 5679,
+  "derivation": "PRESENT_EXPLICIT (id attribute)",
+  "enclosing_section": null
+ },
+ "window": 8,
+ "consequence": "ToBigInt64 wraps modulo 2^64 after ToBigInt (which throws for Numbers): the membrane must hand BigInt, and values are two's-complement i64",
+ "excerpt": "    <emu-clause id=\"sec-tobigint64\" type=\"abstract operation\">\n      <h1>\n        ToBigInt64 (\n          _arg_: an ECMAScript language value,\n        ): either a normal completion containing a BigInt or a throw completion\n      </h1>\n      <dl class=\"header\">\n        <dt>description</dt>",
+ "excerpt_sha256": "b5d0accabfbaea66b0441f2957f238880ecf09c886a170b03f0b8184113320f1",
+ "must_contain": {
+  "ToBigInt64": true
+ },
+ "status": "VERIFIED"
+}

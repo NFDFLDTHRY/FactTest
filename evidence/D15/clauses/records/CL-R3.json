@@ -1,0 +1,32 @@
+{
+ "id": "CL-R3",
+ "trace": "R",
+ "authority": "AUTH-CARGO-BUILD-STD",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/cargo",
+  "branch": "master",
+  "path": "doc/book/src/reference/unstable.md",
+  "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+  "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd",
+  "bytes": 98671
+ },
+ "locator": {
+  "text": "### Requirements",
+  "after": "## build-std",
+  "line_start": 558,
+  "line_end": 565,
+  "derivation": "anchor text after \"## build-std\"",
+  "enclosing_section": "#requirements (line 558)"
+ },
+ "window": 8,
+ "consequence": "building core for wasm64 needs rust-src and a nightly Cargo+rustc, and -Z build-std on every invocation: WASM64_KERNEL_SET runs on the pinned nightly with rust-src (D13 pin)",
+ "excerpt": "### Requirements\n\nAs a summary, a list of requirements today to use `-Z build-std` are:\n\n* You must install libstd's source code through `rustup component add rust-src`\n* You must use both a nightly Cargo and a nightly rustc\n* The `-Z build-std` flag must be passed to all `cargo` invocations.\n",
+ "excerpt_sha256": "f5236253af109bac31dca99211b8eedb55d523883d023e4443d72a71ab31e901",
+ "must_contain": {
+  "rust-src": true,
+  "nightly Cargo and a nightly rustc": true,
+  "must be passed to all `cargo` invocations": true
+ },
+ "status": "VERIFIED"
+}

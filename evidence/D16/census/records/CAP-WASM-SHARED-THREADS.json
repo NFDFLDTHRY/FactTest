@@ -1,0 +1,12 @@
+{
+ "family": "CAP-WASM-SHARED-THREADS",
+ "matrix_row": "Shared/threaded Wasm",
+ "observed": "2026-09-24T08:42:27.804Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "ABSENT",
+ "exposure_expr": "typeof SharedArrayBuffer === 'function'",
+ "discovery_expr": "({crossOriginIsolated: self.crossOriginIsolated})",
+ "exposed": false,
+ "permissions": {},
+ "policy": {}
+}

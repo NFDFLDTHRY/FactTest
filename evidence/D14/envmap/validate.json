@@ -1,14 +1,14 @@
 {
   "tool": "tests/envmap/envmap.mjs validate",
   "graph_schema": "facttest-environment-map/1",
-  "nodes": 374,
-  "edges": 956,
+  "nodes": 441,
+  "edges": 795,
   "status": "PASS",
   "checks": [
     {
       "check": "node_ids_unique",
       "status": "PASS",
-      "detail": "374 nodes"
+      "detail": "441 nodes"
     },
     {
       "check": "every_node_class_declared",
@@ -116,9 +116,24 @@
       "detail": ""
     },
     {
+      "check": "revision_revises_its_authority",
+      "status": "PASS",
+      "detail": "64 revisions"
+    },
+    {
+      "check": "revision_movement_vocabulary",
+      "status": "PASS",
+      "detail": "UNCHANGED MOVED EDITORIAL SEMANTIC MATURITY REMOVED SPLIT/MERGED UNREACHABLE AMBIGUOUS"
+    },
+    {
+      "check": "revision_has_reopen_evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
       "check": "epochs_consistent",
       "status": "PASS",
-      "detail": "D11 -> D12 -> D13 -> D14; 374 nodes attributed of 374"
+      "detail": "D11 -> D12 -> D13 -> D14; 441 nodes attributed of 441"
     },
     {
       "check": "prompt_invariants_carried",

@@ -1,0 +1,19 @@
+{
+ "family": "CAP-BLUETOOTH",
+ "matrix_row": "Bluetooth",
+ "observed": "2026-09-24T08:42:27.938Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "ABSENT",
+ "exposure_expr": "'bluetooth' in navigator",
+ "discovery_expr": "navigator.bluetooth.getAvailability().then(a => ({available: a}))",
+ "exposed": false,
+ "permissions": {
+  "bluetooth": {
+   "error": "TypeError",
+   "message": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'bluetooth' is not a valid enum value of type PermissionName."
+  }
+ },
+ "policy": {
+  "bluetooth": false
+ }
+}

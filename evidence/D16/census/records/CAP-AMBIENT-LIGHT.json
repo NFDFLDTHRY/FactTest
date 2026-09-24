@@ -1,0 +1,19 @@
+{
+ "family": "CAP-AMBIENT-LIGHT",
+ "matrix_row": "Ambient light",
+ "observed": "2026-09-24T08:42:27.876Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "ABSENT",
+ "exposure_expr": "typeof AmbientLightSensor === 'function'",
+ "discovery_expr": null,
+ "exposed": false,
+ "permissions": {
+  "ambient-light-sensor": {
+   "error": "TypeError",
+   "message": "Failed to execute 'query' on 'Permissions': GenericSensorExtraClasses flag is not enabled."
+  }
+ },
+ "policy": {
+  "ambient-light-sensor": false
+ }
+}

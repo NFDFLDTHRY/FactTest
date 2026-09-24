@@ -1,0 +1,29 @@
+{
+ "id": "CL-I1",
+ "trace": "I",
+ "authority": "AUTH-WEBIDL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/webidl",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+  "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9",
+  "bytes": 693068
+ },
+ "locator": {
+  "fragment": "#SecureContext",
+  "line_start": 10629,
+  "line_end": 10646,
+  "derivation": "PRESENT_EXPLICIT (id attribute)",
+  "enclosing_section": "#SecureContext (line 10629)"
+ },
+ "window": 18,
+ "consequence": "a [SecureContext] construct is not exposed at all outside a secure context: absence of an API in an insecure context is exposure, not a runtime failure - admission probes must run in a secure context",
+ "excerpt": "<h4 id=\"SecureContext\" extended-attribute lt=\"SecureContext\">[SecureContext]</h4>\n\nIf the [{{SecureContext}}] [=extended attribute=] appears on an\n[=interface=],\n[=partial interface=],\n[=interface mixin=],\n[=partial interface mixin=],\n[=callback interface=],\n[=namespace=],\n[=partial namespace=],\n[=interface member=],\n[=interface mixin member=], or\n[=namespace member=],\nit indicates that the construct is [=exposed=]\nonly within a [=secure context=].\nThe [{{SecureContext}}] extended attribute must not be used\non any other construct.\n",
+ "excerpt_sha256": "a1b573b169cf7fab2dc3388b0c30e317652224203b453fe4297d009fa0d9adae",
+ "must_contain": {
+  "only within a [=secure context=]": true
+ },
+ "status": "VERIFIED"
+}

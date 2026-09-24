@@ -1,0 +1,58 @@
+{
+ "authority": "AUTH-GIT-SHA256-TRANSITION",
+ "authority_class": "TOOL_DOC",
+ "cited": {
+  "url": "https://git-scm.com/docs/hash-function-transition",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "tool documentation (master)",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "path": "Documentation/technical/hash-function-transition.adoc",
+  "sha256": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d",
+  "observed": "2026-09-24",
+  "locator": "SHA-256 chosen as the successor"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/master",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "none (no line locator, fragment not locatable)",
+  "status": "UNCHANGED (file identical)"
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": null,
+  "candidates": {
+   "note": "no line locator: the clause position is not recorded in the pin"
+  }
+ }
+}

@@ -1,0 +1,4 @@
+$ sh -c for k in P1 P2 P3 P4 P5 P6 P7 Q19 CAP-WEBGPU CON-CAP-001 D17-IMPLEMENTATION-REALITY; do grep -q "$k" design/materialization/D16-OBSERVED-CAPABILITY-UNIVERSE.md || { echo missing $k; exit 1; }; done; grep -q '^GATE: PASS' design/materialization/D16-OBSERVED-CAPABILITY-UNIVERSE.md && grep -q 'D16-CAPABILITY-UNIVERSE' docs/HANDOFF.md && grep -q 'D17' docs/HANDOFF.md
+(cwd .)
+
+[exit 0] expected 0

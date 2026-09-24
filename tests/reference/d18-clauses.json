@@ -1,0 +1,79 @@
+{
+ "schema": "facttest-clause-manifest/1",
+ "epoch": "D18",
+ "law": "design/materialization/D18-INTENDED-REPO-RECONCILIATION.md",
+ "new_authorities": [
+  {
+   "id": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "title": "Content switches (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:content/public/common/content_switches.cc",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_SOURCE",
+   "maturity": "implementation source at the version FactTest ran (not standards law)",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "content/public/common/content_switches.cc"
+   },
+   "extracted_consequence": "kDisableGpu = \"disable-gpu\" at the running revision"
+  },
+  {
+   "id": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "title": "Using Chromium with SwiftShader (Chromium 141)",
+   "exact_url": "https://source.chromium.org/chromium/chromium/src/+/refs/tags/141.0.7390.37:docs/gpu/swiftshader.md",
+   "exact_fragment": null,
+   "authority_owner": "The Chromium Authors (Chromium 141.0.7390.37)",
+   "authority_class": "IMPLEMENTATION_DOC",
+   "maturity": "implementation documentation at the version FactTest ran (not standards law)",
+   "source": {
+    "repo": "https://github.com/chromium/chromium",
+    "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "path": "docs/gpu/swiftshader.md"
+   },
+   "extracted_consequence": "SwiftShader runs purely on the CPU; Chromium uses it as the GL driver or the WebGL fallback"
+  }
+ ],
+ "traces": {
+  "GPU": "running-version pins for the D11 implementation citations superseded in D18"
+ },
+ "clauses": [
+  {
+   "id": "CL-IMP-GPU0",
+   "trace": "GPU",
+   "authority": "AUTH-IMPL-CONTENT-SWITCHES-141",
+   "locator": {
+    "text": "const char kDisableGpu[]"
+   },
+   "window": 1,
+   "must_contain": [
+    "\"disable-gpu\""
+   ],
+   "consequence": "--disable-gpu is defined at the running revision (the switch Playwright may add and the harness removes)",
+   "grounds": [
+    "CON-EM-006"
+   ],
+   "leads_to": []
+  },
+  {
+   "id": "CL-IMP-SSDOC",
+   "trace": "GPU",
+   "authority": "AUTH-IMPL-CHROMIUM-SWIFTSHADER-DOC-141",
+   "locator": {
+    "text": "SwiftShader is an open-source high-performance implementation"
+   },
+   "window": 1,
+   "must_contain": [
+    "which runs purely on the CPU"
+   ],
+   "consequence": "SwiftShader in Chromium 141 is CPU-only: no GPU is involved",
+   "grounds": [
+    "CON-EM-006",
+    "CON-EM-002"
+   ],
+   "leads_to": []
+  }
+ ],
+ "constraints": [],
+ "facts": []
+}

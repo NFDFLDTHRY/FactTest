@@ -1,0 +1,6 @@
+$ sh -c T=$(mktemp -d) && node tests/reference/build-clauses.mjs --clauses evidence/D16/clauses --manifest tests/reference/d16-clauses.json --epoch D16 --delta D16-CAPABILITY-UNIVERSE --commit '3748fa7bd15d74e560951f31338b8c94820c2830 (canonical base; integration commit in LEDGER AFTER)' --harness-in design/environment-map/graph.json --out $T/clauses.json && node tests/capability/build-universe.mjs --clause-epoch $T/clauses.json --universe tests/capability/universe.json --census evidence/D16/census --matrix CAPABILITY-MATRIX.md --epoch D16 --delta D16-CAPABILITY-UNIVERSE --commit '3748fa7bd15d74e560951f31338b8c94820c2830 (canonical base; integration commit in LEDGER AFTER)' --declare --out design/environment-map/epochs/D16.json
+(cwd .)
+D16: 205 nodes, 292 edges -> /tmp/tmp.HSh5UgoBc8/clauses.json
+D16: 305 nodes, 745 edges -> design/environment-map/epochs/D16.json; {"RUN":6,"OBS":16,"ERR":1,"GAP":10}
+
+[exit 0] expected 0

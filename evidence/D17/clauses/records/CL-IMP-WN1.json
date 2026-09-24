@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-WN1",
+ "trace": "WN",
+ "authority": "AUTH-IMPL-WEBNN-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "services/webnn/public/mojom/features.mojom",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "b7904bb2577b5564e0a1218a3ad78ac1c629389bbf7d1221508d19d58d17b0b2",
+  "bytes": 1851
+ },
+ "locator": {
+  "text": "feature kWebMachineLearningNeuralNetwork {",
+  "line_start": 9,
+  "line_end": 11,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 3,
+ "consequence": "the WebNN service feature is off by default in Chromium 141: navigator.ml is absent without a flag",
+ "excerpt": "feature kWebMachineLearningNeuralNetwork {\n  const string name = \"WebMachineLearningNeuralNetwork\";\n  const bool default_state = false;",
+ "excerpt_sha256": "f6db57203bb9db1907896cdd18a98f7466b96624157c1acfc942e6a47e63b9d9",
+ "must_contain": {
+  "const bool default_state = false;": true
+ },
+ "status": "VERIFIED"
+}

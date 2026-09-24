@@ -1,0 +1,30 @@
+{
+ "id": "CL-P3",
+ "trace": "P",
+ "authority": "AUTH-PERMISSIONS-POLICY",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/webappsec-permissions-policy",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+  "sha256": "51a87c5f4008510e501b5a4fe553baf8271e0e3af6ce6e8feece987639794c9a",
+  "bytes": 78906
+ },
+ "locator": {
+  "text": "Let |container policy| be the result of running <a abstract-op>Process",
+  "line_start": 1074,
+  "line_end": 1078,
+  "derivation": "anchor text",
+  "enclosing_section": "#algo-define-inherited-policy-in-container (line 1056)"
+ },
+ "window": 5,
+ "consequence": "the container policy (iframe allow attribute) decides first: the broker must declare allow= for every capability a confined generation may use",
+ "excerpt": "    1. Let |container policy| be the result of running <a abstract-op>Process\n      permissions policy attributes</a> on |container|.\n    1. If |feature| [=map/exists=] in |container policy|:\n        1. If the <a>allowlist</a> for |feature| in |container policy|\n          <a>matches</a> |origin|, return \"<code>Enabled</code>\".",
+ "excerpt_sha256": "da9f40d57c2b0fda223ed3e05604f88cb5e64d74fab122fb3b94c54d25b64d80",
+ "must_contain": {
+  "container policy": true,
+  "Enabled": true
+ },
+ "status": "VERIFIED"
+}

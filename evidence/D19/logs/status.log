@@ -1,0 +1,9 @@
+$ node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D19/status-reprove
+STATUS INVENTORY PASS: 4794 occurrences in 2322 files; unclassified 0
+
+by class: {"B":4122,"C":2,"N":163,"R":507}
+by marker: {"FIXME":9,"PENDING":108,"TODO":9,"[ERR]":284,"[GAP]":2088,"[UNK]":886,"overclaim":56,"stale":1344,"unfinished":10}
+[exit 0]
+$ sh tests/hygiene/handoff-check.sh evidence/D19/status-reprove/handoff-check.json
+handoff check PASS
+[exit 0]

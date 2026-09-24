@@ -1,0 +1,73 @@
+{
+ "authority": "AUTH-GPU-REQUESTADAPTER",
+ "authority_class": "EDITOR_DRAFT",
+ "cited": {
+  "url": "https://gpuweb.github.io/gpuweb/",
+  "fragment": "#dom-gpu-requestadapter",
+  "fragment_status_recorded": "DERIVED_FROM_DFN_UNVERIFIED",
+  "maturity_recorded": "Status: w3c/ED",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "path": "spec/index.bs",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "observed": "2026-09-24",
+  "locator": "<dfn>requestAdapter(options)</dfn> under dfn-for=GPU (lines 2492-2560)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#dom-gpu-requestadapter",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 2492,
+   "kind": "bikeshed IDL dfn"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 2492,
+   "kind": "bikeshed IDL dfn"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   2492,
+   2560
+  ],
+  "window_sha256": "71fe07889ad8fc9ae9100daa83b33ea431daba28ff6e5b00c3f8104fa0dfca0c",
+  "window_excerpt": "    : <dfn>requestAdapter(options)</dfn>\n    ::\n        Requests an [=adapter=] from the user agent.\n        The user agent chooses whether to return an adapter, and, if so,\n        chooses according to the provided options.\n\n        <div algorithm=GPU.requestAdapter>\n            <div data-timeline=content>\n                **Called on:** {{GPU}} |this|.\n\n                **Arguments:**\n\n                <pre class=argumentdef for=\"GPU/requestAdapter(options)\">\n                    |options|: Criteria used to select the adapter.\n                </pre>\n\n                **Returns:** {{Promise}}&lt;{{GPUAdapter}}?&gt;\n\n                [=Content timeline=] steps:\n\n                1. Let <var data-timeline=content>contentTimeline</var> be the current [=Content timeline=].\n                1. Let |promise| be [=a new promise=].\n                1. Issue the |initialization steps| on the [=Device timeline=] of |this|.\n                1. Return |promise|.\n            </div>\n            <div data-timeline=device>\n                [=Device timeline=] |initialization steps|:\n\n                1. All of the requirements in the following steps |must| be met.\n\n                    <div class=validusage>\n",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   2492,
+   2560
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "declared_at_tip": {
+   "status": "w3c/ED",
+   "group": "gpuwg",
+   "level": "None"
+  },
+  "drift": "NONE"
+ }
+}

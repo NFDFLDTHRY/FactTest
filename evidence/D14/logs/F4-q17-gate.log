@@ -1,0 +1,5 @@
+$ sh -c node -e 'const q=JSON.parse(require("fs").readFileSync("evidence/D14/envmap/queries/Q17.json")).answer;if(q.revisions!==64)process.exit(1);console.log(JSON.stringify(q.movement_counts),q.facts_to_recheck.length)'
+(cwd .)
+{"UNREACHABLE":55,"AMBIGUOUS":2,"MOVED":4,"MATURITY":2,"EDITORIAL":2} 8
+
+[exit 0] expected 0

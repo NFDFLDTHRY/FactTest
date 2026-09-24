@@ -1,0 +1,29 @@
+{
+ "id": "CL-ST2",
+ "trace": "ST",
+ "authority": "AUTH-STORAGE-BUCKET-MODE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/storage",
+  "branch": "main",
+  "path": "storage.bs",
+  "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+  "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+  "bytes": 30128
+ },
+ "locator": {
+  "text": "<p>A user agent that comes under storage pressure should clear network state and",
+  "line_start": 570,
+  "line_end": 572,
+  "derivation": "anchor text",
+  "enclosing_section": "#storage-pressure (line 568)"
+ },
+ "window": 3,
+ "consequence": "under storage pressure best-effort buckets may be cleared: an installed Factory's objects are not durable without persistence (D12 P07, B-11)",
+ "excerpt": "<p>A user agent that comes under storage pressure should clear network state and\n<a>local storage buckets</a> whose <a for=\"local storage bucket\">mode</a> is\n\"<code>best-effort</code>\", ideally prioritizing removal in a manner that least impacts the user.",
+ "excerpt_sha256": "2f5d0d447f387d0bb2f51b8a51170560e9a92171b187139c403edf4fca02b776",
+ "must_contain": {
+  "\"<code>best-effort</code>\"": true
+ },
+ "status": "VERIFIED"
+}

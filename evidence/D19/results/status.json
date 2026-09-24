@@ -1,0 +1,67 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "status",
+ "kind": "repo",
+ "started": "2026-09-24T10:48:54.176Z",
+ "commands": [
+  {
+   "command": "node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D19/status-reprove",
+   "exit": 0,
+   "seconds": 0
+  },
+  {
+   "command": "sh tests/hygiene/handoff-check.sh evidence/D19/status-reprove/handoff-check.json",
+   "exit": 0,
+   "seconds": 0
+  }
+ ],
+ "facts": {
+  "FACT-HANDOFF-MODEL-INDEPENDENT": {
+   "probe": "PROBE-STATUS-SCAN",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "status-reprove/handoff-check.json",
+     "sha256": "06c50e44e6041f9c7c14536d8bf475639d613ab362fcea1f18b73491c30d4eb9",
+     "checks": [
+      {
+       "path": "status",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-STATUS-INVENTORIED": {
+   "probe": "PROBE-STATUS-SCAN",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "status-reprove/inventory.json",
+     "sha256": "05f5dcf4b7ddbbc498e27aa5d6bf6d3d1a62fd58347d1a2bfb1b3cba978e976a",
+     "checks": [
+      {
+       "path": "status",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      },
+      {
+       "path": "unclassified",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T10:48:54.661Z",
+ "status": "PASS"
+}

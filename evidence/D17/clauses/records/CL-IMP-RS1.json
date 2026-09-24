@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-RS1",
+ "trace": "RS",
+ "authority": "AUTH-RUSTC-WASM64-TARGET-SPEC",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/rust",
+  "branch": "main",
+  "path": "compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+  "pinned": true,
+  "commit": "6eeff9a52c3e35c4c4cbf5651f342dcd2191866f",
+  "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb",
+  "bytes": 1985
+ },
+ "locator": {
+  "text": "options.features =",
+  "line_start": 38,
+  "line_end": 38,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "the wasm64 target spec of the toolchain FactTest runs (6eeff9a52) carries the same features as the tip D15 read",
+ "excerpt": "    options.features = \"+bulk-memory,+mutable-globals,+sign-ext,+nontrapping-fptoint\".into();",
+ "excerpt_sha256": "0c6bf9c42dd49f1eb71b5f8a214eae3f2f5c15d7d8117f0fb7b96b874e9cfd68",
+ "must_contain": {
+  "+bulk-memory,+mutable-globals,+sign-ext,+nontrapping-fptoint": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,29 @@
+{
+ "id": "CL-W3",
+ "trace": "W",
+ "authority": "AUTH-WASM-CORE-BINARY-LIMITS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/core/binary/types.rst",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022",
+  "bytes": 5846
+ },
+ "locator": {
+  "fragment": "#binary-limits",
+  "line_start": 138,
+  "line_end": 145,
+  "derivation": "PRESENT_EXPLICIT (rst label)",
+  "enclosing_section": "#binary-limits (line 138)"
+ },
+ "window": 8,
+ "consequence": "the binary limits flag carries the address type: the emitted module declares i64 memory in its encoding (what factory wasm-inspect reads)",
+ "excerpt": ".. _binary-limits:\n\nLimits\n~~~~~~\n\n:ref:`Limits <syntax-limits>` are encoded with a preceding flag indicating whether a maximum is present, and a flag for the :ref:`address type <syntax-addrtype>`.\n\n$${grammar: Blimits}",
+ "excerpt_sha256": "d6f78387e78247e50461ca60515c6e526e19deed7a1cd6c6136aa806c7bd2eb6",
+ "must_contain": {
+  "flag for the :ref:`address type": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,29 @@
+{
+ "id": "CL-T5",
+ "trace": "T",
+ "authority": "AUTH-HTML-COI",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "cd8ac6f1bbf86dd0bd09ef75d27dacaebe7b4c1d",
+  "sha256": "c6ecbbaa8361e53f9e2fee0a09be47dd90b2c9deb8e1244466552ae7dc69c2e7",
+  "bytes": 7915656
+ },
+ "locator": {
+  "text": "data-x=\"concept-settings-object-cross-origin-isolated-capability\" export",
+  "line_start": 117443,
+  "line_end": 117449,
+  "derivation": "anchor text",
+  "enclosing_section": "#scripting (line 116957)"
+ },
+ "window": 7,
+ "consequence": "cross-origin isolated capability is a per-environment boolean (COOP/COEP; D12 P05 observed it granted by SW-set headers)",
+ "excerpt": "   <dt>A <dfn data-x=\"concept-settings-object-cross-origin-isolated-capability\" export\n   for=\"environment settings object\">cross-origin isolated capability</dfn></dt>\n\n   <dd><p>A boolean representing whether scripts that use this <span>environment settings\n   object</span> are allowed to use APIs that require cross-origin isolation.</p></dd>\n\n   <dt>A <dfn data-x=\"concept-settings-object-time-origin\" export",
+ "excerpt_sha256": "eb9e58dd7cf2caa49d1e38af8229050e1576473a67df7a633615046c957617c9",
+ "must_contain": {
+  "allowed to use APIs that require cross-origin isolation": true
+ },
+ "status": "VERIFIED"
+}

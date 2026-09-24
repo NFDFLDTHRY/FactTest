@@ -1,0 +1,30 @@
+{
+ "id": "CL-GS4",
+ "trace": "GS",
+ "authority": "AUTH-GENERIC-SENSOR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/sensors",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "a4614786ffe2afb8a4b18c9be47c277e0610437d",
+  "sha256": "584e6b7e5743d0c79f36696742a857f115128433d63112401b3f19b62dc5fdbf",
+  "bytes": 107462
+ },
+ "locator": {
+  "text": "<h3 dfn export>Check sensor policy-controlled features</h3>",
+  "line_start": 1261,
+  "line_end": 1275,
+  "derivation": "anchor text",
+  "enclosing_section": "#check-sensor-policy-controlled-features (line 1261)"
+ },
+ "window": 15,
+ "consequence": "every sensor feature name must be allowed by policy",
+ "excerpt": "<h3 dfn export>Check sensor policy-controlled features</h3>\n\n<div algorithm=\"check sensor policy-controlled features\">\n\n    : input\n    :: |sensor_type|, a [=sensor type=].\n    : output\n    :: True if all of the associated [=sensor feature names=] are [=allowed to use=],\n       false otherwise.\n\n    1.  Let |feature_names| be the |sensor_type|'s associated [=sensor feature names=].\n    1.  [=set/For each=] |feature_name| of |feature_names|,\n        1. If [=active document=] is not [=allowed to use=] the\n           [=policy-controlled feature=] named |feature_name|, then:\n           1.  Return false.",
+ "excerpt_sha256": "47bbcb1e43b93115fd13297ec8474ee85d6efd8aa3cea558c752ca845585c226",
+ "must_contain": {
+  "is not [=allowed to use=] the": true,
+  "[=policy-controlled feature=] named |feature_name|": true
+ },
+ "status": "VERIFIED"
+}

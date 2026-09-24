@@ -1,0 +1,65 @@
+{
+ "authority": "AUTH-RUST-REF-NOSTD",
+ "authority_class": "RUST_REFERENCE",
+ "cited": {
+  "url": "https://doc.rust-lang.org/reference/names/preludes.html",
+  "fragment": "#the-no_std-attribute",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "reference for the language as implemented by rustc (not a standards body)",
+  "observed_recorded": "2026-09-23",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/rust-lang/reference",
+  "branch": "master",
+  "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+  "path": "src/names/preludes.md",
+  "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+  "observed": "2026-09-24",
+  "locator": "rule ids names.preludes.extern.no_std / .no_std.intro / .std"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/master",
+  "commit": "52ffdc09065e0043e877546da923c01bf875d41d"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": "#the-no_std-attribute",
+  "at_pin": {
+   "status": "PRESENT_DERIVED",
+   "line": 78,
+   "kind": "markdown heading"
+  },
+  "at_tip": {
+   "status": "PRESENT_DERIVED",
+   "line": 78,
+   "kind": "markdown heading"
+  }
+ },
+ "clause": {
+  "method": "fragment line + 24",
+  "pin_lines": [
+   78,
+   102
+  ],
+  "window_sha256": "20128f7282862f258ec63f2860fe1ba657d0c52c79895524d748b765599e3df3",
+  "window_excerpt": "### The `no_std` attribute\n\nr[names.preludes.extern.no_std.intro]\nThe *`no_std` [attribute][attributes]* causes the [`std`] crate to not be linked automatically and the [standard library prelude] to instead use the `core` prelude.\n\n> [!EXAMPLE]\n> <!-- ignore: test infrastructure can't handle no_std -->\n> ```rust,ignore\n> #![no_std]\n> ```\n\n> [!NOTE]\n> Using `no_std` is useful when either the crate is targeting a platform that does not support the standard library or is purposefully not using the capabilities of the standard library. Those capabilities are mainly dynamic memory allocation (e.g. `Box` and `Vec`) and file and network capabilities (e.g. `std::fs` and `std::io`).\n\n> [!WARNING]\n> Using `no_std` does not prevent the standard library from being linked. It is still valid to write `extern crate std` in the crate or in one of its dependencies; this will cause the compiler to link the `std` crate into the program.\n\nr[names.preludes.extern.no_std.syntax]\nThe `no_std` attribute uses the [MetaWord] syntax.\n\nr[names.preludes.extern.no_std.allowed-positions]\nThe `no_std` attribute may only be applied to the crate root.\n\nr[names.preludes.extern.no_std.duplicates]\nThe `no_std` attribu",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   78,
+   102
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

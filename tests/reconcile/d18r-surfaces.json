@@ -1,0 +1,29 @@
+{
+ "schema": "facttest-reconcile-surfaces/1",
+ "epoch": "D18R",
+ "base": "1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c",
+ "annotated": {
+  "marker": "D18R ANNOTATION",
+  "files": []
+ },
+ "surfaces": [
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-52",
+   "must_contain": [
+    "FACT-WORKERS-D18R",
+    "hardwareConcurrency 4"
+   ],
+   "must_not_contain": [
+    "hardwareConcurrency was never read"
+   ]
+  },
+  {
+   "file": "docs/HANDOFF.md",
+   "reconciliation": "R-53",
+   "must_contain": [
+    "check an absence claim against the committed evidence"
+   ]
+  }
+ ]
+}

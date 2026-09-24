@@ -1,6 +1,7 @@
 # D14 - Observed Technical Reference Rescan vs Intended
 
 STATUS: RE-OBSERVATION OF THE D14 WORKPIECE (W16 on canonical base 6778133c35a96d5e356df283aa1676ee428766bb)
+MERGE ANNOTATION (PR #5 x PR #6): the paths factory/deltas/D14.json, factory/fixtures/D14/, evidence/D14/ and design/environment-map/epochs/D14.json named below were relocated under D14-TECHNICAL-REFERENCE-RESCAN / D14-RESCAN by design/materialization/D14-MERGE-RECONCILIATION.md; the text is preserved as written.
 LAW: this file compares design/materialization/D14-INTENDED-REFERENCE-RESCAN.md with what the ingress recorded under
 evidence/D14/, fixtures/reference/ and design/environment-map/epochs/D14.json.  The intended drawing is NOT rewritten;
 every difference is preserved as [ERR]/[GAP]/[UNK].  NO LAW TEXT EDITED: the five law files received insertion-only

@@ -1,0 +1,29 @@
+{
+ "id": "CL-R6",
+ "trace": "R",
+ "authority": "AUTH-RUSTC-WASM64-DOC",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/rust",
+  "branch": "master",
+  "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+  "commit": "3670d2532bdf51abbe0b8fea22284d7ca340ffe3",
+  "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+  "bytes": 4126
+ },
+ "locator": {
+  "text": "`cfg(target_arch = \"wasm64\")`",
+  "line_start": 86,
+  "line_end": 86,
+  "derivation": "anchor text",
+  "enclosing_section": "#building-rust-programs (line 77)"
+ },
+ "window": 1,
+ "consequence": "cfg(target_arch = \"wasm64\") is the target's predicate: factc-wasm-abi's panic_handler is gated on it, which is why the crate is target-specific (WASM64_KERNEL_SET root; CROSS_SET on the host)",
+ "excerpt": "* `cfg(target_arch = \"wasm64\")`",
+ "excerpt_sha256": "77ac5eabca50a33844d8f2fd818e5566c4287180a33ae1d8cc7272b6d3f1bdbc",
+ "must_contain": {
+  "cfg(target_arch = \"wasm64\")": true
+ },
+ "status": "VERIFIED"
+}

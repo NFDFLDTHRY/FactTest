@@ -1,0 +1,30 @@
+{
+ "id": "CL-GYR1",
+ "trace": "MS",
+ "authority": "AUTH-GYROSCOPE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/gyroscope",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "335dc6ecc5f85289a2745810a086e7f1c7237cdb",
+  "sha256": "c5d5df52e192f78ed76fbb9c73905e671ec99909c36749683c087d8cffe4b01a",
+  "bytes": 11293
+ },
+ "locator": {
+  "text": "interface Gyroscope : Sensor {",
+  "after": "[SecureContext",
+  "line_start": 178,
+  "line_end": 178,
+  "derivation": "anchor text after \"[SecureContext\"",
+  "enclosing_section": "#gyroscope-interface (line 173)"
+ },
+ "window": 1,
+ "consequence": "Gyroscope is [SecureContext, Exposed=Window]",
+ "excerpt": "  interface Gyroscope : Sensor {",
+ "excerpt_sha256": "1546b0b7f02f1ddc4113e77f302ac21f1b029a0d096875b9f3a4c9cb23a34ae1",
+ "must_contain": {
+  "interface Gyroscope : Sensor {": true
+ },
+ "status": "VERIFIED"
+}

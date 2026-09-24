@@ -1,0 +1,29 @@
+{
+ "id": "CL-ALS2",
+ "trace": "ES",
+ "authority": "AUTH-AMBIENT-LIGHT",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/ambient-light",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "381d5dd21deb386282bbc72147201a8e6ff3b5ea",
+  "sha256": "5fd0659a12a245f6c6976131fee365c3d581a6e95bf2a38b7d4a670d8bad354a",
+  "bytes": 19409
+ },
+ "locator": {
+  "text": "  - The [=illuminance rounding multiple=] must be at least 50 lux.",
+  "line_start": 266,
+  "line_end": 266,
+  "derivation": "anchor text",
+  "enclosing_section": "#reduce-sensor-accuracy (line 254)"
+ },
+ "window": 1,
+ "consequence": "readings are quantized (rounding multiple >= 50 lux): a known-answer probe must compare quantized values",
+ "excerpt": "  - The [=illuminance rounding multiple=] must be at least 50 lux.",
+ "excerpt_sha256": "5dc94c2965fdab5b313df47ce695aaa6532b38a519cca0e69e9437225f240223",
+ "must_contain": {
+  "at least 50 lux": true
+ },
+ "status": "VERIFIED"
+}

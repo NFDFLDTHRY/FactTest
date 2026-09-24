@@ -1,6 +1,7 @@
 # D14 - Intended Technical Reference Rescan ASCII (retrieval route + reference ingress)
 
 STATUS: MATERIALIZATION D14 - INTENDED SYSTEM (ASCII WORKING SURFACE, ROUTED ONLY AFTER STRUCTURAL CHECK: PASS)
+MERGE ANNOTATION (PR #5 x PR #6): the paths factory/deltas/D14.json, factory/fixtures/D14/, evidence/D14/ and design/environment-map/epochs/D14.json named below were relocated under D14-TECHNICAL-REFERENCE-RESCAN / D14-RESCAN by design/materialization/D14-MERGE-RECONCILIATION.md; the text is preserved as written.
 DATE: 2026-09-24
 CANONICAL BASE: 6778133c35a96d5e356df283aa1676ee428766bb (D14-PROMPT-INTAKE on main 4d8a4c0 = PR #4 = D13-REPO-HYGIENE),
 branch claude/d9-rust-cargo-proof-4nys6s.

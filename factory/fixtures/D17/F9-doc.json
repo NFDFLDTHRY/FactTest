@@ -1,0 +1,40 @@
+{
+  "fixture_id": "F9-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "evidence/D17/"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md",
+    "docs/HANDOFF.md",
+    "factory/receipts/D17-IMPLEMENTATION-REALITY/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for k in P1 P2 P3 P4 P5 P6 P7 Q20 IB-SAB-CONSTRUCTOR-HOOK FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT LBL-10 D18-REPO-RECONCILIATION; do grep -q \"$k\" design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md || { echo missing $k; exit 1; }; done; grep -q '^GATE: PASS' design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md && grep -q 'D17-IMPLEMENTATION-REALITY' docs/HANDOFF.md && grep -q 'D18' docs/HANDOFF.md && grep -q 'second repair' design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md && grep -q 'never re-run a fixture to repair' docs/HANDOFF.md"
+        ],
+        "log": "factory/receipts/D17-IMPLEMENTATION-REALITY/logs/F9-observed.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D17-OBSERVED-IMPLEMENTATION-REALITY.md",
+    "docs/HANDOFF.md"
+  ],
+  "tests": [
+    "observed ASCII records the second repair",
+    "handoff procedure rule: repair with a new fixture"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D17-IMPLEMENTATION-REALITY"
+}

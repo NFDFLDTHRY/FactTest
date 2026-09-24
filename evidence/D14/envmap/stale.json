@@ -1,0 +1,613 @@
+{
+  "dimensions": {
+    "authority.source_commit": [
+      {
+        "subject": "FACT-FRONTIER-SOURCES-AT-PIN",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "any pinned repository tip moves with the cited file changed"
+      },
+      {
+        "subject": "FACT-MEMORY64-FINISHED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "registry tip moves"
+      },
+      {
+        "subject": "FACT-WASM-SET-PHASE-1",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "registry tip moves"
+      },
+      {
+        "subject": "FACT-WASM-THREADS-PHASE-4",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "registry tip moves"
+      }
+    ],
+    "browser.flags": [
+      {
+        "subject": "EV-D7-ADM-E0-WEBGPU",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-ADAPTER-SWIFTSHADER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-ADMITTED-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-KNOWN-ANSWER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-MAXBUFFERSIZE-OBSERVED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-RELAY-EXACT-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      }
+    ],
+    "browser.js_engine": [
+      {
+        "subject": "FACT-MEMORY64-DISCOVERED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-ABI-EXEC",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      }
+    ],
+    "browser.product": [
+      {
+        "subject": "EV-D1-B10-B11-CHROMIUM",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D6-PROBE-RECORD",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-ADM-E0-WEBGPU",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-CONTROLLED-LOSS",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-E0-RELAY",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D7-E1-RELAY",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P8-03",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-ADMITTED-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-EPOCH-INVALIDATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-EXPOSED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-KNOWN-ANSWER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-LOSS-DESTROYED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-GPU-RELAY-EXACT-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-MEMORY64-DISCOVERED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-RESELECTION-NO-CODEGEN",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-BROKEN-SEED-FATAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-BROKER-FED-GENERATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GENERATED-OFFLINE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GIT-IDENTITY",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-IDB-CAS",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-INTERRUPTED-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-KERNEL-WORKER-PARTIAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPAQUE-CONFINEMENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPFS-SERVED-APP",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-STORAGE-BEST-EFFORT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-GRANTS-COI",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-NO-SELF-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-ABI-EXEC",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-BROWSER",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-ADMITTED-E0",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-ADMITTED-E1",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "changes"
+      }
+    ],
+    "browser.revision": [
+      {
+        "subject": "FACT-SH-BROKEN-SEED-FATAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-BROKER-FED-GENERATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GENERATED-OFFLINE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-GIT-IDENTITY",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-IDB-CAS",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-INTERRUPTED-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-KERNEL-WORKER-PARTIAL",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPAQUE-CONFINEMENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-OPFS-SERVED-APP",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-STORAGE-BEST-EFFORT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-GRANTS-COI",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-SW-NO-SELF-UPDATE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes"
+      }
+    ],
+    "dependency_graph_identity": [
+      {
+        "subject": "FACT-FIRST-PARTY-GRAPH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      }
+    ],
+    "host.gpu_device_node": [
+      {
+        "subject": "FACT-GPU-ADAPTER-NULL-DEFAULT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-DEFAULT",
+        "relation": "a hardware adapter appears"
+      },
+      {
+        "subject": "FACT-GPU-ADAPTER-SWIFTSHADER",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "a hardware adapter appears (then a different fact)"
+      }
+    ],
+    "host_runtime.git_version": [
+      {
+        "subject": "FACT-WORKPIECE-ISOLATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "changes"
+      }
+    ],
+    "host_runtime.node_version": [
+      {
+        "subject": "FACT-NODE-NO-MEMORY64",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "changes"
+      }
+    ],
+    "network_egress.policy": [
+      {
+        "subject": "FACT-AUTHORITY-REOPEN-DENIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D14-HOST",
+        "relation": "published hosts admitted"
+      }
+    ],
+    "origin_security.origin": [
+      {
+        "subject": "FACT-LOOPBACK-SECURE-CONTEXT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "scheme/host changes"
+      },
+      {
+        "subject": "FACT-SH-BROKER-FED-GENERATION",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-GENERATED-OFFLINE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-OPAQUE-CONFINEMENT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-OPFS-SERVED-APP",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      },
+      {
+        "subject": "FACT-SH-ORIGIN-SCOPED-STORAGE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-BROWSER-PERSISTENT",
+        "relation": "changes (storage and SW state are origin-scoped)"
+      }
+    ],
+    "origin_security.secure_context": [
+      {
+        "subject": "FACT-GPU-EXPOSED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D6-D7-BROWSER-GPUFLAGS",
+        "relation": "becomes false"
+      }
+    ],
+    "other_state.network_egress": [
+      {
+        "subject": "EV-D12-NETWORK",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D12-HOST",
+        "relation": "policy changes"
+      }
+    ],
+    "repo.commit": [
+      {
+        "subject": "FACT-LITERAL-PATH-MATCH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "factory/src/paths.rs changes"
+      },
+      {
+        "subject": "FACT-WILDCARD-SURFACES-DEAD",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "factory/registry or paths.rs changes"
+      }
+    ],
+    "toolchain.nightly.components": [
+      {
+        "subject": "EV-D9-T9-P3-04",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "clippy absent (already the case on ENV-D11-HOST)"
+      },
+      {
+        "subject": "FACT-CORE-ONLY-GRAPH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "rust-src removed"
+      },
+      {
+        "subject": "FACT-NIGHTLY-CLIPPY-ABSENT-D11",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D11-HOST",
+        "relation": "changes"
+      }
+    ],
+    "toolchain.nightly.install_name": [
+      {
+        "subject": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes (build-std hashes the rust-src path)"
+      }
+    ],
+    "toolchain.nightly.rustc_commit": [
+      {
+        "subject": "EV-D1-B9-BUILD",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D1-B9-INSPECT",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D1-D3-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D12-KERNEL",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D12-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P5-02",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P5-03",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P8-01",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P8-02",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-CORE-ONLY-GRAPH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-KERNEL-IDENTITY-INSTALL-PATH",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-QUALIFIED-JUDGE-RERUN",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-SH-KERNEL-TOOLCHAIN-DRIFT",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D12-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-WASM64-MODULE-I64",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      }
+    ],
+    "toolchain.stable.rustc_commit": [
+      {
+        "subject": "FACT-TOOLCHAIN-PINNED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D13-HOST-PINNED",
+        "relation": "changes"
+      }
+    ],
+    "toolchain.stable.rustc_release": [
+      {
+        "subject": "EV-D9-T9-P2-04",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "EV-D9-T9-P4",
+        "subject_class": "EVIDENCE",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-COMPILE-FAIL-WITNESSED",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "changes"
+      },
+      {
+        "subject": "FACT-NATIVE-WORKSPACE-UNBUILDABLE",
+        "subject_class": "COMPUTATIONAL_FACT",
+        "environment": "ENV-D9-HOST",
+        "relation": "a future rustc may change the panic_handler requirement"
+      }
+    ]
+  },
+  "count": 95
+}

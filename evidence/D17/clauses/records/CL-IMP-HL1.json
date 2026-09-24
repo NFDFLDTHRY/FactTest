@@ -1,0 +1,31 @@
+{
+ "id": "CL-IMP-HL1",
+ "trace": "HL",
+ "authority": "AUTH-IMPL-HEADLESS-PERMISSIONS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "headless/lib/browser/headless_permission_manager.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "a499a80610abaed0a63db6733fb240f4ab3caed4b917bf9539c6659b9a1647a6",
+  "bytes": 3880
+ },
+ "locator": {
+  "text": "// In headless mode we just pretend the user \"closes\" any permission prompt,",
+  "line_start": 25,
+  "line_end": 30,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 6,
+ "consequence": "the headless shell resolves every permission request as ASK (prompt closed): no permission, persistence included, can ever be granted there",
+ "excerpt": "  // In headless mode we just pretend the user \"closes\" any permission prompt,\n  // without accepting or denying.\n  std::vector<content::PermissionResult> result(\n      request_description.permissions.size(),\n      content::PermissionResult(blink::mojom::PermissionStatus::ASK,\n                                content::PermissionStatusSource::UNSPECIFIED));",
+ "excerpt_sha256": "395f87584c165ce3e02da996d41673f765998f2687fd89cfd9ada50a8723fc07",
+ "must_contain": {
+  "without accepting or denying.": true,
+  "blink::mojom::PermissionStatus::ASK": true
+ },
+ "status": "VERIFIED"
+}

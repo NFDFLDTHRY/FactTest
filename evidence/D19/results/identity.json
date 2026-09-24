@@ -1,0 +1,180 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "identity",
+ "kind": "cite",
+ "started": "2026-09-24T10:44:21.660Z",
+ "commands": [],
+ "facts": {
+  "FACT-GPU-ADAPTER-NULL-DEFAULT": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "6f29e15617b1866a3dfe24b230259ffaa67c72b2d24cc551e07ce6a4a4ba433c",
+     "checks": [
+      {
+       "path": "page.adapter",
+       "eq": null,
+       "observed": null,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-GPU-ADAPTER-SWIFTSHADER": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "6eb3b8f9630fd1fc6c194a7125d8ba3624f117e0eebc7a51ad80d2c56b3e0c37",
+     "checks": [
+      {
+       "path": "page.adapter.info.isFallbackAdapter",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "page.adapter.info.architecture",
+       "eq": "swiftshader",
+       "observed": "swiftshader",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-GPU-EXPOSED": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "6f29e15617b1866a3dfe24b230259ffaa67c72b2d24cc551e07ce6a4a4ba433c",
+     "checks": [
+      {
+       "path": "page.gpu_exposed",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "6eb3b8f9630fd1fc6c194a7125d8ba3624f117e0eebc7a51ad80d2c56b3e0c37",
+     "checks": [
+      {
+       "path": "page.gpu_exposed",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-LOOPBACK-SECURE-CONTEXT": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "6f29e15617b1866a3dfe24b230259ffaa67c72b2d24cc551e07ce6a4a4ba433c",
+     "checks": [
+      {
+       "path": "page.isSecureContext",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "6eb3b8f9630fd1fc6c194a7125d8ba3624f117e0eebc7a51ad80d2c56b3e0c37",
+     "checks": [
+      {
+       "path": "page.isSecureContext",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-MEMORY64-DISCOVERED": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "6f29e15617b1866a3dfe24b230259ffaa67c72b2d24cc551e07ce6a4a4ba433c",
+     "checks": [
+      {
+       "path": "page.memory64_validates",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "sha256": "6eb3b8f9630fd1fc6c194a7125d8ba3624f117e0eebc7a51ad80d2c56b3e0c37",
+     "checks": [
+      {
+       "path": "page.memory64_validates",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-SAB-GLOBAL-HOST-DEFINED": {
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "sha256": "6f29e15617b1866a3dfe24b230259ffaa67c72b2d24cc551e07ce6a4a4ba433c",
+     "checks": [
+      {
+       "path": "page.sharedArrayBuffer_present",
+       "eq": false,
+       "observed": false,
+       "ok": true
+      },
+      {
+       "path": "page.crossOriginIsolated",
+       "eq": false,
+       "observed": false,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [
+  "R-03",
+  "R-53"
+ ],
+ "finished": "2026-09-24T10:44:21.665Z",
+ "status": "PASS"
+}

@@ -1,0 +1,30 @@
+{
+ "id": "CL-ORI1",
+ "trace": "MS",
+ "authority": "AUTH-ORIENTATION-SENSOR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/orientation-sensor",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "89ae0464f9ff2f95ceeffef2b34e71db7d33e824",
+  "sha256": "89dbebc2e2229ec4706af367f49995e71512fc86a9fce9ae9dc00c9a625b8a4e",
+  "bytes": 26529
+ },
+ "locator": {
+  "text": "The {{AbsoluteOrientationSensor}} is a [=policy-controlled feature=] identified by strings",
+  "line_start": 220,
+  "line_end": 222,
+  "derivation": "anchor text",
+  "enclosing_section": "#model (line 190)"
+ },
+ "window": 3,
+ "consequence": "orientation sensors compose the low-level sensors' policy features: absolute needs accelerometer+gyroscope+magnetometer",
+ "excerpt": "The {{AbsoluteOrientationSensor}} is a [=policy-controlled feature=] identified by strings \"accelerometer\", \"gyroscope\" and \"magnetometer\" . Its [=default allowlist=] is `'self'`.\n\nThe {{RelativeOrientationSensor}} is a [=policy-controlled feature=] identified by strings \"accelerometer\" and \"gyroscope\". Its [=default allowlist=] is `'self'`.",
+ "excerpt_sha256": "e5af52b65d6d0488fe8e632be508a96278b4387c023cf07a2d9148071edce442",
+ "must_contain": {
+  "\"accelerometer\", \"gyroscope\" and \"magnetometer\"": true,
+  "The {{RelativeOrientationSensor}} is a [=policy-controlled feature=] identified by strings \"accelerometer\" and \"gyroscope\"": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,473 @@
+{
+  "delta_id": "D18-REPO-RECONCILIATION",
+  "workpiece_id": "W20",
+  "canonical_base": "715ac92d327f5f2677fd7c0b067fa843da6323c4",
+  "base_tree": "b6590cd7b3b351665c2cf16e676966356123e234",
+  "verified_tree": "43ed5a8982666fc79f91ee4b0d4fe7f24fa79f83",
+  "changed_paths": [
+    "BOOTSTRAP-TESTS.md",
+    "CAPABILITY-MATRIX.md",
+    "CONFLICT-LEDGER.md",
+    "CONSTRAINT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "README.md",
+    "REFERENCE-AUTHORITY.md",
+    "STATION-REGISTRY.md",
+    "design/environment-map/AUTHORITY-REGISTER.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/TRACEABILITY.md",
+    "design/environment-map/epochs/D18.json",
+    "design/environment-map/graph.json",
+    "design/materialization/D18-INTENDED-REPO-RECONCILIATION.md",
+    "design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md",
+    "design/materialization/LEDGER.md",
+    "docs/HANDOFF.md",
+    "evidence/D18/clauses/records/CL-IMP-GPU0.json",
+    "evidence/D18/clauses/records/CL-IMP-SSDOC.json",
+    "evidence/D18/clauses/summary.json",
+    "evidence/D18/envmap/merge-check.json",
+    "evidence/D18/envmap/queries/Q01.json",
+    "evidence/D18/envmap/queries/Q02.json",
+    "evidence/D18/envmap/queries/Q03.json",
+    "evidence/D18/envmap/queries/Q04.json",
+    "evidence/D18/envmap/queries/Q05.json",
+    "evidence/D18/envmap/queries/Q06.json",
+    "evidence/D18/envmap/queries/Q07.json",
+    "evidence/D18/envmap/queries/Q08.json",
+    "evidence/D18/envmap/queries/Q09.json",
+    "evidence/D18/envmap/queries/Q10.json",
+    "evidence/D18/envmap/queries/Q11.json",
+    "evidence/D18/envmap/queries/Q12.json",
+    "evidence/D18/envmap/queries/Q13.json",
+    "evidence/D18/envmap/queries/Q14.json",
+    "evidence/D18/envmap/queries/Q15.json",
+    "evidence/D18/envmap/queries/Q16.json",
+    "evidence/D18/envmap/queries/Q17.json",
+    "evidence/D18/envmap/queries/Q18.json",
+    "evidence/D18/envmap/queries/Q19.json",
+    "evidence/D18/envmap/queries/Q20.json",
+    "evidence/D18/envmap/queries/Q21.json",
+    "evidence/D18/envmap/render-check.json",
+    "evidence/D18/envmap/stale.json",
+    "evidence/D18/envmap/validate.json",
+    "evidence/D18/gate.json",
+    "evidence/D18/handoff-check.json",
+    "evidence/D18/index.json",
+    "evidence/D18/kernel/KRN-D18-A.json",
+    "evidence/D18/kernel/KRN-D18-B.json",
+    "evidence/D18/logs/F2-clauses.log",
+    "evidence/D18/logs/F2-kernel-identity.log",
+    "evidence/D18/logs/F2-stages.log",
+    "evidence/D18/logs/F7-audit-after.log",
+    "evidence/D18/logs/F7-audit-before.log",
+    "evidence/D18/logs/F7-capability-gate.log",
+    "evidence/D18/logs/F7-cleanup-gate.log",
+    "evidence/D18/logs/F7-gate.log",
+    "evidence/D18/logs/F7-handoff-check.log",
+    "evidence/D18/logs/F7-implementation-gate.log",
+    "evidence/D18/logs/F7-index.log",
+    "evidence/D18/logs/F7-merge-check.log",
+    "evidence/D18/logs/F7-q18-gate.log",
+    "evidence/D18/logs/F7-q21-gate.log",
+    "evidence/D18/logs/F7-queries.log",
+    "evidence/D18/logs/F7-render-check.log",
+    "evidence/D18/logs/F7-retire.log",
+    "evidence/D18/logs/F7-stale.log",
+    "evidence/D18/logs/F7-status-scan.log",
+    "evidence/D18/logs/F7-surfaces.log",
+    "evidence/D18/logs/F7-validate.log",
+    "evidence/D18/regress/capability-gate.json",
+    "evidence/D18/regress/implementation-gate.json",
+    "evidence/D18/status/inventory.json",
+    "evidence/D18/status/summary.txt",
+    "evidence/D18/surfaces.json",
+    "evidence/D18/workpieces/audit-after.json",
+    "evidence/D18/workpieces/audit-before.json",
+    "evidence/D18/workpieces/retire.json",
+    "evidence/D18/workpieces/stages.json",
+    "factory/deltas/D18.json",
+    "factory/fixtures/D18/F0-doc.json",
+    "factory/fixtures/D18/F1-fixture.json",
+    "factory/fixtures/D18/F2-build.json",
+    "factory/fixtures/D18/F3-annotate.json",
+    "factory/fixtures/D18/F4-annotate-owner.json",
+    "factory/fixtures/D18/F5-doc.json",
+    "factory/fixtures/D18/F6-doc.json",
+    "factory/fixtures/D18/F7-evidence.json",
+    "factory/fixtures/D18/F8-doc.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F0-doc.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F1-fixture.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F2-build.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F3-annotate.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F4-annotate-owner.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F5-doc.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F6-doc.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F7-evidence.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/F8-doc.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F0-ascii.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F0-scope.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-kernel-identity.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-regression.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-syntax-generic.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F3-annotate.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F4-annotate-owner.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F5-handoff.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-build-epoch.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-checks.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-merge.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F6-render.log",
+    "factory/receipts/D18-REPO-RECONCILIATION/logs/F8-observed.log",
+    "factory/registry/stations/S-ANNOTATE-OWNER.json",
+    "tests/envmap/envmap.mjs",
+    "tests/reconcile/build-reconciliation.mjs",
+    "tests/reconcile/d18-reconciliation.json",
+    "tests/reconcile/gate.mjs",
+    "tests/reconcile/stage-audit.mjs",
+    "tests/reconcile/surfaces.json",
+    "tests/reconcile/surfaces.mjs",
+    "tests/reference/d18-clauses.json",
+    "tests/toolchain/proof-sets.json",
+    "tests/toolchain/proof.mjs"
+  ],
+  "checks": [
+    {
+      "check": "state_base_tree_matches_canonical_base",
+      "status": "PASS",
+      "detail": "b6590cd7b3b351665c2cf16e676966356123e234"
+    },
+    {
+      "check": "changed_paths_within_delta_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_tree_identical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F0-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F0-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F0-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F1-fixture",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F1-fixture.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F1-fixture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F2-build",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F2-build.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F2-build",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F3-annotate",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F3-annotate.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F3-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F3-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F3-annotate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F4-annotate-owner",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F4-annotate-owner.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F4-annotate-owner",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F4-annotate-owner",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F4-annotate-owner",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F5-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F5-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F5-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F6-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F6-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F6-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F7-evidence",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F7-evidence.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F7-evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_pass:F8-doc",
+      "status": "PASS",
+      "detail": "factory/receipts/D18-REPO-RECONCILIATION/F8-doc.json status PASS"
+    },
+    {
+      "check": "receipt_station_matches_fixture:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_base_matches:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receipt_all_checks_pass:F8-doc",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:DOC_CONTRACT_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:FIXTURE_FORGE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:BUILD_VERIFY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:LAW_ANNOTATION",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_capability_receipted:EVIDENCE_ASSEMBLER",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_unreceipted_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D18-INTENDED-REPO-RECONCILIATION.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/materialization/D18-OBSERVED-REPO-RECONCILIATION.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:factory/registry/stations/S-ANNOTATE-OWNER.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/d18-reconciliation.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/surfaces.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/build-reconciliation.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/surfaces.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/gate.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reconcile/stage-audit.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:tests/reference/d18-clauses.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:design/environment-map/epochs/D18.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/clauses/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/kernel/KRN-D18-A.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/kernel/KRN-D18-B.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/workpieces/stages.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/envmap/queries/Q21.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/surfaces.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/gate.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_path_exists:evidence/D18/index.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "forbidden_path_absent:target",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "verifier_identity": {
+    "path": "/home/user/factory-target-canon/debug/factory",
+    "sha256": "bb1475bafccc37cc2edf1db5cfc93b74a34419014db0a4f953f14d6ecad78ba3",
+    "bytes": 7332720
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x86_64",
+    "kernel_release": "6.18.44-fc-v37"
+  },
+  "verified": "2026-09-24T09:57:06Z",
+  "status": "PASS"
+}

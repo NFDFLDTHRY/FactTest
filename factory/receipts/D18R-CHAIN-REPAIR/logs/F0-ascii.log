@@ -1,0 +1,5 @@
+$ sh -c I=design/materialization/D18R-INTENDED-CHAIN-REPAIR.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c' design/materialization/LEDGER.md && grep -q '^## D18R-CHAIN-REPAIR' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && grep -q '"hardwareConcurrency": 4' evidence/D11/browser/default.json && grep -q '"hardwareConcurrency": 4' evidence/D11/browser/gpu-flags.json && grep -q '"hardwareConcurrency": 4' evidence/D16/census/records/CAP-WORKER-DEDICATED.json && grep -q 'executable: chromium.executablePath()' tests/selfhost/primitives-probe.mjs && echo 'both defects present in committed evidence/code'
+(cwd .)
+both defects present in committed evidence/code
+
+[exit 0] expected 0

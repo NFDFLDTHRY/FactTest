@@ -27,8 +27,9 @@
       "profiles": ["dev", "release"],
       "evidence_basis": "D9 T9-P3-04, T9-P5-02/03, T9-P8-* ran on rustc 1.100.0-nightly (6eeff9a52 2026-09-23); KRN-D13-B reproduced D9's kernel byte-for-byte",
       "kernel_identity": {
-        "note": "the release kernel's bytes depend on the rust-src install path (-Z build-std hashes the std source path), i.e. on the rustup toolchain NAME; identity is therefore declared per install name [GAP: not install-path independent]",
+        "note": "D18: the kernel identity is exec_identity - install-name independent (D17 FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT: under two rustup install names only the custom \"name\" section differs, LLVM promoted-symbol hashes).  The whole-file sha256 differs per install name and stays recorded in by_install_name (informational, never the verdict).  Historical: D13 declared identity per install name only (H-12 [GAP]).",
         "artifact": "wasm64-unknown-unknown/release/factc_wasm_abi.wasm",
+        "exec_identity": { "sha256": "e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2", "excluded_custom_sections": ["name"], "algorithm": "sha256 over (section id byte ++ section body) of every section except the excluded custom sections, in module order (tests/implementation/wasm-sections.mjs identity_excluding_custom)", "source": "evidence/D17/kernel/sections.json (INSTALL-PINNED and INSTALL-RENAMED builds, rustc 6eeff9a52)" },
         "by_install_name": {
           "nightly-2026-09-24-x86_64-unknown-linux-gnu": { "sha256": "6f25ce43cfad5a6e0cb079fe2847e435e9974c5bf507bbec6225265df10f6c81", "bytes": 3350254, "source": "KRN-D13-A (D13 assembly)" },
           "nightly-x86_64-unknown-linux-gnu": { "sha256": "309589947e16195448f1523b8c831168c54492956da4b7369bb369290a8f025c", "bytes": 3350252, "source": "D9 T9-P8-01; reproduced by KRN-D13-B" }

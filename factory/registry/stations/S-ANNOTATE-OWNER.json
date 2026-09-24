@@ -1,0 +1,44 @@
+{
+  "station_id": "S-ANNOTATE-OWNER",
+  "version": "1",
+  "capability_tags": [
+    "LAW_ANNOTATION"
+  ],
+  "input_kinds": [
+    "approved_ascii",
+    "owner_direction"
+  ],
+  "operation_class": "insert_annotations_into_owner_contracts",
+  "output_kinds": [
+    "annotated_documents"
+  ],
+  "may_read": [
+    "*"
+  ],
+  "may_change": [
+    "CAPABILITY-MATRIX.md",
+    "BOOTSTRAP-TESTS.md",
+    "factory/receipts/"
+  ],
+  "must_not_change": [
+    "FACTORY-LAW.md",
+    "compiler/",
+    "host/",
+    "factory/src/",
+    "evidence/"
+  ],
+  "preconditions": [
+    "the annotation is ordered by approved ASCII (design/materialization/D18-INTENDED-REPO-RECONCILIATION.md section 3)"
+  ],
+  "invariants": [
+    "INSERTION-ONLY: no existing line of an annotated document is deleted or modified (git diff --numstat reports 0 deleted lines)",
+    "every inserted block begins with a line starting '<delta> ANNOTATION'",
+    "the matrix stays the approved universe G: no row is removed, reordered or given a status"
+  ],
+  "verification": [
+    "per-file deleted-line count 0 against the canonical base",
+    "annotation marker present"
+  ],
+  "source_nonmutating": false,
+  "receipt_schema_version": "1"
+}

@@ -1,0 +1,44 @@
+{
+  "fixture_id": "F3-annotate",
+  "station_id": "S-ANNOTATE",
+  "selected_inputs": [
+    "D18 section 3"
+  ],
+  "narrowed_may_change": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "STATION-REGISTRY.md",
+    "factory/receipts/D18-REPO-RECONCILIATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md STATION-REGISTRY.md; do n=$(git diff --numstat 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f); a=$(echo \"$n\" | cut -f1); d=$(echo \"$n\" | cut -f2); [ -n \"$a\" ] && [ \"$a\" -gt 0 ] && [ \"$d\" = 0 ] || { echo \"$f: numstat '$n'\"; exit 1; }; git diff -U0 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f | awk -v f=$f '/^@@/{h=1;next} /^\\+\\+\\+/{next} /^\\+/{if(h){l=substr($0,2); if(l ~ /[^ ]/){ if(index(l,\"D18 ANNOTATION\")!=1){print f\": hunk begins \" l; bad=1} h=0 }}} END{exit bad}' || exit 1; echo \"$f +$a -0\"; done; git diff --exit-code 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- FACTORY-LAW.md"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F3-annotate.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "REFERENCE-AUTHORITY.md",
+    "CONSTRAINT-LEDGER.md",
+    "CONFLICT-LEDGER.md",
+    "EVIDENCE-OBLIGATIONS.md",
+    "IMPLEMENTATION-CONTRACTS.md",
+    "STATION-REGISTRY.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18-REPO-RECONCILIATION"
+}

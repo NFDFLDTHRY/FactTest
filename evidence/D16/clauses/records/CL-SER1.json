@@ -1,0 +1,30 @@
+{
+ "id": "CL-SER1",
+ "trace": "DEV",
+ "authority": "AUTH-SERIAL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/serial",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+  "sha256": "48d0a5629c71f2b523108b817d9c0c8c2851959d442f37a3a1b3094b3313dcc3",
+  "bytes": 84878
+ },
+ "locator": {
+  "text": "readonly attribute Serial serial;",
+  "after": "[Exposed=Window, SecureContext]",
+  "line_start": 34,
+  "line_end": 34,
+  "derivation": "anchor text after \"[Exposed=Window, SecureContext]\"",
+  "enclosing_section": null
+ },
+ "window": 1,
+ "consequence": "navigator.serial exists only in secure contexts (Window)",
+ "excerpt": "      [SameObject] readonly attribute Serial serial;",
+ "excerpt_sha256": "d92c64133f989893da4ca682ca99d2bb8259461fa5e69fdcace21a49360d8abd",
+ "must_contain": {
+  "readonly attribute Serial serial;": true
+ },
+ "status": "VERIFIED"
+}

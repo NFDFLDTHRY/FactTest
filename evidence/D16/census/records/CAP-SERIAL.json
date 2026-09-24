@@ -1,0 +1,17 @@
+{
+ "family": "CAP-SERIAL",
+ "matrix_row": "Serial",
+ "observed": "2026-09-24T08:42:27.936Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "'serial' in navigator",
+ "discovery_expr": "navigator.serial.getPorts().then(p => ({ports: p.length}))",
+ "exposed": true,
+ "discovery": {
+  "ports": 0
+ },
+ "permissions": {},
+ "policy": {
+  "serial": true
+ }
+}

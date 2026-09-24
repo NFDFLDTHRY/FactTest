@@ -1,0 +1,29 @@
+{
+ "id": "CL-R1",
+ "trace": "R",
+ "authority": "AUTH-RUST-REF-NOSTD",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/reference",
+  "branch": "master",
+  "path": "src/names/preludes.md",
+  "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+  "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+  "bytes": 10212
+ },
+ "locator": {
+  "text": "r[names.preludes.extern.std]",
+  "line_start": 53,
+  "line_end": 54,
+  "derivation": "anchor text",
+  "enclosing_section": "#extern-prelude (line 45)"
+ },
+ "window": 2,
+ "consequence": "a #![no_std] crate root does not get std in its extern prelude: every compiler crate links only what it names from core",
+ "excerpt": "r[names.preludes.extern.std]\nThe [`std`] crate is added as long as the [`no_std` attribute] is not specified in the crate root.",
+ "excerpt_sha256": "bf2891c8551d99ace9f1050274fa10dccd01cb184539eb1f99c0bc95938c9b0f",
+ "must_contain": {
+  "is added as long as the [`no_std` attribute] is not specified in the crate root": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,61 @@
+{
+  "fixture_id": "F1-fixture",
+  "station_id": "S-FIXTURE",
+  "selected_inputs": [
+    "D18 section 2 (current-model rules)",
+    "section 4 (surfaces, exec identity)",
+    "assembly trial"
+  ],
+  "narrowed_may_change": [
+    "tests/reconcile/",
+    "tests/reference/d18-clauses.json",
+    "tests/envmap/envmap.mjs",
+    "tests/toolchain/proof.mjs",
+    "tests/toolchain/proof-sets.json",
+    "factory/receipts/D18-REPO-RECONCILIATION/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "for f in tests/reconcile/build-reconciliation.mjs tests/reconcile/surfaces.mjs tests/reconcile/gate.mjs tests/reconcile/stage-audit.mjs tests/envmap/envmap.mjs tests/toolchain/proof.mjs; do node --check $f || exit 1; done; node -e 'const fs=require(\"fs\");const r=JSON.parse(fs.readFileSync(\"tests/reconcile/d18-reconciliation.json\"));const s=JSON.parse(fs.readFileSync(\"tests/reconcile/surfaces.json\"));const m=JSON.parse(fs.readFileSync(\"tests/reference/d18-clauses.json\"));const p=JSON.parse(fs.readFileSync(\"tests/toolchain/proof-sets.json\"));console.log(r.items.length+\" reconciliations, \"+r.supersessions.length+\" supersessions, \"+r.ledger.constraints.length+\" ledgered, \"+s.surfaces.length+\" surfaces, \"+m.clauses.length+\" clauses, exec \"+p.sets.WASM64_KERNEL_SET.kernel_identity.exec_identity.sha256.slice(0,16))' && ! grep -nE \"'(AUTH|FACT|CON|LAW|CL|CAP|IB|LBL|R|EV|ENV)-[A-Z0-9]\" tests/reconcile/build-reconciliation.mjs tests/reconcile/surfaces.mjs tests/reconcile/gate.mjs tests/reconcile/stage-audit.mjs tests/envmap/envmap.mjs tests/toolchain/proof.mjs && git diff --exit-code 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- tests ':!tests/reconcile' ':!tests/reference/d18-clauses.json' ':!tests/envmap/envmap.mjs' ':!tests/toolchain/proof.mjs' ':!tests/toolchain/proof-sets.json'"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-syntax-generic.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/envmap/envmap.mjs validate design/environment-map/graph.json | grep -qx 'PASS 35 checks' && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out $T/q && for q in Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18 Q19 Q20; do cmp evidence/D17/envmap/queries/$q.json $T/q/$q.json || exit 1; done && grep -q '\"reconciliations\": 0' $T/q/Q21.json && echo 'D17 graph: validate 35, render/merge identical, Q01-Q20 byte-identical to evidence/D17, Q21 none'"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-regression.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && for L in A B; do case $L in A) lab=INSTALL-PINNED;; B) lab=INSTALL-RENAMED;; esac; m=/home/user/factory-builds/d17-kernels/$L/wasm64-unknown-unknown/release/factc_wasm_abi.wasm; want=$(node -e 'const b=JSON.parse(require(\"fs\").readFileSync(\"evidence/D17/kernel/builds.json\"));console.log(b.builds.find(x=>x.label===process.argv[1]).wasm_sha256)' $lab); have=$(sha256sum $m | cut -d' ' -f1); [ \"$have\" = \"$want\" ] || { echo \"$m: $have != $want\"; exit 1; }; echo \"$lab $m sha256 == evidence/D17/kernel/builds.json\"; node tests/toolchain/proof.mjs kernel-identity --sets tests/toolchain/proof-sets.json --out $T/krn --id KRN-F1-$L --root . --module $m || exit 1; grep -q '\"verdict\": \"PASS\"' $T/krn/KRN-F1-$L.json || exit 1; done"
+        ],
+        "log": "factory/receipts/D18-REPO-RECONCILIATION/logs/F1-kernel-identity.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "tests/reconcile/d18-reconciliation.json",
+    "tests/reconcile/surfaces.json",
+    "tests/reconcile/build-reconciliation.mjs",
+    "tests/reconcile/gate.mjs"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D18-REPO-RECONCILIATION"
+}

@@ -1,0 +1,65 @@
+{
+  "query": "Q12",
+  "title": "Which implementation contract cites authority too coarsely?",
+  "answer": {
+    "coarse": [
+      {
+        "contract": "CON-IC-ACCELEROMETER",
+        "contract_status": "GAP",
+        "reasons": [
+          "https://w3c.github.io/accelerometer/: unmapped document root"
+        ]
+      },
+      {
+        "contract": "CON-IC-CPU_WASM64",
+        "contract_status": "READY-CONTRACT",
+        "reasons": [
+          "AUTH-RUSTC-WASM64-DOC: no fragment (document root)"
+        ]
+      },
+      {
+        "contract": "CON-IC-GYROSCOPE",
+        "contract_status": "GAP",
+        "reasons": [
+          "https://w3c.github.io/gyroscope/: unmapped document root"
+        ]
+      },
+      {
+        "contract": "CON-IC-MAGNETOMETER",
+        "contract_status": "GAP",
+        "reasons": [
+          "https://w3c.github.io/magnetometer/: unmapped document root"
+        ]
+      },
+      {
+        "contract": "CON-IC-ORIENTATION_SENSOR",
+        "contract_status": "GAP",
+        "reasons": [
+          "https://w3c.github.io/orientation-sensor/: unmapped document root"
+        ]
+      },
+      {
+        "contract": "CON-IC-PROXIMITY_SENSOR",
+        "contract_status": "GAP",
+        "reasons": [
+          "https://w3c.github.io/proximity/: unmapped document root"
+        ]
+      },
+      {
+        "contract": "CON-IC-WASM_SHARED_THREADS",
+        "contract_status": "ERR",
+        "reasons": [
+          "AUTH-WASM-JSAPI-STORAGE: FRAGMENT_DRIFT: cited #internal-storage is not an id in the source; source ids are #webassembly-storage and #store [ERR]",
+          "AUTH-WASM-THREADS: no fragment (document root)"
+        ]
+      },
+      {
+        "contract": "CON-IC-WEBGPU",
+        "contract_status": "READY-CONTRACT",
+        "reasons": [
+          "AUTH-WGSL: no fragment (document root)"
+        ]
+      }
+    ]
+  }
+}

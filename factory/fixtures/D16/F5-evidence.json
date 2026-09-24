@@ -1,0 +1,233 @@
+{
+  "fixture_id": "F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "design/environment-map/graph.json",
+    "CAPABILITY-MATRIX.md",
+    "/home/user/factory-workpieces"
+  ],
+  "narrowed_may_change": [
+    "evidence/D16/envmap/",
+    "evidence/D16/workpieces/",
+    "evidence/D16/logs/",
+    "evidence/D16/gate.json",
+    "evidence/D16/index.json"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "validate",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D16/envmap/validate.json"
+        ],
+        "log": "evidence/D16/logs/F5-validate.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "query",
+          "design/environment-map/graph.json",
+          "--all",
+          "--out",
+          "evidence/D16/envmap/queries"
+        ],
+        "log": "evidence/D16/logs/F5-queries.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "stale",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D16/envmap/stale.json"
+        ],
+        "log": "evidence/D16/logs/F5-stale.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "merge-check",
+          "design/environment-map/graph.json",
+          "--base-rev",
+          "fdb9c32",
+          "--epochs",
+          "design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json",
+          "--out",
+          "evidence/D16/envmap/merge-check.json"
+        ],
+        "log": "evidence/D16/logs/F5-merge-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/envmap/envmap.mjs",
+          "render-check",
+          "design/environment-map/graph.json",
+          "--dir",
+          "design/environment-map",
+          "--out",
+          "evidence/D16/envmap/render-check.json"
+        ],
+        "log": "evidence/D16/logs/F5-render-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "node",
+        "args": [
+          "tests/capability/gate.mjs",
+          "--universe",
+          "tests/capability/universe.json",
+          "--matrix",
+          "CAPABILITY-MATRIX.md",
+          "--census",
+          "evidence/D16/census",
+          "--graph",
+          "design/environment-map/graph.json",
+          "--out",
+          "evidence/D16/gate.json"
+        ],
+        "log": "evidence/D16/logs/F5-capability-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D16/envmap/queries/Q18.json\")).answers;const c={};let bad=0;for(const x of a){const t=x.terminal||\"\";const k=x.status===\"RUN\"?(t===\"COMPLETE\"?\"RUN COMPLETE\":t.startsWith(\"stops at \")?\"RUN \"+t.split(\":\")[0]:\"BAD\"):(t.startsWith(\"[\"+x.status+\"]\")?\"TERMINAL \"+x.status:\"BAD\");if(k===\"BAD\"){bad++;console.log(\"BAD\",x.fact)}c[k]=(c[k]||0)+1}console.log(a.length+\" claims\",JSON.stringify(c));if(bad||!c[\"RUN COMPLETE\"])process.exit(1)'"
+        ],
+        "log": "evidence/D16/logs/F5-q18-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const q=JSON.parse(require(\"fs\").readFileSync(\"evidence/D16/envmap/queries/Q19.json\")).answer;console.log(q.families,q.in_G,JSON.stringify(q.by_classification),JSON.stringify(q.authority_step_status));if(q.families!==33||q.in_G!==33||q.rows.some(r=>!r.trace||r.trace.length!==10))process.exit(1)'"
+        ],
+        "log": "evidence/D16/logs/F5-q19-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W18",
+          "--out",
+          "evidence/D16/workpieces/audit-before.json"
+        ],
+        "log": "evidence/D16/logs/F5-audit-before.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "retire",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W18",
+          "--out",
+          "evidence/D16/workpieces/retire.json"
+        ],
+        "log": "evidence/D16/logs/F5-retire.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/facttest-materialization-27amc7",
+          "--current",
+          "W18",
+          "--out",
+          "evidence/D16/workpieces/audit-after.json"
+        ],
+        "log": "evidence/D16/logs/F5-audit-after.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D16/workpieces/audit-after.json\"));console.log(JSON.stringify(a.totals));if(a.totals.RETIRABLE!==0)process.exit(1)'"
+        ],
+        "log": "evidence/D16/logs/F5-cleanup-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "/home/user/factory-target-canon/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D16",
+          "evidence/D16/index.json"
+        ],
+        "log": "evidence/D16/logs/F5-index.log",
+        "cwd": "."
+      }
+    ],
+    "identity_probes": [
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D16/envmap/queries/Q19.json",
+    "evidence/D16/gate.json",
+    "evidence/D16/index.json"
+  ],
+  "tests": [
+    "graph valid; Q01-Q19",
+    "capability gate: G preserved, steps complete, classifications allowed",
+    "every claim and every family traversed",
+    "only proven workpiece objects retired",
+    "evidence index"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D16-CAPABILITY-UNIVERSE"
+}

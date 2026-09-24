@@ -1,0 +1,65 @@
+{
+ "authority": "LAW-RUNTIME-ADMISSION",
+ "authority_class": "PROJECT_LAW",
+ "cited": {
+  "url": "RUNTIME-ADMISSION-REPLAN.md",
+  "fragment": "## 1. MachineEpoch",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "project law at commit 4a151c9",
+  "observed_recorded": "2026-09-24",
+  "reopen_recorded": "OPENED"
+ },
+ "pin": {
+  "repo": "https://github.com/NFDFLDTHRY/FactTest",
+  "branch": "claude/facttest-materialization-27amc7",
+  "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+  "path": "RUNTIME-ADMISSION-REPLAN.md",
+  "sha256": "f8906f40f607db5b0b1a4b7f041066a6cde9a11b68586072639718a8923d111a",
+  "observed": "2026-09-24",
+  "locator": "## 1. MachineEpoch"
+ },
+ "published": {
+  "status": "REPOSITORY_LAW (read at canonical HEAD)"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "canonical HEAD",
+  "commit": "5e57467bd7c984529dc466201629b37e0ee44c4b"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "f8906f40f607db5b0b1a4b7f041066a6cde9a11b68586072639718a8923d111a",
+ "tip_relation": "TIP MOVED, FILE IDENTICAL",
+ "tip_sha256": "f8906f40f607db5b0b1a4b7f041066a6cde9a11b68586072639718a8923d111a",
+ "fragment": {
+  "cited": "## 1. MachineEpoch",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 6,
+   "kind": "heading line"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 6,
+   "kind": "heading line"
+  }
+ },
+ "clause": {
+  "method": "fragment line + 24",
+  "pin_lines": [
+   6,
+   30
+  ],
+  "window_sha256": "36bfe5794174d0780c2fe544b0ab87807cc50e42b34edce69006a52bd4e0599e",
+  "window_excerpt": "## 1. MachineEpoch\n\n\\`\\`\\`text\nMachineEpoch\n  epoch_id\n  environment_identity\n  secure_context_state\n  policy_state\n  permission_state\n  interface_presence\n  feature_sets\n  limits\n  resource_state\n  probe_evidence_refs[]\n\\`\\`\\`\n\nEpoch identity changes when a relevant observation used by admission/planning changes.\n\n## 2. AdmissionReceipt\n\n\\`\\`\\`text\nAdmissionReceipt\n  receipt_id\n  epoch_id\n  implementation_id",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   6,
+   30
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

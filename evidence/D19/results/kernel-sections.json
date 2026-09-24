@@ -1,0 +1,47 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "kernel-sections",
+ "kind": "build",
+ "started": "2026-09-24T10:44:22.343Z",
+ "commands": [
+  {
+   "command": "sh tests/implementation/build-kernels.sh evidence/D19/kernel /home/user/factory-builds/d19-kernels",
+   "exit": 0,
+   "seconds": 31
+  }
+ ],
+ "facts": {
+  "FACT-KERNEL-EXEC-SECTIONS-INSTALL-INDEPENDENT": {
+   "probe": "PROBE-KERNEL-SECTIONS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "kernel/sections.json",
+     "sha256": "9000e20c63eb0ccc375394231cb0dfe0eb628a44cb14bdea8c7527d4412c54cd",
+     "checks": [
+      {
+       "path": "identical_excluding_custom",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      },
+      {
+       "path": "differing_sections",
+       "eq": [
+        "custom:name"
+       ],
+       "observed": [
+        "custom:name"
+       ],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-24T10:44:53.288Z",
+ "status": "PASS"
+}

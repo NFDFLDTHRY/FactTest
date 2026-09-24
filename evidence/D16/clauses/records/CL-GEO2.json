@@ -1,0 +1,30 @@
+{
+ "id": "CL-GEO2",
+ "trace": "GEO",
+ "authority": "AUTH-GEOLOCATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/geolocation",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+  "sha256": "5bc468fd115c1e17e53496a6c5329e7c4efa90c822aaf41d491abfbd465093a1",
+  "bytes": 59983
+ },
+ "locator": {
+  "text": "If |geolocation|'s [=environment settings object=] is a",
+  "line_start": 668,
+  "line_end": 676,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 9,
+ "consequence": "in a non-secure context every request calls back PERMISSION_DENIED: the secure-context gate lives in the algorithm, not the IDL",
+ "excerpt": "          <li>If |geolocation|'s [=environment settings object=] is a\n          [=non-secure context=]:\n            <ol>\n              <li>If |watchId| was passed, [=List/remove=] |watchId| from\n              |watchIDs|.\n              </li>\n              <li>[=Call back with error=] passing |errorCallback| and\n              {{GeolocationPositionError/PERMISSION_DENIED}}.\n              </li>",
+ "excerpt_sha256": "898a9c021a13b5b67580f7156f2fa7db269f0cd5fc1b3a48feaa7899ce7f9a52",
+ "must_contain": {
+  "[=non-secure context=]": true,
+  "{{GeolocationPositionError/PERMISSION_DENIED}}": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,81 @@
+{
+ "authority": "AUTH-COMPRESSION-ZLIB",
+ "authority_class": "LIVING_STANDARD",
+ "cited": {
+  "url": "https://compression.spec.whatwg.org/",
+  "fragment": null,
+  "fragment_status_recorded": "NOT_CITED (D12 cites source line numbers at the pin; no published fragment is asserted; D14 rescan)",
+  "maturity_recorded": "living standard source",
+  "observed_recorded": "never (published rendering not opened: host DENIED in D12)",
+  "reopen_recorded": "DENIED"
+ },
+ "pin": {
+  "repo": "https://github.com/whatwg/compression",
+  "branch": "main",
+  "commit": "770f314342e2ee560353a04a7f30ee9449a23ee4",
+  "path": "index.bs",
+  "sha256": "15ae346d1a953f4b65dee0d4f4dfe1d5252d790e5bef496d8f29ddf9c14a8e2f",
+  "observed": "2026-09-24",
+  "locator": "lines 40-45 (\"deflate\" = ZLIB Compressed Data Format, RFC 1950)"
+ },
+ "published": {
+  "status": "UNREACHABLE (DENIED by network policy)",
+  "detail": "curl: (56) CONNECT tunnel failed, response 403"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "refs/heads/main",
+  "commit": "770f314342e2ee560353a04a7f30ee9449a23ee4"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "15ae346d1a953f4b65dee0d4f4dfe1d5252d790e5bef496d8f29ddf9c14a8e2f",
+ "tip_relation": "TIP == PIN",
+ "fragment": {
+  "cited": null,
+  "at_pin": {
+   "status": "NOT_CITED"
+  },
+  "at_tip": {
+   "status": "NOT_CITED"
+  }
+ },
+ "clause": {
+  "method": "locator line numbers",
+  "pin_lines": [
+   40,
+   45
+  ],
+  "window_sha256": "7612e28d78655ca37cced7c84debaa9a4b2c867c6e7ec15cbe8affb08c7a82e0",
+  "window_excerpt": ":: \"ZLIB Compressed Data Format\" [[!RFC1950]]\n\n   Note: This format is referred to as \"deflate\" for consistency with HTTP Content-Encodings. See [[RFC7230 obsolete]] section 4.2.2.\n\n   * Implementations must be \"compliant\" as described in [[!RFC1950]] section 2.3.\n   * Field values described as invalid in [[!RFC1950]] must not be created by {{CompressionStream}}, and are errors for {{DecompressionStream}}.",
+  "status": "UNCHANGED (file identical)",
+  "tip_lines": [
+   40,
+   45
+  ]
+ },
+ "maturity": {
+  "declared_at_pin": {
+   "group": "WHATWG"
+  },
+  "declared_at_tip": {
+   "group": "WHATWG"
+  },
+  "drift": "NONE"
+ },
+ "coarse": {
+  "reason": "no fragment cited (document root)",
+  "clause_line": 40,
+  "candidates": {
+   "section": {
+    "id": "#supported-formats",
+    "line": 31,
+    "kind": "bikeshed heading id"
+   },
+   "definition": {
+    "id": "#compression-context",
+    "line": 29,
+    "kind": "bikeshed dfn"
+   }
+  }
+ }
+}

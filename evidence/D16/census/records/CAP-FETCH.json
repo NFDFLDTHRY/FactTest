@@ -1,0 +1,15 @@
+{
+ "family": "CAP-FETCH",
+ "matrix_row": "Fetch / network",
+ "observed": "2026-09-24T08:42:27.903Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "typeof fetch === 'function' && typeof ReadableStream === 'function'",
+ "discovery_expr": "({response_body: 'body' in Response.prototype})",
+ "exposed": true,
+ "discovery": {
+  "response_body": true
+ },
+ "permissions": {},
+ "policy": {}
+}

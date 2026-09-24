@@ -1,0 +1,9 @@
+$ sh -c mkdir -p evidence/D18/regress && node tests/implementation/gate.mjs --reality tests/implementation/reality.json --label-audit tests/implementation/label-audit.json --labels evidence/D17/labels/audit.json --kernel evidence/D17/kernel --graph design/environment-map/graph.json --out evidence/D18/regress/implementation-gate.json
+(cwd .)
+PASS behaviors_in_graph: 19 behaviours
+PASS census_absences_explained: 6 ABSENT families, each exposure fact explained by an implementation behaviour
+PASS labels_resolved: 12 findings, 6 MISLABEL recorded as [ERR] facts
+PASS kernel_difference_scoped: differs only in ["custom:name"]
+PASS
+
+[exit 0] expected 0

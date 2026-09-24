@@ -1,0 +1,30 @@
+{
+ "id": "CL-IMP-DEPS3",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-CHROMIUM-DEPS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "DEPS",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "23ca8129defe39335795f97c9136fcfdeae5ca225e8fa424ee9831e3e787f1e3",
+  "bytes": 185857
+ },
+ "locator": {
+  "text": "'dawn_revision': '9caf49389e5e0564d18e0504c6cfa45c88b4e4fd',",
+  "line_start": 424,
+  "line_end": 424,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 1,
+ "consequence": "Chromium 141.0.7390.37 builds Dawn 9caf493 (its source is not reachable through the GitHub mirror: [GAP])",
+ "excerpt": "  'dawn_revision': '9caf49389e5e0564d18e0504c6cfa45c88b4e4fd',",
+ "excerpt_sha256": "d722e4b416d7a9a4ad7134d2fd62524a05b25ae131d08ca7f37ebb68fb4b3fed",
+ "must_contain": {
+  "9caf49389e5e0564d18e0504c6cfa45c88b4e4fd": true
+ },
+ "status": "VERIFIED"
+}

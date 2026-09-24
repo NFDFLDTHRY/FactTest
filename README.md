@@ -50,6 +50,8 @@ Every implementation commit on the materialization branch was produced by the Fa
    which documents are live law and which are historical, and every open [ERR]/[GAP]/[UNK] with its class.
 2. [FACTORY-LAW.md](FACTORY-LAW.md) - AGENT -> ASCII -> FACTORY -> WORKPIECE -> VERIFY -> REPO; never AGENT -> REPO.
 3. [design/materialization/LEDGER.md](design/materialization/LEDGER.md) - BEFORE/AFTER of every delta (D0 onward).
+4. [design/materialization/D19-STABLE-BASELINE.md](design/materialization/D19-STABLE-BASELINE.md) - the stable
+   baseline after the D14-D19 technical reference review: what FactTest is entitled to claim now and how to re-verify it.
 
 No session prompt is required: the entry is model-independent.  Proof sets and the toolchain pin are in
 [tests/toolchain/proof-sets.json](tests/toolchain/proof-sets.json) and [rust-toolchain.toml](rust-toolchain.toml).
@@ -58,8 +60,13 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
 
 - Former status line (M9, historical): "MATERIALIZED THROUGH THE FACTORY - BYTE RELAY PHYSICALLY COMMISSIONED
   (SwiftShader WebGPU + wasm64 in Chromium 141)".
+  D18 correction (label audit LBL-07): the WebGPU in that line is SwiftShader's CPU fallback adapter under the unsafe
+  WebGPU switch set in the Chromium 141 headless shell (chromium-headless-shell rev 1194), plus wasm64; no hardware GPU
+  and no installed Chrome was ever observed.
 - The original materialization session (historical) was bootstrapped by
   [FABLE-ASCII-SYSTEM-PROMPT.md](FABLE-ASCII-SYSTEM-PROMPT.md), the Fable 5.1 session bootloader (historical; kept
   unchanged apart from its D13 HISTORICAL banner).  It is not the entry for new work.
 - Later deltas: D9 Rust/Cargo proof harness, D10-D11 computational environment map, D12 self-hosting architecture,
-  D13 repository hygiene (see the ledger).
+  D13 repository hygiene, D14-D19 technical reference review series (D14 authority frontier, D15 foundational clauses,
+  D16 capability universe, D17 implementation reality, D18 repository reconciliation, D18R chain repair, D19 re-proof
+  and stable baseline; see the ledger).

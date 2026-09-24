@@ -1,0 +1,5 @@
+$ sh -c I=design/materialization/D18-INTENDED-REPO-RECONCILIATION.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.' '## 10.' '## 11.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as 715ac92d327f5f2677fd7c0b067fa843da6323c4' design/materialization/LEDGER.md && grep -q '^## D18-REPO-RECONCILIATION' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && node -e 'const s=JSON.parse(require("fs").readFileSync("factory/registry/stations/S-ANNOTATE-OWNER.json"));if(s.station_id!=="S-ANNOTATE-OWNER"||JSON.stringify(s.may_change)!==JSON.stringify(["CAPABILITY-MATRIX.md","BOOTSTRAP-TESTS.md","factory/receipts/"])||!s.must_not_change.includes("FACTORY-LAW.md"))process.exit(1);console.log("S-ANNOTATE-OWNER surfaces",JSON.stringify(s.may_change))'
+(cwd .)
+S-ANNOTATE-OWNER surfaces ["CAPABILITY-MATRIX.md","BOOTSTRAP-TESTS.md","factory/receipts/"]
+
+[exit 0] expected 0

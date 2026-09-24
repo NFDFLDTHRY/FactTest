@@ -1,0 +1,17 @@
+{
+ "family": "CAP-HID",
+ "matrix_row": "HID",
+ "observed": "2026-09-24T08:42:27.932Z",
+ "environment": "ENV-D16-BROWSER",
+ "state": "EXPOSED",
+ "exposure_expr": "'hid' in navigator",
+ "discovery_expr": "navigator.hid.getDevices().then(d => ({devices: d.length}))",
+ "exposed": true,
+ "discovery": {
+  "devices": 0
+ },
+ "permissions": {},
+ "policy": {
+  "hid": true
+ }
+}

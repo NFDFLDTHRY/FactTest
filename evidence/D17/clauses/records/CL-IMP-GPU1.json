@@ -1,0 +1,32 @@
+{
+ "id": "CL-IMP-GPU1",
+ "trace": "GPU",
+ "authority": "AUTH-IMPL-GPU-FINCH-FEATURES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/chromium/chromium",
+  "branch": "main",
+  "path": "gpu/config/gpu_finch_features.cc",
+  "pinned": true,
+  "commit": "9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+  "sha256": "9a51f47dffd2dd4efd94384a0bc82aa381df59bb648d2b98a52433ce758064e7",
+  "bytes": 34491
+ },
+ "locator": {
+  "text": "// Enable WebGPU on gpu service side only.",
+  "line_start": 198,
+  "line_end": 206,
+  "derivation": "anchor text",
+  "enclosing_section": "implementation source: line-anchored, no published fragment semantics"
+ },
+ "window": 9,
+ "consequence": "WebGPUService is enabled by default only on Apple, Windows, ChromeOS and Android: on Linux WebGPU returns no adapter unless enabled",
+ "excerpt": "// Enable WebGPU on gpu service side only. This is used with origin trial and\n// enabled by default on supported platforms.\n#if BUILDFLAG(IS_APPLE) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_CHROMEOS) || \\\n    BUILDFLAG(IS_ANDROID)\n#define WEBGPU_ENABLED base::FEATURE_ENABLED_BY_DEFAULT\n#else\n#define WEBGPU_ENABLED base::FEATURE_DISABLED_BY_DEFAULT\n#endif\nBASE_FEATURE(WebGPUService, WEBGPU_ENABLED);",
+ "excerpt_sha256": "8f650b5fed88c787a46a2c04a6093abc70b1d29929ad2e6f7e58bdc2e902ea0b",
+ "must_contain": {
+  "BUILDFLAG(IS_APPLE) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_CHROMEOS)": true,
+  "#define WEBGPU_ENABLED base::FEATURE_DISABLED_BY_DEFAULT": true,
+  "BASE_FEATURE(WebGPUService, WEBGPU_ENABLED);": true
+ },
+ "status": "VERIFIED"
+}

@@ -1,0 +1,30 @@
+{
+ "id": "CL-W8",
+ "trace": "W",
+ "authority": "AUTH-WASM-JSAPI-VALUES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/js-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+  "bytes": 114471
+ },
+ "locator": {
+  "text": "<dfn>ToWebAssemblyValue</dfn>",
+  "line_start": 1419,
+  "line_end": 1426,
+  "derivation": "anchor text",
+  "enclosing_section": "#exported-function-exotic-objects (line 1238)"
+ },
+ "window": 8,
+ "consequence": "every i64 parameter passed from JS to an export is converted with ToBigInt64: the FactTest host membrane passes BigInt for every pointer/length (kernel-host.mjs, adapter-wasm64_relay.js)",
+ "excerpt": "The algorithm <dfn>ToWebAssemblyValue</dfn>(|v|, |type|) coerces a JavaScript value to a [=WebAssembly value=] by performing the following steps:\n\n1. Assert: |type| is not [=v128=].\n1. Assert: |type| does not [=matches/valtype|match=] [=exnref=].\n1. If |type| is [=i64=],\n    1. Let |i64| be [=?=] [$ToBigInt64$](|v|).\n    1. Let |u64| be the unsigned integer such that |i64| is [=signed_64=](|u64|).\n    1. Return [=i64.const=] |u64|.",
+ "excerpt_sha256": "e9288d6495f34fc36014bdea0f9b06707d3558fda90eeda9e294f7464604a452",
+ "must_contain": {
+  "If |type| is [=i64=]": true,
+  "[$ToBigInt64$](|v|)": true
+ },
+ "status": "VERIFIED"
+}

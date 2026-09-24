@@ -1,0 +1,8 @@
+$ sh -c for L in A B; do case $L in A) lab=INSTALL-PINNED;; B) lab=INSTALL-RENAMED;; esac; m=/home/user/factory-builds/d17-kernels/$L/wasm64-unknown-unknown/release/factc_wasm_abi.wasm; want=$(node -e 'const b=JSON.parse(require("fs").readFileSync("evidence/D17/kernel/builds.json"));console.log(b.builds.find(x=>x.label===process.argv[1]).wasm_sha256)' $lab); have=$(sha256sum $m | cut -d' ' -f1); [ "$have" = "$want" ] || { echo "$m: $have != $want"; exit 1; }; echo "$lab $m sha256 == evidence/D17/kernel/builds.json"; node tests/toolchain/proof.mjs kernel-identity --sets tests/toolchain/proof-sets.json --out evidence/D18/kernel --id KRN-D18-$L --root . --module $m || exit 1; grep -q '"verdict": "PASS"' evidence/D18/kernel/KRN-D18-$L.json || exit 1; done
+(cwd .)
+INSTALL-PINNED /home/user/factory-builds/d17-kernels/A/wasm64-unknown-unknown/release/factc_wasm_abi.wasm sha256 == evidence/D17/kernel/builds.json
+PASS KRN-D18-A  exec identity e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2 == declared (install nightly-2026-09-24-x86_64-unknown-linux-gnu); whole file == recorded for install nightly-2026-09-24-x86_64-unknown-linux-gnu (informational)
+INSTALL-RENAMED /home/user/factory-builds/d17-kernels/B/wasm64-unknown-unknown/release/factc_wasm_abi.wasm sha256 == evidence/D17/kernel/builds.json
+PASS KRN-D18-B  exec identity e8d6582665ea188049059215c6732c7280f5ab4a1920287ecdfa59997161bef2 == declared (install nightly-2026-09-24-x86_64-unknown-linux-gnu); whole file == recorded for install nightly-x86_64-unknown-linux-gnu (informational)
+
+[exit 0] expected 0

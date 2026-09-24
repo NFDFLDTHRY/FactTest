@@ -1,0 +1,7 @@
+$ sh -c for f in CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md; do n=$(git diff --numstat 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f); a=$(echo "$n" | cut -f1); d=$(echo "$n" | cut -f2); [ -n "$a" ] && [ "$a" -gt 0 ] && [ "$d" = 0 ] || { echo "$f: numstat '$n'"; exit 1; }; git diff -U0 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- $f | awk -v f=$f '/^@@/{h=1;next} /^\+\+\+/{next} /^\+/{if(h){l=substr($0,2); if(l ~ /[^ ]/){ if(index(l,"D18 ANNOTATION")!=1){print f": hunk begins " l; bad=1} h=0 }}} END{exit bad}' || exit 1; echo "$f +$a -0"; done; git diff --exit-code 715ac92d327f5f2677fd7c0b067fa843da6323c4 -- FACTORY-LAW.md && [ $(git show 715ac92d327f5f2677fd7c0b067fa843da6323c4:CAPABILITY-MATRIX.md | grep -c '^|') -eq $(grep -c '^|' CAPABILITY-MATRIX.md) ] && echo 'G rows unchanged'
+(cwd .)
+CAPABILITY-MATRIX.md +6 -0
+BOOTSTRAP-TESTS.md +3 -0
+G rows unchanged
+
+[exit 0] expected 0

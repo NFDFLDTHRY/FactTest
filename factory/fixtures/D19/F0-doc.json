@@ -1,0 +1,72 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "D14-D19 prompt (pass D19)",
+    "D18R-OBSERVED-CHAIN-REPAIR",
+    "Q17/Q21 of the D18R graph",
+    "assembly (section 0)"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D19.json",
+    "factory/fixtures/D19/",
+    "factory/receipts/D19-REPROVE-REOBSERVE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.' '## 6.' '## 7.' '## 8.' '## 9.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && grep -q 'integrated as b509fb00920443930aa75b10dae05b9683d2fe1b' design/materialization/LEDGER.md && grep -q '^## D19-REPROVE-REOBSERVE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ]"
+        ],
+        "log": "factory/receipts/D19-REPROVE-REOBSERVE/logs/F0-ascii.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "b509fb00920443930aa75b10dae05b9683d2fe1b",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "tests",
+          "evidence",
+          "fixtures",
+          "design/environment-map",
+          "docs",
+          "README.md",
+          "rust-toolchain.toml",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "STATION-REGISTRY.md",
+          "CAPABILITY-MATRIX.md",
+          "BOOTSTRAP-TESTS.md",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md"
+        ],
+        "log": "factory/receipts/D19-REPROVE-REOBSERVE/logs/F0-scope.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D19-REPROVE-REOBSERVE"
+}

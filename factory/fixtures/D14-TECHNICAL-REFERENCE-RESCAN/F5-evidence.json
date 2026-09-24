@@ -1,0 +1,167 @@
+{
+  "fixture_id": "F5-evidence",
+  "station_id": "S-EVIDENCE",
+  "delta_id": "D14-TECHNICAL-REFERENCE-RESCAN",
+  "selected_inputs": [
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/",
+    "design/environment-map/graph.json",
+    "/home/user/factory-workpieces"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "narrowed_may_change": [
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/"
+  ],
+  "job_parameters": {
+    "identity_probes": [
+      {
+        "name": "rustc-host-set",
+        "program": "rustc",
+        "args": [
+          "+1.94.1",
+          "-vV"
+        ]
+      },
+      {
+        "name": "rustc-wasm64-set",
+        "program": "rustc",
+        "args": [
+          "+nightly-2026-09-24",
+          "-vV"
+        ]
+      },
+      {
+        "name": "node",
+        "program": "node",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "git",
+        "program": "git",
+        "args": [
+          "--version"
+        ]
+      },
+      {
+        "name": "curl",
+        "program": "curl",
+        "args": [
+          "--version"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "cwd": ".",
+        "program": "node",
+        "args": [
+          "tests/hygiene/status-scan.mjs",
+          "--rules",
+          "tests/hygiene/status-classification.json",
+          "--out",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN/hygiene/status"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/hygiene/status-scan.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "tests/hygiene/handoff-check.sh",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN/hygiene/handoff.json"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/hygiene/handoff.log"
+      },
+      {
+        "cwd": ".",
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/envmap/envmap.mjs validate design/environment-map/graph.json --out evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/validate.json && node tests/envmap/envmap.mjs merge-check design/environment-map/graph.json --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14-RESCAN.json --out evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/merge-check.json && node tests/envmap/envmap.mjs render-check design/environment-map/graph.json --dir design/environment-map --out evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/render-check.json && node tests/envmap/envmap.mjs query design/environment-map/graph.json --all --out evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/queries"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/after.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d14/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/d9-rust-cargo-proof-4nys6s",
+          "--current",
+          "W16",
+          "--out",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN/workpieces/audit-before.json"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/workpieces/audit-before.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d14/debug/factory",
+        "args": [
+          "workpiece",
+          "retire",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/d9-rust-cargo-proof-4nys6s",
+          "--current",
+          "W16",
+          "--out",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN/workpieces/retire.json"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/workpieces/retire.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d14/debug/factory",
+        "args": [
+          "workpiece",
+          "audit",
+          "/home/user/factory-workpieces",
+          "/home/user/FactTest",
+          "claude/d9-rust-cargo-proof-4nys6s",
+          "--current",
+          "W16",
+          "--out",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN/workpieces/audit-after.json"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/workpieces/audit-after.log"
+      },
+      {
+        "cwd": ".",
+        "program": "/home/user/factory-target-d14/debug/factory",
+        "args": [
+          "evidence",
+          "index",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN",
+          "evidence/D14-TECHNICAL-REFERENCE-RESCAN/index.json"
+        ],
+        "log": "evidence/D14-TECHNICAL-REFERENCE-RESCAN/index.log"
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/hygiene/status/inventory.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/hygiene/handoff.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/validate.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/merge-check.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/render-check.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/envmap/queries/Q16.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/workpieces/audit-after.json",
+    "evidence/D14-TECHNICAL-REFERENCE-RESCAN/index.json"
+  ],
+  "tests": [
+    "hygiene inventory",
+    "graph evidence after merge",
+    "workpiece audit/retire under the guard",
+    "evidence indexed"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ]
+}

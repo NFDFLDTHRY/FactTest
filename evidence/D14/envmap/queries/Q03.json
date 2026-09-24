@@ -31,535 +31,6 @@
       "constraint_dependencies": []
     },
     {
-      "fact": "FACT-D14-CORPUS-INGESTED",
-      "authorities": [],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-CORPUS-REPRODUCIBLE",
-      "authorities": [],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-D11-PINS-RECHECKED",
-      "authorities": [],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-MAP-LINKS-AUDITED",
-      "authorities": [],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-PAGES-BRANCH-ROUTE",
-      "authorities": [],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-PUBLISHED-HOSTS-DENIED",
-      "authorities": [],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-CARGO-BUILD-STD",
-      "authorities": [
-        "AUTH-CARGO-BUILD-STD"
-      ],
-      "depends_on_closure": [
-        "AUTH-RUST-REF-NOSTD"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-CHROMIUM-CONTENT-SWITCHES",
-      "authorities": [
-        "AUTH-CHROMIUM-CONTENT-SWITCHES"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-CHROMIUM-GL-SWITCHES",
-      "authorities": [
-        "AUTH-CHROMIUM-GL-SWITCHES"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-CHROMIUM-GPU-SWITCHES",
-      "authorities": [
-        "AUTH-CHROMIUM-GPU-SWITCHES"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-CHROMIUM-SWIFTSHADER-DOC",
-      "authorities": [
-        "AUTH-CHROMIUM-SWIFTSHADER-DOC"
-      ],
-      "depends_on_closure": [
-        "AUTH-CHROMIUM-GL-SWITCHES",
-        "AUTH-SWIFTSHADER-README"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-COMPRESSION-ZLIB",
-      "authorities": [
-        "AUTH-COMPRESSION-ZLIB"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-FS-OPFS",
-      "authorities": [
-        "AUTH-FS-OPFS"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-GLOSSARY-COMMIT",
-      "authorities": [
-        "AUTH-GIT-GLOSSARY-COMMIT"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-OBJECT-FORMAT",
-      "authorities": [
-        "AUTH-GIT-OBJECT-FORMAT"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-PACK-FORMAT",
-      "authorities": [
-        "AUTH-GIT-PACK-FORMAT"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-REPO-LAYOUT",
-      "authorities": [
-        "AUTH-GIT-REPO-LAYOUT"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-REVISIONS",
-      "authorities": [
-        "AUTH-GIT-REVISIONS"
-      ],
-      "depends_on_closure": [
-        "AUTH-GIT-GLOSSARY-COMMIT"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-SHA256-TRANSITION",
-      "authorities": [
-        "AUTH-GIT-SHA256-TRANSITION"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-UPDATE-REF-CAS",
-      "authorities": [
-        "AUTH-GIT-UPDATE-REF-CAS"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GIT-WORKTREE",
-      "authorities": [
-        "AUTH-GIT-WORKTREE"
-      ],
-      "depends_on_closure": [
-        "AUTH-GIT-REPO-LAYOUT"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-ADAPTER-EXPIRE",
-      "authorities": [
-        "AUTH-GPU-ADAPTER-EXPIRE"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-ADAPTERINFO",
-      "authorities": [
-        "AUTH-GPU-ADAPTERINFO"
-      ],
-      "depends_on_closure": [
-        "AUTH-GPU-FALLBACK-ADAPTER"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-DESTROY",
-      "authorities": [
-        "AUTH-GPU-DESTROY"
-      ],
-      "depends_on_closure": [
-        "AUTH-GPU-LOSE-DEVICE",
-        "AUTH-GPU-LOST"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-FALLBACK-ADAPTER",
-      "authorities": [
-        "AUTH-GPU-FALLBACK-ADAPTER"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-LIMITS-MAXBUFFERSIZE",
-      "authorities": [
-        "AUTH-GPU-LIMITS-MAXBUFFERSIZE"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-LOSE-DEVICE",
-      "authorities": [
-        "AUTH-GPU-LOSE-DEVICE"
-      ],
-      "depends_on_closure": [
-        "AUTH-GPU-LOST"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-LOST",
-      "authorities": [
-        "AUTH-GPU-LOST"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-NAVIGATOR-GPU",
-      "authorities": [
-        "AUTH-GPU-NAVIGATOR-GPU"
-      ],
-      "depends_on_closure": [
-        "AUTH-SECCTX-TRUSTWORTHY"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-REQUESTADAPTER",
-      "authorities": [
-        "AUTH-GPU-REQUESTADAPTER"
-      ],
-      "depends_on_closure": [
-        "AUTH-GPU-ADAPTER-EXPIRE",
-        "AUTH-GPU-FALLBACK-ADAPTER",
-        "AUTH-GPU-NAVIGATOR-GPU",
-        "AUTH-SECCTX-TRUSTWORTHY"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-GPU-REQUESTDEVICE",
-      "authorities": [
-        "AUTH-GPU-REQUESTDEVICE"
-      ],
-      "depends_on_closure": [
-        "AUTH-GPU-ADAPTER-EXPIRE",
-        "AUTH-GPU-LOSE-DEVICE",
-        "AUTH-GPU-LOST"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-HTML-COI",
-      "authorities": [
-        "AUTH-HTML-COI"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-HTML-HWCONCURRENCY",
-      "authorities": [
-        "AUTH-HTML-HWCONCURRENCY"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-HTML-SANDBOX-ORIGIN",
-      "authorities": [
-        "AUTH-HTML-SANDBOX-ORIGIN"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-HTML-WORKERS",
-      "authorities": [
-        "AUTH-HTML-WORKERS"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-IDB-TRANSACTION",
-      "authorities": [
-        "AUTH-IDB-TRANSACTION"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-MANIFEST-INSTALLABLE",
-      "authorities": [
-        "AUTH-MANIFEST-INSTALLABLE"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-RUST-REF-NOSTD",
-      "authorities": [
-        "AUTH-RUST-REF-NOSTD"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-RUSTC-WASM64-DOC",
-      "authorities": [
-        "AUTH-RUSTC-WASM64-DOC"
-      ],
-      "depends_on_closure": [
-        "AUTH-CARGO-BUILD-STD",
-        "AUTH-RUST-REF-NOSTD",
-        "AUTH-RUSTC-WASM64-TARGET-SPEC"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-RUSTC-WASM64-TARGET-SPEC",
-      "authorities": [
-        "AUTH-RUSTC-WASM64-TARGET-SPEC"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-SECCTX-TRUSTWORTHY",
-      "authorities": [
-        "AUTH-SECCTX-TRUSTWORTHY"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-STORAGE-BUCKET-MODE",
-      "authorities": [
-        "AUTH-STORAGE-BUCKET-MODE"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-SW-INSTALL-FAILED",
-      "authorities": [
-        "AUTH-SW-INSTALL-FAILED"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-SW-REGISTER-TRUST",
-      "authorities": [
-        "AUTH-SW-REGISTER-TRUST"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-SW-SANDBOX-NO-CONTROLLER",
-      "authorities": [
-        "AUTH-SW-SANDBOX-NO-CONTROLLER"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-SW-UPDATE-BYPASS",
-      "authorities": [
-        "AUTH-SW-UPDATE-BYPASS"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-SWIFTSHADER-README",
-      "authorities": [
-        "AUTH-SWIFTSHADER-README"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-V8-FLAGS",
-      "authorities": [
-        "AUTH-V8-FLAGS"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-CORE-BINARY-LIMITS",
-      "authorities": [
-        "AUTH-WASM-CORE-BINARY-LIMITS"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-CORE-CHANGES-64",
-      "authorities": [
-        "AUTH-WASM-CORE-CHANGES-64"
-      ],
-      "depends_on_closure": [
-        "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-CORE-SYNTAX-ADDRTYPE",
-      "authorities": [
-        "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-CORE-TEXT-ADDRTYPE",
-      "authorities": [
-        "AUTH-WASM-CORE-TEXT-ADDRTYPE"
-      ],
-      "depends_on_closure": [
-        "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-CORE-TEXT-MEMTYPE",
-      "authorities": [
-        "AUTH-WASM-CORE-TEXT-MEMTYPE"
-      ],
-      "depends_on_closure": [
-        "AUTH-WASM-CORE-BINARY-LIMITS",
-        "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-JSAPI-MEMORIES",
-      "authorities": [
-        "AUTH-WASM-JSAPI-MEMORIES"
-      ],
-      "depends_on_closure": [
-        "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-JSAPI-STORAGE",
-      "authorities": [
-        "AUTH-WASM-JSAPI-STORAGE"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-JSAPI-VALIDATE",
-      "authorities": [
-        "AUTH-WASM-JSAPI-VALIDATE"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-SET",
-      "authorities": [
-        "AUTH-WASM-SET"
-      ],
-      "depends_on_closure": [
-        "AUTH-HTML-COI",
-        "AUTH-WASM-THREADS"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-THREADS",
-      "authorities": [
-        "AUTH-WASM-THREADS"
-      ],
-      "depends_on_closure": [
-        "AUTH-HTML-COI"
-      ],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WASM-WEBAPI-STREAMING",
-      "authorities": [
-        "AUTH-WASM-WEBAPI-STREAMING"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WEB-LOCKS",
-      "authorities": [
-        "AUTH-WEB-LOCKS"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WEBCRYPTO-DIGEST",
-      "authorities": [
-        "AUTH-WEBCRYPTO-DIGEST"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
-      "fact": "FACT-D14-REOPEN-WGSL",
-      "authorities": [
-        "AUTH-WGSL"
-      ],
-      "depends_on_closure": [],
-      "constraint_dependencies": []
-    },
-    {
       "fact": "FACT-D9-HISTORY-OVERSTATED",
       "authorities": [],
       "depends_on_closure": [],
@@ -592,6 +63,12 @@
       "authorities": [
         "AUTH-RUST-REF-NOSTD"
       ],
+      "depends_on_closure": [],
+      "constraint_dependencies": []
+    },
+    {
+      "fact": "FACT-FRONTIER-SOURCES-AT-PIN",
+      "authorities": [],
       "depends_on_closure": [],
       "constraint_dependencies": []
     },
@@ -799,7 +276,20 @@
         "AUTH-WASM-JSAPI-MEMORIES",
         "AUTH-WASM-JSAPI-VALIDATE"
       ],
-      "depends_on_closure": [],
+      "depends_on_closure": [
+        "AUTH-WASM-PROPOSALS-REGISTRY"
+      ],
+      "constraint_dependencies": []
+    },
+    {
+      "fact": "FACT-MEMORY64-FINISHED",
+      "authorities": [
+        "AUTH-WASM-CORE-CHANGES-64",
+        "AUTH-WASM-PROPOSALS-REGISTRY"
+      ],
+      "depends_on_closure": [
+        "AUTH-WASM-CORE-SYNTAX-ADDRTYPE"
+      ],
       "constraint_dependencies": []
     },
     {
@@ -833,6 +323,12 @@
     },
     {
       "fact": "FACT-PROOF-SETS-DECLARED",
+      "authorities": [],
+      "depends_on_closure": [],
+      "constraint_dependencies": []
+    },
+    {
+      "fact": "FACT-PUBLISHED-FRONTIER-UNVERIFIED",
       "authorities": [],
       "depends_on_closure": [],
       "constraint_dependencies": []
@@ -1013,7 +509,9 @@
         "AUTH-WASM-SET",
         "AUTH-WASM-THREADS"
       ],
-      "depends_on_closure": [],
+      "depends_on_closure": [
+        "AUTH-WASM-PROPOSALS-REGISTRY"
+      ],
       "constraint_dependencies": []
     },
     {
@@ -1070,6 +568,22 @@
     {
       "fact": "FACT-TOOLCHAIN-PINNED",
       "authorities": [],
+      "depends_on_closure": [],
+      "constraint_dependencies": []
+    },
+    {
+      "fact": "FACT-WASM-SET-PHASE-1",
+      "authorities": [
+        "AUTH-WASM-PROPOSALS-REGISTRY"
+      ],
+      "depends_on_closure": [],
+      "constraint_dependencies": []
+    },
+    {
+      "fact": "FACT-WASM-THREADS-PHASE-4",
+      "authorities": [
+        "AUTH-WASM-PROPOSALS-REGISTRY"
+      ],
       "depends_on_closure": [],
       "constraint_dependencies": []
     },
@@ -1137,7 +651,8 @@
       "depends_on_closure": [
         "AUTH-CARGO-BUILD-STD",
         "AUTH-RUST-REF-NOSTD",
-        "AUTH-RUSTC-WASM64-TARGET-SPEC"
+        "AUTH-RUSTC-WASM64-TARGET-SPEC",
+        "AUTH-WASM-PROPOSALS-REGISTRY"
       ],
       "constraint_dependencies": []
     },

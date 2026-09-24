@@ -578,16 +578,240 @@ BEFORE
   unchanged.
 
 AFTER
-- RESULT: integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca (ff-only from 205d337); merged into main by the owner
-  through pull request #4 as 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (PR closed, history fast-forwarded).
-- RECEIPTS: factory/receipts/D13-REPO-HYGIENE/{F0-doc,F1-rust,F2-fixture,F3-doc,F4-annotate,F5-build,F6-evidence,
-  F7-doc,F8-evidence,F9-doc}.json PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.
-- OBSERVED: design/materialization/D13-OBSERVED-REPO-HYGIENE.md; PRE-RESCAN-BASELINE: ESTABLISHED.
-- (recorded by D14-PROMPT-INTAKE, the next delta.)
+- RESULT: integrated as 8265623ed785fbc4cd2328cbf0bb27d8984906ca (ff-only from 205d337); no refusal at the gate.  One
+  fixture (F5-build) was refused at station open before any command ran (receipts directory outside S-BUILD's
+  surface) and corrected; recorded in D13-OBSERVED-REPO-HYGIENE.md section 1.
+- RECEIPTS: factory/receipts/D13-REPO-HYGIENE/{F0-doc..F9-doc}.json (10) PASS.  VERIFICATION: PASS.  INTEGRATION: PASS.
+  PROBE: re-inspection MATCH (status scan, handoff check, graph validate/merge-check, registry check re-run on the
+  canonical tree).
+- EVIDENCE: evidence/D13/ (qualified proof 21/21 weight-bearing PASS on pinned toolchains, mutants 8/8 RUN; status
+  inventory 0 unclassified; 25 proven-disposable workpiece objects retired; graph 302 nodes / 641 edges).
+- LATER: PR #4 merged D13 into main as 4d8a4c0 (owner action on GitHub, merge commit); the branch was fast-forwarded to
+  4d8a4c0.  The owner then issued the six-pass technical reference review series D14-D19.
+- (recorded by D14-D19-PROMPT-INTAKE, the next delta.)
 
 ---
 
-## D14-PROMPT-INTAKE  (FIRST ACTION of the technical reference rescan)
+## D14-D19-PROMPT-INTAKE  (FIRST ACTION of the six-pass technical reference review series)
+
+BEFORE
+- DELTA: D14-D19-PROMPT-INTAKE (factory/deltas/D14-D19-PROMPT-INTAKE.json), workpiece W15.
+- BASE: 4d8a4c0e2568ecda75981aeaef0dc797fb23d928 (main after PR #4; branch fast-forwarded, merged history only).
+- STATION: S-DOC.  FIXTURE: F0-doc.  JUDGE: the factory binary built from 4d8a4c0, i.e. the first delta judged by the
+  D13-repaired Factory (literal surfaces, receipt format 2, verifier identity).
+- CHANGE: design/materialization/D14-D19-TECHNICAL-REFERENCE-REVIEW-PROMPT.md (verbatim), this ledger, the delta, its
+  fixture, receipts.  FORBIDDEN: everything else.
+- NEXT: D14-FRONTIER-REOPEN, assembled in design/materialization/D14-INTENDED-FRONTIER-REOPEN.md.
+
+AFTER
+- RESULT: integrated as 5e57467bd7c984529dc466201629b37e0ee44c4b (ff-only from 4d8a4c0); no refusal.
+- RECEIPTS: factory/receipts/D14-D19-PROMPT-INTAKE/F0-doc.json PASS - the first receipt_format 2 receipt
+  (environment_identity: judge sha256 bb1475ba..., host linux x86_64 6.18.44, git 2.43.0, rustc 1.94.1 probe).
+  VERIFICATION: PASS (verifier_identity recorded).  INTEGRATION: PASS.  PROBE: re-inspection MATCH.  Pushed.
+- (recorded by D14-FRONTIER-REOPEN, the next delta.)
+
+---
+
+## D14-FRONTIER-REOPEN  (pass 1 of 6: what moved in the authority frontier?)
+
+BEFORE
+- DELTA: D14-FRONTIER-REOPEN (factory/deltas/D14.json), workpiece W16, base 5e57467.
+- ASCII: design/materialization/D14-INTENDED-FRONTIER-REOPEN.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F3, F5), S-FIXTURE (F1), S-BUILD (F2 reopen probe), S-EVIDENCE (F4).
+- CHANGE: tests/reference/ (reopen probe, revision builder, D14 review), tests/envmap/envmap.mjs (epoch-declared
+  classes, Q17, revision rendering), evidence/D14/, design/environment-map/ (epoch D14, merged graph, views,
+  SCHEMA/ENVIRONMENT-MAP epoch sections), docs/HANDOFF.md, D14 records, this ledger.  FORBIDDEN: every law and pass
+  document (reconciliation is D18), compiler/, host/, factory/ machinery, fixtures/, earlier epochs and evidence.
+- NETWORK: published authority hosts refused by the environment policy (reported to the owner); source frontier
+  reopened through raw.githubusercontent.com and git ls-remote.
+- PREDICTED: 64 revisions; UNREACHABLE 55, MOVED 4, AMBIGUOUS 2, MATURITY 2, EDITORIAL 2; new fragment drift
+  AUTH-WASM-WEBAPI-STREAMING; rust-lang/rust master -> main; Threads Phase 4, SET Phase 1, Memory64 finished;
+  graph 441 nodes / 795 edges.
+
+AFTER
+- RESULT: integrated as 46cc28be1486798635eac42a6955dedaba36673f (ff-only from 5e57467).
+- ROUTE: F3 refused once at station open (narrowed surface wider than the delta's exact file list); nothing ran;
+  narrowed and resumed.  The first `factory verify` FAILED no_unreceipted_change (SCHEMA.md, ENVIRONMENT-MAP.md
+  copied outside a station run after a masked refused open); integration refused.  Repaired inside the Factory: both
+  files restored to base bytes, fixture F6-doc added, F6 and F5 run, verify re-run.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-doc F4-evidence F5-doc F6-doc PASS (format 2).  VERIFICATION: PASS (second
+  run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree 251f06e0).  Pushed.
+- OBSERVED: D14-OBSERVED-FRONTIER-REOPEN.md - P1-P3 MATCH; P4 DIFFER (W14-stage KEEP: pre-binding drafts); route
+  DIFFER recorded.  Prospective rule adopted: a route checks every station open's exit status before copying.
+- (recorded by D15-FOUNDATIONAL-SEMANTICS, the next delta.)
+
+---
+
+## D15-FOUNDATIONAL-SEMANTICS  (pass 2 of 6: what do the foundational authorities currently require?)
+
+BEFORE
+- DELTA: D15-FOUNDATIONAL-SEMANTICS (factory/deltas/D15.json), workpiece W17, base 46cc28b.
+- ASCII: design/materialization/D15-INTENDED-FOUNDATIONAL-SEMANTICS.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F3, F5), S-FIXTURE (F1), S-BUILD (F2 clause extraction), S-EVIDENCE (F4).
+- CHANGE: tests/reference/ (shared lib, reopen refactor, clause extractor, clause epoch builder, reopen regression
+  witness, D15 clause manifest), tests/envmap/envmap.mjs (clause checks, Q18 claim traversal), evidence/D15/,
+  design/environment-map/ (epoch D15, merged graph, views, SCHEMA section 8, ENVIRONMENT-MAP section 7),
+  docs/HANDOFF.md, D15 records, this ledger.  FORBIDDEN: every law and pass document (constraints stay PROPOSED until
+  D18), compiler/, host/, factory/ machinery, fixtures/, earlier epochs and D0-D14 evidence.
+- NETWORK: unchanged since D14 (published renderings refused by policy; sources read at their tips).
+- PREDICTED: 60/60 clauses VERIFIED over 11 traces; epoch 145 nodes / 305 edges; merged 586 / 1100; validate 30
+  checks; Q18 42 RUN claims, 10 COMPLETE; reopen regression 64 records with only moved tips and one corrected coarse
+  candidate differing.  Findings: ERR-001 current; BigInt membrane, secure-context vs opaque-origin, Permissions Policy
+  in opaque frames, SW update bypass, storage durability grounded as proposed constraints; SAB global absence relabeled
+  host behaviour; git tree order [GAP].
+
+AFTER
+- RESULT: integrated as 3748fa7bd15d74e560951f31338b8c94820c2830 (ff-only from 46cc28b); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-doc F4-evidence F5-doc PASS (format 2).  VERIFICATION: PASS (first run).
+  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree de523355; epochs/D15.json rebuilt byte-identically from the
+  committed evidence).  Pushed.
+- OBSERVED: D15-OBSERVED-FOUNDATIONAL-SEMANTICS.md - P1-P5 MATCH; one editorial drawing error recorded (intended
+  section 0 counted 29 source documents; the Factory read 31 in 21 repositories).
+- (recorded by D16-CAPABILITY-UNIVERSE, the next delta.)
+
+---
+
+## D16-CAPABILITY-UNIVERSE  (pass 3 of 6: what does each approved capability require?)
+
+BEFORE
+- DELTA: D16-CAPABILITY-UNIVERSE (factory/deltas/D16.json), workpiece W18, base 3748fa7.
+- ASCII: design/materialization/D16-INTENDED-CAPABILITY-UNIVERSE.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4, F6), S-FIXTURE (F1), S-BUILD (F2 clause extraction), S-BROWSER (F3 exposure census),
+  S-EVIDENCE (F5).
+- CHANGE: tests/reference/ (absent_in_document, --harness-in, D16 clause manifest), tests/capability/ (census, universe
+  manifest, epoch builder, gate), tests/envmap/envmap.mjs (family checks, Q19, universe view), evidence/D16/,
+  design/environment-map/ (epoch D16, merged graph, views, SCHEMA section 9, ENVIRONMENT-MAP section 8),
+  docs/HANDOFF.md, D16 records, this ledger.  FORBIDDEN: every law and pass document (CAPABILITY-MATRIX.md is read as G,
+  never written), compiler/, host/, factory/ machinery, fixtures/, earlier epochs and D0-D15 evidence.
+- PREDICTED: 90/90 clauses VERIFIED; census 32 records (25 EXPOSED, 6 ABSENT, 1 UNDETERMINED); epoch 305 nodes / 745
+  edges; merged 891 / 1845; gate PASS with 33 rows = 33 families, RUN 6 / OBS 16 / GAP 10 / ERR 1 / UNK 0; Q18 14
+  COMPLETE of 43 RUN claims; Q19 33 families.
+
+AFTER
+- RESULT: integrated as e4e210304591d99f73873dc719b79f187c4d19a1 (ff-only from 3748fa7); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-browser F4-doc F5-evidence F6-doc PASS (format 2).  VERIFICATION: PASS (first
+  run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree 7fbdd25e; epochs/D16.json rebuilt byte-identically from the
+  committed clause and census evidence; capability gate re-run PASS).  Pushed.
+- OBSERVED: D16-OBSERVED-CAPABILITY-UNIVERSE.md - P1-P7 MATCH; census states identical to assembly.
+- (recorded by D17-IMPLEMENTATION-REALITY, the next delta.)
+
+---
+
+## D17-IMPLEMENTATION-REALITY  (pass 4 of 6: what do our implementations actually do?)
+
+BEFORE
+- DELTA: D17-IMPLEMENTATION-REALITY (factory/deltas/D17.json), workpiece W19, base e4e2103.
+- ASCII: design/materialization/D17-INTENDED-IMPLEMENTATION-REALITY.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F4, F6), S-FIXTURE (F1), S-BUILD (F2 clause extraction, F3 kernel builds + label audit),
+  S-EVIDENCE (F5).
+- CHANGE: tests/reference/ (pinned-commit and installed-file sources, D17 clause manifest), tests/implementation/
+  (behaviour manifest, label audit, kernel builds, section comparison, epoch builder, gate), tests/envmap/envmap.mjs
+  (behaviour checks, Q20, Q18 implementation clauses), evidence/D17/, design/environment-map/ (epoch D17, merged graph,
+  views, SCHEMA section 10, ENVIRONMENT-MAP section 9), docs/HANDOFF.md, D17 records, this ledger.  FORBIDDEN: every law
+  and pass document and README.md (the MISLABEL corrections are D18's), compiler/, host/, factory/ machinery, fixtures/,
+  earlier epochs and D0-D16 evidence.
+- PREDICTED: 44/44 implementation clauses VERIFIED at the versions run; kernel builds differ only in the custom name
+  section; label audit 12 findings / 6 MISLABEL; epoch 151 nodes / 261 edges; merged 1042 / 2106; gate PASS (6/6 census
+  absences explained); Q18 14 COMPLETE of 45 RUN claims; Q20 19 behaviours.
+
+AFTER
+- RESULT: integrated as 715ac92d327f5f2677fd7c0b067fa843da6323c4 (ff-only from e4e2103) after two repairs.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-build F4-doc F5-evidence F7-fixture F8-build F9-doc PASS (format 2); F3's first
+  close FAILED (label-audit.mjs wrote into a missing directory; tool fixed, F1 and F3 re-run); the first verify FAILED
+  no_unreceipted_change on 14 paths (re-run receipts cover only their last run) and was repaired with new fixtures
+  F7/F8/F9 after restoring the paths to base; F7's first run FAILED on a copied regression command (restored, corrected).
+  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH (tree b6590cd7; epochs/D17.json rebuilt
+  byte-identically from the committed clause, kernel and label evidence; implementation gate re-run PASS).  Pushed.
+- OBSERVED: D17-OBSERVED-IMPLEMENTATION-REALITY.md - P1-P7 MATCH; drawing counted 29 source documents for 28 [ERR,
+  editorial]; ROUTE DIFFER (repairs).  Procedure rule: repair with a new fixture, never re-run one (docs/HANDOFF.md).
+- (recorded by D18-REPO-RECONCILIATION, the next delta.)
+
+---
+
+## D18-REPO-RECONCILIATION  (pass 5 of 6: given D14-D17, what must change inside the current FactTest model?)
+
+BEFORE
+- DELTA: D18-REPO-RECONCILIATION (factory/deltas/D18.json), workpiece W20, base 715ac92.
+- ASCII: design/materialization/D18-INTENDED-REPO-RECONCILIATION.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F5, F6, F8), S-FIXTURE (F1), S-BUILD (F2 clauses + kernel identity + stage audit), S-ANNOTATE
+  (F3), S-ANNOTATE-OWNER (F4; bootstrap registry material of this delta), S-EVIDENCE (F7).
+- CHANGE: tests/reconcile/ (register, surfaces, epoch builder, surface check, gate, stage audit), tests/envmap/envmap.mjs
+  (current model, reconciliation checks, Q21), tests/toolchain/{proof.mjs, proof-sets.json} (exec identity),
+  tests/reference/d18-clauses.json, insertion-only D18 annotations in REFERENCE-AUTHORITY, CONSTRAINT-LEDGER (incl. the
+  19 ledgered constraints), CONFLICT-LEDGER, EVIDENCE-OBLIGATIONS, IMPLEMENTATION-CONTRACTS, STATION-REGISTRY,
+  CAPABILITY-MATRIX, BOOTSTRAP-TESTS; README.md (correction line), docs/HANDOFF.md; evidence/D18/; design/environment-map/
+  (epoch D18, merged graph, views, SCHEMA section 11, ENVIRONMENT-MAP section 10); D18 records, this ledger.
+  FORBIDDEN: FACTORY-LAW.md, compiler/, host/, factory/src, fixtures/, earlier epochs and D0-D17 evidence, every other
+  law and pass document.
+- PREDICTED: 2/2 clauses VERIFIED; exec identity PASS on both D17 builds; 36 reconciliations, 15 supersessions (61
+  inherited edges), 19 constraints ledgered; epoch 56 nodes / 288 edges; merged 1098 / 2394; validate 42 PASS; surfaces
+  35 PASS; gate PASS; Q18 20 COMPLETE of 47 current RUN claims; Q21 109 current facts.
+
+AFTER
+- RESULT: integrated as 1b81dc0fadffe7a1f3e9ffd6f5d1594a4b3f2e4c (ff-only from 715ac92); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-build F3-annotate F4-annotate-owner F5-doc F6-doc F7-evidence F8-doc PASS (format 2).
+  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D18.json rebuilt
+  byte-identically from the committed clause and kernel evidence; surfaces and reconciliation gate re-run PASS).  Pushed.
+- OBSERVED: D18-OBSERVED-REPO-RECONCILIATION.md - P1-P7 MATCH.
+- DEFECT FOUND AFTER INTEGRATION [ERR]: FACT-WORKERS-D18 said hardwareConcurrency was never read, but D11's browser probe
+  and the D16 census recorded 4; R-45 cited the D12 executable field (chromium.executablePath(), not the launched
+  binary) as launch identity.  The MATCH verdicts compared against predictions that carried the error.  Repaired by
+  D18R-CHAIN-REPAIR before D19 (the D18 records stay as written).
+
+---
+
+## D18R-CHAIN-REPAIR  (repair of pass 5 before pass 6: remove what contradicts committed evidence)
+
+BEFORE
+- DELTA: D18R-CHAIN-REPAIR (factory/deltas/D18R.json), workpiece W21, base 1b81dc0.
+- ASCII: design/materialization/D18R-INTENDED-CHAIN-REPAIR.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F2, F3, F5), S-FIXTURE (F1), S-EVIDENCE (F4).
+- CHANGE: tests/reconcile/ (repair register and surfaces; builder follows supersession chains and takes optional parts;
+  gate takes retired texts), tests/envmap/envmap.mjs (Q21 revised_by), docs/HANDOFF.md, evidence/D18R/,
+  design/environment-map/ (epoch D18R, merged graph, views, SCHEMA section 12, ENVIRONMENT-MAP section 11), D18R
+  records, this ledger.  FORBIDDEN: law and pass documents, README.md, compiler/, host/, factory/, fixtures/, D0-D18
+  evidence and epochs.
+- PREDICTED: D18 regression identical; epoch 3 nodes / 20 edges; merged 1101 / 2414; validate 42 PASS; D18R and D18
+  gates PASS; Q21 38 rows with R-32 revised_by R-52.
+
+AFTER
+- RESULT: integrated as b509fb00920443930aa75b10dae05b9683d2fe1b (ff-only from 1b81dc0); no refusal, no repair.
+- RECEIPTS: F0-doc F1-fixture F2-doc F3-doc F4-evidence F5-doc PASS (format 2).  VERIFICATION: PASS (first run).
+  INTEGRATION: PASS.  PROBE: re-inspection MATCH (epochs/D18R.json rebuilt byte-identically; repair gate re-run PASS).
+  Pushed.
+- OBSERVED: D18R-OBSERVED-CHAIN-REPAIR.md - P1-P5 MATCH; the D18 defect removed from every current node and the live
+  handoff; the absence-claim rule added to docs/HANDOFF.md section 4.
+- (recorded by D19-REPROVE-REOBSERVE, the next delta.)
+
+---
+
+## D19-REPROVE-REOBSERVE  (pass 6 of 6: does the updated model survive execution?)
+
+BEFORE
+- DELTA: D19-REPROVE-REOBSERVE (factory/deltas/D19.json), workpiece W22, base b509fb0.
+- ASCII: design/materialization/D19-INTENDED-REPROVE-REOBSERVE.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F8, F10), S-FIXTURE (F1), S-BROWSER (F2 identity capture, F4 browser group), S-EVIDENCE (F3
+  selection, F7 repository group, F9 evidence), S-BUILD (F5 qualified proof + kernel sections, F6 source re-verification).
+- CHANGE: tests/reprove/ (identity capture, graph-driven selection, runbook, runner, lineage, epoch builder, gate),
+  tests/envmap/{envmap.mjs (Q21 fulfilled_by, Q22), browser-probe.mjs (executable launched)}, tests/hygiene/
+  status-scan.mjs (earlier inventories excluded), evidence/D19/,
+  design/environment-map/ (epoch D19, merged graph, views, SCHEMA section 13, ENVIRONMENT-MAP section 12), README.md,
+  docs/HANDOFF.md, D19 records incl. the stable baseline, this ledger.  FORBIDDEN: law and pass documents, compiler/,
+  host/, factory/, fixtures/, earlier epochs and D0-D18R evidence.
+- PREDICTED: selection 29 of 90 current RUN/OBS facts (gaps 0); every group PASS; epoch about 40 nodes / 160 edges;
+  merged about 1141 / 2574; validate 42 PASS; gate PASS; R-03, R-04, R-49, R-53 fulfilled; Q22 50 RUN claims (49
+  claimable, 1 invalidated by design), 29 re-proved in D19; the status inventory no longer re-scans earlier ones.
+
+AFTER
+- RESULT: integrated as 780aee1b50c4a799a62b760823a3d1460d386d0f (ff-only from b509fb0) on
+  claude/facttest-materialization-27amc7; pull request #6 (base main) opened by the owner; GitHub reported it
+  unmergeable because main had merged PR #5 (D14-TECHNICAL-REFERENCE-RESCAN, a parallel line).  Reconciled by the
+  merge commit recorded in "MERGE RECONCILIATION (PR #5 x PR #6)" below.
+- (recorded by the merge reconciliation, the next change.)
+
+---
+
+## D14-PROMPT-INTAKE  (FIRST ACTION of the technical reference rescan; PARALLEL LINE integrated on main through PR #5 while D14-D19 ran on the materialization branch)
 
 BEFORE
 - DELTA: D14-PROMPT-INTAKE (factory/deltas/D14-PROMPT-INTAKE.json), workpiece W15.
@@ -631,6 +855,48 @@ BEFORE
   45 no-fragment / 9 absent [ERR] / 1 no-route; authorities 17 / 5 / 3 / 29 / 2 absent [ERR] / 8 not network;
   annotations 9+1+1+4+6 lines, 0 deletions; epoch 72 nodes / 315 edges; graph 374 / 956; validate, merge-check,
   render-check, handoff-check, status-scan PASS.
+
+AFTER
+- RESULT: integrated as 8d5ea6f95e90961959cd9f8df4d9db22eb37aa85 (ff-only from 6778133) on
+  claude/d9-rust-cargo-proof-4nys6s; merged into main by the owner through pull request #5 as
+  1205fda00deff8c66cd7e3bb8eb529c87d6a472c.
+- RECEIPTS: factory/receipts/D14-TECHNICAL-REFERENCE-RESCAN/{F0-doc,F1-fixture,F2-build,F3-annotate,F4-doc,F5-evidence}.json
+  PASS (format 2).  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE: re-inspection MATCH.  F5 closed FAIL once on a
+  mis-written envmap query command in its fixture; the fixture was corrected on the control surface, that run's
+  outputs cleared, and F5 re-run PASS before verification.
+- OBSERVED: design/materialization/D14-OBSERVED-REFERENCE-RESCAN.md (23 published hosts DENIED; Pages-branch route;
+  83 copies; 56 pins match; nine drifted fragments).
+- RELOCATED by the merge reconciliation below (path collision with D14-FRONTIER-REOPEN): factory/deltas/D14.json ->
+  factory/deltas/D14-TECHNICAL-REFERENCE-RESCAN.json; factory/fixtures/D14/ -> factory/fixtures/D14-TECHNICAL-
+  REFERENCE-RESCAN/; evidence/D14/ -> evidence/D14-TECHNICAL-REFERENCE-RESCAN/; design/environment-map/epochs/D14.json
+  -> epochs/D14-RESCAN.json (epoch id D14-RESCAN).  Receipts unchanged; originals at 8d5ea6f.
+- (recorded by the merge reconciliation, the next change.)
+
+---
+
+## MERGE RECONCILIATION (PR #5 x PR #6)  (owner-directed git merge; not a StructuralDelta)
+
+BEFORE
+- STATE: main 1205fda (PR #5: D14-PROMPT-INTAKE 6778133 + D14-TECHNICAL-REFERENCE-RESCAN 8d5ea6f) and PR #6 head
+  780aee1 (D14-D19-PROMPT-INTAKE .. D19-REPROVE-REOBSERVE) both descend from 4d8a4c0 (PR #4).  33 conflicting files:
+  two deltas both called D14 wrote factory/deltas/D14.json, factory/fixtures/D14/, evidence/D14/,
+  design/environment-map/epochs/D14.json, the merged graph and its views, this ledger, docs/HANDOFF.md and five law
+  files (insertion-only annotations on both sides).
+- OWNER INSTRUCTION: "Resolve merge conflicts." (session of PR #5).  The other session was live on the PR #6 branch,
+  so the resolution was made on claude/d9-rust-cargo-proof-4nys6s (fast-forwarded to main) as a merge commit with
+  parents 1205fda and 780aee1; the PR #6 branch was not rewritten.
+- DECISION: both lines are kept whole.  The D14-D19 series keeps every path.  The rescan line is relocated under its
+  full delta id (see the D14-TECHNICAL-REFERENCE-RESCAN AFTER entry); its epoch is merged last as D14-RESCAN, with
+  the ten AUTHORIZES edges of authorities that D18 superseded also carried by their D18 successors (envmap rule
+  successor_carries_inherited_edges).  Law files: their versions plus the rescan's insertion-only D14 ANNOTATION lines
+  re-applied by tests/reference/ingress.mjs annotate (order under a citation: D13, D14, D18; 0 deleted lines).  Graph
+  and views regenerated from the D11 base and epochs D12, D13, D14, D15, D16, D17, D18, D18R, D14-RESCAN, D19 (D19
+  stays the current evidence epoch; D19 gate PASS on the merged graph).  ROUTES.json: 29 explicit NO_ROUTE rules for
+  authority URLs the series introduced after the rescan ingest.
+  docs/HANDOFF.md: their text plus the rescan's rows.  Record: design/materialization/D14-MERGE-RECONCILIATION.md.
+- BOUNDARY [GAP]: the Factory has no merge station and integrates fast-forward only; a two-parent reconciliation is
+  an owner-directed change outside station execution and is recorded here as such (returned to ASCII: a merge /
+  reconciliation station or a law clause for parallel lines).
 
 AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
