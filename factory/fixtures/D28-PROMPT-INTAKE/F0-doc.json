@@ -1,0 +1,78 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "owner requests (session input)",
+    "the agent plan the owner approved",
+    "design/materialization/LEDGER.md"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/deltas/D28-PROMPT-INTAKE.json",
+    "factory/fixtures/D28-PROMPT-INTAKE/",
+    "factory/receipts/D28-PROMPT-INTAKE/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q '^# D28-D33 - Six-part analysis and mapping series' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && for s in '## 1. Owner request' '## 2. Agent plan for the six parts' '## 3. Owner request' '## 4. Agent plan for pass 1' '## 5. Owner request'; do grep -qF \"$s\" design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md || { echo missing $s; exit 1; }; done && grep -qF 'Plan a 6 part analysis and mapping that will produce an implementation plan to get the repo functioning as intended.' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && grep -qxF 'Plan pass 1' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && grep -qxF 'Proceed with pass 1' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && for d in 'D28 Decisions and constraints' 'D29 Law-engine decomposition' 'D30 Capability catalog' 'D31 Seed and generation state machine' 'D32 Language 2 and kernel capacity' 'D33 RUST_BUILD measurement and plan assembly'; do grep -qF \"$d\" design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md || { echo missing $d; exit 1; }; done && grep -q '2bbda62' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && grep -q 'integrated as 2bbda62f3fa49043ada7a3a2070d62041bfde4a6' design/materialization/LEDGER.md && grep -q '^## D28-PROMPT-INTAKE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && echo 'prompt tracked: 3 owner requests, 2 approved plans, 6 parts; ledger D27 AFTER + intake BEFORE'"
+        ],
+        "log": "factory/receipts/D28-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "2bbda62f3fa49043ada7a3a2070d62041bfde4a6",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/registry",
+          "evidence",
+          "tests",
+          "fixtures",
+          "design/environment-map",
+          "design/execution-manifest",
+          "design/foundation-closure",
+          "docs",
+          "README.md",
+          "rust-toolchain.toml",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "STATION-REGISTRY.md",
+          "CAPABILITY-MATRIX.md",
+          "BOOTSTRAP-TESTS.md",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "ASCII-GRAMMAR.md",
+          "ASCII-LANGUAGE.md",
+          "LANGUAGE-TESTS.md",
+          "SEMANTIC-MODEL.md",
+          "REFINEMENT-LAW.md"
+        ],
+        "log": "factory/receipts/D28-PROMPT-INTAKE/logs/F0-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D28-PROMPT-INTAKE"
+}

@@ -1,0 +1,173 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D28-PROMPT-INTAKE-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W34",
+  "delta_id": "D28-PROMPT-INTAKE",
+  "canonical_base": "2bbda62f3fa49043ada7a3a2070d62041bfde4a6",
+  "input_artifacts": [
+    "owner requests (session input)",
+    "the agent plan the owner approved",
+    "design/materialization/LEDGER.md"
+  ],
+  "open_tree": "dbfaecc082b225e45360bd3dd5329e2fc1bff847",
+  "close_tree": "282b5d19ca67b9ae73ab6776af27d495456d4a5a",
+  "changed_paths": [
+    "design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D28-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D28-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D28-PROMPT-INTAKE"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-PROMPT-INTAKE/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-PROMPT-INTAKE/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c grep -q '^# D28-D33 - Six-part analysis and mapping series' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && for s in '## 1. Owner request' '## 2. Agent plan for the six parts' '## 3. Owner request' '## 4. Agent plan for pass 1' '## 5. Owner request'; do grep -qF \"$s\" design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md || { echo missing $s; exit 1; }; done && grep -qF 'Plan a 6 part analysis and mapping that will produce an implementation plan to get the repo functioning as intended.' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && grep -qxF 'Plan pass 1' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && grep -qxF 'Proceed with pass 1' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && for d in 'D28 Decisions and constraints' 'D29 Law-engine decomposition' 'D30 Capability catalog' 'D31 Seed and generation state machine' 'D32 Language 2 and kernel capacity' 'D33 RUST_BUILD measurement and plan assembly'; do grep -qF \"$d\" design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md || { echo missing $d; exit 1; }; done && grep -q '2bbda62' design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md && grep -q 'integrated as 2bbda62f3fa49043ada7a3a2070d62041bfde4a6' design/materialization/LEDGER.md && grep -q '^## D28-PROMPT-INTAKE' design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && echo 'prompt tracked: 3 owner requests, 2 approved plans, 6 parts; ledger D27 AFTER + intake BEFORE'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-PROMPT-INTAKE/logs/F0-prompt-contract.log"
+    },
+    {
+      "check": "command:git diff --exit-code 2bbda62f3fa49043ada7a3a2070d62041bfde4a6 -- compiler host factory/src factory/registry evidence tests fixtures design/environment-map design/execution-manifest design/foundation-closure docs README.md rust-toolchain.toml REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md STATION-REGISTRY.md CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md FACTORY-LAW.md FACTORY-CONTRACTS.md ASCII-GRAMMAR.md ASCII-LANGUAGE.md LANGUAGE-TESTS.md SEMANTIC-MODEL.md REFINEMENT-LAW.md",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-PROMPT-INTAKE/logs/F0-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D28-PROMPT-INTAKE/logs/F0-prompt-contract.log",
+    "factory/receipts/D28-PROMPT-INTAKE/logs/F0-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-25T00:30:45Z",
+  "status": "PASS"
+}

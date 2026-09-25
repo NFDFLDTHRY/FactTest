@@ -1199,4 +1199,28 @@ BEFORE
   ERR 5, UNK 6), 75 re-proved; audit 13 PASS; W32 RETIRABLE -> REMOVED; index 866.
 
 AFTER
+- RESULT: integrated as 2bbda62f3fa49043ada7a3a2070d62041bfde4a6 (ff-only from 8a23c08) on W33.
+- RECEIPTS: F0-doc F1-fixture F2-annotate F3-language F4-browser F5-evidence F6-build F7-doc F8-evidence F9-doc
+  F10-evidence F11-doc PASS (format 2).  VERIFICATION: PASS (first run).  INTEGRATION: PASS.  PROBE: re-inspection MATCH
+  (epoch D27, the structural check, the registers rendering and the language manifest reproduced from the canonical
+  tree).  Pushed.
+- OBSERVED: D27-OBSERVED-FOUNDATION-CLOSURE.md - P1-P8 MATCH (index 868 files, predicted 866: the retire record and its
+  log exist only in the real route).
+
+---
+
+## D28-PROMPT-INTAKE  (FIRST ACTION of the six-part analysis and mapping series D28-D33 that produces the implementation plan)
+
+BEFORE
+- DELTA: D28-PROMPT-INTAKE (factory/deltas/D28-PROMPT-INTAKE.json), workpiece W34.
+- BASE: 2bbda62f3fa49043ada7a3a2070d62041bfde4a6 (D27-FOUNDATION-CLOSURE-ALIGNMENT; main is still 8a23c08).
+- STATION: S-DOC.  FIXTURE: F0-doc.  JUDGE: the factory binary built from 2bbda62.
+- CHANGE: design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md (the owner's requests verbatim and the agent's plan
+  the owner approved with "Proceed with pass 1"), this ledger, the delta, its fixture, receipts.  FORBIDDEN: everything
+  else.
+- NEXT: D28-DECISIONS-AND-CONSTRAINTS (pass 1), assembled in design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md.
+  Prompt intake is not one of the six parts; the implementation deltas FC-1..FC-8 follow the six parts (the sequence
+  register is re-baselined by part 6).
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).
