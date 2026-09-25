@@ -1,0 +1,30 @@
+{
+ "id": "CL-HID3",
+ "trace": "DEV",
+ "authority": "AUTH-WEBHID",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WICG/webhid",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+  "sha256": "21ab95f9b4fe9a963b58e0806a7ded26d165d06e969add1cc01ef73499c8f764",
+  "bytes": 115963
+ },
+ "locator": {
+  "text": "The feature name for this feature is `\"hid\"`.",
+  "line_start": 2918,
+  "line_end": 2922,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 5,
+ "consequence": "hid is policy-controlled with default 'self'",
+ "excerpt": "          The feature name for this feature is `\"hid\"`.\n        </p>\n        <p>\n          The [=policy-controlled feature/default allowlist=] for this feature\n          is `'self'`.",
+ "excerpt_sha256": "4af167da4173d9d634fea8c1910e88cc24a52ac6b618690f714e87a4eb3da1b2",
+ "must_contain": {
+  "default allowlist=] for this feature": true,
+  "is `'self'`.": true
+ },
+ "status": "VERIFIED"
+}

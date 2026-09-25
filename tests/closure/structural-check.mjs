@@ -16,6 +16,10 @@
 //   classification every component of the register is classified exactly once with a class the register defines
 //   evidence      with --evidence-required, every cited evidence path exists in the tree (the run after the evidence
 //                 stations); without it, only the path form is checked (the fixture station runs before the evidence)
+//   gating        (D28) every decision row has evidenced options, a status, an evidenced default when assumed, and gates
+//                 mirrored by the sequence steps that list it; every constraint row is provable here with records or
+//                 external with a procedure and an evidence schema; every sequence step names its decisions, constraints
+//                 and assumption; every acceptance step names the external constraints that touch it
 // --render FILE writes the deterministic human-readable rendering of every register (the generated view the target
 // document points at).  Exit 1 on any FAIL.  Generic: names no blocker, fact, component or step of its own.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -25,7 +29,7 @@ const a = process.argv.slice(2); const o = { root: '.' };
 for (let i = 0; i < a.length; i++) { const k = a[i].replace(/^--/, ''); if (k === 'evidence-required') o[k] = true; else o[k] = a[++i]; }
 const J = p => JSON.parse(readFileSync(p, 'utf8'));
 const R = name => J(join(o.registers, name + '.json'));
-const reg = { classification: R('classification'), correspondence: R('correspondence'), hardening: R('hardening'), evolution: R('evolution-contract'), blockers: R('blockers'), rustBuild: R('rust-build'), seed: R('seed'), acceptance: R('acceptance-test'), sequence: R('sequence'), corpus: R('language-corpus') };
+const reg = { classification: R('classification'), correspondence: R('correspondence'), hardening: R('hardening'), evolution: R('evolution-contract'), blockers: R('blockers'), rustBuild: R('rust-build'), seed: R('seed'), acceptance: R('acceptance-test'), sequence: R('sequence'), corpus: R('language-corpus'), decisions: R('decisions'), constraints: R('constraints') };
 const components = J(o.components).components;
 const g = J(o.graph);
 const superseded = new Set(g.edges.filter(e => e.type === 'SUPERSEDES').map(e => e.to));
@@ -86,10 +90,44 @@ for (const c of reg.rustBuild.candidates) { rbBad.push(...chain(c, ['INPUT', 'OP
 for (const t of reg.seed.tcb) rbBad.push(...facts(t.evidence.filter(x => x.startsWith('FACT-')), `tcb ${t.component}`));
 for (const m of reg.seed.seed.must) if (!factOk(m.primitive)) rbBad.push(`seed rule ${m.rule}: primitive ${m.primitive} not a current fact`);
 add('chain', 'rust_build_and_seed_complete', rbBad, `${reg.rustBuild.candidates.length} RUST_BUILD candidates with INPUT/OPERATION/OUTPUT/TRUST/VERIFICATION/BOOTSTRAP/REPRODUCIBILITY/RECOVERY; ${reg.seed.tcb.length} TCB rows; ${reg.seed.seed.must.length} seed rules each on a current primitive`);
+// decisions + constraints (D28): every gate explicit, every default evidenced, every external input named
+const DSTAT = new Set(reg.decisions.statuses); const DEC = new Set(reg.decisions.rows.map(r => r.id)); const KON = new Set(reg.constraints.rows.map(r => r.id));
+const decBad = [];
+for (const r of reg.decisions.rows) {
+  const L = `decision ${r.id}`; decBad.push(...chain(r, ['title', 'question', 'origin', 'options', 'default', 'status', 'gates'], L));
+  if (!DSTAT.has(r.status)) decBad.push(`${L}: status ${r.status}`);
+  if (['ASSUMED-DEFAULT', 'OWNER-ONLY'].includes(r.status) && r.options.length < 2) decBad.push(`${L}: fewer than two options`);
+  const oids = r.options.map(x => x.id);
+  for (const x of r.options) { decBad.push(...facts(x.evidence_for, `${L} ${x.id}`), ...facts(x.evidence_against, `${L} ${x.id}`)); if (!x.evidence_for.length && !x.evidence_against.length) decBad.push(`${L} ${x.id}: no evidence`); for (const pth of x.evidence_paths || []) decBad.push(...evidencePath(pth, `${L} ${x.id}`)); for (const fc of Object.keys(x.consequence || {})) if (fc !== 'none' && !FC.has(fc)) decBad.push(`${L} ${x.id}: consequence names unknown ${fc}`); }
+  if (['ASSUMED-DEFAULT', 'DECIDED'].includes(r.status) && !oids.includes(r.default.option)) decBad.push(`${L}: default ${r.default.option} is not an option`);
+  if (r.status === 'ASSUMED-DEFAULT' && !(r.default.evidence || []).length) decBad.push(`${L}: assumed default without evidence`);
+  decBad.push(...facts(r.default.evidence, `${L} default`), ...refs(r.gates, L));
+  if (r.status === 'NOT-GATING' && (r.gates.length || !r.reason)) decBad.push(`${L}: NOT-GATING must have no gates and a reason`);
+  if (r.status !== 'NOT-GATING' && !r.gates.length) decBad.push(`${L}: gating status with no gates`);
+  const listing = reg.sequence.steps.filter(s => (s.decisions || []).includes(r.id)).map(s => s.id).sort();
+  if (JSON.stringify(listing) !== JSON.stringify([...r.gates].sort())) decBad.push(`${L}: gates ${JSON.stringify(r.gates)} but listed by ${JSON.stringify(listing)}`);
+}
+add('gating', 'decisions_complete', decBad, `${reg.decisions.rows.length} decisions: ${[...DSTAT].map(s => s + ' ' + reg.decisions.rows.filter(r => r.status === s).length).join(', ')}; every option evidenced by current facts, every gate mirrored by the sequence`);
+const konBad = [];
+for (const r of reg.constraints.rows) {
+  const L = `constraint ${r.id}`; konBad.push(...chain(r, ['constraint', 'evidence', 'evidence_paths', 'prevents', 'provable_here', 'acceptance_steps', 'sequence', 'note'], L), ...facts(r.evidence, L), ...refs(r.sequence, L));
+  for (const pth of r.evidence_paths) konBad.push(...evidencePath(pth, L));
+  if (typeof r.provable_here !== 'boolean') konBad.push(`${L}: provable_here not boolean`);
+  if (!r.provable_here && !r.external_procedure) konBad.push(`${L}: not provable here and no external procedure`);
+  if (!r.provable_here && !r.external_evidence_schema) konBad.push(`${L}: not provable here and no external evidence schema`);
+  if (r.external_procedure && /^[A-Za-z0-9_./-]+\.(md|mjs|sh)$/.test(r.external_procedure) && o['evidence-required'] && !existsSync(join(o.root, r.external_procedure))) konBad.push(`${L}: external procedure file missing ${r.external_procedure}`);
+  for (const n of r.acceptance_steps) if (!ACC.has(n)) konBad.push(`${L}: acceptance step ${n} unknown`);
+  const listing = reg.sequence.steps.filter(s => (s.constraints || []).includes(r.id)).map(s => s.id).sort();
+  if (JSON.stringify(listing) !== JSON.stringify([...r.sequence].sort())) konBad.push(`${L}: sequence ${JSON.stringify(r.sequence)} but listed by ${JSON.stringify(listing)}`);
+}
+for (const s of reg.sequence.steps) { const L = `sequence ${s.id}`; if (!Array.isArray(s.decisions) || !Array.isArray(s.constraints) || !s.assumption) konBad.push(`${L}: decisions, constraints and assumption required`); for (const id of s.decisions || []) if (!DEC.has(id)) konBad.push(`${L}: unknown decision ${id}`); for (const id of s.constraints || []) if (!KON.has(id)) konBad.push(`${L}: unknown constraint ${id}`); for (const id of s.decisions || []) { const d = reg.decisions.rows.find(r => r.id === id); if (d && d.status === 'OWNER-ONLY' && !/OWNER-ONLY|waits/.test(s.assumption)) konBad.push(`${L}: depends on OWNER-ONLY ${id} without saying it waits`); } }
+for (const s of reg.acceptance.steps) { const expect = reg.constraints.rows.filter(r => !r.provable_here && r.acceptance_steps.includes(s.step)).map(r => r.id).sort(); if (JSON.stringify(expect) !== JSON.stringify([...(s.external_constraints || [])].sort())) konBad.push(`acceptance ${s.step}: external_constraints ${JSON.stringify(s.external_constraints)} expected ${JSON.stringify(expect)}`); }
+add('gating', 'constraints_and_sequence_gated', konBad, `${reg.constraints.rows.length} constraints (${reg.constraints.rows.filter(r => r.provable_here).length} provable here, ${reg.constraints.rows.filter(r => !r.provable_here).length} external with a procedure and evidence schema); every sequence step names its decisions, constraints and assumption; every acceptance step names its external constraints`);
+const externalInputs = [...reg.decisions.rows.filter(r => r.external_input).map(r => ({ kind: 'decision', id: r.id, input: r.external_input })), ...reg.constraints.rows.filter(r => !r.provable_here).map(r => ({ kind: 'constraint', id: r.id, input: r.external_procedure, schema: r.external_evidence_schema, acceptance_steps: r.acceptance_steps }))];
 // the answer to the stop-condition question, rendered as the chain
 const answer = reg.acceptance.steps.map(s => ({ step: s.step, text: s.text, status: s.status, machinery: s.mechanisms.map(id => { const b = reg.blockers.rows.find(r => r.id === id); return { blocker: id, mechanism: b.browser_native_mechanism, test: b.test, evidence: b.evidence, status: b.status, sequence: b.sequence }; }) }));
 const status = checks.every(c => c.status === 'PASS') ? 'PASS' : 'FAIL';
-const out = { tool: 'tests/closure/structural-check.mjs', status, evidence_required: !!o['evidence-required'], counts: { components: components.length, blockers: reg.blockers.rows.length, correspondence: reg.correspondence.rows.length, hardening: reg.hardening.questions.length, evolution_steps: reg.evolution.steps.length, acceptance_steps: reg.acceptance.steps.length, sequence: reg.sequence.steps.length, corpus_entries: reg.corpus.entries.length }, checks, stop_condition_answer: answer };
+const out = { tool: 'tests/closure/structural-check.mjs', status, evidence_required: !!o['evidence-required'], counts: { components: components.length, blockers: reg.blockers.rows.length, correspondence: reg.correspondence.rows.length, hardening: reg.hardening.questions.length, evolution_steps: reg.evolution.steps.length, acceptance_steps: reg.acceptance.steps.length, sequence: reg.sequence.steps.length, corpus_entries: reg.corpus.entries.length, decisions: reg.decisions.rows.length, constraints: reg.constraints.rows.length, external_inputs: externalInputs.length }, checks, external_inputs: externalInputs, stop_condition_answer: answer };
 mkdirSync(dirname(o.out), { recursive: true }); writeFileSync(o.out, JSON.stringify(out, null, 1) + '\n');
 if (o.render) {
   const L = []; const p = s => L.push(s); const code = f => { p('```text'); f(); p('```'); p(''); };
@@ -116,6 +154,12 @@ if (o.render) {
   p('## 10. The answer to the stop condition'); p('');
   p('"What exact machine must exist for the installed Factory to evolve the language through which the human and local model tell it what to manufacture?"  Each acceptance step, its machinery, the test and the status:'); p('');
   code(() => { for (const s of answer) { p(`${String(s.step).padStart(2)} [${s.status}] ${s.text}`); for (const m of s.machinery) p(`     ${m.blocker} [${m.status}] ${m.mechanism.slice(0, 110)}${m.mechanism.length > 110 ? '...' : ''} | test: ${m.test.slice(0, 70)}${m.test.length > 70 ? '...' : ''} | ${m.sequence.join(',') || 'boundary'}`); } });
+  p('## 11. Decision register (D28)'); p('');
+  code(() => { for (const r of reg.decisions.rows) { p(`${r.id} [${r.status}] ${r.title}  (gates ${r.gates.join(', ') || '-'})`); p(`  question   ${r.question}`); for (const x of r.options) p(`  ${x.id.padEnd(8)} ${x.option}\n           for: ${x.evidence_for.join(', ') || '-'}; against: ${x.evidence_against.join(', ') || '-'}; consequence: ${Object.entries(x.consequence).map(([k, v]) => k + ': ' + v).join(' | ')}`); p(`  default    ${r.default.option || '-'}: ${r.default.reason}`); if (r.reason) p(`  reason     ${r.reason}`); if (r.external_input) p(`  external   ${r.external_input}`); } });
+  p('## 12. Constraint register (D28)'); p('');
+  code(() => { for (const r of reg.constraints.rows) { p(`${r.id} [${r.provable_here ? 'PROVABLE HERE' : 'EXTERNAL'}] ${r.constraint}`); p(`  evidence   ${r.evidence.join(', ')}; records: ${r.evidence_paths.join(', ')}`); p(`  prevents   ${r.prevents}`); if (!r.provable_here) { p(`  external   ${r.external_procedure}`); p(`  schema     ${r.external_evidence_schema}`); } p(`  steps      ${r.acceptance_steps.join(', ') || '-'}; sequence ${r.sequence.join(', ') || '-'}; ${r.note}`); } });
+  p('## 13. External inputs pending (what only the owner or another environment can supply)'); p('');
+  code(() => { for (const e of externalInputs) p(`${e.kind.padEnd(10)} ${e.id.padEnd(8)} ${e.input}${e.acceptance_steps ? ' (acceptance steps ' + e.acceptance_steps.join(', ') + ')' : ''}`); p(''); for (const s of reg.sequence.steps) p(`${s.id}  decisions ${s.decisions.join(', ') || '-'}; constraints ${s.constraints.join(', ') || '-'}\n      assumption: ${s.assumption}`); });
   p(`STRUCTURAL CHECK: ${status} (${checks.length} checks; ${checks.filter(c => c.status === 'PASS').length} PASS)`);
   mkdirSync(dirname(o.render), { recursive: true }); writeFileSync(o.render, L.join('\n') + '\n');
 }

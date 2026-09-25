@@ -768,4 +768,216 @@ FC-8  D35-GENERATION-SWAP  (after FC-7)
      FB-03 [ERR] operation classes + adapters (Linux for the RUST_BUILD epoch and receipt parity; browser for everything the in... | test: [GAP] FC-4 receipt parity on both adapters | FC-4
 ```
 
-STRUCTURAL CHECK: PASS (9 checks; 9 PASS)
+## 11. Decision register (D28)
+
+```text
+D-1 [ASSUMED-DEFAULT] home origin of the installed Factory  (gates FC-1, FC-8)
+  question   on which origin does the Factory seed live?
+  D-1-a    a dedicated HTTPS origin whose storage no other page shares; loopback (a secure context) as the evidence origin of every delta run in this environment
+           for: FACT-SH-ORIGIN-SCOPED-STORAGE, FACT-SH-OPAQUE-CONFINEMENT, FACT-D25-RUNTIME-PHYSICAL; against: -; consequence: FC-1: seed failure matrix on loopback; the public origin run is external | FC-8: the closure experiment on loopback; the public-origin run recorded as external evidence
+  D-1-b    a loopback server as the permanent home
+           for: FACT-SH-ORIGIN-SCOPED-STORAGE; against: FACT-D25-PUBLIC-HTTPS; consequence: FC-1: same tests | FC-8: no public origin ever exercised: acceptance steps 1 and 10 stay bound to a host process
+  D-1-c    a shared host (raw.githack.com, <user>.github.io)
+           for: -; against: FACT-SH-OPAQUE-CONFINEMENT, FACT-SH-GITHACK-UNREACHABLE, FACT-D25-PUBLIC-HTTPS; consequence: FC-1: every page of the shared host reaches the Factory storage: confinement breaks | FC-8: unreachable from this environment
+  default    D-1-a: storage is origin-scoped and same-origin code reaches all of it (P03 + P08): only a dedicated origin keeps the seed and its pointers out of other pages' reach; loopback serves every proof this environment can run
+  external   the host name and hosting of the dedicated HTTPS origin, and one run of tests/physical/PUBLIC-HTTPS-PROBE.md there
+D-2 [ASSUMED-DEFAULT] origins of generated WebApps  (gates FC-1, FC-8)
+  question   does a generated app share the Factory origin (and its storage) or get its own?
+  D-2-a    one origin per generated app (a second loopback port in this environment); the Factory origin serves nothing but the Factory
+           for: FACT-D25-ISOLATION-ORIGIN, FACT-SH-OPAQUE-CONFINEMENT, FACT-SH-ORIGIN-SCOPED-STORAGE; against: -; consequence: FC-1: the seed router serves generated apps only through a distinct origin; probed with two loopback ports | FC-8: the closure experiment executes a generated app on its own origin
+  D-2-b    generated apps on the Factory origin, accepting that they share the Factory trust domain
+           for: FACT-SH-OPFS-SERVED-APP; against: FACT-SH-OPAQUE-CONFINEMENT; consequence: FC-1: the invariant FactTest.git != generated WebApp is violated by design (D12 B-16 [ERR]); the seed must confine apps as generations | FC-8: the executed app can reach Factory storage
+  default    D-2-a: isolation is a property the deploying origin supplies (FACT-D25-ISOLATION-ORIGIN) and same-origin code reaches every storage (P08): the invariant survives only with separate origins
+D-3 [ASSUMED-DEFAULT] RUST_BUILD strategy  (gates FC-7, FC-8)
+  question   how do compiled objects (kernel, law engine, templates) get built for the installed Factory?
+  D-3-a    B3 import-only first: compiled objects built on the host, imported with a RUST_BUILD receipt, qualified by identity (== pin) and execution; FC-7 measures B4 against B1/B5 before any in-browser build is attempted
+           for: FACT-KERNEL-IDENTITY-D24, FACT-CORE-ONLY-GRAPH, FACT-D27-RUST-BUILD-BOUNDARY; against: -; consequence: FC-7: B3 implemented; measured feasibility of B1/B4/B5 with exit criteria; acceptance steps 3-4 stay host-bound until a candidate is realized | FC-8: the closure experiment runs with steps 3-4 gated
+  D-3-b    B1 hosted upstream toolchain (rustc + LLVM as wasm) before anything else
+           for: -; against: FACT-D27-RUST-BUILD-BOUNDARY; consequence: FC-7: no rustc for a wasm host ships and the toolchain hosts are unreachable from here: nothing can be measured before the choice | FC-8: blocked on FC-7
+  D-3-c    B4 first-party Rust-subset compiler before anything else
+           for: FACT-CORE-ONLY-GRAPH; against: FACT-D27-RUST-BUILD-BOUNDARY; consequence: FC-7: a multi-series effort begun before its input is bounded by measurement | FC-8: blocked on FC-7
+  D-3-d    B5 hosted rustc + cranelift
+           for: -; against: FACT-D27-RUST-BUILD-BOUNDARY; consequence: FC-7: no cranelift backend installed; the kernel identity pin would move | FC-8: blocked on FC-7
+  D-3-e    B2 FactTest-native (FactTest compiles FactTest)
+           for: -; against: FACT-D24-PIPELINE-GENERIC; consequence: FC-7: the language describes systems, not general computation (ASCII-GRAMMAR.md); architectural | FC-8: blocked
+  default    D-3-a: the only candidate with existing evidence (kernel identity pinned and install-name independent); it closes 14 of 16 acceptance steps and leaves the boundary honest while FC-7 measures the rest
+  external   the owner's choice among B1/B4/B5 after the FC-7 measurements, or an environment that can measure a hosted toolchain
+D-5 [ASSUMED-DEFAULT] BUILD with no contract registry  (gates FC-5, FC-6)
+  question   must BUILD without a submitted registry report OK (today) or refuse with NO_PLAN?
+  D-5-a    refuse: BUILD without a registry reports NO_LEGAL_PLAN / NO_PLAN and emits no artifact beyond CAPABILITY_IR
+           for: FACT-SH-KERNEL-WORKER-PARTIAL, FACT-D24-EVIDENCE-BOUND; against: -; consequence: FC-5: a compiler change under the evolution contract (a diagnostic, not a language change); corpus rows for BUILD without registry get migration records | FC-6: the qualification runner refuses a candidate whose BUILD output carries no verified plan
+  D-5-b    keep: BUILD without a registry is OK with the artifacts it can produce
+           for: FACT-SH-KERNEL-WORKER-PARTIAL; against: FACT-D24-EVIDENCE-BOUND; consequence: FC-5: no change | FC-6: the runner must add its own check that a plan exists (a rule outside the compiler)
+  default    D-5-a: evidence binding (D24) made every tape name a verified strategy; a BUILD that reports OK without a strategy is a status a later generation could mistake for a buildable system
+D-6 [ASSUMED-DEFAULT] object hash of the browser canonical state  (gates FC-2, FC-8)
+  question   git SHA-1 object names or the git SHA-256 object format?
+  D-6-a    git SHA-1 object names (GitHub-compatible; WebCrypto SHA-1 without SHA-1DC collision detection) with sha256 for artifacts
+           for: FACT-SH-GIT-IDENTITY; against: FACT-GIT-TREE-ORDER-UNDOCUMENTED; consequence: FC-2: the object store reproduces the D26 P09 identities on the repository's own tree | FC-8: remote sync stays git-compatible
+  D-6-b    git SHA-256 object format
+           for: FACT-D14-REOPEN-GIT-SHA256-TRANSITION; against: FACT-SH-GIT-IDENTITY; consequence: FC-2: no browser identity proof exists for SHA-256 objects; GitHub interoperability unknown | FC-8: remote sync needs a transition layer
+  default    D-6-a: 880/880 blob ids, the HEAD tree and commit were reproduced in the browser with SHA-1 (P09); nothing equivalent exists for SHA-256
+D-8 [ASSUMED-DEFAULT] seed replacement after installation  (gates FC-1, FC-8)
+  question   may the seed be replaced after install, and by whom?
+  D-8-a    only as an origin event approved by the owner: the new seed is qualified by the failure matrix before it is served; the platform makes the swap atomic
+           for: FACT-SH-SW-NO-SELF-UPDATE, FACT-SH-INTERRUPTED-UPDATE, FACT-SH-BROKEN-SEED-FATAL; against: -; consequence: FC-1: the failure matrix includes a seed replacement case (v1 -> v2 qualified; interrupted replacement keeps v1) | FC-8: no seed replacement inside the closure experiment
+  D-8-b    never after installation
+           for: FACT-SH-BROKEN-SEED-FATAL; against: FACT-SH-SW-NO-SELF-UPDATE; consequence: FC-1: a seed defect found later is unrepairable except by site-data clearing | FC-8: same
+  D-8-c    any time by whoever serves the origin
+           for: -; against: FACT-SH-BROKEN-SEED-FATAL; consequence: FC-1: a served defect is fatal offline for every installation | FC-8: the TCB grows to the origin server at all times
+  default    D-8-a: a service worker cannot replace itself from local bytes and a broken one is fatal offline; replacement is possible only from the origin and must be qualified before it is served
+D-9 [ASSUMED-DEFAULT] history horizon of the browser canonical state  (gates FC-2, FC-8)
+  question   import the full git history (packfiles) or start at a recorded tree?
+  D-9-a    start at a recorded tree: generation 0 imports the current tree as loose objects with a horizon record naming the host commit; full history stays on the host and in the remote
+           for: FACT-SH-GIT-IDENTITY; against: -; consequence: FC-2: loose-object store + horizon record; no packfile parser | FC-8: packfile import/export drawn as the L4 boundary
+  D-9-b    import the full history through a packfile parser (zlib + deltas)
+           for: -; against: FACT-SH-GIT-IDENTITY; consequence: FC-2: a packfile parser is built before any Factory work runs in the browser | FC-8: nothing new
+  default    D-9-a: loose objects and tree/commit identity are proven (P09); packfiles are not; canonical state needs only the current tree and a CAS ref (D12 section 10)
+D-10 [NOT-GATING] sensor routing (Generic Sensor families versus Device Orientation and Motion)  (gates -)
+  question   which sensor API family does the capability matrix route?
+  D-10-a   route new projects to Device Orientation and Motion, keep the Generic Sensor families in G as advised at their tips
+           for: FACT-SENSOR-FAMILY-ADVISEMENT; against: -; consequence: none: no implementation delta of the closure series uses a sensor
+  D-10-b   route to the Generic Sensor families
+           for: -; against: FACT-SENSOR-FAMILY-ADVISEMENT; consequence: none: no closure delta affected
+  default    -: no delta of FC-1..FC-8 depends on a sensor; the decision stays with the capability matrix
+  reason     no acceptance step and no sequence step touches a sensor family
+D-4 [DECIDED] toolchain pin  (gates FC-4, FC-7)
+  question   is the Rust toolchain pinned?
+  D-4-a    HOST_NATIVE_SET 1.94.1 (rust-toolchain.toml) and WASM64_KERNEL_SET nightly-2026-09-24 (proof sets); kernel identity pinned from the committed source
+           for: FACT-KERNEL-IDENTITY-D24, FACT-CORE-ONLY-GRAPH; against: -; consequence: FC-4: the KERNEL_BUILD capability names the pinned toolchain in its receipt | FC-7: the identity oracle of every RUST_BUILD candidate
+  default    D-4-a: decided by D13 on the D12 KRN evidence; re-pinned by D24
+D-7 [DECIDED] path authority semantics  (gates FC-3)
+  question   literal surfaces or globs?
+  D-7-a    literal: "*", "dir/" or an exact file; no glob expansion
+           for: FACT-LITERAL-PATH-MATCH; against: -; consequence: FC-3: the ported law engine reproduces the literal cover rule (paths.rs) as a pure function
+  default    D-7-a: decided by the owner (D13 target 1)
+I-39 [ASSUMED-DEFAULT] evidence never becomes source (observed ASCII accepted by ANALYZE)  (gates FC-5)
+  question   how does LANGUAGE 2 separate evidence from source?
+  I-39-a   a source-role statement in LANGUAGE 2 (a unit declares authored | canonical | observed; ANALYZE and BUILD refuse an observed unit as source)
+           for: FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE; against: -; consequence: FC-5: one keyword; corpus migration rows for the observed fixtures; L39
+  I-39-b   an evidence dialect that is not a source unit (observed ASCII rendered without a @{system} island)
+           for: FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE; against: -; consequence: FC-5: a renderer change only; the observed ASCII stops being parseable as a system
+  default    I-39-a: both are LANGUAGE 2 candidates; the statement keeps the observed view a valid diagram the human can read with the same tools, which section 10 of ASCII-LANGUAGE.md requires
+I-29 [NOT-GATING] the C14 contract text (eight operations) versus the fourteen-operation kernel API  (gates -)
+  question   does the owner rewrite BOOTSTRAP-CONTRACTS.md C14, and when?
+  I-29-a   fold the rewrite into the FC-5 delta that changes the ABI (ABI 2: the vocabulary query), through S-ANNOTATE-OWNER as an insertion-only annotation
+           for: FACT-D23-C14-TEXT-OWNER, FACT-D23-WASM-TRANSPORT-COMPLETE; against: -; consequence: none: no capability or acceptance step depends on the contract text; the receipts and the transport are already proven
+  I-29-b   leave the text; the annotation of D23 already states the fourteen operations
+           for: FACT-D23-C14-TEXT-OWNER; against: -; consequence: none: no consequence
+  default    -: owner decision on law text; nothing in the sequence waits on it
+  reason     law text only; the kernel API and both transports are proven regardless
+I-33 [NOT-GATING] runtime self-integrity of generated bundles  (gates -)
+  question   must the generated runtime verify its own files at load?
+  I-33-a   keep as decided by D25: tamper detection external (against bundle.json); in the installed Factory the SEED hash-checks every object it serves, so generation integrity does not depend on it
+           for: FACT-D24-RUNTIME-SELF-INTEGRITY, FACT-D24-EVIDENCE-BOUND; against: -; consequence: none: seed rule 2 (registers/seed.json) covers generations; generated apps on their own origin (D-2) stay as the contract says
+  I-33-b   change CODEGEN-BUNDLE-CONTRACT.md to require self-verification
+           for: -; against: FACT-D24-RUNTIME-SELF-INTEGRITY; consequence: none: an owner law change plus a template change (RUST_BUILD today)
+  default    -: owner decision on the bundle contract; closure does not depend on it because the seed, not the bundle, checks identities
+  reason     seed rule 2 hash-checks every served object; the generated-app contract stays the owner's
+I-12/I-13/I-18 [NOT-GATING] law text presentation and wording (the registry header, escaped code fences, the boundary-register class rows)  (gates -)
+  question   does the owner reword law documents?
+  I-12-a   reword through S-ANNOTATE / S-ANNOTATE-OWNER when the owner decides; no closure delta reads the wording
+           for: FACT-D21-ISSUES-CLASSIFIED; against: -; consequence: none: presentation only
+  I-12-b   leave as is
+           for: FACT-D21-ISSUES-CLASSIFIED; against: -; consequence: none: presentation only
+  default    -: owner decision; nothing executable depends on it
+  reason     presentation and wording of law; no test, capability or acceptance step reads it
+```
+
+## 12. Constraint register (D28)
+
+```text
+K-01 [EXTERNAL] no public HTTPS origin is reachable from this environment (githack and GitHub Pages refused at CONNECT; raw.githubusercontent serves text/plain + nosniff + sandbox CSP)
+  evidence   FACT-D25-PUBLIC-HTTPS, FACT-SH-GITHACK-UNREACHABLE, FACT-PUBLISHED-FRONTIER-D20; records: evidence/D25/physical/public-https/public-https.json, evidence/D27/identity/tips.json
+  prevents   executing a generated bundle or the Factory on a public secure-context origin
+  external   tests/physical/PUBLIC-HTTPS-PROBE.md
+  schema     public-https.json: {url, served bundle.json identity, transfers exact, loss/reselection, environment identity} produced by host/harness/webapp-probe.mjs --url
+  steps      1, 10; sequence FC-8; loopback is a secure context and carries every proof this environment can run; it is never substituted for the public run
+K-02 [EXTERNAL] storage is best-effort: navigator.storage.persist() returns false in the Chromium 141 headless shell; installed-Factory durability never observed
+  evidence   FACT-SH-STORAGE-DURABILITY-D18; records: evidence/D26/physical/selfhost/probes/P07-STORAGE-PERSISTENCE.json
+  prevents   proving that the installed Factory's objects and pointers survive storage pressure
+  external   run the D28 durability probe (written by FC-1 beside the seed harness) in an installed full Chrome: navigator.storage.persist() after installation, then a storage-pressure or restart cycle
+  schema     durability.json: {product, revision, installed: boolean, persisted: boolean, quota, usage, objects_after_restart: boolean}
+  steps      1, 12, 13; sequence FC-1; full Chrome grants durable storage to installed or important sites; the headless shell answers every permission ASK
+K-03 [EXTERNAL] only the Chromium headless shell is installed: web-app installation (the manifest's install prompt) is never observed
+  evidence   FACT-CAP-MANIFEST-EXPOSURE, FACT-D25-RUNTIME-PHYSICAL; records: evidence/D27/identity/browser-gpu-flags.json
+  prevents   observing installation of the Factory as an app (the L0 install claim)
+  external   install the seed origin in a full Chrome and record the installation (beforeinstallprompt, display-mode standalone) with the identity capture
+  schema     install.json: {product, revision, display_mode, installed: boolean, identity}
+  steps      1; sequence FC-1, FC-8; launch offline and restart survival are proven without installation (P01, P03); installation itself is a UA behaviour
+K-04 [EXTERNAL] no GPU device node: only the SwiftShader CPU fallback adapter is ever observed
+  evidence   FACT-HARDWARE-GPU-UNAVAILABLE; records: evidence/D27/identity/host.json
+  prevents   observing a hardware WebGPU adapter
+  external   run tests/physical/run-webapp.mjs on a host with a GPU device node
+  schema     probe-record.json with adapter.isFallbackAdapter false
+  steps      -; sequence -; not needed by the Factory itself; generated apps only
+K-05 [EXTERNAL] no rustc for a wasm host ships and no cranelift backend is installed; the toolchain hosts are refused by the egress policy
+  evidence   FACT-D27-RUST-BUILD-BOUNDARY; records: evidence/D27/rust-build/census.json
+  prevents   measuring or running a hosted toolchain (B1/B5) here; B4 and B3 can be measured and built here
+  external   an environment with network access to the toolchain sources measures a wasm-hosted rustc (size, memory, time to compile the pinned workspace); the exit criteria are written by FC-7
+  schema     rust-build-measure.json per candidate: {candidate, artifact_size, peak_rss, wall_time, identity_or_behavioural_oracle, result}
+  steps      3, 4; sequence FC-7; the native pinned build is measurable here and bounds any hosted toolchain from below
+K-06 [EXTERNAL] Linux x86_64 only; no other platform observed
+  evidence   FACT-D27-ENVIRONMENT-IDENTITY; records: evidence/D27/identity/host.json
+  prevents   claims about Android, ChromeOS, macOS or Windows defaults
+  external   run tests/reprove/identity.mjs and the physical probes on another platform
+  schema     identity + probe-record.json per platform
+  steps      -; sequence -; closure on Linux is closure; other platforms are STALE_IF dimensions, not blockers
+K-07 [EXTERNAL] the egress policy refuses the published authority hosts and the shared static hosts; GitHub (REST, git) is reachable
+  evidence   FACT-PUBLISHED-FRONTIER-D20, FACT-SH-GITHACK-UNREACHABLE; records: evidence/D27/identity/tips.json
+  prevents   reopening published renderings; hosting on githack or Pages
+  external   none needed for closure; the authority pins are source-verified at the tips
+  schema     n/a
+  steps      -; sequence FC-8; remote sync (L4) can use GitHub REST, which answers with CORS from here
+K-08 [EXTERNAL] one Chromium version (141) only: seed and generation behaviour across a browser update is unobservable
+  evidence   FACT-SH-INTERRUPTED-UPDATE; records: evidence/D26/physical/selfhost/probes/P15-INTERRUPTED-SW-UPDATE.json
+  prevents   proving that an activated generation survives a browser update
+  external   repeat the FC-1 failure matrix and the FC-8 experiment on the next Chromium; STALE_IF browser.version re-selects every generation claim
+  schema     the same records under the new browser identity
+  steps      12, 13; sequence FC-8; a seed incompatibility would be a P14-class failure
+K-09 [PROVABLE HERE] shared / threaded Wasm is unadmitted (presence only); cross-origin isolation is grantable by the SW
+  evidence   FACT-SHARED-THREADS-UNADMITTED-D18; records: evidence/D26/physical/selfhost/probes/P05-SW-CROSS-ORIGIN-ISOLATION.json
+  prevents   nothing the Factory needs: the kernel is single-threaded
+  steps      -; sequence -; kept for completeness; no closure delta admits threads
+K-10 [PROVABLE HERE] loopback secure context with every storage and confinement primitive available: OPFS, IndexedDB, CacheStorage, service workers, Web Locks, opaque frames, wasm64, git identities, atomic pointers
+  evidence   FACT-D25-RUNTIME-PHYSICAL, FACT-SH-ORIGIN-SCOPED-STORAGE, FACT-SH-OPAQUE-CONFINEMENT, FACT-SH-GIT-IDENTITY, FACT-SH-IDB-CAS, FACT-SH-GENERATED-OFFLINE, FACT-SH-OPFS-SERVED-APP; records: evidence/D26/physical/summary.json
+  prevents   nothing: this is what IS provable here (the positive constraint every FC delta runs under)
+  steps      1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16; sequence FC-1, FC-2, FC-3, FC-4, FC-5, FC-6, FC-7, FC-8; every proof of the series except the public origin, durability under installation, hosted toolchains and browser updates runs here
+K-11 [PROVABLE HERE] the host judge and toolchain are present here: cargo 1.94.1 + nightly-2026-09-24, node 22, git, Playwright
+  evidence   FACT-D26-ENVIRONMENT-IDENTITY, FACT-D27-ENVIRONMENT-IDENTITY; records: evidence/D27/identity/host.json
+  prevents   nothing: the RUST_BUILD epoch of every imported object and the judge of every delta exist here
+  steps      3, 4; sequence FC-4, FC-7; acceptance steps 3-4 are executable here ONLY through this host, which is exactly what closure must remove
+```
+
+## 13. External inputs pending (what only the owner or another environment can supply)
+
+```text
+decision   D-1      the host name and hosting of the dedicated HTTPS origin, and one run of tests/physical/PUBLIC-HTTPS-PROBE.md there
+decision   D-3      the owner's choice among B1/B4/B5 after the FC-7 measurements, or an environment that can measure a hosted toolchain
+constraint K-01     tests/physical/PUBLIC-HTTPS-PROBE.md (acceptance steps 1, 10)
+constraint K-02     run the D28 durability probe (written by FC-1 beside the seed harness) in an installed full Chrome: navigator.storage.persist() after installation, then a storage-pressure or restart cycle (acceptance steps 1, 12, 13)
+constraint K-03     install the seed origin in a full Chrome and record the installation (beforeinstallprompt, display-mode standalone) with the identity capture (acceptance steps 1)
+constraint K-04     run tests/physical/run-webapp.mjs on a host with a GPU device node (acceptance steps )
+constraint K-05     an environment with network access to the toolchain sources measures a wasm-hosted rustc (size, memory, time to compile the pinned workspace); the exit criteria are written by FC-7 (acceptance steps 3, 4)
+constraint K-06     run tests/reprove/identity.mjs and the physical probes on another platform (acceptance steps )
+constraint K-07     none needed for closure; the authority pins are source-verified at the tips (acceptance steps )
+constraint K-08     repeat the FC-1 failure matrix and the FC-8 experiment on the next Chromium; STALE_IF browser.version re-selects every generation claim (acceptance steps 12, 13)
+
+FC-1  decisions D-1, D-2, D-8; constraints K-02, K-03, K-10
+      assumption: runs under D-1-a (loopback as the evidence origin), D-2-a (a second loopback port per generated app) and D-8-a (seed replacement only as a qualified origin event); durability and installation (K-02, K-03) are external rows the delta writes probes for
+FC-2  decisions D-6, D-9; constraints K-10
+      assumption: runs under D-6-a (git SHA-1 identities, sha256 artifacts) and D-9-a (a recorded tree as the horizon; loose objects only)
+FC-3  decisions D-7; constraints K-10
+      assumption: runs under D-7-a (literal path authority, decided): the ported engine reproduces paths.rs as a pure function
+FC-4  decisions D-4; constraints K-10, K-11
+      assumption: runs under D-4-a (the pinned toolchains named by the KERNEL_BUILD receipt); RUST_BUILD keeps a Linux adapter (K-11)
+FC-5  decisions D-5, I-39; constraints K-10
+      assumption: runs under D-5-a (BUILD without a registry refuses) and I-39-a (a source-role statement); the C14 text (I-29) is the owner's and is not waited on
+FC-6  decisions D-5; constraints K-10
+      assumption: runs under D-5-a: the runner refuses a candidate whose BUILD carries no verified plan
+FC-7  decisions D-3, D-4; constraints K-05, K-10, K-11
+      assumption: runs under D-3-a (B3 first) and D-4-a (the identity oracle); hosted-toolchain measurements that need network are external (K-05)
+FC-8  decisions D-1, D-2, D-3, D-6, D-8, D-9; constraints K-01, K-03, K-07, K-08, K-10
+      assumption: runs the closure experiment on loopback under D-1-a, D-2-a, D-8-a, D-9-a with SHA-1 objects (D-6-a) and steps 3-4 gated by D-3-a; the public origin (K-01), installation (K-03) and the browser update (K-08) are external rows recorded, never substituted
+```
+
+STRUCTURAL CHECK: PASS (11 checks; 11 PASS)

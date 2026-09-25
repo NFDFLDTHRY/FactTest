@@ -1,0 +1,6 @@
+$ sh -c node -e 'const a=JSON.parse(require("fs").readFileSync("evidence/D28/envmap/queries/Q22.json")).answer;console.log(a.current_facts,JSON.stringify(a.by_status),JSON.stringify(a.run_claims).slice(0,120),a.reproved_in_current_epoch.length);if(a.run_claims.total!==a.run_claims.claimable+a.run_claims.invalidated)process.exit(1);const d=a.rows.filter(r=>/^FACT-D28-/.test(r.fact));console.log(JSON.stringify(d.map(r=>[r.fact,r.status,r.newest_physical_evidence_epoch])));if(d.length!==6||d.filter(r=>r.status==="OBS").length!==2||d.filter(r=>r.status==="UNK").length!==1||d.filter(r=>r.status==="RUN").length!==3)process.exit(1);if(a.current_facts!==214)process.exit(1)'
+(cwd .)
+214 {"OBS":52,"RUN":136,"ERR":5,"GAP":14,"UNK":7} {"total":136,"claimable":135,"invalidated":1,"traversal":{"stops at IMPLEMENTATION CONTRACT":16,"COMPLETE":19,"stops at  81
+[["FACT-D28-CONSTRAINTS-MAPPED","OBS","D28"],["FACT-D28-DECISIONS-MAPPED","OBS","D28"],["FACT-D28-ENVIRONMENT-IDENTITY","RUN","D28"],["FACT-D28-EXTERNAL-INPUTS-PENDING","UNK","D28"],["FACT-D28-LAUNCHED-EXECUTABLE","RUN","D28"],["FACT-D28-MINIMUM-SET","RUN","D28"]]
+
+[exit 0] expected 0

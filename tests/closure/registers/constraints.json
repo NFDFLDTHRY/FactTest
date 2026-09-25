@@ -1,0 +1,264 @@
+{
+ "schema": "facttest-closure-constraints/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 11; D28 pass 1",
+ "note": "CONSTRAINT register: every environment limit that touches the implementation plan, with the current-fact evidence, what it prevents, whether it is provable in this environment (provable_here) or only externally (external_procedure + the evidence schema an external run must produce), the acceptance steps it touches and the sequence steps that run under it.  External rows are the inputs another environment must supply; they never block a delta from producing every proof this environment can run.",
+ "rows": [
+  {
+   "id": "K-01",
+   "constraint": "no public HTTPS origin is reachable from this environment (githack and GitHub Pages refused at CONNECT; raw.githubusercontent serves text/plain + nosniff + sandbox CSP)",
+   "evidence": [
+    "FACT-D25-PUBLIC-HTTPS",
+    "FACT-SH-GITHACK-UNREACHABLE",
+    "FACT-PUBLISHED-FRONTIER-D20"
+   ],
+   "evidence_paths": [
+    "evidence/D25/physical/public-https/public-https.json",
+    "evidence/D27/identity/tips.json"
+   ],
+   "prevents": "executing a generated bundle or the Factory on a public secure-context origin",
+   "provable_here": false,
+   "external_procedure": "tests/physical/PUBLIC-HTTPS-PROBE.md",
+   "external_evidence_schema": "public-https.json: {url, served bundle.json identity, transfers exact, loss/reselection, environment identity} produced by host/harness/webapp-probe.mjs --url",
+   "acceptance_steps": [
+    1,
+    10
+   ],
+   "sequence": [
+    "FC-8"
+   ],
+   "note": "loopback is a secure context and carries every proof this environment can run; it is never substituted for the public run"
+  },
+  {
+   "id": "K-02",
+   "constraint": "storage is best-effort: navigator.storage.persist() returns false in the Chromium 141 headless shell; installed-Factory durability never observed",
+   "evidence": [
+    "FACT-SH-STORAGE-DURABILITY-D18"
+   ],
+   "evidence_paths": [
+    "evidence/D26/physical/selfhost/probes/P07-STORAGE-PERSISTENCE.json"
+   ],
+   "prevents": "proving that the installed Factory's objects and pointers survive storage pressure",
+   "provable_here": false,
+   "external_procedure": "run the D28 durability probe (written by FC-1 beside the seed harness) in an installed full Chrome: navigator.storage.persist() after installation, then a storage-pressure or restart cycle",
+   "external_evidence_schema": "durability.json: {product, revision, installed: boolean, persisted: boolean, quota, usage, objects_after_restart: boolean}",
+   "acceptance_steps": [
+    1,
+    12,
+    13
+   ],
+   "sequence": [
+    "FC-1"
+   ],
+   "note": "full Chrome grants durable storage to installed or important sites; the headless shell answers every permission ASK"
+  },
+  {
+   "id": "K-03",
+   "constraint": "only the Chromium headless shell is installed: web-app installation (the manifest's install prompt) is never observed",
+   "evidence": [
+    "FACT-CAP-MANIFEST-EXPOSURE",
+    "FACT-D25-RUNTIME-PHYSICAL"
+   ],
+   "evidence_paths": [
+    "evidence/D27/identity/browser-gpu-flags.json"
+   ],
+   "prevents": "observing installation of the Factory as an app (the L0 install claim)",
+   "provable_here": false,
+   "external_procedure": "install the seed origin in a full Chrome and record the installation (beforeinstallprompt, display-mode standalone) with the identity capture",
+   "external_evidence_schema": "install.json: {product, revision, display_mode, installed: boolean, identity}",
+   "acceptance_steps": [
+    1
+   ],
+   "sequence": [
+    "FC-1",
+    "FC-8"
+   ],
+   "note": "launch offline and restart survival are proven without installation (P01, P03); installation itself is a UA behaviour"
+  },
+  {
+   "id": "K-04",
+   "constraint": "no GPU device node: only the SwiftShader CPU fallback adapter is ever observed",
+   "evidence": [
+    "FACT-HARDWARE-GPU-UNAVAILABLE"
+   ],
+   "evidence_paths": [
+    "evidence/D27/identity/host.json"
+   ],
+   "prevents": "observing a hardware WebGPU adapter",
+   "provable_here": false,
+   "external_procedure": "run tests/physical/run-webapp.mjs on a host with a GPU device node",
+   "external_evidence_schema": "probe-record.json with adapter.isFallbackAdapter false",
+   "acceptance_steps": [],
+   "sequence": [],
+   "note": "not needed by the Factory itself; generated apps only"
+  },
+  {
+   "id": "K-05",
+   "constraint": "no rustc for a wasm host ships and no cranelift backend is installed; the toolchain hosts are refused by the egress policy",
+   "evidence": [
+    "FACT-D27-RUST-BUILD-BOUNDARY"
+   ],
+   "evidence_paths": [
+    "evidence/D27/rust-build/census.json"
+   ],
+   "prevents": "measuring or running a hosted toolchain (B1/B5) here; B4 and B3 can be measured and built here",
+   "provable_here": false,
+   "external_procedure": "an environment with network access to the toolchain sources measures a wasm-hosted rustc (size, memory, time to compile the pinned workspace); the exit criteria are written by FC-7",
+   "external_evidence_schema": "rust-build-measure.json per candidate: {candidate, artifact_size, peak_rss, wall_time, identity_or_behavioural_oracle, result}",
+   "acceptance_steps": [
+    3,
+    4
+   ],
+   "sequence": [
+    "FC-7"
+   ],
+   "note": "the native pinned build is measurable here and bounds any hosted toolchain from below"
+  },
+  {
+   "id": "K-06",
+   "constraint": "Linux x86_64 only; no other platform observed",
+   "evidence": [
+    "FACT-D27-ENVIRONMENT-IDENTITY"
+   ],
+   "evidence_paths": [
+    "evidence/D27/identity/host.json"
+   ],
+   "prevents": "claims about Android, ChromeOS, macOS or Windows defaults",
+   "provable_here": false,
+   "external_procedure": "run tests/reprove/identity.mjs and the physical probes on another platform",
+   "external_evidence_schema": "identity + probe-record.json per platform",
+   "acceptance_steps": [],
+   "sequence": [],
+   "note": "closure on Linux is closure; other platforms are STALE_IF dimensions, not blockers"
+  },
+  {
+   "id": "K-07",
+   "constraint": "the egress policy refuses the published authority hosts and the shared static hosts; GitHub (REST, git) is reachable",
+   "evidence": [
+    "FACT-PUBLISHED-FRONTIER-D20",
+    "FACT-SH-GITHACK-UNREACHABLE"
+   ],
+   "evidence_paths": [
+    "evidence/D27/identity/tips.json"
+   ],
+   "prevents": "reopening published renderings; hosting on githack or Pages",
+   "provable_here": false,
+   "external_procedure": "none needed for closure; the authority pins are source-verified at the tips",
+   "external_evidence_schema": "n/a",
+   "acceptance_steps": [],
+   "sequence": [
+    "FC-8"
+   ],
+   "note": "remote sync (L4) can use GitHub REST, which answers with CORS from here"
+  },
+  {
+   "id": "K-08",
+   "constraint": "one Chromium version (141) only: seed and generation behaviour across a browser update is unobservable",
+   "evidence": [
+    "FACT-SH-INTERRUPTED-UPDATE"
+   ],
+   "evidence_paths": [
+    "evidence/D26/physical/selfhost/probes/P15-INTERRUPTED-SW-UPDATE.json"
+   ],
+   "prevents": "proving that an activated generation survives a browser update",
+   "provable_here": false,
+   "external_procedure": "repeat the FC-1 failure matrix and the FC-8 experiment on the next Chromium; STALE_IF browser.version re-selects every generation claim",
+   "external_evidence_schema": "the same records under the new browser identity",
+   "acceptance_steps": [
+    12,
+    13
+   ],
+   "sequence": [
+    "FC-8"
+   ],
+   "note": "a seed incompatibility would be a P14-class failure"
+  },
+  {
+   "id": "K-09",
+   "constraint": "shared / threaded Wasm is unadmitted (presence only); cross-origin isolation is grantable by the SW",
+   "evidence": [
+    "FACT-SHARED-THREADS-UNADMITTED-D18"
+   ],
+   "evidence_paths": [
+    "evidence/D26/physical/selfhost/probes/P05-SW-CROSS-ORIGIN-ISOLATION.json"
+   ],
+   "prevents": "nothing the Factory needs: the kernel is single-threaded",
+   "provable_here": true,
+   "external_procedure": null,
+   "external_evidence_schema": "n/a",
+   "acceptance_steps": [],
+   "sequence": [],
+   "note": "kept for completeness; no closure delta admits threads"
+  },
+  {
+   "id": "K-10",
+   "constraint": "loopback secure context with every storage and confinement primitive available: OPFS, IndexedDB, CacheStorage, service workers, Web Locks, opaque frames, wasm64, git identities, atomic pointers",
+   "evidence": [
+    "FACT-D25-RUNTIME-PHYSICAL",
+    "FACT-SH-ORIGIN-SCOPED-STORAGE",
+    "FACT-SH-OPAQUE-CONFINEMENT",
+    "FACT-SH-GIT-IDENTITY",
+    "FACT-SH-IDB-CAS",
+    "FACT-SH-GENERATED-OFFLINE",
+    "FACT-SH-OPFS-SERVED-APP"
+   ],
+   "evidence_paths": [
+    "evidence/D26/physical/summary.json"
+   ],
+   "prevents": "nothing: this is what IS provable here (the positive constraint every FC delta runs under)",
+   "provable_here": true,
+   "external_procedure": null,
+   "external_evidence_schema": "n/a",
+   "acceptance_steps": [
+    1,
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+   ],
+   "sequence": [
+    "FC-1",
+    "FC-2",
+    "FC-3",
+    "FC-4",
+    "FC-5",
+    "FC-6",
+    "FC-7",
+    "FC-8"
+   ],
+   "note": "every proof of the series except the public origin, durability under installation, hosted toolchains and browser updates runs here"
+  },
+  {
+   "id": "K-11",
+   "constraint": "the host judge and toolchain are present here: cargo 1.94.1 + nightly-2026-09-24, node 22, git, Playwright",
+   "evidence": [
+    "FACT-D26-ENVIRONMENT-IDENTITY",
+    "FACT-D27-ENVIRONMENT-IDENTITY"
+   ],
+   "evidence_paths": [
+    "evidence/D27/identity/host.json"
+   ],
+   "prevents": "nothing: the RUST_BUILD epoch of every imported object and the judge of every delta exist here",
+   "provable_here": true,
+   "external_procedure": null,
+   "external_evidence_schema": "n/a",
+   "acceptance_steps": [
+    3,
+    4
+   ],
+   "sequence": [
+    "FC-4",
+    "FC-7"
+   ],
+   "note": "acceptance steps 3-4 are executable here ONLY through this host, which is exactly what closure must remove"
+  }
+ ]
+}

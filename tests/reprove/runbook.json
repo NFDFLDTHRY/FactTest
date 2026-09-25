@@ -1,6 +1,6 @@
 {
  "schema": "facttest-reprove-runbook/1",
- "note": "reviewed map from a selected fact to the group that re-proves it and the records whose expected observation decides PASS; a selected fact without an entry is a [GAP] (it stays stale)  D20: group ingress re-proves the claims of the line imported from main (pull request #5) on that line's own inputs (its map and graph at the line head, read from git), against the corpus imported into this tree; the FACT-D14-REOPEN-* expectations are the verdicts that line recorded (evidence/D14/audit/fragments.json).  D20: group process replays the D19 selection with the current selector on the D19 inputs (the tree at 780aee1, the D18R graph, the committed D19 identity): the D19 process facts are re-proved when it reproduces the recorded result.  D26: group qualified-proof also runs the per-crate DAG (its browser consumer is the Q-WASM-08 record of the same run); group manifest re-proves the execution-manifest facts (rebuild, gate, stability); group physical regenerates every specimen with the factc built here, drives the bundles through their shells (host/harness/webapp-probe.mjs) and runs the selfhost primitives on the fresh bundle - the D7 runtime facts and the D12 selfhost facts are re-proved on the current bundle; the kernel identity fact (R-65) rests on kernel-sections.  D26: the build directories of the build groups come from REPROVE_TARGET / REPROVE_KERNELS (fresh directories in a clean commissioning run), defaulting to the D19 directories.  D27: group closure re-proves the foundation-closure facts (structure, corpus oracle, manifest, language-law station) with a fresh factc; the language facts are STALE_IF repo.commit of compiler/source and of the language-law documents.",
+ "note": "reviewed map from a selected fact to the group that re-proves it and the records whose expected observation decides PASS; a selected fact without an entry is a [GAP] (it stays stale)  D20: group ingress re-proves the claims of the line imported from main (pull request #5) on that line's own inputs (its map and graph at the line head, read from git), against the corpus imported into this tree; the FACT-D14-REOPEN-* expectations are the verdicts that line recorded (evidence/D14/audit/fragments.json).  D20: group process replays the D19 selection with the current selector on the D19 inputs (the tree at 780aee1, the D18R graph, the committed D19 identity): the D19 process facts are re-proved when it reproduces the recorded result.  D26: group qualified-proof also runs the per-crate DAG (its browser consumer is the Q-WASM-08 record of the same run); group manifest re-proves the execution-manifest facts (rebuild, gate, stability); group physical regenerates every specimen with the factc built here, drives the bundles through their shells (host/harness/webapp-probe.mjs) and runs the selfhost primitives on the fresh bundle - the D7 runtime facts and the D12 selfhost facts are re-proved on the current bundle; the kernel identity fact (R-65) rests on kernel-sections.  D26: the build directories of the build groups come from REPROVE_TARGET / REPROVE_KERNELS (fresh directories in a clean commissioning run), defaulting to the D19 directories.  D27: group closure re-proves the foundation-closure facts (structure, corpus oracle, manifest, language-law station) with a fresh factc; the language facts are STALE_IF repo.commit of compiler/source and of the language-law documents.  D28: the closure group also re-proves the decision and constraint facts (the extended structural check: gating checks).",
  "groups": {
   "identity": {
    "kind": "cite",
@@ -74,9 +74,10 @@
    "commands": [
     "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 780aee1b50c4a799a62b760823a3d1460d386d0f && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out $T/g18r.json >/dev/null && node tests/reprove/select.mjs --graph $T/g18r.json --identity evidence/D19/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --out $O/d19-replay.json",
     "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach ca540647db00c72fa0570f7f4f59a20c299172b7 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json --out $T/g20s.json >/dev/null && node tests/reprove/select.mjs --graph $T/g20s.json --identity evidence/D20/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D20 --out $O/d20-replay.json",
-    "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach b8b09e1b1f1438f1a8cf08fb6cbf9de922737e01 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json --out $T/g25.json >/dev/null && node tests/reprove/select.mjs --graph $T/g25.json --identity evidence/D26/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D26 --out $O/d26-replay.json"
+    "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach b8b09e1b1f1438f1a8cf08fb6cbf9de922737e01 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json --out $T/g25.json >/dev/null && node tests/reprove/select.mjs --graph $T/g25.json --identity evidence/D26/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D26 --out $O/d26-replay.json",
+    "O=$(pwd)/@OUT@/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 2bbda62f3fa49043ada7a3a2070d62041bfde4a6 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json --out $T/g26.json >/dev/null && node tests/reprove/select.mjs --graph $T/g26.json --identity evidence/D27/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D27 --out $O/d27-replay.json"
    ],
-   "note": "D26: the group also replays the D20 selection with the current selector on the D20 inputs (the tree at ca54064, the graph merged through D20-SYNC, the committed D20 identity); the D20 process facts are re-proved when it reproduces the recorded result.  D27: the group also replays the D26 selection with the current selector on the D26 inputs (the tree at b8b09e1, the graph merged through D25, the committed D26 identity, --pass D26); the D26 process facts are re-proved when it reproduces the recorded result (evidence/D26/selection.json)"
+   "note": "D26: the group also replays the D20 selection with the current selector on the D20 inputs (the tree at ca54064, the graph merged through D20-SYNC, the committed D20 identity); the D20 process facts are re-proved when it reproduces the recorded result.  D27: the group also replays the D26 selection with the current selector on the D26 inputs (the tree at b8b09e1, the graph merged through D25, the committed D26 identity, --pass D26); the D26 process facts are re-proved when it reproduces the recorded result (evidence/D26/selection.json).  D28: likewise the D27 selection replayed on the D27 inputs (the tree at 2bbda62, the graph through D26, the committed D27 identity, --pass D27)"
   },
   "manifest": {
    "kind": "repo",
@@ -2919,6 +2920,151 @@
         "environment": 70,
         "implementation": 39,
         "obligation": 1
+       }
+      },
+      {
+       "path": "gaps",
+       "eq": []
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D28-DECISIONS-MAPPED": {
+   "group": "closure",
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "records": [
+    {
+     "file": "closure/structural-check.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      },
+      {
+       "path": "counts.decisions",
+       "eq": 14
+      },
+      {
+       "path": "counts.constraints",
+       "eq": 11
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D28-CONSTRAINTS-MAPPED": {
+   "group": "closure",
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "records": [
+    {
+     "file": "closure/structural-check.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      },
+      {
+       "path": "counts.decisions",
+       "eq": 14
+      },
+      {
+       "path": "counts.constraints",
+       "eq": 11
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D28-EXTERNAL-INPUTS-PENDING": {
+   "group": "closure",
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "records": [
+    {
+     "file": "closure/structural-check.json",
+     "expect": [
+      {
+       "path": "status",
+       "eq": "PASS"
+      },
+      {
+       "path": "counts.decisions",
+       "eq": 14
+      },
+      {
+       "path": "counts.constraints",
+       "eq": 11
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D27-ENVIRONMENT-IDENTITY": {
+   "group": "process",
+   "probe": "PROBE-ENV-IDENTITY",
+   "records": [
+    {
+     "file": "process/d27-replay.json",
+     "expect": [
+      {
+       "path": "evaluated",
+       "eq": 175
+      },
+      {
+       "path": "environment_pairs",
+       "eq": {
+        "SAME": 162,
+        "DRIFT": 67,
+        "UNK": 14
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D27-LAUNCHED-EXECUTABLE": {
+   "group": "identity",
+   "probe": "PROBE-BROWSER-IDENTITY",
+   "records": [
+    {
+     "file": "identity/browser-default.json",
+     "env": "browser-default",
+     "expect": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+      }
+     ]
+    },
+    {
+     "file": "identity/browser-gpu-flags.json",
+     "env": "browser-gpu-flags",
+     "expect": [
+      {
+       "path": "launched_executable.processes.0.exe",
+       "eq": "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+      }
+     ]
+    }
+   ]
+  },
+  "FACT-D27-MINIMUM-SET": {
+   "group": "process",
+   "probe": "PROBE-REPROOF-SELECTION",
+   "records": [
+    {
+     "file": "process/d27-replay.json",
+     "expect": [
+      {
+       "path": "selected",
+       "eq": 75
+      },
+      {
+       "path": "selected_by",
+       "eq": {
+        "environment": 67,
+        "implementation": 14,
+        "obligation": 0
        }
       },
       {

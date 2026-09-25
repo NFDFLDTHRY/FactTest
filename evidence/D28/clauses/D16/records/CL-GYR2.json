@@ -1,0 +1,30 @@
+{
+ "id": "CL-GYR2",
+ "trace": "MS",
+ "authority": "AUTH-GYROSCOPE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/gyroscope",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "335dc6ecc5f85289a2745810a086e7f1c7237cdb",
+  "sha256": "c5d5df52e192f78ed76fbb9c73905e671ec99909c36749683c087d8cffe4b01a",
+  "bytes": 11293
+ },
+ "locator": {
+  "text": "This specification utilizes the [=policy-controlled feature=] identified by the string",
+  "line_start": 127,
+  "line_end": 127,
+  "derivation": "anchor text",
+  "enclosing_section": "#permissions-policy-integration (line 124)"
+ },
+ "window": 1,
+ "consequence": "the gyroscope feature/permission is defined by Device Orientation and Motion",
+ "excerpt": "This specification utilizes the [=policy-controlled feature=] identified by the string \"<code><a permission>gyroscope</a></code>\" defined in [[DEVICE-ORIENTATION]].",
+ "excerpt_sha256": "f0b53f104c7d070ec983ae94333d5fae8c63fb3537a0fdc953d159dddb96fe43",
+ "must_contain": {
+  "gyroscope": true,
+  "[[DEVICE-ORIENTATION]]": true
+ },
+ "status": "VERIFIED"
+}

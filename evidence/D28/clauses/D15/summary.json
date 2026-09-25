@@ -1,0 +1,241 @@
+{
+ "tool": "tests/reference/clauses.mjs",
+ "manifest": "tests/reference/d15-clauses.json",
+ "observed": "2026-09-25T00:54:52.606Z",
+ "clauses": 60,
+ "status": {
+  "VERIFIED": 60
+ },
+ "traces": [
+  "R",
+  "W",
+  "S",
+  "T",
+  "I",
+  "H",
+  "F",
+  "P",
+  "ST",
+  "MF",
+  "G"
+ ],
+ "sources": [
+  {
+   "key": "https://github.com/rust-lang/reference#master:src/names/preludes.md",
+   "commit": "52ffdc09065e0043e877546da923c01bf875d41d",
+   "sha256": "bb58cc1550582abbd32e467be09b1e766e7ff6d83e81445da6aaafdc42070434",
+   "bytes": 10212,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/cargo#master:doc/book/src/reference/unstable.md",
+   "commit": "694054f34bcb04025b16d0eaf075038c0e58a15d",
+   "sha256": "413268a8dc314460a2a17905089d478993e7417dedaa096068ccb349c3be04bd",
+   "bytes": 98671,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/rust#master:src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+   "commit": "f7575a9da8e4a4fca3b5668d5a2ea7476db44b3f",
+   "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+   "bytes": 4126,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/rust-lang/rust#master:compiler/rustc_target/src/spec/targets/wasm64_unknown_unknown.rs",
+   "commit": "f7575a9da8e4a4fca3b5668d5a2ea7476db44b3f",
+   "sha256": "9eb12a5cc5c0a5d88cc76eafd55c78d016052dc5bb8ab07bc4851a1eb7c713bb",
+   "bytes": 1985,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/spec#main:document/core/syntax/types.rst",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "sha256": "91213f2c05efbd89e1706db63fb6afe31b8c560686e1835b79225d4c7de1770d",
+   "bytes": 17872,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/spec#main:specification/wasm-3.0/2.1-validation.types.spectec",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "sha256": "fe29444726505af0328144b93ebec011446afe298d19832f2e4537cd755dfd78",
+   "bytes": 8011,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/spec#main:document/core/binary/types.rst",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "sha256": "663b471c9a44e7c90b4f15385a514ca13ef00f0467d52e25789f3cb2b5cdb022",
+   "bytes": 5846,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/spec#main:document/core/appendix/changes.rst",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "sha256": "2b4e5bad052db22211e8e343658dac631db587602362d4f194bd7b27dd968fe9",
+   "bytes": 21444,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/spec#main:document/js-api/index.bs",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+   "bytes": 114471,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/spec#main:document/web-api/index.bs",
+   "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+   "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+   "bytes": 17819,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/fetch#main:fetch.bs",
+   "commit": "357bd98924d94b81fbe8608192a2ee1f123b82f4",
+   "sha256": "d0b4fc2bd7577ff29b06437641d2070b6d9aaf81620085dad3fd5951224c3c36",
+   "bytes": 444018,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/streams#main:index.bs",
+   "commit": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+   "sha256": "24360b4f8446e6c80e185c5021fcca9b67a7e0bb62490a00109080ebc04c6440",
+   "bytes": 417076,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/threads#main:proposals/threads/Overview.md",
+   "commit": "cc535ada1aa21cfaa3cabf3ac73b89acef78a0a0",
+   "sha256": "8d9d01e9c3c12dc01d1cd5ad25d968c6bdd1c1f1cc34a71829ac4596e8eccb73",
+   "bytes": 33766,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/WebAssembly/shared-everything-threads#main:proposals/shared-everything-threads/Overview.md",
+   "commit": "065aa53822e17eea69bfc049df67a16cbd03d9ce",
+   "sha256": "5eea594af9ec935cdbcfdefd62131905aded7a2c8f85e4b033e03800ed713e7d",
+   "bytes": 54750,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/html#main:source",
+   "commit": "1a249c2a40bd341f7c2c0c9954a9a264b1983b93",
+   "sha256": "2bddefe3791e9003d58e9d438c2dfa98b4a0c1967fc5a1e5327d73a6e3ac9a80",
+   "bytes": 7915793,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/tc39/ecma262#main:spec.html",
+   "commit": "726ec8a42625509026a6570f1d4649bfa9fe4156",
+   "sha256": "17e1fe359da75a82ae164014e1c862287cbe2ffdc8297d45bcf6068c007a69af",
+   "bytes": 3087902,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/webidl#main:index.bs",
+   "commit": "6a53497380036fc4a25b82be889a88e0de7cf448",
+   "sha256": "691ec9747c742b8c347ef5dfa55037209443642e50c495936389c08231124cb9",
+   "bytes": 693068,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/webappsec-secure-contexts#main:index.bs",
+   "commit": "68191bb08a685c1e2d2270e72d2b14b36ba96f42",
+   "sha256": "e5ce5d0f1e52b7d7b0971a5fb46a3ec97acd369eda9518e627c3b6644db1f9c1",
+   "bytes": 39524,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/ServiceWorker#main:index.bs",
+   "commit": "2f5ec0663aed0ad7c3ba6f00cee671ea283d86fc",
+   "sha256": "8b26a2f38cda6675ae734d969494e5ea3e1d59712818b05cdad41433a8c6442b",
+   "bytes": 297377,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/permissions#main:index.html",
+   "commit": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+   "sha256": "46570dd5901750012dc8cefb927b70f29592655c431f73a0a749d285e1e99509",
+   "bytes": 84491,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/webappsec-permissions-policy#main:index.bs",
+   "commit": "29398046f1e0cb45c091adda853df74925dc740a",
+   "sha256": "51a87c5f4008510e501b5a4fe553baf8271e0e3af6ce6e8feece987639794c9a",
+   "bytes": 78906,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/storage#main:storage.bs",
+   "commit": "1933f424de8d0b2d1073e10f3fb77bd12b11efca",
+   "sha256": "fabf3fa808a558b064d7798f12ccd7815342198d60056b03111e9d40d86d04b7",
+   "bytes": 30128,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/whatwg/fs#main:index.bs",
+   "commit": "cd55e5582e9c915c6341479bceaa4216f7a05413",
+   "sha256": "d131de236d98920d97aff42f945a821f9badad783092967454b4b4d83268d0ea",
+   "bytes": 85583,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/IndexedDB#main:index.bs",
+   "commit": "f70491894a213c30424e1f6cfb9466ba82d7e996",
+   "sha256": "f46a9fcda6073a1122af1de730eadac80bd3ddfd823005b71c3360577f342ae8",
+   "bytes": 277352,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/web-locks#main:index.bs",
+   "commit": "a61a77307d2a0b0928320a2ff9c897b7658a9e2e",
+   "sha256": "ee681cee13ef49bf8c26b3b9bcf4bbea25164f362387d819a005e2f5639749a9",
+   "bytes": 43490,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/w3c/manifest#main:index.html",
+   "commit": "8ae3046968895a9d2485e09b4561e09029a8edbf",
+   "sha256": "2bc9a0c2a4bd4e8707de5061e1022d31e42e39ae1766df93ad514371be846d1d",
+   "bytes": 159072,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/git/git#master:Documentation/user-manual.adoc",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "sha256": "fcd8b50d10bb66525e1ac710c91cf4ee5664cf466ee5059c02497ebb48657424",
+   "bytes": 174683,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/git/git#master:Documentation/git-update-ref.adoc",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "sha256": "ba4abaaa5acc9e73587ae2195e0bf431f744258214e575e30f29ae3ff3763a22",
+   "bytes": 7612,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/git/git#master:Documentation/git-mktree.adoc",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "sha256": "76c374c1dc612b1a2996472be938ab3e0ea2607428dc669dac4da7e6907f6974",
+   "bytes": 1075,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/git/git#master:Documentation/gitformat-pack.adoc",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "sha256": "ec285ba4f4e15a68ad83a570eaf74e8549b477496e49933126ef935d9291381b",
+   "bytes": 27494,
+   "ok": true
+  },
+  {
+   "key": "https://github.com/git/git#master:Documentation/technical/hash-function-transition.adoc",
+   "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+   "sha256": "fca700b820efed9fdb6006cfef9b47c3a88fd701af7fda12af814c6d1de20d4d",
+   "bytes": 36295,
+   "ok": true
+  }
+ ]
+}

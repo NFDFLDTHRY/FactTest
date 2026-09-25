@@ -1,0 +1,73 @@
+{
+  "fixture_id": "F5-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "tests/manifest/components.json",
+    "the D27 graph",
+    "receipts",
+    "station registry",
+    "the registers and evidence/D28",
+    "the D28 record texts"
+  ],
+  "narrowed_may_change": [
+    "design/execution-manifest/",
+    "design/environment-map/SCHEMA.md",
+    "design/environment-map/ENVIRONMENT-MAP.md",
+    "docs/HANDOFF.md",
+    "README.md",
+    "design/foundation-closure/CLOSURE-REGISTERS.md",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 0f57ecfd82295ee207f51432af764258fd34b052 --delta D28-DECISIONS-AND-CONSTRAINTS --epoch D28 --out design/execution-manifest"
+        ],
+        "log": "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F5-build-manifest.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json --graph design/environment-map/graph.json --rev 0f57ecfd82295ee207f51432af764258fd34b052 --delta D28-DECISIONS-AND-CONSTRAINTS --epoch D28 --out $T >/dev/null && cmp $T/manifest.json design/execution-manifest/manifest.json && cmp $T/CURRENT-EXECUTION-MANIFEST.md design/execution-manifest/CURRENT-EXECUTION-MANIFEST.md && echo 'manifest deterministic (rebuilt byte-identically)'"
+        ],
+        "log": "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F5-deterministic.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D28.json --root . --evidence-required --render design/foundation-closure/CLOSURE-REGISTERS.md --out $T/structural-check.json && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D28.json --root . --evidence-required --render $T/registers-2.md --out $T/structural-check-2.json >/dev/null && cmp $T/registers-2.md design/foundation-closure/CLOSURE-REGISTERS.md && grep -q '^STRUCTURAL CHECK: PASS' design/foundation-closure/CLOSURE-REGISTERS.md && grep -q '^## 11. Decision register' design/foundation-closure/CLOSURE-REGISTERS.md && grep -q '^## 13. External inputs pending' design/foundation-closure/CLOSURE-REGISTERS.md && echo 'registers rendered deterministically with sections 11-13'"
+        ],
+        "log": "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F5-render-registers.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "grep -q '^gating epoch' design/environment-map/SCHEMA.md && grep -q '^D28 ' design/environment-map/ENVIRONMENT-MAP.md && grep -q 'last delta         D28-DECISIONS-AND-CONSTRAINTS' docs/HANDOFF.md && grep -q '^owner actions      tests/closure/registers/decisions.json' docs/HANDOFF.md && grep -q 'pass 2: D29-LAW-ENGINE-DECOMPOSITION' docs/HANDOFF.md && grep -q 'decisions.json' README.md && echo 'record texts delivered'"
+        ],
+        "log": "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F5-records.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/execution-manifest/manifest.json",
+    "design/foundation-closure/CLOSURE-REGISTERS.md",
+    "docs/HANDOFF.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D28-DECISIONS-AND-CONSTRAINTS"
+}

@@ -373,4 +373,8 @@ closure epoch           epochs/D27.json (D27) = the re-proof fragment (the facts
                         from source and self-hosting not closed [GAP]; the RUST_BUILD boundary [UNK]); the registers of
                         tests/closure/registers/ cite current facts and evidence paths, checked by
                         tests/closure/structural-check.mjs
+gating epoch            epochs/D28.json (D28, pass 1 of the analysis series) = the re-proof fragment + the fact fragment
+                        (decisions mapped [OBS], constraints mapped [OBS], external inputs pending [UNK]): every option of
+                        every decision row cites current facts; every sequence step carries its gates; the structural check
+                        (gating checks) is the record
 ```

@@ -1,0 +1,17 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system modes}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{component p}
+| @{port p.o out: T public}
+| @{component q}
+| @{port q.i in: T public}
+| RELATIONS
+| @{data d1 p.o -> q.i mode=move}
+| @{data d2 p.o -> q.i mode=copy}
+| @{data d3 p.o -> q.i mode=borrow}
+| @{data d4 p.o -> q.i mode=share}
+| @{data d5 p.o -> q.i mode=observe}
++------------------------------------------------------------------------+

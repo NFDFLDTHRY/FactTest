@@ -1223,4 +1223,31 @@ BEFORE
   register is re-baselined by part 6).
 
 AFTER
+- RESULT: integrated as 0f57ecfd82295ee207f51432af764258fd34b052 (ff-only from 2bbda62); no refusal.  RECEIPTS:
+  factory/receipts/D28-PROMPT-INTAKE/F0-doc.json PASS (format 2).  VERIFICATION: PASS.  INTEGRATION: PASS.  PROBE:
+  re-inspection MATCH.  Pushed.
+
+---
+
+## D28-DECISIONS-AND-CONSTRAINTS  (pass 1 of 6: which decisions and environment limits gate the implementation plan, and what may the plan assume?)
+
+BEFORE
+- DELTA: D28-DECISIONS-AND-CONSTRAINTS (factory/deltas/D28.json), workpiece W35, base 0f57ecf.
+- ASCII: design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md (STRUCTURAL CHECK: PASS).
+- STATIONS: S-DOC (F0, F5, F7, F9), S-FIXTURE (F1), S-BROWSER (F2), S-EVIDENCE (F3, F6, F8), S-BUILD (F4).
+- CHANGE: tests/closure/registers/{decisions.json, constraints.json} (new), sequence.json (decisions, constraints,
+  assumption per step), acceptance-test.json (external_constraints per step), tests/closure/structural-check.mjs (the
+  gating checks; sections 11-13 of the rendering), tests/envmap/facts/D28.json, tests/reprove/runbook.json (3 entries + the D27 replay),
+  tests/manifest/issues.json (I-38 covers emptied), design/execution-manifest/ (rebuilt), evidence/D28/,
+  design/environment-map/ (epoch D28, graph, views, SCHEMA, ENVIRONMENT-MAP), design/foundation-closure/ (the
+  re-rendered registers; a section-12 note on the target), docs/HANDOFF.md, README.md, D28 records, this ledger.
+  FORBIDDEN: compiler/, host/, factory/src/, factory/registry/, fixtures/, every law document, earlier epochs, D0-D27
+  evidence.
+- PREDICTED: selection 183 / 81 (environment 73, implementation 20; gaps 0), 81 re-proved, 0 failed; decisions 14 (8
+  assumed defaults, 2 decided, 4 not gating), constraints 11 (3 here, 8 external), external inputs 10; structural check
+  11 PASS; manifest 6419 files, 72 components, gate PASS (41 issues); epoch D28 35 nodes / 232 edges; merged 1503 / 4303;
+  validate 42; Q22 214 current facts (RUN 136, OBS 52, GAP 14, ERR 5, UNK 7), 81 re-proved; audit 13 PASS; RETIRABLE 4 ->
+  0; index 820.
+
+AFTER
 - recorded by the next delta (a delta cannot carry its own integration result).

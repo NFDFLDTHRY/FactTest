@@ -1,0 +1,30 @@
+{
+ "id": "CL-WC2",
+ "trace": "WC",
+ "authority": "AUTH-WEBCODECS",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/webcodecs",
+  "branch": "main",
+  "path": "index.src.html",
+  "commit": "8f7384fb4749a39fa2df6eea37685dd1ede297d1",
+  "sha256": "6ce711783ba8e084a286a40a4d71e4bd380002470922afa93b568a065a5bb324",
+  "bytes": 293911
+ },
+ "locator": {
+  "text": "<dt><dfn method for=VideoEncoder>isConfigSupported(config)</dfn></dt>",
+  "line_start": 1622,
+  "line_end": 1635,
+  "derivation": "anchor text",
+  "enclosing_section": "#videoencoder-methods (line 1484)"
+ },
+ "window": 14,
+ "consequence": "configuration support is queried without side effects (isConfigSupported); an invalid config rejects TypeError",
+ "excerpt": "  <dt><dfn method for=VideoEncoder>isConfigSupported(config)</dfn></dt>\n  <dd>\n    Returns a promise indicating whether the provided |config| is supported by\n    the User Agent.\n\n    NOTE: The returned {{VideoEncoderSupport}} {{VideoEncoderSupport/config}}\n        will contain only the dictionary members that User Agent recognized.\n        Unrecognized dictionary members will be ignored. Authors can detect\n        unrecognized dictionary members by comparing\n        {{VideoEncoderSupport/config}} to their provided |config|.\n\n    When invoked, run these steps:\n    1. If |config| is not a <a>valid VideoEncoderConfig</a>, return\n        [=a promise rejected with=] {{TypeError}}.",
+ "excerpt_sha256": "08832de1757d6f53a14c3865ff65cdde2242d39dc8d5834f5164007f4f959863",
+ "must_contain": {
+  "Returns a promise indicating whether the provided |config| is supported": true,
+  "[=a promise rejected with=] {{TypeError}}": true
+ },
+ "status": "VERIFIED"
+}

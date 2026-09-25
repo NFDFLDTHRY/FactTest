@@ -1,0 +1,17 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system kinds}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{component a}
+| @{port a.o out: T public}
+| @{component b}
+| @{port b.i in: T public}
+| RELATIONS
+| @{data d a.o -> b.i mode=copy}
+| @{sequence s a -> b}
+| INVARIANTS
+| @{invariant inv_reach reachable(a, b)}
+| @{invariant inv_seq sequence_before(a, b)}
++------------------------------------------------------------------------+

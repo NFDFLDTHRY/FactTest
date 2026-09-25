@@ -1,0 +1,109 @@
+{
+ "tool": "tests/audit/consistency-audit.mjs",
+ "status": "PASS",
+ "manifest_rev": "0f57ecfd82295ee207f51432af764258fd34b052",
+ "graph_epochs": [
+  "D11",
+  "D12",
+  "D13",
+  "D14",
+  "D15",
+  "D16",
+  "D17",
+  "D18",
+  "D18R",
+  "D19",
+  "D14-RESCAN",
+  "D20-SYNC",
+  "D20",
+  "D21",
+  "D21R",
+  "D22",
+  "D23",
+  "D24",
+  "D25",
+  "D26",
+  "D27",
+  "D28"
+ ],
+ "checks": [
+  {
+   "equality": "LIVE LAW = CURRENT IMPLEMENTATION CONTRACT",
+   "check": "every_law_file_held",
+   "status": "PASS",
+   "detail": "32 law files each named by the graph, by a component's owner or by the handoff document register"
+  },
+  {
+   "equality": "LIVE LAW = CURRENT IMPLEMENTATION CONTRACT",
+   "check": "every_live_owner_exists",
+   "status": "PASS",
+   "detail": "56 live components; 47 owner files present"
+  },
+  {
+   "equality": "CURRENT IMPLEMENTATION = EXECUTION MANIFEST",
+   "check": "every_path_tiered",
+   "status": "PASS",
+   "detail": "6419 tracked files in 72 components"
+  },
+  {
+   "equality": "CURRENT IMPLEMENTATION = EXECUTION MANIFEST",
+   "check": "every_live_component_has_files",
+   "status": "PASS",
+   "detail": "56 live components with files"
+  },
+  {
+   "equality": "CURRENT IMPLEMENTATION = EXECUTION MANIFEST",
+   "check": "manifest_gate_pass",
+   "status": "PASS",
+   "detail": "gate PASS: every_path_tiered, coverage_complete, live_components_connected, findings_classified, issues_well_formed, historical_not_executable"
+  },
+  {
+   "equality": "EXECUTION MANIFEST = FACTORY ROUTES",
+   "check": "every_live_file_within_its_station",
+   "status": "PASS",
+   "detail": "11 registered stations cover every file of every live component"
+  },
+  {
+   "equality": "EXECUTION MANIFEST = FACTORY ROUTES",
+   "check": "no_live_file_without_authorized_station",
+   "status": "PASS",
+   "detail": "every live file has an authorized station"
+  },
+  {
+   "equality": "FACTORY ROUTES = RECEIPTS / VERIFICATION",
+   "check": "every_delta_receipted_and_verified",
+   "status": "PASS",
+   "detail": "36 integrated deltas, each with a PASS receipt per fixture and a PASS verification (D28-DECISIONS-AND-CONSTRAINTS is verified by the Factory after this audit)"
+  },
+  {
+   "equality": "FACTORY ROUTES = RECEIPTS / VERIFICATION",
+   "check": "every_ledger_integration_commit_exists",
+   "status": "PASS",
+   "detail": "37 ledger entries; every recorded integration commit exists and names its delta"
+  },
+  {
+   "equality": "CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY",
+   "check": "every_run_claim_claimable_or_invalidated",
+   "status": "PASS",
+   "detail": "136 RUN claims = 135 claimable + 1 invalidated"
+  },
+  {
+   "equality": "CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY",
+   "check": "every_non_run_fact_is_an_explicit_stop",
+   "status": "PASS",
+   "detail": "26 GAP/ERR/UNK current facts: 24 open stops, 2 closed by evidence"
+  },
+  {
+   "equality": "CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY",
+   "check": "no_open_internal_defect",
+   "status": "PASS",
+   "detail": "28 A/B/C issues all REPAIRED"
+  },
+  {
+   "equality": "CURRENT CLAIM = CURRENT EVIDENCE OR EXPLICIT BOUNDARY",
+   "check": "open_issues_are_boundaries",
+   "status": "PASS",
+   "detail": "12 open issues, every one class D/E/F/G (I-02:F, I-03:F, I-04:F, I-12:G, I-13:G, I-15:D, I-16:E, I-17:F, I-18:G, I-29:G, I-33:D, I-39:D)"
+  }
+ ]
+}

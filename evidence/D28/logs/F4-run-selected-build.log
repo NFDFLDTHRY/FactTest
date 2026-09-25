@@ -1,0 +1,14 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D28/selection.json --runbook tests/reprove/runbook.json --kind build --out evidence/D28
+(cwd .)
+PASS closure: CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -q -p factc (4 s)
+PASS closure: node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/compon (0 s)
+PASS closure: node tests/closure/language-corpus.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/f (1 s)
+PASS closure: node tests/closure/language-manifest.mjs --root . --out evidence/D28/language/manifest.json --check tests/clos (0 s)
+PASS closure: node tests/closure/station-authority-census.mjs --paths ASCII-LANGUAGE.md,ASCII-GRAMMAR.md,SEMANTIC-MODEL.md,L (0 s)
+PASS closure FACT-D27-CLOSURE-STRUCTURE-CHECKED
+PASS closure FACT-D27-LANGUAGE-1-CORPUS-ORACLE
+PASS closure FACT-D27-LANGUAGE-1-MANIFEST-DERIVED
+PASS closure FACT-D27-LANGUAGE-EVOLUTION-CONTRACT
+PASS closure FACT-D27-LANGUAGE-LAW-STATION-QUALIFIED
+
+[exit 0] expected 0

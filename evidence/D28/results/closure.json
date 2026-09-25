@@ -1,0 +1,170 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "closure",
+ "kind": "build",
+ "started": "2026-09-25T00:57:45.931Z",
+ "commands": [
+  {
+   "command": "CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -q -p factc",
+   "exit": 0,
+   "seconds": 4
+  },
+  {
+   "command": "node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --evidence-required --out evidence/D28/closure/structural-check.json",
+   "exit": 0,
+   "seconds": 0
+  },
+  {
+   "command": "node tests/closure/language-corpus.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --corpus tests/closure/registers/language-corpus.json --out evidence/D28/language/corpus --check tests/closure/language-corpus-v1.json",
+   "exit": 0,
+   "seconds": 1
+  },
+  {
+   "command": "node tests/closure/language-manifest.mjs --root . --out evidence/D28/language/manifest.json --check tests/closure/language-manifest-v1.json --grammar ASCII-GRAMMAR.md",
+   "exit": 0,
+   "seconds": 0
+  },
+  {
+   "command": "node tests/closure/station-authority-census.mjs --paths ASCII-LANGUAGE.md,ASCII-GRAMMAR.md,SEMANTIC-MODEL.md,LANGUAGE-TESTS.md,REFINEMENT-LAW.md --out evidence/D28/stations/census-after.json",
+   "exit": 0,
+   "seconds": 0
+  }
+ ],
+ "facts": {
+  "FACT-D27-CLOSURE-STRUCTURE-CHECKED": {
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "closure/structural-check.json",
+     "sha256": "858b2c1b972c8a3dc6edd1d51b77d7edc88981d52b9f7aa500d197c3b28595c7",
+     "checks": [
+      {
+       "path": "status",
+       "eq": "PASS",
+       "observed": "PASS",
+       "ok": true
+      },
+      {
+       "path": "evidence_required",
+       "eq": true,
+       "observed": true,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D27-LANGUAGE-1-CORPUS-ORACLE": {
+   "probe": "PROBE-LANGUAGE-CORPUS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "language/corpus/corpus-record.json",
+     "sha256": "a76a71da297a1ff1265fc182bd14393ac32b578fda53b38ea8973863e0c9ff78",
+     "checks": [
+      {
+       "path": "language_version",
+       "eq": 1,
+       "observed": 1,
+       "ok": true
+      },
+      {
+       "path": "entries",
+       "eq": 53,
+       "observed": 53,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D27-LANGUAGE-1-MANIFEST-DERIVED": {
+   "probe": "PROBE-LANGUAGE-MANIFEST",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "language/manifest.json",
+     "sha256": "f48dc8d84d6fa14056d33ac1f758f5ca28965140fa83512002445504e5abc005",
+     "checks": [
+      {
+       "path": "language_version",
+       "eq": 1,
+       "observed": 1,
+       "ok": true
+      },
+      {
+       "path": "grammar_check.grammar_version",
+       "eq": 1,
+       "observed": 1,
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D27-LANGUAGE-EVOLUTION-CONTRACT": {
+   "probe": "PROBE-LANGUAGE-MANIFEST",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "language/manifest.json",
+     "sha256": "f48dc8d84d6fa14056d33ac1f758f5ca28965140fa83512002445504e5abc005",
+     "checks": [
+      {
+       "path": "grammar_check.grammar_version",
+       "eq": 1,
+       "observed": 1,
+       "ok": true
+      }
+     ],
+     "ok": true
+    },
+    {
+     "file": "stations/census-after.json",
+     "sha256": "2560cbd4b5c46ddac89178f2f5411e7c4d630a2ea718b01b4d0f4ba1b3c42b33",
+     "checks": [
+      {
+       "path": "unauthorized_paths",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D27-LANGUAGE-LAW-STATION-QUALIFIED": {
+   "probe": "PROBE-STATION-AUTHORITY-CENSUS",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "stations/census-after.json",
+     "sha256": "2560cbd4b5c46ddac89178f2f5411e7c4d630a2ea718b01b4d0f4ba1b3c42b33",
+     "checks": [
+      {
+       "path": "unauthorized_paths",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      },
+      {
+       "path": "stations",
+       "includes": "S-LANGUAGE-LAW",
+       "observed": "11 entries",
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-25T00:57:50.843Z",
+ "status": "PASS"
+}

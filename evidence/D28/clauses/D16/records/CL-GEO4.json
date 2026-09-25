@@ -1,0 +1,29 @@
+{
+ "id": "CL-GEO4",
+ "trace": "GEO",
+ "authority": "AUTH-GEOLOCATION",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/geolocation",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "4aebf6e750ff5f40cf032d96b457a149582c9ecc",
+  "sha256": "5bc468fd115c1e17e53496a6c5329e7c4efa90c822aaf41d491abfbd465093a1",
+  "bytes": 59983
+ },
+ "locator": {
+  "text": "<cite>Geolocation</cite> is a [=default powerful feature=] identified",
+  "line_start": 451,
+  "line_end": 453,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 3,
+ "consequence": "geolocation is a default powerful feature (express permission)",
+ "excerpt": "          <cite>Geolocation</cite> is a [=default powerful feature=] identified\n          by the [=powerful feature/name=] <code><dfn class=\n          \"permission\">\"geolocation\"</dfn></code>.",
+ "excerpt_sha256": "0bfdc5f7c7b495ae8caf620af35acd3ff954fa4ade33d8c29bca8a459d15d83d",
+ "must_contain": {
+  "\"geolocation\"": true
+ },
+ "status": "VERIFIED"
+}

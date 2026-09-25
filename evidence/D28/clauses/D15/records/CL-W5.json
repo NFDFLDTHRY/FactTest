@@ -1,0 +1,29 @@
+{
+ "id": "CL-W5",
+ "trace": "W",
+ "authority": "AUTH-WASM-JSAPI-MEMORIES",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/js-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+  "bytes": 114471
+ },
+ "locator": {
+  "text": "dictionary MemoryDescriptor {",
+  "line_start": 803,
+  "line_end": 807,
+  "derivation": "anchor text",
+  "enclosing_section": "#memories (line 800)"
+ },
+ "window": 5,
+ "consequence": "the JS Memory descriptor carries the address type",
+ "excerpt": "dictionary MemoryDescriptor {\n  required AddressValue initial;\n  AddressValue maximum;\n  AddressType address;\n};",
+ "excerpt_sha256": "6646df31a70f99e49cedce348938227a3a10510c7efb45971e83cdd67c01118a",
+ "must_contain": {
+  "AddressType address;": true
+ },
+ "status": "VERIFIED"
+}

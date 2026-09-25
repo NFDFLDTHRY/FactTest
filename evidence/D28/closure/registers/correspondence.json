@@ -1,0 +1,268 @@
+{
+ "schema": "facttest-closure-correspondence/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 7",
+ "note": "CURRENT -> SELF-HOST correspondence: every Factory operation of the host Factory with its required semantic effect, its browser-native realization, the current evidence that the host operation works, the primitive evidence that the browser mechanism is possible, the test that will prove the realization and its status today",
+ "rows": [
+  {
+   "operation": "git worktree",
+   "current": {
+    "component": "FACTORY-GIT",
+    "mechanism": "git worktree add --detach <W> <base> (factory/src/git.rs); state file outside the tree"
+   },
+   "required_semantic_effect": "isolated mutable candidate tree derived from the canonical base id; base objects never mutated",
+   "browser_native_mechanism": "overlay record {base tree id, path -> blob id} in IndexedDB over write-once objects in OPFS; snapshot = tree id of base + overlay",
+   "current_evidence": [
+    "FACT-WORKPIECE-ISOLATION"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-GIT-IDENTITY",
+    "FACT-SH-ORIGIN-SCOPED-STORAGE"
+   ],
+   "test": "[GAP] overlay snapshot equals git write-tree on the repository's own tree (FC-2 test)",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-2"
+   ]
+  },
+  {
+   "operation": "git object",
+   "current": {
+    "component": "FACTORY-GIT",
+    "mechanism": "git show <base>:<path>, cat-file -e, add -A + write-tree under a temporary index"
+   },
+   "required_semantic_effect": "content-addressed immutable object (blob, tree, commit) with the identity git computes",
+   "browser_native_mechanism": "WebCrypto SHA-1 over \"<type> <size>\\0\" + content, zlib loose objects via CompressionStream; sha256 for artifacts (first-party + WebCrypto cross-check)",
+   "current_evidence": [
+    "FACT-WORKPIECE-ISOLATION"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-GIT-IDENTITY"
+   ],
+   "test": "tests/selfhost/primitives-probe.mjs P09 (880/880 blob ids, HEAD tree and commit recomputed) - [GAP] as a store, [RUN] as identity",
+   "evidence": "evidence/D26/physical/selfhost/probes/P09-GIT-OBJECTS-IN-BROWSER.json",
+   "status": "RUN",
+   "sequence": [
+    "FC-2"
+   ],
+   "note": "identity is proven; the store, packfiles and history walks are not built (FB-17)"
+  },
+  {
+   "operation": "git ref",
+   "current": {
+    "component": "FACTORY-GIT",
+    "mechanism": "refs/heads/<branch> read by rev-parse; moved by merge --ff-only"
+   },
+   "required_semantic_effect": "canonical generation pointer: one named mutable pointer to a commit id",
+   "browser_native_mechanism": "IndexedDB key per ref in the seed-owned database, written only in transactions",
+   "current_evidence": [
+    "FACT-FF-ONLY-INTEGRATION"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-IDB-CAS"
+   ],
+   "test": "[GAP] ref store test (FC-2); primitive P06 RUN",
+   "evidence": "evidence/D26/physical/selfhost/probes/P06-IDB-ATOMIC-POINTER.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-2"
+   ]
+  },
+  {
+   "operation": "git ff-only",
+   "current": {
+    "component": "FACTORY-OPS",
+    "mechanism": "canonical_base_unmoved + canonical_working_tree_clean + git merge --ff-only (ops.rs integrate)"
+   },
+   "required_semantic_effect": "base-unmoved atomic promotion: move the pointer only if it still equals the base the candidate was built on",
+   "browser_native_mechanism": "IDB readwrite compare-and-swap cas_ref(name, old, new) under a Web Lock; exactly one winner",
+   "current_evidence": [
+    "FACT-FF-ONLY-INTEGRATION",
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-IDB-CAS"
+   ],
+   "test": "[GAP] two concurrent integrations from the same base: one PASS, one base-moved refusal (FC-2); f05 witness on the host",
+   "evidence": "evidence/D26/factory/witnesses.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-2"
+   ]
+  },
+  {
+   "operation": "git diff-tree",
+   "current": {
+    "component": "FACTORY-OPS",
+    "mechanism": "git diff-tree -r --name-only <open tree> <close tree> per station run; changed paths judged against authority"
+   },
+   "required_semantic_effect": "deterministic tree difference between two tree ids",
+   "browser_native_mechanism": "recursive comparison of tree objects by id (equal subtree ids short-circuit); same output contract (changed paths)",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED",
+    "FACT-LITERAL-PATH-MATCH"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-GIT-IDENTITY"
+   ],
+   "test": "[GAP] diff equality with git diff-tree on committed histories (FC-2)",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-2"
+   ]
+  },
+  {
+   "operation": "process command",
+   "current": {
+    "component": "FACTORY-OPS",
+    "mechanism": "run_command: program + args + env + cwd, verdict = exit code (152/152 fixture commands are OS programs); cwd/log confined since D22"
+   },
+   "required_semantic_effect": "bounded station capability invocation with a receipt naming the capability, the adapter and the environment identity",
+   "browser_native_mechanism": "registered operation classes (TREE_SNAPSHOT, TREE_DIFF, PATH_AUTHORITY, FILE_ASSERT, JSON_ASSERT, EVIDENCE_INDEX, WASM_INSPECT, KERNEL_BUILD, QUALIFY_SPECIMEN, BROWSER_PROBE) with a Linux adapter and a browser adapter; RUST_BUILD = Linux adapter + IMPORT receipt",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "primitive_evidence": [],
+   "test": "[GAP] receipt parity: the same capability on both adapters yields the same verdict and receipt fields (FC-4)",
+   "evidence": "none",
+   "status": "ERR",
+   "sequence": [
+    "FC-4"
+   ],
+   "note": "ERR for portability (D12 B-03): no fixture of D0-D27 is browser-executable"
+  },
+  {
+   "operation": "filesystem",
+   "current": {
+    "component": "FACTORY-OPS",
+    "mechanism": "the workpiece directory on the OS filesystem; receipts and evidence as files"
+   },
+   "required_semantic_effect": "object / storage substrate that survives restart and is scoped to the installed Factory",
+   "browser_native_mechanism": "OPFS objects (content id) + IndexedDB records + CacheStorage for the shell; all origin-scoped",
+   "current_evidence": [
+    "FACT-WORKPIECE-ISOLATION"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-ORIGIN-SCOPED-STORAGE",
+    "FACT-SH-OPFS-SERVED-APP",
+    "FACT-SH-STORAGE-DURABILITY-D18"
+   ],
+   "test": "tests/selfhost/primitives-probe.mjs P03/P04 (RUN); durability [UNK] (P07: persist() false in the headless shell)",
+   "evidence": "evidence/D26/physical/selfhost/probes/P03-STORAGE-RESTART-ORIGIN.json",
+   "status": "UNK",
+   "sequence": [
+    "FC-1"
+   ],
+   "note": "the substrate works; its durability for an installed Factory is not established (FB-11)"
+  },
+  {
+   "operation": "receipt",
+   "current": {
+    "component": "FACTORY-OPS",
+    "mechanism": "FactoryReceipt format 2 (factory binary sha256, host, git, identity probes) written at station close; verified only as the Factory wrote it (D22)"
+   },
+   "required_semantic_effect": "immutable witnessed operation record: capability, adapter, environment identity, changed paths, verification results",
+   "browser_native_mechanism": "receipt object (content id) written by the law engine, referenced from the workpiece record; the seed verifies object identity on read",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED",
+    "FACT-D22-FACTORY-NEGATIVE-WITNESSES"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-GIT-IDENTITY"
+   ],
+   "test": "[GAP] receipt schema 3 (capability_id, adapter_id, adapter identity) written by both adapters (FC-4); f17-f20 witnesses on the host",
+   "evidence": "evidence/D26/factory/witnesses.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-4"
+   ]
+  },
+  {
+   "operation": "verify",
+   "current": {
+    "component": "FACTORY-OPS",
+    "mechanism": "ops.rs verify: changed paths within MAY CHANGE, MUST NOT CHANGE identical, receipts present and matching, no unreceipted change, base unmoved; judge = the factory binary built from the canonical HEAD"
+   },
+   "required_semantic_effect": "independent candidate judgment by generation N (never by the candidate)",
+   "browser_native_mechanism": "the law engine of the ACTIVE generation N judges the candidate trees and receipts; the candidate runs confined (opaque frame, broker-fed) and cannot reach N's objects or pointers",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-OPAQUE-CONFINEMENT",
+    "FACT-SH-BROKER-FED-GENERATION"
+   ],
+   "test": "[GAP] the ported law engine reproduces the verdicts of f00-f28 on synthetic repositories byte-for-byte (FC-3)",
+   "evidence": "evidence/D26/factory/witnesses.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-3"
+   ]
+  },
+  {
+   "operation": "reinspect",
+   "current": {
+    "component": "FACTORY-OPS",
+    "mechanism": "ops.rs reinspect: canonical tree == verified tree; reinspect commands; canonical checkout untouched"
+   },
+   "required_semantic_effect": "materialized state == verified state",
+   "browser_native_mechanism": "after cas_ref: the tree id the pointer names equals the verified candidate tree id (pure comparison); qualification probes re-run by the new generation",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-IDB-CAS"
+   ],
+   "test": "[GAP] FC-2/FC-3 (equality of ids replaces the working-tree comparison)",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-3"
+   ]
+  },
+  {
+   "operation": "audit / retire",
+   "current": {
+    "component": "FACTORY-HYGIENE",
+    "mechanism": "factory workpiece audit/retire: RETIRABLE only when integrated, reinspected, ancestor of the canonical head, clean; nothing forced"
+   },
+   "required_semantic_effect": "proven-safe garbage collection: an object is removed only when every byte is in the integrated history",
+   "browser_native_mechanism": "overlay records dropped when their commit is an ancestor of the canonical ref; objects referenced by the last K generations never removed (seed rule 6)",
+   "current_evidence": [
+    "FACT-WORKPIECES-AUDITED"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-IDB-CAS"
+   ],
+   "test": "[GAP] FC-2 (reachability from refs + generation history)",
+   "evidence": "evidence/D26/workpieces/audit-after.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-2"
+   ]
+  },
+  {
+   "operation": "remote sync",
+   "current": {
+    "component": "SYNC-IMPORT",
+    "mechanism": "git push by the agent; pull requests merged by the owner on GitHub (outside Factory law); tests/sync/import-line.mjs for a parallel line"
+   },
+   "required_semantic_effect": "optional external replication: fast-forward both ways, DIVERGED returned to ASCII, credentials outside generations",
+   "browser_native_mechanism": "GitHub REST (CORS-open) behind the broker; smart-HTTP not CORS-readable without a proxy; packfile import/export",
+   "current_evidence": [
+    "FACT-D25-PUBLIC-HTTPS"
+   ],
+   "primitive_evidence": [
+    "FACT-SH-GITHACK-UNREACHABLE"
+   ],
+   "test": "[GAP] FC-8 (L4): divergence test, fast-forward push through the chosen transport",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-8"
+   ],
+   "note": "deferrable: L3 does not depend on GitHub (D12 section 12)"
+  }
+ ]
+}

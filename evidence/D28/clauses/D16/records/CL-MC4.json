@@ -1,0 +1,31 @@
+{
+ "id": "CL-MC4",
+ "trace": "MC",
+ "authority": "AUTH-MEDIACAPTURE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/w3c/mediacapture-main",
+  "branch": "main",
+  "path": "getusermedia.html",
+  "commit": "e0bde2206a9ac3af9536fe97208b4bd4c5b7aa1a",
+  "sha256": "2807a41827e9573e6eed4be0116217a8053902dc621dc915d5ccc0d1322c9774",
+  "bytes": 309541
+ },
+ "locator": {
+  "text": "<var>document</var> is not [=allowed to use=] the",
+  "after": "<p>If <var>requestedMediaTypes</var> contains \"video\" and",
+  "line_start": 3795,
+  "line_end": 3797,
+  "derivation": "anchor text after \"<p>If <var>requestedMediaTypes</var> con\"",
+  "enclosing_section": null
+ },
+ "window": 3,
+ "consequence": "getUserMedia fails to Permission Failure when the policy disallows camera (and likewise microphone)",
+ "excerpt": "                    <var>document</var> is not [=allowed to use=] the\n                    feature identified by the \"camera\" permission name,\n                    jump to the step labeled <em>Permission Failure</em> below.</p>",
+ "excerpt_sha256": "1ace199ee3a5f56e99a908b83f44a7ca83e32745377141705f78eb97900d3e8f",
+ "must_contain": {
+  "feature identified by the \"camera\" permission name": true,
+  "Permission Failure": true
+ },
+ "status": "VERIFIED"
+}

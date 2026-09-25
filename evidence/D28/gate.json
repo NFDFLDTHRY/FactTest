@@ -1,0 +1,56 @@
+{
+ "tool": "tests/manifest/gate.mjs",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "every_path_tiered",
+   "status": "PASS",
+   "detail": "6419 tracked files assigned to 72 components"
+  },
+  {
+   "check": "coverage_complete",
+   "status": "PASS",
+   "detail": "44 required items covered by live components"
+  },
+  {
+   "check": "live_components_connected",
+   "status": "PASS",
+   "detail": "56 live components with owner, consumer and station"
+  },
+  {
+   "check": "findings_classified",
+   "status": "PASS",
+   "detail": "7 finding items covered by 3 issues; 41 issues in the inventory"
+  },
+  {
+   "check": "issues_well_formed",
+   "status": "PASS",
+   "detail": "41 issues: A 14, B 12, C 2, D 4, E 1, F 4, G 4"
+  },
+  {
+   "check": "historical_not_executable",
+   "status": "PASS",
+   "detail": "2 live tool(s) reading evidence packages, each recorded as an issue"
+  }
+ ],
+ "issues_by_class": {
+  "B": 12,
+  "F": 4,
+  "C": 2,
+  "A": 14,
+  "G": 4,
+  "D": 4,
+  "E": 1
+ },
+ "issues_by_task": {
+  "D21": 1,
+  "none": 6,
+  "D25": 3,
+  "D23": 3,
+  "D24": 8,
+  "owner": 6,
+  "D22": 9,
+  "D26": 2,
+  "D27": 3
+ }
+}

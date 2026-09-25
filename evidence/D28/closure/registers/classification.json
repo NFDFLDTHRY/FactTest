@@ -1,0 +1,375 @@
+{
+ "schema": "facttest-closure-classification/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 7",
+ "classes": {
+  "SEMANTIC_CORE": "deterministic meaning the installed Factory must preserve exactly: the compiler kernel, the Factory law engine logic and the law/contract text they implement",
+  "HOST_ADAPTER": "a Linux/process/git/filesystem binding that realizes a semantic effect on this host; replaced, not ported, in the browser",
+  "BROWSER_NATIVE_CANDIDATE": "already executes in the browser or is designed to (wasm kernel transport, generated-object templates)",
+  "VERIFICATION_EVIDENCE": "tests, probes, proofs, audits, fixtures and the records that bind claims to evidence",
+  "HISTORICAL_ARCHIVE": "never rewritten; not executed by the current system",
+  "FUTURE_INTERACTION_PACKAGING": "the human / local-model conversational surface; later packaging (no live component today)"
+ },
+ "note": "every component of tests/manifest/components.json classified once; live components (PRODUCTION, FACTORY, TEST) are the ones the correspondence matrix and the blocker register act on.  FUTURE_INTERACTION_PACKAGING has no member today: the tiny local model and the conversational UI are later packaging; the foundation exposes the interface they will use (the ASCII language, its manifest, its diagnostics, the canonical teach-back).",
+ "components": {
+  "CRATE-FOUNDATION": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-SOURCE": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-SEMANTIC": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-CAPABILITY": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-IMPLEMENTATION": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-PLANNING": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-VERIFIER": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-CODEGEN": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-BUNDLE": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-OBSERVE": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-KERNEL": {
+   "class": "SEMANTIC_CORE",
+   "reason": "no_std, forbid(unsafe_code), core-only compiler crates: the meaning of LANGUAGE 1 and of every transformation to a verified bundle",
+   "browser_native": "as is: compiled to wasm64 by RUST_BUILD (FACT-CORE-ONLY-GRAPH, FACT-D23-WASM-TRANSPORT-COMPLETE); evolving them in the browser is the RUST_BUILD boundary (FB-04)"
+  },
+  "CRATE-WASM-ABI": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "the wasm64 export surface of the kernel (21 exports = the whole kernel API): the compiler as it runs in Chromium",
+   "browser_native": "as is (FACT-D23-WASM-TRANSPORT-COMPLETE)"
+  },
+  "FACTORY-MODEL": {
+   "class": "SEMANTIC_CORE",
+   "reason": "pure Factory law: StructuralDelta / Fixture / StationSpec validation, literal path authority, receipt and verification checks - deterministic functions over bytes and trees",
+   "browser_native": "port: the same logic as a no_std law crate compiled to wasm (FB-25, FC-3); verdict parity with the host judge is the test"
+  },
+  "FACTORY-PATHS": {
+   "class": "SEMANTIC_CORE",
+   "reason": "pure Factory law: StructuralDelta / Fixture / StationSpec validation, literal path authority, receipt and verification checks - deterministic functions over bytes and trees",
+   "browser_native": "port: the same logic as a no_std law crate compiled to wasm (FB-25, FC-3); verdict parity with the host judge is the test"
+  },
+  "FACTORY-CHECKS": {
+   "class": "SEMANTIC_CORE",
+   "reason": "pure Factory law: StructuralDelta / Fixture / StationSpec validation, literal path authority, receipt and verification checks - deterministic functions over bytes and trees",
+   "browser_native": "port: the same logic as a no_std law crate compiled to wasm (FB-25, FC-3); verdict parity with the host judge is the test"
+  },
+  "FACTORY-OPS": {
+   "class": "SEMANTIC_CORE",
+   "reason": "the delta pipeline (delta check, workpiece, station open/close, verify, integrate, reinspect) - semantic core interleaved with host adapters (process spawn, git)",
+   "browser_native": "split: the state machine ports (FC-3); its git and process calls are replaced by the object store (FC-2) and capability adapters (FC-4)"
+  },
+  "FACTORY-GIT": {
+   "class": "HOST_ADAPTER",
+   "reason": "git subprocesses (rev-parse, show, write-tree, diff-tree, worktree add, commit, merge --ff-only, status): the canonical-state adapter of this host",
+   "browser_native": "replace: git-compatible objects + tree hashing + IDB CAS refs (FACT-SH-GIT-IDENTITY, FACT-SH-IDB-CAS); FC-2"
+  },
+  "FACTORY-IDENTITY": {
+   "class": "HOST_ADAPTER",
+   "reason": "environment identity probes by process spawn (rustc -vV, node, browser)",
+   "browser_native": "replace: browser identity (CDP product/revision/V8, adapter info) recorded by the seed/broker per generation; FC-4"
+  },
+  "FACTORY-HYGIENE": {
+   "class": "HOST_ADAPTER",
+   "reason": "workpiece audit/retire over git worktrees on the filesystem",
+   "browser_native": "replace: overlay records in IDB (drop = delete); objects referenced by the last K generations are never collected (seed rule 6); FC-2"
+  },
+  "FACTORY-CLI": {
+   "class": "HOST_ADAPTER",
+   "reason": "command-line router of the host Factory binary",
+   "browser_native": "replace: broker messages / UI actions of the Factory generation; FC-3"
+  },
+  "FACTORY-REGISTRY": {
+   "class": "SEMANTIC_CORE",
+   "reason": "station specs (authority envelopes) as data",
+   "browser_native": "as is: data objects read from the base tree by the law engine"
+  },
+  "SYNC-IMPORT": {
+   "class": "HOST_ADAPTER",
+   "reason": "import of a parallel git line from git objects (node + git)",
+   "browser_native": "replace at L4 only (FC-8, optional remote sync)"
+  },
+  "FACTC": {
+   "class": "HOST_ADAPTER",
+   "reason": "native host driver: files in, kernel, artifacts out; never interprets semantics",
+   "browser_native": "replace: the kernel-host transport already exists (host/harness/kernel-host.mjs proves BUILD + OBSERVE byte-identical); a generation drives the kernel in a worker"
+  },
+  "TEMPLATE-MEMBRANE": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "ADAPTER-WASM64": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "ADAPTER-WEBGPU": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "TEMPLATE-SELECTOR": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "TEMPLATE-RUNTIME": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "TEMPLATE-SHELL": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "TEMPLATE-MANIFEST": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "TEMPLATE-SW": {
+   "class": "BROWSER_NATIVE_CANDIDATE",
+   "reason": "generated-object templates instantiated by codegen: they already run in Chromium (FACT-D25-RUNTIME-PHYSICAL)",
+   "browser_native": "as is; compiled into the kernel by include_str! (FB-05): a template change needs RUST_BUILD until templates become recipe data (FC-6)"
+  },
+  "WORKSPACE-ROOT": {
+   "class": "HOST_ADAPTER",
+   "reason": "Cargo workspace and toolchain pin: the RUST_BUILD epoch of this host",
+   "browser_native": "replace only by an in-browser RUST_BUILD (FB-04); until then the build receipt of an imported object"
+  },
+  "KERNEL-LADDERS": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "FACTORY-TESTS": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-BOOTSTRAP": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-LANGUAGE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-COMMISSIONING": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-GENERICITY": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-PHYSICAL": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-AUDIT": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-TOOLCHAIN": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-ENVMAP": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-SELFHOST": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-HYGIENE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-REFERENCE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-CAPABILITY": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-IMPLEMENTATION": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-RECONCILE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-REPROVE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-MANIFEST": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-CLOSURE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "HARNESS-KERNEL-HOST": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "HARNESS-BUNDLE-PROBE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "HARNESS-WEBAPP-PROBE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "proof, probe, ladder, gate, audit and epoch tools (cargo tests, node scripts, sh) and the browser harnesses",
+   "browser_native": "partly: what a generation must run itself (specimen qualification, bundle verification, witness scenarios) becomes capability operations (FC-4, FC-6); host-only proofs (cargo, clippy, mutants) stay with the RUST_BUILD epoch"
+  },
+  "TEST-TOOLCHAIN-HISTORY": {
+   "class": "HISTORICAL_ARCHIVE",
+   "reason": "historical tools kept for reproduction of earlier evidence",
+   "browser_native": "n/a"
+  },
+  "TEST-ENVMAP-BIND-D11": {
+   "class": "HISTORICAL_ARCHIVE",
+   "reason": "historical tools kept for reproduction of earlier evidence",
+   "browser_native": "n/a"
+  },
+  "FIXTURE-LANGUAGE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "specimen and test data: the LANGUAGE 1 corpus, the specimens, the negative crates, the mutants",
+   "browser_native": "as is: data objects; the corpus is the compatibility oracle of the language-evolution contract"
+  },
+  "FIXTURE-COMMISSIONING": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "specimen and test data: the LANGUAGE 1 corpus, the specimens, the negative crates, the mutants",
+   "browser_native": "as is: data objects; the corpus is the compatibility oracle of the language-evolution contract"
+  },
+  "FIXTURE-GENERICITY": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "specimen and test data: the LANGUAGE 1 corpus, the specimens, the negative crates, the mutants",
+   "browser_native": "as is: data objects; the corpus is the compatibility oracle of the language-evolution contract"
+  },
+  "FIXTURE-NEGATIVE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "specimen and test data: the LANGUAGE 1 corpus, the specimens, the negative crates, the mutants",
+   "browser_native": "as is: data objects; the corpus is the compatibility oracle of the language-evolution contract"
+  },
+  "FIXTURE-TOOLCHAIN": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "specimen and test data: the LANGUAGE 1 corpus, the specimens, the negative crates, the mutants",
+   "browser_native": "as is: data objects; the corpus is the compatibility oracle of the language-evolution contract"
+  },
+  "FIXTURE-REFERENCE": {
+   "class": "HISTORICAL_ARCHIVE",
+   "reason": "reproducibility copies of authorities (pins, never current authority)",
+   "browser_native": "n/a (data)"
+  },
+  "RECORD-HANDOFF": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "the records that bind claims to evidence: handoff, ledger, intended/observed ASCII, generated manifest, environment graph, closure registers, deltas/fixtures/receipts, evidence packages",
+   "browser_native": "as is: data objects in the generation; receipts and evidence are written by the law engine and the capability adapters"
+  },
+  "RECORD-MATERIALIZATION": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "the records that bind claims to evidence: handoff, ledger, intended/observed ASCII, generated manifest, environment graph, closure registers, deltas/fixtures/receipts, evidence packages",
+   "browser_native": "as is: data objects in the generation; receipts and evidence are written by the law engine and the capability adapters"
+  },
+  "RECORD-EXECUTION-MANIFEST": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "the records that bind claims to evidence: handoff, ledger, intended/observed ASCII, generated manifest, environment graph, closure registers, deltas/fixtures/receipts, evidence packages",
+   "browser_native": "as is: data objects in the generation; receipts and evidence are written by the law engine and the capability adapters"
+  },
+  "RECORD-ENVIRONMENT-MAP": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "the records that bind claims to evidence: handoff, ledger, intended/observed ASCII, generated manifest, environment graph, closure registers, deltas/fixtures/receipts, evidence packages",
+   "browser_native": "as is: data objects in the generation; receipts and evidence are written by the law engine and the capability adapters"
+  },
+  "RECORD-FOUNDATION-CLOSURE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "the records that bind claims to evidence: handoff, ledger, intended/observed ASCII, generated manifest, environment graph, closure registers, deltas/fixtures/receipts, evidence packages",
+   "browser_native": "as is: data objects in the generation; receipts and evidence are written by the law engine and the capability adapters"
+  },
+  "FACTORY-RECORDS": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "the records that bind claims to evidence: handoff, ledger, intended/observed ASCII, generated manifest, environment graph, closure registers, deltas/fixtures/receipts, evidence packages",
+   "browser_native": "as is: data objects in the generation; receipts and evidence are written by the law engine and the capability adapters"
+  },
+  "EVIDENCE": {
+   "class": "VERIFICATION_EVIDENCE",
+   "reason": "the records that bind claims to evidence: handoff, ledger, intended/observed ASCII, generated manifest, environment graph, closure registers, deltas/fixtures/receipts, evidence packages",
+   "browser_native": "as is: data objects in the generation; receipts and evidence are written by the law engine and the capability adapters"
+  },
+  "LAW-LIVE": {
+   "class": "SEMANTIC_CORE",
+   "reason": "the contract text the semantic core implements (law, language, contracts) and the owner terms",
+   "browser_native": "as is: data; changes only through their stations (S-ANNOTATE, S-ANNOTATE-OWNER, S-LANGUAGE-LAW)"
+  },
+  "OWNER-LICENSE": {
+   "class": "SEMANTIC_CORE",
+   "reason": "the contract text the semantic core implements (law, language, contracts) and the owner terms",
+   "browser_native": "as is: data; changes only through their stations (S-ANNOTATE, S-ANNOTATE-OWNER, S-LANGUAGE-LAW)"
+  },
+  "DOC-HISTORICAL": {
+   "class": "HISTORICAL_ARCHIVE",
+   "reason": "pass documents and the session bootloader",
+   "browser_native": "n/a"
+  }
+ }
+}

@@ -1,0 +1,537 @@
+{
+ "schema": "facttest-closure-blockers/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 6",
+ "note": "SELF-HOSTING BLOCKER register: D12 B-01..B-20 re-classified against D23-D26 evidence (closed rows kept) plus the language and law-engine blockers D27 found.  class: unimplemented | architectural | architectural-limit (a fact the design absorbs) | design | test-gap | environmental | owner-decision | closed.  A GAP/ERR/UNK row is either in the implementation sequence or an explicit environmental / owner / limit boundary.",
+ "rows": [
+  {
+   "id": "FB-01",
+   "blocker": "no Factory WebApp: no UI, no generation, no browser state model",
+   "class": "unimplemented",
+   "layer": "factory-core",
+   "current_evidence": [
+    "FACT-SH-NO-FACTORY-WEBAPP"
+   ],
+   "required_semantic_behaviour": "an installed generation runs the delta pipeline as deterministic state transitions over local objects",
+   "browser_native_mechanism": "generation = objects (JS, wasm law engine, wasm kernel, data) named by a manifest, booted confined by the seed, fed by the broker",
+   "test": "[GAP] FC-3 generation boot + one delta routed entirely inside the browser",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-1",
+    "FC-3"
+   ],
+   "d12": "B-01"
+  },
+  {
+   "id": "FB-02",
+   "blocker": "every canonical/workpiece state operation is a git subprocess",
+   "class": "unimplemented",
+   "layer": "storage",
+   "current_evidence": [
+    "FACT-WORKPIECE-ISOLATION",
+    "FACT-FF-ONLY-INTEGRATION"
+   ],
+   "required_semantic_behaviour": "content-addressed objects, tree identity, overlay workpieces, CAS refs with git-identical ids",
+   "browser_native_mechanism": "WebCrypto SHA-1 + CompressionStream loose objects in OPFS; IDB refs with CAS; overlay records",
+   "test": "[GAP] FC-2 equality with git on the repository's own tree (ids RUN: P09)",
+   "evidence": "evidence/D26/physical/selfhost/probes/P09-GIT-OBJECTS-IN-BROWSER.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-2"
+   ],
+   "d12": "B-02"
+  },
+  {
+   "id": "FB-03",
+   "blocker": "station commands are OS programs (152/152 of D0-D11; every later fixture likewise): none executable by a browser",
+   "class": "architectural",
+   "layer": "stations",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "required_semantic_behaviour": "bounded capability invocation with receipts naming capability, adapter and environment identity",
+   "browser_native_mechanism": "operation classes + adapters (Linux for the RUST_BUILD epoch and receipt parity; browser for everything the installed Factory runs itself)",
+   "test": "[GAP] FC-4 receipt parity on both adapters",
+   "evidence": "none",
+   "status": "ERR",
+   "sequence": [
+    "FC-4"
+   ],
+   "d12": "B-03",
+   "note": "ERR for portability; D12 section 5 proves the operation-class abstraction is necessary, not elegant"
+  },
+  {
+   "id": "FB-04",
+   "blocker": "RUST_BUILD exists only on a host: compiled objects (kernel, templates, the future law engine) need rustc + LLVM + rust-src + cargo -Z build-std=core",
+   "class": "architectural",
+   "layer": "rust-build",
+   "current_evidence": [
+    "FACT-CORE-ONLY-GRAPH",
+    "FACT-KERNEL-IDENTITY-D24"
+   ],
+   "required_semantic_behaviour": "compile the first-party Rust source (12 no_std crates + wasm-abi + the law engine) to wasm64 inside the browser, with an identity checkable against a host build",
+   "browser_native_mechanism": "candidates B1 hosted toolchain, B2 FactTest-native, B3 import-only (L3-A), B4 first-party subset compiler, B5 hosted rustc + cranelift (tests/closure/registers/rust-build.json)",
+   "test": "[UNK] FC-7 feasibility spike with measurable exit criteria after decision D-3",
+   "evidence": "evidence/D27/rust-build/census.json",
+   "status": "UNK",
+   "sequence": [
+    "FC-7"
+   ],
+   "d12": "B-04",
+   "note": "the deepest boundary: acceptance steps 3-4 need it; every other step closes without it (B3)"
+  },
+  {
+   "id": "FB-05",
+   "blocker": "generated-object templates are compiled into the kernel (include_str!): a host/JS change needs a kernel rebuild",
+   "class": "design",
+   "layer": "compiler",
+   "current_evidence": [
+    "FACT-KERNEL-IDENTITY-D24"
+   ],
+   "required_semantic_behaviour": "host/JS templates change without RUST_BUILD",
+   "browser_native_mechanism": "templates as recipe data submitted through the ABI (a new operation = ABI version 2); the kernel binds them by identity into strategy data",
+   "test": "[GAP] FC-6: a template change swaps a generation with the kernel identity unchanged",
+   "evidence": "evidence/D27/rust-build/census.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-6"
+   ],
+   "d12": "B-05"
+  },
+  {
+   "id": "FB-06",
+   "blocker": "wasm ABI transport incomplete (six exports missing in D12)",
+   "class": "closed",
+   "layer": "compiler",
+   "current_evidence": [
+    "FACT-D23-WASM-TRANSPORT-COMPLETE"
+   ],
+   "required_semantic_behaviour": "BUILD + OBSERVE in the browser byte-identical to the native driver",
+   "browser_native_mechanism": "compiler/wasm-abi (21 exports = the whole kernel API)",
+   "test": "Q-WASM-08 (evidence/D26/proof)",
+   "evidence": "evidence/D26/proof/summary.json",
+   "status": "RUN",
+   "sequence": [],
+   "d12": "B-06",
+   "note": "closed by D23; kept so the register stays complete"
+  },
+  {
+   "id": "FB-07",
+   "blocker": "BUILD reports OK with no contract registry and no plan",
+   "class": "owner-decision",
+   "layer": "compiler",
+   "current_evidence": [
+    "FACT-SH-KERNEL-WORKER-PARTIAL"
+   ],
+   "required_semantic_behaviour": "BUILD without a registry reports NO_PLAN, or the current OK is confirmed as intended",
+   "browser_native_mechanism": "kernel semantics (a compiler change under the evolution contract if decided)",
+   "test": "owner decision D-5",
+   "evidence": "none",
+   "status": "UNK",
+   "sequence": [],
+   "d12": "B-07"
+  },
+  {
+   "id": "FB-08",
+   "blocker": "a service worker cannot replace itself offline; a broken seed blocks its scope with no offline recovery",
+   "class": "architectural-limit",
+   "layer": "seed",
+   "current_evidence": [
+    "FACT-SH-SW-NO-SELF-UPDATE",
+    "FACT-SH-BROKEN-SEED-FATAL",
+    "FACT-SH-INTERRUPTED-UPDATE"
+   ],
+   "required_semantic_behaviour": "the seed is total, minimal, qualified before installation, and recovery never depends on generation code",
+   "browser_native_mechanism": "seed = sw.js (router, pointer boot, hash-checked serving, broker, recovery view); replacement is an origin event",
+   "test": "seed failure matrix (FC-1)",
+   "evidence": "evidence/D26/physical/selfhost/probes/P14-BROKEN-SW-RECOVERY.json",
+   "status": "RUN",
+   "sequence": [
+    "FC-1"
+   ],
+   "d12": "B-08",
+   "note": "a limit the design absorbs, not a gap to close"
+  },
+  {
+   "id": "FB-09",
+   "blocker": "same-origin code reaches every storage of the origin",
+   "class": "architectural-limit",
+   "layer": "seed",
+   "current_evidence": [
+    "FACT-SH-OPAQUE-CONFINEMENT"
+   ],
+   "required_semantic_behaviour": "generation code never runs same-origin; storage only through the broker",
+   "browser_native_mechanism": "opaque sandboxed frame + postMessage broker",
+   "test": "FC-1 confinement probe on the real seed",
+   "evidence": "evidence/D26/physical/selfhost/probes/P08-CANDIDATE-CONFINEMENT.json",
+   "status": "RUN",
+   "sequence": [
+    "FC-1"
+   ],
+   "d12": "B-09"
+  },
+  {
+   "id": "FB-10",
+   "blocker": "opaque frames have no active service worker: a URL-loaded confined frame fails offline",
+   "class": "architectural-limit",
+   "layer": "seed",
+   "current_evidence": [
+    "FACT-SH-BROKER-FED-GENERATION"
+   ],
+   "required_semantic_behaviour": "the generation bootstrap is inline (srcdoc) and its code arrives by postMessage",
+   "browser_native_mechanism": "inline bootstrap + broker-sent blobs",
+   "test": "FC-1",
+   "evidence": "evidence/D26/physical/selfhost/probes/P16-CONFINED-GENERATION-LOAD.json",
+   "status": "RUN",
+   "sequence": [
+    "FC-1"
+   ],
+   "d12": "B-10"
+  },
+  {
+   "id": "FB-11",
+   "blocker": "storage is best-effort; persist() false in the headless shell; installed-Factory durability never observed",
+   "class": "environmental",
+   "layer": "storage",
+   "current_evidence": [
+    "FACT-SH-STORAGE-DURABILITY-D18"
+   ],
+   "required_semantic_behaviour": "the installed Factory's objects and pointers survive storage pressure",
+   "browser_native_mechanism": "navigator.storage.persist() granted to an installed site in full Chrome; export/import of objects as the fallback",
+   "test": "[UNK] needs an installed full Chrome (not available in this environment)",
+   "evidence": "evidence/D26/physical/selfhost/probes/P07-STORAGE-PERSISTENCE.json",
+   "status": "UNK",
+   "sequence": [
+    "FC-1"
+   ],
+   "d12": "B-11"
+  },
+  {
+   "id": "FB-12",
+   "blocker": "toolchain unpinned; compiled identity drifts",
+   "class": "closed",
+   "layer": "rust-build",
+   "current_evidence": [
+    "FACT-KERNEL-IDENTITY-D24"
+   ],
+   "required_semantic_behaviour": "a compiled object has one expected identity per source tree",
+   "browser_native_mechanism": "proof sets pin (D13) + kernel exec identity pinned from the committed source (D24)",
+   "test": "tests/implementation/build-kernels.sh == pin",
+   "evidence": "evidence/D26/kernel/sections.json",
+   "status": "RUN",
+   "sequence": [],
+   "d12": "B-12",
+   "note": "closed by D13/D24"
+  },
+  {
+   "id": "FB-13",
+   "blocker": "verifier provenance: the judge's binary sha256 is recorded (format 2) but not its source commit",
+   "class": "unimplemented",
+   "layer": "factory-core",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "required_semantic_behaviour": "the generation manifest names the law-engine object that judged each receipt",
+   "browser_native_mechanism": "receipt names verifier object id + generation id",
+   "test": "[GAP] FC-3",
+   "evidence": "evidence/D26/factory/witnesses.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-3"
+   ],
+   "d12": "B-13"
+  },
+  {
+   "id": "FB-14",
+   "blocker": "workpiece cleanup / audit durability",
+   "class": "closed",
+   "layer": "storage",
+   "current_evidence": [
+    "FACT-WORKPIECES-AUDITED"
+   ],
+   "required_semantic_behaviour": "proven-safe retirement",
+   "browser_native_mechanism": "factory workpiece audit/retire (D13)",
+   "test": "evidence/D26/workpieces",
+   "evidence": "evidence/D26/workpieces/audit-after.json",
+   "status": "RUN",
+   "sequence": [],
+   "d12": "B-14",
+   "note": "closed by D13 on the host; the browser equivalent is FC-2"
+  },
+  {
+   "id": "FB-15",
+   "blocker": "home origin undecided (githack and *.github.io are shared origins)",
+   "class": "owner-decision",
+   "layer": "network",
+   "current_evidence": [
+    "FACT-SH-GITHACK-UNREACHABLE",
+    "FACT-D25-PUBLIC-HTTPS"
+   ],
+   "required_semantic_behaviour": "a dedicated HTTPS origin whose storage no other page shares",
+   "browser_native_mechanism": "dedicated host (recommended by P03 + P08)",
+   "test": "owner decision D-1",
+   "evidence": "none",
+   "status": "UNK",
+   "sequence": [],
+   "d12": "B-15"
+  },
+  {
+   "id": "FB-16",
+   "blocker": "generated apps served on the Factory origin share its trust domain",
+   "class": "owner-decision",
+   "layer": "network",
+   "current_evidence": [
+    "FACT-D25-ISOLATION-ORIGIN"
+   ],
+   "required_semantic_behaviour": "FactTest.git != generated WebApp (the Factory invariant)",
+   "browser_native_mechanism": "separate origins per app, or explicit acceptance",
+   "test": "owner decision D-2; FC-8 probes the chosen answer",
+   "evidence": "none",
+   "status": "ERR",
+   "sequence": [
+    "FC-8"
+   ],
+   "d12": "B-16"
+  },
+  {
+   "id": "FB-17",
+   "blocker": "packfile import/export and history walks are unimplemented",
+   "class": "unimplemented",
+   "layer": "storage",
+   "current_evidence": [
+    "FACT-SH-GIT-IDENTITY"
+   ],
+   "required_semantic_behaviour": "full history in the browser, or a recorded history horizon",
+   "browser_native_mechanism": "packfile parser (zlib + deltas) or import of the current tree with a horizon record",
+   "test": "[GAP] FC-2 (loose objects), FC-8 (packfiles); owner decision D-9",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-2",
+    "FC-8"
+   ],
+   "d12": "B-17"
+  },
+  {
+   "id": "FB-18",
+   "blocker": "GitHub smart-HTTP is not CORS-readable; credentials must stay outside generations",
+   "class": "architectural-limit",
+   "layer": "network",
+   "current_evidence": [
+    "FACT-D25-PUBLIC-HTTPS"
+   ],
+   "required_semantic_behaviour": "optional remote replication with credentials held by the broker",
+   "browser_native_mechanism": "GitHub REST (CORS-open) behind the broker; smart-HTTP only through a proxy (which joins the TCB)",
+   "test": "[GAP] FC-8",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-8"
+   ],
+   "d12": "B-18"
+  },
+  {
+   "id": "FB-19",
+   "blocker": "public HTTPS execution never observed from this environment",
+   "class": "environmental",
+   "layer": "network",
+   "current_evidence": [
+    "FACT-D25-PUBLIC-HTTPS"
+   ],
+   "required_semantic_behaviour": "a generated bundle and later the Factory run on a public secure-context origin",
+   "browser_native_mechanism": "tests/physical/PUBLIC-HTTPS-PROBE.md (deployable probe)",
+   "test": "external run",
+   "evidence": "evidence/D25/physical/public-https/public-https.json",
+   "status": "UNK",
+   "sequence": [],
+   "d12": "B-19"
+  },
+  {
+   "id": "FB-20",
+   "blocker": "browser update behaviour of seed and generations",
+   "class": "environmental",
+   "layer": "seed",
+   "current_evidence": [
+    "FACT-SH-INTERRUPTED-UPDATE"
+   ],
+   "required_semantic_behaviour": "a browser version change re-runs admission and qualification; a seed incompatibility is a P14-class failure",
+   "browser_native_mechanism": "STALE_IF browser.version on every generation claim; qualification probes re-run",
+   "test": "[UNK] not testable here",
+   "evidence": "none",
+   "status": "UNK",
+   "sequence": [],
+   "d12": "B-20"
+  },
+  {
+   "id": "FB-21",
+   "blocker": "the language version is not identified in source; before D27 the grammar text declared no version",
+   "class": "unimplemented",
+   "layer": "language",
+   "current_evidence": [
+    "FACT-D23-WASM-TRANSPORT-COMPLETE"
+   ],
+   "required_semantic_behaviour": "a source unit names the language version it is written in; the grammar and the compiler agree on the current version",
+   "browser_native_mechanism": "D27: LANGUAGE VERSION 1 bound by annotation + derived manifest check; a version island is a LANGUAGE 2 candidate",
+   "test": "tests/closure/language-manifest.mjs --grammar (RUN); L38 version identification (GAP)",
+   "evidence": "evidence/D27/language/manifest.json",
+   "status": "OBS",
+   "sequence": [
+    "FC-5"
+   ]
+  },
+  {
+   "id": "FB-22",
+   "blocker": "observed ASCII is indistinguishable from authored source: ANALYZE accepts it",
+   "class": "unimplemented",
+   "layer": "language",
+   "current_evidence": [
+    "FACT-D24-EVIDENCE-BOUND"
+   ],
+   "required_semantic_behaviour": "evidence never silently becomes source",
+   "browser_native_mechanism": "a source-role statement or an evidence dialect that is not a source unit (LANGUAGE 2); until then Factory law (L-EV-5)",
+   "test": "tests/closure/evidence-feedback-probe.mjs (records the gap); L39 (GAP)",
+   "evidence": "evidence/D27/language/feedback/feedback.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-5"
+   ]
+  },
+  {
+   "id": "FB-23",
+   "blocker": "the running kernel cannot be asked for its vocabulary or the legal forms at a position",
+   "class": "unimplemented",
+   "layer": "language",
+   "current_evidence": [
+    "FACT-D23-WASM-TRANSPORT-COMPLETE"
+   ],
+   "required_semantic_behaviour": "a local model discovers the vocabulary from the compiler it talks to",
+   "browser_native_mechanism": "QUERY_LANGUAGE_MANIFEST ABI operation (ABI 2) returning the manifest bytes; diagnostics with an expected-forms parameter",
+   "test": "[GAP] FC-5",
+   "evidence": "evidence/D27/language/manifest.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-5"
+   ]
+  },
+  {
+   "id": "FB-24",
+   "blocker": "the presentation-equivalence property (L30) is witnessed by fixed transforms only",
+   "class": "test-gap",
+   "layer": "language",
+   "current_evidence": [
+    "FACT-D24-PIPELINE-GENERIC"
+   ],
+   "required_semantic_behaviour": "for every presentation-preserving T: Semantic(Parse(S)) == Semantic(Parse(T(S)))",
+   "browser_native_mechanism": "a generator over the corpus (frames, whitespace, relocation, prose, order)",
+   "test": "[GAP] L40",
+   "evidence": "evidence/D27/language/corpus/corpus-record.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-5"
+   ]
+  },
+  {
+   "id": "FB-25",
+   "blocker": "the Factory law engine is a std crate (process, fs, git): not browser-executable as written",
+   "class": "unimplemented",
+   "layer": "factory-core",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED"
+   ],
+   "required_semantic_behaviour": "the law (delta check, authority, verify, integrate, reinspect) as deterministic functions over objects",
+   "browser_native_mechanism": "a no_std law crate compiled to wasm with a host membrane (the same architecture as the compiler kernel)",
+   "test": "[GAP] FC-3 verdict parity with the host judge on f00-f28",
+   "evidence": "evidence/D26/factory/witnesses.json",
+   "status": "GAP",
+   "sequence": [
+    "FC-3"
+   ]
+  },
+  {
+   "id": "FB-26",
+   "blocker": "no station had authority over the language-law documents (census at the D27 base: five documents, zero stations)",
+   "class": "closed",
+   "layer": "stations",
+   "current_evidence": [
+    "FACT-D22-FACTORY-NEGATIVE-WITNESSES"
+   ],
+   "required_semantic_behaviour": "language law changes only through a station bound to the compiler that implements the language",
+   "browser_native_mechanism": "S-LANGUAGE-LAW (registered by D27: insertion-only, version bound, version-change mode coupled to S-RUST and the evolution qualification)",
+   "test": "station authority census before/after; f02 (authority expansion refused) on the host",
+   "evidence": "evidence/D27/stations/census-after.json",
+   "status": "RUN",
+   "sequence": [],
+   "note": "closed by D27"
+  },
+  {
+   "id": "FB-27",
+   "blocker": "kernel capacity: 8 source units, 64 KiB, 512 islands, 256 objects/relations per workspace; no composition across workspaces",
+   "class": "unimplemented",
+   "layer": "language",
+   "current_evidence": [
+    "FACT-D24-PIPELINE-GENERIC"
+   ],
+   "required_semantic_behaviour": "a system the size of the Factory is described conversationally through subsystems compiled separately and imported by their public contracts",
+   "browser_native_mechanism": "separate compilation by public contract (KERNEL 2); the limits are compiler constants",
+   "test": "[GAP] L43",
+   "evidence": "evidence/D27/language/manifest.json",
+   "status": "UNK",
+   "sequence": [
+    "FC-5"
+   ]
+  },
+  {
+   "id": "FB-28",
+   "blocker": "no independent qualification runner for a candidate generation / compiler N+1 (D12 Q1-Q7)",
+   "class": "unimplemented",
+   "layer": "factory-core",
+   "current_evidence": [
+    "FACT-D22-JUDGE-QUALIFIED",
+    "FACT-D24-PIPELINE-GENERIC"
+   ],
+   "required_semantic_behaviour": "N qualifies N+1: manifest completeness, source provenance, compiled-object receipts, law self-tests, specimens re-verified by N, re-qualification set from the graph, non-mutation",
+   "browser_native_mechanism": "qualification runner in generation N feeding the confined candidate (corpus oracle, specimens, BundleVerifier of N, witness scenarios)",
+   "test": "[GAP] FC-6",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-6"
+   ]
+  },
+  {
+   "id": "FB-29",
+   "blocker": "no seed, broker, generation manifest or pointer schema exists",
+   "class": "unimplemented",
+   "layer": "seed",
+   "current_evidence": [
+    "FACT-SH-IDB-CAS",
+    "FACT-SH-OPAQUE-CONFINEMENT",
+    "FACT-SH-BROKER-FED-GENERATION",
+    "FACT-SH-GENERATED-OFFLINE"
+   ],
+   "required_semantic_behaviour": "boot, promote on startup_ok, rollback on failure, recovery view, offline throughout",
+   "browser_native_mechanism": "tests/closure/registers/seed.json (the minimal trusted seed)",
+   "test": "[GAP] FC-1 failure matrix",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": [
+    "FC-1"
+   ]
+  },
+  {
+   "id": "FB-30",
+   "blocker": "the generated runtime does not verify its own files at load (I-33)",
+   "class": "owner-decision",
+   "layer": "compiler",
+   "current_evidence": [
+    "FACT-D24-RUNTIME-SELF-INTEGRITY"
+   ],
+   "required_semantic_behaviour": "tamper detection external, against bundle.json",
+   "browser_native_mechanism": "in the installed Factory the SEED hash-checks every object it serves (seed rule 2), so generation integrity does not depend on this owner decision",
+   "test": "owner I-33",
+   "evidence": "none",
+   "status": "GAP",
+   "sequence": []
+  }
+ ]
+}

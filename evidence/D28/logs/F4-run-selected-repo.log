@@ -1,0 +1,21 @@
+$ sh -c node tests/reprove/run-selected.mjs --selection evidence/D28/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D28
+(cwd .)
+PASS manifest: H=$(git rev-parse HEAD) && node tests/manifest/build-manifest.mjs --components tests/manifest/components.json  (1 s)
+PASS manifest: M=design/execution-manifest/manifest.json && D=$(node -e 'const m=JSON.parse(require("fs").readFileSync(proces (4 s)
+PASS manifest FACT-D21-ISSUES-CLASSIFIED
+PASS manifest FACT-D21-LIVE-SURFACES-ENUMERATED
+PASS manifest FACT-D21R-MANIFEST-REBUILD-STABLE
+PASS process: O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r  (4 s)
+PASS process: O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r  (7 s)
+PASS process: O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r  (10 s)
+PASS process: O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r  (13 s)
+PASS process FACT-D19-ENVIRONMENT-IDENTITY
+PASS process FACT-D19-MINIMUM-SET
+PASS process FACT-D20-ENVIRONMENT-IDENTITY
+PASS process FACT-D20-MINIMUM-SET
+PASS process FACT-D26-ENVIRONMENT-IDENTITY
+PASS process FACT-D26-MINIMUM-SET
+PASS process FACT-D27-ENVIRONMENT-IDENTITY
+PASS process FACT-D27-MINIMUM-SET
+
+[exit 0] expected 0

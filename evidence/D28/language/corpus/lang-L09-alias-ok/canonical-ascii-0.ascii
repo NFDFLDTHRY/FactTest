@@ -1,0 +1,14 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system tyalias}
+| TYPES
+| @{type A}
+| @{alias B = A}
+| COMPONENTS
+| @{component p}
+| @{port p.o out: A public}
+| @{component q}
+| @{port q.i in: B public}
+| RELATIONS
+| @{data d p.o -> q.i mode=copy}
++------------------------------------------------------------------------+

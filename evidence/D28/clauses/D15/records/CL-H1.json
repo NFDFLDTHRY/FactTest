@@ -1,0 +1,30 @@
+{
+ "id": "CL-H1",
+ "trace": "H",
+ "authority": "AUTH-HTML-SECURE-CONTEXT",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/whatwg/html",
+  "branch": "main",
+  "path": "source",
+  "commit": "1a249c2a40bd341f7c2c0c9954a9a264b1983b93",
+  "sha256": "2bddefe3791e9003d58e9d438c2dfa98b4a0c1967fc5a1e5327d73a6e3ac9a80",
+  "bytes": 7915793
+ },
+ "locator": {
+  "text": "is a <dfn export data-lt=\"secure context|Is",
+  "line_start": 118175,
+  "line_end": 118220,
+  "derivation": "anchor text",
+  "enclosing_section": "#realms-settings-objects-global-objects (line 117462)"
+ },
+ "window": 46,
+ "consequence": "secure context is decided by the environment's TOP-LEVEL CREATION URL: an opaque sandboxed frame under a loopback top-level is still a secure context (D12 P08/P16 observed exactly this)",
+ "excerpt": "  <p>An <span>environment</span> <var>environment</var> is a <dfn export data-lt=\"secure context|Is\n  an environment settings object contextually secure?\">secure context</dfn> if the following\n  algorithm returns true:</p>\n\n  <ol>\n   <li>\n    <p>If <var>environment</var> is an <span>environment settings object</span>:</p>\n\n    <ol>\n     <li><p>Let <var>global</var> be <var>environment</var>'s <span\n     data-x=\"concept-settings-object-global\">global object</span>.</p></li>\n\n     <li>\n      <p>If <var>global</var> is a <code>WorkerGlobalScope</code>:\n\n      <ol>\n       <li>\n        <p>If <var>global</var>'s <span>owner set</span>[0]'s <span>relevant settings object</span>\n        is a <span>secure context</span>, then return true.</p>\n\n        <p class=\"note\">We only need to check the 0th item since they will necessarily all be\n        consistent.</p>\n       </li>\n\n       <li><p>Return false.</p></li>\n      </ol>\n     </li>\n\n     <li>\n      <p>If <var>global</var> is a <code>WorkletGlobalScope</code>, then return true.</p>\n\n      <p class=\"note\">Worklets can only be created in secure contexts.</p>\n     </li>\n    </ol>\n   </li>\n\n   <li><p>If the result of <span>Is url potentially trustworthy?</span> given\n   <var>environment</var>'s <span>top-level creation URL</span> is \"<code data-x=\"\">Potentially\n   Trustworthy</code>\", then return true.</p></li>\n\n   <li><p>Return false.</p></li>\n  </ol>\n  </div>\n\n  <div algorithm>\n  <p>An <span>environment</span> is a <dfn export>non-secure context</dfn> if it is not a",
+ "excerpt_sha256": "5dfb30f621fe18f691b17d8684f149252878aec284842e885aefb548820feaf9",
+ "must_contain": {
+  "top-level creation URL": true,
+  "Potentially": true
+ },
+ "status": "VERIFIED"
+}

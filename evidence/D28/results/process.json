@@ -1,0 +1,321 @@
+{
+ "tool": "tests/reprove/run-selected.mjs",
+ "group": "process",
+ "kind": "repo",
+ "started": "2026-09-25T00:57:12.191Z",
+ "commands": [
+  {
+   "command": "O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 780aee1b50c4a799a62b760823a3d1460d386d0f && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json --out $T/g18r.json >/dev/null && node tests/reprove/select.mjs --graph $T/g18r.json --identity evidence/D19/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --out $O/d19-replay.json",
+   "exit": 0,
+   "seconds": 4
+  },
+  {
+   "command": "O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach ca540647db00c72fa0570f7f4f59a20c299172b7 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json --out $T/g20s.json >/dev/null && node tests/reprove/select.mjs --graph $T/g20s.json --identity evidence/D20/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D20 --out $O/d20-replay.json",
+   "exit": 0,
+   "seconds": 7
+  },
+  {
+   "command": "O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach b8b09e1b1f1438f1a8cf08fb6cbf9de922737e01 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json --out $T/g25.json >/dev/null && node tests/reprove/select.mjs --graph $T/g25.json --identity evidence/D26/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D26 --out $O/d26-replay.json",
+   "exit": 0,
+   "seconds": 10
+  },
+  {
+   "command": "O=$(pwd)/evidence/D28/process && mkdir -p $O && T=$(mktemp -d) && git clone -q --shared . $T/r && git -C $T/r checkout -q --detach 2bbda62f3fa49043ada7a3a2070d62041bfde4a6 && cp tests/reprove/select.mjs $T/r/tests/reprove/select.mjs && cd $T/r && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json --out $T/g26.json >/dev/null && node tests/reprove/select.mjs --graph $T/g26.json --identity evidence/D27/identity --dimensions tests/reprove/dimensions.json --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --pass D27 --out $O/d27-replay.json",
+   "exit": 0,
+   "seconds": 13
+  }
+ ],
+ "facts": {
+  "FACT-D19-ENVIRONMENT-IDENTITY": {
+   "probe": "PROBE-ENV-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d19-replay.json",
+     "sha256": "c4e6f3a8db4580484668ffee989f8760c19827b89a037c2320c29e5ef0543411",
+     "checks": [
+      {
+       "path": "evaluated",
+       "eq": 90,
+       "observed": 90,
+       "ok": true
+      },
+      {
+       "path": "environment_pairs",
+       "eq": {
+        "SAME": 114,
+        "DRIFT": 7,
+        "UNK": 9
+       },
+       "observed": {
+        "SAME": 114,
+        "DRIFT": 7,
+        "UNK": 9
+       },
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D19-MINIMUM-SET": {
+   "probe": "PROBE-REPROOF-SELECTION",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d19-replay.json",
+     "sha256": "c4e6f3a8db4580484668ffee989f8760c19827b89a037c2320c29e5ef0543411",
+     "checks": [
+      {
+       "path": "selected",
+       "eq": 29,
+       "observed": 29,
+       "ok": true
+      },
+      {
+       "path": "selected_by",
+       "eq": {
+        "environment": 6,
+        "implementation": 27,
+        "obligation": 4
+       },
+       "observed": {
+        "environment": 6,
+        "implementation": 27,
+        "obligation": 4
+       },
+       "ok": true
+      },
+      {
+       "path": "gaps",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D20-ENVIRONMENT-IDENTITY": {
+   "probe": "PROBE-ENV-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d20-replay.json",
+     "sha256": "9c11cd167c814a830c6ebe1a95769c8c8f462a1b518d245aa9cdd8d74a5a0b54",
+     "checks": [
+      {
+       "path": "evaluated",
+       "eq": 152,
+       "observed": 152,
+       "ok": true
+      },
+      {
+       "path": "environment_pairs",
+       "eq": {
+        "SAME": 123,
+        "DRIFT": 8,
+        "UNK": 61
+       },
+       "observed": {
+        "SAME": 123,
+        "DRIFT": 8,
+        "UNK": 61
+       },
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D20-MINIMUM-SET": {
+   "probe": "PROBE-REPROOF-SELECTION",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d20-replay.json",
+     "sha256": "9c11cd167c814a830c6ebe1a95769c8c8f462a1b518d245aa9cdd8d74a5a0b54",
+     "checks": [
+      {
+       "path": "selected",
+       "eq": 71,
+       "observed": 71,
+       "ok": true
+      },
+      {
+       "path": "selected_by",
+       "eq": {
+        "environment": 8,
+        "implementation": 4,
+        "obligation": 62
+       },
+       "observed": {
+        "environment": 8,
+        "implementation": 4,
+        "obligation": 62
+       },
+       "ok": true
+      },
+      {
+       "path": "gaps",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D26-ENVIRONMENT-IDENTITY": {
+   "probe": "PROBE-ENV-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d26-replay.json",
+     "sha256": "491e153c998d4009fdee59481105909e1b847f74b6e060fcc91dbfa96a5d9a23",
+     "checks": [
+      {
+       "path": "evaluated",
+       "eq": 169,
+       "observed": 169,
+       "ok": true
+      },
+      {
+       "path": "environment_pairs",
+       "eq": {
+        "SAME": 147,
+        "DRIFT": 70,
+        "UNK": 14
+       },
+       "observed": {
+        "SAME": 147,
+        "DRIFT": 70,
+        "UNK": 14
+       },
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D26-MINIMUM-SET": {
+   "probe": "PROBE-REPROOF-SELECTION",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d26-replay.json",
+     "sha256": "491e153c998d4009fdee59481105909e1b847f74b6e060fcc91dbfa96a5d9a23",
+     "checks": [
+      {
+       "path": "selected",
+       "eq": 101,
+       "observed": 101,
+       "ok": true
+      },
+      {
+       "path": "selected_by",
+       "eq": {
+        "environment": 70,
+        "implementation": 39,
+        "obligation": 1
+       },
+       "observed": {
+        "environment": 70,
+        "implementation": 39,
+        "obligation": 1
+       },
+       "ok": true
+      },
+      {
+       "path": "gaps",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D27-ENVIRONMENT-IDENTITY": {
+   "probe": "PROBE-ENV-IDENTITY",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d27-replay.json",
+     "sha256": "738668227c6a5881336ba42c76c49617bfe17ae95008939ffb39943b833a6e2f",
+     "checks": [
+      {
+       "path": "evaluated",
+       "eq": 175,
+       "observed": 175,
+       "ok": true
+      },
+      {
+       "path": "environment_pairs",
+       "eq": {
+        "SAME": 162,
+        "DRIFT": 67,
+        "UNK": 14
+       },
+       "observed": {
+        "SAME": 162,
+        "DRIFT": 67,
+        "UNK": 14
+       },
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "FACT-D27-MINIMUM-SET": {
+   "probe": "PROBE-REPROOF-SELECTION",
+   "verdict": "PASS",
+   "records": [
+    {
+     "file": "process/d27-replay.json",
+     "sha256": "738668227c6a5881336ba42c76c49617bfe17ae95008939ffb39943b833a6e2f",
+     "checks": [
+      {
+       "path": "selected",
+       "eq": 75,
+       "observed": 75,
+       "ok": true
+      },
+      {
+       "path": "selected_by",
+       "eq": {
+        "environment": 67,
+        "implementation": 14,
+        "obligation": 0
+       },
+       "observed": {
+        "environment": 67,
+        "implementation": 14,
+        "obligation": 0
+       },
+       "ok": true
+      },
+      {
+       "path": "gaps",
+       "eq": [],
+       "observed": [],
+       "ok": true
+      }
+     ],
+     "ok": true
+    }
+   ]
+  }
+ },
+ "obligations": [],
+ "finished": "2026-09-25T00:57:45.848Z",
+ "status": "PASS"
+}

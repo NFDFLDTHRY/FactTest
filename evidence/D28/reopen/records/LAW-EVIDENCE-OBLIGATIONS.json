@@ -1,0 +1,65 @@
+{
+ "authority": "LAW-EVIDENCE-OBLIGATIONS",
+ "authority_class": "PROJECT_LAW",
+ "cited": {
+  "url": "EVIDENCE-OBLIGATIONS.md",
+  "fragment": "## E-025 - Byte Relay commissioning strategy",
+  "fragment_status_recorded": "PRESENT_IN_SOURCE",
+  "maturity_recorded": "project law at commit 4a151c9",
+  "observed_recorded": "2026-09-24",
+  "reopen_recorded": "OPENED"
+ },
+ "pin": {
+  "repo": "https://github.com/NFDFLDTHRY/FactTest",
+  "branch": "claude/facttest-materialization-27amc7",
+  "commit": "4a151c9ae58f9968c70b9b85cef82a02fba12b85",
+  "path": "EVIDENCE-OBLIGATIONS.md",
+  "sha256": "500e3f716eba1a1b51b9296baf3dd7295b867eace660f2b19f6d322feef91354",
+  "observed": "2026-09-24",
+  "locator": "## E-025 - Byte Relay commissioning strategy"
+ },
+ "published": {
+  "status": "REPOSITORY_LAW (read at canonical HEAD)"
+ },
+ "source_tip": {
+  "status": "OK",
+  "ref": "canonical HEAD",
+  "commit": "0f57ecfd82295ee207f51432af764258fd34b052"
+ },
+ "pin_check": "PIN_MATCH",
+ "pin_sha256_observed": "500e3f716eba1a1b51b9296baf3dd7295b867eace660f2b19f6d322feef91354",
+ "tip_relation": "TIP MOVED, FILE CHANGED",
+ "tip_sha256": "3c75bf5f7020db9adb89c47d6f9081264c140c8ff67adfa042be339566e59cd1",
+ "fragment": {
+  "cited": "## E-025 - Byte Relay commissioning strategy",
+  "at_pin": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 346,
+   "kind": "heading line"
+  },
+  "at_tip": {
+   "status": "PRESENT_EXPLICIT",
+   "line": 359,
+   "kind": "heading line"
+  }
+ },
+ "clause": {
+  "method": "fragment line + 24",
+  "pin_lines": [
+   346,
+   368
+  ],
+  "window_sha256": "e1702c890cebca607daf2e1a22013af43dac9dc20c938d1e8f73e1bac2257240",
+  "window_excerpt": "## E-025 - Byte Relay commissioning strategy\n\nProject authority:\n[PASS6.md](PASS6.md)\n\nExternal authority:\n- Wasm address types: https://webassembly.github.io/spec/core/text/types.html#text-addrtype\n- controlled WebGPU device loss: https://gpuweb.github.io/gpuweb/#dom-gpudevice-destroy\n\nRequired future physical evidence after materialization:\n1. commissioning ASCII parses/canonical-renders without semantic drift;\n2. Wasm64 representation path is built, validated and executed;\n3. WebGPU representation path is admitted and executes when available;\n4. exact input bytes emerge unchanged through selected path;\n5. GPUDevice.destroy() produces actual loss evidence;\n6. new epoch invalidates GPU activation;\n7. selector activates already-verified Wasm64 variant without runtime codegen;\n8. exact bytes again emerge unchanged;\n9. ObservationDelta and observed ASCII record transition;\n10. authored ASCII remains unchanged.\n\nIf the physical browser cannot admit either backend, record [GAP]. Model/synthetic evidence cannot substitute for physical evidence.\n",
+  "tip_lines": [
+   359,
+   381
+  ],
+  "status": "MOVED (clause identical, new lines)"
+ },
+ "maturity": {
+  "declared_at_pin": null,
+  "declared_at_tip": null,
+  "drift": "NONE"
+ }
+}

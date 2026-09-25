@@ -1,0 +1,29 @@
+{
+ "id": "CL-HID1",
+ "trace": "DEV",
+ "authority": "AUTH-WEBHID",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WICG/webhid",
+  "branch": "main",
+  "path": "index.html",
+  "commit": "b5e588e6a0dd88f933863cace4892ab02cfded06",
+  "sha256": "21ab95f9b4fe9a963b58e0806a7ded26d165d06e969add1cc01ef73499c8f764",
+  "bytes": 115963
+ },
+ "locator": {
+  "text": "[SecureContext] partial interface Navigator {",
+  "line_start": 253,
+  "line_end": 254,
+  "derivation": "anchor text",
+  "enclosing_section": null
+ },
+ "window": 2,
+ "consequence": "navigator.hid exists only in secure contexts",
+ "excerpt": "        [SecureContext] partial interface Navigator {\n            [SameObject] readonly attribute HID hid;",
+ "excerpt_sha256": "a3cfde61356c2c497159b88205938146738bcba626d98787f9e42b143abc806c",
+ "must_contain": {
+  "readonly attribute HID hid;": true
+ },
+ "status": "VERIFIED"
+}

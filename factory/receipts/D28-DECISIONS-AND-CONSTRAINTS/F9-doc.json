@@ -1,0 +1,148 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D28-DECISIONS-AND-CONSTRAINTS-F9-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F9-doc",
+  "workpiece_id": "W35",
+  "delta_id": "D28-DECISIONS-AND-CONSTRAINTS",
+  "canonical_base": "0f57ecfd82295ee207f51432af764258fd34b052",
+  "input_artifacts": [
+    "Factory evidence of F1-F8"
+  ],
+  "open_tree": "7cc2a22266e3a30322c8a0e7959ce636f8ac4d2c",
+  "close_tree": "e7c2174d1d34ea7434acf123906acabb658be18f",
+  "changed_paths": [
+    "design/materialization/D28-OBSERVED-DECISIONS-AND-CONSTRAINTS.md",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F9-observed.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D28-OBSERVED-DECISIONS-AND-CONSTRAINTS.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D28-DECISIONS-AND-CONSTRAINTS"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F9-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F9-observed.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c O=design/materialization/D28-OBSERVED-DECISIONS-AND-CONSTRAINTS.md; for k in P1 P2 P3 P4 P5 P6 FACT-D28-DECISIONS-MAPPED FACT-D28-CONSTRAINTS-MAPPED FACT-D28-EXTERNAL-INPUTS-PENDING 'ASSUMED-DEFAULT' 'pass 2'; do grep -q -- \"$k\" $O || { echo missing $k in observed; exit 1; }; done; grep -q '^GATE: PASS' $O",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F9-observed.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D28-OBSERVED-DECISIONS-AND-CONSTRAINTS.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F9-observed.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-25T00:59:08Z",
+  "status": "PASS"
+}

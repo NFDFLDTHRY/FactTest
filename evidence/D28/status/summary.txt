@@ -1,0 +1,33 @@
+STATUS INVENTORY PASS: 30102 occurrences in 7184 files; unclassified 0
+
+by class: {"B":27961,"C":2,"N":935,"R":1204}
+by marker: {"FIXME":56,"PENDING":1549,"TODO":268,"[ERR]":3385,"[GAP]":12853,"[UNK]":4287,"overclaim":137,"stale":7512,"unfinished":55}
+
+zones (first matching rule wins):
+  B  Z-EVIDENCE                         26801  historical evidence; immutable (D0-D13 packages)
+  B  Z-RECEIPTS                           244  FactoryReceipts; immutable records
+  N  Z-D13-CONTROL                          6  the running delta's checks name the markers they look for
+  B  Z-DELTA-CONTROL                      101  control records of integrated deltas (tests text incl. the D3-D8 overstatement, FACT-D9-HISTORY-OVERSTATED)
+  B  Z-PROMPTS                             55  owner prompts tracked verbatim (their markers name search vocabulary or past boundaries)
+  R  Z-D13-RECORDS                         38  the D13 classification itself (each row carries its class)
+  B  Z-CLOSED-RECORDS                     692  closed delta records (M0, M9, COMMISSIONING-RECORD, D9-D12, LEDGER history); live items re-listed in docs/HANDOFF.md section 6
+  R  Z-EXECUTION-MANIFEST                 148  the generated CURRENT EXECUTION MANIFEST (D21): each marker quotes a classified issue row (tests/manifest/issues.json) or a graph node
+  R  Z-FOUNDATION-CLOSURE                 196  the live foundation-closure target and its registers (D27): every [GAP]/[ERR]/[UNK] is a classified row of tests/closure/registers/*.json (blockers, acceptance steps, hardening questions, correspondence) or a current graph fact, checked by tests/closure/structural-check.mjs; "pending"/"stale" name the seed pointer state and the STALE_IF traversal
+  R  Z-ENVMAP-REGISTER                    698  live graph + derived views: each marker belongs to a node (AUTHORITY DENIED/drift -> D, FACT GAP/ERR -> C, identity incompleteness -> B)
+  R  Z-HANDOFF-REGISTER                    62  live entry and open-boundary register (explicit class per row)
+  B  Z-HISTORICAL-ROOT                     68  pass files, the Fable 5.1 bootloader and the PASS 5 layout plan: historical (marked by D13 banners where they looked live)
+  R  Z-LAW-ROWS                            62  law ledgers: each [ERR]/[GAP]/[UNK] is a boundary row, classified C or D in docs/HANDOFF.md section 6
+  N  Z-LAW-VOCABULARY                      19  rule words in law text ('stale authority', 'pending', 'entire project' in a principle)
+  C  Z-KERNEL-DIAGNOSTIC                    2  the kernel reports a missing capability at run time: a real capability gap by design
+  N  Z-CODE-SEMANTICS                       4  code vocabulary (service-worker cache 'stale')
+  N  Z-TOOLS                              218  harness vocabulary: evidence PENDING binding, stale queries, heuristic labels
+  N  Z-FIXTURE-DATA                       688  mutant/fixture names describe the defect they attack (e.g. M3 stale forge, M1 'full suite')
+  R  Z-DOCS-OTHER                           0  live documentation register
+
+defect patterns (class A, must stay within bound):
+  PASS DP-01-WILDCARD-SURFACE hits 0 bound [0, 0] a wildcard-looking authority entry in the station registry (dead under the literal rule)
+  PASS DP-02-LEDGER-FABLE-LIVE hits 0 bound [0, 0] the ledger presenting itself as the live Fable 5.1 session record
+  PASS DP-03-README-FABLE-ENTRY hits 0 bound [0, 0] README directing a new reader to the Fable 5.1 bootloader
+  PASS DP-04-LEDGER-AFTER-PLACEHOLDER hits 1 bound [0, 1] an unrecorded AFTER; only the newest entry may carry it (a commit cannot contain its own id) @ design/materialization/LEDGER.md:1253
+  PASS DP-05-BOOTLOADER-BANNER hits 1 bound [1, inf] the Fable 5.1 bootloader carries its HISTORICAL banner @ FABLE-ASCII-SYSTEM-PROMPT.md:1
+  PASS DP-06-FRAGMENT-ANNOTATED hits 5 bound [5, inf] every law citation of js-api #internal-storage carries the fragment-drift annotation @ CONFLICT-LEDGER.md:37, CONSTRAINT-LEDGER.md:63, EVIDENCE-OBLIGATIONS.md:323, IMPLEMENTATION-CONTRACTS.md:89, REFERENCE-AUTHORITY.md:62

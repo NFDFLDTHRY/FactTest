@@ -1,0 +1,26 @@
+{
+ "tool": "tests/implementation/gate.mjs",
+ "status": "PASS",
+ "checks": [
+  {
+   "check": "behaviors_in_graph",
+   "status": "PASS",
+   "detail": "19 behaviours"
+  },
+  {
+   "check": "census_absences_explained",
+   "status": "PASS",
+   "detail": "6 ABSENT families, each exposure fact explained by an implementation behaviour"
+  },
+  {
+   "check": "labels_resolved",
+   "status": "PASS",
+   "detail": "12 findings, 6 MISLABEL recorded as [ERR] facts"
+  },
+  {
+   "check": "kernel_difference_scoped",
+   "status": "PASS",
+   "detail": "differs only in [\"custom:name\"]"
+  }
+ ]
+}

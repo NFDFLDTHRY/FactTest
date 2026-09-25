@@ -1,0 +1,5 @@
+$ sh -c grep -q '^gating epoch' design/environment-map/SCHEMA.md && grep -q '^D28 ' design/environment-map/ENVIRONMENT-MAP.md && grep -q 'last delta         D28-DECISIONS-AND-CONSTRAINTS' docs/HANDOFF.md && grep -q '^owner actions      tests/closure/registers/decisions.json' docs/HANDOFF.md && grep -q 'pass 2: D29-LAW-ENGINE-DECOMPOSITION' docs/HANDOFF.md && grep -q 'decisions.json' README.md && echo 'record texts delivered'
+(cwd .)
+record texts delivered
+
+[exit 0] expected 0

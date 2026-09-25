@@ -1,0 +1,219 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D28-DECISIONS-AND-CONSTRAINTS-F1-fixture",
+  "station_id": "S-FIXTURE",
+  "station_version": "2",
+  "fixture_id": "F1-fixture",
+  "workpiece_id": "W35",
+  "delta_id": "D28-DECISIONS-AND-CONSTRAINTS",
+  "canonical_base": "0f57ecfd82295ee207f51432af764258fd34b052",
+  "input_artifacts": [
+    "the intended record section 1 (registers, gating fields, checks)",
+    "the D27 registers",
+    "the D27 runbook and issue inventory"
+  ],
+  "open_tree": "562f3727112a8f9585289905dbcb1d19ba5a0b74",
+  "close_tree": "788a6319d39eb26c68c40a59c8d698dd46584bf7",
+  "changed_paths": [
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-other-tests-untouched.log",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-structural-check.log",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-syntax-registers.log",
+    "tests/closure/registers/acceptance-test.json",
+    "tests/closure/registers/constraints.json",
+    "tests/closure/registers/decisions.json",
+    "tests/closure/registers/sequence.json",
+    "tests/closure/structural-check.mjs",
+    "tests/envmap/facts/D28.json",
+    "tests/manifest/issues.json",
+    "tests/reprove/runbook.json"
+  ],
+  "output_artifacts": [
+    "tests/closure/registers/decisions.json",
+    "tests/closure/registers/constraints.json",
+    "tests/closure/structural-check.mjs",
+    "tests/envmap/facts/D28.json"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-FIXTURE v2 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D28-DECISIONS-AND-CONSTRAINTS"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "FIXTURE_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-syntax-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-syntax-registers.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-structural-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-structural-check.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-other-tests-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c node --check tests/closure/structural-check.mjs && for j in tests/closure/registers/*.json tests/envmap/facts/D28.json tests/reprove/runbook.json tests/manifest/issues.json; do node -e 'JSON.parse(require(\"fs\").readFileSync(process.argv[1]))' $j || exit 1; done && ! grep -nE \"'(FACT|EV|ENV|IMPL|PROBE)-[A-Z0-9]\" tests/closure/*.mjs && node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const D=J(\"tests/closure/registers/decisions.json\");const K=J(\"tests/closure/registers/constraints.json\");const S=J(\"tests/closure/registers/sequence.json\");const A=J(\"tests/closure/registers/acceptance-test.json\");if(D.rows.length!==14||K.rows.length!==11||!S.steps.every(s=>Array.isArray(s.decisions)&&Array.isArray(s.constraints)&&s.assumption)||!A.steps.every(s=>Array.isArray(s.external_constraints)))process.exit(1);const I=J(\"tests/manifest/issues.json\").issues;const by=Object.fromEntries(I.map(i=>[i.id,i]));if(I.length!==41||by[\"I-38\"].covers.length!==0)process.exit(1);const Rb=J(\"tests/reprove/runbook.json\");if(Object.keys(Rb.facts).length!==129)process.exit(1);const F=J(\"tests/envmap/facts/D28.json\");if(F.facts.length!==3)process.exit(1);console.log(\"decisions\",D.rows.length,\"constraints\",K.rows.length,\"runbook facts\",Object.keys(Rb.facts).length,\"facts\",F.facts.length)' && echo 'syntax, JSON, no fact/evidence/node name in the tools; registers as intended'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-syntax-registers.log"
+    },
+    {
+      "check": "command:sh -c T=$(mktemp -d) && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D28.json --root . --render $T/registers.md --out $T/structural-check.json && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(process.argv[1]));console.log(JSON.stringify(s.counts));if(s.status!==\"PASS\"||s.counts.decisions!==14||s.counts.constraints!==11||s.checks.length!==11)process.exit(1)' $T/structural-check.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-structural-check.log"
+    },
+    {
+      "check": "command:git diff --exit-code 0f57ecfd82295ee207f51432af764258fd34b052 -- tests fixtures :!tests/closure/registers/decisions.json :!tests/closure/registers/constraints.json :!tests/closure/registers/sequence.json :!tests/closure/registers/acceptance-test.json :!tests/closure/structural-check.mjs :!tests/envmap/facts/D28.json :!tests/reprove/runbook.json :!tests/manifest/issues.json",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-other-tests-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/closure/registers/decisions.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/closure/registers/constraints.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/closure/structural-check.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:tests/envmap/facts/D28.json",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-syntax-registers.log",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-structural-check.log",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F1-other-tests-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-25T00:53:18Z",
+  "status": "PASS"
+}

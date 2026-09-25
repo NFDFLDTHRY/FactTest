@@ -1,0 +1,74 @@
+{
+  "fixture_id": "F6-evidence",
+  "station_id": "S-EVIDENCE",
+  "selected_inputs": [
+    "the manifest of F5",
+    "tests/manifest/issues.json",
+    "the registers and evidence/D28",
+    "the D27 graph"
+  ],
+  "narrowed_may_change": [
+    "evidence/D28/manifest.json",
+    "evidence/D28/issues.json",
+    "evidence/D28/gate.json",
+    "evidence/D28/closure/",
+    "evidence/D28/envmap-preview/",
+    "evidence/D28/status-preview/",
+    "evidence/D28/handoff-check-preview.json",
+    "evidence/D28/audit/",
+    "evidence/D28/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "cp design/execution-manifest/manifest.json evidence/D28/manifest.json && cp tests/manifest/issues.json evidence/D28/issues.json && node tests/manifest/gate.mjs --manifest evidence/D28/manifest.json --issues tests/manifest/issues.json --out evidence/D28/gate.json"
+        ],
+        "log": "evidence/D28/logs/F6-gate.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && mkdir -p evidence/D28/closure/registers && cp tests/closure/registers/*.json evidence/D28/closure/registers/ && node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D28.json --root . --evidence-required --render $T/registers.md --out evidence/D28/closure/gating.json && cmp $T/registers.md design/foundation-closure/CLOSURE-REGISTERS.md && node -e 'const s=JSON.parse(require(\"fs\").readFileSync(\"evidence/D28/closure/gating.json\"));console.log(\"status\",s.status,\"checks\",s.checks.length,\"external inputs\",s.external_inputs.length,\"RUN without host\",s.stop_condition_answer.filter(x=>x.status===\"RUN\").length);if(s.status!==\"PASS\"||!s.evidence_required||s.checks.length!==11||s.external_inputs.length!==10||s.stop_condition_answer.some(x=>x.status===\"RUN\"))process.exit(1)'"
+        ],
+        "log": "evidence/D28/logs/F6-structural-check.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "T=$(mktemp -d) && node tests/reprove/build-reprove.mjs --graph design/environment-map/graph.json --selection evidence/D28/selection.json --evidence evidence/D28 --runbook tests/reprove/runbook.json --obligations tests/reprove/obligations.json --dimensions tests/reprove/dimensions.json --epoch D28 --delta D28-DECISIONS-AND-CONSTRAINTS --commit '0f57ecfd82295ee207f51432af764258fd34b052 (canonical base; integration commit in LEDGER AFTER)' --out $T/reprove.json && node tests/envmap/envmap.mjs merge --base-rev fdb9c32 --epochs design/environment-map/epochs/D12.json,design/environment-map/epochs/D13.json,design/environment-map/epochs/D14.json,design/environment-map/epochs/D15.json,design/environment-map/epochs/D16.json,design/environment-map/epochs/D17.json,design/environment-map/epochs/D18.json,design/environment-map/epochs/D18R.json,design/environment-map/epochs/D19.json,design/environment-map/epochs/D14-RESCAN.json=D14-RESCAN,design/environment-map/epochs/D20-SYNC.json,design/environment-map/epochs/D20.json,design/environment-map/epochs/D21.json,design/environment-map/epochs/D21R.json,design/environment-map/epochs/D22.json,design/environment-map/epochs/D23.json,design/environment-map/epochs/D24.json,design/environment-map/epochs/D25.json,design/environment-map/epochs/D26.json,design/environment-map/epochs/D27.json,$T/reprove.json --out $T/g.json >/dev/null && node tests/envmap/envmap.mjs query $T/g.json --all --out evidence/D28/envmap-preview/queries >/dev/null && node tests/hygiene/status-scan.mjs --rules tests/hygiene/status-classification.json --out evidence/D28/status-preview >/dev/null && sh tests/hygiene/handoff-check.sh evidence/D28/handoff-check-preview.json >/dev/null && mkdir -p evidence/D28/audit && node tests/audit/consistency-audit.mjs --current-delta D28-DECISIONS-AND-CONSTRAINTS --manifest evidence/D28/manifest.json --gate evidence/D28/gate.json --graph $T/g.json --issues tests/manifest/issues.json --stations factory/registry/stations --deltas factory/deltas --receipts factory/receipts --ledger design/materialization/LEDGER.md --q22 evidence/D28/envmap-preview/queries/Q22.json --handoff docs/HANDOFF.md --out evidence/D28/audit/consistency.json"
+        ],
+        "log": "evidence/D28/logs/F6-preview-audit.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const a=JSON.parse(require(\"fs\").readFileSync(\"evidence/D28/audit/consistency.json\"));console.log(\"audit\",a.status,a.checks.length);if(a.status!==\"PASS\")process.exit(1)'"
+        ],
+        "log": "evidence/D28/logs/F6-preview-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D28/gate.json",
+    "evidence/D28/closure/gating.json",
+    "evidence/D28/closure/registers/decisions.json",
+    "evidence/D28/audit/consistency.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D28-DECISIONS-AND-CONSTRAINTS"
+}

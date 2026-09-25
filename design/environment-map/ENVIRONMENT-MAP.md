@@ -301,4 +301,8 @@ D27    D27-FOUNDATION-CLOSURE-ALIGNMENT  the foundation-closure / repo-alignment
                                    observed-ASCII boundary [GAP] and the RUST_BUILD boundary [UNK] recorded;
                                    epochs/D27.json = re-proof fragment + facts fragment (four [RUN], one [OBS], two
                                    [GAP], one [UNK]).
+D28    D28-DECISIONS-AND-CONSTRAINTS   pass 1 of the six-part analysis series: 14 decision rows (8 assumed defaults, 2
+                                   decided, 4 not gating) and 11 constraint rows (3 provable here, 8 external) with
+                                   current-fact evidence; every sequence step gated; the STALE_IF selection re-proved;
+                                   epochs/D28.json = re-proof fragment + facts fragment (two [OBS], one [UNK]).
 ```

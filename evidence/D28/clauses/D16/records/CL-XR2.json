@@ -1,0 +1,29 @@
+{
+ "id": "CL-XR2",
+ "trace": "XR",
+ "authority": "AUTH-WEBXR",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/immersive-web/webxr",
+  "branch": "main",
+  "path": "index.bs",
+  "commit": "53b29038ab89b817dbc0fa682557dc2b85908cd6",
+  "sha256": "2fe7451a82eff47ca0ddd10117f14d0b7f03443cc1cf989d135d88ba92c0cb49",
+  "bytes": 274788
+ },
+ "locator": {
+  "text": "1. If |mode| is an [=immersive session=] mode and the requesting document's [=origin=] is not allowed to use the \"xr-spatial-tracking\"",
+  "line_start": 347,
+  "line_end": 347,
+  "derivation": "anchor text",
+  "enclosing_section": "#xrsystem-interface (line 276)"
+ },
+ "window": 1,
+ "consequence": "immersive support queries and sessions need the xr-spatial-tracking policy",
+ "excerpt": "  1. If |mode| is an [=immersive session=] mode and the requesting document's [=origin=] is not allowed to use the \"xr-spatial-tracking\" [[#permissions-policy|permissions policy]], [=reject=] |promise| with a \"{{SecurityError}}\" {{DOMException}} and return it.",
+ "excerpt_sha256": "524c974b2cf00df87993a39dea6d5a36c75b9effdc2cb444a02c140844b709e8",
+ "must_contain": {
+  "[=reject=] |promise| with a \"{{SecurityError}}\"": true
+ },
+ "status": "VERIFIED"
+}

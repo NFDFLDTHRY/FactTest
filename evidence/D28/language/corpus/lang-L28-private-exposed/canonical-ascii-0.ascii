@@ -1,0 +1,15 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system expose}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{subsystem box}
+| @{component inner}
+| @{port inner.hidden out: T private}
+| @{component outsider}
+| @{port outsider.i in: T public}
+| RELATIONS
+| @{contains box -> inner}
+| @{data leak inner.hidden -> outsider.i mode=copy}
++------------------------------------------------------------------------+

@@ -63,6 +63,11 @@ Every implementation commit on the materialization branch was produced by the Fa
    contract, blockers, Rust-build boundary, seed/TCB, acceptance test, sequence) are rendered to
    [CLOSURE-REGISTERS.md](design/foundation-closure/CLOSURE-REGISTERS.md) and gated by tests/closure/structural-check.mjs;
    verdict today: self-hosting NOT CLOSED, every step with its mechanism.
+7. [tests/closure/registers/decisions.json](tests/closure/registers/decisions.json) and
+   [constraints.json](tests/closure/registers/constraints.json) (D28, pass 1 of the analysis series
+   [design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md](design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md)):
+   the owner's decision register with the evidence-backed defaults the plan assumes, and the environment limits with
+   the external procedures that discharge them; every sequence step names its gates.
 
 No session prompt is required: the entry is model-independent.  Proof sets and the toolchain pin are in
 [tests/toolchain/proof-sets.json](tests/toolchain/proof-sets.json) and [rust-toolchain.toml](rust-toolchain.toml).
@@ -91,4 +96,5 @@ No session prompt is required: the entry is model-independent.  Proof sets and t
   is closed and the baseline is design/materialization/D26-STABLE-BASELINE.md); D27 foundation-closure alignment (the
   repository reconstructed as executable evidence of the installed Factory to come; the live target and its registers;
   LANGUAGE VERSION 1 bound to the compiler by a derived manifest and a frozen corpus oracle; the language-law station
-  S-LANGUAGE-LAW forged, attacked and registered; the observed-ASCII and Rust-build boundaries recorded); see the ledger.
+  S-LANGUAGE-LAW forged, attacked and registered; the observed-ASCII and Rust-build boundaries recorded); D28 pass 1 of
+  the six-part analysis and mapping series (decisions and constraints as gated register rows); see the ledger.

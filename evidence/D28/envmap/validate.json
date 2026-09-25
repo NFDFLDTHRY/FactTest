@@ -1,0 +1,219 @@
+{
+  "tool": "tests/envmap/envmap.mjs validate",
+  "graph_schema": "facttest-environment-map/1",
+  "nodes": 1503,
+  "edges": 4303,
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "node_ids_unique",
+      "status": "PASS",
+      "detail": "1503 nodes"
+    },
+    {
+      "check": "every_node_class_declared",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "required_fields_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "every_node_has_owner",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "every_edge_type_has_semantics",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_dangling_edges",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "edge_endpoints_match_semantics",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "conditional_edges_carry_condition",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "authority_pin_separate_from_current",
+      "status": "PASS",
+      "detail": "DENIED reopen never inherits the pin date"
+    },
+    {
+      "check": "authority_has_exact_url",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "authority_not_implementation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "probe_proves_resolvable_facts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "probe_states_failure_meaning",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "evidence_has_environment",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "evidence_has_probe",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "evidence_artifact_identity",
+      "status": "PASS",
+      "detail": "every non-PENDING evidence carries sha256"
+    },
+    {
+      "check": "evidence_pending_listed",
+      "status": "PASS",
+      "detail": "none pending"
+    },
+    {
+      "check": "synthetic_never_counts_as_run",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "run_facts_have_evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fact_status_vocabulary",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "constraint_authority_refs_resolve",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fact_constraint_refs_resolve",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "revision_revises_its_authority",
+      "status": "PASS",
+      "detail": "64 revisions"
+    },
+    {
+      "check": "revision_movement_vocabulary",
+      "status": "PASS",
+      "detail": "UNCHANGED MOVED EDITORIAL SEMANTIC MATURITY REMOVED SPLIT/MERGED UNREACHABLE AMBIGUOUS"
+    },
+    {
+      "check": "revision_has_reopen_evidence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "clause_of_its_authority",
+      "status": "PASS",
+      "detail": "196 clauses"
+    },
+    {
+      "check": "clause_has_extraction_identity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "clause_connected",
+      "status": "PASS",
+      "detail": "every clause grounds something or is on a sublink chain"
+    },
+    {
+      "check": "family_classification_vocabulary",
+      "status": "PASS",
+      "detail": "33 families"
+    },
+    {
+      "check": "family_steps_match_edges",
+      "status": "PASS",
+      "detail": "every traced step has its TRACE_STEP edges and nothing else"
+    },
+    {
+      "check": "behavior_vocabulary",
+      "status": "PASS",
+      "detail": "19 behaviours"
+    },
+    {
+      "check": "behavior_sourced_by_implementation",
+      "status": "PASS",
+      "detail": "every behaviour rests on implementation-class clauses only"
+    },
+    {
+      "check": "behavior_standard_is_not_implementation",
+      "status": "PASS",
+      "detail": "no behaviour cites an implementation source as standards law"
+    },
+    {
+      "check": "reconciliation_vocabulary",
+      "status": "PASS",
+      "detail": "51 reconciliations; every traversal step answered"
+    },
+    {
+      "check": "reconciliation_has_subject",
+      "status": "PASS",
+      "detail": "every reconciliation re-examines at least one node"
+    },
+    {
+      "check": "resolved_only_non_run_facts",
+      "status": "PASS",
+      "detail": "RESOLVED closes only [ERR]/[GAP]/[UNK]/[OBS] fact records"
+    },
+    {
+      "check": "supersession_well_formed",
+      "status": "PASS",
+      "detail": "22 supersessions: same class, one successor each, acyclic, each named by a SUPERSEDED reconciliation that re-examined the superseded node"
+    },
+    {
+      "check": "successor_carries_inherited_edges",
+      "status": "PASS",
+      "detail": "every inheritable edge of a superseded node is carried by its current successor"
+    },
+    {
+      "check": "ledgered_constraints_well_formed",
+      "status": "PASS",
+      "detail": "19 PROPOSED constraints ledgered in project law; still PROPOSED: CON-EM-D14-001"
+    },
+    {
+      "check": "stale_facts_reconciled",
+      "status": "PASS",
+      "detail": "8 Q17 facts to recheck, each re-examined by a reconciliation"
+    },
+    {
+      "check": "epochs_consistent",
+      "status": "PASS",
+      "detail": "D11 -> D12 -> D13 -> D14 -> D15 -> D16 -> D17 -> D18 -> D18R -> D19 -> D14-RESCAN -> D20-SYNC -> D20 -> D21 -> D21R -> D22 -> D23 -> D24 -> D25 -> D26 -> D27 -> D28; 1503 nodes attributed of 1503"
+    },
+    {
+      "check": "prompt_invariants_carried",
+      "status": "PASS",
+      "detail": "11 invariants"
+    }
+  ]
+}

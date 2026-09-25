@@ -1,0 +1,105 @@
+{
+ "schema": "facttest-fact-epoch-spec/1",
+ "environment": "ENV-D28-HOST",
+ "summary": "pass 1 of the six-part analysis and mapping series: every open owner decision and every environment limit that could gate the implementation plan is an explicit, evidence-backed register row; every sequence step names the decisions and constraints it runs under and its assumption; the external inputs only the owner or another environment can supply are enumerated; nothing is decided by the agent",
+ "implementations": [],
+ "probes": [],
+ "facts": [
+  {
+   "id": "FACT-D28-DECISIONS-MAPPED",
+   "subject": "the open owner decisions and owner issues that could gate the implementation plan (D-1, D-2, D-3, D-5, D-6, D-8, D-9, D-10, D-4, D-7, I-39, I-29, I-33, I-12/I-13/I-18)",
+   "predicate": "each is a row of tests/closure/registers/decisions.json with its options, the current-fact evidence for and against each option, the consequence of each option on the sequence steps, an evidence-backed default and a status: 2 DECIDED (D-4, D-7), 8 ASSUMED-DEFAULT, 0 OWNER-ONLY, 4 NOT-GATING; every gate is mirrored by the sequence step that lists the decision (tests/closure/structural-check.mjs, check decisions_complete PASS)",
+   "status": "OBS",
+   "note": "observed structure: the defaults are assumptions the plan runs under, not decisions; the owner flips a row through S-FIXTURE and the gated steps re-select",
+   "source_ref": "evidence/D28/closure/registers/decisions.json",
+   "required_environment": [
+    "the D28 host (ENV-D28-HOST): node 22, git"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "evidence": [
+    {
+     "path": "evidence/D28/closure/registers/decisions.json",
+     "observed_result": "14 rows; 8 ASSUMED-DEFAULT with evidence, 2 DECIDED, 4 NOT-GATING with reasons"
+    },
+    {
+     "path": "evidence/D28/closure/gating.json",
+     "observed_result": "decisions_complete PASS"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a closure register, the sequence or the graph"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D28-CONSTRAINTS-MAPPED",
+   "subject": "the environment limits that touch the implementation plan",
+   "predicate": "each is a row of tests/closure/registers/constraints.json with current-fact evidence and records, what it prevents, whether it is provable in this environment (3 rows: loopback secure context with every primitive, the host judge and toolchain, threads unadmitted) or external (8 rows: public HTTPS, durability under installation, installation itself, hardware GPU, hosted toolchains, other platforms, the published frontier, browser updates) with the external procedure and the evidence schema an external run must produce; every sequence step names its constraints and every acceptance step names the external constraints that touch it (check constraints_and_sequence_gated PASS)",
+   "status": "OBS",
+   "note": "external rows never block a delta from producing every proof this environment can run",
+   "source_ref": "evidence/D28/closure/registers/constraints.json",
+   "required_environment": [
+    "the D28 host (ENV-D28-HOST): node 22, git"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "evidence": [
+    {
+     "path": "evidence/D28/closure/registers/constraints.json",
+     "observed_result": "11 rows: 3 provable here, 8 external"
+    },
+    {
+     "path": "evidence/D28/closure/gating.json",
+     "observed_result": "constraints_and_sequence_gated PASS"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a closure register, the sequence or the graph"
+    }
+   ]
+  },
+  {
+   "id": "FACT-D28-EXTERNAL-INPUTS-PENDING",
+   "subject": "the inputs only the owner or another environment can supply to the foundation-closure plan",
+   "predicate": "not observed here: the dedicated HTTPS origin (host name, hosting, one public-HTTPS run), the owner's RUST_BUILD choice after FC-7 (or an environment able to measure a hosted toolchain), durability and installation in a full Chrome, a GPU host, another platform, the next Chromium, the published authority renderings; each named with its evidence schema in the structural-check record (external_inputs) and rendered in CLOSURE-REGISTERS.md section 13; acceptance steps 1, 3, 4, 10, 12, 13 carry external constraints",
+   "status": "UNK",
+   "note": "the list is computed from the two registers; it shrinks only when an external run supplies evidence through a delta",
+   "source_ref": "evidence/D28/closure/gating.json",
+   "required_environment": [
+    "the D28 host (ENV-D28-HOST): node 22, git"
+   ],
+   "constraint_refs": [],
+   "probe": "PROBE-CLOSURE-STRUCTURAL-CHECK",
+   "evidence": [
+    {
+     "path": "evidence/D28/closure/gating.json",
+     "observed_result": "external_inputs: 10 (2 decisions, 8 constraints)"
+    }
+   ],
+   "implemented_by": [
+    "IMPL-CLOSURE"
+   ],
+   "stale_if": [
+    {
+     "dimension": "repo.commit",
+     "relation": "any change of a closure register, the sequence or the graph"
+    },
+    {
+     "dimension": "network_egress.policy",
+     "relation": "a reachable public origin or toolchain host"
+    }
+   ]
+  }
+ ]
+}

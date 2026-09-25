@@ -1,0 +1,12 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system leak}
+| @{use provider}
+| TYPES
+| @{type T}
+| COMPONENTS
+| @{component sink}
+| @{port sink.i in: T public}
+| RELATIONS
+| @{data d leak -> leak mode=copy}
++------------------------------------------------------------------------+

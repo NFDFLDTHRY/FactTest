@@ -1,0 +1,29 @@
+{
+ "id": "CL-G3",
+ "trace": "G",
+ "authority": "AUTH-GIT-MKTREE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/git/git",
+  "branch": "master",
+  "path": "Documentation/git-mktree.adoc",
+  "commit": "0f8e75abebff0877cae681a3d5ff31ac47f54220",
+  "sha256": "76c374c1dc612b1a2996472be938ab3e0ea2607428dc669dac4da7e6907f6974",
+  "bytes": 1075
+ },
+ "locator": {
+  "text": "The order of the tree entries is normalized by mktree",
+  "line_start": 17,
+  "line_end": 18,
+  "derivation": "anchor text",
+  "enclosing_section": "#_description (line 14)"
+ },
+ "window": 2,
+ "consequence": "tree-entry order is normalized by git but the rule is not stated in the documentation: browser-computed tree ids are correct only as far as observed equality with git goes (P09) - the ordering rule is an implementation fact (D17) [GAP]",
+ "excerpt": "a tree object.  The order of the tree entries is normalized by mktree so\npre-sorting the input is not required.  The object name of the tree object",
+ "excerpt_sha256": "d5fd2431fe1100f6038cf6c4323e905a99478e39af9b64a133c821c1f74e301e",
+ "must_contain": {
+  "normalized by mktree": true
+ },
+ "status": "VERIFIED"
+}

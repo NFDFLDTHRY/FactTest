@@ -1,0 +1,29 @@
+{
+ "id": "CL-S2",
+ "trace": "S",
+ "authority": "AUTH-WASM-WEBAPI-STREAMING",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/web-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "ef5c9e1b5ee2840927308d657d4ddb220d89b6dfa8a3d46eacea6a297f239db6",
+  "bytes": 17819
+ },
+ "locator": {
+  "text": "If |mimeType| is not a [=byte-case-insensitive=] match",
+  "line_start": 127,
+  "line_end": 129,
+  "derivation": "anchor text",
+  "enclosing_section": "#streaming-modules (line 86)"
+ },
+ "window": 3,
+ "consequence": "the MIME check is exact (no parameters): a server sending application/wasm;charset=... fails streaming",
+ "excerpt": "            1. If |mimeType| is not a [=byte-case-insensitive=] match for `` `application/wasm` ``, reject |returnValue| with a {{TypeError}} and abort these substeps.\n\n                Note: extra parameters are not allowed, including the empty `` `application/wasm;` ``.",
+ "excerpt_sha256": "90c08c5792a65c7dcb041acef8343a277e2ac8493d29e5b166fbfbc84ca0b044",
+ "must_contain": {
+  "extra parameters are not allowed": true
+ },
+ "status": "VERIFIED"
+}

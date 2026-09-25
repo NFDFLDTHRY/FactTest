@@ -9,11 +9,19 @@ the project; everything below points at repository files.
 ```text
 canonical branch   claude/facttest-materialization-27amc7 (merged into main by the owner through pull requests; main's
                    parallel line - pull request #5 - joined by the content-neutral sync merge c3159d5 and D20)
-last delta         D27-FOUNDATION-CLOSURE-ALIGNMENT (the foundation-closure / repo-alignment pass: the current
-                   repository reconstructed as executable evidence of what the installed Factory WebApp must preserve;
-                   the live target design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md assembled with its registers
-                   and structurally checked; integration commits in design/materialization/LEDGER.md; the
+last delta         D28-DECISIONS-AND-CONSTRAINTS (pass 1 of the six-part analysis and mapping series D28-D33 that
+                   produces the implementation plan, design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md: every
+                   open owner decision and environment limit an evidence-backed register row; every sequence step
+                   gated by the decisions and constraints it runs under; after D27-FOUNDATION-CLOSURE-ALIGNMENT, which
+                   assembled the live target; integration commits in design/materialization/LEDGER.md; the
                    implementation baseline stays design/materialization/D26-STABLE-BASELINE.md)
+owner actions      tests/closure/registers/decisions.json is the owner's action list: 8 rows run under an ASSUMED-DEFAULT
+                   the evidence supports (D-1 dedicated origin, D-2 one origin per app, D-3 import-only first, D-5 BUILD
+                   without registry refuses, D-6 git SHA-1, D-8 seed replacement as a qualified origin event, D-9 a
+                   recorded tree as the horizon, I-39 a source-role statement); flipping a row (through S-FIXTURE)
+                   re-selects the steps it gates; 4 rows are NOT-GATING (D-10, I-29, I-33, I-12/13/18); 2 DECIDED.
+                   tests/closure/registers/constraints.json names the 8 limits only another environment can discharge
+                   (CLOSURE-REGISTERS.md section 13: external inputs pending)
 current target     design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md: AN INSTALLED FACTORY WEBAPP THAT CONTINUES
                    FACTORY WORK, MANUFACTURES AND QUALIFIES ITS OWN SUCCESSOR, AND EVOLVES THE ASCII LANGUAGE through
                    which a human and a local model describe what the Factory should build.  Registers
@@ -73,18 +81,18 @@ materialized       Factory plane (factory/), no_std compiler kernel (compiler/),
                    tests/audit/)
 not materialized   self-hosting (seed/broker, browser Factory, in-browser Rust), missing ABI exports, hardware GPU,
                    WGSL, shared/threaded Wasm; of the 33 capability families only 6 are [RUN] (Q19; section 6)
-series             D14-D19 CLOSED; D21-D26 CLOSED by D26; D27 = the alignment pass that opens the foundation-closure
-                   series FC-1..FC-8 (tests/closure/registers/sequence.json: D28-SEED-BROKER-QUALIFICATION,
-                   D29-BROWSER-OBJECT-STORE, D30-FACTORY-CORE-PORT, D31-CAPABILITY-STATIONS, D32-LANGUAGE-2-PROPOSAL,
-                   D33-CANDIDATE-QUALIFICATION-RUNNER, D34-RUST-BUILD-SPIKE, D35-GENERATION-SWAP): one StructuralDelta
-                   per step, each closed, verified, integrated and re-observed before the next
-next               FC-1 D28-SEED-BROKER-QUALIFICATION (the immutable minimal seed and its failure matrix) - not begun by
-                   D27.  The entitled-claim surface is graph query Q22 of the D27 graph
-                   (evidence/D27/envmap/queries/Q22.json); the remaining stops are the boundary rows of section 6, the
-                   blocker register tests/closure/registers/blockers.json and the open issues of
-                   tests/manifest/issues.json (every one class D/E/F/G); the owner decisions D-1 (home origin), D-2
-                   (generated-app origins), D-3 (RUST_BUILD strategy), D-5, I-12, I-13, I-18, I-29, I-33 and the
-                   public-HTTPS run (tests/physical/PUBLIC-HTTPS-PROBE.md) are the external inputs a later delta carries
+series             D14-D19 CLOSED; D21-D26 CLOSED by D26; D27 = the alignment pass; D28-D33 = the six-part analysis and
+                   mapping series that produces the implementation plan (pass 1 D28 decisions and constraints DONE;
+                   pass 2 D29 law-engine decomposition; pass 3 D30 capability catalog; pass 4 D31 seed and generation
+                   state machine; pass 5 D32 language 2 and kernel capacity; pass 6 D33 RUST_BUILD measurement and plan
+                   assembly); the implementation sequence FC-1..FC-8 (tests/closure/registers/sequence.json) follows
+                   the series and is re-baselined by pass 6 (its delta numbers move to D34+); one StructuralDelta per
+                   step, each closed, verified, integrated and re-observed before the next
+next               pass 2: D29-LAW-ENGINE-DECOMPOSITION under the assumptions of tests/closure/registers/decisions.json.
+                   The entitled-claim surface is graph query Q22 of the D28 graph (evidence/D28/envmap/queries/Q22.json);
+                   the remaining stops are the boundary rows of section 6, the blocker register
+                   tests/closure/registers/blockers.json and the open issues of tests/manifest/issues.json (every one
+                   class D/E/F/G); the external inputs are the rows of CLOSURE-REGISTERS.md section 13
 ```
 
 ## 2. Mutation law
@@ -168,7 +176,9 @@ LIVE RECORD    design/foundation-closure/ (FOUNDATION-CLOSURE-TARGET.md = the cu
                matrix, component classification, language hardening register, language-evolution contract, blocker
                register, Rust-build boundary, seed/TCB, acceptance test, implementation sequence, language corpus);
                tests/closure/language-manifest-v1.json and tests/closure/language-corpus-v1.json (the LANGUAGE 1 manifest
-               and frozen corpus table: derived / frozen by the compiler, never edited);
+               and frozen corpus table: derived / frozen by the compiler, never edited); tests/closure/registers/
+               decisions.json and constraints.json (D28: the owner's decision register with the assumed defaults, and the
+               environment constraints with their external procedures; the sequence steps carry their gates);
                design/materialization/LEDGER.md; design/environment-map/ (graph.json = merge of the D11 graph and
                epochs/D12.json .. epochs/D19.json, epochs/D14-RESCAN.json=D14-RESCAN, epochs/D20-SYNC.json,
                epochs/D20.json; AUTHORITY-REGISTER.md and TRACEABILITY.md are generated);
@@ -354,6 +364,8 @@ B      workpiece root                       W11-stage, W14-stage hold base-era g
                                             generated graph views (evidence/D20/workpieces/audit-after.json);
                                             factory workpiece retire handles worktrees only; factory-bootstrap-bin
                                             (unmanaged)
+OWNER  (each row below is a decision of tests/closure/registers/decisions.json since D28, with its options, evidence,
+       assumed default and the sequence steps it gates)
 OWNER  D-1 home origin; D-2 generated-app origins (B-16 [ERR]); D-3 RUST_BUILD strategy; D-5 BUILD without registry
        (B-07); D-6 object hash; D-8 seed replacement; D-9 history horizon; D-10 sensor routing (Generic Sensor
        families vs Device Orientation and Motion; CONFLICT-LEDGER OBS-004); deleting the fully merged remote branches

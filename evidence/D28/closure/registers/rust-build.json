@@ -1,0 +1,92 @@
+{
+ "schema": "facttest-closure-rust-build/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 8",
+ "required_capability": "foundation closure (acceptance steps 3-4) requires a browser-native RUST_BUILD that compiles the first-party workspace (compiler/ + wasm-abi + the ported law engine) for wasm64-unknown-unknown with core built from source, producing objects whose identity is checkable against a host build for as long as a host exists, and whose behaviour is qualified by N (Q1-Q7, the corpus oracle, the specimens) thereafter",
+ "distinction": "running the existing compiler as wasm (proved: FACT-D23-WASM-TRANSPORT-COMPLETE, FACT-D25-RUNTIME-PHYSICAL) is NOT compiling modified Rust source into the next compiler (unproved anywhere in a browser)",
+ "decision": "D-3 (owner): the register recommends B3 first (closes L3-A and 14 of 16 acceptance steps with existing evidence), then a measured feasibility spike (FC-7) deciding between B4 and B1/B5 by evidence; B2 is not recommended",
+ "candidates": [
+  {
+   "id": "B1",
+   "name": "hosted upstream toolchain: rustc + LLVM compiled to wasm and run in a worker",
+   "INPUT": "the first-party workspace as objects (compiler/ 12 crates + wasm-abi, 15,373 lines; factory/ 3,797 lines once ported; host/ 568 lines) + core from source (rust-src: 7.2 MB, 176,305 lines; no alloc, no std, no third-party crate: Cargo.lock resolves to first-party paths only) + the pinned toolchain identity",
+   "OPERATION": "rustc front end + LLVM wasm64 backend + linking, driven by a cargo-equivalent that builds core from source (-Z build-std=core semantics)",
+   "OUTPUT": "candidate objects: factc_wasm_abi.wasm (kernel N+1), the law-engine wasm, templates",
+   "TRUST": "the party that compiled rustc/LLVM to wasm; a third-party toolchain of ~360 MB native (driver 158 MB + LLVM 199 MB in the pinned nightly) enters the TCB",
+   "VERIFICATION": "identity oracle: the candidate kernel built in the browser must be byte-identical to the pinned host build of the same source (ef5d886a... at the D27 base) while a host exists; then N re-verifies N+1 by Q1-Q7",
+   "BOOTSTRAP": "the hosted toolchain arrives as an imported object with a build receipt (B3 for the toolchain itself)",
+   "REPRODUCIBILITY": "only if the hosted rustc commit, LLVM and codegen options equal the pin; unknown otherwise",
+   "RECOVERY": "rollback to N (the candidate objects stay unreferenced)",
+   "status": "UNK",
+   "evidence": [
+    "evidence/D27/rust-build/census.json"
+   ],
+   "note": "no rustup component ships rustc for a wasm host (census: rustc-x86_64-unknown-linux-gnu only; codegen backends: none); size and memory (wasm32 4 GiB; LLVM memory use for the kernel unknown) unmeasured; nothing in this environment can measure it (egress denies the toolchain hosts)"
+  },
+  {
+   "id": "B2",
+   "name": "FactTest-native: extend the ASCII language and emitter until the compiler and the Factory are expressible in FactTest",
+   "INPUT": "the compiler and Factory re-described as ASCII systems (compiler/ 12 crates + wasm-abi, 15,373 lines; factory/ 3,797 lines once ported; host/ 568 lines) + core from source (rust-src: 7.2 MB, 176,305 lines; no alloc, no std, no third-party crate: Cargo.lock resolves to first-party paths only) + the pinned toolchain identity",
+   "OPERATION": "FactTest compiles FactTest: the emitter today instantiates recipe-bound relay-class wasm64 modules; general computation is not in the language (ASCII-GRAMMAR.md: systems, not algorithms)",
+   "OUTPUT": "wasm64 objects emitted by the FactTest emitter",
+   "TRUST": "FactTest itself (no third party) - the strongest trust story",
+   "VERIFICATION": "N compiles N+1 from ASCII; identity oracle against the Rust-built kernel does not apply (different compilers); Q1-Q7 + the corpus oracle",
+   "BOOTSTRAP": "a Rust-built kernel N compiles the first ASCII-described kernel N+1; the Rust line is then retired",
+   "REPRODUCIBILITY": "deterministic emitter: same source -> same bytes",
+   "RECOVERY": "rollback to N",
+   "status": "GAP",
+   "evidence": [],
+   "note": "architectural: contradicts the language's scope (systems diagrams, zero guessing) unless a computation sublanguage is added; multi-series; not recommended before B4 evidence"
+  },
+  {
+   "id": "B3",
+   "name": "import-only (L3-A): compiled objects built on a host and imported with a RUST_BUILD receipt",
+   "INPUT": "compiled objects + build receipt {source tree id, toolchain identity (rustc commit, components, flags), object identities} + the pinned kernel identity",
+   "OPERATION": "no compilation in the browser; qualification of the imported object by execution (Q1-Q7) and by identity against the pin",
+   "OUTPUT": "generation N+1 whose compiled objects are imported",
+   "TRUST": "the recorded RUST_BUILD epoch (Linux host) stays in the TCB for every compiled-object change",
+   "VERIFICATION": "identity == pin (two independent build epochs agreeing before import), then Q1-Q7 by N",
+   "BOOTSTRAP": "nothing new: generation 0 is built on the host",
+   "REPRODUCIBILITY": "established for the kernel (FACT-KERNEL-IDENTITY-D24: install-name independent, source-exact)",
+   "RECOVERY": "rollback to N",
+   "status": "RUN",
+   "evidence": [
+    "evidence/D26/kernel/sections.json"
+   ],
+   "note": "achievable now with existing evidence; closes every acceptance step except 3-4 (which then still require the host): SELF-HOSTING NOT CLOSED under B3 alone, honestly recorded"
+  },
+  {
+   "id": "B4",
+   "name": "first-party Rust-subset compiler (no_std, forbid(unsafe) subset the kernel uses) written in that same subset",
+   "INPUT": "the first-party workspace as objects (compiler/ 12 crates + wasm-abi, 15,373 lines; factory/ 3,797 lines once ported; host/ 568 lines) + core from source (rust-src: 7.2 MB, 176,305 lines; no alloc, no std, no third-party crate: Cargo.lock resolves to first-party paths only) + the pinned toolchain identity; the subset of core the kernel uses (or a kernel restricted to a core-free subset)",
+   "OPERATION": "a bootstrap compiler for the language subset: parse, type-check, monomorphize, emit wasm64; no LLVM",
+   "OUTPUT": "wasm64 objects",
+   "TRUST": "the subset compiler (first-party) once bootstrapped; the Linux rustc only for its first build",
+   "VERIFICATION": "identity oracle: the subset compiler must reproduce the pinned kernel byte-for-byte? NO - a different compiler yields different bytes; the oracle becomes behavioural (Q1-Q7, corpus, specimens) plus a second independent build (the Linux rustc) agreeing on behaviour; the kernel identity pin is then per compiler",
+   "BOOTSTRAP": "first build on the host (B3 import), then self-compilation: N+1 compiled by N, compared with N+1 compiled by the host",
+   "REPRODUCIBILITY": "per compiler deterministic; cross-compiler behavioural only",
+   "RECOVERY": "rollback to N",
+   "status": "GAP",
+   "evidence": [
+    "evidence/D27/rust-build/census.json"
+   ],
+   "note": "architectural-scale (a Rust subset compiler including enough of core: 176k lines of core source is the input the subset must handle or the kernel must avoid); the census bounds the input; feasibility unmeasured"
+  },
+  {
+   "id": "B5",
+   "name": "hosted rustc with the cranelift backend (no LLVM)",
+   "INPUT": "the first-party workspace as objects (compiler/ 12 crates + wasm-abi, 15,373 lines; factory/ 3,797 lines once ported; host/ 568 lines) + core from source (rust-src: 7.2 MB, 176,305 lines; no alloc, no std, no third-party crate: Cargo.lock resolves to first-party paths only) + the pinned toolchain identity",
+   "OPERATION": "rustc front end + rustc_codegen_cranelift (pure Rust) compiled to wasm",
+   "OUTPUT": "wasm64 objects",
+   "TRUST": "as B1 minus LLVM; cranelift joins the TCB",
+   "VERIFICATION": "as B1 (identity oracle only if the pin is rebuilt with cranelift; today the pin is LLVM-built)",
+   "BOOTSTRAP": "as B1",
+   "REPRODUCIBILITY": "a cranelift-built kernel has a different identity than the LLVM pin: the pin would move (a new D24-class identity delta)",
+   "RECOVERY": "rollback to N",
+   "status": "UNK",
+   "evidence": [
+    "evidence/D27/rust-build/census.json"
+   ],
+   "note": "the pinned nightly ships no cranelift backend (census: codegen_backends none); wasm64 support of cranelift unverified from here"
+  }
+ ]
+}

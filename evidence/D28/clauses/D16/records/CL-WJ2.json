@@ -1,0 +1,30 @@
+{
+ "id": "CL-WJ2",
+ "trace": "WJ",
+ "authority": "AUTH-WASM-JSAPI-VALIDATE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/WebAssembly/spec",
+  "branch": "main",
+  "path": "document/js-api/index.bs",
+  "commit": "608711107b7f1edb13efd57b7d79b49477462d36",
+  "sha256": "9f4caf1090cda6937146a603222150f0b582a7737dd68322abb18afb70f80b4f",
+  "bytes": 114471
+ },
+ "locator": {
+  "text": "The <dfn method for=\"WebAssembly\">instantiate(|bytes|, |importObject|, |options|)</dfn> method",
+  "line_start": 653,
+  "line_end": 656,
+  "derivation": "anchor text",
+  "enclosing_section": "#webassembly-namespace (line 356)"
+ },
+ "window": 4,
+ "consequence": "instantiate(bytes) compiles asynchronously and instantiates with the import object: the request step of CPU/Wasm64 admission (FactTest instantiates from fetched bytes with zero imports)",
+ "excerpt": "  The <dfn method for=\"WebAssembly\">instantiate(|bytes|, |importObject|, |options|)</dfn> method, when invoked, performs the following steps:\n    1. Let |stableBytes| be a [=get a copy of the buffer source|copy of the bytes held by the buffer=] |bytes|.\n    1. [=Asynchronously compile a WebAssembly module=] from |stableBytes| using |options| and let |promiseOfModule| be the result.\n    1. [=Instantiate a promise of a module|Instantiate=] |promiseOfModule| with imports |importObject| and return the result.",
+ "excerpt_sha256": "d790227d940855db96e34dff94cd7cbd670d60ce7e680c0de8727e38c1896d30",
+ "must_contain": {
+  "[=Asynchronously compile a WebAssembly module=]": true,
+  "[=Instantiate a promise of a module|Instantiate=] |promiseOfModule| with imports |importObject|": true
+ },
+ "status": "VERIFIED"
+}

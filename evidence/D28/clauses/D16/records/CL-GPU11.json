@@ -1,0 +1,29 @@
+{
+ "id": "CL-GPU11",
+ "trace": "GPU",
+ "authority": "AUTH-WGSL",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "wgsl/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "11b1020a2fec581050599ae8e035a7138de551129c0856e055b41b4342d658fd",
+  "bytes": 928167
+ },
+ "locator": {
+  "text": "A <dfn noexport>shader</dfn> is the portion of a WGSL program that executes a [=shader stage=] in a pipeline.",
+  "line_start": 366,
+  "line_end": 366,
+  "derivation": "anchor text",
+  "enclosing_section": "#overview (line 355)"
+ },
+ "window": 1,
+ "consequence": "WGSL governs the shader stage separately from the host API (CON-GPU-003); FactTest has never compiled or dispatched one",
+ "excerpt": "A <dfn noexport>shader</dfn> is the portion of a WGSL program that executes a [=shader stage=] in a pipeline.",
+ "excerpt_sha256": "c0ff6b503d8ecc316d04f0fe1e7918346d0515dfe96f3434f8237dba4abe0d95",
+ "must_contain": {
+  "executes a [=shader stage=] in a pipeline": true
+ },
+ "status": "VERIFIED"
+}

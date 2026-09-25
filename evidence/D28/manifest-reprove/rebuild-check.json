@@ -1,0 +1,16 @@
+{
+ "tool": "tests/manifest/rebuild-check.sh",
+ "commit": "2bbda62f3fa49043ada7a3a2070d62041bfde4a6",
+ "rev": "8a23c08b57ef6a174107fc8a3b55a2bdd43b71d0",
+ "delta": "D27-FOUNDATION-CLOSURE-ALIGNMENT",
+ "epoch": "D27",
+ "builder": "tests/manifest/build-manifest.mjs",
+ "committed_manifest_sha256": "df1ba5531b2323d150e93d3d53b2746e701576cb0a5dd689fd5d424abff4ef2d",
+ "status": "PASS",
+ "checks": [
+  {"check": "rebuild_from_committed_graph_md", "status": "PASS"},
+  {"check": "rebuild_from_committed_graph_json", "status": "PASS"},
+  {"check": "rebuild_without_own_epoch_md", "status": "PASS"},
+  {"check": "rebuild_without_own_epoch_json", "status": "PASS"}
+ ]
+}

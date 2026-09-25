@@ -1,0 +1,99 @@
+{
+  "fixture_id": "F0-doc",
+  "station_id": "S-DOC",
+  "selected_inputs": [
+    "the approved pass-1 plan (series prompt section 4)",
+    "the D27 registers and handoff",
+    "the scratch run of the extended check (section 0)"
+  ],
+  "narrowed_may_change": [
+    "design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md",
+    "design/materialization/LEDGER.md",
+    "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md",
+    "factory/deltas/D28.json",
+    "factory/fixtures/D28/",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "I=design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && ! grep -q PREDICTIONS_PLACEHOLDER $I && grep -q 'integrated as 0f57ecfd82295ee207f51432af764258fd34b052' design/materialization/LEDGER.md && grep -q '^## D28-DECISIONS-AND-CONSTRAINTS' design/materialization/LEDGER.md && ! grep -q PREDICTIONS_PLACEHOLDER design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && grep -q '^ D28 NOTE:' design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md && d=$(git diff --numstat 0f57ecfd82295ee207f51432af764258fd34b052 -- design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md | cut -f2) && [ \"$d\" = 0 ] && echo 'intended + ledger + target note (insertion-only) as intended'"
+        ],
+        "log": "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-ascii.log",
+        "cwd": "."
+      },
+      {
+        "program": "git",
+        "args": [
+          "diff",
+          "--exit-code",
+          "0f57ecfd82295ee207f51432af764258fd34b052",
+          "--",
+          "compiler",
+          "host",
+          "factory/src",
+          "factory/tests",
+          "factory/registry",
+          "tests",
+          "evidence",
+          "fixtures",
+          "design/environment-map",
+          "design/execution-manifest",
+          "design/foundation-closure/CLOSURE-REGISTERS.md",
+          "docs",
+          "README.md",
+          "rust-toolchain.toml",
+          "Cargo.toml",
+          "Cargo.lock",
+          "REFERENCE-AUTHORITY.md",
+          "CONSTRAINT-LEDGER.md",
+          "CONFLICT-LEDGER.md",
+          "EVIDENCE-OBLIGATIONS.md",
+          "IMPLEMENTATION-CONTRACTS.md",
+          "CAPABILITY-MATRIX.md",
+          "BOOTSTRAP-TESTS.md",
+          "BOOTSTRAP-CONTRACTS.md",
+          "BOOTSTRAP-ARCHITECTURE.md",
+          "FACTORY-LAW.md",
+          "FACTORY-CONTRACTS.md",
+          "STATION-REGISTRY.md",
+          "CODEGEN-BUNDLE-CONTRACT.md",
+          "RUNTIME-ADMISSION-REPLAN.md",
+          "ASCII-GRAMMAR.md",
+          "ASCII-LANGUAGE.md",
+          "LANGUAGE-TESTS.md",
+          "SEMANTIC-MODEL.md",
+          "REFINEMENT-LAW.md",
+          "LOWERING-MODEL.md",
+          "REPRESENTATION-TRANSFER.md",
+          "VERIFICATION-CERTIFICATES.md",
+          "PLANNER-COST-MODEL.md",
+          "COMMISSIONING-ASCII.md",
+          "COMMISSIONING-FACTORY.md",
+          "COMMISSIONING-FIXTURE.md",
+          "COMMISSIONING-PROOF.md",
+          "COMMISSIONING-RUNTIME.md",
+          "COMMISSIONING-SLICE.md",
+          "COMMISSIONING-TRACE.md",
+          "FINAL-HANDOFF-REQUIREMENTS.md",
+          "LICENSE"
+        ],
+        "log": "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-untouched.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D28-DECISIONS-AND-CONSTRAINTS"
+}

@@ -1,0 +1,29 @@
+{
+ "id": "CL-R5",
+ "trace": "R",
+ "authority": "AUTH-RUSTC-WASM64-DOC",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/rust-lang/rust",
+  "branch": "master",
+  "path": "src/doc/rustc/src/platform-support/wasm64-unknown-unknown.md",
+  "commit": "f7575a9da8e4a4fca3b5668d5a2ea7476db44b3f",
+  "sha256": "e93b9ad694142d092f6b3957ffb1ef01ac04a05575587fa26f72fa8e67899013",
+  "bytes": 4126
+ },
+ "locator": {
+  "text": "This target does not support `panic=unwind`",
+  "line_start": 62,
+  "line_end": 62,
+  "derivation": "anchor text",
+  "enclosing_section": "#requirements (line 14)"
+ },
+ "window": 1,
+ "consequence": "the wasm64 kernel must use panic=abort (FactTest's release profile sets panic = \"abort\"; the wasm-abi crate supplies its own panic_handler)",
+ "excerpt": "This target does not support `panic=unwind` at this time.",
+ "excerpt_sha256": "20a1d9dc5fa07e897eab62cfeed40bc38d8dbe9724b29010da31aba1bb335f5e",
+ "must_contain": {
+  "does not support `panic=unwind`": true
+ },
+ "status": "VERIFIED"
+}

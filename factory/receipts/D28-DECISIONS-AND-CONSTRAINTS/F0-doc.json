@@ -1,0 +1,174 @@
+{
+  "receipt_format": "2",
+  "receipt_id": "R-D28-DECISIONS-AND-CONSTRAINTS-F0-doc",
+  "station_id": "S-DOC",
+  "station_version": "1",
+  "fixture_id": "F0-doc",
+  "workpiece_id": "W35",
+  "delta_id": "D28-DECISIONS-AND-CONSTRAINTS",
+  "canonical_base": "0f57ecfd82295ee207f51432af764258fd34b052",
+  "input_artifacts": [
+    "the approved pass-1 plan (series prompt section 4)",
+    "the D27 registers and handoff",
+    "the scratch run of the extended check (section 0)"
+  ],
+  "open_tree": "c8758b41f7827998a48099d5837507483391e456",
+  "close_tree": "fb0e4742d3baf84218ee5774d0121b8ed9c4a7f0",
+  "changed_paths": [
+    "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md",
+    "design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md",
+    "design/materialization/LEDGER.md",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-ascii.log",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-untouched.log"
+  ],
+  "output_artifacts": [
+    "design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md"
+  ],
+  "verification_results": [
+    {
+      "check": "station_registered",
+      "status": "PASS",
+      "detail": "S-DOC v1 (canonical-base)"
+    },
+    {
+      "check": "fixture_delta_matches",
+      "status": "PASS",
+      "detail": "D28-DECISIONS-AND-CONSTRAINTS"
+    },
+    {
+      "check": "station_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_must_not_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_surfaces_literal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_read_subset_of_station",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_subset_of_delta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_station_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixture_may_change_disjoint_from_delta_must_not_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "station_capability_required_by_delta",
+      "status": "PASS",
+      "detail": "DOC_CONTRACT_FORGE"
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-ascii.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-ascii.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_log_within_may_change:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command_cwd_within_workpiece:.",
+      "status": "PASS",
+      "detail": "\".\": empty, '.' or '..' segment"
+    },
+    {
+      "check": "command_log_within_workpiece:factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-untouched.log",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "command:sh -c I=design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.'; do grep -qF \"$s\" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && ! grep -q PREDICTIONS_PLACEHOLDER $I && grep -q 'integrated as 0f57ecfd82295ee207f51432af764258fd34b052' design/materialization/LEDGER.md && grep -q '^## D28-DECISIONS-AND-CONSTRAINTS' design/materialization/LEDGER.md && ! grep -q PREDICTIONS_PLACEHOLDER design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && grep -q '^ D28 NOTE:' design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md && d=$(git diff --numstat 0f57ecfd82295ee207f51432af764258fd34b052 -- design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md | cut -f2) && [ \"$d\" = 0 ] && echo 'intended + ledger + target note (insertion-only) as intended'",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-ascii.log"
+    },
+    {
+      "check": "command:git diff --exit-code 0f57ecfd82295ee207f51432af764258fd34b052 -- compiler host factory/src factory/tests factory/registry tests evidence fixtures design/environment-map design/execution-manifest design/foundation-closure/CLOSURE-REGISTERS.md docs README.md rust-toolchain.toml Cargo.toml Cargo.lock REFERENCE-AUTHORITY.md CONSTRAINT-LEDGER.md CONFLICT-LEDGER.md EVIDENCE-OBLIGATIONS.md IMPLEMENTATION-CONTRACTS.md CAPABILITY-MATRIX.md BOOTSTRAP-TESTS.md BOOTSTRAP-CONTRACTS.md BOOTSTRAP-ARCHITECTURE.md FACTORY-LAW.md FACTORY-CONTRACTS.md STATION-REGISTRY.md CODEGEN-BUNDLE-CONTRACT.md RUNTIME-ADMISSION-REPLAN.md ASCII-GRAMMAR.md ASCII-LANGUAGE.md LANGUAGE-TESTS.md SEMANTIC-MODEL.md REFINEMENT-LAW.md LOWERING-MODEL.md REPRESENTATION-TRANSFER.md VERIFICATION-CERTIFICATES.md PLANNER-COST-MODEL.md COMMISSIONING-ASCII.md COMMISSIONING-FACTORY.md COMMISSIONING-FIXTURE.md COMMISSIONING-PROOF.md COMMISSIONING-RUNTIME.md COMMISSIONING-SLICE.md COMMISSIONING-TRACE.md FINAL-HANDOFF-REQUIREMENTS.md LICENSE",
+      "status": "PASS",
+      "detail": "exit 0 (expected 0) log factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-untouched.log"
+    },
+    {
+      "check": "canonical_repository_untouched_by_station",
+      "status": "PASS",
+      "detail": "canonical checkout unchanged"
+    },
+    {
+      "check": "changed_paths_within_fixture_may_change",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "must_not_change_untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "expected_output_exists:design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "evidence_refs": [
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-ascii.log",
+    "factory/receipts/D28-DECISIONS-AND-CONSTRAINTS/logs/F0-untouched.log"
+  ],
+  "environment_identity": {
+    "factory_binary": {
+      "path": "/home/user/factory-target-canon/debug/factory",
+      "sha256": "dd0a577845aebd6143a0e8982e45dfbbd7769787becc64819c62b391b6f2f114",
+      "bytes": 7377336
+    },
+    "host": {
+      "os": "linux",
+      "arch": "x86_64",
+      "kernel_release": "6.18.44-fc-v37"
+    },
+    "git": "git version 2.43.0",
+    "identity_probes": []
+  },
+  "closed": "2026-09-25T00:53:15Z",
+  "status": "PASS"
+}

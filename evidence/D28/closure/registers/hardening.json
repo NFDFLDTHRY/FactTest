@@ -1,0 +1,216 @@
+{
+ "schema": "facttest-closure-hardening/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md section 4",
+ "note": "ASCII LANGUAGE HARDENING register: the language audited as the protocol HUMAN <-> LOCAL MODEL <-> DETERMINISTIC COMPILER, from the implemented parser, renderer, tests, the four-specimen corpus and the D27 experiments; nothing is redesigned here.  Core law preserved: MAXIMUM FREEDOM IN PRESENTATION, MAXIMUM ABSTRACTION BEHIND COMPLETE CONTRACTS, ZERO GUESSING AT SEMANTIC BOUNDARIES.",
+ "questions": [
+  {
+   "id": "H-01",
+   "question": "Is explicit language/schema versioning sufficient today?",
+   "answer": "No.  The language version exists only as the text \"(language version 1)\" in the parser's unknown-keyword diagnostic and as schema_version 1 on artifacts; ASCII-GRAMMAR.md declared no version number before D27.  D27 binds LANGUAGE VERSION 1 to the compiler by an insertion-only annotation and by the derived manifest (tests/closure/language-manifest.mjs --grammar refuses a mismatch).  In-source identification stays a LANGUAGE 2 candidate.",
+   "evidence": [
+    "evidence/D27/language/manifest.json"
+   ],
+   "status": "OBS",
+   "disposition": "LANGUAGE-1-ANNOTATION + LANGUAGE-2-CANDIDATE",
+   "refs": [
+    "FB-21",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-02",
+   "question": "How is a language version identified in source?",
+   "answer": "It is not: no island names a version; a source unit is version 1 by the D27 annotation (\"absence of a version statement means LANGUAGE 1\").  A version island (`@{language <n>}`) is a new keyword and therefore itself a language version change.",
+   "evidence": [
+    "evidence/D27/language/manifest.json"
+   ],
+   "status": "GAP",
+   "disposition": "LANGUAGE-2-CANDIDATE",
+   "refs": [
+    "FB-21",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-03",
+   "question": "How are migrations represented?",
+   "answer": "No mechanism exists.  The contract defines one: a migration record per corpus row whose expected result changes between N and N+1 (id, old expectation, new expectation, reason), reviewed in ASCII, carried by the delta that activates Compiler N+1; the frozen corpus table of N is never edited.",
+   "evidence": [],
+   "status": "GAP",
+   "disposition": "CONTRACT-MECHANISM (FC-5 defines the record format)",
+   "refs": [
+    "FB-21",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-04",
+   "question": "Can Compiler N prove the backwards compatibility promised by N+1?",
+   "answer": "Yes, by the corpus oracle: N freezes the expected table of LANGUAGE N (status, diagnostic codes, canonical rendering sha256, strategy-data identity and bundle certificate per entry); N+1 must reproduce every row or name it in a migration record.  D27 freezes the table for LANGUAGE 1 (53 entries) and shows Compiler 1 reproduces it.",
+   "evidence": [
+    "evidence/D27/language/corpus/corpus-record.json",
+    "tests/closure/language-corpus-v1.json"
+   ],
+   "status": "RUN",
+   "disposition": "SATISFIED for N=1 (oracle exists); N+1 not built",
+   "refs": [
+    "FC-5",
+    "FC-6"
+   ]
+  },
+  {
+   "id": "H-05",
+   "question": "Can new syntax be proposed without using the new syntax as authority?",
+   "answer": "Yes.  A proposal is LANGUAGE N text plus non-semantic prose/diagram presentation; a LANGUAGE 1 island `@{issue <id> NEW \"...\"}` can carry the proposal as governance.  The station S-LANGUAGE-LAW refuses a grammar text whose declared version no activated compiler implements (invariant LANGUAGE VERSION BOUND).",
+   "evidence": [
+    "evidence/D27/stations/census-after.json"
+   ],
+   "status": "RUN",
+   "disposition": "SATISFIED (machinery registered by D27)",
+   "refs": [
+    "FB-26"
+   ]
+  },
+  {
+   "id": "H-06",
+   "question": "Does canonical ASCII expose every compiler-relevant fact?",
+   "answer": "Every SOURCE fact: parse(render(AST)) == AST (L19/L20) and the corpus shows presentation variants of Byte Relay render to one canonical sha256.  Not every INPUT of a BUILD: the contract registry, metric evidence and machine epoch are separate registry dialects; they appear in derived artifacts (implementation hypergraph, verified strategy), not in the canonical ASCII of the system.  This is by design (ASCII-GRAMMAR.md section 24: host-only preferences may not change generated machinery unless source-visible).",
+   "evidence": [
+    "evidence/D27/language/corpus/corpus-record.json"
+   ],
+   "status": "OBS",
+   "disposition": "SATISFIED with the stated boundary",
+   "refs": []
+  },
+  {
+   "id": "H-07",
+   "question": "Are diagnostics structured enough for a tiny model to repair diagrams?",
+   "answer": "Partly.  Each diagnostic carries code, code id, severity, phase, source id, primary span, up to two related spans, a message class, three ordered parameters and an optional authority - enough to locate and classify.  Missing: the expected forms at the failing position and a machine-readable repair hint; the message class is a template selector, not prose.",
+   "evidence": [
+    "evidence/D27/language/corpus/corpus-record.json"
+   ],
+   "status": "OBS",
+   "disposition": "LANGUAGE-2-CANDIDATE (expected-forms parameter), not blocking",
+   "refs": [
+    "FB-23",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-08",
+   "question": "Can the model discover the valid vocabulary mechanically?",
+   "answer": "Offline, yes since D27: the manifest is derived from the compiler source (31 statement keywords, 12 predicates with arity, 8 vocabulary tables, 33 diagnostic codes, the ABI operations, the wasm exports, the kernel limits).  From the running kernel, no: no ABI operation returns the vocabulary.",
+   "evidence": [
+    "evidence/D27/language/manifest.json"
+   ],
+   "status": "RUN",
+   "disposition": "SATISFIED offline; kernel query is FB-23",
+   "refs": [
+    "FB-23"
+   ]
+  },
+  {
+   "id": "H-09",
+   "question": "Should a machine-readable language manifest/schema exist?",
+   "answer": "Yes, and it must be derived from the compiler that implements the language, never authored beside it; the grammar prose is checked against it (D27: tests/closure/language-manifest-v1.json, checked byte-identical on every run).",
+   "evidence": [
+    "evidence/D27/language/manifest.json"
+   ],
+   "status": "RUN",
+   "disposition": "SATISFIED",
+   "refs": []
+  },
+  {
+   "id": "H-10",
+   "question": "Can the model ask the compiler \"what forms are legal here?\"",
+   "answer": "No.  The kernel ABI has no query for the vocabulary or for the legal forms at a position; the manifest answers the first offline.  A QUERY_LANGUAGE_MANIFEST operation is an ABI version change (ABI 1 -> 2) and belongs to the same delta as the compiler that adds it.",
+   "evidence": [
+    "evidence/D27/language/manifest.json"
+   ],
+   "status": "GAP",
+   "disposition": "LANGUAGE-2 / ABI-2 CANDIDATE",
+   "refs": [
+    "FB-23",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-11",
+   "question": "Can incomplete designs remain meaningful under ANALYZE?",
+   "answer": "Yes.  L14/L15/L35: a unit with `@{status ... GAP}` analyzes OK with a partial graph and its statuses preserved; BUILD refuses with BUILD_BLOCKED_BY_GOVERNANCE (corpus row lang-L14-gap; the feedback probe shows the same refusal on ERR issues).",
+   "evidence": [
+    "evidence/D27/language/corpus/corpus-record.json"
+   ],
+   "status": "RUN",
+   "disposition": "SATISFIED",
+   "refs": []
+  },
+  {
+   "id": "H-12",
+   "question": "Can ambiguity always return to the human instead of being guessed?",
+   "answer": "Yes for the implemented forms: L07 AMBIGUOUS_REFERENCE across imported units, L33 a drawn arrow creates no relation, L23 unknown keywords are errors not extension points; the invariant vocabulary is fixed (L34).",
+   "evidence": [
+    "evidence/D27/language/corpus/corpus-record.json"
+   ],
+   "status": "RUN",
+   "disposition": "SATISFIED",
+   "refs": []
+  },
+  {
+   "id": "H-13",
+   "question": "Can presentation be freely redrawn without semantic mutation?",
+   "answer": "For the fixed transforms (whitespace, ASCII/Unicode frames, relocation, prose, declaration order, the compact Byte Relay): identical canonical rendering.  The closure property L30 (for every presentation-preserving T) is witnessed by fixed fixtures only; no generator exists.",
+   "evidence": [
+    "evidence/D27/language/corpus/corpus-record.json"
+   ],
+   "status": "RUN",
+   "disposition": "TEST-TO-ADD (generator-based L30)",
+   "refs": [
+    "FB-24",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-14",
+   "question": "Can observed ASCII remain evidence rather than silently becoming source?",
+   "answer": "No.  The evidence-feedback probe hands the observed ASCII the compiler derives from a physical tape back to the compiler: ANALYZE accepts it as a valid source unit (a `@{system <name>_observed}` island plus `@{issue}` islands are LANGUAGE 1 statements); only the ERR content blocks BUILD.  Nothing in the language marks a unit as authored, canonical or observed; the `_observed` suffix and the `| ` prefix are presentation.",
+   "evidence": [
+    "evidence/D27/language/feedback/feedback.json"
+   ],
+   "status": "GAP",
+   "disposition": "LANGUAGE-2-CANDIDATE (a source-role statement, or an evidence dialect that is not a source unit)",
+   "refs": [
+    "FB-22",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-15",
+   "question": "Can subsystem abstraction keep enormous systems conversational?",
+   "answer": "The mechanism exists: subsystem, contains, refines, use across source units, recursive refinement (L29), private boundaries (L10, L28).  The capacity does not: the kernel is bounded (8 source units, 64 KiB of source, 512 islands, 256 objects, 256 relations per workspace).  A system the size of the Factory itself exceeds one workspace; composition across workspaces (a subsystem compiled separately and imported by its public contract) is not implemented.",
+   "evidence": [
+    "evidence/D27/language/manifest.json"
+   ],
+   "status": "UNK",
+   "disposition": "LANGUAGE-2 / KERNEL-2 CANDIDATE (separate compilation by public contract)",
+   "refs": [
+    "FB-27",
+    "FC-5"
+   ]
+  },
+  {
+   "id": "H-16",
+   "question": "What language-evolution tests are missing?",
+   "answer": "Existing since D27: L36 corpus-oracle reproduction, L37 vocabulary manifest equality with the grammar.  Missing: L38 version identification in source, L39 evidence/source role separation, L40 generator-based presentation equivalence, L41 unknown-keyword attack set derived from (manifest N+1 minus manifest N) run through Compiler N, L42 migration record round trip, L43 multi-workspace composition.  Recorded as obligations in LANGUAGE-TESTS.md (D27 annotation).",
+   "evidence": [
+    "LANGUAGE-TESTS.md"
+   ],
+   "status": "GAP",
+   "disposition": "TEST-TO-ADD (FC-5)",
+   "refs": [
+    "FB-24",
+    "FC-5"
+   ]
+  }
+ ]
+}

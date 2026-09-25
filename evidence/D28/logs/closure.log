@@ -1,0 +1,29 @@
+$ CARGO_TARGET_DIR=${REPROVE_TARGET:-/home/user/factory-builds/d19-target} cargo +1.94.1 build -q -p factc
+[exit 0]
+$ node tests/closure/structural-check.mjs --registers tests/closure/registers --components tests/manifest/components.json --graph design/environment-map/graph.json --facts-spec tests/envmap/facts/D27.json --root . --evidence-required --out evidence/D28/closure/structural-check.json
+PASS [ids] unique_ids: 30 blockers, 8 sequence steps, 16 hardening questions, 16 acceptance steps, 53 corpus entries, 5 rust-build candidates
+PASS [ids] statuses_in_vocabulary: every status is one of OBS RUN NEW GAP ERR UNK (FACTORY-LAW.md)
+PASS [classification] every_component_classified_once: 72 components in 6 classes
+PASS [chain] correspondence_rows_complete: 12 Factory operations mapped CURRENT -> SEMANTIC EFFECT -> BROWSER MECHANISM -> TEST -> EVIDENCE -> STATUS
+PASS [closure] every_open_blocker_sequenced_or_boundary: 30 blockers: GAP 13, ERR 2, UNK 7, closed 4
+PASS [closure] every_acceptance_step_has_mechanism: 16 steps; 0 RUN without the host today
+PASS [closure] sequence_covers_acceptance: 8 deltas cover 23 blockers and every acceptance step
+PASS [chain] hardening_and_evolution_complete: 16 hardening questions answered with evidence; 12 evolution steps bound to mechanisms (8 RUN)
+PASS [chain] rust_build_and_seed_complete: 5 RUST_BUILD candidates with INPUT/OPERATION/OUTPUT/TRUST/VERIFICATION/BOOTSTRAP/REPRODUCIBILITY/RECOVERY; 14 TCB rows; 8 seed rules each on a current primitive
+PASS [gating] decisions_complete: 14 decisions: DECIDED 2, ASSUMED-DEFAULT 8, OWNER-ONLY 0, NOT-GATING 4; every option evidenced by current facts, every gate mirrored by the sequence
+PASS [gating] constraints_and_sequence_gated: 11 constraints (3 provable here, 8 external with a procedure and evidence schema); every sequence step names its decisions, constraints and assumption; every acceptance step names its external constraints
+STRUCTURAL CHECK: PASS
+[exit 0]
+$ node tests/closure/language-corpus.mjs --factc ${REPROVE_TARGET:-/home/user/factory-builds/d19-target}/debug/factc --corpus tests/closure/registers/language-corpus.json --out evidence/D28/language/corpus --check tests/closure/language-corpus-v1.json
+corpus LANGUAGE 1: 53 entries {"DIAGNOSTICS":20,"OK":33}; frozen table REPRODUCED
+[exit 0]
+$ node tests/closure/language-manifest.mjs --root . --out evidence/D28/language/manifest.json --check tests/closure/language-manifest-v1.json --grammar ASCII-GRAMMAR.md
+language version 1: 31 statement keywords, 12 predicates, 8 vocabulary tables, 33 diagnostic codes, 15 ABI operations, 21 wasm exports
+[exit 0]
+$ node tests/closure/station-authority-census.mjs --paths ASCII-LANGUAGE.md,ASCII-GRAMMAR.md,SEMANTIC-MODEL.md,LANGUAGE-TESTS.md,REFINEMENT-LAW.md --out evidence/D28/stations/census-after.json
+AUTHORIZED ASCII-LANGUAGE.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED ASCII-GRAMMAR.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED SEMANTIC-MODEL.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED LANGUAGE-TESTS.md: may ["S-LANGUAGE-LAW"] forbid []
+AUTHORIZED REFINEMENT-LAW.md: may ["S-LANGUAGE-LAW"] forbid []
+[exit 0]

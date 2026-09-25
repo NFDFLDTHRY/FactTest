@@ -1,0 +1,115 @@
+{
+  "fixture_id": "F4-build",
+  "station_id": "S-BUILD",
+  "selected_inputs": [
+    "evidence/D28/selection.json",
+    "tests/reprove/runbook.json (every group kind the selection names)"
+  ],
+  "narrowed_may_change": [
+    "evidence/D28/results/",
+    "evidence/D28/clauses/",
+    "evidence/D28/reopen/",
+    "evidence/D28/ingress-reprove/",
+    "evidence/D28/process/",
+    "evidence/D28/manifest-reprove/",
+    "evidence/D28/status-reprove/",
+    "evidence/D28/lineage/",
+    "evidence/D28/paths/",
+    "evidence/D28/closure/",
+    "evidence/D28/language/",
+    "evidence/D28/stations/",
+    "evidence/D28/proof/",
+    "evidence/D28/crates/",
+    "evidence/D28/kernel/",
+    "evidence/D28/specimens/",
+    "evidence/D28/attacks/",
+    "evidence/D28/anti-cheat/",
+    "evidence/D28/physical/",
+    "evidence/D28/factory/",
+    "evidence/D28/logs/"
+  ],
+  "job_parameters": {
+    "commands": [
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "rm -rf /home/user/factory-builds/d28-target /home/user/factory-builds/d28-kernels && mkdir -p /home/user/factory-builds/d28-target /home/user/factory-builds/d28-kernels && echo 'fresh build directories'"
+        ],
+        "log": "evidence/D28/logs/F4-fresh-dirs.log",
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D28/selection.json --runbook tests/reprove/runbook.json --kind source --out evidence/D28"
+        ],
+        "log": "evidence/D28/logs/F4-run-selected-source.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d28-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d28-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D28/selection.json --runbook tests/reprove/runbook.json --kind cite --out evidence/D28"
+        ],
+        "log": "evidence/D28/logs/F4-run-selected-cite.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d28-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d28-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D28/selection.json --runbook tests/reprove/runbook.json --kind repo --out evidence/D28"
+        ],
+        "log": "evidence/D28/logs/F4-run-selected-repo.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d28-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d28-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node tests/reprove/run-selected.mjs --selection evidence/D28/selection.json --runbook tests/reprove/runbook.json --kind build --out evidence/D28"
+        ],
+        "log": "evidence/D28/logs/F4-run-selected-build.log",
+        "env": {
+          "REPROVE_TARGET": "/home/user/factory-builds/d28-target",
+          "REPROVE_KERNELS": "/home/user/factory-builds/d28-kernels"
+        },
+        "cwd": "."
+      },
+      {
+        "program": "sh",
+        "args": [
+          "-c",
+          "node -e 'const J=p=>JSON.parse(require(\"fs\").readFileSync(p));const fs=require(\"fs\");let n=0,facts=0;for(const f of fs.readdirSync(\"evidence/D28/results\")){const r=J(\"evidence/D28/results/\"+f);const bad=Object.entries(r.facts).filter(([k,v])=>v.verdict!==\"PASS\").map(([k])=>k);if(bad.length||r.commands.some(c=>c.exit!==0)){console.log(r.group,\"FAIL\",bad);process.exit(1)}n++;facts+=Object.keys(r.facts).length}const s=J(\"evidence/D28/selection.json\");console.log(\"groups\",n,\"facts re-proved\",facts,\"selected\",s.selected);if(facts!==s.selected)process.exit(1)'"
+        ],
+        "log": "evidence/D28/logs/F4-checks.log",
+        "cwd": "."
+      }
+    ]
+  },
+  "expected_outputs": [
+    "evidence/D28/selection.json"
+  ],
+  "narrowed_may_read": [
+    "*"
+  ],
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "delta_id": "D28-DECISIONS-AND-CONSTRAINTS"
+}

@@ -1,0 +1,729 @@
+{
+ "schema": "facttest-closure-decisions/1",
+ "law": "design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md sections 6 and 12; D28 pass 1",
+ "note": "DECISION register: every open owner decision and owner issue that could gate the implementation plan, with its options, the current-fact evidence for and against each, the consequence of each option on the sequence, and the evidence-backed default the plan ASSUMES until the owner decides.  status: DECIDED (decided by an earlier delta or the owner) | ASSUMED-DEFAULT (the plan runs under the default; the owner flips it by editing this row through S-FIXTURE, which re-selects the gated deltas) | OWNER-ONLY (no defensible default; the gated deltas wait) | NOT-GATING (no sequence step depends on it).  The agent decides nothing here.",
+ "statuses": [
+  "DECIDED",
+  "ASSUMED-DEFAULT",
+  "OWNER-ONLY",
+  "NOT-GATING"
+ ],
+ "rows": [
+  {
+   "id": "D-1",
+   "title": "home origin of the installed Factory",
+   "question": "on which origin does the Factory seed live?",
+   "origin": "D12 section 19",
+   "options": [
+    {
+     "id": "D-1-a",
+     "option": "a dedicated HTTPS origin whose storage no other page shares; loopback (a secure context) as the evidence origin of every delta run in this environment",
+     "evidence_for": [
+      "FACT-SH-ORIGIN-SCOPED-STORAGE",
+      "FACT-SH-OPAQUE-CONFINEMENT",
+      "FACT-D25-RUNTIME-PHYSICAL"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "evidence/D26/physical/selfhost/probes/P03-STORAGE-RESTART-ORIGIN.json"
+     ],
+     "consequence": {
+      "FC-1": "seed failure matrix on loopback; the public origin run is external",
+      "FC-8": "the closure experiment on loopback; the public-origin run recorded as external evidence"
+     }
+    },
+    {
+     "id": "D-1-b",
+     "option": "a loopback server as the permanent home",
+     "evidence_for": [
+      "FACT-SH-ORIGIN-SCOPED-STORAGE"
+     ],
+     "evidence_against": [
+      "FACT-D25-PUBLIC-HTTPS"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-1": "same tests",
+      "FC-8": "no public origin ever exercised: acceptance steps 1 and 10 stay bound to a host process"
+     }
+    },
+    {
+     "id": "D-1-c",
+     "option": "a shared host (raw.githack.com, <user>.github.io)",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-SH-OPAQUE-CONFINEMENT",
+      "FACT-SH-GITHACK-UNREACHABLE",
+      "FACT-D25-PUBLIC-HTTPS"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-1": "every page of the shared host reaches the Factory storage: confinement breaks",
+      "FC-8": "unreachable from this environment"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-1-a",
+    "reason": "storage is origin-scoped and same-origin code reaches all of it (P03 + P08): only a dedicated origin keeps the seed and its pointers out of other pages' reach; loopback serves every proof this environment can run",
+    "evidence": [
+     "FACT-SH-ORIGIN-SCOPED-STORAGE",
+     "FACT-SH-OPAQUE-CONFINEMENT"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-1",
+    "FC-8"
+   ],
+   "external_input": "the host name and hosting of the dedicated HTTPS origin, and one run of tests/physical/PUBLIC-HTTPS-PROBE.md there"
+  },
+  {
+   "id": "D-2",
+   "title": "origins of generated WebApps",
+   "question": "does a generated app share the Factory origin (and its storage) or get its own?",
+   "origin": "D12 section 19; D12 B-16",
+   "options": [
+    {
+     "id": "D-2-a",
+     "option": "one origin per generated app (a second loopback port in this environment); the Factory origin serves nothing but the Factory",
+     "evidence_for": [
+      "FACT-D25-ISOLATION-ORIGIN",
+      "FACT-SH-OPAQUE-CONFINEMENT",
+      "FACT-SH-ORIGIN-SCOPED-STORAGE"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "evidence/D26/physical/selfhost/probes/P08-CANDIDATE-CONFINEMENT.json"
+     ],
+     "consequence": {
+      "FC-1": "the seed router serves generated apps only through a distinct origin; probed with two loopback ports",
+      "FC-8": "the closure experiment executes a generated app on its own origin"
+     }
+    },
+    {
+     "id": "D-2-b",
+     "option": "generated apps on the Factory origin, accepting that they share the Factory trust domain",
+     "evidence_for": [
+      "FACT-SH-OPFS-SERVED-APP"
+     ],
+     "evidence_against": [
+      "FACT-SH-OPAQUE-CONFINEMENT"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-1": "the invariant FactTest.git != generated WebApp is violated by design (D12 B-16 [ERR]); the seed must confine apps as generations",
+      "FC-8": "the executed app can reach Factory storage"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-2-a",
+    "reason": "isolation is a property the deploying origin supplies (FACT-D25-ISOLATION-ORIGIN) and same-origin code reaches every storage (P08): the invariant survives only with separate origins",
+    "evidence": [
+     "FACT-D25-ISOLATION-ORIGIN",
+     "FACT-SH-OPAQUE-CONFINEMENT"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-1",
+    "FC-8"
+   ]
+  },
+  {
+   "id": "D-3",
+   "title": "RUST_BUILD strategy",
+   "question": "how do compiled objects (kernel, law engine, templates) get built for the installed Factory?",
+   "origin": "D12 section 19; tests/closure/registers/rust-build.json",
+   "options": [
+    {
+     "id": "D-3-a",
+     "option": "B3 import-only first: compiled objects built on the host, imported with a RUST_BUILD receipt, qualified by identity (== pin) and execution; FC-7 measures B4 against B1/B5 before any in-browser build is attempted",
+     "evidence_for": [
+      "FACT-KERNEL-IDENTITY-D24",
+      "FACT-CORE-ONLY-GRAPH",
+      "FACT-D27-RUST-BUILD-BOUNDARY"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "evidence/D27/rust-build/census.json"
+     ],
+     "consequence": {
+      "FC-7": "B3 implemented; measured feasibility of B1/B4/B5 with exit criteria; acceptance steps 3-4 stay host-bound until a candidate is realized",
+      "FC-8": "the closure experiment runs with steps 3-4 gated"
+     }
+    },
+    {
+     "id": "D-3-b",
+     "option": "B1 hosted upstream toolchain (rustc + LLVM as wasm) before anything else",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-D27-RUST-BUILD-BOUNDARY"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-7": "no rustc for a wasm host ships and the toolchain hosts are unreachable from here: nothing can be measured before the choice",
+      "FC-8": "blocked on FC-7"
+     }
+    },
+    {
+     "id": "D-3-c",
+     "option": "B4 first-party Rust-subset compiler before anything else",
+     "evidence_for": [
+      "FACT-CORE-ONLY-GRAPH"
+     ],
+     "evidence_against": [
+      "FACT-D27-RUST-BUILD-BOUNDARY"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-7": "a multi-series effort begun before its input is bounded by measurement",
+      "FC-8": "blocked on FC-7"
+     }
+    },
+    {
+     "id": "D-3-d",
+     "option": "B5 hosted rustc + cranelift",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-D27-RUST-BUILD-BOUNDARY"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-7": "no cranelift backend installed; the kernel identity pin would move",
+      "FC-8": "blocked on FC-7"
+     }
+    },
+    {
+     "id": "D-3-e",
+     "option": "B2 FactTest-native (FactTest compiles FactTest)",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-D24-PIPELINE-GENERIC"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-7": "the language describes systems, not general computation (ASCII-GRAMMAR.md); architectural",
+      "FC-8": "blocked"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-3-a",
+    "reason": "the only candidate with existing evidence (kernel identity pinned and install-name independent); it closes 14 of 16 acceptance steps and leaves the boundary honest while FC-7 measures the rest",
+    "evidence": [
+     "FACT-KERNEL-IDENTITY-D24",
+     "FACT-D27-RUST-BUILD-BOUNDARY"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-7",
+    "FC-8"
+   ],
+   "external_input": "the owner's choice among B1/B4/B5 after the FC-7 measurements, or an environment that can measure a hosted toolchain"
+  },
+  {
+   "id": "D-5",
+   "title": "BUILD with no contract registry",
+   "question": "must BUILD without a submitted registry report OK (today) or refuse with NO_PLAN?",
+   "origin": "D12 section 19 (D-5); D12 B-07",
+   "options": [
+    {
+     "id": "D-5-a",
+     "option": "refuse: BUILD without a registry reports NO_LEGAL_PLAN / NO_PLAN and emits no artifact beyond CAPABILITY_IR",
+     "evidence_for": [
+      "FACT-SH-KERNEL-WORKER-PARTIAL",
+      "FACT-D24-EVIDENCE-BOUND"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "evidence/D26/physical/selfhost/probes/P10-KERNEL-IN-WORKER.json"
+     ],
+     "consequence": {
+      "FC-5": "a compiler change under the evolution contract (a diagnostic, not a language change); corpus rows for BUILD without registry get migration records",
+      "FC-6": "the qualification runner refuses a candidate whose BUILD output carries no verified plan"
+     }
+    },
+    {
+     "id": "D-5-b",
+     "option": "keep: BUILD without a registry is OK with the artifacts it can produce",
+     "evidence_for": [
+      "FACT-SH-KERNEL-WORKER-PARTIAL"
+     ],
+     "evidence_against": [
+      "FACT-D24-EVIDENCE-BOUND"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-5": "no change",
+      "FC-6": "the runner must add its own check that a plan exists (a rule outside the compiler)"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-5-a",
+    "reason": "evidence binding (D24) made every tape name a verified strategy; a BUILD that reports OK without a strategy is a status a later generation could mistake for a buildable system",
+    "evidence": [
+     "FACT-D24-EVIDENCE-BOUND"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-5",
+    "FC-6"
+   ]
+  },
+  {
+   "id": "D-6",
+   "title": "object hash of the browser canonical state",
+   "question": "git SHA-1 object names or the git SHA-256 object format?",
+   "origin": "D12 section 19",
+   "options": [
+    {
+     "id": "D-6-a",
+     "option": "git SHA-1 object names (GitHub-compatible; WebCrypto SHA-1 without SHA-1DC collision detection) with sha256 for artifacts",
+     "evidence_for": [
+      "FACT-SH-GIT-IDENTITY"
+     ],
+     "evidence_against": [
+      "FACT-GIT-TREE-ORDER-UNDOCUMENTED"
+     ],
+     "evidence_paths": [
+      "evidence/D26/physical/selfhost/probes/P09-GIT-OBJECTS-IN-BROWSER.json"
+     ],
+     "consequence": {
+      "FC-2": "the object store reproduces the D26 P09 identities on the repository's own tree",
+      "FC-8": "remote sync stays git-compatible"
+     }
+    },
+    {
+     "id": "D-6-b",
+     "option": "git SHA-256 object format",
+     "evidence_for": [
+      "FACT-D14-REOPEN-GIT-SHA256-TRANSITION"
+     ],
+     "evidence_against": [
+      "FACT-SH-GIT-IDENTITY"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-2": "no browser identity proof exists for SHA-256 objects; GitHub interoperability unknown",
+      "FC-8": "remote sync needs a transition layer"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-6-a",
+    "reason": "880/880 blob ids, the HEAD tree and commit were reproduced in the browser with SHA-1 (P09); nothing equivalent exists for SHA-256",
+    "evidence": [
+     "FACT-SH-GIT-IDENTITY"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-2",
+    "FC-8"
+   ]
+  },
+  {
+   "id": "D-8",
+   "title": "seed replacement after installation",
+   "question": "may the seed be replaced after install, and by whom?",
+   "origin": "D12 section 19",
+   "options": [
+    {
+     "id": "D-8-a",
+     "option": "only as an origin event approved by the owner: the new seed is qualified by the failure matrix before it is served; the platform makes the swap atomic",
+     "evidence_for": [
+      "FACT-SH-SW-NO-SELF-UPDATE",
+      "FACT-SH-INTERRUPTED-UPDATE",
+      "FACT-SH-BROKEN-SEED-FATAL"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "evidence/D26/physical/selfhost/probes/P02-SW-CANNOT-SELF-UPDATE.json",
+      "evidence/D26/physical/selfhost/probes/P15-INTERRUPTED-SW-UPDATE.json",
+      "evidence/D26/physical/selfhost/probes/P14-BROKEN-SW-RECOVERY.json"
+     ],
+     "consequence": {
+      "FC-1": "the failure matrix includes a seed replacement case (v1 -> v2 qualified; interrupted replacement keeps v1)",
+      "FC-8": "no seed replacement inside the closure experiment"
+     }
+    },
+    {
+     "id": "D-8-b",
+     "option": "never after installation",
+     "evidence_for": [
+      "FACT-SH-BROKEN-SEED-FATAL"
+     ],
+     "evidence_against": [
+      "FACT-SH-SW-NO-SELF-UPDATE"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-1": "a seed defect found later is unrepairable except by site-data clearing",
+      "FC-8": "same"
+     }
+    },
+    {
+     "id": "D-8-c",
+     "option": "any time by whoever serves the origin",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-SH-BROKEN-SEED-FATAL"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-1": "a served defect is fatal offline for every installation",
+      "FC-8": "the TCB grows to the origin server at all times"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-8-a",
+    "reason": "a service worker cannot replace itself from local bytes and a broken one is fatal offline; replacement is possible only from the origin and must be qualified before it is served",
+    "evidence": [
+     "FACT-SH-SW-NO-SELF-UPDATE",
+     "FACT-SH-BROKEN-SEED-FATAL"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-1",
+    "FC-8"
+   ]
+  },
+  {
+   "id": "D-9",
+   "title": "history horizon of the browser canonical state",
+   "question": "import the full git history (packfiles) or start at a recorded tree?",
+   "origin": "D12 section 19",
+   "options": [
+    {
+     "id": "D-9-a",
+     "option": "start at a recorded tree: generation 0 imports the current tree as loose objects with a horizon record naming the host commit; full history stays on the host and in the remote",
+     "evidence_for": [
+      "FACT-SH-GIT-IDENTITY"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "evidence/D26/physical/selfhost/probes/P09-GIT-OBJECTS-IN-BROWSER.json"
+     ],
+     "consequence": {
+      "FC-2": "loose-object store + horizon record; no packfile parser",
+      "FC-8": "packfile import/export drawn as the L4 boundary"
+     }
+    },
+    {
+     "id": "D-9-b",
+     "option": "import the full history through a packfile parser (zlib + deltas)",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-SH-GIT-IDENTITY"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-2": "a packfile parser is built before any Factory work runs in the browser",
+      "FC-8": "nothing new"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-9-a",
+    "reason": "loose objects and tree/commit identity are proven (P09); packfiles are not; canonical state needs only the current tree and a CAS ref (D12 section 10)",
+    "evidence": [
+     "FACT-SH-GIT-IDENTITY"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-2",
+    "FC-8"
+   ]
+  },
+  {
+   "id": "D-10",
+   "title": "sensor routing (Generic Sensor families versus Device Orientation and Motion)",
+   "question": "which sensor API family does the capability matrix route?",
+   "origin": "D12 section 19; CONFLICT-LEDGER OBS-004",
+   "options": [
+    {
+     "id": "D-10-a",
+     "option": "route new projects to Device Orientation and Motion, keep the Generic Sensor families in G as advised at their tips",
+     "evidence_for": [
+      "FACT-SENSOR-FAMILY-ADVISEMENT"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "no implementation delta of the closure series uses a sensor"
+     }
+    },
+    {
+     "id": "D-10-b",
+     "option": "route to the Generic Sensor families",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-SENSOR-FAMILY-ADVISEMENT"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "no closure delta affected"
+     }
+    }
+   ],
+   "default": {
+    "option": null,
+    "reason": "no delta of FC-1..FC-8 depends on a sensor; the decision stays with the capability matrix",
+    "evidence": [
+     "FACT-SENSOR-FAMILY-ADVISEMENT"
+    ]
+   },
+   "status": "NOT-GATING",
+   "gates": [],
+   "reason": "no acceptance step and no sequence step touches a sensor family"
+  },
+  {
+   "id": "D-4",
+   "title": "toolchain pin",
+   "question": "is the Rust toolchain pinned?",
+   "origin": "D12 section 19; decided by D13",
+   "options": [
+    {
+     "id": "D-4-a",
+     "option": "HOST_NATIVE_SET 1.94.1 (rust-toolchain.toml) and WASM64_KERNEL_SET nightly-2026-09-24 (proof sets); kernel identity pinned from the committed source",
+     "evidence_for": [
+      "FACT-KERNEL-IDENTITY-D24",
+      "FACT-CORE-ONLY-GRAPH"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "tests/toolchain/proof-sets.json"
+     ],
+     "consequence": {
+      "FC-4": "the KERNEL_BUILD capability names the pinned toolchain in its receipt",
+      "FC-7": "the identity oracle of every RUST_BUILD candidate"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-4-a",
+    "reason": "decided by D13 on the D12 KRN evidence; re-pinned by D24",
+    "evidence": [
+     "FACT-KERNEL-IDENTITY-D24"
+    ]
+   },
+   "status": "DECIDED",
+   "gates": [
+    "FC-4",
+    "FC-7"
+   ]
+  },
+  {
+   "id": "D-7",
+   "title": "path authority semantics",
+   "question": "literal surfaces or globs?",
+   "origin": "D12 section 19; decided by the owner prompt of D13",
+   "options": [
+    {
+     "id": "D-7-a",
+     "option": "literal: \"*\", \"dir/\" or an exact file; no glob expansion",
+     "evidence_for": [
+      "FACT-LITERAL-PATH-MATCH"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-3": "the ported law engine reproduces the literal cover rule (paths.rs) as a pure function"
+     }
+    }
+   ],
+   "default": {
+    "option": "D-7-a",
+    "reason": "decided by the owner (D13 target 1)",
+    "evidence": [
+     "FACT-LITERAL-PATH-MATCH"
+    ]
+   },
+   "status": "DECIDED",
+   "gates": [
+    "FC-3"
+   ]
+  },
+  {
+   "id": "I-39",
+   "title": "evidence never becomes source (observed ASCII accepted by ANALYZE)",
+   "question": "how does LANGUAGE 2 separate evidence from source?",
+   "origin": "D27 I-39; FB-22",
+   "options": [
+    {
+     "id": "I-39-a",
+     "option": "a source-role statement in LANGUAGE 2 (a unit declares authored | canonical | observed; ANALYZE and BUILD refuse an observed unit as source)",
+     "evidence_for": [
+      "FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [
+      "evidence/D27/language/feedback/feedback.json"
+     ],
+     "consequence": {
+      "FC-5": "one keyword; corpus migration rows for the observed fixtures; L39"
+     }
+    },
+    {
+     "id": "I-39-b",
+     "option": "an evidence dialect that is not a source unit (observed ASCII rendered without a @{system} island)",
+     "evidence_for": [
+      "FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "FC-5": "a renderer change only; the observed ASCII stops being parseable as a system"
+     }
+    }
+   ],
+   "default": {
+    "option": "I-39-a",
+    "reason": "both are LANGUAGE 2 candidates; the statement keeps the observed view a valid diagram the human can read with the same tools, which section 10 of ASCII-LANGUAGE.md requires",
+    "evidence": [
+     "FACT-D27-OBSERVED-ASCII-NOT-DISTINGUISHABLE"
+    ]
+   },
+   "status": "ASSUMED-DEFAULT",
+   "gates": [
+    "FC-5"
+   ]
+  },
+  {
+   "id": "I-29",
+   "title": "the C14 contract text (eight operations) versus the fourteen-operation kernel API",
+   "question": "does the owner rewrite BOOTSTRAP-CONTRACTS.md C14, and when?",
+   "origin": "D23 I-29",
+   "options": [
+    {
+     "id": "I-29-a",
+     "option": "fold the rewrite into the FC-5 delta that changes the ABI (ABI 2: the vocabulary query), through S-ANNOTATE-OWNER as an insertion-only annotation",
+     "evidence_for": [
+      "FACT-D23-C14-TEXT-OWNER",
+      "FACT-D23-WASM-TRANSPORT-COMPLETE"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "no capability or acceptance step depends on the contract text; the receipts and the transport are already proven"
+     }
+    },
+    {
+     "id": "I-29-b",
+     "option": "leave the text; the annotation of D23 already states the fourteen operations",
+     "evidence_for": [
+      "FACT-D23-C14-TEXT-OWNER"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "no consequence"
+     }
+    }
+   ],
+   "default": {
+    "option": null,
+    "reason": "owner decision on law text; nothing in the sequence waits on it",
+    "evidence": [
+     "FACT-D23-C14-TEXT-OWNER"
+    ]
+   },
+   "status": "NOT-GATING",
+   "gates": [],
+   "reason": "law text only; the kernel API and both transports are proven regardless"
+  },
+  {
+   "id": "I-33",
+   "title": "runtime self-integrity of generated bundles",
+   "question": "must the generated runtime verify its own files at load?",
+   "origin": "D24 I-33; D25 owner decision",
+   "options": [
+    {
+     "id": "I-33-a",
+     "option": "keep as decided by D25: tamper detection external (against bundle.json); in the installed Factory the SEED hash-checks every object it serves, so generation integrity does not depend on it",
+     "evidence_for": [
+      "FACT-D24-RUNTIME-SELF-INTEGRITY",
+      "FACT-D24-EVIDENCE-BOUND"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "seed rule 2 (registers/seed.json) covers generations; generated apps on their own origin (D-2) stay as the contract says"
+     }
+    },
+    {
+     "id": "I-33-b",
+     "option": "change CODEGEN-BUNDLE-CONTRACT.md to require self-verification",
+     "evidence_for": [],
+     "evidence_against": [
+      "FACT-D24-RUNTIME-SELF-INTEGRITY"
+     ],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "an owner law change plus a template change (RUST_BUILD today)"
+     }
+    }
+   ],
+   "default": {
+    "option": null,
+    "reason": "owner decision on the bundle contract; closure does not depend on it because the seed, not the bundle, checks identities",
+    "evidence": [
+     "FACT-D24-RUNTIME-SELF-INTEGRITY"
+    ]
+   },
+   "status": "NOT-GATING",
+   "gates": [],
+   "reason": "seed rule 2 hash-checks every served object; the generated-app contract stays the owner's"
+  },
+  {
+   "id": "I-12/I-13/I-18",
+   "title": "law text presentation and wording (the registry header, escaped code fences, the boundary-register class rows)",
+   "question": "does the owner reword law documents?",
+   "origin": "D21 issue inventory",
+   "options": [
+    {
+     "id": "I-12-a",
+     "option": "reword through S-ANNOTATE / S-ANNOTATE-OWNER when the owner decides; no closure delta reads the wording",
+     "evidence_for": [
+      "FACT-D21-ISSUES-CLASSIFIED"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "presentation only"
+     }
+    },
+    {
+     "id": "I-12-b",
+     "option": "leave as is",
+     "evidence_for": [
+      "FACT-D21-ISSUES-CLASSIFIED"
+     ],
+     "evidence_against": [],
+     "evidence_paths": [],
+     "consequence": {
+      "none": "presentation only"
+     }
+    }
+   ],
+   "default": {
+    "option": null,
+    "reason": "owner decision; nothing executable depends on it",
+    "evidence": [
+     "FACT-D21-ISSUES-CLASSIFIED"
+    ]
+   },
+   "status": "NOT-GATING",
+   "gates": [],
+   "reason": "presentation and wording of law; no test, capability or acceptance step reads it"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system byte_relay_pinned "Byte Relay (pinned)"}
+| TYPES
+| @{type Bytes}
+| EFFECTS / CAPABILITIES / IMPLEMENTATIONS
+| @{implementation CPU_WASM64}
+| COMPONENTS
+| @{component egress}
+| @{port egress.bytes in: Bytes public}
+| @{component ingress}
+| @{port ingress.bytes out: Bytes public}
+| RELATIONS
+| @{pin egress CPU_WASM64}
+| @{data relay ingress.bytes -> egress.bytes mode=copy}
++------------------------------------------------------------------------+

@@ -1,0 +1,30 @@
+{
+ "id": "CL-GPU9",
+ "trace": "GPU",
+ "authority": "AUTH-GPU-REQUESTDEVICE",
+ "authority_known": true,
+ "source": {
+  "repo": "https://github.com/gpuweb/gpuweb",
+  "branch": "main",
+  "path": "spec/index.bs",
+  "commit": "454d33cfdf6b8c8a1efafe490623cf0905e6c245",
+  "sha256": "6408fbf862e748c2bbe1366aa7fb89455c25c7c200a0542e7175601bcc9458f5",
+  "bytes": 848916
+ },
+ "locator": {
+  "text": "    : <dfn>mapAsync(mode, offset, size)</dfn>",
+  "line_start": 3823,
+  "line_end": 3828,
+  "derivation": "anchor text",
+  "enclosing_section": "#buffer-mapping (line 3761)"
+ },
+ "window": 6,
+ "consequence": "readback is mapAsync + getMappedRange; the promise only signals mapping, so known-answer checks read the mapped range after it resolves",
+ "excerpt": "    : <dfn>mapAsync(mode, offset, size)</dfn>\n    ::\n        Maps the given range of the {{GPUBuffer}} and resolves the returned {{Promise}} when the\n        {{GPUBuffer}}'s content is ready to be accessed with {{GPUBuffer/getMappedRange()}}.\n\n        The resolution of the returned {{Promise}} **only** indicates that the buffer has been mapped.",
+ "excerpt_sha256": "42537c0ba54ab895196bfc22ee77d988283367fa56d5a1ed3065548dfe493bcf",
+ "must_contain": {
+  "Maps the given range of the {{GPUBuffer}}": true,
+  "**only** indicates that the buffer has been mapped": true
+ },
+ "status": "VERIFIED"
+}

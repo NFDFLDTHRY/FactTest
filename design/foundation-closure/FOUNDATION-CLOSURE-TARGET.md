@@ -258,6 +258,10 @@ server, host git, host rustc/cargo or an unmodeled manual intervention, SELF-HOS
  FC-7 D34-RUST-BUILD-SPIKE            D-3 by evidence: B3 + measured B4/B1/B5                 FB-04             steps 3,4
  FC-8 D35-GENERATION-SWAP             the closure experiment run; L4 boundary drawn           FB-16..18 FB-20   steps 1-16 (3-4 gated)
  each: one StructuralDelta, closed, verified, integrated, re-observed before the next; details registers/sequence.json
+ D28 NOTE: the six-part analysis and mapping series D28-D33 (design/materialization/D28-D33-ANALYSIS-SERIES-PROMPT.md)
+ precedes FC-1 and turns each step into a specification; pass 6 re-baselines this table (the FC delta numbers move to
+ D34+).  Since D28 every step carries the decisions and constraints it runs under (registers/decisions.json,
+ registers/constraints.json; CLOSURE-REGISTERS.md sections 11-13).
 ```
 
 ## 13. The answer to the stop condition, and the structural check

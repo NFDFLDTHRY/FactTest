@@ -1,0 +1,5 @@
+$ sh -c I=design/materialization/D28-INTENDED-DECISIONS-AND-CONSTRAINTS.md; for s in '## 0.' '## 1.' '## 2.' '## 3.' '## 4.' '## 5.'; do grep -qF "$s" $I || { echo missing $s; exit 1; }; done; grep -q '^STRUCTURAL CHECK: PASS' $I && ! grep -q PREDICTIONS_PLACEHOLDER $I && grep -q 'integrated as 0f57ecfd82295ee207f51432af764258fd34b052' design/materialization/LEDGER.md && grep -q '^## D28-DECISIONS-AND-CONSTRAINTS' design/materialization/LEDGER.md && ! grep -q PREDICTIONS_PLACEHOLDER design/materialization/LEDGER.md && [ $(grep -c 'recorded by the next delta' design/materialization/LEDGER.md) -eq 1 ] && grep -q '^ D28 NOTE:' design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md && d=$(git diff --numstat 0f57ecfd82295ee207f51432af764258fd34b052 -- design/foundation-closure/FOUNDATION-CLOSURE-TARGET.md | cut -f2) && [ "$d" = 0 ] && echo 'intended + ledger + target note (insertion-only) as intended'
+(cwd .)
+intended + ledger + target note (insertion-only) as intended
+
+[exit 0] expected 0

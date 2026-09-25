@@ -1,0 +1,27 @@
++------------------------------------------------------------------------+
+| SYSTEM
+| @{system byte_relay "Relay of Bytes, Renamed"}
+| TYPES
+| @{type Bytes}
+| COMPONENTS
+| @{component egress "Sink Side"}
+| @{port egress.bytes in: Bytes public}
+| @{component ingress "Source Side"}
+| @{port ingress.bytes out: Bytes public}
+| RELATIONS
+| @{data relay ingress.bytes -> egress.bytes mode=copy}
+| INVARIANTS
+| @{invariant i_cons has_consumer(ingress.bytes)}
+| @{invariant i_path reachable(ingress, egress)}
+| @{invariant i_prod exactly_one_producer(egress.bytes)}
+| @{invariant i_type type_equal(ingress.bytes, egress.bytes)}
+| TESTS / EVIDENCE
+| @{test t_roundtrip runtime}
+| @{evidence e_roundtrip runtime_probe}
+| @{tests t_roundtrip -> i_type}
+| @{witnesses e_roundtrip -> t_roundtrip}
+| OBJECTIVES
+| @{metric preference_rank ordinal "renamed description"}
+| @{objective commissioning}
+| @{goal commissioning 1 minimize preference_rank}
++------------------------------------------------------------------------+
